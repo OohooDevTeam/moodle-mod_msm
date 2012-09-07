@@ -18,96 +18,94 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>The existence of at least one <math>
-                     <latex>b\in \RNr</latex>
-                  </math> with <math>
-                     <latex>a+b=0</latex>
-                  </math> is guaranteed by the appropriate axiom. Now consider an arbitrary element <math>
-                     <latex>c\in \RNr</latex>
-                  </math> with <math>
-                     <latex>a + c = 0</latex>
-                  </math>. Then</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>b</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use that <math>
-                                    <latex>(a+c) = 0</latex>
-                                 </math> is the neutral element with respect to addition.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>b + (a + c)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>by the associativity property of addition</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(b+a) + c</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>because <math>
-                                    <latex>b+a=a+b=0</latex>
-                                 </math> is the neutral element of addition.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>c</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This says exactly that <math>
+         <para>
+            <para.body>The existence of at least one <math>
+                  <latex>b\in \RNr</latex>
+               </math> with <math>
+                  <latex>a+b=0</latex>
+               </math> is guaranteed by the appropriate axiom. Now consider an arbitrary element <math>
+                  <latex>c\in \RNr</latex>
+               </math> with <math>
+                  <latex>a + c = 0</latex>
+               </math>. Then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>b</latex>
-                  </math> is the only additive inverse of <math>
-                     <latex>a</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that <math>
+                                 <latex>(a+c) = 0</latex>
+                              </math> is the neutral element with respect to addition.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>b + (a + c)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>by the associativity property of addition</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(b+a) + c</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>because <math>
+                                 <latex>b+a=a+b=0</latex>
+                              </math> is the neutral element of addition.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>c</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This says exactly that <math>
+                  <latex>b</latex>
+               </math> is the only additive inverse of <math>
+                  <latex>a</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

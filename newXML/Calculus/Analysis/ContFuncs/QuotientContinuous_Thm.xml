@@ -30,53 +30,51 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Using the inverse function <math>
-                     <latex>p\from (\StDffrnc{\RNr}{0})\to (\StDffrnc{ \RNr }{ 0 })</latex>
-                  </math>, we express the function <math>
-                     <latex>(f/g)</latex>
-                  </math> as a composite of functions as follows:</para.body>
-            </para>
-            <ol>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>(1/g) = p\Comp g</latex>
-                        </math>, which is continuous at <math>
-                           <latex>x</latex>
-                        </math>, as <math>
-                           <latex>g</latex>
-                        </math> is continuous at <math>
-                           <latex>x</latex>
-                        </math> and <math>
-                           <latex>p</latex>
-                        </math> is continuous at <math>
-                           <latex>g(x)</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Thus <math>
-                           <latex>f\cdot (1/g)</latex>
-                        </math> is continuous at <math>
-                           <latex>x</latex>
-                        </math>, as both functions <math>
-                           <latex>f</latex>
-                        </math> and <math>
-                           <latex>(1/g)</latex>
-                        </math> are continuous at <math>
-                           <latex>x</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>This was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>Using the inverse function <math>
+                  <latex>p\from (\StDffrnc{\RNr}{0})\to (\StDffrnc{ \RNr }{ 0 })</latex>
+               </math>, we express the function <math>
+                  <latex>(f/g)</latex>
+               </math> as a composite of functions as follows:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(1/g) = p\Comp g</latex>
+                     </math>, which is continuous at <math>
+                        <latex>x</latex>
+                     </math>, as <math>
+                        <latex>g</latex>
+                     </math> is continuous at <math>
+                        <latex>x</latex>
+                     </math> and <math>
+                        <latex>p</latex>
+                     </math> is continuous at <math>
+                        <latex>g(x)</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Thus <math>
+                        <latex>f\cdot (1/g)</latex>
+                     </math> is continuous at <math>
+                        <latex>x</latex>
+                     </math>, as both functions <math>
+                        <latex>f</latex>
+                     </math> and <math>
+                        <latex>(1/g)</latex>
+                     </math> are continuous at <math>
+                        <latex>x</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>This was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -72,82 +72,80 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>The proof are about to give might appear silly at first sight because we appear to perform pointless manipulations of zero vectors. However, these manipulations of zero vectors are designed to relate to the two 
+         <para>
+            <para.body>The proof are about to give might appear silly at first sight because we appear to perform pointless manipulations of zero vectors. However, these manipulations of zero vectors are designed to relate to the two 
 			<subordinate>
-                     <hot>fundamental properties</hot>
-                     <crossref>
-                        <definition.ref definitionID="Def_LinearMap"/>
-                        <info>
-                           <para>
-                              <para.body>Look up the definition of ‘linear transformation’</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>fundamental properties</hot>
+                  <crossref>
+                     <definition.ref definitionID="Def_LinearMap"/>
+                     <info>
+                        <para>
+                           <para.body>Look up the definition of ‘linear transformation’</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			which characterize linear functions</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L(\Vect{0})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L(\Vect{0} + \Vect{0})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>linear maps commute with vector addition</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L(\Vect{0}) + L(\Vect{0})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L(\Vect{0})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{0})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{0} + \Vect{0})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>linear maps commute with vector addition</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{0}) + L(\Vect{0})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{0})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

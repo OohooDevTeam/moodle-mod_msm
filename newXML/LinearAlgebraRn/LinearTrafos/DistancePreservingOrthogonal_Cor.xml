@@ -108,26 +108,25 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is an arbitrary <math>
-                     <latex>(n,n)</latex>
-                  </math>-matrix with column vectors <math>
-                     <latex>A_i</latex>
-                  </math>, note that the entry of <math>
-                     <latex>\Mtrx{A}\Mtrx{A}^T</latex>
-                  </math> in position <math>
-                     <latex>(i,j)</latex>
-                  </math> is the dot product <math>
-                     <latex>\DotPr{ A_i }{ A_j }</latex>
-                  </math>. Therefore <math>
-                     <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx[n]</latex>
-                  </math> if and only if </para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>If <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is an arbitrary <math>
+                  <latex>(n,n)</latex>
+               </math>-matrix with column vectors <math>
+                  <latex>A_i</latex>
+               </math>, note that the entry of <math>
+                  <latex>\Mtrx{A}\Mtrx{A}^T</latex>
+               </math> in position <math>
+                  <latex>(i,j)</latex>
+               </math> is the dot product <math>
+                  <latex>\DotPr{ A_i }{ A_j }</latex>
+               </math>. Therefore <math>
+                  <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx[n]</latex>
+               </math> if and only if </para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \DotPr{ A_i }{ A_j } = 
 \left\{
@@ -138,34 +137,33 @@
 \right.
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>But this latter condition holds 
+         </math.display>
+         <para>
+            <para.body>But this latter condition holds 
 			<subordinate>
-                     <hot>if and only if </hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_OrthogonalMapRecognize"/>
-                        <info>
-                           <para>
-                              <para.body>Look up the details.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
-                  <math>
-                     <latex>L</latex>
-                  </math> preserves distances.</para.body>
-            </para>
-            <para>
-               <para.body>Further, the identity <math>
-                     <latex>\Mtrx{A}\cdot \Mtrx{A}^T = \IdMtrx[n]</latex>
-                  </math> means exactly that <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is invertible and that its inverse is <math>
-                     <latex>\Mtrx{A}^T</latex>
-                  </math>. – This proves the corollary.</para.body>
-            </para>
-         </proof.block.body>
+                  <hot>if and only if </hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_OrthogonalMapRecognize"/>
+                     <info>
+                        <para>
+                           <para.body>Look up the details.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+               <math>
+                  <latex>L</latex>
+               </math> preserves distances.</para.body>
+         </para>
+         <para>
+            <para.body>Further, the identity <math>
+                  <latex>\Mtrx{A}\cdot \Mtrx{A}^T = \IdMtrx[n]</latex>
+               </math> means exactly that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible and that its inverse is <math>
+                  <latex>\Mtrx{A}^T</latex>
+               </math>. – This proves the corollary.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

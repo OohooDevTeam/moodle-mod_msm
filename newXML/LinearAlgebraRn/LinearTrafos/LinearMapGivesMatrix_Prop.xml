@@ -67,140 +67,139 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>
-                  <strong>Existence of</strong>
+         <para>
+            <para.body>
+               <strong>Existence of</strong>
+               <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>   We begin by expressing the vectors  <math>
+                  <latex>L(\StdBss{j})</latex>
+               </math> of <math>
+                  <latex>\RNr[m]</latex>
+               </math> in coordinates</para.body>
+         </para>
+         <math.display>
+            <latex>L(\StdBss{j}) = (a_{1j},\dots ,a_{mj}) = a_{1j}\StdBss{1} + \dots + a_{mj}\StdBss{m}</latex>
+         </math.display>
+         <para>
+            <para.body>Now if</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{x} = (x_1,\dots ,x_n) = x_1\StdBss{1} + \dots + x_n\StdBss{n}</latex>
+         </math.display>
+         <para>
+            <para.body>then the following computation shows that <math>
+                  <latex>L(\Vect{x})</latex>
+               </math> can be computed from the vectors <math>
+                  <latex>L(\StdBss{1}),\dots ,L(\StdBss{n})</latex>
+               </math> alone</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
                   <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>   We begin by expressing the vectors  <math>
-                     <latex>L(\StdBss{j})</latex>
-                  </math> of <math>
-                     <latex>\RNr[m]</latex>
-                  </math> in coordinates</para.body>
-            </para>
-            <math.display>
-               <latex>L(\StdBss{j}) = (a_{1j},\dots ,a_{mj}) = a_{1j}\StdBss{1} + \dots + a_{mj}\StdBss{m}</latex>
-            </math.display>
-            <para>
-               <para.body>Now if</para.body>
-            </para>
-            <math.display>
-               <latex>\Vect{x} = (x_1,\dots ,x_n) = x_1\StdBss{1} + \dots + x_n\StdBss{n}</latex>
-            </math.display>
-            <para>
-               <para.body>then the following computation shows that <math>
                      <latex>L(\Vect{x})</latex>
-                  </math> can be computed from the vectors <math>
-                     <latex>L(\StdBss{1}),\dots ,L(\StdBss{n})</latex>
-                  </math> alone</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L(\Vect{x})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L(x_1\StdBss{1} + \cdots + x_n\StdBss{n})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use the linearity property of <math>
-                                    <latex>L</latex>
-                                 </math> twice</para.body>
-                           </para>
-                           <math.array column="3">
-                              <row rowspan="1">
-                                 <cell colspan="2" halign="center" valign="middle">
-                                    <math>
-                                       <latex>L(x_1\StdBss{1} + \cdots + x_n\StdBss{n})</latex>
-                                    </math>
-                                 </cell>
-                                 <cell colspan="1" halign="center" valign="middle">
-                                    <math>
-                                       <latex>=</latex>
-                                    </math>
-                                 </cell>
-                                 <cell colspan="2" halign="center" valign="middle">
-                                    <math>
-                                       <latex>L(x_1\StdBss{1}) + \cdots + L(x_n\StdBss{n})</latex>
-                                    </math>
-                                 </cell>
-                              </row>
-                              <row rowspan="1">
-                                 <cell colspan="2" halign="center" valign="middle"/>
-                                 <cell colspan="1" halign="center" valign="middle">
-                                    <math>
-                                       <latex>=</latex>
-                                    </math>
-                                 </cell>
-                                 <cell colspan="2" halign="center" valign="middle">
-                                    <math>
-                                       <latex>x_1L(\StdBss{1}) + \cdots + x_nL(\StdBss{n})</latex>
-                                    </math>
-                                 </cell>
-                              </row>
-                           </math.array>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>x_1 L(\StdBss{1}) + \cdots + x_n L(\StdBss{n})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Substitute <math>
-                                    <latex>a_{1j}\StdBss{1} + \cdots + a_{mj}\StdBss{m}</latex>
-                                 </math> for <math>
-                                    <latex>L(\StdBss{j})</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>x_1(a_{11}\StdBss{1} + \cdots + a_{m1}\StdBss{m}) + \cdots + x_n(a_{1n}\StdBss{1} + \cdots + a_{mn}\StdBss{m})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(x_1\StdBss{1} + \cdots + x_n\StdBss{n})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the linearity property of <math>
+                                 <latex>L</latex>
+                              </math> twice</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>L(x_1\StdBss{1} + \cdots + x_n\StdBss{n})</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <math>
+                                    <latex>=</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>L(x_1\StdBss{1}) + \cdots + L(x_n\StdBss{n})</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle"/>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <math>
+                                    <latex>=</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>x_1L(\StdBss{1}) + \cdots + x_nL(\StdBss{n})</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x_1 L(\StdBss{1}) + \cdots + x_n L(\StdBss{n})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Substitute <math>
+                                 <latex>a_{1j}\StdBss{1} + \cdots + a_{mj}\StdBss{m}</latex>
+                              </math> for <math>
+                                 <latex>L(\StdBss{j})</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x_1(a_{11}\StdBss{1} + \cdots + a_{m1}\StdBss{m}) + \cdots + x_n(a_{1n}\StdBss{1} + \cdots + a_{mn}\StdBss{m})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>
 				
 \begin{array}{cccccc}
 (a_{11}x_1 &amp; + &amp; \cdots &amp; + &amp; a_{1n}x_n)\StdBss{1} + \\
@@ -209,19 +208,19 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
 \end{array}
 				
 			</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>
 				
 \left[
 \begin{array}{ccc}
@@ -237,59 +236,58 @@ x_1 \\ \vdots \\ x_n
 \right]
 				
 			</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This means exactly that <math>
-                     <latex>L</latex>
-                  </math> can be computed by the matrix product stated in the theorem.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <strong>Uniqueness of</strong>
-                  <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>   It remains to show the matrix <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> we found above is the only matrix with the property <math>
-                     <latex>L(\Vect{x}) = \Mtrx{A}\Vect{x}</latex>
-                  </math>. So suppose <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math> is another matrix satisfying</para.body>
-            </para>
-            <math.display>
-               <latex>\Mtrx{A}\Vect{x} = L(\Vect{x}) = \Mtrx{B}\Vect{x},\quad \text{for all $\Vect{x}\in \RNr[n]$}</latex>
-            </math.display>
-            <para>
-               <para.body>Choosing <math>
-                     <latex>\Vect{x} = \StdBss{j}</latex>
-                  </math>, we find</para.body>
-            </para>
-            <para align="center">
-               <para.body>
-                  <math>
-                     <latex>j</latex>
-                  </math>-th column of <math>
-                     <latex>\Mtrx{A} = A\StdBss{j} = L(\StdBss{j}) = B\StdBss{j} =</latex>
                   </math>
-                  <math>
-                     <latex>j</latex>
-                  </math>-th column of <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body> This holds for each <math>
-                     <latex>j</latex>
-                  </math> with <math>
-                     <latex>1\leq j\leq n</latex>
-                  </math>, and so <math>
-                     <latex>\Mtrx{A} = \Mtrx{B}</latex>
-                  </math>, as was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This means exactly that <math>
+                  <latex>L</latex>
+               </math> can be computed by the matrix product stated in the theorem.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Uniqueness of</strong>
+               <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>   It remains to show the matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> we found above is the only matrix with the property <math>
+                  <latex>L(\Vect{x}) = \Mtrx{A}\Vect{x}</latex>
+               </math>. So suppose <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> is another matrix satisfying</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{A}\Vect{x} = L(\Vect{x}) = \Mtrx{B}\Vect{x},\quad \text{for all $\Vect{x}\in \RNr[n]$}</latex>
+         </math.display>
+         <para>
+            <para.body>Choosing <math>
+                  <latex>\Vect{x} = \StdBss{j}</latex>
+               </math>, we find</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <math>
+                  <latex>j</latex>
+               </math>-th column of <math>
+                  <latex>\Mtrx{A} = A\StdBss{j} = L(\StdBss{j}) = B\StdBss{j} =</latex>
+               </math>
+               <math>
+                  <latex>j</latex>
+               </math>-th column of <math>
+                  <latex>\Mtrx{B}</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body> This holds for each <math>
+                  <latex>j</latex>
+               </math> with <math>
+                  <latex>1\leq j\leq n</latex>
+               </math>, and so <math>
+                  <latex>\Mtrx{A} = \Mtrx{B}</latex>
+               </math>, as was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -75,67 +75,65 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that <math>
-                     <latex>\Vect{y} = t_1 \Vect{x}_1 + \cdots + t_n \Vect{x}_n</latex>
-                  </math>, for some <math>
-                     <latex>t_1,\dots ,t_n</latex>
-                  </math> in <math>
-                     <latex>\RNr</latex>
-                  </math>. Therefore, <math>
-                     <latex>\Vect{a}:=y_1 \Vect{a}_1+\cdots + y_p \Vect{a}_p</latex>
-                  </math> gives</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{a}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>y_1 \Vect{a}_1+\cdots + y_p \Vect{a}_p</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(t_1x_{11}+\cdots t_n x_{n1})\Vect{a}_1 +\cdots + (t_1x_{1p}+\cdots + t_nx_{np})\Vect{a}_p</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t_1(x_{11}\Vect{a}_1+\cdots+ x_{1p}\Vect{a}_p)+\ \cdots\ + t_n(x_{n1}\Vect{a}_1+\cdots + x_{np}\Vect{a}_p)</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>as was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>We know that <math>
+                  <latex>\Vect{y} = t_1 \Vect{x}_1 + \cdots + t_n \Vect{x}_n</latex>
+               </math>, for some <math>
+                  <latex>t_1,\dots ,t_n</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math>. Therefore, <math>
+                  <latex>\Vect{a}:=y_1 \Vect{a}_1+\cdots + y_p \Vect{a}_p</latex>
+               </math> gives</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{a}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>y_1 \Vect{a}_1+\cdots + y_p \Vect{a}_p</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(t_1x_{11}+\cdots t_n x_{n1})\Vect{a}_1 +\cdots + (t_1x_{1p}+\cdots + t_nx_{np})\Vect{a}_p</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1(x_{11}\Vect{a}_1+\cdots+ x_{1p}\Vect{a}_p)+\ \cdots\ + t_n(x_{n1}\Vect{a}_1+\cdots + x_{np}\Vect{a}_p)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

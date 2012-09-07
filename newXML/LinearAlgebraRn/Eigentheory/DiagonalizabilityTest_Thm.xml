@@ -125,40 +125,39 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>L\from \RNr[n] \to \RNr[n]</latex>
-                  </math> denote the linear map represented by <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> in standard coordinates. Consider now the situation where <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is diagonalizable with diagonalizing matrix</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{C}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>[ \Vect{b}_1\ \dots\ \Vect{b}_n ]</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>satisfying</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>Let <math>
+                  <latex>L\from \RNr[n] \to \RNr[n]</latex>
+               </math> denote the linear map represented by <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> in standard coordinates. Consider now the situation where <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is diagonalizable with diagonalizing matrix</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{C}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[ \Vect{b}_1\ \dots\ \Vect{b}_n ]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>satisfying</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \left[
 \begin{array}{cccc}
@@ -170,18 +169,18 @@ d_1 &amp; 0 &amp; \cdots &amp; 0 \\
 \right]\ =\ \Mtrx{C}^{-1}\, \Mtrx{A}\, \Mtrx{C}
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>We show first that <math>
-                     <latex>\EuScript{B} := (\Vect{b}_1,\dots , \Vect{b}_n)</latex>
-                  </math> is an ordered basis of <math>
-                     <latex>\RNr[n]</latex>
-                  </math>  consisting of eigenvectors of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>. Indeed,</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>We show first that <math>
+                  <latex>\EuScript{B} := (\Vect{b}_1,\dots , \Vect{b}_n)</latex>
+               </math> is an ordered basis of <math>
+                  <latex>\RNr[n]</latex>
+               </math>  consisting of eigenvectors of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. Indeed,</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \aligned
 \Mtrx{A} \Vect{b}_i\ &amp;=\ \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \Vect{b}_i \\
@@ -210,177 +209,177 @@ d_1 &amp; 0 &amp; \cdots &amp; 0 \\
 \endaligned
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>So <math>
-                     <latex>\EuScript{B}</latex>
-                  </math> consists of eigenvectors of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>, and the eigenvalue of <math>
-                     <latex>\Vect{b}_i</latex>
-                  </math> is <math>
-                     <latex>d_i</latex>
-                  </math>. To see how these eigenvalues are related to the characteristic polynomial of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>, we compute</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{A} - \lambda \IdMtrx[n])</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}\ -\ \lambda \IdMtrx[n])</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use that <math>
-                                    <latex>\Mtrx{C}\IdMtrx[n] = \IdMtrx[n] \Mtrx{C}</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}\ -\ C(\lambda \IdMtrx[n])C^{-1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use the associative law of matrix multiplication</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{C} (\Mtrx{D} - \lambda \IdMtrx[n]) \Mtrx{C}^{-1} )</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use that <math>
-                                    <latex>\det(\Mtrx{U}\Mtrx{V}) = \det( \Mtrx{V} \Mtrx{U} )</latex>
-                                 </math>
-                              </para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det( \Mtrx{D} - \lambda \IdMtrx[n] )</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(\lambda - d_1)\cdots (\lambda - d_n)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we just lump multiple occurrences of a factor <math>
-                                    <latex>(\lambda - d_i)</latex>
-                                 </math> into one exponentiated occurrence.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(\lambda - d_1)^{a_1}\, \cdots\, (\lambda - d_r)^{a_r}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Now we turn to the relationship between algebraic and geometric multiplicity of <math>
-                     <latex>d_i</latex>
-                  </math>. From the computation above we see that <math>
-                     <latex>d_i</latex>
-                  </math> occurred in exactly <math>
-                     <latex>a_i</latex>
-                  </math> diagonal positions of <math>
-                     <latex>\Mtrx{D}</latex>
-                  </math>. Corresponding to each of these diagonal positions there is exactly one vector in the ordered list <math>
-                     <latex>\Vect{b}_1,\dots, \Vect{b}_n</latex>
-                  </math> of basis vectors in <math>
-                     <latex>\EuScript{B}</latex>
-                  </math>. It follows that the eigenspace <math>
-                     <latex>E_i</latex>
-                  </math> of <math>
-                     <latex>d_i</latex>
-                  </math> has dimension <math>
-                     <latex>a_i</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>Conversely, assume that conditions 1) and 2) of the theorem are satisfied. By hypothesis, <math>
-                     <latex>\RNr[n]</latex>
-                  </math> has an ordered basis <math>
-                     <latex>\EuScript{B} = (\Vect{b}_1,\dots ,\Vect{b}_n)</latex>
-                  </math> of eigenvectors of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>. Let <math>
-                     <latex>\lambda_1,\dots ,\lambda_n</latex>
-                  </math> denote the corresponding eigenvalues. We need to show that <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is diagonalizable. Let <math>
-                     <latex>\Mtrx{C} := [\Vect{b}_1\ \dots\ \Vect{b}_n]</latex>
-                  </math> and</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>So <math>
+                  <latex>\EuScript{B}</latex>
+               </math> consists of eigenvectors of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>, and the eigenvalue of <math>
+                  <latex>\Vect{b}_i</latex>
+               </math> is <math>
+                  <latex>d_i</latex>
+               </math>. To see how these eigenvalues are related to the characteristic polynomial of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>, we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{A} - \lambda \IdMtrx[n])</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}\ -\ \lambda \IdMtrx[n])</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that <math>
+                                 <latex>\Mtrx{C}\IdMtrx[n] = \IdMtrx[n] \Mtrx{C}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}\ -\ C(\lambda \IdMtrx[n])C^{-1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the associative law of matrix multiplication</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{C} (\Mtrx{D} - \lambda \IdMtrx[n]) \Mtrx{C}^{-1} )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that <math>
+                                 <latex>\det(\Mtrx{U}\Mtrx{V}) = \det( \Mtrx{V} \Mtrx{U} )</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det( \Mtrx{D} - \lambda \IdMtrx[n] )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\lambda - d_1)\cdots (\lambda - d_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we just lump multiple occurrences of a factor <math>
+                                 <latex>(\lambda - d_i)</latex>
+                              </math> into one exponentiated occurrence.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\lambda - d_1)^{a_1}\, \cdots\, (\lambda - d_r)^{a_r}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Now we turn to the relationship between algebraic and geometric multiplicity of <math>
+                  <latex>d_i</latex>
+               </math>. From the computation above we see that <math>
+                  <latex>d_i</latex>
+               </math> occurred in exactly <math>
+                  <latex>a_i</latex>
+               </math> diagonal positions of <math>
+                  <latex>\Mtrx{D}</latex>
+               </math>. Corresponding to each of these diagonal positions there is exactly one vector in the ordered list <math>
+                  <latex>\Vect{b}_1,\dots, \Vect{b}_n</latex>
+               </math> of basis vectors in <math>
+                  <latex>\EuScript{B}</latex>
+               </math>. It follows that the eigenspace <math>
+                  <latex>E_i</latex>
+               </math> of <math>
+                  <latex>d_i</latex>
+               </math> has dimension <math>
+                  <latex>a_i</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>Conversely, assume that conditions 1) and 2) of the theorem are satisfied. By hypothesis, <math>
+                  <latex>\RNr[n]</latex>
+               </math> has an ordered basis <math>
+                  <latex>\EuScript{B} = (\Vect{b}_1,\dots ,\Vect{b}_n)</latex>
+               </math> of eigenvectors of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. Let <math>
+                  <latex>\lambda_1,\dots ,\lambda_n</latex>
+               </math> denote the corresponding eigenvalues. We need to show that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is diagonalizable. Let <math>
+                  <latex>\Mtrx{C} := [\Vect{b}_1\ \dots\ \Vect{b}_n]</latex>
+               </math> and</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \Mtrx{D}\ :=\ 
 \left[
@@ -393,33 +392,32 @@ d_1 &amp; 0 &amp; \cdots &amp; 0 \\
 \right]
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>Then <math>
-                     <latex>\Mtrx{D}</latex>
-                  </math> represents <math>
-                     <latex>L</latex>
-                  </math> with respect to <math>
-                     <latex>\EuScript{B}</latex>
-                  </math> because, for <math>
-                     <latex>1\leq i\leq n</latex>
-                  </math>,</para.body>
-            </para>
-            <math.display>
-               <latex>L(\Vect{b}_i) = \lambda_i \Vect{b}_i= \Mtrx{D}(\Vect{b}_i)_{\EuScript{B}}</latex>
-            </math.display>
-            <para>
-               <para.body>Therefore,</para.body>
-            </para>
-            <math.display>
-               <latex>\Mtrx{D} = \Mtrx{C}_{\EuScript{B}\EuScript{S}}\, \Mtrx{A}\, \Mtrx{C}_{\EuScript{S}\EuScript{B}} = \Mtrx{C}^{-1} \Mtrx{A}\, \Mtrx{C}</latex>
-            </math.display>
-            <para>
-               <para.body>and this means exactly that <math>
-                     <latex>\Mtrx{C}</latex>
-                  </math> is diagonalizable, as claimed.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>Then <math>
+                  <latex>\Mtrx{D}</latex>
+               </math> represents <math>
+                  <latex>L</latex>
+               </math> with respect to <math>
+                  <latex>\EuScript{B}</latex>
+               </math> because, for <math>
+                  <latex>1\leq i\leq n</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>L(\Vect{b}_i) = \lambda_i \Vect{b}_i= \Mtrx{D}(\Vect{b}_i)_{\EuScript{B}}</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore,</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{D} = \Mtrx{C}_{\EuScript{B}\EuScript{S}}\, \Mtrx{A}\, \Mtrx{C}_{\EuScript{S}\EuScript{B}} = \Mtrx{C}^{-1} \Mtrx{A}\, \Mtrx{C}</latex>
+         </math.display>
+         <para>
+            <para.body>and this means exactly that <math>
+                  <latex>\Mtrx{C}</latex>
+               </math> is diagonalizable, as claimed.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

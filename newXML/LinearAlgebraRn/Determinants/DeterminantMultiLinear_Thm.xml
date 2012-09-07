@@ -110,472 +110,470 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>For <math>
-                     <latex>1\leq j\leq n</latex>
-                  </math> and column vectors <math>
-                     <latex>A_1,\dots, A_{j-1},X,Y,A_{j+1},\dots ,A_n</latex>
-                  </math> in <math>
-                     <latex>\RNr[n]</latex>
-                  </math>, set</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{R}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>:=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>[A_1\ \dots\ A_{j-1}\ \ X+Y\ \ A_{j+1}\ \dots\ A_n]</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{U}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>:=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>[A_1\ \dots\ A_{j-1}\ \ X\ \ A_{j+1}\ \dots\ A_n]</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{V}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>:=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>[A_1\ \dots\ A_{j-1}\ \ Y\ \ A_{j+1}\ \dots\ A_n]</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{W}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>:=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>[A_1\ \dots\ A_{j-1}\ \ t\cdot X\ \ A_{j+1}\ \dots\ A_n]</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Then we need to verify the following two identities</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{R})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{U}) + \det(\Mtrx{V})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{W})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t\cdot \det(\Mtrx{V})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>For both statements we argue by induction on <math>
-                     <latex>n</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <strong>Anchoring the induction</strong>   If <math>
-                     <latex>n=1</latex>
-                  </math>, <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> consists just of a single number. Necessarily, <math>
-                     <latex>j=1</latex>
-                  </math>, and</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det[x+y]</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>x+y = \det[x] + \det[y]</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det[t\cdot x]</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t\cdot x = t\cdot \det[x]</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>So the claim holds for <math>
-                     <latex>n=1</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <strong>Induction hypothesis</strong>   Now let <math>
-                     <latex>n\geq 1</latex>
-                  </math>, and suppose that the determinant operation has the stated properties for matrices of size <math>
-                     <latex>(n,n)</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <strong>The induction step</strong>   We need to infer that the determinant operation has the stated properties for matrices of size  <math>
-                     <latex>(n+1,n+1)</latex>
-                  </math>. We begin with the additivity property in the first column; i.e. <math>
-                     <latex>j=1</latex>
-                  </math>. So</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{R}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>[X+Y\ \ A_2\ \dots \ A_{n+1}]</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>with <math>
-                     <latex>\Mtrx{X}=[x_1\ \dots\ x_{n+1}]^T</latex>
-                  </math> and <math>
-                     <latex>\Mtrx{Y}= [y_1\ \dots\ y_{n+1}]^T</latex>
-                  </math>. Now the cofactor expansion of <math>
+         <para>
+            <para.body>For <math>
+                  <latex>1\leq j\leq n</latex>
+               </math> and column vectors <math>
+                  <latex>A_1,\dots, A_{j-1},X,Y,A_{j+1},\dots ,A_n</latex>
+               </math> in <math>
+                  <latex>\RNr[n]</latex>
+               </math>, set</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{R}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[A_1\ \dots\ A_{j-1}\ \ X+Y\ \ A_{j+1}\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{U}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[A_1\ \dots\ A_{j-1}\ \ X\ \ A_{j+1}\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{V}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[A_1\ \dots\ A_{j-1}\ \ Y\ \ A_{j+1}\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{W}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[A_1\ \dots\ A_{j-1}\ \ t\cdot X\ \ A_{j+1}\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Then we need to verify the following two identities</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\det(\Mtrx{R})</latex>
-                  </math> along the first column yields</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{R})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1} (-1)^{i+1}(x_i+y_i)\det(\Mtrx{R}_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1} (-1)^{i+1}x_i\det(\Mtrx{R}_{i1})\ +\ \sum_{i=1}^{n+1} (-1)^{i+1}y_i\det(\Mtrx{R}_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det[X\ \ A_2\ \dots\ A_{n+1}]\ +\ \det[Y\ \ A_2\ \dots\ A_{n+1}]</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This shows that the determinant operation commutes with addition in the first column. To see that it commutes with scalar multiplication as well, consider <math>
-                     <latex>\Mtrx{W}= [tX\ \ A_2\ \dots\ A_{n+1}]</latex>
-                  </math>, for some  in <math>
-                     <latex>t\in\RNr</latex>
-                  </math>. We find</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{W})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1} (-1)^{i+1}(tx_i)\det(\Mtrx{W}_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t\cdot \sum_{i=1}^{n+1} (-1)^{i+1} x_i\det(\Mtrx{W}_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t\cdot \det(U)</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This shows that the determinant operation commutes with scalar multiplication in the first column. We have shown that the determinant operation on  <math>
-                     <latex>(n+1,n+1)</latex>
-                  </math>-matrices is linear in the first column. Now consider columns <math>
-                     <latex>j</latex>
-                  </math> with <math>
-                     <latex>j\geq 2</latex>
-                  </math>. We find:</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{R})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(R_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we apply the induction hypothesis to the <math>
-                                    <latex>(n,n)</latex>
-                                 </math>-matrix <math>
-                                    <latex>R_{i1}</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1} a_{i1}\cdot (-1)^{i+1}( \det(U_{i1}) + \det(V_{i1}) )</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1}\left( a_{i1}\cdot (-1)^{i+1} \det(U_{i1})\right)\ +\ \sum_{i=1}^{n+1}\left( a_{i1}\cdot (-1)^{i+1} \det(V_{i1}) \right)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{U}) + \det(\Mtrx{V})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This completes the induction which establishes that the determinant operation commutes with addition in each column. To see that it commutes with scalar multiplication in each column as well, we compute:</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\det(\Mtrx{W})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(\Mtrx{W}_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use the induction hypothesis</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}t\cdot \det(\Mtrx{U}_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t\cdot \sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(\Mtrx{U}_{i1})</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t\cdot \det(U)</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This completes the induction step which shows that the determinant operation commutes with scalar multiplication in each column. – The proof of the multilinearity property of the determinant operation is complete.</para.body>
-            </para>
-         </proof.block.body>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{U}) + \det(\Mtrx{V})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{W})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot \det(\Mtrx{V})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>For both statements we argue by induction on <math>
+                  <latex>n</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Anchoring the induction</strong>   If <math>
+                  <latex>n=1</latex>
+               </math>, <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> consists just of a single number. Necessarily, <math>
+                  <latex>j=1</latex>
+               </math>, and</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[x+y]</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x+y = \det[x] + \det[y]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[t\cdot x]</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot x = t\cdot \det[x]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So the claim holds for <math>
+                  <latex>n=1</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Induction hypothesis</strong>   Now let <math>
+                  <latex>n\geq 1</latex>
+               </math>, and suppose that the determinant operation has the stated properties for matrices of size <math>
+                  <latex>(n,n)</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>The induction step</strong>   We need to infer that the determinant operation has the stated properties for matrices of size  <math>
+                  <latex>(n+1,n+1)</latex>
+               </math>. We begin with the additivity property in the first column; i.e. <math>
+                  <latex>j=1</latex>
+               </math>. So</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{R}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[X+Y\ \ A_2\ \dots \ A_{n+1}]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>with <math>
+                  <latex>\Mtrx{X}=[x_1\ \dots\ x_{n+1}]^T</latex>
+               </math> and <math>
+                  <latex>\Mtrx{Y}= [y_1\ \dots\ y_{n+1}]^T</latex>
+               </math>. Now the cofactor expansion of <math>
+                  <latex>\det(\Mtrx{R})</latex>
+               </math> along the first column yields</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{R})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} (-1)^{i+1}(x_i+y_i)\det(\Mtrx{R}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} (-1)^{i+1}x_i\det(\Mtrx{R}_{i1})\ +\ \sum_{i=1}^{n+1} (-1)^{i+1}y_i\det(\Mtrx{R}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[X\ \ A_2\ \dots\ A_{n+1}]\ +\ \det[Y\ \ A_2\ \dots\ A_{n+1}]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This shows that the determinant operation commutes with addition in the first column. To see that it commutes with scalar multiplication as well, consider <math>
+                  <latex>\Mtrx{W}= [tX\ \ A_2\ \dots\ A_{n+1}]</latex>
+               </math>, for some  in <math>
+                  <latex>t\in\RNr</latex>
+               </math>. We find</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{W})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} (-1)^{i+1}(tx_i)\det(\Mtrx{W}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot \sum_{i=1}^{n+1} (-1)^{i+1} x_i\det(\Mtrx{W}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot \det(U)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This shows that the determinant operation commutes with scalar multiplication in the first column. We have shown that the determinant operation on  <math>
+                  <latex>(n+1,n+1)</latex>
+               </math>-matrices is linear in the first column. Now consider columns <math>
+                  <latex>j</latex>
+               </math> with <math>
+                  <latex>j\geq 2</latex>
+               </math>. We find:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{R})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(R_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we apply the induction hypothesis to the <math>
+                                 <latex>(n,n)</latex>
+                              </math>-matrix <math>
+                                 <latex>R_{i1}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} a_{i1}\cdot (-1)^{i+1}( \det(U_{i1}) + \det(V_{i1}) )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1}\left( a_{i1}\cdot (-1)^{i+1} \det(U_{i1})\right)\ +\ \sum_{i=1}^{n+1}\left( a_{i1}\cdot (-1)^{i+1} \det(V_{i1}) \right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{U}) + \det(\Mtrx{V})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This completes the induction which establishes that the determinant operation commutes with addition in each column. To see that it commutes with scalar multiplication in each column as well, we compute:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{W})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(\Mtrx{W}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the induction hypothesis</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}t\cdot \det(\Mtrx{U}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot \sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(\Mtrx{U}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot \det(U)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This completes the induction step which shows that the determinant operation commutes with scalar multiplication in each column. – The proof of the multilinearity property of the determinant operation is complete.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

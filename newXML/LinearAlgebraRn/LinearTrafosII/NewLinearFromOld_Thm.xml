@@ -58,11 +58,9 @@
    </statement.theorem>
    <proof type="Proof Idea">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>These statements may be proved directly from the definition. The details are left as a exercises.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>These statements may be proved directly from the definition. The details are left as a exercises.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

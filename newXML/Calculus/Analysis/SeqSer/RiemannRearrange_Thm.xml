@@ -30,416 +30,414 @@
    </statement.theorem>
    <proof type="Proof Sketch">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Riemann’s Rearrangement Theorem follows by combining the following observations:</para.body>
-            </para>
-            <ol type="a">
-               <li>
-                  <para>
-                     <para.body>Dropping from the sequence of summands <math>
-                           <latex>(a_n)</latex>
-                        </math> all negative summands leaves the infinite subsequence <math>
-                           <latex>b_0,b_1,\dots ,b_n,\dots </latex>
-                        </math> of non-negative numbers.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Dropping from the sequence of summands <math>
-                           <latex>(a_n)</latex>
-                        </math> all non-positive summands leaves an infinite subsequence <math>
-                           <latex>c_0,c_1,\dots ,c_n,\dots </latex>
-                        </math> of negative numbers.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>The sequence <math>
-                           <latex>(a_n)</latex>
-                        </math> converges to <math>
-                           <latex>0</latex>
-                        </math>, and so the subsequences <math>
-                           <latex>(b_n)</latex>
-                        </math> and <math>
-                           <latex>(c_n)</latex>
-                        </math> converge to <math>
-                           <latex>0</latex>
-                        </math> as well.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>\sum_{n=0}^{\infty}b_n = +\infty</latex>
-                        </math>, and <math>
-                           <latex>\sum_{n=0}^{\infty} c_n = -\infty</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>With this information we now sketch a process which rearranges to summands in the original series so as to obtain a series which converges to <math>
-                     <latex>L</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <emphasis>Case 1:</emphasis>
-                  <math>
-                     <latex>L</latex>
-                  </math>
-                  <emphasis>is a number</emphasis>. – We apply the following recursive procedure:</para.body>
-            </para>
-            <ol type="1">
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k &gt; L} </latex>
-                        </math>. Such <math>
-                           <latex>\mu_0</latex>
-                        </math> exists and is unique by property c) above. For <math>
-                           <latex>0\leq i\leq \mu_0</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(i)}:= b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} &lt; L } </latex>
-                        </math>. Such <math>
-                           <latex>\nu_0</latex>
-                        </math> exists because of property c). For <math>
-                           <latex>0\leq i\leq \nu_0</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } &gt; L </latex>
-                        </math>. For <math>
-                           <latex>\mu_0+1 \leq i\leq \mu_1</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } &lt; L </latex>
-                        </math>. For <math>
-                           <latex>\nu_0+1 \leq i\leq \nu_1</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Continue inductively: if the for <math>
-                           <latex>r\geq 0</latex>
-                        </math>
-                        <math>
-                           <latex>\mu_r</latex>
-                        </math>, <math>
-                           <latex>\nu_r</latex>
-                        </math>, <math>
-                           <latex>P_r</latex>
-                        </math>, and <math>
-                           <latex>N_r</latex>
-                        </math> have been obtained, then ...</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } &gt; L</latex>
-                        </math>. For <math>
-                           <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } &lt; L </latex>
-                        </math>. For <math>
-                           <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>Then <math>
-                     <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
-                  </math> is a rearrangement of the original series. By design, it converges to <math>
-                     <latex>L</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <emphasis>Case 2:</emphasis>
-                  <math>
-                     <latex>L=+\infty</latex>
-                  </math>. – We modify the process developed if <math>
-                     <latex>L\in \RNr</latex>
-                  </math> as follows.</para.body>
-            </para>
-            <ol type="1">
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k &gt; 0} </latex>
-                        </math>. Such <math>
-                           <latex>\mu_0</latex>
-                        </math> exists and is unique by property c) above. For <math>
-                           <latex>0\leq i\leq \mu_0</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(i)}:= b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} &lt; 0 } </latex>
-                        </math>. Such <math>
-                           <latex>\nu_0</latex>
-                        </math> exists because of property c). For <math>
-                           <latex>0\leq i\leq \nu_0</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } &gt; 1 </latex>
-                        </math>. For <math>
-                           <latex>\mu_0+1 \leq i\leq \mu_1</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } &lt; 1 </latex>
-                        </math>. For <math>
-                           <latex>\nu_0+1 \leq i\leq \nu_1</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Continue inductively: if the for <math>
-                           <latex>r\geq 0</latex>
-                        </math>
-                        <math>
-                           <latex>\mu_r</latex>
-                        </math>, <math>
-                           <latex>\nu_r</latex>
-                        </math>, <math>
-                           <latex> P_r &gt; r </latex>
-                        </math>, and <math>
-                           <latex> N_r &lt; r </latex>
-                        </math> have been obtained, then ...</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } &gt; r+1 </latex>
-                        </math>. For <math>
-                           <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } &lt; r+1 </latex>
-                        </math>. For <math>
-                           <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>Then <math>
-                     <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
-                  </math> is a rearrangement of the original series. By design, it converges to <math>
-                     <latex>+\infty</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <emphasis>Case 3:</emphasis>
-                  <math>
-                     <latex>L=-\infty</latex>
-                  </math>. – One way to see this is to modify the process developed if <math>
-                     <latex>L=+\infty</latex>
-                  </math>. Alternatively, apply case 2 to <math>
-                     <latex>\sum_{n=0}^{\infty}-a_n</latex>
-                  </math> so as to obtain a rearrangement with <math>
-                     <latex>\sum_{n=0}^{\infty}-a_{\sigma(n)} = +\infty</latex>
-                  </math>. It follows that <math>
-                     <latex>\sum_{n=0}^{\infty}a_{\sigma(n)} = -\infty</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>
-                  <emphasis>Case 4: Rearrange into a divergent series</emphasis> –</para.body>
-            </para>
-            <ol type="1">
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k &gt; 0} </latex>
-                        </math>. Such <math>
-                           <latex>\mu_0</latex>
-                        </math> exists and is unique by property c) above. For <math>
-                           <latex>0\leq i\leq \mu_0</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(i)}:= b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} &lt; 0 } </latex>
-                        </math>. Such <math>
-                           <latex>\nu_0</latex>
-                        </math> exists because of property c). For <math>
-                           <latex>0\leq i\leq \nu_0</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } &gt; 1 </latex>
-                        </math>. For <math>
-                           <latex>\mu_0+1 \leq i\leq \mu_1</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } &lt; -1 </latex>
-                        </math>. For <math>
-                           <latex>\nu_0+1 \leq i\leq \nu_1</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Continue inductively: if the for <math>
-                           <latex>r\geq 0</latex>
-                        </math>
-                        <math>
-                           <latex>\mu_r</latex>
-                        </math>, <math>
-                           <latex>\nu_r</latex>
-                        </math>, <math>
-                           <latex> P_r &gt; r </latex>
-                        </math>, and <math>
-                           <latex> N_r &lt; -r </latex>
-                        </math> have been obtained, then ...</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } &gt; r+1 </latex>
-                        </math>. For <math>
-                           <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>
-                        </math>, and set <math>
-                           <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex> \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } &lt; -(r+1) </latex>
-                        </math>. For <math>
-                           <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>
-                        </math>, let <math>
-                           <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>
-                        </math>, and set <math>
-                           <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>Then <math>
-                     <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
-                  </math> is a rearrangement of the original series. By design, it diverges.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>Riemann’s Rearrangement Theorem follows by combining the following observations:</para.body>
+         </para>
+         <ol type="a">
+            <li>
+               <para>
+                  <para.body>Dropping from the sequence of summands <math>
+                        <latex>(a_n)</latex>
+                     </math> all negative summands leaves the infinite subsequence <math>
+                        <latex>b_0,b_1,\dots ,b_n,\dots </latex>
+                     </math> of non-negative numbers.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Dropping from the sequence of summands <math>
+                        <latex>(a_n)</latex>
+                     </math> all non-positive summands leaves an infinite subsequence <math>
+                        <latex>c_0,c_1,\dots ,c_n,\dots </latex>
+                     </math> of negative numbers.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>The sequence <math>
+                        <latex>(a_n)</latex>
+                     </math> converges to <math>
+                        <latex>0</latex>
+                     </math>, and so the subsequences <math>
+                        <latex>(b_n)</latex>
+                     </math> and <math>
+                        <latex>(c_n)</latex>
+                     </math> converge to <math>
+                        <latex>0</latex>
+                     </math> as well.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty}b_n = +\infty</latex>
+                     </math>, and <math>
+                        <latex>\sum_{n=0}^{\infty} c_n = -\infty</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>With this information we now sketch a process which rearranges to summands in the original series so as to obtain a series which converges to <math>
+                  <latex>L</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <emphasis>Case 1:</emphasis>
+               <math>
+                  <latex>L</latex>
+               </math>
+               <emphasis>is a number</emphasis>. – We apply the following recursive procedure:</para.body>
+         </para>
+         <ol type="1">
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k &gt; L} </latex>
+                     </math>. Such <math>
+                        <latex>\mu_0</latex>
+                     </math> exists and is unique by property c) above. For <math>
+                        <latex>0\leq i\leq \mu_0</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(i)}:= b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} &lt; L } </latex>
+                     </math>. Such <math>
+                        <latex>\nu_0</latex>
+                     </math> exists because of property c). For <math>
+                        <latex>0\leq i\leq \nu_0</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } &gt; L </latex>
+                     </math>. For <math>
+                        <latex>\mu_0+1 \leq i\leq \mu_1</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } &lt; L </latex>
+                     </math>. For <math>
+                        <latex>\nu_0+1 \leq i\leq \nu_1</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Continue inductively: if the for <math>
+                        <latex>r\geq 0</latex>
+                     </math>
+                     <math>
+                        <latex>\mu_r</latex>
+                     </math>, <math>
+                        <latex>\nu_r</latex>
+                     </math>, <math>
+                        <latex>P_r</latex>
+                     </math>, and <math>
+                        <latex>N_r</latex>
+                     </math> have been obtained, then ...</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } &gt; L</latex>
+                     </math>. For <math>
+                        <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } &lt; L </latex>
+                     </math>. For <math>
+                        <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Then <math>
+                  <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+               </math> is a rearrangement of the original series. By design, it converges to <math>
+                  <latex>L</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <emphasis>Case 2:</emphasis>
+               <math>
+                  <latex>L=+\infty</latex>
+               </math>. – We modify the process developed if <math>
+                  <latex>L\in \RNr</latex>
+               </math> as follows.</para.body>
+         </para>
+         <ol type="1">
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k &gt; 0} </latex>
+                     </math>. Such <math>
+                        <latex>\mu_0</latex>
+                     </math> exists and is unique by property c) above. For <math>
+                        <latex>0\leq i\leq \mu_0</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(i)}:= b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} &lt; 0 } </latex>
+                     </math>. Such <math>
+                        <latex>\nu_0</latex>
+                     </math> exists because of property c). For <math>
+                        <latex>0\leq i\leq \nu_0</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } &gt; 1 </latex>
+                     </math>. For <math>
+                        <latex>\mu_0+1 \leq i\leq \mu_1</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } &lt; 1 </latex>
+                     </math>. For <math>
+                        <latex>\nu_0+1 \leq i\leq \nu_1</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Continue inductively: if the for <math>
+                        <latex>r\geq 0</latex>
+                     </math>
+                     <math>
+                        <latex>\mu_r</latex>
+                     </math>, <math>
+                        <latex>\nu_r</latex>
+                     </math>, <math>
+                        <latex> P_r &gt; r </latex>
+                     </math>, and <math>
+                        <latex> N_r &lt; r </latex>
+                     </math> have been obtained, then ...</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } &gt; r+1 </latex>
+                     </math>. For <math>
+                        <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } &lt; r+1 </latex>
+                     </math>. For <math>
+                        <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Then <math>
+                  <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+               </math> is a rearrangement of the original series. By design, it converges to <math>
+                  <latex>+\infty</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <emphasis>Case 3:</emphasis>
+               <math>
+                  <latex>L=-\infty</latex>
+               </math>. – One way to see this is to modify the process developed if <math>
+                  <latex>L=+\infty</latex>
+               </math>. Alternatively, apply case 2 to <math>
+                  <latex>\sum_{n=0}^{\infty}-a_n</latex>
+               </math> so as to obtain a rearrangement with <math>
+                  <latex>\sum_{n=0}^{\infty}-a_{\sigma(n)} = +\infty</latex>
+               </math>. It follows that <math>
+                  <latex>\sum_{n=0}^{\infty}a_{\sigma(n)} = -\infty</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <emphasis>Case 4: Rearrange into a divergent series</emphasis> –</para.body>
+         </para>
+         <ol type="1">
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k &gt; 0} </latex>
+                     </math>. Such <math>
+                        <latex>\mu_0</latex>
+                     </math> exists and is unique by property c) above. For <math>
+                        <latex>0\leq i\leq \mu_0</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(i)}:= b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} &lt; 0 } </latex>
+                     </math>. Such <math>
+                        <latex>\nu_0</latex>
+                     </math> exists because of property c). For <math>
+                        <latex>0\leq i\leq \nu_0</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } &gt; 1 </latex>
+                     </math>. For <math>
+                        <latex>\mu_0+1 \leq i\leq \mu_1</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } &lt; -1 </latex>
+                     </math>. For <math>
+                        <latex>\nu_0+1 \leq i\leq \nu_1</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Continue inductively: if the for <math>
+                        <latex>r\geq 0</latex>
+                     </math>
+                     <math>
+                        <latex>\mu_r</latex>
+                     </math>, <math>
+                        <latex>\nu_r</latex>
+                     </math>, <math>
+                        <latex> P_r &gt; r </latex>
+                     </math>, and <math>
+                        <latex> N_r &lt; -r </latex>
+                     </math> have been obtained, then ...</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } &gt; r+1 </latex>
+                     </math>. For <math>
+                        <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>
+                     </math>, and set <math>
+                        <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex> \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } &lt; -(r+1) </latex>
+                     </math>. For <math>
+                        <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>
+                     </math>, let <math>
+                        <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>
+                     </math>, and set <math>
+                        <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Then <math>
+                  <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+               </math> is a rearrangement of the original series. By design, it diverges.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

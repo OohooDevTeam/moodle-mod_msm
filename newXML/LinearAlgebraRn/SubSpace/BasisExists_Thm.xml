@@ -16,207 +16,205 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Let us dispose first of an extreme case: if <math>
-                     <latex>V</latex>
-                  </math> consists only of the 0-vector, we may take the empty set as a basis for <math>
-                     <latex>V</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>Now suppose <math>
-                     <latex>V</latex>
-                  </math> contains a nonzero vector. We use the following two facts in combination to build a basis of <math>
-                     <latex>V</latex>
-                  </math>.</para.body>
-            </para>
-            <ol>
-               <li>
-                  <para>
-                     <para.body>Given a linearly independent subset <math>
-                           <latex>S</latex>
-                        </math> of <math>
-                           <latex>V</latex>
-                        </math>, there are two possibilities: </para.body>
-                  </para>
-                  <ol type="a">
-                     <li>
-                        <para>
-                           <para.body>
-                              <math>
-                                 <latex>S</latex>
-                              </math> spans <math>
-                                 <latex>V</latex>
-                              </math>, in which case it is a basis of <math>
-                                 <latex>V</latex>
-                              </math>;</para.body>
-                        </para>
-                     </li>
-                     <li>
-                        <para>
-                           <para.body>
-                              <math>
-                                 <latex>S</latex>
-                              </math> does not span <math>
-                                 <latex>V</latex>
-                              </math> in which case we can add to <math>
-                                 <latex>S</latex>
-                              </math> a vector from <math>
-                                 <latex>V</latex>
-                              </math> outside <math>
-                                 <latex>\span(S)</latex>
-                              </math> to obtain a 
+         <para>
+            <para.body>Let us dispose first of an extreme case: if <math>
+                  <latex>V</latex>
+               </math> consists only of the 0-vector, we may take the empty set as a basis for <math>
+                  <latex>V</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>Now suppose <math>
+                  <latex>V</latex>
+               </math> contains a nonzero vector. We use the following two facts in combination to build a basis of <math>
+                  <latex>V</latex>
+               </math>.</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>Given a linearly independent subset <math>
+                        <latex>S</latex>
+                     </math> of <math>
+                        <latex>V</latex>
+                     </math>, there are two possibilities: </para.body>
+               </para>
+               <ol type="a">
+                  <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S</latex>
+                           </math> spans <math>
+                              <latex>V</latex>
+                           </math>, in which case it is a basis of <math>
+                              <latex>V</latex>
+                           </math>;</para.body>
+                     </para>
+                  </li>
+                  <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S</latex>
+                           </math> does not span <math>
+                              <latex>V</latex>
+                           </math> in which case we can add to <math>
+                              <latex>S</latex>
+                           </math> a vector from <math>
+                              <latex>V</latex>
+                           </math> outside <math>
+                              <latex>\span(S)</latex>
+                           </math> to obtain a 
 						<subordinate>
-                                 <hot>larger linearly independent subset</hot>
-                                 <crossref>
-                                    <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
-                                    <info>
-                                       <para>
-                                          <para.body>Look up this fact.</para.body>
-                                       </para>
-                                    </info>
-                                 </crossref>
-                              </subordinate>
+                              <hot>larger linearly independent subset</hot>
+                              <crossref>
+                                 <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                                 <info>
+                                    <para>
+                                       <para.body>Look up this fact.</para.body>
+                                    </para>
+                                 </info>
+                              </crossref>
+                           </subordinate>
 						of <math>
-                                 <latex>V</latex>
-                              </math>.</para.body>
-                        </para>
-                     </li>
-                  </ol>
-               </li>
-               <li>
-                  <para>
-                     <para.body>This process of adding vectors to <math>
-                           <latex>S</latex>
-                        </math> to obtain larger linearly independent sets 
+                              <latex>V</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+               </ol>
+            </li>
+            <li>
+               <para>
+                  <para.body>This process of adding vectors to <math>
+                        <latex>S</latex>
+                     </math> to obtain larger linearly independent sets 
 				<subordinate>
-                           <hot>stops after at most <math>
-                                 <latex>n</latex>
-                              </math> steps</hot>
-                           <crossref>
-                              <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
-                              <info>
-                                 <para>
-                                    <para.body>Look up this fact.</para.body>
-                                 </para>
-                              </info>
-                           </crossref>
-                        </subordinate>,
+                        <hot>stops after at most <math>
+                              <latex>n</latex>
+                           </math> steps</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                           <info>
+                              <para>
+                                 <para.body>Look up this fact.</para.body>
+                              </para>
+                           </info>
+                        </crossref>
+                     </subordinate>,
 				because  <math>
-                           <latex>\RNr[n]</latex>
-                        </math> itself is spanned by <math>
-                           <latex>n</latex>
-                        </math> vectors.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>Here are the details: Pick any nonzero vector in <math>
-                     <latex>V</latex>
-                  </math>, call it <math>
-                     <latex>\Vect{a}_1</latex>
-                  </math>, and form <math>
-                     <latex>\EuScript{B}_1:=\Set{ \Vect{a}_1 }</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>We know that <math>
-                     <latex>\EuScript{B}_1</latex>
-                  </math> is linearly independent. If <math>
-                     <latex>\span( \EuScript{B}_1 )=V</latex>
-                  </math>, then <math>
-                     <latex>\EuScript{B}:=\EuScript{B}_1</latex>
-                  </math> is a basis for <math>
-                     <latex>V</latex>
-                  </math>. If <math>
-                     <latex>\span( \EuScript{B}_1 ) \neq V</latex>
-                  </math>, there are vectors in <math>
-                     <latex>V</latex>
-                  </math>  which do not belong to <math>
-                     <latex>\span(\EuScript{B}_1)</latex>
-                  </math>. Pick any one such, call it <math>
-                     <latex>\Vect{a}_2</latex>
-                  </math>, and form <math>
-                     <latex>\EuScript{B}_2:=\EuScript{B}_1\cup \Set{ \Vect{a}_2 }</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>We know that <math>
-                     <latex>\EuScript{B}_2</latex>
-                  </math> is 
+                        <latex>\RNr[n]</latex>
+                     </math> itself is spanned by <math>
+                        <latex>n</latex>
+                     </math> vectors.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Here are the details: Pick any nonzero vector in <math>
+                  <latex>V</latex>
+               </math>, call it <math>
+                  <latex>\Vect{a}_1</latex>
+               </math>, and form <math>
+                  <latex>\EuScript{B}_1:=\Set{ \Vect{a}_1 }</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>We know that <math>
+                  <latex>\EuScript{B}_1</latex>
+               </math> is linearly independent. If <math>
+                  <latex>\span( \EuScript{B}_1 )=V</latex>
+               </math>, then <math>
+                  <latex>\EuScript{B}:=\EuScript{B}_1</latex>
+               </math> is a basis for <math>
+                  <latex>V</latex>
+               </math>. If <math>
+                  <latex>\span( \EuScript{B}_1 ) \neq V</latex>
+               </math>, there are vectors in <math>
+                  <latex>V</latex>
+               </math>  which do not belong to <math>
+                  <latex>\span(\EuScript{B}_1)</latex>
+               </math>. Pick any one such, call it <math>
+                  <latex>\Vect{a}_2</latex>
+               </math>, and form <math>
+                  <latex>\EuScript{B}_2:=\EuScript{B}_1\cup \Set{ \Vect{a}_2 }</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>We know that <math>
+                  <latex>\EuScript{B}_2</latex>
+               </math> is 
 			<subordinate>
-                     <hot>linearly independent</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>.
+                  <hot>linearly independent</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.
 			If <math>
-                     <latex>\span( \EuScript{B}_2 )=V</latex>
-                  </math>, then <math>
-                     <latex>\EuScript{B}:=\EuScript{B}_2</latex>
-                  </math> is a basis for <math>
-                     <latex>V</latex>
-                  </math>. If <math>
-                     <latex>\span( \EuScript{B}_2 ) \neq V</latex>
-                  </math>, there are vectors in <math>
-                     <latex>V</latex>
-                  </math>  which do not belong to <math>
-                     <latex>\span(\EuScript{B}_2)</latex>
-                  </math>. Pick any one such, call it <math>
-                     <latex>\Vect{a}_3</latex>
-                  </math>, and form <math>
-                     <latex>\EuScript{B}_3:=\EuScript{B}_2\cup \Set{ \Vect{a}_3 }</latex>
-                  </math>; etc.</para.body>
-            </para>
-            <para>
-               <para.body>The crucial fact now is that, for some <math>
-                     <latex>k\leq n</latex>
-                  </math>, we must have <math>
-                     <latex>\span( \EuScript{B}_k) = V</latex>
-                  </math>. To see this, we argue by contradiction: Suppose <math>
-                     <latex> n&lt; k </latex>
-                  </math> and <math>
-                     <latex>\EuScript{B}_k</latex>
-                  </math> is a linearly independent subset of <math>
-                     <latex>V</latex>
-                  </math>. Then <math>
-                     <latex>\EuScript{B}_k</latex>
-                  </math> is, in particular, a linearly independent subset of <math>
-                     <latex>\RNr[n]</latex>
-                  </math>; a contradiction to the fact any linearly independent subset of <math>
-                     <latex>\RNr[n]</latex>
-                  </math>
-                  <subordinate>
-                     <hot>has at most <math>
-                           <latex>n</latex>
-                        </math> vectors</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>. Thus the process described above stops after <math>
-                     <latex>k\leq n</latex>
-                  </math> steps, in which case <math>
-                     <latex>\EuScript{B}:= \EuScript{B}_k</latex>
-                  </math> is a basis of <math>
-                     <latex>V</latex>
-                  </math>, and <math>
-                     <latex>\EuScript{B}</latex>
-                  </math> contains at most <math>
-                     <latex>n</latex>
-                  </math> vectors.</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>\span( \EuScript{B}_2 )=V</latex>
+               </math>, then <math>
+                  <latex>\EuScript{B}:=\EuScript{B}_2</latex>
+               </math> is a basis for <math>
+                  <latex>V</latex>
+               </math>. If <math>
+                  <latex>\span( \EuScript{B}_2 ) \neq V</latex>
+               </math>, there are vectors in <math>
+                  <latex>V</latex>
+               </math>  which do not belong to <math>
+                  <latex>\span(\EuScript{B}_2)</latex>
+               </math>. Pick any one such, call it <math>
+                  <latex>\Vect{a}_3</latex>
+               </math>, and form <math>
+                  <latex>\EuScript{B}_3:=\EuScript{B}_2\cup \Set{ \Vect{a}_3 }</latex>
+               </math>; etc.</para.body>
+         </para>
+         <para>
+            <para.body>The crucial fact now is that, for some <math>
+                  <latex>k\leq n</latex>
+               </math>, we must have <math>
+                  <latex>\span( \EuScript{B}_k) = V</latex>
+               </math>. To see this, we argue by contradiction: Suppose <math>
+                  <latex> n&lt; k </latex>
+               </math> and <math>
+                  <latex>\EuScript{B}_k</latex>
+               </math> is a linearly independent subset of <math>
+                  <latex>V</latex>
+               </math>. Then <math>
+                  <latex>\EuScript{B}_k</latex>
+               </math> is, in particular, a linearly independent subset of <math>
+                  <latex>\RNr[n]</latex>
+               </math>; a contradiction to the fact any linearly independent subset of <math>
+                  <latex>\RNr[n]</latex>
+               </math>
+               <subordinate>
+                  <hot>has at most <math>
+                        <latex>n</latex>
+                     </math> vectors</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>. Thus the process described above stops after <math>
+                  <latex>k\leq n</latex>
+               </math> steps, in which case <math>
+                  <latex>\EuScript{B}:= \EuScript{B}_k</latex>
+               </math> is a basis of <math>
+                  <latex>V</latex>
+               </math>, and <math>
+                  <latex>\EuScript{B}</latex>
+               </math> contains at most <math>
+                  <latex>n</latex>
+               </math> vectors.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -170,297 +170,295 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We prove the theorem by induction on <math>
-                     <latex>r</latex>
-                  </math>. If <math>
-                     <latex>r=1</latex>
-                  </math>, <math>
-                     <latex>\EuScript{B}_1 := ( \Vect{v}_1 )</latex>
-                  </math> is an ordered ONB of <math>
-                     <latex>\span\Set{ \Vect{a}_1 }</latex>
-                  </math>  for the following reasons:</para.body>
-            </para>
-            <ol>
-               <li>
-                  <para>
-                     <para.body>the definition of <math>
-                           <latex>\Vect{v}_1</latex>
-                        </math> is valid 
+         <para>
+            <para.body>We prove the theorem by induction on <math>
+                  <latex>r</latex>
+               </math>. If <math>
+                  <latex>r=1</latex>
+               </math>, <math>
+                  <latex>\EuScript{B}_1 := ( \Vect{v}_1 )</latex>
+               </math> is an ordered ONB of <math>
+                  <latex>\span\Set{ \Vect{a}_1 }</latex>
+               </math>  for the following reasons:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>the definition of <math>
+                        <latex>\Vect{v}_1</latex>
+                     </math> is valid 
 					<subordinate>
-                           <hot>since</hot>
-                           <info>
-                              <para>
-                                 <para.body>Else <math>
-                                       <latex>\EuScript{A}</latex>
-                                    </math> would not be linearly independent.</para.body>
-                              </para>
-                           </info>
-                        </subordinate>
-                        <math>
-                           <latex>\Vect{a}_1\neq \Vect{0}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>\span\Set{ \Vect{v}_1 } = \span\Set{ \Vect{a}_1 }</latex>
-                        </math> because <math>
-                           <latex>t \Vect{a}_1 = (t \abs{ \Vect{a}_1 }) \Vect{v}_1</latex>
-                        </math> for all <math>
-                           <latex>t\in \RNr</latex>
-                        </math>
-                     </para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>\EuScript{B}_1</latex>
-                        </math> is linearly independent since <math>
-                           <latex>\abs{ \Vect{v}_1 } = 1</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>So suppose the theorem is true for <math>
-                     <latex> 1\leq (j-1) &lt; r </latex>
-                  </math>. We need to deduce that the theorem is true for <math>
-                     <latex>j</latex>
-                  </math>. The induction hypothesis tells us that, <math>
-                     <latex>\EuScript{B}_{j-1} := (\Vect{v}_1,\dots ,\Vect{v}_{j-1})</latex>
-                  </math> is an ordered ONB of <math>
-                     <latex>\EuScript{A}_{j-1}:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_{j-1} }</latex>
-                  </math>. Therefore the following hold</para.body>
-            </para>
-            <ol>
-               <li>
-                  <para>
-                     <para.body>
-                        <subordinate>
-                           <hot>
-                              <math>
-                                 <latex>\Vect{a}_j - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1}\neq \Vect{0}</latex>
-                              </math>
-                           </hot>
-                           <info>
-                              <info.caption>Why is the vector distinct from 0?</info.caption>
-                              <para>
-                                 <para.body>If this vector were <math>
-                                       <latex>\Vect{0}</latex>
-                                    </math>, then <math>
-                                       <latex>\Vect{a}_j</latex>
-                                    </math> would be a linear combination of <math>
-                                       <latex>\Vect{v}_1</latex>
-                                    </math>, ... ,<math>
-                                       <latex>\Vect{v}_{j-1}</latex>
-                                    </math> and, hence, of <math>
-                                       <latex>\Vect{a}_1</latex>
-                                    </math>, ... , <math>
-                                       <latex>\Vect{a}_{j-1}</latex>
-                                    </math>, a contradiction to the assumption that <math>
-                                       <latex>\EuScript{A}</latex>
-                                    </math> is linearly independent.</para.body>
-                              </para>
-                           </info>
-                        </subordinate>,
+                        <hot>since</hot>
+                        <info>
+                           <para>
+                              <para.body>Else <math>
+                                    <latex>\EuScript{A}</latex>
+                                 </math> would not be linearly independent.</para.body>
+                           </para>
+                        </info>
+                     </subordinate>
+                     <math>
+                        <latex>\Vect{a}_1\neq \Vect{0}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\span\Set{ \Vect{v}_1 } = \span\Set{ \Vect{a}_1 }</latex>
+                     </math> because <math>
+                        <latex>t \Vect{a}_1 = (t \abs{ \Vect{a}_1 }) \Vect{v}_1</latex>
+                     </math> for all <math>
+                        <latex>t\in \RNr</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\EuScript{B}_1</latex>
+                     </math> is linearly independent since <math>
+                        <latex>\abs{ \Vect{v}_1 } = 1</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>So suppose the theorem is true for <math>
+                  <latex> 1\leq (j-1) &lt; r </latex>
+               </math>. We need to deduce that the theorem is true for <math>
+                  <latex>j</latex>
+               </math>. The induction hypothesis tells us that, <math>
+                  <latex>\EuScript{B}_{j-1} := (\Vect{v}_1,\dots ,\Vect{v}_{j-1})</latex>
+               </math> is an ordered ONB of <math>
+                  <latex>\EuScript{A}_{j-1}:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_{j-1} }</latex>
+               </math>. Therefore the following hold</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>
+                           <math>
+                              <latex>\Vect{a}_j - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1}\neq \Vect{0}</latex>
+                           </math>
+                        </hot>
+                        <info>
+                           <info.caption>Why is the vector distinct from 0?</info.caption>
+                           <para>
+                              <para.body>If this vector were <math>
+                                    <latex>\Vect{0}</latex>
+                                 </math>, then <math>
+                                    <latex>\Vect{a}_j</latex>
+                                 </math> would be a linear combination of <math>
+                                    <latex>\Vect{v}_1</latex>
+                                 </math>, ... ,<math>
+                                    <latex>\Vect{v}_{j-1}</latex>
+                                 </math> and, hence, of <math>
+                                    <latex>\Vect{a}_1</latex>
+                                 </math>, ... , <math>
+                                    <latex>\Vect{a}_{j-1}</latex>
+                                 </math>, a contradiction to the assumption that <math>
+                                    <latex>\EuScript{A}</latex>
+                                 </math> is linearly independent.</para.body>
+                           </para>
+                        </info>
+                     </subordinate>,
 				and so the definition of <math>
-                           <latex>\Vect{v}_j</latex>
-                        </math> is valid</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>\EuScript{A}_{j}:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_j} \subseteq \span\Set{ \Vect{v}_1,\dots ,\Vect{v}_{j-1} }=:\EuScript{B}_j</latex>
-                        </math>. To see this, it only 
-					<subordinate>
-                           <hot>remains</hot>
-                           <info>
-                              <info.caption>Why is this so?</info.caption>
-                              <para>
-                                 <para.body>From the induction hypothesis we already know that <math>
-                                       <latex>\span(\EuScript{A}_{j-1})=\span(\EuScript{B}_{j-1})</latex>
-                                    </math>. Further, <math>
-                                       <latex>\span(\EuScript{B}_{j-1}) \subseteq \span(\EuScript{B}_j)</latex>
-                                    </math> because <math>
-                                       <latex>\EuScript{B}_{j-1}\subseteq \EuScript{B}_j</latex>
-                                    </math>.</para.body>
-                              </para>
-                           </info>
-                        </subordinate>
-					to show that <math>
-                           <latex>\Vect{a}_j\in \span(\EuScript{B}_j)</latex>
-                        </math>. Indeed, the defining equation for <math>
-                           <latex>\Vect{v}_j</latex>
-                        </math> yields</para.body>
-                  </para>
-                  <math.array column="3">
-                     <row rowspan="1">
-                        <cell colspan="2" halign="center" valign="middle">
-                           <math>
-                              <latex>\Vect{v}_j</latex>
-                           </math>
-                        </cell>
-                        <cell colspan="1" halign="center" valign="middle">
-                           <math>
-                              <latex>=</latex>
-                           </math>
-                        </cell>
-                        <cell colspan="2" halign="center" valign="middle">
-                           <math>
-                              <latex>(\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 + \cdots + (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1} + s \Vect{v}_j</latex>
-                           </math>
-                        </cell>
-                     </row>
-                  </math.array>
-                  <para>
-                     <para.body>where <math>
-                           <latex>s=\abs{ \Vect{a}_j - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 - \cdots -  (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1}}</latex>
-                        </math>. Therefore, <math>
-                           <latex>\span(\EuScript{A}_j) \subseteq \span( \EuScript{B}_j)</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Conversely, <math>
-                           <latex>\span(\EuScript{B}_j)\subseteq \span(\EuScript{A}_j)</latex>
-                        </math>: Indeed, <math>
-                           <latex>\span(\EuScript{B}_{j-1})=\span(\EuScript{A}_{j-})</latex>
-                        </math> by induction hypothesis, and <math>
-                           <latex>\span(\EuScript{A}_{j-1})\subset \span(\EuScript{A}_j)</latex>
-                        </math>. So, <math>
-                           <latex>\Vect{v}_r</latex>
-                        </math> is a linear combination of vectors in <math>
-                           <latex>\span(\EuScript{A}_j)</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>So <math>
-                           <latex>\span(\EuScript{A}_j)=\span(\EuScript{B}_j)</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>\EuScript{B}_j</latex>
-                        </math> is an orthonormal set of vectors: In view of the induction hypothesis it only remains to show that <math>
-                           <latex>\abs{ \Vect{v}_j } = 1</latex>
-                        </math>, which holds by design, and that <math>
-                           <latex>\DotPr{ \Vect{v}_j }{ \Vect{v}_k } = 0</latex>
-                        </math> for <math>
-                           <latex>1\leq k\leq j-1</latex>
-                        </math>. We find</para.body>
-                  </para>
-                  <math.array column="3">
-                     <row rowspan="1">
-                        <cell colspan="2" halign="center" valign="middle">
-                           <math>
-                              <latex>\DotPr{ \Vect{v}_j }{ \Vect{v}_k }</latex>
-                           </math>
-                        </cell>
-                        <cell colspan="1" halign="center" valign="middle">
-                           <math>
-                              <latex>=</latex>
-                           </math>
-                        </cell>
-                        <cell colspan="2" halign="center" valign="middle">
-                           <math>
-                              <latex>(1/s)\left( \DotPr{ \Vect{a}_j }{ \Vect{v}_k } - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 }(\DotPr{ \Vect{v}_1 }{ \Vect{v}_k }) - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_k }(\DotPr{ \Vect{v}_k }{ \Vect{v}_k })\right.</latex>
-                           </math>
-                        </cell>
-                     </row>
-                     <row rowspan="1">
-                        <cell colspan="2" halign="center" valign="middle"/>
-                        <cell colspan="1" halign="center" valign="middle">
-                           <math>
-                              <latex/>
-                           </math>
-                        </cell>
-                        <cell colspan="2" halign="center" valign="middle">
-                           <math>
-                              <latex>\left.\qquad  - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} }(\DotPr{ \Vect{v}_{j-1} }{ \Vect{v}_k })\right)</latex>
-                           </math>
-                        </cell>
-                     </row>
-                     <row rowspan="1">
-                        <cell colspan="2" halign="center" valign="middle"/>
-                        <cell colspan="1" halign="center" valign="middle">
-                           <math>
-                              <latex>=</latex>
-                           </math>
-                        </cell>
-                        <cell colspan="2" halign="center" valign="middle">
-                           <math>
-                              <latex>(1/s)(\DotPr{ \Vect{a}_j }{ \Vect{v}_k } - \DotPr{ \Vect{a}_j }{ \Vect{v}_k })</latex>
-                           </math>
-                        </cell>
-                     </row>
-                     <row rowspan="1">
-                        <cell colspan="2" halign="center" valign="middle"/>
-                        <cell colspan="1" halign="center" valign="middle">
-                           <math>
-                              <latex>=</latex>
-                           </math>
-                        </cell>
-                        <cell colspan="2" halign="center" valign="middle">
-                           <math>
-                              <latex>0</latex>
-                           </math>
-                        </cell>
-                     </row>
-                  </math.array>
-               </li>
-            </ol>
-            <para>
-               <para.body>It only remains to consider the situation where <math>
-                     <latex>\EuScript{A}_j</latex>
-                  </math> is already orthonormal. By induction hypothesis, <math>
-                     <latex>\Vect{a}_1=\Vect{v}_1</latex>
-                  </math>, <math>
-                     <latex>\Vect{a}_{j-1}=\Vect{v}_{j-1}</latex>
-                  </math>. In the defining formula for <math>
-                     <latex>\Vect{v}_j</latex>
-                  </math>, we find <math>
-                     <latex>\DotPr{ \Vect{a}_j }{ \Vect{v}_k }=0</latex>
-                  </math>, for <math>
-                     <latex>1\leq k\leq j-1</latex>
-                  </math>. Therefore</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
                         <latex>\Vect{v}_j</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
+                     </math> is valid</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
                      <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
+                        <latex>\EuScript{A}_{j}:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_j} \subseteq \span\Set{ \Vect{v}_1,\dots ,\Vect{v}_{j-1} }=:\EuScript{B}_j</latex>
+                     </math>. To see this, it only 
+					<subordinate>
+                        <hot>remains</hot>
+                        <info>
+                           <info.caption>Why is this so?</info.caption>
+                           <para>
+                              <para.body>From the induction hypothesis we already know that <math>
+                                    <latex>\span(\EuScript{A}_{j-1})=\span(\EuScript{B}_{j-1})</latex>
+                                 </math>. Further, <math>
+                                    <latex>\span(\EuScript{B}_{j-1}) \subseteq \span(\EuScript{B}_j)</latex>
+                                 </math> because <math>
+                                    <latex>\EuScript{B}_{j-1}\subseteq \EuScript{B}_j</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </subordinate>
+					to show that <math>
+                        <latex>\Vect{a}_j\in \span(\EuScript{B}_j)</latex>
+                     </math>. Indeed, the defining equation for <math>
+                        <latex>\Vect{v}_j</latex>
+                     </math> yields</para.body>
+               </para>
+               <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{v}_j</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 + \cdots + (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1} + s \Vect{v}_j</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+               <para>
+                  <para.body>where <math>
+                        <latex>s=\abs{ \Vect{a}_j - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 - \cdots -  (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1}}</latex>
+                     </math>. Therefore, <math>
+                        <latex>\span(\EuScript{A}_j) \subseteq \span( \EuScript{B}_j)</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Conversely, <math>
+                        <latex>\span(\EuScript{B}_j)\subseteq \span(\EuScript{A}_j)</latex>
+                     </math>: Indeed, <math>
+                        <latex>\span(\EuScript{B}_{j-1})=\span(\EuScript{A}_{j-})</latex>
+                     </math> by induction hypothesis, and <math>
+                        <latex>\span(\EuScript{A}_{j-1})\subset \span(\EuScript{A}_j)</latex>
+                     </math>. So, <math>
+                        <latex>\Vect{v}_r</latex>
+                     </math> is a linear combination of vectors in <math>
+                        <latex>\span(\EuScript{A}_j)</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>So <math>
+                        <latex>\span(\EuScript{A}_j)=\span(\EuScript{B}_j)</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
                      <math>
-                        <latex>\Vect{a}_j/\abs{ \Vect{a}_j } = \Vect{a}_j</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This completes the induction and, with it, the proof of the validity of the Gram-Schmidt orthonormalization procedure.</para.body>
-            </para>
-         </proof.block.body>
+                        <latex>\EuScript{B}_j</latex>
+                     </math> is an orthonormal set of vectors: In view of the induction hypothesis it only remains to show that <math>
+                        <latex>\abs{ \Vect{v}_j } = 1</latex>
+                     </math>, which holds by design, and that <math>
+                        <latex>\DotPr{ \Vect{v}_j }{ \Vect{v}_k } = 0</latex>
+                     </math> for <math>
+                        <latex>1\leq k\leq j-1</latex>
+                     </math>. We find</para.body>
+               </para>
+               <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\DotPr{ \Vect{v}_j }{ \Vect{v}_k }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1/s)\left( \DotPr{ \Vect{a}_j }{ \Vect{v}_k } - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 }(\DotPr{ \Vect{v}_1 }{ \Vect{v}_k }) - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_k }(\DotPr{ \Vect{v}_k }{ \Vect{v}_k })\right.</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle"/>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left.\qquad  - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} }(\DotPr{ \Vect{v}_{j-1} }{ \Vect{v}_k })\right)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle"/>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1/s)(\DotPr{ \Vect{a}_j }{ \Vect{v}_k } - \DotPr{ \Vect{a}_j }{ \Vect{v}_k })</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle"/>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+            </li>
+         </ol>
+         <para>
+            <para.body>It only remains to consider the situation where <math>
+                  <latex>\EuScript{A}_j</latex>
+               </math> is already orthonormal. By induction hypothesis, <math>
+                  <latex>\Vect{a}_1=\Vect{v}_1</latex>
+               </math>, <math>
+                  <latex>\Vect{a}_{j-1}=\Vect{v}_{j-1}</latex>
+               </math>. In the defining formula for <math>
+                  <latex>\Vect{v}_j</latex>
+               </math>, we find <math>
+                  <latex>\DotPr{ \Vect{a}_j }{ \Vect{v}_k }=0</latex>
+               </math>, for <math>
+                  <latex>1\leq k\leq j-1</latex>
+               </math>. Therefore</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{v}_j</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{a}_j/\abs{ \Vect{a}_j } = \Vect{a}_j</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This completes the induction and, with it, the proof of the validity of the Gram-Schmidt orthonormalization procedure.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

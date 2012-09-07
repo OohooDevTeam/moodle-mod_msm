@@ -76,143 +76,141 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the case where <math>
-                     <latex>L</latex>
-                  </math> is invertible; i.e. there is a linear map <math>
-                     <latex>M\from W\to V</latex>
-                  </math> with</para.body>
-            </para>
-            <math.display>
-               <latex>M\Comp L = \Id[V] \quad\text{and}\quad L\Comp M = \Id[W]</latex>
-            </math.display>
-            <para>
-               <para.body>Let <math>
-                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
-                  </math> and <math>
-                     <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex>
-                  </math> denote the representing matrices. Then</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{A}\EuScript{A}}(M\Comp L) = \IdMtrx</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)\cdot \Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}(L\Comp M) = \IdMtrx</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This implies that both <math>
-                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
-                  </math> and <math>
-                     <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex>
-                  </math> are square shaped of the same size, and are inverse to each other; i.e.</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(L^{-1})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)^{-1}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Next consider the case where <math>
-                     <latex>\Mtrx{A}:=\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
-                  </math> is invertible. Then <math>
-                     <latex>\Mtrx{B}:=\Mtrx{A}^{-1}</latex>
-                  </math> represents a linear function <math>
-                     <latex>M\from W\to V</latex>
-                  </math>. To see that <math>
-                     <latex>M</latex>
-                  </math> does, indeed, reverse the transformation effect of <math>
-                     <latex>L</latex>
-                  </math>, we compute:</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(M\Comp L)(\Vect{x})_{\EuScript{A}}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{B}\Mtrx{A} \Vect{x}_{\EuScript{A}} = \Vect{x}_{\EuScript{A}}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(L\Comp M)(\Vect{y})_{\EuScript{B}}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}\Mtrx{B} \Vect{y}_{\EuScript{B}} = \Vect{y}_{\EuScript{B}}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Thus <math>
-                     <latex>L</latex>
-                  </math> is invertible, with inverse <math>
-                     <latex>M</latex>
-                  </math>. – This completes the proof.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>Consider first the case where <math>
+                  <latex>L</latex>
+               </math> is invertible; i.e. there is a linear map <math>
+                  <latex>M\from W\to V</latex>
+               </math> with</para.body>
+         </para>
+         <math.display>
+            <latex>M\Comp L = \Id[V] \quad\text{and}\quad L\Comp M = \Id[W]</latex>
+         </math.display>
+         <para>
+            <para.body>Let <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
+               </math> and <math>
+                  <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex>
+               </math> denote the representing matrices. Then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{A}\EuScript{A}}(M\Comp L) = \IdMtrx</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)\cdot \Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}(L\Comp M) = \IdMtrx</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This implies that both <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
+               </math> and <math>
+                  <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex>
+               </math> are square shaped of the same size, and are inverse to each other; i.e.</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(L^{-1})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Next consider the case where <math>
+                  <latex>\Mtrx{A}:=\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>
+               </math> is invertible. Then <math>
+                  <latex>\Mtrx{B}:=\Mtrx{A}^{-1}</latex>
+               </math> represents a linear function <math>
+                  <latex>M\from W\to V</latex>
+               </math>. To see that <math>
+                  <latex>M</latex>
+               </math> does, indeed, reverse the transformation effect of <math>
+                  <latex>L</latex>
+               </math>, we compute:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(M\Comp L)(\Vect{x})_{\EuScript{A}}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{B}\Mtrx{A} \Vect{x}_{\EuScript{A}} = \Vect{x}_{\EuScript{A}}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(L\Comp M)(\Vect{y})_{\EuScript{B}}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}\Mtrx{B} \Vect{y}_{\EuScript{B}} = \Vect{y}_{\EuScript{B}}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Thus <math>
+                  <latex>L</latex>
+               </math> is invertible, with inverse <math>
+                  <latex>M</latex>
+               </math>. – This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

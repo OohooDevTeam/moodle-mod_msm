@@ -137,417 +137,415 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that the projection vector has the direction of <math>
-                     <latex>\Vect{y}</latex>
-                  </math>. So 
+         <para>
+            <para.body>We know that the projection vector has the direction of <math>
+                  <latex>\Vect{y}</latex>
+               </math>. So 
 			<subordinate>
-                     <hot>there is a number <math>
+                  <hot>there is a number <math>
+                        <latex>t</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <info.caption>Why does such a number exist?</info.caption>
+                     <para>
+                        <para.body>Here we need the assumption that <math>
+                              <latex>\Vect{y} \neq \Vect{0}</latex>
+                           </math>. With this assumption we have, by definition, that a vector <math>
+                              <latex>\Vect{z}</latex>
+                           </math> is parallel to <math>
+                              <latex>\Vect{y}</latex>
+                           </math> exactly when there is a number <math>
+                              <latex>s</latex>
+                           </math> with <math>
+                              <latex>\Vect{z} = s\cdot \Vect{y}</latex>
+                           </math>. – In the case at hand, <math>
+                              <latex>\Vect{z}</latex>
+                           </math> is the projection of <math>
+                              <latex>\Vect{x}</latex>
+                           </math> onto <math>
+                              <latex>L</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </subordinate> with <math>
+                  <latex>\text{proj}_L(\Vect{x}) = t\cdot \Vect{y}</latex>
+               </math>. For a given number <math>
+                  <latex>t</latex>
+               </math>, set</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{u} := \Vect{x} - t\cdot \Vect{y}</latex>
+               </math> so that <math>
+                  <latex>\Vect{x} = t\cdot \Vect{y} + \Vect{u}</latex>
+               </math>.</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <media type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/ProjectionVectorLine_1.gif"/>
+               </media>
+            </para.body>
+         </para>
+         <para>
+            <para.body>Then <math>
+                  <latex>\Vect{u}</latex>
+               </math> is perpendicular to <math>
+                  <latex>L</latex>
+               </math> if and only if <math>
+                  <latex>\Vect{u} \bullet \Vect{y} = 0</latex>
+               </math>.</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <media type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/ProjectionVectorLine_2.gif"/>
+               </media>
+            </para.body>
+         </para>
+         <para>
+            <para.body>We find the number <math>
+                  <latex>t</latex>
+               </math> for which this happens by dot producting both sides of the equation <math>
+                  <latex>\Vect{x} = t\cdot \Vect{y} + \Vect{u}</latex>
+               </math> with <math>
+                  <latex>\Vect{y}</latex>
+               </math>:</para.body>
+         </para>
+         <table align="center">
+            <row>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\DotPr{ (t \Vect{y} + \Vect{u}) }{ \Vect{y} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <info.caption>Why is this computational step true?</info.caption>
+                              <para>
+                                 <para.body>Here we use the distributivity law of the dot product.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex> \DotPr{ (t \Vect{y}) }{ \Vect{y} } + \DotPr{ \Vect{u} }{ \Vect{y} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <info.caption>Why is this computational step true?</info.caption>
+                              <para>
+                                 <para.body>Here we use the fact that <math>
+                                       <latex>\DotPr{ (t\cdot \Vect{y}) }{ \Vect{y} } = t\, ( \DotPr{ \Vect{y} }{ \Vect{y} })</latex>
+                                    </math>, and that <math>
+                                       <latex>\Vect{u}</latex>
+                                    </math> is to be perpendicular to <math>
+                                       <latex>\Vect{y}</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>t ( \DotPr{ \Vect{y} }{ \Vect{y} }) + 0</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
                            <latex>t</latex>
                         </math>
-                     </hot>
-                     <info>
-                        <info.caption>Why does such a number exist?</info.caption>
-                        <para>
-                           <para.body>Here we need the assumption that <math>
-                                 <latex>\Vect{y} \neq \Vect{0}</latex>
-                              </math>. With this assumption we have, by definition, that a vector <math>
-                                 <latex>\Vect{z}</latex>
-                              </math> is parallel to <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> exactly when there is a number <math>
-                                 <latex>s</latex>
-                              </math> with <math>
-                                 <latex>\Vect{z} = s\cdot \Vect{y}</latex>
-                              </math>. – In the case at hand, <math>
-                                 <latex>\Vect{z}</latex>
-                              </math> is the projection of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> onto <math>
-                                 <latex>L</latex>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
                               </math>
-                           </para.body>
-                        </para>
-                     </info>
-                  </subordinate> with <math>
-                     <latex>\text{proj}_L(\Vect{x}) = t\cdot \Vect{y}</latex>
-                  </math>. For a given number <math>
-                     <latex>t</latex>
-                  </math>, set</para.body>
-            </para>
-            <para align="center">
-               <para.body>
-                  <math>
-                     <latex>\Vect{u} := \Vect{x} - t\cdot \Vect{y}</latex>
-                  </math> so that <math>
-                     <latex>\Vect{x} = t\cdot \Vect{y} + \Vect{u}</latex>
-                  </math>.</para.body>
-            </para>
-            <para align="center">
-               <para.body>
-                  <media type="image" active="0" inline="0">
-                     <img xmlns="" src="ims/ProjectionVectorLine_1.gif"/>
-                  </media>
-               </para.body>
-            </para>
-            <para>
-               <para.body>Then <math>
-                     <latex>\Vect{u}</latex>
-                  </math> is perpendicular to <math>
-                     <latex>L</latex>
-                  </math> if and only if <math>
-                     <latex>\Vect{u} \bullet \Vect{y} = 0</latex>
-                  </math>.</para.body>
-            </para>
-            <para align="center">
-               <para.body>
-                  <media type="image" active="0" inline="0">
-                     <img xmlns="" src="ims/ProjectionVectorLine_2.gif"/>
-                  </media>
-               </para.body>
-            </para>
-            <para>
-               <para.body>We find the number <math>
-                     <latex>t</latex>
-                  </math> for which this happens by dot producting both sides of the equation <math>
-                     <latex>\Vect{x} = t\cdot \Vect{y} + \Vect{u}</latex>
-                  </math> with <math>
-                     <latex>\Vect{y}</latex>
-                  </math>:</para.body>
-            </para>
-            <table align="center">
-               <row>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>=</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\DotPr{ (t \Vect{y} + \Vect{u}) }{ \Vect{y} }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-               <row>
-                  <cell>
-                     <para>
-                        <para.body> </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <subordinate>
-                              <hot>
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </hot>
-                              <info>
-                                 <info.caption>Why is this computational step true?</info.caption>
-                                 <para>
-                                    <para.body>Here we use the distributivity law of the dot product.</para.body>
-                                 </para>
-                              </info>
-                           </subordinate>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex> \DotPr{ (t \Vect{y}) }{ \Vect{y} } + \DotPr{ \Vect{u} }{ \Vect{y} }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-               <row>
-                  <cell>
-                     <para>
-                        <para.body> </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <subordinate>
-                              <hot>
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </hot>
-                              <info>
-                                 <info.caption>Why is this computational step true?</info.caption>
-                                 <para>
-                                    <para.body>Here we use the fact that <math>
-                                          <latex>\DotPr{ (t\cdot \Vect{y}) }{ \Vect{y} } = t\, ( \DotPr{ \Vect{y} }{ \Vect{y} })</latex>
-                                       </math>, and that <math>
-                                          <latex>\Vect{u}</latex>
-                                       </math> is to be perpendicular to <math>
-                                          <latex>\Vect{y}</latex>
-                                       </math>.</para.body>
-                                 </para>
-                              </info>
-                           </subordinate>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>t ( \DotPr{ \Vect{y} }{ \Vect{y} }) + 0</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-               <row>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>t</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <subordinate>
-                              <hot>
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </hot>
-                              <info>
-                                 <info.caption>Why is this computational step true?</info.caption>
-                                 <para>
-                                    <para.body>Here we use again that <math>
-                                          <latex>\Vect{y} \neq \Vect{0}</latex>
-                                       </math>; so we are allowed to divide by the positive number <math>
-                                          <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>
-                                       </math>.</para.body>
-                                 </para>
-                              </info>
-                           </subordinate>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{ \Vect{y} } }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-            </table>
-            <para>
-               <para.body>It remains to show that <math>
-                     <latex>\pr_{L}(\Vect{x})</latex>
-                  </math> is perpendicular to <math>
-                     <latex>\Vect{x} - \pr_{L}(\Vect{x})</latex>
-                  </math>; i.e. we need to check that the dot product of the two vectors vanishes. So we compute</para.body>
-            </para>
-            <table align="center">
-               <row>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\DotPr{ \Vect{y} }{ (\Vect{x} - \pr_{L}(\Vect{x} ) }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>=</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\DotPr{ \Vect{y} }{ \left( \Vect{x} - \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{  \Vect{y} } }\cdot \Vect{y} \right) }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-               <row>
-                  <cell>
-                     <para>
-                        <para.body> </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <subordinate>
-                              <hot>
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </hot>
-                              <info>
-                                 <info.caption>Why is this true?</info.caption>
-                                 <para>
-                                    <para.body>Here we use the distributivity property of the dot product:</para.body>
-                                 </para>
-                                 <math.display>
-                                    <latex>\DotPr{ \Vect{u} }{ (\Vect{v} + \Vect{w}) } = \DotPr{ \Vect{u} }{ \Vect{v} }\ +\ \DotPr{ \Vect{u} }{ \Vect{w} }</latex>
-                                 </math.display>
-                              </info>
-                           </subordinate>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\DotPr{ \Vect{y} }{ \Vect{x} } - \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{ \Vect{y} } }\cdot \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-               <row>
-                  <cell>
-                     <para>
-                        <para.body> </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <subordinate>
-                              <hot>
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </hot>
-                              <info>
-                                 <info.caption>Why is this true?</info.caption>
-                                 <para>
-                                    <para.body>Here we cancel by <math>
-                                          <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>
-                                       </math>
-                                    </para.body>
-                                 </para>
-                              </info>
-                           </subordinate>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\DotPr{ \Vect{y} }{ \Vect{x} } - \DotPr{ \Vect{x} }{ \Vect{y} }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-               <row>
-                  <cell>
-                     <para>
-                        <para.body> </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <subordinate>
-                              <hot>
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </hot>
-                              <info>
-                                 <info.caption>Why is this true?</info.caption>
-                                 <para>
-                                    <para.body>Here we use the commutativity property of the dot product: <math>
-                                          <latex>\DotPr{ \Vect{x} }{ \Vect{y} } = \DotPr{ \Vect{y} }{ \Vect{x} }</latex>
-                                       </math>, and we canceled by <math>
-                                          <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>
-                                       </math>.</para.body>
-                                 </para>
-                              </info>
-                           </subordinate>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>\DotPr{ \Vect{x} }{ \Vect{y} } - \DotPr{ \Vect{x} }{ \Vect{y} }</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-               <row>
-                  <cell>
-                     <para>
-                        <para.body> </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>=</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-                  <cell>
-                     <para>
-                        <para.body>
-                           <math>
-                              <latex>0</latex>
-                           </math>
-                        </para.body>
-                     </para>
-                  </cell>
-               </row>
-            </table>
-            <para>
-               <para.body>So the two vectors in question are, indeed, perpendicular. – This completes the proof.</para.body>
-            </para>
-         </proof.block.body>
+                           </hot>
+                           <info>
+                              <info.caption>Why is this computational step true?</info.caption>
+                              <para>
+                                 <para.body>Here we use again that <math>
+                                       <latex>\Vect{y} \neq \Vect{0}</latex>
+                                    </math>; so we are allowed to divide by the positive number <math>
+                                       <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{ \Vect{y} } }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+         </table>
+         <para>
+            <para.body>It remains to show that <math>
+                  <latex>\pr_{L}(\Vect{x})</latex>
+               </math> is perpendicular to <math>
+                  <latex>\Vect{x} - \pr_{L}(\Vect{x})</latex>
+               </math>; i.e. we need to check that the dot product of the two vectors vanishes. So we compute</para.body>
+         </para>
+         <table align="center">
+            <row>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\DotPr{ \Vect{y} }{ (\Vect{x} - \pr_{L}(\Vect{x} ) }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\DotPr{ \Vect{y} }{ \left( \Vect{x} - \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{  \Vect{y} } }\cdot \Vect{y} \right) }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <info.caption>Why is this true?</info.caption>
+                              <para>
+                                 <para.body>Here we use the distributivity property of the dot product:</para.body>
+                              </para>
+                              <math.display>
+                                 <latex>\DotPr{ \Vect{u} }{ (\Vect{v} + \Vect{w}) } = \DotPr{ \Vect{u} }{ \Vect{v} }\ +\ \DotPr{ \Vect{u} }{ \Vect{w} }</latex>
+                              </math.display>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\DotPr{ \Vect{y} }{ \Vect{x} } - \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{ \Vect{y} } }\cdot \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <info.caption>Why is this true?</info.caption>
+                              <para>
+                                 <para.body>Here we cancel by <math>
+                                       <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\DotPr{ \Vect{y} }{ \Vect{x} } - \DotPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <info.caption>Why is this true?</info.caption>
+                              <para>
+                                 <para.body>Here we use the commutativity property of the dot product: <math>
+                                       <latex>\DotPr{ \Vect{x} }{ \Vect{y} } = \DotPr{ \Vect{y} }{ \Vect{x} }</latex>
+                                    </math>, and we canceled by <math>
+                                       <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\DotPr{ \Vect{x} }{ \Vect{y} } - \DotPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+         </table>
+         <para>
+            <para.body>So the two vectors in question are, indeed, perpendicular. – This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

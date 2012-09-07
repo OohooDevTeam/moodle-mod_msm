@@ -21,81 +21,79 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>By definition of <math>
-                     <latex>L^{-1}</latex>
-                  </math>, we write <math>
-                     <latex>M=L^{-1}</latex>
-                  </math> because there is a linear transformation <math>
-                     <latex>M</latex>
-                  </math> with</para.body>
-            </para>
-            <math.display>
-               <latex>M\Comp L = \Id[n] = L\Comp M</latex>
-            </math.display>
-            <para>
-               <para.body>These two equations, however, also mean that <math>
-                     <latex>M</latex>
-                  </math> is invertible and that <math>
-                     <latex>M^{-1} = L</latex>
-                  </math>. But then</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>... as we just said</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>M^{-1}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>substitute <math>
-                                    <latex>L^{-1}</latex>
-                                 </math> for <math>
-                                    <latex>M</latex>
-                                 </math>
-                              </para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\left( L^{-1} \right)^{-1}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>By definition of <math>
+                  <latex>L^{-1}</latex>
+               </math>, we write <math>
+                  <latex>M=L^{-1}</latex>
+               </math> because there is a linear transformation <math>
+                  <latex>M</latex>
+               </math> with</para.body>
+         </para>
+         <math.display>
+            <latex>M\Comp L = \Id[n] = L\Comp M</latex>
+         </math.display>
+         <para>
+            <para.body>These two equations, however, also mean that <math>
+                  <latex>M</latex>
+               </math> is invertible and that <math>
+                  <latex>M^{-1} = L</latex>
+               </math>. But then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>... as we just said</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>M^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>L^{-1}</latex>
+                              </math> for <math>
+                                 <latex>M</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left( L^{-1} \right)^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

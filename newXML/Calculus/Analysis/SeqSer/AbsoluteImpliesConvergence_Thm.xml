@@ -14,104 +14,102 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that there is a number <math>
-                     <latex>L</latex>
-                  </math> with</para.body>
-            </para>
-            <math.display>
-               <latex>{\color{red}\sum_{n=0}^{\infty} \Abs{a_n} = L}</latex>
-            </math.display>
-            <para>
-               <para.body>From this we will deduce that the series <math>
-                     <latex>\sum_{n=0}^{\infty} \left( a_n+\Abs{a_n}\right)</latex>
-                  </math> converges to a number. Indeed, we 
+         <para>
+            <para.body>We know that there is a number <math>
+                  <latex>L</latex>
+               </math> with</para.body>
+         </para>
+         <math.display>
+            <latex>{\color{red}\sum_{n=0}^{\infty} \Abs{a_n} = L}</latex>
+         </math.display>
+         <para>
+            <para.body>From this we will deduce that the series <math>
+                  <latex>\sum_{n=0}^{\infty} \left( a_n+\Abs{a_n}\right)</latex>
+               </math> converges to a number. Indeed, we 
 			<subordinate>
-                     <hot>have</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_NormRProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
-               </para.body>
-            </para>
-            <math.display>
-               <latex>-\Abs{a_n} \leq a_n\leq \Abs{a_n}</latex>
-            </math.display>
-            <para>
-               <para.body>or, equivalently,</para.body>
-            </para>
-            <math.display>
-               <latex>0\leq a_n + \Abs{a_n} \leq 2\Abs{a_n}</latex>
-            </math.display>
-            <para>
-               <para.body>Now, the comparison criterion for convergence of a series shows that</para.body>
-            </para>
-            <math.display>
-               <latex>0 \leq {\color{blue} K := \sum_{n=0}^{\infty} \left(a_n + \Abs{a_n}\right)} \leq \sum_{n=0}^{\infty} 2\Abs{a_n} = 2L</latex>
-            </math.display>
-            <para>
-               <para.body>It follows that</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{n=0}^{\infty} a_n</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{n=0}^{\infty} \left( (a_n+\Abs{a_n}) - \Abs{a_n}\right)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion/>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>{\color{blue} \sum_{n=0}^{\infty}\left( a_n + \Abs{a_n}\right) }\ -\ {\color{red} \sum_{n=0}^{\infty} \Abs{a_n} }</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>{\color{blue} K} - {\color{red} L}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>So <math>
+                  <hot>have</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_NormRProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+            </para.body>
+         </para>
+         <math.display>
+            <latex>-\Abs{a_n} \leq a_n\leq \Abs{a_n}</latex>
+         </math.display>
+         <para>
+            <para.body>or, equivalently,</para.body>
+         </para>
+         <math.display>
+            <latex>0\leq a_n + \Abs{a_n} \leq 2\Abs{a_n}</latex>
+         </math.display>
+         <para>
+            <para.body>Now, the comparison criterion for convergence of a series shows that</para.body>
+         </para>
+         <math.display>
+            <latex>0 \leq {\color{blue} K := \sum_{n=0}^{\infty} \left(a_n + \Abs{a_n}\right)} \leq \sum_{n=0}^{\infty} 2\Abs{a_n} = 2L</latex>
+         </math.display>
+         <para>
+            <para.body>It follows that</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\sum_{n=0}^{\infty} a_n</latex>
-                  </math> converges to the number <math>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{n=0}^{\infty} \left( (a_n+\Abs{a_n}) - \Abs{a_n}\right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion/>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>{\color{blue} \sum_{n=0}^{\infty}\left( a_n + \Abs{a_n}\right) }\ -\ {\color{red} \sum_{n=0}^{\infty} \Abs{a_n} }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>{\color{blue} K} - {\color{red} L}</latex>
-                  </math>, and this shows what we claimed.</para.body>
-            </para>
-         </proof.block.body>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So <math>
+                  <latex>\sum_{n=0}^{\infty} a_n</latex>
+               </math> converges to the number <math>
+                  <latex>{\color{blue} K} - {\color{red} L}</latex>
+               </math>, and this shows what we claimed.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

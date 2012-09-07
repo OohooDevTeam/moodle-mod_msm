@@ -26,54 +26,52 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>From the given intervals we have two sequences of numbers, namely <math>
-                     <latex>(a_n)</latex>
-                  </math> and <math>
-                     <latex>(b_n)</latex>
-                  </math>. We have <math>
-                     <latex>a_{n+1}\geq a_n</latex>
-                  </math> and <math>
-                     <latex>b_{n+1}\leq b_n</latex>
-                  </math> because <math>
-                     <latex>I_{n+1} \subseteq I_n</latex>
-                  </math>. So <math>
-                     <latex>(a_n)</latex>
-                  </math> is increasing, and <math>
-                     <latex>(b_n)</latex>
-                  </math> is decreasing.</para.body>
-            </para>
-            <para>
-               <para.body>Moreover, every <math>
-                     <latex>b_n</latex>
-                  </math> is an upper bound of the sequence <math>
-                     <latex>(a_n)</latex>
-                  </math>, and every <math>
-                     <latex>a_n</latex>
-                  </math> is a lower bound of the sequence <math>
-                     <latex>(b_n)</latex>
-                  </math>. So both sequence converge. Let</para.body>
-            </para>
-            <math.display>
-               <latex>a := \lim_{n\to\infty} a_n \quad\text{and}\quad b:= \lim_{n\to\infty} b_n</latex>
-            </math.display>
-            <para>
-               <para.body>Then we know that</para.body>
-            </para>
-            <math.display>
-               <latex>a = \sup(a_n) \leq \inf(b_n) = b</latex>
-            </math.display>
-            <para>
-               <para.body>Thus <math>
-                     <latex>\CCIntrvl{a}{b}\subseteq \CCIntrvl{a_n}{b_n}</latex>
-                  </math> for all <math>
-                     <latex>n\in \NNr</latex>
-                  </math>. So <math>
-                     <latex>\emptyset \neq \CCIntrvl{a}{b} \subseteq \intrsctn_n \CCIntrvl{a_n}{b_n}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>From the given intervals we have two sequences of numbers, namely <math>
+                  <latex>(a_n)</latex>
+               </math> and <math>
+                  <latex>(b_n)</latex>
+               </math>. We have <math>
+                  <latex>a_{n+1}\geq a_n</latex>
+               </math> and <math>
+                  <latex>b_{n+1}\leq b_n</latex>
+               </math> because <math>
+                  <latex>I_{n+1} \subseteq I_n</latex>
+               </math>. So <math>
+                  <latex>(a_n)</latex>
+               </math> is increasing, and <math>
+                  <latex>(b_n)</latex>
+               </math> is decreasing.</para.body>
+         </para>
+         <para>
+            <para.body>Moreover, every <math>
+                  <latex>b_n</latex>
+               </math> is an upper bound of the sequence <math>
+                  <latex>(a_n)</latex>
+               </math>, and every <math>
+                  <latex>a_n</latex>
+               </math> is a lower bound of the sequence <math>
+                  <latex>(b_n)</latex>
+               </math>. So both sequence converge. Let</para.body>
+         </para>
+         <math.display>
+            <latex>a := \lim_{n\to\infty} a_n \quad\text{and}\quad b:= \lim_{n\to\infty} b_n</latex>
+         </math.display>
+         <para>
+            <para.body>Then we know that</para.body>
+         </para>
+         <math.display>
+            <latex>a = \sup(a_n) \leq \inf(b_n) = b</latex>
+         </math.display>
+         <para>
+            <para.body>Thus <math>
+                  <latex>\CCIntrvl{a}{b}\subseteq \CCIntrvl{a_n}{b_n}</latex>
+               </math> for all <math>
+                  <latex>n\in \NNr</latex>
+               </math>. So <math>
+                  <latex>\emptyset \neq \CCIntrvl{a}{b} \subseteq \intrsctn_n \CCIntrvl{a_n}{b_n}</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

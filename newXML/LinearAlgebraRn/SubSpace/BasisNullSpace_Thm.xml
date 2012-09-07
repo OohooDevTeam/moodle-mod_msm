@@ -83,116 +83,114 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>It is clear that <math>
-                     <latex>\span(\EuScript{B}) = \NllSp{ \Mtrx{A} }</latex>
-                  </math>. So it only remains to verify the linear independence of <math>
-                     <latex>\EuScript{B}</latex>
-                  </math>. To do this, let us 
+         <para>
+            <para.body>It is clear that <math>
+                  <latex>\span(\EuScript{B}) = \NllSp{ \Mtrx{A} }</latex>
+               </math>. So it only remains to verify the linear independence of <math>
+                  <latex>\EuScript{B}</latex>
+               </math>. To do this, let us 
 			<subordinate>
-                     <hot>recall</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_SolutionsConstruct"/>
-                        <info>
-                           <para>
-                              <para.body>Look up how this goes.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>recall</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_SolutionsConstruct"/>
+                     <info>
+                        <para>
+                           <para.body>Look up how this goes.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			
 			how the vectors <math>
-                     <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex>
-                  </math> are constructed:</para.body>
-            </para>
-            <ol>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex>\Mtrx{B}=[b_{ij}]</latex>
-                        </math> denote the RREF of <math>
-                           <latex>\Mtrx{A}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex>j_1,\dots ,j_{n-r}</latex>
-                        </math> denote the columns of <math>
-                           <latex>\Mtrx{B}</latex>
-                        </math> which do not contain a leading <math>
-                           <latex>1</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Let <math>
-                           <latex>u_1,\dots , u_r</latex>
-                        </math> denote the columns of <math>
-                           <latex>\Mtrx{B}</latex>
-                        </math> containing a leading <math>
-                           <latex>1</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Then construct <math>
-                           <latex>\Vect{b}_k</latex>
-                        </math> as the vector in <math>
-                           <latex>\RNr[n]</latex>
-                        </math> which has</para.body>
-                  </para>
-                  <ul>
-                     <li>
-                        <para>
-                           <para.body>a ‘<math>
-                                 <latex>1</latex>
-                              </math>’ in position <math>
-                                 <latex>j_k</latex>
-                              </math>;</para.body>
-                        </para>
-                     </li>
-                     <li>
-                        <para>
-                           <para.body>the entry <math>
-                                 <latex>-b_{i,j_k}</latex>
-                              </math> in position <math>
-                                 <latex>u_i</latex>
-                              </math>;</para.body>
-                        </para>
-                     </li>
-                     <li>
-                        <para>
-                           <para.body>a ‘<math>
-                                 <latex>0</latex>
-                              </math>’ in each remaining position.</para.body>
-                        </para>
-                     </li>
-                  </ul>
-               </li>
-            </ol>
-            <para>
-               <para.body>Now use these vectors <math>
-                     <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex>
-                  </math> as the columns of the matrix <math>
-                     <latex>\Mtrx{U} := [ \Vect{b}_1\ \dots \ \Vect{b}_{n-r}]</latex>
-                  </math>. The rows <math>
-                     <latex>j_1,\dots ,j_{n-r}</latex>
-                  </math> of <math>
-                     <latex>\Mtrx{U}</latex>
-                  </math> form an upper triangular matrix with a <math>
-                     <latex>1</latex>
-                  </math> in each diagonal position. The determinant of this matrix is <math>
-                     <latex>1</latex>
-                  </math>, implying that the columns of <math>
-                     <latex>\Mtrx{U}</latex>
-                  </math> are linearly independent. This completes the proof.</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex>
+               </math> are constructed:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex>\Mtrx{B}=[b_{ij}]</latex>
+                     </math> denote the RREF of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex>j_1,\dots ,j_{n-r}</latex>
+                     </math> denote the columns of <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> which do not contain a leading <math>
+                        <latex>1</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Let <math>
+                        <latex>u_1,\dots , u_r</latex>
+                     </math> denote the columns of <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> containing a leading <math>
+                        <latex>1</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Then construct <math>
+                        <latex>\Vect{b}_k</latex>
+                     </math> as the vector in <math>
+                        <latex>\RNr[n]</latex>
+                     </math> which has</para.body>
+               </para>
+               <ul>
+                  <li>
+                     <para>
+                        <para.body>a ‘<math>
+                              <latex>1</latex>
+                           </math>’ in position <math>
+                              <latex>j_k</latex>
+                           </math>;</para.body>
+                     </para>
+                  </li>
+                  <li>
+                     <para>
+                        <para.body>the entry <math>
+                              <latex>-b_{i,j_k}</latex>
+                           </math> in position <math>
+                              <latex>u_i</latex>
+                           </math>;</para.body>
+                     </para>
+                  </li>
+                  <li>
+                     <para>
+                        <para.body>a ‘<math>
+                              <latex>0</latex>
+                           </math>’ in each remaining position.</para.body>
+                     </para>
+                  </li>
+               </ul>
+            </li>
+         </ol>
+         <para>
+            <para.body>Now use these vectors <math>
+                  <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex>
+               </math> as the columns of the matrix <math>
+                  <latex>\Mtrx{U} := [ \Vect{b}_1\ \dots \ \Vect{b}_{n-r}]</latex>
+               </math>. The rows <math>
+                  <latex>j_1,\dots ,j_{n-r}</latex>
+               </math> of <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> form an upper triangular matrix with a <math>
+                  <latex>1</latex>
+               </math> in each diagonal position. The determinant of this matrix is <math>
+                  <latex>1</latex>
+               </math>, implying that the columns of <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> are linearly independent. This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

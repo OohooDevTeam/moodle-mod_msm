@@ -60,102 +60,100 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>The equality <math>
-                     <latex>\Mtrx{D} = \Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}</latex>
-                  </math> is equivalent to</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Therefore</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}^r</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)^r</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>
-                                 <math>
-                                    <latex>r</latex>
-                                 </math> factors</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right) \left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)\ \cdots\ \left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use that the pairs <math>
-                                    <latex>\Mtrx{C}^{-1} \Mtrx{C}</latex>
-                                 </math> cancel.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{C}\, \Mtrx{D}^r\, \Mtrx{C}^{-1}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>as claimed.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>The equality <math>
+                  <latex>\Mtrx{D} = \Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}</latex>
+               </math> is equivalent to</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Therefore</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}^r</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)^r</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>r</latex>
+                              </math> factors</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right) \left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)\ \cdots\ \left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that the pairs <math>
+                                 <latex>\Mtrx{C}^{-1} \Mtrx{C}</latex>
+                              </math> cancel.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{C}\, \Mtrx{D}^r\, \Mtrx{C}^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

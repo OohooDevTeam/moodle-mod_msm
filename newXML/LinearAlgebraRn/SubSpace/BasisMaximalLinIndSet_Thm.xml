@@ -24,192 +24,190 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the case where <math>
-                     <latex>S</latex>
-                  </math> is a basis of <math>
-                     <latex>V</latex>
-                  </math>. If <math>
-                     <latex>\Vect{v}\in V</latex>
-                  </math>, we need to show that <math>
-                     <latex>T:= S\cup \Set{ \Vect{v} }</latex>
-                  </math> is linearly dependent.</para.body>
-            </para>
-            <para>
-               <para.body>Indeed, we know that <math>
-                     <latex>\span(S)=V</latex>
-                  </math>. So <math>
+         <para>
+            <para.body>Consider first the case where <math>
+                  <latex>S</latex>
+               </math> is a basis of <math>
+                  <latex>V</latex>
+               </math>. If <math>
+                  <latex>\Vect{v}\in V</latex>
+               </math>, we need to show that <math>
+                  <latex>T:= S\cup \Set{ \Vect{v} }</latex>
+               </math> is linearly dependent.</para.body>
+         </para>
+         <para>
+            <para.body>Indeed, we know that <math>
+                  <latex>\span(S)=V</latex>
+               </math>. So <math>
+                  <latex>\Vect{v}</latex>
+               </math> is a linear combination of <math>
+                  <latex>S</latex>
+               </math>:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Vect{v}</latex>
-                  </math> is a linear combination of <math>
-                     <latex>S</latex>
-                  </math>:</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{v}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>with <math>
-                     <latex>\Vect{s}_1,\dots ,\Vect{s}_k</latex>
-                  </math> in <math>
-                     <latex>S</latex>
-                  </math>. But then</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>-\Vect{v}\ +\ x_1 \Vect{s}_1 + \cdots + x_k \Vect{_k}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>is a representation of <math>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>with <math>
+                  <latex>\Vect{s}_1,\dots ,\Vect{s}_k</latex>
+               </math> in <math>
+                  <latex>S</latex>
+               </math>. But then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Vect{0}</latex>
-                  </math> by vectors in <math>
-                     <latex>T</latex>
-                  </math> for which at least one coefficient is not 0. So <math>
-                     <latex>T</latex>
-                  </math> is not linearly independent.</para.body>
-            </para>
-            <para>
-               <para.body>Consider next the case where, for every vector <math>
-                     <latex>\Vect{v}\in V</latex>
-                  </math>, <math>
-                     <latex>T:= S\cup \Set{ \Vect{v} }</latex>
-                  </math>  is dependent. We need to show that <math>
-                     <latex>S</latex>
-                  </math> is a basis of <math>
-                     <latex>V</latex>
-                  </math>. Since we know already that <math>
-                     <latex>S</latex>
-                  </math> is linearly independent, it only remains to show that <math>
-                     <latex>\span(S)=V</latex>
-                  </math>. So let <math>
-                     <latex>\Vect{v}\in V</latex>
-                  </math> be arbitrary. Then <math>
-                     <latex>T:= S\cup \Set{\Vect{v}}</latex>
-                  </math> is linearly dependent, implying that there is a linear combination</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t \Vect{v}\ +\ x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>with <math>
-                     <latex>\Vect{s}_1,\dots ,\Vect{s}_k</latex>
-                  </math> in <math>
-                     <latex>S</latex>
-                  </math>, for which not all coefficients are 0. 
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\Vect{v}\ +\ x_1 \Vect{s}_1 + \cdots + x_k \Vect{_k}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>is a representation of <math>
+                  <latex>\Vect{0}</latex>
+               </math> by vectors in <math>
+                  <latex>T</latex>
+               </math> for which at least one coefficient is not 0. So <math>
+                  <latex>T</latex>
+               </math> is not linearly independent.</para.body>
+         </para>
+         <para>
+            <para.body>Consider next the case where, for every vector <math>
+                  <latex>\Vect{v}\in V</latex>
+               </math>, <math>
+                  <latex>T:= S\cup \Set{ \Vect{v} }</latex>
+               </math>  is dependent. We need to show that <math>
+                  <latex>S</latex>
+               </math> is a basis of <math>
+                  <latex>V</latex>
+               </math>. Since we know already that <math>
+                  <latex>S</latex>
+               </math> is linearly independent, it only remains to show that <math>
+                  <latex>\span(S)=V</latex>
+               </math>. So let <math>
+                  <latex>\Vect{v}\in V</latex>
+               </math> be arbitrary. Then <math>
+                  <latex>T:= S\cup \Set{\Vect{v}}</latex>
+               </math> is linearly dependent, implying that there is a linear combination</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t \Vect{v}\ +\ x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>with <math>
+                  <latex>\Vect{s}_1,\dots ,\Vect{s}_k</latex>
+               </math> in <math>
+                  <latex>S</latex>
+               </math>, for which not all coefficients are 0. 
 			<subordinate>
-                     <hot>We must have <math>
-                           <latex>t=0</latex>
-                        </math>
-                     </hot>
-                     <info>
-                        <para>
-                           <para.body>For suppose <math>
-                                 <latex>t=0</latex>
-                              </math>. Then</para.body>
-                        </para>
-                        <math.array column="3">
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>t</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                        </math.array>
-                        <para>
-                           <para.body>is a linear combination of vectors in <math>
-                                 <latex>S</latex>
-                              </math>. Since <math>
-                                 <latex>S</latex>
-                              </math> is linearly independent, <math>
-                                 <latex>s_1=\cdots = s_k=0</latex>
-                              </math>. So all coefficients are <math>
-                                 <latex>0</latex>
-                              </math>, contradicting the hypotheses of the proposition.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>, implying that</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{v}</latex>
+                  <hot>We must have <math>
+                        <latex>t=0</latex>
                      </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(1/t) (x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k)</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>is a linear combination of. – This completes the proof.</para.body>
-            </para>
-         </proof.block.body>
+                  </hot>
+                  <info>
+                     <para>
+                        <para.body>For suppose <math>
+                              <latex>t=0</latex>
+                           </math>. Then</para.body>
+                     </para>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>t</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                     <para>
+                        <para.body>is a linear combination of vectors in <math>
+                              <latex>S</latex>
+                           </math>. Since <math>
+                              <latex>S</latex>
+                           </math> is linearly independent, <math>
+                              <latex>s_1=\cdots = s_k=0</latex>
+                           </math>. So all coefficients are <math>
+                              <latex>0</latex>
+                           </math>, contradicting the hypotheses of the proposition.</para.body>
+                     </para>
+                  </info>
+               </subordinate>, implying that</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{v}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1/t) (x_1 \Vect{s}_1 + \cdots + x_k \Vect{s}_k)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>is a linear combination of. – This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

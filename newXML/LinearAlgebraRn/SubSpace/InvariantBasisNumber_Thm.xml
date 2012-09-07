@@ -16,57 +16,55 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>The key ingredient in this proof is the fact that, if <math>
-                     <latex>V</latex>
-                  </math> can be spanned by <math>
-                     <latex>m</latex>
-                  </math> vectors, then any linearly independent subset of <math>
-                     <latex>V</latex>
-                  </math>
-                  <subordinate>
-                     <hot>has at most <math>
-                           <latex>m</latex>
-                        </math> vectors</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>.</para.body>
-            </para>
-            <para>
-               <para.body>Now suppose <math>
-                     <latex>\EuScript{B}</latex>
-                  </math> and <math>
-                     <latex>\EuScript{C}</latex>
-                  </math> are bases of <math>
-                     <latex>V</latex>
-                  </math>, containing exactly <math>
-                     <latex>r</latex>
-                  </math> and <math>
-                     <latex>s</latex>
-                  </math> vectors, respectively. Then we have <math>
-                     <latex>r\leq s</latex>
-                  </math>, because <math>
-                     <latex>\EuScript{B}</latex>
-                  </math> is a linearly independent subset contained in the span of <math>
-                     <latex>\EuScript{C}</latex>
-                  </math>. Moreover, we have that <math>
-                     <latex>s\leq r</latex>
-                  </math>, because <math>
-                     <latex>\EuScript{C}</latex>
-                  </math> is a linearly independent subset contained in the span of <math>
-                     <latex>\EuScript{B}</latex>
-                  </math>. Thus <math>
-                     <latex>r=s</latex>
-                  </math>, and the theorem is proven.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>The key ingredient in this proof is the fact that, if <math>
+                  <latex>V</latex>
+               </math> can be spanned by <math>
+                  <latex>m</latex>
+               </math> vectors, then any linearly independent subset of <math>
+                  <latex>V</latex>
+               </math>
+               <subordinate>
+                  <hot>has at most <math>
+                        <latex>m</latex>
+                     </math> vectors</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.</para.body>
+         </para>
+         <para>
+            <para.body>Now suppose <math>
+                  <latex>\EuScript{B}</latex>
+               </math> and <math>
+                  <latex>\EuScript{C}</latex>
+               </math> are bases of <math>
+                  <latex>V</latex>
+               </math>, containing exactly <math>
+                  <latex>r</latex>
+               </math> and <math>
+                  <latex>s</latex>
+               </math> vectors, respectively. Then we have <math>
+                  <latex>r\leq s</latex>
+               </math>, because <math>
+                  <latex>\EuScript{B}</latex>
+               </math> is a linearly independent subset contained in the span of <math>
+                  <latex>\EuScript{C}</latex>
+               </math>. Moreover, we have that <math>
+                  <latex>s\leq r</latex>
+               </math>, because <math>
+                  <latex>\EuScript{C}</latex>
+               </math> is a linearly independent subset contained in the span of <math>
+                  <latex>\EuScript{B}</latex>
+               </math>. Thus <math>
+                  <latex>r=s</latex>
+               </math>, and the theorem is proven.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -28,100 +28,98 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>V=\span( \EuScript{A} )</latex>
-                  </math>, we set <math>
-                     <latex>\EuScript{C}:=\emptyset</latex>
-                  </math>, and we are done . If <math>
-                     <latex>\span( \EuScript{A} ) \neq V</latex>
-                  </math>, there are vectors in <math>
-                     <latex>V</latex>
-                  </math>  which do not belong to <math>
-                     <latex>\span(\EuScript{A})</latex>
-                  </math>. Pick any one such, call it <math>
-                     <latex>\Vect{c}_1</latex>
-                  </math>, and form <math>
-                     <latex>\EuScript{C}_1:=\Set{ \Vect{c}_1 }</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>We know that <math>
-                     <latex>\EuScript{B}_1:= \EuScript{A} \cup \EuScript{C}_1</latex>
-                  </math> is 
+         <para>
+            <para.body>If <math>
+                  <latex>V=\span( \EuScript{A} )</latex>
+               </math>, we set <math>
+                  <latex>\EuScript{C}:=\emptyset</latex>
+               </math>, and we are done . If <math>
+                  <latex>\span( \EuScript{A} ) \neq V</latex>
+               </math>, there are vectors in <math>
+                  <latex>V</latex>
+               </math>  which do not belong to <math>
+                  <latex>\span(\EuScript{A})</latex>
+               </math>. Pick any one such, call it <math>
+                  <latex>\Vect{c}_1</latex>
+               </math>, and form <math>
+                  <latex>\EuScript{C}_1:=\Set{ \Vect{c}_1 }</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>We know that <math>
+                  <latex>\EuScript{B}_1:= \EuScript{A} \cup \EuScript{C}_1</latex>
+               </math> is 
 			<subordinate>
-                     <hot>linearly independent</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>.
+                  <hot>linearly independent</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.
 			If <math>
-                     <latex>\span( \EuScript{B}_1 )=V</latex>
-                  </math>, then <math>
-                     <latex>\EuScript{B}:=\EuScript{B}_1</latex>
-                  </math> is a basis for <math>
-                     <latex>V</latex>
-                  </math>. If <math>
-                     <latex>\span( \EuScript{B}_1 ) \neq V</latex>
-                  </math>, there are vectors in <math>
-                     <latex>V</latex>
-                  </math>  which do not belong to <math>
-                     <latex>\span(\EuScript{B}_1)</latex>
-                  </math>. Pick any one such, call it <math>
-                     <latex>\Vect{c}_2</latex>
-                  </math>, and form <math>
-                     <latex>\EuScript{B}_2:=\EuScript{B}_1\cup \Set{ \Vect{c}_2 }</latex>
-                  </math>; etc.</para.body>
-            </para>
-            <para>
-               <para.body>The crucial fact now is that, for some <math>
-                     <latex>k\leq n</latex>
-                  </math>, we must have <math>
-                     <latex>\span( \EuScript{B}_k) = V</latex>
-                  </math>. To see this, we argue by contradiction: Suppose <math>
-                     <latex> n&lt; k </latex>
-                  </math> and <math>
-                     <latex>\EuScript{B}_k</latex>
-                  </math> is a linearly independent subset of <math>
-                     <latex>V</latex>
-                  </math>. Then <math>
-                     <latex>\EuScript{B}_k</latex>
-                  </math> is, in particular, a linearly independent subset of <math>
-                     <latex>\RNr[n]</latex>
-                  </math>; a contradiction to the fact that any linearly independent subset of <math>
-                     <latex>\RNr[n]</latex>
-                  </math>
-                  <subordinate>
-                     <hot>has at most <math>
-                           <latex>n</latex>
-                        </math> vectors</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>. Thus the process described above stops after <math>
-                     <latex>k\leq n</latex>
-                  </math> steps, in which case <math>
-                     <latex>\EuScript{B}:= \EuScript{B}_k=\EuScript{A} \cup \EuScript{C}_k</latex>
-                  </math> is a basis of <math>
-                     <latex>V</latex>
-                  </math>, and <math>
-                     <latex>\EuScript{B}</latex>
-                  </math> contains at most <math>
-                     <latex>n</latex>
-                  </math> vectors.</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>\span( \EuScript{B}_1 )=V</latex>
+               </math>, then <math>
+                  <latex>\EuScript{B}:=\EuScript{B}_1</latex>
+               </math> is a basis for <math>
+                  <latex>V</latex>
+               </math>. If <math>
+                  <latex>\span( \EuScript{B}_1 ) \neq V</latex>
+               </math>, there are vectors in <math>
+                  <latex>V</latex>
+               </math>  which do not belong to <math>
+                  <latex>\span(\EuScript{B}_1)</latex>
+               </math>. Pick any one such, call it <math>
+                  <latex>\Vect{c}_2</latex>
+               </math>, and form <math>
+                  <latex>\EuScript{B}_2:=\EuScript{B}_1\cup \Set{ \Vect{c}_2 }</latex>
+               </math>; etc.</para.body>
+         </para>
+         <para>
+            <para.body>The crucial fact now is that, for some <math>
+                  <latex>k\leq n</latex>
+               </math>, we must have <math>
+                  <latex>\span( \EuScript{B}_k) = V</latex>
+               </math>. To see this, we argue by contradiction: Suppose <math>
+                  <latex> n&lt; k </latex>
+               </math> and <math>
+                  <latex>\EuScript{B}_k</latex>
+               </math> is a linearly independent subset of <math>
+                  <latex>V</latex>
+               </math>. Then <math>
+                  <latex>\EuScript{B}_k</latex>
+               </math> is, in particular, a linearly independent subset of <math>
+                  <latex>\RNr[n]</latex>
+               </math>; a contradiction to the fact that any linearly independent subset of <math>
+                  <latex>\RNr[n]</latex>
+               </math>
+               <subordinate>
+                  <hot>has at most <math>
+                        <latex>n</latex>
+                     </math> vectors</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>. Thus the process described above stops after <math>
+                  <latex>k\leq n</latex>
+               </math> steps, in which case <math>
+                  <latex>\EuScript{B}:= \EuScript{B}_k=\EuScript{A} \cup \EuScript{C}_k</latex>
+               </math> is a basis of <math>
+                  <latex>V</latex>
+               </math>, and <math>
+                  <latex>\EuScript{B}</latex>
+               </math> contains at most <math>
+                  <latex>n</latex>
+               </math> vectors.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

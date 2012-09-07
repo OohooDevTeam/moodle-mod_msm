@@ -119,99 +119,97 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that the <math>
-                     <latex>j</latex>
-                  </math>-th column of <math>
+         <para>
+            <para.body>We know that the <math>
+                  <latex>j</latex>
+               </math>-th column of <math>
+                  <latex>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</latex>
+               </math> is given by</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(T\circ S)(\Vect{a}_j)_{\EuScript{C}}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the definition of <math>
+                                 <latex>(T\circ S)</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \left( \Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{x}_{\EuScript{A}} \right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the associativity property of matrix multiplication.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left( \Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}\right) \cdot \Vect{x}_{\EuScript{A}}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Therefore <math>
+                  <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+               </math> is a matrix representing <math>
+                  <latex>T\circ S</latex>
+               </math> with respect to the ordered bases <math>
+                  <latex>\EuScript{A}</latex>
+               </math> of <math>
+                  <latex>U</latex>
+               </math> and <math>
+                  <latex>\EuScript{C}</latex>
+               </math> of <math>
+                  <latex>W</latex>
+               </math>. But we also know that there is exactly one such matrix, namely <math>
+                  <latex>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</latex>
+               </math>. Therefore we must have the claimed identity</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</latex>
-                  </math> is given by</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(T\circ S)(\Vect{a}_j)_{\EuScript{C}}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use the definition of <math>
-                                    <latex>(T\circ S)</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \left( \Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{x}_{\EuScript{A}} \right)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Here we use the associativity property of matrix multiplication.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\left( \Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}\right) \cdot \Vect{x}_{\EuScript{A}}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Therefore <math>
-                     <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
-                  </math> is a matrix representing <math>
-                     <latex>T\circ S</latex>
-                  </math> with respect to the ordered bases <math>
-                     <latex>\EuScript{A}</latex>
-                  </math> of <math>
-                     <latex>U</latex>
-                  </math> and <math>
-                     <latex>\EuScript{C}</latex>
-                  </math> of <math>
-                     <latex>W</latex>
-                  </math>. But we also know that there is exactly one such matrix, namely <math>
-                     <latex>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</latex>
-                  </math>. Therefore we must have the claimed identity</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}}(T)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-         </proof.block.body>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}}(T)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
       </proof.block>
    </proof>
 </theorem>

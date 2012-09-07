@@ -39,12 +39,11 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We prove this claim by evaluating both sides of the equation</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>We prove this claim by evaluating both sides of the equation</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \aligned
 &amp;\det
@@ -101,11 +100,10 @@ x_2 &amp; y_2
 \endaligned
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>This is what we wanted to show.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>This is what we wanted to show.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

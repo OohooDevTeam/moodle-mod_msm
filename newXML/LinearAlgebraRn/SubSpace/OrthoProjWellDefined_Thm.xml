@@ -75,161 +75,159 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>For <math>
-                     <latex>x\in W</latex>
-                  </math> we have</para.body>
-            </para>
-            <math.display>
-               <latex>p(\Vect{x}) - (\Vect{x}-p(\Vect{x})) = \Vect{x} = q(\Vect{x}) - (\Vect{x} - q(\Vect{x})</latex>
-            </math.display>
-            <para>
-               <para.body>Therefore</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(\Vect{x} - q(\Vect{x}) - (\Vect{x}-p(\Vect{x}))</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>p(\Vect{x}) - q(\Vect{x} )</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>The vector on the left 
+         <para>
+            <para.body>For <math>
+                  <latex>x\in W</latex>
+               </math> we have</para.body>
+         </para>
+         <math.display>
+            <latex>p(\Vect{x}) - (\Vect{x}-p(\Vect{x})) = \Vect{x} = q(\Vect{x}) - (\Vect{x} - q(\Vect{x})</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\Vect{x} - q(\Vect{x}) - (\Vect{x}-p(\Vect{x}))</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>p(\Vect{x}) - q(\Vect{x} )</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The vector on the left 
 			<subordinate>
-                     <hot>is in <math>
+                  <hot>is in <math>
+                        <latex>V^{\bot}</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <info.caption>Why is the vector on the left in <math>
                            <latex>V^{\bot}</latex>
-                        </math>
-                     </hot>
-                     <info>
-                        <info.caption>Why is the vector on the left in <math>
+                        </math>?</info.caption>
+                     <para>
+                        <para.body>It suffices to show that <math>
+                              <latex>(\Vect{x}-q(\Vect{x}))</latex>
+                           </math> and <math>
+                              <latex>(\Vect{x}-q(\Vect{x}))</latex>
+                           </math> are in <math>
                               <latex>V^{\bot}</latex>
-                           </math>?</info.caption>
-                        <para>
-                           <para.body>It suffices to show that <math>
-                                 <latex>(\Vect{x}-q(\Vect{x}))</latex>
-                              </math> and <math>
-                                 <latex>(\Vect{x}-q(\Vect{x}))</latex>
-                              </math> are in <math>
-                                 <latex>V^{\bot}</latex>
-                              </math> because the subspace <math>
-                                 <latex>W^{\bot}</latex>
-                              </math> of <math>
-                                 <latex>\RNr[n]</latex>
-                              </math> is closed under vector addition. So we compute</para.body>
-                        </para>
-                        <math.array column="3">
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\DotPr{ \Vect{x} - q(\Vect{x}) }{ \Vect{b}_k }</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\DotPr{ \Vect{x} }{ \Vect{b}_k } - \DotPr{\left( (\DotPr{ \Vect{x} }{ \Vect{b}_1 })\Vect{b}_1 +\cdots + (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r \right) }{ \Vect{b}_k } </latex>
-                                 </math>
-                              </cell>
-                           </row>
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle"/>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\DotPr{ \Vect{x} }{ \Vect{b}_k }\ -\ (\DotPr{ \Vect{x} }{ \Vect{b}_k })( \DotPr{ \Vect{b}_k }{ \Vect{b}_k } )</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle"/>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <math>
-                                    <latex>=</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>0</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                        </math.array>
-                        <para>
-                           <para.body>The identity <math>
-                                 <latex>\DotPr{ \Vect{x} - p(\Vect{x}) }{ \Vect{a}_k } = 0</latex>
-                              </math> follows with a similar computation.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>,
+                           </math> because the subspace <math>
+                              <latex>W^{\bot}</latex>
+                           </math> of <math>
+                              <latex>\RNr[n]</latex>
+                           </math> is closed under vector addition. So we compute</para.body>
+                     </para>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\DotPr{ \Vect{x} - q(\Vect{x}) }{ \Vect{b}_k }</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\DotPr{ \Vect{x} }{ \Vect{b}_k } - \DotPr{\left( (\DotPr{ \Vect{x} }{ \Vect{b}_1 })\Vect{b}_1 +\cdots + (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r \right) }{ \Vect{b}_k } </latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle"/>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\DotPr{ \Vect{x} }{ \Vect{b}_k }\ -\ (\DotPr{ \Vect{x} }{ \Vect{b}_k })( \DotPr{ \Vect{b}_k }{ \Vect{b}_k } )</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle"/>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>0</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                     <para>
+                        <para.body>The identity <math>
+                              <latex>\DotPr{ \Vect{x} - p(\Vect{x}) }{ \Vect{a}_k } = 0</latex>
+                           </math> follows with a similar computation.</para.body>
+                     </para>
+                  </info>
+               </subordinate>,
 			while the vector on the right 
 				<subordinate>
-                     <hot>is in <math>
-                           <latex>W</latex>
-                        </math>
-                     </hot>
-                     <info>
-                        <info.caption>Why is the vector on the right in <math>
+                  <hot>is in <math>
+                        <latex>W</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <info.caption>Why is the vector on the right in <math>
+                           <latex>V</latex>
+                        </math>?</info.caption>
+                     <para>
+                        <para.body>Because it is a linear combination of vectors in <math>
                               <latex>V</latex>
-                           </math>?</info.caption>
-                        <para>
-                           <para.body>Because it is a linear combination of vectors in <math>
-                                 <latex>V</latex>
-                              </math>.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>.
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </subordinate>.
 			It follows that both vectors are <math>
-                     <latex>\Vect{0}</latex>
-                  </math>, because <math>
-                     <latex>V</latex>
-                  </math> and <math>
-                     <latex>V^{\bot}</latex>
-                  </math> have only the zero vector in common. This implies</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>p(\Vect{x})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>q(\Vect{x})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>as claimed.</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>\Vect{0}</latex>
+               </math>, because <math>
+                  <latex>V</latex>
+               </math> and <math>
+                  <latex>V^{\bot}</latex>
+               </math> have only the zero vector in common. This implies</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>p(\Vect{x})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>q(\Vect{x})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

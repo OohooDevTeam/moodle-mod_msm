@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of MathCell
@@ -21,6 +21,7 @@
  */
 class MathCell extends Element
 {
+
     public $position;
     public $content;
     public $colspan;
@@ -51,7 +52,7 @@ class MathCell extends Element
         $this->fontcolor = $DomElement->getAttribute('fontcolor');
 
         $this->companion = array(); // if the ref already exists inside db table, then store in here as id number
-
+        $this->subordinates = array();
         foreach ($DomElement->childNodes as $child)
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
@@ -62,6 +63,10 @@ class MathCell extends Element
                 switch ($childname)
                 {
                     case('math'):
+                        foreach ($this->processSubordinate($child, $position) as $subordinate)
+                        {
+                            $this->subordinates[] = $subordinate;
+                        }
                         foreach ($this->processContent($child, $position) as $content)
                         {
                             $this->content .= $content;
@@ -78,7 +83,7 @@ class MathCell extends Element
 //                               
 //                            }
 //                        }
-                        
+
                         break;
 
                     case('text'):
@@ -121,12 +126,37 @@ class MathCell extends Element
             }
         }
 
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $key => $subordinate)
+            {
+                $elementPositions['subordinate-' . $key] = $subordinate->position;
+            }
+        }
+
         asort($elementPositions);
 
         foreach ($elementPositions as $element => $value)
         {
             switch ($element)
             {
+                case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
+                    $subordinateString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $subordinate = $this->subordinates[$subordinateString[1]];
+                        $subordinate->saveIntoDb($subordinate->position, $this->compid);
+                        $sibling_id = $subordinate->compid;
+                    }
+                    else
+                    {
+                        $subordinate = $this->subordinates[$subordinateString[1]];
+                        $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
+                        $sibling_id = $subordinate->compid;
+                    }
+                    break;
+                    
                 case(preg_match("/^(companion.\d+)$/", $element) ? true : false):
                     $companionString = split('-', $element);
 
@@ -165,7 +195,8 @@ class MathCell extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
         $this->refchilds = array();
         $this->childs = array();
-
+        $this->subordinates = array();
+        
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -194,6 +225,12 @@ class MathCell extends Element
                     $unit->loadFromDb($child->unit_id, $child->id);
                     $this->refchilds[] = $unit;
                     break;
+                
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
 
                 case('msm_info'):
                     $info = new MathInfo();
@@ -215,7 +252,7 @@ class MathCell extends Element
         // if info exists then need to set up the dialog popup window, otherwise, just show the content
         if (empty($this->childs))
         {
-            $content .= $this->content;
+            $content .= $this->displayContent($this, $this->content);
         }
         else
         {

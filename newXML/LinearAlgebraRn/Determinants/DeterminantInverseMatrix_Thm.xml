@@ -25,33 +25,31 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>The matrix <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> and its inverse <math>
-                     <latex>\Mtrx{A}^{-1}</latex>
-                  </math> satisfy the identity</para.body>
-            </para>
-            <math.display>
-               <latex>\Mtrx{A}\cdot \Mtrx{A}^{-1} = \IdMtrx[n]</latex>
-            </math.display>
-            <para>
-               <para.body>Now we have the string of identities</para.body>
-            </para>
-            <math.display>
-               <latex>\det(\Mtrx{A})\cdot \det(\Mtrx{A}^{-1}) = \det(\Mtrx{A}\Mtrx{A}^{-1}) = \det(\IdMtrx[n]) = 1</latex>
-            </math.display>
-            <para>
-               <para.body>Therefore</para.body>
-            </para>
-            <math.display>
-               <latex>\det(\Mtrx{A}^{-1}) = \dfrac{1}{\det(\Mtrx{A})}</latex>
-            </math.display>
-            <para>
-               <para.body>as claimed.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>The matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> and its inverse <math>
+                  <latex>\Mtrx{A}^{-1}</latex>
+               </math> satisfy the identity</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{A}\cdot \Mtrx{A}^{-1} = \IdMtrx[n]</latex>
+         </math.display>
+         <para>
+            <para.body>Now we have the string of identities</para.body>
+         </para>
+         <math.display>
+            <latex>\det(\Mtrx{A})\cdot \det(\Mtrx{A}^{-1}) = \det(\Mtrx{A}\Mtrx{A}^{-1}) = \det(\IdMtrx[n]) = 1</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore</para.body>
+         </para>
+         <math.display>
+            <latex>\det(\Mtrx{A}^{-1}) = \dfrac{1}{\det(\Mtrx{A})}</latex>
+         </math.display>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -37,90 +37,88 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>To explain why this proposition is true, consider the case where <math>
-                     <latex>\Vect{v}\neq \Vect{0}</latex>
-                  </math> is an eigenvector of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> with eigenvalue <math>
-                     <latex>\lambda</latex>
-                  </math>. Then</para.body>
-            </para>
-            <math.display>
-               <latex>\Mtrx{A}\Vect{v} = \lambda \Vect{v}\quad \text{or}\quad (\Mtrx{A} - \lambda\IdMtrx[n])\Vect{v} = \Vect{0}</latex>
-            </math.display>
-            <para>
-               <para.body>So the matrix <math>
-                     <latex>(\Mtrx{A} - \lambda\IdMtrx[n])</latex>
-                  </math> cannot be invertible, hence must have determinant <math>
-                     <latex>0</latex>
-                  </math>, as claimed.</para.body>
-            </para>
-            <para>
-               <para.body>For the converse, suppose <math>
-                     <latex>\lambda</latex>
-                  </math> represents a number for which  <math>
-                     <latex>\det(\Mtrx{A}-\lambda\IdMtrx[n])=0</latex>
-                  </math>. This means that <math>
-                     <latex>(\Mtrx{A}-\lambda\IdMtrx[n])</latex>
-                  </math> is not invertible, hence has a null space of positive dimension. Any vector <math>
-                     <latex>\Vect{v}\neq \Vect{0}</latex>
-                  </math> from <math>
-                     <latex>\NllSp{\Mtrx{A}}</latex>
-                  </math> satisfies</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(\Mtrx{A} - \lambda\IdMtrx[n])\Vect{v}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>and, therefore,</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A} \Vect{v}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\lambda \Vect{v}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>But this means exactly that <math>
-                     <latex>\Vect{v}</latex>
-                  </math> is an eigenvector of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> with eigenvalue <math>
-                     <latex>\lambda</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>To explain why this proposition is true, consider the case where <math>
+                  <latex>\Vect{v}\neq \Vect{0}</latex>
+               </math> is an eigenvector of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> with eigenvalue <math>
+                  <latex>\lambda</latex>
+               </math>. Then</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{A}\Vect{v} = \lambda \Vect{v}\quad \text{or}\quad (\Mtrx{A} - \lambda\IdMtrx[n])\Vect{v} = \Vect{0}</latex>
+         </math.display>
+         <para>
+            <para.body>So the matrix <math>
+                  <latex>(\Mtrx{A} - \lambda\IdMtrx[n])</latex>
+               </math> cannot be invertible, hence must have determinant <math>
+                  <latex>0</latex>
+               </math>, as claimed.</para.body>
+         </para>
+         <para>
+            <para.body>For the converse, suppose <math>
+                  <latex>\lambda</latex>
+               </math> represents a number for which  <math>
+                  <latex>\det(\Mtrx{A}-\lambda\IdMtrx[n])=0</latex>
+               </math>. This means that <math>
+                  <latex>(\Mtrx{A}-\lambda\IdMtrx[n])</latex>
+               </math> is not invertible, hence has a null space of positive dimension. Any vector <math>
+                  <latex>\Vect{v}\neq \Vect{0}</latex>
+               </math> from <math>
+                  <latex>\NllSp{\Mtrx{A}}</latex>
+               </math> satisfies</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\Mtrx{A} - \lambda\IdMtrx[n])\Vect{v}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>and, therefore,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A} \Vect{v}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\lambda \Vect{v}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>But this means exactly that <math>
+                  <latex>\Vect{v}</latex>
+               </math> is an eigenvector of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> with eigenvalue <math>
+                  <latex>\lambda</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

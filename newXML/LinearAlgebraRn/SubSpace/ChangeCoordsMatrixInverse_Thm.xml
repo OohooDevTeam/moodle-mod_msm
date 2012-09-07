@@ -73,35 +73,33 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>For an arbitrary vector <math>
-                     <latex>\Vect{x}</latex>
-                  </math> in <math>
-                     <latex>W</latex>
-                  </math> we find</para.body>
-            </para>
-            <math.display>
-               <latex>\Vect{x}_{\EuScript{B}} = \Mtrx{C}_{\EuScript{B}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Vect{x}_{\EuScript{B}} \quad\text{and}\quad \Vect{x}_{\EuScript{C}} = \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Vect{x}_{\EuScript{C}}</latex>
-            </math.display>
-            <para>
-               <para.body>Now, if <math>
-                     <latex>\dim(W)=r</latex>
-                  </math>, we also have that</para.body>
-            </para>
-            <math.display>
-               <latex>\Vect{x}_{\EuScript{B}} = \IdMtrx[r] \Vect{x}_{\EuScript{B}} \quad\text{and}\quad \Vect{x}_{\EuScript{C}} = \IdMtrx[r] \Vect{x}_{\EuScript{C}}</latex>
-            </math.display>
-            <para>
-               <para.body>As coordinate conversion matrices are unique, this gives</para.body>
-            </para>
-            <math.display>
-               <latex>\Mtrx{C}_{\EuScript{B}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}} = \IdMtrx[n] \quad\text{and}\quad \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Mtrx{C}_{\EuScript{B}\EuScript{C}} = \IdMtrx[n]</latex>
-            </math.display>
-            <para>
-               <para.body>This implies the corollary on reversing coordinate conversion.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>For an arbitrary vector <math>
+                  <latex>\Vect{x}</latex>
+               </math> in <math>
+                  <latex>W</latex>
+               </math> we find</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{x}_{\EuScript{B}} = \Mtrx{C}_{\EuScript{B}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Vect{x}_{\EuScript{B}} \quad\text{and}\quad \Vect{x}_{\EuScript{C}} = \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Vect{x}_{\EuScript{C}}</latex>
+         </math.display>
+         <para>
+            <para.body>Now, if <math>
+                  <latex>\dim(W)=r</latex>
+               </math>, we also have that</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{x}_{\EuScript{B}} = \IdMtrx[r] \Vect{x}_{\EuScript{B}} \quad\text{and}\quad \Vect{x}_{\EuScript{C}} = \IdMtrx[r] \Vect{x}_{\EuScript{C}}</latex>
+         </math.display>
+         <para>
+            <para.body>As coordinate conversion matrices are unique, this gives</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{C}_{\EuScript{B}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}} = \IdMtrx[n] \quad\text{and}\quad \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Mtrx{C}_{\EuScript{B}\EuScript{C}} = \IdMtrx[n]</latex>
+         </math.display>
+         <para>
+            <para.body>This implies the corollary on reversing coordinate conversion.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

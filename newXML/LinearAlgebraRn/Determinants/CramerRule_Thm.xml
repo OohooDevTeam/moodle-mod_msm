@@ -78,26 +78,25 @@ a_{n1} &amp; \dots &amp; a_{nj-1} &amp; a_{nj} &amp; a_{nj+1} &amp; \dots &amp; 
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We 
+         <para>
+            <para.body>We 
 			<subordinate>
-                     <hot>know</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_MatrixEqsLinearEqs"/>
-                        <info>
-                           <para>
-                              <para.body>Look this theorem up</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>know</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_MatrixEqsLinearEqs"/>
+                     <info>
+                        <para>
+                           <para.body>Look this theorem up</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			that the given system has exactly one solution <math>
-                     <latex>(x_1,\dots ,x_n)</latex>
-                  </math>. With this solution we compute</para.body>
-            </para>
-            <math.display>
-               <latex>
+                  <latex>(x_1,\dots ,x_n)</latex>
+               </math>. With this solution we compute</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \aligned
 &amp;\text{det}\begin{bmatrix}
@@ -124,15 +123,14 @@ a_{n1} &amp; \dots &amp; a_{nj-1} &amp; \colorbox{lightgreen}{$a_{nj}$} &amp; a_
 \endaligned
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>By hypothesis, <math>
-                     <latex>\det(\Mtrx{A})\neq 0</latex>
-                  </math>. So we can divide both sides of this identity by <math>
-                     <latex>\det(\Mtrx{A})</latex>
-                  </math> to establish the claim.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>By hypothesis, <math>
+                  <latex>\det(\Mtrx{A})\neq 0</latex>
+               </math>. So we can divide both sides of this identity by <math>
+                  <latex>\det(\Mtrx{A})</latex>
+               </math> to establish the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

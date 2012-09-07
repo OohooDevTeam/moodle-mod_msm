@@ -29,23 +29,21 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>To see where this identity comes from, recall that <math>
-                     <latex>\mathbf{e}_i</latex>
-                  </math> has length <math>
-                     <latex>1</latex>
-                  </math>; i.e. <math>
-                     <latex>| \mathbf{e}_i | = 1</latex>
-                  </math>. Then we compute</para.body>
-            </para>
-            <math.display>
-               <latex>x_i = \mathbf{e}_i \bullet \mathbf{x} = | \mathbf{e}_i | | \mathbf{x} | \cos \omega_i = | \mathbf{x} | \cos \omega_i</latex>
-            </math.display>
-            <para>
-               <para.body>This implies the claim.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>To see where this identity comes from, recall that <math>
+                  <latex>\mathbf{e}_i</latex>
+               </math> has length <math>
+                  <latex>1</latex>
+               </math>; i.e. <math>
+                  <latex>| \mathbf{e}_i | = 1</latex>
+               </math>. Then we compute</para.body>
+         </para>
+         <math.display>
+            <latex>x_i = \mathbf{e}_i \bullet \mathbf{x} = | \mathbf{e}_i | | \mathbf{x} | \cos \omega_i = | \mathbf{x} | \cos \omega_i</latex>
+         </math.display>
+         <para>
+            <para.body>This implies the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

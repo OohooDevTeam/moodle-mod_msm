@@ -67,105 +67,103 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>To see this, we use our experience with rotating the plane counterclockwise through the angle <math>
-                     <latex>\alpha</latex>
-                  </math> to conclude</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>R(\Vect{a})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(\cos \alpha)\cdot \Vect{a} + (\sin \alpha)\cdot \Vect{b} + 0\cdot \Vect{n}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>R(\Vect{b})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(-\sin \alpha)\cdot \Vect{a} + (\cos \alpha) \cdot \Vect{b} + 0\cdot \Vect{n}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>R(\Vect{n})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>0\cdot \Vect{a} + 0\cdot \Vect{b} + 1\cdot \Vect{n}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Therefore the
+         <para>
+            <para.body>To see this, we use our experience with rotating the plane counterclockwise through the angle <math>
+                  <latex>\alpha</latex>
+               </math> to conclude</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>R(\Vect{a})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\cos \alpha)\cdot \Vect{a} + (\sin \alpha)\cdot \Vect{b} + 0\cdot \Vect{n}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>R(\Vect{b})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-\sin \alpha)\cdot \Vect{a} + (\cos \alpha) \cdot \Vect{b} + 0\cdot \Vect{n}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>R(\Vect{n})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0\cdot \Vect{a} + 0\cdot \Vect{b} + 1\cdot \Vect{n}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Therefore the
 			<subordinate>
-                     <hot>columns</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearMapMatrixGeneral"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>columns</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearMapMatrixGeneral"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			of <math>
-                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}</latex>
-                  </math> are as suggested.
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}</latex>
+               </math> are as suggested.
 		</para.body>
-            </para>
-            <para>
-               <para.body>It remains to determine the matrix <math>
-                     <latex>\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex>
-                  </math> representing <math>
-                     <latex>R</latex>
-                  </math> with respect to the standard basis of <math>
-                     <latex>\RNr[3]</latex>
-                  </math>. Now applying the 
+         </para>
+         <para>
+            <para.body>It remains to determine the matrix <math>
+                  <latex>\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex>
+               </math> representing <math>
+                  <latex>R</latex>
+               </math> with respect to the standard basis of <math>
+                  <latex>\RNr[3]</latex>
+               </math>. Now applying the 
 			<subordinate>
-                     <hot>result on changing coordinates</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_ChangeCoordinatesLinearMap"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>result on changing coordinates</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_ChangeCoordinatesLinearMap"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			proves the claim.</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

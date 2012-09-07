@@ -59,33 +59,32 @@ a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We prove this claim by induction on the size of the upper triangular matrix:</para.body>
-            </para>
-            <para>
-               <para.body>If <math>
-                     <latex>n=1</latex>
-                  </math>
-               </para.body>
-            </para>
-            <math.display>
-               <latex>\det [a_{11}] = a_{11}</latex>
-            </math.display>
-            <para>
-               <para.body>as claimed.</para.body>
-            </para>
-            <para>
-               <para.body>So assume now that the claim holds for some <math>
-                     <latex>n\geq 1</latex>
-                  </math>. – This is called the ‘induction hypothesis’. Under this assumption, we need to show that it holds for any upper triangular <math>
-                     <latex>(n+1)</latex>
-                  </math>-matrix <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>. Indeed,</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>We prove this claim by induction on the size of the upper triangular matrix:</para.body>
+         </para>
+         <para>
+            <para.body>If <math>
+                  <latex>n=1</latex>
+               </math>
+            </para.body>
+         </para>
+         <math.display>
+            <latex>\det [a_{11}] = a_{11}</latex>
+         </math.display>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
+         <para>
+            <para.body>So assume now that the claim holds for some <math>
+                  <latex>n\geq 1</latex>
+               </math>. – This is called the ‘induction hypothesis’. Under this assumption, we need to show that it holds for any upper triangular <math>
+                  <latex>(n+1)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. Indeed,</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \aligned
 \det(\Mtrx{A})\ &amp;=\ 
@@ -111,12 +110,12 @@ a_{22} &amp; \cdots &amp; a_{2,n+1} \\
 \endaligned
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>In this last identity we have used the induction hypothesis: the matrix</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>In this last identity we have used the induction hypothesis: the matrix</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \left[
 \begin{array}{ccc}
@@ -127,14 +126,14 @@ a_{22} &amp; \cdots &amp; a_{2,n+1} \\
 \right]
 				
 			</latex>
-            </math.display>
-            <para>
-               <para.body>has size <math>
-                     <latex>(n,n)</latex>
-                  </math>. So the induction hypothesis applies, and it tells us that </para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>has size <math>
+                  <latex>(n,n)</latex>
+               </math>. So the induction hypothesis applies, and it tells us that </para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \det\, \left[
 \begin{array}{ccc}
@@ -145,8 +144,7 @@ a_{22} &amp; \cdots &amp; a_{2,n+1} \\
 \right]\ =\ a_{22}\, a_{33}\cdots\, a_{n+1,n+1}
 				
 			</latex>
-            </math.display>
-         </proof.block.body>
+         </math.display>
       </proof.block>
    </proof>
 </theorem>

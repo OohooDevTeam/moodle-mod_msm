@@ -80,86 +80,84 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>W:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>
-                  </math>. We need to show</para.body>
-            </para>
-            <ol>
-               <li>
-                  <para>
-                     <para.body>
-                        <subordinate>
-                           <hot>
-                              <math>
-                                 <latex>\span\Set{ \Vect{y}_1,\dots ,\Vect{y}_p } = W</latex>
-                              </math>
-                           </hot>
-                           <crossref>
-                              <theorem.ref theoremID="Thm_SpanCompare1"/>
-                              <info>
-                                 <para>
-                                    <para.body>Look up this result</para.body>
-                                 </para>
-                              </info>
-                           </crossref>
-                        </subordinate>
-                     </para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>\Set{ \Vect{y}_1,\dots ,\Vect{y}_p }</latex>
-                        </math> is linearly independent.
+         <para>
+            <para.body>Let <math>
+                  <latex>W:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>
+               </math>. We need to show</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>
+                           <math>
+                              <latex>\span\Set{ \Vect{y}_1,\dots ,\Vect{y}_p } = W</latex>
+                           </math>
+                        </hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_SpanCompare1"/>
+                           <info>
+                              <para>
+                                 <para.body>Look up this result</para.body>
+                              </para>
+                           </info>
+                        </crossref>
+                     </subordinate>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Set{ \Vect{y}_1,\dots ,\Vect{y}_p }</latex>
+                     </math> is linearly independent.
 			</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>Now, we proved earlier that the vectors <math>
-                     <latex>\Vect{y}_1,\dots ,\Vect{y}_p</latex>
-                  </math>, as constructed, are 
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Now, we proved earlier that the vectors <math>
+                  <latex>\Vect{y}_1,\dots ,\Vect{y}_p</latex>
+               </math>, as constructed, are 
 			<subordinate>
-                     <hot>linearly independent.</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearIndepentFromOld"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result which we proved earlier</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>. These vectors a vector space <math>
-                     <latex>Y</latex>
-                  </math>, and so they form a basis of <math>
-                     <latex>Y</latex>
-                  </math>. But then <math>
-                     <latex>Y</latex>
-                  </math> is a <math>
-                     <latex>p</latex>
-                  </math>-dimensional subvector space of the <math>
-                     <latex>p</latex>
-                  </math>-dimensional vector space <math>
-                     <latex>W</latex>
-                  </math>. <subordinate>
-                     <hot>So</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
-                  <math>
-                     <latex>Y=W</latex>
-                  </math>, and the claim follows.</para.body>
-            </para>
-         </proof.block.body>
+                  <hot>linearly independent.</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearIndepentFromOld"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result which we proved earlier</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>. These vectors a vector space <math>
+                  <latex>Y</latex>
+               </math>, and so they form a basis of <math>
+                  <latex>Y</latex>
+               </math>. But then <math>
+                  <latex>Y</latex>
+               </math> is a <math>
+                  <latex>p</latex>
+               </math>-dimensional subvector space of the <math>
+                  <latex>p</latex>
+               </math>-dimensional vector space <math>
+                  <latex>W</latex>
+               </math>. <subordinate>
+                  <hot>So</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+               <math>
+                  <latex>Y=W</latex>
+               </math>, and the claim follows.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

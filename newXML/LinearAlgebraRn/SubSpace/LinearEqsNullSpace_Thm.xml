@@ -24,38 +24,37 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>By definition, the null space of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> consists of all solutions of the matrix equation</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}\cdot\Vect{x}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Now express <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> in terms of its row vectors:</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>By definition, the null space of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> consists of all solutions of the matrix equation</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}\cdot\Vect{x}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Now express <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> in terms of its row vectors:</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 A = 
 \left[
@@ -65,12 +64,12 @@ R_1 \\ \vdots \\ R_m
 \right]
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>Then we find:</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>Then we find:</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \Mtrx{A}\cdot\Vect{x} = 
 \left[
@@ -85,25 +84,24 @@ R_1 \\ \vdots \\ R_m
 \right]
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>and so we see that <math>
-                     <latex>\Vect{x}</latex>
-                  </math> is a solution of <math>
-                     <latex>\Mtrx{A}\cdot \Vect{x}=\Vect{0}</latex>
-                  </math> exactly when <math>
-                     <latex>\Vect{x}</latex>
-                  </math> is perpendicular to each of the row vectors <math>
-                     <latex>R_1</latex>
-                  </math>, ... , <math>
-                     <latex>R_m</latex>
-                  </math>. But this happens exactly when <math>
-                     <latex>\Vect{x}</latex>
-                  </math> belongs to the null space of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>and so we see that <math>
+                  <latex>\Vect{x}</latex>
+               </math> is a solution of <math>
+                  <latex>\Mtrx{A}\cdot \Vect{x}=\Vect{0}</latex>
+               </math> exactly when <math>
+                  <latex>\Vect{x}</latex>
+               </math> is perpendicular to each of the row vectors <math>
+                  <latex>R_1</latex>
+               </math>, ... , <math>
+                  <latex>R_m</latex>
+               </math>. But this happens exactly when <math>
+                  <latex>\Vect{x}</latex>
+               </math> belongs to the null space of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

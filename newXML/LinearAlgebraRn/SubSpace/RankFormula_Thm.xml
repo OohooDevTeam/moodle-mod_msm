@@ -46,36 +46,34 @@ n &amp; = &amp; \Rnk{ \Mtrx{ A } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We proved the first identity when we found a 
+         <para>
+            <para.body>We proved the first identity when we found a 
 			<subordinate>
-                     <hot>basis for the null space of a matrix</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_BasisNullSpace"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this theorem.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>. Then we 
+                  <hot>basis for the null space of a matrix</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_BasisNullSpace"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this theorem.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>. Then we 
 			<subordinate>
-                     <hot>proved</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_BasisRowColumnSpace"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this theorem.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate> that <math>
-                     <latex>\Rnk{ \Mtrx{A} } = \Dim{ \RowSp{ \Mtrx{A} } } = \Dim{ \ColSp{ \Mtrx{ A } } }</latex>
-                  </math>, which implies the second and the third identity.
+                  <hot>proved</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_BasisRowColumnSpace"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this theorem.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate> that <math>
+                  <latex>\Rnk{ \Mtrx{A} } = \Dim{ \RowSp{ \Mtrx{A} } } = \Dim{ \ColSp{ \Mtrx{ A } } }</latex>
+               </math>, which implies the second and the third identity.
 		</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

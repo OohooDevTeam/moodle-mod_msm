@@ -39,27 +39,25 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that the RREF-matrix in question corresponds to a system of linear equations whose solutions agree with the original system. Now if the RREF-matrix contains a leading one in its augmentation column, the row containing this leading 1 reads:</para.body>
-            </para>
-            <math.display>
-               <latex>0 \ \cdots\ 0\ |\  1</latex>
-            </math.display>
-            <para>
-               <para.body>The corresponding linear equation reads</para.body>
-            </para>
-            <math.display>
-               <latex>0\cdot x_1 + \cdots + 0\cdot x_n= 1</latex>
-            </math.display>
-            <para>
-               <para.body>Regardless of the number values substituted for the variables <math>
-                     <latex>x_1,\dots ,x_n</latex>
-                  </math>, the left hand side of this equation is always <math>
-                     <latex>0\neq 1</latex>
-                  </math>. Therefore this equation has no solution. So the entire system has no solution either.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>We know that the RREF-matrix in question corresponds to a system of linear equations whose solutions agree with the original system. Now if the RREF-matrix contains a leading one in its augmentation column, the row containing this leading 1 reads:</para.body>
+         </para>
+         <math.display>
+            <latex>0 \ \cdots\ 0\ |\  1</latex>
+         </math.display>
+         <para>
+            <para.body>The corresponding linear equation reads</para.body>
+         </para>
+         <math.display>
+            <latex>0\cdot x_1 + \cdots + 0\cdot x_n= 1</latex>
+         </math.display>
+         <para>
+            <para.body>Regardless of the number values substituted for the variables <math>
+                  <latex>x_1,\dots ,x_n</latex>
+               </math>, the left hand side of this equation is always <math>
+                  <latex>0\neq 1</latex>
+               </math>. Therefore this equation has no solution. So the entire system has no solution either.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

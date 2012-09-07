@@ -52,56 +52,54 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Set <math>
-                     <latex>c:=\lim_{n\to \infty} a_n</latex>
-                  </math>. We check that <math>
-                     <latex>(x_n)</latex>
-                  </math> satisfies the definition of convergence to <math>
-                     <latex>c</latex>
-                  </math>. So, let <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> be given. Then we know</para.body>
-            </para>
-            <ul>
-               <li>
-                  <para>
-                     <para.body>There exists <math>
-                           <latex>n_1\in\NNr</latex>
-                        </math> such that <math>
-                           <latex> c-\varepsilon &lt; a_n &lt; c+\varepsilon</latex>
-                        </math> for all <math>
-                           <latex>n\geq n_1</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>There exists <math>
-                           <latex>n_2\in\NNr</latex>
-                        </math> such that <math>
-                           <latex> c-\varepsilon &lt; b_n &lt; c+\varepsilon</latex>
-                        </math> for all <math>
-                           <latex>n\geq n_2</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ul>
-            <para>
-               <para.body>Now choose <math>
-                     <latex>n_0 := \max \Set{ n_1 , n_2 }</latex>
-                  </math>, and observe that for all <math>
-                     <latex>n\geq n_0</latex>
-                  </math>,</para.body>
-            </para>
-            <math.display>
-               <latex> c-\varepsilon &lt; a_n \leq x_n \leq b_n &lt; c + \varepsilon </latex>
-            </math.display>
-            <para>
-               <para.body>as was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>Set <math>
+                  <latex>c:=\lim_{n\to \infty} a_n</latex>
+               </math>. We check that <math>
+                  <latex>(x_n)</latex>
+               </math> satisfies the definition of convergence to <math>
+                  <latex>c</latex>
+               </math>. So, let <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> be given. Then we know</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>There exists <math>
+                        <latex>n_1\in\NNr</latex>
+                     </math> such that <math>
+                        <latex> c-\varepsilon &lt; a_n &lt; c+\varepsilon</latex>
+                     </math> for all <math>
+                        <latex>n\geq n_1</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>There exists <math>
+                        <latex>n_2\in\NNr</latex>
+                     </math> such that <math>
+                        <latex> c-\varepsilon &lt; b_n &lt; c+\varepsilon</latex>
+                     </math> for all <math>
+                        <latex>n\geq n_2</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>Now choose <math>
+                  <latex>n_0 := \max \Set{ n_1 , n_2 }</latex>
+               </math>, and observe that for all <math>
+                  <latex>n\geq n_0</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex> c-\varepsilon &lt; a_n \leq x_n \leq b_n &lt; c + \varepsilon </latex>
+         </math.display>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

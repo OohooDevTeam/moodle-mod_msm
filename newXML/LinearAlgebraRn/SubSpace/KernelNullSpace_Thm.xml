@@ -35,96 +35,94 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>To see why this is so, we just need to recall the definitions: we have</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{x}\in \ker(L)</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>\longleftrightarrow	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>Read this as: ‘<math>
-                                    <latex>\Vect{x}</latex>
-                                 </math> is in kernel of <math>
-                                    <latex>L</latex>
-                                 </math> if and only if <math>
-                                    <latex>L</latex>
-                                 </math> of <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math> equals zero’</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>L(\Vect{x}) = 0</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>\longleftrightarrow	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>‘... if and only if <math>
-                                    <latex>\Mtrx{A}</latex>
-                                 </math> times <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math> equals zero ...’</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Mtrx{A}\Vect{x} = 0</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>\longleftrightarrow	</latex>
-                     </math>
-                     <companion>
-                        <info>
-                           <para>
-                              <para.body>‘... if and only if <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math> is in the null space of <math>
-                                    <latex>\Mtrx{A}</latex>
-                                 </math>’</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{x}\in \null(\Mtrx{A})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This is exactly what we wanted to show.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>To see why this is so, we just need to recall the definitions: we have</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}\in \ker(L)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\longleftrightarrow	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Read this as: ‘<math>
+                                 <latex>\Vect{x}</latex>
+                              </math> is in kernel of <math>
+                                 <latex>L</latex>
+                              </math> if and only if <math>
+                                 <latex>L</latex>
+                              </math> of <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> equals zero’</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{x}) = 0</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\longleftrightarrow	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>‘... if and only if <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> times <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> equals zero ...’</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}\Vect{x} = 0</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\longleftrightarrow	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>‘... if and only if <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> is in the null space of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>’</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}\in \null(\Mtrx{A})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This is exactly what we wanted to show.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

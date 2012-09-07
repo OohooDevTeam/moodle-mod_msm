@@ -225,26 +225,25 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>By design, <math>
-                     <latex>\Vect{x} := \Vect{d}</latex>
-                  </math> is a solution of the given system of linear equations. So we can show that every <math>
-                     <latex>\Vect{x}</latex>
-                  </math> of the specified form is a solution by showing that, for each choice of <math>
-                     <latex>t_1,\dots ,t_{n-r}</latex>
-                  </math>,</para.body>
-            </para>
-            <math.display>
-               <latex>t_1 \Vect{b}_1 + \cdots + t_{n-r} \Vect{b}_{n-r}</latex>
-            </math.display>
-            <para>
-               <para.body>is a solution of the system of linear equations which results from replacing in the augmentation column in the RREF-matrix of the original system by <math>
-                     <latex>0</latex>
-                  </math>'s, as is indicated below:</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>By design, <math>
+                  <latex>\Vect{x} := \Vect{d}</latex>
+               </math> is a solution of the given system of linear equations. So we can show that every <math>
+                  <latex>\Vect{x}</latex>
+               </math> of the specified form is a solution by showing that, for each choice of <math>
+                  <latex>t_1,\dots ,t_{n-r}</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>t_1 \Vect{b}_1 + \cdots + t_{n-r} \Vect{b}_{n-r}</latex>
+         </math.display>
+         <para>
+            <para.body>is a solution of the system of linear equations which results from replacing in the augmentation column in the RREF-matrix of the original system by <math>
+                  <latex>0</latex>
+               </math>'s, as is indicated below:</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{array}{ccccccccccccccc|c}
 0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; 0 \\
@@ -255,16 +254,16 @@
 \end{array}
 					
 			</latex>
-            </math.display>
-            <para>
-               <para.body>To see this more clearly, consider how we build the vector <math>
-                     <latex>\Vect{b}_k</latex>
-                  </math>. We use the <math>
-                     <latex>j_k</latex>
-                  </math>-th column</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>To see this more clearly, consider how we build the vector <math>
+                  <latex>\Vect{b}_k</latex>
+               </math>. We use the <math>
+                  <latex>j_k</latex>
+               </math>-th column</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 B_{j_k} = 
 \left[
@@ -274,16 +273,16 @@ b_{1,j_k} \\ \vdots \\ b_{r,j_k}
 \right]
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>of the RREF-matrix to form the vector <math>
-                     <latex>\Vect{b}_k</latex>
-                  </math> below (the dotted positions are occupied by <math>
-                     <latex>0</latex>
-                  </math>'s)</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>of the RREF-matrix to form the vector <math>
+                  <latex>\Vect{b}_k</latex>
+               </math> below (the dotted positions are occupied by <math>
+                  <latex>0</latex>
+               </math>'s)</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{array}{rcccccccc}
 \Vect{b}_k := ( \dots, &amp; -b_{1,j_k} &amp;, \dots , &amp; -b_{2,j_k} &amp;,\dots, &amp; 1 &amp; ,\dots\ \dots  , &amp; -b_{r,j_k} &amp;,\dots)  \\
@@ -291,47 +290,46 @@ b_{1,j_k} \\ \vdots \\ b_{r,j_k}
 \end{array}
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>Now observe what happens if we substitute the coordinates of <math>
-                     <latex>\Vect{b}_k</latex>
-                  </math> for the variables in the <math>
-                     <latex>i</latex>
-                  </math>-th equation of the RREF-system: all but two nonzero entries of <math>
-                     <latex>\Vect{b}_k</latex>
-                  </math> are multiplied by a <math>
+         </math.display>
+         <para>
+            <para.body>Now observe what happens if we substitute the coordinates of <math>
+                  <latex>\Vect{b}_k</latex>
+               </math> for the variables in the <math>
+                  <latex>i</latex>
+               </math>-th equation of the RREF-system: all but two nonzero entries of <math>
+                  <latex>\Vect{b}_k</latex>
+               </math> are multiplied by a <math>
+                  <latex>0</latex>
+               </math>-coefficient. These two nonzero entries yield</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>1\cdot (-b_{i,j_k})\ +\ b_{i,j_k}\cdot 1</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>0</latex>
-                  </math>-coefficient. These two nonzero entries yield</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>1\cdot (-b_{i,j_k})\ +\ b_{i,j_k}\cdot 1</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>0</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>It follows that, for <math>
-                     <latex>t_k</latex>
-                  </math> arbitrary, substituting <math>
-                     <latex>t_k \Vect{b}_k</latex>
-                  </math> for the variables of any left hand side gives <math>
-                     <latex>0</latex>
-                  </math>. This implies the claim.</para.body>
-            </para>
-         </proof.block.body>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>It follows that, for <math>
+                  <latex>t_k</latex>
+               </math> arbitrary, substituting <math>
+                  <latex>t_k \Vect{b}_k</latex>
+               </math> for the variables of any left hand side gives <math>
+                  <latex>0</latex>
+               </math>. This implies the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

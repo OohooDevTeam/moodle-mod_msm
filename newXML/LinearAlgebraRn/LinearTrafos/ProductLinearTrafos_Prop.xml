@@ -73,12 +73,11 @@ A &amp; 0 \\
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that the matrix</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>We know that the matrix</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 P\ :=\ \left[
 \begin{array}{cc}
@@ -88,18 +87,18 @@ A &amp; 0 \\
 \right]
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>represents a linear function <math>
-                     <latex>L\from \RNr[n_1+n_2] \to \RNr[m_1+m_2]</latex>
-                  </math>. If <math>
-                     <latex>\Vect{x} = (\Vect{u},\Vect{v})</latex>
-                  </math> is in <math>
-                     <latex>\StPrdct{\RNr[n_1]}{\RNr[n_2]}</latex>
-                  </math>, then</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>represents a linear function <math>
+                  <latex>L\from \RNr[n_1+n_2] \to \RNr[m_1+m_2]</latex>
+               </math>. If <math>
+                  <latex>\Vect{x} = (\Vect{u},\Vect{v})</latex>
+               </math> is in <math>
+                  <latex>\StPrdct{\RNr[n_1]}{\RNr[n_2]}</latex>
+               </math>, then</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \left[
 \begin{array}{cc}
@@ -110,17 +109,16 @@ A &amp; 0 \\
 \left[ \begin{array}{c} \Mtrx{A}\Vect{u} \\ \Mtrx{B}\Vect{v} \end{array} \right]\ =\ (\StPrdct{S}{T})(\Vect{x})
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>This means that <math>
-                     <latex>\Mtrx{P}</latex>
-                  </math> represents <math>
-                     <latex>\StPrdct{S}{T}</latex>
-                  </math>, and that <math>
-                     <latex>\StPrdct{S}{T}</latex>
-                  </math> is linear.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>This means that <math>
+                  <latex>\Mtrx{P}</latex>
+               </math> represents <math>
+                  <latex>\StPrdct{S}{T}</latex>
+               </math>, and that <math>
+                  <latex>\StPrdct{S}{T}</latex>
+               </math> is linear.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

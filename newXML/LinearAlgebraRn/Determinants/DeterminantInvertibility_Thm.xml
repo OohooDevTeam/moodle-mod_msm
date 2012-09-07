@@ -25,50 +25,48 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We
+         <para>
+            <para.body>We
 			<subordinate>
-                     <hot>know</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_DeterminantRowReduction"/>
-                        <info>
-                           <para>
-                              <para.body>Look up how to compute the determinant of a matrix by reducing it to upper triangular form.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>know</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_DeterminantRowReduction"/>
+                     <info>
+                        <para>
+                           <para.body>Look up how to compute the determinant of a matrix by reducing it to upper triangular form.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			that <math>
-                     <latex>\det(\Mtrx{A})\neq 0</latex>
-                  </math> if and only if any upper triangular reduction matrix <math>
-                     <latex>\Mtrx{U}</latex>
-                  </math> of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> has only nonzero elements <math>
-                     <latex>d_1,\dots ,d_n</latex>
-                  </math> on the diagonal. This happens if and only if the RREF of <math>
-                     <latex>\Mtrx{U}</latex>
-                  </math> and, hence, of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is the identity matrix. This in turn is 
+                  <latex>\det(\Mtrx{A})\neq 0</latex>
+               </math> if and only if any upper triangular reduction matrix <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> has only nonzero elements <math>
+                  <latex>d_1,\dots ,d_n</latex>
+               </math> on the diagonal. This happens if and only if the RREF of <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> and, hence, of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is the identity matrix. This in turn is 
 			<subordinate>
-                     <hot>equivalent</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_MatrixInversionRREF"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this theorem.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>equivalent</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_MatrixInversionRREF"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this theorem.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			to the invertibility of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>.  
+                  <latex>\Mtrx{A}</latex>
+               </math>.  
 		</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

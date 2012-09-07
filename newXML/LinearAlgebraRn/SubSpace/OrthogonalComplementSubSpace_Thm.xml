@@ -20,109 +20,107 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We need to show that <math>
-                     <latex>W:=S^{\bot}</latex>
-                  </math> satisfies the 
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>W:=S^{\bot}</latex>
+               </math> satisfies the 
 			<subordinate>
-                     <hot>three defining properties</hot>
-                     <crossref>
-                        <definition.ref definitionID="Def_SubVectorSpace"/>
-                        <info>
-                           <para>
-                              <para.body>Lookup these properties</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>three defining properties</hot>
+                  <crossref>
+                     <definition.ref definitionID="Def_SubVectorSpace"/>
+                     <info>
+                        <para>
+                           <para.body>Lookup these properties</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			of a subvector space.</para.body>
-            </para>
-            <para>
-               <para.body>The <math>
-                     <latex>\Vect{0}</latex>
-                  </math>-vector belongs to <math>
-                     <latex>W</latex>
-                  </math> because <math>
-                     <latex>\DotPr{\Vect{0}}{ \Vect{s} }=0</latex>
-                  </math>, for every vector <math>
-                     <latex>\Vect{s}</latex>
-                  </math> in <math>
-                     <latex>S</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>To see that <math>
-                     <latex>W</latex>
-                  </math> is closed under vector addition let <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> be in <math>
-                     <latex>W</latex>
-                  </math>. This means that, for every <math>
-                     <latex>\Vect{s}</latex>
-                  </math> in <math>
-                     <latex>S</latex>
-                  </math>,</para.body>
-            </para>
-            <math.display>
-               <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0 = \DotPr{ \Vect{y} }{ \Vect{s} }</latex>
-            </math.display>
-            <para>
-               <para.body>But then</para.body>
-            </para>
-            <math.display>
-               <latex>\DotPr{ (\Vect{x} + \Vect{y}) }{ \Vect{s} } = \DotPr{ \Vect{x} }{ \Vect{s} } + \DotPr{ \Vect{y} }{ \Vect{s} } = 0+0 = 0</latex>
-            </math.display>
-            <para>
-               <para.body>So <math>
-                     <latex>\Vect{x} + \Vect{y}</latex>
-                  </math> belongs to <math>
-                     <latex>W</latex>
-                  </math> as required.</para.body>
-            </para>
-            <para>
-               <para.body>To see that <math>
-                     <latex>W</latex>
-                  </math> is closed under scalar multiplication, let <math>
-                     <latex>\Vect{x}</latex>
-                  </math> in <math>
-                     <latex>W</latex>
-                  </math>. This means that <math>
-                     <latex>\DotPr{ \Vect{x} }{ \Vect{s} }=0</latex>
-                  </math> for every <math>
-                     <latex>\Vect{s}</latex>
-                  </math> in <math>
-                     <latex>S</latex>
-                  </math>. Now if  <math>
-                     <latex>t</latex>
-                  </math> in <math>
-                     <latex>\RNr</latex>
-                  </math> is arbitrary, then</para.body>
-            </para>
-            <math.display>
-               <latex>\DotPr{ (t \Vect{x}) }{ \Vect{s} } = t\cdot (\DotPr{ \Vect{x} }{ \Vect{s} }) = 0 </latex>
-            </math.display>
-            <para>
-               <para.body>So <math>
-                     <latex>t\Vect{x}</latex>
-                  </math> belongs to <math>
-                     <latex>W</latex>
-                  </math> as required.</para.body>
-            </para>
-            <para>
-               <para.body>We have seen that <math>
-                     <latex>S^{\bot}</latex>
-                  </math> contains <math>
-                     <latex>\Vect{0}</latex>
-                  </math> and is closed under addition and scalar multiplication. Therefore <math>
-                     <latex>S^{\bot}</latex>
-                  </math> is a subvector space of  <math>
-                     <latex>\RNr[n]</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+         </para>
+         <para>
+            <para.body>The <math>
+                  <latex>\Vect{0}</latex>
+               </math>-vector belongs to <math>
+                  <latex>W</latex>
+               </math> because <math>
+                  <latex>\DotPr{\Vect{0}}{ \Vect{s} }=0</latex>
+               </math>, for every vector <math>
+                  <latex>\Vect{s}</latex>
+               </math> in <math>
+                  <latex>S</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>To see that <math>
+                  <latex>W</latex>
+               </math> is closed under vector addition let <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> be in <math>
+                  <latex>W</latex>
+               </math>. This means that, for every <math>
+                  <latex>\Vect{s}</latex>
+               </math> in <math>
+                  <latex>S</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0 = \DotPr{ \Vect{y} }{ \Vect{s} }</latex>
+         </math.display>
+         <para>
+            <para.body>But then</para.body>
+         </para>
+         <math.display>
+            <latex>\DotPr{ (\Vect{x} + \Vect{y}) }{ \Vect{s} } = \DotPr{ \Vect{x} }{ \Vect{s} } + \DotPr{ \Vect{y} }{ \Vect{s} } = 0+0 = 0</latex>
+         </math.display>
+         <para>
+            <para.body>So <math>
+                  <latex>\Vect{x} + \Vect{y}</latex>
+               </math> belongs to <math>
+                  <latex>W</latex>
+               </math> as required.</para.body>
+         </para>
+         <para>
+            <para.body>To see that <math>
+                  <latex>W</latex>
+               </math> is closed under scalar multiplication, let <math>
+                  <latex>\Vect{x}</latex>
+               </math> in <math>
+                  <latex>W</latex>
+               </math>. This means that <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{s} }=0</latex>
+               </math> for every <math>
+                  <latex>\Vect{s}</latex>
+               </math> in <math>
+                  <latex>S</latex>
+               </math>. Now if  <math>
+                  <latex>t</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math> is arbitrary, then</para.body>
+         </para>
+         <math.display>
+            <latex>\DotPr{ (t \Vect{x}) }{ \Vect{s} } = t\cdot (\DotPr{ \Vect{x} }{ \Vect{s} }) = 0 </latex>
+         </math.display>
+         <para>
+            <para.body>So <math>
+                  <latex>t\Vect{x}</latex>
+               </math> belongs to <math>
+                  <latex>W</latex>
+               </math> as required.</para.body>
+         </para>
+         <para>
+            <para.body>We have seen that <math>
+                  <latex>S^{\bot}</latex>
+               </math> contains <math>
+                  <latex>\Vect{0}</latex>
+               </math> and is closed under addition and scalar multiplication. Therefore <math>
+                  <latex>S^{\bot}</latex>
+               </math> is a subvector space of  <math>
+                  <latex>\RNr[n]</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -64,48 +64,46 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that the determinant operation on <math>
-                     <latex>(n,n)</latex>
-                  </math>-matrices is alternating and multilinear in the columns of matrices. Now we have <math>
-                     <latex>\det(\Mtrx{A})=\det(\Mtrx{A}^T)</latex>
-                  </math> for every matrix <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>. Therefore the determinant operation is alternating and multilinear in the rows of matrices as well.</para.body>
-            </para>
-            <para>
-               <para.body>Now if <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is given, we know that we can row reduce it to upper triangular matrix <math>
-                     <latex>\Mtrx{U}</latex>
-                  </math> using suitable combinations of</para.body>
-            </para>
-            <ul>
-               <li>
-                  <para>
-                     <para.body>an interchange of columns: the determinant switches its sign;</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>multiplying a column by a nonzero constant <math>
-                           <latex>c</latex>
-                        </math>: the determinant gets multiplied by <math>
-                           <latex>c</latex>
-                        </math>;</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>adding a multiple of one row to another: the determinant remains unchanged.</para.body>
-                  </para>
-               </li>
-            </ul>
-            <para>
-               <para.body>This implies the claim.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>We know that the determinant operation on <math>
+                  <latex>(n,n)</latex>
+               </math>-matrices is alternating and multilinear in the columns of matrices. Now we have <math>
+                  <latex>\det(\Mtrx{A})=\det(\Mtrx{A}^T)</latex>
+               </math> for every matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. Therefore the determinant operation is alternating and multilinear in the rows of matrices as well.</para.body>
+         </para>
+         <para>
+            <para.body>Now if <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is given, we know that we can row reduce it to upper triangular matrix <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> using suitable combinations of</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>an interchange of columns: the determinant switches its sign;</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>multiplying a column by a nonzero constant <math>
+                        <latex>c</latex>
+                     </math>: the determinant gets multiplied by <math>
+                        <latex>c</latex>
+                     </math>;</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>adding a multiple of one row to another: the determinant remains unchanged.</para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>This implies the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

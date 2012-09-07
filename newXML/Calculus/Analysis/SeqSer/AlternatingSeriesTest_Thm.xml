@@ -36,12 +36,11 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We begin by analyzing the odd indexed partial sums</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>We begin by analyzing the odd indexed partial sums</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{array}{lclcl}
 s_{2n+1} &amp; = &amp; \left( a_0 - a_1\right)\ +\ \left( a_2 - a_3\right)\ +\ \dots\ +\ \left(a_{2n} - a_{2n+1}\right) &amp; &amp; \\
@@ -49,71 +48,70 @@ s_{2n+3} &amp; = &amp; s_{2n+1} &amp; + &amp; \underset{ &gt; 0 }{\left(a_{2n+2}
 \end{array}
 					
 			</latex>
-            </math.display>
-            <para>
-               <para.body>Thus we see that the sequence <math>
-                     <latex>(s_{2n+1})</latex>
-                  </math> is 
+         </math.display>
+         <para>
+            <para.body>Thus we see that the sequence <math>
+                  <latex>(s_{2n+1})</latex>
+               </math> is 
 			<subordinate>
-                     <hot>increasing</hot>
-                     <info>
-                        <info.caption>Why is this sequence increasing?</info.caption>
-                        <para>
-                           <para.body>We assume that <math>
-                                 <latex> a_k&gt; a_{k+1}</latex>
-                              </math>, for all <math>
-                                 <latex>k</latex>
-                              </math>. So <math>
-                                 <latex> a_k - a_{k+1} &gt; 0 </latex>
-                              </math> for all <math>
-                                 <latex>k</latex>
-                              </math>.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>. We will now show now that this sequence is bounded above by <math>
-                     <latex>a_0</latex>
-                  </math>. Indeed,</para.body>
-            </para>
-            <math.display>
-               <latex>
+                  <hot>increasing</hot>
+                  <info>
+                     <info.caption>Why is this sequence increasing?</info.caption>
+                     <para>
+                        <para.body>We assume that <math>
+                              <latex> a_k&gt; a_{k+1}</latex>
+                           </math>, for all <math>
+                              <latex>k</latex>
+                           </math>. So <math>
+                              <latex> a_k - a_{k+1} &gt; 0 </latex>
+                           </math> for all <math>
+                              <latex>k</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </subordinate>. We will now show now that this sequence is bounded above by <math>
+                  <latex>a_0</latex>
+               </math>. Indeed,</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 s_{2n+1}\ =\ a_0\ -\ \underset{&gt;\ 0}{\left(a_1 - a_2\right)} - \underset{&gt;\ 0}{ \left( a_3 - a_4\right)}\ -\ \cdots\ -\ \underset{&gt;\ 0}{ \left(a_{2n-1} - a_{2n}\right) } - a_{2n+1}\ &lt;\ a_0.
 					
 			</latex>
-            </math.display>
-            <para>
-               <para.body>Thus <math>
-                     <latex>(s_{2n+1})</latex>
-                  </math> is increasing and bounded above by <math>
-                     <latex>a_0</latex>
-                  </math>, hence converges to a number <math>
-                     <latex>L\leq a_0</latex>
-                  </math>. To see that the given series converges to <math>
-                     <latex>L</latex>
-                  </math>, we analyze the even indexed partial sums</para.body>
-            </para>
-            <math.display>
-               <latex>s_{2n+2}\ =\ s_{2n+1}\ +\ a_{2n+2}</latex>
-            </math.display>
-            <para>
-               <para.body>We find</para.body>
-            </para>
-            <math.display>
-               <latex>\lim_{n\to\infty} s_{2n+2}\ =\ \lim_{n\to\infty}\left( s_{2n+1} + a_{2n+2}\right)\ =\ \lim_{n\to\infty} s_{2n+1}\ +\ 0\ =\ L</latex>
-            </math.display>
-            <para>
-               <para.body>Consequently, <math>
-                     <latex>\lim_{k\to\infty} s_k = L</latex>
-                  </math> and, therefore, the given alternating alternating series converges to a number</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>Thus <math>
+                  <latex>(s_{2n+1})</latex>
+               </math> is increasing and bounded above by <math>
+                  <latex>a_0</latex>
+               </math>, hence converges to a number <math>
+                  <latex>L\leq a_0</latex>
+               </math>. To see that the given series converges to <math>
+                  <latex>L</latex>
+               </math>, we analyze the even indexed partial sums</para.body>
+         </para>
+         <math.display>
+            <latex>s_{2n+2}\ =\ s_{2n+1}\ +\ a_{2n+2}</latex>
+         </math.display>
+         <para>
+            <para.body>We find</para.body>
+         </para>
+         <math.display>
+            <latex>\lim_{n\to\infty} s_{2n+2}\ =\ \lim_{n\to\infty}\left( s_{2n+1} + a_{2n+2}\right)\ =\ \lim_{n\to\infty} s_{2n+1}\ +\ 0\ =\ L</latex>
+         </math.display>
+         <para>
+            <para.body>Consequently, <math>
+                  <latex>\lim_{k\to\infty} s_k = L</latex>
+               </math> and, therefore, the given alternating alternating series converges to a number</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 0\ &lt;\ \sum_{n=1}^{\infty} (-1)^{n}a_n\ \leq\ a_0
 					
 			</latex>
-            </math.display>
-         </proof.block.body>
+         </math.display>
       </proof.block>
    </proof>
 </theorem>

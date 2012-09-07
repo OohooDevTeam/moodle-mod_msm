@@ -30,339 +30,337 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>To show the existence of <math>
-                     <latex>x\in \RNr</latex>
-                  </math> with <math>
-                     <latex>x^2=y</latex>
-                  </math>, we invoke the completeness axiom: define</para.body>
-            </para>
-            <math.display>
-               <latex>A:=\Set{ a\in \RNr\st a\geq 0,\ \ a^2\leq y}\quad \text{and}\quad B:=\Set{ b\in \RNr \st b\geq 0,\ \ y\leq b^2}</latex>
-            </math.display>
-            <para>
-               <para.body>By 
+         <para>
+            <para.body>To show the existence of <math>
+                  <latex>x\in \RNr</latex>
+               </math> with <math>
+                  <latex>x^2=y</latex>
+               </math>, we invoke the completeness axiom: define</para.body>
+         </para>
+         <math.display>
+            <latex>A:=\Set{ a\in \RNr\st a\geq 0,\ \ a^2\leq y}\quad \text{and}\quad B:=\Set{ b\in \RNr \st b\geq 0,\ \ y\leq b^2}</latex>
+         </math.display>
+         <para>
+            <para.body>By 
 			<subordinate>
-                     <hot>design</hot>
-                     <info>
-                        <info.caption>Why is <math>
-                              <latex>A\leq B</latex>
-                           </math>?</info.caption>
-                        <para>
-                           <para.body>Consider arbitrary elements <math>
-                                 <latex>a\in A</latex>
-                              </math> and <math>
-                                 <latex>b\in B</latex>
-                              </math>. Then we know that</para.body>
-                        </para>
-                        <math.display>
-                           <latex>a^2\leq x\quad \text{and}\quad x\leq b^2</latex>
-                        </math.display>
-                        <para>
-                           <para.body>On the other hand, we 
+                  <hot>design</hot>
+                  <info>
+                     <info.caption>Why is <math>
+                           <latex>A\leq B</latex>
+                        </math>?</info.caption>
+                     <para>
+                        <para.body>Consider arbitrary elements <math>
+                              <latex>a\in A</latex>
+                           </math> and <math>
+                              <latex>b\in B</latex>
+                           </math>. Then we know that</para.body>
+                     </para>
+                     <math.display>
+                        <latex>a^2\leq x\quad \text{and}\quad x\leq b^2</latex>
+                     </math.display>
+                     <para>
+                        <para.body>On the other hand, we 
 						<subordinate>
-                                 <hot>know</hot>
-                                 <crossref>
-                                    <theorem.ref theoremID="Thm_ROrderingProperties"/>
-                                    <info>
-                                       <para>
-                                          <para.body>Look up this result.</para.body>
-                                       </para>
-                                    </info>
-                                 </crossref>
-                              </subordinate>
+                              <hot>know</hot>
+                              <crossref>
+                                 <theorem.ref theoremID="Thm_ROrderingProperties"/>
+                                 <info>
+                                    <para>
+                                       <para.body>Look up this result.</para.body>
+                                    </para>
+                                 </info>
+                              </crossref>
+                           </subordinate>
 						that <math>
-                                 <latex>a\leq b</latex>
-                              </math> if and only if <math>
-                                 <latex>a^2\leq b^2</latex>
-                              </math>, and so <math>
-                                 <latex>A\leq B</latex>
-                              </math>.</para.body>
+                              <latex>a\leq b</latex>
+                           </math> if and only if <math>
+                              <latex>a^2\leq b^2</latex>
+                           </math>, and so <math>
+                              <latex>A\leq B</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
+			, <math>
+                  <latex>A\leq B</latex>
+               </math>, and we claim that <math>
+                  <latex>A,B\neq \emptyset</latex>
+               </math>. Indeed, <math>
+                  <latex>A \neq \emptyset</latex>
+               </math>
+               <subordinate>
+                  <hot>because</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_ROrderingProperties"/>
+                     <info>
+                        <para>
+                           <para.body>We proved earlier that <math>
+                                 <latex>  u^2 &gt; 0 </latex>
+                              </math> for all <math>
+                                 <latex>0\neq u\in \RNr</latex>
+                              </math>. – Look up this result.</para.body>
                         </para>
                      </info>
-                  </subordinate>
-			, <math>
-                     <latex>A\leq B</latex>
-                  </math>, and we claim that <math>
-                     <latex>A,B\neq \emptyset</latex>
-                  </math>. Indeed, <math>
-                     <latex>A \neq \emptyset</latex>
-                  </math>
-                  <subordinate>
-                     <hot>because</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_ROrderingProperties"/>
-                        <info>
-                           <para>
-                              <para.body>We proved earlier that <math>
-                                    <latex>  u^2 &gt; 0 </latex>
-                                 </math> for all <math>
-                                    <latex>0\neq u\in \RNr</latex>
-                                 </math>. – Look up this result.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  </crossref>
+               </subordinate>
+               <math>
+                  <latex>0\in A</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>To see that <math>
+                  <latex>B\neq \emptyset</latex>
+               </math>, we treat the two cases <math>
+                  <latex>y\leq 1</latex>
+               </math> and <math>
+                  <latex>y\geq 1</latex>
+               </math> separately: if <math>
+                  <latex>y\leq 1</latex>
+               </math>, then <math>
+                  <latex>y\leq y^2\leq 1^2</latex>
+               </math>, and so <math>
+                  <latex>1\in B</latex>
+               </math>. If <math>
+                  <latex>1\leq y</latex>
+               </math>, we have <math>
+                  <latex>y\leq y^2</latex>
+               </math>, and so <math>
+                  <latex>y^2\in B</latex>
+               </math>. Either way, we find <math>
+                  <latex>B\neq \emptyset</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>Now the completeness axiom implies the existence of <math>
+                  <latex>x\in \RNr</latex>
+               </math> with <math>
+                  <latex>A\leq x\leq B</latex>
+               </math>. We claim that <math>
+                  <latex>x^2 = y</latex>
+               </math>. To this end we show that neither of the inequalities <math>
+                  <latex> x^2&lt;y </latex>
+               </math> or <math>
+                  <latex> x^2&gt; y </latex>
+               </math> can occur. – If <math>
+                  <latex> x^2 &lt; y </latex>
+               </math> then <math>
+                  <latex>x\in A</latex>
+               </math>. Now consider the number</para.body>
+         </para>
+         <math.display>
+            <latex>s\ :=\ \dfrac{2xy}{x^2 + y}</latex>
+         </math.display>
+         <para>
+            <para.body>On the one hand we have <math>
+                  <latex> x^2 +y &lt; 2y </latex>
+               </math> because <math>
+                  <latex> x^2 &lt; y </latex>
+               </math>, and so</para.body>
+         </para>
+         <math.display>
+            <latex> s\ &gt;\ \dfrac{2xy}{2y}\ =\ x </latex>
+         </math.display>
+         <para>
+            <para.body>On the other hand,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
                   <math>
-                     <latex>0\in A</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>To see that <math>
-                     <latex>B\neq \emptyset</latex>
-                  </math>, we treat the two cases <math>
-                     <latex>y\leq 1</latex>
-                  </math> and <math>
-                     <latex>y\geq 1</latex>
-                  </math> separately: if <math>
-                     <latex>y\leq 1</latex>
-                  </math>, then <math>
-                     <latex>y\leq y^2\leq 1^2</latex>
-                  </math>, and so <math>
-                     <latex>1\in B</latex>
-                  </math>. If <math>
-                     <latex>1\leq y</latex>
-                  </math>, we have <math>
-                     <latex>y\leq y^2</latex>
-                  </math>, and so <math>
-                     <latex>y^2\in B</latex>
-                  </math>. Either way, we find <math>
-                     <latex>B\neq \emptyset</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>Now the completeness axiom implies the existence of <math>
-                     <latex>x\in \RNr</latex>
-                  </math> with <math>
-                     <latex>A\leq x\leq B</latex>
-                  </math>. We claim that <math>
-                     <latex>x^2 = y</latex>
-                  </math>. To this end we show that neither of the inequalities <math>
-                     <latex> x^2&lt;y </latex>
-                  </math> or <math>
-                     <latex> x^2&gt; y </latex>
-                  </math> can occur. – If <math>
-                     <latex> x^2 &lt; y </latex>
-                  </math> then <math>
-                     <latex>x\in A</latex>
-                  </math>. Now consider the number</para.body>
-            </para>
-            <math.display>
-               <latex>s\ :=\ \dfrac{2xy}{x^2 + y}</latex>
-            </math.display>
-            <para>
-               <para.body>On the one hand we have <math>
-                     <latex> x^2 +y &lt; 2y </latex>
-                  </math> because <math>
-                     <latex> x^2 &lt; y </latex>
-                  </math>, and so</para.body>
-            </para>
-            <math.display>
-               <latex> s\ &gt;\ \dfrac{2xy}{2y}\ =\ x </latex>
-            </math.display>
-            <para>
-               <para.body>On the other hand,</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>y-s^2</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>y - \left( \dfrac{2xy}{x^2+y} \right)^2</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>y\left( 1\ -\ \dfrac{4y}{x^2 +2y + y^2/x^2} \right)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>y\, \dfrac{x^4 - 2x^2y + y^2}{x^4 +2x^2y + y^2}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex> y\, \dfrac{(x^2 -y)^2}{ (x^2 + y)^2}\ &gt;\ 0</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This means that <math>
-                     <latex> s^2 &lt; y </latex>
-                  </math> and, hence, <math>
-                     <latex>s\in A</latex>
-                  </math>. But then <math>
-                     <latex>s\leq x</latex>
-                  </math>, a contradiction to <math>
-                     <latex> s &gt; x </latex>
-                  </math>. Thus <math>
-                     <latex> x^2 &lt; y </latex>
-                  </math> is impossible.</para.body>
-            </para>
-            <para>
-               <para.body>Next we show that <math>
-                     <latex> x^2 &gt; y </latex>
-                  </math> can not happen: if we had <math>
-                     <latex> x^2&gt;y </latex>
-                  </math>, then <math>
-                     <latex>x\in B</latex>
-                  </math>. Consider the number</para.body>
-            </para>
-            <math.display>
-               <latex>t\ :=\ \dfrac{x}{2}\, \left( 1 + \dfrac{y}{x^2}\right)\ =\ \dfrac{1}{2}\, ( x+y/x)</latex>
-            </math.display>
-            <para>
-               <para.body>Since <math>
-                     <latex> x^2&gt;y </latex>
-                  </math>, we have also <math>
-                     <latex> y/x^2 &lt; 1</latex>
-                  </math>, and so</para.body>
-            </para>
-            <math.display>
-               <latex> t\ &lt;\ \dfrac{x}{2} (1 + 1)\ =\ x</latex>
-            </math.display>
-            <para>
-               <para.body>On the other hand</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t^2-y</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\dfrac{1}{4}(x^2 + 2y + (y/x)^2)\ -\ y</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\dfrac{1}{4x^2}\, (x^4 - 2yx^2 + y^2)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex> \dfrac{1}{4x^2}\, (x-y)^2\ &gt;\ 0</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>This means that <math>
-                     <latex> t^2 &gt; y </latex>
-                  </math> and, hence, <math>
-                     <latex>t\in B</latex>
-                  </math>. But <math>
-                     <latex>x\leq B</latex>
-                  </math> implies <math>
-                     <latex>x\leq t</latex>
-                  </math>, a contradiction to the inequality <math>
-                     <latex> t &lt; x </latex>
-                  </math> we found earlier.</para.body>
-            </para>
-            <para>
-               <para.body>Thus the only remaining possibility is: <math>
-                     <latex>x^2 = y</latex>
-                  </math>, as claimed.</para.body>
-            </para>
-            <para>
-               <para.body>It remains to show that <math>
-                     <latex>x</latex>
-                  </math> is the only number with <math>
-                     <latex>0\leq x</latex>
-                  </math> and <math>
-                     <latex>x^2=y</latex>
-                  </math>. So consider any number <math>
-                     <latex>s</latex>
-                  </math> with <math>
-                     <latex>0\leq s</latex>
-                  </math> and <math>
-                     <latex>s^2 = y</latex>
-                  </math>. We want to show that <math>
-                     <latex>x=s</latex>
-                  </math>. To see  this, we observe first that <math>
-                     <latex>x^2 = s^2</latex>
-                  </math> and so</para.body>
-            </para>
-            <math.display>
-               <latex>0 = x^2 - s^2 = (x+s)(x-s)</latex>
-            </math.display>
-            <para>
-               <para.body>If <math>
-                     <latex>(x+s)=0</latex>
-                  </math>, we conclude <math>
-                     <latex>x=0=y</latex>
-                  </math> from the assumption that <math>
-                     <latex>x,y\geq 0</latex>
-                  </math>. So we are done. If <math>
-                     <latex>(x+s)\neq 0</latex>
-                  </math>, we conclude <math>
-                     <latex>0=(x-s)</latex>
-                  </math> and, hence, <math>
-                     <latex>x=s</latex>
-                  </math>. – Either way, <math>
-                     <latex>x=s</latex>
-                  </math>, as claimed. – This completes the proof of the existence and uniqueness of positive square roots.</para.body>
-            </para>
-         </proof.block.body>
+                     <latex>y-s^2</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>y - \left( \dfrac{2xy}{x^2+y} \right)^2</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>y\left( 1\ -\ \dfrac{4y}{x^2 +2y + y^2/x^2} \right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>y\, \dfrac{x^4 - 2x^2y + y^2}{x^4 +2x^2y + y^2}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex> y\, \dfrac{(x^2 -y)^2}{ (x^2 + y)^2}\ &gt;\ 0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This means that <math>
+                  <latex> s^2 &lt; y </latex>
+               </math> and, hence, <math>
+                  <latex>s\in A</latex>
+               </math>. But then <math>
+                  <latex>s\leq x</latex>
+               </math>, a contradiction to <math>
+                  <latex> s &gt; x </latex>
+               </math>. Thus <math>
+                  <latex> x^2 &lt; y </latex>
+               </math> is impossible.</para.body>
+         </para>
+         <para>
+            <para.body>Next we show that <math>
+                  <latex> x^2 &gt; y </latex>
+               </math> can not happen: if we had <math>
+                  <latex> x^2&gt;y </latex>
+               </math>, then <math>
+                  <latex>x\in B</latex>
+               </math>. Consider the number</para.body>
+         </para>
+         <math.display>
+            <latex>t\ :=\ \dfrac{x}{2}\, \left( 1 + \dfrac{y}{x^2}\right)\ =\ \dfrac{1}{2}\, ( x+y/x)</latex>
+         </math.display>
+         <para>
+            <para.body>Since <math>
+                  <latex> x^2&gt;y </latex>
+               </math>, we have also <math>
+                  <latex> y/x^2 &lt; 1</latex>
+               </math>, and so</para.body>
+         </para>
+         <math.display>
+            <latex> t\ &lt;\ \dfrac{x}{2} (1 + 1)\ =\ x</latex>
+         </math.display>
+         <para>
+            <para.body>On the other hand</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t^2-y</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{1}{4}(x^2 + 2y + (y/x)^2)\ -\ y</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{1}{4x^2}\, (x^4 - 2yx^2 + y^2)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex> \dfrac{1}{4x^2}\, (x-y)^2\ &gt;\ 0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This means that <math>
+                  <latex> t^2 &gt; y </latex>
+               </math> and, hence, <math>
+                  <latex>t\in B</latex>
+               </math>. But <math>
+                  <latex>x\leq B</latex>
+               </math> implies <math>
+                  <latex>x\leq t</latex>
+               </math>, a contradiction to the inequality <math>
+                  <latex> t &lt; x </latex>
+               </math> we found earlier.</para.body>
+         </para>
+         <para>
+            <para.body>Thus the only remaining possibility is: <math>
+                  <latex>x^2 = y</latex>
+               </math>, as claimed.</para.body>
+         </para>
+         <para>
+            <para.body>It remains to show that <math>
+                  <latex>x</latex>
+               </math> is the only number with <math>
+                  <latex>0\leq x</latex>
+               </math> and <math>
+                  <latex>x^2=y</latex>
+               </math>. So consider any number <math>
+                  <latex>s</latex>
+               </math> with <math>
+                  <latex>0\leq s</latex>
+               </math> and <math>
+                  <latex>s^2 = y</latex>
+               </math>. We want to show that <math>
+                  <latex>x=s</latex>
+               </math>. To see  this, we observe first that <math>
+                  <latex>x^2 = s^2</latex>
+               </math> and so</para.body>
+         </para>
+         <math.display>
+            <latex>0 = x^2 - s^2 = (x+s)(x-s)</latex>
+         </math.display>
+         <para>
+            <para.body>If <math>
+                  <latex>(x+s)=0</latex>
+               </math>, we conclude <math>
+                  <latex>x=0=y</latex>
+               </math> from the assumption that <math>
+                  <latex>x,y\geq 0</latex>
+               </math>. So we are done. If <math>
+                  <latex>(x+s)\neq 0</latex>
+               </math>, we conclude <math>
+                  <latex>0=(x-s)</latex>
+               </math> and, hence, <math>
+                  <latex>x=s</latex>
+               </math>. – Either way, <math>
+                  <latex>x=s</latex>
+               </math>, as claimed. – This completes the proof of the existence and uniqueness of positive square roots.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

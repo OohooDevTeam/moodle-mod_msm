@@ -72,76 +72,75 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>By design, each <math>
-                     <latex>\Vect{y}_i</latex>
-                  </math> belongs to <math>
-                     <latex>\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>
-                  </math>. So it remains to show that the vectors are linearly independent. So consider a representation of the zero vector as</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>t_1 \Vect{y}_1 + \cdots + t_n \Vect{y}_n</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>We need to show that <math>
-                     <latex>t_1= \cdots =t_n=0</latex>
-                  </math>. Collecting scalar factors of the vectors <math>
-                     <latex>\Vect{a}_i</latex>
-                  </math>, we find</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>(t_1 x_{11} + \cdots + t_n x_{n1}) \Vect{a}_1 + \cdots + (t_1 x_{1p} + \cdots + t_n x_{np}) \Vect{a}_p</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>and 
+         <para>
+            <para.body>By design, each <math>
+                  <latex>\Vect{y}_i</latex>
+               </math> belongs to <math>
+                  <latex>\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>
+               </math>. So it remains to show that the vectors are linearly independent. So consider a representation of the zero vector as</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1 \Vect{y}_1 + \cdots + t_n \Vect{y}_n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>t_1= \cdots =t_n=0</latex>
+               </math>. Collecting scalar factors of the vectors <math>
+                  <latex>\Vect{a}_i</latex>
+               </math>, we find</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(t_1 x_{11} + \cdots + t_n x_{n1}) \Vect{a}_1 + \cdots + (t_1 x_{1p} + \cdots + t_n x_{np}) \Vect{a}_p</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>and 
 			<subordinate>
-                     <hot>conclude</hot>
-                     <info>
-                        <info.caption>How do we conclude this?</info.caption>
-                        <para>
-                           <para.body>We know that the vectors <math>
-                                 <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex>
-                              </math> are linearly independent. So the scalar factors in the above equation must be 0.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>
+                  <hot>conclude</hot>
+                  <info>
+                     <info.caption>How do we conclude this?</info.caption>
+                     <para>
+                        <para.body>We know that the vectors <math>
+                              <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex>
+                           </math> are linearly independent. So the scalar factors in the above equation must be 0.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
 			that</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{array}{ccccccc}
 x_{11}t_1 &amp; + &amp; \cdots &amp; + &amp; x_{n1}t_n &amp; = &amp; 0 \\
@@ -150,31 +149,30 @@ x_{1p}t_1 &amp; + &amp; \cdots &amp; + &amp; x_{np}t_n &amp; = &amp; 0
 \end{array}
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>This is a homogeneous system of linear equations in the <math>
-                     <latex>n</latex>
-                  </math> unknowns <math>
-                     <latex>t_1,\dots ,t_n</latex>
-                  </math>. The column vectors of the coefficient matrix of this system are linearly independent. Therefore <math>
-                     <latex>t_1=\cdots =t_n=0</latex>
-                  </math> is its only solution. It follows that the vectors <math>
-                     <latex>\Vect{y}_1,\dots ,\Vect{y}_n</latex>
-                  </math> are 
+         </math.display>
+         <para>
+            <para.body>This is a homogeneous system of linear equations in the <math>
+                  <latex>n</latex>
+               </math> unknowns <math>
+                  <latex>t_1,\dots ,t_n</latex>
+               </math>. The column vectors of the coefficient matrix of this system are linearly independent. Therefore <math>
+                  <latex>t_1=\cdots =t_n=0</latex>
+               </math> is its only solution. It follows that the vectors <math>
+                  <latex>\Vect{y}_1,\dots ,\Vect{y}_n</latex>
+               </math> are 
 			<subordinate>
-                     <hot>linearly independent</hot>
-                     <info>
-                        <info.caption>Why are these column vectors linearly independent?</info.caption>
-                        <para>
-                           <para.body>This is what it means: the vectors <math>
-                                 <latex>\Vect{x}_1,\dots ,\Vect{x}_n</latex>
-                              </math> are linearly independent.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>
+                  <hot>linearly independent</hot>
+                  <info>
+                     <info.caption>Why are these column vectors linearly independent?</info.caption>
+                     <para>
+                        <para.body>This is what it means: the vectors <math>
+                              <latex>\Vect{x}_1,\dots ,\Vect{x}_n</latex>
+                           </math> are linearly independent.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
 			. – This completes the proof.</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

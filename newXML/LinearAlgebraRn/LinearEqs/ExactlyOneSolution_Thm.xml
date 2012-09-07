@@ -45,12 +45,11 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>The RREF-matrix corresponds to the system of linear equations</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>The RREF-matrix corresponds to the system of linear equations</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{array}{cccccccccc}
 \colorbox{lightgreen}{$1$} {\color{red} x_1} &amp; + &amp; \colorbox{lightgreen}{$0$} {\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$0$} {\color{red} x_r} &amp; = &amp; {\color{blue} d_1 } \\
@@ -62,14 +61,13 @@
 \end{array}
 						
 			</latex>
-            </math.display>
-            <para>
-               <para.body>It follows that this system has exactly the solution</para.body>
-            </para>
-            <math.display>
-               <latex>(x_1,x_2,\dots ,x_r) = (d_1,d_2,\dots ,d_r)</latex>
-            </math.display>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>It follows that this system has exactly the solution</para.body>
+         </para>
+         <math.display>
+            <latex>(x_1,x_2,\dots ,x_r) = (d_1,d_2,\dots ,d_r)</latex>
+         </math.display>
       </proof.block>
    </proof>
 </theorem>

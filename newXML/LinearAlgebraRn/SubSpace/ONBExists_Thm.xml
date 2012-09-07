@@ -36,61 +36,59 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know already that 
+         <para>
+            <para.body>We know already that 
 			<subordinate>
-                     <hot>
-                        <math>
-                           <latex>S</latex>
-                        </math> is linearly independent</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_OrthogonalmpliesLinearIndependence"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>
+                     <math>
+                        <latex>S</latex>
+                     </math> is linearly independent</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_OrthogonalmpliesLinearIndependence"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			and, hence, 
 			<subordinate>
-                     <hot>can be complemented to a basis of <math>
-                           <latex>V</latex>
-                        </math>
-                     </hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_BasisExists"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>.
+                  <hot>can be complemented to a basis of <math>
+                        <latex>V</latex>
+                     </math>
+                  </hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_BasisExists"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.
 			So, if <math>
-                     <latex>S=(\Vect{b}_1,\dots ,\Vect{b}_s)</latex>
-                  </math>, choose an ordered set of linearly independent vectors <math>
-                     <latex>T=(\Vect{c}_1,\dots ,\Vect{c}_t)</latex>
-                  </math> such that</para.body>
-            </para>
-            <math.display>
-               <latex>\EuScript{A}:=(\Vect{b}_1,\dots ,\Vect{b}_s,\Vect{c}_1,\dots ,\Vect{c}_t)</latex>
-            </math.display>
-            <para>
-               <para.body>is an ordered basis of <math>
-                     <latex>V</latex>
-                  </math>. Then apply the Gram-Schmidt process to <math>
-                     <latex>\EuScript{A}</latex>
-                  </math> so as to obtain an ONB <math>
-                     <latex>\EuScript{B}</latex>
-                  </math> of <math>
-                     <latex>V</latex>
-                  </math>. It only remains to observe that the vectors from <math>
-                     <latex>S</latex>
-                  </math> remain unchanged as they are already orthonormal, and this completes the proof.</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>S=(\Vect{b}_1,\dots ,\Vect{b}_s)</latex>
+               </math>, choose an ordered set of linearly independent vectors <math>
+                  <latex>T=(\Vect{c}_1,\dots ,\Vect{c}_t)</latex>
+               </math> such that</para.body>
+         </para>
+         <math.display>
+            <latex>\EuScript{A}:=(\Vect{b}_1,\dots ,\Vect{b}_s,\Vect{c}_1,\dots ,\Vect{c}_t)</latex>
+         </math.display>
+         <para>
+            <para.body>is an ordered basis of <math>
+                  <latex>V</latex>
+               </math>. Then apply the Gram-Schmidt process to <math>
+                  <latex>\EuScript{A}</latex>
+               </math> so as to obtain an ONB <math>
+                  <latex>\EuScript{B}</latex>
+               </math> of <math>
+                  <latex>V</latex>
+               </math>. It only remains to observe that the vectors from <math>
+                  <latex>S</latex>
+               </math> remain unchanged as they are already orthonormal, and this completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

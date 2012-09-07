@@ -60,114 +60,112 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>V</latex>
-                  </math> contains only the zero vector, we have <math>
-                     <latex>V^{\bot}=W</latex>
-                  </math>, and so the dimension formula is valid in this case:</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
+         <para>
+            <para.body>If <math>
+                  <latex>V</latex>
+               </math> contains only the zero vector, we have <math>
+                  <latex>V^{\bot}=W</latex>
+               </math>, and so the dimension formula is valid in this case:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dim(W)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0 + \dim(V^{\bot})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Consider now the case where <math>
+                  <latex>V</latex>
+               </math> contains a nonzero vector. Then we have</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
                      <math>
-                        <latex>\dim(W)</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
+                        <latex>\span(V\cup V^{\bot}) = W</latex>
+                     </math>, because every <math>
+                        <latex>\Vect{x}\in W</latex>
+                     </math> can be written as <math>
+                        <latex>\Vect{x} = \Vect{x}_V + \Vect{x}_{\bot}</latex>
+                     </math> which is a linear combination of a vector in <math>
+                        <latex>V</latex>
+                     </math> and one in <math>
+                        <latex>V_{\bot}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
                      <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>0 + \dim(V^{\bot})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Consider now the case where <math>
-                     <latex>V</latex>
-                  </math> contains a nonzero vector. Then we have</para.body>
-            </para>
-            <ol>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>\span(V\cup V^{\bot}) = W</latex>
-                        </math>, because every <math>
-                           <latex>\Vect{x}\in W</latex>
-                        </math> can be written as <math>
-                           <latex>\Vect{x} = \Vect{x}_V + \Vect{x}_{\bot}</latex>
-                        </math> which is a linear combination of a vector in <math>
-                           <latex>V</latex>
-                        </math> and one in <math>
-                           <latex>V_{\bot}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>
-                        <math>
-                           <latex>V</latex>
-                        </math> and <math>
-                           <latex>V^{\bot}</latex>
-                        </math> have only the zero vector in common. – If not, the decomposition of <math>
-                           <latex>\Vect{x}\in W</latex>
-                        </math> as <math>
-                           <latex>\Vect{x} = \Vect{x}_{V} + \Vect{x}_{\bot}</latex>
-                        </math> would not be unique.</para.body>
-                  </para>
-               </li>
-            </ol>
-            <para>
-               <para.body>This means that <math>
-                     <latex>V</latex>
-                  </math> and <math>
-                     <latex>V^{\bot}</latex>
-                  </math> form a splitting of <math>
-                     <latex>W</latex>
-                  </math>. Now the formula</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\dim(W)</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\dim(V) + \dim(V^{\bot})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>follows from the 
+                        <latex>V</latex>
+                     </math> and <math>
+                        <latex>V^{\bot}</latex>
+                     </math> have only the zero vector in common. – If not, the decomposition of <math>
+                        <latex>\Vect{x}\in W</latex>
+                     </math> as <math>
+                        <latex>\Vect{x} = \Vect{x}_{V} + \Vect{x}_{\bot}</latex>
+                     </math> would not be unique.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>This means that <math>
+                  <latex>V</latex>
+               </math> and <math>
+                  <latex>V^{\bot}</latex>
+               </math> form a splitting of <math>
+                  <latex>W</latex>
+               </math>. Now the formula</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dim(W)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dim(V) + \dim(V^{\bot})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>follows from the 
 			<subordinate>
-                     <hot>dimension formula</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_SplittingDimensions"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this formula</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>dimension formula</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_SplittingDimensions"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this formula</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			for arbitrary splittings of a vector space.</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

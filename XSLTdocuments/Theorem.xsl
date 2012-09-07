@@ -136,9 +136,9 @@
                             <xsl:apply-templates/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:element name="proof.block.body" namespace="Theorem">
+                            <!--xsl:element name="proof.block.body" namespace="Theorem"-->
                                 <xsl:apply-templates/>
-                            </xsl:element>
+                            <!--/xsl:element-->
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>

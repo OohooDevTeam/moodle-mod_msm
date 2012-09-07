@@ -57,24 +57,22 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>This follows immediately from the  
+         <para>
+            <para.body>This follows immediately from the  
 			<subordinate>
-                     <hot>algebraic properties</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Look up these algebraic properties of the determinant operation</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>algebraic properties</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up these algebraic properties of the determinant operation</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			of the determinant operation.
 		</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

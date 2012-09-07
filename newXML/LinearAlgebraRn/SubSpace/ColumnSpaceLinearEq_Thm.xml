@@ -34,14 +34,13 @@ a_{m1}x_1 &amp; + &amp; \cdots &amp; + &amp; a_{mn}x_n &amp; = &amp; c_m
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that <math>
-                     <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
-                  </math> is a solution of this system if and only if it is a solution of the matrix equation</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>We know that <math>
+                  <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+               </math> is a solution of this system if and only if it is a solution of the matrix equation</para.body>
+         </para>
+         <math.display>
+            <latex>
 								
 \left[
 \begin{array}{ccc}
@@ -62,16 +61,16 @@ c_1 \\ \vdots \\ c_m
 \right]
 					
 							</latex>
-            </math.display>
-            <para>
-               <para.body>Writing <math>
-                     <latex>C_1,\dots, C_n</latex>
-                  </math> for the columns of the unaugmented coefficient matrix <math>
-                     <latex>\Mtrx{A}=[a_{ij}]</latex>
-                  </math>, we observe that</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>Writing <math>
+                  <latex>C_1,\dots, C_n</latex>
+               </math> for the columns of the unaugmented coefficient matrix <math>
+                  <latex>\Mtrx{A}=[a_{ij}]</latex>
+               </math>, we observe that</para.body>
+         </para>
+         <math.display>
+            <latex>
 								
 \left[
 \begin{array}{ccc}
@@ -87,27 +86,26 @@ x_1 \\ \vdots \\ x_n
 \right] = x_1C_1 + \cdots + x_n C_n
 					
 							</latex>
-            </math.display>
-            <para>
-               <para.body>The right hand side of this equation is a linear combination of the column vectors of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>. The original system of linear equations may now be interpreted as: find all possible ways of expressing the augmentation column</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>The right hand side of this equation is a linear combination of the column vectors of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. The original system of linear equations may now be interpreted as: find all possible ways of expressing the augmentation column</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 C\ :=\ \left[\begin{array}{c} c_1 \\ \vdots \\ c_m \end{array}\right]
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>as a linear combination of the column vectors of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>. In particular, this means that this system of linear equations has a solution if and only if the augmentation column is in the column space of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>as a linear combination of the column vectors of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. In particular, this means that this system of linear equations has a solution if and only if the augmentation column is in the column space of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

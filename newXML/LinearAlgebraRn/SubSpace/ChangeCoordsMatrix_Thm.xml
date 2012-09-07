@@ -70,16 +70,15 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Given <math>
-                     <latex>\Vect{x}\in W</latex>
-                  </math>, we need to express it as a linear combination of <math>
-                     <latex>\EuScript{C}</latex>
-                  </math>. So suppose</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>Given <math>
+                  <latex>\Vect{x}\in W</latex>
+               </math>, we need to express it as a linear combination of <math>
+                  <latex>\EuScript{C}</latex>
+               </math>. So suppose</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{array}{rcclrcc}
 \Vect{x}_{\EuScript{B}} &amp; = &amp; (x_1,\dots ,x_r) &amp; \quad \text{i.e.} &amp; \Vect{x} &amp; = &amp; x_1 \Vect{b}_1 + \cdots + x_r \Vect{b}_r \\
@@ -89,64 +88,64 @@
 \end{array}
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>This implies</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{x}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>x_1 \Vect{b}_1 + \cdots + x_r \Vect{b}_r</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>x_1\left( a_{11}\Vect{c}_1 + \cdots + a_{r1}\Vect{c}_r\right)\ + \cdots +\ x_r\left( a_{1r}\Vect{c}_1 + \cdots + a_{rr}\Vect{c}_r\right)</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\left(a_{11}x_1 + \cdots + a_{1r}x_r\right)\Vect{c}_1\ + \cdots +\ \left( a_{r1}x_1+\cdots + a_{rr}x_r\right)\Vect{c}_r</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Writing <math>
-                     <latex>\Vect{x}_{\EuScript{B}}</latex>
-                  </math> and <math>
-                     <latex>\Vect{x}_{\EuScript{C}}</latex>
-                  </math> as column vectors we find</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>This implies</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x_1 \Vect{b}_1 + \cdots + x_r \Vect{b}_r</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x_1\left( a_{11}\Vect{c}_1 + \cdots + a_{r1}\Vect{c}_r\right)\ + \cdots +\ x_r\left( a_{1r}\Vect{c}_1 + \cdots + a_{rr}\Vect{c}_r\right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left(a_{11}x_1 + \cdots + a_{1r}x_r\right)\Vect{c}_1\ + \cdots +\ \left( a_{r1}x_1+\cdots + a_{rr}x_r\right)\Vect{c}_r</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Writing <math>
+                  <latex>\Vect{x}_{\EuScript{B}}</latex>
+               </math> and <math>
+                  <latex>\Vect{x}_{\EuScript{C}}</latex>
+               </math> as column vectors we find</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \aligned
 \Vect{x}_{\EuScript{C}}\ 
@@ -169,18 +168,18 @@ x_1 \\ \vdots \\ x_r
 
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>It remains to show that <math>
-                     <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
-                  </math> is the only matrix performing conversion from <math>
-                     <latex>\EuScript{B}</latex>
-                  </math>-coordinates to <math>
-                     <latex>\EuScript{C}</latex>
-                  </math>-coordinates. So suppose</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>It remains to show that <math>
+                  <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+               </math> is the only matrix performing conversion from <math>
+                  <latex>\EuScript{B}</latex>
+               </math>-coordinates to <math>
+                  <latex>\EuScript{C}</latex>
+               </math>-coordinates. So suppose</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \Mtrx{D}\ =\ 
 \begin{bmatrix}
@@ -190,18 +189,18 @@ d_{r1} &amp; \dots &amp; d_{rr}
 \end{bmatrix}
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>also satisfies <math>
-                     <latex>\Vect{x}_{\EuScript{C}} = D \Vect{x}_{\EuScript{B}}</latex>
-                  </math> for all vectors <math>
-                     <latex>\Vect{x}\in W</latex>
-                  </math>. Now, if <math>
-                     <latex>1\leq j\leq r</latex>
-                  </math>, we find</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>also satisfies <math>
+                  <latex>\Vect{x}_{\EuScript{C}} = D \Vect{x}_{\EuScript{B}}</latex>
+               </math> for all vectors <math>
+                  <latex>\Vect{x}\in W</latex>
+               </math>. Now, if <math>
+                  <latex>1\leq j\leq r</latex>
+               </math>, we find</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{bmatrix}a_{1j} \\ \vdots \\ a_{rj} \end{bmatrix}\ =\ 
 (\mathbf{b}_j)_{\EuScript{C}}\ =\ 
@@ -213,13 +212,12 @@ d_{r1} &amp; \dots &amp; d_{rr}
 \begin{bmatrix}d_{1j} \\ \vdots \\ d_{rj} \end{bmatrix}
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>This means exactly that <math>
-                     <latex>\Mtrx{D}=\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
-                  </math> as required. – The proof is complete.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>This means exactly that <math>
+                  <latex>\Mtrx{D}=\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+               </math> as required. – The proof is complete.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -60,39 +60,37 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We use the picture below to guide our argument.</para.body>
-            </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/HyperPlaneEquation.gif"/>
-            </media>
-            <para>
-               <para.body>If <math>
-                     <latex>\Vect{x}</latex>
-                  </math> is the position vector of an arbitrary point in <math>
-                     <latex>\RNr[n]</latex>
-                  </math>, let <math>
-                     <latex>\Vect{y}:= \Vect{x} - \Vect{p}</latex>
-                  </math> be as shown in the picture above. Then <math>
-                     <latex>\Vect{x}</latex>
-                  </math> belongs to the hyperplane perpendicular to <math>
-                     <latex>\Vect{n}</latex>
-                  </math> through <math>
-                     <latex>P</latex>
-                  </math> if and only if <math>
-                     <latex>\Vect{y}</latex>
-                  </math> is perpendicular to <math>
-                     <latex>\Vect{n}</latex>
-                  </math>; i.e. if and only if</para.body>
-            </para>
-            <math.display>
-               <latex>\DotPr{ (\Vect{x} - \Vect{p}) }{ \Vect{n} } = 0</latex>
-            </math.display>
-            <para>
-               <para.body>This is what we wanted to show.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>We use the picture below to guide our argument.</para.body>
+         </para>
+         <media type="image" active="0" inline="0">
+            <img src="ims/HyperPlaneEquation.gif"/>
+         </media>
+         <para>
+            <para.body>If <math>
+                  <latex>\Vect{x}</latex>
+               </math> is the position vector of an arbitrary point in <math>
+                  <latex>\RNr[n]</latex>
+               </math>, let <math>
+                  <latex>\Vect{y}:= \Vect{x} - \Vect{p}</latex>
+               </math> be as shown in the picture above. Then <math>
+                  <latex>\Vect{x}</latex>
+               </math> belongs to the hyperplane perpendicular to <math>
+                  <latex>\Vect{n}</latex>
+               </math> through <math>
+                  <latex>P</latex>
+               </math> if and only if <math>
+                  <latex>\Vect{y}</latex>
+               </math> is perpendicular to <math>
+                  <latex>\Vect{n}</latex>
+               </math>; i.e. if and only if</para.body>
+         </para>
+         <math.display>
+            <latex>\DotPr{ (\Vect{x} - \Vect{p}) }{ \Vect{n} } = 0</latex>
+         </math.display>
+         <para>
+            <para.body>This is what we wanted to show.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

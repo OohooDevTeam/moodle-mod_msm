@@ -29,33 +29,31 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We know that the <math>
-                     <latex>i</latex>
-                  </math>-th direction angle of <math>
-                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
-                  </math> satisfies</para.body>
-            </para>
-            <math.display>
-               <latex>\cos \omega_i = \dfrac{x_i}{ |\mathbf{x} | }</latex>
-            </math.display>
-            <para>
-               <para.body>Therefore,</para.body>
-            </para>
-            <math.display>
-               <latex>\cos^2 \omega_i\ =\ \dfrac{ x_{i}^{2} }{ |\mathbf{x}|^2 }\ =\ \dfrac{ x_{i}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} }</latex>
-            </math.display>
-            <para>
-               <para.body>Adding all of these terms up yields</para.body>
-            </para>
-            <math.display>
-               <latex>\cos^{2} \omega_1 + \cdots + \cos^2 \omega_{n}^{2} = \dfrac{ x_{1}^{2}+\cdots + x_{n}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} } = 1</latex>
-            </math.display>
-            <para>
-               <para.body>This was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>We know that the <math>
+                  <latex>i</latex>
+               </math>-th direction angle of <math>
+                  <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+               </math> satisfies</para.body>
+         </para>
+         <math.display>
+            <latex>\cos \omega_i = \dfrac{x_i}{ |\mathbf{x} | }</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore,</para.body>
+         </para>
+         <math.display>
+            <latex>\cos^2 \omega_i\ =\ \dfrac{ x_{i}^{2} }{ |\mathbf{x}|^2 }\ =\ \dfrac{ x_{i}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} }</latex>
+         </math.display>
+         <para>
+            <para.body>Adding all of these terms up yields</para.body>
+         </para>
+         <math.display>
+            <latex>\cos^{2} \omega_1 + \cdots + \cos^2 \omega_{n}^{2} = \dfrac{ x_{1}^{2}+\cdots + x_{n}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} } = 1</latex>
+         </math.display>
+         <para>
+            <para.body>This was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

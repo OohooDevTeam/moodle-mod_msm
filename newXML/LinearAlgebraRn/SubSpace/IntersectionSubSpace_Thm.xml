@@ -22,86 +22,84 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>To shorten notation, set <math>
-                     <latex>U:=\Intrsctn{V}{W}</latex>
-                  </math>. Then <math>
-                     <latex>U</latex>
-                  </math> contains the <math>
-                     <latex>\Vect{0}</latex>
-                  </math>-vector, as it is contained in both <math>
-                     <latex>V</latex>
-                  </math>and <math>
-                     <latex>W</latex>
-                  </math>. So it remains to show that <math>
-                     <latex>U</latex>
-                  </math> is closed under vector addition and scalar multiplication</para.body>
-            </para>
-            <para>
-               <para.body>To see that <math>
-                     <latex>U</latex>
-                  </math> is closed under vector addition, let <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> be in <math>
-                     <latex>U</latex>
-                  </math>. This means that both vectors belong to <math>
-                     <latex>V</latex>
-                  </math> and to <math>
-                     <latex>W</latex>
-                  </math>. Now, both <math>
-                     <latex>V</latex>
-                  </math> and <math>
-                     <latex>W</latex>
-                  </math> are closed under vector addition. So <math>
-                     <latex>\Vect{x} + \Vect{y}</latex>
-                  </math> belongs to <math>
-                     <latex>V</latex>
-                  </math> and to <math>
-                     <latex>W</latex>
-                  </math> and, hence, to <math>
-                     <latex>U</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>To see that <math>
-                     <latex>U</latex>
-                  </math> is closed under scalar multiplication, let <math>
-                     <latex>\Vect{x}</latex>
-                  </math> in <math>
-                     <latex>U</latex>
-                  </math> and <math>
-                     <latex>t</latex>
-                  </math> in <math>
-                     <latex>\RNr</latex>
-                  </math> be arbitrary. So <math>
-                     <latex>\Vect{x}</latex>
-                  </math> belongs to <math>
-                     <latex>V</latex>
-                  </math> and to <math>
-                     <latex>W</latex>
-                  </math>. As both <math>
-                     <latex>V</latex>
-                  </math> and <math>
-                     <latex>W</latex>
-                  </math> are closed under scalar multiplication, <math>
-                     <latex>t \Vect{x}</latex>
-                  </math> also belongs to <math>
-                     <latex>V</latex>
-                  </math> and to <math>
-                     <latex>W</latex>
-                  </math> and, hence, to <math>
-                     <latex>U</latex>
-                  </math>.</para.body>
-            </para>
-            <para>
-               <para.body>We have show that the intersection  <math>
-                     <latex>\Intrsctn{V}{W}</latex>
-                  </math> satisfies all requirements of a subvector space.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>To shorten notation, set <math>
+                  <latex>U:=\Intrsctn{V}{W}</latex>
+               </math>. Then <math>
+                  <latex>U</latex>
+               </math> contains the <math>
+                  <latex>\Vect{0}</latex>
+               </math>-vector, as it is contained in both <math>
+                  <latex>V</latex>
+               </math>and <math>
+                  <latex>W</latex>
+               </math>. So it remains to show that <math>
+                  <latex>U</latex>
+               </math> is closed under vector addition and scalar multiplication</para.body>
+         </para>
+         <para>
+            <para.body>To see that <math>
+                  <latex>U</latex>
+               </math> is closed under vector addition, let <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> be in <math>
+                  <latex>U</latex>
+               </math>. This means that both vectors belong to <math>
+                  <latex>V</latex>
+               </math> and to <math>
+                  <latex>W</latex>
+               </math>. Now, both <math>
+                  <latex>V</latex>
+               </math> and <math>
+                  <latex>W</latex>
+               </math> are closed under vector addition. So <math>
+                  <latex>\Vect{x} + \Vect{y}</latex>
+               </math> belongs to <math>
+                  <latex>V</latex>
+               </math> and to <math>
+                  <latex>W</latex>
+               </math> and, hence, to <math>
+                  <latex>U</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>To see that <math>
+                  <latex>U</latex>
+               </math> is closed under scalar multiplication, let <math>
+                  <latex>\Vect{x}</latex>
+               </math> in <math>
+                  <latex>U</latex>
+               </math> and <math>
+                  <latex>t</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math> be arbitrary. So <math>
+                  <latex>\Vect{x}</latex>
+               </math> belongs to <math>
+                  <latex>V</latex>
+               </math> and to <math>
+                  <latex>W</latex>
+               </math>. As both <math>
+                  <latex>V</latex>
+               </math> and <math>
+                  <latex>W</latex>
+               </math> are closed under scalar multiplication, <math>
+                  <latex>t \Vect{x}</latex>
+               </math> also belongs to <math>
+                  <latex>V</latex>
+               </math> and to <math>
+                  <latex>W</latex>
+               </math> and, hence, to <math>
+                  <latex>U</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>We have show that the intersection  <math>
+                  <latex>\Intrsctn{V}{W}</latex>
+               </math> satisfies all requirements of a subvector space.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

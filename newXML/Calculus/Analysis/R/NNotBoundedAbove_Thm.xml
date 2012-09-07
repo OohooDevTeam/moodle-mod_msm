@@ -84,45 +84,43 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We argue by contradiction. Suppose <math>
-                     <latex>\NNr</latex>
-                  </math> has an upper bound in <math>
-                     <latex>\RNr</latex>
-                  </math>. Then <math>
-                     <latex>x:=\sup(N)</latex>
-                  </math> exists in <math>
-                     <latex>\NNr</latex>
-                  </math>. It 
+         <para>
+            <para.body>We argue by contradiction. Suppose <math>
+                  <latex>\NNr</latex>
+               </math> has an upper bound in <math>
+                  <latex>\RNr</latex>
+               </math>. Then <math>
+                  <latex>x:=\sup(N)</latex>
+               </math> exists in <math>
+                  <latex>\NNr</latex>
+               </math>. It 
 			<subordinate>
-                     <hot>follows</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_InfSupRecognize"/>
-                        <info>
-                           <para>
-                              <para.body>Look up the lemma which implies this property.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>follows</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_InfSupRecognize"/>
+                     <info>
+                        <para>
+                           <para.body>Look up the lemma which implies this property.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			that there exists <math>
-                     <latex>n\in \NNr</latex>
-                  </math> with <math>
-                     <latex> x-1 &lt; n </latex>
-                  </math>. But then</para.body>
-            </para>
-            <math.display>
-               <latex> x = (x-1) + 1 &lt; n+1 \in \NNr</latex>
-            </math.display>
-            <para>
-               <para.body>which means that <math>
-                     <latex>x</latex>
-                  </math> is not an upper bound of <math>
-                     <latex>\NNr</latex>
-                  </math>. This contradiction implies the claim.</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>n\in \NNr</latex>
+               </math> with <math>
+                  <latex> x-1 &lt; n </latex>
+               </math>. But then</para.body>
+         </para>
+         <math.display>
+            <latex> x = (x-1) + 1 &lt; n+1 \in \NNr</latex>
+         </math.display>
+         <para>
+            <para.body>which means that <math>
+                  <latex>x</latex>
+               </math> is not an upper bound of <math>
+                  <latex>\NNr</latex>
+               </math>. This contradiction implies the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

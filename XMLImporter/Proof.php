@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Proof
@@ -76,6 +76,8 @@ class Proof extends Element
 
         foreach ($this->proof_blocks as $proof_block)
         {
+//            print_object($proof_block);
+            
             if (empty($sibling_id))
             {
                 $proof_block->saveIntoDb($proof_block->position, $this->compid);
@@ -116,7 +118,7 @@ class Proof extends Element
                 $this->childs[] = $proofblock;
             }
         }
-        
+
         return $this;
     }
 
@@ -129,7 +131,7 @@ class Proof extends Element
         $content .= "proof";
         $content .= "</span>";
         $content .= "</li>";
-        
+
         $content .= "<div class='proof' id='proof-" . $this->compid . "' style='display:none;'>";
 
         foreach ($this->childs as $childComponent)

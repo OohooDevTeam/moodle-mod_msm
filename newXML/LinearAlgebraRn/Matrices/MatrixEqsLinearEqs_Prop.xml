@@ -76,30 +76,29 @@ A^{-1} \begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix}
    </statement.theorem>
    <proof>
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We 
+         <para>
+            <para.body>We 
 			<subordinate>
-                     <hot>know</hot>
-                     <companion>
-                        <unit.ref unitId="Info_MatrixEqsLinearEqs"/>
-                        <info>
-                           <para>
-                              <para.body>Review this equivalence.</para.body>
-                           </para>
-                        </info>
-                     </companion>
-                  </subordinate>
+                  <hot>know</hot>
+                  <companion>
+                     <unit.ref unitId="Info_MatrixEqsLinearEqs"/>
+                     <info>
+                        <para>
+                           <para.body>Review this equivalence.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </subordinate>
 			 that the given system of linear equations is equivalent to the matrix equation.</para.body>
-            </para>
-            <math.display>
-               <latex>\Mtrx{A}{\color{red} \Mtrx{X}} = \Mtrx{C}</latex>
-            </math.display>
-            <para>
-               <para.body>Now we can use properties of matrix multiplication to find that this matrix equation is equalent to</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </para>
+         <math.display>
+            <latex>\Mtrx{A}{\color{red} \Mtrx{X}} = \Mtrx{C}</latex>
+         </math.display>
+         <para>
+            <para.body>Now we can use properties of matrix multiplication to find that this matrix equation is equalent to</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \aligned
 \Mtrx{A}{\color{red} \Mtrx{X}}\ &amp;=\ \Mtrx{C} \\
@@ -110,11 +109,10 @@ A^{-1} \begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix}
 \endaligned
 				
 			</latex>
-            </math.display>
-            <para>
-               <para.body>The last identity means that the given system of linear equations has a unique solution, and this solution is given by the matrix product on the right as claimed.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>The last identity means that the given system of linear equations has a unique solution, and this solution is given by the matrix product on the right as claimed.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

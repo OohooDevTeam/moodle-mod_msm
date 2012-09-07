@@ -45,64 +45,62 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>Given an arbitrary matrix <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> in <math>
-                     <latex>M_{nn}</latex>
-                  </math>, we compute</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>F(\Mtrx{A})</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=	</latex>
-                     </math>
-                     <companion/>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{r\in\SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} F(\Mtrx{E}(r))</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sum_{r\in\SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} \sign(r) F(\IdMtrx[n])</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>F(\IdMtrx[n])\cdot\det(\Mtrx{A})</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>as was to be shown.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>Given an arbitrary matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> in <math>
+                  <latex>M_{nn}</latex>
+               </math>, we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>F(\Mtrx{A})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion/>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r\in\SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} F(\Mtrx{E}(r))</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r\in\SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} \sign(r) F(\IdMtrx[n])</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>F(\IdMtrx[n])\cdot\det(\Mtrx{A})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -24,67 +24,65 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>We begin by recalling the definitions</para.body>
-            </para>
-            <ul>
-               <li>
-                  <para>
-                     <para.body>The image of <math>
-                           <latex>L</latex>
-                        </math> consists of all those <math>
-                           <latex>\Vect{y}</latex>
-                        </math> in <math>
-                           <latex>\RNr[m]</latex>
-                        </math> for which the equation <math>
-                           <latex>L(\Vect{x} ) = \Vect{y}</latex>
-                        </math> has a solution.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>We know that, for each <math>
-                           <latex>\Vect{x}</latex>
-                        </math> in <math>
-                           <latex>\RNr[n]</latex>
-                        </math>, <math>
-                           <latex>L(\Vect{x}) = A\cdot \Vect{x}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-               <li>
-                  <para>
-                     <para.body>Thus the image of <math>
-                           <latex>L</latex>
-                        </math> consists of all those <math>
-                           <latex>\Vect{y} \in \RNr[m]</latex>
-                        </math> for which the matrix equation <math>
-                           <latex>\Mtrx{A}\Vect{x} = \Vect{y}</latex>
-                        </math> has a solution. Now, we 
+         <para>
+            <para.body>We begin by recalling the definitions</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>The image of <math>
+                        <latex>L</latex>
+                     </math> consists of all those <math>
+                        <latex>\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[m]</latex>
+                     </math> for which the equation <math>
+                        <latex>L(\Vect{x} ) = \Vect{y}</latex>
+                     </math> has a solution.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>We know that, for each <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, <math>
+                        <latex>L(\Vect{x}) = A\cdot \Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Thus the image of <math>
+                        <latex>L</latex>
+                     </math> consists of all those <math>
+                        <latex>\Vect{y} \in \RNr[m]</latex>
+                     </math> for which the matrix equation <math>
+                        <latex>\Mtrx{A}\Vect{x} = \Vect{y}</latex>
+                     </math> has a solution. Now, we 
 				<subordinate>
-                           <hot>know</hot>
-                           <crossref>
-                              <theorem.ref theoremID="Thm_ColumnSpaceLinearEq"/>
-                              <info>
-                                 <para>
-                                    <para.body>Look up this fact.</para.body>
-                                 </para>
-                              </info>
-                           </crossref>
-                        </subordinate>
+                        <hot>know</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_ColumnSpaceLinearEq"/>
+                           <info>
+                              <para>
+                                 <para.body>Look up this fact.</para.body>
+                              </para>
+                           </info>
+                        </crossref>
+                     </subordinate>
 				that this matrix equation has a solution if and only if <math>
-                           <latex>\Vect{y}</latex>
-                        </math> is in the column space of <math>
-                           <latex>\Mtrx{A}</latex>
-                        </math>.</para.body>
-                  </para>
-               </li>
-            </ul>
-            <para>
-               <para.body>This is what we wanted to show.</para.body>
-            </para>
-         </proof.block.body>
+                        <latex>\Vect{y}</latex>
+                     </math> is in the column space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>This is what we wanted to show.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

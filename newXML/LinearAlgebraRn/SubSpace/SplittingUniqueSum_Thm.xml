@@ -26,108 +26,106 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>From the property that <math>
-                     <latex>W=\span(U\cup V)</latex>
-                  </math>, we deduce that <math>
-                     <latex>\Vect{w}\in W</latex>
-                  </math> can be expressed in some way as <math>
-                     <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex>
-                  </math> with <math>
-                     <latex>\Vect{u}\in U</latex>
-                  </math> and <math>
-                     <latex>\Vect{v}\in V</latex>
-                  </math>. It remains to show that this is the only way to achieve such an expression. So consider the situation where there are <math>
-                     <latex>\Vect{u},\Vect{u}'\in U</latex>
-                  </math> and <math>
-                     <latex>\Vect{v},\Vect{v}'\in V</latex>
-                  </math> with</para.body>
-            </para>
-            <math.display>
-               <latex>\Vect{u} + \Vect{v} = \Vect{w} = \Vect{u}' + \Vect{v}'</latex>
-            </math.display>
-            <para>
-               <para.body>We then have</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{u} - \Vect{u}'</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{v}' - \Vect{v}</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>Now <math>
-                     <latex>(\Vect{u}-\Vect{u}')\in U</latex>
-                  </math> because <math>
-                     <latex>U</latex>
-                  </math> is closed under vector addition and scalar multiplication, and <math>
-                     <latex>(\Vect{v}'-\Vect{v})\in V</latex>
-                  </math> because <math>
-                     <latex>V</latex>
-                  </math> is closed under vector addition and scalar multiplication. This means that <math>
-                     <latex>(\Vect{u}-\Vect{u}')</latex>
-                  </math> belongs to both, <math>
-                     <latex>U</latex>
-                  </math> and <math>
-                     <latex>V</latex>
-                  </math> and, therefore,</para.body>
-            </para>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{u} - \Vect{u}'</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{0}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{u}</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\Vect{u}'</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-            <para>
-               <para.body>The identity <math>
-                     <latex>\Vect{v}=\Vect{v}'</latex>
-                  </math> follows with a similar argument. This proves the claim.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>From the property that <math>
+                  <latex>W=\span(U\cup V)</latex>
+               </math>, we deduce that <math>
+                  <latex>\Vect{w}\in W</latex>
+               </math> can be expressed in some way as <math>
+                  <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex>
+               </math> with <math>
+                  <latex>\Vect{u}\in U</latex>
+               </math> and <math>
+                  <latex>\Vect{v}\in V</latex>
+               </math>. It remains to show that this is the only way to achieve such an expression. So consider the situation where there are <math>
+                  <latex>\Vect{u},\Vect{u}'\in U</latex>
+               </math> and <math>
+                  <latex>\Vect{v},\Vect{v}'\in V</latex>
+               </math> with</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{u} + \Vect{v} = \Vect{w} = \Vect{u}' + \Vect{v}'</latex>
+         </math.display>
+         <para>
+            <para.body>We then have</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{u} - \Vect{u}'</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{v}' - \Vect{v}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Now <math>
+                  <latex>(\Vect{u}-\Vect{u}')\in U</latex>
+               </math> because <math>
+                  <latex>U</latex>
+               </math> is closed under vector addition and scalar multiplication, and <math>
+                  <latex>(\Vect{v}'-\Vect{v})\in V</latex>
+               </math> because <math>
+                  <latex>V</latex>
+               </math> is closed under vector addition and scalar multiplication. This means that <math>
+                  <latex>(\Vect{u}-\Vect{u}')</latex>
+               </math> belongs to both, <math>
+                  <latex>U</latex>
+               </math> and <math>
+                  <latex>V</latex>
+               </math> and, therefore,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{u} - \Vect{u}'</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{u}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{u}'</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The identity <math>
+                  <latex>\Vect{v}=\Vect{v}'</latex>
+               </math> follows with a similar argument. This proves the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

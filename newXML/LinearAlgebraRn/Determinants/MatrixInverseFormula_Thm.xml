@@ -40,18 +40,17 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <proof.block.body>
-            <para>
-               <para.body>From the matrix equation <math>
-                     <latex>\Mtrx{A} \Mtrx{X} = \IdMtrx[n]</latex>
-                  </math>, we deduce in particular that the  <math>
-                     <latex>j</latex>
-                  </math>-th column of <math>
-                     <latex>\Mtrx{X}</latex>
-                  </math> solves the system of linear equations</para.body>
-            </para>
-            <math.display>
-               <latex>
+         <para>
+            <para.body>From the matrix equation <math>
+                  <latex>\Mtrx{A} \Mtrx{X} = \IdMtrx[n]</latex>
+               </math>, we deduce in particular that the  <math>
+                  <latex>j</latex>
+               </math>-th column of <math>
+                  <latex>\Mtrx{X}</latex>
+               </math> solves the system of linear equations</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \begin{bmatrix}
 a_{11} &amp; \dots &amp; a_{1n} \\
@@ -66,12 +65,12 @@ x_{1j} \\ \vdots \\ x_{nj}
 \end{bmatrix}
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>From Cramer’s rule we obtain</para.body>
-            </para>
-            <math.display>
-               <latex>
+         </math.display>
+         <para>
+            <para.body>From Cramer’s rule we obtain</para.body>
+         </para>
+         <math.display>
+            <latex>
 				
 \aligned
 x_{ij}\ &amp;=\ \dfrac{\text{det}\,
@@ -90,11 +89,10 @@ a_{n1} &amp; \dots &amp; a_{ni-1} &amp; a_{ni} &amp; a_{ni+1} &amp; \dots &amp; 
 
 
 			</latex>
-            </math.display>
-            <para>
-               <para.body>This is exactly the claim.</para.body>
-            </para>
-         </proof.block.body>
+         </math.display>
+         <para>
+            <para.body>This is exactly the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>
