@@ -187,18 +187,21 @@ abstract class Element
 
         $medias = $DomElement->getElementsByTagName('media');
 //        $mlength = $medias->length;
-        
+
         $mlength = $medias->length;
 
         //to eliminate any nested subordinates from being counted when getting the length of the subordinates
         foreach ($medias as $m)
         {
-            if (($m->parentNode->parentNode->parentNode->tagName == 'info') &&($DomElement->tagName != 'info'))
+            if ($m->parentNode->parentNode->parentNode->nodeType == XML_ELEMENT_NODE)
             {
-                $mlength--;
+                if (($m->parentNode->parentNode->parentNode->tagName == 'info') && ($DomElement->tagName != 'info'))
+                {
+                    $mlength--;
+                }
             }
         }
-        
+
         for ($i = 0; $i < $mlength; $i++)
         {
             $position = $position + 1;
@@ -206,6 +209,7 @@ abstract class Element
             $media->loadFromXml($medias->item($i), $position);
             $arrayOfMedia[] = $media;
         }
+
         return $arrayOfMedia;
     }
 
@@ -223,7 +227,6 @@ abstract class Element
         $arrayOfMathArray = array();
 
         $position = $position + 1;
-
         $matharrays = $DomElement->getElementsByTagName('math.array');
         $matharraylength = $matharrays->length;
         for ($i = 0; $i < $matharraylength; $i++)

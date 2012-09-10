@@ -43,12 +43,9 @@ class ProofBlock extends Element
 
 
         $this->position = $position;
-//        $this->proof_block_bodys = array();
-
         $this->logic_types = array();
         $this->proof_logics = array();
-        $this->proof_block_content = array();
-        $this->proof_block_body = array();
+        $this->proof_block_bodys = array();
         $this->captions = array();
 
         $this->indexauthors = array();
@@ -62,9 +59,22 @@ class ProofBlock extends Element
         $doc = new DOMDocument();
         @$doc->loadXML($DomElement);
 
+        // index is used to group the appropriate logic/captiona and proof.block.body for the
+        // specified proof.block
+        // The index number is necessary becasue there are instances of proof.block that does not
+        // have logic or caption but it always has a proof.block.body.
         $index = 0;
+        
+        // temporaray variable to collect all the proof.block.body of one proof.block
+        // the values of sectionedContent will be copied to proof_block_bodys property of object of this class
         $sectionedContent = '';
 
+        $newProofblockNode = $doc->createElementNS('Theorem', 'proof.block');
+        // initial declaration of proofblockbodyNode
+        $proofblockbodyNode = $doc->createElementNS('Theorem', 'proof.block.body');
+
+        // because the transformed XML does not have the proper structure,
+        // this part of the code restructures the XML to make the content processing easier        
         foreach ($DomElement->childNodes as $child)
         {
 
@@ -73,8 +83,43 @@ class ProofBlock extends Element
 
                 if ($child->tagName == 'logic')
                 {
+                    // append the proofblockbodyNode to new proof.block node
+                    // when a new logic element is read
+                    $newProofblockNode->appendChild($proofblockbodyNode);
+                    // need to create a new proofblockbodyNode
+                    $proofblockbodyNode = $doc->createElementNS('Theorem', 'proof.block.body');
+                    $childElement = $doc->importNode($child, true);
+                    $newProofblockNode->appendChild($childElement);
+                }
+                else if ($child->tagName == 'caption')
+                {
+                    $childElement = $doc->importNode($child, true);
+                    $newProofblockNode->appendChild($childElement);
+                }
+                else
+                {
+
+                    $childElement = $doc->importNode($child, true);
+                    $proofblockbodyNode->appendChild($childElement);
+                }
+            }
+        }
+        // appending the last proffblockbodyNode (since there are no more logic elements to trigger appending) 
+        $newProofblockNode->appendChild($proofblockbodyNode);
+        $doc->appendChild($newProofblockNode);
+
+        $rootElement = $doc->documentElement; // new proof.block element
+        // parsing the new XML document
+//        $newdoc = new DOMDocument();
+
+        foreach ($rootElement->childNodes as $child)
+        {
+            if ($child->nodeType == XML_ELEMENT_NODE)
+            {
+                if ($child->tagName == 'logic')
+                {
                     $index++;
-                    $this->proof_block_content[$index] = $sectionedContent;
+                    $this->proof_block_bodys[$index] = $sectionedContent;
                     $sectionedContent = '';
                     $element = $doc->importNode($child, true);
                     $this->logic_types[$index] = $element->getAttribute('type');
@@ -84,7 +129,7 @@ class ProofBlock extends Element
                 {
                     $this->captions[$index] = $this->getContent($child);
                 }
-                else
+                else if ($child->tagName == 'proof.block.body')
                 {
                     foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
                     {
@@ -126,7 +171,7 @@ class ProofBlock extends Element
                     }
                 }
             }
-            $this->proof_block_content[$index] = $sectionedContent;
+            $this->proof_block_bodys[$index] = $sectionedContent;
         }
     }
 
@@ -140,7 +185,7 @@ class ProofBlock extends Element
         global $DB;
         $data = new stdClass();
 
-        foreach ($this->proof_block_content as $key => $content)
+        foreach ($this->proof_block_bodys as $key => $content)
         {
             if (isset($this->logic_types[$key]))
             {
@@ -150,7 +195,7 @@ class ProofBlock extends Element
                 $data->caption = $this->captions[$key];
 
                 $this->id = $DB->insert_record('msm_proof_block', $data);
-//
+
                 $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
                 $siblingid = $compid;
 

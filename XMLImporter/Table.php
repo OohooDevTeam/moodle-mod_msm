@@ -318,58 +318,6 @@ class Table extends Element
             }
         }
         return $this;
-
-//        $doc = new DOMDocument;
-//
-//        @$doc->loadXML($this->table_content);
-//
-//        $table = $doc->getElementsByTagName('table')->item(0);
-//        $trs = $doc->getElementsByTagName('tr');
-//
-//        $border = $table->getAttribute('border');
-//        $cellpadding = $table->getAttribute('cellpadding');
-//
-//        if (empty($border))
-//        {
-//            $border = 0;
-//        }
-//        if (empty($cellpadding))
-//        {
-//           $cellpadding = 0;
-//        }
-//
-//        $newcontent .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
-//
-//        foreach ($trs as $tr)
-//        {
-//            $newcontent .= "<tr>";
-//            foreach ($tr->childNodes as $grandChild)
-//            {
-//                if ($grandChild->nodeType == XML_ELEMENT_NODE)
-//                {
-//                    if ($grandChild->tagName == 'td')
-//                    {
-//                        $newcontent .= "<td style='border-width:" . $border . "px !important;'>";
-//                        foreach ($grandChild->childNodes as $content)
-//                        {
-//                            $newcontent .= $doc->saveXML($content);
-//                        }
-//                        $newcontent .= "</td>";
-//                    }
-//                }
-//                else
-//                {
-//                    $newcontent .= $doc->saveXML($grandChild);
-//                }
-//            }
-//            $newcontent .= "</tr>";
-//        }
-//
-//        $newcontent .= "</table>";
-//
-//        $this->table_content = $newcontent;
-//
-//        return $this;
     }
 
     function displayhtml()
