@@ -23,6 +23,8 @@ class ImgArea extends Element
 {
 
     public $position;
+    public $shape;
+    public $coords;
 
     function __construct($xmlpath = '')
     {
@@ -268,7 +270,7 @@ class ImgArea extends Element
         if (!empty($imgAreaRecord))
         {
             $this->shape = $imgAreaRecord->shape;
-            $this->coordinates - $imgAreaReecord->coords;
+            $this->coordinates = $imgAreaRecord->coordinates;
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
@@ -294,7 +296,16 @@ class ImgArea extends Element
 
     function displayhtml()
     {
-        $content .= '';
+        $content = '';
+        
+        $content .= "<area id='pic-" . $this->infos[0]->compid . "' coords='" . $this->coordinates . "' shape='" . $this->shape . "' href='#' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+        
+        foreach($this->infos as $info)
+        {
+            $content .= $info->displayhtml();
+        }
+        $content .= "</area>";
+       
 
         return $content;
     }

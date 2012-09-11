@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of MathImg
@@ -23,7 +23,6 @@ class MathImg extends Element
 {
 
     public $position;
-  
 
     function __construct($xmlpath = '')
     {
@@ -71,6 +70,7 @@ class MathImg extends Element
     function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB, $CFG;
+
         $data = new stdClass();
         $data->string_id = $this->string_id;
 
@@ -102,7 +102,6 @@ class MathImg extends Element
         $elementPositions = array();
         $sibling_id = null;
 
-
         if (!empty($this->imageareas))
         {
             foreach ($this->imageareas as $key => $imagearea)
@@ -113,7 +112,7 @@ class MathImg extends Element
 
         asort($elementPositions);
 
-        foreach ($elementPositions as $element)
+        foreach ($elementPositions as $element => $value)
         {
             switch ($element)
             {
@@ -178,41 +177,46 @@ class MathImg extends Element
 
         if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
         {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
         }
-        else if((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
+        else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
         {
-            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
         }
-        else if ((!empty($this->width)) && ($inline == '0'))
+        else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '0'))
         {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
         }
-        else if((!empty($this->width)) && ($inline == '1'))
+        else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '1'))
         {
-            $content .= "<img src='" . $this->src . "' height='200' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+            $content .= "<img src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
         }
-        else if ((!empty($this->height)) && ($inline == '0'))
+        else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '0'))
         {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350' name='#" . $filename[0] . "'/>";
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "'/>";
         }
-        else if((!empty($this->height)) && ($inline == '1'))
+        else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '1'))
         {
-             $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350' name='#" . $filename[0] . "'/>";
+            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "'/>";
         }
-        else if ($inline == '0')
+        else if ((empty($this->width)) && (empty($this->height)) &&($inline == '0'))
         {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350' name='#$filename[0]'/>";
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
         }
-        else
+        else if ((empty($this->width)) && (empty($this->height)) &&($inline == '1'))
         {
-            $content .= "<img src='" . $this->src . "' height='200' width='350' name='#$filename[0]'/>";
+            $content .= "<img src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
         }
 
-//        foreach ($this->imageareas as $imagearea)
-//        {
-//            $content .= $imagearea->displayhtml();
-//        }
+        if (!empty($this->imageareas))
+        {
+            $content .= "<map name='" . $filename[0] . "'>";
+            foreach ($this->imageareas as $imagearea)
+            {
+                $content .= $imagearea->displayhtml();
+            }
+            $content .= "</map>";
+        }
 
         return $content;
     }

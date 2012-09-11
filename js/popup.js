@@ -263,6 +263,69 @@ function popup(i) {
             $('#dialog-'+i).dialog('close');
         });
     });
+    
+    $('#pic-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#pic-'+i).mousemove(function () {
+            $('img').mapster('highlight',false);
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#pic-'+i).mouseout(function(){               
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#pic-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#pic-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#pic-'+i).mouseout(function(){            
+            $('img').mapster('highlight',false);
+            $('#dialog-'+i).dialog('close'); 
+        });
+    });
+    
+    $('#copypic-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copypic-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copypic-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open'); 
+        });
+    
+    });
+                
+    $('#copypic-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copypic-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copypic-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+    });
+ 
  
 }
 

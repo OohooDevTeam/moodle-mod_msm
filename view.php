@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -23,9 +22,9 @@
  * You can have a rather longer description of the file as well,
  * if you like, and it can span multiple lines.
  * 
- **************************************************************************
- **                              MSM                                     **
- **************************************************************************
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
  * @package     mod                                                      **
  * @subpackage  msm                                                      **
  * @name        msm                                                      **
@@ -33,9 +32,8 @@
  * @link        http://ualberta.ca                                       **
  * @author      Ga Young Kim                                             **
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
- **************************************************************************
- **************************************************************************/
- 
+ * *************************************************************************
+ * ************************************************************************ */
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 require_once(dirname(__FILE__) . '/lib.php');
 require_once(dirname(__FILE__) . '/XMLImporter/Compositor.php');
@@ -116,10 +114,12 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/Msm
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
 
+echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jImageMaster/dist/jquery.imagemapster.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
+
 
 //echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
 
@@ -156,7 +156,7 @@ $stack = array_reverse($stack); // needed to access the contents in proper order
 
 foreach ($stack as $key => $record)
 {
-    $string .= $record->id . "/" . $record->unit_id ."/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
+    $string .= $record->id . "/" . $record->unit_id . "/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
 }
 
 
@@ -184,11 +184,18 @@ $content .= "</div>";
 $content .= "
     <script type='text/javascript'>
     jQuery(document).ready(function(){
+    
+        $('img').mapster({
+             fillColor: 'ff0000',
+             fillOpacity: 0.5
+        });  
+         
          $('.dialogs').dialog({
               autoOpen: false,
               width: 'auto'
          });
          
+      
          $('#features').jshowoff({
               autoplay:false,
               links:false                  

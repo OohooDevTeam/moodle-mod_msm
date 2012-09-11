@@ -64,7 +64,7 @@ class ProofBlock extends Element
         // The index number is necessary becasue there are instances of proof.block that does not
         // have logic or caption but it always has a proof.block.body.
         $index = 0;
-        
+
         // temporaray variable to collect all the proof.block.body of one proof.block
         // the values of sectionedContent will be copied to proof_block_bodys property of object of this class
         $sectionedContent = '';
@@ -193,197 +193,6 @@ class ProofBlock extends Element
                 $data->proof_logic = $this->proof_logics[$key];
                 $data->proof_content = $content;
                 $data->caption = $this->captions[$key];
-
-                $this->id = $DB->insert_record('msm_proof_block', $data);
-
-                $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
-                $siblingid = $compid;
-
-                $elementPositions = array();
-                $sibling_id = null;
-
-                if (!empty($this->subordinates[$key]))
-                {
-                    foreach ($this->subordinates[$key] as $secondKey => $subordinate)
-                    {
-                        $elementPositions['subordinate' . '-' . $secondKey] = $subordinate->position;
-                    }
-                }
-
-                if (!empty($this->indexauthors[$key]))
-                {
-                    foreach ($this->indexauthors[$key] as $secondKey => $indexauthor)
-                    {
-                        $elementPositions['indexauthor' . '-' . $secondKey] = $indexauthor->position;
-                    }
-                }
-
-                if (!empty($this->indexglossarys[$key]))
-                {
-                    foreach ($this->indexglossarys[$key] as $secondKey => $indexglosary)
-                    {
-                        $elementPositions['indexglossary' . '-' . $secondKey] = $indexglosary->position;
-                    }
-                }
-
-                if (!empty($this->indexsymbols[$key]))
-                {
-                    foreach ($this->indexsymbols[$key] as $secondKey => $indexsymbol)
-                    {
-                        $elementPositions['indexsymbol' . '-' . $secondKey] = $indexsymbol->position;
-                    }
-                }
-
-                if (!empty($this->medias[$key]))
-                {
-                    foreach ($this->medias[$key] as $secondKey => $media)
-                    {
-                        $elementPositions['media' . '-' . $secondKey] = $media->position;
-                    }
-                }
-
-                if (!empty($this->matharrays[$key]))
-                {
-                    foreach ($this->matharrays[$key] as $secondKey => $matharray)
-                    {
-                        $elementPositions['matharray' . '-' . $secondKey] = $matharray->position;
-                    }
-                }
-
-                if (!empty($this->tables[$key]))
-                {
-                    foreach ($this->tables[$key] as $secondKey => $table)
-                    {
-                        $elementPositions['table' . '-' . $secondKey] = $table->position;
-                    }
-                }
-
-                asort($elementPositions);
-
-                foreach ($elementPositions as $element => $value)
-                {
-                    switch ($element)
-                    {
-                        case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-                            $subordinateString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $subordinate = $this->subordinates[$key][$subordinateString[1]];
-                                $subordinate->saveIntoDb($subordinate->position, $compid);
-                                $sibling_id = $subordinate->compid;
-                            }
-                            else
-                            {
-                                $subordinate = $this->subordinates[$key][$subordinateString[1]];
-                                $subordinate->saveIntoDb($subordinate->position, $compid, $sibling_id);
-                                $sibling_id = $subordinate->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
-                            $indexauthorString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
-                                $indexauthor->saveIntoDb($indexauthor->position, $compid);
-                                $sibling_id = $indexauthor->compid;
-                            }
-                            else
-                            {
-                                $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
-                                $indexauthor->saveIntoDb($indexauthor->position, $compid, $sibling_id);
-                                $sibling_id = $indexauthor->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
-                            $indexsymbolString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
-                                $indexsymbol->saveIntoDb($indexsymbol->position, $compid);
-                                $sibling_id = $indexsymbol->compid;
-                            }
-                            else
-                            {
-                                $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
-                                $indexsymbol->saveIntoDb($indexsymbol->position, $compid, $sibling_id);
-                                $sibling_id = $indexsymbol->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
-                            $indexglossaryString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
-                                $indexglossary->saveIntoDb($indexglossary->position, $compid);
-                                $sibling_id = $indexglossary->compid;
-                            }
-                            else
-                            {
-                                $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
-                                $indexglossary->saveIntoDb($indexglossary->position, $compid, $sibling_id);
-                                $sibling_id = $indexglossary->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-                            $mediaString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $media = $this->medias[$key][$mediaString[1]];
-                                $media->saveIntoDb($media->position, $compid);
-                                $sibling_id = $media->compid;
-                            }
-                            else
-                            {
-                                $media = $this->medias[$key][$mediaString[1]];
-                                $media->saveIntoDb($media->position, $compid, $sibling_id);
-                                $sibling_id = $media->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
-                            $matharrayString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $matharray = $this->matharrays[$key][$matharrayString[1]];
-                                $matharray->saveIntoDb($matharray->position, $compid);
-                                $sibling_id = $matharray->compid;
-                            }
-                            else
-                            {
-                                $matharray = $this->matharrays[$key][$matharrayString[1]];
-                                $matharray->saveIntoDb($matharray->position, $compid, $sibling_id);
-                                $sibling_id = $matharray->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(table.\d+)$/", $element) ? true : false):
-                            $tableString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $table = $this->tables[$key][$tableString[1]];
-                                $table->saveIntoDb($table->position, $compid);
-                                $sibling_id = $table->compid;
-                            }
-                            else
-                            {
-                                $table = $this->tables[$key][$tableString[1]];
-                                $table->saveIntoDb($table->position, $compid, $sibling_id);
-                                $sibling_id = $table->compid;
-                            }
-                            break;
-                    }
-                }
             }
             else
             {
@@ -391,413 +200,200 @@ class ProofBlock extends Element
                 $data->proof_logic = null;
                 $data->proof_content = $content;
                 $data->caption = null;
+            }
 
-                $this->id = $DB->insert_record('msm_proof_block', $data);
-//
-                $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
-                $siblingid = $compid;
+            $this->id = $DB->insert_record('msm_proof_block', $data);
 
+            $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
+            $siblingid = $compid;
 
-                $elementPositions = array();
-                $sibling_id = null;
+            $elementPositions = array();
+            $sibling_id = null;
 
-                if (!empty($this->subordinates[$key]))
+            if (!empty($this->subordinates[$key]))
+            {
+                foreach ($this->subordinates[$key] as $secondKey => $subordinate)
                 {
-                    foreach ($this->subordinates[$key] as $secondKey => $subordinate)
-                    {
-                        $elementPositions['subordinate' . '-' . $secondKey] = $subordinate->position;
-                    }
-                }
-
-                if (!empty($this->indexauthors[$key]))
-                {
-                    foreach ($this->indexauthors[$key] as $secondKey => $indexauthor)
-                    {
-                        $elementPositions['indexauthor' . '-' . $secondKey] = $indexauthor->position;
-                    }
-                }
-
-                if (!empty($this->indexglossarys[$key]))
-                {
-                    foreach ($this->indexglossarys[$key] as $secondKey => $indexglosary)
-                    {
-                        $elementPositions['indexglossary' . '-' . $secondKey] = $indexglosary->position;
-                    }
-                }
-
-                if (!empty($this->indexsymbols[$key]))
-                {
-                    foreach ($this->indexsymbols[$key] as $secondKey => $indexsymbol)
-                    {
-                        $elementPositions['indexsymbol' . '-' . $secondKey] = $indexsymbol->position;
-                    }
-                }
-
-                if (!empty($this->medias[$key]))
-                {
-                    foreach ($this->medias[$key] as $secondKey => $media)
-                    {
-                        $elementPositions['media' . '-' . $secondKey] = $media->position;
-                    }
-                }
-
-                if (!empty($this->matharrays[$key]))
-                {
-                    foreach ($this->matharrays[$key] as $secondKey => $matharray)
-                    {
-                        $elementPositions['matharray' . '-' . $secondKey] = $matharray->position;
-                    }
-                }
-
-                if (!empty($this->tables[$key]))
-                {
-                    foreach ($this->tables[$key] as $secondKey => $table)
-                    {
-                        $elementPositions['table' . '-' . $secondKey] = $table->position;
-                    }
-                }
-
-                asort($elementPositions);
-
-                foreach ($elementPositions as $element => $value)
-                {
-                    switch ($element)
-                    {
-                        case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-                            $subordinateString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $subordinate = $this->subordinates[$key][$subordinateString[1]];
-                                $subordinate->saveIntoDb($subordinate->position, $compid);
-                                $sibling_id = $subordinate->compid;
-                            }
-                            else
-                            {
-                                $subordinate = $this->subordinates[$key][$subordinateString[1]];
-                                $subordinate->saveIntoDb($subordinate->position, $compid, $sibling_id);
-                                $sibling_id = $subordinate->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
-                            $indexauthorString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
-                                $indexauthor->saveIntoDb($indexauthor->position, $compid);
-                                $sibling_id = $indexauthor->compid;
-                            }
-                            else
-                            {
-                                $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
-                                $indexauthor->saveIntoDb($indexauthor->position, $compid, $sibling_id);
-                                $sibling_id = $indexauthor->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
-                            $indexsymbolString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
-                                $indexsymbol->saveIntoDb($indexsymbol->position, $compid);
-                                $sibling_id = $indexsymbol->compid;
-                            }
-                            else
-                            {
-                                $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
-                                $indexsymbol->saveIntoDb($indexsymbol->position, $compid, $sibling_id);
-                                $sibling_id = $indexsymbol->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
-                            $indexglossaryString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
-                                $indexglossary->saveIntoDb($indexglossary->position, $compid);
-                                $sibling_id = $indexglossary->compid;
-                            }
-                            else
-                            {
-                                $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
-                                $indexglossary->saveIntoDb($indexglossary->position, $compid, $sibling_id);
-                                $sibling_id = $indexglossary->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-                            $mediaString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $media = $this->medias[$key][$mediaString[1]];
-                                $media->saveIntoDb($media->position, $compid);
-                                $sibling_id = $media->compid;
-                            }
-                            else
-                            {
-                                $media = $this->medias[$key][$mediaString[1]];
-                                $media->saveIntoDb($media->position, $compid, $sibling_id);
-                                $sibling_id = $media->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
-                            $matharrayString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $matharray = $this->matharrays[$key][$matharrayString[1]];
-                                $matharray->saveIntoDb($matharray->position, $compid);
-                                $sibling_id = $matharray->compid;
-                            }
-                            else
-                            {
-                                $matharray = $this->matharrays[$key][$matharrayString[1]];
-                                $matharray->saveIntoDb($matharray->position, $compid, $sibling_id);
-                                $sibling_id = $matharray->compid;
-                            }
-                            break;
-
-                        case(preg_match("/^(table.\d+)$/", $element) ? true : false):
-                            $tableString = split('-', $element);
-
-                            if (empty($sibling_id))
-                            {
-                                $table = $this->tables[$key][$tableString[1]];
-                                $table->saveIntoDb($table->position, $compid);
-                                $sibling_id = $table->compid;
-                            }
-                            else
-                            {
-                                $table = $this->tables[$key][$tableString[1]];
-                                $table->saveIntoDb($table->position, $compid, $sibling_id);
-                                $sibling_id = $table->compid;
-                            }
-                            break;
-                    }
+                    $elementPositions['subordinate' . '-' . $secondKey] = $subordinate->position;
                 }
             }
+
+            if (!empty($this->indexauthors[$key]))
+            {
+                foreach ($this->indexauthors[$key] as $secondKey => $indexauthor)
+                {
+                    $elementPositions['indexauthor' . '-' . $secondKey] = $indexauthor->position;
+                }
+            }
+
+            if (!empty($this->indexglossarys[$key]))
+            {
+                foreach ($this->indexglossarys[$key] as $secondKey => $indexglosary)
+                {
+                    $elementPositions['indexglossary' . '-' . $secondKey] = $indexglosary->position;
+                }
+            }
+
+            if (!empty($this->indexsymbols[$key]))
+            {
+                foreach ($this->indexsymbols[$key] as $secondKey => $indexsymbol)
+                {
+                    $elementPositions['indexsymbol' . '-' . $secondKey] = $indexsymbol->position;
+                }
+            }
+
+            if (!empty($this->medias[$key]))
+            {
+                foreach ($this->medias[$key] as $secondKey => $media)
+                {
+                    $elementPositions['media' . '-' . $secondKey] = $media->position;
+                }
+            }
+
+            if (!empty($this->matharrays[$key]))
+            {
+                foreach ($this->matharrays[$key] as $secondKey => $matharray)
+                {
+                    $elementPositions['matharray' . '-' . $secondKey] = $matharray->position;
+                }
+            }
+
+            if (!empty($this->tables[$key]))
+            {
+                foreach ($this->tables[$key] as $secondKey => $table)
+                {
+                    $elementPositions['table' . '-' . $secondKey] = $table->position;
+                }
+            }
+
+            asort($elementPositions);
+
+            foreach ($elementPositions as $element => $value)
+            {
+                switch ($element)
+                {
+                    case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
+                        $subordinateString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $subordinate = $this->subordinates[$key][$subordinateString[1]];
+                            $subordinate->saveIntoDb($subordinate->position, $compid);
+                            $sibling_id = $subordinate->compid;
+                        }
+                        else
+                        {
+                            $subordinate = $this->subordinates[$key][$subordinateString[1]];
+                            $subordinate->saveIntoDb($subordinate->position, $compid, $sibling_id);
+                            $sibling_id = $subordinate->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
+                        $indexauthorString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
+                            $indexauthor->saveIntoDb($indexauthor->position, $compid);
+                            $sibling_id = $indexauthor->compid;
+                        }
+                        else
+                        {
+                            $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
+                            $indexauthor->saveIntoDb($indexauthor->position, $compid, $sibling_id);
+                            $sibling_id = $indexauthor->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
+                        $indexsymbolString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
+                            $indexsymbol->saveIntoDb($indexsymbol->position, $compid);
+                            $sibling_id = $indexsymbol->compid;
+                        }
+                        else
+                        {
+                            $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
+                            $indexsymbol->saveIntoDb($indexsymbol->position, $compid, $sibling_id);
+                            $sibling_id = $indexsymbol->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
+                        $indexglossaryString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
+                            $indexglossary->saveIntoDb($indexglossary->position, $compid);
+                            $sibling_id = $indexglossary->compid;
+                        }
+                        else
+                        {
+                            $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
+                            $indexglossary->saveIntoDb($indexglossary->position, $compid, $sibling_id);
+                            $sibling_id = $indexglossary->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(media.\d+)$/", $element) ? true : false):
+                        $mediaString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $media = $this->medias[$key][$mediaString[1]];
+                            $media->saveIntoDb($media->position, $compid);
+                            $sibling_id = $media->compid;
+                        }
+                        else
+                        {
+                            $media = $this->medias[$key][$mediaString[1]];
+                            $media->saveIntoDb($media->position, $compid, $sibling_id);
+                            $sibling_id = $media->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                        $matharrayString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $matharray = $this->matharrays[$key][$matharrayString[1]];
+                            $matharray->saveIntoDb($matharray->position, $compid);
+                            $sibling_id = $matharray->compid;
+                        }
+                        else
+                        {
+                            $matharray = $this->matharrays[$key][$matharrayString[1]];
+                            $matharray->saveIntoDb($matharray->position, $compid, $sibling_id);
+                            $sibling_id = $matharray->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                        $tableString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $table = $this->tables[$key][$tableString[1]];
+                            $table->saveIntoDb($table->position, $compid);
+                            $sibling_id = $table->compid;
+                        }
+                        else
+                        {
+                            $table = $this->tables[$key][$tableString[1]];
+                            $table->saveIntoDb($table->position, $compid, $sibling_id);
+                            $sibling_id = $table->compid;
+                        }
+                        break;
+                }
+            }
+            $this->compid = $compid;
         }
-
-        $this->compid = $compid;
-
-//        foreach ($this->proof_block_bodys as $pbb)
-//        {
-//            $data = new stdClass();
-//            if (!empty($pbb->proof_logic))
-//            {
-//                $data->proof_logic = $pbb->proof_logic;
-//            }
-//            if (!empty($pbb->logic_type))
-//            {
-//                $data->logic_type = $pbb->logic_type;
-//            }
-//            if (!empty($pbb->caption))
-//            {
-//                $data->caption = $pbb->caption;
-//            }
-//            if (!empty($pbb->proof_block_content))
-//            {
-//                $data->proof_content = $pbb->proof_block_content;
-//            }
-//
-//            $this->id = $DB->insert_record('msm_proof_block', $data);
-//
-//            $this->compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
-//            $siblingid = $this->compid;
-//        $elementPositions = array();
-//        $sibling_id = null;
-//
-//        if (!empty($this->subordinates))
-//        {
-//            foreach ($this->subordinates as $key => $subordinate)
-//            {
-//                $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
-//            }
-//        }
-//
-//        if (!empty($this->indexauthors))
-//        {
-//            foreach ($this->indexauthors as $key => $indexauthor)
-//            {
-//                $elementPositions['indexauthor' . '-' . $key] = $indexauthor->position;
-//            }
-//        }
-//
-//        if (!empty($this->indexglossarys))
-//        {
-//            foreach ($this->indexglossarys as $key => $indexglosary)
-//            {
-//                $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
-//            }
-//        }
-//
-//        if (!empty($this->indexsymbols))
-//        {
-//            foreach ($this->indexsymbols as $key => $indexsymbol)
-//            {
-//                $elementPositions['indexsymbol' . '-' . $key] = $indexsymbol->position;
-//            }
-//        }
-//
-//        if (!empty($this->medias))
-//        {
-//            foreach ($this->medias as $key => $media)
-//            {
-//                $elementPositions['media' . '-' . $key] = $media->position;
-//            }
-//        }
-//
-//        if (!empty($this->matharrays))
-//        {
-//            foreach ($this->matharrays as $key => $matharray)
-//            {
-//                $elementPositions['matharray' . '-' . $key] = $matharray->position;
-//            }
-//        }
-//
-//        if (!empty($this->tables))
-//        {
-//            foreach ($this->tables as $key => $table)
-//            {
-//                $elementPositions['table' . '-' . $key] = $table->position;
-//            }
-//        }
-//
-//        asort($elementPositions);
-//
-//        foreach ($elementPositions as $element => $value)
-//        {
-//            switch ($element)
-//            {
-//                case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-//                    $subordinateString = split('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $subordinate = $this->subordinates[$subordinateString[1]];
-//                        $subordinate->saveIntoDb($subordinate->position, $this->compid);
-//                        $sibling_id = $subordinate->compid;
-//                    }
-//                    else
-//                    {
-//                        $subordinate = $this->subordinates[$subordinateString[1]];
-//                        $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
-//                        $sibling_id = $subordinate->compid;
-//                    }
-//                    break;
-//
-//                case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
-//                    $indexauthorString = split('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
-//                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid);
-//                        $sibling_id = $indexauthor->compid;
-//                    }
-//                    else
-//                    {
-//                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
-//                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid, $sibling_id);
-//                        $sibling_id = $indexauthor->compid;
-//                    }
-//                    break;
-//
-//                case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
-//                    $indexsymbolString = split('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-//                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid);
-//                        $sibling_id = $indexsymbol->compid;
-//                    }
-//                    else
-//                    {
-//                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-//                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid, $sibling_id);
-//                        $sibling_id = $indexsymbol->compid;
-//                    }
-//                    break;
-//
-//                case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
-//                    $indexglossaryString = split('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-//                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid);
-//                        $sibling_id = $indexglossary->compid;
-//                    }
-//                    else
-//                    {
-//                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-//                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid, $sibling_id);
-//                        $sibling_id = $indexglossary->compid;
-//                    }
-//                    break;
-//
-//                case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-//                    $mediaString = split('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $media = $this->medias[$mediaString[1]];
-//                        $media->saveIntoDb($media->position, $this->compid);
-//                        $sibling_id = $media->compid;
-//                    }
-//                    else
-//                    {
-//                        $media = $this->medias[$mediaString[1]];
-//                        $media->saveIntoDb($media->position, $this->compid, $sibling_id);
-//                        $sibling_id = $media->compid;
-//                    }
-//                    break;
-//
-//                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
-//                    $matharrayString = split('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $matharray = $this->matharrays[$matharrayString[1]];
-//                        $matharray->saveIntoDb($matharray->position, $this->compid);
-//                        $sibling_id = $matharray->compid;
-//                    }
-//                    else
-//                    {
-//                        $matharray = $this->matharrays[$matharrayString[1]];
-//                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
-//                        $sibling_id = $matharray->compid;
-//                    }
-//                    break;
-//
-//                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
-//                    $tableString = split('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $table = $this->tables[$tableString[1]];
-//                        $table->saveIntoDb($table->position, $this->compid);
-//                        $sibling_id = $table->compid;
-//                    }
-//                    else
-//                    {
-//                        $table = $this->tables[$tableString[1]];
-//                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
-//                        $sibling_id = $table->compid;
-//                    }
-//                    break;
-//            }
-//        }
-//        }
     }
 
     function loadFromDb($id, $compid)

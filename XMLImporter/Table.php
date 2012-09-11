@@ -323,6 +323,7 @@ class Table extends Element
     function displayhtml()
     {
         $content = '';
+//        $tempContent = '';
 //        $newtablecontent = $this->displayContent($this, $this->table_content);
 
         $doc = new DOMDocument;
@@ -330,7 +331,7 @@ class Table extends Element
         @$doc->loadXML($this->table_content);
 
         $table = $doc->getElementsByTagName('table')->item(0);
-       
+
         $trs = $doc->getElementsByTagName('tr');
 
         if ($table->hasAttribute('border'))
@@ -390,6 +391,7 @@ class Table extends Element
         }
 
         $content .= "</table>";
+
         return $content;
     }
 

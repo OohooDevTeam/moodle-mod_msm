@@ -28,7 +28,7 @@ var y = 0; // stores the y-axis position of the mouse
  */
 
 function infoopen(i) {    
-    $('#defminibutton-'+i).unbind('click');
+    $('#defminibutton-'+i).unbind('click'); 
     $('#defminibutton-'+i).click(
         function() {
             $('.rightbox').empty();
@@ -41,7 +41,12 @@ function infoopen(i) {
                 }
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
+            $('img').mapster({
+                fillColor: 'ff0000',
+                fillOpacity: 0.5
+            }); 
+            
         });
     
     $('#defminibutton-'+i).ready(function(e){
@@ -70,6 +75,10 @@ function infoopen(i) {
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        $('img').mapster({
+            fillColor: 'ff0000',
+            fillOpacity: 0.5
+        }); 
     });
     
     $('#minibutton-'+i).ready(function(e){
@@ -100,7 +109,12 @@ function infoopen(i) {
                
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);           
+            
+            $('img').mapster({
+                fillColor: 'ff0000',
+                fillOpacity: 0.5
+            }); 
         });
 
     $('#hottag-'+i).ready(function(e){
@@ -130,6 +144,10 @@ function infoopen(i) {
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        $('img').mapster({
+            fillColor: 'ff0000',
+            fillOpacity: 0.5
+        }); 
     });
     
     $('#commentminibutton-'+i).ready(function(e){

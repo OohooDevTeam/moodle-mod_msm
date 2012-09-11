@@ -226,11 +226,12 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             stackstring: $('#stack').val()
         },
         function(){     
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);            
             $('.dialogs').dialog({
                 autoOpen: false,
                 width: 'auto'
             });
+           
         });
           
     };
@@ -250,17 +251,18 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 autoOpen: false,
                 width: 'auto'
             });
+            
         });
-//        pagenumber--;
-//        if(pagenumber > 0)
-//        {				
-//            updatepgnumber(pagenumber);
-//        }
-//        else
-//        {
-//            pagenumber = gallery.length;
-//            updatepgnumber(pagenumber);
-//        }
+    //        pagenumber--;
+    //        if(pagenumber > 0)
+    //        {				
+    //            updatepgnumber(pagenumber);
+    //        }
+    //        else
+    //        {
+    //            pagenumber = gallery.length;
+    //            updatepgnumber(pagenumber);
+    //        }
 				
     };
 			

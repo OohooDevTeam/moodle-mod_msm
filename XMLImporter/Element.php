@@ -801,6 +801,22 @@ abstract class Element
         }
         else
         {
+            foreach ($tables as $key => $t)
+            {
+                if (!empty($object->tables[$key]))
+                {
+                    $table = $object->tables[$key];
+                    $newtableString = $table->displayhtml();
+                    @$newElementdoc->loadXML($newtableString);
+
+                    if (!$t->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $t))
+                    {
+                        echo "error!";
+                    }
+                }
+                $XMLcontent = $doc->saveXML();
+            }
+
             foreach ($matharrays as $key => $marray)
             {
                 if (!empty($object->matharrays[$key]))
@@ -810,19 +826,6 @@ abstract class Element
                     @$newElementdoc->loadXML($newmarrayString);
 
                     $marray->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $marray);
-                }
-                $XMLcontent = $doc->saveXML();
-            }
-
-            foreach ($tables as $key => $t)
-            {
-                if (!empty($object->tables[$key]))
-                {
-                    $table = $object->tables[$key];
-                    $newtableString = $table->displayhtml();
-                    $newElementdoc->loadXML($newtableString);
-
-                    $t->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $t);
                 }
                 $XMLcontent = $doc->saveXML();
             }
