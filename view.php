@@ -114,7 +114,7 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/Msm
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
 
-echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jImageMaster/dist/jquery.imagemapster.js'></script>";
+//echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jImageMaster/dist/jquery.imagemapster.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
@@ -181,21 +181,18 @@ $content .= "</div>";
 $content .= "</div>";
 
 // need to have it in this order or dialog breaks
+
+// if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
 $content .= "
     <script type='text/javascript'>
-    jQuery(document).ready(function(){
-    
-        $('img').mapster({
-             fillColor: 'ff0000',
-             fillOpacity: 0.5
-        });  
-         
+    jQuery(document).ready(function(){       
          $('.dialogs').dialog({
               autoOpen: false,
               width: 'auto'
-         });
-         
-      
+         });      
+        
+
+
          $('#features').jshowoff({
               autoplay:false,
               links:false                  

@@ -199,11 +199,11 @@ class MathImg extends Element
         {
             $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "'/>";
         }
-        else if ((empty($this->width)) && (empty($this->height)) &&($inline == '0'))
+        else if ((empty($this->width)) && (empty($this->height)) && ($inline == '0'))
         {
             $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
         }
-        else if ((empty($this->width)) && (empty($this->height)) &&($inline == '1'))
+        else if ((empty($this->width)) && (empty($this->height)) && ($inline == '1'))
         {
             $content .= "<img src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
         }

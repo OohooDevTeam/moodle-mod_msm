@@ -42,10 +42,10 @@ function infoopen(i) {
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
-            $('img').mapster({
-                fillColor: 'ff0000',
-                fillOpacity: 0.5
-            }); 
+//            $('img').mapster({
+//                fillColor: 'ff0000',
+//                fillOpacity: 0.5
+//            }); 
             
         });
     
@@ -75,10 +75,10 @@ function infoopen(i) {
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        $('img').mapster({
-            fillColor: 'ff0000',
-            fillOpacity: 0.5
-        }); 
+//        $('img').mapster({
+//            fillColor: 'ff0000',
+//            fillOpacity: 0.5
+//        }); 
     });
     
     $('#minibutton-'+i).ready(function(e){
@@ -109,16 +109,17 @@ function infoopen(i) {
                
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);           
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);          
             
-            $('img').mapster({
-                fillColor: 'ff0000',
-                fillOpacity: 0.5
-            }); 
+//            $('img').mapster({
+//                fillColor: 'ff0000',
+//                fillOpacity: 0.5
+//            }); 
         });
 
     $('#hottag-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
+        
         $('#hottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
@@ -144,10 +145,10 @@ function infoopen(i) {
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        $('img').mapster({
-            fillColor: 'ff0000',
-            fillOpacity: 0.5
-        }); 
+//        $('img').mapster({
+//            fillColor: 'ff0000',
+//            fillOpacity: 0.5
+//        }); 
     });
     
     $('#commentminibutton-'+i).ready(function(e){
@@ -287,6 +288,8 @@ function infoopen(i) {
         });
    
     });
+    
+   
 }
 
  

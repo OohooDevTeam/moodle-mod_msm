@@ -231,7 +231,12 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 autoOpen: false,
                 width: 'auto'
             });
-           
+            
+//            $('img').mapster('unbind');
+//            $('img').mapster('rebind',{
+//                fillColor: 'ff0000',
+//                fillOpacity: 0.5
+//            }); 
         });
           
     };
