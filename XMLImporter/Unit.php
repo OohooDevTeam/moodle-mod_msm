@@ -466,8 +466,8 @@ class Unit extends Element
                                             $this->quizpacks[] = $quizpack;
 
                                             // there are exercise/showme/example/quiz that can be part of this
-                                            break;
                                         }
+                                        break;
                                 }
                             }
                         }
@@ -768,7 +768,7 @@ class Unit extends Element
                         $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
                         $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
                         $sibling_id = $subunitCompID;
-                        
+
                         foreach ($subunitCompRecords as $unitCompRecord)
                         {
                             $this->grabSubunitChilds($unitCompRecord, $subunitCompID);
@@ -1176,8 +1176,6 @@ class Unit extends Element
             }
         }
     }
-
-   
 
 }
 

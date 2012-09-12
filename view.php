@@ -114,11 +114,12 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/Msm
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
 
-//echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jImageMaster/dist/jquery.imagemapster.js'></script>";
+echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jImageMaster/dist/jquery.imagemapster.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
+echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
 
 
 //echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
@@ -190,8 +191,11 @@ $content .= "
               autoOpen: false,
               width: 'auto'
          });      
-        
-
+     
+$('img').mapster({
+                fillColor: 'ff0000',
+               fillOpacity: 0.5
+            }); 
 
          $('#features').jshowoff({
               autoplay:false,

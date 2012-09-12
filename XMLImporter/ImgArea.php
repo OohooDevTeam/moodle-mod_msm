@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of ImageMapping
@@ -65,7 +65,7 @@ class ImgArea extends Element
                         $info->loadFromXml($child, $position);
                         $this->infos[] = $info;
                         break;
-                    
+
                     case('companion'):
                         $position++;
                         $companion = new Companion($this->xmlpath);
@@ -297,15 +297,15 @@ class ImgArea extends Element
     function displayhtml()
     {
         $content = '';
-        
+
         $content .= "<area id='pic-" . $this->infos[0]->compid . "' coords='" . $this->coordinates . "' shape='" . $this->shape . "' href='#' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
-        
-        foreach($this->infos as $info)
+
+        foreach ($this->infos as $info)
         {
             $content .= $info->displayhtml();
         }
         $content .= "</area>";
-       
+
 
         return $content;
     }

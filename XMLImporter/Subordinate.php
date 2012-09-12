@@ -335,11 +335,11 @@ class Subordinate extends Element
                     $this->external_links[] = $externallink;
                     break;
                 
-//                case('msm_theorem'):
-//                    $theorem = new Theorem();
-//                    $theorem->loadFromDb($child->unit_id, $child->id);
-//                    $this->childs[] = $theorem;
-//                    break;
+                case('msm_theorem'):
+                    $theorem = new Theorem();
+                    $theorem->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $theorem;
+                    break;
 //
                 case('msm_def'):
                     $def = new Definition();

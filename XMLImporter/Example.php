@@ -395,6 +395,20 @@ class Example extends Element
             }
         }
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        
+        return $content;
+    }
 
 }
 

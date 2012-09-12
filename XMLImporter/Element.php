@@ -736,39 +736,86 @@ abstract class Element
      * @param int $currentUnitID   The reference element that just has been read as a duplicate which needs alll its child element ids to be copied
      * @return boolean             returns false if no child has been copied/ returns true if child elements have been copied
      */
-    function grabSubunitChilds($elementRecord, $currentUnitID)
+    function grabSubunitChilds($elementRecord, $currentUnitID, $isRef = false)
     {
         global $DB;
 
-        $childSibling = 0;
-        // checking if there are child elements to be copied
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
-
-        // checking if the following record is a duplicate or not
-        // if it is the original record, it will already have a child elemnts associated with it
-        $existingchildElements = $DB->get_records('msm_compositor', array('parent_id' => $currentUnitID), 'prev_sibling_id');
-
-        // no child element detected to be copied
-        if (empty($childElements))
+        if (!$isRef)
         {
-            return false;
-        }
-        // child elements exist and also the current reference element record does not have any child (meaning its not the original record)
-        else if ((!empty($childElements)) && (empty($existingchildElements)))
-        {
-            foreach ($childElements as $child)
+            $childSibling = 0;
+            // checking if there are child elements to be copied
+            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
+
+            // checking if the following record is a duplicate or not
+            // if it is the original record, it will already have a child elemnts associated with it
+            $existingchildElements = $DB->get_records('msm_compositor', array('parent_id' => $currentUnitID), 'prev_sibling_id');
+
+            // no child element detected to be copied
+            if (empty($childElements))
             {
-                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
-                $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
-                $childSibling = $childCompID;
-                $this->grabSubunitChilds($child, $childCompID);
+                return false;
             }
-            return true;
+            // child elements exist and also the current reference element record does not have any child (meaning its not the original record)
+            else if ((!empty($childElements)) && (empty($existingchildElements)))
+            {
+                foreach ($childElements as $child)
+                {
+                    $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+                    $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
+                    $childSibling = $childCompID;
+                    $this->grabSubunitChilds($child, $childCompID);
+                }
+                return true;
+            }
+            // child element exist but the current record is the original record and already has child elements associated with it
+            else if ((!empty($childElements)) && (!empty($existingchildElements)))
+            {
+                return false;
+            }
         }
-        // child element exist but the current record is the original record and already has child elements associated with it
-        else if ((!empty($childElements)) && (!empty($existingchildElements)))
+        // preventing theorem ref from having self-reference to itself or reference another reference that references this theorem back
+        // if above is allowed, it creates an infinite loop
+        else if ($isRef)
         {
-            return false;
+            $theoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
+            $currentRecordTable = $DB->get_record('msm_compositor', array('id' => $currentUnitID))->table_id;
+
+            if ($theoremTable == $currentRecordTable)
+            {
+                $childSibling = 0;
+                // checking if there are child elements to be copied
+                $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
+
+                // checking if the following record is a duplicate or not
+                // if it is the original record, it will already have a child elemnts associated with it
+                $existingchildElements = $DB->get_records('msm_compositor', array('parent_id' => $currentUnitID), 'prev_sibling_id');
+
+                // no child element detected to be copied
+                if (empty($childElements))
+                {
+                    return false;
+                }
+                // child elements exist and also the current reference element record does not have any child (meaning its not the original record)
+                else if ((!empty($childElements)) && (empty($existingchildElements)))
+                {
+                    foreach ($childElements as $child)
+                    {
+                        $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+                        if ($childtablename == 'msm_statement_theorem')
+                        {
+                            $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
+                            $childSibling = $childCompID;
+                            $this->grabSubunitChilds($child, $childCompID);
+                        }
+                    }
+                    return true;
+                }
+                // child element exist but the current record is the original record and already has child elements associated with it
+                else if ((!empty($childElements)) && (!empty($existingchildElements)))
+                {
+                    return false;
+                }
+            }
         }
     }
 

@@ -143,6 +143,7 @@ class MathImg extends Element
 
         if (!empty($imgRecord))
         {
+            $this->compid = $compid;
             $this->src = $imgRecord->src;
             $this->height = $imgRecord->height;
             $this->width = $imgRecord->width;
@@ -175,41 +176,76 @@ class MathImg extends Element
         $srcfile = explode('/', $this->src);
         $filename = explode('.', end($srcfile));
 
-        if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
+        if (empty($this->imageareas))
         {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
+            if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
+            {
+                $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "'/>";
+            }
+            else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
+            {
+                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "'/>";
+            }
+            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '0'))
+            {
+                $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "'/>";
+            }
+            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '1'))
+            {
+                $content .= "<img src='" . $this->src . "' height='200' width='" . $this->width . "'/>";
+            }
+            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '0'))
+            {
+                $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350'/>";
+            }
+            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '1'))
+            {
+                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350'/>";
+            }
+            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '0'))
+            {
+                $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350'/>";
+            }
+            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '1'))
+            {
+                $content .= "<img src='" . $this->src . "' height='200' width='350'/>";
+            }
         }
-        else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
+        else if (!empty($this->imageareas))
         {
-            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
-        }
-        else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-        {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
-        }
-        else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-        {
-            $content .= "<img src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
-        }
-        else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '0'))
-        {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "'/>";
-        }
-        else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '1'))
-        {
-            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "'/>";
-        }
-        else if ((empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-        {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
-        }
-        else if ((empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-        {
-            $content .= "<img src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
-        }
+            if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
+            }
+            else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
+            }
+            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '0'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
+            }
+            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '1'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
+            }
+            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '0'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
+            }
+            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '1'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
+            }
+            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '0'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]' onload='activateArea(" . $this->compid . ")'/>";
+            }
+            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '1'))
+            {
+                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]' onload='activateArea(" . $this->compid . ")'/>";
+            }
 
-        if (!empty($this->imageareas))
-        {
             $content .= "<map name='" . $filename[0] . "'>";
             foreach ($this->imageareas as $imagearea)
             {

@@ -116,22 +116,22 @@ class Companion extends Element
 
                         if (!empty($theoremrefID))
                         {
-//                            $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath), 'theorem');
-//
-//                            if (!empty($filepath))
-//                            {
-//                                @$parser->load($filepath);
-//
-//                                $element = $parser->documentElement;
-//
-//                                if (!empty($element))
-//                                {
-//                                    $position = $position + 1;
-//                                    $theorem = new Theorem(dirname($filepath));
-//                                    $theorem->loadFromXml($element, $position);
-//                                    $this->theorems[] = $theorem;
-//                                }
-//                            }
+                            $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath), 'theorem');
+
+                            if (!empty($filepath))
+                            {
+                                @$parser->load($filepath);
+
+                                $element = $parser->documentElement;
+
+                                if (!empty($element))
+                                {
+                                    $position = $position + 1;
+                                    $theorem = new Theorem(dirname($filepath));
+                                    $theorem->loadFromXml($element, $position, 'true');
+                                    $this->theorems[] = $theorem;
+                                }
+                            }
                         }
                         break;
 
@@ -412,7 +412,7 @@ class Companion extends Element
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
                     $theoremString = split('-', $element);
                     $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
-
+                    
                     if (empty($theoremRecord))
                     {
                         if (empty($sibling_id))
@@ -439,7 +439,7 @@ class Companion extends Element
 
                         foreach ($theoremCompRecords as $theoremCompRecord)
                         {
-                            $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                            $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, true);
                         }
                     }
                     break;

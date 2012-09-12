@@ -269,7 +269,7 @@ class Block extends Element
                         }
                         else
                         {
-                            $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');                          
+                            $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
                         }
 
                         if (empty($defRecord))
@@ -306,7 +306,6 @@ class Block extends Element
 
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
                     $theoremString = split('-', $element);
-
                     if (is_object($this->theorems[$theoremString[1]]))
                     {
                         $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
@@ -335,9 +334,34 @@ class Block extends Element
                             $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                             $sibling_id = $theoremCompID;
 
-                            foreach ($theoremCompRecords as $theoremCompRecord)
+                            $parenttableid = $DB->get_record('msm_compositor', array('id' => $parentid))->table_id;
+                            $parentElement = $DB->get_record('msm_table_collection', array('id' => $parenttableid))->tablename;
+
+                            // if parent is subordinate, this theorem is a reference material that cannot have associates..etc to prevent self-references
+                            if (($parentElement == 'msm_subordinate') || ($parentElement == 'msm_associate'))
                             {
-                                $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                                foreach ($theoremCompRecords as $theoremCompRecord)
+                                {
+                                    $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                                }
+                            }
+                            // if parent is not a subordinate/associate, this is a theorem element that needs to have associate...etc 
+                            // Therefore, it cannot use grabSubunitChilds because the other theorem existing in the db might be a reference material which
+                            // will not have any associate elements.  
+                            else
+                            {
+                                if (empty($sibling_id))
+                                {
+                                    $theorem = $this->theorems[$theoremString[1]];
+                                    $theorem->saveIntoDb($theorem->position, $parentid, '', $theoremCompID);
+                                    $sibling_id = $theorem->compid;
+                                }
+                                else
+                                {
+                                    $theorem = $this->theorems[$theoremString[1]];
+                                    $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id, $theoremCompID);
+                                    $sibling_id = $theorem->compid;
+                                }
                             }
                         }
                     }

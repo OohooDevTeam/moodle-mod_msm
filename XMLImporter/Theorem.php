@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Theorem
@@ -34,7 +34,7 @@ class Theorem extends Element
      *
      * @param DOMElement $DomElement 
      */
-    function loadFromXml($DomElement, $position = '')
+    function loadFromXml($DomElement, $position = '', $isRef = 'false')
     {
         $this->position = $position;
 
@@ -48,43 +48,64 @@ class Theorem extends Element
         $this->statements = array();
         $this->associates = array();
         $this->proofs = array();
-
-        foreach ($DomElement->childNodes as $key => $child)
+        
+        if ($isRef == 'false')
         {
-            if ($child->nodeType == XML_ELEMENT_NODE)
+            foreach ($DomElement->childNodes as $key => $child)
             {
-                if ($child->tagName == 'associate')
+                if ($child->nodeType == XML_ELEMENT_NODE)
                 {
-                    $position = $position + 1;
-                    $associate = new Associate($this->xmlpath);
-                    $associate->loadFromXml($child, $position);
-                    $this->associates[] = $associate;
+                    if ($child->tagName == 'associate')
+                    {
+                        $position = $position + 1;
+                        $associate = new Associate($this->xmlpath);
+                        $associate->loadFromXml($child, $position);
+                        $this->associates[] = $associate;
+                    }
+                    else if ($child->tagName == 'statement.theorem')
+                    {
+                        $position = $position + 1;
+                        $statement = new StatementTheorem($this->xmlpath);
+                        $statement->loadFromXml($child, $position);
+                        $this->statements[] = $statement;
+                    }
+                    else if ($child->tagName == 'proof')
+                    {
+                        $position = $position + 1;
+                        $proof = new Proof($this->xmlpath);
+                        $proof->loadFromXml($child, $position);
+                        $this->proofs[] = $proof;
+                    }
                 }
-                else if ($child->tagName == 'statement.theorem')
+            }
+        }
+        else if($isRef == 'true')
+        {
+            foreach ($DomElement->childNodes as $key => $child)
+            {
+                if ($child->nodeType == XML_ELEMENT_NODE)
                 {
-                    $position = $position + 1;
-                    $statement = new StatementTheorem($this->xmlpath);
-                    $statement->loadFromXml($child, $position);
-                    $this->statements[] = $statement;
-                }
-                else if ($child->tagName == 'proof')
-                {
-                    $position = $position + 1;
-                    $proof = new Proof($this->xmlpath);
-                    $proof->loadFromXml($child, $position);
-                    $this->proofs[] = $proof;
+                    if ($child->tagName == 'statement.theorem')
+                    {
+                        $position = $position + 1;
+                        $statement = new StatementTheorem($this->xmlpath);
+                        $statement->loadFromXml($child, $position);
+                        $this->statements[] = $statement;
+                    }
                 }
             }
         }
     }
 
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $parentid = '', $siblingid = '', $theoremCompid = '')
     {
         global $DB;
 
         $sibling_id = $siblingid;
-
-        $data = new stdClass();
+        
+        if(empty($theoremCompid))
+        {
+            $data = new stdClass();
         $data->theorem_type = $this->theorem_type;
         $data->string_id = $this->string_id;
         $data->caption = $this->caption;
@@ -93,6 +114,14 @@ class Theorem extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        }
+        else
+        {
+            $this->compid = $theoremCompid;
+            $this->id = $DB->get_record('msm_compositor', array('id'=>$this->compid))->unit_id;
+        }
+
+        
 
         $elementPosition = array();
 
