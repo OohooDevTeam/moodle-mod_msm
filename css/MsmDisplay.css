@@ -53,6 +53,7 @@ div.controller{
     background-image:url('../pix/background.jpg');
     opacity:0.95;
     filter:Alpha(opacity=95);
+    font-size: 14px;
 }
 
 /*#MySplitter div {
@@ -167,7 +168,7 @@ div.controller{
 
 .hottag
 {
-    color: #229C79;
+    color: #229C79;   
 }
 
 .hottag:hover
@@ -374,13 +375,12 @@ table.matharray
     border-collapse: separate !important;
     border-spacing: 2px;
     /*    max-width: 90%;*/
-}/*
+}
 
-.dialogs table, td{
-    border: 1px solid maroon;
-    border-collapse: separate;
-    border-spacing: 2px;
-}*/
+div.dialogs{
+   margin: 0;
+   display: none;
+}
 
 .comment
 {

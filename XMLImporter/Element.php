@@ -288,9 +288,21 @@ abstract class Element
         //to eliminate any nested subordinates from being counted when getting the length of the subordinates
         foreach ($subordinates as $s)
         {
-            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+            // need to process subordinates separately in table/math.array to prevent duplicate data from being in database
+            // eg) if proof.block had both subordinate in para and table, the same subordinates with parentid for table element would be also present with parentid of proof.block
+            if (($DomElement->tagName == 'table') || ($DomElement->tagName == 'math.array'))
             {
-                $length++;
+                if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+                {
+                    $length++;
+                }
+            }
+            else
+            {
+                if (($s->parentNode->parentNode->parentNode->tagName != 'info') && ($s->parentNode->parentNode->parentNode->tagName != 'cell'))
+                {
+                    $length++;
+                }
             }
         }
         for ($i = 0; $i < $length; $i++)
@@ -827,7 +839,7 @@ abstract class Element
      */
     function displayContent($object, $XMLcontent)
     {
-//        global $DB;
+        global $DB;
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
@@ -855,11 +867,7 @@ abstract class Element
                     $table = $object->tables[$key];
                     $newtableString = $table->displayhtml();
                     @$newElementdoc->loadXML($newtableString);
-
-                    if (!$t->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $t))
-                    {
-                        echo "error!";
-                    }
+                    $t->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $t);
                 }
                 $XMLcontent = $doc->saveXML();
             }
@@ -927,6 +935,7 @@ abstract class Element
 
                             $hottagid = $hottag->getAttribute('id');
 
+
                             if ($positionvalue == $hottagid)
                             {
                                 $newElementdoc->loadXML($newtag);
@@ -949,7 +958,7 @@ abstract class Element
                         if (!empty($subordinate->infos[0]))
                         {
                             $newtag = '';
-                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+                            $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
                             $rawhotString = explode(',', $subordinate->hot);
 
                             // there are other commas in the content 
@@ -985,10 +994,12 @@ abstract class Element
                             $hottagid = $hottag->getAttribute('id');
 
                             if ($positionvalue == $hottagid)
-                            {//                               
-                                $newElementdoc->loadXML($newtag);
+                            {
+                                $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
+                                @$newElementdoc->loadXML($newtag);
 
                                 $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
+
                                 $XMLcontent = $doc->saveXML();
 
                                 $content .= $subordinate->infos[0]->displayhtml();
@@ -1033,8 +1044,6 @@ abstract class Element
                         }
                         $newtag .= "</a>";
 
-//                        print_object($newtag);
-
                         $newElementdoc->loadXML($newtag);
 
                         $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
@@ -1070,9 +1079,8 @@ abstract class Element
                     }
                 }
             }
-
             $content .= $XMLcontent;
-
+            $content = str_replace('<?xml version="1.0"?>', '', $content);
             return $content;
         }
     }

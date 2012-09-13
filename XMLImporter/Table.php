@@ -273,8 +273,6 @@ class Table extends Element
     {
         global $DB;
 
-        $newcontent = '';
-
         $tableRecord = $DB->get_record('msm_table', array('id' => $id));
 
         if (!empty($tableRecord))
@@ -322,16 +320,23 @@ class Table extends Element
 
     function displayhtml()
     {
-        $content = '';
-//        $tempContent = '';
-//        $newtablecontent = $this->displayContent($this, $this->table_content);
+        $newtablecontent = $this->displayContent($this, $this->table_content);
+        $tablecontent = "<root>" . $newtablecontent . "</root>";
+        $content = $this->processTableContent($tablecontent);
+        return $content;
+    }
 
+    function processTableContent($tablecontent)
+    {
+        $content = '';
         $doc = new DOMDocument;
 
-        @$doc->loadXML($this->table_content);
+        @$doc->loadXML($tablecontent);
+
+        $dialogs = $doc->getElementsByTagName('div');
 
         $table = $doc->getElementsByTagName('table')->item(0);
-
+//
         $trs = $doc->getElementsByTagName('tr');
 
         if ($table->hasAttribute('border'))
@@ -376,6 +381,31 @@ class Table extends Element
                         {
                             if ($contentElement->nodeType == XML_ELEMENT_NODE)
                             {
+                                $atags = $contentElement->getElementsByTagName('a');
+
+                                foreach ($atags as $atag)
+                                {
+                                    // getting the associated info's compid
+                                    $tagID = $atag->getAttribute('id');
+                                    $idArray = explode('-', $tagID);
+
+                                    foreach ($dialogs as $dialog)
+                                    {
+                                        $divclass = $dialog->getAttribute('class');
+                                        if ($divclass == 'dialogs')
+                                        {
+                                            $divID = $dialog->getAttribute('id');
+                                            $divIDArray = explode('-', $divID);
+                                            
+                                            if ($idArray[1] == $divIDArray[1])
+                                            {
+                                                $divNode = $doc->importNode($dialog, true);
+                                                $atag->parentNode->appendChild($divNode);                                              
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
                                 $content .= $doc->saveXML($contentElement);
                             }
                         }
@@ -391,10 +421,9 @@ class Table extends Element
         }
 
         $content .= "</table>";
-
+        
         return $content;
     }
 
 }
-
 ?>
