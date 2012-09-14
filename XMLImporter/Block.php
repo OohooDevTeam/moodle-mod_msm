@@ -593,8 +593,8 @@ class Block extends Element
 
     function displayhtml()
     {
-        $content = '';
-
+        $content = '';    
+        
         foreach ($this->childs as $child)
         {
             $content .= $child->displayhtml();

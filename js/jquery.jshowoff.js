@@ -232,10 +232,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 width: 'auto'
             });
             
-            $('img').mapster({
-                fillColor: 'ff0000',
-                fillOpacity: 0.5
-            }); 
         });
           
     };

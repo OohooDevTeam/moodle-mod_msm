@@ -451,10 +451,10 @@ class InContent extends Element
 
         $content .= $this->displayContent($this, $this->content);
 
-        foreach ($this->childs as $child)
-        {
-            $content .= $child->displayhtml();
-        }
+//        foreach ($this->childs as $child)
+//        {
+//            $content .= $child->displayhtml();
+//        }
 
         return $content;
     }

@@ -153,11 +153,12 @@ abstract class Element
                     {
                         $content .= $doc->saveXML($child);
 
-                        $content = str_replace('<math>', '', $content);
-                        $content = str_replace('</math>', '', $content);
+                        $content = preg_replace('/^<math xmlns=(.+)>/', '<math>', $content);
 
-                        $content = str_replace('<latex>', '$', $content);
-                        $content = str_replace('</latex>', '$', $content);
+                        $content = preg_replace('/<math>\s+<latex>/', '$', $content);
+                        $content = preg_replace('/<\/latex>\s+<\/math>/', '$', $content);
+
+                        $content = preg_replace('/<math>\s+<latex\/>/', '', $content);
                     }
                 }
                 // child is not an element node but a text node
@@ -436,16 +437,16 @@ abstract class Element
             $string = str_replace('<hot', '<a href=""', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
-            $string = str_replace('<math>', '$', $string);
-            $string = preg_replace('/^<math xmlns=(.+)>/', '$', $string);
-            $string = str_replace('</math>', '$', $string);
+            $string = preg_replace('/^<math xmlns=(.+)>/', '<math>', $string);
 
             $string = str_replace('<math.display>', '$$', $string);
             $string = preg_replace('/^<math.display xmlns=(.+)>/', '$$', $string);
             $string = str_replace('</math.display>', '$$', $string);
 
-            $string = str_replace('<latex>', '', $string);
-            $string = str_replace('</latex>', '', $string);
+            $string = preg_replace('/<math>\s+<latex>/', '$', $string);
+            $string = preg_replace('/<\/latex>\s+<\/math>/', '$', $string);
+
+            $string = preg_replace('/<math>\s+<latex\/>/', '', $string);
 
             $resultcontent[] = $string;
         }

@@ -48,6 +48,7 @@ class AnswerShowme extends Element
         $this->indexsymbols = array();
         $this->medias = array();
         $this->tables = array();
+        $this->matharrays = array();
 
         $answer_showme_blocks = $DomElement->getElementsByTagName('answer.showme.block');
 
@@ -59,6 +60,11 @@ class AnswerShowme extends Element
 
             foreach ($answer_showme_block_bodys as $asbb)
             {
+                foreach($this->processMathArray($asbb, $position) as $matharray)
+                {
+                    $this->matharrays[] = $matharray;
+            }
+                
                 foreach ($this->processIndexAuthor($asbb, $position) as $indexauthor)
                 {
                     $this->indexauthors[] = $indexauthor;
@@ -123,6 +129,14 @@ class AnswerShowme extends Element
         $elementPositions = array();
         $sibling_id = null;
 
+        
+        if (!empty($this->matharrays))
+        {
+            foreach ($this->matharrays as $key => $matharray)
+            {
+                $elementPositions['matharray' . '-' . $key] = $matharray->position;
+            }
+        }
 
         if (!empty($this->subordinates))
         {
@@ -178,6 +192,23 @@ class AnswerShowme extends Element
         {
             switch ($element)
             {
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $sibling_id = $matharray->compid;
+                    }
+                    break;
+                
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = split('-', $element);
 
@@ -300,6 +331,7 @@ class AnswerShowme extends Element
         $this->subordinates = array();
         $this->medias = array();
         $this->tables = array();
+        $this->matharray = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
@@ -325,6 +357,12 @@ class AnswerShowme extends Element
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);
                     $this->tables[] = $table;
+                    break;
+                
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->matharrays[] = $matharray;
                     break;
             }
         }

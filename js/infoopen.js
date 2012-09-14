@@ -42,10 +42,6 @@ function infoopen(i) {
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
-        //            $('img').mapster({
-        //                fillColor: 'ff0000',
-        //                fillOpacity: 0.5
-        //            }); 
             
         });
     
@@ -75,10 +71,6 @@ function infoopen(i) {
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    //        $('img').mapster({
-    //            fillColor: 'ff0000',
-    //            fillOpacity: 0.5
-    //        }); 
     });
     
     $('#minibutton-'+i).ready(function(e){
@@ -109,15 +101,7 @@ function infoopen(i) {
                
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);          
-            
-            $('#copyimage-'+i).ready(function() {
-                $('#copyimage-'+i).mapster('snapshot');
-                $('#copyimage-'+i).mapster('rebind', {
-                    fillColor: 'ff0000',
-                    fillOpacity: 0.5
-                });
-            });
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);  
         });
 
     $('#hottag-'+i).ready(function(e){
@@ -148,10 +132,6 @@ function infoopen(i) {
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    //        $('img').mapster({
-    //            fillColor: 'ff0000',
-    //            fillOpacity: 0.5
-    //        }); 
     });
     
     $('#commentminibutton-'+i).ready(function(e){
