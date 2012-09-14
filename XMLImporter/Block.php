@@ -531,6 +531,7 @@ class Block extends Element
                     }
                     break;
             }
+            // to order the blocks properly in unit
             $this->root = $sibling_id;
         }
     }

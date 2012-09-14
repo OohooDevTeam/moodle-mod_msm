@@ -38,9 +38,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘This projection is a real number.’</caption>
-               </info.caption>
+               <caption>Comment on ‘This projection is a real number.’</caption>
 					
 					          <para>
                   <para.body>Sorry! No! – If <math>
@@ -69,9 +67,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘This projection is a vector’</caption>
-               </info.caption>
+               <caption>Comment on ‘This projection is a vector’</caption>
 					
 					          <para>
                   <para.body>Correct! – The projection of <math>
@@ -91,9 +87,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘This projection is a line’</caption>
-               </info.caption>
+               <caption>Comment on ‘This projection is a line’</caption>
 					
 					          <para>
                   <para.body>No! - We start with a vector <math>
@@ -128,12 +122,10 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on: <math>
-                        <latex>\Vect{x} = \Vect{0}</latex>
-                     </math>
-                  </caption>
-               </info.caption>
+               <caption>Comment on: <math>
+                     <latex>\Vect{x} = \Vect{0}</latex>
+                  </math>
+               </caption>
 					
 					          <para>
                   <para.body>If <math>
@@ -160,14 +152,12 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on: <math>
-                        <latex>\Vect{x}</latex>
-                     </math> lies on <math>
-                        <latex>L</latex>
-                     </math>
-                  </caption>
-               </info.caption>
+               <caption>Comment on: <math>
+                     <latex>\Vect{x}</latex>
+                  </math> lies on <math>
+                     <latex>L</latex>
+                  </math>
+               </caption>
 					
 					          <para>
                   <para.body>Sorry, no! If <math>
@@ -193,14 +183,12 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on: <math>
-                        <latex>\Vect{x}</latex>
-                     </math> is perpendicular to <math>
-                        <latex>L</latex>
-                     </math>
-                  </caption>
-               </info.caption>
+               <caption>Comment on: <math>
+                     <latex>\Vect{x}</latex>
+                  </math> is perpendicular to <math>
+                     <latex>L</latex>
+                  </math>
+               </caption>
 					
 					          <para>
                   <para.body>Correct! – Given that <math>

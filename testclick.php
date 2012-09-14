@@ -53,124 +53,124 @@ $content .= "<div id='MySplitter'>";
 $content .= "<div class='leftcol' style='min-width: 542px;'>";
 $content .= "<div class='leftbox'>";
 
-$content .= "<img id='#image-1' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey' onload='activateArea(" . 1 . ")'/>";
-
-$content .= "<map name='hey'>";
-
-$content .= '<area id="pic-1" coords="57,91,383,107" shape="rect" href="#" onmouseover="popup(' . 1 . ')">';
-$content .= "<div id='dialog-1' class='dialogs'>";
-$content .= '<para>
-                                 <para.body>Congratulations! </para.body>
-                              </para>';
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-2" coords="59,222,383,240" shape="rect" href="#" onmouseover="popup(' . 2 . ')">';
-$content .= "<div id='dialog-2' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Careful! </para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-3" coords="57,113,384,217" shape="rect" href="#" onmouseover="popup(' . 3 . ')">';
-$content .= "<div id='dialog-3' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Sorry! 1</para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-4" coords="59,247,382,304" shape="rect" href="#" onmouseover="popup(' . 4 . ')">';
-$content .= "<div id='dialog-4' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Sorry! 2</para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-5" coords="59,26,382,83" shape="rect" href="#" onmouseover="popup(' . 5 . ')">';
-$content .= "<div id-'dialog-5' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Sorry! 3</para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= "</map>";
-
-$content .= "<img id='image-2' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey1' onload='activateArea(" . 2 . ")'/>";
-
-$content .= "<map name='hey1'>";
-
-$content .= '<area id="pic-6" coords="57,91,383,107" shape="rect" href="#" onmouseover="popup(' . 6 . ')">';
-$content .= "<div id='dialog-6' class='dialogs'>";
-$content .= '<para>
-                                 <para.body>Congratulations! - The grid point you picked is the tip of a vector <math>
-                                       <latex>\Vect{y}</latex>
-                                    </math> so that.</para.body>
-                              </para>
-						                        <table column="3">
-                                 <tr>
-                                    <td rowspan="1" colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>\OriVol(\Vect{x},\Vect{y})</latex>
-                                       </math>
-                                    </td>
-                                    <td rowspan="1" colspan="1" halign="center" valign="middle">
-                                       <math>
-                                          <latex>=</latex>
-                                       </math>
-                                    </td>
-                                    <td rowspan="1" colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>+15</latex>
-                                       </math>
-                                    </td>
-                                 </tr>
-                              </table>';
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-7" coords="59,222,383,240" shape="rect" href="#" onmouseover="popup(' . 7 . ')">';
-$content .= "<div id='dialog-7' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Careful! With the vector <math>
-                                       <latex>\Vect{y}</latex>
-                                    </math> you are specifying you determine a parallelogram whose unoriented area is <math>
-                                       <latex>15</latex>
-                                    </math>. However, <math>
-                                       <latex>(\Vect{x},\Vect{y})</latex>
-                                    </math> determine the negative orientation of the plane. So this is not an acceptable grid point.</para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-8" coords="57,113,384,217" shape="rect" href="#" onmouseover="popup(' . 8 . ')">';
-$content .= "<div id='dialog-8' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Sorry! Try another point.</para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-9" coords="59,247,382,304" shape="rect" href="#" onmouseover="popup(' . 9 . ')">';
-$content .= "<div id='dialog-9' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Sorry! Try another point.</para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= '<area id="pic-10" coords="59,26,382,83" shape="rect" href="#" onmouseover="popup(' . 10 . ')">';
-$content .= "<div id-'dialog-10' class='dialogs'>";
-$content .= "<para>
-                                 <para.body>Sorry! Try another point.</para.body>
-                              </para>";
-$content .= "</div>";
-$content .= "</area>";
-
-$content .= "</map>";
+//$content .= "<img id='#image-1' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey' onload='activateArea(" . 1 . ")'/>";
+//
+//$content .= "<map name='hey'>";
+//
+//$content .= '<area id="pic-1" coords="57,91,383,107" shape="rect" href="#" onmouseover="popup(' . 1 . ')">';
+//$content .= "<div id='dialog-1' class='dialogs'>";
+//$content .= '<para>
+//                                 <para.body>Congratulations! </para.body>
+//                              </para>';
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-2" coords="59,222,383,240" shape="rect" href="#" onmouseover="popup(' . 2 . ')">';
+//$content .= "<div id='dialog-2' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Careful! </para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-3" coords="57,113,384,217" shape="rect" href="#" onmouseover="popup(' . 3 . ')">';
+//$content .= "<div id='dialog-3' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Sorry! 1</para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-4" coords="59,247,382,304" shape="rect" href="#" onmouseover="popup(' . 4 . ')">';
+//$content .= "<div id='dialog-4' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Sorry! 2</para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-5" coords="59,26,382,83" shape="rect" href="#" onmouseover="popup(' . 5 . ')">';
+//$content .= "<div id-'dialog-5' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Sorry! 3</para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= "</map>";
+//
+//$content .= "<img id='image-2' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey1' onload='activateArea(" . 2 . ")'/>";
+//
+//$content .= "<map name='hey1'>";
+//
+//$content .= '<area id="pic-6" coords="57,91,383,107" shape="rect" href="#" onmouseover="popup(' . 6 . ')">';
+//$content .= "<div id='dialog-6' class='dialogs'>";
+//$content .= '<para>
+//                                 <para.body>Congratulations! - The grid point you picked is the tip of a vector <math>
+//                                       <latex>\Vect{y}</latex>
+//                                    </math> so that.</para.body>
+//                              </para>
+//						                        <table column="3">
+//                                 <tr>
+//                                    <td rowspan="1" colspan="2" halign="center" valign="middle">
+//                                       <math>
+//                                          <latex>\OriVol(\Vect{x},\Vect{y})</latex>
+//                                       </math>
+//                                    </td>
+//                                    <td rowspan="1" colspan="1" halign="center" valign="middle">
+//                                       <math>
+//                                          <latex>=</latex>
+//                                       </math>
+//                                    </td>
+//                                    <td rowspan="1" colspan="2" halign="center" valign="middle">
+//                                       <math>
+//                                          <latex>+15</latex>
+//                                       </math>
+//                                    </td>
+//                                 </tr>
+//                              </table>';
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-7" coords="59,222,383,240" shape="rect" href="#" onmouseover="popup(' . 7 . ')">';
+//$content .= "<div id='dialog-7' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Careful! With the vector <math>
+//                                       <latex>\Vect{y}</latex>
+//                                    </math> you are specifying you determine a parallelogram whose unoriented area is <math>
+//                                       <latex>15</latex>
+//                                    </math>. However, <math>
+//                                       <latex>(\Vect{x},\Vect{y})</latex>
+//                                    </math> determine the negative orientation of the plane. So this is not an acceptable grid point.</para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-8" coords="57,113,384,217" shape="rect" href="#" onmouseover="popup(' . 8 . ')">';
+//$content .= "<div id='dialog-8' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Sorry! Try another point.</para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-9" coords="59,247,382,304" shape="rect" href="#" onmouseover="popup(' . 9 . ')">';
+//$content .= "<div id='dialog-9' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Sorry! Try another point.</para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= '<area id="pic-10" coords="59,26,382,83" shape="rect" href="#" onmouseover="popup(' . 10 . ')">';
+//$content .= "<div id-'dialog-10' class='dialogs'>";
+//$content .= "<para>
+//                                 <para.body>Sorry! Try another point.</para.body>
+//                              </para>";
+//$content .= "</div>";
+//$content .= "</area>";
+//
+//$content .= "</map>";
 
 
 //$content .= "<div class='def'>";
@@ -280,6 +280,14 @@ $content .= "</map>";
 //$content .= "</ul>";
 //
 //$content .= "</div>"; //theorem
+
+$xmlcontent  = "<table> <tr> <td>hello</td> <td>=</td> <td>hey</td> </tr> <tr> <td> </td> <td>=</td> <td>hi</td></tr></table>";
+
+$doc = new DOMDocument();
+$doc->loadXML($xmlcontent);
+
+$content .= $doc->saveXML($doc->documentElement);
+
 $content .= "</div>"; //leftbox
 $content .= "</div>"; //leftcol
 

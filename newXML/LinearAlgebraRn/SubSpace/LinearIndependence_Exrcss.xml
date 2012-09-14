@@ -924,9 +924,7 @@
                            </math>
                            <companion>
                               <info>
-                                 <info.caption>
-                                    <caption>Why is this inequality true?</caption>
-                                 </info.caption>
+                                 <caption>Why is this inequality true?</caption>
 							
 							                          <para>
                                     <para.body>We know that the cross product of two vectors vanishes exactly when the vectors are parallel. – Here we know that <math>
@@ -942,9 +940,7 @@
                            </companion>
                            <companion>
                               <info>
-                                 <info.caption>
-                                    <caption>Why is this inequality true?</caption>
-                                 </info.caption>
+                                 <caption>Why is this inequality true?</caption>
 							
 							                          <para>
                                     <para.body>We know that the cross product of two vectors vanishes exactly when the vectors are parallel. – Here we know that <math>

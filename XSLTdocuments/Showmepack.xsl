@@ -143,10 +143,26 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="exa:caption">
+    <!--xsl:template match="exa:caption">
         <xsl:element name="caption" namespace="Compositor">
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template-->
+    
+    <xsl:template match="exa:caption">
+    <xsl:choose>
+        <xsl:when test="parent::node()[name()='info']">
+            <xsl:element name="info.caption" namespace="Compositor">
+                <xsl:apply-templates/>
+            </xsl:element>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:apply-templates select="child::node()[name()='partref']"/>
+            <xsl:element name="caption" namespace="Compositor">
+                <xsl:apply-templates select="child::node()[not(name()='partref')]"/>
+            </xsl:element>
+        </xsl:otherwise>
+    </xsl:choose>      
     </xsl:template>
         
         <xsl:template match="exa:tablabel">
@@ -747,9 +763,9 @@
     <xsl:template match="exa:info">
         <xsl:element name="info" namespace="Compositor">
             <xsl:if test="exa:caption != ''">
-                <xsl:element name="info.caption" namespace="Compositor">
+               
                     <xsl:apply-templates select="exa:caption"/>
-                </xsl:element>
+                
             </xsl:if>
             <xsl:apply-templates select="node()[not(name()='caption')]"/>            
         </xsl:element>
@@ -823,9 +839,9 @@
             <xsl:if test="child::node() != ''">
                 <xsl:element name="info" namespace="Compositor">
                     <xsl:if test="child::node()[name() = 'caption']">
-                        <xsl:element name="info.caption" namespace="Compositor">
+                        
                             <xsl:apply-templates select="exa:caption"/>
-                        </xsl:element>
+                        
                     </xsl:if>
                     <xsl:apply-templates select="child::node()[not(name()='caption' or name()='subpage.ref' or name()='chapter.ref' or name()='subsection.ref' or name()='section.ref' or name()='theorem.ref' or name()='comment.ref' or name()='definition.ref' or name()='exercise.pack.ref' or name()='example.pack.ref' or name()='external.ref')]"/>
                 </xsl:element>
@@ -926,9 +942,9 @@
             <xsl:if test="child::node() != ''">
                 <xsl:element name="info" namespace="Compositor">
                     <xsl:if test="child::node()[name() = 'caption']">
-                        <xsl:element name="info.caption" namespace="Compositor">
+                       
                             <xsl:apply-templates select="exa:caption"/>
-                        </xsl:element>
+                        
                     </xsl:if>
                     <xsl:apply-templates select="child::node()[not(name()='caption')]"/>
                 </xsl:element>
@@ -1001,9 +1017,9 @@
                 <xsl:if test="child::node()[not(name()='subpage.ref' or name()='definition.ref' or name()='comment.ref' or name()='theorem.ref' or name()='quiz.pack.ref' or name()='showme.pack.ref')]">
                     <xsl:element name="info" namespace="Compositor">
                         <xsl:if test="child::node()[name() = 'caption']">
-                            <xsl:element name="info.caption" namespace="Compositor">
+                            
                                 <xsl:apply-templates select="exa:caption"/>
-                            </xsl:element>
+                            
                         </xsl:if>
                         <xsl:apply-templates select="node()[not(name()='caption' or name()='subpage.ref' or name()='definition.ref' or name()='comment.ref' or name()='theorem.ref' or name()='quiz.pack.ref' or name()='showme.pack.ref')]"/>
                     </xsl:element>

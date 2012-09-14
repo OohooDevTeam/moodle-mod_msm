@@ -98,9 +98,7 @@
                         <crossref>
                            <theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
                            <info>
-                              <info.caption>
-                                 <caption>Why is this so?</caption>
-                              </info.caption>
+                              <caption>Why is this so?</caption>
 						
 						
 						                        <para>

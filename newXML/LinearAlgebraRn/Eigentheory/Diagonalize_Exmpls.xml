@@ -643,11 +643,9 @@ x \\ y \\ z
 				<subordinate>
                         <hot>basis</hot>
                         <info>
-                           <info.caption>
-                              <caption>Why do these vectors form a basis of <math>
-                                    <latex>E_2</latex>
-                                 </math>?</caption>
-                           </info.caption>
+                           <info.caption>Why do these vectors form a basis of <math>
+                                 <latex>E_2</latex>
+                              </math>?</info.caption>
 						
 						                     <para>
                               <para.body>Visibly the vectors span <math>

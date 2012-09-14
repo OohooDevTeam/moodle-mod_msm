@@ -224,9 +224,7 @@
 				              <subordinate>
                      <hot>Normalize</hot>
                      <info>
-                        <info.caption>
-                           <caption>Recall: Normalize</caption>
-                        </info.caption>
+                        <caption>Recall: Normalize</caption>
 						
 						                  <para>
                            <para.body>This means, for each of the given vectors <math>

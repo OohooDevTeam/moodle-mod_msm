@@ -133,8 +133,7 @@ class MathRow extends Element
             $content .= $column->displayhtml($this->rowspan);
         }
         
-        $content .= "</tr>";
-        
+        $content .= "</tr>";        
         
         return $content;
     }

@@ -157,8 +157,7 @@ abstract class Element
 
                         $content = preg_replace('/<math>\s+<latex>/', '$', $content);
                         $content = preg_replace('/<\/latex>\s+<\/math>/', '$', $content);
-
-                        $content = preg_replace('/<math>\s+<latex\/>/', '', $content);
+                        $content = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $content);
                     }
                 }
                 // child is not an element node but a text node
@@ -437,16 +436,16 @@ abstract class Element
             $string = str_replace('<hot', '<a href=""', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
-            $string = preg_replace('/^<math xmlns=(.+)>/', '<math>', $string);
+            $string = preg_replace('/<math xmlns=(.+)>/', '<math>', $string);
+            $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>/', '$$', $string);
 
-            $string = str_replace('<math.display>', '$$', $string);
-            $string = preg_replace('/^<math.display xmlns=(.+)>/', '$$', $string);
-            $string = str_replace('</math.display>', '$$', $string);
+            $string = preg_replace('/<math.display>\s+<latex>/', '$$', $string);
+            $string = preg_replace('/<\/latex>\s+<\/math.display>/', '$$', $string);
+            $string = preg_replace('/<math.display>\s+<latex\/>\s+<\/math.display>/', '', $string);
 
             $string = preg_replace('/<math>\s+<latex>/', '$', $string);
             $string = preg_replace('/<\/latex>\s+<\/math>/', '$', $string);
-
-            $string = preg_replace('/<math>\s+<latex\/>/', '', $string);
+            $string = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $string);
 
             $resultcontent[] = $string;
         }

@@ -99,11 +99,9 @@
                </para>
 				        </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on: <math>
-                        <latex>\omega_1 = \omega_2 = 90</latex>
-                     </math> degrees</caption>
-               </info.caption>
+               <caption>Comment on: <math>
+                     <latex>\omega_1 = \omega_2 = 90</latex>
+                  </math> degrees</caption>
 					
 					          <para>
                   <para.body>Sorry, no! - A vector with this property would have to lie simultaneously on the <math>
@@ -129,12 +127,10 @@
                </para>
 				        </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on: <math>
-                        <latex> 0 &lt; \omega_1,\omega_2 &lt; \pi/2 </latex>
-                     </math>
-                  </caption>
-               </info.caption>
+               <caption>Comment on: <math>
+                     <latex> 0 &lt; \omega_1,\omega_2 &lt; \pi/2 </latex>
+                  </math>
+               </caption>
 					
 					          <para>
                   <para.body>Correct!</para.body>
@@ -169,14 +165,12 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on <math>
-                        <latex> \pi/2 &lt; \omega_1 &lt; \pi </latex>
-                     </math> and <math>
-                        <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
-                     </math>
-                  </caption>
-               </info.caption>
+               <caption>Comment on <math>
+                     <latex> \pi/2 &lt; \omega_1 &lt; \pi </latex>
+                  </math> and <math>
+                     <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
+                  </math>
+               </caption>
 					
 					          <para>
                   <para.body>Correct!</para.body>
@@ -196,14 +190,12 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on <math>
-                        <latex> \pi &lt; \omega_1 &lt; 3\pi/2 </latex>
-                     </math> and <math>
-                        <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
-                     </math>
-                  </caption>
-               </info.caption>
+               <caption>Comment on <math>
+                     <latex> \pi &lt; \omega_1 &lt; 3\pi/2 </latex>
+                  </math> and <math>
+                     <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
+                  </math>
+               </caption>
 					
 					          <para>
                   <para.body>Sorry, no! - By definition, direction angles are between <math>

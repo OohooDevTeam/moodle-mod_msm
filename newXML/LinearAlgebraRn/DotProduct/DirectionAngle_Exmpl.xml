@@ -28,9 +28,7 @@
 				<subordinate>
                         <hot>so</hot>
                         <info>
-                           <info.caption>
-                              <caption>What are we going to use to make this computation</caption>
-                           </info.caption>
+                           <info.caption>What are we going to use to make this computation</info.caption>
 						
 						                     <para>
                               <para.body>Remember the formula for the first direction angle:</para.body>
@@ -54,9 +52,7 @@
 				<subordinate>
                         <hot>formula for direction angles</hot>
                         <info>
-                           <info.caption>
-                              <caption>Recall the formula for the second direction angle</caption>
-                           </info.caption>
+                           <info.caption>Recall the formula for the second direction angle</info.caption>
 						
 						
 						                     <math.display>
@@ -76,11 +72,9 @@
 				<subordinate>
                         <hot>observe that</hot>
                         <info>
-                           <info.caption>
-                              <caption>What does it tell us if <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math> is a first quadrant vector?</caption>
-                           </info.caption>
+                           <info.caption>What does it tell us if <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> is a first quadrant vector?</info.caption>
 						
 						                     <para>
                               <para.body>The direction angles of a first quadrant vector in <math>

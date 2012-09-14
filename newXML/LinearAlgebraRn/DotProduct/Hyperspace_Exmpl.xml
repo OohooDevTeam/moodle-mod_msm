@@ -25,9 +25,7 @@
                </math> which is <subordinate>
                   <hot>perpendicular</hot>
                   <info>
-                     <info.caption>
-                        <caption>Why is this line perpendicular to c?</caption>
-                     </info.caption>
+                     <info.caption>Why is this line perpendicular to c?</info.caption>
 					
 					                <para>
                         <para.body>Because <math>
@@ -79,9 +77,7 @@
                </math> which is <subordinate>
                   <hot>perpendicular</hot>
                   <info>
-                     <info.caption>
-                        <caption>Why is this plane perpendicular to n?</caption>
-                     </info.caption>
+                     <info.caption>Why is this plane perpendicular to n?</info.caption>
 					
 					                <para>
                         <para.body>A point <math>

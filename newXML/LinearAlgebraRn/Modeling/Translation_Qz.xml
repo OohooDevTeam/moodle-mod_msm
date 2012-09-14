@@ -33,9 +33,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘Yes, this is a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘Yes, this is a translation.’</info.caption>
 					
 					          <para>
                   <para.body>No, this movement is not a translation. How do you test it? The arrow describing the movement of the top corner of the triangle is much longer than the arrow describing the movement of the right corner of the left hand triangle. So there is no single translation vector which describes the movement of the entire object.</para.body>
@@ -49,9 +47,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘No, this is not a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘No, this is not a translation.’</info.caption>
 					
 					          <para>
                   <para.body>Correct! This movement is not a translation. How do you test it? The arrow describing the movement of the top corner of the triangle is much longer than the arrow describing the movement of the right corner of the left hand triangle. So there is no single translation vector which describes the movement of the entire object.</para.body>
@@ -81,9 +77,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘Yes, this is a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘Yes, this is a translation.’</info.caption>
 					
 					          <para>
                   <para.body>No, this movement is not a translation. How do you test it? The arrow describing the movement of the top right corner of the left hand square points to the upper right. While the arrow describing the movement of the to left corner of the left hand square points to the lower right. So there is no single translation vector which describes the movement of the entire object.</para.body>
@@ -97,9 +91,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘No, this is not a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘No, this is not a translation.’</info.caption>
 					
 					          <para>
                   <para.body>Correct! This movement is not a translation. How do you test it? The arrow describing the movement of the top right corner of the left hand square points to the upper right. While the arrow describing the movement of the to left corner of the left hand square points to the lower right. So there is no single translation vector which describes the movement of the entire object.</para.body>
@@ -129,9 +121,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘Yes, this is a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘Yes, this is a translation.’</info.caption>
 					
 					          <para>
                   <para.body>No, this movement is not a translation. How do you test it? The arrow describing the movement of the top corner of the triangle is longer than the arrow describing the movement of the bottom right corner of the triangle. So there is no single translation vector which describes the movement of the entire object.</para.body>
@@ -145,9 +135,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘No, this is not a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘No, this is not a translation.’</info.caption>
 					
 					          <para>
                   <para.body>Correct! This movement is not a translation. How do you test it: How do you test it? The arrow describing the movement of the top corner of the triangle is longer than the arrow describing the movement of the bottom right corner of the triangle. So there is no single translation vector which describes the movement of the entire object.</para.body>
@@ -177,9 +165,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘Yes, this is a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘Yes, this is a translation.’</info.caption>
 					
 					          <para>
                   <para.body>Correct! – All arrows connecting a point from the left hand pentagon to the corresponding point on the right hand pentagon have the same length and direction. Therefore there is a translation vector which describes the entire operation.</para.body>
@@ -193,9 +179,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment: ‘No, this is not a translation.’</caption>
-               </info.caption>
+               <info.caption>Comment: ‘No, this is not a translation.’</info.caption>
 					
 					          <para>
                   <para.body>Oops! – Look again to determine if it is possible to shift the left hand pentagon to the right hand pentagon.</para.body>

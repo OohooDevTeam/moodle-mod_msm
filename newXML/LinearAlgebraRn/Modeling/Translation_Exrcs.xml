@@ -54,9 +54,7 @@
 				<subordinate>
                      <hot>window on a computer screen</hot>
                      <info>
-                        <info.caption>
-                           <caption>Background on Moving Windows on a Computer Screen</caption>
-                        </info.caption>
+                        <caption>Background on Moving Windows on a Computer Screen</caption>
 						
 						                  <para>
                            <para.body>First some background information: To locate the position of a display point (pixel) on a computer monitor the following conventions have been adopted.</para.body>

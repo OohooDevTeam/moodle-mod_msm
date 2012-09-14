@@ -875,9 +875,7 @@
                            </math>
                            <companion>
                               <info>
-                                 <info.caption>
-                                    <caption>Why is this true?</caption>
-                                 </info.caption>
+                                 <caption>Why is this true?</caption>
 							
 							                          <para>
                                     <para.body>Given that <math>
@@ -914,9 +912,7 @@
                            </companion>
                            <companion>
                               <info>
-                                 <info.caption>
-                                    <caption>Why is this true?</caption>
-                                 </info.caption>
+                                 <caption>Why is this true?</caption>
 							
 							                          <para>
                                     <para.body>Given that <math>

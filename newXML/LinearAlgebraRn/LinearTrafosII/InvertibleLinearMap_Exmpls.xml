@@ -125,9 +125,7 @@
 				<subordinate>
                         <hot>basis</hot>
                         <info>
-                           <info.caption>
-                              <caption>Explanation</caption>
-                           </info.caption>
+                           <info.caption>Explanation</info.caption>
 						
 						                     <para>
                               <para.body>This is the very definition of a ‘basis’: A linearly independent subset of <math>

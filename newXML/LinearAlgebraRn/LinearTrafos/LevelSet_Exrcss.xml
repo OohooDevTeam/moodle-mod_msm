@@ -211,9 +211,7 @@
 					<subordinate>
                         <hot>kernel</hot>
                         <info>
-                           <info.caption>
-                              <caption>Recall the definition of `kernel'</caption>
-                           </info.caption>
+                           <caption>Recall the definition of `kernel'</caption>
 							
 							                    <para>
                               <para.body>The kernel of a linear map <math>

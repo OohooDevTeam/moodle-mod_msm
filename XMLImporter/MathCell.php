@@ -71,19 +71,6 @@ class MathCell extends Element
                         {
                             $this->content .= $content;
                         }
-
-//                        if (!empty($child->nextSibling->nextSibling))
-//                        {
-//                            if (property_exists($child->nextSibling->nextSibling, 'nodeType'))
-//                            {
-//                                if ($child->nextSibling->nextSibling->nodeType == XML_ELEMENT_NODE)
-//                                {
-//                                    $this->content = '<a href="">' . $this->content . '</a>';
-//                                }
-//                               
-//                            }
-//                        }
-
                         break;
 
                     case('text'):
@@ -156,7 +143,7 @@ class MathCell extends Element
                         $sibling_id = $subordinate->compid;
                     }
                     break;
-                    
+
                 case(preg_match("/^(companion.\d+)$/", $element) ? true : false):
                     $companionString = split('-', $element);
 
@@ -196,7 +183,7 @@ class MathCell extends Element
         $this->refchilds = array();
         $this->childs = array();
         $this->subordinates = array();
-        
+
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -225,7 +212,7 @@ class MathCell extends Element
                     $unit->loadFromDb($child->unit_id, $child->id);
                     $this->refchilds[] = $unit;
                     break;
-                
+
                 case('msm_subordinate'):
                     $subordinate = new Subordinate();
                     $subordinate->loadFromDb($child->unit_id, $child->id);
@@ -252,7 +239,14 @@ class MathCell extends Element
         // if info exists then need to set up the dialog popup window, otherwise, just show the content
         if (empty($this->childs))
         {
-            $content .= $this->displayContent($this, $this->content);
+            if (empty($this->content))
+            {
+                $content .= ' ';
+            }
+            else
+            {
+                $content .= $this->displayContent($this, $this->content);
+            }
         }
         else
         {

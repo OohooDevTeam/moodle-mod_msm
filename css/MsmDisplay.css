@@ -181,20 +181,15 @@ div.controller{
     color:mediumorchid;
 }
 
-.externallink
+.externallink:link, .externallink:visited
 {
     color: #0F900F;
 }
 
-.externallink:hover
+.externallink:hover, .externallink:active
 {
-    cursor: pointer;
+     cursor: pointer;
     color:blue;
-}
-
-.externallink:visited
-{
-    color:mediumorchid;
 }
 
 .def

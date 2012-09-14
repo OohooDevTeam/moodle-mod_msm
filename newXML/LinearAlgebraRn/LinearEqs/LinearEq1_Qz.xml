@@ -34,9 +34,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘Yes!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘Yes!’</info.caption>
 					
 					          <para>
                   <para.body>Correct! This is a linear equation in three variables.</para.body>
@@ -50,9 +48,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘No!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘No!’</info.caption>
 					
 					          <para>
                   <para.body>Hmmm! Honest – I don't have a clue why you might think this equation is not linear, for it is!</para.body>
@@ -77,9 +73,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘Yes!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘Yes!’</info.caption>
 					
 					          <para>
                   <para.body>Sorry! – This equation is not linear because the variable <math>
@@ -97,9 +91,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘No!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘No!’</info.caption>
 					
 					          <para>
                   <para.body>Correct! – This equation is not linear because the variable <math>
@@ -128,9 +120,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘Yes!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘Yes!’</info.caption>
 					
 					          <para>
                   <para.body>Correct! – The given equation is equivalent to</para.body>
@@ -150,9 +140,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘No!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘No!’</info.caption>
 					
 					          <para>
                   <para.body>Sorry! – This equation is linear. If you bring all expressions containing a variable to the left and the constant summand <math>
@@ -179,9 +167,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘Yes!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘Yes!’</info.caption>
 					
 					          <para>
                   <para.body>Correct! – This is a homogeneous linear equation.</para.body>
@@ -195,9 +181,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘No!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘No!’</info.caption>
 					
 					          <para>
                   <para.body>Sorry! – This equation is linear. Perhaps the expression ‘<math>
@@ -228,9 +212,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘Yes!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘Yes!’</info.caption>
 					
 					          <para>
                   <para.body>Sorry! – This equation is not linear because the variable <math>
@@ -248,9 +230,7 @@
                </para>
             </answer>
 				        <info>
-               <info.caption>
-                  <caption>Comment on ‘No!’</caption>
-               </info.caption>
+               <info.caption>Comment on ‘No!’</info.caption>
 					
 					          <para>
                   <para.body>Correct! – This equation is not linear because the variable <math>

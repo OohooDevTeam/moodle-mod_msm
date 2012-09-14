@@ -172,9 +172,7 @@
 				<subordinate>
                         <hot>anti-symmetric</hot>
                         <info>
-                           <info.caption>
-                              <caption>Definition of anti-symmetric</caption>
-                           </info.caption>
+                           <caption>Definition of anti-symmetric</caption>
 						
 						                     <para>
                               <para.body>A matrix <math>

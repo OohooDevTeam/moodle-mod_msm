@@ -142,9 +142,7 @@
 				<subordinate>
                         <hot>equivalent</hot>
                         <info>
-                           <info.caption>
-                              <caption>Why are the two system of linear equations above equivalent?</caption>
-                           </info.caption>
+                           <info.caption>Why are the two system of linear equations above equivalent?</info.caption>
 						
 						                     <para>
                               <para.body>Here it takes some reflection to see why the two systems have the same solutions: Suppose <math>

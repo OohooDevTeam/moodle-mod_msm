@@ -39,6 +39,7 @@ class MathComment extends Element
      */
     public function loadFromXml($DomElement, $position = '')
     {
+        $this->position = $position;
         $this->comment_type = $DomElement->getAttribute('type');
         $this->string_id = $DomElement->getAttribute('id');
 

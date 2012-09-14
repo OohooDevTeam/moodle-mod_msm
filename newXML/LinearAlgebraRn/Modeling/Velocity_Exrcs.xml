@@ -25,9 +25,7 @@
                         <image.mapping xmlns="">
                            <area xmlns="Compositor" shape="rect" coords="217,39,417,53">
 					                         <info>
-                                 <info.caption>
-                                    <caption>What does the blue arrow mean?</caption>
-                                 </info.caption>
+                                 <caption>What does the blue arrow mean?</caption>
 						
 						                           <para>
                                     <para.body>This vector represents the velocity of the aircraft relative to the surrounding air.</para.body>
@@ -36,9 +34,7 @@
 				                       </area>
                            <area xmlns="Compositor" shape="poly" coords="135,115,155,111,219,39,193,35">
 					                         <info>
-                                 <info.caption>
-                                    <caption>What does the green arrow mean?</caption>
-                                 </info.caption>
+                                 <caption>What does the green arrow mean?</caption>
 						
 						                           <para>
                                     <para.body>This vector represents the velocity of the air relative to the ground.</para.body>
@@ -49,9 +45,7 @@
                                  shape="poly"
                                  coords="157,113,161,121,425,47,369,51,159,107">
 					                         <info>
-                                 <info.caption>
-                                    <caption>What does the red arrow mean?</caption>
-                                 </info.caption>
+                                 <caption>What does the red arrow mean?</caption>
 						
 						                           <para>
                                     <para.body>This vector represents the velocity of the aircraft relative to the ground.</para.body>
@@ -110,9 +104,7 @@
                            </math>
                         </hot>
                         <info>
-                           <info.caption>
-                              <caption>Explanation</caption>
-                           </info.caption>
+                           <caption>Explanation</caption>
 						
 						                     <para>
                               <para.body>The vector <math>

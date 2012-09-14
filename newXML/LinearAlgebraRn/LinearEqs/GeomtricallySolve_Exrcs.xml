@@ -307,9 +307,7 @@
 						<subordinate>
                            <hot>no number</hot>
                            <info>
-                              <info.caption>
-                                 <caption>Why is there no such number</caption>
-                              </info.caption>
+                              <caption>Why is there no such number</caption>
 								
 								                      <para>
                                  <para.body>Suppose <math>
@@ -711,9 +709,7 @@
 						<subordinate>
                            <hot>not parallel</hot>
                            <info>
-                              <info.caption>
-                                 <caption>Why are these vectors not parallel?</caption>
-                              </info.caption>
+                              <caption>Why are these vectors not parallel?</caption>
 								
 								                      <para>
                                  <para.body>Suppose <math>

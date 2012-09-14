@@ -888,9 +888,7 @@ A_{\EuScript{S}\EuScript{S}}\ &amp;=\ C_{\EuScript{S}\EuScript{S}}\, A_{\EuScrip
                            </math>
                            <companion>
                               <info>
-                                 <info.caption>
-                                    <caption>Why is this so?</caption>
-                                 </info.caption>
+                                 <caption>Why is this so?</caption>
 							                          <para>
                                     <para.body>By design, the columns of <math>
                                           <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
@@ -902,9 +900,7 @@ A_{\EuScript{S}\EuScript{S}}\ &amp;=\ C_{\EuScript{S}\EuScript{S}}\, A_{\EuScrip
                            </companion>
                            <companion>
                               <info>
-                                 <info.caption>
-                                    <caption>Why is this so?</caption>
-                                 </info.caption>
+                                 <caption>Why is this so?</caption>
 							                          <para>
                                     <para.body>By design, the columns of <math>
                                           <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>

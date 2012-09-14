@@ -388,11 +388,9 @@ A =
                      <image.mapping>
                         <area shape="poly" coords="146,210,148,218,259,205,256,191">
 						                     <info>
-                              <info.caption>
-                                 <caption>Comment on vector <math>
-                                       <latex>\Vect{x}</latex>
-                                    </math>
-                                 </caption>
+                              <info.caption>Comment on vector <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math>
                               </info.caption>
 							
 							                       <para>

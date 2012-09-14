@@ -420,9 +420,7 @@ x &amp;  &amp;  &amp; - &amp; 2z &amp; + &amp; 7w &amp; = &amp; 11 \\
 					<subordinate>
                         <hot>can transform</hot>
                         <info>
-                           <info.caption>
-                              <caption>Explanation</caption>
-                           </info.caption>
+                           <caption>Explanation</caption>
 							
 							                    <para>
                               <para.body>Remember, there are usually many transformation paths along which we can transform a given matrix into RREF. However, for all possible choices of transformation paths, the eventual RREF is always the same.</para.body>
