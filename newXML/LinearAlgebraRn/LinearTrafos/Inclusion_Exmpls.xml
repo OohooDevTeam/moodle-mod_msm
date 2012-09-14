@@ -42,7 +42,7 @@
                      </math> is linear, we check that it commutes with vector addition and scalar multiplication:</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{j}(x+y)</latex>
@@ -70,7 +70,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -87,7 +87,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -111,7 +111,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\inc_j(tx)</latex>
@@ -128,7 +128,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -145,7 +145,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -205,7 +205,7 @@
                      </math> is given by</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{1}(u)</latex>
@@ -222,7 +222,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{2}(u)</latex>
@@ -239,7 +239,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{3}(u)</latex>
@@ -289,7 +289,7 @@
                      </math> is given by</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{1}(-1)</latex>
@@ -306,7 +306,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{2}(-1)</latex>
@@ -323,7 +323,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{3}(-1)</latex>

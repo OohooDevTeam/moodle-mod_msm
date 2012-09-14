@@ -27,7 +27,7 @@
                   <para.body>We analyze the quotient</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\lim_{n\to \infty} \dfrac{ \Abs{ a_{n+1} } }{ \Abs{ a_n } }</latex>
@@ -44,7 +44,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -61,7 +61,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

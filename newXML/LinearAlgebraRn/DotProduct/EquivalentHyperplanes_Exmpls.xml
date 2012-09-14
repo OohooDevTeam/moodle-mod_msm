@@ -18,7 +18,7 @@
             <para.body>Determine if the equations below are equivalent.</para.body>
          </para>
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>2x + 3y - z</latex>
@@ -35,7 +35,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>4x + 6y - 2z</latex>
@@ -80,7 +80,7 @@
             <para.body>Determine if the equations below are equivalent.</para.body>
          </para>
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>3s + 4t -u+v</latex>
@@ -97,7 +97,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>9s + 12t - 3u + 3v</latex>

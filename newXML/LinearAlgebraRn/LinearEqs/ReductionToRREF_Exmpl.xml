@@ -266,7 +266,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                      </math> of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(w,x,y,z)</latex>
@@ -288,7 +288,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                   <para.body>with</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}</latex>
@@ -305,7 +305,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{u}</latex>
@@ -322,7 +322,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>

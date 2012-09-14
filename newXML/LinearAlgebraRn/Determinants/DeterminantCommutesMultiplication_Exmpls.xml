@@ -71,7 +71,7 @@
                   <para.body>In the case at hand we obtain</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\det(\Mtrx{C}^n)</latex>
@@ -99,7 +99,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

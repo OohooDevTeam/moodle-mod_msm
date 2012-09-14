@@ -28,7 +28,7 @@
                      </math> is the collection of all vectors of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -78,7 +78,7 @@
                      </math> is the collection of all vectors of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -155,7 +155,7 @@
                      </math> consists of all vectors of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -172,7 +172,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -189,7 +189,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -219,7 +219,7 @@
                      </math> is of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(a,b)</latex>

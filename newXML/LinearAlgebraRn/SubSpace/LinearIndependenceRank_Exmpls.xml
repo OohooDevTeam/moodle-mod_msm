@@ -15,7 +15,7 @@
             <para.body>Determine if the vectors</para.body>
          </para>
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{a}</latex>
@@ -32,7 +32,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{b}</latex>
@@ -49,7 +49,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{c}</latex>
@@ -66,7 +66,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{d}</latex>
@@ -148,7 +148,7 @@
             <para.body>Determine if the vectors</para.body>
          </para>
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{w}</latex>
@@ -165,7 +165,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{x}</latex>
@@ -182,7 +182,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{y}</latex>
@@ -199,7 +199,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{z}</latex>

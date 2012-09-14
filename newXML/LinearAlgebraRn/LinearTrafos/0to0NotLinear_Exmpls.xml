@@ -27,7 +27,7 @@
          </para>
 			
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>f(1+1)=f(2)</latex>
@@ -44,7 +44,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>f(1) + f(1) = 1 + 1</latex>
@@ -106,7 +106,7 @@ f\from \RNr[2] \longrightarrow \RNr[2],\quad f(x,y) = \left\{
          </para>
 			
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>f(3,0) = f((1,0) + (2,0))</latex>
@@ -123,7 +123,7 @@ f\from \RNr[2] \longrightarrow \RNr[2],\quad f(x,y) = \left\{
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>f(1,0) + f(2,0) = (1,0) + (2,0)</latex>
@@ -151,7 +151,7 @@ f\from \RNr[2] \longrightarrow \RNr[2],\quad f(x,y) = \left\{
          </para>
 			
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>f((1,0) + (0,1))</latex>
@@ -168,7 +168,7 @@ f\from \RNr[2] \longrightarrow \RNr[2],\quad f(x,y) = \left\{
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>f(1,0) + f(0,1)</latex>

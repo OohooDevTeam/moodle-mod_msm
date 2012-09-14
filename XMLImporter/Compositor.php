@@ -77,6 +77,7 @@ class Compositor
         $content = '';
         $stack = array();
 //        $prevstack = array();
+//        $prevstack = array();
 
         //recreating stack from string
         $eachRecordString = explode(',', $string);
@@ -90,6 +91,9 @@ class Compositor
         }
 
         $recordValue = array_pop($stack);
+        
+        // adding the popped value back to prevstack to be referred back to when previous button is triggered
+//        array_push($prevstack, $recordValue);
 
         if (!empty($recordValue))
         {
@@ -122,26 +126,9 @@ class Compositor
                 {
                     $isSubpage = false;
                 }
-                
-//                $parentRecord = $DB->get_record('msm_compositor', array('id' => $unitRecord->parent_id));
-//
-//                // for the root element, the parentRecord will be null
-//                if (!empty($parentRecord))
-//                {
-//                    $parentTable = $DB->get_record('msm_table_collection', array('id' => $parentRecord->table_id))->tablename;
-//
-//                    if (($parentTable != 'msm_associate') && ($parentTable != 'msm_subordinate'))
-//                    {
-//                        $isSubpage = false;
-//                    }
-//                    else
-//                    {
-//                        $isSubpage = true;
-//                        break;
-//                    }
-//                }
             }
 
+            // not a stand alone page
             if (!$isSubpage)
             {
                 $unit = new Unit();
@@ -163,6 +150,10 @@ class Compositor
                         var stackstring = "<?php echo $newstring; ?>";
                         $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
                         $('#stack').val(stackstring); 
+                        
+//                        var prevString = "<!--?php echo $recordValue; ?-->";
+//                        $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visiblity:hidden"/>');
+//                        $('#prevstack').val(prevString);
                     });
                                                                                                                                                                                             
                 </script>
@@ -171,6 +162,7 @@ class Compositor
                 $content .= "</div>";
                 return $content;
             }
+            // it is a standalone page
             else
             {
                 foreach ($stack as $key => $record)

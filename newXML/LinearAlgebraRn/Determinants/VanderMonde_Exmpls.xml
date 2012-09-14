@@ -148,7 +148,7 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                      </math> etc. Thus</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>V_n</latex>
@@ -177,7 +177,7 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -194,7 +194,7 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -211,7 +211,7 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -228,7 +228,7 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

@@ -18,7 +18,7 @@
             <para.body>Determine if the solution hyperplanes of the equations below are parallel.</para.body>
          </para>
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>x + 4y - 1z</latex>
@@ -35,7 +35,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>2x - 8y - 2z</latex>
@@ -82,7 +82,7 @@
                      </math> with</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>
@@ -99,7 +99,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\left[ \begin{array}{r} 2 \\ -8 \\ -2 \end{array} \right]</latex>
@@ -127,7 +127,7 @@
                      </math> with</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>
@@ -160,7 +160,7 @@
             <para.body>Determine if the solution hyperplanes of the equations below are parallel.</para.body>
          </para>
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>3u + v - w + 2x</latex>
@@ -177,7 +177,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>2w - 6u - 2v - 4x</latex>
@@ -222,7 +222,7 @@
                   <para.body>We note that</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{w}</latex>

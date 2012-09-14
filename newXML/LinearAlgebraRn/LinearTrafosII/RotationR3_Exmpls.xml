@@ -53,7 +53,7 @@
                      </math> is</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}</latex>
@@ -75,7 +75,7 @@
                   <para.body>Thus we obtain</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{b}</latex>
@@ -166,7 +166,7 @@ s\sqrt{2} &amp; 3\sqrt{2} &amp; 3\sqrt{2}
                   <para.body>With the aid of the coordinate conversion matrices, we find</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex>
@@ -183,7 +183,7 @@ s\sqrt{2} &amp; 3\sqrt{2} &amp; 3\sqrt{2}
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -220,7 +220,7 @@ s\sqrt{2} &amp; 3\sqrt{2} &amp; 3\sqrt{2}
                      </math> to the location</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>R(\Vect{x})</latex>
@@ -237,7 +237,7 @@ s\sqrt{2} &amp; 3\sqrt{2} &amp; 3\sqrt{2}
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -265,7 +265,7 @@ s\sqrt{2} &amp; 3\sqrt{2} &amp; 3\sqrt{2}
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

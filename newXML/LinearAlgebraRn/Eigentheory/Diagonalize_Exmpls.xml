@@ -166,7 +166,7 @@ x \\ y
                   <para.body>The solutions of the corresponding system of linear equations are of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(x,y)</latex>
@@ -194,7 +194,7 @@ x \\ y
                      </math> is</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>E_1</latex>
@@ -254,7 +254,7 @@ x \\ y
                   <para.body>The solutions of the corresponding system of linear equations are of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(x,y)</latex>
@@ -282,7 +282,7 @@ x \\ y
                      </math> is</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>E_2</latex>
@@ -730,7 +730,7 @@ x \\ y \\ z
                      </math>. Accordingly, we have</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Mtrx{D}</latex>

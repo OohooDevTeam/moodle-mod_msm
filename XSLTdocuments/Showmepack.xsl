@@ -383,7 +383,7 @@
             <xsl:attribute name="column">3</xsl:attribute>
             <xsl:for-each select="child::node()[name()='left']">
                 <xsl:element name="row" namespace="Compositor">
-                    <xsl:attribute name="rowspan" namespace="Compositor">
+                    <xsl:attribute name="rowspan">
                         <xsl:value-of select="1"/>
                     </xsl:attribute>
                     <xsl:apply-templates select="."/>

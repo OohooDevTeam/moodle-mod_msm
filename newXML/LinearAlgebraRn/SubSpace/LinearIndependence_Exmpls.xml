@@ -31,7 +31,7 @@
                   <para.body>We need to examine the possible solutions of the vector equation</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_1 \Vect{a}_1 + t_2 \Vect{a}_2</latex>
@@ -126,7 +126,7 @@ t_1
                   <para.body>We need to examine the possible solutions of the vector equation</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_1 \Vect{a}_1 + t_2 \Vect{a}_2 + t_3 \Vect{a}_3</latex>
@@ -200,7 +200,7 @@ t_1
                      </math> yields</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_1</latex>
@@ -217,7 +217,7 @@ t_1
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_2</latex>
@@ -239,7 +239,7 @@ t_1
                   <para.body>This means that</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>-8\cdot \Vect{a}_1 + 4\cdot \Vect{a}_2 + 4\cdot \Vect{a}_3</latex>
@@ -256,7 +256,7 @@ t_1
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}_2</latex>
@@ -284,7 +284,7 @@ t_1
                      </math>:</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}_1</latex>

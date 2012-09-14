@@ -16,7 +16,8 @@ MathJax.Hub.Config({
     showProcessingMessages: false,
     tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEnvironments: true,
         processEscapes: true,
         balanceBraces: true
     },
@@ -128,10 +129,8 @@ MathJax.Hub.Config({
         }
     },
     
-    jax: ["input/TeX", "output/HTML-CSS"]
-//    "HTML-CSS": {
-//        extensions: ["handle-floats.js"]
-//    }
+    jax: ["input/TeX", "output/HTML-CSS"],
+    
 });
 
 MathJax.Ajax.loadComplete("http://localhost/moodle/mod/msm/js/Mathjaxconfig.js");

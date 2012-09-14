@@ -154,7 +154,7 @@ x \\ y \\ z
                </para>
 			
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>y</latex>
@@ -171,7 +171,7 @@ x \\ y \\ z
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>x</latex>
@@ -194,7 +194,7 @@ x \\ y \\ z
                </para>
 			
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\left( 1 - \tfrac{4}{3} z , \tfrac{2}{3} z,z \right)</latex>

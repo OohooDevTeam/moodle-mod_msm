@@ -40,7 +40,7 @@
                      </math>, we find</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Id(\Vect{b}_i)</latex>
@@ -62,7 +62,7 @@
                   <para.body>and, therefore,</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Id(\Vect{b}_i)_{\EuScript{B}}</latex>

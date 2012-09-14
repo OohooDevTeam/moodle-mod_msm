@@ -220,7 +220,7 @@
                                     </math> so that.</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                                 <row rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{x},\Vect{y})</latex>
@@ -318,7 +318,7 @@
                                     </math> so that.</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                                 <row rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{x},\Vect{y})</latex>
@@ -413,7 +413,7 @@
                                     </math> such that</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                                 <row rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{y},\Vect{x})</latex>
@@ -441,7 +441,7 @@
                                     </math> such that</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                                 <row rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{y},\Vect{x})</latex>

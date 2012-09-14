@@ -33,7 +33,7 @@
          </media>
 			
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\OriVol(\Vect{x},\Vect{y},\Vect{z})</latex>
@@ -50,7 +50,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex/>
@@ -103,7 +103,7 @@
          </media>
 			
 			      <math.array column="3">
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\OriVol(\Vect{u},\Vect{v},\Vect{w})</latex>
@@ -120,7 +120,7 @@
                   </math>
                </cell>
             </row>
-            <row xmlns:compositor="Compositor" compositor:rowspan="1">
+            <row rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex/>

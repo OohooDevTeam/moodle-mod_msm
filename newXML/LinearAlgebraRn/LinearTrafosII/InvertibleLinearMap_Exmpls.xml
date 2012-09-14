@@ -72,7 +72,7 @@
                               <para.body>To see this, evaluate</para.body>
                            </para>
 						                     <math.array column="3">
-                              <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                              <row rowspan="1">
                                  <cell colspan="2" halign="center" valign="middle">
                                     <math>
                                        <latex>\DotPr{ \Vect{a}_1 }{ \Vect{a}_2 }</latex>
@@ -154,7 +154,7 @@
                      </math>. We find</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>L(\Vect{a}_1)</latex>
@@ -171,7 +171,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -188,7 +188,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -205,7 +205,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>L(\Vect{a}_2)</latex>
@@ -222,7 +222,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -239,7 +239,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -277,7 +277,7 @@
                   <para.body>This matrix has</para.body>
                </para>
 			            <math.array column="3">
-                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
+                  <row rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\det(\Mtrx{A}_{\EuScript{B}\EuScript{A}})</latex>
