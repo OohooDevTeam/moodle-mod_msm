@@ -166,6 +166,12 @@ div.controller{
     margin-top: 0px;
 }
 
+#features table
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .hottag
 {
     color: #229C79;   
@@ -375,6 +381,8 @@ table.matharray
 div.dialogs{
    margin: 0;
    display: none;
+   max-width: 605 !important;
+   min-width: 300 !important;
 }
 
 .comment
@@ -610,4 +618,26 @@ span.showmetitle
     font-weight: bold;
     color: white;
     float: right;   
+}
+
+.loadingscreen {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .3 ) 
+               url('../pix/ajax-loader.gif')
+                50% 50% 
+                no-repeat;
+}
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading {
+    overflow: hidden;   
 }

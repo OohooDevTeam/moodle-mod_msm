@@ -126,10 +126,11 @@ MathJax.Hub.Config({
             NllSp: ['{\\text{Null}(#1)}',1],		
 		
             FakeString: '{\\text{fake}}'
-        }
+        },
+        extensions: ["color.js"]
     },
     
-    jax: ["input/TeX", "output/HTML-CSS"],
+    jax: ["input/TeX", "output/HTML-CSS"]
     
 });
 

@@ -408,6 +408,10 @@ class Table extends Element
                                 }
                                 $content .= $doc->saveXML($contentElement);
                             }
+                            else
+                            {
+                                $content .= $doc->saveXML($contentElement);
+                            }
                         }
                         $content .= "</td>";
                     }

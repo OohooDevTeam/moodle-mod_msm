@@ -220,18 +220,28 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     // load the next slide
     function next() {
         goToAndPause(counter);
+        
+        var records = $('#prevstack').val();
+        var separatedrecords = records.split(",");
+        // add one to total length to compensate for the first page being pg 1 instead of 0
+        var pgnumber = separatedrecords.length+1;
+        updatepgnumber(pgnumber);
+        
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
-        {
-                    
-            stackstring: $('#stack').val()
+        {                    
+            stackstring: $('#stack').val(),
+            prevstackstring: $('#prevstack').val(),
+            currentvalue: $('#current').val(),
+            functionname: 'next'
         },
         function(){     
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);            
             $('.dialogs').dialog({
                 autoOpen: false,
-                width: 'auto'
+                height: 'auto',
+                width: 605
             });
-            
+           
         });
           
     };
@@ -240,19 +250,30 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     function previous() {
         goToAndPause(counter);
         
+        var records = $('#prevstack').val();
+        var separatedrecords = records.split(",");
+        // add one to total length to compensate for the first page being pg 1 instead of 0
+        var pgnumber = separatedrecords.length-1;
+        updatepgnumber(pgnumber);
+        
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
         {
-                    
-            prevstackstring: $('#prevstack').val()
+            stackstring: $('#stack').val(),
+            prevstackstring: $('#prevstack').val(),
+            currentvalue: $('#current').val(),
+            functionname: 'previous'
         },
         function(){     
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
             $('.dialogs').dialog({
                 autoOpen: false,
-                width: 'auto'
+                height: 'auto',
+                width: 605
             });
             
         });
+        
+       
     //        pagenumber--;
     //        if(pagenumber > 0)
     //        {				

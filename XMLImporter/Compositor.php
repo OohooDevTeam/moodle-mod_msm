@@ -69,20 +69,23 @@ class Compositor
     }
 
 //    function loadAndDisplay($prevstring, $string)
-    function loadAndDisplay($string)
+    function loadAndDisplay($previousstring, $string, $current, $functionString)
     {
         global $DB;
 
         $newstring = '';
+        $beforeString = '';
         $content = '';
         $stack = array();
-//        $prevstack = array();
-//        $prevstack = array();
+        $prevstack = array();
 
         //recreating stack from string
         $eachRecordString = explode(',', $string);
 
+        $eachPrevRecordString = explode(',', $previousstring);
+
         $recordLength = count($eachRecordString) - 1;
+        $prevRecordLength = count($eachPrevRecordString) - 1;
 
         // foreach not used because need to eliminate empty array at the end due to ending comma when the string is made
         for ($i = 0; $i < $recordLength; $i++)
@@ -90,13 +93,39 @@ class Compositor
             array_push($stack, $eachRecordString[$i]);
         }
 
-        $recordValue = array_pop($stack);
-        
+        for ($i = 0; $i < $prevRecordLength; $i++)
+        {
+            array_push($prevstack, $eachPrevRecordString[$i]);
+        }
+
+        if ($functionString == 'previous')
+        {
+            $recordValue = array_pop($prevstack);
+            if (!empty($recordValue))
+            {
+                array_push($stack, $current);
+            }
+        }
+        // it's the first page?
+        else if(empty($functionString))
+        {
+            $recordValue = array_pop($stack);
+        }
+        else if($functionString == 'next')
+        {
+            $recordValue = array_pop($stack);
+            if (!empty($recordValue))
+            {
+                array_push($prevstack, $current);
+            }
+        }
+
+
         // adding the popped value back to prevstack to be referred back to when previous button is triggered
-//        array_push($prevstack, $recordValue);
 
         if (!empty($recordValue))
         {
+
             $recordids = explode('/', $recordValue);
 
             $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
@@ -109,15 +138,15 @@ class Compositor
 
             // a flag for indicating if the unit element in current debate is
             $isSubpage = false;
-            
+
             // if the unit has a record with parent id being associate/subordinate, do not display the unit
 
             foreach ($unitCompRecords as $unitRecord)
             {
-                
-                $standalone = $DB->get_record('msm_unit', array('id'=>$unitRecord->unit_id))->standalone;
-                
-                if($standalone=='true')
+
+                $standalone = $DB->get_record('msm_unit', array('id' => $unitRecord->unit_id))->standalone;
+
+                if ($standalone == 'true')
                 {
                     $isSubpage = true;
                     break;
@@ -142,6 +171,11 @@ class Compositor
                 {
                     $newstring .= $record . ",";
                 }
+
+                foreach ($prevstack as $key => $prevRecord)
+                {
+                    $beforeString .= $prevRecord . ",";
+                }
                 // passing contents of stack to ajax call by putting it into an hidden input field
                 ?>
 
@@ -151,11 +185,19 @@ class Compositor
                         $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
                         $('#stack').val(stackstring); 
                         
-//                        var prevString = "<!--?php echo $recordValue; ?-->";
-//                        $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visiblity:hidden"/>');
-//                        $('#prevstack').val(prevString);
+                         var currentString = "<?php echo $recordValue; ?>";
+                        $('.unit').append('<input id="current" type="text" name="currentvalue" style="visibility:hidden"/>');
+                        $('#current').val(currentString);
+                                                                                                                        
+                        var prevString = "<?php echo $beforeString; ?>";
+                        $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visibility:hidden"/>');
+                        $('#prevstack').val(prevString);
+                                                                        
+                        var functionstring = "";
+                        $('.unit').append('<input id="functioninput" type="text" name="functionstring" style="visibility:hidden"/>');
+                        $('#functioninput').val(functionstring); 
                     });
-                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                            
                 </script>
 
                 <?php
@@ -169,8 +211,13 @@ class Compositor
                 {
                     $newstring .= $record . ",";
                 }
-               
-                $content.= $this->loadAndDisplay($newstring);
+
+                foreach ($prevstack as $key => $prevRecord)
+                {
+                    $beforeString .= $prevRecord . ",";
+                }
+
+                $content.= $this->loadAndDisplay($beforeString, $newstring, $currrent, $functionString);
                 return $content;
             }
         }

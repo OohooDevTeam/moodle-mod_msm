@@ -161,12 +161,13 @@ foreach ($stack as $key => $record)
 }
 
 
-$content.= $compositor->loadAndDisplay($string, 0);
+$content.= $compositor->loadAndDisplay('', $string, '', '');
 //print_object($stack);
 
 $content .= "</div>";
 
 $content .= "</div>";
+
 $content .= "<div class='controller'>";
 $content .= "</div>";
 $content .= "</div>";
@@ -181,6 +182,8 @@ $content .= "</div>";
 
 $content .= "</div>";
 
+$content .= "<div class='loadingscreen'></div>";
+
 // need to have it in this order or dialog breaks
 
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
@@ -189,7 +192,8 @@ $content .= "
     jQuery(document).ready(function(){       
          $('.dialogs').dialog({
               autoOpen: false,
-              width: 'auto'
+              height: 'auto',
+              width: 605
          }); 
 
          $('#features').jshowoff({
@@ -199,10 +203,18 @@ $content .= "
          
         $('#MySplitter').splitter();
         
-        
+       $('.loadingscreen').on({
+        ajaxStart: function() {
+            $(this).show();
+        },
+        ajaxStop: function() {
+            $(this).hide();
+        }
+       });
+;
     });
+    
     </script>";
-
 
 // where the display method would go...
 

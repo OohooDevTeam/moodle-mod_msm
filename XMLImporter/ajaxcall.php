@@ -1,19 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
-
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 /*
  * This php file is called via AJAX call in the jshowoff javascript file and it calls a function in Compositor class to 
  * create/update the stack with all the record IDs needed for the program to function.
@@ -28,11 +27,16 @@ global $DB, $PAGE, $CFG;
 $comp = new Compositor();
 
 $string = $_POST["stackstring"];
-//$prevstring = $_POST["prevstackstring"];
+$prevstring = $_POST["prevstackstring"];
+$currentString = $_POST["currentvalue"];
+$functionstring = $_POST["functionname"];
 
-$content = $comp->loadAndDisplay($string);
+$content = $comp->loadAndDisplay($prevstring, $string, $currentString, $functionstring);
 
-//$content = $comp->loadAndDisplay($prevstring, $string);
+
+
+//$content = $comp->loadAndDisplay($string);
+
 
 echo $content;
 ?>
