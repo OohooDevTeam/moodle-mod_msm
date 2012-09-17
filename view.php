@@ -160,7 +160,6 @@ foreach ($stack as $key => $record)
     $string .= $record->id . "/" . $record->unit_id . "/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
 }
 
-
 $content.= $compositor->loadAndDisplay('', $string, '', '');
 //print_object($stack);
 

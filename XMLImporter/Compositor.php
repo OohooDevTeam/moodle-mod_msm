@@ -59,9 +59,13 @@ class Compositor
 
         foreach ($unitRecords as $unitRecord)
         {
-            foreach ($this->makeStack($unitRecord) as $child)
+            $checkedUnit = $DB->get_record('msm_unit', array('id' => $unitRecord->unit_id));
+            if ($checkedUnit->standalone == 'false')
             {
-                array_push($childs, $child);
+                foreach ($this->makeStack($unitRecord) as $child)
+                {
+                    array_push($childs, $child);
+                }
             }
         }
 
@@ -107,11 +111,11 @@ class Compositor
             }
         }
         // it's the first page?
-        else if(empty($functionString))
+        else if (empty($functionString))
         {
             $recordValue = array_pop($stack);
         }
-        else if($functionString == 'next')
+        else if ($functionString == 'next')
         {
             $recordValue = array_pop($stack);
             if (!empty($recordValue))
@@ -120,111 +124,57 @@ class Compositor
             }
         }
 
+        $recordids = explode('/', $recordValue);
 
-        // adding the popped value back to prevstack to be referred back to when previous button is triggered
+        $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
 
-        if (!empty($recordValue))
-        {
+        $unitid = $unitRecord->id;
+        $unitcompid = $recordids[0];
 
-            $recordids = explode('/', $recordValue);
 
-            $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
-
-            $unitid = $unitRecord->id;
-            $unitcompid = $recordids[0];
-
-            $unitTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
-            $unitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $unitid, 'table_id' => $unitTable));
-
-            // a flag for indicating if the unit element in current debate is
-            $isSubpage = false;
-
-            // if the unit has a record with parent id being associate/subordinate, do not display the unit
-
-            foreach ($unitCompRecords as $unitRecord)
-            {
-
-                $standalone = $DB->get_record('msm_unit', array('id' => $unitRecord->unit_id))->standalone;
-
-                if ($standalone == 'true')
-                {
-                    $isSubpage = true;
-                    break;
-                }
-                else
-                {
-                    $isSubpage = false;
-                }
-            }
-
-            // not a stand alone page
-            if (!$isSubpage)
-            {
-                $unit = new Unit();
-                $unit->loadFromDb($unitid, $unitcompid);
-                $this->unit = $unit;
+        $unit = new Unit();
+        $unit->loadFromDb($unitid, $unitcompid);
+        $this->unit = $unit;
 //                $content = '';
-                $content .= "<div class=unit>";
-                $content .= $this->unit->displayhtml();
+        $content .= "<div class=unit>";
+        $content .= $this->unit->displayhtml();
 
-                foreach ($stack as $key => $record)
-                {
-                    $newstring .= $record . ",";
-                }
-
-                foreach ($prevstack as $key => $prevRecord)
-                {
-                    $beforeString .= $prevRecord . ",";
-                }
-                // passing contents of stack to ajax call by putting it into an hidden input field
-                ?>
-
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        var stackstring = "<?php echo $newstring; ?>";
-                        $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
-                        $('#stack').val(stackstring); 
-                        
-                         var currentString = "<?php echo $recordValue; ?>";
-                        $('.unit').append('<input id="current" type="text" name="currentvalue" style="visibility:hidden"/>');
-                        $('#current').val(currentString);
-                                                                                                                        
-                        var prevString = "<?php echo $beforeString; ?>";
-                        $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visibility:hidden"/>');
-                        $('#prevstack').val(prevString);
-                                                                        
-                        var functionstring = "";
-                        $('.unit').append('<input id="functioninput" type="text" name="functionstring" style="visibility:hidden"/>');
-                        $('#functioninput').val(functionstring); 
-                    });
-                                                                                                                                                                                                                                                                                            
-                </script>
-
-                <?php
-                $content .= "</div>";
-                return $content;
-            }
-            // it is a standalone page
-            else
-            {
-                foreach ($stack as $key => $record)
-                {
-                    $newstring .= $record . ",";
-                }
-
-                foreach ($prevstack as $key => $prevRecord)
-                {
-                    $beforeString .= $prevRecord . ",";
-                }
-
-                $content.= $this->loadAndDisplay($beforeString, $newstring, $currrent, $functionString);
-                return $content;
-            }
-        }
-        else // at the end of textbook
+        foreach ($stack as $key => $record)
         {
-            $content = '';
+            $newstring .= $record . ",";
         }
+
+        foreach ($prevstack as $key => $prevRecord)
+        {
+            $beforeString .= $prevRecord . ",";
+        }
+        // passing contents of stack to ajax call by putting it into an hidden input field
+        ?>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var stackstring = "<?php echo $newstring; ?>";
+                $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
+                $('#stack').val(stackstring); 
+                                                                                
+                var currentString = "<?php echo $recordValue; ?>";
+                $('.unit').append('<input id="current" type="text" name="currentvalue" style="visibility:hidden"/>');
+                $('#current').val(currentString);
+                                                                                                                                                                                
+                var prevString = "<?php echo $beforeString; ?>";
+                $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visibility:hidden"/>');
+                $('#prevstack').val(prevString);
+                                                                                                                                
+                var functionstring = "";
+                $('.unit').append('<input id="functioninput" type="text" name="functionstring" style="visibility:hidden"/>');
+                $('#functioninput').val(functionstring); 
+            });
+                                                                                                                                                                                                                                                                                                                                                    
+        </script>
+
+        <?php
+        $content .= "</div>";
+        return $content;
 
         return $content;
     }

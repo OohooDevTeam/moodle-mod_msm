@@ -218,13 +218,41 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     };
 			
     // load the next slide
-    function next() {
+    function next() {       
         goToAndPause(counter);
         
-        var records = $('#prevstack').val();
+        var records = $('#stack').val();
         var separatedrecords = records.split(",");
         // add one to total length to compensate for the first page being pg 1 instead of 0
+        var stackRecordNum = separatedrecords.length-1;
+                
+        if(stackRecordNum == '1')
+        {
+            var valueInStack = $('#prevstack').val();
+            var eachrecordarray = valueInStack.split(",");
+            var reversedArray = [];  
+            
+            reversedArray.push(records.replace(",", ""));
+            
+            for(var i=1; i < eachrecordarray.length; i++)
+            {
+                reversedArray.push(eachrecordarray[i].replace(",", ""));
+            }            
+                        
+            var newStackValue = '';
+            while(reversedArray.length != 0)
+            {
+                newStackValue += reversedArray.pop()+","
+            }
+                                   
+            $('#stack').val(newStackValue);
+            $('#prevstack').val('');
+        }
+        records = $('#prevstack').val();
+        separatedrecords = records.split(",");
+        // add one to total length to compensate for the first page being pg 1 instead of 0
         var pgnumber = separatedrecords.length+1;
+        
         updatepgnumber(pgnumber);
         
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
@@ -253,7 +281,33 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
         var records = $('#prevstack').val();
         var separatedrecords = records.split(",");
         // add one to total length to compensate for the first page being pg 1 instead of 0
+        var stackRecordNum = separatedrecords.length;
+                
+        if(stackRecordNum == '1')
+        {
+            var valueInStack = $('#stack').val();
+            var eachrecordarray = valueInStack.split(",");
+            var reversedArray = [];
+            
+            for(var i=0; i < eachrecordarray.length; i++)
+            {
+                reversedArray.push(eachrecordarray[i]);
+            }
+            
+            var newStackValue = '';
+            while(reversedArray.length != 0)
+            {                  
+                newStackValue += reversedArray.pop()+","
+            }
+                       
+            $('#prevstack').val(newStackValue);
+            $('#stack').val('');            
+        }
+        records = $('#prevstack').val();
+        separatedrecords = records.split(",");
+        // add one to total length to compensate for the first page being pg 1 instead of 0
         var pgnumber = separatedrecords.length-1;
+               
         updatepgnumber(pgnumber);
         
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
@@ -272,24 +326,12 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             });
             
         });
-        
-       
-    //        pagenumber--;
-    //        if(pagenumber > 0)
-    //        {				
-    //            updatepgnumber(pagenumber);
-    //        }
-    //        else
-    //        {
-    //            pagenumber = gallery.length;
-    //            updatepgnumber(pagenumber);
-    //        }
-				
+        		
     };
 			
-    function updatepgnumber(num) {
-
-        var pgnum = ''+num+'';
+    function updatepgnumber(pgnumber) {
+       
+        var pgnum = ''+pgnumber+'';
         document.getElementById('pg').innerHTML= 'pg.'+pgnum;
     }
 			

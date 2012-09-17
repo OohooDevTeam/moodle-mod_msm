@@ -112,6 +112,11 @@ MathJax.Hub.Config({
             TopBndry: ['{\\partial{#1}}',1],	
 		
             Arrw: ['{\\overset{\\longrightarrow}{#1}}',1],
+            Arrow: ['{\\overset{\\longrightarrow}{#1}}',1],
+            
+            Abs: ['{\\left\\vert#1\\right\\vert}', 1],
+            
+            Length:['{L(#1)}',1],
 		
             IdMtrx: ['{I_{#1}}',1],					
             ZeroMtrx: ['{\\mathbf{0}_{#1}}',1],		
@@ -123,11 +128,13 @@ MathJax.Hub.Config({
             ZMtrx: ['{\\mathbf{0}_{#1}}',1],		
             ColSp: ['{\\text{Col}(#1)}',1],			
             RowSp: ['{\\text{Row}(#1)}',1],			
-            NllSp: ['{\\text{Null}(#1)}',1],		
+            NllSp: ['{\\text{Null}(#1)}',1],	
+            
+            pr: ['{\\text{\\it proj}}'],
 		
             FakeString: '{\\text{fake}}'
         },
-        extensions: ["color.js"]
+        extensions: ["color.js", "AMSmath.js"]
     },
     
     jax: ["input/TeX", "output/HTML-CSS"]
