@@ -115,7 +115,7 @@ class MathArray extends Element
         }
         
         $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
-        $this->childs = array();
+        $this->rows = array();
         
         foreach($childElements as $child)
         {
@@ -125,22 +125,22 @@ class MathArray extends Element
             {
                 $mathrow = new MathRow();
                 $mathrow->loadFromDb($child->unit_id, $child->id);
-                $this->childs[] = $mathrow;
+                $this->rows[] = $mathrow;
             }
         }
         
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
         
         $content .= "<table border='0' class='matharray'>";
         
-        foreach($this->childs as $row)
+        foreach($this->rows as $row)
         {
-            $content .= $row->displayhtml();
+            $content .= $row->displayhtml($standalone);
         }
         
         $content .= "</table>";

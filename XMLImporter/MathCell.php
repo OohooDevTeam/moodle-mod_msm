@@ -179,7 +179,7 @@ class MathCell extends Element
             $this->content = $mathcellRecord->content;
         }
 
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
         $this->refchilds = array();
         $this->childs = array();
         $this->subordinates = array();
@@ -222,21 +222,21 @@ class MathCell extends Element
                 case('msm_info'):
                     $info = new MathInfo();
                     $info->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[$this->compid] = $info;
+                    $this->childs[] = $info;
                     break;
             }
         }
-
         return $this;
     }
 
-    function displayhtml($rowspan)
+    function displayhtml($rowspan, $standalone)
     {
         $content = '';
 
         $content .= "<td class='matharraycell' colspan='" . $this->colspan . "' rowspan='" . $rowspan . "' align='" . $this->halign . "' valign='" . $this->valign . "'>";
 
         // if info exists then need to set up the dialog popup window, otherwise, just show the content
+       
         if (empty($this->childs))
         {
             if (empty($this->content))
@@ -245,7 +245,8 @@ class MathCell extends Element
             }
             else
             {
-                $content .= $this->displayContent($this, $this->content);
+//                $content .= $this->displayContent($this, $this->content, $standalone);
+                $content .= $this->content;
             }
         }
         else
@@ -254,8 +255,8 @@ class MathCell extends Element
             $content .= $this->content;
             $content .= "</a>";
 
-            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->childs[$this->compid]->caption . '">';
-            $content .= $this->childs[$this->compid]->info_content;
+            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->childs[0]->caption . '">';
+            $content .= $this->childs[0]->info_content;
             $content .= "</div>";
         }
 

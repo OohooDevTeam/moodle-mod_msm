@@ -23,9 +23,6 @@ class ProofBlock extends Element
 {
 
     public $position;
-//    public $proof_block_content;
-    public $logic_type;
-    public $proof_logic;
 
     function __construct($xmlpath = '')
     {
@@ -40,8 +37,6 @@ class ProofBlock extends Element
      */
     public function loadFromXml($DomElement, $position = '')
     {
-
-
         $this->position = $position;
         $this->logic_types = array();
         $this->proof_logics = array();
@@ -80,7 +75,6 @@ class ProofBlock extends Element
 
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
-
                 if ($child->tagName == 'logic')
                 {
                     // append the proofblockbodyNode to new proof.block node
@@ -93,6 +87,7 @@ class ProofBlock extends Element
                 }
                 else if ($child->tagName == 'caption')
                 {
+
                     $childElement = $doc->importNode($child, true);
                     $newProofblockNode->appendChild($childElement);
                 }
@@ -112,13 +107,19 @@ class ProofBlock extends Element
         // parsing the new XML document
 //        $newdoc = new DOMDocument();
 
+        $logicExisted = false;
+        $captionExisted = false;
+
         foreach ($rootElement->childNodes as $child)
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
+
                 if ($child->tagName == 'logic')
                 {
                     $index++;
+                    $logicExisted = true;
+
                     $this->proof_block_bodys[$index] = $sectionedContent;
                     $sectionedContent = '';
                     $element = $doc->importNode($child, true);
@@ -127,51 +128,69 @@ class ProofBlock extends Element
                 }
                 else if ($child->tagName == 'caption')
                 {
-                    $this->captions[$index] = $this->getContent($child);
+                    $captionExisted = true;
+                    if (!$logicExisted)
+                    {
+                        $index++;
+                    }
+
+                    $captionElement = $doc->importNode($child, true);
+                    $this->captions[$index] = $this->getContent($captionElement);
                 }
                 else if ($child->tagName == 'proof.block.body')
                 {
-                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+
+                    $sectionedContent = $doc->saveXML($doc->importNode($child, true));
+
+                    @$doc->loadXML($sectionedContent);
+                    $element = $doc->importNode($doc->documentElement, true);
+
+                    $proofblockcontent = '';
+
+                    foreach ($this->processIndexAuthor($element, $position) as $indexauthor)
                     {
                         $this->indexauthors[$index][] = $indexauthor;
                     }
 
-                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+                    foreach ($this->processIndexGlossary($element, $position) as $indexglossary)
                     {
                         $this->indexglossarys[$index][] = $indexglossary;
                     }
 
-                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+                    foreach ($this->processIndexSymbols($element, $position) as $indexsymbol)
                     {
                         $this->indexsymbols[$index][] = $indexsymbol;
                     }
-                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+                    foreach ($this->processSubordinate($element, $position) as $subordinate)
                     {
                         $this->subordinates[$index][] = $subordinate;
                     }
 
-                    foreach ($this->processMathArray($child, $position) as $matharray)
+                    foreach ($this->processMathArray($element, $position) as $matharray)
                     {
                         $this->matharrays[$index][] = $matharray;
                     }
 
-                    foreach ($this->processMedia($child, $position) as $media)
+                    foreach ($this->processMedia($element, $position) as $media)
                     {
                         $this->medias[$index][] = $media;
                     }
 
-                    foreach ($this->processTable($child, $position) as $table)
+                    foreach ($this->processTable($element, $position) as $table)
                     {
                         $this->tables[$index][] = $table;
                     }
 
-                    foreach ($this->processContent($child, $position) as $content)
+                    foreach ($this->processContent($element, $position) as $content)
                     {
-                        $sectionedContent .= $content;
+                        $proofblockcontent .= $content;
                     }
+                    $this->proof_block_bodys[$index] = $proofblockcontent;
+                    // resetting the boolean flags to detect next logic/caption
+                    $logicExisted = false;
+                    $captionExisted = false;
                 }
             }
-            $this->proof_block_bodys[$index] = $sectionedContent;
         }
     }
 
@@ -184,24 +203,36 @@ class ProofBlock extends Element
     {
         global $DB;
         $data = new stdClass();
+//
+//        echo "proofblock object is?";
+//        print_object($this);
 
         foreach ($this->proof_block_bodys as $key => $content)
         {
-            if (isset($this->logic_types[$key]))
+            if (empty($this->proof_logics[$key]))
             {
-                $data->logic_type = $this->logic_types[$key];
-                $data->proof_logic = $this->proof_logics[$key];
-                $data->proof_content = $content;
-                $data->caption = $this->captions[$key];
+                $data->proof_logic = null;
             }
             else
             {
-                $data->logic_type = null;
-                $data->proof_logic = null;
-                $data->proof_content = $content;
-                $data->caption = null;
+                $data->proof_logic = $this->proof_logics[$key];
             }
 
+            if (empty($this->captions[$key]))
+            {
+                $data->caption = null;
+            }
+            else
+            {
+                $data->caption = $this->captions[$key];
+            }
+            if (isset($this->logic_types[$key]))
+            {
+                $data->logic_type = $this->logic_types[$key];
+            }
+            $data->proof_content = $content;
+
+//            
             $this->id = $DB->insert_record('msm_proof_block', $data);
 
             $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
@@ -460,13 +491,14 @@ class ProofBlock extends Element
         $content .= "<div class='proofblocktitle'>";
         $content .= $this->caption;
         $content .= "</div>";
+
 //        echo "before displayContent in the proofblock";
         // this content needs proof.block.body tags to be added due to it lacking a root element
         // (without it, it will error out in displayContent due to loadXML method needing a root element)
-        $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>");
+        $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>", true);
 
         $content .="</div>";
-        
+
         return $content;
     }
 

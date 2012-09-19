@@ -104,11 +104,11 @@ class Intro extends Element
         return $this;       
     }
     
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
         $content .= "<h2> Introduction </h2>";
-        $content .= $this->block->displayhtml();
+        $content .= $this->block->displayhtml($standalone);
         
         return $content;
     }

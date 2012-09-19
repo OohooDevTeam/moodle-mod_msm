@@ -331,11 +331,11 @@ class Para extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
 
-        $content .= $this->displayContent($this, $this->para_content);
+        $content .= $this->displayContent($this, $this->para_content,$standalone);
 //        
 //        foreach($this->childs as $child)
 //        {

@@ -105,7 +105,7 @@ class MathRow extends Element
         }
         
         $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
-        $this->childs = array();
+        $this->cells = array();
         
         foreach($childElements as $child)
         {
@@ -115,22 +115,22 @@ class MathRow extends Element
             {
                 $mathcell = new MathCell();
                 $mathcell->loadFromDb($child->unit_id, $child->id);
-                $this->childs[] = $mathcell;
+                $this->cells[] = $mathcell;
             }
         }
         
         return $this;
     }
     
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
         
         $content .= "<tr class='matharrayrow' align='center'>";
         
-        foreach($this->childs as $column)
+        foreach($this->cells as $column)
         {
-            $content .= $column->displayhtml($this->rowspan);
+            $content .= $column->displayhtml($this->rowspan, $standalone);
         }
         
         $content .= "</tr>";        

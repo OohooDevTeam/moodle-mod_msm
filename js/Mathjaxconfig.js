@@ -131,6 +131,8 @@ MathJax.Hub.Config({
             NllSp: ['{\\text{Null}(#1)}',1],	
             
             pr: ['{\\text{\\it proj}}'],
+            StdBss: ['{\\mathbf{e}_{#1}}', 1],
+            IdTrafo: ['{\\text{\\it Id}_{#1}}', 1],
 		
             FakeString: '{\\text{fake}}'
         },

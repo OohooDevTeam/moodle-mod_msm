@@ -193,11 +193,14 @@ abstract class Element
         //to eliminate any nested subordinates from being counted when getting the length of the subordinates
         foreach ($medias as $m)
         {
-            if ($m->parentNode->parentNode->parentNode->nodeType == XML_ELEMENT_NODE)
+            if (isset($m->parentNode->parentNode->parentNode))
             {
-                if (($m->parentNode->parentNode->parentNode->tagName == 'info') && ($DomElement->tagName != 'info'))
+                if ($m->parentNode->parentNode->parentNode->nodeType == XML_ELEMENT_NODE)
                 {
-                    $mlength--;
+                    if (($m->parentNode->parentNode->parentNode->tagName == 'info') && ($DomElement->tagName != 'info'))
+                    {
+                        $mlength--;
+                    }
                 }
             }
         }
@@ -837,12 +840,15 @@ abstract class Element
      * @param String $XMLcontent
      * @return null|String
      */
-    function displayContent($object, $XMLcontent)
+    function displayContent($object, $XMLcontent, $rightpanel = false)
     {
         global $DB;
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
+
+//        echo "XMLcontent";
+//        print_object($XMLcontent);
 
         @$doc->loadXML($XMLcontent);
 
@@ -865,7 +871,7 @@ abstract class Element
                 if (!empty($object->tables[$key]))
                 {
                     $table = $object->tables[$key];
-                    $newtableString = $table->displayhtml();
+                    $newtableString = $table->displayhtml($rightpanel);
                     @$newElementdoc->loadXML($newtableString);
                     $t->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $t);
                 }
@@ -877,7 +883,7 @@ abstract class Element
                 if (!empty($object->matharrays[$key]))
                 {
                     $matharray = $object->matharrays[$key];
-                    $newmarrayString = $matharray->displayhtml();
+                    $newmarrayString = $matharray->displayhtml($rightpanel);
                     @$newElementdoc->loadXML($newmarrayString);
 
                     $marray->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $marray);
@@ -896,8 +902,17 @@ abstract class Element
                     {
                         if (!empty($subordinate->infos[0]))
                         {
-                            $newtag = '';
-                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
+                            if ($rightpanel == false)
+                            {
+                                $newtag = '';
+                                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
+                                // if the subordinate is present on the right side of the panel, then display the child contents in the modal dialog
+                            }
+                            else if ($rightpanel)
+                            {
+                                $newtag = '';
+                                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='showonRight(" . $subordinate->infos[0]->compid . ")'>";
+                            }
 
                             $rawhotString = explode(',', $subordinate->hot);
 
@@ -947,7 +962,7 @@ abstract class Element
                                 $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
                                 foreach ($subordinate->childs as $child)
                                 {
-                                    $content .= $child->displayhtml();
+                                    $content .= $child->displayhtml($rightpanel);
                                 }
                                 $content .= "</div>";
                             }

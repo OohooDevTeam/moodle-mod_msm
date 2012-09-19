@@ -61,6 +61,7 @@ class Definition extends Element
         $this->indexsymbols = array();
         $this->medias = array();
         $this->tables = array();
+        $this->matharrays = array();
 
         $associates = $DomElement->getElementsByTagName('associate');
 
@@ -78,6 +79,11 @@ class Definition extends Element
 
         foreach ($defbodys as $d)
         {
+            foreach ($this->processMathArray($d, $position) as $matharray)
+            {
+                $this->matharrays[] = $matharray;
+            }
+
             foreach ($this->processIndexAuthor($d, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
@@ -155,6 +161,14 @@ class Definition extends Element
             }
         }
 
+        if (!empty($this->matharrays))
+        {
+            foreach ($this->matharrays as $key => $matharray)
+            {
+                $elementPositions['matharray' . '-' . $key] = $matharray->position;
+            }
+        }
+
 
         if (!empty($this->subordinates))
         {
@@ -224,6 +238,23 @@ class Definition extends Element
                         $associate = $this->associates[$associateString[1]];
                         $associate->saveIntoDb($associate->position, $this->compid, $sibling_id);
                         $sibling_id = $associate->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $sibling_id = $matharray->compid;
                     }
                     break;
 
@@ -350,7 +381,7 @@ class Definition extends Element
         $this->subordinates = array();
         $this->medias = array();
         $this->tables = array();
-
+        $this->matharrays = array();
         $this->childs = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
@@ -378,6 +409,12 @@ class Definition extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
+                
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->matharrays[] = $matharray;
+                    break;
 
                 case('msm_table'):
                     $table = new Table();
@@ -390,7 +427,7 @@ class Definition extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
         $content .= "<br />";
@@ -407,7 +444,7 @@ class Definition extends Element
         $content .= "<br/>";
 
         $content .= "<div class='defcontent'>";
-        $content .= $this->displayContent($this, $this->def_content);
+        $content .= $this->displayContent($this, $this->def_content, $standalone);
         $content .= "<br />";
         $content .= "</div>";
 

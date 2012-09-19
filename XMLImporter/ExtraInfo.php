@@ -340,7 +340,7 @@ class ExtraInfo extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
         $content .= "<div class='extrainfo'>";

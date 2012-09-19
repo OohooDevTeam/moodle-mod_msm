@@ -445,16 +445,11 @@ class InContent extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
 
-        $content .= $this->displayContent($this, $this->content);
-
-//        foreach ($this->childs as $child)
-//        {
-//            $content .= $child->displayhtml();
-//        }
+        $content .= $this->displayContent($this, $this->content, $standalone);
 
         return $content;
     }

@@ -255,7 +255,7 @@ class Theorem extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
         $content .= "<br />";
@@ -274,7 +274,7 @@ class Theorem extends Element
         $content .= "<div class='theoremcontent'>";
         foreach ($this->childs as $child)
         {
-            $content .= $child->displayhtml();
+            $content .= $child->displayhtml($standalone);
         }
         $content .= "</div>";
 

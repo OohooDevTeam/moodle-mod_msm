@@ -47,7 +47,7 @@ class Proof extends Element
 
         $proof_blocks = $DomElement->getElementsByTagName('proof.block');
 
-        foreach ($proof_blocks as $pb)
+        foreach ($proof_blocks as $key=>$pb)
         {
             $position = $position + 1;
             $proof_block = new ProofBlock($this->xmlpath);

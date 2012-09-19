@@ -119,9 +119,9 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowo
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showonModal.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
-
-
 //echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
 
 echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/Mathjaxconfig.js'></script>";
@@ -184,7 +184,6 @@ $content .= "</div>";
 $content .= "<div class='loadingscreen'></div>";
 
 // need to have it in this order or dialog breaks
-
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
 $content .= "
     <script type='text/javascript'>
@@ -199,6 +198,11 @@ $content .= "
               autoplay:false,
               links:false                  
          });
+         
+ $('img[usemap]').maphilight({
+                    fillColor: 'C0C0C0',
+                    fillOpacity: 0.3                    
+                });
          
         $('#MySplitter').splitter();
         

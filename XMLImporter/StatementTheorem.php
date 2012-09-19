@@ -42,6 +42,7 @@ class StatementTheorem extends Element
         $this->subordinates = array();
         $this->medias = array();
         $this->tables = array();
+        $this->matharrays = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -78,6 +79,11 @@ class StatementTheorem extends Element
                     foreach ($this->processMedia($child, $position) as $media)
                     {
                         $this->medias[] = $media;
+                    }
+
+                    foreach ($this->processMathArray($child, $position) as $matharray)
+                    {
+                        $this->matharrays[] = $matharray;
                     }
 
                     foreach ($this->processTable($child, $position) as $table)
@@ -120,6 +126,14 @@ class StatementTheorem extends Element
             foreach ($this->subordinates as $key => $subordinate)
             {
                 $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
+            }
+        }
+
+        if (!empty($this->matharrays))
+        {
+            foreach ($this->matharrays as $key => $matharray)
+            {
+                $elementPositions['matharray-' . $key] = $matharray->position;
             }
         }
 
@@ -200,6 +214,23 @@ class StatementTheorem extends Element
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $sibling_id = $matharray->compid;
                     }
                     break;
 
@@ -327,13 +358,13 @@ class StatementTheorem extends Element
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
-                
+
                 case('msm_media'):
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
-                
+
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);
@@ -345,15 +376,15 @@ class StatementTheorem extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';
-        $content .= $this->displayContent($this, $this->statement_content);
+        $content .= $this->displayContent($this, $this->statement_content, $standalone);
 
         $content .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->childs as $childComponent)
         {
-            $content .= $childComponent->displayhtml();
+            $content .= $childComponent->displayhtml($standalone);
         }
         $content .= "</ol>";
 

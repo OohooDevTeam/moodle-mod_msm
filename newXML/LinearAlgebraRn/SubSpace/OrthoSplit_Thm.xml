@@ -168,9 +168,7 @@
                   <crossref>
                      <theorem.ref theoremID="Thm_OrthogonalComplementOperationProperties"/>
                      <info>
-                        <info.caption>
-                           <caption>Why is this so?</caption>
-                        </info.caption>
+                        <caption>Why is this so?</caption>
                         <para>
                            <para.body>We know that <math>
                                  <latex>V=\span(\EuScript{B})</latex>

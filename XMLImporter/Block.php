@@ -592,13 +592,13 @@ class Block extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($standalone)
     {
         $content = '';    
         
         foreach ($this->childs as $child)
         {
-            $content .= $child->displayhtml();
+            $content .= $child->displayhtml($standalone);
         }
 
         return $content;
