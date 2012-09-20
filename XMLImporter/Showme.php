@@ -367,6 +367,11 @@ class Showme extends Element
         $content .= "<span class='showmetitle'>";
         $content .= $this->caption;
         $content .= "</span>";
+        
+        $content .= "<span class='showmetype'>";
+        $content .= "Example";
+        $content .= "</span>";
+        
         $content .= "<br />";
 
         $content .= "<div class='showmecontent'>";

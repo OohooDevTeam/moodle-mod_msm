@@ -57,36 +57,45 @@ class StatementTheorem extends Element
                 }
                 else
                 {
-                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+                    //give a root node to child element being passed so tables
+                    $doc = new DOMDocument();
+                    $childElement = $doc->importNode($child, true);
+                    $newNode = $doc->createElement('wrapper');
+                    $newNode->appendChild($childElement);
+
+                    $element = $doc->importNode($newNode, true);
+
+
+                    foreach ($this->processIndexAuthor($element, $position) as $indexauthor)
                     {
                         $this->indexauthors[] = $indexauthor;
                     }
 
-                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+                    foreach ($this->processIndexGlossary($element, $position) as $indexglossary)
                     {
                         $this->indexglossarys[] = $indexglossary;
                     }
 
-                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+                    foreach ($this->processIndexSymbols($element, $position) as $indexsymbol)
                     {
                         $this->indexsymbols[] = $indexsymbol;
                     }
-                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+                    foreach ($this->processSubordinate($element, $position) as $subordinate)
                     {
                         $this->subordinates[] = $subordinate;
                     }
 
-                    foreach ($this->processMedia($child, $position) as $media)
+                    foreach ($this->processMedia($element, $position) as $media)
                     {
                         $this->medias[] = $media;
                     }
 
-                    foreach ($this->processMathArray($child, $position) as $matharray)
+                    foreach ($this->processMathArray($element, $position) as $matharray)
                     {
                         $this->matharrays[] = $matharray;
                     }
 
-                    foreach ($this->processTable($child, $position) as $table)
+                    foreach ($this->processTable($element, $position) as $table)
                     {
                         $this->tables[] = $table;
                     }
@@ -340,6 +349,7 @@ class StatementTheorem extends Element
         $this->subordinates = array();
         $this->medias = array();
         $this->tables = array();
+        $this->matharrays = array();
 
         foreach ($childElements as $child)
         {
@@ -363,6 +373,12 @@ class StatementTheorem extends Element
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
+                    break;
+
+                case('msm_math_array'):
+                    $matharray = new Matharray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->matharrays[] = $matharray;
                     break;
 
                 case('msm_table'):

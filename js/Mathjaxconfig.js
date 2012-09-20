@@ -57,7 +57,7 @@ MathJax.Hub.Config({
             Inclsn: ['{ \\text{inc}{ #1 } }',1],	
             Dgnl: ['{ \\bigtriangleup_{ #1 } }',1],
             Fold: ['{ \\bigtriangledown_{ #1 } }',1],	
-		
+           
             RNr: ['{\\mathbb R^{#1}}',1],	
             CNr: ['{\\mathbb C^{#1}}',1],	
             NNr: ['{\\mathbb N^{#1}}',1],	
@@ -101,7 +101,12 @@ MathJax.Hub.Config({
             dtrmnnt: '{\\text{det}}',								
             Dtrmnnt: ['{\\text{det}\\left\\(#1\\right\\)}',1],		
             DotPr: ['{{#1} \\bullet {#2}}',2], 			
-            CrssPr: ['{{#1}\\! \\times \\!{#2}}',2], 	
+            CrssPr: ['{{#1}\\! \\times \\!{#2}}',2], 
+            StPrdct: ['{{#1}\\hskip -.2em\\times\\hskip -.2em {#2}}', 2],
+            stprdct: '{\\hskip -.1em\\times\\hskip -.1em}',
+            
+            imes:'{\\hskip -.2mm\\times\\hskip -.2mm}',
+            
 		
             uInt: ['{\\mathbb{I}^{#1}}',1],		
             uBll: ['{\\mathbb{B}^{#1}}',1],		
@@ -115,7 +120,7 @@ MathJax.Hub.Config({
             Arrow: ['{\\overset{\\longrightarrow}{#1}}',1],
             
             Abs: ['{\\left\\vert#1\\right\\vert}', 1],
-            
+            abs: ['{\\left\\vert#1\\right\\vert}', 1],
             Length:['{L(#1)}',1],
 		
             IdMtrx: ['{I_{#1}}',1],					
@@ -130,7 +135,7 @@ MathJax.Hub.Config({
             RowSp: ['{\\text{Row}(#1)}',1],			
             NllSp: ['{\\text{Null}(#1)}',1],	
             
-            pr: ['{\\text{\\it proj}}'],
+            pr: ['{\\text{proj}}'],
             StdBss: ['{\\mathbf{e}_{#1}}', 1],
             IdTrafo: ['{\\text{\\it Id}_{#1}}', 1],
 		

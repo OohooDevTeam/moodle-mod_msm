@@ -278,7 +278,7 @@ class MathImg extends Element
         {
 //            if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
 //            {
-            $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "' usemap='#" . $filename[0] . "'/>";
+            $content .= "<img id='image-" . $this->compid . "' class='mathimagemap' src='" . $this->src . "' height='" . $height . "' width='" . $width . "' usemap='#" . $filename[0] . "'/>";
 //            }
 //            else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
 //            {

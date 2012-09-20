@@ -139,7 +139,6 @@ class ProofBlock extends Element
                 }
                 else if ($child->tagName == 'proof.block.body')
                 {
-
                     $sectionedContent = $doc->saveXML($doc->importNode($child, true));
 
                     @$doc->loadXML($sectionedContent);
@@ -436,6 +435,7 @@ class ProofBlock extends Element
         if (!empty($proofBlockRecord))
         {
             $this->compid = $compid;
+            $this->proof_logic = $proofBlockRecord->proof_logic;
             $this->caption = $proofBlockRecord->caption;
             $this->proof_content = $proofBlockRecord->proof_content;
         }
@@ -444,6 +444,23 @@ class ProofBlock extends Element
         $this->matharrays = array();
         $this->medias = array();
         $this->tables = array();
+
+        $this->partrefs = array();
+
+        if ((!empty($this->proof_logic)) && (empty($this->caption)))
+        {
+            $doc = new DOMDocument();
+            @$doc->loadXML($this->proof_logic);
+
+            $partrefs = $doc->getElementsByTagName('part.ref');
+
+            foreach ($partrefs as $partref)
+            {
+                $partrefcontent = $partref->nodeValue;
+                $parttheorem = $DB->get_record('msm_part_theorem', array('partid' => $partrefcontent));
+                $this->partrefs[] = $parttheorem;
+            }
+        }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
@@ -488,16 +505,52 @@ class ProofBlock extends Element
 
         $content .="<div class='proofblock'>";
 
-        $content .= "<div class='proofblocktitle'>";
-        $content .= $this->caption;
-        $content .= "</div>";
+        if (!empty($this->proof_logic))
+        {
+            $content .= "<ul>";
+            $content .= "<li>";
+
+            if (empty($this->caption))
+            {
+                if (count($this->partrefs) > 1)
+                {
+                    $content .= $this->partrefs[0]->part_content . " & " . $this->partrefs[1]->part_content;
+                }
+                else if (count($this->partrefs) == 1)
+                {
+                    $content .= $this->partrefs[0]->part_content;
+                }
+
+                $content .= "</li>";
+            }
+            else if (!empty($this->caption))
+            {
+                $content .= "<div class='proofblocktitle'>";
+                $content .= $this->caption;
+                $content .= "</div>";
+                $content .= "</li>";
+            }
+        }
+        else
+        {
+            $content .= "<div class='proofblocktitle'>";
+            $content .= $this->caption;
+            $content .= "</div>";
+        }
 
 //        echo "before displayContent in the proofblock";
         // this content needs proof.block.body tags to be added due to it lacking a root element
         // (without it, it will error out in displayContent due to loadXML method needing a root element)
-        $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>", true);
+
+        $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>");
+
+        if ((!empty($this->proof_logic)) && (empty($this->caption)))
+        {
+            $content .= "</ul>";
+        }
 
         $content .="</div>";
+
 
         return $content;
     }

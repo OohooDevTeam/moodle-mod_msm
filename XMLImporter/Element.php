@@ -158,6 +158,8 @@ abstract class Element
                         $content = preg_replace('/<math>\s+<latex>/', '$', $content);
                         $content = preg_replace('/<\/latex>\s+<\/math>/', '$', $content);
                         $content = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $content);
+                        // need to escape twice because it is parsed twice 
+                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr)\[(\S+)?\]/', '\\\\$1{$2}', $content);
                     }
                 }
                 // child is not an element node but a text node
@@ -449,6 +451,9 @@ abstract class Element
             $string = preg_replace('/<math>\s+<latex>/', '$', $string);
             $string = preg_replace('/<\/latex>\s+<\/math>/', '$', $string);
             $string = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $string);
+
+            // ? needed to make it ungreedy
+            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr)\[(\S+)?\]/', '\\\\$1{$2}', $string);
 
             $resultcontent[] = $string;
         }
@@ -866,27 +871,35 @@ abstract class Element
         }
         else
         {
-            foreach ($tables as $key => $t)
+
+            $tablelength = $tables->length;
+
+            for ($i = 0; $i < $tablelength; $i++)
             {
-                if (!empty($object->tables[$key]))
+                if (!empty($object->tables[$i]))
                 {
-                    $table = $object->tables[$key];
+                    $table = $object->tables[$i];
                     $newtableString = $table->displayhtml($rightpanel);
                     @$newElementdoc->loadXML($newtableString);
-                    $t->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $t);
+                    $tables->item($i)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $tables->item($i));
                 }
                 $XMLcontent = $doc->saveXML();
             }
+            // could not use foreach matharrays...etc because when replaceChild is executed, it seems like the 
+            // the length of the matharrays decrease as well.
+            $matharraylength = $matharrays->length;
 
-            foreach ($matharrays as $key => $marray)
+            for ($i = 0; $i < $matharraylength; $i++)
             {
-                if (!empty($object->matharrays[$key]))
+                if (!empty($object->matharrays[$i]))
                 {
-                    $matharray = $object->matharrays[$key];
+
+                    $matharray = $object->matharrays[$i];
                     $newmarrayString = $matharray->displayhtml($rightpanel);
+
                     @$newElementdoc->loadXML($newmarrayString);
 
-                    $marray->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $marray);
+                    $matharrays->item(0)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $matharrays->item(0));
                 }
                 $XMLcontent = $doc->saveXML();
             }

@@ -181,6 +181,8 @@
             .attr('id', titleId)
             .html(title)
             .prependTo(uiDialogTitlebar);
+            
+             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 
             //handling of deprecated beforeclose (vs beforeClose) option
             //Ticket #4669 http://dev.jqueryui.com/ticket/4669

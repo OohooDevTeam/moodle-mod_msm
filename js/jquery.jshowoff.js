@@ -269,6 +269,13 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 height: 'auto',
                 width: 605
             });
+            
+            $('.mathimagemap').maphilight({
+                    strokeColor:'379ee0',
+                    strokeWidth:0,
+                    fillColor:'379ee0',
+                    fillOpacity: 0.3
+                });
            
         });
           
@@ -324,7 +331,12 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 height: 'auto',
                 width: 605
             });
-            
+            $('.mathimagemap').maphilight({
+                    strokeColor:'379ee0',
+                    strokeWidth:0,
+                    fillColor:'379ee0',
+                    fillOpacity: 0.3
+                });
         });
         		
     };

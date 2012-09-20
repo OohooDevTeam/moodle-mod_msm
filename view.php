@@ -115,12 +115,12 @@ echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type=
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
 
 //echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jImageMaster/dist/jquery.imagemapster.js'></script>";
-
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showonModal.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
+
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
 //echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
 
@@ -173,9 +173,7 @@ $content .= "</div>";
 
 $content .= "<div class = 'rightcol' style='min-width: 542px;'>";
 $content .= "<div class = 'rightbox'>";
-$content .= "<p>";
-$content .= "right side!!";
-$content .= "</p>";
+
 $content .= "</div>";
 $content .= "</div>";
 
@@ -193,17 +191,19 @@ $content .= "
               height: 'auto',
               width: 605
          }); 
+         
+$('.mathimagemap').maphilight({
+                    strokeColor:'379ee0',
+                    strokeWidth:0,
+                    fillColor:'379ee0',
+                    fillOpacity: 0.3
+                });
 
          $('#features').jshowoff({
               autoplay:false,
               links:false                  
          });
-         
- $('img[usemap]').maphilight({
-                    fillColor: 'C0C0C0',
-                    fillOpacity: 0.3                    
-                });
-         
+                 
         $('#MySplitter').splitter();
         
        $('.loadingscreen').on({

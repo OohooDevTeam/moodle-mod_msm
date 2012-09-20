@@ -37,12 +37,11 @@
                     autoOpen: false,
                     width: 'auto'
                 });
-                $('img[usemap]').maphilight({
+                $('.mathimagemap').maphilight({
                     strokeColor:'379ee0',
                     strokeWidth:0,
                     fillColor:'379ee0',
-                    fillOpacity: 0.3,
-                    alwaysOn: true
+                    fillOpacity: 0.3
                 });
                
                 var data = $(this).data('maphilight') || {};               
@@ -72,7 +71,7 @@ $content .= "<div id='MySplitter'>";
 $content .= "<div class='leftcol' style='min-width: 542px;'>";
 $content .= "<div class='leftbox'>";
 
-$content .= "<img id='#image-1' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey'/>";
+$content .= "<img id='#image-1'  class='mathimagemap' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey'/>";
 
 $content .= "<map name='hey'>";
 
@@ -118,7 +117,7 @@ $content .= "</area>";
 
 $content .= "</map>";
 
-$content .= "<img id='image-2' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey1'/>";
+$content .= "<img id='image-2' class='mathimagemap' src='newXML/LinearAlgebraRn/Determinants/ims/OrientedAreaPlaneGrid.jpg' usemap='#hey1'/>";
 
 $content .= "<map name='hey1'>";
 
