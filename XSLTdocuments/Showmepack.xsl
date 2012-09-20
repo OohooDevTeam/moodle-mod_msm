@@ -812,7 +812,7 @@
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
-                <xsl:if test="child::node()[name() = 'subpage.ref' or name() = 'chapter.ref' or name() = 'subsection.ref'] or name() = 'section.ref'">
+                <xsl:if test="child::node()[name() = 'subpage.ref' or name() = 'chapter.ref' or name() = 'subsection.ref' or name() = 'section.ref']">
                     <xsl:element name="unit.ref" namespace="Compositor">
                         <xsl:attribute name="unitId">
                             <xsl:choose>

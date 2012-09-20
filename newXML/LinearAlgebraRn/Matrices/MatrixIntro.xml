@@ -26,6 +26,7 @@
 		<subordinate>
                   <hot>system of linear equations</hot>
                   <crossref>
+                     <unit.ref unitId="Sec_CoefficientMatrix"/>
                      <info>
 				
 				                    <para>

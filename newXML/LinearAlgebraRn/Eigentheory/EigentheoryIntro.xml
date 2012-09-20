@@ -38,6 +38,7 @@
 		<subordinate>
                   <hot>main types of linear transformations</hot>
                   <crossref>
+                     <unit.ref unitId="Sec_LinearTransformationsMainTypes"/>
                      <info>
 				
 				                    <para>

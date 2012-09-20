@@ -98,6 +98,7 @@
 			<subordinate>
                      <hot>new linear maps from old</hot>
                      <crossref>
+                        <unit.ref unitId="Sec_LinearTransformationsNewFromOld"/>
                         <info>
                            <para>
                               <para.body>Earlier we constructed</para.body>
