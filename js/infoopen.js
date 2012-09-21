@@ -102,12 +102,7 @@ function infoopen(i) {
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-            $('img[usemap]').maphilight({
-                    strokeColor:'379ee0',
-                    strokeWidth:0,
-                    fillColor:'379ee0',
-                    fillOpacity: 0.3
-                });
+           
         });
 
     $('#hottag-'+i).ready(function(e){
@@ -243,6 +238,13 @@ function infoopen(i) {
          
         $('#copyhottag-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
+        });
+        
+        $('.mathimagemap').maphilight({
+            strokeColor:'379ee0',
+            strokeWidth:0,
+            fillColor:'379ee0',
+            fillOpacity: 0.3
         });
    
     });

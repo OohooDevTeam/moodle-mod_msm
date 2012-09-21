@@ -25,6 +25,7 @@ MathJax.Hub.Config({
   
         Macros: {
             st: '{\\, :\\!\\! |\\!\\! :\\, }',
+            im: '{im}',
 	
             AnglBr: ['{ \\left\\langle #1 \\right\\rangle }',1],		
             SqBr: ['{ \\left[ #1 \\right] }',1],	
@@ -54,7 +55,8 @@ MathJax.Hub.Config({
             Target: ['{ \\text{Tar}\\left( #1 \\right) }',1],	
             IdMap: ['{ \\text{Id}_{ #1 } }',1],		
             Prjctn: ['{ \\text{pr}_{ #1 } }',1],	
-            Inclsn: ['{ \\text{inc}{ #1 } }',1],	
+            Inclsn: ['{ \\text{inc}{ #1 } }',1],
+            inc: '{\\text{inc}}',
             Dgnl: ['{ \\bigtriangleup_{ #1 } }',1],
             Fold: ['{ \\bigtriangledown_{ #1 } }',1],	
            
@@ -72,7 +74,8 @@ MathJax.Hub.Config({
             PolyDegree: ['{\\text{deg}\\left( {#1} \\right)}',1],	
             SignNr: ['{\\text{sign}\\left( {#1} \\right)}',1],	
             Abs: ['{\\left| {#1} \\right|}',1],					
-            Norm: ['{\\left\\| {#1} \\right\\|}',1],			
+            Norm: ['{\\left\\| {#1} \\right\\|}',1],
+            norm:['{\\left\\| {#1} \\right\\|}',1],
             RePrt: ['{\\text{Re}\\left( {#1} \\right)}',1],		
             ImPrt: ['{\\text{Im}\\left( {#1} \\right)}',1],		
 		
@@ -137,7 +140,12 @@ MathJax.Hub.Config({
             
             pr: ['{\\text{proj}}'],
             StdBss: ['{\\mathbf{e}_{#1}}', 1],
-            IdTrafo: ['{\\text{\\it Id}_{#1}}', 1],
+            IdTrafo: ['{\\text{Id}_{#1}}', 1],            
+            SltdBox: ['{\\text{Box}{#1}}', 1],
+            
+            SymGrp: ['{S_{#1}}', 1],
+            
+            Id: ['{\\text{Id}_{#1}}', 1],
 		
             FakeString: '{\\text{fake}}'
         },

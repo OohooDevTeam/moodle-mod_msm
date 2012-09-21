@@ -159,7 +159,7 @@ abstract class Element
                         $content = preg_replace('/<\/latex>\s+<\/math>/', '$', $content);
                         $content = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $content);
                         // need to escape twice because it is parsed twice 
-                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|I)\[(\S+)?\]/', '\\\\$1{$2}', $content);
+                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(\S+)?\]/', '\\\\$1{$2}', $content);
                     }
                 }
                 // child is not an element node but a text node
@@ -453,7 +453,7 @@ abstract class Element
             $string = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $string);
 
             // ? needed to make it ungreedy
-            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|I)\[(\S+)?\]/', '\\\\$1{$2}', $string);
+            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(\S+)?\]/', '\\\\$1{$2}', $string);
 
             $resultcontent[] = $string;
         }
@@ -871,39 +871,6 @@ abstract class Element
         }
         else
         {
-
-            $tablelength = $tables->length;
-
-            for ($i = 0; $i < $tablelength; $i++)
-            {
-                if (!empty($object->tables[$i]))
-                {
-                    $table = $object->tables[$i];
-                    $newtableString = $table->displayhtml($rightpanel);
-                    @$newElementdoc->loadXML($newtableString);
-                    $tables->item($i)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $tables->item($i));
-                }
-                $XMLcontent = $doc->saveXML();
-            }
-            // could not use foreach matharrays...etc because when replaceChild is executed, it seems like the 
-            // the length of the matharrays decrease as well.
-            $matharraylength = $matharrays->length;
-
-            for ($i = 0; $i < $matharraylength; $i++)
-            {
-                if (!empty($object->matharrays[$i]))
-                {
-
-                    $matharray = $object->matharrays[$i];
-                    $newmarrayString = $matharray->displayhtml($rightpanel);
-
-                    @$newElementdoc->loadXML($newmarrayString);
-
-                    $matharrays->item(0)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $matharrays->item(0));
-                }
-                $XMLcontent = $doc->saveXML();
-            }
-
             foreach ($hottags as $key => $hottag)
             {
                 if (!empty($object->subordinates[$key]))
@@ -1021,7 +988,7 @@ abstract class Element
                             $newtag .= "</a>";
                             $hottagid = $hottag->getAttribute('id');
 
-                            if ($positionvalue == $hottagid)
+                            if (trim($positionvalue) == trim($hottagid))
                             {
                                 $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
                                 @$newElementdoc->loadXML($newtag);
@@ -1032,13 +999,29 @@ abstract class Element
 
                                 $content .= $subordinate->infos[0]->displayhtml();
                             }
+                            else
+                            {
+                                if (get_class($object) == 'ProofBlock')
+                                {
+                                    echo "position numbers do not match";
+                                    print_object($positionvalue);
+                                    print_object($hottagid);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (get_class($object) == 'ProofBlock')
+                            {
+                                echo "empty info";
+                            }
                         }
                     }
 
                     if (!empty($subordinate->external_links[0]))
                     {
                         $newtag = '';
-                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target ."' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
                         $rawhotString = explode(',', $subordinate->hot);
 
                         // there are other commas in the content 
@@ -1083,6 +1066,38 @@ abstract class Element
                         }
                     }
                 }
+            }
+
+            $tablelength = $tables->length;
+
+            for ($i = 0; $i < $tablelength; $i++)
+            {
+                if (!empty($object->tables[$i]))
+                {
+                    $table = $object->tables[$i];
+                    $newtableString = $table->displayhtml($rightpanel);
+                    @$newElementdoc->loadXML($newtableString);
+                    $tables->item($i)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $tables->item($i));
+                }
+                $XMLcontent = $doc->saveXML();
+            }
+            // could not use foreach matharrays...etc because when replaceChild is executed, it seems like the 
+            // the length of the matharrays decrease as well.
+            $matharraylength = $matharrays->length;
+
+            for ($i = 0; $i < $matharraylength; $i++)
+            {
+                if (!empty($object->matharrays[$i]))
+                {
+
+                    $matharray = $object->matharrays[$i];
+                    $newmarrayString = $matharray->displayhtml($rightpanel);
+
+                    @$newElementdoc->loadXML($newmarrayString);
+
+                    $matharrays->item(0)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $matharrays->item(0));
+                }
+                $XMLcontent = $doc->saveXML();
             }
 
             foreach ($imgs as $key => $img)

@@ -96,8 +96,12 @@ class MathImg extends Element
         $data->description = $this->description;
         $data->extended_caption = $this->extended_caption;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        if (!empty($this->src))
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        }
+
 
         $elementPositions = array();
         $sibling_id = null;

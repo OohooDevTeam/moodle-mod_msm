@@ -50,10 +50,10 @@ div.controller{
     min-height: 720px;
     max-width: 100%;
     max-height: 100%;
-    background-image:url('../pix/background.jpg');
+    background-image:url('../pix/circles_background_1.jpg');
     opacity:0.95;
     filter:Alpha(opacity=95);
-/*    line-height: 0.3em;*/
+    /*    line-height: 0.3em;*/
     font-size: 14px;    
 }
 
@@ -73,7 +73,13 @@ div.controller{
 
 .leftbox
 {
-    background-image:url('../pix/background2.jpg');
+    /*background-color: #EBFAF0;*/
+    -moz-box-shadow: 0 0 5px 5px #85E0A3;
+    -webkit-box-shadow: 0 0 5px 5px #85E0A3;
+    box-shadow: 0 0 5px 5px #85E0A3;
+  
+    /*opacity: 0.8;*/
+        background-image:url('../pix/background2.jpg');
     min-height: 650px;
     max-height: 650px;
     width:97.5%;
@@ -81,6 +87,12 @@ div.controller{
 }
 .rightbox
 {
+    /*background-color: #EBFAF0;*/
+    -moz-box-shadow: 0 0 5px 5px #85E0A3;
+    -webkit-box-shadow: 0 0 5px 5px #85E0A3;
+    box-shadow: 0 0 5px 5px #85E0A3;
+  
+     /*opacity: 0.8;*/
     background-image:url('../pix/background2.jpg');
     min-height: 690px;
     max-height: 690px;
@@ -195,7 +207,7 @@ div.controller{
 
 .externallink:hover, .externallink:active
 {
-     cursor: pointer;
+    cursor: pointer;
     color:blue;
 }
 
@@ -368,9 +380,21 @@ table.matharray
     border: none;
     width: 200px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.mathtable, .mathtable td
+.mathtable
+{
+    border-color: maroon;
+    border-collapse: separate !important;
+    border-spacing: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.mathtable td
 {
     /*    border: 1px solid maroon;*/
     border-color: maroon;
@@ -380,10 +404,10 @@ table.matharray
 }
 
 div.dialogs{
-   margin: 0;
-   display: none;
-   max-width: 605 !important;
-   min-width: 300 !important;
+    margin: 0;
+    display: none;
+    max-width: 605 !important;
+    min-width: 300 !important;
 }
 
 .comment
@@ -644,9 +668,9 @@ span.showmetype
     height:     100%;
     width:      100%;
     background: rgba( 255, 255, 255, .3 ) 
-               url('../pix/ajax-loader.gif')
-                50% 50% 
-                no-repeat;
+        url('../pix/ajax-loader.gif')
+        50% 50% 
+        no-repeat;
 }
 
 body.loading {

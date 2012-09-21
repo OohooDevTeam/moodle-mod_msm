@@ -46,6 +46,7 @@ class Table extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->matharrays = array();
 
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
@@ -74,6 +75,11 @@ class Table extends Element
         foreach ($this->processTable($DomElement, $position) as $table)
         {
             $this->tables[] = $table;
+        }
+        
+        foreach($this->processMathArray($DomElement, $position) as $matharray)
+        {
+            $this->matharrays[] = $matharray;
         }
 
         foreach ($this->processContent($DomElement, $position) as $content)
@@ -155,6 +161,14 @@ class Table extends Element
             foreach ($this->tables as $key => $table)
             {
                 $elementPositions['table' . '-' . $key] = $table->position;
+            }
+        }
+        
+        if (!empty($this->matharrays))
+        {
+            foreach ($this->matharrays as $key => $matharray)
+            {
+                $elementPositions['matharray' . '-' . $key] = $matharray->position;
             }
         }
 
@@ -254,15 +268,32 @@ class Table extends Element
 
                     if (empty($sibling_id))
                     {
-                        $table = $pbb->tables[$tableString[1]];
+                        $table = $this->tables[$tableString[1]];
                         $table->saveIntoDb($table->position, $this->compid);
                         $sibling_id = $table->compid;
                     }
                     else
                     {
-                        $table = $pbb->tables[$tableString[1]];
+                        $table = $this->tables[$tableString[1]];
                         $table->saveIntoDb($table->position, $this->compid, $sibling_id);
                         $sibling_id = $table->compid;
+                    }
+                    break;
+                    
+                    case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $sibling_id = $matharray->compid;
                     }
                     break;
             }
@@ -287,6 +318,7 @@ class Table extends Element
         $this->subordinates = array();
         $this->tables = array();
         $this->medias = array();
+        $this->matharrays = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
@@ -312,6 +344,12 @@ class Table extends Element
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
+                    break;
+                
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->matharrays[] = $matharray;
                     break;
             }
         }
