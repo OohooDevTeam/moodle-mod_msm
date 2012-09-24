@@ -114,7 +114,7 @@ class Crossref extends Element
 
                     case('theorem.ref'):
                         $theoremrefID = $child->getAttribute('theoremID');
-                        
+
                         if (!empty($theoremrefID))
                         {
                             $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath), 'theorem');
@@ -480,7 +480,7 @@ class Crossref extends Element
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
                     $theoremString = split('-', $element);
                     $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
-                    
+
                     if (empty($theoremRecord))
                     {
                         if (empty($sibling_id))

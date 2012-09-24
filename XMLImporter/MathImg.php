@@ -183,174 +183,90 @@ class MathImg extends Element
         // getting the "natural size" of the image
         $imageinfo = getimagesize($this->src);
 
-        if ((empty($this->width)) && (empty($this->height)))
+        if (!empty($imageinfo))
         {
-            $width = $imageinfo[0];
-            $height = $imageinfo[1];
-
-            $hTowRatio = $height / $width;
-
-            // longer height than width
-            if ($hTowRatio >= 1)
+            if ((empty($this->width)) && (empty($this->height)))
             {
-                //fix the height and adjust the width using the ratio to keep
-                // the height to width proportion
-                $height = 350;
-                $width = 350 / $hTowRatio;
+                $width = $imageinfo[0];
+                $height = $imageinfo[1];
+
+                $hTowRatio = $height / $width;
+
+                // longer height than width
+                if ($hTowRatio >= 1)
+                {
+                    //fix the height and adjust the width using the ratio to keep
+                    // the height to width proportion
+                    $height = 350;
+                    $width = 350 / $hTowRatio;
+                }
+                //longer width
+                else
+                {
+                    //fix the width and adjust the height using the ratio to keep
+                    // the height to width proportion
+                    $width = 350;
+                    $height = 350 * $hTowRatio;
+                }
             }
-            //longer width
-            else
+            // height is defined but not width
+            else if ((empty($this->width)) && (!empty($this->height)))
             {
-                //fix the width and adjust the height using the ratio to keep
-                // the height to width proportion
-                $width = 350;
-                $height = 350 * $hTowRatio;
+                //need to resize the width and keep the natural height to width ratio
+                $naturalwidth = $imageinfo[0];
+                $naturalheight = $imageinfo[1];
+
+                // calculating the amount that has been shrunk/expanded
+                $amountResized = $this->height / $naturalheight;
+
+                // adjusting the width accordingly
+                $width = $naturalwidth * $amountResized;
+                $height = $this->height;
             }
-        }
-        // height is defined but not width
-        else if ((empty($this->width)) && (!empty($this->height)))
-        {
-            //need to resize the width and keep the natural height to width ratio
-            $naturalwidth = $imageinfo[0];
-            $naturalheight = $imageinfo[1];
-
-            // calculating the amount that has been shrunk/expanded
-            $amountResized = $this->height / $naturalheight;
-
-            // adjusting the width accordingly
-            $width = $naturalwidth * $amountResized;
-            $height = $this->height;
-        }
-        // width defined but not height
-        else if ((empty($this->height)) && (!empty($this->width)))
-        {
-            //need to resize the height and keep the natural height to width ratio
-            $naturalwidth = $imageinfo[0];
-            $naturalheight = $imageinfo[1];
-
-            // calculating the amount that has been shrunk/expanded
-            $amountResized = $this->width / $naturalwidth;
-
-            // adjusting the width accordingly
-            $height = $naturalheight * $amountResized;
-            $width = $this->width;
-        }
-        else if ((!empty($this->height)) && (!empty($this->width)))
-        {
-            $height = $this->height;
-            $width = $this->width;
-        }
-
-
-
-        if (empty($this->imageareas))
-        {
-//            if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
-//            {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "'/>";
-//            }
-//            else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "'/>";
-//            }
-//            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-//            {
-//                $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "'/>";
-//            }
-//            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img src='" . $this->src . "' height='200' width='" . $this->width . "'/>";
-//            }
-//            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '0'))
-//            {
-//                $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350'/>";
-//            }
-//            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '1'))
-//            {
-//                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350'/>";
-//            }
-//            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-//            {
-//                $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350'/>";
-//            }
-//            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img src='" . $this->src . "' height='200' width='350'/>";
-//            }
-        }
-        else if (!empty($this->imageareas))
-        {
-//            if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
-//            {
-            $content .= "<img id='image-" . $this->compid . "' class='mathimagemap' src='" . $this->src . "' height='" . $height . "' width='" . $width . "' usemap='#" . $filename[0] . "'/>";
-//            }
-//            else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
-//            }
-//            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
-//            }
-//            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "'/>";
-//            }
-//            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '0'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "'/>";
-//            }
-//            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "'/>";
-//            }
-//            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
-//            }
-//            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]'/>";
-//            }
-//            if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-//            else if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-//            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-//            else if ((!empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='200' width='" . $this->width . "' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-//            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '0'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-//            else if ((!empty($this->height)) && (empty($this->width)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='" . $this->height . "' width='350' usemap='#" . $filename[0] . "' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-//            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '0'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' class='mathimage' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-//            else if ((empty($this->width)) && (empty($this->height)) && ($inline == '1'))
-//            {
-//                $content .= "<img id='image-" . $this->compid . "' src='" . $this->src . "' height='200' width='350' usemap='#$filename[0]' onload='activateArea(" . $this->compid . ")'/>";
-//            }
-
-            $content .= "<map name='" . $filename[0] . "'>";
-            foreach ($this->imageareas as $imagearea)
+            // width defined but not height
+            else if ((empty($this->height)) && (!empty($this->width)))
             {
-                $content .= $imagearea->displayhtml();
+                //need to resize the height and keep the natural height to width ratio
+                $naturalwidth = $imageinfo[0];
+                $naturalheight = $imageinfo[1];
+
+                // calculating the amount that has been shrunk/expanded
+                $amountResized = $this->width / $naturalwidth;
+
+                // adjusting the width accordingly
+                $height = $naturalheight * $amountResized;
+                $width = $this->width;
             }
-            $content .= "</map>";
+            else if ((!empty($this->height)) && (!empty($this->width)))
+            {
+                $height = $this->height;
+                $width = $this->width;
+            }
+
+
+
+            if (empty($this->imageareas))
+            {
+                if ($filename[1] != 'png')
+                {
+                    $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "'/>";
+                }
+                else
+                {
+                    $content .= "<img class='mathimage' src='" . $this->src . "'/>";
+                }
+            }
+            else if (!empty($this->imageareas))
+            {
+                $content .= "<img id='image-" . $this->compid . "' class='mathimagemap' src='" . $this->src . "' height='" . $height . "' width='" . $width . "' usemap='#" . $filename[0] . "'/>";
+//           
+                $content .= "<map name='" . $filename[0] . "'>";
+                foreach ($this->imageareas as $imagearea)
+                {
+                    $content .= $imagearea->displayhtml();
+                }
+                $content .= "</map>";
+            }
         }
 
         return $content;

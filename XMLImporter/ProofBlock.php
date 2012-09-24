@@ -447,6 +447,9 @@ class ProofBlock extends Element
 
         $this->partrefs = array();
 
+        $proofid = $DB->get_record('msm_compositor', array('id' => $compid))->parent_id;
+        $theoremid = $DB->get_record('msm_compositor', array('id' => $proofid))->parent_id;
+
         if ((!empty($this->proof_logic)) && (empty($this->caption)))
         {
             $doc = new DOMDocument();
@@ -457,9 +460,33 @@ class ProofBlock extends Element
             foreach ($partrefs as $partref)
             {
                 $partrefcontent = $partref->nodeValue;
-                $parttheorem = $DB->get_record('msm_part_theorem', array('partid' => $partrefcontent));
-                $this->partrefs[] = $parttheorem;
+
+                $statementTheoremtableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
+
+                //get all the statement.theorem elements that are children of the current theorem
+                $currentTheoremChildren = $DB->get_records('msm_compositor', array('parent_id' => $theoremid, 'table_id' => $statementTheoremtableid), 'prev_sibling_id');
+
+                foreach ($currentTheoremChildren as $statementTheorem)
+                {
+                    $partTheoremsComp = $DB->get_records('msm_compositor', array('parent_id' => $statementTheorem->id), 'prev_sibling_id');
+                    foreach ($partTheoremsComp as $partTheorem)
+                    {
+                        $partTheorems = $DB->get_records('msm_part_theorem', array('id' => $partTheorem->unit_id, 'partid' => $partrefcontent));
+
+                        if (sizeof($partTheorems) > 1)
+                        {
+                          $this->partrefs[] = array_pop($partTheorems);
+                            break 2;
+                        }
+                        else if (sizeof($partTheorems) == 1)
+                        {
+                            $this->partrefs[] = array_pop($partTheorems);
+                            break 2;
+                        }
+                    }
+                }
             }
+          
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
@@ -514,12 +541,15 @@ class ProofBlock extends Element
             {
                 if (count($this->partrefs) > 1)
                 {
-                    $content .= $this->partrefs[0]->part_content . " & " . $this->partrefs[1]->part_content;
+                    $content .= "<i>" . $this->partrefs[0]->part_content . "&" . $this->partrefs[1]->part_content . "</i>";
                 }
                 else if (count($this->partrefs) == 1)
                 {
-                    $content .= $this->partrefs[0]->part_content;
+                    $content .= "<i>" . $this->partrefs[0]->part_content . "</i>";
                 }
+
+                $content = preg_replace("/<a href(.+)\sid=(.+)>/", '', $content);
+                $content = str_replace('</a>', '', $content);
 
                 $content .= "</li>";
             }

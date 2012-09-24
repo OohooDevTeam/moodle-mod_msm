@@ -47,7 +47,7 @@ class Proof extends Element
 
         $proof_blocks = $DomElement->getElementsByTagName('proof.block');
 
-        foreach ($proof_blocks as $key=>$pb)
+        foreach ($proof_blocks as $key => $pb)
         {
             $position = $position + 1;
             $proof_block = new ProofBlock($this->xmlpath);
@@ -77,7 +77,7 @@ class Proof extends Element
         foreach ($this->proof_blocks as $proof_block)
         {
 //            print_object($proof_block);
-            
+
             if (empty($sibling_id))
             {
                 $proof_block->saveIntoDb($proof_block->position, $this->compid);
@@ -128,7 +128,14 @@ class Proof extends Element
 
         $content .= "<li class='proofminibutton' id='proofminibutton-" . $this->compid . "' onclick='showRightpage(" . $this->compid . ")'>";
         $content .= "<span style='cursor:pointer'>";
-        $content .= "proof";
+        if (!empty($this->proof_type))
+        {
+            $content .= trim($this->proof_type);
+        }
+        else
+        {
+            $content .= "Proof";
+        }
         $content .= "</span>";
         $content .= "</li>";
 

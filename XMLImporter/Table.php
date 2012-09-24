@@ -76,8 +76,8 @@ class Table extends Element
         {
             $this->tables[] = $table;
         }
-        
-        foreach($this->processMathArray($DomElement, $position) as $matharray)
+
+        foreach ($this->processMathArray($DomElement, $position) as $matharray)
         {
             $this->matharrays[] = $matharray;
         }
@@ -163,7 +163,7 @@ class Table extends Element
                 $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
-        
+
         if (!empty($this->matharrays))
         {
             foreach ($this->matharrays as $key => $matharray)
@@ -279,8 +279,8 @@ class Table extends Element
                         $sibling_id = $table->compid;
                     }
                     break;
-                    
-                    case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
                     $matharrayString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -345,7 +345,7 @@ class Table extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
-                
+
                 case('msm_math_array'):
                     $matharray = new MathArray();
                     $matharray->loadFromDb($child->unit_id, $child->id);
@@ -360,7 +360,9 @@ class Table extends Element
     {
         $newtablecontent = $this->displayContent($this, $this->table_content, $standalone);
         $tablecontent = "<root>" . $newtablecontent . "</root>";
+
         $content = $this->processTableContent($tablecontent);
+
         return $content;
     }
 
@@ -374,8 +376,6 @@ class Table extends Element
         $dialogs = $doc->getElementsByTagName('div');
 
         $table = $doc->getElementsByTagName('table')->item(0);
-//
-        $trs = $doc->getElementsByTagName('tr');
 
         if ($table->hasAttribute('border'))
         {
@@ -403,69 +403,69 @@ class Table extends Element
             $cellpadding = 0;
         }
 
-        $content .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
+        $content .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "' style='width:100% !important;'>";
 
-        foreach ($trs as $tr)
+        foreach ($table->childNodes as $row)
         {
-            $content .= "<tr>";
-            foreach ($tr->childNodes as $grandChild)
+            if ($row->nodeType == XML_ELEMENT_NODE)
             {
-                if ($grandChild->nodeType == XML_ELEMENT_NODE)
+                $content .= "<tr>";
+                foreach ($row->childNodes as $grandChild)
                 {
-                    if ($grandChild->tagName == 'td')
+                    if ($grandChild->nodeType == XML_ELEMENT_NODE)
                     {
-                        $content .= "<td style='border-width:" . $border . "px !important;'>";
-                        foreach ($grandChild->childNodes as $contentElement)
+                        if ($grandChild->tagName == 'td')
                         {
-                            if ($contentElement->nodeType == XML_ELEMENT_NODE)
+                            $content .= "<td style='border-width:" . $border . "px !important;'>";
+                            foreach ($grandChild->childNodes as $contentElement)
                             {
-                                $atags = $contentElement->getElementsByTagName('a');
-
-                                foreach ($atags as $atag)
+                                if ($contentElement->nodeType == XML_ELEMENT_NODE)
                                 {
-                                    // getting the associated info's compid
-                                    $tagID = $atag->getAttribute('id');
-                                    $idArray = explode('-', $tagID);
-
-                                    foreach ($dialogs as $dialog)
+                                    $atags = $contentElement->getElementsByTagName('a');
+//
+                                    foreach ($atags as $atag)
                                     {
-                                        $divclass = $dialog->getAttribute('class');
-                                        if ($divclass == 'dialogs')
+                                        // getting the associated info's compid
+                                        $tagID = $atag->getAttribute('id');
+                                        $idArray = explode('-', $tagID);
+
+                                        foreach ($dialogs as $dialog)
                                         {
-                                            $divID = $dialog->getAttribute('id');
-                                            $divIDArray = explode('-', $divID);
-                                            
-                                            if ($idArray[1] == $divIDArray[1])
+                                            $divclass = $dialog->getAttribute('class');
+                                            if ($divclass == 'dialogs')
                                             {
-                                                $divNode = $doc->importNode($dialog, true);
-                                                $atag->parentNode->appendChild($divNode);                                              
-                                                break;
+                                                $divID = $dialog->getAttribute('id');
+                                                $divIDArray = explode('-', $divID);
+
+                                                if ($idArray[1] == $divIDArray[1])
+                                                {
+                                                    $divNode = $doc->importNode($dialog, true);
+                                                    $atag->parentNode->appendChild($divNode);
+                                                    break;
+                                                }
                                             }
                                         }
                                     }
+                                    $content .= $doc->saveXML($contentElement);
                                 }
-                                $content .= $doc->saveXML($contentElement);
                             }
-                            else
-                            {
-                                $content .= $doc->saveXML($contentElement);
-                            }
+                            $content .= "</td>";
                         }
-                        $content .= "</td>";
+                    }
+                    else
+                    {
+                        $content .= $doc->saveXML($grandChild);
                     }
                 }
-                else
-                {
-                    $content .= $doc->saveXML($grandChild);
-                }
+                $content .= "</tr>";
             }
-            $content .= "</tr>";
         }
 
         $content .= "</table>";
-        
+
         return $content;
     }
 
 }
+
 ?>

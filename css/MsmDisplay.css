@@ -50,7 +50,7 @@ div.controller{
     min-height: 720px;
     max-width: 100%;
     max-height: 100%;
-    background-image:url('../pix/circles_background_1.jpg');
+    background-image:url('../pix/background.jpg');
     opacity:0.95;
     filter:Alpha(opacity=95);
     /*    line-height: 0.3em;*/
@@ -74,23 +74,23 @@ div.controller{
 .leftbox
 {
     /*background-color: #EBFAF0;*/
-    -moz-box-shadow: 0 0 5px 5px #85E0A3;
-    -webkit-box-shadow: 0 0 5px 5px #85E0A3;
-    box-shadow: 0 0 5px 5px #85E0A3;
+    -moz-box-shadow: 0 0 5px 5px #BF8C30;
+    -webkit-box-shadow: 0 0 5px 5px #BF8C30;
+    box-shadow: 0 0 5px 5px #BF8C30;
   
     /*opacity: 0.8;*/
         background-image:url('../pix/background2.jpg');
     min-height: 650px;
     max-height: 650px;
-    width:97.5%;
+    width:97%;
     overflow: auto;
 }
 .rightbox
 {
     /*background-color: #EBFAF0;*/
-    -moz-box-shadow: 0 0 5px 5px #85E0A3;
-    -webkit-box-shadow: 0 0 5px 5px #85E0A3;
-    box-shadow: 0 0 5px 5px #85E0A3;
+    -moz-box-shadow: 0 0 5px 5px #BF8C30;
+    -webkit-box-shadow: 0 0 5px 5px #BF8C30;
+    box-shadow: 0 0 5px 5px #BF8C30;
   
      /*opacity: 0.8;*/
     background-image:url('../pix/background2.jpg');
@@ -110,7 +110,11 @@ div.controller{
     /*    overflow: hidden;*/
     margin-bottom:10px;
     margin-right:10px;    
-    padding:10px;
+    padding-top:10px;
+     padding-bottom:10px;
+      padding-right:10px;
+       padding-left:10px;
+       
 }
 
 .rightcol
@@ -154,6 +158,13 @@ div.controller{
     padding: 10px 10px 60px 10px;
 }
 
+.blockgroup
+{
+    border-style: dashed;
+    border-color: white;
+    border-width: 2px;
+}
+
 #features .date
 {
     /*    overflow: hidden;*/
@@ -183,6 +194,8 @@ div.controller{
 {
     margin-left:auto;
     margin-right:auto;
+    max-width: 300px;
+    min-width: 200px;
 }
 
 .hottag
@@ -219,6 +232,8 @@ div.controller{
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .defcontent
@@ -261,6 +276,8 @@ span.deftype
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 span.theoremtitle
@@ -389,9 +406,6 @@ table.matharray
     border-color: maroon;
     border-collapse: separate !important;
     border-spacing: 2px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
 }
 
 .mathtable td
@@ -418,6 +432,8 @@ div.dialogs{
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .commentcontent
@@ -600,6 +616,8 @@ span.extrainfoname
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .answershowmecontent
@@ -634,6 +652,8 @@ span.answershowmetype
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .showmecontent

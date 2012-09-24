@@ -143,13 +143,16 @@ MathJax.Hub.Config({
             IdTrafo: ['{\\text{Id}_{#1}}', 1],            
             SltdBox: ['{\\text{Box}{#1}}', 1],
             
+            Rnk: ['{\\text{Rank}{#1}', 1],
+            
             SymGrp: ['{S_{#1}}', 1],
             
             Id: ['{\\text{Id}_{#1}}', 1],
 		
             FakeString: '{\\text{fake}}'
         },
-        extensions: ["color.js", "AMSmath.js"]
+        
+        extensions: ["color.js", "AMSmath.js", "AMSsymbols.js"]
     },
     
     jax: ["input/TeX", "output/HTML-CSS"]

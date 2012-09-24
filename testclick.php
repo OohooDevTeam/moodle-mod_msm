@@ -29,6 +29,8 @@
         <script type='text/javascript' src='js/showRightPage.js'></script>
         <script type='text/javascript' src='js/popup.js'></script>
         <script type='text/javascript' src='js/showonModal.js'></script>
+
+        <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,/moodle/mod/msm/js/Mathjaxconfig.js'></script>
         <!--<script type ="text/javascript" src="js/jimagemapster.js"></script>-->
 
         <script type="text/javascript">            
@@ -54,7 +56,7 @@
                     data.fillOpacity = 0.3;
                     $(this).data('maphilight', data).trigger('alwaysOn', 'maphilight');
                 });
-                 $(this).unbind('mouseover');
+                $(this).unbind('mouseover');
                 $('#MySplitter').splitter();       
         
             });
@@ -128,12 +130,28 @@ $content .= '<para>
                                        <latex>\Vect{y}</latex>
                                     </math> so that.</para.body>
                               </para>
-						                        <table column="3">
+						                        <table border="1" column="3">
                                  <tr>
                                     <td rowspan="1" colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>\OriVol(\Vect{x},\Vect{y})</latex>
-                                       </math>
+                                       <table class="matharray" border="0">
+                                            <tr>
+                                               <td rowspan="1" colspan="2" halign="center" valign="middle">
+                                                   <math>
+                                                     <latex>\Vect{a}</latex>
+                                                  </math>
+                                               </td>
+                                                <td rowspan="1" colspan="1" halign="center" valign="middle">
+                                                   <math>
+                                                      <latex>=</latex>
+                                                   </math>
+                                                </td>
+                                                <td rowspan="1" colspan="2" halign="center" valign="middle">
+                                                   <math>
+                                                      <latex>1\cdot \Vect{a}</latex>
+                                                   </math>
+                                                </td>
+                                             </tr>
+                                      </table>
                                     </td>
                                     <td rowspan="1" colspan="1" halign="center" valign="middle">
                                        <math>
@@ -314,6 +332,14 @@ $content .="</div>";
 $content .= "</div>";
 
 $content .= "</div>"; //splitter
+//
+$content = preg_replace('/^<math xmlns=(.+)>/', '<math>', $content);
+
+$content = preg_replace('/<math>\s+<latex>/', '$', $content);
+$content = preg_replace('/<\/latex>\s+<\/math>/', '$', $content);
+$content = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $content);
+// need to escape twice because it is parsed twice 
+$content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(\S+)?\]/', '\\\\$1{$2}', $content);
 //$content .= "<div id='refcontent-1' class='refcontent' style='display:none;'>";
 //$content .= "reference material?";
 //$content .= "</div>";
