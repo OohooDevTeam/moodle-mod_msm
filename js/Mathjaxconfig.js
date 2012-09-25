@@ -13,6 +13,16 @@
  **************************************************************************/
 
 MathJax.Hub.Config({
+    MMLorHTML: {
+        prefer: {
+            MSIE: "MML",
+            Firefox: "HTML",
+            Safari: "HTML",
+            Chrome: "HTML",
+            Opera: "HTML",
+            other: "HTML"
+        }
+    },
     showProcessingMessages: false,
     tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],

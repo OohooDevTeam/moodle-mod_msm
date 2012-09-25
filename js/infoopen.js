@@ -46,11 +46,11 @@ function infoopen(i) {
         });
     
     $('#defminibutton-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
         $('#defminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
-            });
+            });            
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#defminibutton-'+i).mouseout(function(){
@@ -73,12 +73,12 @@ function infoopen(i) {
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     });
     
-    $('#minibutton-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
+    $('#minibutton-'+i).ready(function(e){        
         $('#minibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#minibutton-'+i).mouseout(function(){
@@ -106,12 +106,11 @@ function infoopen(i) {
         });
 
     $('#hottag-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
-        
         $('#hottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
 
         $('#hottag-'+i).mouseout(function(){
@@ -138,13 +137,12 @@ function infoopen(i) {
            
         });
 
-    $('#activehottag-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
-        
+    $('#activehottag-'+i).ready(function(e){        
         $('#activehottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
 
         $('#activehottag-'+i).mouseout(function(){
@@ -169,11 +167,11 @@ function infoopen(i) {
     });
     
     $('#commentminibutton-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
         $('#commentminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#commentminibutton-'+i).mouseout(function(){
@@ -200,11 +198,11 @@ function infoopen(i) {
     });
                 
     $('#copydefminibutton-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
         $('#copydefminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#copydefminibutton-'+i).mouseout(function(){
@@ -231,11 +229,11 @@ function infoopen(i) {
     });
                 
     $('#copyminibutton-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
         $('#copyminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#copyminibutton-'+i).mouseout(function(){
@@ -262,11 +260,11 @@ function infoopen(i) {
     });
                 
     $('#copyhottag-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
         $('#copyhottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#copyhottag-'+i).mouseout(function(){
@@ -292,11 +290,11 @@ function infoopen(i) {
     });
                 
     $('#copycommentminibutton-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
         $('#copycommentminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#copycommentminibutton-'+i).mouseout(function(){
@@ -317,11 +315,11 @@ function infoopen(i) {
     });
                 
     $('#copyactivehottag-'+i).ready(function(e){
-        $('#dialog-'+i).dialog('open');
         $('#copyactivehottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.pageX+5, e.pageY+5]
             });
+            $('#dialog-'+i).dialog('open');
         });
          
         $('#copyactivehottag-'+i).mouseout(function(){

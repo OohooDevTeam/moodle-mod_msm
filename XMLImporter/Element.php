@@ -162,7 +162,7 @@ abstract class Element
                         // need to escape twice because it is parsed twice 
                         $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $content);
                         // to change \RNr to \RNr{}
-                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s)/', '\\\\$1{}$2', $content);
+                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $content);
                     }
                 }
                 // child is not an element node but a text node
@@ -457,7 +457,7 @@ abstract class Element
 
             // ? needed to make it ungreedy
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $string);
-            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.)/', '\\\\$1{}$2', $string);
+            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $string);
             $resultcontent[] = $string;
         }
         return $resultcontent;

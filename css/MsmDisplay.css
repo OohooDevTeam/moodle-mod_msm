@@ -54,7 +54,7 @@ div.controller{
     opacity:0.95;
     filter:Alpha(opacity=95);
     /*    line-height: 0.3em;*/
-    font-size: 12px;    
+    font-size: 14px;    
 }
 
 /*#MySplitter div {
@@ -77,9 +77,9 @@ div.controller{
     -moz-box-shadow: 0 0 5px 5px #BF8C30;
     -webkit-box-shadow: 0 0 5px 5px #BF8C30;
     box-shadow: 0 0 5px 5px #BF8C30;
-  
+
     /*opacity: 0.8;*/
-        background-image:url('../pix/background2.jpg');
+    background-image:url('../pix/background2.jpg');
     min-height: 650px;
     max-height: 650px;
     width:97%;
@@ -91,8 +91,8 @@ div.controller{
     -moz-box-shadow: 0 0 5px 5px #BF8C30;
     -webkit-box-shadow: 0 0 5px 5px #BF8C30;
     box-shadow: 0 0 5px 5px #BF8C30;
-  
-     /*opacity: 0.8;*/
+
+    /*opacity: 0.8;*/
     background-image:url('../pix/background2.jpg');
     min-height: 690px;
     max-height: 690px;
@@ -111,10 +111,10 @@ div.controller{
     margin-bottom:10px;
     margin-right:10px;    
     padding-top:10px;
-     padding-bottom:10px;
-      padding-right:10px;
-       padding-left:10px;
-       
+    padding-bottom:10px;
+    padding-right:10px;
+    padding-left:10px;
+
 }
 
 .rightcol
@@ -242,11 +242,12 @@ div.controller{
     /*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
+    padding: 3px;
 }
 
 span.deftitle
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: right;   
@@ -254,7 +255,7 @@ span.deftitle
 
 span.deftype
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: left;
@@ -263,9 +264,10 @@ span.deftype
 .theoremcontent
 {
     margin-top: 5px;
-       /*    margin-bottom: 5px;*/
+    /*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
+    padding: 3px;
 }
 
 .theorem
@@ -282,7 +284,7 @@ span.deftype
 
 span.theoremtitle
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: right;   
@@ -290,7 +292,7 @@ span.theoremtitle
 
 span.theoremtype
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: left;
@@ -442,11 +444,12 @@ div.dialogs{
     /*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
+    padding: 3px;
 }
 
 span.commenttitle
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: right;   
@@ -454,7 +457,7 @@ span.commenttitle
 
 span.commenttype
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: left;
@@ -543,10 +546,12 @@ img.mathimagemap
     margin-top: 5px;
     border: 2px solid black;
     background-color: white;
+    padding: 3px;
 }
 
 span.extrainfocaption
 {
+    font-size: 14px;
     font-weight: bold;
     color: black;
     float: right;   
@@ -554,6 +559,7 @@ span.extrainfocaption
 
 span.extrainfoname
 {
+    font-size: 14px;
     font-weight: bold;
     color: black;
     float: left;
@@ -561,16 +567,17 @@ span.extrainfoname
 
 .proofblocktitle
 {
+    font-size: 14px;
     color: black;
     font-weight: bold;
 }
 .refcontent
 {
-    font-size:14px;
     text-align: left;
     margin-left: 20px;
     margin-right: 10px;
     margin-top: 0px;
+    padding: 3px;
 }
 
 .refcontent .title
@@ -605,7 +612,7 @@ span.extrainfoname
     text-align: center;
     letter-spacing: 5px;
     font-weight: bold;
-    font-size: large;
+    font-size: 14px;
 }
 
 .answershowme
@@ -623,14 +630,14 @@ span.extrainfoname
 .answershowmecontent
 {
     margin-top: 5px;
-    padding: 2px;
+    padding: 3px;
     border: 2px solid black;
     background-color: white;
 }
 
 span.answershowmetitle
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: right;   
@@ -638,7 +645,7 @@ span.answershowmetitle
 
 span.answershowmetype
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: left;
@@ -658,14 +665,14 @@ span.answershowmetype
 
 .showmecontent
 {
-    padding: 5px;
+    padding: 3px;
     border: 2px solid black;
     background-color: white;
 }
 
 span.showmetitle
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: right;   
@@ -673,7 +680,7 @@ span.showmetitle
 
 span.showmetype
 {
-    /*    font-size: 12px;*/
+    font-size: 14px;
     font-weight: bold;
     color: white;
     float: left;
