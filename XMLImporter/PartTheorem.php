@@ -322,7 +322,7 @@ class PartTheorem extends Element
         return $this;
     }
 
-    function displayhtml($standalone)
+    function displayhtml()
     {
         $content = '';
         $content .= "<li>";
@@ -330,7 +330,7 @@ class PartTheorem extends Element
         {
             $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
         }
-        $content .= $this->displayContent($this, $this->part_content, $standalone);
+        $content .= $this->displayContent($this, $this->part_content);
         $content .= "</li>";
         $content .= "<br />";
 

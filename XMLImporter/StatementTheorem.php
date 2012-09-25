@@ -392,15 +392,15 @@ class StatementTheorem extends Element
         return $this;
     }
 
-    function displayhtml($standalone)
+    function displayhtml()
     {
         $content = '';
-        $content .= $this->displayContent($this, $this->statement_content, $standalone);
+        $content .= $this->displayContent($this, $this->statement_content);
 
         $content .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->childs as $childComponent)
         {
-            $content .= $childComponent->displayhtml($standalone);
+            $content .= $childComponent->displayhtml();
         }
         $content .= "</ol>";
 

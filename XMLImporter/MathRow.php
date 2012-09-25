@@ -122,7 +122,7 @@ class MathRow extends Element
         return $this;
     }
     
-    function displayhtml($standalone)
+    function displayhtml()
     {
         $content = '';
         
@@ -130,7 +130,7 @@ class MathRow extends Element
         
         foreach($this->cells as $column)
         {
-            $content .= $column->displayhtml($this->rowspan, $standalone);
+            $content .= $column->displayhtml($this->rowspan);
         }
         
         $content .= "</tr>";        

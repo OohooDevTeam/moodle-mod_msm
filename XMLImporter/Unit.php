@@ -959,7 +959,7 @@ class Unit extends Element
             $this->creationdate = $unitrecord->creationdate;
             $this->last_revision_date = $unitrecord->last_revision_date;
 
-            $this->standalone = $unitrecord->standalone;
+//            $this->standalone = $unitrecord->standalone;
             $this->parent_id = $unitCompRecord->parent_id;
             $this->prev_sibling_id = $unitCompRecord->prev_sibling_id;
 
@@ -1104,7 +1104,7 @@ class Unit extends Element
 
         foreach ($this->childs as $child)
         {
-            $content .= $child->displayhtml($this->standalone);
+            $content .= $child->displayhtml();
         }
 
 //        $content .= "</div>";

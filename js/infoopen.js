@@ -119,6 +119,39 @@ function infoopen(i) {
         });   
 
     });
+    
+    $('#activehottag-'+i).unbind('click');
+    $('#activehottag-'+i).click(
+        function() {
+            $('.rightbox').empty();
+            var cloned = $('#refcontent-'+i).clone();
+            cloned.find('*').each(function(){
+                var currentid = $(this).attr('id');
+                if(typeof currentid != 'undefined')
+                {
+                    $(this).attr('id', 'copy'+currentid);
+                }
+               
+            });
+            cloned.appendTo($('.rightbox')).css('display', 'block');
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+           
+        });
+
+    $('#activehottag-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        
+        $('#activehottag-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+
+        $('#activehottag-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });   
+
+    });
 
     $('#commentminibutton-'+i).unbind('click');
     $('#commentminibutton-'+i).click(function() {
@@ -238,16 +271,8 @@ function infoopen(i) {
          
         $('#copyhottag-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
-        });
-        
-        $('.mathimagemap').maphilight({
-            strokeColor:'379ee0',
-            strokeWidth:0,
-            fillColor:'379ee0',
-            fillOpacity: 0.3
-        });
-   
-    });
+        });   
+    });  
     
     $('#copycommentminibutton-'+i).click(function(e) {
         x = e.pageX+5;
@@ -278,6 +303,30 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('close');
         });
    
+    });
+    
+    $('#copyactivehottag-'+i).click(function() {  
+        $('#dialog-'+i).dialog('close');
+        $('#copyrefcontent-'+i).dialog(
+        {
+            modal:true,
+            width: 'auto'            
+        });
+        $('#copyrefcontent-'+i).dialog('open').css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    });
+                
+    $('#copyactivehottag-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copyactivehottag-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copyactivehottag-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });   
     });
     
    

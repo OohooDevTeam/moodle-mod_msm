@@ -158,8 +158,11 @@ abstract class Element
                         $content = preg_replace('/<math>\s+<latex>/', '$', $content);
                         $content = preg_replace('/<\/latex>\s+<\/math>/', '$', $content);
                         $content = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $content);
+                        // replacing \RNr[...] to \RNr{...}
                         // need to escape twice because it is parsed twice 
-                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(\S+)?\]/', '\\\\$1{$2}', $content);
+                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $content);
+                        // to change \RNr to \RNr{}
+                        $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s)/', '\\\\$1{}$2', $content);
                     }
                 }
                 // child is not an element node but a text node
@@ -453,8 +456,8 @@ abstract class Element
             $string = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $string);
 
             // ? needed to make it ungreedy
-            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(\S+)?\]/', '\\\\$1{$2}', $string);
-
+            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $string);
+            $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.)/', '\\\\$1{}$2', $string);
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -882,17 +885,17 @@ abstract class Element
                     {
                         if (!empty($subordinate->infos[0]))
                         {
-                            if ($rightpanel == false)
-                            {
-                                $newtag = '';
-                                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
-                                // if the subordinate is present on the right side of the panel, then display the child contents in the modal dialog
-                            }
-                            else if ($rightpanel)
-                            {
-                                $newtag = '';
-                                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='showonRight(" . $subordinate->infos[0]->compid . ")'>";
-                            }
+//                            if ($rightpanel == false)
+//                            {
+                            $newtag = '';
+                            $newtag = "<a id='activehottag-" . $subordinate->infos[0]->compid . "' class='activehottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
+                            // if the subordinate is present on the right side of the panel, then display the child contents in the modal dialog
+//                            }
+//                            else if ($rightpanel == true)
+//                            {
+//                                $newtag = '';
+//                                $newtag = "<a id='activehottag-" . $subordinate->infos[0]->compid . "' class='activehottag' onmouseover='showonRight(" . $subordinate->infos[0]->compid . ")'>";
+//                            }
 
                             $rawhotString = explode(',', $subordinate->hot);
 
@@ -999,29 +1002,13 @@ abstract class Element
 
                                 $content .= $subordinate->infos[0]->displayhtml();
                             }
-                            else
-                            {
-                                if (get_class($object) == 'ProofBlock')
-                                {
-                                    echo "position numbers do not match";
-                                    print_object($positionvalue);
-                                    print_object($hottagid);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (get_class($object) == 'ProofBlock')
-                            {
-                                echo "empty info";
-                            }
                         }
                     }
 
                     if (!empty($subordinate->external_links[0]))
                     {
                         $newtag = '';
-                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target ."' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target . "' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
                         $rawhotString = explode(',', $subordinate->hot);
 
                         // there are other commas in the content 

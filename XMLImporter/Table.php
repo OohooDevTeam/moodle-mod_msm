@@ -356,9 +356,9 @@ class Table extends Element
         return $this;
     }
 
-    function displayhtml($standalone)
+    function displayhtml()
     {
-        $newtablecontent = $this->displayContent($this, $this->table_content, $standalone);
+        $newtablecontent = $this->displayContent($this, $this->table_content);
         $tablecontent = "<root>" . $newtablecontent . "</root>";
 
         $content = $this->processTableContent($tablecontent);

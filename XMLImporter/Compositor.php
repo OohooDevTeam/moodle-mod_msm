@@ -136,7 +136,7 @@ class Compositor
         $unit->loadFromDb($unitid, $unitcompid);
         $this->unit = $unit;
 //                $content = '';
-        $content .= "<div class=unit>";
+        $content .= "<div class='unit'>";
         $content .= $this->unit->displayhtml();
 
         foreach ($stack as $key => $record)

@@ -220,7 +220,7 @@ function popup(i) {
         });
     
     });
-                
+    
     $('#copyhottag-'+i).ready(function(e){   
         $('#dialog-'+i).dialog('open');
         $('#copyhottag-'+i).mousemove(function (e) {

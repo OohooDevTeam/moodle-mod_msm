@@ -427,7 +427,7 @@ class Definition extends Element
         return $this;
     }
 
-    function displayhtml($standalone)
+    function displayhtml()
     {
         $content = '';
         $content .= "<br />";
@@ -444,7 +444,7 @@ class Definition extends Element
         $content .= "<br/>";
 
         $content .= "<div class='defcontent'>";
-        $content .= $this->displayContent($this, $this->def_content, $standalone);
+        $content .= $this->displayContent($this, $this->def_content);
         $content .= "<br />";
         $content .= "</div>";
 

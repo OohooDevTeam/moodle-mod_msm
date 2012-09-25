@@ -385,7 +385,7 @@ class MathComment extends Element
         return $this;
     }
 
-    function displayhtml($standalone)
+    function displayhtml()
     {
         $content = '';
 
@@ -403,7 +403,7 @@ class MathComment extends Element
         $content .= "<br/>";
 
         $content .= "<div class='commentcontent'>";
-        $content .= $this->displayContent($this, $this->comment_content, $standalone);
+        $content .= $this->displayContent($this, $this->comment_content);
         $content .= "<br />";
         $content .= "</div>";
 

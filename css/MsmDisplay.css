@@ -54,7 +54,7 @@ div.controller{
     opacity:0.95;
     filter:Alpha(opacity=95);
     /*    line-height: 0.3em;*/
-    font-size: 14px;    
+    font-size: 12px;    
 }
 
 /*#MySplitter div {
@@ -198,17 +198,17 @@ div.controller{
     min-width: 200px;
 }
 
-.hottag
+.hottag, .activehottag
 {
     color: #229C79;   
 }
 
-.hottag:hover
+.hottag:hover, .activehottag:hover
 {
     cursor: pointer;
     color:blue;
 }
-.hottag:visited
+.hottag:visited, .activehottag:visited
 {
     color:mediumorchid;
 }
@@ -263,7 +263,7 @@ span.deftype
 .theoremcontent
 {
     margin-top: 5px;
-    /*    margin-bottom: 5px;*/
+       /*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
 }

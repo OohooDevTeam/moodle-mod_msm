@@ -599,32 +599,35 @@ class Associate extends Element
 
         if ($associateParentTablename == 'msm_theorem')
         {
-            if (!empty($this->childs))
+            if ($this->description != 'Quiz')
             {
-                $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
-                $content .= "<span style='cursor:pointer'>";
-                $content .= $this->description;
-                $content .= "</span>";
-                $content .= "</li>";
-                $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
-                foreach ($this->childs as $child)
+                if (!empty($this->childs))
                 {
-                    $content .= $child->displayhtml();
+                    $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                    $content .= "<span style='cursor:pointer'>";
+                    $content .= $this->description;
+                    $content .= "</span>";
+                    $content .= "</li>";
+                    $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
+                    foreach ($this->childs as $child)
+                    {
+                        $content .= $child->displayhtml();
+                    }
+                    $content .= "</div>";
                 }
+                else
+                {
+                    $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+                    $content .= "<span style='cursor:pointer'>";
+                    $content .= $this->description;
+                    $content .= "</span>";
+                    $content .= "</li>";
+                }
+
+                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
+                $content .= $this->infos[0]->info_content;
                 $content .= "</div>";
             }
-            else
-            {
-                $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
-                $content .= "<span style='cursor:pointer'>";
-                $content .= $this->description;
-                $content .= "</span>";
-                $content .= "</li>";
-            }
-
-            $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
-            $content .= $this->infos[0]->info_content;
-            $content .= "</div>";
         }
 
         if ($associateParentTablename == 'msm_comment')

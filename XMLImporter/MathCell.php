@@ -229,7 +229,7 @@ class MathCell extends Element
         return $this;
     }
 
-    function displayhtml($rowspan, $standalone)
+    function displayhtml($rowspan)
     {
         $content = '';
 
@@ -245,7 +245,7 @@ class MathCell extends Element
             }
             else
             {
-//                $content .= $this->displayContent($this, $this->content, $standalone);
+//                $content .= $this->displayContent($this, $this->content);
                 $content .= $this->content;
             }
         }

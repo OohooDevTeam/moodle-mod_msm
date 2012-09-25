@@ -88,8 +88,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             timer = '';   
             counter = 0;
             preloadedImg = [];
-            howManyInstances = $('.jshowoff').length+1;
-		
+            howManyInstances = $('.jshowoff').length+1;		
             uniqueClass = 'jshowoff-'+howManyInstances;
             pagenumber = 1;
 		
@@ -109,8 +108,22 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             // add first slide to wrapper
 		
             $(gallery[0]).clone().appendTo($cont);
-            preloadImg(preloadedImg);
-            addControls();
+            preloadImg();
+            
+            // add controls
+            if(config.controls){
+                addControls();
+                if(config.autoPlay==false){
+                    $('.'+uniqueClass+'-play').addClass(uniqueClass+'-paused jshowoff-paused').text(config.controlText.play);
+                };
+            };
+            //            addControls();
+            
+//            // add slide links
+//            if(config.links){
+//                addSlideLinks();
+//                $('.'+uniqueClass+'-slidelinks a').eq(0).addClass(uniqueClass+'-active jshowoff-active');
+//            };
             
             // display error message if no slides present
             if(gallery.length<1){
@@ -269,14 +282,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 height: 'auto',
                 width: 605
             });
-            
-            $('.mathimagemap').maphilight({
-                    strokeColor:'379ee0',
-                    strokeWidth:0,
-                    fillColor:'379ee0',
-                    fillOpacity: 0.3
-                });
-           
         });
           
     };
@@ -331,12 +336,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 height: 'auto',
                 width: 605
             });
-            $('.mathimagemap').maphilight({
-                    strokeColor:'379ee0',
-                    strokeWidth:0,
-                    fillColor:'379ee0',
-                    fillOpacity: 0.3
-                });
         });
         		
     };
@@ -391,7 +390,21 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 return false;
             });
         });
-    };	
+    };
+    
+//    // generate and add slide links
+//    function addSlideLinks() {
+//        $wrap.append('<p class="jshowoff-slidelinks '+uniqueClass+'-slidelinks"></p>');
+//        $.each(gallery, function(i, val) {
+//            var linktext = $(this).attr('title') != '' ? $(this).attr('title') : i+1;
+//            $('<a class="jshowoff-slidelink-'+i+' '+uniqueClass+'-slidelink-'+i+'" href="#null">'+linktext+'</a>').bind('click', {
+//                index:i
+//            }, function(e){
+//                goToAndPause(e.data.index);
+//                return false;
+//            }).appendTo('.'+uniqueClass+'-slidelinks');
+//        });
+//    };	
 
 // end closure
 })(jQuery);

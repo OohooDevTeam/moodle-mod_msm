@@ -74,20 +74,19 @@ $PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id));
 $PAGE->set_title(format_string($msm->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
+//*********************************************************************************************************
+// activate later when editor is done
 
-if ($PAGE->user_allowed_editing())
-{
-    $buttons = '<form method="get" action="' . $CFG->wwwroot . '/course/mod.php"><div>' .
-            '<input type="hidden" name="update" value="' . $cm->id . '" />' .
-            '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';
-    $PAGE->set_button($buttons);
-}
-//
-//$compositor = new Compositor();
-//$compositor = $compositor->loadFromDb($msm->id);
-//$compositor = $compositor->loadFromDb(1); // db broken for now due to no update method... later use above method
-// other things you may want to set - remove if not needed
-//$PAGE->set_cacheable(false);
+//if ($PAGE->user_allowed_editing())
+//{
+//    $buttons = '<form method="get" action="' . $CFG->wwwroot . '/course/mod.php"><div>' .
+//            '<input type="hidden" name="update" value="' . $cm->id . '" />' .
+//            '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';
+//    $PAGE->set_button($buttons);
+//}
+//*********************************************************************************************************
+
+//$PAGE->set_cacheable(true);
 //$PAGE->set_focuscontrol('some-html-id');
 //$PAGE->add_body_class('msm-'.$somevar);
 // Output starts here
@@ -119,7 +118,6 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jq
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showonModal.js'></script>";
 
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
 //echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
@@ -191,17 +189,9 @@ $content .= "
               height: 'auto',
               width: 605
          }); 
-         
-$('.mathimagemap').maphilight({
-                    strokeColor:'379ee0',
-                    strokeWidth:0,
-                    fillColor:'379ee0',
-                    fillOpacity: 0.3
-                });
-
          $('#features').jshowoff({
               autoplay:false,
-              links:false                  
+              links:true                  
          });
                  
         $('#MySplitter').splitter();
