@@ -303,7 +303,8 @@ function infoopen(i) {
    
     });
     
-    $('#copyactivehottag-'+i).click(function() {  
+    // to produce a modal dialog box to display reference materials from the right side of the page
+    $('#copyactivehottag-'+i).click(function(e) {  
         $('#dialog-'+i).dialog('close');
         $('#copyrefcontent-'+i).dialog(
         {
@@ -311,8 +312,14 @@ function infoopen(i) {
             width: 'auto'            
         });
         $('#copyrefcontent-'+i).dialog('open').css('display', 'block');
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    });
+        
+        // to close the modal dialog box by clicking the outside of the box
+        $('.ui-widget-overlay').click(function() {
+            $('#copyrefcontent-'+i).dialog('close'); 
+        });
+    }); 
+    
+   
                 
     $('#copyactivehottag-'+i).ready(function(e){
         $('#copyactivehottag-'+i).mousemove(function (e) {
