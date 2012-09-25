@@ -309,10 +309,10 @@ function infoopen(i) {
         $('#copyrefcontent-'+i).dialog(
         {
             modal:true,
-            width: 'auto'            
+            width: 840            
         });
         $('#copyrefcontent-'+i).dialog('open').css('display', 'block');
-        
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         // to close the modal dialog box by clicking the outside of the box
         $('.ui-widget-overlay').click(function() {
             $('#copyrefcontent-'+i).dialog('close'); 
