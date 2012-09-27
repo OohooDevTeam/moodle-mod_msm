@@ -443,7 +443,7 @@ class Definition extends Element
         }
         $content .= "<br/>";
 
-        $content .= "<div class='defcontent'>";
+        $content .= "<div class='mathcontent'>";
         $content .= $this->displayContent($this, $this->def_content);
         $content .= "<br />";
         $content .= "</div>";

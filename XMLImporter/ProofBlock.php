@@ -69,7 +69,8 @@ class ProofBlock extends Element
         $proofblockbodyNode = $doc->createElementNS('Theorem', 'proof.block.body');
 
         // because the transformed XML does not have the proper structure,
-        // this part of the code restructures the XML to make the content processing easier        
+        // this part of the code restructures the XML to make the content processing easier     
+        $appended = false; // checking if the new node has been appended to the document 
         foreach ($DomElement->childNodes as $child)
         {
 
@@ -80,6 +81,7 @@ class ProofBlock extends Element
                     // append the proofblockbodyNode to new proof.block node
                     // when a new logic element is read
                     $newProofblockNode->appendChild($proofblockbodyNode);
+                    $appended = true;
                     // need to create a new proofblockbodyNode
                     $proofblockbodyNode = $doc->createElementNS('Theorem', 'proof.block.body');
                     $childElement = $doc->importNode($child, true);
@@ -87,6 +89,11 @@ class ProofBlock extends Element
                 }
                 else if ($child->tagName == 'caption')
                 {
+                    if (!$appended)
+                    {
+                        $newProofblockNode->appendChild($proofblockbodyNode);
+                        $proofblockbodyNode = $doc->createElementNS('Theorem', 'proof.block.body');
+                    }
 
                     $childElement = $doc->importNode($child, true);
                     $newProofblockNode->appendChild($childElement);
@@ -96,6 +103,7 @@ class ProofBlock extends Element
 
                     $childElement = $doc->importNode($child, true);
                     $proofblockbodyNode->appendChild($childElement);
+                    $appended = false;
                 }
             }
         }
@@ -475,7 +483,7 @@ class ProofBlock extends Element
 
                         if (sizeof($partTheorems) > 1)
                         {
-                          $this->partrefs[] = array_pop($partTheorems);
+                            $this->partrefs[] = array_pop($partTheorems);
                             break 2;
                         }
                         else if (sizeof($partTheorems) == 1)
@@ -486,7 +494,6 @@ class ProofBlock extends Element
                     }
                 }
             }
-          
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');

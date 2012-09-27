@@ -800,6 +800,9 @@ abstract class Element
         // if above is allowed, it creates an infinite loop
         else if ($isRef)
         {
+            
+//            echo "is ref";
+            
             $theoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
             $currentRecordTable = $DB->get_record('msm_compositor', array('id' => $currentUnitID))->table_id;
 
@@ -836,6 +839,7 @@ abstract class Element
                 // child element exist but the current record is the original record and already has child elements associated with it
                 else if ((!empty($childElements)) && (!empty($existingchildElements)))
                 {
+//                    echo "both empty child in original and copy";
                     return false;
                 }
             }
@@ -848,15 +852,12 @@ abstract class Element
      * @param String $XMLcontent
      * @return null|String
      */
-    function displayContent($object, $XMLcontent, $rightpanel = false)
+    function displayContent($object, $XMLcontent)
     {
         global $DB;
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
-
-//        echo "XMLcontent";
-//        print_object($XMLcontent);
 
         @$doc->loadXML($XMLcontent);
 
@@ -885,18 +886,9 @@ abstract class Element
                     {
                         if (!empty($subordinate->infos[0]))
                         {
-//                            if ($rightpanel == false)
-//                            {
                             $newtag = '';
                             $newtag = "<a id='activehottag-" . $subordinate->infos[0]->compid . "' class='activehottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
-                            // if the subordinate is present on the right side of the panel, then display the child contents in the modal dialog
-//                            }
-//                            else if ($rightpanel == true)
-//                            {
-//                                $newtag = '';
-//                                $newtag = "<a id='activehottag-" . $subordinate->infos[0]->compid . "' class='activehottag' onmouseover='showonRight(" . $subordinate->infos[0]->compid . ")'>";
-//                            }
-
+                          
                             $rawhotString = explode(',', $subordinate->hot);
 
                             // there are other commas in the content 
@@ -945,7 +937,7 @@ abstract class Element
                                 $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
                                 foreach ($subordinate->childs as $child)
                                 {
-                                    $content .= $child->displayhtml($rightpanel);
+                                    $content .= $child->displayhtml();
                                 }
                                 $content .= "</div>";
                             }
@@ -1062,7 +1054,7 @@ abstract class Element
                 if (!empty($object->tables[$i]))
                 {
                     $table = $object->tables[$i];
-                    $newtableString = $table->displayhtml($rightpanel);
+                    $newtableString = $table->displayhtml();
                     @$newElementdoc->loadXML($newtableString);
                     $tables->item($i)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $tables->item($i));
                 }
@@ -1078,7 +1070,7 @@ abstract class Element
                 {
 
                     $matharray = $object->matharrays[$i];
-                    $newmarrayString = $matharray->displayhtml($rightpanel);
+                    $newmarrayString = $matharray->displayhtml();
 
                     @$newElementdoc->loadXML($newmarrayString);
 

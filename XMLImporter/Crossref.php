@@ -472,7 +472,7 @@ class Crossref extends Element
 
                         foreach ($defCompRecords as $defCompRecord)
                         {
-                            $this->grabSubunitChilds($defCompRecord, $defCompID);
+                            $this->grabSubunitChilds($defCompRecord, $defCompID, true);
                         }
                     }
                     break;
@@ -504,10 +504,17 @@ class Crossref extends Element
                         $theoremCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $theoremID, 'table_id' => $theoremtableID));
                         $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                         $sibling_id = $theoremCompID;
-
+                        
                         foreach ($theoremCompRecords as $theoremCompRecord)
                         {
-                            $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, true);
+                            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $theoremCompRecord->id), 'prev_sibling_id');
+                            
+                             if(!empty($childElements))
+                             {
+                                 $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, true);
+                                 break;
+                             }
+                             
                         }
                     }
                     break;

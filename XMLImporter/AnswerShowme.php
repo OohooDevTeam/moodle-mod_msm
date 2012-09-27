@@ -210,6 +210,8 @@ class AnswerShowme extends Element
                     break;
                 
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
+//                    echo "in answer show me";
+//                    print_object($this->content);
                     $subordinateString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -385,7 +387,7 @@ class AnswerShowme extends Element
         $content .= "</span>";
         $content .= "<br />";
 
-        $content .= "<div class='answershowmecontent'>";
+        $content .= "<div class='mathcontent'>";
         $content .= $this->displayContent($this, $this->content);
         $content .= "</div>";
         $content .= "<br />";

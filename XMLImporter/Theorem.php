@@ -271,7 +271,7 @@ class Theorem extends Element
         }
         $content .= "<br/>";
 
-        $content .= "<div class='theoremcontent'>";
+        $content .= "<div class='mathcontent'>";
         foreach ($this->childs as $child)
         {
             $content .= $child->displayhtml();

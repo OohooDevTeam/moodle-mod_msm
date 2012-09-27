@@ -402,7 +402,7 @@ class MathComment extends Element
         }
         $content .= "<br/>";
 
-        $content .= "<div class='commentcontent'>";
+        $content .= "<div class='mathcontent'>";
         $content .= $this->displayContent($this, $this->comment_content);
         $content .= "<br />";
         $content .= "</div>";

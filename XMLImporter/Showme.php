@@ -374,7 +374,7 @@ class Showme extends Element
         
         $content .= "<br />";
 
-        $content .= "<div class='showmecontent'>";
+        $content .= "<div class='mathcontent'>";
         $content .= $this->displayContent($this, $this->statement_showme);
         $content .= "</div>";
         $content .= "<br />";

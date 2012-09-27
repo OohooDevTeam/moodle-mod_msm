@@ -180,14 +180,18 @@ div.controller{
     margin-right: 5px;
 }
 
-#features .content
+.mathcontent
 {
+    margin-top: 5px;
+    /*    margin-bottom: 5px;*/
+    border: 2px solid black;
+    background-color: white;
+    padding: 3px;
     /*    overflow: hidden;*/
     font-size:14px;
     text-align: left;
-    margin-left: 20px;
-    margin-right: 10px;
-    margin-top: 0px;
+
+
 }
 
 #features table
@@ -236,14 +240,14 @@ div.controller{
     margin-right:auto;
 }
 
-.defcontent
+/*.defcontent
 {
     margin-top: 5px;
-    /*    margin-bottom: 5px;*/
+        margin-bottom: 5px;
     border: 2px solid black;
     background-color: white;
     padding: 3px;
-}
+}*/
 
 span.deftitle
 {
@@ -261,14 +265,14 @@ span.deftype
     float: left;
 }
 
-.theoremcontent
+/*.theoremcontent
 {
     margin-top: 5px;
-    /*    margin-bottom: 5px;*/
+        margin-bottom: 5px;
     border: 2px solid black;
     background-color: white;
     padding: 3px;
-}
+}*/
 
 .theorem
 {
@@ -438,14 +442,14 @@ div.dialogs{
     margin-right:auto;
 }
 
-.commentcontent
+/*.commentcontent
 {
     margin-top: 5px;
-    /*    margin-bottom: 5px;*/
+        margin-bottom: 5px;
     border: 2px solid black;
     background-color: white;
     padding: 3px;
-}
+}*/
 
 span.commenttitle
 {
@@ -541,13 +545,13 @@ img.mathimagemap
     padding-right: 10px;
 }
 
-.extrainfocontent
+/*.extrainfocontent
 {
     margin-top: 5px;
     border: 2px solid black;
     background-color: white;
     padding: 3px;
-}
+}*/
 
 span.extrainfocaption
 {
@@ -618,7 +622,7 @@ span.extrainfoname
 
 .answershowme
 {
-    width: 90%;
+    width: 95%;
     background-color: #0F900F;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -628,13 +632,13 @@ span.extrainfoname
     margin-right:auto;
 }
 
-.answershowmecontent
+/*.answershowmecontent
 {
     margin-top: 5px;
     padding: 3px;
     border: 2px solid black;
     background-color: white;
-}
+}*/
 
 span.answershowmetitle
 {
@@ -654,7 +658,7 @@ span.answershowmetype
 
 .showme
 {
-    width: 90%;
+    width: 95%;
     background-color: #0F900F;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -664,12 +668,12 @@ span.answershowmetype
     margin-right:auto;
 }
 
-.showmecontent
+/*.showmecontent
 {
     padding: 3px;
     border: 2px solid black;
     background-color: white;
-}
+}*/
 
 span.showmetitle
 {

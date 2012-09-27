@@ -351,7 +351,7 @@ class ExtraInfo extends Element
             $content .= "<span class='extrainfocaption'>" . $this->caption . "</span>";
         }
 
-        $content .= "<div class='extrainfocontent'>";
+        $content .= "<div class='mathcontent'>";
         $content .= $this->displayContent($this, $this->content);
         $content .= "</div>";
 
