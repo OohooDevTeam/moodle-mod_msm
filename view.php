@@ -74,9 +74,9 @@ $PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id));
 $PAGE->set_title(format_string($msm->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
+
 //*********************************************************************************************************
 // activate later when editor is done
-
 //if ($PAGE->user_allowed_editing())
 //{
 //    $buttons = '<form method="get" action="' . $CFG->wwwroot . '/course/mod.php"><div>' .
@@ -85,7 +85,6 @@ $PAGE->set_context($context);
 //    $PAGE->set_button($buttons);
 //}
 //*********************************************************************************************************
-
 //$PAGE->set_cacheable(true);
 //$PAGE->set_focuscontrol('some-html-id');
 //$PAGE->add_body_class('msm-'.$somevar);
@@ -109,6 +108,11 @@ echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.
 // these js files need to be after the development-bundle
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Splitter.js'></script>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/slideNav.css'/>";
+echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jquery.treeview.css'/>";
+
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/lib/jquery.cookie.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
 
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
@@ -118,6 +122,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jq
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
 
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
 //echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
@@ -131,9 +136,17 @@ if ($msm->intro)
     echo $OUTPUT->box(format_module_intro('msm', $msm, $cm->id), 'generalbox mod_introbox', 'msmintro');
 }
 
+
 // Replace the following lines with you own code
 echo $OUTPUT->heading($msm->name);
-
+echo $OUTPUT->heading('<ul id="navigation">
+            <li class="toc"><a href="" id="toc"><span>Table of Contents</span></a></li>
+            <li class="author"><a href=""><span>Authors</span></a></li>
+            <li class="symbol"><a href=""><span>Symbols</span></a></li>
+            <li class="glossary"><a href=""><span>Glossary</span></a></li>
+            <li class="biblio"><a href=""><span>Bibliography</span></a></li>
+            <li class="contact"><a href=""><span>Contact</span></a></li>
+        </ul>');
 $content = '';
 //$content .= "hello";
 //$content .= "<div>";
@@ -170,12 +183,120 @@ $content .= "</div>";
 $content .= "</div>";
 
 $content .= "<div class = 'rightcol' style='min-width: 542px;'>";
+
 $content .= "<div class = 'rightbox'>";
 
 $content .= "</div>";
 $content .= "</div>";
 
 $content .= "</div>";
+
+$content .= "<div id='tocpanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='toccontent'>";
+$content .= '<div id="treecontrol">
+		<a title="Collapse the entire tree below" href="#"> Collapse All</a> | 
+		<a title="Expand the entire tree below" href="#"> Expand All</a> | 
+		<a title="Toggle the tree below, opening closed branches, closing open branches" href="#">Toggle All</a>
+	</div>';
+$content .= '<ul id="red" class="treeview-red">
+	<li><span>Item 1</span>
+		<ul>
+			<li><span>Item 1.0</span>
+				<ul>
+					<li><span>Item 1.0.0</span></li>
+				</ul>
+			</li>
+			<li><span>Item 1.1</span></li>
+			<li><span>Item 1.2</span>
+				<ul>
+					<li><span>Item 1.2.0</span>
+					<ul>
+						<li><span>Item 1.2.0.0</span></li>
+						<li><span>Item 1.2.0.1</span></li>
+						<li><span>Item 1.2.0.2</span></li>
+					</ul>
+				</li>
+					<li><span>Item 1.2.1</span>
+					<ul>
+						<li><span>Item 1.2.1.0</span></li>
+					</ul>
+				</li>
+					<li><span>Item 1.2.2</span>
+					<ul>
+						<li><span>Item 1.2.2.0</span></li>
+						<li><span>Item 1.2.2.1</span></li>
+						<li><span>Item 1.2.2.2</span></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><span>Item 2</span>
+		<ul>
+			<li><span>Item 2.0</span>
+				<ul>
+					<li><span>Item 2.0.0</span>
+					<ul>
+						<li><span>Item 2.0.0.0</span></li>
+						<li><span>Item 2.0.0.1</span></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+			<li><span>Item 2.1</span>
+				<ul>
+					<li><span>Item 2.1.0</span>
+					<ul>
+						<li><span>Item 2.1.0.0</span></li>
+					</ul>
+				</li>
+					<li><span>Item 2.1.1</span>
+					<ul>
+						<li><span>Item 2.1.1.0</span></li>
+						<li><span>Item 2.1.1.1</span></li>
+						<li><span>Item 2.1.1.2</span></li>
+					</ul>
+				</li>
+					<li><span>Item 2.1.2</span>
+					<ul>
+						<li><span>Item 2.1.2.0</span></li>
+						<li><span>Item 2.1.2.1</span></li>
+						<li><span>Item 2.1.2.2</span></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><span>Item 3</span>
+		<ul>
+			<li class="open"><span>Item 3.0</span>
+				<ul>
+					<li><span>Item 3.0.0</span></li>
+					<li><span>Item 3.0.1</span>
+					<ul>
+						<li><span>Item 3.0.1.0</span></li>
+						<li><span>Item 3.0.1.1</span></li>
+					</ul>
+					
+				</li>
+					<li><span>Item 3.0.2</span>
+					<ul>
+						<li><span>Item 3.0.2.0</span></li>
+						<li><span>Item 3.0.2.1</span></li>
+						<li><span>Item 3.0.2.2</span></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	</ul>';
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
+
+
 
 $content .= "<div class='loadingscreen'></div>";
 
@@ -189,6 +310,15 @@ $content .= "
               height: 'auto',
               width: 605
          }); 
+         
+ $('#red').treeview({
+                    persist: 'cookie',
+                    animated: 'fast',
+                    collapsed: true,
+                    control: '#treecontrol'
+                });
+                
+$('.slidepanelcontent').hide(); //updated line, removing the #panel ID.     
          $('#features').jshowoff({
               autoplay:false,
               links:true                  

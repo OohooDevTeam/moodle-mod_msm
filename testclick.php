@@ -7,7 +7,8 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" media = "screen" href="css/MsmDisplay.css" />
-        <!--<link rel="stylesheet" href="css/jquery.treeview.css"/>-->
+        <link rel="stylesheet" type="text/css" href="css/slideNav.css"/>
+        <link rel="stylesheet" href="css/jquery.treeview.css"/>
         <script src="development-bundle/jquery-1.7.1.js"></script>
 
         <link rel='stylesheet' href='development-bundle/themes/ui-lightness/jquery.ui.all.css'/>
@@ -20,38 +21,33 @@
         <script src='development-bundle/ui/jquery.ui.resizable.js'></script>
         <script src='development-bundle/ui/jquery.ui.dialog.js'></script>
 
-        <script type="text/javascript" src="js/sweet-menu-latest/sweet-menu/jquery.easing.js"></script>
+        <!--<script type="text/javascript" src="js/sweet-menu-latest/sweet-menu/jquery.easing.js"></script>-->
 
-<!--        <script type="text/javascript" src="js/jTreeview/lib/jquery.cookie.js"></script>
-        <script type="text/javascript" src="js/jTreeview/jquery.treeview.js"></script>-->
-        <script type="text/javascript" src="js/sweet-menu-latest/sweet-menu/jquery.sweet-menu-1.0.js"></script>
+        <script type="text/javascript" src="js/jTreeview/lib/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/jTreeview/jquery.treeview.js"></script>
+        <!--<script type="text/javascript" src="js/sweet-menu-latest/sweet-menu/jquery.sweet-menu-1.0.js"></script>-->
         <script type='text/javascript' src='js/Splitter.js'></script>
         <script type="text/javascript" src="js/maphilight/jquery.maphilight.js"></script>
 
         <script type='text/javascript' src='js/showRightPage.js'></script>
         <script type='text/javascript' src='js/popup.js'></script>
+        <script typr="text/javascript" src="js/navMenu.js"></script>
 
         <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,/moodle/mod/msm/js/Mathjaxconfig.js'></script>
         <!--<script type ="text/javascript" src="js/jimagemapster.js"></script>-->
 
         <script type="text/javascript">            
             $(document).ready(function(){                
-                 // first example
-//                $("#navigation").treeview({
-//                    collapsed: true,
-//                    unique: true,
-//                    persist: "location"
-//                });
-                
-                $('#navMenu').sweetMenu({
-                    top: 200,
-                    padding: 10,
-                    iconSize: 48,
-                    easing: 'easeOutBounce',
-                    duration: 500
-                   
-                });    
+                // first example
+                $("#red").treeview({
+                    persist: "cookie",
+                    animated: "fast",
+                    collapsed: true,
+                    control: "#treecontrol"
+                });
 
+                //                
+                             
                 $('.dialogs').dialog({
                     autoOpen: false,
                     width: 'auto'
@@ -73,60 +69,6 @@
             });
         </script>
 
-        <style type="text/css">
-            .sweetMenuAnchor{
-                border-top: 1px solid #ffffff;
-                border-right: 1px solid #ffffff;
-                border-bottom: 1px solid #ffffff;
-                border-top-right-radius: 4px;
-                -moz-border-radius-topright: 4px;
-                border-bottom-right-radius: 4px;
-                -moz-border-radius-bottomright: 4px;
-                color: #0071bb;
-                font-size: 24px;
-                font-weight: bold;
-                text-align: right;
-                text-transform: uppercase;
-                font-family: arial;
-                text-decoration: none;
-                background-color: #888888;
-                opacity: 0.6;
-                z-index: 100;
-            }
-
-            .sweetMenuAnchor span{
-                display: block;
-                padding-top: 10px;
-            }
-
-            h1
-            {
-                display: block;
-                text-align: center;
-                font-size: 48px;
-                color: #ffffff;
-                text-shadow: 0px 0px 12px #000000;
-                font-family: "Trebuchet MS";
-            }
-
-            /*----------------------for sliding panel-----------------------------*/
-
-            .panel
-            {
-                position:absolute;
-                right:0px;
-                top:50px;
-                background-color:#999999;
-                height:100%;
-                width:0;
-            }
-            .panel .slidepanelcontent
-            {
-                width:50%;
-                margin-left:70px;
-            }
-        </style>
-
     </head>
 </html>
 
@@ -134,6 +76,14 @@
 //$blockcontent = '';
 
 $content = '';
+$content .= '<ul id="navigation">
+            <li class="toc"><a href="" id="toc"><span>Table of Contents</span></a></li>
+            <li class="author"><a href=""><span>Authors</span></a></li>
+            <li class="symbol"><a href=""><span>Symbols</span></a></li>
+            <li class="glossary"><a href=""><span>Glossary</span></a></li>
+            <li class="biblio"><a href=""><span>Bibliography</span></a></li>
+            <li class="contact"><a href=""><span>Contact</span></a></li>
+        </ul>';
 $content .= "<div id='MySplitter'>";
 
 $content .= "<div class='leftcol' style='min-width: 542px;'>";
@@ -410,114 +360,117 @@ $content .= "<div id='refcontent-1' class='refcontent' style='display:none;'>";
 $content .= "reference material?";
 $content .= "</div>";
 
-$content .= '<ul id="navMenu">
-            <li><a href="#home" id="toc">Table of Content</a></li>
-            <li><a href="#home">Authors</a></li>
-            <li><a href="#home" id="symbol">Symbols</a></li>
-            <li><a href="#home" id="glossary">Glossary</a></li>
-            <li><a href="#home">Bibliography</a></li>
-            <li><a href="#home">Contacts</a></li>
-        </ul>';
+
+
+
+
+
 //$content .= "<div id='proofblock-1' class='proofblock'>";
 ////$content .= "<div id='proofblock-1' class='proofblock'>";
 //$content .= "hey include me!!";
 //$content .= "</div>";
 
 $content .= "<div id='tocpanel' class='panel'>";
-$content .="<div class='slidepanelcontent'>";
-$content .= '<ul id="navigation">
-		<li><a href="http://www.dynamicdrive.com">Item 1</a>
-			<ul>
-				<li><a href="http://www.dynamicdrive.com">Item 1.0</a>
+$content .="<div class='slidepanelcontent' id='toccontent'>";
+$content .= '<div id="treecontrol">
+		<a title="Collapse the entire tree below" href="#"> Collapse All</a> | 
+		<a title="Expand the entire tree below" href="#"> Expand All</a> | 
+		<a title="Toggle the tree below, opening closed branches, closing open branches" href="#">Toggle All</a>
+	</div>';
+$content .= '<ul id="red" class="treeview-red">
+	<li><span>Item 1</span>
+		<ul>
+			<li><span>Item 1.0</span>
+				<ul>
+					<li><span>Item 1.0.0</span></li>
+				</ul>
+			</li>
+			<li><span>Item 1.1</span></li>
+			<li><span>Item 1.2</span>
+				<ul>
+					<li><span>Item 1.2.0</span>
 					<ul>
-						<li><a href="index.html">Item 1.0.0</a></li>
+						<li><span>Item 1.2.0.0</span></li>
+						<li><span>Item 1.2.0.1</span></li>
+						<li><span>Item 1.2.0.2</span></li>
 					</ul>
 				</li>
-				<li><a href="http://www.dynamicdrive.com">Item 1.1</a></li>
-				<li><a href="http://www.dynamicdrive.com">Item 1.2</a>
+					<li><span>Item 1.2.1</span>
 					<ul>
-						<li><a href="http://www.dynamicdrive.com">Item 1.2.0</a>
-						<ul>
-							<li><a href="http://www.dynamicdrive.com">Item 1.2.0.0</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 1.2.0.1</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 1.2.0.2</a></li>
-						</ul>
-					</li>
-						<li><a href="http://www.dynamicdrive.com">Item 1.2.1</a>
-						<ul>
-							<li><a href="http://www.dynamicdrive.com">Item 1.2.1.0</a></li>
-						</ul>
-					</li>
-						<li><a href="http://www.dynamicdrive.com">Item 1.2.2</a>
-						<ul>
-							<li><a href="http://www.dynamicdrive.com">Item 1.2.2.0</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 1.2.2.1</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 1.2.2.2</a></li>
-						</ul>
-					</li>
+						<li><span>Item 1.2.1.0</span></li>
 					</ul>
 				</li>
-			</ul>
-		</li>
-		<li><a href="http://www.dynamicdrive.com">Item 2</a>
-			<ul>
-				<li><span>Item 2.0</span>
+					<li><span>Item 1.2.2</span>
 					<ul>
-						<li><a href="http://www.dynamicdrive.com">Item 2.0.0</a>
-						<ul>
-							<li><a href="http://www.dynamicdrive.com">Item 2.0.0.0</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 2.0.0.1</a></li>
-						</ul>
-					</li>
+						<li><span>Item 1.2.2.0</span></li>
+						<li><span>Item 1.2.2.1</span></li>
+						<li><span>Item 1.2.2.2</span></li>
 					</ul>
 				</li>
-				<li><a href="http://www.dynamicdrive.com">Item 2.1</a>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><span>Item 2</span>
+		<ul>
+			<li><span>Item 2.0</span>
+				<ul>
+					<li><span>Item 2.0.0</span>
 					<ul>
-						<li><a href="http://www.dynamicdrive.com">Item 2.1.0</a>
-						<ul>
-							<li><a href="http://www.dynamicdrive.com">Item 2.1.0.0</a></li>
-						</ul>
-					</li>
-						<li><a href="http://www.dynamicdrive.com">Item 2.1.1</a>
-						<ul>
-							<li><a href="http://www.dynamicdrive.com">Item 2.1.1.0</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 2.1.1.1</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 2.1.1.2</a></li>
-						</ul>
-					</li>
-						<li><a href="http://www.dynamicdrive.com">Item 2.1.2</a>
-						<ul>
-							<li><a href="http://www.dynamicdrive.com">Item 2.1.2.0</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 2.1.2.1</a></li>
-							<li><a href="http://www.dynamicdrive.com">Item 2.1.2.2</a></li>
-						</ul>
-					</li>
+						<li><span>Item 2.0.0.0</span></li>
+						<li><span>Item 2.0.0.1</span></li>
 					</ul>
 				</li>
-			</ul>
-		</li>
-		<li><a href="http://www.dynamicdrive.com">Item 3</a>
-			<ul>
-				<li class="open"><a href="http://www.dynamicdrive.com">Item 3.0</a>
+				</ul>
+			</li>
+			<li><span>Item 2.1</span>
+				<ul>
+					<li><span>Item 2.1.0</span>
 					<ul>
-						<li><a href="http://www.dynamicdrive.com">Item 3.0.0</a></li>
-						<li><a href="http://www.dynamicdrive.com">Item 3.0.1</a>
-							<ul>
-								<li><a href="http://www.dynamicdrive.com">Item 3.0.1.0</a></li>
-								<li><a href="http://www.dynamicdrive.com">Item 3.0.1.1</a></li>
-							</ul>
-						</li>
-						<li><a href="http://www.dynamicdrive.com">Item 3.0.2</a>
-							<ul>
-								<li><a href="http://www.dynamicdrive.com">Item 3.0.2.0</a></li>
-								<li><a href="http://www.dynamicdrive.com">Item 3.0.2.1</a></li>
-								<li><a href="http://www.dynamicdrive.com">Item 3.0.2.2</a></li>
-							</ul>
-						</li>
+						<li><span>Item 2.1.0.0</span></li>
 					</ul>
 				</li>
-			</ul>
-		</li>
+					<li><span>Item 2.1.1</span>
+					<ul>
+						<li><span>Item 2.1.1.0</span></li>
+						<li><span>Item 2.1.1.1</span></li>
+						<li><span>Item 2.1.1.2</span></li>
+					</ul>
+				</li>
+					<li><span>Item 2.1.2</span>
+					<ul>
+						<li><span>Item 2.1.2.0</span></li>
+						<li><span>Item 2.1.2.1</span></li>
+						<li><span>Item 2.1.2.2</span></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><span>Item 3</span>
+		<ul>
+			<li class="open"><span>Item 3.0</span>
+				<ul>
+					<li><span>Item 3.0.0</span></li>
+					<li><span>Item 3.0.1</span>
+					<ul>
+						<li><span>Item 3.0.1.0</span></li>
+						<li><span>Item 3.0.1.1</span></li>
+					</ul>
+					
+				</li>
+					<li><span>Item 3.0.2</span>
+					<ul>
+						<li><span>Item 3.0.2.0</span></li>
+						<li><span>Item 3.0.2.1</span></li>
+						<li><span>Item 3.0.2.2</span></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
 	</ul>';
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
