@@ -28,7 +28,7 @@ $(function() {
     $('#toc').toggle(function () {
         $('#tocpanel').stop().animate({
             height:'90%', 
-            opacity:0.8
+            opacity:1.0
         }, 500, function() {
             $('#toccontent').fadeIn('slow');
                                     

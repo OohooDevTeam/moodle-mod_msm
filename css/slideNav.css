@@ -80,7 +80,7 @@ ul#navigation li a span{
 
 .panel
 {
-     overflow: auto;
+    overflow: auto;
     position: fixed;
     margin-top: 0px;
     margin-right: 0px;
@@ -98,7 +98,7 @@ ul#navigation li a span{
 }
 .panel .slidepanelcontent
 {    
-   
+
     width: 95%;
     margin: 10px;   
     background-color: white;

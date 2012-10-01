@@ -243,18 +243,16 @@ class MathImg extends Element
                 $width = $this->width;
             }
 
-
-
             if (empty($this->imageareas))
             {
-                if ($filename[1] != 'png')
-                {
+//                if ($filename[1] != 'png')
+//                {
                     $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "'/>";
-                }
-                else
-                {
-                    $content .= "<img class='mathimage' src='" . $this->src . "'/>";
-                }
+//                }
+//                else
+//                {
+//                    $content .= "<img class='mathimage' src='" . $this->src . "'/>";
+//                }
             }
             else if (!empty($this->imageareas))
             {

@@ -37,6 +37,7 @@
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 require_once(dirname(__FILE__) . '/lib.php');
 require_once(dirname(__FILE__) . '/XMLImporter/Compositor.php');
+require_once(dirname(__FILE__) . '/XMLImporter/TableOfContents.php');
 //$PAGE->requires->css('/mod/msm/MsmDisplay.css');
 
 global $PAGE, $OUTPUT;
@@ -193,106 +194,8 @@ $content .= "</div>";
 
 $content .= "<div id='tocpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='toccontent'>";
-$content .= '<div id="treecontrol">
-		<a title="Collapse the entire tree below" href="#"> Collapse All</a> | 
-		<a title="Expand the entire tree below" href="#"> Expand All</a> | 
-		<a title="Toggle the tree below, opening closed branches, closing open branches" href="#">Toggle All</a>
-	</div>';
-$content .= '<ul id="red" class="treeview-red">
-	<li><span>Item 1</span>
-		<ul>
-			<li><span>Item 1.0</span>
-				<ul>
-					<li><span>Item 1.0.0</span></li>
-				</ul>
-			</li>
-			<li><span>Item 1.1</span></li>
-			<li><span>Item 1.2</span>
-				<ul>
-					<li><span>Item 1.2.0</span>
-					<ul>
-						<li><span>Item 1.2.0.0</span></li>
-						<li><span>Item 1.2.0.1</span></li>
-						<li><span>Item 1.2.0.2</span></li>
-					</ul>
-				</li>
-					<li><span>Item 1.2.1</span>
-					<ul>
-						<li><span>Item 1.2.1.0</span></li>
-					</ul>
-				</li>
-					<li><span>Item 1.2.2</span>
-					<ul>
-						<li><span>Item 1.2.2.0</span></li>
-						<li><span>Item 1.2.2.1</span></li>
-						<li><span>Item 1.2.2.2</span></li>
-					</ul>
-				</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-	<li><span>Item 2</span>
-		<ul>
-			<li><span>Item 2.0</span>
-				<ul>
-					<li><span>Item 2.0.0</span>
-					<ul>
-						<li><span>Item 2.0.0.0</span></li>
-						<li><span>Item 2.0.0.1</span></li>
-					</ul>
-				</li>
-				</ul>
-			</li>
-			<li><span>Item 2.1</span>
-				<ul>
-					<li><span>Item 2.1.0</span>
-					<ul>
-						<li><span>Item 2.1.0.0</span></li>
-					</ul>
-				</li>
-					<li><span>Item 2.1.1</span>
-					<ul>
-						<li><span>Item 2.1.1.0</span></li>
-						<li><span>Item 2.1.1.1</span></li>
-						<li><span>Item 2.1.1.2</span></li>
-					</ul>
-				</li>
-					<li><span>Item 2.1.2</span>
-					<ul>
-						<li><span>Item 2.1.2.0</span></li>
-						<li><span>Item 2.1.2.1</span></li>
-						<li><span>Item 2.1.2.2</span></li>
-					</ul>
-				</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-	<li><span>Item 3</span>
-		<ul>
-			<li class="open"><span>Item 3.0</span>
-				<ul>
-					<li><span>Item 3.0.0</span></li>
-					<li><span>Item 3.0.1</span>
-					<ul>
-						<li><span>Item 3.0.1.0</span></li>
-						<li><span>Item 3.0.1.1</span></li>
-					</ul>
-					
-				</li>
-					<li><span>Item 3.0.2</span>
-					<ul>
-						<li><span>Item 3.0.2.0</span></li>
-						<li><span>Item 3.0.2.1</span></li>
-						<li><span>Item 3.0.2.2</span></li>
-					</ul>
-				</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-	</ul>';
+$tableofcontents = new TableOfContents();
+$content .= $tableofcontents->makeToc();
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
 
