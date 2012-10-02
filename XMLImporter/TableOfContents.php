@@ -61,10 +61,6 @@ class TableOfContents
         $content .= '<ul id="red" class="treeview-red">';
 
         $content .= $this->makeTree($this->unitTitles);
-
-//        print_object($this->makeTree($this->unitTitles));
-//        die;
-
         $content .= '</ul>';
 
         return $content;
@@ -128,7 +124,6 @@ class TableOfContents
         {
             $unitRecord = $DB->get_record($this->unittable, array('id' => $unit->unit_id));
 
-//            print_object($unitRecord);
             if ($unitRecord->standalone == 'false')
             {
                 $unitTitles[] = trim($unitRecord->title);

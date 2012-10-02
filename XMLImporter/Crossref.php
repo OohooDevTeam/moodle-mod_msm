@@ -498,23 +498,49 @@ class Crossref extends Element
                     }
                     else
                     {
+                        
+//                        if($this->theorems[0]->string_id == 'Thm_LinearIndependenceFacts')
+//                        {
+//                            echo "the theorem in question\n";
+//                            print_object($this->theorems);
+//                        }
                         $theoremID = $theoremRecord->id;
                         $theoremtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
 
                         $theoremCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $theoremID, 'table_id' => $theoremtableID));
                         $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                         $sibling_id = $theoremCompID;
-                        
+
                         foreach ($theoremCompRecords as $theoremCompRecord)
                         {
+                            // flag to determine if the childElement of the theorem has a statement theorem.
+                            // if it does have it, then it will call the grabSubunitChilds to copy all the childElements
+                            // if the theorem does not have statement.theorem element, then it's the wrong theorem Record and move on to find the next theorem
+                            $statementTheoremExists = false;
                             $childElements = $DB->get_records('msm_compositor', array('parent_id' => $theoremCompRecord->id), 'prev_sibling_id');
-                            
-                             if(!empty($childElements))
-                             {
-                                 $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, true);
-                                 break;
-                             }
-                             
+
+                            foreach ($childElements as $child)
+                            {
+                                $statementTheoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
+                                if ($statementTheoremTable == $child->table_id)
+                                {
+                                    $statementTheoremExists = true;
+                                    break;
+                                }
+                            }
+
+                            if ((!empty($childElements)) && ($statementTheoremExists))
+                            {
+//                                echo "in this branch\n";
+                                $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, true);
+//                                print_object($this->theorems);
+                                break;
+                            }
+//                            else if((!empty($childElements)) && (!$statementTheoremExists))
+//                            {
+//                                echo "no statement theorem";
+//                                print_object($childElements);
+//                            }
                         }
                     }
                     break;

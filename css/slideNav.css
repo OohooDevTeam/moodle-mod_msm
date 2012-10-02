@@ -92,9 +92,10 @@ ul#navigation li a span{
     border: 2px green;
     padding-right: 10px;
     padding-left: 10px;
-    background-color:lightgreen;
+    background-color: #39B54A;
     width: 50%;
     height: auto;
+    z-index: 1000;
 }
 .panel .slidepanelcontent
 {    

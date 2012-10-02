@@ -48,7 +48,7 @@ class Theorem extends Element
         $this->statements = array();
         $this->associates = array();
         $this->proofs = array();
-        
+
         if ($isRef == 'false')
         {
             foreach ($DomElement->childNodes as $key => $child)
@@ -79,7 +79,7 @@ class Theorem extends Element
                 }
             }
         }
-        else if($isRef == 'true')
+        else if ($isRef == 'true')
         {
             foreach ($DomElement->childNodes as $key => $child)
             {
@@ -102,36 +102,36 @@ class Theorem extends Element
         global $DB;
 
         $sibling_id = $siblingid;
-        
-        if(empty($theoremCompid))
+
+        if (empty($theoremCompid))
         {
             $data = new stdClass();
-        $data->theorem_type = $this->theorem_type;
-        $data->string_id = $this->string_id;
-        $data->caption = $this->caption;
-        $data->textcaption = $this->textcaption;
-        $data->description = $this->description;
+            $data->theorem_type = $this->theorem_type;
+            $data->string_id = $this->string_id;
+            $data->caption = $this->caption;
+            $data->textcaption = $this->textcaption;
+            $data->description = $this->description;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
         else
         {
             $this->compid = $theoremCompid;
-            $this->id = $DB->get_record('msm_compositor', array('id'=>$this->compid))->unit_id;
+            $this->id = $DB->get_record('msm_compositor', array('id' => $this->compid))->unit_id;
         }
 
-        
+
 
         $elementPosition = array();
 
-        if (!empty($this->associates))
-        {
-            foreach ($this->associates as $key => $associate)
-            {
-                $elementPosition['associate' . '-' . $key] = $associate->position;
-            }
-        }
+//        if (!empty($this->associates))
+//        {
+//            foreach ($this->associates as $key => $associate)
+//            {
+//                $elementPosition['associate' . '-' . $key] = $associate->position;
+//            }
+//        }
 
         if (!empty($this->statements))
         {
@@ -155,22 +155,22 @@ class Theorem extends Element
         {
             switch ($element)
             {
-                case(preg_match("/^(associate.\d+)$/", $element) ? true : false):
-                    $associateString = split('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $associate = $this->associates[$associateString[1]];
-                        $associate->saveIntoDb($associate->position, $this->compid);
-                        $sibling_id = $associate->compid;
-                    }
-                    else
-                    {
-                        $associate = $this->associates[$associateString[1]];
-                        $associate->saveIntoDb($associate->position, $this->compid, $sibling_id);
-                        $sibling_id = $associate->compid;
-                    }
-                    break;
+//                case(preg_match("/^(associate.\d+)$/", $element) ? true : false):
+//                    $associateString = split('-', $element);
+//
+//                    if (empty($sibling_id))
+//                    {
+//                        $associate = $this->associates[$associateString[1]];
+//                        $associate->saveIntoDb($associate->position, $this->compid);
+//                        $sibling_id = $associate->compid;
+//                    }
+//                    else
+//                    {
+//                        $associate = $this->associates[$associateString[1]];
+//                        $associate->saveIntoDb($associate->position, $this->compid, $sibling_id);
+//                        $sibling_id = $associate->compid;
+//                    }
+//                    break;
 
                 case(preg_match("/^(statement.\d+)$/", $element) ? true : false):
                     $statementString = split('-', $element);
@@ -206,6 +206,24 @@ class Theorem extends Element
                     }
                     break;
             }
+        }
+
+        $sibling_id = 0;
+
+        foreach ($this->associates as $associate)
+        {
+//            if (empty($sibling_id))
+//            {
+//                $associate = $this->associates[$associateString[1]];
+//                $associate->saveIntoDb($associate->position, $this->compid);
+//                $sibling_id = $associate->compid;
+//            }
+//            else
+//            {
+
+            $associate->saveIntoDb($associate->position, $this->compid, $sibling_id);
+            $sibling_id = $associate->compid;
+//            }
         }
     }
 

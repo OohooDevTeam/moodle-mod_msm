@@ -1054,7 +1054,7 @@ class Unit extends Element
     function displayhtml()
     {
         $content = '';
-//        $content .= "<div class='unit'>";
+//        $content .= "<div class='unit' id='unit-" . $this->compid . "'>";
         // most likely a first page if creationdate and authors are there...
         if ((!empty($this->creationdate)) || (!empty($this->authors)))
         {

@@ -210,8 +210,6 @@ class AnswerShowme extends Element
                     break;
                 
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-//                    echo "in answer show me";
-//                    print_object($this->content);
                     $subordinateString = split('-', $element);
 
                     if (empty($sibling_id))

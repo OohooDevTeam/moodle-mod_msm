@@ -762,6 +762,8 @@ abstract class Element
     function grabSubunitChilds($elementRecord, $currentUnitID, $isRef = false)
     {
         global $DB;
+        
+//        echo "in grabSubunitChilds";
 
         if (!$isRef)
         {
@@ -800,9 +802,6 @@ abstract class Element
         // if above is allowed, it creates an infinite loop
         else if ($isRef)
         {
-            
-//            echo "is ref";
-            
             $theoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
             $currentRecordTable = $DB->get_record('msm_compositor', array('id' => $currentUnitID))->table_id;
 
@@ -829,9 +828,10 @@ abstract class Element
                         $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
                         if ($childtablename == 'msm_statement_theorem')
                         {
+//                            echo "child is statementTheorem";
                             $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
                             $childSibling = $childCompID;
-                            $this->grabSubunitChilds($child, $childCompID);
+                            $this->grabSubunitChilds($child, $childCompID, false);
                         }
                     }
                     return true;
@@ -839,7 +839,6 @@ abstract class Element
                 // child element exist but the current record is the original record and already has child elements associated with it
                 else if ((!empty($childElements)) && (!empty($existingchildElements)))
                 {
-//                    echo "both empty child in original and copy";
                     return false;
                 }
             }

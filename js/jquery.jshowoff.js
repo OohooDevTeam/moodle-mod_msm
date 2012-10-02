@@ -276,12 +276,14 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             functionname: 'next'
         },
         function(){     
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);            
+                    
             $('.dialogs').dialog({
                 autoOpen: false,
                 height: 'auto',
                 width: 605
             });
+            $('.leftbox').animate({scrollTop: '0px'}, 800);
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
         });
           
     };
@@ -330,12 +332,14 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             functionname: 'previous'
         },
         function(){     
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+           
             $('.dialogs').dialog({
                 autoOpen: false,
                 height: 'auto',
                 width: 605
             });
+            $('.leftbox').animate({scrollTop: '0px'}, 800);
+             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         });
         		
     };

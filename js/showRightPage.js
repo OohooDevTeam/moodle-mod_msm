@@ -26,7 +26,7 @@ function showRightpage(id)
             }
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+//        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 
     });
 }
