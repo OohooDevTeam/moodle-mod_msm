@@ -458,6 +458,7 @@ abstract class Element
             // ? needed to make it ungreedy
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $string);
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $string);
+            $string = preg_replace('/\\\\dfrac/', '\\\\\frac', $string);
             $resultcontent[] = $string;
         }
         return $resultcontent;

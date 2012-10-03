@@ -119,11 +119,11 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             };
             //            addControls();
             
-//            // add slide links
-//            if(config.links){
-//                addSlideLinks();
-//                $('.'+uniqueClass+'-slidelinks a').eq(0).addClass(uniqueClass+'-active jshowoff-active');
-//            };
+            //            // add slide links
+            //            if(config.links){
+            //                addSlideLinks();
+            //                $('.'+uniqueClass+'-slidelinks a').eq(0).addClass(uniqueClass+'-active jshowoff-active');
+            //            };
             
             // display error message if no slides present
             if(gallery.length<1){
@@ -233,40 +233,86 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     // load the next slide
     function next() {       
         goToAndPause(counter);
-        
-        var records = $('#stack').val();
-        var separatedrecords = records.split(",");
-        // add one to total length to compensate for the first page being pg 1 instead of 0
-        var stackRecordNum = separatedrecords.length-1;
-                
-        if(stackRecordNum == '1')
+        //        
+        var nextrecords = $('#stack').val();
+        var separatedNext = nextrecords.split(",");
+        var nextstackNum = separatedNext.length;
+                        
+        if(nextstackNum == '0')
         {
             var valueInStack = $('#prevstack').val();
             var eachrecordarray = valueInStack.split(",");
             var reversedArray = [];  
-            
+                    
             reversedArray.push(records.replace(",", ""));
-            
+                    
             for(var i=1; i < eachrecordarray.length; i++)
             {
                 reversedArray.push(eachrecordarray[i].replace(",", ""));
             }            
-                        
+                                
             var newStackValue = '';
-            while(reversedArray.length != 0)
+            while(reversedArray.length-1 != 0)
             {
-                newStackValue += reversedArray.pop()+","
+                newStackValue += reversedAsrray.pop()+",";
             }
-                                   
+            newStackValue += reversedAsrray.pop();
+                                           
             $('#stack').val(newStackValue);
             $('#prevstack').val('');
         }
-        records = $('#prevstack').val();
-        separatedrecords = records.split(",");
-        // add one to total length to compensate for the first page being pg 1 instead of 0
-        var pgnumber = separatedrecords.length+1;
+        //                
+        //                alert(nextstackNum);
+       
+        var prevRecords = $('#prevstack').val();
+        var separatedPrev = prevRecords.split(",");
+        
+        if(prevRecords == '')
+            {
+                separatedPrev.length = 0;
+            }
+        
+        var pgnumber = separatedPrev.length+2;
+       
         
         updatepgnumber(pgnumber);
+        
+        
+        //        var records = $('#stack').val();
+        //        var separatedrecords = records.split(",");
+        //        // add one to total length to compensate for the first page being pg 1 instead of 0
+        //        var stackRecordNum = separatedrecords.length;
+        //                
+        //                alert("in next: " + stackRecordNum);
+        //                
+        //        if(stackRecordNum == '1')
+        //        {
+        //            var valueInStack = $('#prevstack').val();
+        //            var eachrecordarray = valueInStack.split(",");
+        //            var reversedArray = [];  
+        //            
+        //            reversedArray.push(records.replace(",", ""));
+        //            
+        //            for(var i=1; i < eachrecordarray.length; i++)
+        //            {
+        //                reversedArray.push(eachrecordarray[i].replace(",", ""));
+        //            }            
+        //                        
+        //            var newStackValue = '';
+        //            while(reversedArray.length != 0)
+        //            {
+        //                newStackValue += reversedArray.pop()+","
+        //            }
+        //                                   
+        //            $('#stack').val(newStackValue);
+        //            $('#prevstack').val('');
+        //        }
+        //        records = $('#prevstack').val();
+        //        separatedrecords = records.split(",");
+        //        // add one to total length to compensate for the first page being pg 1 instead of 0
+        //        var pgnumber = separatedrecords.length;
+        //        
+        //        updatepgnumber(pgnumber);
         
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
         {                    
@@ -282,7 +328,9 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 height: 'auto',
                 width: 605
             });
-            $('.leftbox').animate({scrollTop: '0px'}, 800);
+            $('.leftbox').animate({
+                scrollTop: '0px'
+            }, 800);
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
         });
           
@@ -290,37 +338,67 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 		
     // load the previous slide
     function previous() {
+        var records;
+        var separatedrecords;
+        var pgnumber;
+        var functionflag;
         goToAndPause(counter);
         
-        var records = $('#prevstack').val();
-        var separatedrecords = records.split(",");
+        var prevrecords = $('#prevstack').val();
+        var separatedPrev = prevrecords.split(",");
         // add one to total length to compensate for the first page being pg 1 instead of 0
-        var stackRecordNum = separatedrecords.length;
-                
-        if(stackRecordNum == '1')
+        
+        if(prevrecords == '')
         {
-            var valueInStack = $('#stack').val();
-            var eachrecordarray = valueInStack.split(",");
+            prevRecordNum = 0;
+        }
+        else
+        {
+            var prevRecordNum = separatedPrev.length;
+ 
+        }
+        
+        if(prevRecordNum == '0')
+        {
+            var valuesInNext = $('#stack').val();
+            var nextRecords = valuesInNext.split(",");
             var reversedArray = [];
-            
-            for(var i=0; i < eachrecordarray.length; i++)
+                
+            for(var i=0; i< nextRecords.length; i++)
             {
-                reversedArray.push(eachrecordarray[i]);
+                reversedArray.push(nextRecords[i]);
             }
             
             var newStackValue = '';
-            while(reversedArray.length != 0)
+            while(reversedArray.length-1 != 0)
             {                  
-                newStackValue += reversedArray.pop()+","
+                newStackValue += reversedArray.pop()+",";
             }
-                       
+            newStackValue += reversedArray.pop();
+                               
             $('#prevstack').val(newStackValue);
-            $('#stack').val('');            
+            $('#stack').val('');  
+            
+            functionflag = 'newprev';
+            
+        //            records = $('#prevstack').val();
+        //            separatedrecords = records.split(",");
+        //            // add one to total length to compensate for the first page being pg 1 instead of 0
+        //            pgnumber = separatedrecords.length+1;
         }
+        else
+        {
+            functionflag = 'previous';
+        }
+        //        else
+        //        {
         records = $('#prevstack').val();
         separatedrecords = records.split(",");
+        
         // add one to total length to compensate for the first page being pg 1 instead of 0
-        var pgnumber = separatedrecords.length-1;
+        pgnumber = separatedrecords.length;
+        //        }
+       
                
         updatepgnumber(pgnumber);
         
@@ -329,7 +407,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             stackstring: $('#stack').val(),
             prevstackstring: $('#prevstack').val(),
             currentvalue: $('#current').val(),
-            functionname: 'previous'
+            functionname: functionflag
         },
         function(){     
            
@@ -338,8 +416,10 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 height: 'auto',
                 width: 605
             });
-            $('.leftbox').animate({scrollTop: '0px'}, 800);
-             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            $('.leftbox').animate({
+                scrollTop: '0px'
+            }, 800);
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         });
         		
     };

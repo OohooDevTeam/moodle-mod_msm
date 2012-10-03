@@ -603,7 +603,8 @@ class Associate extends Element
             {
                 if (!empty($this->childs))
                 {
-                    $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+//                    $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                    $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")'>";
                     $content .= "<span style='cursor:pointer'>";
                     $content .= $this->description;
                     $content .= "</span>";
@@ -634,7 +635,8 @@ class Associate extends Element
         {
             if (!empty($this->childs))
             {
-                $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+//                $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")'>";
                 $content .= "<span style='cursor:pointer'>";
                 $content .= $this->description;
                 $content .= "</span>";

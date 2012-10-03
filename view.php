@@ -111,26 +111,20 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Splitter.js'>
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/slideNav.css'/>";
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jquery.treeview.css'/>";
+echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
+
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/lib/jquery.cookie.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
 
-echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
-
-//echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jImageMaster/dist/jquery.imagemapster.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
-
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
-//echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
 
-echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/Mathjaxconfig.js'></script>";
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Mathjaxconfig.js'></script>";
-
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 
 if ($msm->intro)
 { // Conditions to show the intro can change to look for own settings or whatever
@@ -167,13 +161,21 @@ $stack = $compositor->makeStack($rootcomp);
 
 $stack = array_reverse($stack); // needed to access the contents in proper order
 
-foreach ($stack as $key => $record)
+for($i=0; $i < sizeof($stack)-1; $i++)
 {
-    $string .= $record->id . "/" . $record->unit_id . "/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
+    $string .= $stack[$i]->id . "/" . $stack[$i]->unit_id . "/" . $stack[$i]->parent_id . "/" . $stack[$i]->prev_sibling_id . ",";
 }
+$string .= $stack[sizeof($stack)-1]->id . "/" . $stack[sizeof($stack)-1]->unit_id . "/" . $stack[sizeof($stack)-1]->parent_id . "/" . $stack[sizeof($stack)-1]->prev_sibling_id;
+
+//foreach ($stack as $key => $record)
+//{
+//    $string .= $record->id . "/" . $record->unit_id . "/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
+//}
 
 $content.= $compositor->loadAndDisplay('', $string, '', '');
 //print_object($stack);
+
+//die;
 
 $content .= "</div>";
 
@@ -207,13 +209,14 @@ $content .= "<div class='loadingscreen'></div>";
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
 $content .= "
     <script type='text/javascript'>
-    jQuery(document).ready(function(){       
+    jQuery(document).ready(function(){     
+     $('.slidepanelcontent').hide();  
          $('.dialogs').dialog({
               autoOpen: false,
               height: 'auto',
               width: 605
-         }); 
-         
+         });  
+
  $('#red').treeview({
                     persist: 'cookie',
                     animated: 'fast',
@@ -221,7 +224,6 @@ $content .= "
                     control: '#treecontrol'
                 });
                 
-$('.slidepanelcontent').hide(); //updated line, removing the #panel ID.     
          $('#features').jshowoff({
               autoplay:false,
               links:true                  

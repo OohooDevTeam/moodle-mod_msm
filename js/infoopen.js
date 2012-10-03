@@ -179,6 +179,21 @@ function infoopen(i) {
         });
    
     });
+    $('#proofminibutton-'+i).unbind('click');
+    $('#proofminibutton-'+i).click(function() {
+        $('.rightbox').empty();
+        var cloned = $('#proof-'+i).clone();
+        cloned.find('*').each(function(){
+            var currentid = $(this).attr('id');
+            if(typeof currentid != 'undefined')
+            {
+                $(this).attr('id', 'copy'+currentid);
+            }
+        });
+        cloned.appendTo($('.rightbox')).css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+
+    });
  
     $('#copydefminibutton-'+i).click(function(e) {
         x = e.pageX+5;

@@ -126,7 +126,7 @@ class Proof extends Element
     {
         $content = '';
 
-        $content .= "<li class='proofminibutton' id='proofminibutton-" . $this->compid . "' onclick='showRightpage(" . $this->compid . ")'>";
+        $content .= "<li class='proofminibutton' id='proofminibutton-" . $this->compid . "' onmouseover='infoopen(" . $this->compid . ")'>";
         $content .= "<span style='cursor:pointer'>";
         if (!empty($this->proof_type))
         {
