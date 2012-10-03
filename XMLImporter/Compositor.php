@@ -175,8 +175,6 @@ class Compositor
         <?php
         $content .= "</div>";
         return $content;
-
-        return $content;
     }
 
 }
