@@ -161,18 +161,20 @@ $stack = $compositor->makeStack($rootcomp);
 
 $stack = array_reverse($stack); // needed to access the contents in proper order
 
-//for($i=0; $i < sizeof($stack)-1; $i++)
-//{
-//    $string .= $stack[$i]->id . "/" . $stack[$i]->unit_id . "/" . $stack[$i]->parent_id . "/" . $stack[$i]->prev_sibling_id . ",";
-//}
-//$string .= $stack[sizeof($stack)-1]->id . "/" . $stack[sizeof($stack)-1]->unit_id . "/" . $stack[sizeof($stack)-1]->parent_id . "/" . $stack[sizeof($stack)-1]->prev_sibling_id;
 
-foreach ($stack as $key => $record)
+//last element is added separately to prevent having ending comma
+for($i=0; $i < sizeof($stack)-1; $i++)
 {
-    $string .= $record->id . "/" . $record->unit_id . "/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
+    $string .= $stack[$i]->id . "/" . $stack[$i]->unit_id . "/" . $stack[$i]->parent_id . "/" . $stack[$i]->prev_sibling_id . ",";
 }
+$string .= $stack[sizeof($stack)-1]->id . "/" . $stack[sizeof($stack)-1]->unit_id . "/" . $stack[sizeof($stack)-1]->parent_id . "/" . $stack[sizeof($stack)-1]->prev_sibling_id;
 
-$content.= $compositor->loadAndDisplay('', $string, '', '');
+//foreach ($stack as $key => $record)
+//{
+//    $string .= $record->id . "/" . $record->unit_id . "/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
+//}
+
+$content.= $compositor->loadAndDisplay(null, $string, null, '');
 //print_object($stack);
 
 //die;

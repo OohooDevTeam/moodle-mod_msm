@@ -72,104 +72,176 @@ class Compositor
         return $childs;
     }
 
-//    function loadAndDisplay($prevstring, $string)
-    function loadAndDisplay($previousstring, $string, $current, $functionString)
+    function loadAndDisplay($previousString, $nextString, $current, $functionString)
     {
         global $DB;
 
-        $newstring = '';
-        $beforeString = '';
+        $prevStack = array();
+        $nextStack = array();
+
         $content = '';
-        $stack = array();
-        $prevstack = array();
+        $nextRecordString = '';
+        $prevRecordString = '';
 
-        //recreating stack from string
-        $eachRecordString = explode(',', $string);
 
-        $eachPrevRecordString = explode(',', $previousstring);
+        // grabbing each compositor record passed in input field
+        $eachPrevString = explode(',', $previousString);
+        $eachNextString = explode(',', $nextString);
 
-        $recordLength = count($eachRecordString) - 1;
-        $prevRecordLength = count($eachPrevRecordString) - 1;
-
-        // foreach not used because need to eliminate empty array at the end due to ending comma when the string is made
-        for ($i = 0; $i < $recordLength; $i++)
+        if (empty($previousString))
         {
-            array_push($stack, $eachRecordString[$i]);
+            $prevStackLength = 0;
+        }
+        else
+        {
+            $prevStackLength = count($eachPrevString);
         }
 
-        for ($i = 0; $i < $prevRecordLength; $i++)
+        if (empty($nextString))
         {
-            array_push($prevstack, $eachPrevRecordString[$i]);
+            $nextStackLength = 0;
+        }
+        else
+        {
+            $nextStackLength = count($eachNextString);
         }
 
+        for ($i = 0; $i < $prevStackLength; $i++)
+        {
+            array_push($prevStack, $eachPrevString[$i]);
+        }
+
+        for ($i = 0; $i < $nextStackLength; $i++)
+        {
+            array_push($nextStack, $eachNextString[$i]);
+        }
+        
         if ($functionString == 'previous')
         {
-            $recordValue = array_pop($prevstack);
-            if (!empty($recordValue))
+            // add the current value into the next stack
+            if (!empty($current))
             {
-                array_push($stack, $current);
+                array_push($nextStack, $current);
             }
-        }
-        // it's the first page?
-        else if (empty($functionString))
-        {
-            $recordValue = array_pop($stack);
+            // if the previous stack is empty then we are at the beginning of the document
+            // which means we must navigate to the end of the book.
+            // Therefore, the stack containing next record ids must be reversed and stored as previous record values
+            if (empty($prevStack))
+            {
+                $tempArray = array_reverse($nextStack);
+                $currentRecord = array_pop($tempArray);
+
+                $prevStack = null;
+
+                foreach ($tempArray as $recordCopy)
+                {
+                    $prevStack[] = $recordCopy;
+                }
+
+                $nextStack = null;
+            }
+            else
+            {
+                $currentRecord = array_pop($prevStack);
+            }
         }
         else if ($functionString == 'next')
         {
-            $recordValue = array_pop($stack);
-            if (!empty($recordValue))
+            if (!empty($current))
             {
-                array_push($prevstack, $current);
+                array_push($prevStack, $current);
+            }
+
+            if (empty($nextStack))
+            {
+                $tempArray = array_reverse($prevStack);
+
+                $currentRecord = array_pop($tempArray);
+
+                // has an empty record in it, so reinitializing it
+                $nextStack = null;
+
+                foreach ($tempArray as $recordCopy)
+                {
+                    $nextStack[] = $recordCopy;
+                }
+
+                $prevStack = null;
+            }
+            else
+            {
+                $currentRecord = array_pop($nextStack);
             }
         }
+        //the first time the app is opened, no function string given
+        else if (empty($functionString))
+        {
+            $currentRecord = array_pop($nextStack);
+        }
 
-        $recordids = explode('/', $recordValue);
+        $recordIds = explode('/', $currentRecord);
+        $unitRecord = $DB->get_record('msm_unit', array('id' => $recordIds[1]));
 
-        $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
-
-        $unitid = $unitRecord->id;
-        $unitcompid = $recordids[0];
-
+        $unitId = $unitRecord->id;
+        $compId = $recordIds[0];
 
         $unit = new Unit();
-        $unit->loadFromDb($unitid, $unitcompid);
+        $unit->loadFromDb($unitId, $compId);
         $this->unit = $unit;
-//                $content = '';
+
+
         $content .= "<div class='unit'>";
         $content .= $this->unit->displayhtml();
 
-        foreach ($stack as $key => $record)
+        $nextStackSize = count($nextStack);
+        $prevStackSize = count($prevStack);
+
+        for ($i = 0; $i < $nextStackSize - 1; $i++)
         {
-            $newstring .= $record . ",";
+            $nextRecordString .= $nextStack[$i] . ',';
         }
 
-        foreach ($prevstack as $key => $prevRecord)
+        if ($nextStackSize - 1 >= 0)
         {
-            $beforeString .= $prevRecord . ",";
+            if (!empty($nextStack[$nextStackSize - 1]))
+            {
+                $nextRecordString .= $nextStack[$nextStackSize - 1];
+            }
         }
-        // passing contents of stack to ajax call by putting it into an hidden input field
+
+        for ($i = 0; $i < $prevStackSize - 1; $i++)
+        {
+            $prevRecordString .= $prevStack[$i] . ',';
+        }
+
+        if ($prevStackSize - 1 >= 0)
+        {
+            if (!empty($prevStack[$prevStackSize - 1]))
+            {
+                $prevRecordString .= $prevStack[$prevStackSize - 1];
+            }
+        }
         ?>
 
         <script type="text/javascript">
             $(document).ready(function() {
-                var stackstring = "<?php echo $newstring; ?>";
+                var stackstring = "<?php echo $nextRecordString; ?>";
                 $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
                 $('#stack').val(stackstring); 
-                                                                                
-                var currentString = "<?php echo $recordValue; ?>";
+                                                                                                                                                        
+                var currentString = "<?php echo $currentRecord; ?>";
                 $('.unit').append('<input id="current" type="text" name="currentvalue"/>');
                 $('#current').val(currentString);
-                                                                                                                                                                                
-                var prevString = "<?php echo $beforeString; ?>";
+                                                                                                                                                                                                                                                        
+                var prevString = "<?php echo $prevRecordString; ?>";
                 $('.unit').append('<input id="prevstack" type="text" name="prevstackstring"/>');
                 $('#prevstack').val(prevString);
-                                                                                                                                
+                                                                                                                                                                                                        
                 var functionstring = "";
                 $('.unit').append('<input id="functioninput" type="text" name="functionstring"/>');
                 $('#functioninput').val(functionstring); 
             });
-                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                            
         </script>
 
         <?php

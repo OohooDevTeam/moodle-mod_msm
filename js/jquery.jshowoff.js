@@ -232,39 +232,38 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 			
     // load the next slide
     function next() {       
-        goToAndPause(counter);
+        var stackRecordNum;
+        var pgnumber;
+        
+        var prevrecords = $('#prevstack').val();
+        var separatedprevrecords = prevrecords.split(",");
         
         var records = $('#stack').val();
         var separatedrecords = records.split(",");
-        // add one to total length to compensate for the first page being pg 1 instead of 0
-        var stackRecordNum = separatedrecords.length-1;
-                
-        if(stackRecordNum == '1')
+        
+        goToAndPause(counter);
+        // at the end of the book and press next, it should go back to the beginning of the book
+        if(separatedrecords == '')
         {
-            var valueInStack = $('#prevstack').val();
-            var eachrecordarray = valueInStack.split(",");
-            var reversedArray = [];  
-            
-            reversedArray.push(records.replace(",", ""));
-            
-            for(var i=1; i < eachrecordarray.length; i++)
-            {
-                reversedArray.push(eachrecordarray[i].replace(",", ""));
-            }            
-                        
-            var newStackValue = '';
-            while(reversedArray.length != 0)
-            {
-                newStackValue += reversedArray.pop()+","
-            }
-                                   
-            $('#stack').val(newStackValue);
-            $('#prevstack').val('');
+            stackRecordNum = 0;
         }
-        records = $('#prevstack').val();
-        separatedrecords = records.split(",");
-        // add one to total length to compensate for the first page being pg 1 instead of 0
-        var pgnumber = separatedrecords.length+1;
+        else
+        {
+            stackRecordNum = separatedrecords.length;
+        }
+        
+        if(stackRecordNum == '0')
+        {
+            pgnumber = 1;
+        }
+        else if(separatedprevrecords == '')
+        {
+            pgnumber =2;
+        }
+        else
+        {           
+            pgnumber = separatedprevrecords.length+2;
+        }
         
         updatepgnumber(pgnumber);
         
@@ -292,37 +291,35 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 
     // load the previous slide
     function previous() {
-        goToAndPause(counter);
+        var stackRecordNum;    
+        var pgnumber;
+        
+        var nextrecords = $('#stack').val();
+        var separatedNext = nextrecords.split(",");
         
         var records = $('#prevstack').val();
         var separatedrecords = records.split(",");
-        // add one to total length to compensate for the first page being pg 1 instead of 0
-        var stackRecordNum = separatedrecords.length;
-                
-        if(stackRecordNum == '1')
+        
+        goToAndPause(counter);  
+        
+        if(separatedrecords == '')
         {
-            var valueInStack = $('#stack').val();
-            var eachrecordarray = valueInStack.split(",");
-            var reversedArray = [];
-            
-            for(var i=0; i < eachrecordarray.length; i++)
-            {
-                reversedArray.push(eachrecordarray[i]);
-            }
-            
-            var newStackValue = '';
-            while(reversedArray.length != 0)
-            {                  
-                newStackValue += reversedArray.pop()+","
-            }
-                       
-            $('#prevstack').val(newStackValue);
-            $('#stack').val('');            
+            stackRecordNum = 0;
         }
-        records = $('#prevstack').val();
-        separatedrecords = records.split(",");
-        // add one to total length to compensate for the first page being pg 1 instead of 0
-        var pgnumber = separatedrecords.length-1;
+        else
+        {
+            stackRecordNum = separatedrecords.length;
+        }
+              
+        if(stackRecordNum == '0')
+        {
+            
+            pgnumber = separatedNext.length+1;
+        }
+        else
+        {
+            pgnumber = separatedrecords.length;
+        }       
                
         updatepgnumber(pgnumber);
         

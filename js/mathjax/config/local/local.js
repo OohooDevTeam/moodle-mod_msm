@@ -45,9 +45,9 @@ MathJax.Hub.Config({
         balanceBraces: true
     },
     TeX: {
-        //        extensions: ["color.js", "AMSmath.js", "AMSsymbols.js"],
+                extensions: ["color.js", "AMSmath.js", "AMSsymbols.js"],
 
-        extensions: ["autoload-all.js"],
+//        extensions: ["autoload-all.js"],
   
         Macros: {
             st: '{\\, :\\!\\! |\\!\\! :\\, }',
