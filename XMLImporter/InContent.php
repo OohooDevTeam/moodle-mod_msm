@@ -46,9 +46,6 @@ class InContent extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
-
-//        $this->content = array();
-
         $this->childContents = array();
 
         //determining the element node of the passed DOMElement to identify the type in DB field

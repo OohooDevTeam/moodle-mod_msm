@@ -64,8 +64,7 @@ class StatementTheorem extends Element
                     $newNode->appendChild($childElement);
 
                     $element = $doc->importNode($newNode, true);
-
-
+                    
                     foreach ($this->processIndexAuthor($element, $position) as $indexauthor)
                     {
                         $this->indexauthors[] = $indexauthor;
@@ -107,6 +106,8 @@ class StatementTheorem extends Element
                 }
             }
         }
+        
+       
     }
 
     function saveIntoDb($position, $parentid = '', $siblingid = '')

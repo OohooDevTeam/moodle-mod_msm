@@ -226,19 +226,19 @@ class Compositor
         <script type="text/javascript">
             $(document).ready(function() {
                 var stackstring = "<?php echo $nextRecordString; ?>";
-                $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
+                $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden;"/>');
                 $('#stack').val(stackstring); 
                                                                                                                                                         
                 var currentString = "<?php echo $currentRecord; ?>";
-                $('.unit').append('<input id="current" type="text" name="currentvalue"/>');
+                $('.unit').append('<input id="current" type="text" name="currentvalue" style="visibility:hidden;"/>');
                 $('#current').val(currentString);
                                                                                                                                                                                                                                                         
                 var prevString = "<?php echo $prevRecordString; ?>";
-                $('.unit').append('<input id="prevstack" type="text" name="prevstackstring"/>');
+                $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visibility:hidden;"/>');
                 $('#prevstack').val(prevString);
                                                                                                                                                                                                         
                 var functionstring = "";
-                $('.unit').append('<input id="functioninput" type="text" name="functionstring"/>');
+                $('.unit').append('<input id="functioninput" type="text" name="functionstring" style="visibility:hidden;"/>');
                 $('#functioninput').val(functionstring); 
             });
                                                                                                                                                                                                                                                                                                                                                                                                                             

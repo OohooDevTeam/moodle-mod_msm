@@ -53,6 +53,7 @@ class MathComment extends Element
         $this->indexsymbols = array();
         $this->medias = array();
         $this->tables = array();
+        $this->matharrays = array();
 
 
         $associates = $DomElement->getElementsByTagName('associate');
@@ -98,6 +99,11 @@ class MathComment extends Element
             foreach ($this->processTable($c, $position) as $table)
             {
                 $this->tables[] = $table;
+            }
+
+            foreach ($this->processMathArray($c, $position) as $matharray)
+            {
+                $this->matharrays[] = $matharray;
             }
 
             foreach ($this->processContent($c, $position) as $content)
@@ -189,6 +195,14 @@ class MathComment extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->matharrays))
+        {
+            foreach ($this->matharrays as $key => $matharray)
+            {
+                $elementPositions['matharray-' . $key] = $matharray->position;
             }
         }
 
@@ -308,6 +322,23 @@ class MathComment extends Element
                     }
                     break;
 
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $sibling_id = $matharray->compid;
+                    }
+                    break;
+
                 case(preg_match("/^(table.\d+)$/", $element) ? true : false):
                     $tableString = split('-', $element);
 
@@ -347,6 +378,7 @@ class MathComment extends Element
         $this->subordinates = array();
         $this->medias = array();
         $this->associates = array();
+        $this->matharrays = array();
         $this->tables = array();
         $this->childs = array();
 
@@ -374,6 +406,12 @@ class MathComment extends Element
                     $this->associates[] = $associate;
                     break;
                 
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDB($child->unit_id, $child->id);
+                    $this->matharrays[] = $matharray;
+                    break;
+
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);

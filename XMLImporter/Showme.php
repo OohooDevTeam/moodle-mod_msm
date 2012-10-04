@@ -50,11 +50,19 @@ class Showme extends Element
         $this->indexsymbols = array();
         $this->medias = array();
         $this->tables = array();
+        $this->matharrays = array();
 
         $statements = $DomElement->getElementsByTagName('statement.showme');
 
         foreach ($statements as $st)
         {
+//            $doc = new DOMDocument();
+//            $childElement = $doc->importNode($st, true);
+//            $newNode = $doc->createElement('wrapper');
+//            $newNode->appendChild($childElement);
+//
+//            $element = $doc->importNode($newNode, true);
+
             foreach ($this->processIndexAuthor($st, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
@@ -77,6 +85,11 @@ class Showme extends Element
             foreach ($this->processMedia($st, $position) as $media)
             {
                 $this->medias[] = $media;
+            }
+
+            foreach ($this->processMathArray($st, $position) as $matharray)
+            {
+                $this->matharrays[] = $matharray;
             }
 
             foreach ($this->processTable($st, $position) as $table)
@@ -163,6 +176,14 @@ class Showme extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->matharrays))
+        {
+            foreach ($this->matharrays as $key => $matharray)
+            {
+                $elementPositions['matharray-' . $key] = $matharray->position;
             }
         }
 
@@ -282,6 +303,23 @@ class Showme extends Element
                     }
                     break;
 
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $sibling_id = $matharray->compid;
+                    }
+                    break;
+
                 case(preg_match("/^(table.\d+)$/", $element) ? true : false):
                     $tableString = split('-', $element);
 
@@ -320,7 +358,8 @@ class Showme extends Element
         $this->subordinates = array();
         $this->medias = array();
         $this->tables = array();
-        
+        $this->matharrays = array();
+
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
         foreach ($childElements as $child)
@@ -347,6 +386,12 @@ class Showme extends Element
                     $this->medias[] = $media;
                     break;
                 
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->matharrays[] = $matharray;
+                    break;
+
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);
@@ -367,11 +412,11 @@ class Showme extends Element
         $content .= "<span class='showmetitle'>";
         $content .= $this->caption;
         $content .= "</span>";
-        
+
         $content .= "<span class='showmetype'>";
         $content .= "Example";
         $content .= "</span>";
-        
+
         $content .= "<br />";
 
         $content .= "<div class='mathcontent'>";
