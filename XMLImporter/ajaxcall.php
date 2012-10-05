@@ -33,10 +33,5 @@ $functionstring = $_POST["functionname"];
 
 $content = $comp->loadAndDisplay($prevstring, $string, $currentString, $functionstring);
 
-
-
-//$content = $comp->loadAndDisplay($string);
-
-
 echo $content;
 ?>

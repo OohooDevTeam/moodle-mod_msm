@@ -108,7 +108,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             // add first slide to wrapper
 		
             $(gallery[0]).clone().appendTo($cont);
-            preloadImg();
+//            preloadImg();
             
             // add controls
             if(config.controls){
@@ -372,13 +372,13 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     };
 
     // load images into memory
-    function preloadImg() {
-        $(gallery).each(function(i){
-            $(this).find('img').each(function(i){
-                preloadedImg[i] = $('<img>').attr('src',$(this).attr('src'));					
-            });
-        });
-    };
+//    function preloadImg() {
+//        $(gallery).each(function(i){
+//            $(this).find('img').each(function(i){
+//                preloadedImg[i] = $('<img>').attr('src',$(this).attr('src'));					
+//            });
+//        });
+//    };
 				
     // generate and add play/pause, prev, next controls
     function addControls() {

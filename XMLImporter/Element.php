@@ -431,9 +431,12 @@ abstract class Element
 
             $string = str_replace('<cell', '<td', $string);
             $string = str_replace('</cell>', '</td>', $string);
-
-            $string = str_replace('<para.body', '<p', $string);
-            $string = str_replace('</para.body>', '</p>', $string);
+            
+            $string = str_replace('<para.body', '<span', $string);
+            $string = str_replace('</para.body>', '</span>', $string);
+            
+            $string = str_replace('<para', '<p', $string);
+            $string = str_replace('</para>', '</p>', $string);
 
             $string = str_replace('<strong', '<b', $string);
             $string = str_replace('</strong>', '</b>', $string);

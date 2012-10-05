@@ -22,15 +22,6 @@ body
     width:100%;    
     z-index:0;
 }
-
-/*body table, body td{
-    border-collapse: separate;
-    border-spacing: 2px;
-    border:none;
-}*/
-
-/*controller for the jShowoff plugin*/
-
 div.controller{
     position:absolute;
     top: 92%;
@@ -40,6 +31,7 @@ div.controller{
     /*    margin-top: 10px;*/
     /*    margin-left: 10px;*/
     overflow: hidden;
+    margin: 2%;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -60,13 +52,13 @@ div.controller{
 /*#MySplitter div {
     overflow: auto;
 }*/
-.vsplitbar {
+/*.vsplitbar {
     min-width:0.5%;
     max-width:0.5%;
     height:100%-2px;
     cursor: col-resize;
     background: #FFFFFF;
-}
+}*/
 /*-----------------------------------------------------------------------------*/
 
 /*leftbox and rightbox classes are for the faded background in display*/
@@ -82,8 +74,9 @@ div.controller{
     background-image:url('../pix/background2.jpg');
     min-height: 650px;
     max-height: 650px;
-    width:97%;
+    /*width:97%;*/
     overflow: auto;
+    margin: 10px;
 }
 .rightbox
 {
@@ -96,32 +89,33 @@ div.controller{
     background-image:url('../pix/background2.jpg');
     min-height: 690px;
     max-height: 690px;
-    width:96%;
+    /*width:96%;*/
     padding: 5px;
     overflow: auto;
     /*white-space: nowrap;*/
     /*    overflow: hidden;*/
+     margin: 10px;
 }
 
 /*leftcol and rightcol are the divs in MySplitter element*/
 
-.leftcol
+#leftcol
 {
     /*    overflow: hidden;*/
-    margin-bottom:10px;
+/*    margin-bottom:10px;
     margin-right:10px;    
     padding-top:10px;
     padding-bottom:10px;
     padding-right:10px;
-    padding-left:10px;
+    padding-left:10px;*/
 
 }
 
-.rightcol
+#rightcol
 {
     /*    overflow: auto;*/
-    padding-top:10px;
-    padding-left:10px;
+/*    padding-top:10px;
+    padding-left:10px;*/
 }
 
 #features .title

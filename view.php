@@ -107,7 +107,9 @@ echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.resizab
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.js'></script>";
 
 // these js files need to be after the development-bundle
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Splitter.js'></script>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
+
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/slideNav.css'/>";
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jquery.treeview.css'/>";
@@ -147,7 +149,7 @@ $content = '';
 //$content .= "<div>";
 $content .= "<div id = 'MySplitter' padding:10px;>";
 
-$content .= "<div class = 'leftcol' style='min-width: 542px;'>";
+$content .= "<div id = 'leftcol'>";
 
 $content .= "<div class = 'leftbox'>";
 $content .= "<div id='features'>";
@@ -187,7 +189,7 @@ $content .= "<div class='controller'>";
 $content .= "</div>";
 $content .= "</div>";
 
-$content .= "<div class = 'rightcol' style='min-width: 542px;'>";
+$content .= "<div id = 'rightcol'>";
 
 $content .= "<div class = 'rightbox'>";
 
@@ -211,40 +213,45 @@ $content .= "<div class='loadingscreen'></div>";
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
 $content .= "
     <script type='text/javascript'>
-    jQuery(document).ready(function(){     
-     $('.slidepanelcontent').hide();  
-         $('.dialogs').dialog({
-              autoOpen: false,
-              height: 'auto',
-              width: 605
-         });  
+            jQuery(document).ready(function(){    
+                MathJax.Hub.Queue(['Typeset',MathJax.Hub]); 
+                
+                $('.slidepanelcontent').hide();  
+                
+                $('.dialogs').dialog({
+                    autoOpen: false,
+                    height: 'auto',
+                    width: 605
+                });  
 
- $('#red').treeview({
+                $('#red').treeview({
                     persist: 'cookie',
                     animated: 'fast',
                     collapsed: true,
                     control: '#treecontrol'
                 });
                 
-         $('#features').jshowoff({
-              autoplay:false,
-              links:true                  
-         });
+                $('#features').jshowoff({
+                    autoplay:false,
+                    links:true                  
+                });
                  
-        $('#MySplitter').splitter();
+                $('#MySplitter').split({
+                    orientation: 'vertical',
+                    position: '50%'
+                });
         
-       $('.loadingscreen').on({
-        ajaxStart: function() {
-            $(this).show();
-        },
-        ajaxStop: function() {
-            $(this).hide();
-        }
-       });
-;
-    });
+                $('.loadingscreen').on({
+                    ajaxStart: function() {
+                        $(this).show();
+                    },
+                    ajaxStop: function() {
+                        $(this).hide();
+                    }
+                });           
+            });
     
-    </script>";
+        </script>";
 
 // where the display method would go...
 
@@ -252,5 +259,4 @@ echo $OUTPUT->box($content);
 
 // Finish the page
 echo $OUTPUT->footer();
-
 
