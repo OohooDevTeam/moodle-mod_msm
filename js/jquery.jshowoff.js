@@ -108,7 +108,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             // add first slide to wrapper
 		
             $(gallery[0]).clone().appendTo($cont);
-//            preloadImg();
+            //            preloadImg();
             
             // add controls
             if(config.controls){
@@ -241,6 +241,8 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
         var records = $('#stack').val();
         var separatedrecords = records.split(",");
         
+        var functioninput = $('#functioninput').val();
+        
         goToAndPause(counter);
         // at the end of the book and press next, it should go back to the beginning of the book
         if(separatedrecords == '')
@@ -261,11 +263,21 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             pgnumber =2;
         }
         else
-        {           
-            pgnumber = separatedprevrecords.length+2;
+        {     
+            if((functioninput == '')||(functioninput == 'undefined')||(functioninput == null))
+            {
+                pgnumber = separatedprevrecords.length+1;
+            }
+            else
+            {
+//                alert(functioninput);
+                pgnumber = separatedprevrecords.length+2;
+            }
+            
         }
         
-        updatepgnumber(pgnumber);
+        updatepgnumber(pgnumber);      
+        
         
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
         {                    
@@ -300,6 +312,8 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
         var records = $('#prevstack').val();
         var separatedrecords = records.split(",");
         
+        var functioninput = $('#functioninput').val();
+        
         goToAndPause(counter);  
         
         if(separatedrecords == '')
@@ -318,7 +332,15 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
         }
         else
         {
-            pgnumber = separatedrecords.length;
+            if((functioninput == '')||(functioninput == 'undefined')||(functioninput == null))
+            {
+                pgnumber = separatedrecords.length-1;
+            }
+            else
+            {
+//                alert(functioninput);
+                pgnumber = separatedrecords.length;
+            }
         }       
                
         updatepgnumber(pgnumber);
@@ -372,13 +394,13 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     };
 
     // load images into memory
-//    function preloadImg() {
-//        $(gallery).each(function(i){
-//            $(this).find('img').each(function(i){
-//                preloadedImg[i] = $('<img>').attr('src',$(this).attr('src'));					
-//            });
-//        });
-//    };
+    //    function preloadImg() {
+    //        $(gallery).each(function(i){
+    //            $(this).find('img').each(function(i){
+    //                preloadedImg[i] = $('<img>').attr('src',$(this).attr('src'));					
+    //            });
+    //        });
+    //    };
 				
     // generate and add play/pause, prev, next controls
     function addControls() {

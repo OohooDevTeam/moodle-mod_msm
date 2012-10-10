@@ -8,21 +8,21 @@ function navToPage(unitid)
     var nextRecords = $('#stack').val();
     var prevRecords = $('#prevstack').val();
     var currentRecord = $('#current').val();
-    var selected = null;
-    
-    //    console.log('currentRecord: '+ currentRecord);
-    
-    var newCurrentData = null;
-    var newNextData = null;
-    var newPrevData = null;
+    var newCurrentData='';
+    var newNextData='';
+    var newPrevData='';
+    var pgnumber = null;
+     var selected = null;
     
     var eachCurrentData = currentRecord.split('/');
     
     $(this).ready(function() {    
+       
         var nextArray = nextRecords.split(',');
         var prevArray = prevRecords.split(',');
+        
         //usually in sets of 4
-        if(eachCurrentData.legnth > 3)
+        if(eachCurrentData.length > 3)
         {
             if(eachCurrentData[1] == unitid)
             {
@@ -54,30 +54,55 @@ function navToPage(unitid)
             
             if(selected != null)
             {
-                //            alert(selected);
-                prevArray.push(currentRecord);
+                if(prevArray == '')
+                {
+                    prevArray[0] = currentRecord;
+                }
+                else
+                {
+                    prevArray.push(currentRecord);
+                }
           
                 while((nextArray.length-1) >= (selected+1))
                 {
                     var lastElement = nextArray.pop();
                     prevArray.push(lastElement);
                 }
-            
-                // at selected index
-                newCurrentData= nextArray.pop();
+                
+                newCurrentData= nextArray.pop();               
             
                 for(var i=0; i < prevArray.length-1; i++)
                 {
-                    newPrevData += prevArray[i] + ',';
+                    if((prevArray[i] != '')||(prevArray[i] != null)||(prevArray[i] != 'undefined'))
+                    {
+                        newPrevData += prevArray[i] + ',';
+
+                    }
                 }
-                newPrevData += prevArray[prevArray.length-1];
+               
+                if(prevArray.length-1 > 0)
+                {
+                    newPrevData += prevArray[prevArray.length-1]; 
+                }
                 
                 for(var i=0; i < nextArray.length-1; i++)
                 {
-                    newNextData += nextArray[i] + ',';
+                    if((nextArray[i] != '')||(nextArray[i] != null)||(nextArray[i] != 'undefined'))
+                    {
+                        newNextData += nextArray[i] + ',';
+
+                    }
                 }
-                newNextData += nextArray[nextArray.length-1];
-            
+                                
+                if(nextArray.length-1 > 0)
+                {
+                    newNextData += nextArray[nextArray.length-1];
+                }
+                
+               
+                pgnumber = prevArray.length+1;
+                updatepgnumber(pgnumber);
+           
                 $('#features').load('../msm/XMLImporter/ajaxcall.php', 
                 {
                     stackstring: newNextData,
@@ -118,30 +143,56 @@ function navToPage(unitid)
             //previous array has the unit value
             if(selected != null)
             {
-                //            alert(selected);
-                nextArray.push(currentRecord);
-          
+                if(nextArray == '')
+                {
+                    nextArray[0] = currentRecord;
+                }
+                else
+                {
+                    nextArray.push(currentRecord);
+                }
+                
                 while((prevArray.length-1) >= (selected+1))
                 {
-                    var lastElement = prevArray.pop();
+                    var lastElement = prevArray.pop();                   
                     nextArray.push(lastElement);
                 }
             
                 // at selected index
                 newCurrentData= prevArray.pop();
+                
+                console.log(prevArray);
             
                 for(var i=0; i < prevArray.length-1; i++)
                 {
-                    newPrevData += prevArray[i] + ',';
+                    if((prevArray[i] != '')||(prevArray[i] != null)||(prevArray[i] != 'undefined'))
+                    {
+                        newPrevData += prevArray[i] + ',';
+
+                    }
                 }
-                newPrevData += prevArray[prevArray.length-1];
+                
+                if(prevArray.length-1 > 0)
+                {
+                    newPrevData += prevArray[prevArray.length-1]; 
+                }
                 
                 for(var i=0; i < nextArray.length-1; i++)
                 {
-                    newNextData += nextArray[i] + ',';
+                    if((nextArray[i] != '')||(nextArray[i] != null)||(nextArray[i] != 'undefined'))
+                    {
+                        newNextData += nextArray[i] + ',';
+
+                    }
                 }
-                newNextData += nextArray[nextArray.length-1];
-            
+                if(nextArray.length=1 > 0)
+                {
+                    newNextData += nextArray[nextArray.length-1];
+                }
+                
+                pgnumber = prevArray.length+1;
+                updatepgnumber(pgnumber);
+                
                 $('#features').load('../msm/XMLImporter/ajaxcall.php', 
                 {
                     stackstring: newNextData,
@@ -162,7 +213,12 @@ function navToPage(unitid)
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
                 });
             }
-        }      
-   
+        }
     });   
+}
+
+function updatepgnumber(pgnumber) {
+       
+    var pgnum = ''+pgnumber+'';
+    document.getElementById('pg').innerHTML= 'pg.'+pgnum;
 }
