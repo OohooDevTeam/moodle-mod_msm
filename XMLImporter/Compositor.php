@@ -178,7 +178,11 @@ class Compositor
         {
             $currentRecord = array_pop($nextStack);
         }
-
+        else if($functionString == 'toc')
+        {
+            $currentRecord = $current;
+        }
+       
         $recordIds = explode('/', $currentRecord);
         $unitRecord = $DB->get_record('msm_unit', array('id' => $recordIds[1]));
 

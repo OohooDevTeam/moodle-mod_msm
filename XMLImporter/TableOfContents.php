@@ -43,11 +43,11 @@ class TableOfContents
     {
         global $DB;
 
-        $this->unitTitles = array();
+        $this->unitData = array();
 
         foreach ($this->getTocData('root') as $unitTitleArray)
         {
-            $this->unitTitles[] = $unitTitleArray;
+            $this->unitData[] = $unitTitleArray;
         }
 
 
@@ -58,9 +58,9 @@ class TableOfContents
                         <a title="Expand the entire tree below" href="#"> Expand All</a> | 
                         <a title="Toggle the tree below, opening closed branches, closing open branches" href="#">Toggle All</a>
                      </div>';
-        $content .= '<ul id="red" class="treeview-red">';
+        $content .= '<ul id="tableofcontent" class="treeview-red">';
 
-        $content .= $this->makeTree($this->unitTitles);
+        $content .= $this->makeTree($this->unitData);
         $content .= '</ul>';
 
         return $content;
@@ -72,22 +72,22 @@ class TableOfContents
 
         foreach ($TitlesArray as $key => $unitTitle)
         {
-            if (gettype($unitTitle) == 'string')
+            if (gettype($unitTitle) == 'object')
             {
                 if ($key + 1 < sizeof($TitlesArray))
                 {
-                    if (gettype($TitlesArray[$key + 1]) == 'string')
+                    if (gettype($TitlesArray[$key + 1]) == 'object')
                     {
-                        $newString .= "<li><span>" . $unitTitle . "</span></li>";
+                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . "</a></li>";
                     }
                     else
                     {
-                        $newString .= "<li><span>" . $unitTitle . "</span>";
+                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . "</a>";
                     }
                 }
                 else
                 {
-                    $newString .= "<li><span>" . $unitTitle . "</span></li>";
+                    $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . "</a></li>";
                 }
             }
             elseif (gettype($unitTitle) == 'array')
@@ -100,14 +100,14 @@ class TableOfContents
                 $newString .= "</li>";
             }
         }
-
+//
         return $newString;
     }
 
     private function getTocData($compRecord)
     {
         global $DB;
-        $unitTitles = array();
+        $unitData = array();
 
         $unittableid = $DB->get_record($this->tabletable, array('tablename' => 'msm_unit'))->id;
 
@@ -126,17 +126,17 @@ class TableOfContents
 
             if ($unitRecord->standalone == 'false')
             {
-                $unitTitles[] = trim($unitRecord->title);
+                $unitData[] = $unitRecord;
             }
 
             $childElements = $DB->get_records($this->comptable, array('parent_id' => $unit->id, 'table_id' => $unittableid));
             if (sizeof($childElements) > 0)
             {
-                $unitTitles[] = $this->getTocData($unit);
+                $unitData[] = $this->getTocData($unit);
             }
         }
 
-        return $unitTitles;
+        return $unitData;
     }
 
 }

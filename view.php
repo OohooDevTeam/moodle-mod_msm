@@ -120,6 +120,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jq
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/lib/jquery.cookie.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
@@ -211,12 +212,13 @@ $content .= "<div class='loadingscreen'></div>";
 
 // need to have it in this order or dialog breaks
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
+
+//** make sure the sliding panel hiding method comes AFTER treeview method declaration!! (otherwise, it gives a bug 
+// when the page is refreshed.  The plus/minus pics become reversed.)
 $content .= "
     <script type='text/javascript'>
             jQuery(document).ready(function(){    
-                MathJax.Hub.Queue(['Typeset',MathJax.Hub]); 
-                
-                $('.slidepanelcontent').hide();  
+                MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
                 
                 $('.dialogs').dialog({
                     autoOpen: false,
@@ -224,12 +226,15 @@ $content .= "
                     width: 605
                 });  
 
-                $('#red').treeview({
+                $('#tableofcontent').treeview({
                     persist: 'cookie',
                     animated: 'fast',
                     collapsed: true,
                     control: '#treecontrol'
                 });
+                
+                $('#toccontent').hide();  
+
                 
                 $('#features').jshowoff({
                     autoplay:false,
