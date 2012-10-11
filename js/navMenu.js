@@ -4,27 +4,7 @@
  */
 
 
-$(function() {
-//    var d=300;
-//    $('#navigation a').each(function(){
-//        $(this).stop().animate({
-//            'marginBottom':'-80px'
-//        });
-//    });
-//
-//    $('#navigation > li').hover(
-//        function () {
-//            $('a',$(this)).stop().animate({
-//                'marginBottom':'-2px'
-//            });
-//        },
-//        function () {
-//            $('a',$(this)).stop().animate({
-//                'marginBottom':'-80px'
-//            });
-//        }
-//        );
-            
+$(function() {            
     $('#toc').toggle(function () {
         $('#tocpanel').stop().animate({
             height:'90%', 
@@ -37,6 +17,60 @@ $(function() {
     function(){
         $('#toccontent').fadeOut('slow', function() {
             $('#tocpanel').stop().animate({
+                height:'0px', 
+                opacity:0.1
+            }, 500); //slide the #panel back to a width of 0
+        });
+    });
+    
+    $('#symbol').toggle(function () {
+        $('#symbolpanel').stop().animate({
+            height:'90%', 
+            opacity:1.0
+        }, 500, function() {
+            $('#symbolcontent').fadeIn('slow');
+                                    
+        });  
+    },
+    function(){
+        $('#symbolcontent').fadeOut('slow', function() {
+            $('#symbolpanel').stop().animate({
+                height:'0px', 
+                opacity:0.1
+            }, 500); //slide the #panel back to a width of 0
+        });
+    });
+    
+    $('#glossary').toggle(function () {
+        $('#glossarypanel').stop().animate({
+            height:'90%', 
+            opacity:1.0
+        }, 500, function() {
+            $('#glossarycontent').fadeIn('slow');
+                                    
+        });  
+    },
+    function(){
+        $('#glossarycontent').fadeOut('slow', function() {
+            $('#glossarypanel').stop().animate({
+                height:'0px', 
+                opacity:0.1
+            }, 500); //slide the #panel back to a width of 0
+        });
+    });
+    
+    $('#contact').toggle(function () {
+        $('#contactpanel').stop().animate({
+            height:'90%', 
+            opacity:1.0
+        }, 500, function() {
+            $('#contactcontent').fadeIn('slow');
+                                    
+        });  
+    },
+    function(){
+        $('#contactcontent').fadeOut('slow', function() {
+            $('#contactpanel').stop().animate({
                 height:'0px', 
                 opacity:0.1
             }, 500); //slide the #panel back to a width of 0

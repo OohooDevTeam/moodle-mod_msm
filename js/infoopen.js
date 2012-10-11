@@ -349,6 +349,34 @@ function infoopen(i) {
         });   
     });
     
+    $('#symbolinfo-'+i).click(function(e) {  
+        $('#dialog-'+i).dialog('close');
+        $('#symbolrefcontent-'+i).dialog(
+        {
+            modal:true,
+            width: 840            
+        });
+        $('#symbolrefcontent-'+i).dialog('open').css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        // to close the modal dialog box by clicking the outside of the box
+        $('.ui-widget-overlay').click(function() {
+            $('#symbolrefcontent-'+i).dialog('close'); 
+        });
+    });   
+                
+    $('#symbolinfo-'+i).ready(function(e){
+        $('#symbolinfo-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+            $('#dialog-'+i).dialog('open');
+        });
+         
+        $('#symbolinfo-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });   
+    });
+    
    
 }
 

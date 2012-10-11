@@ -45,7 +45,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     var gallery;
     var $cont;
     var timer;
-    var preloadedImg;
+    //    var preloadedImg;
     var howManyInstances;
     var counter;
     var uniqueClass;
@@ -270,7 +270,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             }
             else
             {
-//                alert(functioninput);
+                //                alert(functioninput);
                 pgnumber = separatedprevrecords.length+2;
             }
             
@@ -338,7 +338,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             }
             else
             {
-//                alert(functioninput);
+                //                alert(functioninput);
                 pgnumber = separatedrecords.length;
             }
         }       
@@ -419,6 +419,16 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
         });
     };
     
+    var gallery=null;
+    var $cont=null;
+    var timer=null;
+    //    var preloadedImg;
+    var howManyInstances=null;
+    var counter=null;
+    var uniqueClass=null;
+    var cssClass=null;
+    var $wrap=null;
+    
 //    // generate and add slide links
 //    function addSlideLinks() {
 //        $wrap.append('<p class="jshowoff-slidelinks '+uniqueClass+'-slidelinks"></p>');
@@ -436,42 +446,42 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 // end closure
 })(jQuery);
 
-
-(function($) {
-
-    $.fn.slideIt = function(settings1,callback) {
-	
-        // default global vars
-        var config1 = {
-            direction : 'left',
-            showHide : 'show',
-            changeSpeed : 600
-        };
-		
-        // merge default global variables with custom variables, modifying 'config1'
-        if (settings1) $.extend(config1, settings1);
-		
-        this.each(function(i) {	
-            $(this).css({
-                left:'auto',
-                right:'auto',
-                top:'auto',
-                bottom:'auto'
-            });
-            var measurement = (config1.direction == 'left') || (config1.direction == 'right') ? $(this).outerWidth() : $(this).outerHeight();
-            var startStyle = {};
-            startStyle['position'] = $(this).css('position') == 'static' ? 'relative' : $(this).css('position');
-            startStyle[config1.direction] = (config1.showHide == 'show') ? '-'+measurement+'px' : 0;
-            var endStyle = {};
-            endStyle[config1.direction] = config1.showHide == 'show' ? 0 : '-'+measurement+'px';
-            $(this).css(startStyle).animate(endStyle,config1.changeSpeed,callback);
-        // end .each
-        });
-	
-        return this;
-		
-    // end .slideIt
-    };
-
-// end closure
-})(jQuery);
+//
+//(function($) {
+//
+//    $.fn.slideIt = function(settings1,callback) {
+//	
+//        // default global vars
+//        var config1 = {
+//            direction : 'left',
+//            showHide : 'show',
+//            changeSpeed : 600
+//        };
+//		
+//        // merge default global variables with custom variables, modifying 'config1'
+//        if (settings1) $.extend(config1, settings1);
+//		
+//        this.each(function(i) {	
+//            $(this).css({
+//                left:'auto',
+//                right:'auto',
+//                top:'auto',
+//                bottom:'auto'
+//            });
+//            var measurement = (config1.direction == 'left') || (config1.direction == 'right') ? $(this).outerWidth() : $(this).outerHeight();
+//            var startStyle = {};
+//            startStyle['position'] = $(this).css('position') == 'static' ? 'relative' : $(this).css('position');
+//            startStyle[config1.direction] = (config1.showHide == 'show') ? '-'+measurement+'px' : 0;
+//            var endStyle = {};
+//            endStyle[config1.direction] = config1.showHide == 'show' ? 0 : '-'+measurement+'px';
+//            $(this).css(startStyle).animate(endStyle,config1.changeSpeed,callback);
+//        // end .each
+//        });
+//	
+//        return this;
+//		
+//    // end .slideIt
+//    };
+//
+//// end closure
+//})(jQuery);

@@ -140,10 +140,10 @@ echo $OUTPUT->heading($msm->name);
 echo $OUTPUT->heading('<ul id="navigation">
             <li class="toc"><a href="" id="toc"><span>Table of Contents</span></a></li>
             <li class="author"><a href=""><span>Authors</span></a></li>
-            <li class="symbol"><a href=""><span>Symbols</span></a></li>
-            <li class="glossary"><a href=""><span>Glossary</span></a></li>
+            <li class="symbol"><a href="" id="symbol"><span>Symbols</span></a></li>
+            <li class="glossary"><a href="" id="glossary"><span>Glossary</span></a></li>
             <li class="biblio"><a href=""><span>Bibliography</span></a></li>
-            <li class="contact"><a href=""><span>Contact</span></a></li>
+            <li class="contact"><a href="" id="contact"><span>Contact</span></a></li>
         </ul>');
 $content = '';
 //$content .= "hello";
@@ -163,14 +163,12 @@ $string = '';
 $stack = $compositor->makeStack($rootcomp);
 
 $stack = array_reverse($stack); // needed to access the contents in proper order
-
-
 //last element is added separately to prevent having ending comma
-for($i=0; $i < sizeof($stack)-1; $i++)
+for ($i = 0; $i < sizeof($stack) - 1; $i++)
 {
     $string .= $stack[$i]->id . "/" . $stack[$i]->unit_id . "/" . $stack[$i]->parent_id . "/" . $stack[$i]->prev_sibling_id . ",";
 }
-$string .= $stack[sizeof($stack)-1]->id . "/" . $stack[sizeof($stack)-1]->unit_id . "/" . $stack[sizeof($stack)-1]->parent_id . "/" . $stack[sizeof($stack)-1]->prev_sibling_id;
+$string .= $stack[sizeof($stack) - 1]->id . "/" . $stack[sizeof($stack) - 1]->unit_id . "/" . $stack[sizeof($stack) - 1]->parent_id . "/" . $stack[sizeof($stack) - 1]->prev_sibling_id;
 
 //foreach ($stack as $key => $record)
 //{
@@ -179,7 +177,6 @@ $string .= $stack[sizeof($stack)-1]->id . "/" . $stack[sizeof($stack)-1]->unit_i
 
 $content.= $compositor->loadAndDisplay(null, $string, null, '');
 //print_object($stack);
-
 //die;
 
 $content .= "</div>";
@@ -207,12 +204,63 @@ $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
 
 
+$content .= "<div id='symbolpanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='symbolcontent'>";
+$content .= "<h3> S Y M B O L S </h3>";
+//$content .= '<ul id="symbolindex" class="treeview-red">';
+//
+//$symbolUnitRecords = $DB->get_records('msm_index_symbol');
+//$symbolTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
+//foreach ($symbolUnitRecords as $symbolRecord)
+//{    
+//    $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id));
+//    $firstitem = array_shift(array_values($symbolRecords));
+//   
+//    $symbolIndex = new MathIndex();
+//    $symbolIndex->loadSymbolFromDb($firstitem->unit_id, $firstitem->id);
+//   
+//    $content .= $symbolIndex->displaySymbol();
+//}
+//
+//$content .= "</ul>";
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
+
+//$content .= "<div id='glossarypanel' class='panel'>";
+//$content .="<div class='slidepanelcontent' id='glossarycontent'>";
+//$content .= "<h3> G L O S S A R Y </h3>";
+////$content .= '<ul id="glossaryindex" class="treeview-red">';
+//
+////$symbolUnitRecords = $DB->get_records('msm_index_symbol');
+////$symbolTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
+////foreach ($symbolUnitRecords as $symbolRecord)
+////{    
+////    $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id));
+////    $firstitem = array_shift(array_values($symbolRecords));
+////   
+//    $glossaryIndex = new MathIndex();
+//    $glossaryIndex->loadGlossaryFromDb();
+////   
+////    $content .= $symbolIndex->displaySymbol();
+////}
+//
+////$content .= "</ul>";
+//$content .="</div>"; // end of slidepanelcontent
+//$content .= "</div>"; // end of panel
+
+//$content .= "<div id='contactpanel' class='panel'>";
+//$content .="<div class='slidepanelcontent' id='contactcontent'>";
+//$content .= "<h3> C O N T A C T S </h3>";
+//
+//$content .= "<div> where prof's/TAs' email...etc contact information would go... </div>";
+//
+//$content .="</div>"; // end of slidepanelcontent
+//$content .= "</div>"; // end of panel
 
 $content .= "<div class='loadingscreen'></div>";
 
 // need to have it in this order or dialog breaks
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
-
 //** make sure the sliding panel hiding method comes AFTER treeview method declaration!! (otherwise, it gives a bug 
 // when the page is refreshed.  The plus/minus pics become reversed.)
 $content .= "
@@ -233,7 +281,10 @@ $content .= "
                     control: '#treecontrol'
                 });
                 
+
+                
                 $('#toccontent').hide();  
+                $('#symbolcontent').hide();  
 
                 
                 $('#features').jshowoff({
@@ -261,6 +312,13 @@ $content .= "
 // where the display method would go...
 
 echo $OUTPUT->box($content);
+
+//$('#symbolindex').treeview({
+//                    persist: 'cookie',
+//                    animated: 'fast',
+//                    collapsed: true,
+//                    control: '#treecontrol'
+//                });
 
 // Finish the page
 echo $OUTPUT->footer();
