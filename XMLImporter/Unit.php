@@ -19,7 +19,7 @@ require_once("ExtraInfo.php");
 require_once("Intro.php");
 require_once("Theorem.php");
 require_once("StageDate.php");
-require_once("Block.php");
+require_once("MathBlock.php");
 require_once("InContent.php");
 require_once("Para.php");
 require_once("StatementTheorem.php");

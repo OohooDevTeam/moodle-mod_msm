@@ -202,29 +202,18 @@ $tableofcontents = new TableOfContents();
 $content .= $tableofcontents->makeToc();
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
+$filename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
+if (file_exists($filename))
+{
+    $file = fopen($filename, 'r');
+    $content .= fread($file, filesize($filename));
+    fclose($file);
+}
+else
+{
+    echo "file " . $filename . "does not exist.";
+}
 
-
-$content .= "<div id='symbolpanel' class='panel'>";
-$content .="<div class='slidepanelcontent' id='symbolcontent'>";
-$content .= "<h3> S Y M B O L S </h3>";
-//$content .= '<ul id="symbolindex" class="treeview-red">';
-//
-//$symbolUnitRecords = $DB->get_records('msm_index_symbol');
-//$symbolTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
-//foreach ($symbolUnitRecords as $symbolRecord)
-//{    
-//    $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id));
-//    $firstitem = array_shift(array_values($symbolRecords));
-//   
-//    $symbolIndex = new MathIndex();
-//    $symbolIndex->loadSymbolFromDb($firstitem->unit_id, $firstitem->id);
-//   
-//    $content .= $symbolIndex->displaySymbol();
-//}
-//
-//$content .= "</ul>";
-$content .="</div>"; // end of slidepanelcontent
-$content .= "</div>"; // end of panel
 
 //$content .= "<div id='glossarypanel' class='panel'>";
 //$content .="<div class='slidepanelcontent' id='glossarycontent'>";
@@ -248,14 +237,14 @@ $content .= "</div>"; // end of panel
 //$content .="</div>"; // end of slidepanelcontent
 //$content .= "</div>"; // end of panel
 
-//$content .= "<div id='contactpanel' class='panel'>";
-//$content .="<div class='slidepanelcontent' id='contactcontent'>";
-//$content .= "<h3> C O N T A C T S </h3>";
-//
-//$content .= "<div> where prof's/TAs' email...etc contact information would go... </div>";
-//
-//$content .="</div>"; // end of slidepanelcontent
-//$content .= "</div>"; // end of panel
+$content .= "<div id='contactpanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='contactcontent'>";
+$content .= "<h3> C O N T A C T S </h3>";
+
+$content .= "<div> where prof's/TAs' email...etc contact information would go... </div>";
+
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
 
 $content .= "<div class='loadingscreen'></div>";
 
@@ -265,9 +254,7 @@ $content .= "<div class='loadingscreen'></div>";
 // when the page is refreshed.  The plus/minus pics become reversed.)
 $content .= "
     <script type='text/javascript'>
-            jQuery(document).ready(function(){    
-                MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
-                
+            jQuery(document).ready(function(){                  
                 $('.dialogs').dialog({
                     autoOpen: false,
                     height: 'auto',
@@ -281,11 +268,14 @@ $content .= "
                     control: '#treecontrol'
                 });
                 
-
-                
-                $('#toccontent').hide();  
-                $('#symbolcontent').hide();  
-
+                $('#symbolcontent').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
+               
+                $('#toccontent').hide(); 
+                $('#symbolcontent').hide();
+                $('#contactcontent').hide();
                 
                 $('#features').jshowoff({
                     autoplay:false,
@@ -304,7 +294,9 @@ $content .= "
                     ajaxStop: function() {
                         $(this).hide();
                     }
-                });           
+                });  
+                                MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
+
             });
     
         </script>";
@@ -312,14 +304,6 @@ $content .= "
 // where the display method would go...
 
 echo $OUTPUT->box($content);
-
-//$('#symbolindex').treeview({
-//                    persist: 'cookie',
-//                    animated: 'fast',
-//                    collapsed: true,
-//                    control: '#treecontrol'
-//                });
-
 // Finish the page
 echo $OUTPUT->footer();
 

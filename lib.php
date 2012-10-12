@@ -25,9 +25,9 @@
  * Moodle is performing actions across all modules.
  *
  * 
- **************************************************************************
- **                              MSM                                     **
- **************************************************************************
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
  * @package     mod                                                      **
  * @subpackage  msm                                                      **
  * @name        msm                                                      **
@@ -35,10 +35,10 @@
  * @link        http://ualberta.ca                                       **
  * @author      Ga Young Kim                                             **
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
- **************************************************************************
- **************************************************************************/
-
+ * *************************************************************************
+ * ************************************************************************ */
 defined('MOODLE_INTERNAL') || die();
+
 
 /** example constant */
 //define('NEWMODULE_ULTIMATE_ANSWER', 42);
@@ -156,16 +156,15 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         $parser = new DOMDocument();
         //define('parser', $parser);
         @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
-        //$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
+//        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
 
         $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
-        //$unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
+//        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
         $position = 1;
-       
-        $unit->loadFromXml($parser->documentElement, $position);        
-        
+
+        $unit->loadFromXml($parser->documentElement, $position);
+
         $unit->saveIntoDb($unit->position, $msm->id);
-           
     }
 
 //    echo "done";
@@ -246,7 +245,7 @@ function msm_delete_instance($id)
     {
         return false;
     }
-   
+
     $DB->delete_records('msm', array('id' => $msm->id));
 
     return true;
@@ -338,7 +337,26 @@ function msm_print_recent_mod_activity($activity, $courseid, $detail, $modnames,
  * */
 function msm_cron()
 {
-    return true;
+    global $CFG, $DB;
+    
+     require_once("XMLImporter/Unit.php");
+     
+    $math = new MathIndex();
+    // $math->makeSymbolPanel();
+    $data = $math->makeSymbolPanel();
+//    
+//    echo $data;
+    
+    $courseid = $DB->get_record('msm', array('id'=>'1'))->course;
+//    
+//    echo "courseid? " . $courseid;
+    $msmid = 1;
+    $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msmid . "-msm_symbolindex.html";
+//    
+    $file = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
+    fwrite($file, $data);
+    
+    fclose($file);
 }
 
 /**

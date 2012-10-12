@@ -456,6 +456,36 @@ class MathIndex extends Element
         return $content;
     }
 
+    function makeSymbolPanel()
+    {
+        global $DB;
+        
+        $content = '';
+
+        $content .= "<div id='symbolpanel' class='panel'>";
+        $content .="<div class='slidepanelcontent' id='symbolcontent'>";
+        $content .= "<h3> S Y M B O L S </h3>";
+        $content .= '<ul id="symbolindex" class="treeview-red">';
+
+        $symbolUnitRecords = $DB->get_records('msm_index_symbol');
+        $symbolTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
+        foreach ($symbolUnitRecords as $symbolRecord)
+        {
+            $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id));
+            $firstitem = array_shift(array_values($symbolRecords));
+
+            $this->loadSymbolFromDb($firstitem->unit_id, $firstitem->id);
+
+            $content .= $this->displaySymbol();
+        }
+
+        $content .= "</ul>";
+        $content .="</div>"; // end of slidepanelcontent
+        $content .= "</div>"; // end of panel
+
+        return $content;
+    }
+
 }
 
 ?>
