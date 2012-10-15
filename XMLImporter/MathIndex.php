@@ -402,9 +402,13 @@ class MathIndex extends Element
         }
         else
         {
-            foreach ($parentNode->children as $childNode)
+            echo "entered";
+            if (!empty($parentNode->children))
             {
-                $this->createTree($child, $childNode, $termLength - 1, $termArray, $index + 1);
+                foreach ($parentNode->children as $descendent)
+                {
+                    $this->createTree($child, $descendent, $termLength, $termArray, $index);
+                }
             }
         }
     }
@@ -507,9 +511,11 @@ class MathIndex extends Element
                 }
                 else
                 {
+                    $content .= "<li><span>" . $term->text . "     </span>";
                     $content .= "<ul>";
                     $content .= $this->displayGlossary($term);
                     $content .= "</ul>";
+                    $content .= "</li>";
                 }
             }
             else
@@ -589,8 +595,8 @@ class MathIndex extends Element
         $content .= '<ul id="glossaryindex" class="treeview-red">';
 
         $glossaryTree = $this->loadGlossaryFromDb($msmid);
-        
-        print_object($glossaryTree);
+
+//        print_object($glossaryTree);
 
         $content .= $this->displayGlossary($glossaryTree);
 
