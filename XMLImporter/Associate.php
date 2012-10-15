@@ -218,7 +218,7 @@ class Associate extends Element
         }
     }
 
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
 
@@ -226,7 +226,7 @@ class Associate extends Element
         $data->description = $this->description;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();
         $sibling_id = null;
@@ -291,13 +291,13 @@ class Associate extends Element
                     if (empty($sibling_id))
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $this->compid);
+                        $info->saveIntoDb($info->position, $msmid, $this->compid);
                         $sibling_id = $info->compid;
                     }
                     else
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $this->compid, $sibling_id);
+                        $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $info->compid;
                     }
                     break;
@@ -318,13 +318,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $comment = $this->comments[$commentString[1]];
-                            $comment->saveIntoDb($comment->position, $this->compid);
+                            $comment->saveIntoDb($comment->position, $msmid, $this->compid);
                             $sibling_id = $comment->compid;
                         }
                         else
                         {
                             $comment = $this->comments[$commentString[1]];
-                            $comment->saveIntoDb($comment->position, $this->compid, $sibling_id);
+                            $comment->saveIntoDb($comment->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $comment->compid;
                         }
                     }
@@ -334,12 +334,12 @@ class Associate extends Element
                         $commenttableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_comment'))->id;
 
                         $commentCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $commentID, 'table_id' => $commenttableID));
-                        $commentCompID = $this->insertToCompositor($commentID, 'msm_comment', $this->compid, $sibling_id);
+                        $commentCompID = $this->insertToCompositor($commentID, 'msm_comment', $msmid, $this->compid, $sibling_id);
                         $sibling_id = $commentCompID;
 
                         foreach ($commentCompRecords as $commentCompRecord)
                         {
-                            $this->grabSubunitChilds($commentCompRecord, $commentCompID);
+                            $this->grabSubunitChilds($commentCompRecord, $commentCompID, $msmid);
                         }
                     }
                     break;
@@ -353,13 +353,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $this->compid);
+                            $subunit->saveIntoDb($subunit->position, $msmid, $this->compid);
                             $sibling_id = $subunit->compid;
                         }
                         else
                         {
                             $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
+                            $subunit->saveIntoDb($subunit->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $subunit->compid;
                         }
                     }
@@ -369,12 +369,12 @@ class Associate extends Element
                         $unittableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
 
                         $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
-                        $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
+                        $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $msmid, $this->compid, $sibling_id);
                         $sibling_id = $subunitCompID;
 
                         foreach ($subunitCompRecords as $unitCompRecord)
                         {
-                            $this->grabSubunitChilds($unitCompRecord, $subunitCompID);
+                            $this->grabSubunitChilds($unitCompRecord, $subunitCompID, $msmid);
                         }
                     }
                     break;
@@ -395,13 +395,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $this->compid);
+                            $def->saveIntoDb($def->position, $msmid, $this->compid);
                             $sibling_id = $def->compid;
                         }
                         else
                         {
                             $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $this->compid, $sibling_id);
+                            $def->saveIntoDb($def->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $def->compid;
                         }
                     }
@@ -411,12 +411,12 @@ class Associate extends Element
                         $deftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_def'))->id;
 
                         $defCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $defID, 'table_id' => $deftableID));
-                        $defCompID = $this->insertToCompositor($defID, 'msm_def', $this->compid, $sibling_id);
+                        $defCompID = $this->insertToCompositor($defID, 'msm_def', $msmid, $this->compid, $sibling_id);
                         $sibling_id = $defCompID;
 
                         foreach ($defCompRecords as $defCompRecord)
                         {
-                            $this->grabSubunitChilds($defCompRecord, $defCompID);
+                            $this->grabSubunitChilds($defCompRecord, $defCompID, $msmid);
                         }
                     }
                     break;
@@ -430,13 +430,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $this->compid);
+                            $theorem->saveIntoDb($theorem->position, $msmid, $this->compid);
                             $sibling_id = $theorem->compid;
                         }
                         else
                         {
                             $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
+                            $theorem->saveIntoDb($theorem->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $theorem->compid;
                         }
                     }
@@ -446,12 +446,12 @@ class Associate extends Element
                         $theoremtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
 
                         $theoremCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $theoremID, 'table_id' => $theoremtableID));
-                        $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $this->compid, $sibling_id);
+                        $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $msmid, $this->compid, $sibling_id);
                         $sibling_id = $theoremCompID;
 
                         foreach ($theoremCompRecords as $theoremCompRecord)
                         {
-                            $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                            $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, $msmid);
                         }
                     }
                     break;
@@ -465,13 +465,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $ref = $this->refs[$refString[1]];
-                            $ref->saveIntoDb($ref->position, $this->compid);
+                            $ref->saveIntoDb($ref->position, $msmid, $this->compid);
                             $sibling_id = $ref->compid;
                         }
                         else
                         {
                             $ref = $this->refs[$refString[1]];
-                            $ref->saveIntoDb($ref->position, $this->compid, $sibling_id);
+                            $ref->saveIntoDb($ref->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $ref->compid;
                         }
                     }
@@ -481,12 +481,12 @@ class Associate extends Element
                         $reftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_packs'))->id;
 
                         $refCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $refID, 'table_id' => $reftableID));
-                        $refCompID = $this->insertToCompositor($refID, 'msm_packs', $this->compid, $sibling_id);
+                        $refCompID = $this->insertToCompositor($refID, 'msm_packs', $msmid, $this->compid, $sibling_id);
                         $sibling_id = $refCompID;
 
                         foreach ($refCompRecords as $refCompRecord)
                         {
-                            $this->grabSubunitChilds($refCompRecord, $refCompID);
+                            $this->grabSubunitChilds($refCompRecord, $refCompID, $msmid);
                         }
                     }
                     break;

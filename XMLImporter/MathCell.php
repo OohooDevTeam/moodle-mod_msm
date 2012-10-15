@@ -88,7 +88,7 @@ class MathCell extends Element
         }
     }
 
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -100,7 +100,7 @@ class MathCell extends Element
         $data->content = $this->content;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();
         $sibling_id = null;
@@ -133,13 +133,13 @@ class MathCell extends Element
                     if (empty($sibling_id))
                     {
                         $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $this->compid);
+                        $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid);
                         $sibling_id = $subordinate->compid;
                     }
                     else
                     {
                         $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
+                        $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
                     }
                     break;
@@ -150,12 +150,12 @@ class MathCell extends Element
                     if (empty($sibling_id))
                     {
                         $companion = $this->companion[$companionString[1]];
-                        $companion->saveIntoDb($companion->position, $this->compid);
+                        $companion->saveIntoDb($companion->position, $msmid, $this->compid);
                     }
                     else
                     {
                         $companion = $this->companion[$companionString[1]];
-                        $companion->saveIntoDb($companion->position, $this->compid, $sibling_id);
+                        $companion->saveIntoDb($companion->position, $msmid, $this->compid, $sibling_id);
                     }
                     break;
             }

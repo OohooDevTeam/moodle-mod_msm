@@ -57,7 +57,7 @@ class Cite extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -65,7 +65,7 @@ class Cite extends Element
         $data->caption = $this->caption;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPosition = array();
         foreach ($this->items as $key => $item)
@@ -79,7 +79,7 @@ class Cite extends Element
         {
             $itemString = split('-', $element);
 
-            $this->items[$itemString[1]]->saveIntoDb($this->items[$itemString[1]]->position, $this->compid);
+            $this->items[$itemString[1]]->saveIntoDb($this->items[$itemString[1]]->position, $msmid, $this->compid);
         }
     }
 

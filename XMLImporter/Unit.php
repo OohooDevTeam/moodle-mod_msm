@@ -477,7 +477,7 @@ class Unit extends Element
         }
     }
 
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $exercisepackRecordID = 0;
@@ -506,7 +506,7 @@ class Unit extends Element
         if ($this->position == 1) // it's the root element, which means, no parent and no previous siblings
         {
             $compdata = new stdClass();
-            $compdata->msm_id = $parentid;
+            $compdata->msm_id = $msmid;
             $compdata->unit_id = $this->id;
             $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
             $compdata->parent_id = 0;
@@ -517,6 +517,7 @@ class Unit extends Element
         else // child element, therefore, has a parentid with possible previous sibling id
         {
             $compdata = new stdClass();
+            $compdata->msm_id = $msmid;
             $compdata->unit_id = $this->id;
             $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
             $compdata->parent_id = $parentid;
@@ -655,15 +656,15 @@ class Unit extends Element
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
                         $author = $this->authors[$authorstring[1]];
-                        $author->saveIntoDb($author->position, '', '', 'author');
-                        $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid);
+                        $author->saveIntoDb($author->position, $msmid, '', '', 'author');
+                        $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $msmid, $this->compid);
                         $sibling_id = $this->authors[$authorstring[1]]->compid;
                     }
                     else // child has a previous sibling
                     {
                         $author = $this->authors[$authorstring[1]];
-                        $author->saveIntoDb($author->position, '', '', 'author');
-                        $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid, $sibling_id);
+                        $author->saveIntoDb($author->position, $msmid, '', '', 'author');
+                        $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $this->authors[$authorstring[1]]->compid;
                     }
                     break;
@@ -675,15 +676,15 @@ class Unit extends Element
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
                         $contributor = $this->contributors[$contributorstring[1]];
-                        $contributor->saveIntoDb($contributor->position, '', '', 'contributor');
-                        $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid);
+                        $contributor->saveIntoDb($contributor->position, $msmid, '', '', 'contributor');
+                        $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $msmid, $this->compid);
                         $sibling_id = $this->contributors[$contributorstring[1]]->compid;
                     }
                     else // child has a previous sibling
                     {
                         $contributor = $this->contributors[$contributorstring[1]];
-                        $contributor->saveIntoDb($contributor->position, '', '', 'contributor');
-                        $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid, $sibling_id);
+                        $contributor->saveIntoDb($contributor->position, $msmid, '', '', 'contributor');
+                        $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $this->contributors[$contributorstring[1]]->compid;
                     }
                     break;
@@ -694,15 +695,15 @@ class Unit extends Element
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
                         $stagedate = $this->stagedates[$stageString[1]];
-                        $stagedate->saveIntoDb($stagedate->position, 'contributor');
-                        $this->stagedates[$stageString[1]]->compid = $stagedate->insertToCompositor($stagedate->id, $stagedate->tablename, $this->compid);
+                        $stagedate->saveIntoDb($stagedate->position, $msmid, 'contributor');
+                        $this->stagedates[$stageString[1]]->compid = $stagedate->insertToCompositor($stagedate->id, $stagedate->tablename, $msmid, $this->compid);
                         $sibling_id = $this->stagedates[$stageString[1]]->compid;
                     }
                     else // child has a previous sibling
                     {
                         $stagedate = $this->stagedates[$stageString[1]];
-                        $stagedate->saveIntoDb($stagedate->position);
-                        $this->stagedates[$stageString[1]]->compid = $stagedate->insertToCompositor($stagedate->id, $stagedate->tablename, $this->compid, $sibling_id);
+                        $stagedate->saveIntoDb($stagedate->position, $msmid);
+                        $this->stagedates[$stageString[1]]->compid = $stagedate->insertToCompositor($stagedate->id, $stagedate->tablename, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $this->stagedates[$stageString[1]]->compid;
                     }
                     break;
@@ -710,12 +711,12 @@ class Unit extends Element
                 case('intro'):
                     if (empty($sibling_id))
                     {
-                        $this->intro->saveIntoDb($this->intro->position, $this->compid);
+                        $this->intro->saveIntoDb($this->intro->position, $msmid, $this->compid);
                         $sibling_id = $this->intro->compid;
                     }
                     else
                     {
-                        $this->intro->saveIntoDb($this->intro->position, $this->compid, $sibling_id);
+                        $this->intro->saveIntoDb($this->intro->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $this->intro->compid;
                     }
                     break;
@@ -726,13 +727,13 @@ class Unit extends Element
                     if (empty($sibling_id))
                     {
                         $block = $this->block[$blockString[1]];
-                        $block->saveIntoDb($block->position, $this->compid);
+                        $block->saveIntoDb($block->position, $msmid, $this->compid);
                         $sibling_id = $block->root;
                     }
                     else
                     {
                         $block = $this->block[$blockString[1]];
-                        $block->saveIntoDb($block->position, $this->compid, $sibling_id);
+                        $block->saveIntoDb($block->position, $msmid, $this->compid, $sibling_id);
                         if (!empty($block->root))
                         {
                             $sibling_id = $block->root;
@@ -750,13 +751,13 @@ class Unit extends Element
                         if (empty($sibling_id))
                         {
                             $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $this->compid);
+                            $subunit->saveIntoDb($subunit->position, $msmid, $this->compid);
                             $sibling_id = $subunit->compid;
                         }
                         else
                         {
                             $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
+                            $subunit->saveIntoDb($subunit->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $subunit->compid;
                         }
                     }
@@ -766,12 +767,12 @@ class Unit extends Element
                         $unittableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
 
                         $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
-                        $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
+                        $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $msmid, $this->compid, $sibling_id);
                         $sibling_id = $subunitCompID;
 
                         foreach ($subunitCompRecords as $unitCompRecord)
                         {
-                            $this->grabSubunitChilds($unitCompRecord, $subunitCompID);
+                            $this->grabSubunitChilds($unitCompRecord, $subunitCompID, $msmid);
                         }
                     }
                     break;
@@ -785,20 +786,20 @@ class Unit extends Element
                         if (empty($sibling_id))
                         {
                             $exercisepack = $this->exercisepacks[$exercisepackString[1]];
-                            $exercisepack->saveIntoDb($exercisepack->position, $this->compid);
+                            $exercisepack->saveIntoDb($exercisepack->position, $msmid, $this->compid);
                             $sibling_id = $exercisepack->compid;
                         }
                         else
                         {
                             $exercisepack = $this->exercisepacks[$exercisepackString[1]];
-                            $exercisepack->saveIntoDb($exercisepack->position, $this->compid, $sibling_id);
+                            $exercisepack->saveIntoDb($exercisepack->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $exercisepack->compid;
                         }
                     }
                     else
                     {
                         $exercisepackID = $exercisepackRecord->id;
-                        $sibling_id = $this->insertToCompositor($exercisepackID, 'msm_packs', $this->compid, $sibling_id);
+                        $sibling_id = $this->insertToCompositor($exercisepackID, 'msm_packs', $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -811,13 +812,13 @@ class Unit extends Element
                         if (empty($sibling_id))
                         {
                             $examplepack = $this->examplepacks[$examplepackString[1]];
-                            $examplepack->saveIntoDb($examplepack->position, $this->compid);
+                            $examplepack->saveIntoDb($examplepack->position, $msmid, $this->compid);
                             $sibling_id = $examplepack->compid;
                         }
                         else
                         {
                             $examplepack = $this->examplepacks[$examplepackString[1]];
-                            $examplepack->saveIntoDb($examplepack->position, $this->compid, $sibling_id);
+                            $examplepack->saveIntoDb($examplepack->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $examplepack->compid;
                         }
                     }
@@ -825,7 +826,7 @@ class Unit extends Element
                     {
                         $examplepackID = $examplepackRecord->id;
                         $examplepack = $this->examplepacks[$examplepackString[1]];
-                        $examplepack->compid = $this->insertToCompositor($examplepackID, $examplepack->tablename, $this->compid, $sibling_id);
+                        $examplepack->compid = $this->insertToCompositor($examplepackID, $examplepack->tablename, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -839,13 +840,13 @@ class Unit extends Element
                         if (empty($sibling_id))
                         {
                             $quizpack = $this->quizpacks[$quizpackString[1]];
-                            $quizpack->saveIntoDb($quizpack->position, $this->compid);
+                            $quizpack->saveIntoDb($quizpack->position, $msmid, $this->compid);
                             $sibling_id = $quizpack->compid;
                         }
                         else
                         {
                             $quizpack = $this->quizpacks[$quizpackString[1]];
-                            $quizpack->saveIntoDb($quizpack->position, $this->compid, $sibling_id);
+                            $quizpack->saveIntoDb($quizpack->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $quizpack->compid;
                         }
                     }
@@ -853,7 +854,7 @@ class Unit extends Element
                     {
                         $quizpackID = $quizpackRecord->id;
                         $quizpack = $this->quizpacks[$quizpackString[1]];
-                        $quizpack->compid = $this->insertToCompositor($quizpackID, $quizpack->tablename, $this->compid, $sibling_id);
+                        $quizpack->compid = $this->insertToCompositor($quizpackID, $quizpack->tablename, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -866,13 +867,13 @@ class Unit extends Element
                         if (empty($sibling_id))
                         {
                             $showmepack = $this->showmepacks[$showmepackString[1]];
-                            $showmepack->saveIntoDb($showmepack->position, $this->compid);
+                            $showmepack->saveIntoDb($showmepack->position, $msmid, $this->compid);
                             $sibling_id = $showmepack->compid;
                         }
                         else
                         {
                             $showmepack = $this->showmepacks[$showmepackString[1]];
-                            $showmepack->saveIntoDb($showmepack->position, $this->compid, $sibling_id);
+                            $showmepack->saveIntoDb($showmepack->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $showmepack->compid;
                         }
                     }
@@ -880,7 +881,7 @@ class Unit extends Element
                     {
                         $showmepackID = $showmepackRecord->id;
                         $showmepack = $this->showmepacks[$showmepackString[1]];
-                        $showmepack->compid = $this->insertToCompositor($showmepackID, $showmepack->tablename, $this->compid, $sibling_id);
+                        $showmepack->compid = $this->insertToCompositor($showmepackID, $showmepack->tablename, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -894,13 +895,13 @@ class Unit extends Element
                         if (empty($sibling_id))
                         {
                             $studyexercise = $this->studyexercises[$studyexerciseString[1]];
-                            $studyexercise->saveIntoDb($studyexercise->position, $this->compid);
+                            $studyexercise->saveIntoDb($studyexercise->position, $msmid, $this->compid);
                             $sibling_id = $studyexercise->compid;
                         }
                         else
                         {
                             $studyexercise = $this->studyexercises[$studyexerciseString[1]];
-                            $studyexercise->saveIntoDb($studyexercise->position, $this->compid, $sibling_id);
+                            $studyexercise->saveIntoDb($studyexercise->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $studyexercise->compid;
                         }
                     }
@@ -908,7 +909,7 @@ class Unit extends Element
                     {
                         $studyexerciseID = $studyexerciseRecord->id;
                         $studyexercise = $this->studyexercises[$studyexerciseString[1]];
-                        $studyexercise->compid = $this->insertToCompositor($studyexerciseID, $studyexercise->tablename, $this->compid, $sibling_id);
+                        $studyexercise->compid = $this->insertToCompositor($studyexerciseID, $studyexercise->tablename, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -922,13 +923,13 @@ class Unit extends Element
                         if (empty($sibling_id))
                         {
                             $studyexample = $this->studyexamples[$studyexampleString[1]];
-                            $studyexample->saveIntoDb($studyexample->position, $this->compid);
+                            $studyexample->saveIntoDb($studyexample->position, $msmid, $this->compid);
                             $sibling_id = $studyexample->compid;
                         }
                         else
                         {
                             $studyexample = $this->studyexamples[$studyexampleString[1]];
-                            $studyexample->saveIntoDb($studyexample->position, $this->compid, $sibling_id);
+                            $studyexample->saveIntoDb($studyexample->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $studyexample->compid;
                         }
                     }
@@ -936,7 +937,7 @@ class Unit extends Element
                     {
                         $studyexampleID = $studyexampleRecord->id;
                         $studyexample = $this->studyexamples[$studyexampleString[1]];
-                        $studyexample->compid = $this->insertToCompositor($studyexampleID, $studyexample->tablename, $this->compid, $sibling_id);
+                        $studyexample->compid = $this->insertToCompositor($studyexampleID, $studyexample->tablename, $msmid, $this->compid, $sibling_id);
                     }
                     break;
             }
@@ -958,8 +959,6 @@ class Unit extends Element
             $this->title = $unitrecord->title;
             $this->creationdate = $unitrecord->creationdate;
             $this->last_revision_date = $unitrecord->last_revision_date;
-
-//            $this->standalone = $unitrecord->standalone;
             $this->parent_id = $unitCompRecord->parent_id;
             $this->prev_sibling_id = $unitCompRecord->prev_sibling_id;
 

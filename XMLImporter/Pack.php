@@ -164,7 +164,7 @@ class Pack extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -178,7 +178,7 @@ class Pack extends Element
         $data->type = $this->type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
         $elementPositions = array();
         $sibling_id = 0;
@@ -227,13 +227,13 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $quiz = $this->quizs[$quizString[1]];
-                        $quiz->saveIntoDb($quiz->position, $this->compid);
+                        $quiz->saveIntoDb($quiz->position, $msmid, $this->compid);
                         $sibling_id = $quiz->compid;
                     }
                     else
                     {
                         $quiz = $this->quizs[$quizString[1]];
-                        $quiz->saveIntoDb($quiz->position, $this->compid, $sibling_id);
+                        $quiz->saveIntoDb($quiz->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $quiz->compid;
                     }
                     break;
@@ -244,13 +244,13 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $example = $this->examples[$exampleString[1]];
-                        $example->saveIntoDb($example->position, $this->compid);
+                        $example->saveIntoDb($example->position, $msmid, $this->compid);
                         $sibling_id = $example->compid;
                     }
                     else
                     {
                         $example = $this->examples[$exampleString[1]];
-                        $example->saveIntoDb($example->position, $this->compid, $sibling_id);
+                        $example->saveIntoDb($example->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $example->compid;
                     }
                     break;
@@ -261,13 +261,13 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $exercise = $this->exercises[$exerciseString[1]];
-                        $exercise->saveIntoDb($exercise->position, $this->compid);
+                        $exercise->saveIntoDb($exercise->position, $msmid, $this->compid);
                         $sibling_id = $exercise->compid;
                     }
                     else
                     {
                         $exercise = $this->exercises[$exerciseString[1]];
-                        $exercise->saveIntoDb($exercise->position, $this->compid, $sibling_id);
+                        $exercise->saveIntoDb($exercise->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $exercise->compid;
                     }
                     break;
@@ -278,13 +278,13 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $showme = $this->showmes[$showmeString[1]];
-                        $showme->saveIntoDb($showme->position, $this->compid);
+                        $showme->saveIntoDb($showme->position, $msmid, $this->compid);
                         $sibling_id = $showme->compid;
                     }
                     else
                     {
                         $showme = $this->showmes[$showmeString[1]];
-                        $showme->saveIntoDb($showme->position, $this->compid, $sibling_id);
+                        $showme->saveIntoDb($showme->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $showme->compid;
                     }
                     break;

@@ -338,25 +338,34 @@ function msm_print_recent_mod_activity($activity, $courseid, $detail, $modnames,
 function msm_cron()
 {
     global $CFG, $DB;
+
+    require_once("XMLImporter/Unit.php");
+
+    $msmRecords = $DB->get_records('msm');
+
+    foreach ($msmRecords as $msm)
+    {
+        $symbol = new MathIndex();
+        $symboldata = $symbol->makeSymbolPanel($msm->id);
+        $courseid = $DB->get_record('msm', array('id' => $msm->id))->course;
+        $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_symbolindex.html";
     
-     require_once("XMLImporter/Unit.php");
-     
-    $math = new MathIndex();
-    // $math->makeSymbolPanel();
-    $data = $math->makeSymbolPanel();
-//    
-//    echo $data;
+        $symbolfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
+        fwrite($symbolfile, $symboldata);
+
+        fclose($symbolfile);
+        unset($symbol);
+        
+        $glossary = new MathIndex();
+        $glossarydata = $glossary->makeGlossaryPanel($msm->id);
+        $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_glossaryindex.html";
     
-    $courseid = $DB->get_record('msm', array('id'=>'1'))->course;
-//    
-//    echo "courseid? " . $courseid;
-    $msmid = 1;
-    $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msmid . "-msm_symbolindex.html";
-//    
-    $file = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
-    fwrite($file, $data);
-    
-    fclose($file);
+        $glossaryfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
+        fwrite($glossaryfile, $glossarydata);
+
+        fclose($glossaryfile);
+        unset($glossary);
+    }
 }
 
 /**

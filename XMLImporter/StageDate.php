@@ -68,7 +68,7 @@ class StageDate extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {        
         global $DB;
         $data = new stdClass();
@@ -76,7 +76,7 @@ class StageDate extends Element
         {
             $data->stagedate = $date;
             $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
     }
     

@@ -56,14 +56,14 @@ class MathRow extends Element
         }
     }
     
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
         $data->rowspan = $this->rowspan;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
         $elementPosition = array();
         $sibling_id = null;
@@ -81,12 +81,12 @@ class MathRow extends Element
 
             if(empty($sibling_id))
             {
-               $this->cells[$cellString[1]]->saveIntoDb($this->cells[$cellString[1]]->position, $this->compid);
+               $this->cells[$cellString[1]]->saveIntoDb($this->cells[$cellString[1]]->position, $msmid, $this->compid);
                $sibling_id = $this->cells[$cellString[1]]->compid;
             }
             else
             {
-                $this->cells[$cellString[1]]->saveIntoDb($this->cells[$cellString[1]]->position, $this->compid, $sibling_id);
+                $this->cells[$cellString[1]]->saveIntoDb($this->cells[$cellString[1]]->position, $msmid, $this->compid, $sibling_id);
                $sibling_id = $this->cells[$cellString[1]]->compid;
             }
         }

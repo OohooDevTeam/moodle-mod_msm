@@ -206,7 +206,7 @@ class ProofBlock extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -242,7 +242,7 @@ class ProofBlock extends Element
 //            
             $this->id = $DB->insert_record('msm_proof_block', $data);
 
-            $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
+            $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $msmid, $parentid, $siblingid);
             $siblingid = $compid;
 
             $elementPositions = array();
@@ -316,13 +316,13 @@ class ProofBlock extends Element
                         if (empty($sibling_id))
                         {
                             $subordinate = $this->subordinates[$key][$subordinateString[1]];
-                            $subordinate->saveIntoDb($subordinate->position, $compid);
+                            $subordinate->saveIntoDb($subordinate->position, $msmid, $compid);
                             $sibling_id = $subordinate->compid;
                         }
                         else
                         {
                             $subordinate = $this->subordinates[$key][$subordinateString[1]];
-                            $subordinate->saveIntoDb($subordinate->position, $compid, $sibling_id);
+                            $subordinate->saveIntoDb($subordinate->position, $msmid, $compid, $sibling_id);
                             $sibling_id = $subordinate->compid;
                         }
                         break;
@@ -333,13 +333,13 @@ class ProofBlock extends Element
                         if (empty($sibling_id))
                         {
                             $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
-                            $indexauthor->saveIntoDb($indexauthor->position, $compid);
+                            $indexauthor->saveIntoDb($indexauthor->position, $msmid, $compid);
                             $sibling_id = $indexauthor->compid;
                         }
                         else
                         {
                             $indexauthor = $this->indexauthors[$key][$indexauthorString[1]];
-                            $indexauthor->saveIntoDb($indexauthor->position, $compid, $sibling_id);
+                            $indexauthor->saveIntoDb($indexauthor->position, $msmid, $compid, $sibling_id);
                             $sibling_id = $indexauthor->compid;
                         }
                         break;
@@ -350,13 +350,13 @@ class ProofBlock extends Element
                         if (empty($sibling_id))
                         {
                             $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
-                            $indexsymbol->saveIntoDb($indexsymbol->position, $compid);
+                            $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $compid);
                             $sibling_id = $indexsymbol->compid;
                         }
                         else
                         {
                             $indexsymbol = $this->indexsymbols[$key][$indexsymbolString[1]];
-                            $indexsymbol->saveIntoDb($indexsymbol->position, $compid, $sibling_id);
+                            $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $compid, $sibling_id);
                             $sibling_id = $indexsymbol->compid;
                         }
                         break;
@@ -367,13 +367,13 @@ class ProofBlock extends Element
                         if (empty($sibling_id))
                         {
                             $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
-                            $indexglossary->saveIntoDb($indexglossary->position, $compid);
+                            $indexglossary->saveIntoDb($indexglossary->position, $msmid, $compid);
                             $sibling_id = $indexglossary->compid;
                         }
                         else
                         {
                             $indexglossary = $this->indexglossarys[$key][$indexglossaryString[1]];
-                            $indexglossary->saveIntoDb($indexglossary->position, $compid, $sibling_id);
+                            $indexglossary->saveIntoDb($indexglossary->position, $msmid, $compid, $sibling_id);
                             $sibling_id = $indexglossary->compid;
                         }
                         break;
@@ -384,13 +384,13 @@ class ProofBlock extends Element
                         if (empty($sibling_id))
                         {
                             $media = $this->medias[$key][$mediaString[1]];
-                            $media->saveIntoDb($media->position, $compid);
+                            $media->saveIntoDb($media->position, $msmid, $compid);
                             $sibling_id = $media->compid;
                         }
                         else
                         {
                             $media = $this->medias[$key][$mediaString[1]];
-                            $media->saveIntoDb($media->position, $compid, $sibling_id);
+                            $media->saveIntoDb($media->position, $msmid, $compid, $sibling_id);
                             $sibling_id = $media->compid;
                         }
                         break;
@@ -401,13 +401,13 @@ class ProofBlock extends Element
                         if (empty($sibling_id))
                         {
                             $matharray = $this->matharrays[$key][$matharrayString[1]];
-                            $matharray->saveIntoDb($matharray->position, $compid);
+                            $matharray->saveIntoDb($matharray->position, $msmid, $compid);
                             $sibling_id = $matharray->compid;
                         }
                         else
                         {
                             $matharray = $this->matharrays[$key][$matharrayString[1]];
-                            $matharray->saveIntoDb($matharray->position, $compid, $sibling_id);
+                            $matharray->saveIntoDb($matharray->position, $msmid, $compid, $sibling_id);
                             $sibling_id = $matharray->compid;
                         }
                         break;
@@ -418,13 +418,13 @@ class ProofBlock extends Element
                         if (empty($sibling_id))
                         {
                             $table = $this->tables[$key][$tableString[1]];
-                            $table->saveIntoDb($table->position, $compid);
+                            $table->saveIntoDb($table->position, $msmid, $compid);
                             $sibling_id = $table->compid;
                         }
                         else
                         {
                             $table = $this->tables[$key][$tableString[1]];
-                            $table->saveIntoDb($table->position, $compid, $sibling_id);
+                            $table->saveIntoDb($table->position, $msmid, $compid, $sibling_id);
                             $sibling_id = $table->compid;
                         }
                         break;

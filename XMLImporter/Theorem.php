@@ -97,7 +97,7 @@ class Theorem extends Element
         }
     }
 
-    function saveIntoDb($position, $parentid = '', $siblingid = '', $theoremCompid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '', $theoremCompid = '')
     {
         global $DB;
 
@@ -113,7 +113,7 @@ class Theorem extends Element
             $data->description = $this->description;
 
             $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
         else
         {
@@ -178,13 +178,13 @@ class Theorem extends Element
                     if (empty($sibling_id))
                     {
                         $statement = $this->statements[$statementString[1]];
-                        $statement->saveIntoDb($statement->position, $this->compid);
+                        $statement->saveIntoDb($statement->position, $msmid, $this->compid);
                         $sibling_id = $statement->compid;
                     }
                     else
                     {
                         $statement = $this->statements[$statementString[1]];
-                        $statement->saveIntoDb($statement->position, $this->compid, $sibling_id);
+                        $statement->saveIntoDb($statement->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $statement->compid;
                     }
                     break;
@@ -195,13 +195,13 @@ class Theorem extends Element
                     if (empty($sibling_id))
                     {
                         $proof = $this->proofs[$proofString[1]];
-                        $proof->saveIntoDb($proof->position, $this->compid);
+                        $proof->saveIntoDb($proof->position, $msmid, $this->compid);
                         $sibling_id = $proof->compid;
                     }
                     else
                     {
                         $proof = $this->proofs[$proofString[1]];
-                        $proof->saveIntoDb($proof->position, $this->compid, $sibling_id);
+                        $proof->saveIntoDb($proof->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $proof->compid;
                     }
                     break;
@@ -221,7 +221,7 @@ class Theorem extends Element
 //            else
 //            {
 
-            $associate->saveIntoDb($associate->position, $this->compid, $sibling_id);
+            $associate->saveIntoDb($associate->position, $msmid, $this->compid, $sibling_id);
             $sibling_id = $associate->compid;
 //            }
         }

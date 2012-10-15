@@ -62,7 +62,7 @@ else
     error('You must specify a course_module ID or an instance ID');
 }
 
-$rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id), '*', MUST_EXIST);
+$rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0), '*', MUST_EXIST);
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
@@ -202,16 +202,28 @@ $tableofcontents = new TableOfContents();
 $content .= $tableofcontents->makeToc();
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
-$filename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
-if (file_exists($filename))
+$symbolfilename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
+if (file_exists($symbolfilename))
 {
-    $file = fopen($filename, 'r');
-    $content .= fread($file, filesize($filename));
-    fclose($file);
+    $symbolfile = fopen($symbolfilename, 'r');
+    $content .= fread($symbolfile, filesize($symbolfilename));
+    fclose($symbolfile);
 }
 else
 {
-    echo "file " . $filename . "does not exist.";
+    echo "file " . $symbolfilename . "does not exist.";
+}
+
+$glossryfilename = $msm->course . '-' . $msm->id . '-msm_glossaryindex.html';
+if (file_exists($glossryfilename))
+{
+    $glossaryfile = fopen($glossryfilename, 'r');
+    $content .= fread($glossaryfile, filesize($glossryfilename));
+    fclose($glossaryfile);
+}
+else
+{
+    echo "file " . $glossryfilename . "does not exist.";
 }
 
 
@@ -254,7 +266,9 @@ $content .= "<div class='loadingscreen'></div>";
 // when the page is refreshed.  The plus/minus pics become reversed.)
 $content .= "
     <script type='text/javascript'>
-            jQuery(document).ready(function(){                  
+            jQuery(document).ready(function(){   
+                                            MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
+
                 $('.dialogs').dialog({
                     autoOpen: false,
                     height: 'auto',
@@ -272,9 +286,15 @@ $content .= "
                     animated: 'fast',
                     collapsed: true
                 });
+                
+                $('#glossarycontent').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
                
                 $('#toccontent').hide(); 
                 $('#symbolcontent').hide();
+                $('#glossarycontent').hide();
                 $('#contactcontent').hide();
                 
                 $('#features').jshowoff({
@@ -295,7 +315,6 @@ $content .= "
                         $(this).hide();
                     }
                 });  
-                                MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
 
             });
     

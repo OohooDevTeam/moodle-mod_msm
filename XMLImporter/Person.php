@@ -86,7 +86,7 @@ class Person extends Element
      * @param int $position
      * @param String $type 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '', $type='')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '', $type='')
     {
         global $DB;
 

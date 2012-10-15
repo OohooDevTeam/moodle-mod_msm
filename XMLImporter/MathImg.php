@@ -67,7 +67,7 @@ class MathImg extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB, $CFG;
 
@@ -99,7 +99,7 @@ class MathImg extends Element
         if (!empty($this->src))
         {
             $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 
 
@@ -126,13 +126,13 @@ class MathImg extends Element
                     if (empty($sibling_id))
                     {
                         $imagearea = $this->imageareas[$imageareaString[1]];
-                        $imagearea->saveIntoDb($imagearea->position, $this->compid);
+                        $imagearea->saveIntoDb($imagearea->position, $msmid, $this->compid);
                         $sibling_id = $imagearea->compid;
                     }
                     else
                     {
                         $imagearea = $this->imageareas[$imageareaString[1]];
-                        $imagearea->saveIntoDb($imagearea->position, $this->compid, $sibling_id);
+                        $imagearea->saveIntoDb($imagearea->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $imagearea->compid;
                     }
             }

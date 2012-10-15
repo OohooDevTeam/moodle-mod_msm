@@ -161,7 +161,7 @@ class Block extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
 
@@ -263,9 +263,6 @@ class Block extends Element
                         if (!empty($this->defs[$defString[1]]->string_id))
                         {
                             $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
-//                            echo "string_id def";
-//                            print_object($this->defs[$defString[1]]);
-//                            print_object($defRecord);
                         }
                         else
                         {
@@ -277,13 +274,13 @@ class Block extends Element
                             if (empty($sibling_id))
                             {
                                 $def = $this->defs[$defString[1]];
-                                $def->saveIntoDb($def->position, $parentid);
+                                $def->saveIntoDb($def->position, $msmid, $parentid);
                                 $sibling_id = $def->compid;
                             }
                             else
                             {
                                 $def = $this->defs[$defString[1]];
-                                $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                                $def->saveIntoDb($def->position, $msmid, $parentid, $sibling_id);
                                 $sibling_id = $def->compid;
                             }
                         }
@@ -293,12 +290,12 @@ class Block extends Element
                             $deftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_def'))->id;
 
                             $defCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $defID, 'table_id' => $deftableID));
-                            $defCompID = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                            $defCompID = $this->insertToCompositor($defID, 'msm_def', $msmid, $parentid, $sibling_id);
                             $sibling_id = $defCompID;
 
                             foreach ($defCompRecords as $defCompRecord)
                             {
-                                $this->grabSubunitChilds($defCompRecord, $defCompID);
+                                $this->grabSubunitChilds($defCompRecord, $defCompID, $msmid);
                             }
                         }
                     }
@@ -315,13 +312,13 @@ class Block extends Element
                             if (empty($sibling_id))
                             {
                                 $theorem = $this->theorems[$theoremString[1]];
-                                $theorem->saveIntoDb($theorem->position, $parentid);
+                                $theorem->saveIntoDb($theorem->position, $msmid, $parentid);
                                 $sibling_id = $theorem->compid;
                             }
                             else
                             {
                                 $theorem = $this->theorems[$theoremString[1]];
-                                $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
+                                $theorem->saveIntoDb($theorem->position, $msmid, $parentid, $sibling_id);
                                 $sibling_id = $theorem->compid;
                             }
                         }
@@ -331,7 +328,7 @@ class Block extends Element
                             $theoremtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
 
                             $theoremCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $theoremID, 'table_id' => $theoremtableID));
-                            $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
+                            $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $msmid, $parentid, $sibling_id);
                             $sibling_id = $theoremCompID;
 
                             $parenttableid = $DB->get_record('msm_compositor', array('id' => $parentid))->table_id;
@@ -342,7 +339,7 @@ class Block extends Element
                             {
                                 foreach ($theoremCompRecords as $theoremCompRecord)
                                 {
-                                    $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                                    $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, $msmid);
                                 }
                             }
                             // if parent is not a subordinate/associate, this is a theorem element that needs to have associate...etc 
@@ -353,13 +350,13 @@ class Block extends Element
                                 if (empty($sibling_id))
                                 {
                                     $theorem = $this->theorems[$theoremString[1]];
-                                    $theorem->saveIntoDb($theorem->position, $parentid, '', $theoremCompID);
+                                    $theorem->saveIntoDb($theorem->position, $msmid, $parentid, '', $theoremCompID);
                                     $sibling_id = $theorem->compid;
                                 }
                                 else
                                 {
                                     $theorem = $this->theorems[$theoremString[1]];
-                                    $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id, $theoremCompID);
+                                    $theorem->saveIntoDb($theorem->position, $msmid, $parentid, $sibling_id, $theoremCompID);
                                     $sibling_id = $theorem->compid;
                                 }
                             }
@@ -386,13 +383,13 @@ class Block extends Element
                             if (empty($sibling_id))
                             {
                                 $comment = $this->comments[$commentString[1]];
-                                $comment->saveIntoDb($comment->position, $parentid);
+                                $comment->saveIntoDb($comment->position, $msmid, $parentid);
                                 $sibling_id = $comment->compid;
                             }
                             else
                             {
                                 $comment = $this->comments[$commentString[1]];
-                                $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                                $comment->saveIntoDb($comment->position, $msmid, $parentid, $sibling_id);
                                 $sibling_id = $comment->compid;
                             }
                         }
@@ -402,12 +399,12 @@ class Block extends Element
                             $commenttableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_comment'))->id;
 
                             $commentCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $commentID, 'table_id' => $commenttableID));
-                            $commentCompID = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                            $commentCompID = $this->insertToCompositor($commentID, 'msm_comment', $msmid, $parentid, $sibling_id);
                             $sibling_id = $commentCompID;
 
                             foreach ($commentCompRecords as $commentCompRecord)
                             {
-                                $this->grabSubunitChilds($commentCompRecord, $commentCompID);
+                                $this->grabSubunitChilds($commentCompRecord, $commentCompID, $msmid);
                             }
                         }
                     }
@@ -419,13 +416,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $parentid);
+                        $media->saveIntoDb($media->position, $msmid, $parentid);
                         $sibling_id = $media->compid;
                     }
                     else
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $parentid, $sibling_id);
+                        $media->saveIntoDb($media->position, $msmid, $parentid, $sibling_id);
                         $sibling_id = $media->compid;
                     }
                     break;
@@ -436,13 +433,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $para = $this->paras[$paraString[1]];
-                        $para->saveIntoDb($para->position, $parentid);
+                        $para->saveIntoDb($para->position, $msmid, $parentid);
                         $sibling_id = $para->compid;
                     }
                     else
                     {
                         $para = $this->paras[$paraString[1]];
-                        $para->saveIntoDb($para->position, $parentid, $sibling_id);
+                        $para->saveIntoDb($para->position, $msmid, $parentid, $sibling_id);
                         $sibling_id = $para->compid;
                     }
                     break;
@@ -453,13 +450,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $ol = $this->ols[$olString[1]];
-                        $ol->saveIntoDb($ol->position, $parentid);
+                        $ol->saveIntoDb($ol->position, $msmid, $parentid);
                         $sibling_id = $ol->compid;
                     }
                     else
                     {
                         $ol = $this->ols[$olString[1]];
-                        $ol->saveIntoDb($ol->position, $parentid, $sibling_id);
+                        $ol->saveIntoDb($ol->position, $msmid, $parentid, $sibling_id);
                         $sibling_id = $ol->compid;
                     }
                     break;
@@ -470,13 +467,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $ul = $this->uls[$ulString[1]];
-                        $ul->saveIntoDb($ul->position, $parentid);
+                        $ul->saveIntoDb($ul->position, $msmid, $parentid);
                         $sibling_id = $ul->compid;
                     }
                     else
                     {
                         $ul = $this->uls[$ulString[1]];
-                        $ul->saveIntoDb($ul->position, $parentid, $sibling_id);
+                        $ul->saveIntoDb($ul->position, $msmid, $parentid, $sibling_id);
                         $sibling_id = $ul->compid;
                     }
                     break;
@@ -487,13 +484,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $mathdisplay = $this->math_displays[$mathdisplayString[1]];
-                        $mathdisplay->saveIntoDb($mathdisplay->position, $parentid);
+                        $mathdisplay->saveIntoDb($mathdisplay->position, $msmid, $parentid);
                         $sibling_id = $mathdisplay->compid;
                     }
                     else
                     {
                         $mathdisplay = $this->math_displays[$mathdisplayString[1]];
-                        $mathdisplay->saveIntoDb($mathdisplay->position, $parentid, $sibling_id);
+                        $mathdisplay->saveIntoDb($mathdisplay->position, $msmid, $parentid, $sibling_id);
                         $sibling_id = $mathdisplay->compid;
                     }
                     break;
@@ -504,13 +501,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $matharray = $this->math_arrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $parentid);
+                        $matharray->saveIntoDb($matharray->position, $msmid, $parentid);
                         $sibling_id = $matharray->compid;
                     }
                     else
                     {
                         $matharray = $this->math_arrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $parentid, $sibling_id);
+                        $matharray->saveIntoDb($matharray->position, $msmid, $parentid, $sibling_id);
                         $sibling_id = $matharray->compid;
                     }
                     break;
@@ -520,13 +517,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $parentid);
+                        $table->saveIntoDb($table->position, $msmid, $parentid);
                         $sibling_id = $table->compid;
                     }
                     else
                     {
                         $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $parentid, $sibling_id);
+                        $table->saveIntoDb($table->position, $msmid, $parentid, $sibling_id);
                         $sibling_id = $table->compid;
                     }
                     break;

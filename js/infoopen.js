@@ -377,6 +377,34 @@ function infoopen(i) {
         });   
     });
     
+     $('#glossaryinfo-'+i).click(function(e) {  
+        $('#dialog-'+i).dialog('close');
+        $('#glossaryrefcontent-'+i).dialog(
+        {
+            modal:true,
+            width: 840            
+        });
+        $('#glossaryrefcontent-'+i).dialog('open').css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        // to close the modal dialog box by clicking the outside of the box
+        $('.ui-widget-overlay').click(function() {
+            $('#glossaryrefcontent-'+i).dialog('close'); 
+        });
+    });   
+                
+    $('#glossaryinfo-'+i).ready(function(e){
+        $('#glossaryinfo-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+            $('#dialog-'+i).dialog('open');
+        });
+         
+        $('#glossaryinfo-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });   
+    });
+    
    
 }
 

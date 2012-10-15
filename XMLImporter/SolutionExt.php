@@ -53,7 +53,7 @@ class SolutionExt extends Element
         }
     }
 
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -61,7 +61,7 @@ class SolutionExt extends Element
         $data->ext_name = $this->ext_name;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPosition = array();
         foreach ($this->steps as $key => $step)
@@ -75,7 +75,7 @@ class SolutionExt extends Element
         {
             $stepString = split('-', $element);
 
-            $this->steps[$stepString[1]]->saveIntoDb($this->steps[$stepString[1]]->position, $this->compid);
+            $this->steps[$stepString[1]]->saveIntoDb($this->steps[$stepString[1]]->position, $msmid, $this->compid);
         }
     }
 

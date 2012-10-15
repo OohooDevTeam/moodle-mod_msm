@@ -61,7 +61,7 @@ class Proof extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -72,7 +72,7 @@ class Proof extends Element
         $data->proof_type = $this->proof_type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         foreach ($this->proof_blocks as $proof_block)
         {
@@ -80,12 +80,12 @@ class Proof extends Element
 
             if (empty($sibling_id))
             {
-                $proof_block->saveIntoDb($proof_block->position, $this->compid);
+                $proof_block->saveIntoDb($proof_block->position, $msmid, $this->compid);
                 $sibling_id = $proof_block->compid;
             }
             else
             {
-                $proof_block->saveIntoDb($proof_block->position, $this->compid, $sibling_id);
+                $proof_block->saveIntoDb($proof_block->position, $msmid, $this->compid, $sibling_id);
                 $sibling_id = $proof_block->compid;
             }
         }

@@ -737,12 +737,15 @@ abstract class Element
      *                              was the parent element in the XML file.
      * @param int $siblingid        Represents the record ID from the compositor tables that 
      *                              was the previous sibling element in the XML file.
+     * @param int $msmid            Represents the record ID from the msm table which defines the
+     *                              moodle module instance
      */
-    function insertToCompositor($elementid, $tablename, $parentid = '', $siblingid = '')
+    function insertToCompositor($elementid, $tablename, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
 
         $compdata = new stdClass();
+        $compdata->msm_id = $msmid;
         $compdata->unit_id = $elementid;
         $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => $tablename))->id;
         $compdata->parent_id = $parentid;
@@ -763,7 +766,7 @@ abstract class Element
      * @param int $currentUnitID   The reference element that just has been read as a duplicate which needs alll its child element ids to be copied
      * @return boolean             returns false if no child has been copied/ returns true if child elements have been copied
      */
-    function grabSubunitChilds($elementRecord, $currentUnitID, $isRef = false)
+    function grabSubunitChilds($elementRecord, $currentUnitID, $msmid, $isRef = false)
     {
         global $DB;
         
@@ -790,9 +793,9 @@ abstract class Element
                 foreach ($childElements as $child)
                 {
                     $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
-                    $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
+                    $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $msmid, $currentUnitID, $childSibling);
                     $childSibling = $childCompID;
-                    $this->grabSubunitChilds($child, $childCompID);
+                    $this->grabSubunitChilds($child, $childCompID, $msmid);
                 }
                 return true;
             }
@@ -833,9 +836,9 @@ abstract class Element
                         if ($childtablename == 'msm_statement_theorem')
                         {
 //                            echo "child is statementTheorem";
-                            $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
+                            $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $msmid, $currentUnitID, $childSibling);
                             $childSibling = $childCompID;
-                            $this->grabSubunitChilds($child, $childCompID, false);
+                            $this->grabSubunitChilds($child, $childCompID, $msmid, false);
                         }
                     }
                     return true;

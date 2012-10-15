@@ -64,7 +64,7 @@ class MathArray extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -72,7 +72,7 @@ class MathArray extends Element
         $data->no_column = $this->no_column;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
         $elementPosition = array();
         $sibling_id = null;
@@ -89,12 +89,12 @@ class MathArray extends Element
 
             if(empty($sibling_id))
             {
-               $this->rows[$rowString[1]]->saveIntoDb($this->rows[$rowString[1]]->position, $this->compid);
+               $this->rows[$rowString[1]]->saveIntoDb($this->rows[$rowString[1]]->position, $msmid, $this->compid);
                $sibling_id = $this->rows[$rowString[1]]->compid;
             }
             else
             {
-                $this->rows[$rowString[1]]->saveIntoDb($this->rows[$rowString[1]]->position, $this->compid, $sibling_id);
+                $this->rows[$rowString[1]]->saveIntoDb($this->rows[$rowString[1]]->position, $msmid, $this->compid, $sibling_id);
                $sibling_id = $this->rows[$rowString[1]]->compid;
             }
            

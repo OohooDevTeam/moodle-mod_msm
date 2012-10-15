@@ -118,7 +118,7 @@ class MathComment extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
 
@@ -137,13 +137,13 @@ class MathComment extends Element
                 $data->comment_content = $content;
 
                 $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 
         $elementPositions = array();
@@ -226,13 +226,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $associate = $this->associates[$associateString[1]];
-                        $associate->saveIntoDb($associate->position, $this->compid);
+                        $associate->saveIntoDb($associate->position, $msmid, $this->compid);
                         $sibling_id = $associate->compid;
                     }
                     else
                     {
                         $associate = $this->associates[$associateString[1]];
-                        $associate->saveIntoDb($associate->position, $this->compid, $sibling_id);
+                        $associate->saveIntoDb($associate->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $associate->compid;
                     }
                     break;
@@ -243,13 +243,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $this->compid);
+                        $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid);
                         $sibling_id = $subordinate->compid;
                     }
                     else
                     {
                         $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
+                        $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
                     }
                     break;
@@ -260,13 +260,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $indexauthor = $this->indexauthors[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid);
+                        $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid);
                         $sibling_id = $indexauthor->compid;
                     }
                     else
                     {
                         $indexauthor = $this->indexauthors[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid, $sibling_id);
+                        $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexauthor->compid;
                     }
                     break;
@@ -277,13 +277,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid);
+                        $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid);
                         $sibling_id = $indexsymbol->compid;
                     }
                     else
                     {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid, $sibling_id);
+                        $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexsymbol->compid;
                     }
                     break;
@@ -294,13 +294,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid);
+                        $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid);
                         $sibling_id = $indexglossary->compid;
                     }
                     else
                     {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid, $sibling_id);
+                        $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexglossary->compid;
                     }
                     break;
@@ -311,13 +311,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $this->compid);
+                        $media->saveIntoDb($media->position, $msmid, $this->compid);
                         $sibling_id = $media->compid;
                     }
                     else
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $this->compid, $sibling_id);
+                        $media->saveIntoDb($media->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
                     }
                     break;
@@ -328,13 +328,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $matharray = $this->matharrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $matharray->saveIntoDb($matharray->position, $msmid, $this->compid);
                         $sibling_id = $matharray->compid;
                     }
                     else
                     {
                         $matharray = $this->matharrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $matharray->saveIntoDb($matharray->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $matharray->compid;
                     }
                     break;
@@ -345,13 +345,13 @@ class MathComment extends Element
                     if (empty($sibling_id))
                     {
                         $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $this->compid);
+                        $table->saveIntoDb($table->position, $msmid, $this->compid);
                         $sibling_id = $table->compid;
                     }
                     else
                     {
                         $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $table->saveIntoDb($table->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $table->compid;
                     }
                     break;

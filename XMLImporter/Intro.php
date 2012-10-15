@@ -57,7 +57,7 @@ class Intro extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -66,7 +66,7 @@ class Intro extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
 
         $elementPosition = array();
@@ -81,7 +81,7 @@ class Intro extends Element
         {
             $blockString = split('-', $element);
 
-            $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $this->compid);
+            $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $msmid, $this->compid);
         }
     }
     

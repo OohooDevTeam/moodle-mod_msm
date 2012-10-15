@@ -78,7 +78,7 @@ class Media extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -88,7 +88,7 @@ class Media extends Element
         $data->media_type = $this->type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();
         $sibling_id = null;
@@ -120,13 +120,13 @@ class Media extends Element
                     if (empty($sibling_id))
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $this->compid);
+                        $info->saveIntoDb($info->position, $msmid, $this->compid);
                         $sibling_id = $info->compid;
                     }
                     else
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $this->compid, $sibling_id);
+                        $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $info->compid;
                     }
                     break;
@@ -137,13 +137,13 @@ class Media extends Element
                     if (empty($sibling_id))
                     {
                         $image = $this->imgs[$imgString[1]];
-                        $image->saveIntoDb($image->position, $this->compid);
+                        $image->saveIntoDb($image->position, $msmid, $this->compid);
                         $sibling_id = $image->compid;
                     }
                     else
                     {
                         $image = $this->imgs[$imgString[1]];
-                        $image->saveIntoDb($image->position, $this->compid, $sibling_id);
+                        $image->saveIntoDb($image->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $image->compid;
                     }
                     break;

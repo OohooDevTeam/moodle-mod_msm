@@ -13,6 +13,7 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
  * *************************************************************************
  * ************************************************************************ */
+require_once('GlossaryNode.php');
 
 /**
  * Description of Index
@@ -117,7 +118,7 @@ class MathIndex extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -156,12 +157,12 @@ class MathIndex extends Element
             if (empty($recordID))
             {
                 $this->id = $DB->insert_record($this->symboltable, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->symboltable, $parentid, $sibling_id);
+                $this->compid = $this->insertToCompositor($this->id, $this->symboltable, $msmid, $parentid, $sibling_id);
                 $sibling_id = $this->compid;
             }
             else
             {
-                $this->compid = $this->insertToCompositor($recordID, $this->symboltable, $parentid, $sibling_id);
+                $this->compid = $this->insertToCompositor($recordID, $this->symboltable, $msmid, $parentid, $sibling_id);
                 $sibling_id = $this->compid;
             }
         }
@@ -221,14 +222,14 @@ class MathIndex extends Element
 
                 if (empty($recordID))
                 {
-                    $name->saveIntoDb($name->position, 'index');
-                    $name->compid = $this->insertToCompositor($name->id, $name->tablename, $parentid, $siblingid);
+                    $name->saveIntoDb($name->position, $msmid, '', '', 'index');
+                    $name->compid = $this->insertToCompositor($name->id, $name->tablename, $msmid, $parentid, $siblingid);
                     $sibling_id = $name->compid;
                     $this->compid = $name->compid;
                 }
                 else
                 {
-                    $name->compid = $this->insertToCompositor($recordID, $name->tablename, $parentid, $siblingid);
+                    $name->compid = $this->insertToCompositor($recordID, $name->tablename, $msmid, $parentid, $siblingid);
                     $sibling_id = $name->compid;
                     $this->compid = $name->compid;
                 }
@@ -269,12 +270,12 @@ class MathIndex extends Element
             if (empty($recordID))
             {
                 $this->id = $DB->insert_record($this->glossarytable, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $parentid, $siblingid);
+                $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $msmid, $parentid, $siblingid);
                 $sibling_id = $this->compid;
             }
             else
             {
-                $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $parentid, $siblingid);
+                $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $msmid, $parentid, $siblingid);
                 $sibling_id = $this->compid;
             }
         }
@@ -307,11 +308,11 @@ class MathIndex extends Element
 
             if (empty($recordID))
             {
-                $info->saveIntoDb($info->position, $this->compid);
+                $info->saveIntoDb($info->position, $msmid, $this->compid);
             }
             else
             {
-                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $parentid, $sibling_id);
+                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $msmid, $parentid, $sibling_id);
                 $sibling_id = $info->compid;
             }
         }
@@ -322,20 +323,91 @@ class MathIndex extends Element
      * @global moodle_database $DB
      * @return \MathIndex
      */
-//    function loadGlossaryFromDb()
-//    {
-//        global $DB;
-//
-//        // grabs all the records in index_glossary in alphabetical order
-//        $sql = 'SELECT * FROM mdl_msm_index_glossary ORDER BY term ASC';
-//
-//        $allGlossaryRecords = $DB->get_records_sql($sql);
-////
-////        print_object($allGlossaryRecords);
-////        die;
-//
-//        return $this;
-//    }
+    function loadGlossaryFromDb($msmid)
+    {
+        global $DB;
+
+        $glossaryTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_glossary'))->id;
+        $glossaryCompRecords = $DB->get_records('msm_compositor', array('table_id' => $glossaryTable, 'msm_id' => $msmid), 'unit_id');
+
+        $prevUnitId = 0;
+        $rootNode = new GlossaryNode();
+        $rootNode->text = 'root';
+        $rootNode->depth = 0;
+
+        foreach ($glossaryCompRecords as $glossaryComp)
+        {
+            if ($prevUnitId == $glossaryComp->unit_id)
+            {
+                // only processing the first occurence of the specified glofssary record
+                continue;
+            }
+            else
+            {
+                $glossaryUnit = $DB->get_record('msm_index_glossary', array('id' => $glossaryComp->unit_id));
+
+                $childElement = $DB->get_record('msm_compositor', array('parent_id' => $glossaryComp->id));
+
+                $infotable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_info'))->id;
+
+                if (!empty($childElement))
+                {
+                    if ($childElement->table_id == $infotable)
+                    {
+                        $info = new MathInfo();
+                        $info->loadFromDb($childElement->unit_id, $childElement->id);
+                    }
+                }
+
+                $termpath = explode('/', $glossaryUnit->term);
+
+                $termPathLength = sizeof($termpath);
+
+                if (isset($info))
+                {
+                    $this->createTree($info, $rootNode, $termPathLength, $termpath, 1);
+                }
+            }
+            $prevUnitId = $glossaryComp->unit_id;
+        }
+
+        return $rootNode;
+    }
+
+    function createTree($child, $parentNode, $termLength, $termArray, $index)
+    {
+        if ($parentNode->text != $termArray[$index - 1])
+        {
+            if ($termLength == 2)
+            {
+                $childNode = new GlossaryNode();
+                $childNode->depth = $index;
+                $childNode->text = trim($termArray[$index - 1]);
+                $parentNode->addChild($childNode);
+
+                if (!empty($child))
+                {
+                    $childNode->children[] = $child;
+                }
+            }
+            else if ($termLength > 2)
+            {
+                $childNode = new GlossaryNode();
+                $childNode->depth = $index;
+                $childNode->text = trim($termArray[$index - 1]);
+                $parentNode->addChild($childNode);
+
+                $this->createTree($child, $childNode, $termLength - 1, $termArray, $index + 1);
+            }
+        }
+        else
+        {
+            foreach ($parentNode->children as $childNode)
+            {
+                $this->createTree($child, $childNode, $termLength - 1, $termArray, $index + 1);
+            }
+        }
+    }
 
     function loadSymbolFromDb($id, $compid)
     {
@@ -419,13 +491,32 @@ class MathIndex extends Element
         return $this;
     }
 
-    function displayGlossary()
+    function displayGlossary($glossaryTree)
     {
         global $CFG;
-
         $content = '';
 
-
+        foreach ($glossaryTree->children as $term)
+        {
+            if (!empty($term->children))
+            {
+                if (get_class($term->children[0]) == 'MathInfo')
+                {
+                    $content .= "<li><span>" . $term->text . "     </span><a id='glossaryinfo-" . $term->children[0]->compid . "' style='cursor:pointer;' onmouseover='infoopen(" . $term->children[0]->compid . ")'><img src='$CFG->wwwroot/mod/msm/pix/info.png'/></a></li>";
+                    $content .= $term->children[0]->displayhtml();
+                }
+                else
+                {
+                    $content .= "<ul>";
+                    $content .= $this->displayGlossary($term);
+                    $content .= "</ul>";
+                }
+            }
+            else
+            {
+                $content .= "<li><span>" . $term->text . "     </span></li>";
+            }
+        }
         return $content;
     }
 
@@ -456,10 +547,10 @@ class MathIndex extends Element
         return $content;
     }
 
-    function makeSymbolPanel()
+    function makeSymbolPanel($msmid)
     {
         global $DB;
-        
+
         $content = '';
 
         $content .= "<div id='symbolpanel' class='panel'>";
@@ -471,13 +562,37 @@ class MathIndex extends Element
         $symbolTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
         foreach ($symbolUnitRecords as $symbolRecord)
         {
-            $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id));
+            $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id, 'msm_id' => $msmid));
             $firstitem = array_shift(array_values($symbolRecords));
 
             $this->loadSymbolFromDb($firstitem->unit_id, $firstitem->id);
 
             $content .= $this->displaySymbol();
         }
+
+        $content .= "</ul>";
+        $content .="</div>"; // end of slidepanelcontent
+        $content .= "</div>"; // end of panel
+
+        return $content;
+    }
+
+    function makeGlossaryPanel($msmid)
+    {
+        global $DB;
+
+        $content = '';
+
+        $content .= "<div id='glossarypanel' class='panel'>";
+        $content .="<div class='slidepanelcontent' id='glossarycontent'>";
+        $content .= "<h3> G L O S S A R Y </h3>";
+        $content .= '<ul id="glossaryindex" class="treeview-red">';
+
+        $glossaryTree = $this->loadGlossaryFromDb($msmid);
+        
+        print_object($glossaryTree);
+
+        $content .= $this->displayGlossary($glossaryTree);
 
         $content .= "</ul>";
         $content .="</div>"; // end of slidepanelcontent

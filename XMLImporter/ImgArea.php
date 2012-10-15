@@ -98,7 +98,7 @@ class ImgArea extends Element
         }
     }
 
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
 
@@ -107,7 +107,7 @@ class ImgArea extends Element
         $data->coordinates = $this->coords;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();
         $sibling_id = null;
@@ -172,13 +172,13 @@ class ImgArea extends Element
                     if (empty($sibling_id))
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $this->compid);
+                        $info->saveIntoDb($info->position, $msmid, $this->compid);
                         $sibling_id = $info->compid;
                     }
                     else
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $this->compid, $sibling_id);
+                        $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $info->compid;
                     }
                     break;
@@ -189,12 +189,12 @@ class ImgArea extends Element
                     if (empty($sibling_id))
                     {
                         $companion = $this->companions[$companionString[1]];
-                        $companion->saveIntoDb($companion->position, $this->compid);
+                        $companion->saveIntoDb($companion->position, $msmid, $this->compid);
                     }
                     else
                     {
                         $companion = $this->companions[$companionString[1]];
-                        $companion->saveIntoDb($companion->position, $this->compid, $sibling_id);
+                        $companion->saveIntoDb($companion->position, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -204,12 +204,12 @@ class ImgArea extends Element
                     if (empty($sibling_id))
                     {
                         $crossref = $this->crossrefs[$crossrefString[1]];
-                        $crossref->saveIntoDb($crossref->position, $this->compid);
+                        $crossref->saveIntoDb($crossref->position, $msmid, $this->compid);
                     }
                     else
                     {
                         $crossref = $this->crossrefs[$crossrefString[1]];
-                        $crossref->saveIntoDb($crossref->position, $this->compid, $sibling_id);
+                        $crossref->saveIntoDb($crossref->position, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -219,12 +219,12 @@ class ImgArea extends Element
                     if (empty($sibling_id))
                     {
                         $externalref = $this->external_refs[$externalrefString[1]];
-                        $externalref->saveIntoDb($externalref->position, $this->compid);
+                        $externalref->saveIntoDb($externalref->position, $msmid, $this->compid);
                     }
                     else
                     {
                         $externalref = $this->external_refs[$externalrefString[1]];
-                        $externalref->saveIntoDb($externalref->position, $this->compid, $sibling_id);
+                        $externalref->saveIntoDb($externalref->position, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -234,12 +234,12 @@ class ImgArea extends Element
                     if (empty($sibling_id))
                     {
                         $externallink = $this->external_links[$externallinkString[1]];
-                        $externallink->saveIntoDb($externallink->position, $this->compid);
+                        $externallink->saveIntoDb($externallink->position, $msmid, $this->compid);
                     }
                     else
                     {
                         $externallink = $this->external_links[$externallinkString[1]];
-                        $externallink->saveIntoDb($externallink->position, $this->compid, $sibling_id);
+                        $externallink->saveIntoDb($externallink->position, $msmid, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -249,12 +249,12 @@ class ImgArea extends Element
                     if (empty($sibling_id))
                     {
                         $cite = $this->cites[$citeString[1]];
-                        $cite->saveIntoDb($cite->position, $this->compid);
+                        $cite->saveIntoDb($cite->position, $msmid, $this->compid);
                     }
                     else
                     {
                         $cite = $this->cites[$citeString[1]];
-                        $cite->saveIntoDb($cite->position, $this->compid, $sibling_id);
+                        $cite->saveIntoDb($cite->position, $msmid, $this->compid, $sibling_id);
                     }
                     break;
             }

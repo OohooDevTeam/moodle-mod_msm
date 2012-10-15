@@ -76,7 +76,7 @@ class ApproachExt extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -88,7 +88,7 @@ class ApproachExt extends Element
         $data->ext_name = $this->ext_name;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
          $elementPositions = array();
         $sibling_id = null;
@@ -121,13 +121,13 @@ class ApproachExt extends Element
                     if (empty($sibling_id))
                     {
                         $answerexercise = $this->answer_exercises[$answerexerciseString[1]];
-                        $answerexercise->saveIntoDb($answerexercise->position, $this->compid);
+                        $answerexercise->saveIntoDb($answerexercise->position, $msmid, $this->compid);
                         $sibling_id = $answerexercise->compid;
                     }
                     else
                     {
                         $answerexercise = $this->answer_exercises[$answerexerciseString[1]];
-                        $answerexercise->saveIntoDb($answerexercise->position, $this->compid, $sibling_id);
+                        $answerexercise->saveIntoDb($answerexercise->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $answerexercise->compid;
                     }
                     break;
@@ -138,13 +138,13 @@ class ApproachExt extends Element
                     if (empty($sibling_id))
                     {
                         $solutionext = $this->solution_exts[$solutionextString[1]];
-                        $solutionext->saveIntoDb($solutionext->position, $this->compid);
+                        $solutionext->saveIntoDb($solutionext->position, $msmid, $this->compid);
                         $sibling_id = $solutionext->compid;
                     }
                     else
                     {
                         $solutionext = $this->solution_exts[$solutionextString[1]];
-                        $solutionext->saveIntoDb($solutionext->position, $this->compid, $sibling_id);
+                        $solutionext->saveIntoDb($solutionext->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $solutionext->compid;
                     }
                     break;

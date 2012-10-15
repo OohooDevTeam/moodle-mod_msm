@@ -58,7 +58,7 @@ class ExternalLink extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {        
         global $DB;
         $data = new stdClass();
@@ -67,7 +67,7 @@ class ExternalLink extends Element
         $data->target =$this->target;
         
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
         $elementPosition = array();
         foreach ($this->infos as $key => $info)
@@ -81,7 +81,7 @@ class ExternalLink extends Element
         {
             $infoString = split('-', $element);
 
-            $this->infos[$infoString[1]]->saveIntoDb($this->infos[$infoString[1]]->position, $this->compid);
+            $this->infos[$infoString[1]]->saveIntoDb($this->infos[$infoString[1]]->position, $msmid, $this->compid);
         }
         
     }
