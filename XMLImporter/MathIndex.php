@@ -76,7 +76,7 @@ class MathIndex extends Element
                 foreach ($terms as $t)
                 {
                     $term = $this->getContent($t);
-                    $string = $string . $term . '/';
+                    $string = $string . trim($term) . '/';
                     $this->term = $string;
                 }
 
@@ -223,13 +223,13 @@ class MathIndex extends Element
                 if (empty($recordID))
                 {
                     $name->saveIntoDb($name->position, $msmid, '', '', 'index');
-                    $name->compid = $this->insertToCompositor($name->id, $name->tablename, $msmid, $parentid, $siblingid);
+                    $name->compid = $this->insertToCompositor($name->id, $name->tablename, $msmid, $parentid, $sibling_id);
                     $sibling_id = $name->compid;
                     $this->compid = $name->compid;
                 }
                 else
                 {
-                    $name->compid = $this->insertToCompositor($recordID, $name->tablename, $msmid, $parentid, $siblingid);
+                    $name->compid = $this->insertToCompositor($recordID, $name->tablename, $msmid, $parentid, $sibling_id);
                     $sibling_id = $name->compid;
                     $this->compid = $name->compid;
                 }
@@ -270,12 +270,12 @@ class MathIndex extends Element
             if (empty($recordID))
             {
                 $this->id = $DB->insert_record($this->glossarytable, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $msmid, $parentid, $siblingid);
+                $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $msmid, $parentid, $sibling_id);
                 $sibling_id = $this->compid;
             }
             else
             {
-                $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $msmid, $parentid, $siblingid);
+                $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $msmid, $parentid, $sibling_id);
                 $sibling_id = $this->compid;
             }
         }
@@ -361,56 +361,112 @@ class MathIndex extends Element
 
                 $termpath = explode('/', $glossaryUnit->term);
 
-                $termPathLength = sizeof($termpath);
-
                 if (isset($info))
                 {
-                    $this->createTree($info, $rootNode, $termPathLength, $termpath, 1);
+                    $this->createTree($info, $rootNode, $termpath);
                 }
             }
             $prevUnitId = $glossaryComp->unit_id;
         }
 
+        $this->sortTree($rootNode);
         return $rootNode;
     }
 
-    function createTree($child, $parentNode, $termLength, $termArray, $index)
+    /**
+     * 
+     * @param GlossaryNode $finalTree       represents the root element of the tree created in loadGlossaryFromDb function
+     *                                      using createTree method.
+     */
+    function sortTree($finalTree)
     {
-        if ($parentNode->text != $termArray[$index - 1])
+        $comparisonArray = array();
+        foreach ($finalTree->children as $child)
         {
-            if ($termLength == 2)
-            {
-                $childNode = new GlossaryNode();
-                $childNode->depth = $index;
-                $childNode->text = trim($termArray[$index - 1]);
-                $parentNode->addChild($childNode);
+            $comparisonArray[] = strtolower($child->text);
+        }
 
-                if (!empty($child))
+        sort($comparisonArray);
+
+        foreach ($comparisonArray as $key => $text)
+        {
+            foreach ($finalTree->children as $index => $subNode)
+            {
+                if (strtolower($subNode->text) == $text)
                 {
-                    $childNode->children[] = $child;
+                    $temp = $finalTree->children[$key];
+                    $finalTree->children[$key] = $subNode;
+                    $finalTree->children[$index] = $temp;
                 }
             }
-            else if ($termLength > 2)
+        }
+    }
+
+    function createTree($child, $parentNode, $termArray)
+    {
+        $termLength = sizeof($termArray);
+
+        if (!empty($parentNode->children))
+        {
+            $term = array_shift($termArray);
+
+            $foundCatergory = false;
+
+            foreach ($parentNode->children as $parentChild)
+            {
+                if ($parentChild->text == $term)
+                {
+                    $this->createTree($child, $parentChild, $termArray);
+                    $foundCatergory = true;
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            if (!$foundCatergory)
             {
                 $childNode = new GlossaryNode();
-                $childNode->depth = $index;
-                $childNode->text = trim($termArray[$index - 1]);
-                $parentNode->addChild($childNode);
+                $childNode->text = $term;
+                $parentNode->children[] = $childNode;
 
-                $this->createTree($child, $childNode, $termLength - 1, $termArray, $index + 1);
+                $this->createTree($child, $childNode, $termArray);
             }
         }
         else
         {
-            echo "entered";
-            if (!empty($parentNode->children))
+            if ($termLength >= 1)
             {
-                foreach ($parentNode->children as $descendent)
+                $term = array_shift($termArray);
+
+                if (!empty($term))
                 {
-                    $this->createTree($child, $descendent, $termLength, $termArray, $index);
+                    if ($parentNode->text != $term)
+                    {
+                        $childNode = new GlossaryNode();
+                        $childNode->text = $term;
+                        $parentNode->children[] = $childNode;
+
+                        $this->createTree($child, $childNode, $termArray);
+                    }
+                    else
+                    {
+                        $parentNode->infos[] = $child;
+                    }
+                }
+                else
+                {
+                    $parentNode->infos[] = $child;
                 }
             }
+            else
+            {
+                return false;
+            }
         }
+        $child = null;
     }
 
     function loadSymbolFromDb($id, $compid)
@@ -500,27 +556,51 @@ class MathIndex extends Element
         global $CFG;
         $content = '';
 
-        foreach ($glossaryTree->children as $term)
+        foreach ($glossaryTree->children as $key => $term)
         {
-            if (!empty($term->children))
+            if (!empty($term->text))
             {
-                if (get_class($term->children[0]) == 'MathInfo')
+                // it has a info box associated with the word
+                if (sizeof($term->infos) > 0)
                 {
-                    $content .= "<li><span>" . $term->text . "     </span><a id='glossaryinfo-" . $term->children[0]->compid . "' style='cursor:pointer;' onmouseover='infoopen(" . $term->children[0]->compid . ")'><img src='$CFG->wwwroot/mod/msm/pix/info.png'/></a></li>";
-                    $content .= $term->children[0]->displayhtml();
+                    if(sizeof($term->infos) > 1)
+                    {
+                        print_object($term);
+                    }
+                    // this word has a child category
+                    if (sizeof($term->children) > 0)
+                    {
+                        $content .= "<li><span>" . $term->text . "     </span><a id='glossaryinfo-" . $term->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $term->infos[0]->compid . ")'>i</a>";
+                        $content .= "<ul>";
+                        $content .= $this->displayGlossary($term);
+                        $content .= "</ul>";
+                        $content .= "<li>";
+                        $content .= $term->infos[0]->displayhtml();
+                    }
+                    // empty children
+                    else
+                    {
+                        $content .= "<li><span>" . $term->text . "   </span><a id='glossaryinfo-" . $term->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $term->infos[0]->compid . ")'>i</a></li>";
+                        $content .= $term->infos[0]->displayhtml();
+                    }
                 }
-                else
+                else // no info box associated with this word
                 {
-                    $content .= "<li><span>" . $term->text . "     </span>";
-                    $content .= "<ul>";
-                    $content .= $this->displayGlossary($term);
-                    $content .= "</ul>";
-                    $content .= "</li>";
+                    // this word has a child category
+                    if (sizeof($term->children) > 0)
+                    {
+                        $content .= "<li><span>" . $term->text . "</span>";
+                        $content .= "<ul>";
+                        $content .= $this->displayGlossary($term);
+                        $content .= "</ul>";
+                        $content .= "<li>";
+                    }
+                    // empty children
+                    else
+                    {
+                        $content .= "<li><span>" . $term->text . "</span></li>";
+                    }
                 }
-            }
-            else
-            {
-                $content .= "<li><span>" . $term->text . "     </span></li>";
             }
         }
         return $content;
@@ -534,21 +614,21 @@ class MathIndex extends Element
 
         if (sizeof($this->infos) != 0)
         {
-            $content .= "<li><span>" . $this->symbol . "     </span><a id='symbolinfo-" . $this->infos[0]->compid . "' style='cursor:pointer;' onmouseover='infoopen(" . $this->infos[0]->compid . ")'><img src='$CFG->wwwroot/mod/msm/pix/info.png'/></a></li>";
+            $content .= "<li><span>" . $this->symbol . "     </span><a id='symbolinfo-" . $this->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $this->infos[0]->compid . ")'>i</a></li>";
 
             $content .= $this->infos[0]->displayhtml();
+
+            $content .= "<div class='symbolrefcontent' id='symbolrefcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
+            foreach ($this->parents as $parent)
+            {
+                $content .= $parent->displayhtml();
+            }
+            $content .= "</div>";
         }
         else
         {
             $content .= "<li><span>" . $this->symbol . "</span></li>";
         }
-
-        $content .= "<div class='symbolrefcontent' id='symbolrefcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
-        foreach ($this->parents as $parent)
-        {
-            $content .= $parent->displayhtml();
-        }
-        $content .= "</div>";
 
         return $content;
     }
@@ -559,8 +639,6 @@ class MathIndex extends Element
 
         $content = '';
 
-        $content .= "<div id='symbolpanel' class='panel'>";
-        $content .="<div class='slidepanelcontent' id='symbolcontent'>";
         $content .= "<h3> S Y M B O L S </h3>";
         $content .= '<ul id="symbolindex" class="treeview-red">';
 
@@ -577,8 +655,15 @@ class MathIndex extends Element
         }
 
         $content .= "</ul>";
-        $content .="</div>"; // end of slidepanelcontent
-        $content .= "</div>"; // end of panel
+
+        $content .= "<script type='text/javascript'>     
+                    $(document).ready(function() {
+                        $('#symbolcontent').treeview({
+                          animated: 'fast',
+                          collapsed: true
+                        });
+                    });                        
+                    </script>";
 
         return $content;
     }
@@ -588,9 +673,6 @@ class MathIndex extends Element
         global $DB;
 
         $content = '';
-
-        $content .= "<div id='glossarypanel' class='panel'>";
-        $content .="<div class='slidepanelcontent' id='glossarycontent'>";
         $content .= "<h3> G L O S S A R Y </h3>";
         $content .= '<ul id="glossaryindex" class="treeview-red">';
 
@@ -601,8 +683,16 @@ class MathIndex extends Element
         $content .= $this->displayGlossary($glossaryTree);
 
         $content .= "</ul>";
-        $content .="</div>"; // end of slidepanelcontent
-        $content .= "</div>"; // end of panel
+
+        $content .= "<script type='text/javascript'>     
+                    $(document).ready(function() {
+                        $('#glossarycontent').treeview({
+                          animated: 'fast',
+                          collapsed: true
+                        });
+                    });
+                        
+                    </script>";
 
         return $content;
     }

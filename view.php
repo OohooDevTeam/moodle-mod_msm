@@ -116,14 +116,13 @@ echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jquery.treeview.css
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'></script>";
-
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/lib/jquery.cookie.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
 
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
 
@@ -202,52 +201,17 @@ $tableofcontents = new TableOfContents();
 $content .= $tableofcontents->makeToc();
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
-$symbolfilename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
-if (file_exists($symbolfilename))
-{
-    $symbolfile = fopen($symbolfilename, 'r');
-    $content .= fread($symbolfile, filesize($symbolfilename));
-    fclose($symbolfile);
-}
-else
-{
-    echo "file " . $symbolfilename . "does not exist.";
-}
 
-$glossryfilename = $msm->course . '-' . $msm->id . '-msm_glossaryindex.html';
-if (file_exists($glossryfilename))
-{
-    $glossaryfile = fopen($glossryfilename, 'r');
-    $content .= fread($glossaryfile, filesize($glossryfilename));
-    fclose($glossaryfile);
-}
-else
-{
-    echo "file " . $glossryfilename . "does not exist.";
-}
+$content .= "<div id='symbolpanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='symbolcontent'>";
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
 
+$content .= "<div id='glossarypanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='glossarycontent'>";
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
 
-//$content .= "<div id='glossarypanel' class='panel'>";
-//$content .="<div class='slidepanelcontent' id='glossarycontent'>";
-//$content .= "<h3> G L O S S A R Y </h3>";
-////$content .= '<ul id="glossaryindex" class="treeview-red">';
-//
-////$symbolUnitRecords = $DB->get_records('msm_index_symbol');
-////$symbolTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
-////foreach ($symbolUnitRecords as $symbolRecord)
-////{    
-////    $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id));
-////    $firstitem = array_shift(array_values($symbolRecords));
-////   
-//    $glossaryIndex = new MathIndex();
-//    $glossaryIndex->loadGlossaryFromDb();
-////   
-////    $content .= $symbolIndex->displaySymbol();
-////}
-//
-////$content .= "</ul>";
-//$content .="</div>"; // end of slidepanelcontent
-//$content .= "</div>"; // end of panel
 
 $content .= "<div id='contactpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='contactcontent'>";
@@ -260,42 +224,29 @@ $content .= "</div>"; // end of panel
 
 $content .= "<div class='loadingscreen'></div>";
 
+$content .= '<input id="instanceid" type="text" name="moduleinfo" value="' . $msm->course . ',' . $msm->id . '" style="visibility:hidden;"/>';
+
 // need to have it in this order or dialog breaks
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
 //** make sure the sliding panel hiding method comes AFTER treeview method declaration!! (otherwise, it gives a bug 
 // when the page is refreshed.  The plus/minus pics become reversed.)
 $content .= "
     <script type='text/javascript'>
-            jQuery(document).ready(function(){   
-                                            MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
-
+            jQuery(document).ready(function(){
+            $('#tableofcontent').treeview({
+                    persist: 'cookie',
+                    animated: 'fast',
+                    collapsed: true,
+                    control: '#treecontrol'
+                });              
+               
+                $('.slidepanelcontent').hide();
+                
                 $('.dialogs').dialog({
                     autoOpen: false,
                     height: 'auto',
                     width: 605
                 });  
-
-                $('#tableofcontent').treeview({
-                    persist: 'cookie',
-                    animated: 'fast',
-                    collapsed: true,
-                    control: '#treecontrol'
-                });
-                
-                $('#symbolcontent').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-                
-                $('#glossarycontent').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-               
-                $('#toccontent').hide(); 
-                $('#symbolcontent').hide();
-                $('#glossarycontent').hide();
-                $('#contactcontent').hide();
                 
                 $('#features').jshowoff({
                     autoplay:false,
@@ -314,7 +265,8 @@ $content .= "
                     ajaxStop: function() {
                         $(this).hide();
                     }
-                });  
+                });
+                            MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
 
             });
     

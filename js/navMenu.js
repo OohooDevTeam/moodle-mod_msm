@@ -28,9 +28,21 @@ $(function() {
             height:'90%', 
             opacity:1.0
         }, 500, function() {
-            $('#symbolcontent').fadeIn('slow');
+            $('#symbolcontent').fadeIn('slow');          
                                     
-        });  
+        });
+        $('#symbolcontent').load('../msm/XMLImporter/loadSymbol.php', 
+        {
+            moduleinfo: $('#instanceid').val()
+        },
+        function(){           
+            $('.dialogs').dialog({
+                autoOpen: false,
+                height: 'auto',
+                width: 605
+            });
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        });
     },
     function(){
         $('#symbolcontent').fadeOut('slow', function() {
@@ -48,7 +60,19 @@ $(function() {
         }, 500, function() {
             $('#glossarycontent').fadeIn('slow');
                                     
-        });  
+        });
+        $('#glossarycontent').load('../msm/XMLImporter/loadGlossary.php', 
+        {
+            moduleinfo: $('#instanceid').val()
+        },
+        function(){           
+            $('.dialogs').dialog({
+                autoOpen: false,
+                height: 'auto',
+                width: 605
+            });
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        });
     },
     function(){
         $('#glossarycontent').fadeOut('slow', function() {
