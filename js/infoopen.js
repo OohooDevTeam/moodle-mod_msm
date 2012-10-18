@@ -349,15 +349,20 @@ function infoopen(i) {
         });   
     });
     
-    $('#symbolinfo-'+i).click(function(e) {  
+    $('#symbolinfo-'+i).click(function(e) { 
+        $('#symbolrefcontent-'+i).attr('class', 'renderefcontent');        
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        
         $('#dialog-'+i).dialog('close');
+        
         $('#symbolrefcontent-'+i).dialog(
         {
             modal:true,
             width: 840            
-        });
+        });      
+        
         $('#symbolrefcontent-'+i).dialog('open').css('display', 'block');
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        
         // to close the modal dialog box by clicking the outside of the box
         $('.ui-widget-overlay').click(function() {
             $('#symbolrefcontent-'+i).dialog('close'); 
@@ -377,7 +382,10 @@ function infoopen(i) {
         });   
     });
     
-     $('#glossaryinfo-'+i).click(function(e) {  
+    $('#glossaryinfo-'+i).click(function(e) {  
+        $('#glossaryrefcontent-'+i).attr('class', 'renderefcontent');        
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        
         $('#dialog-'+i).dialog('close');
         $('#glossaryrefcontent-'+i).dialog(
         {
@@ -385,7 +393,6 @@ function infoopen(i) {
             width: 840            
         });
         $('#glossaryrefcontent-'+i).dialog('open').css('display', 'block');
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         // to close the modal dialog box by clicking the outside of the box
         $('.ui-widget-overlay').click(function() {
             $('#glossaryrefcontent-'+i).dialog('close'); 

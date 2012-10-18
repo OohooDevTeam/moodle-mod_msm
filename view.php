@@ -93,9 +93,16 @@ $PAGE->set_context($context);
 
 echo $OUTPUT->header();
 
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.7.1.min.js'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.8.2.js'></script>";
+//echo "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
 
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/slideNav.css'/>";
+echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jquery.treeview.css'/>";
+echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
+
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/external/jquery.bgiframe-2.1.2.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.core.js'></script>";
@@ -107,25 +114,21 @@ echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.resizab
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.js'></script>";
 
 // these js files need to be after the development-bundle
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
 
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/slideNav.css'/>";
-echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jquery.treeview.css'/>";
-echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/lib/jquery.cookie.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
+
 
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
-
+//echo "<script type='text/x-mathjax-config' src='$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 
 if ($msm->intro)
@@ -202,16 +205,29 @@ $content .= $tableofcontents->makeToc();
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
 
-$content .= "<div id='symbolpanel' class='panel'>";
-$content .="<div class='slidepanelcontent' id='symbolcontent'>";
-$content .="</div>"; // end of slidepanelcontent
-$content .= "</div>"; // end of panel
+$symbolfilename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
+if (file_exists($symbolfilename))
+{
+    $symbolfile = fopen($symbolfilename, 'r');
+    $content .= fread($symbolfile, filesize($symbolfilename));
+    fclose($symbolfile);
+}
+else
+{
+    echo "file " . $symbolfilename . "does not exist.";
+}
 
-$content .= "<div id='glossarypanel' class='panel'>";
-$content .="<div class='slidepanelcontent' id='glossarycontent'>";
-$content .="</div>"; // end of slidepanelcontent
-$content .= "</div>"; // end of panel
-
+$glossryfilename = $msm->course . '-' . $msm->id . '-msm_glossaryindex.html';
+if (file_exists($glossryfilename))
+{
+    $glossaryfile = fopen($glossryfilename, 'r');
+    $content .= fread($glossaryfile, filesize($glossryfilename));
+    fclose($glossaryfile);
+}
+else
+{
+    echo "file " . $glossryfilename . "does not exist.";
+}
 
 $content .= "<div id='contactpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='contactcontent'>";
@@ -224,24 +240,32 @@ $content .= "</div>"; // end of panel
 
 $content .= "<div class='loadingscreen'></div>";
 
-$content .= '<input id="instanceid" type="text" name="moduleinfo" value="' . $msm->course . ',' . $msm->id . '" style="visibility:hidden;"/>';
-
 // need to have it in this order or dialog breaks
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
 //** make sure the sliding panel hiding method comes AFTER treeview method declaration!! (otherwise, it gives a bug 
 // when the page is refreshed.  The plus/minus pics become reversed.)
+
 $content .= "
     <script type='text/javascript'>
-            jQuery(document).ready(function(){
-            $('#tableofcontent').treeview({
+            jQuery(document).ready(function(){                 
+                 $('#tableofcontent').treeview({
                     persist: 'cookie',
                     animated: 'fast',
                     collapsed: true,
                     control: '#treecontrol'
                 });              
-               
-                $('.slidepanelcontent').hide();
                 
+                 $('#symbolindex').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
+
+                $('#glossaryindex').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
+                     $('.slidepanelcontent, #glossarycontent').hide();
+                     
                 $('.dialogs').dialog({
                     autoOpen: false,
                     height: 'auto',
@@ -265,12 +289,12 @@ $content .= "
                     ajaxStop: function() {
                         $(this).hide();
                     }
-                });
-                            MathJax.Hub.Queue(['Typeset',MathJax.Hub]);                 
-
+                });  
+                
+                MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
             });
-    
         </script>";
+
 
 // where the display method would go...
 

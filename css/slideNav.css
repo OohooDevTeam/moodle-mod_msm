@@ -97,7 +97,7 @@ ul#navigation li a span{
     height: auto;
     z-index: 1000;
 }
-.panel .slidepanelcontent
+.slidepanelcontent, .rendercontent, .glossarypanelcontent
 {    
 
     width: 95%;

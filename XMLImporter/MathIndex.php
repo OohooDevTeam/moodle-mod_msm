@@ -563,7 +563,7 @@ class MathIndex extends Element
                 // it has a info box associated with the word
                 if (sizeof($term->infos) > 0)
                 {
-                    if(sizeof($term->infos) > 1)
+                    if (sizeof($term->infos) > 1)
                     {
                         print_object($term);
                     }
@@ -639,6 +639,8 @@ class MathIndex extends Element
 
         $content = '';
 
+        $content .= "<div id='symbolpanel' class='panel'>";
+        $content .="<div class='slidepanelcontent' id='symbolcontent'>";
         $content .= "<h3> S Y M B O L S </h3>";
         $content .= '<ul id="symbolindex" class="treeview-red">';
 
@@ -655,15 +657,8 @@ class MathIndex extends Element
         }
 
         $content .= "</ul>";
-
-        $content .= "<script type='text/javascript'>     
-                    $(document).ready(function() {
-                        $('#symbolcontent').treeview({
-                          animated: 'fast',
-                          collapsed: true
-                        });
-                    });                        
-                    </script>";
+        $content .="</div>"; // end of slidepanelcontent
+        $content .= "</div>"; // end of panel
 
         return $content;
     }
@@ -673,6 +668,9 @@ class MathIndex extends Element
         global $DB;
 
         $content = '';
+
+        $content .= "<div id='glossarypanel' class='panel'>";
+        $content .="<div class='glossarypanelcontent' id='glossarycontent'>";
         $content .= "<h3> G L O S S A R Y </h3>";
         $content .= '<ul id="glossaryindex" class="treeview-red">';
 
@@ -683,16 +681,8 @@ class MathIndex extends Element
         $content .= $this->displayGlossary($glossaryTree);
 
         $content .= "</ul>";
-
-        $content .= "<script type='text/javascript'>     
-                    $(document).ready(function() {
-                        $('#glossarycontent').treeview({
-                          animated: 'fast',
-                          collapsed: true
-                        });
-                    });
-                        
-                    </script>";
+        $content .="</div>"; // end of slidepanelcontent
+        $content .= "</div>"; // end of panel
 
         return $content;
     }
