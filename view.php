@@ -264,7 +264,7 @@ $content .= "
                     animated: 'fast',
                     collapsed: true
                 });
-                     $('.slidepanelcontent, #glossarycontent').hide();
+                     $('.slidepanelcontent, #glossarycontent, #symbolcontent').hide();
                      
                 $('.dialogs').dialog({
                     autoOpen: false,

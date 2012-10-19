@@ -1,24 +1,12 @@
 MathJax.Hub.Config({
-    jax: ["input/TeX", "output/HTML-CSS"], 
-    
-    MMLorHTML: {
-        prefer: {
-            MSIE: "MML",
-            Firefox: "HTML",
-            Safari: "HTML",
-            Chrome: "HTML",
-            Opera: "HTML",
-            other: "HTML"
-        }
-    },
     showProcessingMessages: true,
     tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+//        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
 //        processEnvironments: true,
         processEscapes: true,
         balanceBraces: true,
-        ignoreClass: "tex2jax_ignore|symbolrefcontent|glossarypanelcontent"
+        ignoreClass: "tex2jax_ignore|symbolrefcontent|glossarypanelcontent|symbolpanelcontent"
     },
     TeX: {
                 extensions: ["color.js", "AMSmath.js", "AMSsymbols.js"],

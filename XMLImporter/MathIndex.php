@@ -640,7 +640,7 @@ class MathIndex extends Element
         $content = '';
 
         $content .= "<div id='symbolpanel' class='panel'>";
-        $content .="<div class='slidepanelcontent' id='symbolcontent'>";
+        $content .="<div class='symbolpanelcontent' id='symbolcontent'>";
         $content .= "<h3> S Y M B O L S </h3>";
         $content .= '<ul id="symbolindex" class="treeview-red">';
 

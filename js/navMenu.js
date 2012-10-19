@@ -24,6 +24,8 @@ $(function() {
     });
     
     $('#symbol').toggle(function () {
+        $('#symbolcontent').attr('class', 'rendercontent');        
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
         $('#symbolpanel').stop().animate({
             height:'90%', 
             opacity:1.0
