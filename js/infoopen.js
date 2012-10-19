@@ -412,6 +412,36 @@ function infoopen(i) {
         });   
     });
     
+    $('#authorinfo-'+i).click(function(e) {  
+        $('#authorrefcontent-'+i).attr('class', 'renderefcontent');        
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        
+        $('#dialog-'+i).dialog('close');
+        $('#authorrefcontent-'+i).dialog(
+        {
+            modal:true,
+            width: 840            
+        });
+        $('#authorrefcontent-'+i).dialog('open').css('display', 'block');
+        // to close the modal dialog box by clicking the outside of the box
+        $('.ui-widget-overlay').click(function() {
+            $('#authorrefcontent-'+i).dialog('close'); 
+        });
+    });   
+                
+    $('#authorinfo-'+i).ready(function(e){
+        $('#authorinfo-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+            $('#dialog-'+i).dialog('open');
+        });
+         
+        $('#authorinfo-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });   
+    });
+    
    
 }
 

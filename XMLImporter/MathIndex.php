@@ -164,6 +164,14 @@ class MathIndex extends Element
             {
                 $this->compid = $this->insertToCompositor($recordID, $this->symboltable, $msmid, $parentid, $sibling_id);
                 $sibling_id = $this->compid;
+
+                $symbolTableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
+                $sameSymbolRecords = $DB->get_records('msm_compositor', array('unit_id' => $recordID, 'table_id' => $symbolTableID));
+
+                foreach ($sameSymbolRecords as $symbolrecord)
+                {
+                    $this->grabSubunitChilds($symbolrecord, $this->compid, $msmid);
+                }
             }
         }
 
@@ -277,6 +285,14 @@ class MathIndex extends Element
             {
                 $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $msmid, $parentid, $sibling_id);
                 $sibling_id = $this->compid;
+
+                $glossaryTableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_glossary'))->id;
+                $sameGlossaryRecords = $DB->get_records('msm_compositor', array('unit_id' => $recordID, 'table_id' => $glossaryTableID));
+
+                foreach ($sameGlossaryRecords as $glossaryrecord)
+                {
+                    $this->grabSubunitChilds($glossaryrecord, $this->compid, $msmid);
+                }
             }
         }
 
@@ -346,214 +362,239 @@ class MathIndex extends Element
             {
                 $glossaryUnit = $DB->get_record('msm_index_glossary', array('id' => $glossaryComp->unit_id));
 
-                $childElement = $DB->get_record('msm_compositor', array('parent_id' => $glossaryComp->id));
+                $childElements = $DB->get_records('msm_compositor', array('parent_id' => $glossaryComp->id));
 
                 $infotable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_info'))->id;
 
-                if (!empty($childElement))
+                $infos = array();
+                if (!empty($childElements))
                 {
-                    if ($childElement->table_id == $infotable)
+                    foreach ($childElements as $child)
                     {
-                        $info = new MathInfo();
-                        $info->loadFromDb($childElement->unit_id, $childElement->id);
+                        if ($child->table_id == $infotable)
+                        {
+                            $info = new MathInfo();
+                            $info->loadFromDb($child->unit_id, $child->id);
+                            $infos[] = $info;
+                        }
                     }
                 }
 
+                print_object($infos);
                 $termpath = explode('/', $glossaryUnit->term);
 
-                if (isset($info))
+                if (isset($infos))
                 {
-                    $this->createTree($info, $rootNode, $termpath);
+                    $this->createTree($infos, $rootNode, $termpath);
+                    unset($infos);
                 }
             }
             $prevUnitId = $glossaryComp->unit_id;
         }
 
-        $this->sortTree($rootNode);
+        $this->sortTree($rootNode, 'text');
         return $rootNode;
     }
 
-    /**
-     * 
-     * @param GlossaryNode $finalTree       represents the root element of the tree created in loadGlossaryFromDb function
-     *                                      using createTree method.
-     */
-    function sortTree($finalTree)
-    {
-        $comparisonArray = array();
-        foreach ($finalTree->children as $child)
-        {
-            $comparisonArray[] = strtolower($child->text);
-        }
-
-        sort($comparisonArray);
-
-        foreach ($comparisonArray as $key => $text)
-        {
-            foreach ($finalTree->children as $index => $subNode)
-            {
-                if (strtolower($subNode->text) == $text)
-                {
-                    $temp = $finalTree->children[$key];
-                    $finalTree->children[$key] = $subNode;
-                    $finalTree->children[$index] = $temp;
-                }
-            }
-        }
-    }
-
-    function createTree($child, $parentNode, $termArray)
-    {
-        $termLength = sizeof($termArray);
-
-        if (!empty($parentNode->children))
-        {
-            $term = array_shift($termArray);
-
-            $foundCatergory = false;
-
-            foreach ($parentNode->children as $parentChild)
-            {
-                if ($parentChild->text == $term)
-                {
-                    $this->createTree($child, $parentChild, $termArray);
-                    $foundCatergory = true;
-                    break;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-
-            if (!$foundCatergory)
-            {
-                $childNode = new GlossaryNode();
-                $childNode->text = $term;
-                $parentNode->children[] = $childNode;
-
-                $this->createTree($child, $childNode, $termArray);
-            }
-        }
-        else
-        {
-            if ($termLength >= 1)
-            {
-                $term = array_shift($termArray);
-
-                if (!empty($term))
-                {
-                    if ($parentNode->text != $term)
-                    {
-                        $childNode = new GlossaryNode();
-                        $childNode->text = $term;
-                        $parentNode->children[] = $childNode;
-
-                        $this->createTree($child, $childNode, $termArray);
-                    }
-                    else
-                    {
-                        $parentNode->infos[] = $child;
-                    }
-                }
-                else
-                {
-                    $parentNode->infos[] = $child;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-        $child = null;
-    }
-
-    function loadSymbolFromDb($id, $compid)
+    function loadSymbolFromDb($msmid)
     {
         global $DB;
 
-        $symbolRecord = $DB->get_record($this->symboltable, array('id' => $id));
+        $prevUnitID = 0;
 
-        $this->id = $symbolRecord->id;
-        $this->symbol = $symbolRecord->symbol;
-        $this->symbol_type = $symbolRecord->symbol_type;
-        $this->sortstring = $symbolRecord->sortstring;
+        $symbols = new GlossaryNode();
 
-        $this->infos = array();
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $symboltableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
 
-        foreach ($childElements as $child)
+        $symbolCompRecords = $DB->get_records('msm_compositor', array('table_id' => $symboltableid, 'msm_id' => $msmid), 'unit_id');
+
+        foreach ($symbolCompRecords as $key => $symbolComp)
         {
-            $childTablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
-
-            if ($childTablename == 'msm_info')
+            $currentSymbol = new MathIndex();
+            if ($prevUnitID != $symbolComp->unit_id)
             {
-                $info = new MathInfo();
-                $info->loadFromDb($child->unit_id, $child->id);
-                $this->infos[] = $info;
-            }
-        }
+                $SymbolUnit = $DB->get_record('msm_index_symbol', array('id' => $symbolComp->unit_id));
 
-        $this->parents = array();
-        $currentRecord = $DB->get_record('msm_compositor', array('id' => $compid));
-        $parentElements = $DB->get_records('msm_compositor', array('id' => $currentRecord->parent_id));
+                $currentSymbol->id = $SymbolUnit->id;
+                $currentSymbol->symbol = $SymbolUnit->symbol;
+                $currentSymbol->symbol_type = $SymbolUnit->symbol_type;
+                $currentSymbol->sortstring = $SymbolUnit->sortstring;
 
-        foreach ($parentElements as $parent)
-        {
-            $parentTablename = $DB->get_record('msm_table_collection', array('id' => $parent->table_id))->tablename;
+                $currentSymbol->infos = array();
+                $childElements = $DB->get_records('msm_compositor', array('parent_id' => $symbolComp->id));
 
-            if ($parentTablename == 'msm_def')
-            {
-                $def = new Definition();
-                $def->loadFromDb($parent->unit_id, $parent->id);
-                $this->parents[] = $def;
-            }
-            else if ($parentTablename == 'msm_theorem')
-            {
-                $theorem = new Theorem();
-                $theorem->loadFromDb($parent->unit_id, $parent->id);
-                $this->parents[] = $theorem;
-            }
-            else
-            {
-                $parentUnitElement = $DB->get_records('msm_compositor', array('id' => $parent->parent_id));
-                $unitTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
-                $theoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
-                $statementTheoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
-
-                foreach ($parentUnitElement as $parentUnit)
+                foreach ($childElements as $child)
                 {
-                    if ($parentUnit->table_id == $unitTable)
+                    $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+                    if ($childtablename == 'msm_info')
                     {
-                        $unit = new Unit();
-                        $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id);
-                        $this->parents[] = $unit;
-                    }
-                    else if ($parentUnit->table_id == $theoremTable)
-                    {
-                        $theorem = new Theorem();
-                        $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id);
-                        $this->parents[] = $theorem;
-                    }
-                    else if ($parentUnit->table_id == $statementTheoremTable)
-                    {
-                        $TheoremElement = $DB->get_record('msm_compositor', array('id' => $parentUnit->parent_id));
-
-                        $theorem = new Theorem();
-                        $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id);
-                        $this->parents[] = $theorem;
+                        $info = new MathInfo();
+                        $info->loadFromDb($child->unit_id, $child->id);
+                        $currentSymbol->infos[] = $info;
                     }
                 }
-            }
-        }
 
-        return $this;
+                $currentSymbol->parents = array();
+                $parentElements = $DB->get_records('msm_compositor', array('id' => $symbolComp->parent_id));
+
+                foreach ($parentElements as $parent)
+                {
+                    $parentTablename = $DB->get_record('msm_table_collection', array('id' => $parent->table_id))->tablename;
+
+                    if ($parentTablename == 'msm_def')
+                    {
+                        $def = new Definition();
+                        $def->loadFromDb($parent->unit_id, $parent->id);
+                        $currentSymbol->parents[] = $def;
+                    }
+                    else if ($parentTablename == 'msm_theorem')
+                    {
+                        $theorem = new Theorem();
+                        $theorem->loadFromDb($parent->unit_id, $parent->id);
+                        $currentSymbol->parents[] = $theorem;
+                    }
+                    else
+                    {
+                        $parentUnitElement = $DB->get_records('msm_compositor', array('id' => $parent->parent_id));
+                        $unitTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+                        $theoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
+                        $statementTheoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
+
+                        foreach ($parentUnitElement as $parentUnit)
+                        {
+                            if ($parentUnit->table_id == $unitTable)
+                            {
+                                $unit = new Unit();
+                                $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                $currentSymbol->parents[] = $unit;
+                            }
+                            else if ($parentUnit->table_id == $theoremTable)
+                            {
+                                $theorem = new Theorem();
+                                $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                $currentSymbol->parents[] = $theorem;
+                            }
+                            else if ($parentUnit->table_id == $statementTheoremTable)
+                            {
+                                $TheoremElement = $DB->get_record('msm_compositor', array('id' => $parentUnit->parent_id));
+
+                                $theorem = new Theorem();
+                                $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id);
+                                $currentSymbol->parents[] = $theorem;
+                            }
+                        }
+                    }
+                }
+                $symbols->children[] = $currentSymbol;
+            }
+            $prevUnitID = $symbolComp->unit_id;
+        }
+        return $symbols;
+    }
+
+    function loadAuthorFromDb($msmid)
+    {
+        global $DB;
+
+        $authors = new GlossaryNode();
+        $prevUnitID = 0;
+
+        $authorTableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_person'))->id;
+
+        $authorCompRecords = $DB->get_records('msm_compositor', array('table_id' => $authorTableid, 'msm_id' => $msmid), 'unit_id');
+
+        foreach ($authorCompRecords as $authorComp)
+        {
+            $currentAuthor = new Person();
+            if ($prevUnitID != $authorComp->unit_id)
+            {
+                $authorUnit = $DB->get_record('msm_person', array('id' => $authorComp->unit_id, 'type' => 'index'));
+
+                if (!empty($authorUnit))
+                {
+                    $currentAuthor->id = $authorUnit->id;
+                    $currentAuthor->firstname = $authorUnit->firstname;
+                    $currentAuthor->lastname = $authorUnit->lastname;
+                    $currentAuthor->middlename = $authorUnit->middlename;
+                    $currentAuthor->initials = $authorUnit->initials;
+
+                    $currentAuthor->infos = array();
+                    $childElements = $DB->get_records('msm_compositor', array('parent_id' => $authorComp->id));
+
+                    foreach ($childElements as $child)
+                    {
+                        $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+                        if ($childtablename == 'msm_info')
+                        {
+                            $info = new MathInfo();
+                            $info->loadFromDb($child->unit_id, $child->id);
+                            $currentAuthor->infos[] = $info;
+                        }
+                    }
+
+                    $currentAuthor->parents = array();
+                    $parentElements = $DB->get_records('msm_compositor', array('id' => $authorComp->parent_id));
+
+                    foreach ($parentElements as $parent)
+                    {
+                        $parentTablename = $DB->get_record('msm_table_collection', array('id' => $parent->table_id))->tablename;
+
+                        if ($parentTablename == 'msm_def')
+                        {
+                            $def = new Definition();
+                            $def->loadFromDb($parent->unit_id, $parent->id);
+                            $currentAuthor->parents[] = $def;
+                        }
+                        else if ($parentTablename == 'msm_theorem')
+                        {
+                            $theorem = new Theorem();
+                            $theorem->loadFromDb($parent->unit_id, $parent->id);
+                            $currentAuthor->parents[] = $theorem;
+                        }
+                        else
+                        {
+                            $parentUnitElement = $DB->get_records('msm_compositor', array('id' => $parent->parent_id));
+                            $unitTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+                            $theoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
+                            $statementTheoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
+
+                            foreach ($parentUnitElement as $parentUnit)
+                            {
+                                if ($parentUnit->table_id == $unitTable)
+                                {
+                                    $unit = new Unit();
+                                    $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $currentAuthor->parents[] = $unit;
+                                }
+                                else if ($parentUnit->table_id == $theoremTable)
+                                {
+                                    $theorem = new Theorem();
+                                    $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $currentAuthor->parents[] = $theorem;
+                                }
+                                else if ($parentUnit->table_id == $statementTheoremTable)
+                                {
+                                    $TheoremElement = $DB->get_record('msm_compositor', array('id' => $parentUnit->parent_id));
+
+                                    $theorem = new Theorem();
+                                    $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id);
+                                    $currentAuthor->parents[] = $theorem;
+                                }
+                            }
+                        }
+                    }
+                    $authors->children[] = $currentAuthor;
+                }
+            }
+            $prevUnitID = $authorComp->unit_id;
+        }
+        $this->sortTree($authors, 'lastname');
+
+        return $authors;
     }
 
     function displayGlossary($glossaryTree)
     {
-        global $CFG;
         $content = '';
 
         foreach ($glossaryTree->children as $key => $term)
@@ -565,7 +606,16 @@ class MathIndex extends Element
                 {
                     if (sizeof($term->infos) > 1)
                     {
-                        print_object($term);
+                        $content .= "<li><span>" . $term->text . "     </span>";
+                        foreach ($term->infos as $info)
+                        {
+                            $content .= "<a id='glossaryinfo-" . $info->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $info->compid . ")'>i</a>";
+                            $content .= $info->displayhtml();
+                        }
+                        $content .= "<ul>";
+                        $content .= $this->displayGlossary($term);
+                        $content .= "</ul>";
+                        $content .= "<li>";
                     }
                     // this word has a child category
                     if (sizeof($term->children) > 0)
@@ -606,37 +656,64 @@ class MathIndex extends Element
         return $content;
     }
 
-    function displaySymbol()
+    function displaySymbol($symbolNode)
     {
-        global $CFG;
-
         $content = '';
-
-        if (sizeof($this->infos) != 0)
+        foreach ($symbolNode->children as $symbol)
         {
-            $content .= "<li><span>" . $this->symbol . "     </span><a id='symbolinfo-" . $this->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $this->infos[0]->compid . ")'>i</a></li>";
-
-            $content .= $this->infos[0]->displayhtml();
-
-            $content .= "<div class='symbolrefcontent' id='symbolrefcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
-            foreach ($this->parents as $parent)
+            if (sizeof($symbol->infos) != 0)
             {
-                $content .= $parent->displayhtml();
-            }
-            $content .= "</div>";
-        }
-        else
-        {
-            $content .= "<li><span>" . $this->symbol . "</span></li>";
-        }
+                $content .= "<li><span>" . $symbol->symbol . "     </span><a id='symbolinfo-" . $symbol->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $symbol->infos[0]->compid . ")'>i</a></li>";
 
+                $content .= $symbol->infos[0]->displayhtml();
+
+                $content .= "<div class='symbolrefcontent' id='symbolrefcontent-" . $symbol->infos[0]->compid . "' style='display:none;'>";
+                foreach ($symbol->parents as $parent)
+                {
+                    $content .= $parent->displayhtml();
+                }
+                $content .= "</div>";
+            }
+            else
+            {
+                $content .= "<li><span>" . $symbol->symbol . "</span></li>";
+            }
+        }
+        return $content;
+    }
+
+    function displayAuthor($AuthorNode)
+    {
+        $content = '';
+        foreach ($AuthorNode->children as $author)
+        {
+            if (sizeof($author->infos) != 0)
+            {
+                if (empty($author->middlename))
+                {
+                    $author->middlename = '';
+                }
+                $content .= "<li><span>" . $author->lastname . ", " . $author->firstname . " " . $author->middlename . "     </span><a id='authorinfo-" . $author->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $author->infos[0]->compid . ")'>i</a></li>";
+
+                $content .= $author->infos[0]->displayhtml();
+
+                $content .= "<div class='authorrefcontent' id='authorrefcontent-" . $author->infos[0]->compid . "' style='display:none;'>";
+                foreach ($author->parents as $parent)
+                {
+                    $content .= $parent->displayhtml();
+                }
+                $content .= "</div>";
+            }
+            else
+            {
+                $content .= "<li><span>" . $author->lastname . ", " . $author->firstname . " " . $author->middlename . "</span></li>";
+            }
+        }
         return $content;
     }
 
     function makeSymbolPanel($msmid)
     {
-        global $DB;
-
         $content = '';
 
         $content .= "<div id='symbolpanel' class='panel'>";
@@ -644,17 +721,8 @@ class MathIndex extends Element
         $content .= "<h3> S Y M B O L S </h3>";
         $content .= '<ul id="symbolindex" class="treeview-red">';
 
-        $symbolUnitRecords = $DB->get_records('msm_index_symbol');
-        $symbolTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
-        foreach ($symbolUnitRecords as $symbolRecord)
-        {
-            $symbolRecords = $DB->get_records('msm_compositor', array('table_id' => $symbolTable, 'unit_id' => $symbolRecord->id, 'msm_id' => $msmid));
-            $firstitem = array_shift(array_values($symbolRecords));
-
-            $this->loadSymbolFromDb($firstitem->unit_id, $firstitem->id);
-
-            $content .= $this->displaySymbol();
-        }
+        $symbolList = $this->loadSymbolFromDb($msmid);
+        $content .= $this->displaySymbol($symbolList);
 
         $content .= "</ul>";
         $content .="</div>"; // end of slidepanelcontent
@@ -665,8 +733,6 @@ class MathIndex extends Element
 
     function makeGlossaryPanel($msmid)
     {
-        global $DB;
-
         $content = '';
 
         $content .= "<div id='glossarypanel' class='panel'>";
@@ -675,9 +741,6 @@ class MathIndex extends Element
         $content .= '<ul id="glossaryindex" class="treeview-red">';
 
         $glossaryTree = $this->loadGlossaryFromDb($msmid);
-
-//        print_object($glossaryTree);
-
         $content .= $this->displayGlossary($glossaryTree);
 
         $content .= "</ul>";
@@ -685,6 +748,127 @@ class MathIndex extends Element
         $content .= "</div>"; // end of panel
 
         return $content;
+    }
+
+    function makeAuthorPanel($msmid)
+    {
+        $content = '';
+
+        $content .= "<div id='authorpanel' class='panel'>";
+        $content .="<div class='authorpanelcontent' id='authorcontent'>";
+        $content .= "<h3> A U T H O R S </h3>";
+        $content .= '<ul id="authorindex" class="treeview-red">';
+
+        $authorTree = $this->loadAuthorFromDb($msmid);
+        $content .= $this->displayAuthor($authorTree);
+
+        $content .= "</ul>";
+        $content .="</div>"; // end of slidepanelcontent
+        $content .= "</div>"; // end of panel
+
+        return $content;
+    }
+
+    /**
+     * 
+     * @param GlossaryNode $finalTree       represents the root element of the tree created in loadGlossaryFromDb function
+     *                                      using createTree method.
+     */
+    private function sortTree($finalTree, $compareObject)
+    {
+        $comparisonArray = array();
+        foreach ($finalTree->children as $child)
+        {
+            $comparisonArray[] = strtolower($child->$compareObject);
+        }
+
+        sort($comparisonArray);
+
+        foreach ($comparisonArray as $key => $text)
+        {
+            foreach ($finalTree->children as $index => $subNode)
+            {
+                if (strtolower($subNode->$compareObject) == $text)
+                {
+                    $temp = $finalTree->children[$key];
+                    $finalTree->children[$key] = $subNode;
+                    $finalTree->children[$index] = $temp;
+                }
+            }
+        }
+    }
+
+    private function createTree($children, $parentNode, $termArray)
+    {
+        $termLength = sizeof($termArray);
+
+        if (!empty($parentNode->children))
+        {
+            $term = array_shift($termArray);
+
+            $foundCatergory = false;
+
+            foreach ($parentNode->children as $parentChild)
+            {
+                if ($parentChild->text == $term)
+                {
+                    $this->createTree($children, $parentChild, $termArray);
+                    $foundCatergory = true;
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            if (!$foundCatergory)
+            {
+                $childNode = new GlossaryNode();
+                $childNode->text = $term;
+                $parentNode->children[] = $childNode;
+
+                $this->createTree($children, $childNode, $termArray);
+            }
+        }
+        else
+        {
+            if ($termLength >= 1)
+            {
+                $term = array_shift($termArray);
+
+                if (!empty($term))
+                {
+                    if ($parentNode->text != $term)
+                    {
+                        $childNode = new GlossaryNode();
+                        $childNode->text = $term;
+                        $parentNode->children[] = $childNode;
+
+                        $this->createTree($children, $childNode, $termArray);
+                    }
+                    else
+                    {
+                        foreach ($children as $child)
+                        {
+                            $parentNode->infos[] = $child;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach ($children as $child)
+                    {
+                        $parentNode->infos[] = $child;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        $child = null;
     }
 
 }

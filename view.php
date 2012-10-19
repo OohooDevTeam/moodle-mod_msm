@@ -141,7 +141,7 @@ if ($msm->intro)
 echo $OUTPUT->heading($msm->name);
 echo $OUTPUT->heading('<ul id="navigation">
             <li class="toc"><a href="" id="toc"><span>Table of Contents</span></a></li>
-            <li class="author"><a href=""><span>Authors</span></a></li>
+            <li class="author"><a href="" id="author"><span>Authors</span></a></li>
             <li class="symbol"><a href="" id="symbol"><span>Symbols</span></a></li>
             <li class="glossary"><a href="" id="glossary"><span>Glossary</span></a></li>
             <li class="biblio"><a href=""><span>Bibliography</span></a></li>
@@ -229,6 +229,18 @@ else
     echo "file " . $glossryfilename . "does not exist.";
 }
 
+$authorfilename = $msm->course . '-' . $msm->id . '-msm_authorindex.html';
+if (file_exists($authorfilename))
+{
+    $authorfile = fopen($authorfilename, 'r');
+    $content .= fread($authorfile, filesize($authorfilename));
+    fclose($authorfile);
+}
+else
+{
+    echo "file " . $authorfilename . "does not exist.";
+}
+
 $content .= "<div id='contactpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='contactcontent'>";
 $content .= "<h3> C O N T A C T S </h3>";
@@ -264,7 +276,11 @@ $content .= "
                     animated: 'fast',
                     collapsed: true
                 });
-                     $('.slidepanelcontent, #glossarycontent, #symbolcontent').hide();
+                 $('#authorindex').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
+                     $('.slidepanelcontent, #glossarycontent, #symbolcontent, #authorcontent').hide();
                      
                 $('.dialogs').dialog({
                     autoOpen: false,

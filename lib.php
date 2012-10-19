@@ -365,6 +365,16 @@ function msm_cron()
 
         fclose($glossaryfile);
         unset($glossary);
+        
+        $author = new MathIndex();
+        $authordata = $author->makeAuthorPanel($msm->id);
+        $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_authorindex.html";
+    
+        $authorfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
+        fwrite($authorfile, $authordata);
+
+        fclose($authorfile);
+        unset($author);
     }
 }
 

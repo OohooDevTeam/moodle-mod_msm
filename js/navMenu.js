@@ -63,6 +63,26 @@ $(function() {
         });
     });
     
+    $('#author').toggle(function () {
+        $('#authorcontent').attr('class', 'rendercontent');        
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
+        $('#authorpanel').stop().animate({
+            height:'90%', 
+            opacity:1.0
+        }, 500, function() {
+            $('#authorcontent').fadeIn('slow');
+                                    
+        });
+    },
+    function(){
+        $('#authorcontent').fadeOut('slow', function() {
+            $('#authorpanel').stop().animate({
+                height:'0px', 
+                opacity:0.1
+            }, 500); //slide the #panel back to a width of 0
+        });
+    });
+    
     $('#contact').toggle(function () {
         $('#contactpanel').stop().animate({
             height:'90%', 
