@@ -291,7 +291,6 @@ $content .= "
                     }
                 });  
                 
-                MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
             });
         </script>";
 
