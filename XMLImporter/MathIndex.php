@@ -158,12 +158,11 @@ class MathIndex extends Element
             {
                 $this->id = $DB->insert_record($this->symboltable, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->symboltable, $msmid, $parentid, $sibling_id);
-                $sibling_id = $this->compid;
+//                $sibling_id = $this->compid;
             }
             else
             {
                 $this->compid = $this->insertToCompositor($recordID, $this->symboltable, $msmid, $parentid, $sibling_id);
-                $sibling_id = $this->compid;
 
                 $symbolTableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_symbol'))->id;
                 $sameSymbolRecords = $DB->get_records('msm_compositor', array('unit_id' => $recordID, 'table_id' => $symbolTableID));
@@ -173,6 +172,7 @@ class MathIndex extends Element
                     $this->grabSubunitChilds($symbolrecord, $this->compid, $msmid);
                 }
             }
+            $sibling_id = $this->compid;
         }
 
         if (!empty($this->names))
@@ -279,58 +279,61 @@ class MathIndex extends Element
             {
                 $this->id = $DB->insert_record($this->glossarytable, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $msmid, $parentid, $sibling_id);
-                $sibling_id = $this->compid;
             }
             else
             {
                 $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $msmid, $parentid, $sibling_id);
-                $sibling_id = $this->compid;
 
-                $glossaryTableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_glossary'))->id;
-                $sameGlossaryRecords = $DB->get_records('msm_compositor', array('unit_id' => $recordID, 'table_id' => $glossaryTableID));
-
-                foreach ($sameGlossaryRecords as $glossaryrecord)
-                {
-                    $this->grabSubunitChilds($glossaryrecord, $this->compid, $msmid);
-                }
+//                $glossaryTableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_glossary'))->id;
+//                $sameGlossaryRecords = $DB->get_records('msm_compositor', array('unit_id' => $recordID, 'table_id' => $glossaryTableID));
+//
+//                foreach ($sameGlossaryRecords as $glossaryrecord)
+//                {
+//                    $this->grabSubunitChilds($glossaryrecord, $this->compid, $msmid);
+//                }
             }
+            $sibling_id = $this->compid;
         }
 
+        $sibling_id=0;
         foreach ($this->infos as $info)
         {
-            $numOfRecords = $DB->count_records('msm_info');
-            if ($numOfRecords > 0)
-            {
-                // need the limit to be $numOfRecords+1 to process the last record
-                for ($i = 1; $i < $numOfRecords + 1; $i++)
-                {
-                    $string = $DB->get_field('msm_info', 'info_content', array('id' => $i));
-
-                    if (trim($string) == trim($info->content))
-                    {
-                        $recordID = $i;
-                        break;
-                    }
-                    else
-                    {
-                        $recordID = false;
-                    }
-                }
-            }
-            else
-            {
-                $recordID = false;
-            }
-
-            if (empty($recordID))
-            {
-                $info->saveIntoDb($info->position, $msmid, $this->compid);
-            }
-            else
-            {
-                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $msmid, $parentid, $sibling_id);
-                $sibling_id = $info->compid;
-            }
+            $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
+            $sibling_id = $info->compid;
+//            $numOfRecords = $DB->count_records('msm_info');
+//            if ($numOfRecords > 0)
+//            {
+//                // need the limit to be $numOfRecords+1 to process the last record
+//                for ($i = 1; $i < $numOfRecords + 1; $i++)
+//                {
+//                    $string = $DB->get_field('msm_info', 'info_content', array('id' => $i));
+//
+//                    if (trim($string) == trim($info->content))
+//                    {
+//                        $recordID = $i;
+//                        break;
+//                    }
+//                    else
+//                    {
+//                        $recordID = false;
+//                    }
+//                }
+//            }
+//            else
+//            {
+//                $recordID = false;
+//            }
+//
+//            if (empty($recordID))
+//            {
+//                $info->saveIntoDb($info->position, $msmid, $this->compid);
+//                $sibling_id = $info->compid;
+//            }
+//            else
+//            {
+//                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $msmid, $parentid, $sibling_id);
+//                $sibling_id = $info->compid;
+//            }
         }
     }
 
@@ -380,19 +383,85 @@ class MathIndex extends Element
                     }
                 }
 
-                print_object($infos);
+                $parents = array();
+                $parentElements = $DB->get_records('msm_compositor', array('id' => $glossaryComp->parent_id));
+
+                if (!empty($parentElements))
+                {
+                    foreach ($parentElements as $parent)
+                    {
+                        $parentTablename = $DB->get_record('msm_table_collection', array('id' => $parent->table_id))->tablename;
+
+                        if ($parentTablename == 'msm_def')
+                        {
+                            $def = new Definition();
+                            $def->loadFromDb($parent->unit_id, $parent->id);
+                            $parents[] = $def;
+                        }
+                        else if ($parentTablename == 'msm_theorem')
+                        {
+                            $theorem = new Theorem();
+                            $theorem->loadFromDb($parent->unit_id, $parent->id);
+                            $parents[] = $theorem;
+                        }
+                        else
+                        {
+                            $parentUnitElement = $DB->get_records('msm_compositor', array('id' => $parent->parent_id));
+                            $unitTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+                            $theoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
+                            $statementTheoremTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
+
+                            foreach ($parentUnitElement as $parentUnit)
+                            {
+                                if ($parentUnit->table_id == $unitTable)
+                                {
+                                    $unit = new Unit();
+                                    $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $parents[] = $unit;
+                                }
+                                else if ($parentUnit->table_id == $theoremTable)
+                                {
+                                    $theorem = new Theorem();
+                                    $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $parents[] = $theorem;
+                                }
+                                else if ($parentUnit->table_id == $statementTheoremTable)
+                                {
+                                    $TheoremElement = $DB->get_record('msm_compositor', array('id' => $parentUnit->parent_id));
+
+                                    $theorem = new Theorem();
+                                    $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id);
+                                    $parents[] = $theorem;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 $termpath = explode('/', $glossaryUnit->term);
 
-                if (isset($infos))
+                if ((isset($infos)) && (isset($parents)))
                 {
-                    $this->createTree($infos, $rootNode, $termpath);
+                    $this->createTree($infos, $parents, $rootNode, $termpath);
                     unset($infos);
+                    unset($parents);
+                }
+                else if ((isset($infos)) && (!isset($parents)))
+                {
+                    $this->createTree($infos, '', $rootNode, $termpath);
+                    unset($infos);
+                }
+                else if ((!isset($infos)) && (isset($parents)))
+                {
+                    $this->createTree('', $parents, $rootNode, $termpath);
+                    unset($parents);
                 }
             }
             $prevUnitId = $glossaryComp->unit_id;
         }
 
         $this->sortTree($rootNode, 'text');
+//        print_object($rootNode);
         return $rootNode;
     }
 
@@ -595,69 +664,186 @@ class MathIndex extends Element
 
     function displayGlossary($glossaryTree)
     {
+        global $DB;
+        
+        print_object($glossaryTree);
+        die;
+
         $content = '';
 
-        foreach ($glossaryTree->children as $key => $term)
+        if ($glossaryTree->text != 'root')
         {
-            if (!empty($term->text))
+            $content .= "<li><span>" . $glossaryTree->text . "     </span>";
+
+            if (sizeof($glossaryTree->infos) > 0)
             {
-                // it has a info box associated with the word
-                if (sizeof($term->infos) > 0)
+                foreach ($glossaryTree->infos as $info)
                 {
-                    if (sizeof($term->infos) > 1)
-                    {
-                        $content .= "<li><span>" . $term->text . "     </span>";
-                        foreach ($term->infos as $info)
-                        {
-                            $content .= "<a id='glossaryinfo-" . $info->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $info->compid . ")'>i</a>";
-                            $content .= $info->displayhtml();
-                        }
-                        $content .= "<ul>";
-                        $content .= $this->displayGlossary($term);
-                        $content .= "</ul>";
-                        $content .= "<li>";
-                    }
-                    // this word has a child category
-                    if (sizeof($term->children) > 0)
-                    {
-                        $content .= "<li><span>" . $term->text . "     </span><a id='glossaryinfo-" . $term->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $term->infos[0]->compid . ")'>i</a>";
-                        $content .= "<ul>";
-                        $content .= $this->displayGlossary($term);
-                        $content .= "</ul>";
-                        $content .= "<li>";
-                        $content .= $term->infos[0]->displayhtml();
-                    }
-                    // empty children
-                    else
-                    {
-                        $content .= "<li><span>" . $term->text . "   </span><a id='glossaryinfo-" . $term->infos[0]->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $term->infos[0]->compid . ")'>i</a></li>";
-                        $content .= $term->infos[0]->displayhtml();
-                    }
+                    $content .= "<a id='glossaryinfo-" . $info->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $info->compid . ")'>i</a>";
+                    $content .= $info->displayhtml();
                 }
-                else // no info box associated with this word
+                foreach ($glossaryTree->parents as $parent)
                 {
-                    // this word has a child category
-                    if (sizeof($term->children) > 0)
-                    {
-                        $content .= "<li><span>" . $term->text . "</span>";
-                        $content .= "<ul>";
-                        $content .= $this->displayGlossary($term);
-                        $content .= "</ul>";
-                        $content .= "<li>";
-                    }
-                    // empty children
-                    else
-                    {
-                        $content .= "<li><span>" . $term->text . "</span></li>";
-                    }
+                    $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $info->compid . "' style='display:none;'>";
+                    $content .= $parent->displayhtml();
+                    $content .= "</div>";
                 }
             }
+            else
+            {
+                foreach ($glossaryTree->parents as $parent)
+                {
+                    $content .= "<a id='glossaryinfo-" . $parent->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $parent->compid . ")'>i</a>";
+                    $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $parent->compid . "' style='display:none;'>";
+                    $content .= $parent->displayhtml();
+                    $content .= "</div>";
+                }
+            }
+
+            if (sizeof($glossaryTree->children) > 0)
+            {
+                $content .= "<ul class='chilren'>";
+                foreach ($glossaryTree->children as $child)
+                {
+                    $content .= $this->displayGlossary($child);
+                }
+                $content .= "</ul>";
+                $content .= "</li>";
+            }
+            else
+            {
+                $content .= "</li>";
+            }
         }
+        else
+        {
+            foreach ($glossaryTree->children as $child)
+            {
+                $content .= $this->displayGlossary($child);
+            }
+        }
+
+
+
+//        $content = '';
+//
+//        foreach ($glossaryTree->children as $key => $term)
+//        {
+//            if (!empty($term->text))
+//            {
+//                // it has a info box associated with the word
+//                if (sizeof($term->infos) > 0)
+//                {
+//                    if (sizeof($term->infos) > 1)
+//                    {
+//                        $content .= "<li><span>" . $term->text . "     </span>";
+//                        foreach ($term->infos as $info)
+//                        {
+//                            $currentIndexCompid = $DB->get_record('msm_compositor', array('id' => $info->compid))->parent_id;
+//                            $content .= "<a id='glossaryinfo-" . $currentIndexCompid . "' class='msm_infobutton' onmouseover='infoopen(" . $currentIndexCompid . ")'>i</a>";
+//                            $content .= $info->displayhtml();
+//                        }
+//
+//                        if (!empty($term->parents))
+//                        {
+//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $currentIndexCompid . "' style='display:none;'>";
+//                            foreach ($term->parents as $parent)
+//                            {
+//                                $content .= $parent->displayhtml();
+//                            }
+//                            $content .= "</div>";
+//                        }
+//
+//
+//                        $content .= "<ul>";
+//                        $content .= $this->displayGlossary($term);
+//                        $content .= "</ul>";
+//                        $content .= "<li>";
+//                    }
+//                     $currentIndexCompid = $DB->get_record('msm_compositor', array('id' => $term->infos[0]->compid))->parent_id;
+//                    // this word has a child category
+//                    if (sizeof($term->children) > 0)
+//                    {
+//                        $content .= "<li><span>" . $term->text . "     </span><a id='glossaryinfo-" . $currentIndexCompid . "' class='msm_infobutton' onmouseover='infoopen(" . $currentIndexCompid . ")'>i</a>";
+//                        $content .= "<ul>";
+//                        $content .= $this->displayGlossary($term);
+//                        $content .= "</ul>";
+//                        $content .= "<li>";
+//                        $content .= $term->infos[0]->displayhtml();
+//
+//                        if (!empty($term->parents))
+//                        {
+//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $currentIndexCompid . "' style='display:none;'>";
+//                            foreach ($term->parents as $parent)
+//                            {
+//                                $content .= $parent->displayhtml();
+//                            }
+//                            $content .= "</div>";
+//                        }
+//                    }
+//                    // empty children
+//                    else
+//                    {
+//                        $content .= "<li><span>" . $term->text . "   </span><a id='glossaryinfo-" . $currentIndexCompid . "' class='msm_infobutton' onmouseover='infoopen(" . $currentIndexCompid . ")'>i</a></li>";
+//                        $content .= $term->infos[0]->displayhtml();
+//
+//                        if (!empty($term->parents))
+//                        {
+//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $currentIndexCompid . "' style='display:none;'>";
+//                            foreach ($term->parents as $parent)
+//                            {
+//                                $content .= $parent->displayhtml();
+//                            }
+//                            $content .= "</div>";
+//                        }
+//                    }
+//                }
+//                else // no info box associated with this word
+//                {
+//                    // this word has a child category
+//                    if (sizeof($term->children) > 0)
+//                    {
+//                        $content .= "<li><span>" . $term->text . "</span>";
+//
+//                        if (!empty($term->parents))
+//                        {
+//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $term->parents[0]->compid . "' style='display:none;'>";
+//                            foreach ($term->parents as $parent)
+//                            {
+//                                $content .= $parent->displayhtml();
+//                            }
+//                            $content .= "</div>";
+//                        }
+//
+//                        $content .= "<ul>";
+//                        $content .= $this->displayGlossary($term);
+//                        $content .= "</ul>";
+//                        $content .= "<li>";
+//                    }
+//                    // empty children
+//                    else
+//                    {
+//                        $content .= "<li><span>" . $term->text . "</span></li>";
+//                        if (!empty($term->parents))
+//                        {
+//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $term->parents[0]->compid . "' style='display:none;'>";
+//                            foreach ($term->parents as $parent)
+//                            {
+//                                $content .= $parent->displayhtml();
+//                            }
+//                            $content .= "</div>";
+//                        }
+//                    }
+//                }
+//            }
+//        }
         return $content;
     }
 
     function displaySymbol($symbolNode)
     {
+        global $DB;
+
         $content = '';
         foreach ($symbolNode->children as $symbol)
         {
@@ -682,10 +868,12 @@ class MathIndex extends Element
         return $content;
     }
 
-    function displayAuthor($AuthorNode)
+    function displayAuthor($authorNode)
     {
+        global $DB;
+
         $content = '';
-        foreach ($AuthorNode->children as $author)
+        foreach ($authorNode->children as $author)
         {
             if (sizeof($author->infos) != 0)
             {
@@ -798,7 +986,7 @@ class MathIndex extends Element
         }
     }
 
-    private function createTree($children, $parentNode, $termArray)
+    private function createTree($children, $ancestors, $parentNode, $termArray)
     {
         $termLength = sizeof($termArray);
 
@@ -812,7 +1000,7 @@ class MathIndex extends Element
             {
                 if ($parentChild->text == $term)
                 {
-                    $this->createTree($children, $parentChild, $termArray);
+                    $this->createTree($children, $ancestors, $parentChild, $termArray);
                     $foundCatergory = true;
                     break;
                 }
@@ -828,7 +1016,7 @@ class MathIndex extends Element
                 $childNode->text = $term;
                 $parentNode->children[] = $childNode;
 
-                $this->createTree($children, $childNode, $termArray);
+                $this->createTree($children, $ancestors, $childNode, $termArray);
             }
         }
         else
@@ -845,13 +1033,18 @@ class MathIndex extends Element
                         $childNode->text = $term;
                         $parentNode->children[] = $childNode;
 
-                        $this->createTree($children, $childNode, $termArray);
+                        $this->createTree($children, $ancestors, $childNode, $termArray);
                     }
                     else
                     {
                         foreach ($children as $child)
                         {
                             $parentNode->infos[] = $child;
+                        }
+
+                        foreach ($ancestors as $ancestor)
+                        {
+                            $parentNode->parents[] = $ancestor;
                         }
                     }
                 }
@@ -861,6 +1054,10 @@ class MathIndex extends Element
                     {
                         $parentNode->infos[] = $child;
                     }
+                    foreach ($ancestors as $ancestor)
+                    {
+                        $parentNode->parents[] = $ancestor;
+                    }
                 }
             }
             else
@@ -869,6 +1066,7 @@ class MathIndex extends Element
             }
         }
         $child = null;
+        $ancestor = null;
     }
 
 }

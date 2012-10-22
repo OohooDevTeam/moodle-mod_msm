@@ -581,7 +581,12 @@ class ProofBlock extends Element
 
         $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>");
 
-        if ((!empty($this->proof_logic)) && (empty($this->caption)))
+//        if ((!empty($this->proof_logic)) && (empty($this->caption)))
+//        {
+//            $content .= "</ul>";
+//        }
+        
+        if (!empty($this->proof_logic))
         {
             $content .= "</ul>";
         }

@@ -85,7 +85,6 @@ class MathInfo extends Element
         {
             $this->content .= $content;
         }
-
     }
 
     /**
@@ -332,7 +331,7 @@ class MathInfo extends Element
     function displayhtml()
     {
         $content = '';
-
+        
         if (empty($this->caption))
         {
             $content .= '<div id="dialog-' . $this->compid . '" class="dialogs">';
@@ -341,7 +340,7 @@ class MathInfo extends Element
         {
             $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->caption . '">';
         }
-
+        
         $content .= $this->displayContent($this, $this->info_content);
 
         $content .= "</div>";

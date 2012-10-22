@@ -14,10 +14,11 @@ class GlossaryNode
 {
 
     public $depth = 0;          //for printing
-    public $parentNode = null;  //reference to parent node
+    public $parents = array();  //reference to parent node
     public $text = '';          //display text
     public $children = array(); //children node(s)
     public $infos = array();
+    public $compid = 0;
 
     
     public function addChild(GlossaryNode $node)
