@@ -665,9 +665,9 @@ class MathIndex extends Element
     function displayGlossary($glossaryTree)
     {
         global $DB;
-        
-        print_object($glossaryTree);
-        die;
+//        
+//        print_object($glossaryTree);
+//        die;
 
         $content = '';
 
@@ -1027,8 +1027,13 @@ class MathIndex extends Element
 
                 if (!empty($term))
                 {
+                    echo "term and nodetext\n";
+                    print_object($parentNode->text);
+                    print_object($term);
+                    
                     if ($parentNode->text != $term)
                     {
+                        echo "not the same node\n";
                         $childNode = new GlossaryNode();
                         $childNode->text = $term;
                         $parentNode->children[] = $childNode;
@@ -1037,6 +1042,8 @@ class MathIndex extends Element
                     }
                     else
                     {
+                        echo "same text and term\n";
+                        
                         foreach ($children as $child)
                         {
                             $parentNode->infos[] = $child;
