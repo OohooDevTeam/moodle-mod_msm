@@ -359,7 +359,7 @@ class MathComment extends Element
         }
     }
 
-    function loadFromDb($id, $compid)
+    function loadFromDb($id, $compid, $indexref = false)
     {
         global $DB;
 
@@ -386,37 +386,69 @@ class MathComment extends Element
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            switch ($childtablename)
+            if (!$indexref)
             {
-                case('msm_subordinate'):
-                    $subordinate = new Subordinate();
-                    $subordinate->loadFromDb($child->unit_id, $child->id);
-                    $this->subordinates[] = $subordinate;
-                    break;
+                switch ($childtablename)
+                {
+                    case('msm_subordinate'):
+                        $subordinate = new Subordinate();
+                        $subordinate->loadFromDb($child->unit_id, $child->id);
+                        $this->subordinates[] = $subordinate;
+                        break;
 
-                case('msm_media'):
-                    $media = new Media();
-                    $media->loadFromDb($child->unit_id, $child->id);
-                    $this->medias[] = $media;
-                    break;
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->medias[] = $media;
+                        break;
 
-                case('msm_associate'):
-                    $associate = new Associate();
-                    $associate->loadFromDb($child->unit_id, $child->id);
-                    $this->associates[] = $associate;
-                    break;
-                
-                case('msm_math_array'):
-                    $matharray = new MathArray();
-                    $matharray->loadFromDB($child->unit_id, $child->id);
-                    $this->matharrays[] = $matharray;
-                    break;
+                    case('msm_associate'):
+                        $associate = new Associate();
+                        $associate->loadFromDb($child->unit_id, $child->id);
+                        $this->associates[] = $associate;
+                        break;
 
-                case('msm_table'):
-                    $table = new Table();
-                    $table->loadFromDb($child->unit_id, $child->id);
-                    $this->tables[] = $table;
-                    break;
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->matharrays[] = $matharray;
+                        break;
+
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->tables[] = $table;
+                        break;
+                }
+            }
+            else
+            {
+                switch ($childtablename)
+                {
+                    case('msm_subordinate'):
+                        $subordinate = new Subordinate();
+                        $subordinate->loadFromDb($child->unit_id, $child->id);
+                        $this->subordinates[] = $subordinate;
+                        break;
+
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->medias[] = $media;
+                        break;
+
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->matharrays[] = $matharray;
+                        break;
+
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->tables[] = $table;
+                        break;
+                }
             }
         }
 
@@ -447,12 +479,16 @@ class MathComment extends Element
 
         $content .= "<br />";
 
-        $content .= "<ul class='commentminibuttons'>";
-        foreach ($this->associates as $key => $associate)
+        if (!empty($this->associates))
         {
-            $content .= $associate->displayhtml();
+            $content .= "<ul class='commentminibuttons'>";
+            foreach ($this->associates as $key => $associate)
+            {
+                $content .= $associate->displayhtml();
+            }
+            $content .= "</ul>";
         }
-        $content .= "</ul>";
+
 
         $content .= "</div>";
         $content .= "<br />";

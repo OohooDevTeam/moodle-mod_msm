@@ -62,7 +62,7 @@ class Definition extends Element
         $this->medias = array();
         $this->tables = array();
         $this->matharrays = array();
-
+        
         $associates = $DomElement->getElementsByTagName('associate');
 
         foreach ($associates as $a)
@@ -72,7 +72,6 @@ class Definition extends Element
             $associate->loadFromXml($a, $position);
             $this->associates[] = $associate;
         }
-
         $defbodys = $DomElement->getElementsByTagName('def.body');
 
         $doc = new DOMDocument();
@@ -153,13 +152,13 @@ class Definition extends Element
         $elementPositions = array();
         $sibling_id = null;
 
-        if (!empty($this->associates))
-        {
-            foreach ($this->associates as $key => $associate)
-            {
-                $elementPositions['associate' . '-' . $key] = $associate->position;
-            }
-        }
+//        if (!empty($this->associates))
+//        {
+//            foreach ($this->associates as $key => $associate)
+//            {
+//                $elementPositions['associate' . '-' . $key] = $associate->position;
+//            }
+//        }
 
         if (!empty($this->matharrays))
         {
@@ -224,22 +223,22 @@ class Definition extends Element
         {
             switch ($element)
             {
-                case(preg_match("/^(associate.\d+)$/", $element) ? true : false):
-                    $associateString = split('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $associate = $this->associates[$associateString[1]];
-                        $associate->saveIntoDb($associate->position, $msmid, $this->compid);
-                        $sibling_id = $associate->compid;
-                    }
-                    else
-                    {
-                        $associate = $this->associates[$associateString[1]];
-                        $associate->saveIntoDb($associate->position, $msmid, $this->compid, $sibling_id);
-                        $sibling_id = $associate->compid;
-                    }
-                    break;
+//                case(preg_match("/^(associate.\d+)$/", $element) ? true : false):
+//                    $associateString = split('-', $element);
+//
+//                    if (empty($sibling_id))
+//                    {
+//                        $associate = $this->associates[$associateString[1]];
+//                        $associate->saveIntoDb($associate->position, $msmid, $this->compid);
+//                        $sibling_id = $associate->compid;
+//                    }
+//                    else
+//                    {
+//                        $associate = $this->associates[$associateString[1]];
+//                        $associate->saveIntoDb($associate->position, $msmid, $this->compid, $sibling_id);
+//                        $sibling_id = $associate->compid;
+//                    }
+//                    break;
 
                 case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
                     $matharrayString = split('-', $element);
@@ -361,9 +360,17 @@ class Definition extends Element
                     break;
             }
         }
+
+        $sibling_id = 0;
+
+        foreach ($this->associates as $associate)
+        {
+            $associate->saveIntoDb($associate->position, $msmid, $this->compid, $sibling_id);
+            $sibling_id = $associate->compid;
+        }
     }
 
-    function loadFromDb($id, $compid)
+    function loadFromDb($id, $compid, $indexref = false)
     {
         global $DB;
 
@@ -390,37 +397,69 @@ class Definition extends Element
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            switch ($childtablename)
+            if (!$indexref)
             {
-                case('msm_associate'):
-                    $associate = new Associate();
-                    $associate->loadFromDb($child->unit_id, $child->id);
-                    $this->associates[] = $associate;
-                    break;
+                switch ($childtablename)
+                {
+                    case('msm_associate'):
+                        $associate = new Associate();
+                        $associate->loadFromDb($child->unit_id, $child->id);
+                        $this->associates[] = $associate;
+                        break;
 
-                case('msm_subordinate'):
-                    $subordinate = new Subordinate();
-                    $subordinate->loadFromDb($child->unit_id, $child->id);
-                    $this->subordinates[] = $subordinate;
-                    break;
+                    case('msm_subordinate'):
+                        $subordinate = new Subordinate();
+                        $subordinate->loadFromDb($child->unit_id, $child->id);
+                        $this->subordinates[] = $subordinate;
+                        break;
 
-                case('msm_media'):
-                    $media = new Media();
-                    $media->loadFromDb($child->unit_id, $child->id);
-                    $this->medias[] = $media;
-                    break;
-                
-                case('msm_math_array'):
-                    $matharray = new MathArray();
-                    $matharray->loadFromDb($child->unit_id, $child->id);
-                    $this->matharrays[] = $matharray;
-                    break;
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->medias[] = $media;
+                        break;
 
-                case('msm_table'):
-                    $table = new Table();
-                    $table->loadFromDb($child->unit_id, $child->id);
-                    $this->tables[] = $table;
-                    break;
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->matharrays[] = $matharray;
+                        break;
+
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->tables[] = $table;
+                        break;
+                }
+            }
+            else
+            {
+                switch ($childtablename)
+                {
+                    case('msm_subordinate'):
+                        $subordinate = new Subordinate();
+                        $subordinate->loadFromDb($child->unit_id, $child->id);
+                        $this->subordinates[] = $subordinate;
+                        break;
+
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->medias[] = $media;
+                        break;
+
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->matharrays[] = $matharray;
+                        break;
+
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->tables[] = $table;
+                        break;
+                }
             }
         }
 
@@ -450,12 +489,16 @@ class Definition extends Element
 
         $content .= "<br />";
 
-        $content .= "<ul class='defminibuttons'>";
-        foreach ($this->associates as $key => $associate)
+        if (!empty($this->associates))
         {
-            $content .= $associate->displayhtml();
+            $content .= "<ul class='defminibuttons'>";
+            foreach ($this->associates as $key => $associate)
+            {
+                $content .= $associate->displayhtml();
+            }
+            $content .= "</ul>";
         }
-        $content .= "</ul>";
+
 
         $content .= "</div>";
         $content .= "<br />";

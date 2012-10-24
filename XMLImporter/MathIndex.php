@@ -295,7 +295,7 @@ class MathIndex extends Element
             $sibling_id = $this->compid;
         }
 
-        $sibling_id=0;
+        $sibling_id = 0;
         foreach ($this->infos as $info)
         {
             $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
@@ -395,13 +395,13 @@ class MathIndex extends Element
                         if ($parentTablename == 'msm_def')
                         {
                             $def = new Definition();
-                            $def->loadFromDb($parent->unit_id, $parent->id);
+                            $def->loadFromDb($parent->unit_id, $parent->id, true);
                             $parents[] = $def;
                         }
                         else if ($parentTablename == 'msm_theorem')
                         {
                             $theorem = new Theorem();
-                            $theorem->loadFromDb($parent->unit_id, $parent->id);
+                            $theorem->loadFromDb($parent->unit_id, $parent->id, true);
                             $parents[] = $theorem;
                         }
                         else
@@ -416,13 +416,13 @@ class MathIndex extends Element
                                 if ($parentUnit->table_id == $unitTable)
                                 {
                                     $unit = new Unit();
-                                    $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id, true);
                                     $parents[] = $unit;
                                 }
                                 else if ($parentUnit->table_id == $theoremTable)
                                 {
                                     $theorem = new Theorem();
-                                    $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id, true);
                                     $parents[] = $theorem;
                                 }
                                 else if ($parentUnit->table_id == $statementTheoremTable)
@@ -430,8 +430,16 @@ class MathIndex extends Element
                                     $TheoremElement = $DB->get_record('msm_compositor', array('id' => $parentUnit->parent_id));
 
                                     $theorem = new Theorem();
-                                    $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id);
+                                    $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id, true);
                                     $parents[] = $theorem;
+                                }
+                                else
+                                {
+                                    $parentRecord = $this->findParentUnit($unitTable, $parentUnit->parent_id);
+
+                                    $unit = new Unit();
+                                    $unit->loadFromDb($parentRecord->unit_id, $parentRecord->id, true);
+                                    $parents[] = $unit;
                                 }
                             }
                         }
@@ -439,19 +447,20 @@ class MathIndex extends Element
                 }
 
                 $termpath = explode('/', $glossaryUnit->term);
+                array_pop($termpath);
 
-                if ((isset($infos)) && (isset($parents)))
+                if ((!empty($infos)) && (!empty($parents)))
                 {
                     $this->createTree($infos, $parents, $rootNode, $termpath);
                     unset($infos);
                     unset($parents);
                 }
-                else if ((isset($infos)) && (!isset($parents)))
+                else if ((!empty($infos)) && (empty($parents)))
                 {
                     $this->createTree($infos, '', $rootNode, $termpath);
                     unset($infos);
                 }
-                else if ((!isset($infos)) && (isset($parents)))
+                else if ((empty($infos)) && (!empty($parents)))
                 {
                     $this->createTree('', $parents, $rootNode, $termpath);
                     unset($parents);
@@ -464,6 +473,154 @@ class MathIndex extends Element
 //        print_object($rootNode);
         return $rootNode;
     }
+
+    private function createTree($children, $ancestors, $parentNode, $termArray)
+    {
+        if (!empty($termArray))
+        {
+            $term = array_shift($termArray);
+            $isfound = false;
+            if (!empty($parentNode->children))
+            {
+                foreach ($parentNode->children as $currentNode)
+                {
+                    if ($currentNode->text == $term)
+                    {
+                        // if end of the array then need to add the infos/parents associated with it
+                        if (sizeof($termArray) == 0)
+                        {
+                            if (!empty($children))
+                            {
+                                // adding info associated with the term
+                                foreach ($children as $child)
+                                {
+                                    if (!empty($currentNode->infos))
+                                    {
+                                        $currentinfosize = sizeof($currentNode->infos);
+                                        $currentNode->infos[$currentinfosize] = $child;
+                                    }
+                                    else
+                                    {
+                                        $currentNode->infos[] = $child;
+                                    }
+                                }
+                            }
+
+                            if (!empty($ancestors))
+                            {
+                                // adding parent elements associated with the term
+                                foreach ($ancestors as $ancestor)
+                                {
+                                    if (!empty($currentNode->parents))
+                                    {
+                                        $currentParentSize = sizeof($currentNode->parents);
+                                        $currentNode->parents[$currentParentSize] = $ancestor;
+                                    }
+                                    else
+                                    {
+                                        $currentNode->parents[] = $ancestor;
+                                    }
+                                }
+                            }
+                        }
+                        $this->createTree($children, $ancestors, $currentNode, $termArray);
+                        $isfound = true;
+                        break;
+                    }
+                }
+                if (!$isfound)
+                {
+                    $currentNode = new GlossaryNode();
+                    $currentNode->text = $term;
+                    $parentNode->children[] = $currentNode;
+
+                    // if end of the array then need to add the infos/parents associated with it
+                    if (sizeof($termArray) == 0)
+                    {
+                        if (!empty($children))
+                        {
+                            // adding info associated with the term
+                            foreach ($children as $child)
+                            {
+                                if (!empty($currentNode->infos))
+                                {
+                                    $currentinfosize = sizeof($currentNode->infos);
+                                    $currentNode->infos[$currentinfosize] = $child;
+                                }
+                                else
+                                {
+                                    $currentNode->infos[] = $child;
+                                }
+                            }
+                        }
+
+                        if (!empty($ancestors))
+                        {
+                            // adding parent elements associated with the term
+                            foreach ($ancestors as $ancestor)
+                            {
+                                if (!empty($currentNode->parents))
+                                {
+                                    $currentParentSize = sizeof($currentNode->parents);
+                                    $currentNode->parents[$currentParentSize] = $ancestor;
+                                }
+                                else
+                                {
+                                    $currentNode->parents[] = $ancestor;
+                                }
+                            }
+                        }
+                    }
+
+                    $this->createTree($children, $ancestors, $currentNode, $termArray);
+                }
+            }
+            else
+            {
+                $currentNode = new GlossaryNode();
+                $currentNode->text = $term;
+                if (!empty($children))
+                {
+                    foreach ($children as $child)
+                    {
+                        if (!empty($currentNode->infos))
+                        {
+                            $currentinfosize = sizeof($currentNode->infos);
+                            $currentNode->infos[$currentinfosize] = $child;
+                        }
+                        else
+                        {
+                            $currentNode->infos[] = $child;
+                        }
+                    }
+                }
+
+                if (!empty($ancestors))
+                {
+                    foreach ($ancestors as $ancestor)
+                    {
+                        if (!empty($currentNode->parents))
+                        {
+                            $currentParentSize = sizeof($currentNode->parents);
+                            $currentNode->parents[$currentParentSize] = $ancestor;
+                        }
+                        else
+                        {
+                            $currentNode->parents[] = $ancestor;
+                        }
+                    }
+                }
+                $parentNode->children[] = $currentNode;
+                $this->createTree($children, $ancestors, $currentNode, $termArray);
+            }
+        }
+        $this->sortTree($parentNode, 'text');
+    }
+
+//    private function findNode($terms, $rootNode)
+//    {
+//        return $foundNode;
+//    }
 
     function loadSymbolFromDb($msmid)
     {
@@ -513,13 +670,13 @@ class MathIndex extends Element
                     if ($parentTablename == 'msm_def')
                     {
                         $def = new Definition();
-                        $def->loadFromDb($parent->unit_id, $parent->id);
+                        $def->loadFromDb($parent->unit_id, $parent->id, true);
                         $currentSymbol->parents[] = $def;
                     }
                     else if ($parentTablename == 'msm_theorem')
                     {
                         $theorem = new Theorem();
-                        $theorem->loadFromDb($parent->unit_id, $parent->id);
+                        $theorem->loadFromDb($parent->unit_id, $parent->id, true);
                         $currentSymbol->parents[] = $theorem;
                     }
                     else
@@ -534,13 +691,13 @@ class MathIndex extends Element
                             if ($parentUnit->table_id == $unitTable)
                             {
                                 $unit = new Unit();
-                                $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id, true);
                                 $currentSymbol->parents[] = $unit;
                             }
                             else if ($parentUnit->table_id == $theoremTable)
                             {
                                 $theorem = new Theorem();
-                                $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id, true);
                                 $currentSymbol->parents[] = $theorem;
                             }
                             else if ($parentUnit->table_id == $statementTheoremTable)
@@ -548,8 +705,16 @@ class MathIndex extends Element
                                 $TheoremElement = $DB->get_record('msm_compositor', array('id' => $parentUnit->parent_id));
 
                                 $theorem = new Theorem();
-                                $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id);
+                                $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id, true);
                                 $currentSymbol->parents[] = $theorem;
+                            }
+                            else
+                            {
+                                $parentRecord = $this->findParentUnit($unitTable, $parentUnit->parent_id);
+
+                                $unit = new Unit();
+                                $unit->loadFromDb($parentRecord->unit_id, $parentRecord->id, true);
+                                $currentSymbol->parents[] = $unit;
                             }
                         }
                     }
@@ -611,13 +776,13 @@ class MathIndex extends Element
                         if ($parentTablename == 'msm_def')
                         {
                             $def = new Definition();
-                            $def->loadFromDb($parent->unit_id, $parent->id);
+                            $def->loadFromDb($parent->unit_id, $parent->id, true);
                             $currentAuthor->parents[] = $def;
                         }
                         else if ($parentTablename == 'msm_theorem')
                         {
                             $theorem = new Theorem();
-                            $theorem->loadFromDb($parent->unit_id, $parent->id);
+                            $theorem->loadFromDb($parent->unit_id, $parent->id, true);
                             $currentAuthor->parents[] = $theorem;
                         }
                         else
@@ -632,13 +797,13 @@ class MathIndex extends Element
                                 if ($parentUnit->table_id == $unitTable)
                                 {
                                     $unit = new Unit();
-                                    $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $unit->loadFromDb($parentUnit->unit_id, $parentUnit->id, true);
                                     $currentAuthor->parents[] = $unit;
                                 }
                                 else if ($parentUnit->table_id == $theoremTable)
                                 {
                                     $theorem = new Theorem();
-                                    $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id);
+                                    $theorem->loadFromDb($parentUnit->unit_id, $parentUnit->id, true);
                                     $currentAuthor->parents[] = $theorem;
                                 }
                                 else if ($parentUnit->table_id == $statementTheoremTable)
@@ -646,8 +811,16 @@ class MathIndex extends Element
                                     $TheoremElement = $DB->get_record('msm_compositor', array('id' => $parentUnit->parent_id));
 
                                     $theorem = new Theorem();
-                                    $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id);
+                                    $theorem->loadFromDb($TheoremElement->unit_id, $TheoremElement->id, true);
                                     $currentAuthor->parents[] = $theorem;
+                                }
+                                else
+                                {
+                                    $parentRecord = $this->findParentUnit($unitTable, $parentUnit->parent_id);
+
+                                    $unit = new Unit();
+                                    $unit->loadFromDb($parentRecord->unit_id, $parentRecord->id, true);
+                                    $currentAuthor->parents[] = $unit;
                                 }
                             }
                         }
@@ -662,34 +835,77 @@ class MathIndex extends Element
         return $authors;
     }
 
+    private function findParentUnit($unittableid, $parentId)
+    {
+        global $DB;
+
+        $parentElement = $DB->get_record('msm_compositor', array('id' => $parentId));
+
+        if ($parentElement->table_id == $unittableid)
+        {
+            return $parentElement;
+        }
+        else
+        {
+            $parentElement = $this->findParentUnit($unittableid, $parentElement->parent_id);
+        }
+        return $parentElement;
+    }
+
     function displayGlossary($glossaryTree)
     {
         global $DB;
-//        
+////        
 //        print_object($glossaryTree);
 //        die;
 
         $content = '';
 
+        // current node is a root element, which is ignored
         if ($glossaryTree->text != 'root')
         {
-            $content .= "<li><span>" . $glossaryTree->text . "     </span>";
+            $content .= "<li><span>" . $glossaryTree->text . "      </span>";
 
-            if (sizeof($glossaryTree->infos) > 0)
+            if ((sizeof($glossaryTree->infos) > 0) && (sizeof($glossaryTree->parents) > 0))
+            {
+                // takes care of processing when info is larger/equal size to parent array
+                foreach ($glossaryTree->infos as $info)
+                {
+                    $content .= "<a id='glossaryinfo-" . $info->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $info->compid . ")'>i</a>";
+                    $content .= $info->displayhtml();
+
+                    // checks that parent array is not empty
+                    if (sizeof($glossaryTree->parents) > 0)
+                    {
+                        $parent = array_shift($glossaryTree->parents);
+                        $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $info->compid . "' style='display:none;'>";
+                        $content .= $parent->displayhtml();
+                        $content .= "</div>";
+                    }
+                }
+                // if the size of the parent array is larger than the info array then there are some left over parents to be processed
+                if (sizeof($glossaryTree->parents) > 0)
+                {
+                    foreach ($glossaryTree->parents as $parent)
+                    {
+                        $content .= "<a id='glossaryinfo-" . $parent->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $parent->compid . ")'>i</a>";
+                        $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $parent->compid . "' style='display:none;'>";
+                        $content .= $parent->displayhtml();
+                        $content .= "</div>";
+                    }
+                }
+            }
+            // in case where parent array is empty
+            else if ((sizeof($glossaryTree->infos) > 0) && (sizeof($glossaryTree->parents) == 0))
             {
                 foreach ($glossaryTree->infos as $info)
                 {
                     $content .= "<a id='glossaryinfo-" . $info->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $info->compid . ")'>i</a>";
                     $content .= $info->displayhtml();
                 }
-                foreach ($glossaryTree->parents as $parent)
-                {
-                    $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $info->compid . "' style='display:none;'>";
-                    $content .= $parent->displayhtml();
-                    $content .= "</div>";
-                }
             }
-            else
+             // in case where info array is empty, then an icon would be created but it will have no associating info box 
+            else if ((sizeof($glossaryTree->infos) == 0) && (sizeof($glossaryTree->parents) > 0))
             {
                 foreach ($glossaryTree->parents as $parent)
                 {
@@ -699,7 +915,7 @@ class MathIndex extends Element
                     $content .= "</div>";
                 }
             }
-
+            // if the current node of the tree has children, then need to display them in the tree
             if (sizeof($glossaryTree->children) > 0)
             {
                 $content .= "<ul class='chilren'>";
@@ -710,11 +926,13 @@ class MathIndex extends Element
                 $content .= "</ul>";
                 $content .= "</li>";
             }
+            // no children for the current node, so just close the list item tag
             else
             {
                 $content .= "</li>";
             }
         }
+        // it is not the root node therefore, process its children
         else
         {
             foreach ($glossaryTree->children as $child)
@@ -723,120 +941,58 @@ class MathIndex extends Element
             }
         }
 
-
-
-//        $content = '';
-//
-//        foreach ($glossaryTree->children as $key => $term)
+//        if ($glossaryTree->text != 'root')
 //        {
-//            if (!empty($term->text))
+//            $content .= "<li><span>" . $glossaryTree->text . "     </span>";
+//
+//            if (sizeof($glossaryTree->infos) > 0)
 //            {
-//                // it has a info box associated with the word
-//                if (sizeof($term->infos) > 0)
+//                foreach ($glossaryTree->infos as $info)
 //                {
-//                    if (sizeof($term->infos) > 1)
-//                    {
-//                        $content .= "<li><span>" . $term->text . "     </span>";
-//                        foreach ($term->infos as $info)
-//                        {
-//                            $currentIndexCompid = $DB->get_record('msm_compositor', array('id' => $info->compid))->parent_id;
-//                            $content .= "<a id='glossaryinfo-" . $currentIndexCompid . "' class='msm_infobutton' onmouseover='infoopen(" . $currentIndexCompid . ")'>i</a>";
-//                            $content .= $info->displayhtml();
-//                        }
-//
-//                        if (!empty($term->parents))
-//                        {
-//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $currentIndexCompid . "' style='display:none;'>";
-//                            foreach ($term->parents as $parent)
-//                            {
-//                                $content .= $parent->displayhtml();
-//                            }
-//                            $content .= "</div>";
-//                        }
-//
-//
-//                        $content .= "<ul>";
-//                        $content .= $this->displayGlossary($term);
-//                        $content .= "</ul>";
-//                        $content .= "<li>";
-//                    }
-//                     $currentIndexCompid = $DB->get_record('msm_compositor', array('id' => $term->infos[0]->compid))->parent_id;
-//                    // this word has a child category
-//                    if (sizeof($term->children) > 0)
-//                    {
-//                        $content .= "<li><span>" . $term->text . "     </span><a id='glossaryinfo-" . $currentIndexCompid . "' class='msm_infobutton' onmouseover='infoopen(" . $currentIndexCompid . ")'>i</a>";
-//                        $content .= "<ul>";
-//                        $content .= $this->displayGlossary($term);
-//                        $content .= "</ul>";
-//                        $content .= "<li>";
-//                        $content .= $term->infos[0]->displayhtml();
-//
-//                        if (!empty($term->parents))
-//                        {
-//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $currentIndexCompid . "' style='display:none;'>";
-//                            foreach ($term->parents as $parent)
-//                            {
-//                                $content .= $parent->displayhtml();
-//                            }
-//                            $content .= "</div>";
-//                        }
-//                    }
-//                    // empty children
-//                    else
-//                    {
-//                        $content .= "<li><span>" . $term->text . "   </span><a id='glossaryinfo-" . $currentIndexCompid . "' class='msm_infobutton' onmouseover='infoopen(" . $currentIndexCompid . ")'>i</a></li>";
-//                        $content .= $term->infos[0]->displayhtml();
-//
-//                        if (!empty($term->parents))
-//                        {
-//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $currentIndexCompid . "' style='display:none;'>";
-//                            foreach ($term->parents as $parent)
-//                            {
-//                                $content .= $parent->displayhtml();
-//                            }
-//                            $content .= "</div>";
-//                        }
-//                    }
+//                    $content .= "<a id='glossaryinfo-" . $info->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $info->compid . ")'>i</a>";
+//                    $content .= $info->displayhtml();
 //                }
-//                else // no info box associated with this word
+//                foreach ($glossaryTree->parents as $parent)
 //                {
-//                    // this word has a child category
-//                    if (sizeof($term->children) > 0)
-//                    {
-//                        $content .= "<li><span>" . $term->text . "</span>";
-//
-//                        if (!empty($term->parents))
-//                        {
-//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $term->parents[0]->compid . "' style='display:none;'>";
-//                            foreach ($term->parents as $parent)
-//                            {
-//                                $content .= $parent->displayhtml();
-//                            }
-//                            $content .= "</div>";
-//                        }
-//
-//                        $content .= "<ul>";
-//                        $content .= $this->displayGlossary($term);
-//                        $content .= "</ul>";
-//                        $content .= "<li>";
-//                    }
-//                    // empty children
-//                    else
-//                    {
-//                        $content .= "<li><span>" . $term->text . "</span></li>";
-//                        if (!empty($term->parents))
-//                        {
-//                            $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $term->parents[0]->compid . "' style='display:none;'>";
-//                            foreach ($term->parents as $parent)
-//                            {
-//                                $content .= $parent->displayhtml();
-//                            }
-//                            $content .= "</div>";
-//                        }
-//                    }
+//                    $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $info->compid . "' style='display:none;'>";
+//                    $content .= $parent->displayhtml();
+//                    $content .= "</div>";
 //                }
 //            }
+//            else
+//            {
+//                foreach ($glossaryTree->parents as $parent)
+//                {
+//                    $content .= "<a id='glossaryinfo-" . $parent->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $parent->compid . ")'>i</a>";
+//                    $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $parent->compid . "' style='display:none;'>";
+//                    $content .= $parent->displayhtml();
+//                    $content .= "</div>";
+//                }
+//            }
+//
+//            if (sizeof($glossaryTree->children) > 0)
+//            {
+//                $content .= "<ul class='chilren'>";
+//                foreach ($glossaryTree->children as $child)
+//                {
+//                    $content .= $this->displayGlossary($child);
+//                }
+//                $content .= "</ul>";
+//                $content .= "</li>";
+//            }
+//            else
+//            {
+//                $content .= "</li>";
+//            }
 //        }
+//        else
+//        {
+//            foreach ($glossaryTree->children as $child)
+//            {
+//                $content .= $this->displayGlossary($child);
+//            }
+//        }
+
         return $content;
     }
 
@@ -984,96 +1140,6 @@ class MathIndex extends Element
                 }
             }
         }
-    }
-
-    private function createTree($children, $ancestors, $parentNode, $termArray)
-    {
-        $termLength = sizeof($termArray);
-
-        if (!empty($parentNode->children))
-        {
-            $term = array_shift($termArray);
-
-            $foundCatergory = false;
-
-            foreach ($parentNode->children as $parentChild)
-            {
-                if ($parentChild->text == $term)
-                {
-                    $this->createTree($children, $ancestors, $parentChild, $termArray);
-                    $foundCatergory = true;
-                    break;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-
-            if (!$foundCatergory)
-            {
-                $childNode = new GlossaryNode();
-                $childNode->text = $term;
-                $parentNode->children[] = $childNode;
-
-                $this->createTree($children, $ancestors, $childNode, $termArray);
-            }
-        }
-        else
-        {
-            if ($termLength >= 1)
-            {
-                $term = array_shift($termArray);
-
-                if (!empty($term))
-                {
-                    echo "term and nodetext\n";
-                    print_object($parentNode->text);
-                    print_object($term);
-                    
-                    if ($parentNode->text != $term)
-                    {
-                        echo "not the same node\n";
-                        $childNode = new GlossaryNode();
-                        $childNode->text = $term;
-                        $parentNode->children[] = $childNode;
-
-                        $this->createTree($children, $ancestors, $childNode, $termArray);
-                    }
-                    else
-                    {
-                        echo "same text and term\n";
-                        
-                        foreach ($children as $child)
-                        {
-                            $parentNode->infos[] = $child;
-                        }
-
-                        foreach ($ancestors as $ancestor)
-                        {
-                            $parentNode->parents[] = $ancestor;
-                        }
-                    }
-                }
-                else
-                {
-                    foreach ($children as $child)
-                    {
-                        $parentNode->infos[] = $child;
-                    }
-                    foreach ($ancestors as $ancestor)
-                    {
-                        $parentNode->parents[] = $ancestor;
-                    }
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-        $child = null;
-        $ancestor = null;
     }
 
 }

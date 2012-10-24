@@ -944,7 +944,7 @@ class Unit extends Element
         }
     }
 
-    function loadFromDb($id, $compid)
+    function loadFromDb($id, $compid, $indexref = false)
     {
         global $DB;
 
@@ -978,72 +978,145 @@ class Unit extends Element
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            switch ($childtablename)
+            if (!$indexref)
             {
-                case('msm_extra_info'):
-                    $extrainfo = new ExtraInfo();
-                    $extrainfo->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $extrainfo;
-                    break;
+                switch ($childtablename)
+                {
+                    case('msm_extra_info'):
+                        $extrainfo = new ExtraInfo();
+                        $extrainfo->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $extrainfo;
+                        break;
 
-                case('msm_person'):
-                    $person = new Person();
-                    $person->loadFromDb($child->unit_id);
-                    $this->authors[] = $person;
-                    break;
+                    case('msm_person'):
+                        $person = new Person();
+                        $person->loadFromDb($child->unit_id);
+                        $this->authors[] = $person;
+                        break;
 
-                case('msm_intro'):
-                    $intro = new Intro();
-                    $intro->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $intro;
-                    break;
-                case('msm_def'):
-                    $def = new Definition();
-                    $def->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $def;
-                    break;
+                    case('msm_intro'):
+                        $intro = new Intro();
+                        $intro->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $intro;
+                        break;
+                    case('msm_def'):
+                        $def = new Definition();
+                        $def->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $def;
+                        break;
 
-                case('msm_para'):
-                    $para = new Para();
-                    $para->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $para;
-                    break;
+                    case('msm_para'):
+                        $para = new Para();
+                        $para->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $para;
+                        break;
 
-                case('msm_content'):
-                    $incontent = new InContent();
-                    $incontent->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $incontent;
-                    break;
+                    case('msm_content'):
+                        $incontent = new InContent();
+                        $incontent->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $incontent;
+                        break;
 
-                case('msm_theorem'):
-                    $theorem = new Theorem();
-                    $theorem->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $theorem;
-                    break;
+                    case('msm_theorem'):
+                        $theorem = new Theorem();
+                        $theorem->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $theorem;
+                        break;
 
-                case('msm_media'):
-                    $media = new Media();
-                    $media->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $media;
-                    break;
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $media;
+                        break;
 
-                case('msm_math_array'):
-                    $matharray = new MathArray();
-                    $matharray->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $matharray;
-                    break;
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $matharray;
+                        break;
 
-                case('msm_table'):
-                    $table = new Table();
-                    $table->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $table;
-                    break;
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $table;
+                        break;
 //                   
-                case('msm_comment'):
-                    $comment = new MathComment();
-                    $comment->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $comment;
-                    break;
+                    case('msm_comment'):
+                        $comment = new MathComment();
+                        $comment->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $comment;
+                        break;
+                }
+            }
+            else
+            {
+                switch ($childtablename)
+                {
+                    case('msm_extra_info'):
+                        $extrainfo = new ExtraInfo();
+                        $extrainfo->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $extrainfo;
+                        break;
+
+                    case('msm_person'):
+                        $person = new Person();
+                        $person->loadFromDb($child->unit_id);
+                        $this->authors[] = $person;
+                        break;
+
+                    case('msm_intro'):
+                        $intro = new Intro();
+                        $intro->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $intro;
+                        break;
+                    case('msm_def'):
+                        $def = new Definition();
+                        $def->loadFromDb($child->unit_id, $child->id, true);
+                        $this->childs[] = $def;
+                        break;
+
+                    case('msm_para'):
+                        $para = new Para();
+                        $para->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $para;
+                        break;
+
+                    case('msm_content'):
+                        $incontent = new InContent();
+                        $incontent->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $incontent;
+                        break;
+
+                    case('msm_theorem'):
+                        $theorem = new Theorem();
+                        $theorem->loadFromDb($child->unit_id, $child->id, true);
+                        $this->childs[] = $theorem;
+                        break;
+
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $media;
+                        break;
+
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $matharray;
+                        break;
+
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $table;
+                        break;
+//                   
+                    case('msm_comment'):
+                        $comment = new MathComment();
+                        $comment->loadFromDb($child->unit_id, $child->id, true);
+                        $this->childs[] = $comment;
+                        break;
+                }
             }
         }
 

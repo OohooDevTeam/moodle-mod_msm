@@ -498,12 +498,6 @@ class Crossref extends Element
                     }
                     else
                     {
-                        
-//                        if($this->theorems[0]->string_id == 'Thm_LinearIndependenceFacts')
-//                        {
-//                            echo "the theorem in question\n";
-//                            print_object($this->theorems);
-//                        }
                         $theoremID = $theoremRecord->id;
                         $theoremtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
 
