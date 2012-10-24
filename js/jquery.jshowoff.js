@@ -298,7 +298,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             }, 800);
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
         });
-          
     };
 
     // load the previous slide
@@ -363,8 +362,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 scrollTop: '0px'
             }, 800);
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        });
-        		
+        });	
     };
 			
     function updatepgnumber(pgnumber) {
@@ -419,15 +417,15 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
         });
     };
     
-    var gallery=null;
-    var $cont=null;
-    var timer=null;
+    gallery=null;
+    $cont=null;
+    timer=null;
     //    var preloadedImg;
-    var howManyInstances=null;
-    var counter=null;
-    var uniqueClass=null;
-    var cssClass=null;
-    var $wrap=null;
+    howManyInstances=null;
+    counter=null;
+    uniqueClass=null;
+    cssClass=null;
+    $wrap=null;
     
 //    // generate and add slide links
 //    function addSlideLinks() {

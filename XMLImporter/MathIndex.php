@@ -298,42 +298,42 @@ class MathIndex extends Element
         $sibling_id = 0;
         foreach ($this->infos as $info)
         {
-            $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
-            $sibling_id = $info->compid;
-//            $numOfRecords = $DB->count_records('msm_info');
-//            if ($numOfRecords > 0)
-//            {
-//                // need the limit to be $numOfRecords+1 to process the last record
-//                for ($i = 1; $i < $numOfRecords + 1; $i++)
-//                {
-//                    $string = $DB->get_field('msm_info', 'info_content', array('id' => $i));
-//
-//                    if (trim($string) == trim($info->content))
-//                    {
-//                        $recordID = $i;
-//                        break;
-//                    }
-//                    else
-//                    {
-//                        $recordID = false;
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                $recordID = false;
-//            }
-//
-//            if (empty($recordID))
-//            {
-//                $info->saveIntoDb($info->position, $msmid, $this->compid);
-//                $sibling_id = $info->compid;
-//            }
-//            else
-//            {
-//                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $msmid, $parentid, $sibling_id);
-//                $sibling_id = $info->compid;
-//            }
+//            $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
+//            $sibling_id = $info->compid;
+            $numOfRecords = $DB->count_records('msm_info');
+            if ($numOfRecords > 0)
+            {
+                // need the limit to be $numOfRecords+1 to process the last record
+                for ($i = 1; $i < $numOfRecords + 1; $i++)
+                {
+                    $string = $DB->get_field('msm_info', 'info_content', array('id' => $i));
+
+                    if (trim($string) == trim($info->content))
+                    {
+                        $recordID = $i;
+                        break;
+                    }
+                    else
+                    {
+                        $recordID = false;
+                    }
+                }
+            }
+            else
+            {
+                $recordID = false;
+            }
+
+            if (empty($recordID))
+            {
+                $info->saveIntoDb($info->position, $msmid, $this->compid);
+                $sibling_id = $info->compid;
+            }
+            else
+            {
+                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $msmid, $this->compid, $sibling_id);
+                $sibling_id = $info->compid;
+            }
         }
     }
 
