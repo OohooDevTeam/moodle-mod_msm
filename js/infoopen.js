@@ -349,6 +349,7 @@ function infoopen(i) {
         });   
     });
     
+    $('#symbolinfo-'+i).unbind('click');
     $('#symbolinfo-'+i).click(function(e) { 
         $('#symbolrefcontent-'+i).attr('class', 'renderefcontent');        
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
@@ -381,8 +382,9 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('close');
         });   
     });
-    
-    $('#glossaryinfo-'+i).click(function(e) {  
+   
+    $('#glossaryinfo-'+i).unbind('click');
+    $('#glossaryinfo-'+i).click(function(e) {        
         $('#glossaryrefcontent-'+i).attr('class', 'renderefcontent');        
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         
@@ -412,7 +414,7 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('close');
         });   
     });
-    
+     $('#authorinfo-'+i).unbind('click');
     $('#authorinfo-'+i).click(function(e) {  
         $('#authorrefcontent-'+i).attr('class', 'renderefcontent');        
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
