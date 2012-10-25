@@ -533,7 +533,7 @@ class ProofBlock extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
 
@@ -555,7 +555,8 @@ class ProofBlock extends Element
                     $content .= "<i>" . $this->partrefs[0]->part_content . "</i>";
                 }
 
-                $content = preg_replace("/<a href(.+)\sid=(.+)>/", '', $content);
+                $content = preg_replace("/<a id=(.+)>(.+)<\/a>/", '$2', $content);
+                $content = preg_replace("/<a id=(.+)>/", '', $content);
                 $content = str_replace('</a>', '', $content);
 
                 $content .= "</li>";

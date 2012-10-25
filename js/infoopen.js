@@ -1,33 +1,35 @@
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
-
-
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 /* 
  * This javascript function is similar to the one in popup.js but this code does not 
  * deal with dialog box when the buttons are clicked.  It is to display the related
  * reference materials to the right side of the panel instead of sticking the dialog box 
  * to the frame.
  */
-var x = 0; // stores the x-axis position of the mouse
-var y = 0; // stores the y-axis position of the mouse
+
+
 
 /* variable i is passed by each time the defminibutton/minibutton in definition.php/theorem.php has a mouse hovering over and 
  * it tracks the unique ID number of the buttons to call the correct dialog windows.
  */
 
 function infoopen(i) {    
+    
+    var x = 0; // stores the x-axis position of the mouse
+    var y = 0; // stores the y-axis position of the mouse
+    
     $('#defminibutton-'+i).unbind('click'); 
     $('#defminibutton-'+i).click(
         function() {
@@ -195,6 +197,7 @@ function infoopen(i) {
 
     });
  
+    $('#copydefminibutton-'+i).unbind('click');
     $('#copydefminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -211,7 +214,6 @@ function infoopen(i) {
         });
     
     });
-                
     $('#copydefminibutton-'+i).ready(function(e){
         $('#copydefminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -226,6 +228,7 @@ function infoopen(i) {
    
     });
     
+    $('#copyminibutton-'+i).unbind('click');
     $('#copyminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -242,7 +245,6 @@ function infoopen(i) {
         });
     
     });
-                
     $('#copyminibutton-'+i).ready(function(e){
         $('#copyminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -257,6 +259,7 @@ function infoopen(i) {
    
     });
     
+    $('#copyhottag-'+i).unbind('click'); 
     $('#copyhottag-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -273,7 +276,6 @@ function infoopen(i) {
         });
     
     });
-                
     $('#copyhottag-'+i).ready(function(e){
         $('#copyhottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -287,7 +289,8 @@ function infoopen(i) {
         });   
     });  
     
-    $('#copycommentminibutton-'+i).click(function(e) {
+    $('#copycommentminibutton-'+i).unbind('click');    
+    $('#copycommentminibutton-'+i).click(function(e) {    
         x = e.pageX+5;
         y = e.pageY+5;
 
@@ -303,7 +306,6 @@ function infoopen(i) {
         });
     
     });
-                
     $('#copycommentminibutton-'+i).ready(function(e){
         $('#copycommentminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -318,7 +320,8 @@ function infoopen(i) {
    
     });
     
-    // to produce a modal dialog box to display reference materials from the right side of the page
+    // to produce a modal dialog box to display reference materials from the right side of the page\
+    $('#copyactivehottag-'+i).unbind('click');   
     $('#copyactivehottag-'+i).click(function(e) {  
         $('#dialog-'+i).dialog('close');
         $('#copyrefcontent-'+i).dialog(
@@ -333,8 +336,6 @@ function infoopen(i) {
             $('#copyrefcontent-'+i).dialog('close'); 
         });
     }); 
-    
-   
                 
     $('#copyactivehottag-'+i).ready(function(e){
         $('#copyactivehottag-'+i).mousemove(function (e) {
@@ -396,7 +397,7 @@ function infoopen(i) {
         });
         $('#glossaryrefcontent-'+i).dialog('open').css('display', 'block');
         // to close the modal dialog box by clicking the outside of the box
-//        alert("opening?");
+        //        alert("opening?");
         $('.ui-widget-overlay').click(function() {
             $('#glossaryrefcontent-'+i).dialog('close'); 
         });
@@ -414,7 +415,7 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('close');
         });   
     });
-     $('#authorinfo-'+i).unbind('click');
+    $('#authorinfo-'+i).unbind('click');
     $('#authorinfo-'+i).click(function(e) {  
         $('#authorrefcontent-'+i).attr('class', 'renderefcontent');        
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);

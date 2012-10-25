@@ -16,13 +16,15 @@
 /* 
  * to create a dialog window to display additional informations
  */
-var x = 0; // stores the x-axis position of the mouse
-var y = 0; // stores the y-axis position of the mouse
 
 /* variable i is passed by each time the defminibutton/minibutton in definition.php/theorem.php has a mouse hovering over and 
  * it tracks the unique ID number of the buttons to call the correct dialog windows.
  */
-function popup(i) {
+function popup(i) {   
+    var x = 0; // stores the x-axis position of the mouse
+    var y = 0; // stores the y-axis position of the mouse
+    
+    $('#defminibutton-'+i).unbind('click');
     $('#defminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -52,7 +54,7 @@ function popup(i) {
             $('#dialog-'+i).dialog('close');
         });
     });
-    
+    $('#minibutton-'+i).unbind('click');
     $('#minibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -83,6 +85,7 @@ function popup(i) {
         });
     });
     
+    $('#hottag-'+i).unbind('click');
     $('#hottag-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -114,6 +117,7 @@ function popup(i) {
 
     });
     
+    $('#commentminibutton-'+i).unbind('click');
     $('#commentminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -144,6 +148,7 @@ function popup(i) {
         });
     });
     
+    $('#copydefminibutton-'+i).unbind('click');
     $('#copydefminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -174,6 +179,7 @@ function popup(i) {
         });
     });
     
+    $('#copyminibutton-'+i).unbind('click');
     $('#copyminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -204,6 +210,7 @@ function popup(i) {
         });
     });
     
+    $('#copyhottag-'+i).unbind('click');
     $('#copyhottag-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -234,6 +241,7 @@ function popup(i) {
         });
     });
     
+    $('#copycommentminibutton-'+i).unbind('click');
     $('#copycommentminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -264,6 +272,7 @@ function popup(i) {
         });
     });
     
+    $('#pic-'+i).unbind('click');
     $('#pic-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -294,6 +303,7 @@ function popup(i) {
         });
     });
     
+    $('#copypic-'+i).unbind('click');
     $('#copypic-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
