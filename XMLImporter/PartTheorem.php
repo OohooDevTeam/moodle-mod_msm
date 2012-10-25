@@ -80,8 +80,8 @@ class PartTheorem extends Element
             {
                 $this->tables[] = $table;
             }
-            
-            foreach($this->processMathArray($parb, $position) as $matharray)
+
+            foreach ($this->processMathArray($parb, $position) as $matharray)
             {
                 $this->matharrays[] = $matharray;
             }
@@ -161,8 +161,8 @@ class PartTheorem extends Element
                 $elementPositions['media' . '-' . $key] = $media->position;
             }
         }
-        
-         if (!empty($this->matharrays))
+
+        if (!empty($this->matharrays))
         {
             foreach ($this->matharrays as $key => $matharray)
             {
@@ -268,8 +268,8 @@ class PartTheorem extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
-                    
-                    case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
                     $matharrayString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -336,19 +336,19 @@ class PartTheorem extends Element
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
-                
+
                 case('msm_math_array'):
                     $matharray = new MathArray();
                     $matharray->loadFromDb($child->unit_id, $child->id);
                     $this->matharrays[] = $matharray;
                     break;
-                
+
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);
                     $this->tables[] = $table;
                     break;
-                
+
                 case('msm_media'):
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
@@ -360,7 +360,7 @@ class PartTheorem extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex)
     {
         $content = '';
         $content .= "<li>";
@@ -368,7 +368,14 @@ class PartTheorem extends Element
         {
             $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
         }
-        $content .= $this->displayContent($this, $this->part_content);
+        if (!$isindex)
+        {
+            $content .= $this->displayContent($this, $this->part_content);
+        }
+        else
+        {
+            $content .= $this->part_content;
+        }
         $content .= "</li>";
         $content .= "<br />";
 

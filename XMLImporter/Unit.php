@@ -1123,7 +1123,7 @@ class Unit extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
 //        $content .= "<div class='unit' id='unit-" . $this->compid . "'>";
@@ -1176,7 +1176,7 @@ class Unit extends Element
 
         foreach ($this->childs as $child)
         {
-            $content .= $child->displayhtml();
+            $content .= $child->displayhtml($isindex);
         }
 
 //        $content .= "</div>";

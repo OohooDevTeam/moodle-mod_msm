@@ -440,11 +440,19 @@ class InContent extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
 
-        $content .= $this->displayContent($this, $this->content);
+        if (!$isindex)
+        {
+            $content .= $this->displayContent($this, $this->content);
+        }
+        else
+        {
+            $content .= $this->content;
+        }
+
 
         return $content;
     }

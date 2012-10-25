@@ -356,9 +356,17 @@ class Table extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
-        $newtablecontent = $this->displayContent($this, $this->table_content);
+        if (!$isindex)
+        {
+            $newtablecontent = $this->displayContent($this, $this->table_content);
+        }
+        else
+        {
+            $newtablecontent = $this->table_content;
+        }
+        
         $tablecontent = "<root>" . $newtablecontent . "</root>";
 
         $content = $this->processTableContent($tablecontent);

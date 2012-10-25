@@ -900,7 +900,7 @@ class MathIndex extends Element
                     {
                         $parent = array_shift($glossaryTree->parents);
                         $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $info->compid . "' style='display:none;'>";
-                        $content .= $parent->displayhtml();
+                        $content .= $parent->displayhtml(true);
                         $content .= "</div>";
                     }
                 }
@@ -911,7 +911,7 @@ class MathIndex extends Element
                     {
                         $content .= "<a id='glossaryinfo-" . $parent->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $parent->compid . ")'>i</a>";
                         $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $parent->compid . "' style='display:none;'>";
-                        $content .= $parent->displayhtml();
+                        $content .= $parent->displayhtml(true);
                         $content .= "</div>";
                     }
                 }
@@ -932,7 +932,7 @@ class MathIndex extends Element
                 {
                     $content .= "<a id='glossaryinfo-" . $parent->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $parent->compid . ")'>i</a>";
                     $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $parent->compid . "' style='display:none;'>";
-                    $content .= $parent->displayhtml();
+                    $content .= $parent->displayhtml(true);
                     $content .= "</div>";
                 }
             }
@@ -981,7 +981,7 @@ class MathIndex extends Element
                 $content .= "<div class='symbolrefcontent' id='symbolrefcontent-" . $symbol->infos[0]->compid . "' style='display:none;'>";
                 foreach ($symbol->parents as $parent)
                 {
-                    $content .= $parent->displayhtml();
+                    $content .= $parent->displayhtml(true);
                 }
                 $content .= "</div>";
             }
@@ -1013,7 +1013,7 @@ class MathIndex extends Element
                 $content .= "<div class='authorrefcontent' id='authorrefcontent-" . $author->infos[0]->compid . "' style='display:none;'>";
                 foreach ($author->parents as $parent)
                 {
-                    $content .= $parent->displayhtml();
+                    $content .= $parent->displayhtml(true);
                 }
                 $content .= "</div>";
             }

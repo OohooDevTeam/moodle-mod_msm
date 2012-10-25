@@ -191,7 +191,7 @@ class Media extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
         $content .= "<div class='picture'>";
@@ -200,7 +200,7 @@ class Media extends Element
         {
             foreach ($this->childs as $childComponent)
             {
-                $content .= $childComponent->displayhtml($this->inline);
+                $content .= $childComponent->displayhtml($this->inline, $isindex);
             }
         }
         else
@@ -208,13 +208,16 @@ class Media extends Element
             $imagehtml = '';
             foreach ($this->childs as $childComponent)
             {
-                $imagehtml .= $childComponent->displayhtml($this->inline);
+                $imagehtml .= $childComponent->displayhtml($this->inline, $isindex);
             }
-            $content .= "<a id='hottag-" . $this->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
-            $content .= $imagehtml;
-            $content .= "</a>";
+            if (!$isindex)
+            {
+                $content .= "<a id='hottag-" . $this->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+                $content .= $imagehtml;
+                $content .= "</a>";
 
-            $content .= $this->infos[0]->displayhtml();
+                $content .= $this->infos[0]->displayhtml();
+            }
         }
 
         $content .= "</div>";

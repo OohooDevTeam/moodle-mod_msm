@@ -340,7 +340,7 @@ class ExtraInfo extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
         $content .= "<div class='extrainfo'>";
@@ -351,9 +351,18 @@ class ExtraInfo extends Element
             $content .= "<span class='extrainfocaption'>" . $this->caption . "</span>";
         }
 
-        $content .= "<div class='mathcontent'>";
-        $content .= $this->displayContent($this, $this->content);
-        $content .= "</div>";
+        if (!$isindex)
+        {
+            $content .= "<div class='mathcontent'>";
+            $content .= $this->displayContent($this, $this->content);
+            $content .= "</div>";
+        }
+        else
+        {
+            $content .= "<div class='mathcontent'>";
+            $content .= $this->content;
+            $content .= "</div>";
+        }
 
         $content .= "</div>";
         return $content;

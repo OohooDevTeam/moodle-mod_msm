@@ -172,7 +172,7 @@ class MathImg extends Element
         return $this;
     }
 
-    function displayhtml($inline)
+    function displayhtml($inline, $isindex = false)
     {
         $content = '';
 
@@ -247,7 +247,7 @@ class MathImg extends Element
             {
 //                if ($filename[1] != 'png')
 //                {
-                    $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "'/>";
+                $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "'/>";
 //                }
 //                else
 //                {
@@ -258,12 +258,15 @@ class MathImg extends Element
             {
                 $content .= "<img id='image-" . $this->compid . "' class='mathimagemap' src='" . $this->src . "' height='" . $height . "' width='" . $width . "' usemap='#" . $filename[0] . "'/>";
 //           
-                $content .= "<map name='" . $filename[0] . "'>";
-                foreach ($this->imageareas as $imagearea)
+                if (!$isindex)
                 {
-                    $content .= $imagearea->displayhtml();
+                    $content .= "<map name='" . $filename[0] . "'>";
+                    foreach ($this->imageareas as $imagearea)
+                    {
+                        $content .= $imagearea->displayhtml();
+                    }
+                    $content .= "</map>";
                 }
-                $content .= "</map>";
             }
         }
 

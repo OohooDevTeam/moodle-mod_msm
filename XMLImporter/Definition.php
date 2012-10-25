@@ -62,7 +62,7 @@ class Definition extends Element
         $this->medias = array();
         $this->tables = array();
         $this->matharrays = array();
-        
+
         $associates = $DomElement->getElementsByTagName('associate');
 
         foreach ($associates as $a)
@@ -466,7 +466,7 @@ class Definition extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
         $content .= "<br />";
@@ -482,22 +482,35 @@ class Definition extends Element
         }
         $content .= "<br/>";
 
-        $content .= "<div class='mathcontent'>";
-        $content .= $this->displayContent($this, $this->def_content);
-        $content .= "<br />";
-        $content .= "</div>";
-
-        $content .= "<br />";
-
-        if (!empty($this->associates))
+        if (!$isindex)
         {
-            $content .= "<ul class='defminibuttons'>";
-            foreach ($this->associates as $key => $associate)
+            $content .= "<div class='mathcontent'>";
+            $content .= $this->displayContent($this, $this->def_content);
+            $content .= "<br />";
+            $content .= "</div>";
+
+            $content .= "<br />";
+
+            if (!empty($this->associates))
             {
-                $content .= $associate->displayhtml();
+                $content .= "<ul class='defminibuttons'>";
+                foreach ($this->associates as $key => $associate)
+                {
+                    $content .= $associate->displayhtml();
+                }
+                $content .= "</ul>";
             }
-            $content .= "</ul>";
         }
+        else
+        {
+            $content .= "<div class='mathcontent'>";
+            $content .= $this->def_content;
+            $content .= "<br />";
+            $content .= "</div>";
+
+            $content .= "<br />";
+        }
+
 
 
         $content .= "</div>";

@@ -132,7 +132,7 @@ class MathArray extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
         
@@ -140,7 +140,7 @@ class MathArray extends Element
         
         foreach($this->rows as $row)
         {
-            $content .= $row->displayhtml();
+            $content .= $row->displayhtml($isindex = false);
         }
         
         $content .= "</table>";

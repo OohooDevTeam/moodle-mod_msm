@@ -119,7 +119,7 @@ class ExternalLink extends Element
         return $this;
     }
     
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content ='';
         

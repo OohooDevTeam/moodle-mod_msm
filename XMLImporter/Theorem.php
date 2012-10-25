@@ -248,7 +248,7 @@ class Theorem extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
         $content .= "<br />";
@@ -267,48 +267,48 @@ class Theorem extends Element
         $content .= "<div class='mathcontent'>";
         foreach ($this->childs as $child)
         {
-            $content .= $child->displayhtml();
+            $content .= $child->displayhtml($isindex);
         }
         $content .= "</div>";
 
         $content .= "<br />";
 
-        if ((!empty($this->associates)) && (!empty($this->proofs)))
+        if (!$isindex)
         {
-            $content .= "<ul class='minibuttons'>";
-            foreach ($this->associates as $associate)
+            if ((!empty($this->associates)) && (!empty($this->proofs)))
             {
-                $content .= $associate->displayhtml();
-            }
+                $content .= "<ul class='minibuttons'>";
+                foreach ($this->associates as $associate)
+                {
+                    $content .= $associate->displayhtml();
+                }
 
-            foreach ($this->proofs as $proof)
+                foreach ($this->proofs as $proof)
+                {
+                    $content .= $proof->displayhtml();
+                }
+
+                $content .= "</ul>";
+            }
+            else if ((!empty($this->associates)) && (empty($this->proofs)))
             {
-                $content .= $proof->displayhtml();
+                $content .= "<ul class='minibuttons'>";
+                foreach ($this->associates as $associate)
+                {
+                    $content .= $associate->displayhtml();
+                }
+                $content .= "</ul>";
             }
-
-            $content .= "</ul>";
+            else if ((empty($this->associates)) && (!empty($this->proofs)))
+            {
+                $content .= "<ul class='minibuttons'>";
+                foreach ($this->proofs as $proof)
+                {
+                    $content .= $proof->displayhtml();
+                }
+                $content .= "</ul>";
+            }
         }
-        else if ((!empty($this->associates)) && (empty($this->proofs)))
-        {
-            $content .= "<ul class='minibuttons'>";
-            foreach ($this->associates as $associate)
-            {
-                $content .= $associate->displayhtml();
-            }
-            $content .= "</ul>";
-        }
-        else if ((empty($this->associates)) && (!empty($this->proofs)))
-        {
-            $content .= "<ul class='minibuttons'>";
-            foreach ($this->proofs as $proof)
-            {
-                $content .= $proof->displayhtml();
-            }
-            $content .= "</ul>";
-        }
-
-
-
 
         $content .= "</div>";
         $content .= "<br />";

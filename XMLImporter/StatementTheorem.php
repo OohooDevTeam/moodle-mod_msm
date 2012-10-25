@@ -64,7 +64,7 @@ class StatementTheorem extends Element
                     $newNode->appendChild($childElement);
 
                     $element = $doc->importNode($newNode, true);
-                    
+
                     foreach ($this->processIndexAuthor($element, $position) as $indexauthor)
                     {
                         $this->indexauthors[] = $indexauthor;
@@ -106,8 +106,6 @@ class StatementTheorem extends Element
                 }
             }
         }
-        
-       
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
@@ -393,15 +391,22 @@ class StatementTheorem extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
-        $content .= $this->displayContent($this, $this->statement_content);
+        if (!$isindex)
+        {
+            $content .= $this->displayContent($this, $this->statement_content);
+        }
+        else
+        {
+            $content .= $this->statement_content;
+        }
 
         $content .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->childs as $childComponent)
         {
-            $content .= $childComponent->displayhtml();
+            $content .= $childComponent->displayhtml($isindex);
         }
         $content .= "</ol>";
 

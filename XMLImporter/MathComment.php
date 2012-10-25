@@ -455,7 +455,7 @@ class MathComment extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
 
@@ -472,23 +472,34 @@ class MathComment extends Element
         }
         $content .= "<br/>";
 
-        $content .= "<div class='mathcontent'>";
-        $content .= $this->displayContent($this, $this->comment_content);
-        $content .= "<br />";
-        $content .= "</div>";
-
-        $content .= "<br />";
-
-        if (!empty($this->associates))
+        if (!$isindex)
         {
-            $content .= "<ul class='commentminibuttons'>";
-            foreach ($this->associates as $key => $associate)
-            {
-                $content .= $associate->displayhtml();
-            }
-            $content .= "</ul>";
-        }
+            $content .= "<div class='mathcontent'>";
+            $content .= $this->displayContent($this, $this->comment_content);
+            $content .= "<br />";
+            $content .= "</div>";
 
+            $content .= "<br />";
+
+            if (!empty($this->associates))
+            {
+                $content .= "<ul class='commentminibuttons'>";
+                foreach ($this->associates as $key => $associate)
+                {
+                    $content .= $associate->displayhtml();
+                }
+                $content .= "</ul>";
+            }
+        }
+        else
+        {
+            $content .= "<div class='mathcontent'>";
+            $content .= $this->comment_content;
+            $content .= "<br />";
+            $content .= "</div>";
+
+            $content .= "<br />";
+        }
 
         $content .= "</div>";
         $content .= "<br />";

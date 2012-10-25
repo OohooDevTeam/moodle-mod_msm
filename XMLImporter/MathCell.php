@@ -229,14 +229,14 @@ class MathCell extends Element
         return $this;
     }
 
-    function displayhtml($rowspan)
+    function displayhtml($rowspan, $isindex = false)
     {
         $content = '';
 
         $content .= "<td class='matharraycell' colspan='" . $this->colspan . "' rowspan='" . $rowspan . "' align='" . $this->halign . "' valign='" . $this->valign . "'>";
 
         // if info exists then need to set up the dialog popup window, otherwise, just show the content
-       
+
         if (empty($this->childs))
         {
             if (empty($this->content))
@@ -251,13 +251,20 @@ class MathCell extends Element
         }
         else
         {
-            $content .= "<a id='hottag-" . $this->compid . "' class='hottag' onmouseover='popup(" . $this->compid . ")'>";
-            $content .= $this->content;
-            $content .= "</a>";
+            if (!$isindex)
+            {
+                $content .= "<a id='hottag-" . $this->compid . "' class='hottag' onmouseover='popup(" . $this->compid . ")'>";
+                $content .= $this->content;
+                $content .= "</a>";
 
-            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->childs[0]->caption . '">';
-            $content .= $this->childs[0]->info_content;
-            $content .= "</div>";
+                $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->childs[0]->caption . '">';
+                $content .= $this->childs[0]->info_content;
+                $content .= "</div>";
+            }
+            else
+            {
+                 $content .= $this->content;
+            }
         }
 
         $content .= "</td>";

@@ -320,7 +320,7 @@ class Para extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
-                
+
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);
@@ -331,11 +331,19 @@ class Para extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($isindex = false)
     {
         $content = '';
 
-        $content .= $this->displayContent($this, $this->para_content);
+        if (!$isindex)
+        {
+            $content .= $this->displayContent($this, $this->para_content);
+        }
+        else
+        {
+            $content .= $this->para_content;
+        }
+
 
         return $content;
     }
