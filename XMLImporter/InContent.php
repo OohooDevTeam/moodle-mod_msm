@@ -443,17 +443,7 @@ class InContent extends Element
     function displayhtml($isindex = false)
     {
         $content = '';
-
-        if (!$isindex)
-        {
-            $content .= $this->displayContent($this, $this->content);
-        }
-        else
-        {
-            $content .= $this->content;
-        }
-
-
+        $content .= $this->displayContent($this, $this->content, $isindex);
         return $content;
     }
 

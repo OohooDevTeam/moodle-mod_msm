@@ -360,7 +360,7 @@ class PartTheorem extends Element
         return $this;
     }
 
-    function displayhtml($isindex)
+    function displayhtml($isindex = false)
     {
         $content = '';
         $content .= "<li>";
@@ -368,14 +368,7 @@ class PartTheorem extends Element
         {
             $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
         }
-        if (!$isindex)
-        {
-            $content .= $this->displayContent($this, $this->part_content);
-        }
-        else
-        {
-            $content .= $this->part_content;
-        }
+        $content .= $this->displayContent($this, $this->part_content, $isindex);
         $content .= "</li>";
         $content .= "<br />";
 

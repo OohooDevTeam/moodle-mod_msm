@@ -358,15 +358,8 @@ class Table extends Element
 
     function displayhtml($isindex = false)
     {
-        if (!$isindex)
-        {
-            $newtablecontent = $this->displayContent($this, $this->table_content);
-        }
-        else
-        {
-            $newtablecontent = $this->table_content;
-        }
-        
+        $newtablecontent = $this->displayContent($this, $this->table_content, $isindex);
+
         $tablecontent = "<root>" . $newtablecontent . "</root>";
 
         $content = $this->processTableContent($tablecontent);
@@ -445,11 +438,14 @@ class Table extends Element
                                                 $divID = $dialog->getAttribute('id');
                                                 $divIDArray = explode('-', $divID);
 
-                                                if ($idArray[1] == $divIDArray[1])
+                                                if ((isset($idArray[1])) && (isset($divIDArray[1])))
                                                 {
-                                                    $divNode = $doc->importNode($dialog, true);
-                                                    $atag->parentNode->appendChild($divNode);
-                                                    break;
+                                                    if ($idArray[1] == $divIDArray[1])
+                                                    {
+                                                        $divNode = $doc->importNode($dialog, true);
+                                                        $atag->parentNode->appendChild($divNode);
+                                                        break;
+                                                    }
                                                 }
                                             }
                                         }

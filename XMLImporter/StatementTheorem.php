@@ -394,14 +394,7 @@ class StatementTheorem extends Element
     function displayhtml($isindex = false)
     {
         $content = '';
-        if (!$isindex)
-        {
-            $content .= $this->displayContent($this, $this->statement_content);
-        }
-        else
-        {
-            $content .= $this->statement_content;
-        }
+        $content .= $this->displayContent($this, $this->statement_content, $isindex);
 
         $content .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->childs as $childComponent)

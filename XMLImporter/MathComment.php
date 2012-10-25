@@ -472,15 +472,15 @@ class MathComment extends Element
         }
         $content .= "<br/>";
 
-        if (!$isindex)
-        {
             $content .= "<div class='mathcontent'>";
-            $content .= $this->displayContent($this, $this->comment_content);
+            $content .= $this->displayContent($this, $this->comment_content, $isindex);
             $content .= "<br />";
             $content .= "</div>";
 
             $content .= "<br />";
 
+        if (!$isindex)
+        {
             if (!empty($this->associates))
             {
                 $content .= "<ul class='commentminibuttons'>";
@@ -491,16 +491,7 @@ class MathComment extends Element
                 $content .= "</ul>";
             }
         }
-        else
-        {
-            $content .= "<div class='mathcontent'>";
-            $content .= $this->comment_content;
-            $content .= "<br />";
-            $content .= "</div>";
-
-            $content .= "<br />";
-        }
-
+        
         $content .= "</div>";
         $content .= "<br />";
 

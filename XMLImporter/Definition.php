@@ -482,15 +482,16 @@ class Definition extends Element
         }
         $content .= "<br/>";
 
+
+        $content .= "<div class='mathcontent'>";
+        $content .= $this->displayContent($this, $this->def_content, $isindex);
+        $content .= "<br />";
+        $content .= "</div>";
+
+        $content .= "<br />";
+        
         if (!$isindex)
         {
-            $content .= "<div class='mathcontent'>";
-            $content .= $this->displayContent($this, $this->def_content);
-            $content .= "<br />";
-            $content .= "</div>";
-
-            $content .= "<br />";
-
             if (!empty($this->associates))
             {
                 $content .= "<ul class='defminibuttons'>";
@@ -501,17 +502,6 @@ class Definition extends Element
                 $content .= "</ul>";
             }
         }
-        else
-        {
-            $content .= "<div class='mathcontent'>";
-            $content .= $this->def_content;
-            $content .= "<br />";
-            $content .= "</div>";
-
-            $content .= "<br />";
-        }
-
-
 
         $content .= "</div>";
         $content .= "<br />";

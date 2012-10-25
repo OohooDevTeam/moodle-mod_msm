@@ -431,10 +431,10 @@ abstract class Element
 
             $string = str_replace('<cell', '<td', $string);
             $string = str_replace('</cell>', '</td>', $string);
-            
+
             $string = str_replace('<para.body', '<span', $string);
             $string = str_replace('</para.body>', '</span>', $string);
-            
+
             $string = str_replace('<para', '<p', $string);
             $string = str_replace('</para>', '</p>', $string);
 
@@ -444,7 +444,7 @@ abstract class Element
             $string = str_replace('<emphasis', '<i', $string);
             $string = str_replace('</emphasis>', '</i>', $string);
 
-            $string = str_replace('<hot', '<a href=""', $string);
+            $string = str_replace('<hot', '<a', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
             $string = preg_replace('/<math xmlns=(.+)>/', '<math>', $string);
@@ -769,7 +769,7 @@ abstract class Element
     function grabSubunitChilds($elementRecord, $currentUnitID, $msmid, $isRef = false)
     {
         global $DB;
-        
+
 //        echo "in grabSubunitChilds";
 
         if (!$isRef)
@@ -858,7 +858,7 @@ abstract class Element
      * @param String $XMLcontent
      * @return null|String
      */
-    function displayContent($object, $XMLcontent)
+    function displayContent($object, $XMLcontent, $isindex = false)
     {
         global $DB;
         $content = '';
@@ -893,8 +893,15 @@ abstract class Element
                         if (!empty($subordinate->infos[0]))
                         {
                             $newtag = '';
-                            $newtag = "<a id='activehottag-" . $subordinate->infos[0]->compid . "' class='activehottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
-                          
+                            if (!$isindex)
+                            {
+                                $newtag = "<a id='activehottag-" . $subordinate->infos[0]->compid . "' class='activehottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
+                            }
+                            else
+                            {
+                                $newtag = "<span>";
+                            }
+
                             $rawhotString = explode(',', $subordinate->hot);
 
                             // there are other commas in the content 
@@ -927,25 +934,35 @@ abstract class Element
                             {
                                 $newtag .= $this->getContent($rawhotContent);
                             }
-                            $newtag .= "</a>";
+                            if (!$isindex)
+                            {
+                                $newtag .= "</a>";
+                            }
+                            else
+                            {
+                                $newtag .= "</span>";
+                            }
 
                             $hottagid = $hottag->getAttribute('id');
-
-
+                            
                             if ($positionvalue == $hottagid)
                             {
+
                                 $newElementdoc->loadXML($newtag);
 
                                 $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
                                 $XMLcontent = $doc->saveXML();
 
-                                $content .= $subordinate->infos[0]->displayhtml();
-                                $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
-                                foreach ($subordinate->childs as $child)
+                                if (!$isindex)
                                 {
-                                    $content .= $child->displayhtml();
+                                    $content .= $subordinate->infos[0]->displayhtml();
+                                    $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
+                                    foreach ($subordinate->childs as $child)
+                                    {
+                                        $content .= $child->displayhtml();
+                                    }
+                                    $content .= "</div>";
                                 }
-                                $content .= "</div>";
                             }
                         }
                     }
@@ -954,7 +971,14 @@ abstract class Element
                         if (!empty($subordinate->infos[0]))
                         {
                             $newtag = '';
-                            $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+                            if (!$isindex)
+                            {
+                                $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+                            }
+                            else
+                            {
+                                $newtag = "<span>";
+                            }
                             $rawhotString = explode(',', $subordinate->hot);
 
                             // there are other commas in the content 
@@ -986,7 +1010,16 @@ abstract class Element
                             {
                                 $newtag .= $this->getContent($rawhotContent);
                             }
-                            $newtag .= "</a>";
+
+                            if (!$isindex)
+                            {
+                                $newtag .= "</a>";
+                            }
+                            else
+                            {
+                                $newtag .= "</span>";
+                            }
+
                             $hottagid = $hottag->getAttribute('id');
 
                             if (trim($positionvalue) == trim($hottagid))
@@ -998,7 +1031,10 @@ abstract class Element
 
                                 $XMLcontent = $doc->saveXML();
 
-                                $content .= $subordinate->infos[0]->displayhtml();
+                                if (!$isindex)
+                                {
+                                    $content .= $subordinate->infos[0]->displayhtml();
+                                }
                             }
                         }
                     }
@@ -1006,7 +1042,14 @@ abstract class Element
                     if (!empty($subordinate->external_links[0]))
                     {
                         $newtag = '';
-                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target . "' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                        if (!$isindex)
+                        {
+                            $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target . "' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                        }
+                        else
+                        {
+                            $newtag = "<span>";
+                        }
                         $rawhotString = explode(',', $subordinate->hot);
 
                         // there are other commas in the content 
@@ -1038,14 +1081,22 @@ abstract class Element
                         {
                             $newtag .= $this->getContent($rawhotContent);
                         }
-                        $newtag .= "</a>";
+
+                        if (!$isindex)
+                        {
+                            $newtag .= "</a>";
+                        }
+                        else
+                        {
+                            $newtag .= "</span>";
+                        }
 
                         $newElementdoc->loadXML($newtag);
 
                         $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
                         $XMLcontent = $doc->saveXML();
 
-                        if (!empty($subordinate->external_links[0]->infos[0]))
+                        if ((!empty($subordinate->external_links[0]->infos[0])) && (!$isindex))
                         {
                             $content .= $subordinate->external_links[0]->infos[0]->displayhtml();
                         }
@@ -1085,6 +1136,7 @@ abstract class Element
                 $XMLcontent = $doc->saveXML();
             }
 
+
             foreach ($imgs as $key => $img)
             {
                 if (!empty($object->medias[$key]))
@@ -1096,7 +1148,7 @@ abstract class Element
                         $image = $media->childs[0];
 
                         $newtag = '';
-                        $newtag .= $media->displayhtml();
+                        $newtag .= $media->displayhtml($isindex);
                         // there can be only one xml declaration for the loadXML to work
                         // so if there are other xml declarations were added, remove them
                         $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);

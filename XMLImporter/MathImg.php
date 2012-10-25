@@ -245,27 +245,23 @@ class MathImg extends Element
 
             if (empty($this->imageareas))
             {
-//                if ($filename[1] != 'png')
-//                {
                 $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "'/>";
-//                }
-//                else
-//                {
-//                    $content .= "<img class='mathimage' src='" . $this->src . "'/>";
-//                }
             }
             else if (!empty($this->imageareas))
             {
-                $content .= "<img id='image-" . $this->compid . "' class='mathimagemap' src='" . $this->src . "' height='" . $height . "' width='" . $width . "' usemap='#" . $filename[0] . "'/>";
-//           
                 if (!$isindex)
                 {
+                    $content .= "<img id='image-" . $this->compid . "' class='mathimagemap' src='" . $this->src . "' height='" . $height . "' width='" . $width . "' usemap='#" . $filename[0] . "'/>";
                     $content .= "<map name='" . $filename[0] . "'>";
                     foreach ($this->imageareas as $imagearea)
                     {
                         $content .= $imagearea->displayhtml();
                     }
                     $content .= "</map>";
+                }
+                else
+                {
+                    $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $height . "' width='" . $width . "'/>";
                 }
             }
         }

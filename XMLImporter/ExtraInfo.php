@@ -351,18 +351,9 @@ class ExtraInfo extends Element
             $content .= "<span class='extrainfocaption'>" . $this->caption . "</span>";
         }
 
-        if (!$isindex)
-        {
-            $content .= "<div class='mathcontent'>";
-            $content .= $this->displayContent($this, $this->content);
-            $content .= "</div>";
-        }
-        else
-        {
-            $content .= "<div class='mathcontent'>";
-            $content .= $this->content;
-            $content .= "</div>";
-        }
+        $content .= "<div class='mathcontent'>";
+        $content .= $this->displayContent($this, $this->content, $isindex);
+        $content .= "</div>";
 
         $content .= "</div>";
         return $content;

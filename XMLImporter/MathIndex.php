@@ -438,18 +438,18 @@ class MathIndex extends Element
 
             if ((!empty($infos)) && (!empty($parents)))
             {
-                $this->createTree($infos, $parents, $rootNode, $rootNode, $termpath);
+                $this->createTree($glossaryComp->id, $infos, $parents, $rootNode, $rootNode, $termpath);
                 unset($infos);
                 unset($parents);
             }
             else if ((!empty($infos)) && (empty($parents)))
             {
-                $this->createTree($infos, '', $rootNode, $rootNode, $termpath);
+                $this->createTree($glossaryComp->id, $infos, '', $rootNode, $rootNode, $termpath);
                 unset($infos);
             }
             else if ((empty($infos)) && (!empty($parents)))
             {
-                $this->createTree('', $parents, $rootNode, $rootNode, $termpath);
+                $this->createTree($glossaryComp->id, '', $parents, $rootNode, $rootNode, $termpath);
                 unset($parents);
             }
         }
@@ -458,7 +458,7 @@ class MathIndex extends Element
         return $rootNode;
     }
 
-    private function createTree($children, $ancestors, $rootNode, $parentNode, $termArray)
+    private function createTree($currentCompid, $children, $ancestors, $rootNode, $parentNode, $termArray)
     {
         if (!empty($termArray))
         {
@@ -521,7 +521,7 @@ class MathIndex extends Element
                                 }
                             }
                         }
-                        $this->createTree($children, $ancestors, $rootNode, $currentNode, $termArray);
+                        $this->createTree($currentCompid, $children, $ancestors, $rootNode, $currentNode, $termArray);
                         $isfound = true;
                         break;
                     }
@@ -533,6 +533,7 @@ class MathIndex extends Element
 //                    if (empty($foundNode))
 //                    {
                     $currentNode = new GlossaryNode();
+                    $currentNode->compid = $currentCompid;
                     $currentNode->text = $term;
                     $parentNode->children[] = $currentNode;
 
@@ -588,13 +589,14 @@ class MathIndex extends Element
                         }
                     }
 
-                    $this->createTree($children, $ancestors, $rootNode, $currentNode, $termArray);
+                    $this->createTree($currentCompid, $children, $ancestors, $rootNode, $currentNode, $termArray);
 //                    
                 }
             }
             else
             {
                 $currentNode = new GlossaryNode();
+                $currentNode->compid = $currentCompid;
                 $currentNode->text = $term;
                 if (!empty($children))
                 {
@@ -642,7 +644,7 @@ class MathIndex extends Element
                     }
                 }
                 $parentNode->children[] = $currentNode;
-                $this->createTree($children, $ancestors, $rootNode, $currentNode, $termArray);
+                $this->createTree($currentCompid, $children, $ancestors, $rootNode, $currentNode, $termArray);
             }
         }
         $this->sortTree($parentNode, 'text');
@@ -909,8 +911,8 @@ class MathIndex extends Element
                 {
                     foreach ($glossaryTree->parents as $parent)
                     {
-                        $content .= "<a id='glossaryinfo-" . $parent->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $parent->compid . ")'>i</a>";
-                        $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $parent->compid . "' style='display:none;'>";
+                        $content .= "<a id='glossaryinfo-" . $glossaryTree->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $glossaryTree->compid . ")'>i</a>";
+                        $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $glossaryTree->compid . "' style='display:none;'>";
                         $content .= $parent->displayhtml(true);
                         $content .= "</div>";
                     }
@@ -930,8 +932,8 @@ class MathIndex extends Element
             {
                 foreach ($glossaryTree->parents as $parent)
                 {
-                    $content .= "<a id='glossaryinfo-" . $parent->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $parent->compid . ")'>i</a>";
-                    $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $parent->compid . "' style='display:none;'>";
+                    $content .= "<a id='glossaryinfo-" . $glossaryTree->compid . "' class='msm_infobutton' onmouseover='infoopen(" . $glossaryTree->compid . ")'>i</a>";
+                    $content .= "<div class='glossaryrefcontent' id='glossaryrefcontent-" . $glossaryTree->compid . "' style='display:none;'>";
                     $content .= $parent->displayhtml(true);
                     $content .= "</div>";
                 }

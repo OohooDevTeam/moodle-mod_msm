@@ -396,7 +396,7 @@ function infoopen(i) {
         });
         $('#glossaryrefcontent-'+i).dialog('open').css('display', 'block');
         // to close the modal dialog box by clicking the outside of the box
-        alert("opening?");
+//        alert("opening?");
         $('.ui-widget-overlay').click(function() {
             $('#glossaryrefcontent-'+i).dialog('close'); 
         });
