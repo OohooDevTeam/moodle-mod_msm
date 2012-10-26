@@ -6,10 +6,20 @@
         Purpose of the stylesheet follows.
 */
 ul#navigation {
+    /*    for having the nav menu at the bottom
+    position: fixed;
+        margin: 0px;
+        padding: 0px;
+        top: 0px;
+        right: 10px;
+        list-style: none;
+        z-index:999999;
+        width:721px;*/
+
     position: fixed;
     margin: 0px;
     padding: 0px;
-    bottom: 0px;
+    top: 0px;
     right: 10px;
     list-style: none;
     z-index:999999;
@@ -22,27 +32,48 @@ ul#navigation li {
 }
 
 ul#navigation li a {
+    /*for having the nav menu at the bottom    
+    display: block;
+        float:left;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 100px;
+        height: 40px;
+        background-color:#FFFFAA;
+        background-repeat:no-repeat;
+        background-position:50% 45px;
+        border:1px solid #FFFF00;
+        text-decoration:none;
+        text-align:center;
+        padding-top:10px;
+        padding-bottom: 10px;
+        -moz-border-radius:0px 0px 10px 10px;
+        -webkit-border-top-right-radius: 10px;
+        -webkit-border-top-left-radius: 10px;
+        -khtml-border-top-right-radius: 10px;
+        -khtml-border-top-left-radius: 10px;
+        opacity: 0.7;
+        filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);*/
     display: block;
     float:left;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: -2px;
     width: 100px;
-    height: 40px;
+    height: 25px;
     background-color:#FFFFAA;
     background-repeat:no-repeat;
-    background-position:50% 45px;
-    border:1px solid #FFFF00;
+    background-position:50% 10px;
+    border:1px solid #BDDCEF;
+    -moz-border-radius:0px 0px 10px 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -khtml-border-bottom-right-radius: 10px;
+    -khtml-border-bottom-left-radius: 10px;
     text-decoration:none;
     text-align:center;
     padding-top:10px;
     padding-bottom: 10px;
-    -moz-border-radius:0px 0px 10px 10px;
-    -webkit-border-top-right-radius: 10px;
-    -webkit-border-top-left-radius: 10px;
-    -khtml-border-top-right-radius: 10px;
-    -khtml-border-top-left-radius: 10px;
     opacity: 0.7;
-    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);  
 }
 
 /*ul#navigation .toc a{
