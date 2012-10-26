@@ -127,6 +127,8 @@ class Definition extends Element
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
+        
+        $data = new stdClass();
 
         $data->def_type = $this->type;
         $data->string_id = $this->string_id;

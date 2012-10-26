@@ -104,6 +104,9 @@ class QuizChoice extends Element
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
+        
+        $data = new stdClass();
+        
         $data->answer = $this->answer;
 
         $this->id = $DB->insert_record($this->tablename, $data);
