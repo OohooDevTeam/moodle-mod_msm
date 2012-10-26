@@ -85,6 +85,9 @@ function msm_supports($feature)
  */
 function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 {
+    @set_time_limit(60 * 60); // 1 hour should be enough. You can always change this value
+    raise_memory_limit(MEMORY_HUGE);
+
     global $CFG, $DB;
 
     require_once("$CFG->libdir/resourcelib.php");
@@ -349,27 +352,27 @@ function msm_cron()
         $symboldata = $symbol->makeSymbolPanel($msm->id);
         $courseid = $DB->get_record('msm', array('id' => $msm->id))->course;
         $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_symbolindex.html";
-    
+
         $symbolfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
         fwrite($symbolfile, $symboldata);
 
         fclose($symbolfile);
         unset($symbol);
-        
+
         $glossary = new MathIndex();
         $glossarydata = $glossary->makeGlossaryPanel($msm->id);
         $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_glossaryindex.html";
-    
+
         $glossaryfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
         fwrite($glossaryfile, $glossarydata);
 
         fclose($glossaryfile);
         unset($glossary);
-        
+
         $author = new MathIndex();
         $authordata = $author->makeAuthorPanel($msm->id);
         $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_authorindex.html";
-    
+
         $authorfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
         fwrite($authorfile, $authordata);
 

@@ -34,7 +34,7 @@ require_once("Table.php");
 require_once("Showme.php");
 require_once("Example.php");
 require_once("Exercise.php");
-require_once("Quiz.php");
+require_once("MathQuiz.php");
 require_once("PartExample.php");
 require_once("AnswerShowme.php");
 require_once("Proof.php");
