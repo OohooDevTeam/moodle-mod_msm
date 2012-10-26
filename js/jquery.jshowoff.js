@@ -199,10 +199,10 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
         };
     };	
     // is the rotator currently in 'play' mode
-    function isPlaying(){
-        return $('.'+uniqueClass+'-play').hasClass('jshowoff-paused') ? false : true;
-    };
-            
+    //    function isPlaying(){
+    //        return $('.'+uniqueClass+'-play').hasClass('jshowoff-paused') ? false : true;
+    //    };
+    //            
     // stop slide rotation
     function pause(src) {
         clearInterval(timer);
@@ -298,6 +298,13 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             }, 800);
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
         });
+        $('#stack').remove();
+        $('#prevstack').remove();
+        $('#current').remove();
+        $('#functioninput').remove();
+        
+        stackRecordNum = null;    
+        pgnumber = null;
     };
 
     // load the previous slide
@@ -337,7 +344,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             }
             else
             {
-                //                alert(functioninput);
                 pgnumber = separatedrecords.length;
             }
         }       
@@ -362,7 +368,14 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 scrollTop: '0px'
             }, 800);
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        });	
+        });
+        $('#stack').remove();
+        $('#prevstack').remove();
+        $('#current').remove();
+        $('#functioninput').remove();
+        
+        stackRecordNum = null;    
+        pgnumber = null;
     };
 			
     function updatepgnumber(pgnumber) {
