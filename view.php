@@ -181,13 +181,13 @@ $content.= $compositor->loadAndDisplay(null, $string, null, '');
 //print_object($stack);
 //die;
 
-$content .= "</div>";
+$content .= "</div>"; //features
 
-$content .= "</div>";
+$content .= "</div>"; // leftbox
 
 $content .= "<div class='controller'>";
 $content .= "</div>";
-$content .= "</div>";
+$content .= "</div>"; // leftcol
 
 $content .= "<div id = 'rightcol'>";
 
@@ -196,7 +196,9 @@ $content .= "<div class = 'rightbox'>";
 $content .= "</div>";
 $content .= "</div>";
 
-$content .= "</div>";
+$content .= "</div>"; // splitter
+
+//$content .= '<input id="coursemod" type="text" name="coursemodids" style="visibility:hidden;" value="' . $msm->course . '-' . $msm->id .'"/>';
 
 $content .= "<div id='tocpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='toccontent'>";
