@@ -152,7 +152,7 @@ class Exercise extends Element
             switch ($element)
             {
                 case(preg_match("/^(problem.\d+)$/", $element) ? true : false):
-                    $problemString = split('-', $element);
+                    $problemString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -169,7 +169,7 @@ class Exercise extends Element
                     break;
 
                 case(preg_match("/^(approach.\d+)$/", $element) ? true : false):
-                    $approachString = split('-', $element);
+                    $approachString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -186,7 +186,7 @@ class Exercise extends Element
                     break;
 
                 case(preg_match("/^(approachext.\d+)$/", $element) ? true : false):
-                    $approachextString = split('-', $element);
+                    $approachextString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -203,7 +203,7 @@ class Exercise extends Element
                     break;
 
                 case(preg_match("/^(partexercise.\d+)$/", $element) ? true : false):
-                    $partexerciseString = split('-', $element);
+                    $partexerciseString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

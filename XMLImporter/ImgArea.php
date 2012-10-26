@@ -168,7 +168,7 @@ class ImgArea extends Element
             switch ($element)
             {
                 case(preg_match("/^(info.\d+)$/", $element) ? true : false):
-                    $infoString = split('-', $element);
+                    $infoString = explode('-', $element);
                     if (empty($sibling_id))
                     {
                         $info = $this->infos[$infoString[1]];
@@ -184,7 +184,7 @@ class ImgArea extends Element
                     break;
 
                 case(preg_match("/^(companion.\d+)$/", $element) ? true : false):
-                    $companionString = split('-', $element);
+                    $companionString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -199,7 +199,7 @@ class ImgArea extends Element
                     break;
 
                 case(preg_match("/^(crossref.\d+)$/", $element) ? true : false):
-                    $crossrefString = split('-', $element);
+                    $crossrefString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -214,7 +214,7 @@ class ImgArea extends Element
                     break;
 
                 case(preg_match("/^(externalref.\d+)$/", $element) ? true : false):
-                    $externalrefString = split('-', $element);
+                    $externalrefString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -229,7 +229,7 @@ class ImgArea extends Element
                     break;
 
                 case(preg_match("/^(externallink.\d+)$/", $element) ? true : false):
-                    $externallinkString = split('-', $element);
+                    $externallinkString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -244,7 +244,7 @@ class ImgArea extends Element
                     break;
 
                 case(preg_match("/^(cite.\d+)$/", $element) ? true : false):
-                    $citeString = split('-', $element);
+                    $citeString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

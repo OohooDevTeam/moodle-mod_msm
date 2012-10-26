@@ -116,7 +116,7 @@ class Media extends Element
             switch ($element)
             {
                 case(preg_match("/^(info.\d+)$/", $element) ? true : false):
-                    $infoString = split('-', $element);
+                    $infoString = explode('-', $element);
                     if (empty($sibling_id))
                     {
                         $info = $this->infos[$infoString[1]];
@@ -132,7 +132,7 @@ class Media extends Element
                     break;
 
                 case(preg_match("/^(img.\d+)$/", $element) ? true : false):
-                    $imgString = split('-', $element);
+                    $imgString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

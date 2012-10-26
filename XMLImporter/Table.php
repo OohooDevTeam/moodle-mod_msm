@@ -179,7 +179,7 @@ class Table extends Element
             switch ($element)
             {
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-                    $subordinateString = split('-', $element);
+                    $subordinateString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -196,7 +196,7 @@ class Table extends Element
                     break;
 
                 case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
-                    $indexauthorString = split('-', $element);
+                    $indexauthorString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -213,7 +213,7 @@ class Table extends Element
                     break;
 
                 case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
-                    $indexsymbolString = split('-', $element);
+                    $indexsymbolString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -230,7 +230,7 @@ class Table extends Element
                     break;
 
                 case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
-                    $indexglossaryString = split('-', $element);
+                    $indexglossaryString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -247,7 +247,7 @@ class Table extends Element
                     break;
 
                 case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-                    $mediaString = split('-', $element);
+                    $mediaString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -264,7 +264,7 @@ class Table extends Element
                     break;
 
                 case(preg_match("/^(table.\d+)$/", $element) ? true : false):
-                    $tableString = split('-', $element);
+                    $tableString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -281,7 +281,7 @@ class Table extends Element
                     break;
 
                 case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
-                    $matharrayString = split('-', $element);
+                    $matharrayString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

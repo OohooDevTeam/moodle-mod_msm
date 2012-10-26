@@ -121,7 +121,7 @@ class MathImg extends Element
             switch ($element)
             {
                 case(preg_match("/^(imgarea.\d+)$/", $element) ? true : false):
-                    $imageareaString = split('-', $element);
+                    $imageareaString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

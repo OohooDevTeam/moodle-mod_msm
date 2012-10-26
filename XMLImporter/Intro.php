@@ -79,7 +79,7 @@ class Intro extends Element
 
         foreach ($elementPosition as $element => $value)
         {
-            $blockString = split('-', $element);
+            $blockString = explode('-', $element);
 
             $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $msmid, $this->compid);
         }

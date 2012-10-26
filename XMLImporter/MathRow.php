@@ -77,7 +77,7 @@ class MathRow extends Element
 
         foreach ($elementPosition as $element => $value)
         {
-            $cellString = split('-', $element);
+            $cellString = explode('-', $element);
 
             if(empty($sibling_id))
             {

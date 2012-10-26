@@ -242,7 +242,7 @@ class Example extends Element
             switch ($element)
             {
                 case(preg_match("/^(answerext.\d+)$/", $element) ? true : false):
-                    $answerextString = split('-', $element);
+                    $answerextString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -258,7 +258,7 @@ class Example extends Element
                     }
                     break;
                 case(preg_match("/^(partexample.\d+)$/", $element) ? true : false):
-                    $partexampleString = split('-', $element);
+                    $partexampleString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -275,7 +275,7 @@ class Example extends Element
                     break;
 
                 case(preg_match("/^(answer.\d+)$/", $element) ? true : false):
-                    $answerString = split('-', $element);
+                    $answerString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -292,7 +292,7 @@ class Example extends Element
                     break;
 
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-                    $subordinateString = split('-', $element);
+                    $subordinateString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -309,7 +309,7 @@ class Example extends Element
                     break;
 
                 case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
-                    $indexauthorString = split('-', $element);
+                    $indexauthorString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -326,7 +326,7 @@ class Example extends Element
                     break;
 
                 case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
-                    $indexsymbolString = split('-', $element);
+                    $indexsymbolString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -343,7 +343,7 @@ class Example extends Element
                     break;
 
                 case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
-                    $indexglossaryString = split('-', $element);
+                    $indexglossaryString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -360,7 +360,7 @@ class Example extends Element
                     break;
 
                 case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-                    $mediaString = split('-', $element);
+                    $mediaString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -377,7 +377,7 @@ class Example extends Element
                     break;
 
                 case(preg_match("/^(table.\d+)$/", $element) ? true : false):
-                    $tableString = split('-', $element);
+                    $tableString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

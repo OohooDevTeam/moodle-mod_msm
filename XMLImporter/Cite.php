@@ -77,7 +77,7 @@ class Cite extends Element
 
         foreach ($elementPosition as $element => $value)
         {
-            $itemString = split('-', $element);
+            $itemString = explode('-', $element);
 
             $this->items[$itemString[1]]->saveIntoDb($this->items[$itemString[1]]->position, $msmid, $this->compid);
         }

@@ -286,7 +286,7 @@ class Associate extends Element
             switch ($element)
             {
                 case(preg_match("/^(info.\d+)$/", $element) ? true : false):
-                    $infoString = split('-', $element);
+                    $infoString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -303,7 +303,7 @@ class Associate extends Element
                     break;
 
                 case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
-                    $commentString = split('-', $element);
+                    $commentString = explode('-', $element);
                     if (!empty($this->comments[$commentString[1]]->string_id))
                     {
                         $commentID = $this->checkForRecord($this->comments[$commentString[1]]);
@@ -345,7 +345,7 @@ class Associate extends Element
                     break;
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
-                    $subunitString = split('-', $element);
+                    $subunitString = explode('-', $element);
                     $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
                     if (empty($subunitRecord))
@@ -380,7 +380,7 @@ class Associate extends Element
                     break;
 
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
-                    $defString = split('-', $element);
+                    $defString = explode('-', $element);
                     if (!empty($this->defs[$defString[1]]->string_id))
                     {
                         $defID = $this->checkForRecord($this->defs[$defString[1]]);
@@ -422,7 +422,7 @@ class Associate extends Element
                     break;
 
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
-                    $theoremString = split('-', $element);
+                    $theoremString = explode('-', $element);
                     $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
 
                     if (empty($theoremRecord))
@@ -457,7 +457,7 @@ class Associate extends Element
                     break;
 
                 case(preg_match("/^(ref.\d+)$/", $element) ? true : false):
-                    $refString = split('-', $element);
+                    $refString = explode('-', $element);
                     $refRecord = $this->checkForRecord($this->refs[$refString[1]]);
 
                     if (empty($refRecord))

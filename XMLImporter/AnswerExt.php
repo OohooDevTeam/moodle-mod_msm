@@ -83,7 +83,7 @@ class AnswerExt extends Element
 
         foreach ($elementPosition as $element => $value)
         {
-            $stepString = split('-', $element);
+            $stepString = explode('-', $element);
 
             $this->steps[$stepString[1]]->saveIntoDb($this->steps[$stepString[1]]->position, $msmid, $this->compid);
         }

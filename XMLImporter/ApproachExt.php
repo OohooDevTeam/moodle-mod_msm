@@ -116,7 +116,7 @@ class ApproachExt extends Element
             switch ($element)
             {               
                 case(preg_match("/^(answerexercise.\d+)$/", $element) ? true : false):
-                    $answerexerciseString = split('-', $element);
+                    $answerexerciseString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -133,7 +133,7 @@ class ApproachExt extends Element
                     break;
 
                 case(preg_match("/^(solutionext.\d+)$/", $element) ? true : false):
-                    $solutionextString = split('-', $element);
+                    $solutionextString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

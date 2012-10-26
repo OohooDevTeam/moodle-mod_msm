@@ -222,7 +222,7 @@ class Pack extends Element
             switch ($element)
             {
                  case(preg_match("/^(quiz.\d+)$/", $element) ? true : false):
-                    $quizString = split('-', $element);
+                    $quizString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -239,7 +239,7 @@ class Pack extends Element
                     break;
                     
                 case(preg_match("/^(example.\d+)$/", $element) ? true : false):
-                    $exampleString = split('-', $element);
+                    $exampleString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -256,7 +256,7 @@ class Pack extends Element
                     break;
 
                 case(preg_match("/^(exercise.\d+)$/", $element) ? true : false):
-                    $exerciseString = split('-', $element);
+                    $exerciseString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -273,7 +273,7 @@ class Pack extends Element
                     break;
 
                 case(preg_match("/^(showme.\d+)$/", $element) ? true : false):
-                    $showmeString = split('-', $element);
+                    $showmeString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

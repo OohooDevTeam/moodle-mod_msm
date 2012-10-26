@@ -79,7 +79,7 @@ class ExternalLink extends Element
 
         foreach ($elementPosition as $element => $value)
         {
-            $infoString = split('-', $element);
+            $infoString = explode('-', $element);
 
             $this->infos[$infoString[1]]->saveIntoDb($this->infos[$infoString[1]]->position, $msmid, $this->compid);
         }

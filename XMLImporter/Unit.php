@@ -651,7 +651,7 @@ class Unit extends Element
             {
                 case(preg_match("/^(author.\d+)$/", $element) ? true : false):
 
-                    $authorstring = split('-', $element);
+                    $authorstring = explode('-', $element);
 
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
@@ -671,7 +671,7 @@ class Unit extends Element
 
                 case(preg_match("/^(contributors.\d+)$/", $element) ? true : false):
 
-                    $contributorstring = split('-', $element);
+                    $contributorstring = explode('-', $element);
 
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
@@ -690,7 +690,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(stage.\d+)$/", $element) ? true : false):
-                    $stageString = split('-', $element);
+                    $stageString = explode('-', $element);
 
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
@@ -722,7 +722,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(block.\d+)$/", $element) ? true : false):
-                    $blockString = split('-', $element);
+                    $blockString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -743,7 +743,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
-                    $subunitString = split('-', $element);
+                    $subunitString = explode('-', $element);
                     $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
                     if (empty($subunitRecord))
@@ -778,7 +778,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(exercisepack.\d+)$/", $element) ? true : false):
-                    $exercisepackString = split('-', $element);
+                    $exercisepackString = explode('-', $element);
                     $exercisepackRecord = $this->checkForRecord($this->exercisepacks[$exercisepackString[1]]);
 
                     if (empty($exercisepackRecord))
@@ -804,7 +804,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(examplepack.\d+)$/", $element) ? true : false):
-                    $examplepackString = split('-', $element);
+                    $examplepackString = explode('-', $element);
                     $examplepackRecord = $this->checkForRecord($this->examplepacks[$examplepackString[1]]);
 
                     if (empty($examplepackRecord))
@@ -832,7 +832,7 @@ class Unit extends Element
 
                 case(preg_match("/^(quizpack.\d+)$/", $element) ? true : false):
 
-                    $quizpackString = split('-', $element);
+                    $quizpackString = explode('-', $element);
                     $quizpackRecord = $this->checkForRecord($this->quizpacks[$quizpackString[1]]);
 
                     if (empty($quizpackRecord))
@@ -859,7 +859,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(showmepack.\d+)$/", $element) ? true : false):
-                    $showmepackString = split('-', $element);
+                    $showmepackString = explode('-', $element);
                     $showmepackRecord = $this->checkForRecord($this->showmepacks[$showmepackString[1]]);
 
                     if (empty($showmepackRecord))
@@ -886,7 +886,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(studyexercise.\d+)$/", $element) ? true : false):
-                    $studyexerciseString = split('-', $element);
+                    $studyexerciseString = explode('-', $element);
 
                     $studyexerciseRecord = $this->checkForRecord($this->studyexercises[$studyexerciseString[1]]);
 
@@ -914,7 +914,7 @@ class Unit extends Element
                     break;
 
                 case(preg_match("/^(studyexample.\d+)$/", $element) ? true : false):
-                    $studyexampleString = split('-', $element);
+                    $studyexampleString = explode('-', $element);
 
                     $studyexampleRecord = $this->checkForRecord($this->studyexamples[$studyexampleString[1]]);
 

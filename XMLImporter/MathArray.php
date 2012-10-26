@@ -85,7 +85,7 @@ class MathArray extends Element
 
         foreach ($elementPosition as $element => $value)
         {
-            $rowString = split('-', $element);
+            $rowString = explode('-', $element);
 
             if(empty($sibling_id))
             {

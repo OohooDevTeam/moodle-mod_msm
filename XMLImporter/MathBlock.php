@@ -256,7 +256,7 @@ class Block extends Element
             switch ($element)
             {
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
-                    $defString = split('-', $element);
+                    $defString = explode('-', $element);
 
                     if (is_object($this->defs[$defString[1]]))
                     {
@@ -302,7 +302,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
-                    $theoremString = split('-', $element);
+                    $theoremString = explode('-', $element);
                     if (is_object($this->theorems[$theoremString[1]]))
                     {
                         $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
@@ -365,7 +365,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
-                    $commentString = split('-', $element);
+                    $commentString = explode('-', $element);
 
                     if (is_object($this->comments[$commentString[1]]))
                     {
@@ -411,7 +411,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-                    $mediaString = split('-', $element);
+                    $mediaString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -428,7 +428,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(para.\d+)$/", $element) ? true : false):
-                    $paraString = split('-', $element);
+                    $paraString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -445,7 +445,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(ol.\d+)$/", $element) ? true : false):
-                    $olString = split('-', $element);
+                    $olString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -462,7 +462,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(ul.\d+)$/", $element) ? true : false):
-                    $ulString = split('-', $element);
+                    $ulString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -479,7 +479,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(mathdisplay.\d+)$/", $element) ? true : false):
-                    $mathdisplayString = split('-', $element);
+                    $mathdisplayString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -496,7 +496,7 @@ class Block extends Element
                     break;
 
                 case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
-                    $matharrayString = split('-', $element);
+                    $matharrayString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -512,7 +512,7 @@ class Block extends Element
                     }
                     break;
                 case(preg_match("/^(table.\d+)$/", $element) ? true : false):
-                    $tableString = split('-', $element);
+                    $tableString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

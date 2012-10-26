@@ -146,7 +146,7 @@ class Theorem extends Element
             switch ($element)
             {
                 case(preg_match("/^(statement.\d+)$/", $element) ? true : false):
-                    $statementString = split('-', $element);
+                    $statementString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -163,7 +163,7 @@ class Theorem extends Element
                     break;
 
                 case(preg_match("/^(proof.\d+)$/", $element) ? true : false):
-                    $proofString = split('-', $element);
+                    $proofString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {

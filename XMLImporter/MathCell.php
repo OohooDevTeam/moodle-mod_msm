@@ -128,7 +128,7 @@ class MathCell extends Element
             switch ($element)
             {
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-                    $subordinateString = split('-', $element);
+                    $subordinateString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
@@ -145,7 +145,7 @@ class MathCell extends Element
                     break;
 
                 case(preg_match("/^(companion.\d+)$/", $element) ? true : false):
-                    $companionString = split('-', $element);
+                    $companionString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
