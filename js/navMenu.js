@@ -24,8 +24,8 @@ $(function() {
     });
     
     $('#symbol').toggle(function () {
-        $('#symbolcontent').attr('class', 'rendercontent');        
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
+        //        $('#symbolcontent').attr('class', 'rendercontent');        
+        //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
         $('#symbolpanel').stop().animate({
             height:'90%', 
             opacity:1.0
@@ -33,6 +33,27 @@ $(function() {
             $('#symbolcontent').fadeIn('slow');          
                                     
         });
+        if($("#symbolindex").length == 0)
+        {
+            $('#symbolcontent').load('../msm/XMLImporter/loadSymbol.php', 
+            {
+                moduleinfo: $('#instanceid').val()
+            },
+            function(){           
+                $('.dialogs').dialog({
+                    autoOpen: false,
+                    height: 'auto',
+                    width: 605
+                });
+                $('#symbolindex').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
+
+            
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            });
+        }
     },
     function(){
         $('#symbolcontent').fadeOut('slow', function() {
@@ -44,8 +65,8 @@ $(function() {
     });
     
     $('#glossary').toggle(function () {
-        $('#glossarycontent').attr('class', 'rendercontent');        
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
+        //        $('#glossarycontent').attr('class', 'rendercontent');        
+        //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
         $('#glossarypanel').stop().animate({
             height:'90%', 
             opacity:1.0
@@ -53,6 +74,26 @@ $(function() {
             $('#glossarycontent').fadeIn('slow');
                                     
         });
+        if($("#glossaryindex").length == 0)
+        {
+            $('#glossarycontent').load('../msm/XMLImporter/loadGlossary.php', 
+            {
+                moduleinfo: $('#instanceid').val()
+            },
+            function(){           
+                $('.dialogs').dialog({
+                    autoOpen: false,
+                    height: 'auto',
+                    width: 605
+                });
+            
+                $('#glossaryindex').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            });
+        }
     },
     function(){
         $('#glossarycontent').fadeOut('slow', function() {
@@ -64,8 +105,8 @@ $(function() {
     });
     
     $('#author').toggle(function () {
-        $('#authorcontent').attr('class', 'rendercontent');        
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
+        //        $('#authorcontent').attr('class', 'rendercontent');        
+        //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
         $('#authorpanel').stop().animate({
             height:'90%', 
             opacity:1.0
@@ -73,6 +114,25 @@ $(function() {
             $('#authorcontent').fadeIn('slow');
                                     
         });
+        if($("#authorindex").length == 0)
+        {
+            $('#authorcontent').load('../msm/XMLImporter/loadAuthor.php', 
+            {
+                moduleinfo: $('#instanceid').val()
+            },
+            function(){           
+                $('.dialogs').dialog({
+                    autoOpen: false,
+                    height: 'auto',
+                    width: 605
+                });
+                $('#authorindex').treeview({
+                    animated: 'fast',
+                    collapsed: true
+                });
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            });
+        }
     },
     function(){
         $('#authorcontent').fadeOut('slow', function() {
@@ -83,13 +143,13 @@ $(function() {
         });
     });
     
-    $('#contact').toggle(function () {
+    $('#contact').toggle(function () {      
         $('#contactpanel').stop().animate({
             height:'90%', 
             opacity:1.0
         }, 500, function() {
             $('#contactcontent').fadeIn('slow');
-                                    
+            $('#contact').toggleClass('navActive');                        
         });  
     },
     function(){
@@ -100,5 +160,4 @@ $(function() {
             }, 500); //slide the #panel back to a width of 0
         });
     });
-  
 });

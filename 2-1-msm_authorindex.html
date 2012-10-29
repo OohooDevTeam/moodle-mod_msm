@@ -1,0 +1,1239 @@
+<h3> A U T H O R S </h3><ul id="authorindex" class="treeview-red"><li><span>Gauß, Carolo Friderico     </span><a id='authorinfo-8852' class='msm_infobutton' onmouseover='infoopen(8852)'>i</a></li><div id="dialog-8852" class="dialogs" title="Carl Friedrich Gauß"><info xmlns="Unit">
+                        
+					
+					                   <p>
+                           <span>Appears here for using the term ‘determinant’ for a concept which determines the properties of a quadratic form.</span>
+                        </p>
+				                 </info></div><div class='authorrefcontent' id='authorrefcontent-8852' style='display:none;'><div class='title'>Determinants</div><h2> Introduction </h2><p xmlns="Unit">
+            <span>The determinant is a function which receives as input a square matrix $\Mtrx{A}$ and yields, as output, a number denoted by $\det(\Mtrx{A})$. We are interested in determinants because:</span>
+         </p><ol xmlns="Unit">
+		          <li>
+			            <p>
+                  <span>determinants enable us to develop the concept of `oriented volume' in $n$-dimensional space, and</span>
+               </p>
+		          </li>
+		          <li>
+			            <p>
+                  <span>determinants provide a new test for invertibility of a square matrix $\Mtrx{A}$: $\Mtrx{A}$ is invertible exactly when $\det(\Mtrx{A})\neq 0$.</span>
+               </p>
+		          </li>
+	        </ol><p xmlns="Unit">
+            <span>Let us preview our determinant topics in some more detail.</span>
+         </p>
+<ol xmlns="Unit">
+		          <li>
+               <p>
+                  <span>
+                     <span> How to compute determinants</span>   &#xA0; We first define the determinant of $(1,1)$-matrices, then the determinants of $(2,2)$-matrices, then the determinants of $(3,3)$-matrices and so on. &#x2013; A few experiments will show you that, with increasing size of matrices, the number of computations one has to carry out increases extremely rapidly.</span>
+               </p>
+            </li>
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="24">Rules for computing with determinants</a>  
+				 &#x2013; Given that computing determinants of large matrices requires a lot of computations, it is doubly important that there are rules for computing with determinants which are quick and efficient. Some of these rules may seem counter intuitive at first. However, we will explain how these rules correspond perfectly to the properties of the volume function on boxes.</span>
+               </p>
+			            <p>
+                  <span>In addition, these rules will guide us to an alternate method of computing determinants using row and column operations. For determinants of large matrices this method is much more efficient than the recursive one we discussed earlier.</span>
+               </p>
+		          </li>
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="25">Orientation of space</a>   &#x2013; Each $\RNr{n}$ carries two distinct orientations. This is a subtle property of space. In $\RNr{3}$ we encounter it by considering our two hands. While our hands are mirrored images of one another, they are not interchangeable, that is: we cannot replace a left hand by a right hand. Thus we need to distinguish carefully between &#x2018;left&#x2019; and &#x2018;right&#x2019;. We encounter the need for such a distinction in each $\RNr{n}$, and the determinant operation will help us make such a distinction.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="26">Oriented volume</a>  
+				&#x2013; Here we combine what we learned about properties of the determinant operation with properties of the volume of boxes and orientation. The result is the surprisingly powerful notion of oriented volume, computed using determinants.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="27">Cross product</a>  
+				&#x2013; operation is only defined for pairs of vectors in $\RNr{3}$. Given two vectors $\Vect{x}$ and $\Vect{y}$ from $\RNr{3}$, it returns the vector $\CrssPr{ \Vect{x} }{ \Vect{y} }$ of $\RNr{3}$, called the cross product of $\Vect{x}$ and $\Vect{y}$. The geometric properties of the cross product operation make it a very powerful tool in mechanical engineering and in parts of physics.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+               <p>
+                  <span>
+                     <i>Cramer's rule</i> &#x2013; if a system of $n$ linear equations in $n$ variables has an invertible coefficient matrix, then we can express the unique solution of this system by a formula which uses the determinant operation.
+		</span>
+               </p>
+            </li>
+	        </ol>
+
+<p xmlns="Unit">
+            <span>Some <span> historic highlights</span>  
+	           </span>
+         </p>
+
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The history of determinants started with an analysis of the number of solutions of a system of linear equations. The determinant of the unaugmented coefficient matrix of a homogeneous system of $n$ linear equations is nonzero exactly when the system has the unique solution $(0,\dots ,0)$.</span>
+               </p>
+            </li>
+		          <li>
+               <p>
+                  <span>The term &#x2018;determinant&#x2019; appeared first in
+			<span> C. F. Gau&#xDF;&#x2019;s</span>  
+			                  <a id="23">work</a>  
+			on quadratic forms to express the fact that the determinant determines the properties of the quadratic form. However, the concept to which Gau&#xDF; applied the term &#x2018;determinant&#x2019; is distinct from the concept which we call &#x2018;determinant&#x2019; today.
+			
+		</span>
+                  
+               </p>
+            </li>
+		          <li>
+			            <p>
+                  <span>The current use of the term &#x2018;determinant&#x2019; goes back at least as far as 
+				<a id="24">A.-L. Cauchy</a>  .
+				He is credited with publishing the most complete of the 
+				<span> A.-L. Cauchy</span>  .
+				
+			</span>
+                  
+               </p>
+		          </li>
+		          <li>
+			            <p>
+                  <span>Later 
+				<a id="26">Weierstrass</a>  
+				
+				used an axiomatic definition of &#x2018;determinant&#x2019;. This means he used properties like &#x2018;multilinear&#x2019;, &#x2018;alternating&#x2019;, to define the determinant.</span>
+                  
+               </p>
+		          </li>
+	        </ul>
+</div><li><span>Cauchy, Augustin Louis     </span><a id='authorinfo-1605' class='msm_infobutton' onmouseover='infoopen(1605)'>i</a></li><div id="dialog-1605" class="dialogs"><info xmlns="Theorem">
+                     <p>
+                        <span>Credited with a contribution to the Cauchy-Schwarz inequality.</span>
+                     </p>
+                  </info></div><div class='authorrefcontent' id='authorrefcontent-1605' style='display:none;'><br /><div class='theorem'><span class='theoremtitle'>Geometric Properties of Norm and Dot Product</span><span class='theoremtype'>Proposition</span><br/><div class='mathcontent'><statement.theorem><p xmlns="Theorem">
+         <span>For vectors $\Vect{x}$ and $\Vect{y}$ in $\RNr{n}$, the following hold:</span>
+      </p></statement.theorem><ol class='parttheorem' style='list-style-type:lower-roman;'><li><span class='parttheoremtitle'>Relationship between dot product and norm</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $\DotPr{ \Vect{x} }{ \Vect{x} } = | \Vect{x} |^2$
+               </span>
+               
+               
+            </p>
+         </part.body></li><br /><li><span class='parttheoremtitle'>Orthogonality criterion</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $\DotPr{\Vect{x}}{\Vect{y}} = 0$ if and only if $\Vect{x}$ is perpendicular to $\Vect{y}$.
+				</span>
+               
+            </p>
+         </part.body></li><br /><li><span class='parttheoremtitle'>Angle between two vectors</span>
+<part.body xmlns="Theorem">
+            <p>
+               <span>
+                  <span> 
+                        $\DotPr{\Vect{x}}{\Vect{y}} = \Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \cos \sphericalangle(\Vect{x},\Vect{y})$
+                     </span>  , provided $\Vect{x}$ and $\Vect{y}$ have positive length.
+				</span>
+               
+               
+            </p>
+         </part.body>
+</li><br /><li><span class='parttheoremtitle'>Triangle inequality</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $\Abs{\Vect{x} + \Vect{y}} \leq \Abs{\Vect{x}} + \Abs{\Vect{y}}$
+               </span>
+               
+            </p>
+         </part.body></li><br /><li><span class='parttheoremtitle'>Cauchy-Schwarz inequality</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $| \DotPr{\Vect{x}}{\Vect{y}} | \leq | \Vect{x} | | \Vect{y} |$. </span>
+               
+               
+               
+            </p>
+         </part.body></li><br /></ol></div><br /></div><br /></div><li><span>Cayley, Arthur      </span><a id='authorinfo-4667' class='msm_infobutton' onmouseover='infoopen(4667)'>i</a></li><div id="dialog-4667" class="dialogs"><info xmlns="Unit">
+                  <p>
+                     <span>Appears here for contributing to the evolution of the theory of matrices.</span>
+                  </p>
+               </info></div><div class='authorrefcontent' id='authorrefcontent-4667' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>Cauchy, Augustin-Louis      </span><a id='authorinfo-8854' class='msm_infobutton' onmouseover='infoopen(8854)'>i</a></li><div id="dialog-8854" class="dialogs" title="Augustin-Louis Cauchy"><info xmlns="Unit">
+                        
+						
+						                  <p>
+                           <span>Appears here for his contribution to the early development of determinants.</span>
+                        </p>
+					                </info></div><div class='authorrefcontent' id='authorrefcontent-8854' style='display:none;'><div class='title'>Determinants</div><h2> Introduction </h2><p xmlns="Unit">
+            <span>The determinant is a function which receives as input a square matrix $\Mtrx{A}$ and yields, as output, a number denoted by $\det(\Mtrx{A})$. We are interested in determinants because:</span>
+         </p><ol xmlns="Unit">
+		          <li>
+			            <p>
+                  <span>determinants enable us to develop the concept of `oriented volume' in $n$-dimensional space, and</span>
+               </p>
+		          </li>
+		          <li>
+			            <p>
+                  <span>determinants provide a new test for invertibility of a square matrix $\Mtrx{A}$: $\Mtrx{A}$ is invertible exactly when $\det(\Mtrx{A})\neq 0$.</span>
+               </p>
+		          </li>
+	        </ol><p xmlns="Unit">
+            <span>Let us preview our determinant topics in some more detail.</span>
+         </p>
+<ol xmlns="Unit">
+		          <li>
+               <p>
+                  <span>
+                     <span> How to compute determinants</span>   &#xA0; We first define the determinant of $(1,1)$-matrices, then the determinants of $(2,2)$-matrices, then the determinants of $(3,3)$-matrices and so on. &#x2013; A few experiments will show you that, with increasing size of matrices, the number of computations one has to carry out increases extremely rapidly.</span>
+               </p>
+            </li>
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="24">Rules for computing with determinants</a>  
+				 &#x2013; Given that computing determinants of large matrices requires a lot of computations, it is doubly important that there are rules for computing with determinants which are quick and efficient. Some of these rules may seem counter intuitive at first. However, we will explain how these rules correspond perfectly to the properties of the volume function on boxes.</span>
+               </p>
+			            <p>
+                  <span>In addition, these rules will guide us to an alternate method of computing determinants using row and column operations. For determinants of large matrices this method is much more efficient than the recursive one we discussed earlier.</span>
+               </p>
+		          </li>
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="25">Orientation of space</a>   &#x2013; Each $\RNr{n}$ carries two distinct orientations. This is a subtle property of space. In $\RNr{3}$ we encounter it by considering our two hands. While our hands are mirrored images of one another, they are not interchangeable, that is: we cannot replace a left hand by a right hand. Thus we need to distinguish carefully between &#x2018;left&#x2019; and &#x2018;right&#x2019;. We encounter the need for such a distinction in each $\RNr{n}$, and the determinant operation will help us make such a distinction.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="26">Oriented volume</a>  
+				&#x2013; Here we combine what we learned about properties of the determinant operation with properties of the volume of boxes and orientation. The result is the surprisingly powerful notion of oriented volume, computed using determinants.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="27">Cross product</a>  
+				&#x2013; operation is only defined for pairs of vectors in $\RNr{3}$. Given two vectors $\Vect{x}$ and $\Vect{y}$ from $\RNr{3}$, it returns the vector $\CrssPr{ \Vect{x} }{ \Vect{y} }$ of $\RNr{3}$, called the cross product of $\Vect{x}$ and $\Vect{y}$. The geometric properties of the cross product operation make it a very powerful tool in mechanical engineering and in parts of physics.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+               <p>
+                  <span>
+                     <i>Cramer's rule</i> &#x2013; if a system of $n$ linear equations in $n$ variables has an invertible coefficient matrix, then we can express the unique solution of this system by a formula which uses the determinant operation.
+		</span>
+               </p>
+            </li>
+	        </ol>
+
+<p xmlns="Unit">
+            <span>Some <span> historic highlights</span>  
+	           </span>
+         </p>
+
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The history of determinants started with an analysis of the number of solutions of a system of linear equations. The determinant of the unaugmented coefficient matrix of a homogeneous system of $n$ linear equations is nonzero exactly when the system has the unique solution $(0,\dots ,0)$.</span>
+               </p>
+            </li>
+		          <li>
+               <p>
+                  <span>The term &#x2018;determinant&#x2019; appeared first in
+			<span> C. F. Gau&#xDF;&#x2019;s</span>  
+			                  <a id="23">work</a>  
+			on quadratic forms to express the fact that the determinant determines the properties of the quadratic form. However, the concept to which Gau&#xDF; applied the term &#x2018;determinant&#x2019; is distinct from the concept which we call &#x2018;determinant&#x2019; today.
+			
+		</span>
+                  
+               </p>
+            </li>
+		          <li>
+			            <p>
+                  <span>The current use of the term &#x2018;determinant&#x2019; goes back at least as far as 
+				<a id="24">A.-L. Cauchy</a>  .
+				He is credited with publishing the most complete of the 
+				<span> A.-L. Cauchy</span>  .
+				
+			</span>
+                  
+               </p>
+		          </li>
+		          <li>
+			            <p>
+                  <span>Later 
+				<a id="26">Weierstrass</a>  
+				
+				used an axiomatic definition of &#x2018;determinant&#x2019;. This means he used properties like &#x2018;multilinear&#x2019;, &#x2018;alternating&#x2019;, to define the determinant.</span>
+                  
+               </p>
+		          </li>
+	        </ul>
+</div><li><span>Frobenius, Ferdinand Georg     </span><a id='authorinfo-4669' class='msm_infobutton' onmouseover='infoopen(4669)'>i</a></li><div id="dialog-4669" class="dialogs"><info xmlns="Unit">
+                  <p>
+                     <span>Appears here for contributing to the evolution of the theory of matrices.</span>
+                  </p>
+               </info></div><div class='authorrefcontent' id='authorrefcontent-4669' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>Frobenius,       </span><a id='authorinfo-10608' class='msm_infobutton' onmouseover='infoopen(10608)'>i</a></li><div id="dialog-10608" class="dialogs"><info xmlns="Unit">
+                     <p>
+                        <span>In connection with the non-existence of cross product operations in dimensions other than $3$ and $7$.</span>
+                     </p>
+                  </info></div><div class='authorrefcontent' id='authorrefcontent-10608' style='display:none;'><div class='title'>Cross Products in Arbitrary Dimensions?</div><p xmlns="Unit">
+               <span>The operations ‘dot product’ and ‘determinant’ are defined for all dimensions $n\geq 1$. Analogously we would expect a definition of the cross product in dimensions $n\geq 1$. There are two interpretations</span>
+            </p>
+<ul xmlns="Unit">
+               <li>
+                  <p>
+                     <span>We look for an alternating and multilinear operation which assigns to an ordered $(n-1)$-tuple of vectors $(\Vect{b}_1,\dots ,\Vect{b}_{n-1})$ in $\RNr{n}$ a vector $\text{Cross}(\Vect{b}_1,\dots ,\Vect{b}_{n-1})$ in $\RNr{n}$ such that</span>
+                  </p>
+                  <math.array column="3">
+                     <tr rowspan="1">
+                        <td colspan="2" halign="center" valign="middle">
+                           $\det[\Vect{b}_1\ \ \cdots\ \ \Vect{b}_{n-1}\ \ \text{Cross}(\Vect{b}_1,\dots ,\Vect{b}_{n-1})]$
+                        </td>
+                        <td colspan="1" halign="center" valign="middle">
+                           $ &gt; $
+                        </td>
+                        <td colspan="2" halign="center" valign="middle">
+                           $0$
+                        </td>
+                     </tr>
+                  </math.array>
+                  <p>
+                     <span>
+                        $(\Vect{b}_1,\dots ,\Vect{b}_{n-1})$ is linearly independent. Such an operation exists, but is usually not referred to as a &#x2018;cross product&#x2019;.</span>
+                  </p>
+               </li>
+               <li>
+                  <p>
+                     <span>We look for an alternating bilinear operation on ordered pairs of vectors $(\Vect{u},\Vect{v})$ such that $\CrssPr{ \Vect{u} }{ \Vect{v} }\neq \Vect{0}$ whenever $\Vect{u}$ and $\Vect{v}$ are not parallel, and such that $\CrssPr{ \Vect{u} }{ \Vect{v} }$ is perpendicular to both $\Vect{u}$ and $\Vect{v}$.</span>
+                  </p>
+                  <p>
+                     <span>For deeper reasons, such an operation is only possible if $n=3$ or $n=7$.</span>
+                  </p>
+               </li>
+            </ul>
+<p xmlns="Unit">
+               <span>
+                  <b>Advanced information</b>   We mention two results on the (non-)existence of cross products of pairs. First a now classical result from algebraic topology:</span>
+            </p><p xmlns="Unit">
+               <span>
+                  <b>Theorem</b>   Suppose $\RNr{n}$ admits a cross product operation satisfying</span>
+            </p><ul xmlns="Unit">
+               <li>
+                  <p>
+                     <span>If $\Vect{x}$ and $\Vect{y}$ are not parallel, then $\CrssPr{ \Vect{x} }{ \Vect{y} }\neq 0$.</span>
+                  </p>
+               </li>
+               <li>
+                  <p>
+                     <span>For all $\Vect{x},\Vect{y}\in \RNr{n}$, $\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{x} }\neq 0$ and $\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{y} }\neq 0$
+                     </span>
+                  </p>
+               </li>
+               <li>
+                  <p>
+                     <span>
+                        $\CrssPr{-}{-}\from \RNr{n}\times \RNr{n} \longrightarrow \RNr{n}$ is a continuous function</span>
+                  </p>
+               </li>
+            </ul><p xmlns="Unit">
+               <span>Then $n=3$ or $n=7$.</span>
+            </p><p xmlns="Unit">
+               <span>If we add to the list of assumptions above the requirement that the cross product be bilinear, then the conclusion of the theorem can be proven by elementary algebraic means. This is a classical theorem of Frobenius.
+				</span>
+               
+            </p></div><li><span>Gauß, Carl Friedrich     </span><a id='authorinfo-3796' class='msm_infobutton' onmouseover='infoopen(3796)'>i</a></li><div id="dialog-3796" class="dialogs" title="Carl Friedrich Gauß"><info xmlns="Unit">
+                     
+                     <p>
+                        <span>... and solving systems of linear equations.</span>
+                     </p>
+                  </info></div><div class='authorrefcontent' id='authorrefcontent-3796' style='display:none;'><div class='title'>Solving a System of Linear Equations by Gauß-Jordan Elimination</div><h2> Introduction </h2><p xmlns="Unit">
+               <span>Let us now turn to a method to compute explicitly the solutions of a system of linear equations. Amongst the first who used this method effectively were C.F. Gauß 
+		
+			and W. Jordan
+. This method combines the following basic fact and basic principle.</span>
+               
+               
+            </p>
+<ol xmlns="Unit">
+               <li>
+                  <p>
+                     <span>
+                        <b>Basic fact</b> &#xA0; If a system of linear equations appears in a certain &#x2018;simple&#x2019; form, called <b>R</b>ow <b>R</b>educed <b>E</b>chelon <b>F</b>orm (RREF), it is 
+				<span> quite easy</span>  
+				to determine all of its solutions.</span>
+                  </p>
+               </li>
+               <li>
+                  <p>
+                     <span>
+                        <b>Basic principle</b> &#xA0; If a system of linear equations is not in RREF, there is a procedure, called row reduction, which turns it into a new system which is in RREF and has exactly the same solutions as the original system.</span>
+                  </p>
+               </li>
+            </ol>
+<p xmlns="Unit">
+               <span>Accordingly, if we want to find the solutions of a system of linear equations, we first reduce it to RREF with the row reduction method, then we read the solutions off of the RREF-system.</span>
+            </p></div><li><span>Gram, Jorgen Pedersen     </span><a id='authorinfo-14095' class='msm_infobutton' onmouseover='infoopen(14095)'>i</a></li><div id="dialog-14095" class="dialogs"><info xmlns="Unit">
+                     <p>
+                        <span>In connection with the Gram-Schmidt orthonormalization process</span>
+                     </p>
+                  </info></div><div class='authorrefcontent' id='authorrefcontent-14095' style='display:none;'><div class='title'>Orthonormalizing a Given Basis</div><h2> Introduction </h2><p xmlns="Unit">
+               <span>In the previous sections we saw how much more convenient it is to work with a basis of orthonormal vectors of a vector space $V$, vs. working with an arbitrary basis of $V$. So it is useful to learn how to turn an arbitrary ordered basis of $V$ into an orthonormal one, and this is exactly what we are going to do here.</span>
+            </p><p xmlns="Unit">
+               <span>We will explain a procedure which orthonormalizes an arbitrary basis of $V$. This procedure is called Gram-Schmidt orthonormalization, named after Jorgen Pedersen Gram and Eduard Schmidt. It had, however, been used earlier in specialized contexts.
+			</span>
+               
+               
+            </p><br /><div class='theorem'><span class='theoremtitle'>Gram-Schmidt orthonormalization</span><span class='theoremtype'>Theorem</span><br/><div class='mathcontent'>
+<statement.theorem><p xmlns="Theorem">
+         <span>Given an ordered linearly independent set $\EuScript{A}:=(\Vect{a}_1,\dots ,\Vect{a}_r)$ of vectors in $\RNr{n}$, the ordered set of vectors $\EuScript{B}:=(\Vect{v}_1,\dots ,\Vect{v}_r)$ defined below is an ordered ONB of $\span(\EuScript{A})$.
+			</span>
+         
+      </p><table xmlns:default="Theorem" border="0" class="matharray"><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\Vect{v}_1$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"><a id="hottag-14104" class="hottag" onmouseover="popup(14104)">$:=	$</a><div id="dialog-14104" class="dialogs" title=""><default:info xmlns="Theorem">
+                     <default:p>
+                        <default:span>Thus $\Vect{v}_1$ is the normalization of $\Vect{a}_1$; i.e. $\Vect{v}_1$ has the same direction as $\Vect{a}_1$, but has length $1$.</default:span>
+                     </default:p>
+                  </default:info></div></td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\dfrac{ \Vect{a}_1 }{ \abs{ \Vect{a}_1} }$</td></tr><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\Vect{v}_2$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"><a id="hottag-14109" class="hottag" onmouseover="popup(14109)">$:=	$</a><div id="dialog-14109" class="dialogs" title=""><default:info xmlns="Theorem">
+                     <default:p>
+                        <default:span>Thus $\Vect{v}_2$ is the component of $\Vect{a}_2$ which is perpendicular to $\Vect{v}_1$, normalized.</default:span>
+                     </default:p>
+                  </default:info></div></td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\dfrac{ \Vect{a}_2 - (\DotPr{ \Vect{a}_2 }{ \Vect{v}_1 })\Vect{v}_1 }{ \abs{ \Vect{a}_2 - (\DotPr{ \Vect{a}_2 }{ \Vect{v}_1 })\Vect{v}_1} }$</td></tr><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\vdots$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"> </td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\qquad \vdots \qquad\qquad \vdots$</td></tr><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\Vect{v}_r$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"><a id="hottag-14118" class="hottag" onmouseover="popup(14118)">$:=	$</a><div id="dialog-14118" class="dialogs" title=""><default:info xmlns="Theorem">
+                     <default:p>
+                        <default:span>Thus $\Vect{v}_r$ is the component of $\Vect{a}_r$ which is perpendicular to each of $\Vect{v}_1$, ... , $\Vect{v}_{r-1}$, normalized.</default:span>
+                     </default:p>
+                  </default:info></div></td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\dfrac{ \Vect{a}_r - (\DotPr{ \Vect{a}_r }{ \Vect{v}_1 })\Vect{v}_1 - (\DotPr{ \Vect{a}_r }{ \Vect{v}_2 })\Vect{v}_2 - \cdots - (\DotPr{ \Vect{a}_r }{ \Vect{v}_{r-1} })\Vect{v}_{r-1} }{ \abs{ \Vect{a}_r - (\DotPr{ \Vect{a}_r }{ \Vect{v}_1 })\Vect{v}_1 - (\DotPr{ \Vect{a}_r }{ \Vect{v}_2 })\Vect{v}_2 - \cdots - (\DotPr{ \Vect{a}_r }{ \Vect{v}_{r-1} })\Vect{v}_{r-1} } }$</td></tr></table><p xmlns="Theorem">
+         <span>Moreover, $\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_j } = \span\Set{ \Vect{v}_1,\dots ,\Vect{v}_j }$ for each $1\leq j\leq r$ and, if $\Vect{a}_1,\dots ,\Vect{a}_j$ are already orthonormal, then $\Vect{a}_k=\Vect{v}_k$ for each $1\leq k\leq j$.</span>
+      </p></statement.theorem>
+<ol class='parttheorem' style='list-style-type:lower-roman;'></ol></div><br /></div><br /><p xmlns="Unit">
+               <span>The Gram-Schmidt orthonormalization theorem has the following immediate consequence</span>
+            </p><br /><div class='theorem'><span class='theoremtitle'>Existence of an ONB</span><span class='theoremtype'>Corollary</span><br/><div class='mathcontent'><statement.theorem><p xmlns="Theorem">
+         <span>In a nonzero subvector space $V$ of $\RNr{n}$ every orthonormal subset $S$ of $V$ can be complemented to an orthonormal basis of $V$.</span>
+      </p></statement.theorem><ol class='parttheorem' style='list-style-type:lower-roman;'></ol></div><br /></div><br /></div><li><span>Grassmann, Hermann Günther     </span><a id='authorinfo-4665' class='msm_infobutton' onmouseover='infoopen(4665)'>i</a></li><div id="dialog-4665" class="dialogs"><info xmlns="Unit">
+                  <p>
+                     <span>Appears here for contributing to the early evolution of the theory of matrices.</span>
+                  </p>
+               </info></div><div class='authorrefcontent' id='authorrefcontent-4665' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>Hamilton, Rowan William     </span><a id='authorinfo-4663' class='msm_infobutton' onmouseover='infoopen(4663)'>i</a></li><div id="dialog-4663" class="dialogs"><info xmlns="Unit">
+                  <p>
+                     <span>Appears here for contributing to the early evolution of the theory of matrices.</span>
+                  </p>
+               </info></div><div class='authorrefcontent' id='authorrefcontent-4663' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>Jordan, Wilhelm      </span><a id='authorinfo-3798' class='msm_infobutton' onmouseover='infoopen(3798)'>i</a></li><div id="dialog-3798" class="dialogs" title="Carl Friedrich Gauß"><info xmlns="Unit">
+                     
+                     <p>
+                        <span>... and solving systems of linear equations.</span>
+                     </p>
+                  </info></div><div class='authorrefcontent' id='authorrefcontent-3798' style='display:none;'><div class='title'>Solving a System of Linear Equations by Gauß-Jordan Elimination</div><h2> Introduction </h2><p xmlns="Unit">
+               <span>Let us now turn to a method to compute explicitly the solutions of a system of linear equations. Amongst the first who used this method effectively were C.F. Gauß 
+		
+			and W. Jordan
+. This method combines the following basic fact and basic principle.</span>
+               
+               
+            </p>
+<ol xmlns="Unit">
+               <li>
+                  <p>
+                     <span>
+                        <b>Basic fact</b> &#xA0; If a system of linear equations appears in a certain &#x2018;simple&#x2019; form, called <b>R</b>ow <b>R</b>educed <b>E</b>chelon <b>F</b>orm (RREF), it is 
+				<span> quite easy</span>  
+				to determine all of its solutions.</span>
+                  </p>
+               </li>
+               <li>
+                  <p>
+                     <span>
+                        <b>Basic principle</b> &#xA0; If a system of linear equations is not in RREF, there is a procedure, called row reduction, which turns it into a new system which is in RREF and has exactly the same solutions as the original system.</span>
+                  </p>
+               </li>
+            </ol>
+<p xmlns="Unit">
+               <span>Accordingly, if we want to find the solutions of a system of linear equations, we first reduce it to RREF with the row reduction method, then we read the solutions off of the RREF-system.</span>
+            </p></div><li><span>Schmidt, Eduard      </span><a id='authorinfo-14097' class='msm_infobutton' onmouseover='infoopen(14097)'>i</a></li><div id="dialog-14097" class="dialogs"><info xmlns="Unit">
+                     <p>
+                        <span>In connection with the Gram-Schmidt orthonormalization process</span>
+                     </p>
+                  </info></div><div class='authorrefcontent' id='authorrefcontent-14097' style='display:none;'><div class='title'>Orthonormalizing a Given Basis</div><h2> Introduction </h2><p xmlns="Unit">
+               <span>In the previous sections we saw how much more convenient it is to work with a basis of orthonormal vectors of a vector space $V$, vs. working with an arbitrary basis of $V$. So it is useful to learn how to turn an arbitrary ordered basis of $V$ into an orthonormal one, and this is exactly what we are going to do here.</span>
+            </p><p xmlns="Unit">
+               <span>We will explain a procedure which orthonormalizes an arbitrary basis of $V$. This procedure is called Gram-Schmidt orthonormalization, named after Jorgen Pedersen Gram and Eduard Schmidt. It had, however, been used earlier in specialized contexts.
+			</span>
+               
+               
+            </p><br /><div class='theorem'><span class='theoremtitle'>Gram-Schmidt orthonormalization</span><span class='theoremtype'>Theorem</span><br/><div class='mathcontent'>
+<statement.theorem><p xmlns="Theorem">
+         <span>Given an ordered linearly independent set $\EuScript{A}:=(\Vect{a}_1,\dots ,\Vect{a}_r)$ of vectors in $\RNr{n}$, the ordered set of vectors $\EuScript{B}:=(\Vect{v}_1,\dots ,\Vect{v}_r)$ defined below is an ordered ONB of $\span(\EuScript{A})$.
+			</span>
+         
+      </p><table xmlns:default="Theorem" border="0" class="matharray"><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\Vect{v}_1$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"><a id="hottag-14104" class="hottag" onmouseover="popup(14104)">$:=	$</a><div id="dialog-14104" class="dialogs" title=""><default:info xmlns="Theorem">
+                     <default:p>
+                        <default:span>Thus $\Vect{v}_1$ is the normalization of $\Vect{a}_1$; i.e. $\Vect{v}_1$ has the same direction as $\Vect{a}_1$, but has length $1$.</default:span>
+                     </default:p>
+                  </default:info></div></td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\dfrac{ \Vect{a}_1 }{ \abs{ \Vect{a}_1} }$</td></tr><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\Vect{v}_2$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"><a id="hottag-14109" class="hottag" onmouseover="popup(14109)">$:=	$</a><div id="dialog-14109" class="dialogs" title=""><default:info xmlns="Theorem">
+                     <default:p>
+                        <default:span>Thus $\Vect{v}_2$ is the component of $\Vect{a}_2$ which is perpendicular to $\Vect{v}_1$, normalized.</default:span>
+                     </default:p>
+                  </default:info></div></td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\dfrac{ \Vect{a}_2 - (\DotPr{ \Vect{a}_2 }{ \Vect{v}_1 })\Vect{v}_1 }{ \abs{ \Vect{a}_2 - (\DotPr{ \Vect{a}_2 }{ \Vect{v}_1 })\Vect{v}_1} }$</td></tr><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\vdots$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"> </td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\qquad \vdots \qquad\qquad \vdots$</td></tr><tr class="matharrayrow" align="center"><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\Vect{v}_r$</td><td class="matharraycell" colspan="1" rowspan="1" align="center" valign="middle"><a id="hottag-14118" class="hottag" onmouseover="popup(14118)">$:=	$</a><div id="dialog-14118" class="dialogs" title=""><default:info xmlns="Theorem">
+                     <default:p>
+                        <default:span>Thus $\Vect{v}_r$ is the component of $\Vect{a}_r$ which is perpendicular to each of $\Vect{v}_1$, ... , $\Vect{v}_{r-1}$, normalized.</default:span>
+                     </default:p>
+                  </default:info></div></td><td class="matharraycell" colspan="2" rowspan="1" align="center" valign="middle">$\dfrac{ \Vect{a}_r - (\DotPr{ \Vect{a}_r }{ \Vect{v}_1 })\Vect{v}_1 - (\DotPr{ \Vect{a}_r }{ \Vect{v}_2 })\Vect{v}_2 - \cdots - (\DotPr{ \Vect{a}_r }{ \Vect{v}_{r-1} })\Vect{v}_{r-1} }{ \abs{ \Vect{a}_r - (\DotPr{ \Vect{a}_r }{ \Vect{v}_1 })\Vect{v}_1 - (\DotPr{ \Vect{a}_r }{ \Vect{v}_2 })\Vect{v}_2 - \cdots - (\DotPr{ \Vect{a}_r }{ \Vect{v}_{r-1} })\Vect{v}_{r-1} } }$</td></tr></table><p xmlns="Theorem">
+         <span>Moreover, $\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_j } = \span\Set{ \Vect{v}_1,\dots ,\Vect{v}_j }$ for each $1\leq j\leq r$ and, if $\Vect{a}_1,\dots ,\Vect{a}_j$ are already orthonormal, then $\Vect{a}_k=\Vect{v}_k$ for each $1\leq k\leq j$.</span>
+      </p></statement.theorem>
+<ol class='parttheorem' style='list-style-type:lower-roman;'></ol></div><br /></div><br /><p xmlns="Unit">
+               <span>The Gram-Schmidt orthonormalization theorem has the following immediate consequence</span>
+            </p><br /><div class='theorem'><span class='theoremtitle'>Existence of an ONB</span><span class='theoremtype'>Corollary</span><br/><div class='mathcontent'><statement.theorem><p xmlns="Theorem">
+         <span>In a nonzero subvector space $V$ of $\RNr{n}$ every orthonormal subset $S$ of $V$ can be complemented to an orthonormal basis of $V$.</span>
+      </p></statement.theorem><ol class='parttheorem' style='list-style-type:lower-roman;'></ol></div><br /></div><br /></div><li><span>Schwarz, Karl Herman Amandus     </span><a id='authorinfo-1609' class='msm_infobutton' onmouseover='infoopen(1609)'>i</a></li><div id="dialog-1609" class="dialogs"><info xmlns="Theorem">
+                     <p>
+                        <span>Credited with a contribution to the Cauchy-Schwarz inequality.</span>
+                     </p>
+                  </info></div><div class='authorrefcontent' id='authorrefcontent-1609' style='display:none;'><br /><div class='theorem'><span class='theoremtitle'>Geometric Properties of Norm and Dot Product</span><span class='theoremtype'>Proposition</span><br/><div class='mathcontent'><statement.theorem><p xmlns="Theorem">
+         <span>For vectors $\Vect{x}$ and $\Vect{y}$ in $\RNr{n}$, the following hold:</span>
+      </p></statement.theorem><ol class='parttheorem' style='list-style-type:lower-roman;'><li><span class='parttheoremtitle'>Relationship between dot product and norm</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $\DotPr{ \Vect{x} }{ \Vect{x} } = | \Vect{x} |^2$
+               </span>
+               
+               
+            </p>
+         </part.body></li><br /><li><span class='parttheoremtitle'>Orthogonality criterion</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $\DotPr{\Vect{x}}{\Vect{y}} = 0$ if and only if $\Vect{x}$ is perpendicular to $\Vect{y}$.
+				</span>
+               
+            </p>
+         </part.body></li><br /><li><span class='parttheoremtitle'>Angle between two vectors</span>
+<part.body xmlns="Theorem">
+            <p>
+               <span>
+                  <span> 
+                        $\DotPr{\Vect{x}}{\Vect{y}} = \Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \cos \sphericalangle(\Vect{x},\Vect{y})$
+                     </span>  , provided $\Vect{x}$ and $\Vect{y}$ have positive length.
+				</span>
+               
+               
+            </p>
+         </part.body>
+</li><br /><li><span class='parttheoremtitle'>Triangle inequality</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $\Abs{\Vect{x} + \Vect{y}} \leq \Abs{\Vect{x}} + \Abs{\Vect{y}}$
+               </span>
+               
+            </p>
+         </part.body></li><br /><li><span class='parttheoremtitle'>Cauchy-Schwarz inequality</span><part.body xmlns="Theorem">
+            <p>
+               <span>
+                  $| \DotPr{\Vect{x}}{\Vect{y}} | \leq | \Vect{x} | | \Vect{y} |$. </span>
+               
+               
+               
+            </p>
+         </part.body></li><br /></ol></div><br /></div><br /></div><li><span>Shu, Jiu Shang Suan     </span><a id='authorinfo-4656' class='msm_infobutton' onmouseover='infoopen(4656)'>i</a></li><div id="dialog-4656" class="dialogs"><info xmlns="Unit">
+                        <p>
+                           <span>Appears here as the author of the ancient Chinese work on ‘The Nine Chapters on the Mathematical Art’.</span>
+                        </p>
+                     </info></div><div class='authorrefcontent' id='authorrefcontent-4656' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>Sylvester, James Joseph     </span><a id='authorinfo-4661' class='msm_infobutton' onmouseover='infoopen(4661)'>i</a></li><div id="dialog-4661" class="dialogs"><info xmlns="Unit">
+                  <p>
+                     <span>Appears here for introducing the term ‘matrix’ for a rectangular arrangement of numbers.</span>
+                  </p>
+               </info></div><div class='authorrefcontent' id='authorrefcontent-4661' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>Taussky-Todd, Olga      </span><a id='authorinfo-4673' class='msm_infobutton' onmouseover='infoopen(4673)'>i</a></li><div id="dialog-4673" class="dialogs"><info xmlns="Unit">
+                  <p>
+                     <span>Appears here for contributing to the evolution of the theory of matrices.</span>
+                  </p>
+               </info></div><div class='authorrefcontent' id='authorrefcontent-4673' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>von Neumann, John      </span><a id='authorinfo-4671' class='msm_infobutton' onmouseover='infoopen(4671)'>i</a></li><div id="dialog-4671" class="dialogs"><info xmlns="Unit">
+                  <p>
+                     <span>Appears here for contributing to the evolution of the theory of matrices.</span>
+                  </p>
+               </info></div><div class='authorrefcontent' id='authorrefcontent-4671' style='display:none;'><div class='title'>Matrix Algebra</div><h2> Introduction </h2>
+<p xmlns="Unit">
+            <span>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<span> rectangular arrangement of numbers</span>  . 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<a id="16">system of linear equations</a>   we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</span>
+            
+         </p>
+<p xmlns="Unit">
+            <span>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices $\Mtrx{A}$ and $\Mtrx{B}$ are compatible, the product $\Mtrx{A}\cdot \Mtrx{B}$ is defined.</span>
+         </p><p xmlns="Unit">
+            <span>It is possible to embed the system $\RNr{}$ of real numbers in the system of matrices, for example by turning a number $x$ into the matrix $[x]$ consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</span>
+         </p><p xmlns="Unit">
+            <span>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</span>
+         </p><p xmlns="Unit">
+            <span>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</span>
+         </p>
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The &#x2018;Lo Shu&#x2019;-<span> magic square</span>  
+		of China was recorded around 650 BCE in China.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <i>The Nine Chapters on the Mathematical Art</i>, which originated between 300 BCE and 200 CE.
+			
+		</span>
+                  
+               </p>
+            </li>
+		
+		          <li>
+               <p>
+                  <span>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</span>
+               </p>
+            </li>
+	        </ul>
+<p xmlns="Unit">
+            <span>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</span>
+            
+            
+            
+            
+            
+            
+            
+         </p></div><li><span>Weierstrass, Karl      </span><a id='authorinfo-8859' class='msm_infobutton' onmouseover='infoopen(8859)'>i</a></li><div id="dialog-8859" class="dialogs" title="Augustin-Louis Cauchy"><info xmlns="Unit">
+                        
+						
+						                  <p>
+                           <span>Appears here for his contribution to the early development of determinants.</span>
+                        </p>
+					                </info></div><div class='authorrefcontent' id='authorrefcontent-8859' style='display:none;'><div class='title'>Determinants</div><h2> Introduction </h2><p xmlns="Unit">
+            <span>The determinant is a function which receives as input a square matrix $\Mtrx{A}$ and yields, as output, a number denoted by $\det(\Mtrx{A})$. We are interested in determinants because:</span>
+         </p><ol xmlns="Unit">
+		          <li>
+			            <p>
+                  <span>determinants enable us to develop the concept of `oriented volume' in $n$-dimensional space, and</span>
+               </p>
+		          </li>
+		          <li>
+			            <p>
+                  <span>determinants provide a new test for invertibility of a square matrix $\Mtrx{A}$: $\Mtrx{A}$ is invertible exactly when $\det(\Mtrx{A})\neq 0$.</span>
+               </p>
+		          </li>
+	        </ol><p xmlns="Unit">
+            <span>Let us preview our determinant topics in some more detail.</span>
+         </p>
+<ol xmlns="Unit">
+		          <li>
+               <p>
+                  <span>
+                     <span> How to compute determinants</span>   &#xA0; We first define the determinant of $(1,1)$-matrices, then the determinants of $(2,2)$-matrices, then the determinants of $(3,3)$-matrices and so on. &#x2013; A few experiments will show you that, with increasing size of matrices, the number of computations one has to carry out increases extremely rapidly.</span>
+               </p>
+            </li>
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="24">Rules for computing with determinants</a>  
+				 &#x2013; Given that computing determinants of large matrices requires a lot of computations, it is doubly important that there are rules for computing with determinants which are quick and efficient. Some of these rules may seem counter intuitive at first. However, we will explain how these rules correspond perfectly to the properties of the volume function on boxes.</span>
+               </p>
+			            <p>
+                  <span>In addition, these rules will guide us to an alternate method of computing determinants using row and column operations. For determinants of large matrices this method is much more efficient than the recursive one we discussed earlier.</span>
+               </p>
+		          </li>
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="25">Orientation of space</a>   &#x2013; Each $\RNr{n}$ carries two distinct orientations. This is a subtle property of space. In $\RNr{3}$ we encounter it by considering our two hands. While our hands are mirrored images of one another, they are not interchangeable, that is: we cannot replace a left hand by a right hand. Thus we need to distinguish carefully between &#x2018;left&#x2019; and &#x2018;right&#x2019;. We encounter the need for such a distinction in each $\RNr{n}$, and the determinant operation will help us make such a distinction.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="26">Oriented volume</a>  
+				&#x2013; Here we combine what we learned about properties of the determinant operation with properties of the volume of boxes and orientation. The result is the surprisingly powerful notion of oriented volume, computed using determinants.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+			            <p>
+                  <span>
+                     <a id="27">Cross product</a>  
+				&#x2013; operation is only defined for pairs of vectors in $\RNr{3}$. Given two vectors $\Vect{x}$ and $\Vect{y}$ from $\RNr{3}$, it returns the vector $\CrssPr{ \Vect{x} }{ \Vect{y} }$ of $\RNr{3}$, called the cross product of $\Vect{x}$ and $\Vect{y}$. The geometric properties of the cross product operation make it a very powerful tool in mechanical engineering and in parts of physics.</span>
+               </p>
+		          </li>
+		
+		
+		          <li>
+               <p>
+                  <span>
+                     <i>Cramer's rule</i> &#x2013; if a system of $n$ linear equations in $n$ variables has an invertible coefficient matrix, then we can express the unique solution of this system by a formula which uses the determinant operation.
+		</span>
+               </p>
+            </li>
+	        </ol>
+
+<p xmlns="Unit">
+            <span>Some <span> historic highlights</span>  
+	           </span>
+         </p>
+
+<ul xmlns="Unit">
+		          <li>
+               <p>
+                  <span>The history of determinants started with an analysis of the number of solutions of a system of linear equations. The determinant of the unaugmented coefficient matrix of a homogeneous system of $n$ linear equations is nonzero exactly when the system has the unique solution $(0,\dots ,0)$.</span>
+               </p>
+            </li>
+		          <li>
+               <p>
+                  <span>The term &#x2018;determinant&#x2019; appeared first in
+			<span> C. F. Gau&#xDF;&#x2019;s</span>  
+			                  <a id="23">work</a>  
+			on quadratic forms to express the fact that the determinant determines the properties of the quadratic form. However, the concept to which Gau&#xDF; applied the term &#x2018;determinant&#x2019; is distinct from the concept which we call &#x2018;determinant&#x2019; today.
+			
+		</span>
+                  
+               </p>
+            </li>
+		          <li>
+			            <p>
+                  <span>The current use of the term &#x2018;determinant&#x2019; goes back at least as far as 
+				<a id="24">A.-L. Cauchy</a>  .
+				He is credited with publishing the most complete of the 
+				<span> A.-L. Cauchy</span>  .
+				
+			</span>
+                  
+               </p>
+		          </li>
+		          <li>
+			            <p>
+                  <span>Later 
+				<a id="26">Weierstrass</a>  
+				
+				used an axiomatic definition of &#x2018;determinant&#x2019;. This means he used properties like &#x2018;multilinear&#x2019;, &#x2018;alternating&#x2019;, to define the determinant.</span>
+                  
+               </p>
+		          </li>
+	        </ul>
+</div></ul>

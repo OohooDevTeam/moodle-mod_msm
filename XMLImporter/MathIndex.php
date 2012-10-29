@@ -1031,8 +1031,8 @@ class MathIndex extends Element
     {
         $content = '';
 
-        $content .= "<div id='symbolpanel' class='panel'>";
-        $content .="<div class='symbolpanelcontent' id='symbolcontent'>";
+//        $content .= "<div id='symbolpanel' class='panel'>";
+//        $content .="<div class='symbolpanelcontent' id='symbolcontent'>";
         $content .= "<h3> S Y M B O L S </h3>";
         $content .= '<ul id="symbolindex" class="treeview-red">';
 
@@ -1040,8 +1040,8 @@ class MathIndex extends Element
         $content .= $this->displaySymbol($symbolList);
 
         $content .= "</ul>";
-        $content .="</div>"; // end of slidepanelcontent
-        $content .= "</div>"; // end of panel
+//        $content .="</div>"; // end of slidepanelcontent
+//        $content .= "</div>"; // end of panel
 
         return $content;
     }
@@ -1050,8 +1050,8 @@ class MathIndex extends Element
     {
         $content = '';
 
-        $content .= "<div id='glossarypanel' class='panel'>";
-        $content .="<div class='glossarypanelcontent' id='glossarycontent'>";
+//        $content .= "<div id='glossarypanel' class='panel'>";
+//        $content .="<div class='glossarypanelcontent' id='glossarycontent'>";
         $content .= "<h3> G L O S S A R Y </h3>";
         $content .= '<ul id="glossaryindex" class="treeview-red">';
 
@@ -1059,8 +1059,8 @@ class MathIndex extends Element
         $content .= $this->displayGlossary($glossaryTree);
 
         $content .= "</ul>";
-        $content .="</div>"; // end of slidepanelcontent
-        $content .= "</div>"; // end of panel
+//        $content .="</div>"; // end of slidepanelcontent
+//        $content .= "</div>"; // end of panel
 
         return $content;
     }
@@ -1069,8 +1069,8 @@ class MathIndex extends Element
     {
         $content = '';
 
-        $content .= "<div id='authorpanel' class='panel'>";
-        $content .="<div class='authorpanelcontent' id='authorcontent'>";
+//        $content .= "<div id='authorpanel' class='panel'>";
+//        $content .="<div class='authorpanelcontent' id='authorcontent'>";
         $content .= "<h3> A U T H O R S </h3>";
         $content .= '<ul id="authorindex" class="treeview-red">';
 
@@ -1078,8 +1078,8 @@ class MathIndex extends Element
         $content .= $this->displayAuthor($authorTree);
 
         $content .= "</ul>";
-        $content .="</div>"; // end of slidepanelcontent
-        $content .= "</div>"; // end of panel
+//        $content .="</div>"; // end of slidepanelcontent
+//        $content .= "</div>"; // end of panel
 
         return $content;
     }

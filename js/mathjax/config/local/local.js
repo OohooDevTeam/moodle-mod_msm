@@ -32,7 +32,8 @@ MathJax.Hub.Config({
         //        processEnvironments: true,
         processEscapes: true,
         balanceBraces: true,
-        ignoreClass: "tex2jax_ignore|symbolrefcontent|glossaryrefcontent|authorrefcontent|glossarypanelcontent|symbolpanelcontent"
+        //        ignoreClass: "tex2jax_ignore|symbolrefcontent|glossaryrefcontent|authorrefcontent|glossarypanelcontent|symbolpanelcontent"
+        ignoreClass: "tex2jax_ignore|symbolrefcontent|glossaryrefcontent|authorrefcontent"
     },
     TeX: {
         extensions: ["color.js", "AMSmath.js", "AMSsymbols.js"],

@@ -207,41 +207,56 @@ $content .= $tableofcontents->makeToc();
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
 
-$symbolfilename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
-if (file_exists($symbolfilename))
-{
-    $symbolfile = fopen($symbolfilename, 'r');
-    $content .= fread($symbolfile, filesize($symbolfilename));
-    fclose($symbolfile);
-}
-else
-{
-    echo "file " . $symbolfilename . "does not exist.";
-}
+$content .= "<div id='symbolpanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='symbolcontent'>";
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
 
-$glossryfilename = $msm->course . '-' . $msm->id . '-msm_glossaryindex.html';
-if (file_exists($glossryfilename))
-{
-    $glossaryfile = fopen($glossryfilename, 'r');
-    $content .= fread($glossaryfile, filesize($glossryfilename));
-    fclose($glossaryfile);
-}
-else
-{
-    echo "file " . $glossryfilename . "does not exist.";
-}
+$content .= "<div id='glossarypanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='glossarycontent'>";
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
 
-$authorfilename = $msm->course . '-' . $msm->id . '-msm_authorindex.html';
-if (file_exists($authorfilename))
-{
-    $authorfile = fopen($authorfilename, 'r');
-    $content .= fread($authorfile, filesize($authorfilename));
-    fclose($authorfile);
-}
-else
-{
-    echo "file " . $authorfilename . "does not exist.";
-}
+$content .= "<div id='authorpanel' class='panel'>";
+$content .="<div class='slidepanelcontent' id='authorcontent'>";
+$content .="</div>"; // end of slidepanelcontent
+$content .= "</div>"; // end of panel
+
+//$symbolfilename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
+//if (file_exists($symbolfilename))
+//{
+//    $symbolfile = fopen($symbolfilename, 'r');
+//    $content .= fread($symbolfile, filesize($symbolfilename));
+//    fclose($symbolfile);
+//}
+//else
+//{
+//    echo "file " . $symbolfilename . "does not exist.";
+//}
+//
+//$glossryfilename = $msm->course . '-' . $msm->id . '-msm_glossaryindex.html';
+//if (file_exists($glossryfilename))
+//{
+//    $glossaryfile = fopen($glossryfilename, 'r');
+//    $content .= fread($glossaryfile, filesize($glossryfilename));
+//    fclose($glossaryfile);
+//}
+//else
+//{
+//    echo "file " . $glossryfilename . "does not exist.";
+//}$authorfilename = $msm->course . '-' . $msm->id . '-msm_authorindex.html';
+//if (file_exists($authorfilename))
+//{
+//    $authorfile = fopen($authorfilename, 'r');
+//    $content .= fread($authorfile, filesize($authorfilename));
+//    fclose($authorfile);
+//}
+//else
+//{
+//    echo "file " . $authorfilename . "does not exist.";
+//}
+
+//
 
 $content .= "<div id='contactpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='contactcontent'>";
@@ -253,6 +268,8 @@ $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
 
 $content .= "<div class='loadingscreen'></div>";
+
+$content .= '<input id="instanceid" type="text" name="moduleinfo" value="' . $msm->course . ',' . $msm->id . '" style="visibility:hidden;"/>';
 
 // need to have it in this order or dialog breaks
 // if implementing jImageMapster, need to insert the jquery code in the space between dialogs and jshowoff
@@ -269,20 +286,7 @@ $content .= "
                     control: '#treecontrol'
                 });              
                 
-                 $('#symbolindex').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-
-                $('#glossaryindex').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-                 $('#authorindex').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-                     $('.slidepanelcontent, #glossarycontent, #symbolcontent, #authorcontent').hide();
+                $('.slidepanelcontent, #glossarycontent, #symbolcontent, #authorcontent').hide();
                      
                 $('.dialogs').dialog({
                     autoOpen: false,
