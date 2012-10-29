@@ -1951,6 +1951,12 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012101203, 'msm');
     }
+    
+    if ($oldversion < 2012102900)
+    {
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012102900, 'msm');
+    }
 
 
 

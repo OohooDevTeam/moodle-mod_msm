@@ -91,9 +91,11 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     global $CFG, $DB;
 
     require_once("$CFG->libdir/resourcelib.php");
-    require_once("XMLImporter/Unit.php");
-    require_once("XMLImporter/Compositor.php");
-    require_once("XMLImporter/TableCollection.php");
+    require_once('editorCreation/authoringTool.php');
+
+//    require_once("XMLImporter/Unit.php");
+//    require_once("XMLImporter/Compositor.php");
+//    require_once("XMLImporter/TableCollection.php");
 
     $msm->timecreated = time();
 
@@ -103,71 +105,74 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
 
     //temporary delete records.
-    $DB->delete_records('msm_unit');
-    $DB->delete_records('msm_def');
-    $DB->delete_records('msm_table_collection');
-    $DB->delete_records('msm');
-    $DB->delete_records('msm_intro');
-    $DB->delete_records('msm_theorem');
-    $DB->delete_records('msm_associate');
-    $DB->delete_records('msm_info');
-    $DB->delete_records('msm_extra_info');
-    $DB->delete_records('msm_theorem');
-    $DB->delete_records('msm_proof');
-    $DB->delete_records('msm_proof_block');
-    $DB->delete_records('msm_statement_theorem');
-    $DB->delete_records('msm_comment');
-    $DB->delete_records('msm_para');
-    $DB->delete_records('msm_subordinate');
-    $DB->delete_records('msm_person');
-    $DB->delete_records('msm_content');
-    $DB->delete_records('msm_index_glossary');
-    $DB->delete_records('msm_index_symbol');
-    $DB->delete_records('msm_table');
-    $DB->delete_records('msm_answer');
-    $DB->delete_records('msm_answer_exercise');
-    $DB->delete_records('msm_answer_showme');
-    $DB->delete_records('msm_packs');
-    $DB->delete_records('msm_problem');
-    $DB->delete_records('msm_exercise');
-    $DB->delete_records('msm_example');
-    $DB->delete_records('msm_showme');
-    $DB->delete_records('msm_quiz');
-    $DB->delete_records('msm_quiz_choice');
-    $DB->delete_records('msm_part_exercise');
-    $DB->delete_records('msm_part_example');
-    $DB->delete_records('msm_part_theorem');
-    $DB->delete_records('msm_ext');
-    $DB->delete_records('msm_approach');
-    $DB->delete_records('msm_solution');
-    $DB->delete_records('msm_statement_example');
-    $DB->delete_records('msm_media');
-    $DB->delete_records('msm_img');
-    $DB->delete_records('msm_pilot');
-    $DB->delete_records('msm_step');
-    $DB->delete_records('msm_external_link');
-    $DB->delete_records('msm_cite');
-    $DB->delete_records('msm_item');
-    $DB->delete_records('msm_compositor');
+//    $DB->delete_records('msm_unit');
+//    $DB->delete_records('msm_def');
+//    $DB->delete_records('msm_table_collection');
+//    $DB->delete_records('msm');
+//    $DB->delete_records('msm_intro');
+//    $DB->delete_records('msm_theorem');
+//    $DB->delete_records('msm_associate');
+//    $DB->delete_records('msm_info');
+//    $DB->delete_records('msm_extra_info');
+//    $DB->delete_records('msm_theorem');
+//    $DB->delete_records('msm_proof');
+//    $DB->delete_records('msm_proof_block');
+//    $DB->delete_records('msm_statement_theorem');
+//    $DB->delete_records('msm_comment');
+//    $DB->delete_records('msm_para');
+//    $DB->delete_records('msm_subordinate');
+//    $DB->delete_records('msm_person');
+//    $DB->delete_records('msm_content');
+//    $DB->delete_records('msm_index_glossary');
+//    $DB->delete_records('msm_index_symbol');
+//    $DB->delete_records('msm_table');
+//    $DB->delete_records('msm_answer');
+//    $DB->delete_records('msm_answer_exercise');
+//    $DB->delete_records('msm_answer_showme');
+//    $DB->delete_records('msm_packs');
+//    $DB->delete_records('msm_problem');
+//    $DB->delete_records('msm_exercise');
+//    $DB->delete_records('msm_example');
+//    $DB->delete_records('msm_showme');
+//    $DB->delete_records('msm_quiz');
+//    $DB->delete_records('msm_quiz_choice');
+//    $DB->delete_records('msm_part_exercise');
+//    $DB->delete_records('msm_part_example');
+//    $DB->delete_records('msm_part_theorem');
+//    $DB->delete_records('msm_ext');
+//    $DB->delete_records('msm_approach');
+//    $DB->delete_records('msm_solution');
+//    $DB->delete_records('msm_statement_example');
+//    $DB->delete_records('msm_media');
+//    $DB->delete_records('msm_img');
+//    $DB->delete_records('msm_pilot');
+//    $DB->delete_records('msm_step');
+//    $DB->delete_records('msm_external_link');
+//    $DB->delete_records('msm_cite');
+//    $DB->delete_records('msm_item');
+//    $DB->delete_records('msm_compositor');
 
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
-        $table_collection = new TableCollection();
-        $tableid = $table_collection->insertTablename();
+        $authoringTool = new AuthorTool();
+        echo $authoringTool->createEditor();
 
-        $parser = new DOMDocument();
-        //define('parser', $parser);
-        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
-//        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
-
-        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
-//        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
-        $position = 1;
-
-        $unit->loadFromXml($parser->documentElement, $position);
-
-        $unit->saveIntoDb($unit->position, $msm->id);
+//        $table_collection = new TableCollection();
+//        $tableid = $table_collection->insertTablename();
+//
+//        $parser = new DOMDocument();
+//        //define('parser', $parser);
+//        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
+////        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
+//
+//        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
+////        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
+//        $position = 1;
+//
+//        $unit->loadFromXml($parser->documentElement, $position);
+//
+//        $unit->saveIntoDb($unit->position, $msm->id);
     }
 
 //    echo "done";

@@ -23,9 +23,7 @@ $(function() {
         });
     });
     
-    $('#symbol').toggle(function () {
-        //        $('#symbolcontent').attr('class', 'rendercontent');        
-        //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
+    $('#symbol').toggle(function () {    
         $('#symbolpanel').stop().animate({
             height:'90%', 
             opacity:1.0
@@ -64,9 +62,7 @@ $(function() {
         });
     });
     
-    $('#glossary').toggle(function () {
-        //        $('#glossarycontent').attr('class', 'rendercontent');        
-        //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
+    $('#glossary').toggle(function () {     
         $('#glossarypanel').stop().animate({
             height:'90%', 
             opacity:1.0
@@ -104,9 +100,7 @@ $(function() {
         });
     });
     
-    $('#author').toggle(function () {
-        //        $('#authorcontent').attr('class', 'rendercontent');        
-        //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);      
+    $('#author').toggle(function () {   
         $('#authorpanel').stop().animate({
             height:'90%', 
             opacity:1.0

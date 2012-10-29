@@ -36,10 +36,17 @@ $string['modulename'] = 'msm';
 $string['modulenameplural'] = 'msms';
 $string['modulename_help'] = 'Use the msm module for... | The msm module allows...';
 $string['msmfieldset'] = 'Custom example fieldset';
-$string['msmname'] = 'msm name';
+$string['msmname'] = 'Title of Composition';
 $string['msmname_help'] = 'This is the content of the help tooltip associated with the msmname field. Markdown syntax is supported.';
-$string['msm'] = 'msm';
+$string['msm'] = 'Math Suite for Moodle';
 $string['pluginadministration'] = 'msm administration';
 $string['pluginname'] = 'msm';
 $string['updatecomp'] = 'Update this composition';
-$string['msm:addinstance'] = 'Add a new MSM';
+$string['msm:addinstance'] = 'MSM Creation Tool';
+$string['msmtype'] = 'Type of Composition';
+$string['msmtype_help'] = 'Replace with explanation of each types...';
+
+$string['msmsubmit'] = ' Save and Proceed ';
+
+$string['importbutton'] = 'Import from Existing XML';
+

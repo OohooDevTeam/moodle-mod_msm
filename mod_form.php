@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -22,9 +21,9 @@
  * visit: http://docs.moodle.org/en/Development:lib/formslib.php
  *
  *
- **************************************************************************
- **                              MSM                                     **
- **************************************************************************
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
  * @package     mod                                                      **
  * @subpackage  msm                                                      **
  * @name        msm                                                      **
@@ -32,56 +31,82 @@
  * @link        http://ualberta.ca                                       **
  * @author      Ga Young Kim                                             **
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
- **************************************************************************
- **************************************************************************/
-
+ * *************************************************************************
+ * ************************************************************************ */
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/course/moodleform_mod.php');
+require_once($CFG->dirroot . '/course/moodleform_mod.php');
+require_once($CFG->dirroot . '/lib/formslib.php');
 
 /**
  * Module instance settings form
  */
-class mod_msm_mod_form extends moodleform_mod {
+class mod_msm_mod_form extends moodleform_mod
+{
 
     /**
      * Defines forms elements
      */
-    public function definition() {
+    public function definition()
+    {
 
         $mform = $this->_form;
 
+        $config = get_config('msm');
+
         //-------------------------------------------------------------------------------
         // Adding the "general" fieldset, where all the common settings are showed
-        $mform->addElement('header', 'general', get_string('general', 'form'));
 
+        $mform->addElement('header', 'general', get_string('msm', 'msm'));
+//        $mform->addElement('header', 'general', get_string('general', 'form'));
         // Adding the standard "name" field
-        $mform->addElement('text', 'name', get_string('msmname', 'msm'), array('size'=>'64'));
-        if (!empty($CFG->formatstringstriptags)) {
+        $mform->addElement('text', 'name', get_string('msmname', 'msm'), array('size' => '64'));
+        if (!empty($CFG->formatstringstriptags))
+        {
             $mform->setType('name', PARAM_TEXT);
-        } else {
+        }
+        else
+        {
             $mform->setType('name', PARAM_CLEAN);
         }
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
-        $mform->addHelpButton('name', 'msmname', 'msm');
-
+//        $mform->addHelpButton('name', 'msmname', 'msm');
         // Adding the standard "intro" and "introformat" fields
         $this->add_intro_editor();
 
         //-------------------------------------------------------------------------------
         // Adding the rest of msm settings, spreeading all them into this fieldset
         // or adding more fieldsets ('header' elements) if needed for better logic
-        $mform->addElement('static', 'label1', 'msmsetting1', 'Your msm fields go here. Replace me!');
+//        $mform->addElement('static', 'label1', get_string('msmtype', 'msm'));
 
-        $mform->addElement('header', 'msmfieldset', get_string('msmfieldset', 'msm'));
-        $mform->addElement('static', 'label2', 'msmsetting2', 'Your msm fields go here. Replace me!');
+        $msm_types = array();
+        $msm_types[0] = 'Book';
+        $msm_types[1] = 'Lecture';
+        $msm_types[2] = 'Work book';
+        $msm_types[3] = 'Others';
+        $mform->addElement('select', 'type', get_string('msmtype', 'msm'), $msm_types);
+        $mform->addHelpButton('type', 'msmtype', 'msm');
 
+//        $mform->addElement('header', 'msmfieldset', get_string('msmfieldset', 'msm'));
+//        $mform->addElement('static', 'label2', 'msmsetting2', 'Your msm fields go here. Replace me!');
         //-------------------------------------------------------------------------------
         // add standard elements, common to all modules
         $this->standard_coursemodule_elements();
-        //-------------------------------------------------------------------------------
-        // add standard buttons, common to all modules
-        $this->add_action_buttons();
+
+//        $mform->registerNoSubmitButton('submitnewbutton');
+
+        $buttonarray[] = &$mform->createElement('button', 'submitnewbutton', get_string('msmsubmit', 'msm'), array('link' => 'editorCreation/authoringTool.php'));
+        $buttonarray[] = &$mform->createElement('submit', 'submitexistingbutton', get_string('importbutton', 'msm'));
+        $buttonarray[] = &$mform->createElement('cancel');
+        $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
+        $mform->closeHeaderBefore('buttonar');
+       
+//        if($mform->no_submit_button_pressed())
+//        {
+//            createEditor();
+//        }
+//        $this->add_action_buttons();
     }
+
 }
