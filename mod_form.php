@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -37,6 +38,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/course/moodleform_mod.php');
 require_once($CFG->dirroot . '/lib/formslib.php');
+require_once('editorCreation/authoringTool.php');
 
 /**
  * Module instance settings form
@@ -49,7 +51,8 @@ class mod_msm_mod_form extends moodleform_mod
      */
     public function definition()
     {
-
+        global $CFG;
+      
         $mform = $this->_form;
 
         $config = get_config('msm');
@@ -88,25 +91,22 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addElement('select', 'type', get_string('msmtype', 'msm'), $msm_types);
         $mform->addHelpButton('type', 'msmtype', 'msm');
 
+        
+         $this->standard_coursemodule_elements();
 //        $mform->addElement('header', 'msmfieldset', get_string('msmfieldset', 'msm'));
 //        $mform->addElement('static', 'label2', 'msmsetting2', 'Your msm fields go here. Replace me!');
         //-------------------------------------------------------------------------------
         // add standard elements, common to all modules
-        $this->standard_coursemodule_elements();
-
-//        $mform->registerNoSubmitButton('submitnewbutton');
-
-        $buttonarray[] = &$mform->createElement('button', 'submitnewbutton', get_string('msmsubmit', 'msm'), array('link' => 'editorCreation/authoringTool.php'));
+        $buttonarray[] = &$mform->createElement('submit', 'submitnewbutton', get_string('msmsubmit', 'msm'), array('link' => $CFG->wwwroot . '/mod/msm/editorCreation/authoringTool.php'));
         $buttonarray[] = &$mform->createElement('submit', 'submitexistingbutton', get_string('importbutton', 'msm'));
         $buttonarray[] = &$mform->createElement('cancel');
         $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
         $mform->closeHeaderBefore('buttonar');
+        
        
-//        if($mform->no_submit_button_pressed())
-//        {
-//            createEditor();
-//        }
-//        $this->add_action_buttons();
+//
+//        $this->add_action_buttons(true, get_string('msmsubmit', 'msm'), get_string('importbutton', 'msm'));
     }
 
 }
+

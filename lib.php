@@ -91,11 +91,11 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     global $CFG, $DB;
 
     require_once("$CFG->libdir/resourcelib.php");
-    require_once('editorCreation/authoringTool.php');
+//    require_once('editorCreation/authoringTool.php');
 
 //    require_once("XMLImporter/Unit.php");
 //    require_once("XMLImporter/Compositor.php");
-//    require_once("XMLImporter/TableCollection.php");
+    require_once("XMLImporter/TableCollection.php");
 
     $msm->timecreated = time();
 
@@ -155,11 +155,12 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
-        $authoringTool = new AuthorTool();
-        echo $authoringTool->createEditor();
+//        redirect($CFG->wwwroot . '/mod/msm/editorCreation/authoringTool.php');
+//        $editor = new MsmEditor();
+//        $editor->displayEditor();
 
-//        $table_collection = new TableCollection();
-//        $tableid = $table_collection->insertTablename();
+        $table_collection = new TableCollection();
+        $tableid = $table_collection->insertTablename();
 //
 //        $parser = new DOMDocument();
 //        //define('parser', $parser);

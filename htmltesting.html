@@ -7,53 +7,169 @@ and open the template in the editor.
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/jquery.splitter.css"/>
+        <link rel="stylesheet" type="text/css" href="css/superfish.css" media="screen"/>        
+
         <style>
-            div { 
-                position:  absolute;
-                left: 0;
-                top: 0; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
-                width: 200px; 
-                background: rgba(255,255,255,0.66); 
-                border: 2px  solid rgba(0,0,0,0.5); 
-                border-radius: 4px; padding: 8px;
-            }​
+            .msm_title_input
+            {
+                margin-left: 15px;
+                /*margin-right: 15%;*/
+                width: 95%;
+                height: 5%;
+            }
+            #msm_editor_container
+            {
+                 border: 2px solid darkorange;
+                background-color: #FFFFFF;
+                min-height: 700px;
+                top: 100px;
+            }
+            
+            #msm_editor_container h2
+            {
+                text-align: center;
+                letter-spacing: 3px;
+            }
+            #msm_editor_left
+            {
+                background-color: lightblue;
+/*                border: 2px solid darkslategrey;*/
+                min-height: 700px;
+                overflow-y: auto;
+            }
+/*            #msm_editor_middleright
+            {
+                background-color: #FFFFFF;
+                border: 2px solid darkorchid;
+                min-height: 300px;
+            }*/
+            #msm_editor_middle
+            {
+                background-color: lightgoldenrodyellow;
+                /*border: 2px solid darkmagenta;*/
+                min-height: 700px;
+                overflow-y: auto;
+            }
+            #msm_editor_right
+            {
+                background-color: lightpink;
+                /*border: 2px solid darkcyan;*/
+                min-height: 700px;
+                overflow-y: auto;
+            }
+            /*            #msm_menu_container
+                        {
+                            padding-left: 25%;
+                        }*/
         </style>
-        <script>
-            function drag_start(event) {
-                var style = window.getComputedStyle(event.target, null);
-                event.dataTransfer.setData("text/plain",
-                (parseInt(style.getPropertyValue("left"),10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"),10) - event.clientY));
-            } 
-            function drag_over(event) { 
-                event.preventDefault(); 
-                return false; 
-            } 
-            function drop(event) { 
-                var offset = event.dataTransfer.getData("text/plain").split(',');
-                var dm = document.getElementById('container');
-                dm.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';
-                dm.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';
-                event.preventDefault();
-                return false;
-            } 
+        <script type="text/javascript" src="development-bundle/jquery-1.7.1.js"></script>
+        <script type="text/javascript" src="js/jquery.splitter-0.6.js"></script>
+        <script type="text/javascript" src="js/hoverIntent.js"></script>
+        <script type="text/javascript" src="js/superfish.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('ul.sf-menu').superfish();
+                
+                $('#msm_editor_container').split({
+                    orientation: 'vertical',
+                    limit: 100,
+                    position: '20%'
+                });
+                
+                $('#msm_editor_middleright').split({
+                    orientation: 'vertical',
+                    //                    limit: 10
+                    position: '80%'
+                });
+            })
         </script>
     </head>
     <body>
-        <div draggable="true" id="container">
-            This is an aside, drag me.
+        <ul class="sf-menu">
+            <li>
+                <a href="#a"><span>File</span></a>
+                <ul>
+                    <li>
+                        <a href="#aa"> <span>Open</span></a>
+                    </li>
+                    <li>
+                        <a href="#ab"> <span>Save</span></a>
+                    </li>
+                    <li>
+                        <a href="#ac"> <span>Save as...</span></a>
+                    </li>
+                    <li>
+                        <a href="#ad"> <span>Rename Composition</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#b"> <span>Edit</span></a>                   
+                <ul>
+                    <li>
+                        <a href="#ba"> <span>Undo</span></a>
+                    </li>
+                    <li>
+                        <a href="#bb"> <span>Redo</span></a>
+                    </li>
+                    <li>
+                        <a href="#bc"> <span>Cut</span></a>
+                    </li>
+                    <li>
+                        <a href="#bd"> <span>Copy</span></a>
+                    </li>
+                    <li>
+                        <a href="#be"> <span>Paste</span></a>
+                    </li>
+                    <li>
+                        <a href="#bf"> <span>Delete</span></a>
+                    </li>
+
+                    <li>
+                        <a href="#bg"> <span>Select All</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#c"> <span>View</span></a>                 
+            </li>
+            <li>
+                <a href="#d"> <span>Sound</span></a>  
+            </li>
+            <li>
+                <a href="#e"> <span>Setting</span></a>  
+                <ul>
+                    <li>
+                        <a href="#ea"> <span>Theme</span></a>  
+                    </li>
+                    <li>
+                        <a href="#eb"> <span>Change Type</span></a>  
+                    </li>
+                    <li>
+                        <a href="#ec"> <span>Change Container Labels</span></a>  
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div id="msm_editor_container">
+            <div id="msm_editor_left">
+                <h2> Structural Elements </h2>
+                
+            </div>
+            <div id="msm_editor_middleright">
+                <div id="msm_editor_middle">
+                    <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
+                    <input class="msm_title_input" name="msm_unit_title" placeholder="Please enter the title of this _____."/>
+                </div>
+
+                <div id="msm_editor_right">
+                    <h2> XML Hierarchy </h2>
+                </div>
+            </div>
+
+
         </div>
-
-        <script>
-
-            var c=document.getElementById("container");
-            //            var ctx=c.getContext("2d");
-            //            ctx.fillStyle="#FF0000";
-            //            ctx.fillRect(0,0,150,75);
-            
-            c.addEventListener('dragstart',drag_start,false); 
-            document.body.addEventListener('dragover',drag_over,false); 
-            document.body.addEventListener('drop',drop,false); 
-            ​
-        </script>
     </body>
 </html>

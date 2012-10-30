@@ -1,17 +1,8 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+require_once('MsmEditor.php');
 
-class AuthorTool
-{
-
-    function createEditor()
-    {
-        return "in editing page";
-    }
-}
+$editor = new MsmEditor();
+ echo $editor->displayEditor();
 
 ?>
