@@ -8,24 +8,25 @@ and open the template in the editor.
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/jquery.splitter.css"/>
-        <link rel="stylesheet" type="text/css" href="css/superfish.css" media="screen"/>        
+        <link rel="stylesheet" type="text/css" href="css/superfish.css" media="screen"/> 
+        <link rel='stylesheet' href='development-bundle/themes/ui-lightness/jquery.ui.all.css'/>
+
 
         <style>
             .msm_title_input
             {
                 margin-left: 15px;
-                /*margin-right: 15%;*/
                 width: 95%;
                 height: 5%;
             }
             #msm_editor_container
             {
-                 border: 2px solid darkorange;
+                border: 2px solid darkorange;
                 background-color: #FFFFFF;
                 min-height: 700px;
                 top: 100px;
             }
-            
+
             #msm_editor_container h2
             {
                 text-align: center;
@@ -34,61 +35,156 @@ and open the template in the editor.
             #msm_editor_left
             {
                 background-color: lightblue;
-/*                border: 2px solid darkslategrey;*/
                 min-height: 700px;
                 overflow-y: auto;
             }
-/*            #msm_editor_middleright
-            {
-                background-color: #FFFFFF;
-                border: 2px solid darkorchid;
-                min-height: 300px;
-            }*/
             #msm_editor_middle
             {
                 background-color: lightgoldenrodyellow;
-                /*border: 2px solid darkmagenta;*/
                 min-height: 700px;
                 overflow-y: auto;
             }
             #msm_editor_right
             {
                 background-color: lightpink;
-                /*border: 2px solid darkcyan;*/
                 min-height: 700px;
                 overflow-y: auto;
             }
-            /*            #msm_menu_container
-                        {
-                            padding-left: 25%;
-                        }*/
+
+            .msm_tab {
+                overflow:auto;     
+                display: none; 
+                position:absolute; 
+                height:auto; 
+                bottom:0; 
+                top:0; 
+                left:0; 
+                right:0; 
+                margin-top:50px; 
+                margin-bottom:10px; 
+                margin-right:0px; 
+                margin-left:0px;
+                font-size: 3;
+            }
+
+            #msm_setting_type { height:90%; }
+
+            .dialogs{
+                margin: 0;
+                display: none;
+                max-width: 605 !important;
+                min-width: 300 !important;
+            }
+
+            .msm_type_input{
+                width: 250px;
+            }
+            .msm_structure_input
+            {
+                width: 400px;
+            }
+
+            .msm_structure_names
+            {
+                font-weight: 700;
+            }
+
+            .msm_structural_element
+            {                
+                margin-left: 2%;
+                margin-right: 2%;
+                border: 2px dashed black;
+                width: 90%;
+                height: 25%;
+                text-align: center;
+            }
+
+            .copied_msm_structural_element
+            {
+                margin: 2%;
+                border: 2px dashed black;
+                width: 90%;
+                height: 25%;
+                text-align: center;
+            }
         </style>
         <script type="text/javascript" src="development-bundle/jquery-1.7.1.js"></script>
         <script type="text/javascript" src="js/jquery.splitter-0.6.js"></script>
         <script type="text/javascript" src="js/hoverIntent.js"></script>
         <script type="text/javascript" src="js/superfish.js"></script>
+
+        <script type="text/javascript" src='development-bundle/external/jquery.bgiframe-2.1.2.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.core.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.widget.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.mouse.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.draggable.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.droppable.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.position.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.resizable.js'></script>
+        <script type="text/javascript" src='development-bundle/ui/jquery.ui.dialog.js'></script>
+        <script type="text/javascript" src="development-bundle/ui/jquery.ui.tabs.js"></script>
+
+        <script type="text/javascript" src="js/authorNav.js"></script>
+
+        <script type='text/javascript' src='js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>
+
         <script type="text/javascript">
             $(document).ready(function() {
-                $('ul.sf-menu').superfish();
-                
+                  
                 $('#msm_editor_container').split({
                     orientation: 'vertical',
                     limit: 100,
                     position: '20%'
                 });
-                
+                //                
                 $('#msm_editor_middleright').split({
                     orientation: 'vertical',
-                    //                    limit: 10
+                    limit: 100,
                     position: '80%'
                 });
+                
+                $('ul.sf-menu').superfish({
+                    autoArrows: false
+                });             
+
+                $('#msm_setting_type').tabs();  
+                
+                $('.msm_structural_element').draggable({
+                    appendTo: "#msm_editor_middle",
+                    containment: "#msm_editor_middle",
+                    helper:"clone"                    
+                });
+                
+                $('.copied_msm_structural_element').draggable({
+                    appendTo: "#msm_editor_middle",
+                    containment: "#msm_editor_middle"
+                });
+                
+                $('#msm_editor_middle').droppable({
+                    accepted: ".msm_structural_element"&".copied_msm_structural_element",
+                    drop: function( event, ui ) { 
+                        $("<div class='copied_msm_structural_element'></div>").text(ui.helper.text())
+                        .resizable({
+                            ghost: true,                       
+                            helper: "resizable-helper",
+                            maxHeight: 600,
+                            minHeight: 100,
+                            maxWidth: 1000,
+                            minWidth: 300,
+                            containment: "parent",
+                            aspectRatio: true 
+                        })
+                        .appendTo(this);  
+                    }
+                });       
             })
         </script>
     </head>
     <body>
         <ul class="sf-menu">
             <li>
-                <a href="#a"><span>File</span></a>
+                <a href="#a"><span >File</span></a>
+                <span class="sf-sub-indicator"> >> </span>
                 <ul>
                     <li>
                         <a href="#aa"> <span>Open</span></a>
@@ -105,7 +201,8 @@ and open the template in the editor.
                 </ul>
             </li>
             <li>
-                <a href="#b"> <span>Edit</span></a>                   
+                <a href="#b"> <span>Edit</span></a>       
+                <span class="sf-sub-indicator"> >> </span>
                 <ul>
                     <li>
                         <a href="#ba"> <span>Undo</span></a>
@@ -138,30 +235,90 @@ and open the template in the editor.
                 <a href="#d"> <span>Sound</span></a>  
             </li>
             <li>
-                <a href="#e"> <span>Setting</span></a>  
-                <ul>
-                    <li>
-                        <a href="#ea"> <span>Theme</span></a>  
-                    </li>
-                    <li>
-                        <a href="#eb"> <span>Change Type</span></a>  
-                    </li>
-                    <li>
-                        <a href="#ec"> <span>Change Container Labels</span></a>  
-                    </li>
-                </ul>
+                <a id="msm_nav_setting" onclick="openNavDialog()"> <span>Setting</span></a>  
+
+                <div class="dialogs" id="msm_setting_dialog">
+                    <div id="msm_setting_type">
+                        <ul>
+                            <li>
+                                <a href="#msm_type">Composition Type</a>
+                            </li>
+                            <li>
+                                <a href="#msm_theme">MSM Theme</a>
+                            </li>
+                            <li>
+                                <a href="#msm_element_names">Name of Structural Elements</a>
+                            </li>
+                        </ul>
+
+                        <div id="msm_type" class="msm_tab">
+                            <span> <b>Type of Composition: </b></span>
+                            <br/><br/>
+                            <form>
+                                <input type="radio" name="msm_type" value="Lecture"> Lecture <br/><br/>
+                                <input type="radio" name="msm_type" value="Book" checked="checked"> Book <br/><br/>
+                                <input type="radio" name="msm_type" value="Work book"> Work book <br/><br/>
+                                <input type="radio" name="msm_type" value="Others"> Others:  
+                                <input class="msm_type_input" name="msm_type_input" placeholder=" Please specify the type of Composition."/>
+                            </form>
+
+                        </div> 
+                        <div id="msm_theme" class="msm_tab">
+                            Big content...
+                        </div> 
+                        <div id="msm_element_names" class="msm_tab">
+                            <span class="msm_structure_names">Top Unit :  </span>
+                            <input class="msm_structure_input" name="msm_top" placeholder=" Please specify the name of the top element of this composition."/>
+                            <br />
+                            <span class="msm_structure_names">Child Unit :  </span>
+                            <input class="msm_structure_input" name="msm_top" placeholder=" Please specify the name of the child element of this composition."/>
+                            <br />
+                            <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
+                        </div> 
+                    </div> 
+                    <br style="clear:both;" />
+                    <button class="msm_setting_buttons" id="msm_setting_save" type="button"> Save </button>
+                    <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
+                    <div id="msm_setting_cancelled">
+                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
+                    </div>
+                </div>
             </li>
         </ul>
 
         <div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
-                
+
+                <div class="msm_structural_element" id="msm_def">
+                    Drag to add Definition
+                </div>
+                <br />
+                <div class="msm_structural_element" id="msm_theorem">
+                    Drag to add Theorem
+                </div>
+                <br />
+                <div class="msm_structural_element" id="msm_body">
+                    Drag to add content
+                </div>
+                <br />
+                <div class="msm_structural_element" id="msm_intro">
+                    Drag to add Intro
+                </div>
+                <br />
+                <div class="msm_structural_element" id="msm_pic">
+                    Drag to add Images
+                </div>
+                <br />
+                <div class="msm_structural_element" id="msm_media">
+                    Drag to add Other Media types
+                </div>
+                <br />
             </div>
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle">
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
-                    <input class="msm_title_input" name="msm_unit_title" placeholder="Please enter the title of this _____."/>
+                    <input class="msm_title_input" name="msm_unit_title" placeholder=" Please enter the title of this _____."/>
                 </div>
 
                 <div id="msm_editor_right">
