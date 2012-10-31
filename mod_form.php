@@ -97,7 +97,7 @@ class mod_msm_mod_form extends moodleform_mod
 //        $mform->addElement('static', 'label2', 'msmsetting2', 'Your msm fields go here. Replace me!');
         //-------------------------------------------------------------------------------
         // add standard elements, common to all modules
-        $buttonarray[] = &$mform->createElement('submit', 'submitnewbutton', get_string('msmsubmit', 'msm'), array('link' => $CFG->wwwroot . '/mod/msm/editorCreation/authoringTool.php'));
+        $buttonarray[] = &$mform->createElement('button', 'submitnewbutton', get_string('msmsubmit', 'msm'), array('onclick' => 'window.location="' . $CFG->wwwroot . '/mod/msm/htmltesting.html"'));
         $buttonarray[] = &$mform->createElement('submit', 'submitexistingbutton', get_string('importbutton', 'msm'));
         $buttonarray[] = &$mform->createElement('cancel');
         $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
