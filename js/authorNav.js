@@ -80,6 +80,7 @@ function drop(event)
         clonedDraggedElement.id = "copied-"+draggedElement.id;
         clonedDraggedElement.className = "copied-"+draggedElement.className;
 
+        // making the display when user drags div to add the theorem
         if(clonedDraggedElement.id == 'copied-msm_def')
         {
             var defSelectMenu = '<select class="msm_unit_child_dropdown">\n\
@@ -93,15 +94,23 @@ function drop(event)
             var defTitleField = '<input class="msm_unit_child_title" id="msm_def_title_input" name="msm_def_title" placeholder=" Title of Definition"/>';
             var defContentField = '<input class="msm_unit_child_content" id="msm_def_content_input" name="msm_def_content" placeholder="Need to add moodle form here?"/>';
             
-            var defAddChildButton = '<button class= "msm_unit_child_button" id="msm_def_child_add" type="button"> (+) Add Associated Information </button>';
+            var defAssoMenu = '<b> Choose an associated information: </b>\n\
+                            <select class="msm_associated_dropdown">\n\
+                                <option value="Info">Quick Info</option>\n\
+                                <option value="Comment">Comment</option>\n\
+                                <option value="Explanation">Explanation</option>\n\
+                                <option value="Example">Example</option>\n\
+                                <option value="Illustration">Illustration</option>\n\
+                            </select>';
         
             while(clonedDraggedElement.firstChild)
             {
                 clonedDraggedElement.removeChild(clonedDraggedElement.firstChild);
             }
         
-            clonedDraggedElement.innerHTML = defSelectMenu + defTitleField + defContentField + defAddChildButton;
+            clonedDraggedElement.innerHTML = defSelectMenu + defTitleField + defContentField + defAssoMenu;
         }
+        // making the display when user drags div to add the theorem
         else if(clonedDraggedElement.id == 'copied-msm_theorem')
         {
             var theoremSelectMenu = '<select class="msm_unit_child_dropdown">\n\
@@ -112,22 +121,31 @@ function drop(event)
                             </select>';
             var theoremTitleField = '<input class="msm_unit_child_title" id="msm_theorem_title_input" name="msm_theorem_title" placeholder=" Title of Theorem"/>';
             var theoremContentField = '<input class="msm_unit_child_content" id="msm_theorem_content_input" name="msm_theorem_content" placeholder=" Need to add moodle form here?"/>';
-            var theoremAddChildButton = '<button class= "msm_unit_child_button" id="msm_theorem_child_add" type="button"> (+) Add Associated Information </button>';
+            var theoremAssoMenu = '<b> Choose an associated information: </b>\n\
+                            <select class="msm_associated_dropdown">\n\
+                                <option value="Info">Quick Info</option>\n\
+                                <option value="Comment">Comment</option>\n\
+                                <option value="Explanation">Explanation</option>\n\
+                                <option value="Example">Example</option>\n\
+                                <option value="Illustration">Illustration</option>\n\
+                                <option value="Proof">Proof</option>\n\
+                            </select>';
         
             while(clonedDraggedElement.firstChild)
             {
                 clonedDraggedElement.removeChild(clonedDraggedElement.firstChild);
             }
         
-            clonedDraggedElement.innerHTML = theoremSelectMenu + theoremTitleField + theoremContentField + theoremAddChildButton;
+            clonedDraggedElement.innerHTML = theoremSelectMenu + theoremTitleField + theoremContentField + theoremAssoMenu;
         }
+        
+        //later need to add comments...etc
         
         
         event.target.appendChild(clonedDraggedElement);
     }  
     else
     {        
-        
         // correct target met, then move the draggable object to specified coordinates
         draggedElement.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';
         draggedElement.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';
@@ -158,11 +176,4 @@ function resizeDiv(event)
             minWidth: 320
         });
     }
-    
-//    else
-//    {
-//        alert("blur");
-//        targetElement.style.borderStyle = "dashed";
-//        targetElement.style.borderWidth = "2";
-//    }
 }
