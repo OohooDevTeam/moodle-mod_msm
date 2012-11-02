@@ -140,11 +140,11 @@ if ($msm->intro)
 // Replace the following lines with you own code
 echo $OUTPUT->heading($msm->name);
 echo $OUTPUT->heading('<ul id="navigation">
-            <li class="toc"><a href="" id="toc"><span>Table of Contents</span></a></li>
-            <li class="author"><a href="" id="author"><span>Authors</span></a></li>
-            <li class="symbol"><a href="" id="symbol"><span>Symbols</span></a></li>
-            <li class="glossary"><a href="" id="glossary"><span>Glossary</span></a></li>            
-            <li class="contact"><a href="" id="contact"><span>Contact</span></a></li>
+            <li class="toc"><a id="toc"><span>Table of Contents</span></a></li>
+            <li class="author"><a id="author"><span>Authors</span></a></li>
+            <li class="symbol"><a id="symbol"><span>Symbols</span></a></li>
+            <li class="glossary"><a id="glossary"><span>Glossary</span></a></li>            
+            <li class="contact"><a id="contact"><span>Contact</span></a></li>
         </ul>');
 //<li class="biblio"><a href=""><span>Bibliography</span></a></li> --> add in later when info is given
 $content = '';

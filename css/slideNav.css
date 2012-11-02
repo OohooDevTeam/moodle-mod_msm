@@ -97,6 +97,7 @@ ul#navigation .contact a    {
 
 ul#navigation li a:hover{
     background-color:#FBEC5D;
+    cursor: pointer;
 }
 
 ul#navigation li a span{

@@ -4,154 +4,204 @@
  */
 
 
-$(function() {            
-    $('#toc').toggle(function () {
-        $('#tocpanel').stop().animate({
-            height:'90%', 
-            opacity:1.0
-        }, 500, function() {
-            $('#toccontent').fadeIn('slow');
-                                    
-        });  
-    },
-    function(){
-        $('#toccontent').fadeOut('slow', function() {
+$(function() {   
+    $('#toc').click(function () {  
+        if($('#tocpanel').height() > 0)
+        {
+            $('#toccontent').fadeOut('slow', function() {
+                $('#tocpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
+            });
+        }
+        else
+        {
+            $('.slidepanelcontent').not('#toccontent').fadeOut('slow', function() {
+                $('.panel').not('#tocpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
+            });
             $('#tocpanel').stop().animate({
-                height:'0px', 
-                opacity:0.1
-            }, 500); //slide the #panel back to a width of 0
-        });
+                height:'90%', 
+                opacity:1.0
+            }, 500, function() {
+                $('#toccontent').fadeIn('slow');                                   
+            });  
+        }
     });
     
-    $('#symbol').toggle(function () {    
-        $('#symbolpanel').stop().animate({
-            height:'90%', 
-            opacity:1.0
-        }, 500, function() {
-            $('#symbolcontent').fadeIn('slow');          
-                                    
-        });
-        if($("#symbolindex").length == 0)
+    $('#symbol').click(function () {  
+        if($('#symbolpanel').height() > 0)
         {
-            $('#symbolcontent').load('../msm/XMLImporter/loadSymbol.php', 
-            {
-                moduleinfo: $('#instanceid').val()
-            },
-            function(){           
-                $('.dialogs').dialog({
-                    autoOpen: false,
-                    height: 'auto',
-                    width: 605
-                });
-                $('#symbolindex').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-
-            
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            $('#symbolcontent').fadeOut('slow', function() {
+                $('#symbolpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
             });
         }
-    },
-    function(){
-        $('#symbolcontent').fadeOut('slow', function() {
+        else
+        {
+            $('.slidepanelcontent').not('#symbolcontent').fadeOut('slow', function() {
+                $('.panel').not('#symbolpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
+            });
             $('#symbolpanel').stop().animate({
-                height:'0px', 
-                opacity:0.1
-            }, 500); //slide the #panel back to a width of 0
-        });
+                height:'90%', 
+                opacity:1.0
+            }, 500, function() {
+                $('#symbolcontent').fadeIn('slow');          
+                                        
+            });
+            if($("#symbolindex").length == 0)
+            {
+                $('#symbolcontent').load('../msm/XMLImporter/loadSymbol.php', 
+                {
+                    moduleinfo: $('#instanceid').val()
+                },
+                function(){           
+                    $('.dialogs').dialog({
+                        autoOpen: false,
+                        height: 'auto',
+                        width: 605
+                    });
+                    $('#symbolindex').treeview({
+                        animated: 'fast',
+                        collapsed: true
+                    });
+    
+                
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                });
+            }  
+        }
     });
     
-    $('#glossary').toggle(function () {     
-        $('#glossarypanel').stop().animate({
-            height:'90%', 
-            opacity:1.0
-        }, 500, function() {
-            $('#glossarycontent').fadeIn('slow');
-                                    
-        });
-        if($("#glossaryindex").length == 0)
+    $('#glossary').click(function () {  
+        if($('#glossarypanel').height() > 0)
         {
-            $('#glossarycontent').load('../msm/XMLImporter/loadGlossary.php', 
-            {
-                moduleinfo: $('#instanceid').val()
-            },
-            function(){           
-                $('.dialogs').dialog({
-                    autoOpen: false,
-                    height: 'auto',
-                    width: 605
-                });
-            
-                $('#glossaryindex').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            $('#glossarycontent').fadeOut('slow', function() {
+                $('#glossarypanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
             });
         }
-    },
-    function(){
-        $('#glossarycontent').fadeOut('slow', function() {
+        else
+        {
+            $('.slidepanelcontent').not('#glossarycontent').fadeOut('slow', function() {
+                $('.panel').not('#glossarypanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
+            });
             $('#glossarypanel').stop().animate({
-                height:'0px', 
-                opacity:0.1
-            }, 500); //slide the #panel back to a width of 0
-        });
+                height:'90%', 
+                opacity:1.0
+            }, 500, function() {
+                $('#glossarycontent').fadeIn('slow');
+                                    
+            });
+            if($("#glossaryindex").length == 0)
+            {
+                $('#glossarycontent').load('../msm/XMLImporter/loadGlossary.php', 
+                {
+                    moduleinfo: $('#instanceid').val()
+                },
+                function(){           
+                    $('.dialogs').dialog({
+                        autoOpen: false,
+                        height: 'auto',
+                        width: 605
+                    });
+            
+                    $('#glossaryindex').treeview({
+                        animated: 'fast',
+                        collapsed: true
+                    });
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                });
+            } 
+        }
     });
     
-    $('#author').toggle(function () {   
-        $('#authorpanel').stop().animate({
-            height:'90%', 
-            opacity:1.0
-        }, 500, function() {
-            $('#authorcontent').fadeIn('slow');
-                                    
-        });
-        if($("#authorindex").length == 0)
+    $('#author').click(function () {  
+        if($('#authorpanel').height() > 0)
         {
-            $('#authorcontent').load('../msm/XMLImporter/loadAuthor.php', 
-            {
-                moduleinfo: $('#instanceid').val()
-            },
-            function(){           
-                $('.dialogs').dialog({
-                    autoOpen: false,
-                    height: 'auto',
-                    width: 605
-                });
-                $('#authorindex').treeview({
-                    animated: 'fast',
-                    collapsed: true
-                });
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            $('#authorcontent').fadeOut('slow', function() {
+                $('#authorpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
             });
         }
-    },
-    function(){
-        $('#authorcontent').fadeOut('slow', function() {
+        else
+        {
+            $('.slidepanelcontent').not('#authorcontent').fadeOut('slow', function() {
+                $('.panel').not('#authorpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
+            });
+            
             $('#authorpanel').stop().animate({
-                height:'0px', 
-                opacity:0.1
-            }, 500); //slide the #panel back to a width of 0
-        });
+                height:'90%', 
+                opacity:1.0
+            }, 500, function() {
+                $('#authorcontent').fadeIn('slow');
+                                    
+            });
+            if($("#authorindex").length == 0)
+            {
+                $('#authorcontent').load('../msm/XMLImporter/loadAuthor.php', 
+                {
+                    moduleinfo: $('#instanceid').val()
+                },
+                function(){           
+                    $('.dialogs').dialog({
+                        autoOpen: false,
+                        height: 'auto',
+                        width: 605
+                    });
+                    $('#authorindex').treeview({
+                        animated: 'fast',
+                        collapsed: true
+                    });
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                });
+            }            
+        }
     });
     
-    $('#contact').toggle(function () {      
-        $('#contactpanel').stop().animate({
-            height:'90%', 
-            opacity:1.0
-        }, 500, function() {
-            $('#contactcontent').fadeIn('slow');
-            $('#contact').toggleClass('navActive');                        
-        });  
-    },
-    function(){
-        $('#contactcontent').fadeOut('slow', function() {
+    $('#contact').click(function () {  
+        if($('#contactpanel').height() > 0)
+        {
+            $('#contactcontent').fadeOut('slow', function() {
+                $('#contactpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
+            });
+        }
+        else
+        {
+            // closing any other panels that are not contact related
+            $('.slidepanelcontent').not('#contactcontent').fadeOut('slow', function() {
+                $('.panel').not('#contactpanel').stop().animate({
+                    height:'0px', 
+                    opacity:0.1
+                }, 500); //slide the #panel back to a width of 0
+            });
             $('#contactpanel').stop().animate({
-                height:'0px', 
-                opacity:0.1
-            }, 500); //slide the #panel back to a width of 0
-        });
+                height:'90%', 
+                opacity:1.0
+            }, 500, function() {
+                $('#contactcontent').fadeIn('slow');                                   
+            });            
+        }
     });
 });

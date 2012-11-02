@@ -114,7 +114,7 @@ and open the template in the editor.
                 cursor: move;
             }
 
-            .copied-msm_structural_element
+            .copied_msm_structural_element
             {
                 margin: 3% 2%;
                 border: 2px dashed black;
@@ -127,7 +127,7 @@ and open the template in the editor.
                 top: 0;
             }
 
-            .copied-msm_structural_element_selected
+            .copied_msm_structural_element_selected
             {
                 border: 2px dashed black;
                 width: 94%;
@@ -192,6 +192,7 @@ and open the template in the editor.
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.widget.js'></script>
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.mouse.js'></script>
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.draggable.js'></script>
+        <script type="text/javascript" src="development-bundle/ui/jquery.ui.droppable.js"></script>
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.position.js'></script>
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.resizable.js'></script>
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.dialog.js'></script>
@@ -221,6 +222,37 @@ and open the template in the editor.
                 });             
 
                 $('#msm_setting_type').tabs();   
+                
+                $('.msm_structural_element').draggable({
+                    appendTo: "msm_editor_middle_droparea",
+                    containment: "msm_editor_middle_droparea",
+                    cursor: "move",
+                    helper: "clone"
+                });
+                
+                $('.copied_msm_structural_element').draggable({
+                    appendTo: "msm_editor_middle_droparea",
+                    containment: "msm_editor_middle_droparea",
+                    cursor: "move"
+                });
+                
+                $('#msm_editor_middle_droparea').droppable({
+                    accepted: ".msm_structural_element"&".copied_msm_structural_element",
+                    drop: function( event, ui ) { 
+                        $("<div class='copied_msm_structural_element'></div>").text(ui.helper.text())
+                        .resizable({
+                            ghost: true,                       
+                            helper: "resizable-helper",
+                            maxHeight: 600,
+                            minHeight: 100,
+                            maxWidth: 1000,
+                            minWidth: 300,
+                            containment: "parent",
+                            aspectRatio: true 
+                        })
+                        .appendTo(this);  
+                    }
+                });
             })
         </script>
     </head>
@@ -334,27 +366,33 @@ and open the template in the editor.
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
 
-                <div class="msm_structural_element" id="msm_def" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
+                <!--                <div class="msm_structural_element" id="msm_def" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_def">
                     Drag to add Definition
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_theorem" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
+                <!--<div class="msm_structural_element" id="msm_theorem" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_theorem">
                     Drag to add Theorem
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_body" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
+                <!--<div class="msm_structural_element" id="msm_body" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_body">
                     Drag to add content
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_intro" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
+                <!--<div class="msm_structural_element" id="msm_intro" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_intro">
                     Drag to add Intro
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_pic" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
+                <!--<div class="msm_structural_element" id="msm_pic" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_pic">
                     Drag to add Images
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_media" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
+                <!--<div class="msm_structural_element" id="msm_media" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_media">
                     Drag to add Other Media types
                 </div>
                 <br />
@@ -363,7 +401,7 @@ and open the template in the editor.
                 <div id="msm_editor_middle">
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
                     <input class="msm_title_input" name="msm_unit_title" placeholder=" Please enter the title of this _____."/>
-                    <div id="msm_editor_middle_droparea"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div id="msm_editor_middle_droparea">
 
                     </div>
                 </div>
