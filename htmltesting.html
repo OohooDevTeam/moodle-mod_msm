@@ -21,7 +21,7 @@ and open the template in the editor.
             }
             #msm_editor_container
             {
-                border: 2px solid darkorange;
+                border: 2px solid black;
                 background-color: #FFFFFF;
                 min-height: 700px;
                 top: 100px;
@@ -41,6 +41,11 @@ and open the template in the editor.
                 /*overflow:auto;*/
                 overflow-y: scroll;
             }
+            
+            #msm_editor_middleright
+            {
+                overflow: hidden;
+            }
             #msm_editor_middle
             {
                 background-color: lightgoldenrodyellow;
@@ -51,7 +56,7 @@ and open the template in the editor.
             {
                 background-color: lightpink;
                 min-height: 700px;
-                overflow-y: auto;
+                /*overflow-y: scroll;*/
             }
 
             #msm_editor_middle_droparea{
@@ -113,8 +118,8 @@ and open the template in the editor.
 
             .msm_structural_element
             {                
-                margin-left: 2%;
-                margin-right: 2%;
+                margin-left: auto;
+                margin-right: auto;
                 border: 2px dashed black;
                 width: 90%;
                 height: 25%;

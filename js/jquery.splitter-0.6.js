@@ -78,15 +78,7 @@
                             position = n;
                             var sw = spliter.width()/2;
                             spliter.css('left', n-sw);
-                            var scrollbar = scrollbarWidth();
-                            if(!splitFlag)
-                            {
-                                panel_1.width(n-sw+scrollbar);
-                            }
-                            else
-                            {
-                                panel_1.width(n-sw);
-                            }
+                            panel_1.width(n-sw);
                             panel_2.width(self.width()-n-sw);
                         }
                     };
@@ -253,14 +245,14 @@
     };
 })(jQuery);
 
-
-function scrollbarWidth() { 
-    var wide_scroll_html = '<div id="wide_scroll_div_one" style="width:50px;height:50px;overflow-y:scroll;position:absolute;top:-200px;left:-200px;"><div id="wide_scroll_div_two" style="height:100px;width:100%"></div></div>'; 
-    $("body").append(wide_scroll_html); // Append our div and add the hmtl to your document for calculations
-    var scroll_w1 = $("#wide_scroll_div_one").width(); // Getting the width of the surrounding(parent) div - we already know it is 50px since we styled it but just to make sure.
-    var scroll_w2 = $("#wide_scroll_div_two").innerWidth(); // Find the inner width of the inner(child) div.
-    var scroll_bar_width = scroll_w1 - scroll_w2; // subtract the difference
-    $("#wide_scroll_div_one").remove(); // remove the html from your document
-    
-    return scroll_bar_width; 
-}
+//
+//function scrollbarWidth() { 
+//    var wide_scroll_html = '<div id="wide_scroll_div_one" style="width:50px;height:50px;overflow-y:scroll;position:absolute;top:-200px;left:-200px;"><div id="wide_scroll_div_two" style="height:100px;width:100%"></div></div>'; 
+//    $("body").append(wide_scroll_html); // Append our div and add the hmtl to your document for calculations
+//    var scroll_w1 = $("#wide_scroll_div_one").width(); // Getting the width of the surrounding(parent) div - we already know it is 50px since we styled it but just to make sure.
+//    var scroll_w2 = $("#wide_scroll_div_two").innerWidth(); // Find the inner width of the inner(child) div.
+//    var scroll_bar_width = scroll_w1 - scroll_w2; // subtract the difference
+//    $("#wide_scroll_div_one").remove(); // remove the html from your document
+//    
+//    return scroll_bar_width; 
+//}
