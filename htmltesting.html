@@ -15,8 +15,8 @@ and open the template in the editor.
         <style>
             .msm_title_input
             {
-                margin: 2% 3%;
-                width: 94%;
+                margin: 2% 2%;
+                width: 96%;
                 height: 5%;
             }
             #msm_editor_container
@@ -39,9 +39,9 @@ and open the template in the editor.
                 background-color: lightblue;
                 min-height: 700px;
                 /*overflow:auto;*/
-                overflow-y: scroll;
+                overflow-y: auto;
             }
-            
+
             #msm_editor_middleright
             {
                 overflow: hidden;
@@ -50,7 +50,7 @@ and open the template in the editor.
             {
                 background-color: lightgoldenrodyellow;
                 min-height: 700px;
-                overflow-y: auto;
+                overflow: auto;
             }
             #msm_editor_right
             {
@@ -60,9 +60,9 @@ and open the template in the editor.
             }
 
             #msm_editor_middle_droparea{
-                margin-left: 3%;
-                margin-right: 3%;
-                margin-bottom: 3%;
+                margin-left: 2%;
+                margin-right: 2%;
+                margin-bottom: 2%;
                 margin-top: 0;
                 /*padding: 2px;*/
                 background-color: white;
@@ -215,20 +215,15 @@ and open the template in the editor.
 
         <script type='text/javascript' src='js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {   
+        <script type="text/javascript">           
+            $(document).ready(function() {  
+                 var selectedId = 0;
                 $('.msm_structural_element').draggable({
                     appendTo: "msm_editor_middle_droparea",
                     containment: "msm_editor_middle_droparea",
                     cursor: "move",
                     helper: "clone"
-                });
-        
-                $('.copied_msm_structural_element').draggable({
-                    appendTo: "msm_editor_middle_droparea",
-                    containment: "msm_editor_middle_droparea",
-                    cursor: "move"
-                });
+                });              
         
                 $('#msm_editor_middle_droparea').droppable({
                     accepted: "#msm_editor_left > div",
@@ -236,7 +231,7 @@ and open the template in the editor.
                     hoverClass: "ui-state-hover",
                     tolerance: "pointer",
                     drop: function( event, ui ) {  
-                        processDroppedChild(event, ui.draggable.context.id);     
+                        selectedId = processDroppedChild(event, ui.draggable.context.id, selectedId);     
                     }
                 });              
                 

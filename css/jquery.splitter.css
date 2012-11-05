@@ -8,7 +8,7 @@
   position: relative;
 }
 .spliter_panel .vspliter {
-    background-color: #f9f0d2;
+    background-color: white;
     cursor: col-resize;
     z-index:900;
     width: 4px;
