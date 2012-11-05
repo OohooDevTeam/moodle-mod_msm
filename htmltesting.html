@@ -38,7 +38,8 @@ and open the template in the editor.
             {
                 background-color: lightblue;
                 min-height: 700px;
-                overflow-y: auto;
+                /*overflow:auto;*/
+                overflow-y: scroll;
             }
             #msm_editor_middle
             {
@@ -58,11 +59,18 @@ and open the template in the editor.
                 margin-right: 3%;
                 margin-bottom: 3%;
                 margin-top: 0;
-                padding: 2px;
+                /*padding: 2px;*/
                 background-color: white;
                 min-height: 500px;
-                /*overflow-y: auto;*/
+                overflow-y: auto;
                 border: 1px solid black;
+            }
+
+            .custom-state-highlight{               
+                background-color: yellow !important;
+                border: 2px solid yellow !important;
+                background-position: 0 0;
+                opacity: 0.3;
             }
 
             .msm_tab {
@@ -203,8 +211,36 @@ and open the template in the editor.
         <script type='text/javascript' src='js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>
 
         <script type="text/javascript">
-            $(document).ready(function() {
-                  
+            $(document).ready(function() {   
+                $('.msm_structural_element').draggable({
+                    appendTo: "msm_editor_middle_droparea",
+                    containment: "msm_editor_middle_droparea",
+                    cursor: "move",
+                    helper: "clone"
+                });
+        
+                $('.copied_msm_structural_element').draggable({
+                    appendTo: "msm_editor_middle_droparea",
+                    containment: "msm_editor_middle_droparea",
+                    cursor: "move"
+                });
+        
+                $('#msm_editor_middle_droparea').droppable({
+                    accepted: "#msm_editor_left > div",
+                    activeClass: "custom-state-highlight",
+                    hoverClass: "ui-state-hover",
+                    tolerance: "pointer",
+                    drop: function( event, ui ) {  
+                        processDroppedChild(event, ui.draggable.context.id);     
+                    }
+                });              
+                
+                $('ul.sf-menu').superfish({
+                    autoArrows: false
+                });             
+
+                $('#msm_setting_type').tabs();  
+                
                 $('#msm_editor_container').split({
                     orientation: 'vertical',
                     limit: 100,
@@ -217,42 +253,6 @@ and open the template in the editor.
                     position: '80%'
                 });
                 
-                $('ul.sf-menu').superfish({
-                    autoArrows: false
-                });             
-
-                $('#msm_setting_type').tabs();   
-                
-                //                $('.msm_structural_element').draggable({
-                //                    appendTo: "msm_editor_middle_droparea",
-                //                    containment: "msm_editor_middle_droparea",
-                //                    cursor: "move",
-                //                    helper: "clone"
-                //                });
-                //                
-                //                $('.copied_msm_structural_element').draggable({
-                //                    appendTo: "msm_editor_middle_droparea",
-                //                    containment: "msm_editor_middle_droparea",
-                //                    cursor: "move"
-                //                });
-                //                
-                //                $('#msm_editor_middle_droparea').droppable({
-                //                    accepted: ".msm_structural_element"&".copied_msm_structural_element",
-                //                    drop: function( event, ui ) { 
-                //                        $("<div class='copied_msm_structural_element'></div>").text(ui.helper.text())
-                //                        .resizable({
-                //                            ghost: true,                       
-                //                            helper: "resizable-helper",
-                //                            maxHeight: 600,
-                //                            minHeight: 100,
-                //                            maxWidth: 1000,
-                //                            minWidth: 300,
-                //                            containment: "parent",
-                //                            aspectRatio: true 
-                //                        })
-                //                        .appendTo(this);  
-                //                    }
-                //                });
             })
         </script>
     </head>
@@ -366,42 +366,43 @@ and open the template in the editor.
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
 
-                <div class="msm_structural_element" id="msm_def" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
-                    <!--<div class="msm_structural_element" id="msm_def">-->
+                <!--<div class="msm_structural_element" id="msm_def" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_def">
                     Drag to add Definition
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_theorem" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
-                    <!--<div class="msm_structural_element" id="msm_theorem">-->
+                <!--<div class="msm_structural_element" id="msm_theorem" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_theorem">
                     Drag to add Theorem
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_body" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
-                    <!--<div class="msm_structural_element" id="msm_body">-->
+                <!--<div class="msm_structural_element" id="msm_body" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_body">
                     Drag to add content
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_intro" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
-                    <!--<div class="msm_structural_element" id="msm_intro">-->
+                <!--<div class="msm_structural_element" id="msm_intro" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_intro">
                     Drag to add Intro
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_pic" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
-                    <!--<div class="msm_structural_element" id="msm_pic">-->
+                <!--<div class="msm_structural_element" id="msm_pic" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_pic">
                     Drag to add Images
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_media" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">
-                    <!--<div class="msm_structural_element" id="msm_media">-->
+                <!--<div class="msm_structural_element" id="msm_media" draggable="true" ondragstart="dragStart(event)" onclick="resizeDiv(event)">-->
+                <div class="msm_structural_element" id="msm_media">
                     Drag to add Other Media types
                 </div>
                 <br />
             </div>
             <div id="msm_editor_middleright">
-                <div id="msm_editor_middle">
+                <div id="msm_editor_middle" >
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
                     <input class="msm_title_input" name="msm_unit_title" placeholder=" Please enter the title of this _____."/>
-                    <div id="msm_editor_middle_droparea" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <!--<div id="msm_editor_middle_droparea" ondrop="drop(event)" ondragover="allowDrop(event)">-->
+                    <div id="msm_editor_middle_droparea">
 
                     </div>
                 </div>
