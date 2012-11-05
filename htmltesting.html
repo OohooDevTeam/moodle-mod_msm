@@ -210,6 +210,7 @@ and open the template in the editor.
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.resizable.js'></script>
         <script type="text/javascript" src='development-bundle/ui/jquery.ui.dialog.js'></script>
         <script type="text/javascript" src="development-bundle/ui/jquery.ui.tabs.js"></script>
+        <script type="text/javascript" src="../../lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js"></script>
 
         <script type="text/javascript" src="js/authorNav.js"></script>
 
@@ -217,7 +218,14 @@ and open the template in the editor.
 
         <script type="text/javascript">           
             $(document).ready(function() {  
-                 var selectedId = 0;
+                var selectedId = 0;
+                
+                tinyMCE.init({
+                    mode : "specific_textareas", 
+                    theme : "simple", 
+                    editor_selector :"msm_unit_child_content"
+                });
+                
                 $('.msm_structural_element').draggable({
                     appendTo: "msm_editor_middle_droparea",
                     containment: "msm_editor_middle_droparea",
@@ -233,8 +241,8 @@ and open the template in the editor.
                     drop: function( event, ui ) {  
                         selectedId = processDroppedChild(event, ui.draggable.context.id, selectedId);     
                     }
-                });              
-                
+                });  
+                               
                 $('ul.sf-menu').superfish({
                     autoArrows: false
                 });             
