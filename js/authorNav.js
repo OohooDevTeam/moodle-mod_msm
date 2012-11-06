@@ -46,7 +46,7 @@ function closeSetting()
 }
 
 function processDroppedChild(e, droppedId, _index)
-{
+{    
     var clonedCurrentElement = $("<div></div>");
     
     switch(droppedId)
@@ -121,11 +121,26 @@ function processDroppedChild(e, droppedId, _index)
             break;
             
         case "msm_intro":
-            alert("intro");
+            var introTitle = $('<h3> Introduction </h3>');
+            var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input" name="msm_intro_content" placeholder=" Need to add moodle form here?"/>');
+            clonedCurrentElement.attr("id", "copied_msm_intro"+_index++);
+            clonedCurrentElement.attr("class", "copied_msm_structural_element");
+            clonedCurrentElement.attr("ondblclick", "resizeElement(event)");
+            
+            clonedCurrentElement.append(introTitle);
+            clonedCurrentElement.append(introContentField);
+            clonedCurrentElement.appendTo('#msm_editor_middle_droparea');
             break;
             
         case "msm_body":
-            alert("body");
+            var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input" name="msm_body_content" placeholder=" Need to add moodle form here?"/>');
+            
+            clonedCurrentElement.attr("id", "copied_msm_body"+_index++);
+            clonedCurrentElement.attr("class", "copied_msm_structural_element");
+            clonedCurrentElement.attr("ondblclick", "resizeElement(event)");
+            
+            clonedCurrentElement.append(bodyContentField);
+            clonedCurrentElement.appendTo('#msm_editor_middle_droparea');
             break;
             
         case "msm_media":
@@ -140,7 +155,6 @@ function processDroppedChild(e, droppedId, _index)
         cursor: "move"
     });  
     
-       
     return _index;
 }
 
@@ -148,12 +162,19 @@ function processDroppedChild(e, droppedId, _index)
 function resizeElement(e)
 {   
     var currentid = e.target.id;
-    $('#'+currentid).resizable({
-        containement: "parent",
-        ghost: true,
-        helper: "resizable-helper",
-        minHeight: 150,
-        minWidth: 320
-    }); 
+    var match = currentid.match(/copied_/);
+    
+    // to prevent textarea from being trigger to resize when double clicked
+    if(match != null)
+    {
+        $('#'+currentid).resizable({
+            containement: "parent",
+            ghost: true,
+            helper: "resizable-helper",
+            minHeight: 150,
+            minWidth: 320
+        });  
+    }
+   
 }
 
