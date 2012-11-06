@@ -62,6 +62,13 @@ else
     error('You must specify a course_module ID or an instance ID');
 }
 
+if (!$units = $DB->get_records('msm_compositor', array('msm_id' => $msm->id)))
+{
+    $params = array('mid' => $msm->id);
+    $url = new moodle_url('/mod/msm/authoringTool.php', $params);
+    redirect($url);
+}
+
 $rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0), '*', MUST_EXIST);
 
 require_login($course, true, $cm);
@@ -197,7 +204,6 @@ $content .= "</div>";
 $content .= "</div>";
 
 $content .= "</div>"; // splitter
-
 //$content .= '<input id="coursemod" type="text" name="coursemodids" style="visibility:hidden;" value="' . $msm->course . '-' . $msm->id .'"/>';
 
 $content .= "<div id='tocpanel' class='panel'>";
@@ -221,7 +227,6 @@ $content .= "<div id='authorpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='authorcontent'>";
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
-
 //$symbolfilename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
 //if (file_exists($symbolfilename))
 //{
@@ -255,7 +260,6 @@ $content .= "</div>"; // end of panel
 //{
 //    echo "file " . $authorfilename . "does not exist.";
 //}
-
 //
 
 $content .= "<div id='contactpanel' class='panel'>";

@@ -38,7 +38,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/course/moodleform_mod.php');
 require_once($CFG->dirroot . '/lib/formslib.php');
-require_once('editorCreation/authoringTool.php');
+//require_once('editorCreation/authoringTool.php');
 
 /**
  * Module instance settings form
@@ -93,18 +93,7 @@ class mod_msm_mod_form extends moodleform_mod
 
         
          $this->standard_coursemodule_elements();
-//        $mform->addElement('header', 'msmfieldset', get_string('msmfieldset', 'msm'));
-//        $mform->addElement('static', 'label2', 'msmsetting2', 'Your msm fields go here. Replace me!');
-        //-------------------------------------------------------------------------------
-        // add standard elements, common to all modules
-//        $buttonarray[] = &$mform->createElement('button', 'submitnewbutton', get_string('msmsubmit', 'msm'), array('onclick' => 'window.location="' . $CFG->wwwroot . '/mod/msm/htmltesting.html"'));
-//        $buttonarray[] = &$mform->createElement('submit', 'submitexistingbutton', get_string('importbutton', 'msm'));
-//        $buttonarray[] = &$mform->createElement('cancel');
-//        $mform->addGroup($buttonarray, 'buttonar', '', array(' '), false);
-//        $mform->closeHeaderBefore('buttonar');
-        
-       
-//
+//       
         $this->add_action_buttons(true, get_string('msmsubmit', 'msm'), get_string('importbutton', 'msm'));
     }
 

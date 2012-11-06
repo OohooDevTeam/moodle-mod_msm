@@ -117,7 +117,7 @@ function processDroppedChild(e, droppedId, _index)
             break;
             
         case "msm_pic":
-            alert("picture!");
+            alert("pic");
             break;
             
         case "msm_intro":

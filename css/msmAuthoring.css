@@ -1,0 +1,201 @@
+/* 
+    Document   : msmAuthoring
+    Created on : Nov 6, 2012, 11:16:50 AM
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.msm_title_input
+{
+    margin: 2% 2%;
+    width: 96%;
+    height: 5%;
+}
+#msm_editor_container
+{
+    border: 2px solid black;
+    background-color: #FFFFFF;
+    min-height: 700px;
+    top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#msm_editor_container h2
+{
+    text-align: center;
+    letter-spacing: 3px;
+}
+#msm_editor_left
+{
+    background-color: lightblue;
+    min-height: 700px;
+    /*overflow:auto;*/
+    overflow-y: auto;
+}
+
+#msm_editor_middleright
+{
+    overflow: hidden;
+}
+#msm_editor_middle
+{
+    background-color: lightgoldenrodyellow;
+    min-height: 700px;
+    overflow: auto;
+}
+#msm_editor_right
+{
+    background-color: lightpink;
+    min-height: 700px;
+    /*overflow-y: scroll;*/
+}
+
+#msm_editor_middle_droparea{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    margin-top: 0;
+    /*padding: 2px;*/
+    background-color: white;
+    min-height: 500px;
+    overflow-y: auto;
+    border: 1px solid black;
+}
+
+.custom-state-highlight{               
+    background-color: yellow !important;
+    border: 2px solid yellow !important;
+    background-position: 0 0;
+    opacity: 0.3;
+}
+
+.msm_tab {
+    overflow:auto;     
+    display: none; 
+    position:absolute; 
+    height:auto; 
+    bottom:0; 
+    top:0; 
+    left:0; 
+    right:0; 
+    margin-top:50px; 
+    margin-bottom:10px; 
+    margin-right:0px; 
+    margin-left:0px;
+    font-size: 3;
+}
+
+#msm_setting_type { height:90%; }
+
+.dialogs{
+    margin: 0;
+    display: none;
+    max-width: 605 !important;
+    min-width: 300 !important;
+}
+
+.msm_type_input{
+    width: 250px;
+}
+.msm_structure_input
+{
+    width: 400px;
+}
+
+.msm_structure_names
+{
+    font-weight: 700;
+}
+
+.msm_structural_element
+{                
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px dashed black;
+    width: 90%;
+    height: 25%;
+    text-align: center;
+    cursor: move;
+}
+
+.copied_msm_structural_element
+{
+    margin: 3% 2%;
+    border: 2px dashed black;
+    width: 94%;
+    height: 25%;
+    text-align: center;
+    /* The following two properties are there so that chrome does not
+    return auto from getComputedStyle javascript function*/
+    left: 0;
+    top: 0;
+}
+
+.copied_msm_structural_element_selected
+{
+    border: 2px dashed black;
+    width: 94%;
+    height: 25%;
+    text-align: center;
+    /* The following two properties are there so that chrome does not
+    return auto from getComputedStyle javascript function*/
+    left: 0;
+    top: 0;
+}
+
+#msm_setting_dialog
+{
+    z-index: 2001; /*to prevent resizable borders to have effect in dialog box*/
+}
+#msm_setting_cancelled
+{
+    z-index: 2002; /*to prevent resizable borders to have effect in dialog box*/
+}
+
+.msm_unit_child_title
+{
+    float: right;
+    margin-right: 2%;
+    margin-top: 2%;
+    width: auto;
+    margin-bottom: 2%;
+}
+
+.msm_unit_child_dropdown
+{
+    float: left;
+    margin-left: 2%;
+    margin-top: 2%;
+    width: auto;
+    margin-bottom: 2%;
+}
+.msm_unit_child_content
+{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    margin-top: 0;
+    height: auto;
+    width: 96%;
+    min-width: 300px;
+    overflow: auto;
+    resize: none;
+}
+.msm_unit_child_button
+{
+    margin: 2%;
+}
+#msm_body_content_input
+{
+    margin-top: 2%;
+    min-height: 100px;
+}
+.msm_associated_dropdown
+{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 1%;
+}
+

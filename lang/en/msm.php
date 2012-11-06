@@ -32,6 +32,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['createbook'] = "Create Book";
+$string['createcontent'] = "Create Composition";
+$string['invalidcoursemoduleid'] = "Invalid Course Module ID";
 $string['modulename'] = 'msm';
 $string['modulenameplural'] = 'msms';
 $string['modulename_help'] = 'Use the msm module for... | The msm module allows...';
