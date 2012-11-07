@@ -138,7 +138,7 @@ $msm_nav = '<ul class="sf-menu">
                                 <input type="radio" name="msm_type" id="msm_type_book" value="Book" onclick="processChange(event)"> Book <br/><br/>
                                 <input type="radio" name="msm_type" id="msm_type_wbook" value="Work book" onclick="processChange(event)"> Work book <br/><br/>
                                 <input type="radio" name="msm_type" id="msm_type_others" value="Others" onclick="processChange(event)"> Others:  
-                                <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition."/>
+                                <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition." onkeypress="validateBorder()"/>
                             </form>
 
                         </div> 
@@ -146,8 +146,8 @@ $msm_nav = '<ul class="sf-menu">
                             Big content...
                         </div> 
                         <div id="msm_element_names" class="msm_tab">
-                            <span class="msm_structure_names">Top Unit :  </span>
-                            <input class="msm_structure_input" id="msm_structure_input_top" name="msm_top"/>
+                            <span class="msm_structure_top_names">Top Unit :  </span>
+                            <input class="msm_structure_top_input" id="msm_structure_input_top" name="msm_top"/>
                             <br />                            
                             <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
                         </div> 

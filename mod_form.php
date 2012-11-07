@@ -90,6 +90,7 @@ class mod_msm_mod_form extends moodleform_mod
         $msm_types[3] = 'Others';
         $mform->addElement('select', 'comptype', get_string('msmtype', 'msm'), $msm_types);
         $mform->addHelpButton('comptype', 'msmtype', 'msm');
+        
 
         $this->standard_coursemodule_elements();
 //       

@@ -30,10 +30,10 @@ function openNavDialog(chosenvalue)
                 $('#msm_structure_input_top').attr("placeholder", "e.g.) Lecture");
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Section"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 break;
            
             case 1:
@@ -42,13 +42,13 @@ function openNavDialog(chosenvalue)
                 $('#msm_structure_input_top').attr("placeholder", "e.g.) Book");
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Section"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Subsection"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Subsection"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 break;
                 
             case 2:
@@ -56,13 +56,13 @@ function openNavDialog(chosenvalue)
                 $('#msm_structure_input_top').attr("placeholder", "e.g.) WorkBook");
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Exercises"/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Exercises"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 break;
                 
             case 3:
@@ -70,7 +70,7 @@ function openNavDialog(chosenvalue)
                 $('#msm_structure_input_top').attr("placeholder", "Please specify the name of the top element of this composition.");
                 
                 $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="Please specify the name of the child element of this composition."/><br />').insertBefore('#msm_child_add');
+                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
                 break;
         }
     });
@@ -84,14 +84,13 @@ function openNavDialog(chosenvalue)
 function addChildUnit()
 {
     $('#msm_child_add').ready(function () {
-        console.log($('#msm_child_add').prev().prev());
         var prevChildid = $('#msm_child_add').prev().prev().attr("id");     
         var childidNumber = prevChildid.split('-');
         
         var newidNumber = parseInt(childidNumber[1])+1;
         
         $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-        $('<input class="msm_structure_input" id="msm_structure_input_child-'+ newidNumber +  ' name="msm_top" placeholder=" Please specify the name of the child element of this composition."/><br />').insertBefore('#msm_child_add');
+        $('<input class="msm_structure_input" id="msm_structure_input_child-'+ newidNumber +  ' name="msm_top" placeholder=" Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
     });
 }
 
@@ -126,15 +125,136 @@ function closeSetting()
  */
 function saveSetting()
 {
+    var selectedValue = $('input[name=msm_type]:radio:checked').val(); 
+    if(selectedValue == 'Others')
+    {
+        var specifiedValue = $('#msm_type_specifiedType').val();
+            
+        if((specifiedValue == null)||(specifiedValue == ''))
+        {
+            $("<div class='dialogs' id='msm_emptyComposition'> Please specify the type of your composition. </div>").appendTo('#msm_type_specifiedType');
+            
+            $( "#msm_emptyComposition" ).dialog({
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $('#msm_type_specifiedType').css('border-color', '#FFA500');
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        }
+//        else
+//        {
+//            console.log(document.getElementById('msm_type_specifiedType').style.borderColor);
+//            if(document.getElementById('msm_type_specifiedType').style.borderColor == 'rgb(255, 165, 0)')
+//            {
+//                $('#msm_type_specifiedType').css('border-color', '#228B22');
+//            }
+//        }
+    }
     
+    var topElement = $('#msm_structure_input_top').val();
+    
+    if(topElement == null)
+    {
+        topElement = selectedValue;
+    }
+    
+    var childvalues = [];
+    $('.msm_structure_input').each(function(i) {
+        if($(this).val() != null)
+        {
+            childvalues[i] = $(this).val();
+        }
+        
+    });
+}
+
+/**
+ *  This method checks if the user tried to save without filling in required field (ie, different border color for field)
+ *  then changes the border color when user fills in the field. (color change = orange --> green)
+ *
+*/
+function validateBorder()
+{
+    if(document.getElementById('msm_type_specifiedType').style.borderColor == 'rgb(255, 165, 0)')
+    {
+        if($('#msm_type_specifiedType').val())
+        {
+            $('#msm_type_specifiedType').css('border-color', '#228B22');
+        }
+    }
 }
 
 /**
  * This function is activated when radio buttons are triggered.  When the selection of the radio buttons are changed, then update the settings composition name
  * input area to be updated accordingly.
  */
-function processChange()
+function processChange(e)
 {
+    switch(e.target.id)
+    {
+        case "msm_type_lecture":
+            $('.msm_structure_names').remove();
+            $('.msm_structure_input').remove();
+            $('br.childNewline').remove();
+            
+            $('#msm_structure_input_top').attr("placeholder", "e.g.) Lecture");
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
+            break;
+            
+        case "msm_type_book":
+            $('.msm_structure_names').remove();
+            $('.msm_structure_input').remove();
+            $('br.childNewline').remove();
+            
+            $('#msm_structure_input_top').attr("placeholder", "e.g.) Book");
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Subsection"/><br class="childNewline" />').insertBefore('#msm_child_add');
+            break;
+                
+        case "msm_type_wbook":
+            $('.msm_structure_names').remove();
+            $('.msm_structure_input').remove();
+            $('br.childNewline').remove();
+            
+            $('#msm_structure_input_top').attr("placeholder", "e.g.) WorkBook");
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Exercises"/><br class="childNewline" />').insertBefore('#msm_child_add');
+            break;
+            
+        case "msm_type_others":
+            $('.msm_structure_names').remove();
+            $('.msm_structure_input').remove();
+            $('br.childNewline').remove();
+            
+            $('#msm_structure_input_top').attr("placeholder", "Please specify the name of the top element of this composition.");
+                
+            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
+            break;
+                
+    }
     
 }
 
