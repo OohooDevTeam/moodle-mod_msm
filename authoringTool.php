@@ -35,8 +35,11 @@ require_login($course->id, true, $cm);
 
 add_to_log($course->id, 'createbook', 'createbook', 'view.php?id=' . $cm->id, $msm->id);
 $PAGE->set_url('/mod/msm/authoringTool.php', array('mid' => $msm->id));
+
 echo $OUTPUT->header();
+
 $mform = new mod_msm_authoring_form();
-$mform->display();
+echo $OUTPUT->box($mform->display());
+
 echo $OUTPUT->footer();
 ?>

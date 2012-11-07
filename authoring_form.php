@@ -18,11 +18,7 @@ class mod_msm_authoring_form extends moodleform
     {
         global $CFG;
         $mform =& $this->_form;
-        
-        // debugging statement
-        print_object($mform);
-        die;
-        
+       
         require_once('htmltesting.html');
         $mform->addElement('html', '<br />');
     }
