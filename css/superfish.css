@@ -54,11 +54,13 @@ ul.sf-menu li li li.sfHover ul {
 
 /*** DEMO SKIN ***/
 .sf-menu {
-    float:			left;
-    margin-bottom:	1em;
+    /*position: relative;*/
+    float:			right;
+/*    margin-bottom:	1em;
     margin-left: 20%;
-    margin-right:20%;
+    margin-right:20%;*/
     width: 60%;
+    font-weight: 400 !important /* to remove the bolding caused by moodle css*/ 
 }
 .sf-menu a {
     border-left:	1px solid #fff;

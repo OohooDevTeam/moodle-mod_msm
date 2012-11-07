@@ -1930,7 +1930,7 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012082800, 'msm');
     }
-    
+
     if ($oldversion < 2012101200)
     {
         // msm savepoint reached
@@ -1946,16 +1946,43 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012101202, 'msm');
     }
-     if ($oldversion < 2012101203)
+    if ($oldversion < 2012101203)
     {
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012101203, 'msm');
     }
-    
+
     if ($oldversion < 2012102900)
     {
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012102900, 'msm');
+    }
+
+    if ($oldversion < 2012110700)
+    {
+
+        // Define field comptype to be added to msm
+        $table = new xmldb_table('msm');
+        $field = new xmldb_field('comptype', XMLDB_TYPE_CHAR, '200', null, XMLDB_NOTNULL, null, null, 'name');
+
+        // Conditionally launch add field comptype
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // Define field compchildtype to be added to msm_unit
+        $table = new xmldb_table('msm_unit');
+        $field = new xmldb_field('compchildtype', XMLDB_TYPE_CHAR, '200', null, XMLDB_NOTNULL, null, null, 'string_id');
+
+        // Conditionally launch add field compchildtype
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012110700, 'msm');
     }
 
 

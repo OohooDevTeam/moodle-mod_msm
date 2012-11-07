@@ -204,7 +204,6 @@ $content .= "</div>";
 $content .= "</div>";
 
 $content .= "</div>"; // splitter
-//$content .= '<input id="coursemod" type="text" name="coursemodids" style="visibility:hidden;" value="' . $msm->course . '-' . $msm->id .'"/>';
 
 $content .= "<div id='tocpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='toccontent'>";
@@ -227,40 +226,6 @@ $content .= "<div id='authorpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='authorcontent'>";
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
-//$symbolfilename = $msm->course . '-' . $msm->id . '-msm_symbolindex.html';
-//if (file_exists($symbolfilename))
-//{
-//    $symbolfile = fopen($symbolfilename, 'r');
-//    $content .= fread($symbolfile, filesize($symbolfilename));
-//    fclose($symbolfile);
-//}
-//else
-//{
-//    echo "file " . $symbolfilename . "does not exist.";
-//}
-//
-//$glossryfilename = $msm->course . '-' . $msm->id . '-msm_glossaryindex.html';
-//if (file_exists($glossryfilename))
-//{
-//    $glossaryfile = fopen($glossryfilename, 'r');
-//    $content .= fread($glossaryfile, filesize($glossryfilename));
-//    fclose($glossaryfile);
-//}
-//else
-//{
-//    echo "file " . $glossryfilename . "does not exist.";
-//}$authorfilename = $msm->course . '-' . $msm->id . '-msm_authorindex.html';
-//if (file_exists($authorfilename))
-//{
-//    $authorfile = fopen($authorfilename, 'r');
-//    $content .= fread($authorfile, filesize($authorfilename));
-//    fclose($authorfile);
-//}
-//else
-//{
-//    echo "file " . $authorfilename . "does not exist.";
-//}
-//
 
 $content .= "<div id='contactpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='contactcontent'>";

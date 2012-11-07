@@ -52,7 +52,7 @@ class mod_msm_mod_form extends moodleform_mod
     public function definition()
     {
         global $CFG;
-      
+
         $mform = $this->_form;
 
         $config = get_config('msm');
@@ -88,11 +88,10 @@ class mod_msm_mod_form extends moodleform_mod
         $msm_types[1] = 'Lecture';
         $msm_types[2] = 'Work book';
         $msm_types[3] = 'Others';
-        $mform->addElement('select', 'type', get_string('msmtype', 'msm'), $msm_types);
-        $mform->addHelpButton('type', 'msmtype', 'msm');
+        $mform->addElement('select', 'comptype', get_string('msmtype', 'msm'), $msm_types);
+        $mform->addHelpButton('comptype', 'msmtype', 'msm');
 
-        
-         $this->standard_coursemodule_elements();
+        $this->standard_coursemodule_elements();
 //       
         $this->add_action_buttons(true, get_string('msmsubmit', 'msm'), get_string('importbutton', 'msm'));
     }

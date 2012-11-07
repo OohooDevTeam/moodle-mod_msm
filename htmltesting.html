@@ -2,6 +2,7 @@
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -149,7 +150,7 @@ and open the template in the editor.
                             <br/><br/>
                             <form>
                                 <input type="radio" name="msm_type" value="Lecture"> Lecture <br/><br/>
-                                <input type="radio" name="msm_type" value="Book" checked="checked"> Book <br/><br/>
+                                <input type="radio" name="msm_type" value="Book"> Book <br/><br/>
                                 <input type="radio" name="msm_type" value="Work book"> Work book <br/><br/>
                                 <input type="radio" name="msm_type" value="Others"> Others:  
                                 <input class="msm_type_input" name="msm_type_input" placeholder=" Please specify the type of Composition."/>
@@ -173,7 +174,7 @@ and open the template in the editor.
                     <button class="msm_setting_buttons" id="msm_setting_save" type="button"> Save </button>
                     <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
                     <div id="msm_setting_cancelled">
-                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
+                        <p style="display:none;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
                     </div>
                 </div>
             </li>

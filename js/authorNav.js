@@ -7,13 +7,15 @@ function openNavDialog()
 {
     $('#msm_nav_setting').ready(function() {
         $('#msm_setting_dialog').dialog({
+            // disabling the close button 
+            open: function(event, ui) { $(".ui-dialog-titlebar-close").hide();},
             modal:true,
             autoOpen: false,
             height: 500,
-            width: 605
+            width: 605,
+            closeOnEscape: false
         });
         $('#msm_setting_dialog').dialog('open').css('display', 'block');
-    //        $('#msm_setting_type').tabs().css('display', 'block');
     });
 }
 
@@ -28,6 +30,7 @@ function addChildUnit()
 function closeSetting()
 {
     $('#msm_setting_cancel').ready(function() {
+        $("#msm_setting_cancelled > p").css("display", "block");
         $( "#msm_setting_cancelled" ).dialog({
             resizable: false,
             height:180,

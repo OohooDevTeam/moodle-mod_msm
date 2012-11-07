@@ -98,6 +98,8 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     require_once("XMLImporter/TableCollection.php");
 
     $msm->timecreated = time();
+    
+
 //
     $courseid = $msm->course;
 //    //only one instance in every system
@@ -568,6 +570,7 @@ function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedo
  */
 function msm_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm)
 {
+    
 }
 
 /**

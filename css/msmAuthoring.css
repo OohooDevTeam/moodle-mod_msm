@@ -12,14 +12,18 @@
     width: 96%;
     height: 5%;
 }
+
+#msm_mod_name
+{
+    float: left;
+    margin-left: 2%;
+}
 #msm_editor_container
 {
     border: 2px solid black;
     background-color: #FFFFFF;
     min-height: 700px;
-    top: 50px;
-    /*margin-left: 10px;*/
-    /*margin-right: 10px;*/
+    /*top: 50px;*/
 }
 
 #msm_editor_container h2
@@ -31,7 +35,6 @@
 {
     background-color: lightblue;
     min-height: 700px;
-    /*overflow:auto;*/
     overflow-y: auto;
 }
 
@@ -57,7 +60,6 @@
     margin-right: 2%;
     margin-bottom: 2%;
     margin-top: 0;
-    /*padding: 2px;*/
     background-color: white;
     min-height: 500px;
     overflow-y: auto;
