@@ -11,12 +11,7 @@ require_once($CFG->dirroot . '/mod/msm/lib.php');
 
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
-//if ($id)
-//{
-//    $cm = get_coursemodule_from_id('msm', $id, 0, false, MUST_EXIST);
-//    $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
-//    $msm = $DB->get_record('msm', array('id' => $cm->instance), '*', MUST_EXIST);
-//}
+
 if ($m)
 {
     $msm = $DB->get_record('msm', array('id' => $m), '*', MUST_EXIST);
@@ -27,8 +22,6 @@ else
 {
     error('You must specify a course_module ID');
 }
-
-//$course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
@@ -64,6 +57,8 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.j
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/superfish.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/authorNav.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
+
+$selectedValue = $DB->get_record('msm', array('id'=>$msm->id))->comptype;
 
 $msm_nav = '<ul class="sf-menu">
             <li>
@@ -119,7 +114,7 @@ $msm_nav = '<ul class="sf-menu">
                 <a href="#d"> <span>Sound</span></a>  
             </li>
             <li>
-                <a id="msm_nav_setting" onclick="openNavDialog()"> <span>Setting</span></a>  
+                <a id="msm_nav_setting" onclick="openNavDialog(' . $selectedValue . ')"> <span>Setting</span></a>  
 
                 <div class="dialogs" id="msm_setting_dialog">
                     <div id="msm_setting_type">
@@ -139,11 +134,11 @@ $msm_nav = '<ul class="sf-menu">
                             <span> <b>Type of Composition: </b></span>
                             <br/><br/>
                             <form>
-                                <input type="radio" name="msm_type" value="Lecture"> Lecture <br/><br/>
-                                <input type="radio" name="msm_type" value="Book"> Book <br/><br/>
-                                <input type="radio" name="msm_type" value="Work book"> Work book <br/><br/>
-                                <input type="radio" name="msm_type" value="Others"> Others:  
-                                <input class="msm_type_input" name="msm_type_input" placeholder=" Please specify the type of Composition."/>
+                                <input type="radio" name="msm_type" id="msm_type_lecture" value="Lecture" onclick="processChange(event)"> Lecture <br/><br/>
+                                <input type="radio" name="msm_type" id="msm_type_book" value="Book" onclick="processChange(event)"> Book <br/><br/>
+                                <input type="radio" name="msm_type" id="msm_type_wbook" value="Work book" onclick="processChange(event)"> Work book <br/><br/>
+                                <input type="radio" name="msm_type" id="msm_type_others" value="Others" onclick="processChange(event)"> Others:  
+                                <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition."/>
                             </form>
 
                         </div> 
@@ -152,16 +147,13 @@ $msm_nav = '<ul class="sf-menu">
                         </div> 
                         <div id="msm_element_names" class="msm_tab">
                             <span class="msm_structure_names">Top Unit :  </span>
-                            <input class="msm_structure_input" name="msm_top" placeholder=" Please specify the name of the top element of this composition."/>
-                            <br />
-                            <span class="msm_structure_names">Child Unit :  </span>
-                            <input class="msm_structure_input" name="msm_top" placeholder=" Please specify the name of the child element of this composition."/>
-                            <br />
+                            <input class="msm_structure_input" id="msm_structure_input_top" name="msm_top"/>
+                            <br />                            
                             <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
                         </div> 
                     </div> 
                     <br style="clear:both;" />
-                    <button class="msm_setting_buttons" id="msm_setting_save" type="button"> Save </button>
+                    <button class="msm_setting_buttons" id="msm_setting_save" type="button" onclick="saveSetting()"> Save </button>
                     <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
                     <div id="msm_setting_cancelled">
                         <p style="display:none;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
@@ -171,9 +163,6 @@ $msm_nav = '<ul class="sf-menu">
         </ul>';
 
 echo $OUTPUT->heading($msm->name . $msm_nav);
-
-//$mform = new mod_msm_authoring_form();
-//echo $OUTPUT->box($mform->display());
 
 $formContent = '';
 
