@@ -139,6 +139,7 @@ $msm_nav = '<ul class="sf-menu">
                                 <input type="radio" name="msm_type" id="msm_type_wbook" value="Work book" onclick="processChange(event)"> Work book <br/><br/>
                                 <input type="radio" name="msm_type" id="msm_type_others" value="Others" onclick="processChange(event)"> Others:  
                                 <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition." onkeypress="validateBorder()"/>
+                                <span style="color: red;">*</span>
                             </form>
 
                         </div> 
@@ -148,6 +149,7 @@ $msm_nav = '<ul class="sf-menu">
                         <div id="msm_element_names" class="msm_tab">
                             <span class="msm_structure_top_names">Top Unit :  </span>
                             <input class="msm_structure_top_input" id="msm_structure_input_top" name="msm_top"/>
+                            <span style="color: red;">*</span>
                             <br />                            
                             <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
                         </div> 
@@ -155,6 +157,7 @@ $msm_nav = '<ul class="sf-menu">
                     <br style="clear:both;" />
                     <button class="msm_setting_buttons" id="msm_setting_save" type="button" onclick="saveSetting()"> Save </button>
                     <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
+                    <div style="float: right; font-style:italic; color: red;"><span style="color: red;">*</span> required information</div>
                     <div id="msm_setting_cancelled">
                         <p style="display:none;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
                     </div>
