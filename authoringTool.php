@@ -56,6 +56,12 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitt
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/superfish.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/authorNav.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorActions.js'></script>";
+
+echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>";
+//echo "<script type='text/javascript src='$CFG->wwwroot/lib/editor/tinymce/3.4.6/tiny_mce_jquery.js></script>";
+//echo "<script type='text/javascript;"
+
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 
 $selectedValue = $DB->get_record('msm', array('id' => $msm->id))->comptype;
@@ -220,10 +226,13 @@ $formContent .= '<div id="msm_editor_container">
         </div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp()"> Done </button>';
 
-$formContent .= '<script type="text/javascript">           
-            $(document).ready(function() {  
+$formContent .= '<script type="text/javascript">  
+    tinyMCE.init({
+                    mode:"textareas",
+                    theme: "advanced"
+                });
+            $(document).ready(function() {
                 var selectedId = 0;
-                
                 $(".msm_structural_element").draggable({
                     appendTo: "msm_editor_middle_droparea",
                     containment: "msm_editor_middle_droparea",

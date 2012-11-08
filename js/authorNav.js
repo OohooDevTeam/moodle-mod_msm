@@ -273,10 +273,14 @@ function processDroppedChild(e, droppedId, _index)
 {    
     var clonedCurrentElement = $("<div></div>");
     
+    _index++;
+    
+    var id = droppedId;
+    
     switch(droppedId)
     {
         case "msm_def":
-            var defSelectMenu = $('<select class="msm_unit_child_dropdown">\n\
+            var defSelectMenu = $('<select class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'" onchange="processType(event);">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
                                 <option value="Agreement">Agreement</option>\n\
@@ -284,11 +288,11 @@ function processDroppedChild(e, droppedId, _index)
                                 <option value="Axiom">Axiom</option>\n\
                                 <option value="Terminology">Terminology</option>\n\
                             </select>');
-            var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input" name="msm_def_title" placeholder=" Title of Definition"/>');
-            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input" name="msm_def_content" placeholder="Need to add moodle form here?"/>');
+            var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input'+_index+'" name="msm_def_title" placeholder=" Title of Definition"/>');
+            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input'+_index+'" name="msm_def_content" placeholder="Need to add moodle form here?"/>');
             
             var defAssoMenu = $('<b> Choose an associated information: </b>\n\
-                            <select class="msm_associated_dropdown">\n\
+                            <select class="msm_associated_dropdown" id="msm_def_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
                                 <option value="None">None</option>\n\
                                 <option value="Info">Quick Info</option>\n\
                                 <option value="Comment">Comment</option>\n\
@@ -298,7 +302,7 @@ function processDroppedChild(e, droppedId, _index)
                             </select>');
         
             //        var currentElement = document.getElementById(droppedId);
-            clonedCurrentElement.attr("id", "copied_msm_def-"+_index++);
+            clonedCurrentElement.attr("id", "copied_msm_def-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.attr("ondblclick", "resizeElement(event)");
             clonedCurrentElement.append(defSelectMenu);
@@ -310,16 +314,16 @@ function processDroppedChild(e, droppedId, _index)
             break;
         
         case "msm_theorem":
-            var theoremSelectMenu = $('<select class="msm_unit_child_dropdown">\n\
+            var theoremSelectMenu = $('<select class="msm_unit_child_dropdown" id="msm_theorem_type_dropdown-'+_index+'" onchange="processType(event);">\n\
                                 <option value="Theorem">Theorem</option>\n\
                                 <option value="Proposition">Proposition</option>\n\
                                 <option value="Lemma">Lemma</option>\n\
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
-            var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input" name="msm_theorem_title" placeholder=" Title of Theorem"/>');
-            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input" name="msm_theorem_content" placeholder=" Need to add moodle form here?"/>');
+            var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input'+_index+'" name="msm_theorem_title" placeholder=" Title of Theorem"/>');
+            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input'+_index+'" name="msm_theorem_content" placeholder=" Need to add moodle form here?"/>');
             var theoremAssoMenu = $('<b> Choose an associated information: </b>\n\
-                            <select class="msm_associated_dropdown">\n\
+                            <select class="msm_associated_dropdown" id="msm_theorem_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
                                 <option value="None">None</option>\n\
                                 <option value="Info">Quick Info</option>\n\
                                 <option value="Comment">Comment</option>\n\
@@ -329,7 +333,7 @@ function processDroppedChild(e, droppedId, _index)
                                 <option value="Proof">Proof</option>\n\
                             </select>');
         
-            clonedCurrentElement.attr("id", "copied_msm_theorem"+_index++);
+            clonedCurrentElement.attr("id", "copied_msm_theorem"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.attr("ondblclick", "resizeElement(event)");
             clonedCurrentElement.append(theoremSelectMenu);
@@ -346,8 +350,8 @@ function processDroppedChild(e, droppedId, _index)
             
         case "msm_intro":
             var introTitle = $('<h3> Introduction </h3>');
-            var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input" name="msm_intro_content" placeholder=" Need to add moodle form here?"/>');
-            clonedCurrentElement.attr("id", "copied_msm_intro"+_index++);
+            var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input'+_index+'" name="msm_intro_content" placeholder=" Need to add moodle form here?"/>');
+            clonedCurrentElement.attr("id", "copied_msm_intro"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.attr("ondblclick", "resizeElement(event)");
             
@@ -357,9 +361,9 @@ function processDroppedChild(e, droppedId, _index)
             break;
             
         case "msm_body":
-            var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input" name="msm_body_content" placeholder=" Need to add moodle form here?"/>');
+            var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input'+_index+'" name="msm_body_content" placeholder=" Need to add moodle form here?"/>');
             
-            clonedCurrentElement.attr("id", "copied_msm_body"+_index++);
+            clonedCurrentElement.attr("id", "copied_msm_body"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.attr("ondblclick", "resizeElement(event)");
             
@@ -386,6 +390,11 @@ function processDroppedChild(e, droppedId, _index)
         containment: "msm_editor_middle_droparea",
         cursor: "move"
     });  
+    
+    tinyMCE.init({
+                    mode:"textareas",
+                    theme: "simple"
+                });
     
     return _index;
 }
