@@ -185,6 +185,13 @@ function validateBorder()
             $('#msm_type_specifiedType').css('border-color', '#228B22');
         }
     }
+    else if(document.getElementById('msm_unit_title').style.borderColor == 'rgb(255, 165, 0)')
+    {
+        if($('#msm_unit_title').val())
+        {
+            $('#msm_unit_title').css('border-color', '#228B22');
+        }
+    }
 }
 
 /**
@@ -365,12 +372,13 @@ function processDroppedChild(e, droppedId, _index)
             break;       
             
     }
-    
-    //enabling the save button since there are contents in the middle editor area
     if($('#msm_editor_save').attr("disabled"))
     {
         $('#msm_editor_save').removeAttr('disabled');
     }
+    
+    //enabling the save button since there are contents in the middle editor area
+    
     
     
     $('.copied_msm_structural_element').draggable({
@@ -408,10 +416,45 @@ function resizeElement(e)
 /**
  * to save contents created in middle editor panel
  *  --> diplay change: from filled in content --> maintain same content in middle but with edit button instead of  & thumbnail of composed unit added to tree in right panel
+ *  --> disable drag&drop/resize...etc
  */
 function saveUnit()
 {
- //AJAX call to php file/function that will put appropriate info into db tables   
+    $('#msm_editor_save').ready(function() {
+        var titleinput = $('#msm_unit_title').val();
+        console.log(titleinput);
+        if((titleinput == null)||(titleinput == ''))
+        {
+            $("<div class='dialogs' id='msm_emptyMsmTitle'> Please specify the title of this unit. </div>").appendTo('#msm_unit_title');
+            
+            $( "#msm_emptyMsmTitle" ).dialog({
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $('#msm_unit_title').css('border-color', '#FFA500');
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });   
+        }
+        else
+        {
+            $('#msm_editor_save').remove();
+            $('<button class="msm_editor_buttons" id="msm_editor_edit" type="button" onclick="editUnit()"> Edit </button>').appendTo('#msm_editor_middle');
+            $('#msm_editor_reset').attr("disabled", "disabled");
+        }
+       
+    });
+//AJAX call to php file/function that will put appropriate info into db tables   
+}
+
+/**
+ * need to enable drag/drop/resize again... and also enable edit button
+ *
+*/
+function editUnit()
+{
+    
 }
 
 /**

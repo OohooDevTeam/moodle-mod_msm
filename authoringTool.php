@@ -203,7 +203,7 @@ $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle" >
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
-                    <input class="msm_title_input" name="msm_unit_title" placeholder=" Please enter the title of this _____."/>
+                    <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
                     <div id="msm_editor_middle_droparea">
 
                     </div>
