@@ -58,9 +58,10 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/superfish.js'
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/authorNav.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 
-$selectedValue = $DB->get_record('msm', array('id'=>$msm->id))->comptype;
+$selectedValue = $DB->get_record('msm', array('id' => $msm->id))->comptype;
 
-$msm_nav = '<ul class="sf-menu">
+$msm_nav = '';
+$msm_nav .= '<ul class="sf-menu">
             <li>
                 <a href="#a"><span >File</span></a>
                 <span class="sf-sub-indicator"> >> </span>
@@ -165,7 +166,8 @@ $msm_nav = '<ul class="sf-menu">
             </li>
         </ul>';
 
-echo $OUTPUT->heading($msm->name . $msm_nav);
+
+echo $OUTPUT->heading($msm->name);
 
 $formContent = '';
 
@@ -205,14 +207,18 @@ $formContent .= '<div id="msm_editor_container">
                     <div id="msm_editor_middle_droparea">
 
                     </div>
+                     <button class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()"> Reset </button>
+                     
+                    <button class="msm_editor_buttons" id="msm_editor_save" type="button" disabled="disabled" onclick="saveUnit()"> Save </button>
+                   
                 </div>
 
                 <div id="msm_editor_right">
                     <h2> XML Hierarchy </h2>
                 </div>
-            </div>
-        </div>';
-
+            </div>            
+        </div>
+        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp()"> Done </button>';
 
 $formContent .= '<script type="text/javascript">           
             $(document).ready(function() {  
@@ -256,6 +262,6 @@ $formContent .= '<script type="text/javascript">
             })
         </script>';
 
-echo $OUTPUT->box($formContent);
+echo $OUTPUT->box($msm_nav . $formContent);
 echo $OUTPUT->footer();
 ?>

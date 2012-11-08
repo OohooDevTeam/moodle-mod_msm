@@ -144,14 +144,14 @@ function saveSetting()
                 }
             });
         }
-//        else
-//        {
-//            console.log(document.getElementById('msm_type_specifiedType').style.borderColor);
-//            if(document.getElementById('msm_type_specifiedType').style.borderColor == 'rgb(255, 165, 0)')
-//            {
-//                $('#msm_type_specifiedType').css('border-color', '#228B22');
-//            }
-//        }
+    //        else
+    //        {
+    //            console.log(document.getElementById('msm_type_specifiedType').style.borderColor);
+    //            if(document.getElementById('msm_type_specifiedType').style.borderColor == 'rgb(255, 165, 0)')
+    //            {
+    //                $('#msm_type_specifiedType').css('border-color', '#228B22');
+    //            }
+    //        }
     }
     
     var topElement = $('#msm_structure_input_top').val();
@@ -362,9 +362,16 @@ function processDroppedChild(e, droppedId, _index)
             
         case "msm_media":
             alert("media");
-            break;           
+            break;       
             
     }
+    
+    //enabling the save button since there are contents in the middle editor area
+    if($('#msm_editor_save').attr("disabled"))
+    {
+        $('#msm_editor_save').removeAttr('disabled');
+    }
+    
     
     $('.copied_msm_structural_element').draggable({
         appendTo: "msm_editor_middle_droparea",
@@ -398,3 +405,38 @@ function resizeElement(e)
    
 }
 
+/**
+ * to save contents created in middle editor panel
+ *  --> diplay change: from filled in content --> maintain same content in middle but with edit button instead of  & thumbnail of composed unit added to tree in right panel
+ */
+function saveUnit()
+{
+ //AJAX call to php file/function that will put appropriate info into db tables   
+}
+
+/**
+ * needs to ask if the user wants to save the content if save button has not been pressed, if was saved, then call saveUnit and close dialog,
+ * else if not save then empty out content in middle, save button disabled while reset is abled
+ */
+function resetUnit()
+{    
+    $('#msm_editor_reset').ready(function() {
+        $("<div class='dialogs' id='msm_resetComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to discard the current composition? </div>").appendTo('#msm_editor_middle');
+        $( "#msm_resetComposition" ).dialog({
+            resizable: false,
+            height:180,
+            modal: true,
+            buttons: {
+                "Yes": function() {
+                    // empty out the contents in the middle editting area and diable the save button
+                    $('#msm_editor_middle_droparea').empty();
+                    $('#msm_editor_save').attr("disabled", "disabled");
+                    $( this ).dialog( "close" );
+                },
+                "No": function() {
+                    $( this ).dialog( "close" );                   
+                }
+            }
+        });
+    });
+}
