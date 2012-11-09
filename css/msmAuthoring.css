@@ -1,10 +1,16 @@
-/* 
-    Document   : msmAuthoring
-    Created on : Nov 6, 2012, 11:16:50 AM
-    Author     : User
-    Description:
-        Purpose of the stylesheet follows.
-*/
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 
 .msm_title_input
 {

@@ -1,8 +1,16 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 /**
  *  This function is triggered by the click on Settings navigation bar.  It opens the modal dialog box that has all the 
  *  forms responsible for changing the settings of the editor tool.
@@ -397,6 +405,12 @@ function processDroppedChild(e, droppedId, _index)
                 });
     
     return _index;
+}
+
+function activateTinymce()
+{
+     
+                
 }
 
 /**
