@@ -60,6 +60,7 @@ echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.positio
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.resizable.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.tabs.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.sortable.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.js'></script>";
@@ -220,7 +221,9 @@ $formContent .= '<div id="msm_editor_container">
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
                     <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
                     <div id="msm_editor_middle_droparea">
-
+                        <div id="msm_trash_droparea">
+                            <img id="msm_trash_icon" src="' . $CFG->wwwroot . '/mod/msm/pix/trash_recyclebin_empty_closed.png"/><br><span style="margin-left: 40%;"><b>Remove Unit</b></span>                            
+                        </div>
                     </div>
                      <button class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()"> Reset </button>
                      
@@ -237,24 +240,27 @@ $formContent .= '<div id="msm_editor_container">
 
 $formContent .= '<script type="text/javascript">    
             $(document).ready(function() {
-                var selectedId = 0;              
-      
+                var selectedId = 0;  
+                
+                $("#msm_editor_middle_droparea").sortable({
+                    connectWith: "#msm_editor_middle_droparea"
+                });
+                
                 $(".msm_structural_element").draggable({
                     appendTo: "msm_editor_middle_droparea",
                     containment: "msm_editor_middle_droparea",
                     cursor: "move",
-                    helper: "clone"
+                    helper: "clone"                   
                 });              
         
                 $("#msm_editor_middle_droparea").droppable({
-                    accepted: "#msm_editor_left > div",
-                    activeClass: "custom-state-highlight",
+                    accept: "#msm_editor_left > div",
                     hoverClass: "ui-state-hover",
                     tolerance: "pointer",
-                    drop: function( event, ui ) {  
-                        selectedId = processDroppedChild(event, ui.draggable.context.id, selectedId);     
+                    drop: function( event, ui ) { 
+                        selectedId = processDroppedChild(event, ui.draggable.context.id, selectedId);                        
                     }
-                });  
+                });                  
                                
                 $("ul.sf-menu").superfish({
                     autoArrows: false

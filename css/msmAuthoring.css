@@ -245,3 +245,25 @@
     margin-left: 2%;
     margin-right: 2%;
 }
+#msm_trash_droparea
+{
+    position: relative;
+    float: right;
+    bottom: 0;
+    border: 2px solid black;
+    padding: 2px;
+    width: 100%;
+    display: none;
+    background-color: red;
+    opacity: 0.5;
+}
+
+#msm_trash_icon
+{   
+    margin-left: 43%; 
+}
+
+.msm_associate_optionarea{
+    margin-top: 2%;
+    /*margin-bottom: 2%;*/
+}
