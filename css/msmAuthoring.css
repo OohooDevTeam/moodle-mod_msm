@@ -160,13 +160,14 @@
 {
     margin: 3% 2%;
     border: 2px dashed black;
-    width: 94%;
+    width: 90%;
     height: 25%;
     text-align: center;
     /* The following two properties are there so that chrome does not
     return auto from getComputedStyle javascript function*/
     left: 0;
     top: 0;
+    padding: 2%;
 }
 
 .copied_msm_structural_element_selected
@@ -193,8 +194,8 @@
 .msm_unit_child_title
 {
     float: right;
-    margin-right: 2%;
-    margin-top: 2%;
+    /*margin-right: 2%;*/
+    /*margin-top: 2%;*/
     width: auto;
     margin-bottom: 2%;
 }
@@ -202,17 +203,17 @@
 .msm_unit_child_dropdown
 {
     float: left;
-    margin-left: 2%;
-    margin-top: 2%;
+    /*margin-left: 2%;*/
+    /*margin-top: 2%;*/
     width: auto;
     margin-bottom: 2%;
 }
 .msm_unit_child_content
 {
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 2%;
-    margin-top: 0;
+    /*margin-left: 2%;*/
+    /*margin-right: 2%;*/
+    /*margin-bottom: 2%;*/
+    /*margin-top: 0;*/
     height: auto;
     width: 96%;
     min-width: 300px;
