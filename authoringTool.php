@@ -1,9 +1,9 @@
 <?php
 
 /**
- **************************************************************************
- **                              MSM                                     **
- **************************************************************************
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
  * @package     mod                                                      **
  * @subpackage  msm                                                      **
  * @name        msm                                                      **
@@ -11,9 +11,8 @@
  * @link        http://ualberta.ca                                       **
  * @author      Ga Young Kim                                             **
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
- **************************************************************************
- **************************************************************************/
-
+ * *************************************************************************
+ * ************************************************************************ */
 require_once('../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 
@@ -240,7 +239,11 @@ $formContent .= '<div id="msm_editor_container">
 
 $formContent .= '<script type="text/javascript">    
             $(document).ready(function() {
-                var selectedId = 0;     
+                var selectedId = 0;  
+                
+//                 $("#msm_editor_container :not(.msm_unit_child_content)").click(function(){
+//                        alert("clicked!");
+//                 });
 
                 $("#msm_editor_middle_droparea").sortable({
                     connectWith: "#msm_editor_middle_droparea"

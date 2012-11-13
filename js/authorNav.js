@@ -471,7 +471,7 @@ function showtinyMce(event)
                 newButton.setAttribute('id', 'msm_content_edit-'+idparts[1]);
                 newButton.setAttribute('name', 'msm_content_edit_button');
                 newButton.setAttribute('value', 'Edit Content');
-//                newButton.setAttribute('onclick', 'switchToEdit("'+currentEditorId+'")');
+                //                newButton.setAttribute('onclick', 'switchToEdit("'+currentEditorId+'")');
                 var currentEditor = document.getElementById(currentEditorId);
                 currentEditor.parentNode.insertBefore(newButton, currentEditor);
                 
@@ -590,7 +590,7 @@ function resizeElement(e)
         var editorHeight = 0;
         var newEditorHeight = 0;
         $('#'+currentid).resizable({
-            containement: "parent",
+            containement: "#msm_editor_middle_droparea",
             ghost: true,
             helper: "resizable-helper",
             minHeight: 330,
@@ -611,10 +611,12 @@ function resizeElement(e)
                 editorHeight = $('#'+selectedID+'tbl').height();
                 newEditorHeight = editorHeight-ydifference;
                 
-                $('#'+selectedID+'tbl').height(newEditorHeight);                
+                $('#'+selectedID+'tbl').height(newEditorHeight);   
             }
         });  
     }
+    
+   
    
 }
 

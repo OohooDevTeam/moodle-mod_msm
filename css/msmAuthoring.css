@@ -52,7 +52,7 @@
 {
     background-color: lightgoldenrodyellow;
     min-height: 700px;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 #msm_editor_right
@@ -72,6 +72,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid black;
+    height: fit-content;
 }
 
 .msm_editor_buttons
