@@ -297,7 +297,7 @@ function processDroppedChild(e, droppedId, _index)
                                 <option value="Terminology">Terminology</option>\n\
                             </select>');
             var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title" placeholder=" Title of Definition"/>');
-            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content" placeholder="Need to add moodle form here?"/>');
+            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content" placeholder="Need to add moodle form here?"  onclick="showtinyMce(event);"/>');
             
             var defAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
                             <select class="msm_associated_dropdown" id="msm_def_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
@@ -329,7 +329,7 @@ function processDroppedChild(e, droppedId, _index)
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
             var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title" placeholder=" Title of Theorem"/>');
-            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content" placeholder=" Need to add moodle form here?"/>');
+            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content" placeholder=" Need to add moodle form here?" onclick="showtinyMce(event);"/>');
             var theoremAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
                             <select class="msm_associated_dropdown" id="msm_theorem_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
                                 <option value="None">None</option>\n\
@@ -358,7 +358,7 @@ function processDroppedChild(e, droppedId, _index)
             
         case "msm_intro":
             var introTitle = $('<h3> Introduction </h3>');
-            var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content" placeholder=" Need to add moodle form here?"/>');
+            var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content" placeholder=" Need to add moodle form here?" onclick="showtinyMce(event);"/>');
             clonedCurrentElement.attr("id", "copied_msm_intro"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.attr("ondblclick", "resizeElement(event)");
@@ -369,7 +369,7 @@ function processDroppedChild(e, droppedId, _index)
             break;
             
         case "msm_body":
-            var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content" placeholder=" Need to add moodle form here?"/>');
+            var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content" placeholder=" Need to add moodle form here?" onclick="showtinyMce(event);"/>');
             
             clonedCurrentElement.attr("id", "copied_msm_body"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -415,10 +415,18 @@ function processDroppedChild(e, droppedId, _index)
         {
             $("#msm_trash_droparea").css("display", "none");     
         }
-    });    
+    });   
     
-    tinyMCE.init({
-        mode:"textareas",
+    return _index;
+}
+
+function showtinyMce(event)
+{
+    var elementid = event.target.id;  
+    var currentEditorId = 0;
+    var configArray = [{
+        mode:"exact",
+        elements: elementid,
         plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "96%",
         height: "70%",
@@ -433,10 +441,126 @@ function processDroppedChild(e, droppedId, _index)
 
         skin : "o2k7",
         skin_variant : "silver"
-    });
+    },{
+        mode : "textareas",
+        theme : "advanced",
+        readonly : true        
+    }];
     
-    return _index;
+    //    var changedReadOnly = false;   
+    
+    for (var i = 0; i < tinymce.editors.length; i++)
+    {
+        //        console.log("ediorid that is being iterated: "+ tinymce.editors[i].id);
+        
+        if((tinymce.editors[i].id != elementid) &&(!tinymce.editors[i].settings.readonly))
+        {  
+            alert("showtiny remove");
+            currentEditorId = tinymce.editors[i].id;
+            var idparts = currentEditorId.split("-");
+            tinyMCE.execCommand("mceRemoveControl", true, currentEditorId);
+            tinyMCE.settings = configArray[1];
+            tinyMCE.execCommand('mceAddControl', true, currentEditorId);
+            
+            if((tinymce.editors[i].settings.readonly) && (document.getElementById('msm_content_edit-'+idparts[1])== null))
+            {
+                var idparts = currentEditorId.split("-");
+                var newButton = document.createElement("input");
+                newButton.setAttribute("type", "button");
+                newButton.setAttribute("class", "msm_content_edit_buttons")
+                newButton.setAttribute('id', 'msm_content_edit-'+idparts[1]);
+                newButton.setAttribute('name', 'msm_content_edit_button');
+                newButton.setAttribute('value', 'Edit Content');
+//                newButton.setAttribute('onclick', 'switchToEdit("'+currentEditorId+'")');
+                var currentEditor = document.getElementById(currentEditorId);
+                currentEditor.parentNode.insertBefore(newButton, currentEditor);
+                
+                
+            }
+            
+        }
+        else
+        {
+            alert("showtiny but no action");
+        }
+    }  
+
+    tinyMCE.settings = configArray[0];
+    tinyMCE.execCommand('mceAddControl', true, elementid);
 }
+//
+//function switchToEdit(ed)
+//{
+//     console.log(ed);
+//    alert("in switchToEdit");
+//    var editorId = 0;
+//    for (var i = 0; i < tinymce.editors.length; i++) {
+//        editorId = tinymce.editors[i].id;
+//        
+//        var configArray = [{
+//            mode:"exact",
+//            elements: editorId,
+//            plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+//            width: "96%",
+//            height: "70%",
+//            theme: "advanced",
+//            theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+//            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+//            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
+//            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+//            theme_advanced_toolbar_location : "top",
+//            theme_advanced_toolbar_align : "left",
+//            theme_advanced_statusbar_location : "bottom",
+//
+//            skin : "o2k7",
+//            skin_variant : "silver"
+//        },{
+//            mode : "textareas",
+//            theme : "advanced",
+//            readonly : true        
+//        }];
+//        console.log("editorId: "+editorId);
+//        if(editorId == ed)
+//        {
+//            if(tinymce.editors[i].settings.readonly)
+//            {
+//                alert("switchTo add editor");
+//                tinyMCE.execCommand("mceRemoveControl", true, editorId);
+//                tinyMCE.settings = configArray[0];
+//                tinyMCE.execCommand('mceAddControl', true, editorId);
+//              
+//                break;
+//            }
+//            
+//        }
+//        else //active editor existing --> turn it into readonly
+//        {
+//            
+//            alert("switchTo remove");
+//            var idparts = editorId.split("-");
+//            tinyMCE.execCommand("mceRemoveControl", true, editorId);
+//            tinyMCE.settings = configArray[1];
+//            tinyMCE.execCommand('mceAddControl', true, editorId);
+//                
+//            if((tinymce.editors[i].settings.readonly) && (document.getElementById('msm_content_edit-'+idparts[1])== null))
+//            {
+//                var idparts = editorId.split("-");
+//                var newButton = document.createElement("input");
+//                newButton.setAttribute("type", "button");
+//                newButton.setAttribute("class", "msm_content_edit_buttons")
+//                newButton.setAttribute('id', 'msm_content_edit-'+idparts[1]);
+//                newButton.setAttribute('name', 'msm_content_edit_button');
+//                newButton.setAttribute('value', 'Edit Content');
+//                newButton.setAttribute('onclick', 'switchToEdit("'+editorId+'")');
+//                var currentEditor = document.getElementById(editorId);
+//                currentEditor.parentNode.insertBefore(newButton, currentEditor);
+//            }
+//               
+//        }
+//    }
+//    return false;   
+//    
+//}
 
 /**
  * This method is activated when the dragged item in the middle panel is double clicked.
@@ -469,7 +593,7 @@ function resizeElement(e)
             containement: "parent",
             ghost: true,
             helper: "resizable-helper",
-            minHeight: 328,
+            minHeight: 330,
             minWidth: 605,            
             stop: function(event, ui)
             {
@@ -487,7 +611,7 @@ function resizeElement(e)
                 editorHeight = $('#'+selectedID+'tbl').height();
                 newEditorHeight = editorHeight-ydifference;
                 
-                $('#'+selectedID+'tbl').height(newEditorHeight);
+                $('#'+selectedID+'tbl').height(newEditorHeight);                
             }
         });  
     }

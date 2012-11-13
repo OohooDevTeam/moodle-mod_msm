@@ -240,8 +240,8 @@ $formContent .= '<div id="msm_editor_container">
 
 $formContent .= '<script type="text/javascript">    
             $(document).ready(function() {
-                var selectedId = 0;  
-                
+                var selectedId = 0;     
+
                 $("#msm_editor_middle_droparea").sortable({
                     connectWith: "#msm_editor_middle_droparea"
                 });
