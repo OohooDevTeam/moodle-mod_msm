@@ -75,6 +75,11 @@
     height: fit-content;
 }
 
+#msm_child_appending_area
+{
+    list-style: none;
+}
+
 .msm_editor_buttons
 {
     position: relative;

@@ -223,6 +223,8 @@ $formContent .= '<div id="msm_editor_container">
                         <div id="msm_trash_droparea">
                             <img id="msm_trash_icon" src="' . $CFG->wwwroot . '/mod/msm/pix/trash_recyclebin_empty_closed.png"/><br><span style="margin-left: 40%;"><b>Remove Unit</b></span>                            
                         </div>
+                        <ul id="msm_child_appending_area">
+                        </ul>
                     </div>
                      <button class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()"> Reset </button>
                      
@@ -239,19 +241,37 @@ $formContent .= '<div id="msm_editor_container">
 
 $formContent .= '<script type="text/javascript">    
             $(document).ready(function() {
-                var selectedId = 0;  
+                var selectedId = 0;     
                 
-//                 $("#msm_editor_container :not(.msm_unit_child_content)").click(function(){
-//                        alert("clicked!");
-//                 });
+                tinyMCE.init({
+                    mode:"textareas",
+                    plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                    width: "96%",
+                    height: "70%",
+                    theme: "advanced",
+                    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                    theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+                    theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
+                    theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+                    theme_advanced_toolbar_location : "top",
+                    theme_advanced_toolbar_align : "left",
+                    theme_advanced_statusbar_location : "bottom",
+                    skin : "o2k7",
+                    skin_variant : "silver"
+                });               
 
-                $("#msm_editor_middle_droparea").sortable({
-                    connectWith: "#msm_editor_middle_droparea"
+                $("#msm_child_appending_area").sortable({
+                    appendTo: "#msm_child_appending_area",
+                    containment: "#msm_editor_middle_droparea",
+                    cursor: "move"
                 });
+                
+                $("#msm_child_appending_area").disableSelection();
                 
                 $(".msm_structural_element").draggable({
                     appendTo: "msm_editor_middle_droparea",
                     containment: "msm_editor_middle_droparea",
+                    scroll: true,
                     cursor: "move",
                     helper: "clone"                   
                 });              
