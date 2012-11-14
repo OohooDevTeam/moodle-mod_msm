@@ -398,6 +398,11 @@ function processDroppedChild(e, droppedId, _index)
         drop: function( event, ui ) {
             $(ui.draggable).remove();
             $('#msm_trash_droparea').css('display', 'none');
+            console.log($("#msm_editor_middle_droparea").children().length);
+            if($("#msm_editor_middle_droparea").children().length < 2)
+            {
+                $("#msm_editor_save").attr("disabled", "disabled");
+            }
         }
     });  
     
@@ -572,7 +577,6 @@ function resizeElement(e)
     var match = currentid.match(/copied_/);
     var splittedType = e.target.id.split("_");
     var splittedId = e.target.id.split("-");
-    var idnumber = splittedId[1];
     var selectedID = splittedType[1]+"_"+splittedType[2]+"_"+splittedType[3];
     
     // to prevent textarea from being trigger to resize when double clicked
@@ -597,6 +601,8 @@ function resizeElement(e)
             minWidth: 605,            
             stop: function(event, ui)
             {
+                // adjusting editor width and height accordingly when 
+                // the parent div is resized
                 currentWidth = $('#'+currentid).width();
                 xdifference = originalWidth-currentWidth;
                 
