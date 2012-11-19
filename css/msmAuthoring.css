@@ -219,7 +219,9 @@
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
     background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+    color:#ffffff;
     background-color:#fb9e25;
+    cursor: pointer;
 }
 .msm_element_close:active 
 {
@@ -254,6 +256,21 @@
    float: right;
    width: auto;
 }*/
+.msm_unit_pic_title
+{
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 158px; 
+    width: auto;
+}
+
+.msm_pic_filepicker
+{
+    float: left;
+    margin-left: 2%;
+    width:auto;
+    margin-bottom: 2%;
+}
 
 .msm_unit_child_title
 {
