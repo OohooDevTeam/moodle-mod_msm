@@ -72,12 +72,28 @@
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid black;
-    height: fit-content;
+    height: 70%;
+    /*padding-bottom: 2%;*/
 }
-
+/*
 #msm_child_appending_area
 {
-    list-style: none;
+    padding: 0; 
+    height: 100%;
+    padding-bottom: 25%;
+    padding-top: 2%;
+}*/
+
+.msm_sortable_placeholder
+{ 
+    border: 1px dotted red; 
+    visibility: visible !important; 
+    margin: 3% 2%;
+
+}
+.msm_sortable_placeholder * 
+{
+    visibility: hidden; 
 }
 
 .msm_editor_buttons

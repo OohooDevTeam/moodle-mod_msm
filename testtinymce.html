@@ -1,6 +1,6 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
+
+<!--To change this template, choose Tools | Templates
+and open the template in the editor.-->
 
 <!DOCTYPE html>
 <html>
@@ -47,21 +47,19 @@ and open the template in the editor.
         <script src='development-bundle/ui/jquery.ui.sortable.js'></script>
 
         <script type="text/javascript">
-            //            $(document).ready(function(){           
-            //                $('.boxcontainer').sortable({
-            //                    connectWith: ".boxcontainer"
-            //                });
-            //            
-            //                $( ".box" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-            //                .find( ".box_header" )
-            //                .addClass( "ui-widget-header ui-corner-all" )
-            //                .end()
-            //                .find( ".box_content" );
-                
-                
-
-            //                $( ".boxcontainer" ).disableSelection(); 
-            //                });
+                        $(document).ready(function(){           
+                            $('.boxcontainer').sortable({
+                                connectWith: ".boxcontainer"
+                            });
+                        
+//                            $( ".box" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+//                            .find( ".box_header" )
+//                            .addClass( "ui-widget-header ui-corner-all" )
+//                            .end()
+//                            .find( ".box_content" );
+                            
+                            $( ".boxcontainer" ).disableSelection(); 
+                            });
                 
             function showtinymce(event){
                 tinyMCE.init({
@@ -81,45 +79,45 @@ and open the template in the editor.
                     skin : "o2k7",
                     skin_variant : "silver",
                     
-                    setup : function(ed) {
-                        ed.makeReadOnly = function(ro) {
-                            var t = this, s = t.settings, DOM = tinymce.DOM, d = t.getDoc(), b=null;;
-
-                            if(!s.readonly && ro) {
-                                if (!tinymce.isIE) {
-                                    try {
-                                        d.designMode = 'Off';
-                                    } catch (ex) {
-                        
-                                    }
-                                } else {
-                                    b = t.getBody();
-                                    DOM.hide(b);
-                                    b.contentEditable = false;
-                                    DOM.show(b);
-                                }
-                                s.readonly = true;
-                            } else if(s.readonly && !ro) {
-                                if (!tinymce.isIE) {
-                                    try {
-                                        d.designMode = 'On';
-                                        // Design mode must be set here once again to fix a bug where
-                                        // Ctrl+A/Delete/Backspace didn't work if the editor was added using mceAddControl then removed then added again
-                                        d.designMode = 'Off';
-                                        d.designMode = 'On';
-                                    } catch (ex) {
-                        
-                                    }
-                                } else {
-                                    b = t.getBody();
-                                    DOM.hide(b);
-                                    b.contentEditable = true;
-                                    DOM.show(b);
-                                }
-                                s.readonly = false;
-                            }
-                        };
-                    }
+//                    setup : function(ed) {
+//                        ed.makeReadOnly = function(ro) {
+//                            var t = this, s = t.settings, DOM = tinymce.DOM, d = t.getDoc(), b=null;;
+//
+//                            if(!s.readonly && ro) {
+//                                if (!tinymce.isIE) {
+//                                    try {
+//                                        d.designMode = 'Off';
+//                                    } catch (ex) {
+//                        
+//                                    }
+//                                } else {
+//                                    b = t.getBody();
+//                                    DOM.hide(b);
+//                                    b.contentEditable = false;
+//                                    DOM.show(b);
+//                                }
+//                                s.readonly = true;
+//                            } else if(s.readonly && !ro) {
+//                                if (!tinymce.isIE) {
+//                                    try {
+//                                        d.designMode = 'On';
+//                                        // Design mode must be set here once again to fix a bug where
+//                                        // Ctrl+A/Delete/Backspace didn't work if the editor was added using mceAddControl then removed then added again
+//                                        d.designMode = 'Off';
+//                                        d.designMode = 'On';
+//                                    } catch (ex) {
+//                        
+//                                    }
+//                                } else {
+//                                    b = t.getBody();
+//                                    DOM.hide(b);
+//                                    b.contentEditable = true;
+//                                    DOM.show(b);
+//                                }
+//                                s.readonly = false;
+//                            }
+//                        };
+//                    }
                     
                 });
             }
@@ -151,78 +149,5 @@ and open the template in the editor.
                 <div class="box_content"><textarea id="text5" onclick="showtinymce(event)"></textarea></div>
             </div>
         </div>
-    </body>
-</html>-->
-
-<html>
-    <head>
-         <script src='development-bundle/jquery-1.7.1.js'></script>
-        <script type='text/javascript' src='../../lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                tinyMCE.init({
-                    mode : "textareas",
-                    theme : "advanced",
-                    readonly : true,                
-                    setup : function(ed) {
-                        ed.makeReadOnly = function(ro) {
-                            var t = this, s = t.settings, DOM = tinymce.DOM, d = t.getDoc();
-
-                            if(!s.readonly && ro) {
-                                if (!tinymce.isIE) {
-                                    try {
-                                        d.designMode = 'Off';
-                                    } catch (ex) {
-
-                                    }
-                                } else {
-                                    // It will not steal focus if we hide it while setting contentEditable
-                                    b = t.getBody();
-                                    DOM.hide(b);
-                                    b.contentEditable = false;
-                                    DOM.show(b);
-                                }
-                                s.readonly = true;
-                            } else if(s.readonly && !ro) {
-                                if (!tinymce.isIE) {
-                                    try {
-                                        d.designMode = 'On';
-                                    } catch (ex) {
-
-                                    }
-                                } else {
-                                    // It will not steal focus if we hide it while setting contentEditable
-                                    b = t.getBody();
-                                    DOM.hide(b);
-                                    b.contentEditable = true;
-                                    DOM.show(b);
-                                }
-                                s.readonly = false;
-                            }
-                            return s.readonly;
-                        };
-                    
-                        if(ed.settings.readonly) {
-                            ed.settings.readonly = false;
-                            ed.onInit.add(function(ed) {
-                                toggleReadOnly(ed);
-                            });
-                        }
-                    }
-                });
-                
-                function toggleReadOnly(ed) {
-                var btn = document.getElementById('btn1');
-                btn.value = ed.makeReadOnly(!ed.settings.readonly) ? "Disable ReadOnly" : "Enable ReadOnly";
-            };
-            });
-           
-            
-            
-        </script>
-    </head>
-    <body>
-        <input type="button" onclick="javascript:toggleReadOnly(tinyMCE.get('elm1'));" value="Enable ReadOnly" id="btn1" />
-        <textarea id="elm1" rows="33" cols="30" style="width: 50px"></textarea>
     </body>
 </html>

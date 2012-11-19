@@ -223,8 +223,8 @@ $formContent .= '<div id="msm_editor_container">
                         <div id="msm_trash_droparea">
                             <img id="msm_trash_icon" src="' . $CFG->wwwroot . '/mod/msm/pix/trash_recyclebin_empty_closed.png"/><br><span style="margin-left: 40%;"><b>Remove Unit</b></span>                            
                         </div>
-                        <ul id="msm_child_appending_area">
-                        </ul>
+                        <div id="msm_child_appending_area">
+                        </div>
                     </div>
                      <button class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()"> Reset </button>
                      
@@ -258,15 +258,7 @@ $formContent .= '<script type="text/javascript">
                     theme_advanced_statusbar_location : "bottom",
                     skin : "o2k7",
                     skin_variant : "silver"
-                });               
-
-                $("#msm_child_appending_area").sortable({
-                    appendTo: "#msm_child_appending_area",
-                    containment: "#msm_editor_middle_droparea",
-                    cursor: "move"
-                });
-                
-                $("#msm_child_appending_area").disableSelection();
+                });     
                 
                 $(".msm_structural_element").draggable({
                     appendTo: "msm_editor_middle_droparea",
