@@ -272,6 +272,23 @@
     margin-bottom: 2%;
 }
 
+.msm_file_lists
+{
+    float: left;
+    width: 100%;
+    height: auto;
+/*    margin: 1%;
+    padding: 1%;*/
+    overflow: hidden;
+}
+
+.msm_img_previews
+{
+    overflow:hidden;
+    border: 2px solid orange;
+    margin: 1% 0;
+}
+
 .msm_unit_child_title
 {
     float: right;

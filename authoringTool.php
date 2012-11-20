@@ -65,6 +65,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitt
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/superfish.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/authorNav.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorCore.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorActions.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>";
@@ -237,9 +238,7 @@ $formContent .= '<div id="msm_editor_container">
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp()"> Done </button>';
 
 $formContent .= '<script type="text/javascript">    
-            $(document).ready(function() {
-                var selectedId = 0;     
-                
+            $(document).ready(function() {                
                 tinyMCE.init({
                     mode:"textareas",
                     plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
@@ -270,7 +269,7 @@ $formContent .= '<script type="text/javascript">
                     hoverClass: "ui-state-hover",
                     tolerance: "pointer",
                     drop: function( event, ui ) { 
-                        selectedId = processDroppedChild(event, ui.draggable.context.id, selectedId);                        
+                        processDroppedChild(event, ui.draggable.context.id);                        
                     }
                 });                  
                                
