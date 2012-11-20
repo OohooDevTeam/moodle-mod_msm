@@ -289,8 +289,9 @@
     overflow:hidden;
     border: 2px solid orange;
     margin: 1% auto;
-    padding: 2%;
+    /*padding: 2%;*/
 }
+
 
 .msm_unit_child_title
 {
