@@ -234,20 +234,19 @@ function showImagePreview(evt)
                     
                     var maxw = $('#msm_img_preview-'+filepickerId[1]+'-'+_imageIndex).width()
                     
-                    console.log(maxw);
+//                    console.log("max width from div: "+maxw);
                     
                     image.onclick = function(){
                         $(this).resizable
                         ({
                             ghost: true,
-                            resize: function(event, ui)
-                            {
-                                $(this).resizable("option", "maxWidth", maxw);
-                            }
-                        });
-                        
+                            handles: "n, e, s, w, ne, se, sw, nw"
+//                            resize: function(event, ui)
+//                            {
+//                                
+//                            }
+                        });                        
                     };
-                    
 
                     imageDiv.appendChild(image);
                     document.getElementById('msm_file_list-'+filepickerId[1]).insertBefore(imageDiv, null);
@@ -256,13 +255,17 @@ function showImagePreview(evt)
                     var imageWidth = image.offsetWidth;
                     var divWidth = imageDiv.offsetWidth;
                     
-                    console.log(imageWidth);
-                    console.log(divWidth);
+//                    console.log("width of image: "+imageWidth);
+//                    console.log("width of div: "+divWidth);
                     
-                    if(imageWidth > divWidth)
+                    if(imageWidth >= divWidth)
                     {
-                        console.log("bigger");
+//                        console.log("bigger");
                         image.width = divWidth;
+                    }
+                    else
+                    {
+//                        console.log("smaller");
                     }
                 };
             })(files[0]);

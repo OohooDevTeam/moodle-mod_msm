@@ -292,6 +292,10 @@
     /*padding: 2%;*/
 }
 
+.msm_thumbnails
+{
+    margin: auto !important;
+}
 
 .msm_unit_child_title
 {

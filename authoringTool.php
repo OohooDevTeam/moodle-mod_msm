@@ -289,7 +289,21 @@ $formContent .= '<script type="text/javascript">
                     orientation: "vertical",
                     limit: 100,
                     position: "80%"
-                });             
+                });
+                
+                // for disabling the resize when focus is out of the picture 
+               $("#msm_editor_container").click(function(e){
+                    var matches = e.target.className.match(/msm_thumbnails/);
+                    if(!matches)
+                    {
+                        console.log("class name: "+e.target.className);
+                        $(".msm_thumbnails").resizable("destroy");
+                    }
+               });
+               $("iframe").mouseup(function() {
+                                    alert("triggered?");
+                                    $(".msm_thumbnails").resizable("widget").trigger("mouseup");
+               });
             })
         </script>';
 
