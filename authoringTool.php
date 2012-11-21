@@ -299,11 +299,7 @@ $formContent .= '<script type="text/javascript">
                         console.log("class name: "+e.target.className);
                         $(".msm_thumbnails").resizable("destroy");
                     }
-               });
-               $("iframe").mouseup(function() {
-                                    alert("triggered?");
-                                    $(".msm_thumbnails").resizable("widget").trigger("mouseup");
-               });
+               });               
             })
         </script>';
 

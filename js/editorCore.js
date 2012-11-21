@@ -230,42 +230,44 @@ function showImagePreview(evt)
                     image.id = "msm_img_thumbnail-"+filepickerId[1]+"-"+_imageIndex;
                     image.className = "msm_thumbnails";
                     image.src = e.target.result;
-                    image.title = escape(theFile.name);  
-                    
-                    var maxw = $('#msm_img_preview-'+filepickerId[1]+'-'+_imageIndex).width()
-                    
-//                    console.log("max width from div: "+maxw);
-                    
+                    image.title = escape(theFile.name);            
+                   
+                    //                    var isDown = false;
                     image.onclick = function(){
                         $(this).resizable
                         ({
                             ghost: true,
-                            handles: "n, e, s, w, ne, se, sw, nw"
-//                            resize: function(event, ui)
-//                            {
-//                                
-//                            }
+                            create: function(event, ui)
+                            {
+                                var maxw = $('#msm_img_preview-'+filepickerId[1]+'-'+_imageIndex).width();
+                                $(this).resizable("option", "maxWidth", maxw);
+                            }
+                        //                            resize: function(event, ui)
+                        //                            {
+                        //                                
+                        //                                $("table.mceLayout > *").mouseup(function(){
+                        //                                    $(".msm_thumbnails").resizable("widget").trigger("mouseup");
+                        //                                    if(isDown)
+                        //                                    {
+                        //                                        alert("trigger2");
+                        //                                        $(".msm_thumbnails").resizable("widget").trigger("mouseup");
+                        //                                    }
+                        //                                })
+                        //                                                      
+                        //                            }
                         });                        
                     };
 
                     imageDiv.appendChild(image);
                     document.getElementById('msm_file_list-'+filepickerId[1]).insertBefore(imageDiv, null);
-                
-                    //resizing the image so it fits into the div
-                    var imageWidth = image.offsetWidth;
-                    var divWidth = imageDiv.offsetWidth;
                     
-//                    console.log("width of image: "+imageWidth);
-//                    console.log("width of div: "+divWidth);
+                    //resizing the image so it fits into the div                    
+                    var imageWidth = document.getElementById('msm_img_thumbnail-'+filepickerId[1]+'-'+_imageIndex).width;
+                    var divWidth = imageDiv.offsetWidth;
                     
                     if(imageWidth >= divWidth)
                     {
-//                        console.log("bigger");
                         image.width = divWidth;
-                    }
-                    else
-                    {
-//                        console.log("smaller");
                     }
                 };
             })(files[0]);
@@ -312,10 +314,10 @@ function showImagePreview(evt)
 }
 
 /**
-     * to save contents created in middle editor panel
-     *  --> diplay change: from filled in content --> maintain same content in middle but with edit button instead of  & thumbnail of composed unit added to tree in right panel
-     *  --> disable drag&drop/resize...etc
-     */
+ * to save contents created in middle editor panel
+ *  --> diplay change: from filled in content --> maintain same content in middle but with edit button instead of  & thumbnail of composed unit added to tree in right panel
+ *  --> disable drag&drop/resize...etc
+ */
 function saveUnit()
 {
     $('#msm_editor_save').ready(function() {
@@ -347,18 +349,18 @@ function saveUnit()
 }
 
 /**
-     * need to enable drag/drop/resize again... and also enable edit button
-     *
-     */
+ * need to enable drag/drop/resize again... and also enable edit button
+ *
+ */
 function editUnit()
 {
     
 }
 
 /**
-     * needs to ask if the user wants to save the content if save button has not been pressed, if was saved, then call saveUnit and close dialog,
-     * else if not save then empty out content in middle, save button disabled while reset is abled
-     */
+ * needs to ask if the user wants to save the content if save button has not been pressed, if was saved, then call saveUnit and close dialog,
+ * else if not save then empty out content in middle, save button disabled while reset is abled
+ */
 function resetUnit()
 {    
     $('#msm_editor_reset').ready(function() {
@@ -383,10 +385,10 @@ function resetUnit()
 }
 
 /**
-     * This method is used to delete elements that were added to the middle panel and is triggered by msm_element_close button in each of the 
-     * structural elements dragged from the left column.
-     * 
-     */
+ * This method is used to delete elements that were added to the middle panel and is triggered by msm_element_close button in each of the 
+ * structural elements dragged from the left column.
+ * 
+ */
 function deleteElement(e)
 {
     var currentElement = e.target.parentElement.id;
