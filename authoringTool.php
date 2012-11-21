@@ -296,7 +296,6 @@ $formContent .= '<script type="text/javascript">
                     var matches = e.target.className.match(/msm_thumbnails/);
                     if(!matches)
                     {
-                        console.log("class name: "+e.target.className);
                         $(".msm_thumbnails").resizable("destroy");
                     }
                });               
