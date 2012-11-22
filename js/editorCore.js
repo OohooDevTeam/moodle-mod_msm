@@ -24,6 +24,7 @@ var _index = 0;
 
 // variable that gives unique id number to each image of the editor
 var _imageIndex = 0;
+var _mediaIndex = 0;
 
 /**
  * This function is activated when user drags one of the structural elememts on the very left side of the panel to middle panel.
@@ -47,6 +48,7 @@ function processDroppedChild(e, droppedId)
                                 <option value="Axiom">Axiom</option>\n\
                                 <option value="Terminology">Terminology</option>\n\
                             </select>');
+            var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
             var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title" placeholder=" Title of Definition"/>');
           
             var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content" placeholder="Need to add moodle form here?"/>');
@@ -66,6 +68,7 @@ function processDroppedChild(e, droppedId)
             
             clonedCurrentElement.append(defCloseButton);
             clonedCurrentElement.append(defSelectMenu);
+            clonedCurrentElement.append(defTitle);
             clonedCurrentElement.append(defTitleField);
             clonedCurrentElement.append(defContentField);
             clonedCurrentElement.append(defAssoMenu);
@@ -81,6 +84,8 @@ function processDroppedChild(e, droppedId)
                                 <option value="Lemma">Lemma</option>\n\
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
+                
+            var theoremTitle = $("<span class='msm_element_title'><b> THEOREM </b></span>");
             var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title" placeholder=" Title of Theorem"/>');
             var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content" placeholder=" Need to add moodle form here?"/>');
 
@@ -100,6 +105,7 @@ function processDroppedChild(e, droppedId)
             
             clonedCurrentElement.append(theoremCloseButton);
             clonedCurrentElement.append(theoremSelectMenu);
+            clonedCurrentElement.append(theoremTitle);
             clonedCurrentElement.append(theoremTitleField);
             clonedCurrentElement.append(theoremContentField);
             clonedCurrentElement.append(theoremAssoMenu);
@@ -108,6 +114,7 @@ function processDroppedChild(e, droppedId)
             
         case "msm_pic":
             var picCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+            var picTitle = $("<span class='msm_element_title'><b> IMAGE </b></span><br><br>");
             var picTitleField = $('<input class="msm_unit_pic_title" id="msm_pic_title_input-'+_index+'" name="msm_pic_title" placeholder="Optional Title for the Image"/>');
             var picFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_pic_filepicker-'+_index+'" name="msm_pic_files[]" multiple onchange="showImagePreview(event)"/>\n\
                                         <br><output class="msm_file_lists" id="msm_file_list-'+_index+'"></output>');
@@ -117,6 +124,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
             clonedCurrentElement.append(picCloseButton);
+            clonedCurrentElement.append(picTitle);
             clonedCurrentElement.append(picTitleField);
             clonedCurrentElement.append(picFilePicker);
             clonedCurrentElement.append(picCaptionField);
@@ -126,7 +134,7 @@ function processDroppedChild(e, droppedId)
             
         case "msm_intro":
             var introCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-            var introTitle = $('<h3> Introduction </h3>');           
+            var introTitle = $("<span class='msm_element_title'><b> INTRODUCTION </b></span><br>");        
             var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content" placeholder=" Need to add moodle form here?"/>');
 
             
@@ -141,18 +149,36 @@ function processDroppedChild(e, droppedId)
             
         case "msm_body":
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+            var bodyTitle = $("<span class='msm_element_title'><b> CONTENT </b></span><br><br>");
             var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content" placeholder=" Need to add moodle form here?"/>');
 
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.append(bodyCloseButton);
+            clonedCurrentElement.append(bodyTitle);
             clonedCurrentElement.append(bodyContentField);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             break;
             
         case "msm_media":
-            alert("media");
-            break;       
+//            var mediaCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+//            var mediaTitle = $("<span class='msm_element_title'><b> MEDIA </b></span><br><br>");
+//            var mediaTitleField = $('<input class="msm_unit_pic_title" id="msm_media_title_input-'+_index+'" name="msm_media_title" placeholder="Optional Title for the media element"/>');
+//            var mediaFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_media_filepicker-'+_index+'" name="msm_media_files[]" multiple onchange="showMediaPreview(event)"/>\n\
+//                                        <br><output class="msm_file_lists" id="msm_mediafile_list-//'+_index+'"></output>');
+//            var mediaCaptionField = $('<textarea class="msm_unit_child_content" id="msm_media_content-'+_index+'" name="msm_media_content" placeholder="Caption for the media element"/>');
+//            
+//            clonedCurrentElement.attr("id", "copied_msm_media-"+_index);
+//            clonedCurrentElement.attr("class", "copied_msm_structural_element");
+//            
+//            clonedCurrentElement.append(mediaCloseButton);
+//            clonedCurrentElement.append(mediaTitle);
+//            clonedCurrentElement.append(mediaTitleField);
+//            clonedCurrentElement.append(mediaFilePicker);
+//            clonedCurrentElement.append(mediaCaptionField);
+//            
+//            clonedCurrentElement.appendTo("#msm_child_appending_area");
+            break;      
             
     }
     if($('#msm_editor_save').attr("disabled"))
@@ -190,6 +216,8 @@ function processDroppedChild(e, droppedId)
     });
                 
     $("#msm_child_appending_area").disableSelection();
+    
+    $(".flowplayer").flowplayer();
 }
 
 /**
@@ -215,9 +243,10 @@ function showImagePreview(evt)
     // Only process image files
     if(files.length != 0) // condition to deal with canceled transaction in browse window
     {
+        
         if (files[0].type.match('image.*')) {
             var reader = new FileReader();
-
+            
             // Closure to capture the file information.
             reader.onload = (function(theFile) {
                 return function(e) {
@@ -230,9 +259,7 @@ function showImagePreview(evt)
                     image.id = "msm_img_thumbnail-"+filepickerId[1]+"-"+_imageIndex;
                     image.className = "msm_thumbnails";
                     image.src = e.target.result;
-                    image.title = escape(theFile.name);            
-                   
-                    //                    var isDown = false;
+                    image.title = escape(theFile.name);  
                     image.onclick = function(){
                         $(this).resizable
                         ({
@@ -281,25 +308,68 @@ function showImagePreview(evt)
     }
     
     // reinitialize tinyMCE 
-     tinyMCE.execCommand("mceAddControl", false, tinymce.Editor.id);
-//    tinyMCE.init({
-//        mode:"textareas",
-//        plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-//        width: "96%",
-//        height: "70%",
-//        theme: "advanced",
-//        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-//        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-//        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
-//        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-//        theme_advanced_toolbar_location : "top",
-//        theme_advanced_toolbar_align : "left",
-//        theme_advanced_statusbar_location : "bottom",
-//        skin : "o2k7",
-//        skin_variant : "silver"
-//    });
-    
+    tinyMCE.execCommand("mceAddControl", false, tinymce.Editor.id);    
 }
+
+/**
+ * The method to show previews of video/audio...etc files to be added to the composition
+ *
+ */
+//function showMediaPreview(evt)
+//{
+//    var filepickerId = evt.target.id.split("-")
+//    var files = evt.target.files; // FileList object
+//    
+//    console.log(evt);
+//    
+//    _mediaIndex++;
+//    
+//    //    var outputElement = document.getElementById('msm_file_list-'+filepickerId[1]);
+//    
+//    // remove image inserted before --> according to XML schema, only one image allowed
+//    //    if(outputElement.hasChildNodes())
+//    //    {
+//    //        $('#'+outputElement.firstChild.id).empty().remove();
+//    //    }
+//    
+//    // Only process image files
+//    if(files.length != 0) // condition to deal with canceled transaction in browse window
+//    {
+//        if (files[0].type.match('.mp4')) {
+//            
+//            var videoreader = new FileReader();
+//            
+//            videoreader.onload = (function(theMedia)
+//            {
+//                return function(e){
+//                    var videoDiv = document.createElement("div");
+//                    videoDiv.className = "flowplayer";
+//                    videoDiv.id = "msm_media_preview_container-" + filepickerId[1] + "-" + _mediaIndex;
+//                    
+//                    var videoElement = document.createElement("video");
+//                    videoElement.src = e.target.result;
+//                    videoElement.id = "msm_video_clip-" + filepickerId[1] + "-" + _mediaIndex;
+//                    videoElement.className = "msm_video_preview";
+//                    videoElement.title = escape(theMedia.name);  
+//                    
+//                    videoDiv.appendChild(videoElement);
+//                    document.getElementById('msm_mediafile_list-'+filepickerId[1]).insertBefore(videoDiv, null);
+//                };
+//            })(files[0]);
+//            
+//            videoreader.readAsDataURL(files[0]);
+//        }
+//        else if(files[0].type.match('audio.*'))
+//        {
+//            alert("audio!");
+//        }
+//        else
+//        {
+//            alert("wrong type of media");
+//        }
+//    }
+//    
+//}
 
 /**
  * to save contents created in middle editor panel

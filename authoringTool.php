@@ -47,6 +47,7 @@ echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jq
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/superfish.css' media='screen'/> ";
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
+//echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jflowplayer/skin/minimalist.css'/>";
 
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/external/jquery.bgiframe-2.1.2.js'></script>";
@@ -69,6 +70,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorCore.js
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorActions.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
 //echo "<script type='text/javascript src='$CFG->wwwroot/lib/editor/tinymce/3.4.6/tiny_mce_jquery.js></script>";
 //echo "<script type='text/javascript;"
 
@@ -298,7 +300,8 @@ $formContent .= '<script type="text/javascript">
                     {
                         $(".msm_thumbnails").resizable("destroy");
                     }
-               });               
+               });                 
+              
             })
         </script>';
 
