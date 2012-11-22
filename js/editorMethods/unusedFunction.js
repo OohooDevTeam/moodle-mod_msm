@@ -38,7 +38,7 @@ function showtinyMce(event)
         { 
             currentEditorId = tinymce.editors[i].id;
             var idparts = currentEditorId.split("-");
-//            tinyMCE.execCommand("mceRemoveControl", true, currentEditorId);
+            //            tinyMCE.execCommand("mceRemoveControl", true, currentEditorId);
             tinyMCE.settings = configArray[1];
             tinyMCE.execCommand('mceToggleEditor', true, currentEditorId);
             
@@ -70,7 +70,7 @@ function activateTinymce(e)
     var targetEditor = partOfParentId+"_content_input-"+idParts[1];
     // span of where the new edit button will be included
     var spanID = partOfParentId + "_edit_button_location-"+idParts[1];
-//    console.log(targetEditor);
+    //    console.log(targetEditor);
     var configArray = [{
         mode:"exact",
         elements:  targetEditor,
@@ -100,37 +100,37 @@ function activateTinymce(e)
         //         console.log(tinymce.editors);
         var currentEditorId = tinymce.editors[i].id;
         
-                console.log("editor #"+i+": "+currentEditorId);
+        console.log("editor #"+i+": "+currentEditorId);
        
         if(tinymce.editors[i].settings.readonly)
         {
             if(currentEditorId == targetEditor)
             {
                 //                console.log("readonly:" +tinymce.editors[i].id);
-                                console.log("hey");
+                console.log("hey");
                                 
-//                tinyMCE.execCommand("mceRemoveControl", true, currentEditorId);
+                //                tinyMCE.execCommand("mceRemoveControl", true, currentEditorId);
                 tinyMCE.settings = configArray[0];
                 tinyMCE.execCommand('mceToggleEditor', true, currentEditorId);                
-//                document.getElementById(spanID).innerHTML = '';
+            //                document.getElementById(spanID).innerHTML = '';
             }
              
         }
-//        else
-//        {      
-//            //            console.log("not readonly: "+currentEditorId);
-//            tinyMCE.execCommand("mceRemoveControl", true, currentEditorId);
-//            tinyMCE.settings = configArray[1];
-//            tinyMCE.execCommand('mceAddControl', true, currentEditorId);
-//            
-//            var idNumber = currentEditorId.split("-");
-//            var selectedElement = currentEditorId.split("_");
-//            
-//            var spantoAddButton = selectedElement[0] + "_" + selectedElement[1] + "_edit_button_location-" + idNumber[1];
-//            
-//            var newButton = "<input type='button' class='msm_content_edit_buttons' id='msm_content_edit-"+idNumber[1]+"' name='msm_content_edit_button' value='Edit Content' onclick='activateTinymce(event)'/>";           
-//            document.getElementById(spantoAddButton).innerHTML = newButton;            
-//        }
+    //        else
+    //        {      
+    //            //            console.log("not readonly: "+currentEditorId);
+    //            tinyMCE.execCommand("mceRemoveControl", true, currentEditorId);
+    //            tinyMCE.settings = configArray[1];
+    //            tinyMCE.execCommand('mceAddControl', true, currentEditorId);
+    //            
+    //            var idNumber = currentEditorId.split("-");
+    //            var selectedElement = currentEditorId.split("_");
+    //            
+    //            var spantoAddButton = selectedElement[0] + "_" + selectedElement[1] + "_edit_button_location-" + idNumber[1];
+    //            
+    //            var newButton = "<input type='button' class='msm_content_edit_buttons' id='msm_content_edit-"+idNumber[1]+"' name='msm_content_edit_button' value='Edit Content' onclick='activateTinymce(event)'/>";           
+    //            document.getElementById(spantoAddButton).innerHTML = newButton;            
+    //        }
     }
 }
 
@@ -199,3 +199,107 @@ function resizeElement(e)
         });
     }
 }
+
+/**
+ * to get the choice of type drop down menu --> index for identifying html ID and childtype for distiguishing if
+ * it's from def/theorem
+ */
+function processType(e)
+{
+    //    console.log(e);
+    var selectedType = e.target.selectedIndex;
+    var selectedChildElement = e.target.id;
+    var selectedtext = null;
+    
+    var splitResult = selectedChildElement.split('_');
+    
+    if(splitResult[1] == "def")
+    {
+        switch(selectedType)
+        {
+            case 0:
+                selectedtext = "Notation";
+                break;
+            case 1:
+                selectedtext = "Definition";
+                break;
+            case 2:
+                selectedtext = "Agreement";
+                break;
+            case 3:
+                selectedtext = "Convention";
+                break;
+            case 4:
+                selectedtext = "Axiom";
+                break;
+            case 5:
+                selectedtext = "Terminology";
+                break;
+        }
+    }
+    else
+    {
+        switch(selectedType)
+        {
+            case 0:
+                selectedtext = "Theorem";
+                break;
+            case 1:
+                selectedtext = "Proposition";
+                break;
+            case 2:
+                selectedtext = "Lemma";
+                break;
+            case 3:
+                selectedtext = "Corollary";
+                break;
+        }
+    }
+    
+    
+    alert(selectedtext);
+}
+
+$("#msm_editor_save").click(function() {
+    var children =  document.getElementById("msm_child_appending_area").childNodes;
+
+    var idString = "";
+    for(var i=0; i<children.length-1; i++)
+    {
+        if(children[i].tagName == "DIV")
+        {
+            idString += children[i].id + ",";
+        }           
+    }
+        
+    if(children[children.length-1].tagName == "DIV")
+    {
+        idString += children[children.length-1].id;
+    }
+
+    $("#msm_child_order").val(idString);
+
+    var titleinput = $("#msm_unit_title").val();
+
+    if((titleinput == null)||(titleinput == ""))
+    {
+        $("<div class=\"dialogs\" id=\"msm_emptyMsmTitle\"> Please specify the title of this unit. </div>").appendTo("#msm_unit_title");
+
+        $("#msm_emptyMsmTitle").dialog({
+            modal: true,
+            buttons: {
+                Ok: function() {
+                    $("#msm_unit_title").css("border-color", "#FFA500");
+                    $(this).dialog("close");
+                }
+            }
+        });   
+    }
+    else
+    {
+        $("#msm_editor_save").remove();
+        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+        $("#msm_editor_reset").attr("disabled", "disabled");
+    }
+
+});

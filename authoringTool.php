@@ -20,6 +20,19 @@ require_once($CFG->dirroot . '/mod/msm/lib.php');
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 
+// to get the msm instance id when the save button is clicked
+//if ($m == 0)
+//{
+//    $rawString = $_POST['msm_child_order'];
+//    
+////    $lastElement = $stringArray[sizeof($stringArray)-1];
+//   
+//    if(is_int($rawString))
+//    {
+//       $m =  $rawString;
+//    }
+//    
+//}
 if ($m)
 {
     $msm = $DB->get_record('msm', array('id' => $m), '*', MUST_EXIST);
@@ -28,7 +41,7 @@ if ($m)
 }
 else
 {
-    error('You must specify a course_module ID');
+    print_error('You must specify a course_module ID');
 }
 
 require_login($course, true, $cm);
@@ -65,9 +78,10 @@ echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.sortabl
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/superfish.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/authorNav.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorCore.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorActions.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/authorNav.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorCore.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorActions.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveMethod.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
@@ -221,15 +235,17 @@ $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle" >
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
-                    <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
-                    <div id="msm_editor_middle_droparea">                        
-                        <div id="msm_child_appending_area">
-                        </div>
-                    </div>
-                     <button class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()"> Reset </button>
-                     
-                    <button class="msm_editor_buttons" id="msm_editor_save" type="button" disabled="disabled" onclick="saveUnit()"> Save </button>
-                   
+                    <form name="msm_unit_form" action="">
+                         <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
+                         <label class="msm_form_error" for="msm_unit_title" id="msm_unit_title_error">This field is required.</label>
+                         <div id="msm_editor_middle_droparea">                        
+                             <div id="msm_child_appending_area">
+                             </div>
+                             <input id="msm_child_order" name="msm_child_order" style="visibility: hidden;"/>
+                         </div>
+                         <input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
+                         <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
+                    </form>
                 </div>
 
                 <div id="msm_editor_right">
@@ -300,8 +316,9 @@ $formContent .= '<script type="text/javascript">
                     {
                         $(".msm_thumbnails").resizable("destroy");
                     }
-               });                 
-              
+               });
+               // client side action for the save button before PHP script is ran to insert data in to tables
+                
             })
         </script>';
 

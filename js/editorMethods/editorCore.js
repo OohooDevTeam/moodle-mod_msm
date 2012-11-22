@@ -40,7 +40,7 @@ function processDroppedChild(e, droppedId)
     {
         case "msm_def":
             var defCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
-            var defSelectMenu = $('<select class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'" onchange="processType(event);">\n\
+            var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
                                 <option value="Agreement">Agreement</option>\n\
@@ -49,12 +49,14 @@ function processDroppedChild(e, droppedId)
                                 <option value="Terminology">Terminology</option>\n\
                             </select>');
             var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
-            var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title" placeholder=" Title of Definition"/>');
+            var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
+            var defTitleError = $('<label class="msm_form_error" for="msm_def_title_input-'+_index+'" id="msm_def_title_error-'+_index+'"> This field is required </label>');
           
-            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content" placeholder="Need to add moodle form here?"/>');
+            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'" placeholder="Need to add moodle form here?"/>');
+            var defContentError = $('<label class="msm_form_error" for="msm_def_content_input-'+_index+'" id="msm_def_content_error-'+_index+'"> This field is required </label>');
             
             var defAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
-                            <select class="msm_associated_dropdown" id="msm_def_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
+                            <select name="msm_def_associate_dropdown-'+_index+'" class="msm_associated_dropdown" id="msm_def_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
                                 <option value="None">None</option>\n\
                                 <option value="Info">Quick Info</option>\n\
                                 <option value="Comment">Comment</option>\n\
@@ -70,7 +72,9 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(defSelectMenu);
             clonedCurrentElement.append(defTitle);
             clonedCurrentElement.append(defTitleField);
+            clonedCurrentElement.append(defTitleError);
             clonedCurrentElement.append(defContentField);
+            clonedCurrentElement.append(defContentError);
             clonedCurrentElement.append(defAssoMenu);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             break;
@@ -78,7 +82,7 @@ function processDroppedChild(e, droppedId)
         case "msm_theorem":
             var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
 
-            var theoremSelectMenu = $('<select class="msm_unit_child_dropdown" id="msm_theorem_type_dropdown-'+_index+'" onchange="processType(event);">\n\
+            var theoremSelectMenu = $('<select name="msm_theorem_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_theorem_type_dropdown-'+_index+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
                                 <option value="Proposition">Proposition</option>\n\
                                 <option value="Lemma">Lemma</option>\n\
@@ -86,11 +90,13 @@ function processDroppedChild(e, droppedId)
                             </select>');
                 
             var theoremTitle = $("<span class='msm_element_title'><b> THEOREM </b></span>");
-            var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title" placeholder=" Title of Theorem"/>');
-            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content" placeholder=" Need to add moodle form here?"/>');
+            var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title_input-'+_index+'" placeholder=" Title of Theorem"/>');
+            var theoremTitleError = $('<label for="msm_theorem_title_input-'+_index+'" class="msm_form_error" id="msm_theorem_title_error-'+_index+'">This field is required.</label>');
+            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
+            var theoremContentError = $('<label for="msm_theorem_content_input-'+_index+'" class="msm_form_error" id="msm_theorem_content_error-'+_index+'">This field is required.</label>');
 
             var theoremAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
-                            <select class="msm_associated_dropdown" id="msm_theorem_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
+                            <select name="msm_theorem_associate_dropdown-'+_index+'" class="msm_associated_dropdown" id="msm_theorem_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
                                 <option value="None">None</option>\n\
                                 <option value="Info">Quick Info</option>\n\
                                 <option value="Comment">Comment</option>\n\
@@ -106,8 +112,10 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(theoremCloseButton);
             clonedCurrentElement.append(theoremSelectMenu);
             clonedCurrentElement.append(theoremTitle);
+            clonedCurrentElement.append(theoremTitleError);
             clonedCurrentElement.append(theoremTitleField);
             clonedCurrentElement.append(theoremContentField);
+            clonedCurrentElement.append(theoremContentError);
             clonedCurrentElement.append(theoremAssoMenu);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             break;
@@ -115,10 +123,11 @@ function processDroppedChild(e, droppedId)
         case "msm_pic":
             var picCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var picTitle = $("<span class='msm_element_title'><b> IMAGE </b></span><br><br>");
-            var picTitleField = $('<input class="msm_unit_pic_title" id="msm_pic_title_input-'+_index+'" name="msm_pic_title" placeholder="Optional Title for the Image"/>');
-            var picFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_pic_filepicker-'+_index+'" name="msm_pic_files[]" multiple onchange="showImagePreview(event)"/>\n\
-                                        <br><output class="msm_file_lists" id="msm_file_list-'+_index+'"></output>');
-            var picCaptionField = $('<textarea class="msm_unit_child_content" id="msm_pic_content-'+_index+'" name="msm_pic_content" placeholder="Caption for the image"/>');
+            var picTitleField = $('<input class="msm_unit_pic_title" id="msm_pic_title_input-'+_index+'" name="msm_pic_title_input-'+_index+'" placeholder="Optional Title for the Image"/>');            
+            var picFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_pic_filepicker-'+_index+'" name="msm_pic_filepicker-'+_index+'" onchange="showImagePreview(event)"/>\n\
+                                        <br><output class="msm_file_lists" id="msm_file_list-'+_index+'" name="msm_file_list-'+_index+'"></output>');
+           var picFilePickerError = $('<label for="msm_pic_filepicker-'+_index+'" class="msm_form_error" id="msm_pic_error-'+_index+'">This field is required.</label>');
+            var picCaptionField = $('<textarea class="msm_unit_child_content" id="msm_pic_content-'+_index+'" name="msm_pic_content-'+_index+'" placeholder="Caption for the image"/>');
             
             clonedCurrentElement.attr("id", "copied_msm_pic-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -127,6 +136,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(picTitle);
             clonedCurrentElement.append(picTitleField);
             clonedCurrentElement.append(picFilePicker);
+            clonedCurrentElement.append(picFilePickerError);
             clonedCurrentElement.append(picCaptionField);
             
             clonedCurrentElement.appendTo("#msm_child_appending_area");
@@ -135,8 +145,8 @@ function processDroppedChild(e, droppedId)
         case "msm_intro":
             var introCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var introTitle = $("<span class='msm_element_title'><b> INTRODUCTION </b></span><br>");        
-            var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content" placeholder=" Need to add moodle form here?"/>');
-
+            var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
+            var introContentError = $('<label for="msm_intro_content_input-'+_index+'" class="msm_form_error" id="msm_intro_content_error-'+_index+'">This field is required.</label>');
             
             clonedCurrentElement.attr("id", "copied_msm_intro-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -144,43 +154,49 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(introCloseButton);
             clonedCurrentElement.append(introTitle);           
             clonedCurrentElement.append(introContentField);
+            clonedCurrentElement.append(introContentError);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             break;
             
         case "msm_body":
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var bodyTitle = $("<span class='msm_element_title'><b> CONTENT </b></span><br><br>");
-            var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content" placeholder=" Need to add moodle form here?"/>');
+            var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
+            var bodyContentError = $('<label for="msm_body_content_input-'+_index+'" class="msm_form_error" id="msm_body_content_error-'+_index+'">This field is required.</label>');
 
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.append(bodyCloseButton);
             clonedCurrentElement.append(bodyTitle);
             clonedCurrentElement.append(bodyContentField);
+            clonedCurrentElement.append(bodyContentError);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             break;
             
         case "msm_media":
-//            var mediaCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-//            var mediaTitle = $("<span class='msm_element_title'><b> MEDIA </b></span><br><br>");
-//            var mediaTitleField = $('<input class="msm_unit_pic_title" id="msm_media_title_input-'+_index+'" name="msm_media_title" placeholder="Optional Title for the media element"/>');
-//            var mediaFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_media_filepicker-'+_index+'" name="msm_media_files[]" multiple onchange="showMediaPreview(event)"/>\n\
-//                                        <br><output class="msm_file_lists" id="msm_mediafile_list-//'+_index+'"></output>');
-//            var mediaCaptionField = $('<textarea class="msm_unit_child_content" id="msm_media_content-'+_index+'" name="msm_media_content" placeholder="Caption for the media element"/>');
-//            
-//            clonedCurrentElement.attr("id", "copied_msm_media-"+_index);
-//            clonedCurrentElement.attr("class", "copied_msm_structural_element");
-//            
-//            clonedCurrentElement.append(mediaCloseButton);
-//            clonedCurrentElement.append(mediaTitle);
-//            clonedCurrentElement.append(mediaTitleField);
-//            clonedCurrentElement.append(mediaFilePicker);
-//            clonedCurrentElement.append(mediaCaptionField);
-//            
-//            clonedCurrentElement.appendTo("#msm_child_appending_area");
+            //            var mediaCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+            //            var mediaTitle = $("<span class='msm_element_title'><b> MEDIA </b></span><br><br>");
+            //            var mediaTitleField = $('<input class="msm_unit_pic_title" id="msm_media_title_input-'+_index+'" name="msm_media_title" placeholder="Optional Title for the media element"/>');
+            //            var mediaFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_media_filepicker-'+_index+'" name="msm_media_files[]" multiple onchange="showMediaPreview(event)"/>\n\
+            //                                        <br><output class="msm_file_lists" id="msm_mediafile_list-//'+_index+'"></output>');
+            //            var mediaCaptionField = $('<textarea class="msm_unit_child_content" id="msm_media_content-'+_index+'" name="msm_media_content" placeholder="Caption for the media element"/>');
+            //            
+            //            clonedCurrentElement.attr("id", "copied_msm_media-"+_index);
+            //            clonedCurrentElement.attr("class", "copied_msm_structural_element");
+            //            
+            //            clonedCurrentElement.append(mediaCloseButton);
+            //            clonedCurrentElement.append(mediaTitle);
+            //            clonedCurrentElement.append(mediaTitleField);
+            //            clonedCurrentElement.append(mediaFilePicker);
+            //            clonedCurrentElement.append(mediaCaptionField);
+            //            
+            //            clonedCurrentElement.appendTo("#msm_child_appending_area");
             break;      
             
     }
+    
+    
+    $(".msm_form_error").hide();
     if($('#msm_editor_save').attr("disabled"))
     {
         $('#msm_editor_save').removeAttr('disabled');
@@ -217,7 +233,7 @@ function processDroppedChild(e, droppedId)
                 
     $("#msm_child_appending_area").disableSelection();
     
-    $(".flowplayer").flowplayer();
+//    $(".flowplayer").flowplayer();
 }
 
 /**
@@ -378,30 +394,48 @@ function showImagePreview(evt)
  */
 function saveUnit()
 {
-    $('#msm_editor_save').ready(function() {
-        var titleinput = $('#msm_unit_title').val();
-        console.log(titleinput);
-        if((titleinput == null)||(titleinput == ''))
+    $("#msm_editor_save").ready(function() {
+        var children =  document.getElementById('msm_child_appending_area').childNodes;
+        
+        var idString = "";
+        for(var i=0; i<children.length-1; i++)
         {
-            $("<div class='dialogs' id='msm_emptyMsmTitle'> Please specify the title of this unit. </div>").appendTo('#msm_unit_title');
-            
-            $( "#msm_emptyMsmTitle" ).dialog({
+            if(children[i].tagName == "DIV")
+            {
+                idString += children[i].id + ",";
+            }           
+        }
+        if(children[children.length-1].tagName == "DIV")
+        {
+            idString += children[children.length-1].id;
+        }
+        
+                    
+        $("#msm_child_order").val(idString);
+
+        var titleinput = $("#msm_unit_title").val();
+
+        if((titleinput == null)||(titleinput == ""))
+        {
+            $("<div class='dialogs' id='msm_emptyMsmTitle'> Please specify the title of this unit. </div>").appendTo("#msm_unit_title");
+
+            $("#msm_emptyMsmTitle").dialog({
                 modal: true,
                 buttons: {
                     Ok: function() {
-                        $('#msm_unit_title').css('border-color', '#FFA500');
-                        $( this ).dialog( "close" );
+                        $("#msm_unit_title").css("border-color", "#FFA500");
+                        $(this).dialog("close");
                     }
                 }
             });   
         }
         else
         {
-            $('#msm_editor_save').remove();
-            $('<button class="msm_editor_buttons" id="msm_editor_edit" type="button" onclick="editUnit()"> Edit </button>').appendTo('#msm_editor_middle');
-            $('#msm_editor_reset').attr("disabled", "disabled");
+            $("#msm_editor_save").remove();
+            $("<button class='msm_editor_buttons' id='msm_editor_edit' type='button' onclick='editUnit()'> Edit </button>").appendTo("#msm_editor_middle");
+            $("#msm_editor_reset").attr("disabled", "disabled");
         }
-       
+
     });
 //AJAX call to php file/function that will put appropriate info into db tables   
 }
