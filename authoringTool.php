@@ -95,7 +95,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_
 //echo "<script type='text/javascript src='$CFG->wwwroot/lib/editor/tinymce/3.4.6/tiny_mce_jquery.js></script>";
 //echo "<script type='text/javascript;"
 
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 
 $selectedValue = $DB->get_record('msm', array('id' => $msm->id))->comptype;
 
@@ -244,7 +244,7 @@ $formContent .= '<div id="msm_editor_container">
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
                     <form id="msm_unit_form" name="msm_unit_form" action="editorCreation/msmUnitForm.php" method="post">
                          <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
-                         <label class="msm_form_error" for="msm_unit_title" id="msm_unit_title_error">This field is required.</label>
+                         
                          <div id="msm_editor_middle_droparea">                        
                              <div id="msm_child_appending_area">
                              </div>

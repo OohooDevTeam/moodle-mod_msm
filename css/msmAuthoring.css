@@ -284,14 +284,6 @@
     overflow: hidden;
 }
 
-label.msm_form_error 
-{ 
-    font-weight:normal;
-    color:red;
-    text-align:left;
-    width:140px;
-    padding-left:25px;
-}
 
 .msm_img_previews
 {

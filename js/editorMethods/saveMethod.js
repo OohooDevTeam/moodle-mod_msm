@@ -19,7 +19,11 @@ $(document).ready(function(){
                 idString += children[i].id + ",";
             }           
         }
-        //        
+        
+        $("textarea").each(function(){
+            this.value = tinymce.get(this.id).getContent();
+        });
+                
         //        if(children[children.length-1].tagName == "DIV")
         //        {
         //            idString += children[children.length-1].id;
@@ -33,19 +37,44 @@ $(document).ready(function(){
         
         var formData = $("#msm_unit_form").serializeArray();
         var targetURL = $("#msm_unit_form").attr("action");
-        
-        console.log(formData);
-        
+        var ids = [];
         $.ajax({
-           type: "POST",
-           url: targetURL,
-           data: formData,
-           success: function(data) {
-                alert(data);
-           },
-           error: function() {
-               alert("fail");
-           }
+            type: "POST",
+            url: targetURL,
+            data: formData,
+            success: function(data) {   
+                ids = JSON.parse(data);
+                if(ids instanceof Array)
+                {
+                    for(var i=0; i < ids.length; i++)
+                    {
+                        var numOfContent = ids[i].match(/content/);
+                        
+                        if(numOfContent)
+                        {
+                            $('#'+ids[i]).parent().css("border", "solid 4px #FFA500");
+                        }
+                        else
+                        {
+                            $('#'+ids[i]).css("border-color", "#FFA500");
+                        }
+                        
+                    }
+                    $("<div class=\"dialogs\" id=\"msm_emptyContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo("#msm_unit_title");
+
+                    $("#msm_emptyContent").dialog({
+                        modal: true,
+                        buttons: {
+                            Ok: function() {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });  
+                }
+            },
+            error: function() {
+                alert("fail");
+            }
         });
             
     });
