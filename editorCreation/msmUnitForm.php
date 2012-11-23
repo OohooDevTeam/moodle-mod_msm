@@ -7,16 +7,30 @@
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 
-$childIds = $_POST['msm_child_order'];
+$childOrder = $_POST['msm_child_order'];
 
-$eachId = explode(",", $childIds);
+$arrayOfChild = explode(",", $childOrder);
 
-//iterating through each child basically
-foreach($eachId as $id)
+$lengthOfArray = sizeOf($arrayOfChild);
+
+$msmId = $arrayOfChild[$lengthOfArray-1];
+
+for($i=0; $i < $lengthOfArray-1; $i++)
 {
-    $idInfo = explode("-", $id);
-    $indexNumber = $idInfo[1];
-    echo $indexNumber;
+    $childIdInfo = explode("-", $arrayOfChild[$i]);
+    
+    switch($childIdInfo[0])
+    {
+        case "copied_msm_def":
+            echo "def";
+            break;
+        case "copied_msm_theorem":
+            echo "theorem";
+            break;
+        default:
+            echo $childInfo[0];
+            break;
+    }
 }
 
 ?>

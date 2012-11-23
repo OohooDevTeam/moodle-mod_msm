@@ -20,18 +20,25 @@ require_once($CFG->dirroot . '/mod/msm/lib.php');
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 
-// to get the msm instance id when the save button is clicked
+//// to get the msm instance id when the save button is clicked
 //if ($m == 0)
 //{
 //    $rawString = $_POST['msm_child_order'];
 //    
-////    $lastElement = $stringArray[sizeof($stringArray)-1];
-//   
-//    if(is_int($rawString))
+//    print_object($rawString);
+//    
+//    if($rawString != '')
 //    {
-//       $m =  $rawString;
+//        $m = $rawString;
 //    }
 //    
+////    $lastElement = $stringArray[sizeof($stringArray)-1];
+//   
+////    if(is_int($rawString))
+////    {
+////       $m =  $rawString;
+////    }
+////    
 //}
 if ($m)
 {
@@ -88,7 +95,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_
 //echo "<script type='text/javascript src='$CFG->wwwroot/lib/editor/tinymce/3.4.6/tiny_mce_jquery.js></script>";
 //echo "<script type='text/javascript;"
 
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 
 $selectedValue = $DB->get_record('msm', array('id' => $msm->id))->comptype;
 
@@ -235,7 +242,7 @@ $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle" >
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
-                    <form name="msm_unit_form" action="">
+                    <form id="msm_unit_form" name="msm_unit_form" action="editorCreation/msmUnitForm.php" method="post">
                          <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
                          <label class="msm_form_error" for="msm_unit_title" id="msm_unit_title_error">This field is required.</label>
                          <div id="msm_editor_middle_droparea">                        
