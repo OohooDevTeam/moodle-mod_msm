@@ -6,25 +6,22 @@
  */
 
 /**
- * Description of EditorTheorem
+ * Description of EditorUnit
  *
  * @author User
  */
-class EditorTheorem
+class EditorUnit
 {
+
     public $id;
-   public $compid;
-    public $type;
+    public $compid;
     public $title;
-    public $content;
-    public $associateType;
-    public $tablename;
-    public $position;
     public $description;
+    public $position;
 
     public function __construct()
     {
-        $this->tablename = 'msm_theorem';
+        $this->tablename = 'msm_unit';
     }
 
 }

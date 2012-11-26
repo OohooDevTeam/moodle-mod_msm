@@ -23,11 +23,6 @@ $(document).ready(function(){
         $("textarea").each(function(){
             this.value = tinymce.get(this.id).getContent();
         });
-                
-        //        if(children[children.length-1].tagName == "DIV")
-        //        {
-        //            idString += children[children.length-1].id;
-        //        }
         
         var urlParam = window.location.search;
        
@@ -43,6 +38,10 @@ $(document).ready(function(){
             url: targetURL,
             data: formData,
             success: function(data) {   
+                
+                console.log(data);
+                // this section of the code is for detecting empty contents and it gives the user 
+                // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
                 if(ids instanceof Array)
                 {

@@ -12,12 +12,15 @@
  */
 class EditorDefinition
 {
+   public $id;
+   public $compid;
    public $type;
    public $title;
    public $content;
    public $associateType;
    public $tablename;
    public $position;
+   public $description;
    
    public function __construct()
    {
