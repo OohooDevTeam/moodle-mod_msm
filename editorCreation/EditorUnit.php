@@ -10,7 +10,7 @@
  *
  * @author User
  */
-class EditorUnit
+class EditorUnit extends EditorElement
 {
 
     public $id;
@@ -22,6 +22,43 @@ class EditorUnit
     public function __construct()
     {
         $this->tablename = 'msm_unit';
+    }
+
+    public function getFormData($idNumber, $position)
+    {
+        $this->errorArray = array();
+        if ($_POST['msm_unit_title'] != '')
+        {
+            $this->title = $_POST['msm_unit_title'];
+        }
+        else
+        {
+            $this->errorArray[] = 'msm_unit_title';
+        }
+
+        if ($_POST['msm_unit_descripton_input'] != '')
+        {
+            $this->description = $_POST['msm_unit_descripton_input'];
+        }
+        return $this;
+    }
+
+    public function insertData($parentid, $siblingid, $msmid)
+    {
+        global $DB;
+        
+        $data = new stdClass();
+        $data->title = $this->title;
+        $data->description = $this->description;
+        $unit->id = $DB->insert_record($this->tablename, $data);
+        
+        $compData = new stdClass();
+        $compData->msm_id = $msmid;
+        $compData->unit_id = $this->id;
+        $compData->parent_id = $parentid;
+        $compData->prev_sibling_id = $siblingid;
+        $compData->table_id = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename))->id;
+        $unit->compid = $DB->insert_record('msm_compositor', $compData);
     }
 
 }

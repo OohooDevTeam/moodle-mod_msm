@@ -35,6 +35,7 @@ function processDroppedChild(e, droppedId)
     var clonedCurrentElement = $("<div></div>");
     
     _index++;
+    var currentContentid = 0;
     
     switch(droppedId)
     {
@@ -76,6 +77,8 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(defDescriptionField);
             clonedCurrentElement.append(defAssoMenu);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
+            
+            currentContentid = 'msm_def_content_input-'+_index;
             break;
         
         case "msm_theorem":
@@ -116,6 +119,8 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(theoremDescriptionField);
             clonedCurrentElement.append(theoremAssoMenu);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
+            
+            currentContentid = 'msm_theorem_content_input-'+_index;
             break;
             
         case "msm_pic":
@@ -141,6 +146,8 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(picDescriptionLabel);
             clonedCurrentElement.append(picDescriptionField);     
             clonedCurrentElement.appendTo("#msm_child_appending_area");
+            
+            currentContentid = 'msm_pic_content-'+_index;
             break;
             
         case "msm_intro":
@@ -155,6 +162,8 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(introTitle);           
             clonedCurrentElement.append(introContentField);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
+            
+            currentContentid = 'msm_intro_content_input-'+_index;
             break;
             
         case "msm_body":
@@ -168,6 +177,8 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(bodyTitle);
             clonedCurrentElement.append(bodyContentField);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
+            
+            currentContentid = 'msm_body_content_input-'+_index;
             break;
             
         case "msm_media":
@@ -198,8 +209,10 @@ function processDroppedChild(e, droppedId)
         $('#msm_editor_save').removeAttr('disabled');
     }
     
+    // has to be exact mode b/c if it is initiated twice, the editor function gives it a random id and breaks the save method
     tinyMCE.init({
-        mode:"textareas",
+        mode:"exact",
+        elements: currentContentid,
         plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "96%",
         height: "70%",
@@ -216,6 +229,7 @@ function processDroppedChild(e, droppedId)
         skin_variant : "silver"
     });
     
+    
     $("#msm_child_appending_area").sortable({
         appendTo: "#msm_child_appending_area",
         connectWith: "#msm_child_appending_area",
@@ -225,8 +239,21 @@ function processDroppedChild(e, droppedId)
         start: function(event, ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+        },
+        change: function(event, ui)
+        {
+            var editorLength = tinymce.editors.length;
+            for(var i=0; i < editorLength; i++)
+            {
+                var idEditor = tinymce.editors[i].editorId;
+                tinyMCE.execCommand("mceRemoveControl", true, idEditor);
+                tinyMCE.execCommand("mceAddControl", true, idEditor);
+            }
+            
         }
     });
+    
+    console.log(tinymce);
                 
     $("#msm_child_appending_area").disableSelection();
     

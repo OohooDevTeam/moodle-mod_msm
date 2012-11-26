@@ -10,9 +10,11 @@
  *
  * @author User
  */
-class EditorElement
+abstract class EditorElement
 {
-    //put your code here
+    abstract function getFormData($idNumber, $position);
+    
+    abstract function insertData($parentid, $siblingid, $msmid);
 }
 
 ?>

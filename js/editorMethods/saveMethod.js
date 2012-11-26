@@ -37,12 +37,12 @@ $(document).ready(function(){
             type: "POST",
             url: targetURL,
             data: formData,
-            success: function(data) {   
-                
-                console.log(data);
+            success: function(data) { 
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
+//                console.log(data);
                 ids = JSON.parse(data);
+                
                 if(ids instanceof Array)
                 {
                     for(var i=0; i < ids.length; i++)
@@ -70,6 +70,12 @@ $(document).ready(function(){
                         }
                     });  
                 }
+                else
+                    {
+                        // later need to add code to switch save button to edit button, add different code for reset so that when it empties the units,
+                        // it also clears out the db data, switch off tinymce, disable any modification function(resize..etc)
+                        alert("success!");
+                    }
             },
             error: function() {
                 alert("fail");
