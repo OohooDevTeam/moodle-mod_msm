@@ -19,7 +19,6 @@ require_once($CFG->dirroot . '/mod/msm/lib.php');
 
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
-
 //// to get the msm instance id when the save button is clicked
 //if ($m == 0)
 //{
@@ -243,7 +242,11 @@ $formContent .= '<div id="msm_editor_container">
                 <div id="msm_editor_middle" >
                     <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
                     <form id="msm_unit_form" name="msm_unit_form" action="editorCreation/msmUnitForm.php" method="post">
+                         <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">Unit title: </label>
                          <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
+                         
+                         <label class="msm_unit_description_labels" id="msm_unit_description_label" for="msm_unit_descripton_input">Description: </label>
+                         <input class="msm_unit_description_inputs" id="msm_unit_descripton_input" name="msm_unit_descripton_input" placeholder="Insert description to search this element in future."/>
                          
                          <div id="msm_editor_middle_droparea">                        
                              <div id="msm_child_appending_area">
@@ -274,6 +277,7 @@ $formContent .= '<script type="text/javascript">
                     theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
                     theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
                     theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+//                    theme_advanced_toolbar_location : "external",
                     theme_advanced_toolbar_location : "top",
                     theme_advanced_toolbar_align : "left",
                     theme_advanced_statusbar_location : "bottom",

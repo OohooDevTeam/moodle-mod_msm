@@ -11,12 +11,17 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
  **************************************************************************
  **************************************************************************/
+.msm_unit_title_labels
+{
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
 
 .msm_title_input
 {
-    margin: 2% 2%;
-    width: 96%;
-    height: 5%;
+    width: 89%;
+    margin-bottom: 2%;
+    margin-left: 1.5%;
 }
 
 #msm_mod_name
@@ -256,14 +261,19 @@
    float: right;
    width: auto;
 }*/
+.msm_unit_pic_title_labels
+{
+    float:left;
+}
+
 .msm_unit_pic_title
 {
     /*    margin-left: auto;
         margin-right: auto;*/
-    float:left;
+
     margin-bottom: 1%;
     min-width: 158px; 
-    width: 96%;
+    width: 83%;
 }
 
 .msm_pic_filepicker
@@ -291,6 +301,33 @@
     border: 2px solid orange;
     margin: 1% auto;
     /*padding: 2%;*/
+}
+
+.msm_unit_description_labels
+{
+    margin-bottom: 2%;
+    margin-left: 2%;    
+}
+
+.msm_unit_description_inputs
+{
+    width: 89%;
+    margin-bottom: 2%;
+}
+
+.msm_child_description_labels
+{
+    float:left;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 0 !important;
+}
+
+.msm_child_description_inputs
+{
+    width: 84%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .msm_thumbnails
