@@ -68,6 +68,12 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
     }
 }
 
+foreach($unit->errorArray as $uniterror)
+{
+    $hasError = true;
+    $errorArray[] = $uniterror;
+}
+
 foreach ($unitcontent as $unitchild)
 {
     if (!empty($unitchild->errorArray))
