@@ -327,7 +327,7 @@
 
 .msm_child_description_inputs
 {
-    width: 84%;
+    width: 83%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -426,3 +426,17 @@
     margin-top: 2%;
     margin-bottom: 2%;
 }*/
+
+.msm_editor_content
+{
+    margin-top: 2%;
+    width: 95%;
+    border: 2px solid black;
+    padding: 2%;
+    
+}
+
+.msm_editor_content p
+{
+    text-align: left;
+}

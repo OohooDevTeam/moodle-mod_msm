@@ -70,6 +70,27 @@ class EditorTheorem extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record("msm_compositor", $compData);
+
+        $sibling_id = 0;
+        if (!empty($this->content))
+        {
+            $statementData = new stdClass();
+            $statementData->statement_content = $this->content;
+
+            $statementTheorem = new stdClass();
+            $statementTheorem->id = $DB->insert_record('msm_statement_theorem', $statementData);
+
+            $statementCompData = new stdClass();
+            $statementCompData->msm_id = $msmid;
+            $statementCompData->unit_id = $statementTheorem->id;
+            $statementCompData->table_id = $DB->get_record("msm_table_collection", array("tablename" => 'msm_statement_theorem'))->id;
+            $statementCompData->parent_id = $this->compid;
+            $statementCompData->prev_sibling_id = $sibling_id;
+
+            $statementTheorem->compid = $DB->insert_record("msm_compositor", $statementCompData);
+
+            $sibling_id = $statementTheorem->compid;
+        }
     }
 
 }
