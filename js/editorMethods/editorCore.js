@@ -122,7 +122,7 @@ function processDroppedChild(e, droppedId)
             currentContentid = 'msm_theorem_content_input-'+_index;
             break;
             
-            case "msm_comment":
+        case "msm_comment":
             var commentCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
             var commentSelectMenu = $('<select name="msm_comment_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_comment_type_dropdown-'+_index+'">\n\
                                 <option value="Comment">Comment</option>\n\
@@ -165,10 +165,12 @@ function processDroppedChild(e, droppedId)
             var introCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var introTitle = $("<span class='msm_element_title'><b> INTRODUCTION </b></span><br><br>");        
             
-           var introTitleLabel = $('<label class="msm_unit_intro_title_labels" id="msm_intro_title_label-'+_index+'" for="msm_intro_title_input-'+_index+'">Title:</label>');
+            var introTitleLabel = $('<label class="msm_unit_intro_title_labels" id="msm_intro_title_label-'+_index+'" for="msm_intro_title_input-'+_index+'">Title:</label>');
             var introTitleField = $('<input class="msm_unit_intro_title" id="msm_intro_title_input-'+_index+'" name="msm_intro_title_input-'+_index+'" placeholder="Optional Title for the introduction"/>');     
 
             var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
+            
+            var introChildButton = $('<button class="msm_intro_child_buttons" id="msm_intro_child_button-'+_index+'" onclick="addIntroContent('+_index+')">(+) Add additional content</button>');
             
             clonedCurrentElement.attr("id", "copied_msm_intro-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -178,6 +180,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(introTitleLabel);
             clonedCurrentElement.append(introTitleField);
             clonedCurrentElement.append(introContentField);
+            clonedCurrentElement.append(introChildButton);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_intro_content_input-'+_index;
@@ -194,7 +197,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.append(bodyCloseButton);
             clonedCurrentElement.append(bodyTitle);
-             clonedCurrentElement.append(bodyTitleLabel);
+            clonedCurrentElement.append(bodyTitleLabel);
             clonedCurrentElement.append(bodyTitleField);
             clonedCurrentElement.append(bodyContentField);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
@@ -377,5 +380,49 @@ function deleteElement(e)
             }
         }
     });
+}
+
+/*
+ * This method is triggered by the add content button in introduction.  It adds a div identical to content in
+ * structural element for user to be able to extend the intro into sections...etc with it's own subtitles to section them off. 
+ * All contents added in here belongs to block in intro section.
+ */
+function addIntroContent(idNumber)
+{
+    var childNumber = 0;
+    
+    $(".msm_intro_child").each(function() {
+        childNumber++;
+    })
+    
+    var newId = idNumber + childNumber;
+    
+    var introChildDiv = document.createElement("div");
+    introChildDiv.id = "msm_intro_child_div-"+newId;
+    introChildDiv.className = "msm_intro_child";
+    
+    var introChildTitleLabel = document.createElement("label");
+    introChildTitleLabel.id = "msm_intro_child_title_label-"+newId;
+    introChildTitleLabel.className = "msm_intro_child_title_labels";
+    introChildTitleLabel.setAttribute("for", "msm_intro_child_title-"+newId);
+    
+    var introChildTitle = document.createElement("input");
+    introChildTitle.id = "msm_intro_child_title-"+newId;
+    introChildTitle.className = "msm_intro_child_titles";
+    introChildTitle.name = "msm_intro_child_title-"+newId;
+    introChildTitle.setAttribute("placeholder", "Optional Title for the Content");
+    
+    var introChildContent = document.createElement("textarea");
+    introChildContent.id = "msm_intro_child_content-"+newId;
+    introChildContent.className = "msm_intro_child_contents";
+    introChildContent.name = "msm_intro_child_content-"+newId;
+    
+    
+    introChildDiv.append(introChildTitleLabel);
+    introChildDiv.append(introChildTitle);
+    introChildDiv.append(introChildContent);
+    tinyMCE.execCommand("mceAddControl", false, introChildContent.id); 
+    
+    introChildDiv.appendTo("copied_msm_intro-"+idNumber);   
 }
 

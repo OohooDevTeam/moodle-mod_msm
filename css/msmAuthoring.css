@@ -433,10 +433,16 @@
     width: 91.5%;
     border: 2px solid black;
     padding: 2%;
-    
 }
 
 .msm_editor_content p
 {
     text-align: left;
+}
+
+.msm_intro_child_buttons
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
 }
