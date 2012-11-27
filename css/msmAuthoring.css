@@ -106,7 +106,7 @@
     position: relative;
     float: left;
 }
-#msm_editor_reset
+#msm_editor_reset, #msm_editor_new
 {
     left: 54%;
 }
@@ -430,7 +430,7 @@
 .msm_editor_content
 {
     margin-top: 2%;
-    width: 95%;
+    width: 91.5%;
     border: 2px solid black;
     padding: 2%;
     
