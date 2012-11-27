@@ -55,8 +55,7 @@
     <TABLE NAME="msm_intro" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_unit" NEXT="msm_def">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
-        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
-        <FIELD NAME="caption" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
