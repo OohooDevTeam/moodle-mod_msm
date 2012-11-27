@@ -37,7 +37,7 @@ $(document).ready(function(){
             type: "POST",
             url: targetURL,
             data: formData,
-            success: function(data) { 
+            success: function(data) {
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
 //                console.log(data);

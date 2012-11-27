@@ -9,6 +9,7 @@ require_once($CFG->dirroot . '/mod/msm/lib.php');
 require_once('EditorElement.php');
 require_once('EditorDefinition.php');
 require_once('EditorTheorem.php');
+require_once('EditorComment.php');
 require_once('EditorImage.php');
 require_once('EditorUnit.php');
 require_once('../XMLImporter/TableCollection.php');
@@ -52,15 +53,18 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             $theorem->getFormData($childIdInfo[1], $i);
             $unitcontent[] = $theorem;
             break;
+        
+        case "copied_msm_comment":
+            $comment = new EditorComment();
+            $comment->getFormData($childIdInfo[1], $i);
+            $unitcontent[] = $comment;
+            break;
 
         case "copied_msm_intro":
             echo "intro";
             break;
         case "copied_msm_content":
             echo "content";
-            break;
-        case "copied_msm_pic":
-            echo "pic";
             break;
         default:
             echo $childIdInfo[0];

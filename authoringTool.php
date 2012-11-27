@@ -222,6 +222,10 @@ $formContent .= '<div id="msm_editor_container">
                     Drag to add Theorem
                 </div>
                 <br />
+                <div class="msm_structural_element" id="msm_comment">
+                    Drag to add Comment
+                </div>
+                <br />
                 <div class="msm_structural_element" id="msm_body">
                     Drag to add content
                 </div>
@@ -230,14 +234,14 @@ $formContent .= '<div id="msm_editor_container">
                     Drag to add Intro
                 </div>
                 <br />
-                <div class="msm_structural_element" id="msm_pic">
+                <!--div class="msm_structural_element" id="msm_pic">
                     Drag to add Images
                 </div>
                 <br />
                 <div class="msm_structural_element" id="msm_media">
                     Drag to add Other Media types
                 </div>
-                <br />
+                <br /-->
             </div>
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle" >
@@ -319,17 +323,7 @@ $formContent .= '<script type="text/javascript">
                     orientation: "vertical",
                     limit: 100,
                     position: "80%"
-                });
-                
-                // for disabling the resize when focus is out of the picture 
-               $("#msm_editor_container").click(function(e){
-                    var matches = e.target.className.match(/msm_thumbnails/);
-                    if(!matches)
-                    {
-                        $(".msm_thumbnails").resizable("destroy");
-                    }
-               });
-               // client side action for the save button before PHP script is ran to insert data in to tables
+                });              
                 
             })
         </script>';

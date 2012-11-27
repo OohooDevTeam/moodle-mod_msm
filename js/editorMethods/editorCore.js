@@ -23,8 +23,7 @@
 var _index = 0;
 
 // variable that gives unique id number to each image of the editor
-var _imageIndex = 0;
-var _mediaIndex = 0;
+
 
 /**
  * This function is activated when user drags one of the structural elememts on the very left side of the panel to middle panel.
@@ -52,7 +51,7 @@ function processDroppedChild(e, droppedId)
             var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
             var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
-            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'" placeholder="Need to add moodle form here?"/>');
+            var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'"/>');
             var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_descripton_input-"+_index+"'>Description: </label>");
             var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_descripton_input-"+_index+"' name='msm_def_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
             var defAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
@@ -93,7 +92,7 @@ function processDroppedChild(e, droppedId)
                 
             var theoremTitle = $("<span class='msm_element_title'><b> THEOREM </b></span>");
             var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title_input-'+_index+'" placeholder=" Title of Theorem"/>');
-            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
+            var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content_input-'+_index+'"/>');
             var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_descripton_input-"+_index+"'>Description: </label>");
             var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_descripton_input-"+_index+"' name='msm_theorem_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
             var theoremAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
@@ -123,31 +122,43 @@ function processDroppedChild(e, droppedId)
             currentContentid = 'msm_theorem_content_input-'+_index;
             break;
             
-        case "msm_pic":
-            var picCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-            var picTitle = $("<span class='msm_element_title'><b> IMAGE </b></span><br><br>");
-            var picTitleLabel = $('<label class="msm_unit_pic_title_labels" id="msm_pic_title_label-'+_index+'" for="msm_pic_title_input-'+_index+'">Title of Image:</label>');
-            var picTitleField = $('<input class="msm_unit_pic_title" id="msm_pic_title_input-'+_index+'" name="msm_pic_title_input-'+_index+'" placeholder="Optional Title for the Image"/>');            
-            var picFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_pic_filepicker-'+_index+'" name="msm_pic_filepicker-'+_index+'" onchange="showImagePreview(event)"/>\n\
-                                        <br><output class="msm_file_lists" id="msm_file_list-'+_index+'" name="msm_file_list-'+_index+'"></output>');
-            var picDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_pic_description_label-"+_index+"' for='msm_pic_descripton_input-"+_index+"'>Description: </label>");
-            var picDescriptionField = $("<input class='msm_child_description_inputs' id='msm_pic_descripton_input-"+_index+"' name='msm_pic_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-            var picCaptionField = $('<textarea class="msm_unit_child_content" id="msm_pic_content-'+_index+'" name="msm_pic_content-'+_index+'" placeholder="Caption for the image"/>');
+            case "msm_comment":
+            var commentCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
+            var commentSelectMenu = $('<select name="msm_comment_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_comment_type_dropdown-'+_index+'">\n\
+                                <option value="Comment">Comment</option>\n\
+                                <option value="Remark">Remark</option>\n\
+                                <option value="Information">Information</option>\n\
+                            </select>');
+            var commentTitle = $("<span class='msm_element_title'><b> COMMENT </b></span>");
+            var commentTitleField = $('<input class="msm_unit_child_title" id="msm_comment_title_input-'+_index+'" name="msm_comment_title_input-'+_index+'" placeholder=" Title of Comment"/>');
+          
+            var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_comment_content_input-'+_index+'" name="msm_comment_content_input-'+_index+'"/>');
+            var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_descripton_input-"+_index+"'>Description: </label>");
+            var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_descripton_input-"+_index+"' name='msm_comment_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+            var commentAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
+                            <select name="msm_comment_associate_dropdown-'+_index+'" class="msm_associated_dropdown" id="msm_def_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
+                                <option value="None">None</option>\n\
+                                <option value="Info">Quick Info</option>\n\
+                                <option value="Comment">Comment</option>\n\
+                                <option value="Explanation">Explanation</option>\n\
+                                <option value="Example">Example</option>\n\
+                                <option value="Illustration">Illustration</option>\n\
+                            </select></div>');        
             
-            clonedCurrentElement.attr("id", "copied_msm_pic-"+_index);
+            clonedCurrentElement.attr("id", "copied_msm_comment-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
-            clonedCurrentElement.append(picCloseButton);
-            clonedCurrentElement.append(picTitle);
-            clonedCurrentElement.append(picTitleLabel);
-            clonedCurrentElement.append(picTitleField);
-            clonedCurrentElement.append(picFilePicker);                    
-            clonedCurrentElement.append(picCaptionField);   
-            clonedCurrentElement.append(picDescriptionLabel);
-            clonedCurrentElement.append(picDescriptionField);     
-            clonedCurrentElement.appendTo("#msm_child_appending_area");
+            clonedCurrentElement.append(commentCloseButton);
+            clonedCurrentElement.append(commentSelectMenu);
+            clonedCurrentElement.append(commentTitle);
+            clonedCurrentElement.append(commentTitleField);
+            clonedCurrentElement.append(commentContentField);
+            clonedCurrentElement.append(commentDescriptionLabel);
+            clonedCurrentElement.append(commentDescriptionField);
+            clonedCurrentElement.append(commentAssoMenu);
+            clonedCurrentElement.appendTo('#msm_child_appending_area');
             
-            currentContentid = 'msm_pic_content-'+_index;
+            currentContentid = 'msm_comment_content_input-'+_index;
             break;
             
         case "msm_intro":
@@ -189,27 +200,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_body_content_input-'+_index;
-            break;
-            
-        case "msm_media":
-            //            var mediaCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-            //            var mediaTitle = $("<span class='msm_element_title'><b> MEDIA </b></span><br><br>");
-            //            var mediaTitleField = $('<input class="msm_unit_pic_title" id="msm_media_title_input-'+_index+'" name="msm_media_title" placeholder="Optional Title for the media element"/>');
-            //            var mediaFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_media_filepicker-'+_index+'" name="msm_media_files[]" multiple onchange="showMediaPreview(event)"/>\n\
-            //                                        <br><output class="msm_file_lists" id="msm_mediafile_list-//'+_index+'"></output>');
-            //            var mediaCaptionField = $('<textarea class="msm_unit_child_content" id="msm_media_content-'+_index+'" name="msm_media_content" placeholder="Caption for the media element"/>');
-            //            
-            //            clonedCurrentElement.attr("id", "copied_msm_media-"+_index);
-            //            clonedCurrentElement.attr("class", "copied_msm_structural_element");
-            //            
-            //            clonedCurrentElement.append(mediaCloseButton);
-            //            clonedCurrentElement.append(mediaTitle);
-            //            clonedCurrentElement.append(mediaTitleField);
-            //            clonedCurrentElement.append(mediaFilePicker);
-            //            clonedCurrentElement.append(mediaCaptionField);
-            //            
-            //            clonedCurrentElement.appendTo("#msm_child_appending_area");
-            break;      
+            break;       
             
     }
     
@@ -265,160 +256,8 @@ function processDroppedChild(e, droppedId)
     });    
                 
     $("#msm_child_appending_area").disableSelection();
-    
-//    $(".flowplayer").flowplayer();
 }
 
-/**
- *  This function is responsible for displaying the preview of the image chosen by the user
- *  in the editor.
- *
- */
-function showImagePreview(evt)
-{
-    var filepickerId = evt.target.id.split("-")
-    var files = evt.target.files; // FileList object
-    
-    _imageIndex++;
-    
-    var outputElement = document.getElementById('msm_file_list-'+filepickerId[1]);
-    
-    // remove image inserted before --> according to XML schema, only one image allowed
-    if(outputElement.hasChildNodes())
-    {
-        $('#'+outputElement.firstChild.id).empty().remove();
-    }
-    
-    // Only process image files
-    if(files.length != 0) // condition to deal with canceled transaction in browse window
-    {
-        
-        if (files[0].type.match('image.*')) {
-            var reader = new FileReader();
-            
-            // Closure to capture the file information.
-            reader.onload = (function(theFile) {
-                return function(e) {
-                    // Render thumbnail.
-                    var imageDiv = document.createElement('div');
-                    imageDiv.className = "msm_img_previews";
-                    imageDiv.id = "msm_img_preview-"+filepickerId[1]+"-"+_imageIndex;
-                
-                    var image = document.createElement("img");
-                    image.id = "msm_img_thumbnail-"+filepickerId[1]+"-"+_imageIndex;
-                    image.className = "msm_thumbnails";
-                    image.src = e.target.result;
-                    image.title = escape(theFile.name);  
-                    image.onclick = function(){
-                        $(this).resizable
-                        ({
-                            ghost: true,
-                            create: function(event, ui)
-                            {
-                                var maxw = $('#msm_img_preview-'+filepickerId[1]+'-'+_imageIndex).width();
-                                $(this).resizable("option", "maxWidth", maxw);
-                            }
-                        });                        
-                    };
-
-                    imageDiv.appendChild(image);
-                    document.getElementById('msm_file_list-'+filepickerId[1]).insertBefore(imageDiv, null);
-                    
-                    //resizing the image so it fits into the div                    
-                    var imageWidth = document.getElementById('msm_img_thumbnail-'+filepickerId[1]+'-'+_imageIndex).width;
-                    var divWidth = imageDiv.offsetWidth;
-                    
-                    if(imageWidth >= divWidth)
-                    {
-                        image.width = divWidth;
-                    }
-                };
-            })(files[0]);
-
-            // Read in the image file as a data URL.
-            reader.readAsDataURL(files[0]);
-        }
-        else
-        {
-            // alert dialog to notify the user to select only image file
-            $("<div class='dialogs' id='msm_wrongFileType'> Please select an image file. </div>").appendTo('#msm_pic_filepicker-'+_index);
-            
-            $( "#msm_wrongFileType" ).dialog({
-                modal: true,
-                buttons: {
-                    Ok: function(event, ui) {
-                        //removing the wrong file from event object
-                        document.getElementById('msm_pic_filepicker-'+_index).value = '';
-                        $( this ).dialog( "close" );
-                    }
-                }
-            });
-        }
-    }
-    
-    // reinitialize tinyMCE 
-    tinyMCE.execCommand("mceAddControl", false, tinymce.Editor.id);    
-}
-
-/**
- * The method to show previews of video/audio...etc files to be added to the composition
- *
- */
-//function showMediaPreview(evt)
-//{
-//    var filepickerId = evt.target.id.split("-")
-//    var files = evt.target.files; // FileList object
-//    
-//    console.log(evt);
-//    
-//    _mediaIndex++;
-//    
-//    //    var outputElement = document.getElementById('msm_file_list-'+filepickerId[1]);
-//    
-//    // remove image inserted before --> according to XML schema, only one image allowed
-//    //    if(outputElement.hasChildNodes())
-//    //    {
-//    //        $('#'+outputElement.firstChild.id).empty().remove();
-//    //    }
-//    
-//    // Only process image files
-//    if(files.length != 0) // condition to deal with canceled transaction in browse window
-//    {
-//        if (files[0].type.match('.mp4')) {
-//            
-//            var videoreader = new FileReader();
-//            
-//            videoreader.onload = (function(theMedia)
-//            {
-//                return function(e){
-//                    var videoDiv = document.createElement("div");
-//                    videoDiv.className = "flowplayer";
-//                    videoDiv.id = "msm_media_preview_container-" + filepickerId[1] + "-" + _mediaIndex;
-//                    
-//                    var videoElement = document.createElement("video");
-//                    videoElement.src = e.target.result;
-//                    videoElement.id = "msm_video_clip-" + filepickerId[1] + "-" + _mediaIndex;
-//                    videoElement.className = "msm_video_preview";
-//                    videoElement.title = escape(theMedia.name);  
-//                    
-//                    videoDiv.appendChild(videoElement);
-//                    document.getElementById('msm_mediafile_list-'+filepickerId[1]).insertBefore(videoDiv, null);
-//                };
-//            })(files[0]);
-//            
-//            videoreader.readAsDataURL(files[0]);
-//        }
-//        else if(files[0].type.match('audio.*'))
-//        {
-//            alert("audio!");
-//        }
-//        else
-//        {
-//            alert("wrong type of media");
-//        }
-//    }
-//    
-//}
 
 /**
  * to save contents created in middle editor panel

@@ -30,8 +30,9 @@ class EditorIntro extends EditorElement
 
     public function insertData($parentid, $siblingid, $msmid)
     {
+        global $DB;
+        
         $data = new stdClass();
-        $data->
         
         $compData = new stdClass();
     }

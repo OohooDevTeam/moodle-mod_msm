@@ -303,3 +303,216 @@ $("#msm_editor_save").click(function() {
     }
 
 });
+
+$(document).ready(function() {
+     // for disabling the resize when focus is out of the picture 
+               $("#msm_editor_container").click(function(e){
+                    var matches = e.target.className.match(/msm_thumbnails/);
+                    if(!matches)
+                    {
+                        $(".msm_thumbnails").resizable("destroy");
+                    }
+               });
+});
+
+// // case for processChild
+// // need these variables
+// var _imageIndex = 0;
+//var _mediaIndex = 0;
+//case "msm_pic":
+//            var picCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+//            var picTitle = $("<span class='msm_element_title'><b> IMAGE </b></span><br><br>");
+//            var picTitleLabel = $('<label class="msm_unit_pic_title_labels" id="msm_pic_title_label-'+_index+'" for="msm_pic_title_input-'+_index+'">Title of Image:</label>');
+//            var picTitleField = $('<input class="msm_unit_pic_title" id="msm_pic_title_input-'+_index+'" name="msm_pic_title_input-'+_index+'" placeholder="Optional Title for the Image"/>');            
+//            var picFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_pic_filepicker-'+_index+'" name="msm_pic_filepicker-'+_index+'" onchange="showImagePreview(event)"/>\n\
+//                                        <br><output class="msm_file_lists" id="msm_file_list-//'+_index+'" name="msm_file_list-'+_index+'"></output>');
+//            var picDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_pic_description_label-"+_index+"' for='msm_pic_descripton_input-"+_index+"'>Description: </label>");
+//            var picDescriptionField = $("<input class='msm_child_description_inputs' id='msm_pic_descripton_input-"+_index+"' name='msm_pic_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+//            var picCaptionField = $('<textarea class="msm_unit_child_content" id="msm_pic_content-'+_index+'" name="msm_pic_content-'+_index+'" placeholder="Caption for the image"/>');
+//            
+//            clonedCurrentElement.attr("id", "copied_msm_pic-"+_index);
+//            clonedCurrentElement.attr("class", "copied_msm_structural_element");
+//            
+//            clonedCurrentElement.append(picCloseButton);
+//            clonedCurrentElement.append(picTitle);
+//            clonedCurrentElement.append(picTitleLabel);
+//            clonedCurrentElement.append(picTitleField);
+//            clonedCurrentElement.append(picFilePicker);                    
+//            clonedCurrentElement.append(picCaptionField);   
+//            clonedCurrentElement.append(picDescriptionLabel);
+//            clonedCurrentElement.append(picDescriptionField);     
+//            clonedCurrentElement.appendTo("#msm_child_appending_area");
+//            
+//            currentContentid = 'msm_pic_content-'+_index;
+//            break;
+
+//case "msm_media":
+            //            var mediaCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+            //            var mediaTitle = $("<span class='msm_element_title'><b> MEDIA </b></span><br><br>");
+            //            var mediaTitleField = $('<input class="msm_unit_pic_title" id="msm_media_title_input-'+_index+'" name="msm_media_title" placeholder="Optional Title for the media element"/>');
+            //            var mediaFilePicker = $('<br> <input type="file" class="msm_pic_filepicker" id="msm_media_filepicker-'+_index+'" name="msm_media_files[]" multiple onchange="showMediaPreview(event)"/>\n\
+            //                                        <br><output class="msm_file_lists" id="msm_mediafile_list-//'+_index+'"></output>');
+            //            var mediaCaptionField = $('<textarea class="msm_unit_child_content" id="msm_media_content-'+_index+'" name="msm_media_content" placeholder="Caption for the media element"/>');
+            //            
+            //            clonedCurrentElement.attr("id", "copied_msm_media-"+_index);
+            //            clonedCurrentElement.attr("class", "copied_msm_structural_element");
+            //            
+            //            clonedCurrentElement.append(mediaCloseButton);
+            //            clonedCurrentElement.append(mediaTitle);
+            //            clonedCurrentElement.append(mediaTitleField);
+            //            clonedCurrentElement.append(mediaFilePicker);
+            //            clonedCurrentElement.append(mediaCaptionField);
+            //            
+            //            clonedCurrentElement.appendTo("#msm_child_appending_area");
+//            break;   
+
+/**
+ *  This function is responsible for displaying the preview of the image chosen by the user
+ *  in the editor.
+ *
+ */
+function showImagePreview(evt)
+{
+    var filepickerId = evt.target.id.split("-")
+    var files = evt.target.files; // FileList object
+    
+    _imageIndex++;
+    
+    var outputElement = document.getElementById('msm_file_list-'+filepickerId[1]);
+    
+    // remove image inserted before --> according to XML schema, only one image allowed
+    if(outputElement.hasChildNodes())
+    {
+        $('#'+outputElement.firstChild.id).empty().remove();
+    }
+    
+    // Only process image files
+    if(files.length != 0) // condition to deal with canceled transaction in browse window
+    {
+        
+        if (files[0].type.match('image.*')) {
+            var reader = new FileReader();
+            
+            // Closure to capture the file information.
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    // Render thumbnail.
+                    var imageDiv = document.createElement('div');
+                    imageDiv.className = "msm_img_previews";
+                    imageDiv.id = "msm_img_preview-"+filepickerId[1]+"-"+_imageIndex;
+                
+                    var image = document.createElement("img");
+                    image.id = "msm_img_thumbnail-"+filepickerId[1]+"-"+_imageIndex;
+                    image.className = "msm_thumbnails";
+                    image.src = e.target.result;
+                    image.title = escape(theFile.name);  
+                    image.onclick = function(){
+                        $(this).resizable
+                        ({
+                            ghost: true,
+                            create: function(event, ui)
+                            {
+                                var maxw = $('#msm_img_preview-'+filepickerId[1]+'-'+_imageIndex).width();
+                                $(this).resizable("option", "maxWidth", maxw);
+                            }
+                        });                        
+                    };
+
+                    imageDiv.appendChild(image);
+                    document.getElementById('msm_file_list-'+filepickerId[1]).insertBefore(imageDiv, null);
+                    
+                    //resizing the image so it fits into the div                    
+                    var imageWidth = document.getElementById('msm_img_thumbnail-'+filepickerId[1]+'-'+_imageIndex).width;
+                    var divWidth = imageDiv.offsetWidth;
+                    
+                    if(imageWidth >= divWidth)
+                    {
+                        image.width = divWidth;
+                    }
+                };
+            })(files[0]);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(files[0]);
+        }
+        else
+        {
+            // alert dialog to notify the user to select only image file
+            $("<div class='dialogs' id='msm_wrongFileType'> Please select an image file. </div>").appendTo('#msm_pic_filepicker-'+_index);
+            
+            $( "#msm_wrongFileType" ).dialog({
+                modal: true,
+                buttons: {
+                    Ok: function(event, ui) {
+                        //removing the wrong file from event object
+                        document.getElementById('msm_pic_filepicker-'+_index).value = '';
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        }
+    }
+    
+    // reinitialize tinyMCE 
+    tinyMCE.execCommand("mceAddControl", false, tinymce.Editor.id);    
+}
+
+/**
+ * The method to show previews of video/audio...etc files to be added to the composition
+ *
+ */
+//function showMediaPreview(evt)
+//{
+//    var filepickerId = evt.target.id.split("-")
+//    var files = evt.target.files; // FileList object
+//    
+//    console.log(evt);
+//    
+//    _mediaIndex++;
+//    
+//    //    var outputElement = document.getElementById('msm_file_list-'+filepickerId[1]);
+//    
+//    // remove image inserted before --> according to XML schema, only one image allowed
+//    //    if(outputElement.hasChildNodes())
+//    //    {
+//    //        $('#'+outputElement.firstChild.id).empty().remove();
+//    //    }
+//    
+//    // Only process image files
+//    if(files.length != 0) // condition to deal with canceled transaction in browse window
+//    {
+//        if (files[0].type.match('.mp4')) {
+//            
+//            var videoreader = new FileReader();
+//            
+//            videoreader.onload = (function(theMedia)
+//            {
+//                return function(e){
+//                    var videoDiv = document.createElement("div");
+//                    videoDiv.className = "flowplayer";
+//                    videoDiv.id = "msm_media_preview_container-" + filepickerId[1] + "-" + _mediaIndex;
+//                    
+//                    var videoElement = document.createElement("video");
+//                    videoElement.src = e.target.result;
+//                    videoElement.id = "msm_video_clip-" + filepickerId[1] + "-" + _mediaIndex;
+//                    videoElement.className = "msm_video_preview";
+//                    videoElement.title = escape(theMedia.name);  
+//                    
+//                    videoDiv.appendChild(videoElement);
+//                    document.getElementById('msm_mediafile_list-'+filepickerId[1]).insertBefore(videoDiv, null);
+//                };
+//            })(files[0]);
+//            
+//            videoreader.readAsDataURL(files[0]);
+//        }
+//        else if(files[0].type.match('audio.*'))
+//        {
+//            alert("audio!");
+//        }
+//        else
+//        {
+//            alert("wrong type of media");
+//        }
+//    }
+//    
+//}
