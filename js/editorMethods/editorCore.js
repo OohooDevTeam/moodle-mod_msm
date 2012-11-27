@@ -239,21 +239,20 @@ function processDroppedChild(e, droppedId)
         start: function(event, ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            // this code along with the one in stop is needed for enabling sortable on the div containing
+            // the tinymce editor so the iframe part of the editor doesn't become disabled
+            $(this).find('.msm_unit_child_content').each(function() {
+               tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+            });
         },
-        change: function(event, ui)
+        stop: function(event, ui)
         {
-            var editorLength = tinymce.editors.length;
-            for(var i=0; i < editorLength; i++)
-            {
-                var idEditor = tinymce.editors[i].editorId;
-                tinyMCE.execCommand("mceRemoveControl", true, idEditor);
-                tinyMCE.execCommand("mceAddControl", true, idEditor);
-            }
-            
+             $(this).find('.msm_unit_child_content').each(function() {
+               tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+               $(this).sortable("refresh");
+            });
         }
-    });
-    
-    console.log(tinymce);
+    });    
                 
     $("#msm_child_appending_area").disableSelection();
     
