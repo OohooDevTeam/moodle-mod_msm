@@ -33,18 +33,10 @@ class EditorTheorem extends EditorElement
         $this->type = $_POST['msm_theorem_type_dropdown-' . $idNumber];
         $this->description = $_POST['msm_theorem_descripton_input-' . $idNumber];
         $this->associateType = $_POST['msm_theorem_associate_dropdown-' . $idNumber];
+        $this->title = $_POST['msm_theorem_title_input-' . $idNumber];
         $this->position = $position;
 
         $this->errorArray = array();
-
-        if ($_POST['msm_theorem_title_input-' . $idNumber] != '')
-        {
-            $this->title = $_POST['msm_theorem_title_input-' . $idNumber];
-        }
-        else
-        {
-            $this->errorArray[] = 'msm_theorem_title_input-' . $idNumber;
-        }
 
         if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
         {
@@ -54,17 +46,17 @@ class EditorTheorem extends EditorElement
         {
             $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . "_ifr";
         }
-        
+
         return $this;
     }
 
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
-        
+
         $data = new stdClass();
         $compData = new stdClass();
-        
+
         $data->theorem_type = $this->type;
         $data->caption = $this->title;
         $data->description = $this->description;

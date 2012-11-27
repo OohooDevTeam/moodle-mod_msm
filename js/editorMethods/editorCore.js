@@ -152,14 +152,20 @@ function processDroppedChild(e, droppedId)
             
         case "msm_intro":
             var introCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-            var introTitle = $("<span class='msm_element_title'><b> INTRODUCTION </b></span><br>");        
+            var introTitle = $("<span class='msm_element_title'><b> INTRODUCTION </b></span><br><br>");        
+            
+           var introTitleLabel = $('<label class="msm_unit_intro_title_labels" id="msm_intro_title_label-'+_index+'" for="msm_intro_title_input-'+_index+'">Title:</label>');
+            var introTitleField = $('<input class="msm_unit_intro_title" id="msm_intro_title_input-'+_index+'" name="msm_intro_title_input-'+_index+'" placeholder="Optional Title for the introduction"/>');     
+
             var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
             
             clonedCurrentElement.attr("id", "copied_msm_intro-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
             clonedCurrentElement.append(introCloseButton);
-            clonedCurrentElement.append(introTitle);           
+            clonedCurrentElement.append(introTitle); 
+            clonedCurrentElement.append(introTitleLabel);
+            clonedCurrentElement.append(introTitleField);
             clonedCurrentElement.append(introContentField);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
@@ -169,12 +175,16 @@ function processDroppedChild(e, droppedId)
         case "msm_body":
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var bodyTitle = $("<span class='msm_element_title'><b> CONTENT </b></span><br><br>");
+            var bodyTitleLabel = $('<label class="msm_unit_body_title_labels" id="msm_body_title_label-'+_index+'" for="msm_body_title_input-'+_index+'">Title:</label>');
+            var bodyTitleField = $('<input class="msm_unit_body_title" id="msm_body_title_input-'+_index+'" name="msm_body_title_input-'+_index+'" placeholder="Optional Title for this content"/>');  
             var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
 
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             clonedCurrentElement.append(bodyCloseButton);
             clonedCurrentElement.append(bodyTitle);
+             clonedCurrentElement.append(bodyTitleLabel);
+            clonedCurrentElement.append(bodyTitleField);
             clonedCurrentElement.append(bodyContentField);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
@@ -242,14 +252,14 @@ function processDroppedChild(e, droppedId)
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
-               tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
             });
         },
         stop: function(event, ui)
         {
-             $(this).find('.msm_unit_child_content').each(function() {
-               tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
-               $(this).sortable("refresh");
+            $(this).find('.msm_unit_child_content').each(function() {
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                $(this).sortable("refresh");
             });
         }
     });    

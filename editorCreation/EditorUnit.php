@@ -27,31 +27,21 @@ class EditorUnit extends EditorElement
     public function getFormData($idNumber, $position)
     {
         $this->errorArray = array();
-        if ($_POST['msm_unit_title'] != '')
-        {
-            $this->title = $_POST['msm_unit_title'];
-        }
-        else
-        {
-            $this->errorArray[] = 'msm_unit_title';
-        }
-        
-        if ($_POST['msm_unit_descripton_input'] != '')
-        {
-            $this->description = $_POST['msm_unit_descripton_input'];
-        }
+
+        $this->title = $_POST['msm_unit_title'];
+        $this->description = $_POST['msm_unit_descripton_input'];
         return $this;
     }
 
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
-        
+
         $data = new stdClass();
         $data->title = $this->title;
         $data->description = $this->description;
         $this->id = $DB->insert_record($this->tablename, $data);
-        
+
         $compData = new stdClass();
         $compData->msm_id = $msmid;
         $compData->unit_id = $this->id;
