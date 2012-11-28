@@ -170,7 +170,8 @@ function processDroppedChild(e, droppedId)
 
             var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
             
-            var introChildButton = $('<button class="msm_intro_child_buttons" id="msm_intro_child_button-'+_index+'" onclick="addIntroContent('+_index+')">(+) Add additional content</button>');
+            var introChildContainer = $("<div id='msm_intro_child_container'></div>");
+            var introChildButton = $('<input class="msm_intro_child_buttons" id="msm_intro_child_button-'+_index+'" type="button" onclick="addIntroContent('+_index+')" value="Add additional content"/>');
             
             clonedCurrentElement.attr("id", "copied_msm_intro-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -180,6 +181,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(introTitleLabel);
             clonedCurrentElement.append(introTitleField);
             clonedCurrentElement.append(introContentField);
+            clonedCurrentElement.append(introChildContainer);
             clonedCurrentElement.append(introChildButton);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
@@ -401,10 +403,37 @@ function addIntroContent(idNumber)
     introChildDiv.id = "msm_intro_child_div-"+newId;
     introChildDiv.className = "msm_intro_child";
     
+    var introCloseButton = document.createElement("a");
+    introCloseButton.className = "msm_element_close";
+    introCloseButton.onclick = function(e) {
+        var currentElement = e.target.parentElement.id;
+        $("<div class='dialogs' id='msm_deleteIntroChild'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this content from introduction? </div>").appendTo('#'+currentElement);
+        $( "#msm_deleteIntroChild" ).dialog({
+            resizable: false,
+            height:180,
+            modal: true,
+            buttons: {
+                "Yes": function() {
+                    $('#'+currentElement).empty().remove();
+                    $( this ).dialog( "close" );
+                },
+                "No": function() {
+                    $( this ).dialog( "close" );                   
+                }
+            }
+        });
+    };
+    
+    var introCloseButtonText = document.createTextNode("x");
+    introCloseButton.appendChild(introCloseButtonText);    
+    
     var introChildTitleLabel = document.createElement("label");
     introChildTitleLabel.id = "msm_intro_child_title_label-"+newId;
     introChildTitleLabel.className = "msm_intro_child_title_labels";
     introChildTitleLabel.setAttribute("for", "msm_intro_child_title-"+newId);
+    
+    var titleLabel = document.createTextNode("Title:");
+    introChildTitleLabel.appendChild(titleLabel);
     
     var introChildTitle = document.createElement("input");
     introChildTitle.id = "msm_intro_child_title-"+newId;
@@ -417,12 +446,58 @@ function addIntroContent(idNumber)
     introChildContent.className = "msm_intro_child_contents";
     introChildContent.name = "msm_intro_child_content-"+newId;
     
+    introChildDiv.appendChild(introCloseButton);
+    introChildDiv.appendChild(introChildTitleLabel);
+    introChildDiv.appendChild(introChildTitle);
+    introChildDiv.appendChild(introChildContent);
     
-    introChildDiv.append(introChildTitleLabel);
-    introChildDiv.append(introChildTitle);
-    introChildDiv.append(introChildContent);
-    tinyMCE.execCommand("mceAddControl", false, introChildContent.id); 
+    $(introChildDiv).appendTo("#msm_intro_child_container");
     
-    introChildDiv.appendTo("copied_msm_intro-"+idNumber);   
+    //    $(introChildDiv).insertBefore("#msm_intro_child_button-"+idNumber);
+    
+    tinyMCE.init({
+        mode:"exact",
+        elements: "msm_intro_child_content-"+newId,
+        plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        width: "96%",
+        height: "70%",
+        theme: "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+        //        theme_advanced_toolbar_location : "external",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        skin : "o2k7",
+        skin_variant : "silver"
+    });
+    
+    $("#msm_intro_child_container").sortable({
+        appendTo: "msm_intro_child_container",
+        connectWith: "msm_intro_child_container",
+        cursor: "move",
+        tolerance: "pointer",
+        placeholder: "msm_sortable_placeholder",
+        start: function(event, ui)
+        {
+            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            // this code along with the one in stop is needed for enabling sortable on the div containing
+            // the tinymce editor so the iframe part of the editor doesn't become disabled
+            $(this).find('.msm_intro_child_contents').each(function() {
+                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+            });
+        },
+        stop: function(event, ui)
+        {
+            $(this).find('.msm_intro_child_contents').each(function() {
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                $(this).sortable("refresh");
+            });
+        }
+    });    
+                
+    $("msm_intro_child_container").disableSelection();
+     
 }
-

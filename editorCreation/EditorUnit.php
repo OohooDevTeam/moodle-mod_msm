@@ -26,6 +26,7 @@ class EditorUnit extends EditorElement
 
     public function getFormData($idNumber, $position)
     {
+        $this->position = $position;
         $this->errorArray = array();
 
         $this->title = $_POST['msm_unit_title'];

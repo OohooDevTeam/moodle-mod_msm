@@ -82,18 +82,7 @@ $(document).ready(function(){
                     // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
                     // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
                     // to display the html format properly.  Therefore div was created to replace it.
-                    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {
-                        
-                        tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-                        
-                        var editorContent = document.createElement("div");
-                        editorContent.id = $(this).attr("id");
-                        editorContent.className = "msm_editor_content";
-                        var content = $(this).val();
-                        
-                        $(editorContent).html(content);
-                        $(this).replaceWith(editorContent);
-                    });
+                    removeTinymceEditor();
                     
                     // disabling all input/selection areas in editor and also disabling all jquery actions such as 
                     // sortable, draggable and droppable
@@ -107,6 +96,35 @@ $(document).ready(function(){
             
     });
 });
+
+function removeTinymceEditor()
+{   
+    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {
+                        
+        tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
+                        
+        var editorContent = document.createElement("div");
+        editorContent.id = $(this).attr("id");
+        editorContent.className = "msm_editor_content";
+        var content = $(this).val();
+                        
+        $(editorContent).html(content);
+        $(this).replaceWith(editorContent);
+    });
+                    
+    $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function() {
+                        
+        tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
+                        
+        var editorContent = document.createElement("div");
+        editorContent.id = $(this).attr("id");
+        editorContent.className = "msm_editor_content";
+        var content = $(this).val();
+                        
+        $(editorContent).html(content);
+        $(this).replaceWith(editorContent);
+    });
+}
 
 /**
  * disabling all input/selection areas in editor and also disabling all jquery actions such as 

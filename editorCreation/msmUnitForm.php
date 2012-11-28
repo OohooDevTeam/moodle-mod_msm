@@ -12,6 +12,8 @@ require_once('EditorTheorem.php');
 require_once('EditorComment.php');
 require_once('EditorImage.php');
 require_once('EditorUnit.php');
+require_once('EditorIntro.php');
+require_once('EditorBlock.php');
 require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
@@ -61,8 +63,11 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             break;
 
         case "copied_msm_intro":
-            echo "intro";
+            $intro = new EditorIntro();
+            $intro->getFormData($childIdInfo[1], $i);
+            $unitcontent[] = $intro;
             break;
+        
         case "copied_msm_content":
             echo "content";
             break;
@@ -96,7 +101,8 @@ else
     // need code fo insert unit information to unitdatabase before procesing the child so that
     // the parentid exists when the child elements are being inserted to the db
 
-    $siblingCompid = 0;
+    $siblingCompid = 0;    
+    
     foreach ($unitcontent as $element)
     {
         $element->insertData($unit->compid, $siblingCompid, $msmId);

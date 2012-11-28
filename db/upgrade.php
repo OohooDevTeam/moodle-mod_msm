@@ -2062,6 +2062,55 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012112702, 'msm');
     }
+    
+    if ($oldversion < 2012112800) {
+
+        // Define field block_caption to be added to msm_intro
+        $table = new xmldb_table('msm_intro');
+        $field = new xmldb_field('block_caption', XMLDB_TYPE_CHAR, '500', null, null, null, null, 'string_id');
+
+        // Conditionally launch add field block_caption
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+        
+        // Define field block_caption to be added to msm_extra_info
+        $table = new xmldb_table('msm_extra_info');
+        $field = new xmldb_field('block_caption', XMLDB_TYPE_CHAR, '500', null, null, null, null, 'extra_info_name');
+
+        // Conditionally launch add field block_caption
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012112800, 'msm');
+    }
+    
+     if ($oldversion < 2012112801) {
+
+        // Define field block_caption to be added to msm_unit
+        $table = new xmldb_table('msm_unit');
+        $field = new xmldb_field('block_caption', XMLDB_TYPE_CHAR, '500', null, null, null, null, 'last_revision_date');
+
+        // Conditionally launch add field block_caption
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+        
+        // Define table msm_block to be dropped
+        $table = new xmldb_table('msm_block');
+
+        // Conditionally launch drop table for msm_block
+        if ($dbman->table_exists($table)) {
+            $dbman->drop_table($table);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012112801, 'msm');
+    }
+
+
 
 
 
