@@ -8,7 +8,7 @@ $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         
         // prevents navigation to msmUnitForm.php
-        event.preventDefault();
+//        event.preventDefault();
         
         var children =  document.getElementById("msm_child_appending_area").childNodes;
 

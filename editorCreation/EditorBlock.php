@@ -40,7 +40,7 @@ class EditorBlock extends EditorElement
             if (!empty($_POST['msm_intro_child_content-' . $idInfo[1]]))
             {
                 $this->introcontent = $_POST['msm_intro_child_content-' . $idInfo[1]];
-                //process contents
+               
             }
             else
             {
@@ -56,7 +56,7 @@ class EditorBlock extends EditorElement
             if (!empty($_POST['msm_intro_content_input-' . $idInfo[1]]))
             {
                 $this->introcontent = $_POST['msm_intro_content_input-' . $idInfo[1]];
-                //process contents
+               $this->processContent($this->introcontent);
             }
             else
             {
@@ -88,6 +88,7 @@ class EditorBlock extends EditorElement
             $this->compid = $DB->insert_record("msm_compositor", $compData);
         }
     }
+    
 
 }
 
