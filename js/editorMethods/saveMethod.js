@@ -141,6 +141,7 @@ function disableEditorFunction()
     $(".copied_msm_structural_element .msm_element_close").remove();
                     
     $("#msm_child_appending_area").sortable("destroy");
+    $("#msm_intro_child_container").sortable("destroy");
     $(".msm_structural_element").draggable("destroy");
     $("#msm_editor_middle_droparea").droppable("destroy");
 }

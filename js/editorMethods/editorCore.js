@@ -250,10 +250,20 @@ function processDroppedChild(e, droppedId)
             $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
             });
+            
+            $(this).find('.msm_intro_child_contents').each(function() {
+                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+            });
         },
         stop: function(event, ui)
         {
             $(this).find('.msm_unit_child_content').each(function() {
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                $(this).sortable("refresh");
+            });
+            
+            // if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_intro_child_contents').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
             });
