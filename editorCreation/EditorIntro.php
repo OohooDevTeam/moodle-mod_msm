@@ -25,29 +25,23 @@ class EditorIntro extends EditorElement
     {
         $this->position = $position;
         $this->blocks = array();
-
-        $intromatch = '/^msm_intro_content.*/';
-        $match = '/^msm_intro_child_content.*/';
+        
+        $intromatch = '/^msm_intro_content_.*/';
+        $childmatch = '/^msm_intro_child_content-.*/';
 
         $i = 0;
         foreach ($_POST as $elementID => $value)
         {
-            if (preg_match($match, $elementID))
-            {
-                $idInfo = explode("-", $elementID);
-
-                $block = new EditorBlock();
-                $block->getFormData($idInfo[1], $i);
-                $this->blocks[] = $block;
-            }
-            else if (preg_match($intromatch, $elementID))
+            if ((preg_match($intromatch, $elementID)) || (preg_match($childmatch, $elementID)))
             {
                 $block = new EditorBlock();
-                $block->getFormData($idNumber, $i);
+                $block->getFormData($elementID, $i);
+                
                 $this->blocks[] = $block;
             }
             $i++;
         }
+
         return $this;
     }
 
