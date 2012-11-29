@@ -6,6 +6,7 @@
  */
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
+
 require_once('EditorElement.php');
 require_once('EditorDefinition.php');
 require_once('EditorTheorem.php');
@@ -15,6 +16,8 @@ require_once('EditorUnit.php');
 require_once('EditorIntro.php');
 require_once('EditorBlock.php');
 require_once('EditorPara.php');
+require_once('EditorInContent.php');
+
 require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
@@ -79,6 +82,7 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             break;
     }
 }
+
 
 // unit cannot get an error since both title and description can be null
 foreach ($unitcontent as $unitchild)

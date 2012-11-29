@@ -219,7 +219,7 @@ function processDroppedChild(e, droppedId)
     tinyMCE.init({
         mode:"exact",
         elements: currentContentid,
-        plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "96%",
         height: "70%",
         theme: "advanced",
@@ -476,8 +476,8 @@ function addIntroContent(idNumber)
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_intro_child_content-"+newId,
-        plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        elements: "msm_intro_child_content-"+newId,                    
+        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "96%",
         height: "70%",
         theme: "advanced",
@@ -498,11 +498,17 @@ function addIntroContent(idNumber)
         connectWith: "msm_intro_child_container",
         cursor: "move",
         tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",
-        start: function(event, ui)
+        placeholder: "msm_sortable_placeholder",        
+        start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
-            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+        },
+        beforeStop: function(event, ui)
+        {
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_intro_child_contents').each(function() {
@@ -511,6 +517,9 @@ function addIntroContent(idNumber)
         },
         stop: function(event, ui)
         {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+            // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");

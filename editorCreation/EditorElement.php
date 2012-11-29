@@ -38,6 +38,12 @@ abstract class EditorElement
                    $para->getFormData($child, $key);
                    $newContent[] = $para;
                }
+               else if(($child->tagName == "ol") || ($child->tagName == "ul"))
+               {
+                   $inContent = new EditorInContent();
+                   $inContent->getFormData($child, $key);
+                   $newContent[] = $inContent;
+               }
                else
                {
                    print_object($child->tagName);

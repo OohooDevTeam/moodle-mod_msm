@@ -71,6 +71,11 @@ class EditorBlock extends EditorElement
                         $content->insertData($this->compid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
                     }
+                    else if(get_class($content) == "EditorInContent")
+                    {
+                        $content->insertData($this->compid, $sibling_id, $msmid);
+                        $sibling_id = $content->compid;
+                    }
                 }
             }
             else if ($this->type == "intro")
@@ -93,6 +98,11 @@ class EditorBlock extends EditorElement
                 foreach ($this->content as $content)
                 {
                     if (get_class($content) == "EditorPara")
+                    {
+                        $content->insertData($this->compid, $sibling_id, $msmid);
+                        $sibling_id = $content->compid;
+                    }
+                    else if(get_class($content) == "EditorInContent")
                     {
                         $content->insertData($this->compid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
