@@ -242,9 +242,16 @@ function processDroppedChild(e, droppedId)
         cursor: "move",
         tolerance: "pointer",
         placeholder: "msm_sortable_placeholder",
-        start: function(event, ui)
+        start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+        },
+        beforeStop: function(event, ui)
+        {
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
@@ -257,6 +264,8 @@ function processDroppedChild(e, droppedId)
         },
         stop: function(event, ui)
         {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
             $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
@@ -493,6 +502,7 @@ function addIntroContent(idNumber)
         start: function(event, ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight);
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_intro_child_contents').each(function() {
