@@ -69,8 +69,10 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             $unitcontent[] = $intro;
             break;
         
-        case "copied_msm_content":
-            echo "content";
+        case "copied_msm_body":
+            $body = new EditorBlock();
+            $body->getFormData($arrayOfChild[$i], $i);
+            $unitcontent[] = $body;
             break;
         default:
             echo $childIdInfo[0];
