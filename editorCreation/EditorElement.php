@@ -21,23 +21,32 @@ abstract class EditorElement
     {
         $doc = new DOMDocument();
         $doc->loadHTML($oldContent);
-        
-        print_object($oldContent);
-
+//
         $rootElement = $doc->getElementsByTagName('body')->item(0);
+//        
+//        $rootElement = $doc->documentElement;
 
-        foreach ($rootElement->childNodes as $child)
+        $newContent = array();
+        
+        foreach ($rootElement->childNodes as $key=>$child)
         {
-            echo "each child" . "\n";
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
-                print_object($child->tagName);
-                print_object($child->nodeValue);
+               if($child->tagName == "p")
+               {
+                   $para = new EditorPara();
+                   $para->getFormData($child, $key);
+                   $newContent[] = $para;
+               }
+               else
+               {
+                   print_object($child->tagName);
+                   print_object($child->nodeValue);
+               }
             }
         }
-
-
-        die;
+        
+        return $newContent;
     }
 
 }

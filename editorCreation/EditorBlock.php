@@ -14,7 +14,7 @@ class EditorBlock extends EditorElement
 {
 
     public $introtitle;
-    public $introcontent;
+//    public $introcontent;
     public $position;
     public $id;
     public $compid;
@@ -25,6 +25,7 @@ class EditorBlock extends EditorElement
         $this->position = $position;
 
         $this->errorArray = array();
+        $this->introcontent = array();
 
         $match = "/^msm_intro_child_.*/";
 
@@ -39,7 +40,12 @@ class EditorBlock extends EditorElement
 
             if (!empty($_POST['msm_intro_child_content-' . $idInfo[1]]))
             {
-                $this->introcontent = $_POST['msm_intro_child_content-' . $idInfo[1]];
+                $rawintrocontent = $_POST['msm_intro_child_content-' . $idInfo[1]];
+                
+                foreach($this->processContent($rawintrocontent) as $content)
+                {
+                    $this->introcontent[] = $content;
+                }
                
             }
             else
@@ -55,8 +61,12 @@ class EditorBlock extends EditorElement
             }
             if (!empty($_POST['msm_intro_content_input-' . $idInfo[1]]))
             {
-                $this->introcontent = $_POST['msm_intro_content_input-' . $idInfo[1]];
-               $this->processContent($this->introcontent);
+                $rawintrocontent = $_POST['msm_intro_content_input-' . $idInfo[1]];
+                
+                foreach($this->processContent($rawintrocontent) as $content)
+                {
+                    $this->introcontent[] = $content;
+                }
             }
             else
             {
@@ -71,7 +81,7 @@ class EditorBlock extends EditorElement
     {
         global $DB;
 
-        if (!empty($this->introcontent))
+        if (sizeof($this->introcontent) > 0)
         {
             $data = new stdClass();
             $data->block_caption = $this->introtitle;
@@ -86,6 +96,16 @@ class EditorBlock extends EditorElement
             $compData->prev_sibling_id = $siblingid;
 
             $this->compid = $DB->insert_record("msm_compositor", $compData);
+            
+            $sibling_id = 0;
+            foreach($this->introcontent as $content)
+            {
+                if(get_class($content) == "EditorPara")
+                {
+                    $content->insertData($this->compid, $sibling_id, $msmid);
+                    $sibling_id = $content->compid;
+                }
+            }
         }
     }
     

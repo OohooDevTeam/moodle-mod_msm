@@ -14,6 +14,7 @@ require_once('EditorImage.php');
 require_once('EditorUnit.php');
 require_once('EditorIntro.php');
 require_once('EditorBlock.php');
+require_once('EditorPara.php');
 require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
