@@ -423,21 +423,12 @@
     margin-left: 43%; 
 }
 
-/*.msm_associate_optionarea{
-    margin-top: 2%;
-    margin-bottom: 2%;
-}*/
-
 .msm_editor_content
 {
     margin-top: 2%;
     width: 91.5%;
     border: 2px solid black;
     padding: 2%;
-}
-
-.msm_editor_content p
-{
     text-align: left;
 }
 
@@ -461,3 +452,10 @@
 {
     border: 2px ridge orange;
 }
+
+#msm_setting_container
+{
+    height: 100%;
+    
+}
+

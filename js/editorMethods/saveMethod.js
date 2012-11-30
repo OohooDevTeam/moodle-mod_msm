@@ -3,8 +3,8 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
-    $(".msm_form_error").hide();
+$(document).ready(function(){     
+    
     $("#msm_unit_form").submit(function(event) { 
         
         // prevents navigation to msmUnitForm.php

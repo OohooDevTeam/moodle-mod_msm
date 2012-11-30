@@ -16,8 +16,6 @@
 require_once('../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 //require_once("editorCreation/msmUnitForm.php");
-
-
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 //// to get the msm instance id when the save button is clicked
@@ -89,6 +87,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorCore.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorActions.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveMethod.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
@@ -155,53 +154,55 @@ $msm_nav .= '<ul class="sf-menu">
             </li>
             <li>
                 <a id="msm_nav_setting" onclick="openNavDialog(' . $selectedValue . ')"> <span>Setting</span></a>  
+                    
+                     <div class="dialogs" id="msm_setting_dialog"> 
+                    
+                        <div id="msm_setting_type"> 
+                            <ul>
+                                <li>
+                                    <a href="#msm_type">Composition Type</a>
+                                </li>
+                                <li>
+                                    <a href="#msm_theme">MSM Theme</a>
+                                </li>
+                                <li>
+                                    <a href="#msm_element_names">Name of Structural Elements</a>
+                                </li>
+                            </ul>
+                             <form id="msm_setting_form" name="msm_setting_form" action="editorCreation/msmUnitForm.php" method="post">
+                            <div id="msm_type" class="msm_tab">
+                                <span> <b>Type of Composition: </b></span>
+                                <br/><br/>
+                                
+                                    <input type="radio" name="msm_type" id="msm_type_lecture" value="Lecture" onclick="processChange(event)"> Lecture <br/><br/>
+                                    <input type="radio" name="msm_type" id="msm_type_book" value="Book" onclick="processChange(event)"> Book <br/><br/>
+                                    <input type="radio" name="msm_type" id="msm_type_wbook" value="Work book" onclick="processChange(event)"> Work book <br/><br/>
+                                    <input type="radio" name="msm_type" id="msm_type_others" value="Others" onclick="processChange(event)"> Others:  
+                                    <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition." onkeypress="validateBorder()"/>
+                                    <span style="color: red;">*</span>
+                                
 
-                <div class="dialogs" id="msm_setting_dialog">
-                    <div id="msm_setting_type">
-                        <ul>
-                            <li>
-                                <a href="#msm_type">Composition Type</a>
-                            </li>
-                            <li>
-                                <a href="#msm_theme">MSM Theme</a>
-                            </li>
-                            <li>
-                                <a href="#msm_element_names">Name of Structural Elements</a>
-                            </li>
-                        </ul>
-
-                        <div id="msm_type" class="msm_tab">
-                            <span> <b>Type of Composition: </b></span>
-                            <br/><br/>
-                            <form>
-                                <input type="radio" name="msm_type" id="msm_type_lecture" value="Lecture" onclick="processChange(event)"> Lecture <br/><br/>
-                                <input type="radio" name="msm_type" id="msm_type_book" value="Book" onclick="processChange(event)"> Book <br/><br/>
-                                <input type="radio" name="msm_type" id="msm_type_wbook" value="Work book" onclick="processChange(event)"> Work book <br/><br/>
-                                <input type="radio" name="msm_type" id="msm_type_others" value="Others" onclick="processChange(event)"> Others:  
-                                <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition." onkeypress="validateBorder()"/>
-                                <span style="color: red;">*</span>
-                            </form>
-
+                            </div> 
+                            <div id="msm_theme" class="msm_tab">
+                                Big content...
+                            </div> 
+                            <div id="msm_element_names" class="msm_tab">                            
+                                    <span class="msm_structure_top_names">Top Unit :  </span>
+                                    <input class="msm_structure_top_input" id="msm_structure_input_top" name="msm_structure_input_top"/>
+                                    <span style="color: red;">*</span>
+                                    <br />                            
+                                <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
+                            </div> 
                         </div> 
-                        <div id="msm_theme" class="msm_tab">
-                            Big content...
-                        </div> 
-                        <div id="msm_element_names" class="msm_tab">
-                            <span class="msm_structure_top_names">Top Unit :  </span>
-                            <input class="msm_structure_top_input" id="msm_structure_input_top" name="msm_top"/>
-                            <span style="color: red;">*</span>
-                            <br />                            
-                            <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
-                        </div> 
-                    </div> 
-                    <br style="clear:both;" />
-                    <button class="msm_setting_buttons" id="msm_setting_save" type="button" onclick="saveSetting()"> Save </button>
-                    <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
-                    <div style="float: right; font-style:italic; color: red;"><span style="color: red;">*</span> required information</div>
-                    <div id="msm_setting_cancelled">
-                        <p style="display:none;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
+                        <br style="clear:both;" />
+                        <input type="submit" name="msm_setting_save" class="msm_setting_buttons" id="msm_setting_save" value="Save"/>
+                        <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
+                         <div style="float: right; font-style:italic; color: red;"><span style="color: red;">*</span> required information</div>
+                          </form>
+                        <div id="msm_setting_cancelled">
+                            <p style="display:none;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
+                        </div>                       
                     </div>
-                </div>
             </li>
         </ul>';
 

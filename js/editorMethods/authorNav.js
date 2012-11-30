@@ -37,56 +37,62 @@ function openNavDialog(chosenvalue)
             closeOnEscape: false
         });
         $('#msm_setting_dialog').dialog('open').css('display', 'block');
-        switch(chosenvalue)
-        {           
-            case 0:
-                $('#msm_type_lecture').attr("checked", "true");
-                $('#msm_structure_input_top').attr("placeholder", "e.g.) Lecture");
+        
+        // this condition is to prevent code from adding child units whenever window is cancelled then opened again
+        if($('#msm_element_names').children('.msm_structure_names').length == 0)
+        {
+            switch(chosenvalue)
+            {           
+                case 0:
+                    $('#msm_type_lecture').attr("checked", "true");
+                    $('#msm_structure_input_top').attr("placeholder", "e.g.) Lecture");
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_structure_input_child-0" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                break;
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_structure_input_child-1" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    break;
            
-            case 1:
-                $('#msm_type_book').attr("checked", "true");
+                case 1:
+                    $('#msm_type_book').attr("checked", "true");
                 
-                $('#msm_structure_input_top').attr("placeholder", "e.g.) Book");
+                    $('#msm_structure_input_top').attr("placeholder", "e.g.) Book");
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_structure_input_child-0" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_structure_input_child-1" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Subsection"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                break;
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-2" name="msm_structure_input_child-2" placeholder="e.g.) Subsection"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    break;
                 
-            case 2:
-                $('#msm_type_wbook').attr("checked", "true");
-                $('#msm_structure_input_top').attr("placeholder", "e.g.) WorkBook");
+                case 2:
+                    $('#msm_type_wbook').attr("checked", "true");
+                    $('#msm_structure_input_top').attr("placeholder", "e.g.) WorkBook");
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_structure_input_child-0" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_structure_input_child-1" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Exercises"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                break;
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-2" name="msm_structure_input_child-2" placeholder="e.g.) Exercises"/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    break;
                 
-            case 3:
-                $('#msm_type_others').attr("checked", "true");
-                $('#msm_structure_input_top').attr("placeholder", "Please specify the name of the top element of this composition.");
+                case 3:
+                    $('#msm_type_others').attr("checked", "true");
+                    $('#msm_structure_input_top').attr("placeholder", "Please specify the name of the top element of this composition.");
                 
-                $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-                $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
-                break;
+                    $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
+                    $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_structure_input_child-0" placeholder="Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
+                    break;
+            }
         }
+        
     });
 }
 
@@ -104,7 +110,7 @@ function addChildUnit()
         var newidNumber = parseInt(childidNumber[1])+1;
         
         $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-        $('<input class="msm_structure_input" id="msm_structure_input_child-'+ newidNumber +  ' name="msm_top" placeholder=" Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
+        $('<input class="msm_structure_input" id="msm_structure_input_child-'+ newidNumber +  '" name="msm_structure_input_child-'+ newidNumber +  '" placeholder=" Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
     });
 }
 
@@ -137,53 +143,45 @@ function closeSetting()
 /**
  * This function will respond to save button in settings modal dialog and will pass the information in the settins form to update appropriate database field values.
  */
-function saveSetting()
-{
-    var selectedValue = $('input[name=msm_type]:radio:checked').val(); 
-    if(selectedValue == 'Others')
-    {
-        var specifiedValue = $('#msm_type_specifiedType').val();
-            
-        if((specifiedValue == null)||(specifiedValue == ''))
-        {
-            $("<div class='dialogs' id='msm_emptyComposition'> Please specify the type of your composition. </div>").appendTo('#msm_type_specifiedType');
-            
-            $( "#msm_emptyComposition" ).dialog({
-                modal: true,
-                buttons: {
-                    Ok: function() {
-                        $('#msm_type_specifiedType').css('border-color', '#FFA500');
-                        $( this ).dialog( "close" );
-                    }
-                }
-            });
-        }
-    //        else
-    //        {
-    //            console.log(document.getElementById('msm_type_specifiedType').style.borderColor);
-    //            if(document.getElementById('msm_type_specifiedType').style.borderColor == 'rgb(255, 165, 0)')
-    //            {
-    //                $('#msm_type_specifiedType').css('border-color', '#228B22');
-    //            }
-    //        }
-    }
-    
-    var topElement = $('#msm_structure_input_top').val();
-    
-    if(topElement == null)
-    {
-        topElement = selectedValue;
-    }
-    
-    var childvalues = [];
-    $('.msm_structure_input').each(function(i) {
-        if($(this).val() != null)
-        {
-            childvalues[i] = $(this).val();
-        }
-        
-    });
-}
+//function saveSetting()
+//{
+//    var selectedValue = $('input[name=msm_type]:radio:checked').val(); 
+//    if(selectedValue == 'Others')
+//    {
+//        var specifiedValue = $('#msm_type_specifiedType').val();
+//            
+//        if((specifiedValue == null)||(specifiedValue == ''))
+//        {
+//            $("<div class='dialogs' id='msm_emptyComposition'> Please specify the type of your composition. </div>").appendTo('#msm_type_specifiedType');
+//            
+//            $( "#msm_emptyComposition" ).dialog({
+//                modal: true,
+//                buttons: {
+//                    Ok: function() {
+//                        $('#msm_type_specifiedType').css('border-color', '#FFA500');
+//                        $( this ).dialog( "close" );
+//                    }
+//                }
+//            });
+//        }
+//    }
+//    
+//    var topElement = $('#msm_structure_input_top').val();
+//    
+//    if(topElement == null)
+//    {
+//        topElement = selectedValue;
+//    }
+//    
+//    var childvalues = [];
+//    $('.msm_structure_input').each(function(i) {
+//        if($(this).val() != null)
+//        {
+//            childvalues[i] = $(this).val();
+//        }
+//        
+//    });
+//}
 
 /**
  *  This method checks if the user tried to save without filling in required field (ie, different border color for field)
