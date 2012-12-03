@@ -24,59 +24,54 @@ global $DB;
 
 $hasError = false;
 $errorArray = array();
-$copiedValue = array();
-
-if (isset($_POST['msm_setting_save']))
+//$copiedValue = array();
+//if (isset($_POST['msm_setting_save']))
+//{
+//    if (isset($_POST['msm_structure_input_top']))
+//    {
+//        $topCompName = $_POST['msm_structure_input_top'];
+//        $copiedValue[] = "msm_structure_input_top|" . $topCompName;
+//    }
+//    else
+//    {
+//        $hasError = true;
+//        $errorArray = 'msm_structure_input_top';
+//    }
+//
+//    $match = '/^msm_structure_input_child-.*/';
+//
+//    foreach ($_POST as $id => $inputs)
+//    {
+//        if (preg_match($match, $id))
+//        {
+//            if (!empty($inputs))
+//            {
+//                $copiedValue[] = $id . "|" . $inputs;
+//            }
+//            else
+//            {
+//                $hasError = true;
+//                $errorArray = $id;
+//            }
+//        }
+//    }
+//
+//    if ($hasError)
+//    {
+//        echo json_encode($errorArray);
+//    }
+//    else
+//    {
+//        $newInputValue = '';
+//        for ($i = 0; $i < sizeof($copiedValue) - 1; $i++)
+//        {
+//            $newInputValue .= $copiedValue[$i] . ",";
+//        }
+//        $newInputValue .= $copiedValue[sizeof($copiedValue) - 1];
+//    }
+//}
+if (isset($_POST['msm_editor_save']))
 {
-        if (isset($_POST['msm_structure_input_top']))
-        {
-            $topCompName = $_POST['msm_structure_input_top'];
-            $copiedValue['msm_structure_input_top'] = $topCompName;
-        }
-        else
-        {
-            $hasError = true;
-            $errorArray =  'msm_structure_input_top';
-        }
-
-        $match = '/^msm_structure_input_child-.*/';
-
-        foreach ($_POST as $id => $inputs)
-        {
-            if (preg_match($match, $id))
-            {
-                if (!empty($inputs))
-                {
-                    $copiedValue[$id] = $inputs;
-                }
-                else
-                {
-                    $hasError = true;
-                    $errorArray = $id;
-                }
-            }
-        }
-
-        if ($hasError)
-        {
-            echo json_encode($errorArray);
-        }
-        else
-        {
-            $string = '';
-            foreach($copiedValue as $formid=>$formvalue)
-            {
-                $string.= $formid . ":" . $formvalue . ",";
-            }
-            
-            print_object($string);
-            echo $string;
-        }
-}
-else if (isset($_POST['msm_editor_save']))
-{
-    print_object($copiedValue);
-    
     $childOrder = $_POST['msm_child_order'];
 
     $arrayOfChild = explode(",", $childOrder);
@@ -86,8 +81,6 @@ else if (isset($_POST['msm_editor_save']))
     $msmId = $arrayOfChild[$lengthOfArray - 1];
 
     $unitcontent = array();
-
-
     $errorArray = array();
 
     $DB->delete_records('msm_table_collection');
