@@ -10,6 +10,8 @@ $(document).ready(function(){
         // prevents navigation to msmUnitForm.php
         event.preventDefault();
         
+        $("#msm_setting_form").submit();
+        
         var children =  document.getElementById("msm_child_appending_area").childNodes;
 
         var idString = "";
@@ -45,6 +47,7 @@ $(document).ready(function(){
                 
                 if(ids instanceof Array)
                 {
+                    console.log(ids);
                     for(var i=0; i < ids.length; i++)
                     {
                         var numOfContent = ids[i].match(/content/);

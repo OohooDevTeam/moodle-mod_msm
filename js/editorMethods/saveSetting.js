@@ -9,29 +9,87 @@ $(document).ready(function() {
         event.preventDefault();
         
         var formData = $("#msm_setting_form").serializeArray();
-//        var targetURL = $("#msm_setting_form").attr("action");  
+        //        var targetURL = $("#msm_setting_form").attr("action");  
         
         var newInputField = $("<input id='msm_unit_name_input' name='msm_unit_name_input' style='visibility:hidden;'/>");
         
         var inputValue = '';
+        var value = '';
+        var isEmpty = false;
         
         $(formData).each(function(index, element){
-          
-            if(index != formData.length-1)
+            if(element.value == "Others")
             {
-                inputValue += element.name + "|" + element.value + ",";
+                if($("#msm_type_specifiedType").val() == '')
+                {
+                    $("<div class='dialogs' id='msm_emptyComposition'> Please specify the type of your composition. </div>").appendTo('#msm_type_specifiedType');
+                                        
+                    $("#msm_emptyComposition").dialog({
+                        modal: true,
+                        buttons: {
+                            Ok: function() {
+                                $('#msm_type_specifiedType').css('border-color', '#FFA500');
+                                $( this ).dialog( "close" );
+                            }
+                        }
+                    });
+                    isEmpty = true;
+                }
             }
-            else
+            
+            if(!isEmpty)
             {
-                inputValue += element.name + "|" + element.value;
-            }
-        });
+                if(index != formData.length-1)
+                {
+                    if(element.value != '')
+                    {
+                        inputValue += element.name + "|" + element.value + ",";
 
-        newInputField.val(inputValue);
+                    }
+                    else
+                    {
+                        if(element.name != "msm_type_input")
+                        {
+                            value = $('#'+element.name).attr("placeholder").split(")");
+                            if(value.length == 2)
+                            {
+                                inputValue += element.name + "|" + $.trim(value[1]) + ",";
+                            }
+                        }                        
+                    }
+                }
+                else
+                {
+                    if(element.value != '')
+                    {
+                        inputValue += element.name + "|" + element.value;
+                    }
+                    else
+                    {
+                        console.log(element.name);
+                        value = $('#'+element.name).attr("placeholder").split(")");
+                        if(value.length == 2)
+                        {
+                            inputValue += element.name + "|" + $.trim(value[1]);
+                        }
+                    }
+                }
+            }
+            
+            
+        });
         
-        $("#msm_unit_form").append(newInputField);
         
-        $("#msm_setting_dialog").dialog("close");
+        if(!isEmpty)
+        {
+            newInputField.val(inputValue);
+        
+            $("#msm_unit_form").append(newInputField);
+        
+            $("#msm_setting_dialog").dialog("close");
+        }
+         
+      
         
     //        var newdata = [];
     //        $.ajax({
