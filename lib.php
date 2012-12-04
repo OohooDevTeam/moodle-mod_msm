@@ -98,7 +98,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     require_once("XMLImporter/TableCollection.php");
 
     $msm->timecreated = time();
-    
 
 //
     $courseid = $msm->course;
@@ -157,6 +156,36 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
+        // matching all the property defining the unit names
+        $match = '/^(top|child)level(-\d+)*$/';
+
+        foreach ($msm as $property => $value)
+        {
+            if (preg_match($match, trim($property)))
+            {
+                $unitNameTableData = new stdClass();
+        $unitNameTableData->msmid = $msm->id;
+                if(trim($property) == 'toplevel')
+                {
+                    $unitNameTableData->unitname = $value;
+                    $unitNameTableData->depth = 0;
+                }
+                else
+                {
+                    $unitNameTableData->unitname = $value;
+                    
+                    $inputFieldId = explode("-", $property);
+                    
+                    // id number given to input field id starts with one
+                    $unitNameTableData->depth = $inputFieldId[1];
+                }
+                $DB->insert_record('msm_unit_name', $unitNameTableData);
+            }
+            
+        }
+//        
+//        
+//       
 //        $table_collection = new TableCollection();
 //        $tableid = $table_collection->insertTablename();
 //

@@ -84,16 +84,113 @@ class mod_msm_mod_form extends moodleform_mod
 //        $mform->addElement('static', 'label1', get_string('msmtype', 'msm'));
 
         $msm_types = array();
-        $msm_types[0] = 'Book';
-        $msm_types[1] = 'Lecture';
-        $msm_types[2] = 'Work book';
+         $msm_types[0] = 'Lecture';
+        $msm_types[1] = 'Book';       
+        $msm_types[2] = 'Work Book';
         $msm_types[3] = 'Others';
-        $mform->addElement('select', 'comptype', get_string('msmtype', 'msm'), $msm_types);
+
+        $selectattr = array('onchange' =>
+            "javascript:
+                var currentSelect = document.getElementById('id_comptype').value;
+                
+                switch(currentSelect)
+                {                        
+                    case '0':
+                        document.getElementById('id_toplevel').value = 'Lecture';
+                        document.getElementById('id_childlevel-1').value = 'Part';
+                        document.getElementById('id_childlevel-2').value = 'Topic';
+                        document.getElementById('id_childlevel-3').value = 'Section';
+                        document.getElementById('id_childlevel-4').value = 'Subsection';
+                        break;
+                        
+                    case '1':
+                        document.getElementById('id_toplevel').value = 'Book';
+                        document.getElementById('id_childlevel-1').value = 'Book Part';
+                        document.getElementById('id_childlevel-2').value = 'Chapter';
+                        document.getElementById('id_childlevel-3').value = 'Section';
+                        document.getElementById('id_childlevel-4').value = 'Subsection';
+                        break;
+                        
+                    case '2':
+                        document.getElementById('id_toplevel').value = 'Work Book';
+                        document.getElementById('id_childlevel-1').value = 'Book Part';
+                        document.getElementById('id_childlevel-2').value = 'Chapter';
+                        document.getElementById('id_childlevel-3').value = 'Section';
+                        document.getElementById('id_childlevel-4').value = 'Subsection';
+                        break;
+                        
+                    case '3':
+                        document.getElementById('id_toplevel').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel-1').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel-2').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel-3').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel-4').value = 'Please specify the name of this container.';
+                        break;
+                    
+                }
+                "
+        );
+
+        $mform->addElement('select', 'comptype', get_string('msmtype', 'msm'), $msm_types, $selectattr);
         $mform->addHelpButton('comptype', 'msmtype', 'msm');
-        
+
+        $mform->addElement('header', 'settinggeneral', get_string('levelsetting', 'msm'));
+        $mform->addHelpButton('settinggeneral', 'levelsetting', 'msm');
+        $mform->addElement('text', 'toplevel', get_string('toplevel', 'msm'), array('size' => '64', 'value' => 'Lecture'));
+        $mform->addElement('text', 'childlevel-1', get_string('childlevel1', 'msm'), array('size' => '64', 'value' => 'Part'));
+        $mform->addElement('text', 'childlevel-2', get_string('childlevel2', 'msm'), array('size' => '64', 'value' => 'Topic'));
+        $mform->addElement('text', 'childlevel-3', get_string('childlevel3', 'msm'), array('size' => '64', 'value' => 'Section'));
+        $mform->addElement('text', 'childlevel-4', get_string('childlevel4', 'msm'), array('size' => '64', 'value' => 'Subsection'));
+
+        $attr = array("onclick" =>
+            "javascript:
+                var index = 0;               
+                
+                var allFitems = document.getElementById('settinggeneral').getElementsByClassName('fitem');
+
+                for (var i=0; i < allFitems.length-1; i++)
+                {
+                    index++;
+                }
+                
+                console.log(index);
+
+                var fitemDiv = document.createElement('div');
+                fitemDiv.className = 'fitem';
+                
+                var fitemTitle = document.createElement('div');
+                fitemTitle.className = 'fitemtitle';
+                
+                var felement = document.createElement('div');
+                felement.className = 'felement ftext';
+                
+                var inputLabel = document.createElement('label');
+                inputLabel.for = 'id_childlevel-'+index;
+                
+                var labelValue = document.createTextNode('Name of additional child element');
+                inputLabel.appendChild(labelValue);
+                
+                var inputField = document.createElement('input');
+                inputField.id = 'id_childlevel-'+index;
+                inputField.name = 'childlevel-'+index;
+                inputField.size = 64;
+                inputField.value = 'Please specify the name of this container.';
+                inputField.type = 'text';
+                
+                felement.appendChild(inputField);
+                fitemTitle.appendChild(inputLabel);
+                
+                fitemDiv.appendChild(fitemTitle);
+                fitemDiv.appendChild(felement);                
+                
+                allFitems[0].parentNode.insertBefore(fitemDiv, allFitems[index]);
+                "
+        );
+
+        $mform->addElement('button', 'msm_addchild', get_string('addchildbutton', 'msm'), $attr);
 
         $this->standard_coursemodule_elements();
-//       
+       
         $this->add_action_buttons(true, get_string('msmsubmit', 'msm'), get_string('importbutton', 'msm'));
     }
 

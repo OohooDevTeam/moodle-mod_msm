@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20121128" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20121204" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -570,11 +570,22 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="msm_image_mapping" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_math_cell">
+    <TABLE NAME="msm_image_mapping" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_math_cell" NEXT="msm_unit_name">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="shape"/>
         <FIELD NAME="shape" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="coordinates"/>
         <FIELD NAME="coordinates" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="shape"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_unit_name" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_image_mapping">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="msmid"/>
+        <FIELD NAME="msmid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="unitname"/>
+        <FIELD NAME="unitname" TYPE="char" LENGTH="250" NOTNULL="false" SEQUENCE="false" PREVIOUS="msmid" NEXT="depth"/>
+        <FIELD NAME="depth" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="unitname"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
