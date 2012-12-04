@@ -84,8 +84,8 @@ class mod_msm_mod_form extends moodleform_mod
 //        $mform->addElement('static', 'label1', get_string('msmtype', 'msm'));
 
         $msm_types = array();
-         $msm_types[0] = 'Lecture';
-        $msm_types[1] = 'Book';       
+        $msm_types[0] = 'Lecture';
+        $msm_types[1] = 'Book';
         $msm_types[2] = 'Work Book';
         $msm_types[3] = 'Others';
 
@@ -142,6 +142,12 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addElement('text', 'childlevel-3', get_string('childlevel3', 'msm'), array('size' => '64', 'value' => 'Section'));
         $mform->addElement('text', 'childlevel-4', get_string('childlevel4', 'msm'), array('size' => '64', 'value' => 'Subsection'));
 
+        $mform->addRule('toplevel', null, 'required', null, 'client');
+        $mform->addRule('childlevel-1', null, 'required', null, 'client');
+        $mform->addRule('childlevel-2', null, 'required', null, 'client');
+        $mform->addRule('childlevel-3', null, 'required', null, 'client');
+        $mform->addRule('childlevel-4', null, 'required', null, 'client');
+
         $attr = array("onclick" =>
             "javascript:
                 var index = 0;               
@@ -190,7 +196,7 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addElement('button', 'msm_addchild', get_string('addchildbutton', 'msm'), $attr);
 
         $this->standard_coursemodule_elements();
-       
+
         $this->add_action_buttons(true, get_string('msmsubmit', 'msm'), get_string('importbutton', 'msm'));
     }
 

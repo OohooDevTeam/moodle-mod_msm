@@ -10,9 +10,7 @@ $(document).ready(function() {
         
         var formData = $("#msm_setting_form").serializeArray();
         //        var targetURL = $("#msm_setting_form").attr("action");  
-        
-        var newInputField = $("<input id='msm_unit_name_input' name='msm_unit_name_input' style='visibility:hidden;'/>");
-        
+   
         var inputValue = '';
         var value = '';
         var isEmpty = false;
@@ -66,7 +64,6 @@ $(document).ready(function() {
                     }
                     else
                     {
-                        console.log(element.name);
                         value = $('#'+element.name).attr("placeholder").split(")");
                         if(value.length == 2)
                         {
@@ -82,10 +79,7 @@ $(document).ready(function() {
         
         if(!isEmpty)
         {
-            newInputField.val(inputValue);
-        
-            $("#msm_unit_form").append(newInputField);
-        
+            $('#msm_unit_name_input').val(inputValue);
             $("#msm_setting_dialog").dialog("close");
         }
          

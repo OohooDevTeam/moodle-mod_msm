@@ -153,7 +153,7 @@ $msm_nav .= '<ul class="sf-menu">
                 <a href="#d"> <span>Sound</span></a>  
             </li>
             <li>
-                <a id="msm_nav_setting" onclick="openNavDialog(' . $selectedValue . ')"> <span>Setting</span></a>  
+                <a id="msm_nav_setting" onclick="openNavDialog()"> <span>Setting</span></a>  
                     
                      <div class="dialogs" id="msm_setting_dialog"> 
                     
@@ -211,6 +211,15 @@ echo $OUTPUT->heading($msm->name);
 
 $formContent = '';
 
+$topContainer  = $DB->get_record('msm_unit_name', array('msmid'=>$msm->id, 'depth'=>0))->unitname;
+
+$unitNames = '';
+
+foreach($DB->get_records('msm_unit_name', array('msmid'=>$msm->id), 'depth') as $key=>$record)
+{
+    $unitNames .= $record->unitname . ",";
+}
+
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
@@ -246,10 +255,10 @@ $formContent .= '<div id="msm_editor_container">
             </div>
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle" >
-                    <h2> ___ Design Area </h2> <!-- grab the string from the setting values -->
+                    <h2> ' . $topContainer . ' Design Area </h2> <!-- grab the string from the setting values -->
                     <form id="msm_unit_form" name="msm_unit_form" action="editorCreation/msmUnitForm.php" method="post">
-                         <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">Unit title: </label>
-                         <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this _____." onkeypress="validateBorder()"/>
+                         <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">' . $topContainer . ' title: </label>
+                         <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this ' . $topContainer . '." onkeypress="validateBorder()"/>
                          
                          <label class="msm_unit_description_labels" id="msm_unit_description_label" for="msm_unit_descripton_input">Description: </label>
                          <input class="msm_unit_description_inputs" id="msm_unit_descripton_input" name="msm_unit_descripton_input" placeholder="Insert description to search this element in future."/>
@@ -261,6 +270,8 @@ $formContent .= '<div id="msm_editor_container">
                          </div>
                          <input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
                          <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
+                         
+                         <input id="msm_unit_name_input" name="msm_unit_name_input" style="visibility:hidden;" value="'. $unitNames . '"/> 
                     </form>
                 </div>
 

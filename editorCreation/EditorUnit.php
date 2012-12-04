@@ -18,7 +18,7 @@ class EditorUnit extends EditorElement
     public $title;
     public $description;
     public $position;
-    public $unitNames = array();
+    public $unitName;
 
     public function __construct()
     {
@@ -27,29 +27,31 @@ class EditorUnit extends EditorElement
 
     public function getFormData($idNumber, $position)
     {
+        global $DB;
         $this->position = $position;
         $this->errorArray = array();
 
         $this->title = $_POST['msm_unit_title'];
         $this->description = $_POST['msm_unit_descripton_input'];
 
-        $unitName = $_POST['msm_unit_name_input'];
-        $eachUnit = explode(",", $unitName);
-        $currentType = '';
-        foreach ($eachUnit as $key => $idNameCombo)
-        {
-            $unitIdNamePair = explode("|", $idNameCombo);
-
-            if ($key == 0)
-            {
-                $currentType = $unitIdNamePair[1];
-                $this->unitNames[] = $unitIdNamePair[1];
-            }
-            else if ($key >= 2)
-            {
-                $this->unitNames[] = $unitIdNamePair[1];
-            }
-        }
+        $this->unitName = $DB->get_record('msm_unit_name', array('msmid'=>$msmid, 'depth'=>0))->id;
+//        $unitName = $_POST['msm_unit_name_input'];
+//        $eachUnit = explode(",", $unitName);
+//        $currentType = '';
+//        foreach ($eachUnit as $key => $idNameCombo)
+//        {
+//            $unitIdNamePair = explode("|", $idNameCombo);
+//
+//            if ($key == 0)
+//            {
+//                $currentType = $unitIdNamePair[1];
+//                $this->unitNames[] = $unitIdNamePair[1];
+//            }
+//            else if ($key >= 2)
+//            {
+//                $this->unitNames[] = $unitIdNamePair[1];
+//            }
+//        }
         return $this;
     }
 
@@ -64,7 +66,10 @@ class EditorUnit extends EditorElement
         // so the default value is the name of the top unit specified by the user
         
 //        print_object($this->unitNames[0]);
-        $data->compchildtype = $this->unitNames[0];
+//        $data->compchildtype = $this->unitNames[0];
+        
+        $data->compchildtype =  $this->unitName;       
+       
         $this->id = $DB->insert_record($this->tablename, $data);
 
         $compData = new stdClass();
