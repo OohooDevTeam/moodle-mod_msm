@@ -155,7 +155,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
         // matching all the property defining the unit names
-        $match = '/^(top|child)level(-\d+)*$/';
+        $match = '/^(top|child)level(\d+)*$/';
 
         $depth = 0;
         foreach ($msm as $property => $value)

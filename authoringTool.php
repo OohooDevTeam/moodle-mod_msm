@@ -219,6 +219,7 @@ foreach($DB->get_records('msm_unit_name', array('msmid'=>$msm->id), 'depth') as 
 {
     $unitNames .= $record->unitname . ",";
 }
+$unitNames .= $msm->id;
 
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">

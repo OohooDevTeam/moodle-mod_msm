@@ -39,7 +39,7 @@ function openNavDialog()
         $('#msm_setting_dialog').dialog('open').css('display', 'block');
         
         // this condition is to prevent code from adding child units whenever window is cancelled then opened again
-        if($('#msm_element_names').children('.msm_structure_names').length == 0)
+        if(($('#msm_element_names').children('.msm_structure_names').length == 0) &&($('#msm_element_names').children('.msm_setting_form').length == 0))
         {
             var allUnitNames = $('#msm_unit_name_input').val().split(",");
             
@@ -64,7 +64,6 @@ function openNavDialog()
             } 
             for(var i=1; i < allUnitNames.length-1; i++)
             {
-              console.log(allUnitNames[i]);
                 if(allUnitNames[i] != '')
                 {
                     var inputLabel = document.createElement('label');
@@ -90,7 +89,16 @@ function openNavDialog()
                     $(settingContainer).insertBefore('#msm_child_add');
                 }               
                 
-            }            
+            }
+            var msmInstanceid = document.createElement('input');
+            msmInstanceid.id = "msm_instance_id";
+            msmInstanceid.name = "msm_instance_id";
+            msmInstanceid.style.visibility = "hidden";
+            msmInstanceid.style.display = "none";
+                    
+            $(msmInstanceid).val(allUnitNames[allUnitNames.length-1]);
+            
+            $(msmInstanceid).insertAfter('#msm_child_add');
         }
         
     });

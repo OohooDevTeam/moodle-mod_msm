@@ -25,6 +25,7 @@ class EditorUnit extends EditorElement
         $this->tablename = 'msm_unit';
     }
 
+    // idNumber contains the msm id number
     public function getFormData($idNumber, $position)
     {
         global $DB;
@@ -34,7 +35,8 @@ class EditorUnit extends EditorElement
         $this->title = $_POST['msm_unit_title'];
         $this->description = $_POST['msm_unit_descripton_input'];
 
-        $this->unitName = $DB->get_record('msm_unit_name', array('msmid'=>$msmid, 'depth'=>0))->id;
+        $this->unitName = $DB->get_record('msm_unit_name', array('msmid'=>$idNumber, 'depth'=>0))->id;
+        
 //        $unitName = $_POST['msm_unit_name_input'];
 //        $eachUnit = explode(",", $unitName);
 //        $currentType = '';

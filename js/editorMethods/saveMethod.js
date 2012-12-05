@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){     
+$(document).ready(function() {     
     
     $("#msm_unit_form").submit(function(event) { 
         
@@ -44,10 +44,10 @@ $(document).ready(function(){
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
-                
+                console.log(ids);
                 if(ids instanceof Array)
                 {
-                    console.log(ids);
+//                    console.log(ids);
                     for(var i=0; i < ids.length; i++)
                     {
                         var numOfContent = ids[i].match(/content/);

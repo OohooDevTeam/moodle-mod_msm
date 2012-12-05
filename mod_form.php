@@ -137,16 +137,16 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addElement('header', 'settinggeneral', get_string('levelsetting', 'msm'));
         $mform->addHelpButton('settinggeneral', 'levelsetting', 'msm');
         $mform->addElement('text', 'toplevel', get_string('toplevel', 'msm'), array('size' => '64', 'value' => 'Lecture'));
-        $mform->addElement('text', 'childlevel-1', get_string('childlevel1', 'msm'), array('size' => '64', 'value' => 'Part'));
-        $mform->addElement('text', 'childlevel-2', get_string('childlevel2', 'msm'), array('size' => '64', 'value' => 'Topic'));
-        $mform->addElement('text', 'childlevel-3', get_string('childlevel3', 'msm'), array('size' => '64', 'value' => 'Section'));
-        $mform->addElement('text', 'childlevel-4', get_string('childlevel4', 'msm'), array('size' => '64', 'value' => 'Subsection'));
+        $mform->addElement('text', 'childlevel1', get_string('childlevel1', 'msm'), array('size' => '64', 'value' => 'Part'));
+        $mform->addElement('text', 'childlevel2', get_string('childlevel2', 'msm'), array('size' => '64', 'value' => 'Topic'));
+        $mform->addElement('text', 'childlevel3', get_string('childlevel3', 'msm'), array('size' => '64', 'value' => 'Section'));
+        $mform->addElement('text', 'childlevel4', get_string('childlevel4', 'msm'), array('size' => '64', 'value' => 'Subsection'));
 
         $mform->addRule('toplevel', null, 'required', null, 'client');
-        $mform->addRule('childlevel-1', null, 'required', null, 'client');
-        $mform->addRule('childlevel-2', null, 'required', null, 'client');
-        $mform->addRule('childlevel-3', null, 'required', null, 'client');
-        $mform->addRule('childlevel-4', null, 'required', null, 'client');
+        $mform->addRule('childlevel1', null, 'required', null, 'client');
+        $mform->addRule('childlevel2', null, 'required', null, 'client');
+        $mform->addRule('childlevel3', null, 'required', null, 'client');
+        $mform->addRule('childlevel4', null, 'required', null, 'client');
      
         $repeatedArray = array();
         $repeatedArray[] =  $mform->createElement('text', 'additionalChild', get_string('moreChild', 'msm'), array('size' => '64', 'placeholder'=>'Please specify the name of this container.'));
