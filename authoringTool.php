@@ -96,7 +96,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 
-$selectedValue = $DB->get_record('msm', array('id' => $msm->id))->comptype;
+//$selectedValue = $DB->get_record('msm', array('id' => $msm->id))->comptype;
 
 $msm_nav = '';
 $msm_nav .= '<ul class="sf-menu">

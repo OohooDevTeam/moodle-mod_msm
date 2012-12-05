@@ -147,53 +147,74 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addRule('childlevel-2', null, 'required', null, 'client');
         $mform->addRule('childlevel-3', null, 'required', null, 'client');
         $mform->addRule('childlevel-4', null, 'required', null, 'client');
+     
+        $repeatedArray = array();
+        $repeatedArray[] =  $mform->createElement('text', 'additionalChild', get_string('moreChild', 'msm'), array('size' => '64', 'placeholder'=>'Please specify the name of this container.'));
+        
+//        if ($this->_instance)
+//        {
+//            $repeatno = $DB->count_records('testslide_slides', array('testslideid' => $instance));
+//            $repeatno += 1;
+//        }
+//        else
+//        {
+            $repeatno = 0;
+//        }
+        
+         $repeateloptions = array();
+         $repeateloptions['additionalChild']['default'] = '';
+         $mform->setType('additionalChild', PARAM_TEXT);
 
-        $attr = array("onclick" =>
-            "javascript:
-                var index = 0;               
-                
-                var allFitems = document.getElementById('settinggeneral').getElementsByClassName('fitem');
-
-                for (var i=0; i < allFitems.length-1; i++)
-                {
-                    index++;
-                }
-                
-                console.log(index);
-
-                var fitemDiv = document.createElement('div');
-                fitemDiv.className = 'fitem';
-                
-                var fitemTitle = document.createElement('div');
-                fitemTitle.className = 'fitemtitle';
-                
-                var felement = document.createElement('div');
-                felement.className = 'felement ftext';
-                
-                var inputLabel = document.createElement('label');
-                inputLabel.for = 'id_childlevel-'+index;
-                
-                var labelValue = document.createTextNode('Name of additional child element');
-                inputLabel.appendChild(labelValue);
-                
-                var inputField = document.createElement('input');
-                inputField.id = 'id_childlevel-'+index;
-                inputField.name = 'childlevel-'+index;
-                inputField.size = 64;
-                inputField.value = 'Please specify the name of this container.';
-                inputField.type = 'text';
-                
-                felement.appendChild(inputField);
-                fitemTitle.appendChild(inputLabel);
-                
-                fitemDiv.appendChild(fitemTitle);
-                fitemDiv.appendChild(felement);                
-                
-                allFitems[0].parentNode.insertBefore(fitemDiv, allFitems[index]);
-                "
-        );
-
-        $mform->addElement('button', 'msm_addchild', get_string('addchildbutton', 'msm'), $attr);
+//        $attr = array("onclick" =>
+//            "javascript:
+//                var index = 0;               
+//                
+//                var allFitems = document.getElementById('settinggeneral').getElementsByClassName('fitem');
+//
+//                for (var i=0; i < allFitems.length-1; i++)
+//                {
+//                    index++;
+//                }
+//                
+//                console.log(index);
+//
+//                var fitemDiv = document.createElement('div');
+//                fitemDiv.className = 'fitem';
+//                
+//                var fitemTitle = document.createElement('div');
+//                fitemTitle.className = 'fitemtitle';
+//                
+//                var felement = document.createElement('div');
+//                felement.className = 'felement ftext';
+//                
+//                var inputLabel = document.createElement('label');
+//                inputLabel.for = 'id_childlevel-'+index;
+//                
+//                var labelValue = document.createTextNode('Name of additional child element');
+//                inputLabel.appendChild(labelValue);
+//                
+//                var inputField = document.createElement('input');
+//                inputField.id = 'id_childlevel-'+index;
+//                inputField.name = 'childlevel-'+index;
+//                inputField.size = 64;
+//                inputField.setAttribute('placeholder','Please specify the name of this container.');
+//                inputField.type = 'text';
+//                
+//                felement.appendChild(inputField);
+//                fitemTitle.appendChild(inputLabel);
+//                
+//                fitemDiv.appendChild(fitemTitle);
+//                fitemDiv.appendChild(felement);                
+//                
+//                allFitems[0].parentNode.insertBefore(fitemDiv, allFitems[index]);
+//                "
+//        );
+//
+//        $mform->addElement('button', 'msm_addchild', get_string('addchildbutton', 'msm'), $attr);
+        
+        
+        
+        $this->repeat_elements($repeatedArray, $repeatno, $repeateloptions, 'option_repeats', 'option_add_fields', 1, get_string('addchildbutton', 'msm'));
 
         $this->standard_coursemodule_elements();
 

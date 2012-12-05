@@ -64,8 +64,8 @@ function openNavDialog()
             } 
             for(var i=1; i < allUnitNames.length-1; i++)
             {
-              
-                if((allUnitNames[i] != '') || (allUnitNames[i] != 'Please specify the name of this container.'))
+              console.log(allUnitNames[i]);
+                if(allUnitNames[i] != '')
                 {
                     var inputLabel = document.createElement('label');
                     inputLabel.htmlFor = "msm_structure_input_child-"+(i-1);
@@ -124,7 +124,7 @@ function addChildUnit()
         inputField.id = "msm_structure_input_child-"+newidNumber;
         inputField.name = "msm_structure_input_child-"+newidNumber;
                     
-        $(inputField).val("Please specify the name of the child element of this composition.");
+        $(inputField).attr("placeholder","Please specify the name of the child element of this composition.");
                     
         var settingContainer = document.createElement('div');
         settingContainer.className = "msm_setting_form";
@@ -162,48 +162,7 @@ function closeSetting()
     });
 }
 
-/**
- * This function will respond to save button in settings modal dialog and will pass the information in the settins form to update appropriate database field values.
- */
-//function saveSetting()
-//{
-//    var selectedValue = $('input[name=msm_type]:radio:checked').val(); 
-//    if(selectedValue == 'Others')
-//    {
-//        var specifiedValue = $('#msm_type_specifiedType').val();
-//            
-//        if((specifiedValue == null)||(specifiedValue == ''))
-//        {
-//            $("<div class='dialogs' id='msm_emptyComposition'> Please specify the type of your composition. </div>").appendTo('#msm_type_specifiedType');
-//            
-//            $( "#msm_emptyComposition" ).dialog({
-//                modal: true,
-//                buttons: {
-//                    Ok: function() {
-//                        $('#msm_type_specifiedType').css('border-color', '#FFA500');
-//                        $( this ).dialog( "close" );
-//                    }
-//                }
-//            });
-//        }
-//    }
-//    
-//    var topElement = $('#msm_structure_input_top').val();
-//    
-//    if(topElement == null)
-//    {
-//        topElement = selectedValue;
-//    }
-//    
-//    var childvalues = [];
-//    $('.msm_structure_input').each(function(i) {
-//        if($(this).val() != null)
-//        {
-//            childvalues[i] = $(this).val();
-//        }
-//        
-//    });
-//}
+
 
 /**
  *  This method checks if the user tried to save without filling in required field (ie, different border color for field)

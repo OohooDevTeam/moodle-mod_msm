@@ -516,3 +516,46 @@ function showImagePreview(evt)
 //    }
 //    
 //}
+
+/**
+ * This function will respond to save button in settings modal dialog and will pass the information in the settins form to update appropriate database field values.
+ */
+//function saveSetting()
+//{
+//    var selectedValue = $('input[name=msm_type]:radio:checked').val(); 
+//    if(selectedValue == 'Others')
+//    {
+//        var specifiedValue = $('#msm_type_specifiedType').val();
+//            
+//        if((specifiedValue == null)||(specifiedValue == ''))
+//        {
+//            $("<div class='dialogs' id='msm_emptyComposition'> Please specify the type of your composition. </div>").appendTo('#msm_type_specifiedType');
+//            
+//            $( "#msm_emptyComposition" ).dialog({
+//                modal: true,
+//                buttons: {
+//                    Ok: function() {
+//                        $('#msm_type_specifiedType').css('border-color', '#FFA500');
+//                        $( this ).dialog( "close" );
+//                    }
+//                }
+//            });
+//        }
+//    }
+//    
+//    var topElement = $('#msm_structure_input_top').val();
+//    
+//    if(topElement == null)
+//    {
+//        topElement = selectedValue;
+//    }
+//    
+//    var childvalues = [];
+//    $('.msm_structure_input').each(function(i) {
+//        if($(this).val() != null)
+//        {
+//            childvalues[i] = $(this).val();
+//        }
+//        
+//    });
+//}

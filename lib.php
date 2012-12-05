@@ -152,37 +152,54 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //    $DB->delete_records('msm_cite');
 //    $DB->delete_records('msm_item');
 //    $DB->delete_records('msm_compositor');
-
-
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
         // matching all the property defining the unit names
         $match = '/^(top|child)level(-\d+)*$/';
 
+        $depth = 0;
         foreach ($msm as $property => $value)
         {
             if (preg_match($match, trim($property)))
             {
                 $unitNameTableData = new stdClass();
-        $unitNameTableData->msmid = $msm->id;
-                if(trim($property) == 'toplevel')
-                {
-                    $unitNameTableData->unitname = $value;
-                    $unitNameTableData->depth = 0;
-                }
-                else
-                {
-                    $unitNameTableData->unitname = $value;
-                    
-                    $inputFieldId = explode("-", $property);
-                    
-                    // id number given to input field id starts with one
-                    $unitNameTableData->depth = $inputFieldId[1];
-                }
+                $unitNameTableData->msmid = $msm->id;
+//                if (trim($property) == 'toplevel')
+//                {
+                $unitNameTableData->unitname = $value;
+                $unitNameTableData->depth = $depth;
                 $DB->insert_record('msm_unit_name', $unitNameTableData);
+                $depth++;
+//                }
+//                else
+//                {
+//                    $unitNameTableData->unitname = $value;
+//
+//                    // id number given to input field id starts with one
+//                    $unitNameTableData->depth = $depth;
+//                    $DB->insert_record('msm_unit_name', $unitNameTableData);
+//                    $depth++;
+//                }
             }
-            
+            else if (trim($property) == 'additionalChild')
+            {
+                foreach ($value as $moreChild)
+                {
+                    if (!empty($moreChild))
+                    {
+                        $unitNameTableData = new stdClass();
+                        $unitNameTableData->msmid = $msm->id;
+                        $unitNameTableData->unitname = $moreChild;
+                        $unitNameTableData->depth = $depth;
+                        $DB->insert_record('msm_unit_name', $unitNameTableData);
+                        $depth++;
+                    }
+                    
+                }
+            }
         }
+    }
+
 //        
 //        
 //       
@@ -201,8 +218,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //        $unit->loadFromXml($parser->documentElement, $position);
 //
 //        $unit->saveIntoDb($unit->position, $msm->id);
-    }
-
 //    echo "done";
 //    die;
 //    

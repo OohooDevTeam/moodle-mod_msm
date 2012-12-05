@@ -57,6 +57,7 @@ $string['childlevel1'] = 'Name of first child element';
 $string['childlevel2'] = 'Name of second child element';
 $string['childlevel3'] = 'Name of third child element';
 $string['childlevel4'] = 'Name of fourth child element';
+$string['moreChild'] = 'Name of additional child element';
 $string['addchildbutton'] = '(+) Add more child elements';
 
 $string['msmsubmit'] = ' Save and Proceed ';
