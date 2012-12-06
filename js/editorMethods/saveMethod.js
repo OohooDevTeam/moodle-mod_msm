@@ -4,7 +4,6 @@
  */
 
 $(document).ready(function(){
-    $(".msm_form_error").hide();
     $("#msm_unit_form").submit(function(event) { 
         
         // prevents navigation to msmUnitForm.php
@@ -42,7 +41,6 @@ $(document).ready(function(){
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
-                
                 if(ids instanceof Array)
                 {
                     for(var i=0; i < ids.length; i++)

@@ -88,19 +88,19 @@ function openNavDialog()
                     
                     $(settingContainer).insertBefore('#msm_child_add');
                 }               
-                
+            
             }
             var msmInstanceid = document.createElement('input');
             msmInstanceid.id = "msm_instance_id";
             msmInstanceid.name = "msm_instance_id";
             msmInstanceid.style.visibility = "hidden";
             msmInstanceid.style.display = "none";
-                    
+            
             $(msmInstanceid).val(allUnitNames[allUnitNames.length-1]);
             
             $(msmInstanceid).insertAfter('#msm_child_add');
         }
-        
+    
     });
 }
 
@@ -122,24 +122,24 @@ function addChildUnit()
         
         var inputLabel = document.createElement('label');
         inputLabel.htmlFor = "msm_structure_input_child-"+newidNumber;
-                    
+        
         var labelText = document.createTextNode("Child Unit : ");
-                    
+        
         inputLabel.appendChild(labelText);   
-                    
+        
         var inputField = document.createElement('input');
         inputField.className = "msm_structure_input";
         inputField.id = "msm_structure_input_child-"+newidNumber;
         inputField.name = "msm_structure_input_child-"+newidNumber;
-                    
+        
         $(inputField).attr("placeholder","Please specify the name of the child element of this composition.");
-                    
+        
         var settingContainer = document.createElement('div');
         settingContainer.className = "msm_setting_form";
-                    
+        
         settingContainer.appendChild(inputLabel);
         settingContainer.appendChild(inputField);
-                    
+        
         $(settingContainer).insertBefore('#msm_child_add');        
     });
 }
@@ -201,69 +201,130 @@ function validateBorder()
  */
 function processChange(e)
 {
+    $(".msm_setting_form").empty().remove();  
+    
+    var child1Value;
+    var child2Value;
+    var child3Value;
+    var child4Value;
+    
+    
     switch(e.target.id)
     {
         case "msm_type_lecture":
-            $('.msm_structure_names').remove();
-            $('.msm_structure_input').remove();
-            $('br.childNewline').remove();
+            $("#msm_structure_input_top").val("Lecture");
             
-            $('#msm_structure_input_top').attr("placeholder", "e.g.) Lecture");
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
+            child1Value = "Part";
+            child2Value = "Topic";
+            child3Value = "Section";
+            child4Value = "Subsection";           
             break;
-            
+        
         case "msm_type_book":
-            $('.msm_structure_names').remove();
-            $('.msm_structure_input').remove();
-            $('br.childNewline').remove();
+            $("#msm_structure_input_top").val("Book");
             
-            $('#msm_structure_input_top').attr("placeholder", "e.g.) Book");
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Section"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Subsection"/><br class="childNewline" />').insertBefore('#msm_child_add');
+            child1Value = "Book Part";
+            child2Value = "Chapter";
+            child3Value = "Section";
+            child4Value = "Subsection";
             break;
-                
+        
         case "msm_type_wbook":
-            $('.msm_structure_names').remove();
-            $('.msm_structure_input').remove();
-            $('br.childNewline').remove();
+            $("#msm_structure_input_top").val("Work Book");
+            child1Value = "Book Part";
+            child2Value = "Chapter";
+            child3Value = "Section";
+            child4Value = "Subsection";
             
-            $('#msm_structure_input_top').attr("placeholder", "e.g.) WorkBook");
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="e.g.) Chapter"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Topic"/><br class="childNewline" />').insertBefore('#msm_child_add');
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-1" name="msm_top" placeholder="e.g.) Exercises"/><br class="childNewline" />').insertBefore('#msm_child_add');
             break;
-            
+        
         case "msm_type_others":
-            $('.msm_structure_names').remove();
-            $('.msm_structure_input').remove();
-            $('br.childNewline').remove();
-            
-            $('#msm_structure_input_top').attr("placeholder", "Please specify the name of the top element of this composition.");
-                
-            $('<span class="msm_structure_names">Child Unit :  </span>').insertBefore('#msm_child_add');
-            $('<input class="msm_structure_input" id="msm_structure_input_child-0" name="msm_top" placeholder="Please specify the name of the child element of this composition."/><br class="childNewline" />').insertBefore('#msm_child_add');
+            // need to read the input field later
+            $("#msm_structure_input_top").val("Others");
             break;
-                
+    
     }
     
+    var container1 = document.createElement("div");
+    container1.className = "msm_setting_form";    
+    var container2 = document.createElement("div");
+    container2.className = "msm_setting_form";    
+    var container3 = document.createElement("div");
+    container3.className = "msm_setting_form";    
+    var container4 = document.createElement("div");
+    container4.className = "msm_setting_form";
+    
+    var star = document.createElement("span"); //<span style="color: red;">*</span>
+    star.style.color = "red";
+    star.value = "*";
+    
+    var labelText1 = document.createTextNode("Child Unit : ");
+    var labelText2 = document.createTextNode("Child Unit : ");
+    var labelText3 = document.createTextNode("Child Unit : ");
+    var labelText4 = document.createTextNode("Child Unit : ");
+    
+    var label1 = document.createElement("label");
+    label1.htmlFor = "msm_structure_input_child-0"; 
+    label1.appendChild(labelText1);    
+    var inputfield1 = document.createElement("input");
+    inputfield1.className = "msm_structure_input";
+    inputfield1.id = "msm_structure_input_child-0";
+    inputfield1.name = "msm_structure_input_child-0";
+    inputfield1.value = child1Value;
+    
+    var label2 = document.createElement("label");
+    label2.htmlFor = "msm_structure_input_child-1";   
+    label2.appendChild(labelText2);    
+    var inputfield2 = document.createElement("input");
+    inputfield2.className = "msm_structure_input";
+    inputfield2.id = "msm_structure_input_child-1";
+    inputfield2.name = "msm_structure_input_child-1";
+    inputfield2.value = child2Value;
+    
+    var label3 = document.createElement("label");
+    label3.htmlFor = "msm_structure_input_child-2";    
+    label3.appendChild(labelText3);    
+    var inputfield3 = document.createElement("input");
+    inputfield3.className = "msm_structure_input";
+    inputfield3.id = "msm_structure_input_child-2";
+    inputfield3.name = "msm_structure_input_child-2";
+    inputfield3.value = child3Value;
+    
+    var label4 = document.createElement("label");
+    label4.htmlFor = "msm_structure_input_child-3";  
+    label4.appendChild(labelText4);    
+    var inputfield4 = document.createElement("input");
+    inputfield4.className = "msm_structure_input";
+    inputfield4.id = "msm_structure_input_child-3";
+    inputfield4.name = "msm_structure_input_child-3";
+    inputfield4.value = child4Value;
+    
+    // first child element
+    container1.appendChild(label1);
+    container1.appendChild(inputfield1);
+    container1.appendChild(star);
+    
+    // second child element
+    container2.appendChild(label2);
+    container2.appendChild(inputfield2);
+    container2.appendChild(star);
+    
+    // third child element
+    container3.appendChild(label3);
+    container3.appendChild(inputfield3);
+    container3.appendChild(star);
+    
+    // fourth child element
+    container4.appendChild(label4);
+    container4.appendChild(inputfield4);
+    container4.appendChild(star);
+    
+    $(container1).insertBefore('#msm_child_add');
+    $(container2).insertBefore('#msm_child_add');
+    $(container3).insertBefore('#msm_child_add');
+    $(container4).insertBefore('#msm_child_add');
+
+
 }
 
 

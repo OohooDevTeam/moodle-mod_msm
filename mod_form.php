@@ -97,34 +97,34 @@ class mod_msm_mod_form extends moodleform_mod
                 {                        
                     case '0':
                         document.getElementById('id_toplevel').value = 'Lecture';
-                        document.getElementById('id_childlevel-1').value = 'Part';
-                        document.getElementById('id_childlevel-2').value = 'Topic';
-                        document.getElementById('id_childlevel-3').value = 'Section';
-                        document.getElementById('id_childlevel-4').value = 'Subsection';
+                        document.getElementById('id_childlevel1').value = 'Part';
+                        document.getElementById('id_childlevel2').value = 'Topic';
+                        document.getElementById('id_childlevel3').value = 'Section';
+                        document.getElementById('id_childlevel4').value = 'Subsection';
                         break;
                         
                     case '1':
                         document.getElementById('id_toplevel').value = 'Book';
-                        document.getElementById('id_childlevel-1').value = 'Book Part';
-                        document.getElementById('id_childlevel-2').value = 'Chapter';
-                        document.getElementById('id_childlevel-3').value = 'Section';
-                        document.getElementById('id_childlevel-4').value = 'Subsection';
+                        document.getElementById('id_childlevel1').value = 'Book Part';
+                        document.getElementById('id_childlevel2').value = 'Chapter';
+                        document.getElementById('id_childlevel3').value = 'Section';
+                        document.getElementById('id_childlevel4').value = 'Subsection';
                         break;
                         
                     case '2':
                         document.getElementById('id_toplevel').value = 'Work Book';
-                        document.getElementById('id_childlevel-1').value = 'Book Part';
-                        document.getElementById('id_childlevel-2').value = 'Chapter';
-                        document.getElementById('id_childlevel-3').value = 'Section';
-                        document.getElementById('id_childlevel-4').value = 'Subsection';
+                        document.getElementById('id_childlevel1').value = 'Book Part';
+                        document.getElementById('id_childlevel2').value = 'Chapter';
+                        document.getElementById('id_childlevel3').value = 'Section';
+                        document.getElementById('id_childlevel4').value = 'Subsection';
                         break;
                         
                     case '3':
                         document.getElementById('id_toplevel').value = 'Please specify the name of this container.';
-                        document.getElementById('id_childlevel-1').value = 'Please specify the name of this container.';
-                        document.getElementById('id_childlevel-2').value = 'Please specify the name of this container.';
-                        document.getElementById('id_childlevel-3').value = 'Please specify the name of this container.';
-                        document.getElementById('id_childlevel-4').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel1').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel2').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel3').value = 'Please specify the name of this container.';
+                        document.getElementById('id_childlevel4').value = 'Please specify the name of this container.';
                         break;
                     
                 }
@@ -147,73 +147,16 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addRule('childlevel2', null, 'required', null, 'client');
         $mform->addRule('childlevel3', null, 'required', null, 'client');
         $mform->addRule('childlevel4', null, 'required', null, 'client');
-     
-        $repeatedArray = array();
-        $repeatedArray[] =  $mform->createElement('text', 'additionalChild', get_string('moreChild', 'msm'), array('size' => '64', 'placeholder'=>'Please specify the name of this container.'));
-        
-//        if ($this->_instance)
-//        {
-//            $repeatno = $DB->count_records('testslide_slides', array('testslideid' => $instance));
-//            $repeatno += 1;
-//        }
-//        else
-//        {
-            $repeatno = 0;
-//        }
-        
-         $repeateloptions = array();
-         $repeateloptions['additionalChild']['default'] = '';
-         $mform->setType('additionalChild', PARAM_TEXT);
 
-//        $attr = array("onclick" =>
-//            "javascript:
-//                var index = 0;               
-//                
-//                var allFitems = document.getElementById('settinggeneral').getElementsByClassName('fitem');
-//
-//                for (var i=0; i < allFitems.length-1; i++)
-//                {
-//                    index++;
-//                }
-//                
-//                console.log(index);
-//
-//                var fitemDiv = document.createElement('div');
-//                fitemDiv.className = 'fitem';
-//                
-//                var fitemTitle = document.createElement('div');
-//                fitemTitle.className = 'fitemtitle';
-//                
-//                var felement = document.createElement('div');
-//                felement.className = 'felement ftext';
-//                
-//                var inputLabel = document.createElement('label');
-//                inputLabel.for = 'id_childlevel-'+index;
-//                
-//                var labelValue = document.createTextNode('Name of additional child element');
-//                inputLabel.appendChild(labelValue);
-//                
-//                var inputField = document.createElement('input');
-//                inputField.id = 'id_childlevel-'+index;
-//                inputField.name = 'childlevel-'+index;
-//                inputField.size = 64;
-//                inputField.setAttribute('placeholder','Please specify the name of this container.');
-//                inputField.type = 'text';
-//                
-//                felement.appendChild(inputField);
-//                fitemTitle.appendChild(inputLabel);
-//                
-//                fitemDiv.appendChild(fitemTitle);
-//                fitemDiv.appendChild(felement);                
-//                
-//                allFitems[0].parentNode.insertBefore(fitemDiv, allFitems[index]);
-//                "
-//        );
-//
-//        $mform->addElement('button', 'msm_addchild', get_string('addchildbutton', 'msm'), $attr);
-        
-        
-        
+        $repeatedArray = array();
+        $repeatedArray[] = $mform->createElement('text', 'additionalChild', get_string('moreChild', 'msm'), array('size' => '64', 'placeholder' => 'Please specify the name of this container.'));
+
+        $repeatno = 0;
+        $repeateloptions = array();
+        $repeateloptions['additionalChild']['default'] = '';
+        $mform->setType('additionalChild', PARAM_TEXT);
+
+
         $this->repeat_elements($repeatedArray, $repeatno, $repeateloptions, 'option_repeats', 'option_add_fields', 1, get_string('addchildbutton', 'msm'));
 
         $this->standard_coursemodule_elements();
