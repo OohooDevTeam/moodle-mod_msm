@@ -41,6 +41,9 @@ $(document).ready(function(){
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
+                
+                console.log(ids);
+                
                 if(ids instanceof Array)
                 {
                     for(var i=0; i < ids.length; i++)
@@ -49,10 +52,12 @@ $(document).ready(function(){
                         
                         if(numOfContent)
                         {
+                            console.log(ids[i])
                             $('#'+ids[i]).parent().css("border", "solid 4px #FFA500");
                         }
                         else
                         {
+                            alert("not matched to content");
                             $('#'+ids[i]).css("border-color", "#FFA500");
                         }
                         

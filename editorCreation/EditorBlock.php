@@ -136,7 +136,7 @@ class EditorBlock extends EditorElement
             }
             else
             {
-                $this->errorArray[] = 'msm_intro_child_content-' . $idInfo[1];
+                $this->errorArray[] = 'msm_intro_child_content-' . $idInfo[1] . '_ifr';
             }
         }
         else
@@ -156,7 +156,7 @@ class EditorBlock extends EditorElement
             }
             else
             {
-                $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1];
+                $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1] . '_ifr';;
             }
         }
         
@@ -185,7 +185,7 @@ class EditorBlock extends EditorElement
         }
         else
         {
-            $this->errorArray[] = 'msm_body_content_input-' . $idInfo[1];
+            $this->errorArray[] = 'msm_body_content_input-' . $idInfo[1] . '_ifr';;
         }
         
         $this->type = "unit";
