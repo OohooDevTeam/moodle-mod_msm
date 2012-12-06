@@ -88,6 +88,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorActions.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveMethod.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
@@ -296,6 +297,7 @@ $formContent .= '<script type="text/javascript">
                     theme_advanced_toolbar_location : "top",
                     theme_advanced_toolbar_align : "left",
                     theme_advanced_statusbar_location : "bottom",
+                    file_browser_callback: "myFileBrowser",
                     skin : "o2k7",
                     skin_variant : "silver"
                 });     
@@ -306,8 +308,8 @@ $formContent .= '<script type="text/javascript">
                     scroll: true,
                     cursor: "move",
                     helper: "clone"                   
-                });              
-        
+                }); 
+                
                 $("#msm_editor_middle_droparea").droppable({
                     accept: "#msm_editor_left > div",
                     hoverClass: "ui-state-hover",
