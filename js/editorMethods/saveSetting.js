@@ -50,32 +50,51 @@ $(document).ready(function () {
                 data: formData,
                 success: function (data) {
                     errorids = JSON.parse(data);
+                    
+                    // indicates if the border change occurred or not, 
+                    // if the border change has occured then fires a message dialog warning user to fill the content in
+                    var flag = false;
+                    
                     if(errorids instanceof Array)
                     {
                         for(var i=0; i < errorids.length; i++)
                         {
-                            var numOfContent = errorids[i].match(/content/);
-                        
-                            if(numOfContent)
+                            
+                            if(errorids[i] == 'msm_strcutre_input_top')
                             {
-                                $('#'+errorids[i]).parent().css("border", "solid 4px #FFA500");
+                                flag = true;
+                                $('#'+errorids[i]).css("border-color", "#FFA500"); 
                             }
                             else
                             {
-                                $('#'+errorids[i]).css("border-color", "#FFA500");
-                            }
-                        
-                        }
-                        $("<div class=\"dialogs\" id=\"msm_emptySettingContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo("#msm_setting_dialog");
-
-                        $("#msm_emptySettingContent").dialog({
-                            modal: true,
-                            buttons: {
-                                Ok: function() {
-                                    $(this).dialog("close");
+                                var idNumber  = errorids[i].split("-");
+                                        
+                                if(idNumber[1] <= 3)
+                                {
+                                    flag = true
+                                    $('#'+errorids[i]).css("border-color", "#FFA500");
                                 }
                             }
-                        });  
+                        }
+                        if(flag)
+                        {
+                            $("<div class=\"dialogs\" id=\"msm_emptySettingContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo("#msm_setting_dialog");
+
+                            $("#msm_emptySettingContent").dialog({
+                                modal: true,
+                                buttons: {
+                                    Ok: function() {
+                                        $(this).dialog("close");
+                                    }
+                                }
+                            });  
+                        }
+                        else
+                        {
+                            $('#msm_unit_name_input').val(inputValue);
+                            $("#msm_setting_dialog").dialog("close");
+                        }
+                        
                     }
                     else
                     {

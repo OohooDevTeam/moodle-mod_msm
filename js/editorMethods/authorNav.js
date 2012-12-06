@@ -85,6 +85,7 @@ function openNavDialog()
                     
                     settingContainer.appendChild(inputLabel);
                     settingContainer.appendChild(inputField);
+                    $(settingContainer).append('<span style="color: red;">*</span>');
                     
                     $(settingContainer).insertBefore('#msm_child_add');
                 }               
@@ -254,10 +255,6 @@ function processChange(e)
     var container4 = document.createElement("div");
     container4.className = "msm_setting_form";
     
-    var star = document.createElement("span"); //<span style="color: red;">*</span>
-    star.style.color = "red";
-    star.value = "*";
-    
     var labelText1 = document.createTextNode("Child Unit : ");
     var labelText2 = document.createTextNode("Child Unit : ");
     var labelText3 = document.createTextNode("Child Unit : ");
@@ -270,7 +267,7 @@ function processChange(e)
     inputfield1.className = "msm_structure_input";
     inputfield1.id = "msm_structure_input_child-0";
     inputfield1.name = "msm_structure_input_child-0";
-    inputfield1.value = child1Value;
+    $(inputfield1).val(child1Value);
     
     var label2 = document.createElement("label");
     label2.htmlFor = "msm_structure_input_child-1";   
@@ -279,7 +276,7 @@ function processChange(e)
     inputfield2.className = "msm_structure_input";
     inputfield2.id = "msm_structure_input_child-1";
     inputfield2.name = "msm_structure_input_child-1";
-    inputfield2.value = child2Value;
+    $(inputfield2).val(child2Value);
     
     var label3 = document.createElement("label");
     label3.htmlFor = "msm_structure_input_child-2";    
@@ -288,7 +285,7 @@ function processChange(e)
     inputfield3.className = "msm_structure_input";
     inputfield3.id = "msm_structure_input_child-2";
     inputfield3.name = "msm_structure_input_child-2";
-    inputfield3.value = child3Value;
+    $(inputfield3).val(child3Value);
     
     var label4 = document.createElement("label");
     label4.htmlFor = "msm_structure_input_child-3";  
@@ -297,27 +294,27 @@ function processChange(e)
     inputfield4.className = "msm_structure_input";
     inputfield4.id = "msm_structure_input_child-3";
     inputfield4.name = "msm_structure_input_child-3";
-    inputfield4.value = child4Value;
+    $(inputfield4).val(child4Value);
     
     // first child element
     container1.appendChild(label1);
     container1.appendChild(inputfield1);
-    container1.appendChild(star);
+    $(container1).append('<span style="color: red;">*</span>');
     
     // second child element
     container2.appendChild(label2);
     container2.appendChild(inputfield2);
-    container2.appendChild(star);
+    $(container2).append('<span style="color: red;">*</span>');
     
     // third child element
     container3.appendChild(label3);
     container3.appendChild(inputfield3);
-    container3.appendChild(star);
+    $(container3).append('<span style="color: red;">*</span>');
     
     // fourth child element
     container4.appendChild(label4);
     container4.appendChild(inputfield4);
-    container4.appendChild(star);
+    $(container4).append('<span style="color: red;">*</span>');
     
     $(container1).insertBefore('#msm_child_add');
     $(container2).insertBefore('#msm_child_add');

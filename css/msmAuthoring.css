@@ -448,10 +448,10 @@
 }
 
 /* border added for debugging purpose! --> remove when project is done */
-#msm_intro_child_container
+/*#msm_intro_child_container
 {
     border: 2px ridge orange;
-}
+}*/
 
 #msm_setting_container
 {

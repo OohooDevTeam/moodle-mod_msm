@@ -59,7 +59,7 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             $theorem->getFormData($childIdInfo[1], $i);
             $unitcontent[] = $theorem;
             break;
-        
+
         case "copied_msm_comment":
             $comment = new EditorComment();
             $comment->getFormData($childIdInfo[1], $i);
@@ -71,7 +71,7 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             $intro->getFormData($childIdInfo[1], $i);
             $unitcontent[] = $intro;
             break;
-        
+
         case "copied_msm_body":
             $body = new EditorBlock();
             $body->getFormData($arrayOfChild[$i], $i);
@@ -87,6 +87,21 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
 // unit cannot get an error since both title and description can be null
 foreach ($unitcontent as $unitchild)
 {
+    // intro does not have errorArray property but its content blocks do
+    if (get_class($unitchild) == "EditorIntro")
+    {
+        foreach ($unitchild->blocks as $introContent)
+        {
+            if (!empty($introContent->errorArray))
+            {
+                $hasError = true;
+                foreach ($introContent->errorArray as $introerrorid)
+                {
+                    $errorArray[] = $introerrorid;
+                }
+            }
+        }
+    }
     if (!empty($unitchild->errorArray))
     {
         $hasError = true;
@@ -108,8 +123,8 @@ else
     // need code fo insert unit information to unitdatabase before procesing the child so that
     // the parentid exists when the child elements are being inserted to the db
 
-    $siblingCompid = 0;    
-    
+    $siblingCompid = 0;
+
     foreach ($unitcontent as $element)
     {
         $element->insertData($unit->compid, $siblingCompid, $msmId);
