@@ -62,7 +62,7 @@ class EditorInContent extends EditorElement
         {
             $this->additional_attribute = null;
         }
-        
+
         $this->content = $doc->saveHTML($listElement);
 
         return $this;
@@ -76,16 +76,16 @@ class EditorInContent extends EditorElement
         $data->additional_attribute = $this->additional_attribute;
         $data->content = $this->content;
         $data->type = $this->type;
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;
         $compData->unit_id = $this->id;
-        $compData->table_id = $DB->get_record("msm_table_collection", array('tablename'=>$this->tablename))->id;
+        $compData->table_id = $DB->get_record("msm_table_collection", array('tablename' => $this->tablename))->id;
         $compData->parent_id = $parentid;
         $compData->prev_sibling_id = $siblingid;
-        
+
         $this->compid = $DB->insert_record('msm_compositor', $compData);
     }
 

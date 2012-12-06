@@ -25,7 +25,7 @@ class EditorIntro extends EditorElement
     {
         $this->position = $position;
         $this->blocks = array();
-        
+
         $intromatch = '/^msm_intro_content_.*/';
         $childmatch = '/^msm_intro_child_content-.*/';
 
@@ -36,7 +36,7 @@ class EditorIntro extends EditorElement
             {
                 $block = new EditorBlock();
                 $block->getFormData($elementID, $i);
-                
+
                 $this->blocks[] = $block;
             }
             $i++;

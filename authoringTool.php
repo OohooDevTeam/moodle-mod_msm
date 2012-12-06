@@ -87,7 +87,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorCore.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorActions.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveMethod.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.4.6/tiny_mce.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
@@ -154,55 +154,52 @@ $msm_nav .= '<ul class="sf-menu">
             </li>
             <li>
                 <a id="msm_nav_setting" onclick="openNavDialog()"> <span>Setting</span></a>  
-                    
-                     <div class="dialogs" id="msm_setting_dialog"> 
-                    
-                        <div id="msm_setting_type"> 
-                            <ul>
-                                <li>
-                                    <a href="#msm_type">Composition Type</a>
-                                </li>
-                                <li>
-                                    <a href="#msm_theme">MSM Theme</a>
-                                </li>
-                                <li>
-                                    <a href="#msm_element_names">Name of Structural Elements</a>
-                                </li>
-                            </ul>
-                             <form id="msm_setting_form" name="msm_setting_form" action="editorCreation/msmUnitForm.php" method="post">
+
+                <div class="dialogs" id="msm_setting_dialog"> 
+
+                    <div id="msm_setting_type"> 
+                        <ul>
+                            <li>
+                                <a href="#msm_type">Composition Type</a>
+                            </li>
+                            <li>
+                                <a href="#msm_theme">MSM Theme</a>
+                            </li>
+                            <li>
+                                <a href="#msm_element_names">Name of Structural Elements</a>
+                            </li>
+                        </ul>
+                        <!--form id="msm_setting_form" name="msm_setting_form" action="editorCreation/msmUnitForm.php" method="post"-->
                             <div id="msm_type" class="msm_tab">
                                 <span> <b>Type of Composition: </b></span>
-                                <br/><br/>
-                                
-                                    <input type="radio" name="msm_type" id="msm_type_lecture" value="Lecture" onclick="processChange(event)"> Lecture <br/><br/>
-                                    <input type="radio" name="msm_type" id="msm_type_book" value="Book" onclick="processChange(event)"> Book <br/><br/>
-                                    <input type="radio" name="msm_type" id="msm_type_wbook" value="Work book" onclick="processChange(event)"> Work book <br/><br/>
-                                    <input type="radio" name="msm_type" id="msm_type_others" value="Others" onclick="processChange(event)"> Others:  
-                                    <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition." onkeypress="validateBorder()"/>
-                                    <span style="color: red;">*</span>
-                                
-
+                                <br/><br/>                                
+                                <input type="radio" name="msm_type" id="msm_type_lecture" value="Lecture" onclick="processChange(event)"> Lecture <br/><br/>
+                                <input type="radio" name="msm_type" id="msm_type_book" value="Book" onclick="processChange(event)"> Book <br/><br/>
+                                <input type="radio" name="msm_type" id="msm_type_wbook" value="Work book" onclick="processChange(event)"> Work book <br/><br/>
+                                <input type="radio" name="msm_type" id="msm_type_others" value="Others" onclick="processChange(event)"> Others:  
+                                <input class="msm_type_input" id="msm_type_specifiedType" name="msm_type_input" placeholder=" Please specify the type of Composition." onkeypress="validateBorder()"/>
+                                <span style="color: red;">*</span> 
                             </div> 
                             <div id="msm_theme" class="msm_tab">
                                 Big content...
                             </div> 
                             <div id="msm_element_names" class="msm_tab">                            
-                                    <span class="msm_structure_top_names">Top Unit :  </span>
-                                    <input class="msm_structure_top_input" id="msm_structure_input_top" name="msm_structure_input_top"/>
-                                    <span style="color: red;">*</span>
-                                    <br />                            
+                                <span class="msm_structure_top_names">Top Unit :  </span>
+                                <input class="msm_structure_top_input" id="msm_structure_input_top" name="msm_structure_input_top"/>
+                                <span style="color: red;">*</span>
+                                <br />                            
                                 <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
                             </div> 
-                        </div> 
-                        <br style="clear:both;" />
-                        <input type="submit" name="msm_setting_save" class="msm_setting_buttons" id="msm_setting_save" value="Save"/>
-                        <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
-                         <div style="float: right; font-style:italic; color: red;"><span style="color: red;">*</span> required information</div>
-                          </form>
-                        <div id="msm_setting_cancelled">
-                            <p style="display:none;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
-                        </div>                       
-                    </div>
+                    </div> 
+                    <br style="clear:both;" />
+                    <input type="submit" name="msm_setting_save" class="msm_setting_buttons" id="msm_setting_save" value="Save"/>
+                    <button class="msm_setting_buttons" id="msm_setting_cancel" type="button" onclick="closeSetting()"> Cancel </button>
+                    <div style="float: right; font-style:italic; color: red;"><span style="color: red;">*</span> required information</div>
+                    <!--/form-->
+                    <div id="msm_setting_cancelled">
+                        <p style="display:none;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Would you like to exit without saving the changes?</p>
+                    </div>                       
+                </div>
             </li>
         </ul>';
 
@@ -258,21 +255,21 @@ $formContent .= '<div id="msm_editor_container">
                 <div id="msm_editor_middle" >
                     <h2> ' . $topContainer . ' Design Area </h2> <!-- grab the string from the setting values -->
                     <form id="msm_unit_form" name="msm_unit_form" action="editorCreation/msmUnitForm.php" method="post">
-                         <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">' . $topContainer . ' title: </label>
-                         <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this ' . $topContainer . '." onkeypress="validateBorder()"/>
-                         
-                         <label class="msm_unit_description_labels" id="msm_unit_description_label" for="msm_unit_descripton_input">Description: </label>
-                         <input class="msm_unit_description_inputs" id="msm_unit_descripton_input" name="msm_unit_descripton_input" placeholder="Insert description to search this element in future."/>
-                         
-                         <div id="msm_editor_middle_droparea">                        
-                             <div id="msm_child_appending_area">
-                             </div>
-                             <input id="msm_child_order" name="msm_child_order" style="visibility: hidden;"/>
-                         </div>
-                         <input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
-                         <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
-                         
-                         <input id="msm_unit_name_input" name="msm_unit_name_input" style="visibility:hidden;" value="'. $unitNames . '"/> 
+                        <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">' . $topContainer . ' title: </label>
+                        <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this ' . $topContainer . '." onkeypress="validateBorder()"/>
+
+                        <label class="msm_unit_description_labels" id="msm_unit_description_label" for="msm_unit_descripton_input">Description: </label>
+                        <input class="msm_unit_description_inputs" id="msm_unit_descripton_input" name="msm_unit_descripton_input" placeholder="Insert description to search this element in future."/>
+
+                        <div id="msm_editor_middle_droparea">                        
+                            <div id="msm_child_appending_area">
+                            </div>
+                            <input id="msm_child_order" name="msm_child_order" style="visibility: hidden;"/>
+                        </div>
+                        <input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
+                        <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
+
+                        <input id="msm_unit_name_input" name="msm_unit_name_input" style="visibility:hidden;" value="'. $unitNames . '"/> 
                     </form>
                 </div>
 
@@ -295,7 +292,6 @@ $formContent .= '<script type="text/javascript">
                     theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
                     theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
                     theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-//                    theme_advanced_toolbar_location : "external",
                     theme_advanced_toolbar_location : "top",
                     theme_advanced_toolbar_align : "left",
                     theme_advanced_statusbar_location : "bottom",

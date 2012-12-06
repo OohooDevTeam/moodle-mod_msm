@@ -44,7 +44,7 @@ class EditorTheorem extends EditorElement
         }
         else
         {
-            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . "_ifr";
+            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
         }
 
         return $this;
@@ -83,11 +83,11 @@ class EditorTheorem extends EditorElement
             $statementCompData = new stdClass();
             $statementCompData->msm_id = $msmid;
             $statementCompData->unit_id = $statementTheorem->id;
-            $statementCompData->table_id = $DB->get_record("msm_table_collection", array("tablename" => 'msm_statement_theorem'))->id;
+            $statementCompData->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
             $statementCompData->parent_id = $this->compid;
             $statementCompData->prev_sibling_id = $sibling_id;
 
-            $statementTheorem->compid = $DB->insert_record("msm_compositor", $statementCompData);
+            $statementTheorem->compid = $DB->insert_record('msm_compositor', $statementCompData);
 
             $sibling_id = $statementTheorem->compid;
         }

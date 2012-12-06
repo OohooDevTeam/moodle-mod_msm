@@ -44,7 +44,7 @@ class EditorDefinition extends EditorElement
         }
         else
         {
-            $this->errorArray[] = 'msm_def_content_input-' . $idNumber . "_ifr";
+            $this->errorArray[] = 'msm_def_content_input-' . $idNumber . '_ifr';
         }
 
         return $this;

@@ -288,62 +288,62 @@ function processDroppedChild(e, droppedId)
  *  --> diplay change: from filled in content --> maintain same content in middle but with edit button instead of  & thumbnail of composed unit added to tree in right panel
  *  --> disable drag&drop/resize...etc
  */
-function saveUnit()
-{
-    $("#msm_editor_save").ready(function() {
-        var children =  document.getElementById('msm_child_appending_area').childNodes;
-        
-        var idString = "";
-        for(var i=0; i<children.length-1; i++)
-        {
-            if(children[i].tagName == "DIV")
-            {
-                idString += children[i].id + ",";
-            }           
-        }
-        if(children[children.length-1].tagName == "DIV")
-        {
-            idString += children[children.length-1].id;
-        }
-        
-                    
-        $("#msm_child_order").val(idString);
-
-        var titleinput = $("#msm_unit_title").val();
-
-        if((titleinput == null)||(titleinput == ""))
-        {
-            $("<div class='dialogs' id='msm_emptyMsmTitle'> Please specify the title of this unit. </div>").appendTo("#msm_unit_title");
-
-            $("#msm_emptyMsmTitle").dialog({
-                modal: true,
-                buttons: {
-                    Ok: function() {
-                        $("#msm_unit_title").css("border-color", "#FFA500");
-                        $(this).dialog("close");
-                    }
-                }
-            });   
-        }
-        else
-        {
-            $("#msm_editor_save").remove();
-            $("<button class='msm_editor_buttons' id='msm_editor_edit' type='button' onclick='editUnit()'> Edit </button>").appendTo("#msm_editor_middle");
-            $("#msm_editor_reset").attr("disabled", "disabled");
-        }
-
-    });
-//AJAX call to php file/function that will put appropriate info into db tables   
-}
+//function saveUnit()
+//{
+//    $("#msm_editor_save").ready(function() {
+//        var children =  document.getElementById('msm_child_appending_area').childNodes;
+//        
+//        var idString = "";
+//        for(var i=0; i<children.length-1; i++)
+//        {
+//            if(children[i].tagName == "DIV")
+//            {
+//                idString += children[i].id + ",";
+//            }           
+//        }
+//        if(children[children.length-1].tagName == "DIV")
+//        {
+//            idString += children[children.length-1].id;
+//        }
+//        
+//                    
+//        $("#msm_child_order").val(idString);
+//
+//        var titleinput = $("#msm_unit_title").val();
+//
+//        if((titleinput == null)||(titleinput == ""))
+//        {
+//            $("<div class='dialogs' id='msm_emptyMsmTitle'> Please specify the title of this unit. </div>").appendTo("#msm_unit_title");
+//
+//            $("#msm_emptyMsmTitle").dialog({
+//                modal: true,
+//                buttons: {
+//                    Ok: function() {
+//                        $("#msm_unit_title").css("border-color", "#FFA500");
+//                        $(this).dialog("close");
+//                    }
+//                }
+//            });   
+//        }
+//        else
+//        {
+//            $("#msm_editor_save").remove();
+//            $("<button class='msm_editor_buttons' id='msm_editor_edit' type='button' onclick='editUnit()'> Edit </button>").appendTo("#msm_editor_middle");
+//            $("#msm_editor_reset").attr("disabled", "disabled");
+//        }
+//
+//    });
+////AJAX call to php file/function that will put appropriate info into db tables   
+//}
 
 /**
  * need to enable drag/drop/resize again... and also enable edit button
  *
  */
-function editUnit()
-{
-    
-}
+//function editUnit()
+//{
+//    
+//}
 
 /**
  * needs to ask if the user wants to save the content if save button has not been pressed, if was saved, then call saveUnit and close dialog,
