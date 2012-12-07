@@ -1,4 +1,4 @@
-<?php
+<?php //
 
 /*
  * To change this template, choose Tools | Templates
@@ -17,11 +17,14 @@ class EditorTheorem extends EditorElement
     public $compid;
     public $type;
     public $title;
-    public $content;
+    public $contents = array();
+//    public $contentPosition;
     public $associateType;
     public $tablename;
     public $position;
     public $description;
+
+//    public $partTheorems = array();
 
     public function __construct()
     {
@@ -37,17 +40,41 @@ class EditorTheorem extends EditorElement
         $this->position = $position;
 
         $this->errorArray = array();
+//
+//        if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
+//        {
+//            $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
+//        }
+//        else
+//        {
+//            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
+//        }
 
-        if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
+        $partmatch = '/^msm_theorem_part_.*/';
+        $contentmatch = '/^msm_theorem_content_input-.*/';
+
+        $i = 0; //position for the part theorem
+
+        foreach ($_POST as $id => $value)
         {
-            $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
+            if (preg_match($partmatch, $id))
+            {
+                $indexNumber = explode("-", $id);
+
+                $partTheorem = new EditorPartTheorem();
+                $partTheorem->getFormData($indexNumber, $i);
+                $this->content[] = $partTheorem;
+                $i++;
+            }
+            else if (preg_match($contentmatch, $id))
+            {
+                $indexNumber = explode("-", $id);
+                $statementTheorem = new EditorStatementTheorem();
+                $statementTheorem->getFormData($indexNumber[1], $i);
+                $this->content[] = $statementTheorem;
+                $i++;
+            }
         }
-        else
-        {
-            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
-        }
-        
-//        if($_POST['msm_'])
 
         return $this;
     }
@@ -74,25 +101,31 @@ class EditorTheorem extends EditorElement
         $this->compid = $DB->insert_record("msm_compositor", $compData);
 
         $sibling_id = 0;
-        if (!empty($this->content))
-        {
-            $statementData = new stdClass();
-            $statementData->statement_content = $this->content;
 
-            $statementTheorem = new stdClass();
-            $statementTheorem->id = $DB->insert_record('msm_statement_theorem', $statementData);
+        $currentIndex = 0;
+        $nextIndex = 1;
 
-            $statementCompData = new stdClass();
-            $statementCompData->msm_id = $msmid;
-            $statementCompData->unit_id = $statementTheorem->id;
-            $statementCompData->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_statement_theorem'))->id;
-            $statementCompData->parent_id = $this->compid;
-            $statementCompData->prev_sibling_id = $sibling_id;
-
-            $statementTheorem->compid = $DB->insert_record('msm_compositor', $statementCompData);
-
-            $sibling_id = $statementTheorem->compid;
-        }
+//        foreach ($this->content as $key => $object)
+//        {
+//            if ($key != sizeof($this->content) - 1)
+//            {
+//                if ($this->content[$currentIndex]->position < $this->content[$nextIndex])
+//                {
+//                    $object->insertData($this->comp,)
+//                }
+//            }
+//        }
+//        if (!empty($this->content))
+//        {
+//
+//
+//            $sibling_id = $statementTheorem->compid;
+//        }
+//
+//        foreach ($this->partTheorems as $key => $partTheorem)
+//        {
+//            $
+//        }
     }
 
 }
