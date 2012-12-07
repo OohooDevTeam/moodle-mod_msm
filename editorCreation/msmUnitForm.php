@@ -41,6 +41,8 @@ $tableCollection->insertTablename();
 
 $unit = new EditorUnit();
 $unit->getFormData($msmId, '');
+//
+//print_object($_POST);
 
 for ($i = 0; $i < $lengthOfArray - 1; $i++)
 {

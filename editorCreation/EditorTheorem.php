@@ -46,6 +46,8 @@ class EditorTheorem extends EditorElement
         {
             $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
         }
+        
+//        if($_POST['msm_'])
 
         return $this;
     }

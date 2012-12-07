@@ -19,7 +19,7 @@
 
 .msm_title_input
 {
-    width: 89%;
+    width: 85%;
     margin-bottom: 2%;
     margin-left: 1.5%;
 }
@@ -314,7 +314,7 @@
 
 .msm_unit_description_inputs
 {
-    width: 89%;
+    width: 85%;
     margin-bottom: 2%;
 }
 
@@ -328,7 +328,7 @@
 
 .msm_child_description_inputs
 {
-    width: 83%;
+    width: 91%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -456,9 +456,58 @@
 #msm_setting_container
 {
     height: 100%;
-    
+
 }
 
 #msm_setting_form{
     height: 100%;
+}
+
+.msm_theorem_content_containers
+{
+    border: 2px solid black;
+    margin-top: 2%;
+}
+
+.msm_theorem_part_tlabel
+{
+    float: left;
+    margin-top: 2%
+}
+
+
+.msm_theorem_part_title{
+    float: left;
+    margin: 2%;
+    width: 81%;
+}
+
+.msm_theorem_part_content
+{
+    height: auto;
+    width: 96%;
+    min-width: 300px;
+    overflow: auto;
+    resize: none;
+}
+
+.msm_theorem_child_buttons
+{
+    margin-left: auto;
+    margin-right: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.msm_theorem_part_buttons
+{
+    margin-left: 10%;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.msm_theorem_child
+{
+    margin-top: 1%;
 }
