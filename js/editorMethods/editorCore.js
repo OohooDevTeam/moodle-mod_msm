@@ -648,14 +648,16 @@ function addTheoremContent(idNumber)
     })
     
     var theoremStatementWrapper = $('<div class="msm_theorem_statement_containers" id="msm_theorem_statement_container-'+newId+'"></div>');
+    var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theorem_content_input-'+newId+'" name="msm_theorem_content_input-'+newId+'"/>');    
    
     var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+newId+'" type="button" onclick="addTheoremPart('+newId+')" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+newId+'"></div>');
             
-     theoremPartWrapper.append(theoremPartButton);
+    theoremPartWrapper.append(theoremPartButton);
             
+    theoremStatementWrapper.append(theoremCloseButton);
     theoremStatementWrapper.append(theoremContentHeader);
     theoremStatementWrapper.append(theoremContentField);
    
@@ -737,10 +739,14 @@ function addTheoremPart(idNumber)
     })
     
     var theoremPartContainer = $('<div class="msm_theorem_child" id="msm_theorem_part_container-'+newId+'"></div>');
+    
+    var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+    
     var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theorem_part_title-0">Part Theorem title: </label>');
-    var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theorem_part_title-'+newId+'" name="msm_theorem_part_title-'+newId+'" placeholder=" Title for this part of the theorem."/>');
-    var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theorem_part_content-'+newId+'" name="msm_theorem_part_content-'+newId+'"/>');
+    var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theorem_part_title-'+idNumber+'-'+newId+'" name="msm_theorem_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
+    var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theorem_part_content-'+idNumber+'-'+newId+'" name="msm_theorem_part_content-'+idNumber+'-'+newId+'"/>');
             
+    theoremPartContainer.append(theoremCloseButton);
     theoremPartContainer.append(theoremPartLabel);
     theoremPartContainer.append(theoremPartTitle);
     theoremPartContainer.append(theoremPartContentField);
@@ -749,7 +755,7 @@ function addTheoremPart(idNumber)
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_theorem_part_content-"+newId,                    
+        elements: "msm_theorem_part_content-"+idNumber+"-"+newId,                    
         plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",

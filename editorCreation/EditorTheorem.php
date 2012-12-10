@@ -40,33 +40,13 @@ class EditorTheorem extends EditorElement
         $this->position = $position;
 
         $this->errorArray = array();
-//
-//        if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
-//        {
-//            $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
-//        }
-//        else
-//        {
-//            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
-//        }
-
-        $partmatch = '/^msm_theorem_part_.*/';
         $contentmatch = '/^msm_theorem_content_input-.*/';
 
         $i = 0; //position for the part theorem
 
         foreach ($_POST as $id => $value)
         {
-            if (preg_match($partmatch, $id))
-            {
-                $indexNumber = explode("-", $id);
-
-                $partTheorem = new EditorPartTheorem();
-                $partTheorem->getFormData($indexNumber, $i);
-                $this->content[] = $partTheorem;
-                $i++;
-            }
-            else if (preg_match($contentmatch, $id))
+            if (preg_match($contentmatch, $id))
             {
                 $indexNumber = explode("-", $id);
                 $statementTheorem = new EditorStatementTheorem();
@@ -100,6 +80,12 @@ class EditorTheorem extends EditorElement
 
         $this->compid = $DB->insert_record("msm_compositor", $compData);
 
+        $sibling_id = 0;
+        foreach($this->content as $statementTheorem)
+        {
+            $statementTheorem->insertData($this->compid, $sibling_id, $msmid);
+            $sibling_id = $statementTheorem->compid;
+        }
     }
 
 }

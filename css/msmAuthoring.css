@@ -261,14 +261,19 @@
    float: right;
    width: auto;
 }*/
-.msm_unit_pic_title_labels, .msm_unit_intro_title_labels, .msm_unit_body_title_labels, .msm_intro_child_title_labels
+.msm_unit_pic_title_labels, .msm_unit_intro_title_labels, .msm_unit_body_title_labels, .msm_intro_child_title_labels, .msm_theorem_part_tlabel 
 {
     float:left;
 }
 
-.msm_unit_intro_title, .msm_unit_body_title, .msm_intro_child_titles 
+.msm_unit_intro_title, .msm_unit_body_title, .msm_intro_child_titles
 {
     width: 88%;
+    margin-bottom: 2%;
+}
+
+.msm_theorem_part_title{
+    width: 81%;
     margin-bottom: 2%;
 }
 
@@ -474,7 +479,7 @@
     padding: 2%;
 }
 
-.msm_theorem_part_tlabel
+/*.msm_theorem_part_tlabel
 {
     float: left;
     margin-top: 2%
@@ -485,7 +490,7 @@
     float: left;
     margin: 2%;
     width: 81%;
-}
+}*/
 
 .msm_theorem_part_content
 {
@@ -495,13 +500,15 @@
     overflow: auto;
     resize: none;
 }
-
-.msm_theorem_statement_containers
+/*
+*/.msm_theorem_statement_containers
 {
-    border: 2px solid black;
+    border: 2px dotted red;
+    padding: 2%;
 }
 
 .msm_theorem_child
 {
     margin-top: 1%;
+    border: 2px dashed darkgreen;
 }

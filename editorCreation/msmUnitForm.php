@@ -17,6 +17,8 @@ require_once('EditorIntro.php');
 require_once('EditorBlock.php');
 require_once('EditorPara.php');
 require_once('EditorInContent.php');
+require_once('EditorPartTheorem.php');
+require_once('EditorStatementTheorem.php');
 
 require_once('../XMLImporter/TableCollection.php');
 
@@ -100,6 +102,31 @@ foreach ($unitcontent as $unitchild)
                 foreach ($introContent->errorArray as $introerrorid)
                 {
                     $errorArray[] = $introerrorid;
+                }
+            }
+        }
+    }
+    if (get_class($unitchild) == 'EditorTheorem')
+    {
+        foreach ($unitchild->content as $statementTheorem)
+        {
+            if (!empty($statementTheorem->errorArray))
+            {
+                $hasError = true;
+                foreach ($statementTheorem->errorArray as $statementerrorid)
+                {
+                    $errorArray[] = $statementerrorid;
+                }
+            }
+            foreach ($statementTheorem->children as $partTheorem)
+            {
+                if (!empty($partTheorem->errorArray))
+                {
+                    $hasError = true;
+                    foreach ($partTheorem->errorArray as $partErrorid)
+                    {
+                        $errorArray[] = $partErrorid;
+                    }
                 }
             }
         }
