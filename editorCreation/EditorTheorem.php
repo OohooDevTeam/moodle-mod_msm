@@ -100,32 +100,6 @@ class EditorTheorem extends EditorElement
 
         $this->compid = $DB->insert_record("msm_compositor", $compData);
 
-        $sibling_id = 0;
-
-        $currentIndex = 0;
-        $nextIndex = 1;
-
-//        foreach ($this->content as $key => $object)
-//        {
-//            if ($key != sizeof($this->content) - 1)
-//            {
-//                if ($this->content[$currentIndex]->position < $this->content[$nextIndex])
-//                {
-//                    $object->insertData($this->comp,)
-//                }
-//            }
-//        }
-//        if (!empty($this->content))
-//        {
-//
-//
-//            $sibling_id = $statementTheorem->compid;
-//        }
-//
-//        foreach ($this->partTheorems as $key => $partTheorem)
-//        {
-//            $
-//        }
     }
 
 }

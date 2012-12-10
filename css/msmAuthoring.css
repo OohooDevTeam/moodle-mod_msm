@@ -328,7 +328,7 @@
 
 .msm_child_description_inputs
 {
-    width: 91%;
+    width: 90%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -465,8 +465,13 @@
 
 .msm_theorem_content_containers
 {
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     margin-top: 2%;
+}
+
+.msm_theorem_child
+{
+    padding: 2%;
 }
 
 .msm_theorem_part_tlabel
@@ -491,20 +496,9 @@
     resize: none;
 }
 
-.msm_theorem_child_buttons
+.msm_theorem_statement_containers
 {
-    margin-left: auto;
-    margin-right: 10%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.msm_theorem_part_buttons
-{
-    margin-left: 10%;
-    margin-right: auto;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    border: 2px solid black;
 }
 
 .msm_theorem_child
