@@ -512,3 +512,34 @@
     margin-top: 1%;
     border: 2px dashed darkgreen;
 }
+
+.msm_associate_containers{
+    text-align: left;
+    margin: 2% 1%;
+}
+
+.msm_associate_buttons
+{
+  text-align: center;
+  position: relative;
+  padding: 2px;
+  left: 40%; /*to center the button*/
+  
+}
+.msm_associate_childs{
+    border: 2px dotted orange;
+    padding: 2%;
+    margin-bottom: 1%;
+}
+
+.msm_info_titles{
+    width: 92%;
+    margin: 0 2%;
+}
+.msm_info_contents{
+    width: 92%;
+    margin: 0 2%;
+}
+.msm_info_header{
+    font-weight: bold;
+}

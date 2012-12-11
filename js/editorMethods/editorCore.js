@@ -38,6 +38,8 @@ function processDroppedChild(e, droppedId)
     
     var currenttheoremPart = 0;
     
+    var type = '';
+    
     switch(droppedId)
     {
         case "msm_def":
@@ -56,11 +58,14 @@ function processDroppedChild(e, droppedId)
             var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'"/>');
             var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_descripton_input-"+_index+"'>Description: </label>");
             var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_descripton_input-"+_index+"' name='msm_def_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-            
-            var defAssociateButton = $("<input class='msm_associate_buttons' id='msm_def_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+")' value='Add Associated Information''/>")
+            var defAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
+            type = "def";
+            var defAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
             
             clonedCurrentElement.attr("id", "copied_msm_def-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
+            
+            defAssociateDiv.append(defAssociateButton);
             
             clonedCurrentElement.append(defCloseButton);
             clonedCurrentElement.append(defSelectMenu);
@@ -69,7 +74,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(defContentField);
             clonedCurrentElement.append(defDescriptionLabel);
             clonedCurrentElement.append(defDescriptionField);
-            clonedCurrentElement.append(defAssociateButton);
+            clonedCurrentElement.append(defAssociateDiv);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_def_content_input-'+_index;
@@ -101,12 +106,15 @@ function processDroppedChild(e, droppedId)
             var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'" type="button" onclick="addTheoremPart('+_index+')" value="Add more parts"/>');
             var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_descripton_input-"+_index+"'>Description: </label>");
             var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_descripton_input-"+_index+"' name='msm_theorem_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-            var theoremAssociateButton = $("<input class='msm_associate_buttons' id='msm_theorem_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+")' value='Add Associated Information''/>")
+            var theoremAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
+            type = "theorem";
+            var theoremAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
         
             clonedCurrentElement.attr("id", "copied_msm_theorem-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
             theoremPartWrapper.append(theoremPartButton);
+            theoremAssociateDiv.append(theoremAssociateButton);
             
             theoremStatementWrapper.append(theoremContentHeader);
             theoremStatementWrapper.append(theoremContentField); 
@@ -122,7 +130,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(theoremContentWrapper);
             clonedCurrentElement.append(theoremDescriptionLabel);
             clonedCurrentElement.append(theoremDescriptionField);
-            clonedCurrentElement.append(theoremAssociateButton);
+            clonedCurrentElement.append(theoremAssociateDiv);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_theorem_content_input-'+_index;
@@ -141,10 +149,14 @@ function processDroppedChild(e, droppedId)
             var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_comment_content_input-'+_index+'" name="msm_comment_content_input-'+_index+'"/>');
             var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_descripton_input-"+_index+"'>Description: </label>");
             var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_descripton_input-"+_index+"' name='msm_comment_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-            var theoremAssociateButton = $("<input class='msm_associate_buttons' id='msm_comment_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+")' value='Add Associated Information''/>")
+            var commentAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
+            type = "comment";
+            var commentAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
             
             clonedCurrentElement.attr("id", "copied_msm_comment-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
+            
+            commentAssociateDiv.append(commentAssociateButton);
             
             clonedCurrentElement.append(commentCloseButton);
             clonedCurrentElement.append(commentSelectMenu);
@@ -153,7 +165,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(commentContentField);
             clonedCurrentElement.append(commentDescriptionLabel);
             clonedCurrentElement.append(commentDescriptionField);
-            clonedCurrentElement.append(theoremAssociateButton);
+            clonedCurrentElement.append(commentAssociateDiv);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_comment_content_input-'+_index;
@@ -783,4 +795,169 @@ function addTheoremPart(idNumber)
     });    
                 
     $("#msm_theorem_content_container-"+idNumber).disableSelection();
+}
+
+// index is the ending id number for associate
+
+// ** make sure that the form input areas have both index number and their own unique idnumber so can order them according to their parents
+function addAssociateForm(index, type)
+{
+    var newId = 1; // index number = parent id number, newId = child id number
+    
+    $("#msm_associate_container-"+index+" > div").each(function() {
+        newId++;
+    })
+    
+    var associateInfoDiv = $('<div class="msm_associate_childs" id="msm_associate_childs-' + index + '-' + newId + '"></div>');
+ 
+    var typeDropdown;
+    
+    if((type == 'def')||(type == 'comment'))
+    {
+        typeDropdown = $('<div class="msm_associate_optionarea"><span class="msm_associate_option_label"> Type of information: </span>\n\
+                            <select name="msm_associate_dropdown-'+index + '-' + newId+'" class="msm_associated_dropdown" id="msm_associate_dropdown-'+index + '-' + newId+'" onchange="processAssociate(event);">\n\
+                                <option value="Comment">Comment</option>\n\
+                                <option value="Explanation">Explanation</option>\n\
+                                <option value="Example">Example</option>\n\
+                                <option value="Illustration">Illustration</option>\n\
+                                <option value="Remark">Remark</option>\n\
+                                <option value="Exploration">Exploration</option>\n\
+                            </select></div><br>');    
+    }
+    else if(type == "theorem")
+    {
+        typeDropdown = $('<div class="msm_associate_optionarea"><span class="msm_associate_option_label"> Type of information: </span>\n\
+                           <select name="msm_associate_dropdown-'+index + '-' + newId+'" class="msm_associated_dropdown" id="msm_associate_dropdown-'+index + '-' + newId+'" onchange="processAssociate(event);">\n\
+                                <option value="Comment">Comment</option>\n\
+                                <option value="Explanation">Explanation</option>\n\
+                                <option value="Example">Example</option>\n\
+                                <option value="Illustration">Illustration</option>\n\
+                                <option value="Proof">Proof</option>\n\
+                                <option value="Remark">Remark</option>\n\
+                                <option value="Exploration">Exploration</option>\n\
+                            </select></div><br>');
+    }
+    
+    var infoHeader = $('<span class="msm_info_header">Information</span><br>');
+    var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'">title: </label>');
+    // title input area needs to be a textarea due to the need for math equation editor
+    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'"/><br>');
+    
+    var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'">content: </label>');
+    var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'"/><br><br>');
+        
+    var refTypeDropdown = $('<div class="msm_associate_reftype_optionarea"><span class="msm_associate_reftype_label">Type of reference to add: </span>\n\
+                                    <select name="msm_associate_reftype-'+index + '-' + newId+'" class="msm_associate_reftype_dropdown" id="msm_associate_reftype-'+index + '-' + newId+'" onchange="processReftype(event);">\n\
+                                    <option value="None">None</option>\n\
+                                    <option value="Comment">Comment</option>\n\
+                                    <option value="Definition">Definition</option>\n\
+                                    <option value="Theorem">Theorem</option>\n\
+                                    <option value="Example">Example</option> \n\
+                                    <option value="Section of this Composition">Section of this Composition</option>\n\
+                               </select></div>');
+  
+    associateInfoDiv.append(typeDropdown);
+    associateInfoDiv.append(infoHeader);
+    associateInfoDiv.append(infoTitleLabel);
+    associateInfoDiv.append(infoTitleInput);
+    associateInfoDiv.append(infoContentLabel);
+    associateInfoDiv.append(infoContentInput);
+    associateInfoDiv.append(refTypeDropdown);
+     
+    $(associateInfoDiv).insertBefore("#msm_associate_button-"+index);
+    
+    var configArray = [{
+        mode:"none",
+        //        elements: "msm_info_content-"+index+"-"+newId,                  
+        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        width: "100%",
+        height: "70%",
+        theme: "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+        //        theme_advanced_toolbar_location : "external",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        skin : "o2k7",
+        skin_variant : "silver"            
+    },{
+        mode:"none",
+        //        elements: "msm_info_titles-"+index+"-"+newId,                      
+        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        width: "100%",
+        height: "70%",
+        theme: "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+        theme_advanced_toolbar_location : "external",
+        //        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        skin : "o2k7",
+        skin_variant : "silver"
+    }];
+
+    tinyMCE.settings = configArray[0];
+    tinyMCE.execCommand('mceAddControl', true, "msm_info_content-"+index+"-"+newId);
+    tinyMCE.settings = configArray[1];
+    tinyMCE.execCommand('mceAddControl', true, "msm_info_title-"+index+"-"+newId);
+    
+    //    tinyMCE.init({
+    //       
+    //    });
+    //    
+    //    tinyMCE.init({
+    //       
+    //    });
+   
+    $("#msm_associate_container-"+index).sortable({
+        appendTo: "msm_associate_container-"+index,
+        connectWith: "msm_associate_container-"+index,
+        cursor: "move",
+        tolerance: "pointer",
+        placeholder: "msm_sortable_placeholder",        
+        start: function(event,ui)
+        {
+            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+        },
+        beforeStop: function(event, ui)
+        {
+            // this code along with the one in stop is needed for enabling sortable on the div containing
+            // the tinymce editor so the iframe part of the editor doesn't become disabled
+            $(this).find('.msm_info_titles').each(function() {
+                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+            });
+            $(this).find('.msm_info_contents').each(function() {
+                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+            });
+        },
+        stop: function(event, ui)
+        {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+            // if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_info_titles').each(function() {
+                tinyMCE.settings = configArray[1];
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                $(this).sortable("refresh");
+            });
+            $(this).find('.msm_info_contents').each(function() {
+                tinyMCE.settings = configArray[0];
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                $(this).sortable("refresh");
+            });
+        }
+    });    
+                
+    $("#msm_associate_container-"+index).disableSelection();
+     
 }
