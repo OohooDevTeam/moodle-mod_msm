@@ -56,15 +56,8 @@ function processDroppedChild(e, droppedId)
             var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'"/>');
             var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_descripton_input-"+_index+"'>Description: </label>");
             var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_descripton_input-"+_index+"' name='msm_def_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-            var defAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
-                            <select name="msm_def_associate_dropdown-'+_index+'" class="msm_associated_dropdown" id="msm_def_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
-                                <option value="None">None</option>\n\
-                                <option value="Info">Quick Info</option>\n\
-                                <option value="Comment">Comment</option>\n\
-                                <option value="Explanation">Explanation</option>\n\
-                                <option value="Example">Example</option>\n\
-                                <option value="Illustration">Illustration</option>\n\
-                            </select></div>');        
+            
+            var defAssociateButton = $("<input class='msm_associate_buttons' id='msm_def_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+")' value='Add Associated Information''/>")
             
             clonedCurrentElement.attr("id", "copied_msm_def-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -76,7 +69,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(defContentField);
             clonedCurrentElement.append(defDescriptionLabel);
             clonedCurrentElement.append(defDescriptionField);
-            clonedCurrentElement.append(defAssoMenu);
+            clonedCurrentElement.append(defAssociateButton);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_def_content_input-'+_index;
@@ -108,16 +101,7 @@ function processDroppedChild(e, droppedId)
             var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'" type="button" onclick="addTheoremPart('+_index+')" value="Add more parts"/>');
             var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_descripton_input-"+_index+"'>Description: </label>");
             var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_descripton_input-"+_index+"' name='msm_theorem_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-            var theoremAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
-                            <select name="msm_theorem_associate_dropdown-'+_index+'" class="msm_associated_dropdown" id="msm_theorem_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
-                                <option value="None">None</option>\n\
-                                <option value="Info">Quick Info</option>\n\
-                                <option value="Comment">Comment</option>\n\
-                                <option value="Explanation">Explanation</option>\n\
-                                <option value="Example">Example</option>\n\
-                                <option value="Illustration">Illustration</option>\n\
-                                <option value="Proof">Proof</option>\n\
-                            </select></div>');
+            var theoremAssociateButton = $("<input class='msm_associate_buttons' id='msm_theorem_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+")' value='Add Associated Information''/>")
         
             clonedCurrentElement.attr("id", "copied_msm_theorem-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -138,7 +122,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(theoremContentWrapper);
             clonedCurrentElement.append(theoremDescriptionLabel);
             clonedCurrentElement.append(theoremDescriptionField);
-            clonedCurrentElement.append(theoremAssoMenu);
+            clonedCurrentElement.append(theoremAssociateButton);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_theorem_content_input-'+_index;
@@ -157,15 +141,7 @@ function processDroppedChild(e, droppedId)
             var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_comment_content_input-'+_index+'" name="msm_comment_content_input-'+_index+'"/>');
             var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_descripton_input-"+_index+"'>Description: </label>");
             var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_descripton_input-"+_index+"' name='msm_comment_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-            var commentAssoMenu = $('<div class="msm_associate_optionarea"><b> Choose an associated information: </b>\n\
-                            <select name="msm_comment_associate_dropdown-'+_index+'" class="msm_associated_dropdown" id="msm_def_associate_dropdown-'+_index+'" onchange="processAssociate(event);">\n\
-                                <option value="None">None</option>\n\
-                                <option value="Info">Quick Info</option>\n\
-                                <option value="Comment">Comment</option>\n\
-                                <option value="Explanation">Explanation</option>\n\
-                                <option value="Example">Example</option>\n\
-                                <option value="Illustration">Illustration</option>\n\
-                            </select></div>');        
+            var theoremAssociateButton = $("<input class='msm_associate_buttons' id='msm_comment_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+")' value='Add Associated Information''/>")
             
             clonedCurrentElement.attr("id", "copied_msm_comment-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -177,7 +153,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(commentContentField);
             clonedCurrentElement.append(commentDescriptionLabel);
             clonedCurrentElement.append(commentDescriptionField);
-            clonedCurrentElement.append(commentAssoMenu);
+            clonedCurrentElement.append(theoremAssociateButton);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_comment_content_input-'+_index;

@@ -24,32 +24,38 @@ function processAssociate(e)
     
     var splitResult = selectedChildElement.split('_');
     
-    if(splitResult[1] == "def")
-    {
-        switch(selectedAssociate)
-        {
-            case 0:
-                selectedtext = "None";
-                break;
-            case 1:
-                selectedtext = "Quick Info";
-                break;
-            case 2:
-                selectedtext = "Comment";
-                break;
-            case 3:
-                selectedtext = "Explanation";
-                break;
-            case 4:
-                selectedtext = "Example";
-                break;
-            case 5:
-                selectedtext = "Illustration";
-                break;
-        }
-    }
-    else
-    {
+//    if((splitResult[1] == "def") || (splitResult[1] == "comment"))
+//    {
+//        switch(selectedAssociate)
+//        {
+//            case 0:
+//                selectedtext = "None";
+//                break;
+//            case 1:
+//                selectedtext = "Quick Info";
+//                break;
+//            case 2:
+//                selectedtext = "Comment";
+//                break;
+//            case 3:
+//                selectedtext = "Explanation";
+//                break;
+//            case 4:
+//                selectedtext = "Example";
+//                break;
+//            case 5:
+//                selectedtext = "Illustration";
+//                break;
+//            case 6:
+//                selectedtext = "Remark";
+//                break;
+//            case 7:
+//                selectedtext = "Exploration";
+//                break;
+//        }
+//    }
+//    else
+//    {
         switch(selectedAssociate)
         {
             case 0:
@@ -73,8 +79,14 @@ function processAssociate(e)
             case 6:
                 selectedtext = "Proof";
                 break;
+            case 7:
+                selectedtext = "Remark";
+                break;
+            case 8:
+                selectedtext = "Exploration";
+                break;
         }
-    }
+//    }
     
     alert(selectedtext);
 }
