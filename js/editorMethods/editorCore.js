@@ -303,6 +303,7 @@ function resetUnit()
 function deleteElement(e)
 {
     var currentElement = e.target.parentElement.id;
+    
     $("<div class='dialogs' id='msm_deleteComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
     $( "#msm_deleteComposition" ).dialog({
         resizable: false,
@@ -316,7 +317,8 @@ function deleteElement(e)
                 if($("#msm_child_appending_area").children().length < 1)
                 {
                     $("#msm_editor_save").attr("disabled", "disabled");
-                }
+                }              
+                
                 $( this ).dialog( "close" );
             },
             "No": function() {
@@ -673,16 +675,19 @@ function addAssociateForm(index, type)
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'"/><br><br>');
         
-    var refTypeDropdown = $('<div class="msm_associate_reftype_optionarea" id="msm_associate_reftype_option-'+index + '-' + newId+'"><span class="msm_associate_reftype_label">Type of reference to add: </span>\n\
-                                    <select name="msm_associate_reftype-'+index + '-' + newId+'" class="msm_associate_reftype_dropdown" id="msm_associate_reftype-'+index + '-' + newId+'" onchange="processReftype(event);">\n\
-                                    <option value="None">None</option>\n\
-                                    <option value="Comment">Comment</option>\n\
-                                    <option value="Definition">Definition</option>\n\
-                                    <option value="Theorem">Theorem</option>\n\
-                                    <option value="Example">Example</option> \n\
-                                    <option value="Section of this Composition">Section of this Composition</option>\n\
-                               </select></div>');
+    var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index +"'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
+                                    <select name='msm_associate_reftype-"+index + "-" + newId+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"' onchange='processReftype(event);'>\n\
+                                    <option value='None'>None</option>\n\
+                                    <option value='Comment'>Comment</option>\n\
+                                    <option value='Definition'>Definition</option>\n\
+                                    <option value='Theorem'>Theorem</option>\n\
+                                    <option value='Example'>Example</option> \n\
+                                    <option value='Section of this Composition'>Section of this Composition</option>\n\
+                               </select></div>");
+    
+    var associateCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
   
+    associateInfoDiv.append(associateCloseButton);
     associateInfoDiv.append(typeDropdown);
     associateInfoDiv.append(infoHeader);
     associateInfoDiv.append(infoTitleLabel);

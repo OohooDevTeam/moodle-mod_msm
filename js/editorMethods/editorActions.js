@@ -15,7 +15,7 @@
 // e = event
 function processReftype(e)
 {
-    _index++;
+//    _index++;
     var selectedReftype = e.target.selectedIndex;
     var selectedtext = null;
     
@@ -27,7 +27,7 @@ function processReftype(e)
     
    // removes any previously added forms for previous choices made by the author
    $(idString).each(function() {
-       $(this).empty().remove();
+       $(this).empty().remove();   
    })
         
     switch(selectedReftype)
