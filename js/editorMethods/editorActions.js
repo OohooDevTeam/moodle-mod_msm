@@ -66,7 +66,7 @@ function makeRefDefinition()
 {
     var clonedCurrentElement = $("<div></div>");
     
-    var defCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
+    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+_index+'" onclick="deleteRefElement(event);">x</a>');
     var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
@@ -82,7 +82,7 @@ function makeRefDefinition()
     var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_descripton_input-"+_index+"'>Description: </label>");
     var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_descripton_input-"+_index+"' name='msm_def_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
                
-    clonedCurrentElement.attr("id", "copied_msm_def-"+_index);
+    clonedCurrentElement.attr("id", "copied_msm_defref-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
    
     clonedCurrentElement.append(defCloseButton);
@@ -99,7 +99,7 @@ function makeRefDefinition()
 function makeRefTheorem()
 {
     var clonedCurrentElement = $("<div></div>");
-    var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+_index+'" onclick="deleteRefElement(event)">x</a>');
 
     var theoremSelectMenu = $('<select name="msm_theorem_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_theorem_type_dropdown-'+_index+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
@@ -125,7 +125,7 @@ function makeRefTheorem()
     var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_descripton_input-"+_index+"'>Description: </label>");
     var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_descripton_input-"+_index+"' name='msm_theorem_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
             
-    clonedCurrentElement.attr("id", "copied_msm_theorem-"+_index);
+    clonedCurrentElement.attr("id", "copied_msm_theoremref-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
     theoremPartWrapper.append(theoremPartButton);
@@ -151,7 +151,7 @@ function makeRefTheorem()
 function makeRefComment()
 {
     var clonedCurrentElement = $("<div></div>");
-    var commentCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
+    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+_index+'" onclick="deleteRefElement(event);">x</a>');
     var commentSelectMenu = $('<select name="msm_comment_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_comment_type_dropdown-'+_index+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
@@ -164,7 +164,7 @@ function makeRefComment()
     var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_descripton_input-"+_index+"'>Description: </label>");
     var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_descripton_input-"+_index+"' name='msm_comment_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
             
-    clonedCurrentElement.attr("id", "copied_msm_comment-"+_index);
+    clonedCurrentElement.attr("id", "copied_msm_commentref-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
     clonedCurrentElement.append(commentCloseButton);
@@ -178,3 +178,32 @@ function makeRefComment()
     return clonedCurrentElement;
 }
 
+function deleteRefElement(e)
+{
+    var currentElementType = e.target.id.split("_");
+    var currentElementInfo = e.target.id.split("-");
+    
+    var currentElement = "copied_msm_"+currentElementType[1]+"ref-"+currentElementInfo[1];
+    
+    $("<div class='dialogs' id='msm_deleteRefComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
+    $( "#msm_deleteRefComposition" ).dialog({
+        resizable: false,
+        height:180,
+        modal: true,
+        buttons: {
+            "Yes": function() {
+                $('#'+currentElement).empty().remove();
+                
+                if($('#msm_associate_reftype_optionarea'+currentElementInfo[1]).children().length < 1)
+                {
+                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
+                }   
+                
+                $( this ).dialog( "close" );
+            },
+            "No": function() {
+                $( this ).dialog( "close" );                   
+            }
+        }
+    });
+}

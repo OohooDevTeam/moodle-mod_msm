@@ -317,7 +317,7 @@ function deleteElement(e)
                 if($("#msm_child_appending_area").children().length < 1)
                 {
                     $("#msm_editor_save").attr("disabled", "disabled");
-                }              
+                }                
                 
                 $( this ).dialog( "close" );
             },
