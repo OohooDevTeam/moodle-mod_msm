@@ -35,7 +35,7 @@ class EditorTheorem extends EditorElement
     {
         $this->type = $_POST['msm_theorem_type_dropdown-' . $idNumber];
         $this->description = $_POST['msm_theorem_descripton_input-' . $idNumber];
-        $this->associateType = $_POST['msm_theorem_associate_dropdown-' . $idNumber];
+//        $this->associateType = $_POST['msm_theorem_associate_dropdown-' . $idNumber];
         $this->title = $_POST['msm_theorem_title_input-' . $idNumber];
         $this->position = $position;
 

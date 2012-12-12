@@ -19,6 +19,8 @@ require_once('EditorPara.php');
 require_once('EditorInContent.php');
 require_once('EditorPartTheorem.php');
 require_once('EditorStatementTheorem.php');
+require_once('EditorAssociate.php');
+require_once('EditorInfo.php');
 
 require_once('../XMLImporter/TableCollection.php');
 
@@ -43,7 +45,8 @@ $tableCollection->insertTablename();
 
 $unit = new EditorUnit();
 $unit->getFormData($msmId, '');
-//
+
+//echo "in unit";
 //print_object($_POST);
 
 for ($i = 0; $i < $lengthOfArray - 1; $i++)
@@ -126,6 +129,23 @@ foreach ($unitcontent as $unitchild)
                     foreach ($partTheorem->errorArray as $partErrorid)
                     {
                         $errorArray[] = $partErrorid;
+                    }
+                }
+            }
+        }
+    }
+    if (get_class($unitchild) == 'EditorDefintion')
+    {
+        foreach ($unitchild->associates as $associate)
+        {
+            foreach ($associate->infos as $info)
+            {
+                if (!empty($info->errorArray))
+                {
+                    $hasError = true;
+                    foreach ($info->errorArray as $infoError)
+                    {
+                        $errorArray[] = $infoError;
                     }
                 }
             }

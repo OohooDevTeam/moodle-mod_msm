@@ -18,10 +18,10 @@ class EditorDefinition extends EditorElement
     public $type;
     public $title;
     public $content;
-    public $associateType;
     public $tablename;
     public $position;
     public $description;
+    public $associates = array();
 
     public function __construct()
     {
@@ -31,7 +31,6 @@ class EditorDefinition extends EditorElement
     function getFormData($idNumber, $position)
     {
         $this->type = $_POST['msm_def_type_dropdown-' . $idNumber];
-        $this->associateType = $_POST['msm_def_associate_dropdown-' . $idNumber];
         $this->description = $_POST['msm_def_descripton_input-' . $idNumber];
         $this->title = $_POST['msm_def_title_input-' . $idNumber];
         $this->position = $position;
@@ -45,6 +44,23 @@ class EditorDefinition extends EditorElement
         else
         {
             $this->errorArray[] = 'msm_def_content_input-' . $idNumber . '_ifr';
+        }
+        
+        $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
+        
+        $i = 0;
+        
+        foreach($_POST as $id=>$value)
+        {
+            if(preg_match($match, $id))
+            {
+                $idInfo = explode("-", $id);
+                $indexNumber = $idInfo[1] . "-" . $idInfo[2];
+                $associate = new EditorAssociate();
+                $associate->getFormData($indexNumber, $i);
+                $this->associates[] = $associate;                
+                $i++;
+            }
         }
 
         return $this;
@@ -62,7 +78,6 @@ class EditorDefinition extends EditorElement
         $this->id = $DB->insert_record($this->tablename, $data);
 
         $compData = new stdClass();
-
         $compData->msm_id = $msmid;
         $compData->unit_id = $this->id;
         $compData->table_id = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename))->id;
@@ -70,6 +85,14 @@ class EditorDefinition extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
+        
+        $sibling_id = 0;
+        
+        foreach($this->associates as $associate)
+        {
+            $associate->insertData($this->compid, $sibling_id, $msmid);
+            $sibling_id = $associate->compid;
+        }
     }
 
 }

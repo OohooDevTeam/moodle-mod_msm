@@ -456,7 +456,7 @@ function addIntroContent(idNumber)
      
 }
 
-function addTheoremContent(idNumber)
+function addTheoremContent(event, idNumber)
 {
     var newId = 1;
     
@@ -469,7 +469,7 @@ function addTheoremContent(idNumber)
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theorem_content_input-'+newId+'" name="msm_theorem_content_input-'+newId+'"/>');    
    
-    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+newId+'" type="button" onclick="addTheoremPart('+newId+')" value="Add more parts"/>');
+    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+newId+'" type="button" onclick="addTheoremPart(event, '+newId+')" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+newId+'"></div>');
             
     theoremPartWrapper.append(theoremPartButton);
@@ -480,7 +480,7 @@ function addTheoremContent(idNumber)
    
     theoremStatementWrapper.append(theoremPartWrapper);
     
-    $(theoremStatementWrapper).insertBefore("#msm_theorem_child_button-"+idNumber);    
+    $(theoremStatementWrapper).insertBefore("#"+event.target.id);    
     
     tinyMCE.init({
         mode:"exact",
@@ -547,7 +547,7 @@ function addTheoremContent(idNumber)
     $("#msm_theorem_content_container-"+idNumber).disableSelection();
 }
 
-function addTheoremPart(idNumber)
+function addTheoremPart(event, idNumber)
 {
     var newId = 1;
     
@@ -568,7 +568,7 @@ function addTheoremPart(idNumber)
     theoremPartContainer.append(theoremPartTitle);
     theoremPartContainer.append(theoremPartContentField);
     
-    $(theoremPartContainer).insertBefore("#msm_theorem_part_button-"+idNumber);
+    $(theoremPartContainer).insertBefore("#"+event.target.id);
     
     tinyMCE.init({
         mode:"exact",
@@ -729,6 +729,44 @@ function addAssociateForm(index, type)
         skin : "o2k7",
         skin_variant : "silver"
     }];
+    //
+    // tinyMCE.init({
+    //        mode:"exact",
+    //        elements: "msm_info_content-"+index+"-"+newId,                    
+    //        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+    //        width: "100%",
+    //        height: "70%",
+    //        theme: "advanced",
+    //        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+    //        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+    //        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+    //        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+    //        //        theme_advanced_toolbar_location : "external",
+    //        theme_advanced_toolbar_location : "top",
+    //        theme_advanced_toolbar_align : "left",
+    //        theme_advanced_statusbar_location : "bottom",
+    //        skin : "o2k7",
+    //        skin_variant : "silver"
+    //    });
+    //    
+    //    tinyMCE.init({
+    //        mode:"exact",
+    //        elements: "msm_info_title-"+index+"-"+newId,                    
+    //        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+    //        width: "100%",
+    //        height: "70%",
+    //        theme: "advanced",
+    //        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+    //        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+    //        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+    //        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+    //        //        theme_advanced_toolbar_location : "external",
+    //        theme_advanced_toolbar_location : "top",
+    //        theme_advanced_toolbar_align : "left",
+    //        theme_advanced_statusbar_location : "bottom",
+    //        skin : "o2k7",
+    //        skin_variant : "silver"
+    //    });
 
     // setting different config for title and content tinymces
     tinyMCE.settings = configArray[0];
@@ -847,8 +885,8 @@ function makeTheorem()
             
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+_index+'"></div>');
             
-    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent('+_index+')" value="Add content"/>');
-    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'" type="button" onclick="addTheoremPart('+_index+')" value="Add more parts"/>');
+    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent(event, '+_index+')" value="Add content"/>');
+    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'" type="button" onclick="addTheoremPart(event, '+_index+')" value="Add more parts"/>');
     var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_descripton_input-"+_index+"'>Description: </label>");
     var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_descripton_input-"+_index+"' name='msm_theorem_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var theoremAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");

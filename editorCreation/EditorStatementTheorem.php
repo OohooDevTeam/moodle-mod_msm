@@ -36,8 +36,7 @@ class EditorStatementTheorem extends EditorElement
         {
             $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber;
         }
-
-//        $partmatch1 = '/^msm_theorem_part_title_' . $idNumber . '-.*/';
+        
         $partmatch = "/^msm_theorem_part_content-$idNumber-.*/";
 
         $i = 0;
@@ -46,7 +45,6 @@ class EditorStatementTheorem extends EditorElement
         {
             if (preg_match($partmatch, $id))
             {
-//                $indexNumber = explode("-", $id);
                 $partTheorem = new EditorPartTheorem();
                 $partTheorem->getFormData($id, $i);
                 $this->children[] = $partTheorem;

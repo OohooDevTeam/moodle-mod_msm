@@ -5,9 +5,8 @@
 
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
-        
         // prevents navigation to msmUnitForm.php
-                event.preventDefault();
+        event.preventDefault();
         
         var children =  document.getElementById("msm_child_appending_area").childNodes;
 
@@ -19,7 +18,6 @@ $(document).ready(function(){
                 idString += children[i].id + ",";
             }           
         }
-        
         $("textarea").each(function(){
             this.value = tinymce.get(this.id).getContent();
         });
@@ -139,6 +137,33 @@ function removeTinymceEditor()
             $(this).replaceWith(editorContent);
         });
     });
+    
+    $('.msm_associate_containers').each(function() {
+        $(this).find('.msm_info_titles').each(function() {
+                        
+            tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
+                        
+            var editorContent = document.createElement("div");
+            editorContent.id = $(this).attr("id");
+            editorContent.className = "msm_editor_content";
+            var content = $(this).val();
+                        
+            $(editorContent).html(content);
+            $(this).replaceWith(editorContent);
+        });
+        $(this).find('.msm_info_contents').each(function() {
+                        
+            tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
+                        
+            var editorContent = document.createElement("div");
+            editorContent.id = $(this).attr("id");
+            editorContent.className = "msm_editor_content";
+            var content = $(this).val();
+                        
+            $(editorContent).html(content);
+            $(this).replaceWith(editorContent);
+        });
+    });
 }
 
 /**
@@ -160,6 +185,11 @@ function disableEditorFunction()
     $(".msm_theorem_part_dropareas").each(function() {
         $(this).sortable("destroy");
     })
+    
+    $(".msm_associate_containers").each(function() {
+        $(this).sortable("destroy");
+    });
+    
     $(".msm_structural_element").draggable("destroy");
     $("#msm_editor_middle_droparea").droppable("destroy");
 }
