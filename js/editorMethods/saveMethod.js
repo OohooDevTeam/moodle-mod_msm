@@ -18,10 +18,10 @@ $(document).ready(function(){
                 idString += children[i].id + ",";
             }           
         }
-        $("textarea").each(function(){
+        $("textarea").each(function(){ 
             this.value = tinymce.get(this.id).getContent();
         });
-        
+        //        
         var urlParam = window.location.search;
        
         var urlParamInfo = urlParam.split("=");
@@ -32,7 +32,7 @@ $(document).ready(function(){
         var targetURL = $("#msm_unit_form").attr("action");
         var ids = [];
         
-        console.log(formData);
+        //        console.log(formData);
         $.ajax({
             type: "POST",
             url: targetURL,

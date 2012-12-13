@@ -34,14 +34,10 @@ class EditorAssociate extends EditorElement
         
         $i = 0;
         
-//        echo "associate";
-//        print_object($_POST);
-        
         foreach($_POST as $id=>$value)
         {
             if(preg_match($infomatch, $id))
             {
-                print_object($id);
                 $idInfo = explode("-", $id);
                 $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                 $info = new EditorInfo();
@@ -51,11 +47,6 @@ class EditorAssociate extends EditorElement
                 $i++;
             }
         }
-        
-//        if($_POST['msm_associate_reftype-' . $idNumber] != "None")
-//        {
-//            print_object($_POST);
-//        }
         
         return $this;
     }

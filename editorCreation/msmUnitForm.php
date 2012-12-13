@@ -42,12 +42,8 @@ $errorArray = array();
 $DB->delete_records('msm_table_collection');
 $tableCollection = new TableCollection();
 $tableCollection->insertTablename();
-
 $unit = new EditorUnit();
 $unit->getFormData($msmId, '');
-
-//echo "in unit";
-//print_object($_POST);
 
 for ($i = 0; $i < $lengthOfArray - 1; $i++)
 {

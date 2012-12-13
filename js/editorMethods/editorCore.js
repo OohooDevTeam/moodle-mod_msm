@@ -670,10 +670,10 @@ function addAssociateForm(index, type)
     var infoHeader = $('<span class="msm_info_header">Information</span><br>');
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
-    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'"/><br>');
+    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'" name="msm_info_title-'+index + '-' + newId+'"/><br>');
     
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'">content: </label>');
-    var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'"/><br><br>');
+    var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'" name="msm_info_content-'+index + '-' + newId+'"/><br><br>');
         
     var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index +"'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
                                     <select name='msm_associate_reftype-"+index + "-" + newId+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"' onchange='processReftype(event);'>\n\
