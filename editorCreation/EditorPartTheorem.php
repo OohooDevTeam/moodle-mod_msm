@@ -40,7 +40,7 @@ class EditorPartTheorem extends EditorElement
         }
         else
         {
-            $this->errorArray[] = 'msm_theorem_part_content-' . $idInfo[1] . '-' . $idInfo[2];
+            $this->errorArray[] = 'msm_theorem_part_content-' . $idInfo[1] . '-' . $idInfo[2] . '_ifr';
         }
         
         return $this;

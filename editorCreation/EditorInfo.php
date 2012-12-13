@@ -34,7 +34,7 @@ class EditorInfo extends EditorElement
         }
         else
         {
-            $this->errorArray[] = 'msm_info_content-' . $idNumber;
+            $this->errorArray[] = 'msm_info_content-' . $idNumber . '_ifr';
         }
         
         return $this;

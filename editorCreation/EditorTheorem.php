@@ -18,11 +18,11 @@ class EditorTheorem extends EditorElement
     public $type;
     public $title;
     public $contents = array();
-//    public $contentPosition;
     public $associateType;
     public $tablename;
     public $position;
     public $description;
+    public $children = array(); //associates
 
 //    public $partTheorems = array();
 
@@ -52,6 +52,23 @@ class EditorTheorem extends EditorElement
                 $statementTheorem = new EditorStatementTheorem();
                 $statementTheorem->getFormData($indexNumber[1], $i);
                 $this->content[] = $statementTheorem;
+                $i++;
+            }
+        }
+        
+        $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
+        
+        $i = 0;
+        
+        foreach($_POST as $id=>$value)
+        {
+            if(preg_match($match, $id))
+            {
+                $idInfo = explode("-", $id);
+                $indexNumber = $idInfo[1] . "-" . $idInfo[2];
+                $associate = new EditorAssociate();
+                $associate->getFormData($indexNumber, $i);
+                $this->children[] = $associate;                
                 $i++;
             }
         }
@@ -85,6 +102,14 @@ class EditorTheorem extends EditorElement
         {
             $statementTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $statementTheorem->compid;
+        }
+        
+        $sibling_id = 0;
+        
+        foreach($this->children as $associate)
+        {
+            $associate->insertData($this->compid, $sibling_id, $msmid);
+            $sibling_id = $associate->compid;
         }
     }
 

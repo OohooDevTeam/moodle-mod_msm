@@ -458,7 +458,7 @@ function addIntroContent(idNumber)
 
 function addTheoremContent(event, idNumber)
 {
-    var newId = 1;
+    var newId = idNumber;
     
     $(".msm_theorem_content_containers > div").each(function() {
         newId++;

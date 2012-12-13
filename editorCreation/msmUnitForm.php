@@ -86,7 +86,6 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
     }
 }
 
-
 // unit cannot get an error since both title and description can be null
 foreach ($unitcontent as $unitchild)
 {
@@ -129,10 +128,10 @@ foreach ($unitcontent as $unitchild)
                 }
             }
         }
+        
     }
-    if (get_class($unitchild) == 'EditorDefintion')
-    {
-        foreach ($unitchild->associates as $associate)
+    
+    foreach ($unitchild->children as $associate)
         {
             foreach ($associate->infos as $info)
             {
@@ -146,7 +145,23 @@ foreach ($unitcontent as $unitchild)
                 }
             }
         }
-    }
+//    if ((get_class($unitchild) == 'EditorDefinition')||(get_class($unitchild) == 'EditorComment'))
+//    {
+//        foreach ($unitchild->associates as $associate)
+//        {
+//            foreach ($associate->infos as $info)
+//            {
+//                if (!empty($info->errorArray))
+//                {
+//                    $hasError = true;F
+//                    foreach ($info->errorArray as $infoError)
+//                    {
+//                        $errorArray[] = $infoError;
+//                    }
+//                }
+//            }
+//        }
+//    }
     if (!empty($unitchild->errorArray))
     {
         $hasError = true;
@@ -159,6 +174,7 @@ foreach ($unitcontent as $unitchild)
 
 if ($hasError)
 {
+//    print_object($errorArray);
     echo json_encode($errorArray);
 }
 else

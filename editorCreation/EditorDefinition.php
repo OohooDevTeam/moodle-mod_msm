@@ -21,7 +21,7 @@ class EditorDefinition extends EditorElement
     public $tablename;
     public $position;
     public $description;
-    public $associates = array();
+    public $children = array(); //associate
 
     public function __construct()
     {
@@ -45,20 +45,20 @@ class EditorDefinition extends EditorElement
         {
             $this->errorArray[] = 'msm_def_content_input-' . $idNumber . '_ifr';
         }
-        
+
         $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
-        
+
         $i = 0;
-        
-        foreach($_POST as $id=>$value)
+
+        foreach ($_POST as $id => $value)
         {
-            if(preg_match($match, $id))
+            if (preg_match($match, $id))
             {
                 $idInfo = explode("-", $id);
                 $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                 $associate = new EditorAssociate();
                 $associate->getFormData($indexNumber, $i);
-                $this->associates[] = $associate;                
+                $this->children[] = $associate;
                 $i++;
             }
         }
@@ -85,10 +85,10 @@ class EditorDefinition extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
-        
+
         $sibling_id = 0;
-        
-        foreach($this->associates as $associate)
+
+        foreach ($this->children as $associate)
         {
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;

@@ -14,12 +14,12 @@ class EditorComment extends EditorElement
 {
 
     public $type;
-    public $associateType;
     public $description;
     public $title;
     public $position;
     public $id;
     public $compid;
+    public $children = array(); //associate
 
     function __construct()
     {
@@ -29,7 +29,7 @@ class EditorComment extends EditorElement
     public function getFormData($idNumber, $position)
     {
         $this->type = $_POST['msm_comment_type_dropdown-' . $idNumber];
-        $this->associateType = $_POST['msm_comment_associate_dropdown-' . $idNumber];
+//        $this->associateType = $_POST['msm_comment_associate_dropdown-' . $idNumber];
         $this->description = $_POST['msm_comment_descripton_input-' . $idNumber];
         $this->title = $_POST['msm_comment_title_input-' . $idNumber];
         $this->position = $position;
@@ -43,6 +43,23 @@ class EditorComment extends EditorElement
         else
         {
             $this->errorArray[] = 'msm_comment_content_input-' . $idNumber . "_ifr";
+        }
+
+        $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
+
+        $i = 0;
+
+        foreach ($_POST as $id => $value)
+        {
+            if (preg_match($match, $id))
+            {
+                $idInfo = explode("-", $id);
+                $indexNumber = $idInfo[1] . "-" . $idInfo[2];
+                $associate = new EditorAssociate();
+                $associate->getFormData($indexNumber, $i);
+                $this->children[] = $associate;
+                $i++;
+            }
         }
 
         return $this;
@@ -67,6 +84,14 @@ class EditorComment extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
+        
+        $sibling_id = 0;
+        
+        foreach($this->children as $associate)
+        {
+            $associate->insertData($this->compid, $sibling_id, $msmid);
+            $sibling_id = $associate->compid;
+        }
     }
 
 }

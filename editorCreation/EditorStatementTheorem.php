@@ -18,7 +18,7 @@ class EditorStatementTheorem extends EditorElement
     public $compid;
     public $errorArray = array();
     public $content;
-    public $children = array();
+    public $children = array(); // part.theorem
 
     function __construct()
     {
@@ -34,7 +34,7 @@ class EditorStatementTheorem extends EditorElement
         }
         else
         {
-            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber;
+            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
         }
         
         $partmatch = "/^msm_theorem_part_content-$idNumber-.*/";

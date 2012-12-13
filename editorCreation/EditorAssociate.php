@@ -14,7 +14,7 @@ class EditorAssociate extends EditorElement
 {
     public $id;
     public $compid;
-    public $errorArray = array();
+//    public $errorArray = array();
     public $type; // in db--> description of the associate
     public $infos = array();
     
