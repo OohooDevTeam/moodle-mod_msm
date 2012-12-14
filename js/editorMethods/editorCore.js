@@ -202,7 +202,7 @@ function processDroppedChild(e, droppedId)
         },
         beforeStop: function(event, ui)
         {
-            alert("removing control");
+//            alert("removing control");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_theorem_content').each(function() {
@@ -212,7 +212,7 @@ function processDroppedChild(e, droppedId)
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
-            alert("adding control");
+//            alert("adding control");
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
@@ -243,27 +243,32 @@ function processDroppedChild(e, droppedId)
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+                tinyMCE.execCommand("mceRemoveControl", false, $(this)); 
             });
             
-            $(this).find('.msm_intro_child_contents').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
-            });
+//            $(this).find('.msm_intro_child_contents').each(function() {
+////                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id"));
+//            });
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");           
             
-            $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+            $(this).find('.msm_unit_child_content').each(function(index, element) {  
+//                $(this).tinymce(editoroptions_normal);
+
+//                new tinymce.Editor($(this).attr("id"), tinyMCE.settings).render();
+
+                tinyMCE.execCommand("mceAddControl", false, $(this)); 
                 $(this).sortable("refresh");
             });
             
-            // if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_intro_child_contents').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
-                $(this).sortable("refresh");
-            });
+//             if there are children in intro element, need to refresh the ifram of its editors
+//            $(this).find('.msm_intro_child_contents').each(function() {
+//                tinyMCE.execCommand("mceAddControl", true, $(this).attr("id")); 
+//                console.log($(this).attr("id"));
+//                $(this).sortable("refresh");
+//            });
         }
     });    
                 
