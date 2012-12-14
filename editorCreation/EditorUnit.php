@@ -33,7 +33,7 @@ class EditorUnit extends EditorElement
         $this->errorArray = array();
 
         $this->title = $_POST['msm_unit_title'];
-        $this->description = $_POST['msm_unit_descripton_input'];
+        $this->description = $_POST['msm_unit_description_input'];
        
         $this->unitName = $DB->get_record('msm_unit_name', array('msmid' => $idNumber, 'depth' => 0))->id;
 

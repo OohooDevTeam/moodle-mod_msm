@@ -468,7 +468,7 @@
     height: 100%;
 }
 
-.msm_theorem_content_containers
+.msm_theorem_content_containers, .msm_theoremref_content_containers
 {
     /*border: 2px solid black;*/
     margin-top: 2%;
@@ -501,7 +501,7 @@
     resize: none;
 }
 /*
-*/.msm_theorem_statement_containers
+*/.msm_theorem_statement_containers, .msm_theoremref_statement_containers
 {
     border: 2px dotted red;
     padding: 2%;

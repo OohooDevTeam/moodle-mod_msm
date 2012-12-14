@@ -30,7 +30,7 @@ class EditorComment extends EditorElement
     {
         $this->type = $_POST['msm_comment_type_dropdown-' . $idNumber];
 //        $this->associateType = $_POST['msm_comment_associate_dropdown-' . $idNumber];
-        $this->description = $_POST['msm_comment_descripton_input-' . $idNumber];
+        $this->description = $_POST['msm_comment_description_input-' . $idNumber];
         $this->title = $_POST['msm_comment_title_input-' . $idNumber];
         $this->position = $position;
 

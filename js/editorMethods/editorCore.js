@@ -458,7 +458,7 @@ function addIntroContent(idNumber)
 
 function addTheoremContent(event, idNumber)
 {
-    var newId = idNumber;
+    var newId = 1;
     
     $(".msm_theorem_content_containers > div").each(function() {
         newId++;
@@ -559,7 +559,7 @@ function addTheoremPart(event, idNumber)
     
     var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
     
-    var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theorem_part_title-0">Part Theorem title: </label>');
+    var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theorem_part_title-'+idNumber+'-'+newId+'">Part Theorem title: </label>');
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theorem_part_title-'+idNumber+'-'+newId+'" name="msm_theorem_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
     var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theorem_part_content-'+idNumber+'-'+newId+'" name="msm_theorem_part_content-'+idNumber+'-'+newId+'"/>');
             
@@ -675,7 +675,7 @@ function addAssociateForm(index, type)
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'" name="msm_info_content-'+index + '-' + newId+'"/><br><br>');
         
-    var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index +"'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
+    var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
                                     <select name='msm_associate_reftype-"+index + "-" + newId+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"' onchange='processReftype(event);'>\n\
                                     <option value='None'>None</option>\n\
                                     <option value='Comment'>Comment</option>\n\
@@ -799,8 +799,8 @@ function makeDefinition()
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
     var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'"/>');
-    var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_descripton_input-"+_index+"'>Description: </label>");
-    var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_descripton_input-"+_index+"' name='msm_def_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+    var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_description_input-"+_index+"'>Description: </label>");
+    var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_description_input-"+_index+"' name='msm_def_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var defAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
     var type = "def";
     var defAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
@@ -848,8 +848,8 @@ function makeTheorem()
             
     var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent(event, '+_index+')" value="Add content"/>');
     var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'" type="button" onclick="addTheoremPart(event, '+_index+')" value="Add more parts"/>');
-    var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_descripton_input-"+_index+"'>Description: </label>");
-    var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_descripton_input-"+_index+"' name='msm_theorem_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+    var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_description_input-"+_index+"'>Description: </label>");
+    var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_description_input-"+_index+"' name='msm_theorem_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var theoremAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
     var type = "theorem";
     var theoremAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
@@ -892,8 +892,8 @@ function makeComment()
     var commentTitleField = $('<input class="msm_unit_child_title" id="msm_comment_title_input-'+_index+'" name="msm_comment_title_input-'+_index+'" placeholder=" Title of Comment"/>');
           
     var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_comment_content_input-'+_index+'" name="msm_comment_content_input-'+_index+'"/>');
-    var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_descripton_input-"+_index+"'>Description: </label>");
-    var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_descripton_input-"+_index+"' name='msm_comment_descripton_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+    var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_description_input-"+_index+"'>Description: </label>");
+    var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_description_input-"+_index+"' name='msm_comment_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var commentAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
     var type = "comment";
     var commentAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")

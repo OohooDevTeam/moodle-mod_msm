@@ -42,8 +42,6 @@ $(document).ready(function(){
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
                 
-                console.log(ids);
-                
                 if(ids instanceof Array)
                 {
                     for(var i=0; i < ids.length; i++)

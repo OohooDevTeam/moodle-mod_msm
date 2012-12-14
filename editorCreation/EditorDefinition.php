@@ -28,41 +28,65 @@ class EditorDefinition extends EditorElement
         $this->tablename = 'msm_def';
     }
 
+    // $idNumber can be just a parent index number or if it is a reference, it's a string
+    // containing parent_id#|ref to have separate processing steps
     function getFormData($idNumber, $position)
     {
-        $this->type = $_POST['msm_def_type_dropdown-' . $idNumber];
-        $this->description = $_POST['msm_def_descripton_input-' . $idNumber];
-        $this->title = $_POST['msm_def_title_input-' . $idNumber];
         $this->position = $position;
-
         $this->errorArray = array();
 
-        if ($_POST['msm_def_content_input-' . $idNumber] != '')
+        $idInfo = explode("|", $idNumber);
+        
+        // processing definitions as reference material
+        if (sizeof($idInfo) > 1)
         {
-            $this->content = $_POST['msm_def_content_input-' . $idNumber];
-        }
-        else
-        {
-            $this->errorArray[] = 'msm_def_content_input-' . $idNumber . '_ifr';
-        }
+            $this->type = $_POST['msm_defref_type_dropdown-' . $idInfo[0]];
+            $this->description = $_POST['msm_defref_description_input-' . $idInfo[0]];
+            $this->title = $_POST['msm_defref_title_input-' . $idInfo[0]];
 
-        $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
-
-        $i = 0;
-
-        foreach ($_POST as $id => $value)
-        {
-            if (preg_match($match, $id))
+            if ($_POST['msm_defref_content_input-' . $idInfo[0]] != '')
             {
-                $idInfo = explode("-", $id);
-                $indexNumber = $idInfo[1] . "-" . $idInfo[2];
-                $associate = new EditorAssociate();
-                $associate->getFormData($indexNumber, $i);
-                $this->children[] = $associate;
-                $i++;
+                $this->content = $_POST['msm_defref_content_input-' . $idInfo[0]];
+            }
+            else
+            {
+                $this->errorArray[] = 'msm_defref_content_input-' . $idInfo[0] . '_ifr';
             }
         }
+        // processing definition as main part of unit
+        else if (sizeof($idInfo) == 1)
+        {
+            $this->type = $_POST['msm_def_type_dropdown-' . $idNumber];
+            $this->description = $_POST['msm_def_description_input-' . $idNumber];
+            $this->title = $_POST['msm_def_title_input-' . $idNumber];
 
+
+            if ($_POST['msm_def_content_input-' . $idNumber] != '')
+            {
+                $this->content = $_POST['msm_def_content_input-' . $idNumber];
+            }
+            else
+            {
+                $this->errorArray[] = 'msm_def_content_input-' . $idNumber . '_ifr';
+            }
+
+            $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
+
+            $i = 0;
+
+            foreach ($_POST as $id => $value)
+            {
+                if (preg_match($match, $id))
+                {
+                    $idInfo = explode("-", $id);
+                    $indexNumber = $idInfo[1] . "-" . $idInfo[2];
+                    $associate = new EditorAssociate();
+                    $associate->getFormData($indexNumber, $i);
+                    $this->children[] = $associate;
+                    $i++;
+                }
+            }
+        }
         return $this;
     }
 

@@ -1,4 +1,6 @@
-<?php //
+<?php
+
+//
 
 /*
  * To change this template, choose Tools | Templates
@@ -24,52 +26,80 @@ class EditorTheorem extends EditorElement
     public $description;
     public $children = array(); //associates
 
-//    public $partTheorems = array();
-
     public function __construct()
     {
         $this->tablename = 'msm_theorem';
     }
 
+    // theorem as reference material would result in $idNumber being "parentid#|ref" while
+    // for main unit content, it would just be a parentid#
     public function getFormData($idNumber, $position)
     {
-        $this->type = $_POST['msm_theorem_type_dropdown-' . $idNumber];
-        $this->description = $_POST['msm_theorem_descripton_input-' . $idNumber];
-//        $this->associateType = $_POST['msm_theorem_associate_dropdown-' . $idNumber];
-        $this->title = $_POST['msm_theorem_title_input-' . $idNumber];
         $this->position = $position;
-
         $this->errorArray = array();
-        $contentmatch = '/^msm_theorem_content_input-.*/';
 
-        $i = 0; //position for the part theorem
+        $idNumberInfo = explode("|", $idNumber);
 
-        foreach ($_POST as $id => $value)
+        // reference material
+        if (sizeof($idNumberInfo) > 1)
         {
-            if (preg_match($contentmatch, $id))
+            $this->type = $_POST['msm_theoremref_type_dropdown-' . $idNumberInfo[0]];
+            $this->description = $_POST['msm_theoremref_description_input-' . $idNumberInfo[0]];
+            $this->title = $_POST['msm_theoremref_title_input-' . $idNumberInfo[0]];
+
+            $contentmatch = '/^msm_theoremref_content_input-.*/';
+
+            $i = 0; //position for the part theorem
+
+            foreach ($_POST as $id => $value)
             {
-                $indexNumber = explode("-", $id);
-                $statementTheorem = new EditorStatementTheorem();
-                $statementTheorem->getFormData($indexNumber[1], $i);
-                $this->content[] = $statementTheorem;
-                $i++;
+                if (preg_match($contentmatch, $id))
+                {
+                    $indexNumber = explode("-", $id);
+                    $statementRefTheorem = new EditorStatementTheorem();
+                    $statementRefTheorem->getFormData($idNumberInfo[0], $i);
+                    $this->content[] = $statementRefTheorem;
+                    $i++;
+                }
             }
         }
-        
-        $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
-        
-        $i = 0;
-        
-        foreach($_POST as $id=>$value)
+        else if (sizeof($idNumberInfo) == 1) // main unit content
         {
-            if(preg_match($match, $id))
+            $this->type = $_POST['msm_theorem_type_dropdown-' . $idNumber];
+            $this->description = $_POST['msm_theorem_description_input-' . $idNumber];
+            $this->title = $_POST['msm_theorem_title_input-' . $idNumber];
+
+            $contentmatch = '/^msm_theorem_content_input-.*/';
+
+            $i = 0; //position for the part theorem
+
+            foreach ($_POST as $id => $value)
             {
-                $idInfo = explode("-", $id);
-                $indexNumber = $idInfo[1] . "-" . $idInfo[2];
-                $associate = new EditorAssociate();
-                $associate->getFormData($indexNumber, $i);
-                $this->children[] = $associate;                
-                $i++;
+                if (preg_match($contentmatch, $id))
+                {
+                    $indexNumber = explode("-", $id);
+                    $statementTheorem = new EditorStatementTheorem();
+                    $statementTheorem->getFormData($indexNumber[1], $i);
+                    $this->content[] = $statementTheorem;
+                    $i++;
+                }
+            }
+
+            $match = "/^msm_associate_dropdown-$idNumber-(\d+)/";
+
+            $i = 0;
+
+            foreach ($_POST as $id => $value)
+            {
+                if (preg_match($match, $id))
+                {
+                    $idInfo = explode("-", $id);
+                    $indexNumber = $idInfo[1] . "-" . $idInfo[2];
+                    $associate = new EditorAssociate();
+                    $associate->getFormData($indexNumber, $i);
+                    $this->children[] = $associate;
+                    $i++;
+                }
             }
         }
 
@@ -98,15 +128,15 @@ class EditorTheorem extends EditorElement
         $this->compid = $DB->insert_record("msm_compositor", $compData);
 
         $sibling_id = 0;
-        foreach($this->content as $statementTheorem)
+        foreach ($this->content as $statementTheorem)
         {
             $statementTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $statementTheorem->compid;
         }
-        
+
         $sibling_id = 0;
-        
-        foreach($this->children as $associate)
+
+        foreach ($this->children as $associate)
         {
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;
