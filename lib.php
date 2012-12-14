@@ -53,7 +53,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param string $feature FEATURE_xx constant for requested feature
  * @return mixed true if the feature is supported, null if unknown
  */
-function mod_msm_supports($feature)
+function msm_supports($feature)
 {
     switch ($feature)
     {
@@ -83,7 +83,7 @@ function mod_msm_supports($feature)
  * @param mod_msm_mod_form $mform
  * @return int The id of the newly inserted msm record
  */
-function mod_msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
+function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 {
     @set_time_limit(60 * 60); // 1 hour should be enough. You can always change this value
     raise_memory_limit(MEMORY_HUGE);
@@ -194,15 +194,12 @@ function mod_msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                         $DB->insert_record('msm_unit_name', $unitNameTableData);
                         $depth++;
                     }
-                    
                 }
             }
         }
     }
 
 //        
-//        
-//       
 //        $table_collection = new TableCollection();
 //        $tableid = $table_collection->insertTablename();
 //
@@ -218,6 +215,7 @@ function mod_msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //        $unit->loadFromXml($parser->documentElement, $position);
 //
 //        $unit->saveIntoDb($unit->position, $msm->id);
+//    }
 //    echo "done";
 //    die;
 //    
@@ -235,7 +233,7 @@ function mod_msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
  * @param mod_msm_mod_form $mform
  * @return boolean Success/Fail
  */
-function mod_msm_update_instance(stdClass $msm, mod_msm_mod_form $mform = null)
+function msm_update_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 {
     global $CFG, $DB;
 //
@@ -288,7 +286,7 @@ function mod_msm_update_instance(stdClass $msm, mod_msm_mod_form $mform = null)
  * @param int $id Id of the module instance
  * @return boolean Success/Failure
  */
-function mod_msm_delete_instance($id)
+function msm_delete_instance($id)
 {
     global $DB;
 
@@ -311,7 +309,7 @@ function mod_msm_delete_instance($id)
  *
  * @return stdClass|null
  */
-function mod_msm_user_outline($course, $user, $mod, $msm)
+function msm_user_outline($course, $user, $mod, $msm)
 {
 
     $return = new stdClass();
@@ -330,7 +328,7 @@ function mod_msm_user_outline($course, $user, $mod, $msm)
  * @param stdClass $msm the module instance record
  * @return void, is supposed to echp directly
  */
-function mod_msm_user_complete($course, $user, $mod, $msm)
+function msm_user_complete($course, $user, $mod, $msm)
 {
     
 }
@@ -342,7 +340,7 @@ function mod_msm_user_complete($course, $user, $mod, $msm)
  *
  * @return boolean
  */
-function mod_msm_print_recent_activity($course, $viewfullnames, $timestart)
+function msm_print_recent_activity($course, $viewfullnames, $timestart)
 {
     return false;  //  True if anything was printed, otherwise false
 }
@@ -363,7 +361,7 @@ function mod_msm_print_recent_activity($course, $viewfullnames, $timestart)
  * @param int $groupid check for a particular group's activity only, defaults to 0 (all groups)
  * @return void adds items into $activities and increases $index
  */
-function mod_msm_get_recent_mod_activity(&$activities, &$index, $timestart, $courseid, $cmid, $userid = 0, $groupid = 0)
+function msm_get_recent_mod_activity(&$activities, &$index, $timestart, $courseid, $cmid, $userid = 0, $groupid = 0)
 {
     
 }
@@ -373,7 +371,7 @@ function mod_msm_get_recent_mod_activity(&$activities, &$index, $timestart, $cou
 
  * @return void
  */
-function mod_msm_print_recent_mod_activity($activity, $courseid, $detail, $modnames, $viewfullnames)
+function msm_print_recent_mod_activity($activity, $courseid, $detail, $modnames, $viewfullnames)
 {
     
 }
@@ -386,7 +384,7 @@ function mod_msm_print_recent_mod_activity($activity, $courseid, $detail, $modna
  * @return boolean
  * @todo Finish documenting this function
  * */
-function mod_msm_cron()
+function msm_cron()
 {
     global $CFG, $DB;
 
@@ -441,7 +439,7 @@ function mod_msm_cron()
  * @param int $msmid ID of an instance of this module
  * @return boolean|array false if no participants, array of objects otherwise
  */
-function mod_msm_get_participants($msmid)
+function msm_get_participants($msmid)
 {
     return false;
 }
@@ -452,7 +450,7 @@ function mod_msm_get_participants($msmid)
  * @example return array('moodle/site:accessallgroups');
  * @return array
  */
-function mod_msm_get_extra_capabilities()
+function msm_get_extra_capabilities()
 {
     return array();
 }
@@ -472,7 +470,7 @@ function mod_msm_get_extra_capabilities()
  * @param int $msmid ID of an instance of this module
  * @return bool true if the scale is used by the given msm instance
  */
-function mod_msm_scale_used($msmid, $scaleid)
+function msm_scale_used($msmid, $scaleid)
 {
     global $DB;
 
@@ -495,7 +493,7 @@ function mod_msm_scale_used($msmid, $scaleid)
  * @param $scaleid int
  * @return boolean true if the scale is used by any msm instance
  */
-function mod_msm_scale_used_anywhere($scaleid)
+function msm_scale_used_anywhere($scaleid)
 {
     global $DB;
 
@@ -518,7 +516,7 @@ function mod_msm_scale_used_anywhere($scaleid)
  * @param stdClass $msm instance object with extra cmidnumber and modname property
  * @return void
  */
-function mod_msm_grade_item_update(stdClass $msm)
+function msm_grade_item_update(stdClass $msm)
 {
     global $CFG;
     require_once($CFG->libdir . '/gradelib.php');
@@ -542,7 +540,7 @@ function mod_msm_grade_item_update(stdClass $msm)
  * @param int $userid update grade of specific user only, 0 means all participants
  * @return void
  */
-function mod_msm_update_grades(stdClass $msm, $userid = 0)
+function msm_update_grades(stdClass $msm, $userid = 0)
 {
     global $CFG, $DB;
     require_once($CFG->libdir . '/gradelib.php');
@@ -568,7 +566,7 @@ function mod_msm_update_grades(stdClass $msm, $userid = 0)
  * @param stdClass $context
  * @return array of [(string)filearea] => (string)description
  */
-function mod_msm_get_file_areas($course, $cm, $context)
+function msm_get_file_areas($course, $cm, $context)
 {
     return array();
 }
@@ -584,7 +582,7 @@ function mod_msm_get_file_areas($course, $cm, $context)
  * @param bool $forcedownload
  * @return void this should never return to the caller
  */
-function mod_msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload)
+function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload)
 {
     global $DB, $CFG;
 
@@ -612,7 +610,7 @@ function mod_msm_pluginfile($course, $cm, $context, $filearea, array $args, $for
  * @param stdClass $module
  * @param cm_info $cm
  */
-function mod_msm_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm)
+function msm_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm)
 {
     
 }
@@ -626,7 +624,7 @@ function mod_msm_extend_navigation(navigation_node $navref, stdclass $course, st
  * @param settings_navigation $settingsnav {@link settings_navigation}
  * @param navigation_node $msmnode {@link navigation_node}
  */
-function mod_msm_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $msmnode = null)
+function msm_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $msmnode = null)
 {
     
 }

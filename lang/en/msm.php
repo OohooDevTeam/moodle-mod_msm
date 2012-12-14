@@ -37,7 +37,13 @@ $string['createcontent'] = "Create Composition";
 $string['invalidcoursemoduleid'] = "Invalid Course Module ID";
 $string['modulename'] = 'msm';
 $string['modulenameplural'] = 'msms';
-$string['modulename_help'] = 'Use the msm module for... | The msm module allows...';
+$string['modulename_help'] = 'The msm module enables the teachers to create their own electronic teaching materials (eg. textbook, lecture...etc) and also allowing the students to learn in interactive manner.  This module can contain media elements as well as interactive exercises, tests and quizes and have note taking tools for the students.
+A msm module may be used
+
+* To create/display reading material for specified course
+* As a staff departmental handbook
+* To create evaluating materials for students
+* For students to create notes';
 $string['msmfieldset'] = 'Custom example fieldset';
 $string['msmname'] = 'Title of Composition';
 $string['msmname_help'] = 'This is the content of the help tooltip associated with the msmname field. Markdown syntax is supported.';

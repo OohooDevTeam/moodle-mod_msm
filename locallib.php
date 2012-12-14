@@ -43,6 +43,6 @@ defined('MOODLE_INTERNAL') || die();
  * @param array $things
  * @return object
  */
-//function mod_msm_do_something_useful(array $things) {
+//function msm_do_something_useful(array $things) {
 //    return new stdClass();
 //}

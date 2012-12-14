@@ -82,6 +82,7 @@ class Unit extends Element
     public $compid;
     public $string_id;
     public $standalone;
+    public $compchildtype;
 
     function __construct($xmlpath = '')
     {
@@ -493,12 +494,47 @@ class Unit extends Element
         $data->plain_title = $this->plain_title;
         $data->creationdate = $this->creation;
         $data->last_revision_date = $this->last_revision;
+        
+        if($parentid == '')
+        {
+            $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid"=>$msmid, "depth"=>0))->id;
+        }
+        else
+        {
+            // get parent record and check if it belongs to unit 
+            // if parent is unit --> need to increment depth and put the compositor type id from unit_name to this new unit
+            $parentRecord = $DB->get_record("msm_compositor", array("id"=>$parentid));
+            
+            if(!empty($parentRecord))
+            {
+                 $parentUnitType = $parentRecord->table_id;                 
+            }
+           
+            
+            $unittableid = $DB->get_record("msm_table_collection", array("tablename"=>"msm_unit"))->id;
+            
+            if($unittableid == $parentUnitType)
+            {
+                $parentUnitRecord = $DB->get_record("msm_unit", array("id"=>$parentRecord->unit_id));
+                
+                $parentCompType = $parentUnitRecord->compchildtype;
+                
+                $compTypeDepth = $DB->get_record('msm_unit_name', array("msmid"=>$msmid, "id"=>$parentCompType))->depth;
+              
+                $data->compchildtype = $DB->get_record("msm_unit_name", array("msmid"=>$msmid, "depth"=>$compTypeDepth+1))->id;
+                
+            }
+            else
+            {
+                $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid"=>$msmid, "depth"=>0))->id;
+            }
+        }
 
         if (!empty($this->acknowledgement))
         {
             $data->acknowledgement = $this->acknowledgement;
         }
-
+        
         $this->id = $DB->insert_record($this->tablename, $data);
 
         // for inserting unit records in to compositor table

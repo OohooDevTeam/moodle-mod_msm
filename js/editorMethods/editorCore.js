@@ -202,6 +202,7 @@ function processDroppedChild(e, droppedId)
         },
         beforeStop: function(event, ui)
         {
+            alert("removing control");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_theorem_content').each(function() {
@@ -211,7 +212,7 @@ function processDroppedChild(e, droppedId)
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
-            
+            alert("adding control");
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
@@ -238,6 +239,7 @@ function processDroppedChild(e, droppedId)
         },
         beforeStop: function(event, ui)
         {
+            alert("removing control");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
