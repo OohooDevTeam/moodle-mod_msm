@@ -53,11 +53,13 @@ class EditorTheorem extends EditorElement
 
             foreach ($_POST as $id => $value)
             {
+                $idParam = $idNumberInfo[0] . "|ref";
+                
                 if (preg_match($contentmatch, $id))
                 {
                     $indexNumber = explode("-", $id);
                     $statementRefTheorem = new EditorStatementTheorem();
-                    $statementRefTheorem->getFormData($idNumberInfo[0], $i);
+                    $statementRefTheorem->getFormData($idParam, $i);
                     $this->content[] = $statementRefTheorem;
                     $i++;
                 }

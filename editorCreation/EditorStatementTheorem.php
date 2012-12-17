@@ -28,29 +28,63 @@ class EditorStatementTheorem extends EditorElement
     public function getFormData($idNumber, $position)
     {
         $this->position = $position;
-        if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
-        {
-            $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
-        }
-        else
-        {
-            $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
-        }
-        
-        $partmatch = "/^msm_theorem_part_content-$idNumber-.*/";
 
-        $i = 0;
+        $idInfo = explode("|", $idNumber);
 
-        foreach ($_POST as $id => $content)
+        if (sizeof($idInfo) > 1)
         {
-            if (preg_match($partmatch, $id))
+            if ($_POST['msm_theoremref_content_input-' . $idInfo[0]] != '')
             {
-                $partTheorem = new EditorPartTheorem();
-                $partTheorem->getFormData($id, $i);
-                $this->children[] = $partTheorem;
-                $i++;
+                $this->content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
+            }
+            else
+            {
+                $this->errorArray[] = 'msm_theoremref_content_input-' . $idInfo[0] . '_ifr';
+            }
+
+            $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-.*/";
+
+            $i = 0;
+
+            foreach ($_POST as $id => $content)
+            {
+                if (preg_match($partmatch, $id))
+                {
+                    $idParam = $id . "|ref";
+                    $partTheorem = new EditorPartTheorem();
+                    $partTheorem->getFormData($idParam, $i);
+                    $this->children[] = $partTheorem;
+                    $i++;
+                }
             }
         }
+        else if (sizeof($idInfo) == 1)
+        {
+            if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
+            {
+                $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
+            }
+            else
+            {
+                $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
+            }
+
+            $partmatch = "/^msm_theorem_part_content-$idNumber-.*/";
+
+            $i = 0;
+
+            foreach ($_POST as $id => $content)
+            {
+                if (preg_match($partmatch, $id))
+                {
+                    $partTheorem = new EditorPartTheorem();
+                    $partTheorem->getFormData($id, $i);
+                    $this->children[] = $partTheorem;
+                    $i++;
+                }
+            }
+        }
+
 
         return $this;
     }

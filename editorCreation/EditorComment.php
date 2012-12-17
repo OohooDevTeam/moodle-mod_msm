@@ -32,20 +32,20 @@ class EditorComment extends EditorElement
 
         if (sizeof($idInfo) > 1)
         {
-            $this->type = $_POST['msm_comment_type_dropdown-' . $idInfo[0]];
-            $this->description = $_POST['msm_comment_description_input-' . $idInfo[0]];
-            $this->title = $_POST['msm_comment_title_input-' . $idInfo[0]];
+            $this->type = $_POST['msm_commentref_type_dropdown-' . $idInfo[0]];
+            $this->description = $_POST['msm_commentref_description_input-' . $idInfo[0]];
+            $this->title = $_POST['msm_commentref_title_input-' . $idInfo[0]];
             $this->position = $position;
 
             $this->errorArray = array();
 
-            if ($_POST['msm_comment_content_input-' . $idInfo[0]] != '')
+            if ($_POST['msm_commentref_content_input-' . $idInfo[0]] != '')
             {
-                $this->content = $_POST['msm_comment_content_input-' . $idInfo[0]];
+                $this->content = $_POST['msm_commentref_content_input-' . $idInfo[0]];
             }
             else
             {
-                $this->errorArray[] = 'msm_comment_content_input-' . $idInfo[0] . "_ifr";
+                $this->errorArray[] = 'msm_commentref_content_input-' . $idInfo[0] . "_ifr";
             }
         }
         else if (sizeof($idInfo) == 1)

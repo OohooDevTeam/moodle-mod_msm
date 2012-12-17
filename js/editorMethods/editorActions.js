@@ -234,7 +234,7 @@ function deleteRefElement(e)
 
 function addrefTheoremContent(event, idNumber)
 {
-    var newId = 1;
+    var newId = idNumber;
     
     $(".msm_theoremref_content_containers > div").each(function(index) {
         newId++;
@@ -296,7 +296,7 @@ function addrefTheoremContent(event, idNumber)
             alert("theorem ref content moving");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
-            $(this).find('.msm_unit_child_content.msm_theorem_content').each(function() {
+            $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
             });
             
@@ -310,7 +310,7 @@ function addrefTheoremContent(event, idNumber)
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_unit_child_content.msm_theorem_content').each(function() {
+            $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
             });
@@ -327,7 +327,7 @@ function addrefTheoremContent(event, idNumber)
 
 function addrefTheoremPart(event, idNumber)
 {
-    var newId = 1;
+    var newId = idNumber;
     
     $(".msm_theoremref_part_dropareas > div").each(function() {
         newId++;
