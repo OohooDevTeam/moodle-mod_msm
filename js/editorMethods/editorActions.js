@@ -293,6 +293,7 @@ function addrefTheoremContent(event, idNumber)
         },
         beforeStop: function(event, ui)
         {
+            alert("theorem ref content moving");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content.msm_theorem_content').each(function() {
@@ -305,6 +306,7 @@ function addrefTheoremContent(event, idNumber)
         },
         stop: function(event, ui)
         {
+             alert("theorem ref content stop moving");
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
@@ -381,6 +383,7 @@ function addrefTheoremPart(event, idNumber)
         },
         beforeStop: function(event, ui)
         {
+             alert("theorem part ref content moving");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_theorem_content').each(function() {
@@ -389,6 +392,7 @@ function addrefTheoremPart(event, idNumber)
         },
         stop: function(event, ui)
         {
+             alert("theorem part ref content stop");
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors

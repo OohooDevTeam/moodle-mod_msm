@@ -59,9 +59,9 @@ class EditorInfo extends EditorElement
                 $this->ref = $theorem;
                 break;
             case "Comment":
-//                $comment = new EditorComment();
-//                $comment->getFormData($param, '');
-//                $this->ref = $comment;
+                $comment = new EditorComment();
+                $comment->getFormData($param, '');
+                $this->ref = $comment;
                 break;
             case "Example":
                 break;

@@ -750,6 +750,7 @@ function addAssociateForm(index, type)
         },
         beforeStop: function(event, ui)
         {
+            alert("moving associates");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_info_titles').each(function() {
@@ -758,9 +759,20 @@ function addAssociateForm(index, type)
             $(this).find('.msm_info_contents').each(function() {
                 tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
             });
+            
+            $(this).find('.msm_associate_reftype_optionarea').each(function() {
+                $(this).find('.copied_msm_structural_element').each(function() {
+                    $(this).find('.msm_unit_child_content').each(function()
+                    {
+                        tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id"));
+                    });
+                });
+            });
+           
         },
         stop: function(event, ui)
         {
+            alert("stop associates");
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
@@ -774,6 +786,18 @@ function addAssociateForm(index, type)
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
             });
+            
+            $(this).find('.msm_associate_reftype_optionarea').each(function() {
+                $(this).find('.copied_msm_structural_element').each(function() {
+                    $(this).find('.msm_unit_child_content').each(function()
+                    {
+                        tinyMCE.settings = configArray[0];
+                        tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    });
+                });
+            });
+            
+        //            
         }
     });    
                 
