@@ -184,9 +184,14 @@ function disableEditorFunction()
                     
     $("#msm_child_appending_area").sortable("destroy");
     $("#msm_intro_child_container").sortable("destroy");
+    
+    $(".msm_theorem_content_containers").each(function(){
+        $(this).sortable("destroy");
+    });
+    
     $(".msm_theorem_part_dropareas").each(function() {
         $(this).sortable("destroy");
-    })
+    });  
     
     $(".msm_associate_containers").each(function() {
         $(this).sortable("destroy");
