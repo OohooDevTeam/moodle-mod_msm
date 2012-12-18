@@ -140,6 +140,21 @@ function removeTinymceEditor()
         });
     });
     
+    $('.msm_theoremref_part_dropareas').each(function() {
+        $(this).find('.msm_theorem_content').each(function() {
+                        
+            tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
+                        
+            var editorContent = document.createElement("div");
+            editorContent.id = $(this).attr("id");
+            editorContent.className = "msm_editor_content";
+            var content = $(this).val();
+                        
+            $(editorContent).html(content);
+            $(this).replaceWith(editorContent);
+        });
+    });
+    
     $('.msm_associate_containers').each(function() {
         $(this).find('.msm_info_titles').each(function() {
                         

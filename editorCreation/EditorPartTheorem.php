@@ -63,7 +63,7 @@ class EditorPartTheorem extends EditorElement
             }
         }
 
-
+//        print_object($this);
         return $this;
     }
 

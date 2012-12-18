@@ -243,7 +243,7 @@ function addrefTheoremContent(event, idNumber)
     var theoremStatementWrapper = $('<div class="msm_theoremref_statement_containers" id="msm_theoremref_statement_container-'+newId+'"></div>');
     var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
-    var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+newId+'" name="msmref_theorem_content_input-'+newId+'"/>');    
+    var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+newId+'" name="msm_theoremref_content_input-'+newId+'"/>');    
    
     var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+newId+'" type="button" onclick="addrefTheoremPart(event, '+newId+')" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+newId+'"></div>');
@@ -329,9 +329,9 @@ function addrefTheoremPart(event, idNumber)
 {
     var newId = idNumber;
     
-    $(".msm_theoremref_part_dropareas > div").each(function() {
+    $("#msm_theoremref_part_droparea-"+idNumber+" > div").each(function(index, element) {
         newId++;
-    })
+    });    
     
     var theoremPartContainer = $('<div class="msm_theorem_child" id="msm_theoremref_part_container-'+newId+'"></div>');
     
