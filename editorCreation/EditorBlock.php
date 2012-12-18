@@ -49,31 +49,32 @@ class EditorBlock extends EditorElement
         {
             if ($this->type == "unit")
             {
-                $data = new stdClass();
-                $data->block_caption = $this->title;
-
-                $this->id = $DB->insert_record('msm_unit', $data);
-
-                $compData = new stdClass();
-                $compData->msm_id = $msmid;
-                $compData->table_id = $DB->get_record("msm_table_collection", array('tablename' => 'msm_unit'))->id;
-                $compData->unit_id = $this->id;
-                $compData->parent_id = $parentid;
-                $compData->prev_sibling_id = $siblingid;
-
-                $this->compid = $DB->insert_record("msm_compositor", $compData);
-
                 $sibling_id = 0;
                 foreach ($this->content as $content)
                 {
-                    if (get_class($content) == "EditorPara")
+                    if (!empty($this->title))
                     {
+                        print_object($this->title);
+                        $data = new stdClass();
+                        $data->block_caption = $this->title;
+
+                        $this->id = $DB->insert_record("msm_unit", $data);
+
+                        $compData = new stdClass();
+                        $compData->msm_id = $msmid;
+                        $compData->table_id = $DB->get_record('msm_table_collection', array("tablename" => "msm_unit"))->id;
+                        $compData->unit_id = $this->id;
+                        $compData->parent_id = $parentid;
+                        $compData->prev_sibling_id = $siblingid;
+
+                        $this->compid = $DB->insert_record("msm_compositor", $compData);
+
                         $content->insertData($this->compid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
                     }
-                    else if (get_class($content) == "EditorInContent")
+                    else
                     {
-                        $content->insertData($this->compid, $sibling_id, $msmid);
+                        $content->insertData($parentid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
                     }
                 }
@@ -97,21 +98,8 @@ class EditorBlock extends EditorElement
                 $sibling_id = 0;
                 foreach ($this->content as $content)
                 {
-                    if (get_class($content) == "EditorPara")
-                    {
-                        $content->insertData($this->compid, $sibling_id, $msmid);
-                        $sibling_id = $content->compid;
-                    }
-                    else if (get_class($content) == "EditorInContent")
-                    {
-                        $content->insertData($this->compid, $sibling_id, $msmid);
-                        $sibling_id = $content->compid;
-                    }
-                    else if (get_class($content) == "EditorTable")
-                    {
-                        $content->insertData($this->compid, $sibling_id, $msmid);
-                        $sibling_id = $content->compid;
-                    }
+                    $content->insertData($this->compid, $sibling_id, $msmid);
+                    $sibling_id = $content->compid;
                 }
             }
         }

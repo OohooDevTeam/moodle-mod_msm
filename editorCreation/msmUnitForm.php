@@ -105,6 +105,19 @@ foreach ($unitcontent as $unitchild)
             }
         }
     }
+    
+    if(get_class($unitchild) == "EditorBlock")
+    {
+       if (!empty($unitchild->errorArray))
+            {
+                $hasError = true;
+                foreach ($unitchild->errorArray as $blockerrorid)
+                {
+                    $errorArray[] = $blockerrorid;
+                }
+            }
+    }
+    
     if (get_class($unitchild) == 'EditorTheorem')
     {
         foreach ($unitchild->content as $statementTheorem)
@@ -130,7 +143,7 @@ foreach ($unitcontent as $unitchild)
             }
         }
     }
-    if (get_class($unitchild) != 'EditorIntro')
+    if ((get_class($unitchild) != 'EditorIntro') && (get_class($unitchild) != 'EditorBlock'))
     {
         foreach ($unitchild->children as $associate)
         {
