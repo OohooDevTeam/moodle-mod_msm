@@ -10,9 +10,39 @@
  *
  * @author User
  */
-class EditorImage
+class EditorImage extends EditorElement
 {
-    //put your code here
+    public $position;
+    public $id;
+    public $compid;
+    public $src;
+    public $description;
+    public $caption;
+    public $height;
+    public $width;
+    
+    function __construct()
+    {
+        $this->tablename = 'msm_img';
+    }
+
+    public function getFormData($idNumber, $position)
+    {
+        $this->position = $position;
+        
+        return $this;
+    }
+
+    public function insertData($parentid, $siblingid, $msmid)
+    {
+        global $DB;
+        
+        $data = new stdClass();
+        
+        $compData = new stdClass();
+    }
+    
+    
 }
 
 ?>

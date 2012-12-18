@@ -44,6 +44,12 @@ abstract class EditorElement
                    $inContent->getFormData($child, $key);
                    $newContent[] = $inContent;
                }
+               else if($child->tagName == "table")
+               {
+                   $table = new EditorTable();
+                   $table->getFormData($child, $key);
+                   $newContent[] = $table;
+               }
                else
                {
                    print_object($child->tagName);

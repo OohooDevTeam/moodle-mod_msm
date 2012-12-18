@@ -71,7 +71,7 @@ class EditorBlock extends EditorElement
                         $content->insertData($this->compid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
                     }
-                    else if(get_class($content) == "EditorInContent")
+                    else if (get_class($content) == "EditorInContent")
                     {
                         $content->insertData($this->compid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
@@ -102,7 +102,12 @@ class EditorBlock extends EditorElement
                         $content->insertData($this->compid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
                     }
-                    else if(get_class($content) == "EditorInContent")
+                    else if (get_class($content) == "EditorInContent")
+                    {
+                        $content->insertData($this->compid, $sibling_id, $msmid);
+                        $sibling_id = $content->compid;
+                    }
+                    else if (get_class($content) == "EditorTable")
                     {
                         $content->insertData($this->compid, $sibling_id, $msmid);
                         $sibling_id = $content->compid;
@@ -156,10 +161,11 @@ class EditorBlock extends EditorElement
             }
             else
             {
-                $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1] . '_ifr';;
+                $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1] . '_ifr';
+                ;
             }
         }
-        
+
         $this->type = "intro";
 
         return $this;
@@ -185,9 +191,10 @@ class EditorBlock extends EditorElement
         }
         else
         {
-            $this->errorArray[] = 'msm_body_content_input-' . $idInfo[1] . '_ifr';;
+            $this->errorArray[] = 'msm_body_content_input-' . $idInfo[1] . '_ifr';
+            ;
         }
-        
+
         $this->type = "unit";
 
         return $this;

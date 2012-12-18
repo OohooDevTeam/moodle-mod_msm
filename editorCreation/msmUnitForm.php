@@ -21,6 +21,7 @@ require_once('EditorPartTheorem.php');
 require_once('EditorStatementTheorem.php');
 require_once('EditorAssociate.php');
 require_once('EditorInfo.php');
+require_once('EditorTable.php');
 
 require_once('../XMLImporter/TableCollection.php');
 
@@ -128,10 +129,10 @@ foreach ($unitcontent as $unitchild)
                 }
             }
         }
-        
     }
-    
-    foreach ($unitchild->children as $associate)
+    if (get_class($unitchild) != 'EditorIntro')
+    {
+        foreach ($unitchild->children as $associate)
         {
             foreach ($associate->infos as $info)
             {
@@ -145,6 +146,8 @@ foreach ($unitcontent as $unitchild)
                 }
             }
         }
+    }
+
 //    if ((get_class($unitchild) == 'EditorDefinition')||(get_class($unitchild) == 'EditorComment'))
 //    {
 //        foreach ($unitchild->associates as $associate)

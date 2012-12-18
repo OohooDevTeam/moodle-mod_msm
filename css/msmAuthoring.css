@@ -520,11 +520,11 @@
 
 .msm_associate_buttons
 {
-  text-align: center;
-  position: relative;
-  padding: 2px;
-  left: 40%; /*to center the button*/
-  
+    text-align: center;
+    position: relative;
+    padding: 2px;
+    left: 40%; /*to center the button*/
+
 }
 .msm_associate_childs{
     border: 2px dotted orange;
@@ -542,4 +542,11 @@
 }
 .msm_info_header{
     font-weight: bold;
+}
+
+.msm_editor_content td
+{
+    border-color: maroon;
+    border-collapse: separate !important;
+    border-spacing: 2px;
 }
