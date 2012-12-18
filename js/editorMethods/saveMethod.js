@@ -32,7 +32,6 @@ $(document).ready(function(){
         var targetURL = $("#msm_unit_form").attr("action");
         var ids = [];
         
-        //        console.log(formData);
         $.ajax({
             type: "POST",
             url: targetURL,

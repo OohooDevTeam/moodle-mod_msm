@@ -544,9 +544,10 @@
     font-weight: bold;
 }
 
-.msm_editor_content td
+/*.msm_editor_content td
 {
+    border-width: 2px;
     border-color: maroon;
     border-collapse: separate !important;
     border-spacing: 2px;
-}
+}*/
