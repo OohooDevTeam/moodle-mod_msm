@@ -23,43 +23,45 @@
 		 */
         init : function(ed, url) {
             // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceSubordinate');
+                       
             ed.addCommand('mceSubordinate', function() {   
                 $('#msm_subordinate').dialog({
                     // disabling the close button 
                     open: function(event, ui) {
                         $(".ui-dialog-titlebar-close").hide();
-                        $("#msm_subordinate_highlighted").val(ed.editor.selection.getContent({
-                    format : 'text'
-                }));
+                        $("#msm_subordinate_highlighted").val(ed.selection.getContent({
+                            format : 'text'
+                        }));
                     },
                     modal:true,
                     autoOpen: false,
-                    height: 'auto',
+                    height: 500,
                     width: 750,
                     closeOnEscape: false
                 });
                 $('#msm_subordinate').dialog('open').css('display', 'block');
-                
-            //                ed.windowManager.open({
-            //                    file : url + '/subordinate.htm',                                       
-            //                    width : ed.getParam('subordinate_popup_width', 750),
-            //                    height : ed.getParam('subordinate_popup_height', 600),
-            //                    inline : 1
-            //                }, {
-            //                    plugin_url : url // Plugin absolute URL
-            //                });
-            });
+            });  
 
+
+            // Add a node change handler, selects the button in the UI when a image is selected
+            ed.onNodeChange.add(function(ed, cm, n) {
+                if(ed.selection.getContent())
+                {
+//                    cm.setActive('subordinate', true); 
+                    cm.setDisabled('subordinate', false);  
+                }
+                else
+                {                 
+                    cm.setActive('subordinate', false); 
+                    cm.setDisabled('subordinate', true);  
+                }
+            });
+            
             // Register subordinate button
             ed.addButton('subordinate', {
                 title : 'subordinate.desc',
                 cmd : 'mceSubordinate',
                 image : url + '/img/subordinate.png'
-            });
-
-            // Add a node change handler, selects the button in the UI when a image is selected
-            ed.onNodeChange.add(function(ed, cm, n) {
-                cm.setActive('subordinate', n.nodeName == 'IMG');
             });
         },
 

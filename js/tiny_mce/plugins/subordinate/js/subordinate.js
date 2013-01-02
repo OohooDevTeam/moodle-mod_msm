@@ -91,7 +91,7 @@ function changeForm(e) {
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
-        skin_variant : "silver",
+        skin_variant : "silver"
     });
     tinyMCE.init({            
         mode:"exact",
@@ -108,7 +108,7 @@ function changeForm(e) {
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
-        skin_variant : "silver",
+        skin_variant : "silver"
     });
 }
 //
