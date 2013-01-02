@@ -25,11 +25,11 @@ and open the template in the editor.
         <script type="text/javascript" src='js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>
 
         <script type="text/javascript">
-            function closeSubFormDialog()
-            {
-                $('#msm_subordinate').dialog("close");
-            }
-            
+//            function closeSubFormDialog()
+//            {
+//                $('#test_tinymce').dialog("close");
+//            }
+//            
             tinyMCE.init({
                 mode:"exact",
                 elements: "test_content",
@@ -52,8 +52,9 @@ and open the template in the editor.
     <body>
         <label for="test_content">Test content: </label>
         <textarea id="test_content"></textarea>
+        <div id="test_tinymce"></div>
 
-        <div id="msm_subordinate" style="display:none;" title="Create Subordinate">
+<!--        <div id="msm_subordinate" style="display:none;" title="Create Subordinate">
             <form id="msm_subordinate_form">
                 <div class="msm_subordinate_form_container">
                     <label for="msm_subordinate_highlighted"> Selected Text: </label>
@@ -74,21 +75,21 @@ and open the template in the editor.
                     </div>
                 </div>
 
-                <!--<form onsubmit="//SubordinateDialog.insert();return false;" action="#">-->
+                <form onsubmit="//SubordinateDialog.insert();return false;" action="#">
 
-                <!--	<p>Here is a subordinate dialog.</p>
+                	<p>Here is a subordinate dialog.</p>
                         <p>Selected text: <input id="someval" name="someval" type="text" class="text" /></p>
                         <p>Custom arg: <input id="somearg" name="somearg" type="text" class="text" /></p>
                 
                         <div class="mceActionPanel">
                                 <input type="button" id="insert" name="insert" value="{#insert}" onclick="SubordinateDialog.insert();" />
                                 <input type="button" id="cancel" name="cancel" value="{#cancel}" onclick="tinyMCEPopup.close();" />
-                        </div>-->
+                        </div>
                 <div class="msm_subordinate_button_container">
                     <input type="submit" id="msm_subordinate_submit" class="msm_subordinate_button" value="Save"/>
                     <input type="button" id="msm_subordinate_cancel" class="msm_subordinate_button" value="Cancel" onclick="closeSubFormDialog()"/>
                 </div>            
             </form>
-        </div>
+        </div>-->
     </body>
 </html>

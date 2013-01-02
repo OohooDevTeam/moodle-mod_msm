@@ -24,30 +24,30 @@
         init : function(ed, url) {
             // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceSubordinate');
                        
-            ed.addCommand('mceSubordinate', function() {   
-                $('#msm_subordinate').dialog({
-                    // disabling the close button 
-                    open: function(event, ui) {
-                        $(".ui-dialog-titlebar-close").hide();
-                        $("#msm_subordinate_highlighted").val(ed.selection.getContent({
-                            format : 'text'
-                        }));
-                    },
-                    modal:true,
-                    autoOpen: false,
-                    height: 500,
-                    width: 750,
-                    closeOnEscape: false
-                });
-                $('#msm_subordinate').dialog('open').css('display', 'block');
-            });  
+            //            ed.addCommand('mceSubordinate', function() {   
+            //                $('#test_tinymce').html(url+'/subordinate.htm').dialog({
+            //                    // disabling the close button 
+            //                    open: function(event, ui) {
+            //                        alert("open dialog");
+            //                        $(".ui-dialog-titlebar-close").hide();
+            //                        $("#msm_subordinate_highlighted").val(ed.selection.getContent({
+            //                            format : 'text'
+            //                        }));
+            //                    },
+            //                    modal:true,
+            //                    autoOpen: false,
+            //                    height: 500,
+            //                    width: 750,
+            //                    closeOnEscape: false
+            //                });
+            //                $('#msm_subordinate').dialog('open').css('display', 'block');
+            //            });  
 
 
             // Add a node change handler, selects the button in the UI when a image is selected
             ed.onNodeChange.add(function(ed, cm, n) {
                 if(ed.selection.getContent())
                 {
-//                    cm.setActive('subordinate', true); 
                     cm.setDisabled('subordinate', false);  
                 }
                 else
@@ -61,7 +61,50 @@
             ed.addButton('subordinate', {
                 title : 'subordinate.desc',
                 cmd : 'mceSubordinate',
-                image : url + '/img/subordinate.png'
+                image : url + '/img/subordinate.png',
+                onclick: function() {
+                    var idNumber = ed.editorId.split("-");
+                    
+                    if(idNumber > 2)
+                    {
+                        makeSubordinateDialog(idNumber[1], idNumber[2]);
+                        $('#msm_subordinate_container-'+idNumber[1]+'-'+idNumber[2]).dialog({
+                            //                     disabling the close button 
+                            open: function(event, ui) {
+                                $(".ui-dialog-titlebar-close").hide();
+                                $("#msm_subordinate_highlighted").val(ed.selection.getContent({
+                                    format : 'text'
+                                }));
+                            },
+                            modal:true,
+                            autoOpen: false,
+                            height: 500,
+                            width: 750,
+                            closeOnEscape: false
+                        });
+                        $('#msm_subordinate_container-'+idNumber[1]+'-'+idNumber[2]).dialog('open').css('display', 'block');
+                    }
+                    else
+                    {
+                        makeSubordinateDialog(idNumber[1], '');
+                        $('#msm_subordinate_container-'+idNumber[1]).dialog({
+                            //                     disabling the close button 
+                            open: function(event, ui) {
+                                $(".ui-dialog-titlebar-close").hide();
+                                $("#msm_subordinate_highlighted").val(ed.selection.getContent({
+                                    format : 'text'
+                                }));
+                            },
+                            modal:true,
+                            autoOpen: false,
+                            height: 500,
+                            width: 750,
+                            closeOnEscape: false
+                        });
+                        $('#msm_subordinate_container-'+idNumber[1]).dialog('open').css('display', 'block');
+                    }
+                    
+                }
             });
         },
 
@@ -99,3 +142,166 @@
     // Register plugin
     tinymce.PluginManager.add('subordinate', tinymce.plugins.SubordinatePlugin);
 })();
+
+function makeSubordinateDialog(idNumber1, idNumber2)
+{
+    var container;
+    var dialogwhole = document.createElement('div');
+    var dialogForm = document.createElement('form');
+    var dialogFormContainer = document.createElement('div');
+    var selectedTextlabel = document.createElement('label');
+    var selectedTextValue = document.createTextNode('Selected Text : ');
+    var selectedTextInput = document.createElement('input');
+    
+    var selectTypeLabel = document.createElement('label');
+    var selectTypeText = document.createTextNode('Subordinate Type : ');
+    var selectTypeMenu = document.createElement('select');
+    
+    var selectTypeOption0 = document.createElement('option');
+    selectTypeOption0.setAttribute("value", "None");
+    var selectTypeOption0Value = document.createTextNode('None');
+    var selectTypeOption1 = document.createElement('option');
+    selectTypeOption1.setAttribute("value", "Information");
+    var selectTypeOption1Value = document.createTextNode('Information');
+    var selectTypeOption2 = document.createElement('option');
+    selectTypeOption2.setAttribute("value", "External Link");
+    var selectTypeOption2Value = document.createTextNode('External Link');
+    var selectTypeOption3 = document.createElement('option');
+    selectTypeOption3.setAttribute("value", "Internal Reference");
+    var selectTypeOption3Value = document.createTextNode('Internal Reference');
+    var selectTypeOption4 = document.createElement('option');
+    selectTypeOption4.setAttribute("value", "External Reference");
+    var selectTypeOption4Value = document.createTextNode('External Reference');
+    
+    selectTypeOption0.appendChild(selectTypeOption0Value);
+    selectTypeOption1.appendChild(selectTypeOption1Value);
+    selectTypeOption2.appendChild(selectTypeOption2Value);
+    selectTypeOption3.appendChild(selectTypeOption3Value);
+    selectTypeOption4.appendChild(selectTypeOption4Value);
+    
+    var dialogContentForm = document.createElement('div');
+    var dialogButtonContainer = document.createElement('div');
+    var saveButton = document.createElement('input');
+    var cancelButton = document.createElement('input');  
+    
+    if(idNumber2 != '')
+    {
+        container = document.getElementById('msm_subordinate_container-'+idNumber1+'-'+idNumber2);        
+        dialogwhole.id = 'msm_subordinate-'+idNumber1+'-'+idNumber2;
+        dialogwhole.title = "Create Subordinate";
+        
+        dialogForm.id = 'msm_subordinate_form-'+idNumber1+'-'+idNumber2;
+        
+        dialogFormContainer.className = "msm_subordinate_form_container";
+        
+        selectedTextlabel.setAttribute("for",'msm_subordinate_highlighted-'+idNumber1+'-'+idNumber2);
+        selectedTextlabel.appendChild(selectedTextValue);
+        
+        selectedTextInput.id = 'msm_subordinate_highlighted-'+idNumber1+'-'+idNumber2;
+        selectedTextInput.name = 'msm_subordinate_highlighted-'+idNumber1+'-'+idNumber2;
+        selectedTextInput.setAttribute("disabled", "disabled");
+        
+        selectTypeLabel.setAttribute("for", 'msm_subordinate_select-'+idNumber1+'-'+idNumber2);
+        selectTypeLabel.appendChild(selectTypeText);
+        
+        selectTypeMenu.id = 'msm_subordinate_select-'+idNumber1+'-'+idNumber2;
+        selectTypeMenu.name = 'msm_subordinate_select-'+idNumber1+'-'+idNumber2;
+        selectTypeMenu.onchange = function() {
+            changeForm(event, idNumber1, idNumber2);
+        };
+        
+        dialogContentForm.id = 'msm_subordinate_content_form_container-'+idNumber1+'-'+idNumber2;
+        
+        dialogButtonContainer.className = 'msm_subordinate_button_container';
+        
+        saveButton.setAttribute("type", "submit");
+        saveButton.id = 'msm_subordinate_submit-'+idNumber1+'-'+idNumber2;
+        saveButton.className = 'msm_subordinate_button';
+        saveButton.setAttribute("value", "Save");
+        
+        cancelButton.setAttribute("type", "button");
+        cancelButton.id = 'msm_subordinate_cancel-'+idNumber1+'-'+idNumber2;
+        cancelButton.className = 'msm_subordinate_button';
+        cancelButton.setAttribute("value", "Cancel");
+        cancelButton.onclick = function() {
+            closeSubFormDialog(idNumber1, idNumber2);
+        };
+        
+       
+        
+    }
+    else
+    {
+        container = document.getElementById('msm_subordinate_container-'+idNumber1);        
+        dialogwhole.id = 'msm_subordinate-'+idNumber1;
+        dialogwhole.title = "Create Subordinate";
+        
+        dialogForm.id = 'msm_subordinate_form-'+idNumber1;
+        
+        dialogFormContainer.className = "msm_subordinate_form_container";
+        
+        selectedTextlabel.setAttribute("for",'msm_subordinate_highlighted-'+idNumber1);
+        selectedTextlabel.appendChild(selectedTextValue);
+        
+        selectedTextInput.id = 'msm_subordinate_highlighted-'+idNumber1;
+        selectedTextInput.name = 'msm_subordinate_highlighted-'+idNumber1;
+        selectedTextInput.setAttribute("disabled", "disabled");
+        
+        selectTypeLabel.setAttribute("for", 'msm_subordinate_select-'+idNumber1);
+        selectTypeLabel.appendChild(selectTypeText);
+        
+        selectTypeMenu.id = 'msm_subordinate_select-'+idNumber1;
+        selectTypeMenu.name = 'msm_subordinate_select-'+idNumber1;
+        selectTypeMenu.onchange = function() {
+            changeForm(event, idNumber1, '');
+        };
+        
+        dialogContentForm.id = 'msm_subordinate_content_form_container-'+idNumber1;
+        
+        dialogButtonContainer.className = 'msm_subordinate_button_container';
+        
+        saveButton.setAttribute("type", "submit");
+        saveButton.id = 'msm_subordinate_submit-'+idNumber1;
+        saveButton.className = 'msm_subordinate_button';
+        saveButton.setAttribute("value", "Save");
+        
+        cancelButton.setAttribute("type", "button");
+        cancelButton.id = 'msm_subordinate_cancel-'+idNumber1;
+        cancelButton.className = 'msm_subordinate_button';
+        cancelButton.setAttribute("value", "Cancel");
+        cancelButton.onclick = function() {
+            closeSubFormDialog(idNumber1, '');
+        };
+    }
+    
+    selectTypeMenu.appendChild(selectTypeOption0);
+    selectTypeMenu.appendChild(selectTypeOption1);
+    selectTypeMenu.appendChild(selectTypeOption2);
+    selectTypeMenu.appendChild(selectTypeOption3);
+    selectTypeMenu.appendChild(selectTypeOption4);
+        
+    dialogButtonContainer.appendChild(saveButton);
+    dialogButtonContainer.appendChild(cancelButton);
+        
+    dialogFormContainer.appendChild(selectedTextlabel);
+    dialogFormContainer.appendChild(selectedTextInput);
+    dialogFormContainer.appendChild(document.createElement('br'));
+    dialogFormContainer.appendChild(document.createElement('br'));
+    dialogFormContainer.appendChild(selectTypeLabel);
+    dialogFormContainer.appendChild(selectTypeMenu);
+    dialogFormContainer.appendChild(dialogContentForm);
+        
+    dialogForm.appendChild(dialogFormContainer);
+    dialogForm.appendChild(document.createElement('br'));
+    dialogForm.appendChild(document.createElement('br'));
+    dialogForm.appendChild(dialogButtonContainer);
+        
+    dialogwhole.appendChild(dialogForm);
+    
+    // only append the new dialog form to div when it hasn't already been done
+    if(!container.hasChildNodes())
+    {
+        container.appendChild(dialogForm);
+    }
+    
+}

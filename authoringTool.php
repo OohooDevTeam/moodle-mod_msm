@@ -90,6 +90,8 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
 
+echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>";
+
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
 
 //echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/tiny_mce.js'></script>";
