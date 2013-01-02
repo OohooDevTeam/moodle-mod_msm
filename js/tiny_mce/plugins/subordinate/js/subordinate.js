@@ -1,23 +1,18 @@
 //tinyMCEPopup.requireLangPack();
 
 //var SubordinateDialog = {
-function init(){
+function init(content, id1, id2){
+    var selectedText;
+    if(id2 != '')
+    {
+        selectedText= document.getElementById('msm_subordinate_highlighted-'+id1+'-'+id2);
+    }
+    else
+    {
+        selectedText= document.getElementById('msm_subordinate_highlighted-'+id1);
+    }     
         
-    var selectedText = document.getElementById('msm_subordinate_highlighted');
-        
-    selectedText.value = tinyMCEPopup.editor.selection.getContent({
-        format : 'text'
-    });
-    
-    alert("hello?");
-        
-//        var f = document.forms[0];
-//        
-//
-//        // Get the selected contents as text and place it in the input
-//        f.msm_subordinate_highlighted.value = tinyMCEPopup.editor.selection.getContent({
-//            format : 'text'
-//        });
+    selectedText.value = content; 
 }
     
         

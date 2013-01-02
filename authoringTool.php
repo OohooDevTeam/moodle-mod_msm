@@ -91,6 +91,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
 
 echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>";
+echo " <script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/css/subordinate.css'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
 

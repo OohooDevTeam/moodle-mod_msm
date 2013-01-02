@@ -12,7 +12,7 @@
     width: 80%;
 }
 
-#msm_subordinate_form_container fieldset > div
+/*#msm_subordinate_form_container fieldset > div
 {
     padding: 2%;
 }
@@ -20,12 +20,12 @@
 {
     padding: 2%;
 }
-/*
+
 #subordinatesrc {
 	border: none;
 	width: 320px;
 	height: 240px;
-}*/
+}
 
 .title {
 	padding-bottom: 5px;
@@ -34,7 +34,7 @@
 .mceActionPanel {
 	padding-top: 5px;
 }
-/*
+
 #msm_subordinate
 {
     display: none;

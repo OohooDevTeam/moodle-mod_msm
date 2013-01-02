@@ -68,11 +68,13 @@
                     if(idNumber > 2)
                     {
                         makeSubordinateDialog(idNumber[1], idNumber[2]);
+                         
+                        init(ed.selection.getContent(), idNumber[1], idNumber[2]);
                         $('#msm_subordinate_container-'+idNumber[1]+'-'+idNumber[2]).dialog({
                             //                     disabling the close button 
                             open: function(event, ui) {
                                 $(".ui-dialog-titlebar-close").hide();
-                                $("#msm_subordinate_highlighted").val(ed.selection.getContent({
+                                $("#msm_subordinate_highlighted-"+idNumber[1]+"-"+idNumber[2]).val(ed.selection.getContent({
                                     format : 'text'
                                 }));
                             },
@@ -87,11 +89,13 @@
                     else
                     {
                         makeSubordinateDialog(idNumber[1], '');
+                         
+                        init(ed.selection.getContent(), idNumber[1], '');
                         $('#msm_subordinate_container-'+idNumber[1]).dialog({
                             //                     disabling the close button 
                             open: function(event, ui) {
                                 $(".ui-dialog-titlebar-close").hide();
-                                $("#msm_subordinate_highlighted").val(ed.selection.getContent({
+                                $("#msm_subordinate_highlighted-"+idNumber[1]).val(ed.selection.getContent({
                                     format : 'text'
                                 }));
                             },
@@ -297,7 +301,7 @@ function makeSubordinateDialog(idNumber1, idNumber2)
     dialogForm.appendChild(dialogButtonContainer);
         
     dialogwhole.appendChild(dialogForm);
-    
+   
     // only append the new dialog form to div when it hasn't already been done
     if(!container.hasChildNodes())
     {
