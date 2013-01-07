@@ -44,7 +44,8 @@
             //            });  
 
 
-            // Add a node change handler, selects the button in the UI when a image is selected
+            // Add a node change handler, when no content is selected, the button is disabled,
+            // otherwise, the button is enabled.
             ed.onNodeChange.add(function(ed, cm, n) {
                 if(ed.selection.getContent())
                 {
@@ -71,9 +72,8 @@
                          
                         init(ed.selection.getContent(), idNumber[1], idNumber[2]);
                         $('#msm_subordinate_container-'+idNumber[1]+'-'+idNumber[2]).dialog({
-                            //                     disabling the close button 
-                            open: function(event, ui) {
-                                $(".ui-dialog-titlebar-close").hide();
+                            open: function(event, ui) {                               
+                                $(".ui-dialog-titlebar-close").hide();  //  disabling the close button 
                                 $("#msm_subordinate_highlighted-"+idNumber[1]+"-"+idNumber[2]).val(ed.selection.getContent({
                                     format : 'text'
                                 }));
@@ -192,7 +192,7 @@ function makeSubordinateDialog(idNumber1, idNumber2)
     {
         container = document.getElementById('msm_subordinate_container-'+idNumber1+'-'+idNumber2);        
         dialogwhole.id = 'msm_subordinate-'+idNumber1+'-'+idNumber2;
-        dialogwhole.title = "Create Subordinate";
+        container.setAttribute("title", "Create Subordinate");
         
         dialogForm.id = 'msm_subordinate_form-'+idNumber1+'-'+idNumber2;
         
@@ -215,6 +215,7 @@ function makeSubordinateDialog(idNumber1, idNumber2)
         };
         
         dialogContentForm.id = 'msm_subordinate_content_form_container-'+idNumber1+'-'+idNumber2;
+        dialogContentForm.className = "msm_subordinate_content_form_containers";
         
         dialogButtonContainer.className = 'msm_subordinate_button_container';
         
@@ -238,7 +239,7 @@ function makeSubordinateDialog(idNumber1, idNumber2)
     {
         container = document.getElementById('msm_subordinate_container-'+idNumber1);        
         dialogwhole.id = 'msm_subordinate-'+idNumber1;
-        dialogwhole.title = "Create Subordinate";
+        container.setAttribute("title", "Create Subordinate");
         
         dialogForm.id = 'msm_subordinate_form-'+idNumber1;
         
@@ -261,6 +262,7 @@ function makeSubordinateDialog(idNumber1, idNumber2)
         };
         
         dialogContentForm.id = 'msm_subordinate_content_form_container-'+idNumber1;
+        dialogContentForm.className = "msm_subordinate_content_form_containers";
         
         dialogButtonContainer.className = 'msm_subordinate_button_container';
         
@@ -305,7 +307,7 @@ function makeSubordinateDialog(idNumber1, idNumber2)
     // only append the new dialog form to div when it hasn't already been done
     if(!container.hasChildNodes())
     {
-        container.appendChild(dialogForm);
+        container.appendChild(dialogwhole);
     }
     
 }

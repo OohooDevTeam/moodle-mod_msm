@@ -23,6 +23,7 @@ function changeForm(e, id1, id2) {
     // making a fieldset element for the info form (all selection will be using it
     // so make it available to all switch cases)    
     var fieldset = document.createElement("fieldset");
+    fieldset.setAttribute("style", "border:1px solid black; padding: 2%; margin-top: 1%;");
         
     var infoLegend = document.createElement("legend");
     var legendText = document.createTextNode("Subordinate Information Form");
@@ -30,17 +31,28 @@ function changeForm(e, id1, id2) {
         
     var infotitlediv = document.createElement("div");
     var infocontentdiv = document.createElement("div");
+    
+    var infoTitleLabel = document.createElement("label");
+    var infoContentLabel = document.createElement("label");
         
     var infoTitle = document.createTextNode("Information Title: ");
     var infoContent = document.createTextNode("Information Content: ");
+    
     var infoTitleInput = document.createElement("textarea");
     var infoContentInput = document.createElement("textarea");
     if(id2 != '')
     {
         container= document.getElementById("msm_subordinate_content_form_container-"+id1+"-"+id2);
+        
+        infoTitleLabel.setAttribute("for", "msm_subordinate_infoTitle-"+id1+"-"+id2);        
+        infoTitleLabel.appendChild(infoTitle);
+        
         infoTitleInput.id = "msm_subordinate_infoTitle-"+id1+"-"+id2;
         infoTitleInput.name = "msm_subordinate_infoTitle-"+id1+"-"+id2;
         infoTitleInput.className = "msm_subordinate_textareas";        
+        
+        infoContentLabel.setAttribute("for", "msm_subordinate_infoContent-"+id1+"-"+id2);        
+        infoContentLabel.appendChild(infoContent);
     
         infoContentInput.id = "msm_subordinate_infoContent-"+id1+"-"+id2;
         infoContentInput.name = "msm_subordinate_infoContent-"+id1+"-"+id2;
@@ -49,9 +61,16 @@ function changeForm(e, id1, id2) {
     else
     {
         container= document.getElementById("msm_subordinate_content_form_container-"+id1);
+        
+        infoTitleLabel.setAttribute("for", "msm_subordinate_infoTitle-"+id1);        
+        infoTitleLabel.appendChild(infoTitle);
+        
         infoTitleInput.id = "msm_subordinate_infoTitle-"+id1;
         infoTitleInput.name = "msm_subordinate_infoTitle-"+id1;
-        infoTitleInput.className = "msm_subordinate_textareas";        
+        infoTitleInput.className = "msm_subordinate_textareas";     
+        
+        infoContentLabel.setAttribute("for", "msm_subordinate_infoContent-"+id1);        
+        infoContentLabel.appendChild(infoContent);
     
         infoContentInput.id = "msm_subordinate_infoContent-"+id1;
         infoContentInput.name = "msm_subordinate_infoContent-"+id1;
@@ -59,12 +78,13 @@ function changeForm(e, id1, id2) {
     }
        
     fieldset.appendChild(infoLegend);
-    infotitlediv.appendChild(infoTitle);
+    infotitlediv.appendChild(infoTitleLabel);
     infotitlediv.appendChild(infoTitleInput);
-    fieldset.appendChild(infotitlediv);
+    fieldset.appendChild(infotitlediv);        
         
+    fieldset.appendChild(document.createElement("br"));
         
-    infocontentdiv.appendChild(infoContent);        
+    infocontentdiv.appendChild(infoContentLabel);        
     infocontentdiv.appendChild(infoContentInput);
     fieldset.appendChild(infocontentdiv);
         
@@ -108,7 +128,7 @@ function changeForm(e, id1, id2) {
             theme: "advanced",
             theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
             theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
             theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
             theme_advanced_toolbar_location : "top",
             theme_advanced_toolbar_align : "left",
@@ -125,7 +145,7 @@ function changeForm(e, id1, id2) {
             theme: "advanced",
             theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
             theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
             theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
             theme_advanced_toolbar_location : "top",
             theme_advanced_toolbar_align : "left",
@@ -145,7 +165,7 @@ function changeForm(e, id1, id2) {
             theme: "advanced",
             theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
             theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
             theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
             theme_advanced_toolbar_location : "top",
             theme_advanced_toolbar_align : "left",
@@ -162,7 +182,7 @@ function changeForm(e, id1, id2) {
             theme: "advanced",
             theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
             theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
             theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
             theme_advanced_toolbar_location : "top",
             theme_advanced_toolbar_align : "left",
