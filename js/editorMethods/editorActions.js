@@ -66,13 +66,13 @@ function processReftype(e)
     tinyMCE.init({
         mode:"exact",
         elements: currentId,
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image, cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         //        theme_advanced_toolbar_location : "external",
         theme_advanced_toolbar_location : "top",
@@ -103,6 +103,7 @@ function makeRefDefinition()
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_defref_title_input-'+_index+'" name="msm_defref_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
     var defContentField = $('<textarea class="msm_unit_child_content" id="msm_defref_content_input-'+_index+'" name="msm_defref_content_input-'+_index+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+_index+'"></div>');
     var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_defref_description_label-"+_index+"' for='msm_defref_description_input-"+_index+"'>Description: </label>");
     var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+_index+"' name='msm_defref_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
                
@@ -114,6 +115,7 @@ function makeRefDefinition()
     clonedCurrentElement.append(defTitle);
     clonedCurrentElement.append(defTitleField);
     clonedCurrentElement.append(defContentField);
+    clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(defDescriptionLabel);
     clonedCurrentElement.append(defDescriptionField);
     
@@ -141,6 +143,7 @@ function makeRefTheorem()
             
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theoremref_content_input-'+_index+'" name="msm_theoremref_content_input-'+_index+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+_index+'"></div>');
             
     var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+_index+'"></div>');
             
@@ -156,6 +159,7 @@ function makeRefTheorem()
             
     theoremStatementWrapper.append(theoremContentHeader);
     theoremStatementWrapper.append(theoremContentField); 
+    theoremStatementWrapper.append(subordinateContainer);
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
@@ -185,6 +189,7 @@ function makeRefComment()
     var commentTitleField = $('<input class="msm_unit_child_title" id="msm_commentref_title_input-'+_index+'" name="msm_commentref_title_input-'+_index+'" placeholder=" Title of Comment"/>');
           
     var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_commentref_content_input-'+_index+'" name="msm_commentref_content_input-'+_index+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+_index+'"></div>');
     var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_commentref_description_label-"+_index+"' for='msm_commentref_description_input-"+_index+"'>Description: </label>");
     var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+_index+"' name='msm_commentref_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
             
@@ -196,6 +201,7 @@ function makeRefComment()
     clonedCurrentElement.append(commentTitle);
     clonedCurrentElement.append(commentTitleField);
     clonedCurrentElement.append(commentContentField);
+    clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(commentDescriptionLabel);
     clonedCurrentElement.append(commentDescriptionField);
     
@@ -244,6 +250,7 @@ function addrefTheoremContent(event, idNumber)
     var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+newId+'" name="msm_theoremref_content_input-'+newId+'"/>');    
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+newId+'"></div>');
    
     var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+newId+'" type="button" onclick="addrefTheoremPart(event, '+newId+')" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+newId+'"></div>');
@@ -253,6 +260,7 @@ function addrefTheoremContent(event, idNumber)
     theoremStatementWrapper.append(theoremCloseButton);
     theoremStatementWrapper.append(theoremContentHeader);
     theoremStatementWrapper.append(theoremContentField);
+    theoremStatementWrapper.append(subordinateContainer);
    
     theoremStatementWrapper.append(theoremPartWrapper);
     
@@ -260,14 +268,14 @@ function addrefTheoremContent(event, idNumber)
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_theoremref_content_input-"+newId,                    
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        elements: "msm_theoremref_content_input-"+newId,        
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         //        theme_advanced_toolbar_location : "external",
         theme_advanced_toolbar_location : "top",
@@ -293,7 +301,6 @@ function addrefTheoremContent(event, idNumber)
         },
         beforeStop: function(event, ui)
         {
-            alert("theorem ref content moving");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
@@ -306,7 +313,6 @@ function addrefTheoremContent(event, idNumber)
         },
         stop: function(event, ui)
         {
-             alert("theorem ref content stop moving");
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
@@ -340,24 +346,26 @@ function addrefTheoremPart(event, idNumber)
     var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theoremref_part_title-0">Part Theorem title: </label>');
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theoremref_part_title-'+idNumber+'-'+newId+'" name="msm_theoremref_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
     var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theoremref_part_content-'+idNumber+'-'+newId+'" name="msm_theoremref_part_content-'+idNumber+'-'+newId+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+idNumber+'-'+newId+'"></div>');
             
     theoremPartContainer.append(theoremCloseButton);
     theoremPartContainer.append(theoremPartLabel);
     theoremPartContainer.append(theoremPartTitle);
     theoremPartContainer.append(theoremPartContentField);
+    theoremPartContainer.append(subordinateContainer);
     
     $(theoremPartContainer).insertBefore("#"+event.target.id);
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_theoremref_part_content-"+idNumber+"-"+newId,                    
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        elements: "msm_theoremref_part_content-"+idNumber+"-"+newId,               
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         //        theme_advanced_toolbar_location : "external",
         theme_advanced_toolbar_location : "top",
@@ -383,21 +391,20 @@ function addrefTheoremPart(event, idNumber)
         },
         beforeStop: function(event, ui)
         {
-             alert("theorem part ref content moving");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+                tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
             });
         },
         stop: function(event, ui)
         {
-             alert("theorem part ref content stop");
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+            $(this).find('.msm_theorem_content').each(function() {                 
+//                tinyMCE.execCommand("mceSubordinate", false, $(this).attr("id"));
+                tinyMCE.execCommand("mceAddControl", true, $(this).attr("id"));
                 $(this).sortable("refresh");
             });
         }

@@ -1,22 +1,16 @@
 //tinyMCEPopup.requireLangPack();
 
 //var SubordinateDialog = {
-function init(content, id1, id2){
+function init(content, id){
     var selectedText;
-    if(id2 != '')
-    {
-        selectedText= document.getElementById('msm_subordinate_highlighted-'+id1+'-'+id2);
-    }
-    else
-    {
-        selectedText= document.getElementById('msm_subordinate_highlighted-'+id1);
-    }     
-        
+   
+    selectedText= document.getElementById('msm_subordinate_highlighted-'+id);
+   
     selectedText.value = content; 
 }
     
         
-function changeForm(e, id1, id2) {
+function changeForm(e, id) {
     var container;
     var selectVal = e.target.selectedIndex;
             
@@ -40,42 +34,23 @@ function changeForm(e, id1, id2) {
     
     var infoTitleInput = document.createElement("textarea");
     var infoContentInput = document.createElement("textarea");
-    if(id2 != '')
-    {
-        container= document.getElementById("msm_subordinate_content_form_container-"+id1+"-"+id2);
-        
-        infoTitleLabel.setAttribute("for", "msm_subordinate_infoTitle-"+id1+"-"+id2);        
-        infoTitleLabel.appendChild(infoTitle);
-        
-        infoTitleInput.id = "msm_subordinate_infoTitle-"+id1+"-"+id2;
-        infoTitleInput.name = "msm_subordinate_infoTitle-"+id1+"-"+id2;
-        infoTitleInput.className = "msm_subordinate_textareas";        
-        
-        infoContentLabel.setAttribute("for", "msm_subordinate_infoContent-"+id1+"-"+id2);        
-        infoContentLabel.appendChild(infoContent);
     
-        infoContentInput.id = "msm_subordinate_infoContent-"+id1+"-"+id2;
-        infoContentInput.name = "msm_subordinate_infoContent-"+id1+"-"+id2;
-        infoContentInput.className = "msm_subordinate_textareas";
-    }
-    else
-    {
-        container= document.getElementById("msm_subordinate_content_form_container-"+id1);
+    container= document.getElementById("msm_subordinate_content_form_container-"+id);
         
-        infoTitleLabel.setAttribute("for", "msm_subordinate_infoTitle-"+id1);        
-        infoTitleLabel.appendChild(infoTitle);
+    infoTitleLabel.setAttribute("for", "msm_subordinate_infoTitle-"+id);        
+    infoTitleLabel.appendChild(infoTitle);
         
-        infoTitleInput.id = "msm_subordinate_infoTitle-"+id1;
-        infoTitleInput.name = "msm_subordinate_infoTitle-"+id1;
-        infoTitleInput.className = "msm_subordinate_textareas";     
+    infoTitleInput.id = "msm_subordinate_infoTitle-"+id;
+    infoTitleInput.name = "msm_subordinate_infoTitle-"+id;
+    infoTitleInput.className = "msm_subordinate_textareas";        
         
-        infoContentLabel.setAttribute("for", "msm_subordinate_infoContent-"+id1);        
-        infoContentLabel.appendChild(infoContent);
+    infoContentLabel.setAttribute("for", "msm_subordinate_infoContent-"+id);        
+    infoContentLabel.appendChild(infoContent);
     
-        infoContentInput.id = "msm_subordinate_infoContent-"+id1;
-        infoContentInput.name = "msm_subordinate_infoContent-"+id1;
-        infoContentInput.className = "msm_subordinate_textareas";
-    }
+    infoContentInput.id = "msm_subordinate_infoContent-"+id;
+    infoContentInput.name = "msm_subordinate_infoContent-"+id;
+    infoContentInput.className = "msm_subordinate_textareas";
+   
        
     fieldset.appendChild(infoLegend);
     infotitlediv.appendChild(infoTitleLabel);
@@ -116,96 +91,47 @@ function changeForm(e, id1, id2) {
             alert("external ref");
             break;
     }
-    
-    if(id2 != '')
-    {
-        tinyMCE.init({            
-            mode:"exact",
-            elements: "msm_subordinate_infoTitle-"+id1+"-"+id2,
-            plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-            width: "96%",
-            height: "70%",
-            theme: "advanced",
-            theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
-            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-            theme_advanced_toolbar_location : "top",
-            theme_advanced_toolbar_align : "left",
-            theme_advanced_statusbar_location : "bottom",
-            skin : "o2k7",
-            skin_variant : "silver"
-        });
-        tinyMCE.init({            
-            mode:"exact",
-            elements: "msm_subordinate_infoContent-"+id1+"-"+id2,
-            plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-            width: "96%",
-            height: "70%",
-            theme: "advanced",
-            theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
-            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-            theme_advanced_toolbar_location : "top",
-            theme_advanced_toolbar_align : "left",
-            theme_advanced_statusbar_location : "bottom",
-            skin : "o2k7",
-            skin_variant : "silver"
-        }); 
-    }
-    else
-    {
-        tinyMCE.init({            
-            mode:"exact",
-            elements: "msm_subordinate_infoTitle-"+id1,
-            plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-            width: "96%",
-            height: "70%",
-            theme: "advanced",
-            theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
-            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-            theme_advanced_toolbar_location : "top",
-            theme_advanced_toolbar_align : "left",
-            theme_advanced_statusbar_location : "bottom",
-            skin : "o2k7",
-            skin_variant : "silver"
-        });
-        tinyMCE.init({            
-            mode:"exact",
-            elements: "msm_subordinate_infoContent-"+id1,
-            plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-            width: "96%",
-            height: "70%",
-            theme: "advanced",
-            theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl",
-            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-            theme_advanced_toolbar_location : "top",
-            theme_advanced_toolbar_align : "left",
-            theme_advanced_statusbar_location : "bottom",
-            skin : "o2k7",
-            skin_variant : "silver"
-        });
-    }
+  
+    tinyMCE.init({            
+        mode:"exact",
+        elements: "msm_subordinate_infoTitle-"+id,
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        width: "96%",
+        height: "70%",
+        theme: "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        skin : "o2k7",
+        skin_variant : "silver"
+    });
+    tinyMCE.init({            
+        mode:"exact",
+        elements: "msm_subordinate_infoContent-"+id,
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        width: "96%",
+        height: "70%",
+        theme: "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        skin : "o2k7",
+        skin_variant : "silver"
+    });
    
 }
 
-function closeSubFormDialog(id1, id2)
+function closeSubFormDialog(id)
 {
-    if (id2 != '')
-    {
-        $('#msm_subordinate_container-'+id1+'-'+id2).dialog("close");
-
-    }
-    else
-    {
-        $('#msm_subordinate_container-'+id1).dialog("close");
-
-    }
+    $('#msm_subordinate_container-'+id).dialog("close");
 }
 //
 //function insert() {

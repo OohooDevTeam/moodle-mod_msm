@@ -143,7 +143,8 @@
 			visualaid : ['visualaid_desc', 'mceToggleVisualAid'],
 			anchor : ['anchor_desc', 'mceInsertAnchor'],
 			newdocument : ['newdocument_desc', 'mceNewDocument'],
-			blockquote : ['blockquote_desc', 'mceBlockQuote']
+			blockquote : ['blockquote_desc', 'mceBlockQuote'],
+                        subordinate : ['subordinate_desc', 'mceSubordinate']
 		},
 
 		stateControls : ['bold', 'italic', 'underline', 'strikethrough', 'bullist', 'numlist', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'sub', 'sup', 'blockquote'],

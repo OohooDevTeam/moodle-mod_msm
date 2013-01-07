@@ -189,44 +189,7 @@ function processDroppedChild(e, droppedId)
         //        file_browser_callback: "myFileBrowser",
         skin : "o2k7",
         skin_variant : "silver"
-    });
-    
-    $("#msm_theorem_content_container-"+_index).sortable({
-        appendTo: "msm_theorem_content_container-"+_index,
-        connectWith: "msm_theorem_content_container-"+_index,
-        cursor: "move",
-        tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",        
-        start: function(event,ui)
-        {
-            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
-            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
-            $(".msm_sortable_placeholder").css("background-color","#DC143C");
-            $(".msm_sortable_placeholder").css("opacity","0.5");
-            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
-            //            alert("removing control");
-            // this code along with the one in stop is needed for enabling sortable on the div containing
-            // the tinymce editor so the iframe part of the editor doesn't become disabled
-            $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
-            });
-        },
-        stop: function(event, ui)
-        {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
-            //            alert("adding control");
-            // if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
-                $(this).sortable("refresh");
-            });
-        }
-    });    
-                
-    $("#msm_theorem_content_container-"+_index).disableSelection();
+    });  
    
     $("#msm_child_appending_area").sortable({
         appendTo: "#msm_child_appending_area",
@@ -410,14 +373,14 @@ function addIntroContent(idNumber)
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_intro_child_content-"+newId,                    
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        elements: "msm_intro_child_content-"+newId,   
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         //        theme_advanced_toolbar_location : "external",
         theme_advanced_toolbar_location : "top",
@@ -495,14 +458,14 @@ function addTheoremContent(event, idNumber)
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_theorem_content_input-"+newId,                    
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        elements: "msm_theorem_content_input-"+newId,   
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         //        theme_advanced_toolbar_location : "external",
         theme_advanced_toolbar_location : "top",
@@ -530,6 +493,10 @@ function addTheoremContent(event, idNumber)
         {
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
+            $(this).find('.msm_unit_child_content').each(function() {
+                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id"));  
+            });
+            
             $(this).find('.msm_unit_child_content.msm_theorem_content').each(function() {
                 tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
             });
@@ -543,6 +510,11 @@ function addTheoremContent(event, idNumber)
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_unit_child_content').each(function() {
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                $(this).sortable("refresh");
+            });
+            
             $(this).find('.msm_unit_child_content.msm_theorem_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
@@ -585,14 +557,14 @@ function addTheoremPart(event, idNumber)
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_theorem_part_content-"+idNumber+"-"+newId,                    
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        elements: "msm_theorem_part_content-"+idNumber+"-"+newId,  
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         //        theme_advanced_toolbar_location : "external",
         theme_advanced_toolbar_location : "top",
@@ -630,7 +602,7 @@ function addTheoremPart(event, idNumber)
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id"));
                 $(this).sortable("refresh");
             });
         }
@@ -683,7 +655,7 @@ function addAssociateForm(index, type)
     var infoHeader = $('<span class="msm_info_header">Information</span><br>');
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
-    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'" name="msm_info_title-'+index + '-' + newId+'"/><br>');
+    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'" name="msm_info_title-'+index + '-' + newId+'"/><br>');    
     
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'" name="msm_info_content-'+index + '-' + newId+'"/><br><br>');
@@ -714,14 +686,14 @@ function addAssociateForm(index, type)
     $(associateInfoDiv).insertBefore("#msm_associate_button-"+index);
     
     var configArray = [{
-        mode:"none",        
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        mode:"none",   
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
@@ -766,7 +738,6 @@ function addAssociateForm(index, type)
         },
         beforeStop: function(event, ui)
         {
-            alert("moving associates");
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_info_titles').each(function() {
@@ -788,7 +759,6 @@ function addAssociateForm(index, type)
         },
         stop: function(event, ui)
         {
-            alert("stop associates");
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
@@ -917,6 +887,41 @@ function makeTheorem()
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
     clonedCurrentElement.append(theoremAssociateDiv);
+    
+    $("#msm_theorem_content_container-"+_index).sortable({
+        appendTo: "msm_theorem_content_container-"+_index,
+        connectWith: "msm_theorem_content_container-"+_index,
+        cursor: "move",
+        tolerance: "pointer",
+        placeholder: "msm_sortable_placeholder",        
+        start: function(event,ui)
+        {
+            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+        },
+        beforeStop: function(event, ui)
+        {
+            // this code along with the one in stop is needed for enabling sortable on the div containing
+            // the tinymce editor so the iframe part of the editor doesn't become disabled
+            $(this).find('.msm_unit_child_content').each(function() {                
+                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+            });
+        },
+        stop: function(event, ui)
+        {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            // if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_unit_child_content').each(function() {
+                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                $(this).sortable("refresh");
+            });
+        }
+    });    
+                
+    $("#msm_theorem_content_container-"+_index).disableSelection();
             
     return clonedCurrentElement;
 }
