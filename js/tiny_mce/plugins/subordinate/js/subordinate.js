@@ -1,5 +1,7 @@
 //tinyMCEPopup.requireLangPack();
 
+var _subIndex = 1;
+
 //var SubordinateDialog = {
 function init(content, id){
     var selectedText;
@@ -62,6 +64,35 @@ function changeForm(e, id) {
     infocontentdiv.appendChild(infoContentLabel);        
     infocontentdiv.appendChild(infoContentInput);
     fieldset.appendChild(infocontentdiv);
+    
+    //-----------------------------end of information form---------------------------------//
+    
+    //-----------------------------start of external url form-----------------------------//
+    var urlfieldset = document.createElement("fieldset");
+    urlfieldset.setAttribute("style", "border:1px solid black; padding: 2%; margin-top: 1%;");
+    
+    var urlLegend = document.createElement("legend");
+    var urllegendText = document.createTextNode("External URL Form");
+    urlLegend.appendChild(urllegendText);
+    
+    var urlLabel = document.createElement("label");
+    var urlLabelText = document.createTextNode("External URL: ");
+    urlLabel.setAttribute("for", "msm_subordinate_url-"+id);
+    
+    urlLabel.appendChild(urlLabelText);
+    
+    var urlInput = document.createElement("input");
+    urlInput.setAttribute("type", "text"); //type url is not compatible with IE and safari
+    urlInput.className = "msm_subordinate_urls";
+    urlInput.id = "msm_subordinate_url-"+id;
+    urlInput.name = "msm_subordinate_url-"+id;
+    urlInput.setAttribute("style", "min-width: 83%;");
+    
+    urlfieldset.appendChild(urlLegend);
+    urlfieldset.appendChild(urlLabel);
+    urlfieldset.appendChild(urlInput);
+    
+    //-----------------------------end of external url form---------------------------------//
         
     // erasing any previously appended children from previous choices made by the user
     if(container.hasChildNodes())
@@ -70,8 +101,7 @@ function changeForm(e, id) {
         {
             container.removeChild(container.firstChild);
         }
-    }
-    
+    }    
         
     switch(selectVal)
     {       
@@ -82,7 +112,8 @@ function changeForm(e, id) {
             container.appendChild(fieldset);
             break;
         case 2:
-            alert("external link");
+            container.appendChild(urlfieldset);
+            container.appendChild(fieldset);
             break;
         case 3:
             alert("internal ref");
@@ -133,6 +164,113 @@ function closeSubFormDialog(id)
 {
     $('#msm_subordinate_container-'+id).dialog("close");
 }
+
+//
+function submitSubForm(id)
+{
+    var hasError = false;
+    
+    var subSelectVal = $("#msm_subordinate_select-"+id).val();
+    $("textarea").each(function(){ 
+        this.value = tinymce.get(this.id).getContent();
+    });
+    var infoTitleVal = $("#msm_subordinate_infoTitle-"+id).val();
+    var infoContentVal = $("#msm_subordinate_infoContent-"+id).val();
+     
+    console.log(subSelectVal);
+    console.log(infoTitleVal);
+    console.log(infoContentVal);
+    
+    // need validation methods
+    
+    var subResultContainer = document.createElement("div");
+    // id defines which editor the subordinate is from and _subIndex is related to the hot tagged word that this subordinate is associated with
+    subResultContainer.id = "msm_subordinate_result-"+id+"-"+_subIndex;
+//    subResultContainer.setAttribute("style","display:none;");
+    
+    //----All data associated with subordinate information(common for all select choices) ----//
+    var selectChoiceContainer = document.createElement("div");
+    selectChoiceContainer.id = "msm_subordinate_select-"+id+"-"+_subIndex;
+ 
+    var selectChoiceContainerText = document.createTextNode(subSelectVal);
+    selectChoiceContainer.appendChild(selectChoiceContainerText);
+            
+    var infoTitleContainer = document.createElement("div");
+    infoTitleContainer.id = "msm_subordinate_infoTitle-"+id+"-"+_subIndex;
+            
+    var infoTitleContainerText = document.createTextNode(infoTitleVal);
+    infoTitleContainer.appendChild(infoTitleContainerText);
+            
+    var infoContentContainer = document.createElement("div");
+    infoContentContainer.id = "msm_subordinate_infoContent-"+id+"-"+_subIndex;
+    
+    if(infoContentVal != '')
+    {
+        var infoContentContainerText = document.createTextNode(infoContentVal);
+        infoContentContainer.appendChild(infoContentContainerText);  
+    }
+    else
+    {
+        hasError = true;
+    }
+            
+   
+    
+    //-----------------------------------------------------------------------------------//
+    
+    if(!hasError)
+    {
+        switch(subSelectVal)
+        {
+            case "Information":
+                subResultContainer.appendChild(selectChoiceContainer);
+                subResultContainer.appendChild(infoTitleContainer);
+                subResultContainer.appendChild(infoContentContainer);
+                break;
+            
+            case "External Link":
+                var urlInputValue = $("#msm_subordinate_url-"+id).val();
+                
+                if(urlInputValue != '')
+                {
+                    var urlContainer = document.createElement("div");
+                    urlContainer.id = "msm_subordinate_url"+id+"-"+_subIndex;
+                        
+                    var urlContainerText = document.createTextNode(urlInputValue);
+                    urlContainer.appendChild(urlContainerText);
+                        
+                    subResultContainer.appendChild(urlContainer);
+                    subResultContainer.appendChild(selectChoiceContainer);
+                    subResultContainer.appendChild(infoTitleContainer);
+                    subResultContainer.appendChild(infoContentContainer);
+                    break;
+                }
+                else
+                {
+                    hasError = true;
+                    break;
+                }
+            
+              
+            case "Internal Reference":
+                break;
+            case "External Reference":
+                break;          
+          
+        }
+    }
+    
+    _subIndex++;
+    
+    if(!hasError)
+    {
+        console.log(document.getElementById("msm_subordinate_container-"+id));
+        document.getElementById("msm_subordinate_container-"+id).parentNode.appendChild(subResultContainer);
+        $('#msm_subordinate_container-'+id).dialog("close");
+    }
+    
+}
+
 //
 //function insert() {
 //    // Insert the contents from the input into the document

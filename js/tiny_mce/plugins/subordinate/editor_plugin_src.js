@@ -266,6 +266,9 @@ function makeSubordinateDialog(idNumber)
     saveButton.id = 'msm_subordinate_submit-'+idNumber;
     saveButton.className = 'msm_subordinate_button';
     saveButton.setAttribute("value", "Save");
+    saveButton.onsubmit = function() {
+        submitSubForm(idNumber);
+    };
         
     cancelButton.setAttribute("type", "button");
     cancelButton.id = 'msm_subordinate_cancel-'+idNumber;
