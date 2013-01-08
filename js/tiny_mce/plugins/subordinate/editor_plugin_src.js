@@ -24,11 +24,7 @@
         init : function(ed, url) {
             // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceSubordinate');
                        
-            ed.addCommand('mceSubordinate', function() {   
-                //                                title : 'subordinate.desc',
-                //                cmd : 'mceSubordinate',
-                //                image : url + '/img/subordinate.png',
-                //                onclick: function() {  
+            ed.addCommand('mceSubordinate', function() { 
                 var type = ed.editorId.split("_");
                     
                 var match = type[1].match(/ref/);
@@ -61,25 +57,32 @@
                           
                 }
                     
-                makeSubordinateDialog(indexNumber);
+                makeSubordinateDialog(ed, indexNumber);
                          
                 init(ed.selection.getContent(), indexNumber);
+                
+                // to fix the dialog window size to 80% of window size
+                var wWidth = $(window).width();
+                var wHeight = $(window).height();
+                
+                var dWidth = wWidth*0.6;
+                var dHeight = wHeight*0.8;
+                
                 $('#msm_subordinate_container-'+indexNumber).dialog({
                     open: function(event, ui) {                               
                         $(".ui-dialog-titlebar-close").hide();  //  disabling the close button 
                         $("#msm_subordinate_highlighted-"+indexNumber).val(ed.selection.getContent({
                             format : 'text'
                         }));
+                        initInfoEditor(indexNumber);
                     },
                     modal:true,
                     autoOpen: false,
-                    height: 500,
-                    width: 750,
+                    height: dHeight,
+                    width: dWidth,
                     closeOnEscape: false
                 });
                 $('#msm_subordinate_container-'+indexNumber).dialog('open').css('display', 'block');
-                   
-            //                }
             });  
 
 
@@ -101,59 +104,7 @@
             ed.addButton('subordinate', {
                 title : 'subordinate.desc',
                 cmd : 'mceSubordinate',
-                image : url + '/img/subordinate.png'
-            //            onclick: function() {                    
-            //                var type = ed.editorId.split("_");
-            //                    
-            //                var match = type[1].match(/ref/);
-            //                var idNumber;
-            //                var indexNumber;
-            //                if(match)
-            //                {
-            //                    idNumber= ed.editorId.split("-");
-            //                    if(idNumber.length > 2)
-            //                    {
-            //                        indexNumber = "ref"+idNumber[1]+"-"+idNumber[2];
-            //                    }
-            //                    else
-            //                    {
-            //                        indexNumber = "ref"+idNumber[1];
-            //                    }
-            //                        
-            //                }
-            //            else
-            //            {
-            //                idNumber= ed.editorId.split("-");
-            //                if(idNumber.length > 2)
-            //                {
-            //                    indexNumber = idNumber[1]+"-"+idNumber[2];
-            //                }
-            //                else
-            //                {
-            //                    indexNumber = idNumber[1];
-            //                }
-            //                          
-            //            }
-            //                    
-            //            makeSubordinateDialog(indexNumber);
-            //                         
-            //            init(ed.selection.getContent(), indexNumber);
-            //            $('#msm_subordinate_container-'+indexNumber).dialog({
-            //                open: function(event, ui) {                               
-            //                    $(".ui-dialog-titlebar-close").hide();  //  disabling the close button 
-            //                    $("#msm_subordinate_highlighted-"+indexNumber).val(ed.selection.getContent({
-            //                        format : 'text'
-            //                    }));
-            //                },
-            //                modal:true,
-            //                autoOpen: false,
-            //                height: 500,
-            //                width: 750,
-            //                closeOnEscape: false
-            //            });
-            //            $('#msm_subordinate_container-'+indexNumber).dialog('open').css('display', 'block');
-            //                   
-            //        }
+                image : url + '/img/subordinate.png'                
             });
         },
 
@@ -192,7 +143,7 @@
     tinymce.PluginManager.add('subordinate', tinymce.plugins.SubordinatePlugin);
 })();
 
-function makeSubordinateDialog(idNumber)
+function makeSubordinateDialog(ed, idNumber)
 {
     var container;
     var dialogwhole = document.createElement('div');
@@ -206,9 +157,6 @@ function makeSubordinateDialog(idNumber)
     var selectTypeText = document.createTextNode('Subordinate Type : ');
     var selectTypeMenu = document.createElement('select');
     
-    var selectTypeOption0 = document.createElement('option');
-    selectTypeOption0.setAttribute("value", "None");
-    var selectTypeOption0Value = document.createTextNode('None');
     var selectTypeOption1 = document.createElement('option');
     selectTypeOption1.setAttribute("value", "Information");
     var selectTypeOption1Value = document.createTextNode('Information');
@@ -222,7 +170,6 @@ function makeSubordinateDialog(idNumber)
     selectTypeOption4.setAttribute("value", "External Reference");
     var selectTypeOption4Value = document.createTextNode('External Reference');
     
-    selectTypeOption0.appendChild(selectTypeOption0Value);
     selectTypeOption1.appendChild(selectTypeOption1Value);
     selectTypeOption2.appendChild(selectTypeOption2Value);
     selectTypeOption3.appendChild(selectTypeOption3Value);
@@ -262,12 +209,12 @@ function makeSubordinateDialog(idNumber)
         
     dialogButtonContainer.className = 'msm_subordinate_button_container';
         
-    saveButton.setAttribute("type", "submit");
+    saveButton.setAttribute("type", "button");
     saveButton.id = 'msm_subordinate_submit-'+idNumber;
     saveButton.className = 'msm_subordinate_button';
     saveButton.setAttribute("value", "Save");
-    saveButton.onsubmit = function() {
-        submitSubForm(idNumber);
+    saveButton.onclick = function() {
+        submitSubForm(ed, idNumber);
     };
         
     cancelButton.setAttribute("type", "button");
@@ -278,7 +225,9 @@ function makeSubordinateDialog(idNumber)
         closeSubFormDialog(idNumber);
     };
     
-    selectTypeMenu.appendChild(selectTypeOption0);
+    var infoForm = makeInfoForm(idNumber);    
+    dialogContentForm.appendChild(infoForm);
+    
     selectTypeMenu.appendChild(selectTypeOption1);
     selectTypeMenu.appendChild(selectTypeOption2);
     selectTypeMenu.appendChild(selectTypeOption3);
@@ -300,12 +249,11 @@ function makeSubordinateDialog(idNumber)
     dialogForm.appendChild(document.createElement('br'));
     dialogForm.appendChild(dialogButtonContainer);
         
-    dialogwhole.appendChild(dialogForm);
+    dialogwhole.appendChild(dialogForm);    
    
     // only append the new dialog form to div when it hasn't already been done
     if(!container.hasChildNodes())
     {
         container.appendChild(dialogwhole);
     }
-    
 }

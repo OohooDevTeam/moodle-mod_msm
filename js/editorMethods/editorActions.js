@@ -104,6 +104,7 @@ function makeRefDefinition()
           
     var defContentField = $('<textarea class="msm_unit_child_content" id="msm_defref_content_input-'+_index+'" name="msm_defref_content_input-'+_index+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
     var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_defref_description_label-"+_index+"' for='msm_defref_description_input-"+_index+"'>Description: </label>");
     var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+_index+"' name='msm_defref_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
                
@@ -116,6 +117,7 @@ function makeRefDefinition()
     clonedCurrentElement.append(defTitleField);
     clonedCurrentElement.append(defContentField);
     clonedCurrentElement.append(subordinateContainer);
+    clonedCurrentElement.append(subordinateResult);
     clonedCurrentElement.append(defDescriptionLabel);
     clonedCurrentElement.append(defDescriptionField);
     
@@ -144,6 +146,7 @@ function makeRefTheorem()
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theoremref_content_input-'+_index+'" name="msm_theoremref_content_input-'+_index+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
             
     var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+_index+'"></div>');
             
@@ -160,6 +163,7 @@ function makeRefTheorem()
     theoremStatementWrapper.append(theoremContentHeader);
     theoremStatementWrapper.append(theoremContentField); 
     theoremStatementWrapper.append(subordinateContainer);
+    theoremStatementWrapper.append(subordinateResult);
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
@@ -190,6 +194,7 @@ function makeRefComment()
           
     var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_commentref_content_input-'+_index+'" name="msm_commentref_content_input-'+_index+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
     var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_commentref_description_label-"+_index+"' for='msm_commentref_description_input-"+_index+"'>Description: </label>");
     var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+_index+"' name='msm_commentref_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
             
@@ -202,6 +207,7 @@ function makeRefComment()
     clonedCurrentElement.append(commentTitleField);
     clonedCurrentElement.append(commentContentField);
     clonedCurrentElement.append(subordinateContainer);
+    clonedCurrentElement.append(subordinateResult);
     clonedCurrentElement.append(commentDescriptionLabel);
     clonedCurrentElement.append(commentDescriptionField);
     
@@ -251,6 +257,7 @@ function addrefTheoremContent(event, idNumber)
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+newId+'" name="msm_theoremref_content_input-'+newId+'"/>');    
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+newId+'"></div>');
    
     var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+newId+'" type="button" onclick="addrefTheoremPart(event, '+newId+')" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+newId+'"></div>');
@@ -261,6 +268,7 @@ function addrefTheoremContent(event, idNumber)
     theoremStatementWrapper.append(theoremContentHeader);
     theoremStatementWrapper.append(theoremContentField);
     theoremStatementWrapper.append(subordinateContainer);
+    theoremStatementWrapper.append(subordinateResult);
    
     theoremStatementWrapper.append(theoremPartWrapper);
     
@@ -347,12 +355,14 @@ function addrefTheoremPart(event, idNumber)
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theoremref_part_title-'+idNumber+'-'+newId+'" name="msm_theoremref_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
     var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theoremref_part_content-'+idNumber+'-'+newId+'" name="msm_theoremref_part_content-'+idNumber+'-'+newId+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-ref'+idNumber+'-'+newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+idNumber+'-'+newId+'"></div>');
             
     theoremPartContainer.append(theoremCloseButton);
     theoremPartContainer.append(theoremPartLabel);
     theoremPartContainer.append(theoremPartTitle);
     theoremPartContainer.append(theoremPartContentField);
     theoremPartContainer.append(subordinateContainer);
+    theoremPartContainer.append(subordinateResult);
     
     $(theoremPartContainer).insertBefore("#"+event.target.id);
     

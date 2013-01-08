@@ -84,7 +84,7 @@ function processDroppedChild(e, droppedId)
 
                 var introContentField = $('<textarea class="msm_unit_child_content" id="msm_intro_content_input-'+_index+'" name="msm_intro_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
                 var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+_index+'"></div>');
-
+                var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
             
                 var introChildContainer = $("<div id='msm_intro_child_container'></div>");
                 var introChildButton = $('<input class="msm_intro_child_buttons" id="msm_intro_child_button-'+_index+'" type="button" onclick="addIntroContent('+_index+')" value="Add additional content"/>');
@@ -98,6 +98,7 @@ function processDroppedChild(e, droppedId)
                 clonedCurrentElement.append(introTitleField);
                 clonedCurrentElement.append(introContentField);
                 clonedCurrentElement.append(subordinateContainer);
+                clonedCurrentElement.append(subordinateResult);
                 clonedCurrentElement.append(introChildContainer);
                 clonedCurrentElement.append(introChildButton);
                 clonedCurrentElement.appendTo('#msm_child_appending_area');
@@ -128,6 +129,7 @@ function processDroppedChild(e, droppedId)
             var bodyTitleField = $('<input class="msm_unit_body_title" id="msm_body_title_input-'+_index+'" name="msm_body_title_input-'+_index+'" placeholder="Optional Title for this content"/>');  
             var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
             var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+_index+'"></div>');
+             var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
 
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -137,6 +139,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(bodyTitleField);
             clonedCurrentElement.append(bodyContentField);
             clonedCurrentElement.append(subordinateContainer);
+            clonedCurrentElement.append(subordinateResult);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_body_content_input-'+_index;
@@ -361,11 +364,16 @@ function addIntroContent(idNumber)
     subordinateContainer.id = "msm_subordinate_container-"+newId;
     subordinateContainer.className = "msm_subordinate_containers";
     
+    var subordinateResult = document.createElement("div");
+    subordinateResult.id = "msm_subordinate_result_container-"+newId;
+    subordinateResult.className = "msm_subordiante_result_containers";
+    
     introChildDiv.appendChild(introCloseButton);
     introChildDiv.appendChild(introChildTitleLabel);
     introChildDiv.appendChild(introChildTitle);
     introChildDiv.appendChild(introChildContent);
     introChildDiv.appendChild(subordinateContainer);
+    introChildDiv.appendChild(subordinateResult);
     
     $(introChildDiv).appendTo("#msm_intro_child_container");
     
@@ -441,6 +449,8 @@ function addTheoremContent(event, idNumber)
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theorem_content_input-'+newId+'" name="msm_theorem_content_input-'+newId+'"/>');    
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+newId+'"></div>');
+   
        
     var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+newId+'" type="button" onclick="addTheoremPart(event, '+newId+')" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+newId+'"></div>');
@@ -451,6 +461,7 @@ function addTheoremContent(event, idNumber)
     theoremStatementWrapper.append(theoremContentHeader);
     theoremStatementWrapper.append(theoremContentField);
     theoremStatementWrapper.append(subordinateContainer);
+    theoremStatementWrapper.append(subordinateResult);
    
     theoremStatementWrapper.append(theoremPartWrapper);
     
@@ -546,12 +557,14 @@ function addTheoremPart(event, idNumber)
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theorem_part_title-'+idNumber+'-'+newId+'" name="msm_theorem_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
     var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theorem_part_content-'+idNumber+'-'+newId+'" name="msm_theorem_part_content-'+idNumber+'-'+newId+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+idNumber+'-'+newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+idNumber+'-'+newId+'"></div>');
             
     theoremPartContainer.append(theoremCloseButton);
     theoremPartContainer.append(theoremPartLabel);
     theoremPartContainer.append(theoremPartTitle);
     theoremPartContainer.append(theoremPartContentField);
     theoremPartContainer.append(subordinateContainer);
+    theoremPartContainer.append(subordinateResult);
     
     $(theoremPartContainer).insertBefore("#"+event.target.id);
     
@@ -660,6 +673,7 @@ function addAssociateForm(index, type)
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'" name="msm_info_content-'+index + '-' + newId+'"/><br><br>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+index + '-' + newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+index + '-' + newId+'"></div>');
 
     var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
                                     <select name='msm_associate_reftype-"+index + "-" + newId+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"' onchange='processReftype(event);'>\n\
@@ -681,6 +695,7 @@ function addAssociateForm(index, type)
     associateInfoDiv.append(infoContentLabel);
     associateInfoDiv.append(infoContentInput);
     associateInfoDiv.append(subordinateContainer);
+    associateInfoDiv.append(subordinateResult);
     associateInfoDiv.append(refTypeDropdown);
      
     $(associateInfoDiv).insertBefore("#msm_associate_button-"+index);
@@ -809,6 +824,7 @@ function makeDefinition()
           
     var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
     var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_description_input-"+_index+"'>Description: </label>");
     var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_description_input-"+_index+"' name='msm_def_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var defAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
@@ -826,6 +842,7 @@ function makeDefinition()
     clonedCurrentElement.append(defTitleField);
     clonedCurrentElement.append(defContentField);
     clonedCurrentElement.append(subordinateContainer);
+    clonedCurrentElement.append(subordinateResult);
     clonedCurrentElement.append(defDescriptionLabel);
     clonedCurrentElement.append(defDescriptionField);
     clonedCurrentElement.append(defAssociateDiv);
@@ -855,6 +872,7 @@ function makeTheorem()
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content_input-'+_index+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+_index+'"></div>');
             
     var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent(event, '+_index+')" value="Add content"/>');
@@ -874,6 +892,7 @@ function makeTheorem()
     theoremStatementWrapper.append(theoremContentHeader);
     theoremStatementWrapper.append(theoremContentField); 
     theoremStatementWrapper.append(subordinateContainer); 
+    theoremStatementWrappter.append(subordinateResult);
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
@@ -940,6 +959,7 @@ function makeComment()
           
     var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_comment_content_input-'+_index+'" name="msm_comment_content_input-'+_index+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
     var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_description_input-"+_index+"'>Description: </label>");
     var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_description_input-"+_index+"' name='msm_comment_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var commentAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
@@ -957,6 +977,7 @@ function makeComment()
     clonedCurrentElement.append(commentTitleField);
     clonedCurrentElement.append(commentContentField);
     clonedCurrentElement.append(subordinateContainer);
+    clonedCurrentElement.append(subordinateResult);
     clonedCurrentElement.append(commentDescriptionLabel);
     clonedCurrentElement.append(commentDescriptionField);
     clonedCurrentElement.append(commentAssociateDiv);
