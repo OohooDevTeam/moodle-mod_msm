@@ -298,7 +298,7 @@ function submitSubForm(ed, id)
             {
                 $(errorArray[i]).parent().css("border", "solid 4px #FFA500");
             }
-        }
+        }        
                 
         $("<div class=\"dialogs\" id=\"msm_emptySubContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo('#msm_subordinate_container-'+id);
 
@@ -310,5 +310,90 @@ function submitSubForm(ed, id)
                 }
             }
         }); 
+    }
+}
+
+function loadValues(ed, id)
+{
+    var resultNumber;
+    var selectedNumber;
+    
+    var matchedElement;
+    
+    var selected = ed.selection.getNode();
+    
+//    console.log(ed.selection.getStart());
+//    console.log(selected);
+//    console.log(ed.selection.getEnd());
+    
+    // previous value only exists if the node is already anchor element
+    // if it's just a plain text element, then there are no existing values to be considered
+    if(selected.tagName == 'A')
+    {
+        var selectedId = selected.id.split("-");
+        
+        $("#msm_subordinate_result_container-"+id + " > div").each(function() {
+            var resultid = this.id.split("-");            
+            
+            if(resultid.length > 3)
+            {
+                resultNumber = resultid[1] + "-" + resultid[2] + "-" + resultid[3];
+                selectedNumber = selectedId[1] + "-" + selectedId[2] + "-" + selectedId[3];
+            }
+            else
+            {
+                resultNumber = resultid[1] + "-" + resultid[2];
+                selectedNumber = selectedId[1] + "-" + selectedId[2];
+            }
+            
+            if(resultNumber == selectedNumber)
+            {
+                matchedElement = this;
+            }
+        });
+        
+        $("#"+matchedElement.id+" > div").each(function() {
+            var formid =  this.id;
+            var formData = $(this).html();
+           
+            console.log(formid);
+            console.log(formData);
+            
+            console.log(tinymce.get(formid).setContent(formData));
+        });
+        
+    }
+    // the element is not an anchor element --> empty out the form so user can fill it in again
+    else
+    {
+        // TODO need a function to eliminate nested anchor elements in the selected text
+        // cases:
+        // 1. user can have 2 separate words with one nested <a>
+        // 2. user cna have 3+ separate words highlighted together with 1+ nested <a> in any order
+        //        --> can also have middle of a word to middle of next word...etc
+        //        --> therefore no assumption on spacing...
+                
+                
+        //        var anchorElements = selected.getElementsByTagName("a");
+        //        
+        //        for(var i=0; i<anchorElements.length; i++)
+        //        {
+        //            var text = anchorElements[i].innerHTML;
+        //            ed.selection.replaceChild(text, anchorElements[i]);
+        //        }
+        //        //        // nested anchored element
+        //        //        if(ed.selection.getEnd().tagName == "A")
+        //        //        {            
+        //        //           
+        //        //        }
+        var container = document.getElementById('msm_subordinate_content_form_container-'+id);
+        
+        // to prevent resetting the info form when it just was created in makeSubordinateDialog function
+        if(container.hasChildNodes())
+        {
+            $('#msm_subordinate_content_form_container-'+id).empty();
+            container.appendChild(makeInfoForm(id))
+        }
+        
     }
 }

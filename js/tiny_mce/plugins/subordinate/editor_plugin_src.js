@@ -61,6 +61,8 @@
                          
                 init(ed.selection.getContent(), indexNumber);
                 
+                loadValues(ed, indexNumber);
+                
                 // to fix the dialog window size to 80% of window size
                 var wWidth = $(window).width();
                 var wHeight = $(window).height();
