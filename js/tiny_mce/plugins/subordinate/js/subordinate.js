@@ -4,6 +4,7 @@ var _subIndex = 1;
 
 //var SubordinateDialog = {
 function init(content, id){
+    alert("init");
     var selectedText;
    
     selectedText= document.getElementById('msm_subordinate_highlighted-'+id);
@@ -13,19 +14,34 @@ function init(content, id){
     
         
 function changeForm(e, id) {
+    alert("changeForm");
     var container = document.getElementById("msm_subordinate_content_form_container-"+id);
     var selectVal;
     
     // default setting when the subordinate window is first shown
-    if(e == '')
+    
+    switch(e)
     {
-        selectVal = 0
+        case '':
+            selectVal = 0;
+            break;
+        case "info":
+            selectVal = 0;
+            break;
+        case "url":
+            selectVal = 1;
+            break;
+        case "ir":
+            selectVal = 2;
+            break;
+        case "er":
+            selectVal = 3;
+            break;
+        default:
+            selectVal = e.target.selectedIndex;
+            break;
     }
-    else
-    {
-        selectVal = e.target.selectedIndex;
-    }
-            
+    
     var fieldset = makeInfoForm(id);    
     
     //-----------------------------end of information form---------------------------------//
@@ -83,8 +99,7 @@ function changeForm(e, id) {
             break;           
     }   
     
-    initInfoEditor(id);
-    
+    initInfoEditor(id);    
 }
 
 function initInfoEditor(id)
@@ -122,12 +137,12 @@ function initInfoEditor(id)
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
         skin_variant : "silver"
-    });
-    
+    });    
 }
 
 function makeInfoForm(id)
 {
+    alert("makeInfoForm");
     // making a fieldset element for the info form (all selection will be using it
     // so make it available to all switch cases)    
     var fieldset = document.createElement("fieldset");
@@ -186,38 +201,98 @@ function closeSubFormDialog(id)
 // ed --> current editor that the plugin was triggered from
 function submitSubForm(ed, id)
 {
-    var hasError = false;
-    var errorArray = [];
+    alert("submitSubForm");
+    var selected = ed.selection.getNode();
+    
+    // checking if this selected text has already been submitted once 
+    // if so, find the existing storage div and update the data with new ones
+    // if not, then proceed to create a new storage div for the new subordinate data
+    if(selected.tagName == "A")
+    {
+        alert("submitSubForm A condition");
+        var foundElement = findSubordinateResult(selected, id);
+        
+        console.log("found Element: ");
+        console.log(foundElement);
+        
+        if(foundElement)
+        {    
+            var oldIndex = foundElement.id.split('-');
+            var oldId;
+            var oldsId;
+            
+            if(oldIndex.length > 3)
+            {
+                oldId = oldIndex[1] + "-" + oldIndex[2];
+                oldsId = oldIndex[3];
+            }
+            else
+            {
+                oldId = oldIndex[1];
+                oldsId = oldIndex[2];
+            }
+            
+            var resultContainer = document.getElementById(foundElement.id);
+            
+            console.log("submitSubForm resultcontainer");
+            console.log(resultContainer);
+            
+            createSubordinateData(oldId, oldsId, ed, resultContainer);
+        }
+    }
+    else
+    {            
+        alert("submitSubForm non-A condition");
+        console.log("submitSubForm non-A tagName: "+ selected.tagName);
+        var subResultContainer = document.createElement("div");
+        // id defines which editor the subordinate is from and _subIndex is related to the hot tagged word that this subordinate is associated with
+        subResultContainer.id = "msm_subordinate_result-"+id+"-"+_subIndex;
+        subResultContainer.setAttribute("style","display:none;");
+    
+        createSubordinateData(id, _subIndex, ed, subResultContainer);
+        
+        _subIndex++;
+    }   
+   
+}
+
+function createSubordinateData(id, sId, ed, subResultContainer)
+{   
+    alert("createSubordinateData");
+    var hasError;
+    var errorArray;
+    
+    $("#msm_subordinate-"+id+" textarea").each(function(){ 
+        this.value = tinymce.get(this.id).getContent({
+            format: "text"
+        });
+    });
     
     var subSelectVal = $("#msm_subordinate_select-"+id).val();
-    $("textarea").each(function(){ 
-        this.value = tinymce.get(this.id).getContent();
-    });
     var infoTitleVal = $("#msm_subordinate_infoTitle-"+id).val();
     var infoContentVal = $("#msm_subordinate_infoContent-"+id).val();
     
-    // TODO need validation methods
+    //    console.log(subSelectVal);
+    console.log("infoTitleVal: "+infoTitleVal);
+    //    console.log(infoContentVal);
+    //    
     
-    var subResultContainer = document.createElement("div");
-    // id defines which editor the subordinate is from and _subIndex is related to the hot tagged word that this subordinate is associated with
-    subResultContainer.id = "msm_subordinate_result-"+id+"-"+_subIndex;
-    subResultContainer.setAttribute("style","display:none;");
+    $("#"+subResultContainer.id).empty();
     
-    //----All data associated with subordinate information(common for all select choices) ----//
     var selectChoiceContainer = document.createElement("div");
-    selectChoiceContainer.id = "msm_subordinate_select-"+id+"-"+_subIndex;
+    selectChoiceContainer.id = "msm_subordinate_select-"+id+"-"+sId;
  
     var selectChoiceContainerText = document.createTextNode(subSelectVal);
     selectChoiceContainer.appendChild(selectChoiceContainerText);
             
     var infoTitleContainer = document.createElement("div");
-    infoTitleContainer.id = "msm_subordinate_infoTitle-"+id+"-"+_subIndex;
+    infoTitleContainer.id = "msm_subordinate_infoTitle-"+id+"-"+sId;
             
     var infoTitleContainerText = document.createTextNode(infoTitleVal);
     infoTitleContainer.appendChild(infoTitleContainerText);
             
     var infoContentContainer = document.createElement("div");
-    infoContentContainer.id = "msm_subordinate_infoContent-"+id+"-"+_subIndex;
+    infoContentContainer.id = "msm_subordinate_infoContent-"+id+"-"+sId;
     
     if(infoContentVal != '')
     {
@@ -226,6 +301,7 @@ function submitSubForm(ed, id)
     }
     else
     {
+        console.log("info content is empty");
         hasError = true;
         errorArray.push("#msm_subordinate_infoContent-"+id+"_ifr");
     }
@@ -245,7 +321,7 @@ function submitSubForm(ed, id)
             if(urlInputValue != '')
             {
                 var urlContainer = document.createElement("div");
-                urlContainer.id = "msm_subordinate_url"+id+"-"+_subIndex;
+                urlContainer.id = "msm_subordinate_url-"+id+"-"+sId;
                         
                 var urlContainerText = document.createTextNode(urlInputValue);
                 urlContainer.appendChild(urlContainerText);
@@ -266,100 +342,137 @@ function submitSubForm(ed, id)
         case "Internal Reference":
             break;
         case "External Reference":
-            break;          
-          
+            break;     
+                
     }
-        
+    
     if(!hasError)
     {
         // insert the div storing the result of subordinate form as nextsibling of textarea that triggered the subordinate plugin
         var resultcontainer = document.getElementById("msm_subordinate_result_container-"+id);
         resultcontainer.appendChild(subResultContainer);
         
+        console.log("resultContainer: ");
+        console.log(resultcontainer);
+        
         // swapping selected text as anchor element 
         var selectedText = ed.selection.getContent();
-        ed.selection.setContent("<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+_subIndex+"'>"+selectedText+"</a>");
+        
+        if(ed.selection.getNode().tagName != "A")
+        {
+            ed.selection.setContent("<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"'>"+selectedText+"</a>");
+        }      
         
         $('#msm_subordinate_container-'+id).dialog("close");
-        _subIndex++;
     }
     // null values are present
     else
-    {
-        for(var i=0; i < errorArray.length; i++)
-        {
-            var match = errorArray[i].match(/subordinate.url./);
-            
-            if(match)
-            {
-                $(errorArray[i]).css("border", "solid 4px #FFA500");
-            }
-            else
-            {
-                $(errorArray[i]).parent().css("border", "solid 4px #FFA500");
-            }
-        }        
-                
-        $("<div class=\"dialogs\" id=\"msm_emptySubContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo('#msm_subordinate_container-'+id);
-
-        $("#msm_emptySubContent").dialog({
-            modal: true,
-            buttons: {
-                Ok: function() {
-                    $(this).dialog("close");
-                }
-            }
-        }); 
+    {          
+        nullErrorWarning(errorArray, id);
     }
+   
+}
+
+function nullErrorWarning(errorArray, id)
+{    
+    alert("nullErrorWarning");
+    for(var i=0; i < errorArray.length; i++)
+    {
+        var match = errorArray[i].match(/subordinate.url./);
+            
+        if(match)
+        {
+            $(errorArray[i]).css("border", "solid 4px #FFA500");
+        }
+        else
+        {
+            $(errorArray[i]).parent().css("border", "solid 4px #FFA500");
+        }
+    }        
+                
+    $("<div class=\"dialogs\" id=\"msm_emptySubContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo('#msm_subordinate_container-'+id);
+
+    $("#msm_emptySubContent").dialog({
+        modal: true,
+        buttons: {
+            Ok: function() {
+                $(this).dialog("close");
+            }
+        }
+    }); 
 }
 
 function loadValues(ed, id)
 {
-    var resultNumber;
-    var selectedNumber;
-    
+    alert("loadValues");
     var matchedElement;
     
     var selected = ed.selection.getNode();
-    
-//    console.log(ed.selection.getStart());
-//    console.log(selected);
-//    console.log(ed.selection.getEnd());
     
     // previous value only exists if the node is already anchor element
     // if it's just a plain text element, then there are no existing values to be considered
     if(selected.tagName == 'A')
     {
-        var selectedId = selected.id.split("-");
+        matchedElement = findSubordinateResult(selected, id);
         
-        $("#msm_subordinate_result_container-"+id + " > div").each(function() {
-            var resultid = this.id.split("-");            
+        $("#"+matchedElement.id+" > div").each(function() {
+            var divid = this.id.split("-");
+            var formid;
             
-            if(resultid.length > 3)
+            // eliminate the last number in id that indicates which anchored element it belongs to
+            // b/c the editor id does not reflect this
+            if(divid.length > 3)
             {
-                resultNumber = resultid[1] + "-" + resultid[2] + "-" + resultid[3];
-                selectedNumber = selectedId[1] + "-" + selectedId[2] + "-" + selectedId[3];
+                formid = divid[0]+"-"+divid[1]+"-"+divid[2];
             }
             else
             {
-                resultNumber = resultid[1] + "-" + resultid[2];
-                selectedNumber = selectedId[1] + "-" + selectedId[2];
+                formid = divid[0]+"-"+divid[1];
             }
             
-            if(resultNumber == selectedNumber)
+            var formData = this.innerHTML;            
+            var editor = tinymce.get(formid);
+            
+            if(formid.match(/select/))
             {
-                matchedElement = this;
+                switch(formData)
+                {
+                    case "Information":
+                        changeForm("info", id);
+                        document.getElementById(formid).selectedIndex = 0;
+                        break;
+                    case "External Link":
+                        changeForm("url", id);
+                        document.getElementById(formid).selectedIndex = 1;
+                        break;
+                    case "Internal Reference":
+                        changeForm("ir", id);
+                        document.getElementById(formid).selectedIndex = 2;
+                        break;
+                    case "External Reference":
+                        changeForm("er", id);
+                        document.getElementById(formid).selectedIndex = 3;
+                        break;
+                }
             }
-        });
-        
-        $("#"+matchedElement.id+" > div").each(function() {
-            var formid =  this.id;
-            var formData = $(this).html();
-           
-            console.log(formid);
-            console.log(formData);
             
-            console.log(tinymce.get(formid).setContent(formData));
+            if(typeof editor != "undefined")
+            {
+                editor.setContent(formData, {
+                    format: "text"
+                });
+                console.log("getContent at load: "+editor.getContent());
+            }
+            else
+            {
+                console.log("editor is undefined");
+                console.log(formid);
+            }
+            
+            if(formid.match(/url/))
+            {
+                document.getElementById(formid).value = formData;
+            }
         });
         
     }
@@ -386,14 +499,63 @@ function loadValues(ed, id)
         //        //        {            
         //        //           
         //        //        }
+        //        console.log("not anchor: "+ selected.tagName);
+        
         var container = document.getElementById('msm_subordinate_content_form_container-'+id);
         
         // to prevent resetting the info form when it just was created in makeSubordinateDialog function
         if(container.hasChildNodes())
         {
             $('#msm_subordinate_content_form_container-'+id).empty();
+            alert("form container emptied");
             container.appendChild(makeInfoForm(id))
         }
         
     }
+}
+
+/**
+ *  This function finds the subordinate data submitted stored in the div and returns the 
+ *  HTML element itself. Used to load the information that were submitted by the user already and
+ *  allows for an editting function.
+ *  
+ *  @param selected    the element with highlighted text in editor
+ *  @param id          the id number attached to the div to specify the subordinate data in question
+ */
+function findSubordinateResult(selected, id)
+{
+    alert("findSubordinateResult");
+    var resultNumber;
+    var selectedNumber;
+    var matchedElement;
+    
+    var selectedId = selected.id.split("-");    
+    
+    console.log("container: ");
+    console.log($("#msm_subordinate_result_container-"+id));
+        
+    $("#msm_subordinate_result_container-"+id + " > div").each(function() {
+        var resultid = this.id.split("-");            
+            
+        if(resultid.length > 3)
+        {
+            resultNumber = resultid[1] + "-" + resultid[2] + "-" + resultid[3];
+            selectedNumber = selectedId[1] + "-" + selectedId[2] + "-" + selectedId[3];
+        }
+        else
+        {
+            resultNumber = resultid[1] + "-" + resultid[2];
+            selectedNumber = selectedId[1] + "-" + selectedId[2];
+        }
+            
+        if(resultNumber == selectedNumber)
+        {
+            matchedElement = this;
+        }
+    });
+        
+    console.log("matched element: ");
+    console.log(matchedElement);
+        
+    return matchedElement;
 }

@@ -71,7 +71,7 @@
                 var dHeight = wHeight*0.8;
                 
                 $('#msm_subordinate_container-'+indexNumber).dialog({
-                    open: function(event, ui) {                               
+                    open: function(event, ui) { 
                         $(".ui-dialog-titlebar-close").hide();  //  disabling the close button 
                         $("#msm_subordinate_highlighted-"+indexNumber).val(ed.selection.getContent({
                             format : 'text'
@@ -159,8 +159,8 @@ function makeSubordinateDialog(ed, idNumber)
     var selectTypeText = document.createTextNode('Subordinate Type : ');
     var selectTypeMenu = document.createElement('select');
     
-    var selectTypeOption1 = document.createElement('option');
-    selectTypeOption1.setAttribute("value", "Information");
+    var selectTypeOption1 = document.createElement('option');  
+    selectTypeOption1.value = "Information";
     var selectTypeOption1Value = document.createTextNode('Information');
     var selectTypeOption2 = document.createElement('option');
     selectTypeOption2.setAttribute("value", "External Link");
@@ -171,6 +171,8 @@ function makeSubordinateDialog(ed, idNumber)
     var selectTypeOption4 = document.createElement('option');
     selectTypeOption4.setAttribute("value", "External Reference");
     var selectTypeOption4Value = document.createTextNode('External Reference');
+    
+    selectTypeOption1.setAttribute("selected", "selected");
     
     selectTypeOption1.appendChild(selectTypeOption1Value);
     selectTypeOption2.appendChild(selectTypeOption2Value);
@@ -256,6 +258,11 @@ function makeSubordinateDialog(ed, idNumber)
     // only append the new dialog form to div when it hasn't already been done
     if(!container.hasChildNodes())
     {
+        container.appendChild(dialogwhole);
+    }
+    else
+    {
+        $('#msm_subordinate_container-'+idNumber).empty();
         container.appendChild(dialogwhole);
     }
 }
