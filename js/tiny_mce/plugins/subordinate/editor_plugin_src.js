@@ -87,7 +87,6 @@
                 $('#msm_subordinate_container-'+indexNumber).dialog('open').css('display', 'block');
             });  
 
-
             // Add a node change handler, when no content is selected, the button is disabled,
             // otherwise, the button is enabled.
             ed.onNodeChange.add(function(ed, cm, n) {
@@ -105,9 +104,10 @@
             // Register subordinate button
             ed.addButton('subordinate', {
                 title : 'subordinate.desc',
-                cmd : 'mceSubordinate',
+                cmd : 'mceSubordinate', 
                 image : url + '/img/subordinate.png'                
             });
+            
         },
 
         /**

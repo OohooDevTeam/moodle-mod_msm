@@ -4,7 +4,7 @@ var _subIndex = 1;
 
 //var SubordinateDialog = {
 function init(content, id){
-    alert("init");
+    //    alert("init");
     var selectedText;
    
     selectedText= document.getElementById('msm_subordinate_highlighted-'+id);
@@ -14,7 +14,7 @@ function init(content, id){
     
         
 function changeForm(e, id) {
-    alert("changeForm");
+    //    alert("changeForm");
     var container = document.getElementById("msm_subordinate_content_form_container-"+id);
     var selectVal;
     
@@ -104,45 +104,19 @@ function changeForm(e, id) {
 
 function initInfoEditor(id)
 {
-    tinyMCE.init({            
-        mode:"exact",
-        elements: "msm_subordinate_infoTitle-"+id,
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "96%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });
-    tinyMCE.init({            
-        mode:"exact",
-        elements: "msm_subordinate_infoContent-"+id,
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "96%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });    
+    var titleid = "msm_subordinate_infoTitle-"+id;
+    var contentid = "msm_subordinate_infoContent-"+id;
+   
+    // must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id
+    tinymce.execCommand('mceRemoveControl', false, titleid);
+    tinymce.execCommand('mceRemoveControl', false, contentid);
+    
+    tinymce.execCommand('mceAddControl', false, titleid);
+    tinymce.execCommand('mceAddControl', false, contentid);
 }
 
 function makeInfoForm(id)
 {
-    alert("makeInfoForm");
     // making a fieldset element for the info form (all selection will be using it
     // so make it available to all switch cases)    
     var fieldset = document.createElement("fieldset");
@@ -201,7 +175,6 @@ function closeSubFormDialog(id)
 // ed --> current editor that the plugin was triggered from
 function submitSubForm(ed, id)
 {
-    alert("submitSubForm");
     var selected = ed.selection.getNode();
     
     // checking if this selected text has already been submitted once 
@@ -209,11 +182,7 @@ function submitSubForm(ed, id)
     // if not, then proceed to create a new storage div for the new subordinate data
     if(selected.tagName == "A")
     {
-        alert("submitSubForm A condition");
         var foundElement = findSubordinateResult(selected, id);
-        
-        console.log("found Element: ");
-        console.log(foundElement);
         
         if(foundElement)
         {    
@@ -234,16 +203,11 @@ function submitSubForm(ed, id)
             
             var resultContainer = document.getElementById(foundElement.id);
             
-            console.log("submitSubForm resultcontainer");
-            console.log(resultContainer);
-            
             createSubordinateData(oldId, oldsId, ed, resultContainer);
         }
     }
     else
-    {            
-        alert("submitSubForm non-A condition");
-        console.log("submitSubForm non-A tagName: "+ selected.tagName);
+    {   
         var subResultContainer = document.createElement("div");
         // id defines which editor the subordinate is from and _subIndex is related to the hot tagged word that this subordinate is associated with
         subResultContainer.id = "msm_subordinate_result-"+id+"-"+_subIndex;
@@ -252,30 +216,24 @@ function submitSubForm(ed, id)
         createSubordinateData(id, _subIndex, ed, subResultContainer);
         
         _subIndex++;
-    }   
-   
+    }  
 }
 
 function createSubordinateData(id, sId, ed, subResultContainer)
 {   
-    alert("createSubordinateData");
     var hasError;
     var errorArray;
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
-        this.value = tinymce.get(this.id).getContent({
+        $(this).val(tinymce.get(this.id).getContent({
             format: "text"
-        });
-    });
+        }));
+    
+    });    
     
     var subSelectVal = $("#msm_subordinate_select-"+id).val();
     var infoTitleVal = $("#msm_subordinate_infoTitle-"+id).val();
     var infoContentVal = $("#msm_subordinate_infoContent-"+id).val();
-    
-    //    console.log(subSelectVal);
-    console.log("infoTitleVal: "+infoTitleVal);
-    //    console.log(infoContentVal);
-    //    
     
     $("#"+subResultContainer.id).empty();
     
@@ -301,7 +259,6 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     }
     else
     {
-        console.log("info content is empty");
         hasError = true;
         errorArray.push("#msm_subordinate_infoContent-"+id+"_ifr");
     }
@@ -352,9 +309,6 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         var resultcontainer = document.getElementById("msm_subordinate_result_container-"+id);
         resultcontainer.appendChild(subResultContainer);
         
-        console.log("resultContainer: ");
-        console.log(resultcontainer);
-        
         // swapping selected text as anchor element 
         var selectedText = ed.selection.getContent();
         
@@ -374,8 +328,7 @@ function createSubordinateData(id, sId, ed, subResultContainer)
 }
 
 function nullErrorWarning(errorArray, id)
-{    
-    alert("nullErrorWarning");
+{ 
     for(var i=0; i < errorArray.length; i++)
     {
         var match = errorArray[i].match(/subordinate.url./);
@@ -404,7 +357,6 @@ function nullErrorWarning(errorArray, id)
 
 function loadValues(ed, id)
 {
-    alert("loadValues");
     var matchedElement;
     
     var selected = ed.selection.getNode();
@@ -438,7 +390,7 @@ function loadValues(ed, id)
                 switch(formData)
                 {
                     case "Information":
-                        changeForm("info", id);
+                        changeForm("info", id);                        
                         document.getElementById(formid).selectedIndex = 0;
                         break;
                     case "External Link":
@@ -458,15 +410,7 @@ function loadValues(ed, id)
             
             if(typeof editor != "undefined")
             {
-                editor.setContent(formData, {
-                    format: "text"
-                });
-                console.log("getContent at load: "+editor.getContent());
-            }
-            else
-            {
-                console.log("editor is undefined");
-                console.log(formid);
+                editor.setContent(formData);
             }
             
             if(formid.match(/url/))
@@ -507,11 +451,12 @@ function loadValues(ed, id)
         if(container.hasChildNodes())
         {
             $('#msm_subordinate_content_form_container-'+id).empty();
-            alert("form container emptied");
+            //            alert("form container emptied");
             container.appendChild(makeInfoForm(id))
         }
         
     }
+    
 }
 
 /**
@@ -524,18 +469,14 @@ function loadValues(ed, id)
  */
 function findSubordinateResult(selected, id)
 {
-    alert("findSubordinateResult");
     var resultNumber;
     var selectedNumber;
     var matchedElement;
     
-    var selectedId = selected.id.split("-");    
-    
-    console.log("container: ");
-    console.log($("#msm_subordinate_result_container-"+id));
+    var selectedId = selected.id.split("-");   
         
     $("#msm_subordinate_result_container-"+id + " > div").each(function() {
-        var resultid = this.id.split("-");            
+        var resultid = this.id.split("-"); 
             
         if(resultid.length > 3)
         {
@@ -553,9 +494,6 @@ function findSubordinateResult(selected, id)
             matchedElement = this;
         }
     });
-        
-    console.log("matched element: ");
-    console.log(matchedElement);
         
     return matchedElement;
 }
