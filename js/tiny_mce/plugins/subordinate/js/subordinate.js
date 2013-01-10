@@ -104,10 +104,6 @@ function changeForm(e, id) {
 
 function initInfoEditor(id)
 {
-    console.log("id?: "+id);
-    
-    console.log(tinymce.editors);
-    
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
    
@@ -132,9 +128,6 @@ function initInfoEditor(id)
         skin : "o2k7",
         skin_variant : "silver"
     };
-    
-    console.log(titleid);
-    console.log(contentid);
     
     tinymce.execCommand('mceAddControl', false, titleid);
     tinymce.execCommand('mceAddControl', false, contentid);
@@ -200,7 +193,7 @@ function closeSubFormDialog(id)
 // ed --> current editor that the plugin was triggered from
 function submitSubForm(ed, id)
 {
-    var selected = ed.selection.getNode();
+    var selected = ed.selection.getSel().extentNode.parentNode; 
     
     // checking if this selected text has already been submitted once 
     // if so, find the existing storage div and update the data with new ones
@@ -332,8 +325,6 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     {
         // insert the div storing the result of subordinate form as nextsibling of textarea that triggered the subordinate plugin
         var resultcontainer = document.getElementById("msm_subordinate_result_container-"+id);
-        console.log(id);
-        console.log(resultcontainer);
         
         resultcontainer.appendChild(subResultContainer);
         
@@ -387,7 +378,9 @@ function loadValues(ed, id)
 {
     var matchedElement;
     
-    var selected = ed.selection.getNode();
+    //    var selected = ed.selection.getNode();
+
+    var selected = ed.selection.getSel().extentNode.parentNode; 
     
     // previous value only exists if the node is already anchor element
     // if it's just a plain text element, then there are no existing values to be considered
@@ -502,6 +495,8 @@ function findSubordinateResult(selected, id)
     var matchedElement;
     
     var selectedId = selected.id.split("-");   
+    
+    console.log("selecte ID: "+ selectedId);
         
     $("#msm_subordinate_result_container-"+id + " > div").each(function() {
         var resultid = this.id.split("-"); 
@@ -516,10 +511,15 @@ function findSubordinateResult(selected, id)
             resultNumber = resultid[1] + "-" + resultid[2];
             selectedNumber = selectedId[1] + "-" + selectedId[2];
         }
+        
+        console.log("resultNumber: "+resultNumber);
+        console.log("selectedNumber: "+selectedNumber);
             
         if(resultNumber == selectedNumber)
-        {
+        {           
             matchedElement = this;
+            console.log("matchedElement: ");
+            console.log(matchedElement);
         }
     });
         
