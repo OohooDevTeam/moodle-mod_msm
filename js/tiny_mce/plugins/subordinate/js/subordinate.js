@@ -1,24 +1,17 @@
-//tinyMCEPopup.requireLangPack();
 
 var _subIndex = 1;
 
-//var SubordinateDialog = {
 function init(content, id){
-    //    alert("init");
     var selectedText;
    
     selectedText= document.getElementById('msm_subordinate_highlighted-'+id);
    
     selectedText.value = content;     
-}
-    
+}    
         
 function changeForm(e, id) {
-    //    alert("changeForm");
     var container = document.getElementById("msm_subordinate_content_form_container-"+id);
     var selectVal;
-    
-    // default setting when the subordinate window is first shown
     
     switch(e)
     {
@@ -42,9 +35,7 @@ function changeForm(e, id) {
             break;
     }
     
-    var fieldset = makeInfoForm(id);    
-    
-    //-----------------------------end of information form---------------------------------//
+    var fieldset = makeInfoForm(id);  
     
     //-----------------------------start of external url form-----------------------------//
     var urlfieldset = document.createElement("fieldset");
@@ -227,6 +218,7 @@ function submitSubForm(ed, id)
     else
     {   
         var subResultContainer = document.createElement("div");
+        
         // id defines which editor the subordinate is from and _subIndex is related to the hot tagged word that this subordinate is associated with
         subResultContainer.id = "msm_subordinate_result-"+id+"-"+_subIndex;
         subResultContainer.setAttribute("style","display:none;");
@@ -377,8 +369,6 @@ function nullErrorWarning(errorArray, id)
 function loadValues(ed, id)
 {
     var matchedElement;
-    
-    //    var selected = ed.selection.getNode();
 
     var selected = ed.selection.getSel().extentNode.parentNode; 
     
@@ -472,7 +462,6 @@ function loadValues(ed, id)
         if(container.hasChildNodes())
         {
             $('#msm_subordinate_content_form_container-'+id).empty();
-            //            alert("form container emptied");
             container.appendChild(makeInfoForm(id))
         }
         
@@ -494,9 +483,7 @@ function findSubordinateResult(selected, id)
     var selectedNumber;
     var matchedElement;
     
-    var selectedId = selected.id.split("-");   
-    
-    console.log("selecte ID: "+ selectedId);
+    var selectedId = selected.id.split("-");  
         
     $("#msm_subordinate_result_container-"+id + " > div").each(function() {
         var resultid = this.id.split("-"); 
@@ -511,15 +498,10 @@ function findSubordinateResult(selected, id)
             resultNumber = resultid[1] + "-" + resultid[2];
             selectedNumber = selectedId[1] + "-" + selectedId[2];
         }
-        
-        console.log("resultNumber: "+resultNumber);
-        console.log("selectedNumber: "+selectedNumber);
             
         if(resultNumber == selectedNumber)
         {           
             matchedElement = this;
-            console.log("matchedElement: ");
-            console.log(matchedElement);
         }
     });
         
