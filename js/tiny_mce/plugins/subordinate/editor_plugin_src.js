@@ -26,36 +26,42 @@
                        
             ed.addCommand('mceSubordinate', function() { 
                 var type = ed.editorId.split("_");
+                
+                console.log(type);
                     
-                var match = type[1].match(/ref/);
+                //                var match = type[1].match(/ref/);
                 var idNumber;
                 var indexNumber;
-                if(match)
+                //                if(match)
+                //                {
+                //                    idNumber= ed.editorId.split("-");
+                //                    if(idNumber.length > 2)
+                //                    {
+                //                        indexNumber = "ref"+idNumber[1]+"-"+idNumber[2];
+                //                    }
+                //                    else
+                //                    {
+                //                        indexNumber = "ref"+idNumber[1];
+                //                    }
+                //                        
+                //                }
+                //                else
+                //                {
+                idNumber= ed.editorId.split("-");
+                
+                var lasttype = type[2].split("-");
+                if(idNumber.length > 2)
                 {
-                    idNumber= ed.editorId.split("-");
-                    if(idNumber.length > 2)
-                    {
-                        indexNumber = "ref"+idNumber[1]+"-"+idNumber[2];
-                    }
-                    else
-                    {
-                        indexNumber = "ref"+idNumber[1];
-                    }
-                        
+                    indexNumber = type[1]+lasttype[0]+idNumber[1]+"-"+idNumber[2];
                 }
                 else
                 {
-                    idNumber= ed.editorId.split("-");
-                    if(idNumber.length > 2)
-                    {
-                        indexNumber = idNumber[1]+"-"+idNumber[2];
-                    }
-                    else
-                    {
-                        indexNumber = idNumber[1];
-                    }
-                          
+                    indexNumber = type[1]+lasttype[0]+idNumber[1];
                 }
+                          
+                //                }
+                
+                console.log("indexNumber: "+indexNumber);
                     
                 makeSubordinateDialog(ed, indexNumber);
                          

@@ -104,12 +104,37 @@ function changeForm(e, id) {
 
 function initInfoEditor(id)
 {
+    console.log("id?: "+id);
+    
+    console.log(tinymce.editors);
+    
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
    
     // must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id
     tinymce.execCommand('mceRemoveControl', false, titleid);
     tinymce.execCommand('mceRemoveControl', false, contentid);
+    
+    tinymce.settings = 
+    {
+        mode:"none",   
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        width: "100%",
+        height: "70%",
+        theme: "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        skin : "o2k7",
+        skin_variant : "silver"
+    };
+    
+    console.log(titleid);
+    console.log(contentid);
     
     tinymce.execCommand('mceAddControl', false, titleid);
     tinymce.execCommand('mceAddControl', false, contentid);
@@ -307,6 +332,9 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     {
         // insert the div storing the result of subordinate form as nextsibling of textarea that triggered the subordinate plugin
         var resultcontainer = document.getElementById("msm_subordinate_result_container-"+id);
+        console.log(id);
+        console.log(resultcontainer);
+        
         resultcontainer.appendChild(subResultContainer);
         
         // swapping selected text as anchor element 
