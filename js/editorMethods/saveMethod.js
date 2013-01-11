@@ -20,6 +20,8 @@ $(document).ready(function(){
         }
         $("textarea").each(function(){ 
             this.value = tinymce.get(this.id).getContent();
+            console.log("each of textarea value");
+            console.log(this.value);
         });
         //        
         var urlParam = window.location.search;
@@ -31,6 +33,9 @@ $(document).ready(function(){
         var formData = $("#msm_unit_form").serializeArray();
         var targetURL = $("#msm_unit_form").attr("action");
         var ids = [];
+        
+//        console.log("unit form data being passed to server side");
+//        console.log(formData);
         
         $.ajax({
             type: "POST",
@@ -108,6 +113,7 @@ function removeTinymceEditor()
         var content = $(this).val();
                         
         $(editorContent).html(content);
+        console.log(editorContent);
         $(this).replaceWith(editorContent);
     });
                     
