@@ -245,9 +245,9 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
         $(this).val(tinymce.get(this.id).getContent({
-            format: "text"
+            format: "html"
         }));  
-    //        $(this).val(tinymce.get(this.id).getContent());  
+//            $(this).val(tinymce.get(this.id).getContent());  
     
     });    
     
@@ -436,16 +436,11 @@ function loadValues(ed, id)
 
     var selected = ed.selection.getSel().extentNode.parentNode; 
     
-    console.log("selected: ");
-    console.log(selected);
-    
     // previous value only exists if the node is already anchor element
     // if it's just a plain text element, then there are no existing values to be considered
     if(selected.tagName == 'A')
     {
         matchedElement = findSubordinateResult(selected, id);
-        
-        console.log(matchedElement);
         
         $("#"+matchedElement.id+" > div").each(function() {
             var divid = this.id.split("-");
@@ -489,9 +484,7 @@ function loadValues(ed, id)
             }
             
             if(typeof editor != "undefined")
-            {  
-                console.log("setContent: ");
-                console.log(formData);
+            { 
                 editor.setContent(formData);
             }
             

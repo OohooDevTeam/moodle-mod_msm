@@ -18,12 +18,19 @@ $(document).ready(function(){
                 idString += children[i].id + ",";
             }           
         }
+        
+        var subordinateArray = [];
         $("textarea").each(function(){ 
-            this.value = tinymce.get(this.id).getContent({
-                format: "html"
-            });
+            if(!this.id.match(/info/))
+            {             
+                subordinateArray.push(prepareSubordinate(this.id));
+                
+                this.value = tinymce.get(this.id).getContent({
+                    format: "html"
+                });
+            }   
         });
-        //        
+                
         var urlParam = window.location.search;
        
         var urlParamInfo = urlParam.split("=");
@@ -32,10 +39,18 @@ $(document).ready(function(){
         
         var formData = $("#msm_unit_form").serializeArray();
         var targetURL = $("#msm_unit_form").attr("action");
-        var ids = [];
+        var ids = [];      
         
-        //        console.log("unit form data being passed to server side");
-        //        console.log(formData);
+        for(var i=0; i <subordinateArray.length; i++)
+        {
+            for(var key in subordinateArray[i])
+            {
+                formData.push({
+                    name: key,
+                    value: subordinateArray[i][key]
+                });
+            }
+        }
         
         $.ajax({
             type: "POST",
@@ -87,7 +102,7 @@ $(document).ready(function(){
                     // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
                     // to display the html format properly.  Therefore div was created to replace it.
                     removeTinymceEditor();
-                    
+                                        
                     // disabling all input/selection areas in editor and also disabling all jquery actions such as 
                     // sortable, draggable and droppable
                     disableEditorFunction();      
@@ -116,6 +131,29 @@ $(document).ready(function(){
             
     });
 });
+
+function prepareSubordinate(id)
+{
+    var subordinates = [];
+    var inst = tinyMCE.getInstanceById(id);    
+    var hotwords = inst.getBody().getElementsByTagName("a");
+    
+    for(var i=0; i < hotwords.length; i++)
+    {
+        var currentWord = hotwords[i];
+           
+        var idInfo = currentWord.id.split("-");
+               
+        var matchedElement = findSubordinateResult(currentWord, idInfo[1]);
+        
+        $(matchedElement).children("div").each(function() {
+            subordinates[this.id] = $(this).html();
+        });
+    }
+    
+    return subordinates;
+    
+}
 
 function removeTinymceEditor()
 {   
