@@ -93,21 +93,15 @@ $(document).ready(function(){
                     disableEditorFunction();      
                     
                     $(".msm_subordinate_hotwords").each(function(i, element) {
-                        var idInfo = this.id.split("-");
-                        console.log("idInfo: "+idInfo);
-                        
+                        var idInfo = this.id.split("-");                        
                         var newid = '';
                         
                         for(var i=1; i < idInfo.length-1; i++)
                         {
-                            console.log("index: "+i);
-                            console.log("element: "+idInfo[i]);
                             newid += idInfo[i]+"-";
                         }
                             
                         newid += idInfo[idInfo.length-1];
-                        
-                        console.log("newid: "+newid);
                         
                         $(this).on('mouseover', function(){
                             previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
@@ -309,7 +303,7 @@ function enableEditorFunction()
                     
 }
 
-
+// to activate the dialog box for display purposes
 function previewInfo(elementid, dialogid)
 {
     $(".msm_subordinate_info_dialogs").dialog({
@@ -320,14 +314,10 @@ function previewInfo(elementid, dialogid)
     });
     
     var x = 0; // stores the x-axis position of the mouse
-    var y = 0; // stores the y-axis position of the mouse
-
-    console.log("elementid: "+elementid);
-    console.log("dialogid: "+dialogid);    
+    var y = 0; // stores the y-axis position of the mouse  
 
     $("#"+elementid).unbind("click");
     $("#"+elementid).click(function(e) {
-        console.log(e);
         x = e.clientX+5;
         y = e.clientY+5;
 
@@ -346,7 +336,6 @@ function previewInfo(elementid, dialogid)
 
     $("#"+elementid).ready(function(e){        
         $("#"+elementid).mousemove(function (e) {
-            console.log(e);
             $("#"+dialogid).dialog("option", {
                 position: [e.clientX+5, e.clientY+5]
             });

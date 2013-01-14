@@ -349,9 +349,7 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         
         // swapping selected text as anchor element 
         var selectedText = ed.selection.getContent();
-//        
-//        var hotwordid = "msm_subordinate_hotword-"+id+"-"+sId;
-//        
+        
         if(ed.selection.getNode().tagName != "A")
         {
             if(infourl)
@@ -366,7 +364,6 @@ function createSubordinateData(id, sId, ed, subResultContainer)
                 //                var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"' onmouseover='previewInfo(\"msm_subordinate_hotword-"+id+"-"+sId+"\", \""+resultDialog.id+"\");'>"+selectedText+"</a>";
                 var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"'>"+selectedText+"</a>";
                 ed.selection.setContent(newContent); 
-                console.log(newContent);
                 
             }
         }
@@ -439,11 +436,16 @@ function loadValues(ed, id)
 
     var selected = ed.selection.getSel().extentNode.parentNode; 
     
+    console.log("selected: ");
+    console.log(selected);
+    
     // previous value only exists if the node is already anchor element
     // if it's just a plain text element, then there are no existing values to be considered
     if(selected.tagName == 'A')
     {
         matchedElement = findSubordinateResult(selected, id);
+        
+        console.log(matchedElement);
         
         $("#"+matchedElement.id+" > div").each(function() {
             var divid = this.id.split("-");
@@ -488,6 +490,8 @@ function loadValues(ed, id)
             
             if(typeof editor != "undefined")
             {  
+                console.log("setContent: ");
+                console.log(formData);
                 editor.setContent(formData);
             }
             
@@ -554,23 +558,28 @@ function findSubordinateResult(selected, id)
     var selectedId = selected.id.split("-");  
         
     $("#msm_subordinate_result_container-"+id + " > div").each(function() {
-        var resultid = this.id.split("-"); 
-            
-        if(resultid.length > 3)
+        
+        if(this.id.match(/result/))
         {
-            resultNumber = resultid[1] + "-" + resultid[2] + "-" + resultid[3];
-            selectedNumber = selectedId[1] + "-" + selectedId[2] + "-" + selectedId[3];
-        }
-        else
-        {
-            resultNumber = resultid[1] + "-" + resultid[2];
-            selectedNumber = selectedId[1] + "-" + selectedId[2];
-        }
+            var resultid = this.id.split("-"); 
             
-        if(resultNumber == selectedNumber)
-        {           
-            matchedElement = this;
+            if(resultid.length > 3)
+            {
+                resultNumber = resultid[1] + "-" + resultid[2] + "-" + resultid[3];
+                selectedNumber = selectedId[1] + "-" + selectedId[2] + "-" + selectedId[3];
+            }
+            else
+            {
+                resultNumber = resultid[1] + "-" + resultid[2];
+                selectedNumber = selectedId[1] + "-" + selectedId[2];
+            }
+            
+            if(resultNumber == selectedNumber)
+            {           
+                matchedElement = this;
+            }
         }
+        
     });
         
     return matchedElement;
