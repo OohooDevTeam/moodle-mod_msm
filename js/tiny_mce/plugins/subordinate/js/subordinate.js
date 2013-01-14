@@ -194,14 +194,11 @@ function submitSubForm(ed, id)
 {
     var selected = ed.selection.getSel().extentNode.parentNode; 
     
-    console.log(selected);
-    
     // checking if this selected text has already been submitted once 
     // if so, find the existing storage div and update the data with new ones
     // if not, then proceed to create a new storage div for the new subordinate data
     if(selected.tagName == "A")
     {
-        console.log("a");
         var foundElement = findSubordinateResult(selected, id);
         
         if(foundElement)
@@ -227,19 +224,14 @@ function submitSubForm(ed, id)
         }
     }
     else
-    {   
-        console.log(selected.tagName);
+    { 
         var subResultContainer = document.createElement("div");
         
         // id defines which editor the subordinate is from and _subIndex is related to the hot tagged word that this subordinate is associated with
         subResultContainer.id = "msm_subordinate_result-"+id+"-"+_subIndex;
         subResultContainer.setAttribute("style","display:none;");
     
-     console.log(selected);
-    
         createSubordinateData(id, _subIndex, ed, subResultContainer);
-        
-         console.log(selected);
         
         _subIndex++;
     }  
@@ -252,10 +244,10 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     var infourl = null;
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
-                $(this).val(tinymce.get(this.id).getContent({
-                    format: "text"
-                }));  
-//        $(this).val(tinymce.get(this.id).getContent());  
+        $(this).val(tinymce.get(this.id).getContent({
+            format: "text"
+        }));  
+    //        $(this).val(tinymce.get(this.id).getContent());  
     
     });    
     
@@ -357,9 +349,9 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         
         // swapping selected text as anchor element 
         var selectedText = ed.selection.getContent();
-        
-        console.log("selectedText: " +selectedText);
-        
+//        
+//        var hotwordid = "msm_subordinate_hotword-"+id+"-"+sId;
+//        
         if(ed.selection.getNode().tagName != "A")
         {
             if(infourl)
@@ -371,54 +363,15 @@ function createSubordinateData(id, sId, ed, subResultContainer)
             }
             else
             {
-                var newContent = "<a href='' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"'>"+selectedText+"</a>";
-                ed.selection.setContent(newContent);
-            }
-        }      
-        
-        $('#msm_subordinate_container-'+id).dialog("close");     
-        
-        $("#msm_subordinate_hotword-"+id+"-"+sId).ready(function (){
-            var x = 0; // stores the x-axis position of the mouse
-            var y = 0; // stores the y-axis position of the mouse
-    
-            var dialogid = resultDialog.id;
-    
-            console.log("elementid: "+this);
-            console.log("dialogid: "+dialogid);    
-    
-            $(this).unbind('click');
-            $(this).click(function(e) {
-                x = e.pageX+5;
-                y = e.pageY+5;
-
-                $('#'+dialogid).dialog('open').css("display", "block");
-                ;
-                $(this).mousemove(function () {
-                    $('#'+dialogid).dialog('option', {
-                        position: [x, y]
-                    });
-                });
-     
-                $(this).mouseout(function(){
-                    $('#'+dialogid).dialog('open').css("display", "block");;
-                });
-    
-            });
+                //                var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"' onmouseover='previewInfo(\"msm_subordinate_hotword-"+id+"-"+sId+"\", \""+resultDialog.id+"\");'>"+selectedText+"</a>";
+                var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"'>"+selectedText+"</a>";
+                ed.selection.setContent(newContent); 
+                console.log(newContent);
                 
-            $(this).mouseover(function(e){        
-                $(this).mousemove(function (e) {
-                    $('#'+dialogid).dialog('option', {
-                        position: [e.pageX+5, e.pageY+5]
-                    });
-                    $('#'+dialogid).dialog('open').css("display", "block");
-                });
-         
-                $(this).mouseout(function(){
-                    $('#'+dialogid).dialog('close');
-                });
-            });
-        });
+            }
+        }
+        
+        $('#msm_subordinate_container-'+id).dialog("close");    
         
     }
     // null values are present
@@ -429,51 +382,11 @@ function createSubordinateData(id, sId, ed, subResultContainer)
    
 }
 
-
-//function previewInfo(elementid, dialogid)
-//{
-//    var x = 0; // stores the x-axis position of the mouse
-//    var y = 0; // stores the y-axis position of the mouse
-//    
-//    console.log("elementid: "+elementid);
-//    console.log("dialogid: "+dialogid);    
-//    
-//    $('#'+elementid).unbind('click');
-//    $('#'+elementid).click(function(e) {
-//        x = e.pageX+5;
-//        y = e.pageY+5;
-//
-//        $('#'+dialogid).dialog('open');
-//        $('#'+elementid).mousemove(function () {
-//            $('#'+dialogid).dialog('option', {
-//                position: [x, y]
-//            });
-//        });
-//     
-//        $('#'+elementid).mouseout(function(){
-//            $('#'+dialogid).dialog('open');
-//        });
-//    
-//    });
-//                
-//    $('#'+elementid).ready(function(e){        
-//        $('#'+elementid).mousemove(function (e) {
-//            $('#'+dialogid).dialog('option', {
-//                position: [e.pageX+5, e.pageY+5]
-//            });
-//            $('#'+dialogid).dialog('open');
-//        });
-//         
-//        $('#'+elementid).mouseout(function(){
-//            $('#'+dialogid).dialog('close');
-//        });
-//    });
-//}
-
 function createInfoDialog(idNumber, title, content)
 {
     var dialogDiv = document.createElement("div");
     dialogDiv.id = "msm_subordinate_info_dialog-"+idNumber;
+    dialogDiv.className = "msm_subordinate_info_dialogs";
     dialogDiv.setAttribute("title", title);
     dialogDiv.innerHTML = content;
     dialogDiv.setAttribute("style", "display:none;")
@@ -574,7 +487,7 @@ function loadValues(ed, id)
             }
             
             if(typeof editor != "undefined")
-            {               
+            {  
                 editor.setContent(formData);
             }
             

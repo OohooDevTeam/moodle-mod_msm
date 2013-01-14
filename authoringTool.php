@@ -304,6 +304,13 @@ $formContent .= '<script type="text/javascript">
                     skin : "o2k7",
                     skin_variant : "silver",
                });
+               $(".msm_subordinate_info_dialogs").dialog({
+                    autoOpen: false,
+                    height: "auto",
+                    modal: false,
+                    width: 605
+                });
+
                 
                 $(".msm_structural_element").draggable({
                     appendTo: "msm_editor_middle_droparea",
@@ -338,9 +345,9 @@ $formContent .= '<script type="text/javascript">
                     orientation: "vertical",
                     limit: 100,
                     position: "80%"
-                });              
-                
-            })
+                });   
+                            
+            });               
         </script>';
 
 echo $OUTPUT->box($msm_nav . $formContent);

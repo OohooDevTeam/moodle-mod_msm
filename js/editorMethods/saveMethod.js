@@ -5,9 +5,9 @@
 
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
-//         prevents navigation to msmUnitForm.php
+        //         prevents navigation to msmUnitForm.php
         event.preventDefault();
-        
+              
         var children =  document.getElementById("msm_child_appending_area").childNodes;
 
         var idString = "";
@@ -19,9 +19,9 @@ $(document).ready(function(){
             }           
         }
         $("textarea").each(function(){ 
-            this.value = tinymce.get(this.id).getContent();
-            console.log("each of textarea value");
-            console.log(this.value);
+            this.value = tinymce.get(this.id).getContent({
+                format: "html"
+            });
         });
         //        
         var urlParam = window.location.search;
@@ -34,8 +34,8 @@ $(document).ready(function(){
         var targetURL = $("#msm_unit_form").attr("action");
         var ids = [];
         
-//        console.log("unit form data being passed to server side");
-//        console.log(formData);
+        //        console.log("unit form data being passed to server side");
+        //        console.log(formData);
         
         $.ajax({
             type: "POST",
@@ -90,7 +90,29 @@ $(document).ready(function(){
                     
                     // disabling all input/selection areas in editor and also disabling all jquery actions such as 
                     // sortable, draggable and droppable
-                    disableEditorFunction();                    
+                    disableEditorFunction();      
+                    
+                    $(".msm_subordinate_hotwords").each(function(i, element) {
+                        var idInfo = this.id.split("-");
+                        console.log("idInfo: "+idInfo);
+                        
+                        var newid = '';
+                        
+                        for(var i=1; i < idInfo.length-1; i++)
+                        {
+                            console.log("index: "+i);
+                            console.log("element: "+idInfo[i]);
+                            newid += idInfo[i]+"-";
+                        }
+                            
+                        newid += idInfo[idInfo.length-1];
+                        
+                        console.log("newid: "+newid);
+                        
+                        $(this).on('mouseover', function(){
+                            previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
+                        });
+                    });
                 }
             },
             error: function() {
@@ -113,7 +135,6 @@ function removeTinymceEditor()
         var content = $(this).val();
                         
         $(editorContent).html(content);
-        console.log(editorContent);
         $(this).replaceWith(editorContent);
     });
                     
@@ -287,3 +308,53 @@ function enableEditorFunction()
     $("#msm_child_appending_area").disableSelection();
                     
 }
+
+
+function previewInfo(elementid, dialogid)
+{
+    $(".msm_subordinate_info_dialogs").dialog({
+        autoOpen: false,
+        height: "auto",
+        modal: false,
+        width: 605
+    });
+    
+    var x = 0; // stores the x-axis position of the mouse
+    var y = 0; // stores the y-axis position of the mouse
+
+    console.log("elementid: "+elementid);
+    console.log("dialogid: "+dialogid);    
+
+    $("#"+elementid).unbind("click");
+    $("#"+elementid).click(function(e) {
+        console.log(e);
+        x = e.clientX+5;
+        y = e.clientY+5;
+
+        $("#"+dialogid).dialog('open').css("display", "block");
+        $("#"+elementid).mousemove(function () {
+            $("#"+dialogid).dialog("option", {
+                position: [x, y]
+            });
+        });
+
+        $("#"+elementid).mouseout(function(){
+            $("#"+dialogid).dialog('open').css("display", "block");
+        });
+
+    });
+
+    $("#"+elementid).ready(function(e){        
+        $("#"+elementid).mousemove(function (e) {
+            console.log(e);
+            $("#"+dialogid).dialog("option", {
+                position: [e.clientX+5, e.clientY+5]
+            });
+            $("#"+dialogid).dialog('open').css("display", "block");
+        });
+
+        $("#"+elementid).mouseout(function(){
+            $("#"+dialogid).dialog("close").css("display", "none");
+        });
+    });
+} 

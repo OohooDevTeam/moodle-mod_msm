@@ -26,8 +26,8 @@ function popup(i) {
     
     $('#defminibutton-'+i).unbind('click');
     $('#defminibutton-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#defminibutton-'+i).mousemove(function () {
@@ -45,7 +45,7 @@ function popup(i) {
     $('#defminibutton-'+i).ready(function(e){        
         $('#defminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
@@ -56,8 +56,8 @@ function popup(i) {
     });
     $('#minibutton-'+i).unbind('click');
     $('#minibutton-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#minibutton-'+i).mousemove(function () {
@@ -75,7 +75,7 @@ function popup(i) {
     $('#minibutton-'+i).ready(function(e){
         $('#minibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });            
             $('#dialog-'+i).dialog('open');
         });
@@ -87,8 +87,8 @@ function popup(i) {
     
     $('#hottag-'+i).unbind('click');
     $('#hottag-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#hottag-'+i).mousemove(function () {
@@ -106,7 +106,7 @@ function popup(i) {
     $('#hottag-'+i).ready(function(e){ 
         $('#hottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
@@ -119,8 +119,8 @@ function popup(i) {
     
     $('#commentminibutton-'+i).unbind('click');
     $('#commentminibutton-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#commentminibutton-'+i).mousemove(function () {
@@ -138,7 +138,7 @@ function popup(i) {
     $('#commentminibutton-'+i).ready(function(e){       
         $('#commentminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
@@ -150,8 +150,8 @@ function popup(i) {
     
     $('#copydefminibutton-'+i).unbind('click');
     $('#copydefminibutton-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#copydefminibutton-'+i).mousemove(function () {
@@ -169,7 +169,7 @@ function popup(i) {
     $('#copydefminibutton-'+i).ready(function(e){        
         $('#copydefminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
@@ -181,8 +181,8 @@ function popup(i) {
     
     $('#copyminibutton-'+i).unbind('click');
     $('#copyminibutton-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#copyminibutton-'+i).mousemove(function () {
@@ -200,7 +200,7 @@ function popup(i) {
     $('#copyminibutton-'+i).ready(function(e){        
         $('#copyminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
@@ -212,8 +212,8 @@ function popup(i) {
     
     $('#copyhottag-'+i).unbind('click');
     $('#copyhottag-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#copyhottag-'+i).mousemove(function () {
@@ -231,7 +231,7 @@ function popup(i) {
     $('#copyhottag-'+i).ready(function(e){          
         $('#copyhottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
@@ -243,8 +243,8 @@ function popup(i) {
     
     $('#copycommentminibutton-'+i).unbind('click');
     $('#copycommentminibutton-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#copycommentminibutton-'+i).mousemove(function () {
@@ -262,7 +262,7 @@ function popup(i) {
     $('#copycommentminibutton-'+i).ready(function(e){       
         $('#copycommentminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
@@ -274,8 +274,8 @@ function popup(i) {
     
     $('#pic-'+i).unbind('click');
     $('#pic-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#pic-'+i).mousemove(function () {
@@ -293,7 +293,7 @@ function popup(i) {
     $('#pic-'+i).ready(function(e){       
         $('#pic-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');         
         });
@@ -305,8 +305,8 @@ function popup(i) {
     
     $('#copypic-'+i).unbind('click');
     $('#copypic-'+i).click(function(e) {
-        x = e.pageX+5;
-        y = e.pageY+5;
+        x = e.clientX+5;
+        y = e.clientY+5;
 
         $('#dialog'+i).dialog('open');
         $('#copypic-'+i).mousemove(function () {
@@ -324,7 +324,7 @@ function popup(i) {
     $('#copypic-'+i).ready(function(e){       
         $('#copypic-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
-                position: [e.pageX+5, e.pageY+5]
+                position: [e.clientX+5, e.clientY+5]
             });
             $('#dialog-'+i).dialog('open');
         });
