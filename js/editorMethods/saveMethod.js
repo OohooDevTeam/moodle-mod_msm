@@ -134,6 +134,7 @@ $(document).ready(function(){
 
 function prepareSubordinate(id)
 {
+    var param;
     var subordinates = [];
     var inst = tinyMCE.getInstanceById(id);    
     var hotwords = inst.getBody().getElementsByTagName("a");
@@ -142,9 +143,17 @@ function prepareSubordinate(id)
     {
         var currentWord = hotwords[i];
            
-        var idInfo = currentWord.id.split("-");
-               
-        var matchedElement = findSubordinateResult(currentWord, idInfo[1]);
+        var idInfo = currentWord.id.split("-");        
+        
+        if(idInfo.length > 3)
+        {
+            param = idInfo[1]+"-"+idInfo[2];
+        }
+        else
+        {
+            param = idInfo[1];
+        }
+        var matchedElement = findSubordinateResult(currentWord, param);
         
         $(matchedElement).children("div").each(function() {
             subordinates[this.id] = $(this).html();

@@ -28,6 +28,8 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
+//print_object($_POST);
+
 $childOrder = $_POST['msm_child_order'];
 
 $arrayOfChild = explode(",", $childOrder);

@@ -19,6 +19,7 @@ class EditorInfo extends EditorElement
     public $content;
     public $position;
     public $errorArray = array();
+    public $subordinates = array();
     public $ref;
 
     function __construct()
@@ -32,6 +33,8 @@ class EditorInfo extends EditorElement
         $this->position = $position;
 
         $subid = explode("|", $idNumber);
+        
+//        print_object($subid);
 
         if (sizeof($subid) > 1)
         {
@@ -69,6 +72,11 @@ class EditorInfo extends EditorElement
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_info_content-' . $idNumber];
+                
+                 foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -129,6 +137,14 @@ class EditorInfo extends EditorElement
         if (!empty($this->ref))
         {
             $this->ref->insertData($parentid, $this->compid, $msmid);
+        }
+        
+        
+        $subordinate_sibling = 0;
+        foreach($this->subordinates as $subordinate)
+        {
+            $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
+            $subordinate_sibling = $subordinate->compid;
         }
     }
 

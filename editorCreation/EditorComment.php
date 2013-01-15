@@ -20,7 +20,8 @@ class EditorComment extends EditorElement
     public $id;
     public $compid;
     public $children = array(); //associate
-
+    public $subordinates = array();
+    
     function __construct()
     {
         $this->tablename = "msm_comment";
@@ -42,6 +43,11 @@ class EditorComment extends EditorElement
             if ($_POST['msm_commentref_content_input-' . $idInfo[0]] != '')
             {
                 $this->content = $_POST['msm_commentref_content_input-' . $idInfo[0]];
+                
+                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -60,6 +66,11 @@ class EditorComment extends EditorElement
             if ($_POST['msm_comment_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_comment_content_input-' . $idNumber];
+                
+                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -113,6 +124,13 @@ class EditorComment extends EditorElement
         {
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;
+        }
+        
+        $subordinate_sibling = 0;
+        foreach($this->subordinates as $subordinate)
+        {
+            $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
+            $subordinate_sibling = $subordinate->compid;
         }
     }
 

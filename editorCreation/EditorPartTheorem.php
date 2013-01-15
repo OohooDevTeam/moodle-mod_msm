@@ -19,6 +19,7 @@ class EditorPartTheorem extends EditorElement
     public $content;
     public $caption;
     public $errorArray = array();
+    public $subordinates = array();
 
     function __construct()
     {
@@ -41,6 +42,12 @@ class EditorPartTheorem extends EditorElement
             if ($_POST['msm_theoremref_part_content-' . $idInfo[1] . '-' . $idInfo[2]] != '')
             {
                 $this->content = $_POST['msm_theoremref_part_content-' . $idInfo[1] . '-' . $idInfo[2]];
+                
+                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
+                
             }
             else
             {
@@ -56,6 +63,11 @@ class EditorPartTheorem extends EditorElement
             if ($_POST['msm_theorem_part_content-' . $idInfo[1] . '-' . $idInfo[2]] != '')
             {
                 $this->content = $_POST['msm_theorem_part_content-' . $idInfo[1] . '-' . $idInfo[2]];
+                
+                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -63,7 +75,6 @@ class EditorPartTheorem extends EditorElement
             }
         }
 
-//        print_object($this);
         return $this;
     }
 
@@ -88,6 +99,13 @@ class EditorPartTheorem extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
+        
+        $subordinate_sibling = 0;
+        foreach($this->subordinates as $subordinate)
+        {
+            $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
+            $subordinate_sibling = $subordinate->compid;
+        }
     }
 
 }

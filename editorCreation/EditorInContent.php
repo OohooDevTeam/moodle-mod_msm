@@ -20,6 +20,7 @@ class EditorInContent extends EditorElement
     public $type;
     public $content;
     public $position;
+    public $suboridnates = array();
 
     function __construct()
     {
@@ -64,6 +65,11 @@ class EditorInContent extends EditorElement
         }
 
         $this->content = $doc->saveHTML($listElement);
+        
+        foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+        {
+            $this->subordinates[] = $subordinates;
+        }
 
         return $this;
     }
@@ -87,6 +93,13 @@ class EditorInContent extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
+        
+        $subordinate_sibling = 0;
+        foreach($this->subordinates as $subordinate)
+        {
+            $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
+            $subordinate_sibling = $subordinate->compid;
+        }
     }
 
 }
