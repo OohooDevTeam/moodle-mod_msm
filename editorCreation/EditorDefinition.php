@@ -21,7 +21,9 @@ class EditorDefinition extends EditorElement
     public $tablename;
     public $position;
     public $description;
+    public $errorArray = array();
     public $children = array(); //associate
+    public $subordinates = array();
 
     public function __construct()
     {
@@ -33,10 +35,9 @@ class EditorDefinition extends EditorElement
     function getFormData($idNumber, $position)
     {
         $this->position = $position;
-        $this->errorArray = array();
-
-        $idInfo = explode("|", $idNumber);
         
+        $idInfo = explode("|", $idNumber);
+
         // processing definitions as reference material
         if (sizeof($idInfo) > 1)
         {
@@ -47,6 +48,12 @@ class EditorDefinition extends EditorElement
             if ($_POST['msm_defref_content_input-' . $idInfo[0]] != '')
             {
                 $this->content = $_POST['msm_defref_content_input-' . $idInfo[0]];
+
+                // grab all anchored elements in content --> it is only from subordinate
+                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -64,6 +71,12 @@ class EditorDefinition extends EditorElement
             if ($_POST['msm_def_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_def_content_input-' . $idNumber];
+
+                // grab all anchored elements in content --> it is only from subordinate
+                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -116,6 +129,13 @@ class EditorDefinition extends EditorElement
         {
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;
+        }
+
+        $subordinate_sibling = 0;
+        foreach ($this->subordinates as $subordinate)
+        {
+            $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
+            $subordinate_sibling = $subordinate->compid;
         }
     }
 

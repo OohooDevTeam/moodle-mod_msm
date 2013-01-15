@@ -37,26 +37,26 @@ $(document).ready(function(){
        
         $("#msm_child_order").val(idString+urlParamInfo[1]);
         
-        var formData = $("#msm_unit_form").serializeArray();
-        var targetURL = $("#msm_unit_form").attr("action");
-        var ids = [];      
-        
-        for(var i=0; i <subordinateArray.length; i++)
+        var subordinateData = '';
+        for(var i=0; i < subordinateArray.length; i++)
         {
             for(var key in subordinateArray[i])
             {
-                formData.push({
-                    name: key,
-                    value: subordinateArray[i][key]
-                });
+                subordinateData += key+"|"+subordinateArray[i][key]+",";
             }
         }
+        
+        $("#msm_unit_subordinate_container").val(subordinateData);
+        
+        var formData = $("#msm_unit_form").serializeArray();
+        var targetURL = $("#msm_unit_form").attr("action");
+        var ids = [];         
         
         $.ajax({
             type: "POST",
             url: targetURL,
             data: formData,
-            success: function(data) {
+            success: function(data) { 
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);

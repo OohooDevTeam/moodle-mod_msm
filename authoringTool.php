@@ -271,6 +271,7 @@ $formContent .= '<div id="msm_editor_container">
                             <div id="msm_child_appending_area">
                             </div>
                             <input id="msm_child_order" name="msm_child_order" style="visibility: hidden;"/>
+                            <input id="msm_unit_subordinate_container" name="msm_unit_subordinate_container" style="visibility: hidden;"/>
                         </div>
                         <input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
                         <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
