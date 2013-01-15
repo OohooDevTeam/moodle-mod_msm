@@ -54,7 +54,6 @@ class EditorBlock extends EditorElement
                 {
                     if (!empty($this->title))
                     {
-                        print_object($this->title);
                         $data = new stdClass();
                         $data->block_caption = $this->title;
 
