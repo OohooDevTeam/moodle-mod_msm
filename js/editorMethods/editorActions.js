@@ -30,30 +30,38 @@ function processReftype(e)
         $(this).empty().remove();   
     })
         
-    var currentId = 0;
-    var indexnumber = 1;
+//    var currentId = 0;
+//    var indexnumber = 1;
+    var currentId;
+    
+    var associateInfo = selectedId.split("-");
+    
+    var indexNumber = associateInfo[1]+"-"+associateInfo[2];
         
     switch(selectedReftype)
     {
         case 0:
             break;
         case 1: //comment
-            element = makeRefComment();
+            element = makeRefComment(indexNumber);
             $(element).insertAfter("#"+selectedId); 
-            indexnumber= element[0].id.split("-");
-            currentId = 'msm_commentref_content_input-'+indexnumber[1];
+            //            indexnumber= element[0].id.split("-");
+            //            currentId = 'msm_commentref_content_input-'+indexnumber[1];
+            currentId = 'msm_commentref_content_input-'+indexNumber;
             break;
         case 2: //def
-            element = makeRefDefinition();
+            element = makeRefDefinition(indexNumber);
             $(element).insertAfter("#"+selectedId);           
-            indexnumber= element[0].id.split("-");
-            currentId = 'msm_defref_content_input-'+indexnumber[1];
+            //            indexnumber= element[0].id.split("-");
+            //            currentId = 'msm_defref_content_input-'+indexnumber[1];
+            currentId = 'msm_defref_content_input-'+indexNumber;
             break;
         case 3: //theorem
-            element = makeRefTheorem();
+            element = makeRefTheorem(indexNumber);
             $(element).insertAfter("#"+selectedId);
-            indexnumber= element[0].id.split("-");
-            currentId = 'msm_theoremref_content_input-'+indexnumber[1];
+            //            indexnumber= element[0].id.split("-");
+            //            currentId = 'msm_theoremref_content_input-'+indexnumber[1];
+            currentId = 'msm_theoremref_content_input-'+indexNumber;
             break;            
         case 4:
             selectedtext = "Example";
@@ -86,12 +94,12 @@ function processReftype(e)
 }
 
 
-function makeRefDefinition()
+function makeRefDefinition(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
     
-    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+_index+'" onclick="deleteRefElement(event);">x</a>');
-    var defSelectMenu = $('<select name="msm_defref_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_defref_type_dropdown-'+_index+'">\n\
+    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+idindex+'" onclick="deleteRefElement(event);">x</a>');
+    var defSelectMenu = $('<select name="msm_defref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_defref_type_dropdown-'+idindex+'">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
                                 <option value="Agreement">Agreement</option>\n\
@@ -100,16 +108,16 @@ function makeRefDefinition()
                                 <option value="Terminology">Terminology</option>\n\
                             </select>');
     var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
-    var defTitleField = $('<input class="msm_unit_child_title" id="msm_defref_title_input-'+_index+'" name="msm_defref_title_input-'+_index+'" placeholder=" Title of Definition"/>');
+    var defTitleField = $('<input class="msm_unit_child_title" id="msm_defref_title_input-'+idindex+'" name="msm_defref_title_input-'+idindex+'" placeholder=" Title of Definition"/>');
           
-    var defContentField = $('<textarea class="msm_unit_child_content" id="msm_defref_content_input-'+_index+'" name="msm_defref_content_input-'+_index+'"/>');
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-defrefcontent'+_index+'"></div>');
-    //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-defrefcontent'+_index+'"></div>');
-    var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_defref_description_label-"+_index+"' for='msm_defref_description_input-"+_index+"'>Description: </label>");
-    var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+_index+"' name='msm_defref_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+    var defContentField = $('<textarea class="msm_unit_child_content" id="msm_defref_content_input-'+idindex+'" name="msm_defref_content_input-'+idindex+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-defrefcontent'+idindex+'"></div>');
+    //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+idindex+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-defrefcontent'+idindex+'"></div>');
+    var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_defref_description_label-"+idindex+"' for='msm_defref_description_input-"+idindex+"'>Description: </label>");
+    var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+idindex+"' name='msm_defref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
                
-    clonedCurrentElement.attr("id", "copied_msm_defref-"+_index);
+    clonedCurrentElement.attr("id", "copied_msm_defref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
    
     clonedCurrentElement.append(defCloseButton);
@@ -125,12 +133,12 @@ function makeRefDefinition()
     return clonedCurrentElement;
 }
 
-function makeRefTheorem()
+function makeRefTheorem(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
-    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+_index+'" onclick="deleteRefElement(event)">x</a>');
+    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+idindex+'" onclick="deleteRefElement(event)">x</a>');
 
-    var theoremSelectMenu = $('<select name="msm_theoremref_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_theoremref_type_dropdown-'+_index+'">\n\
+    var theoremSelectMenu = $('<select name="msm_theoremref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_theoremref_type_dropdown-'+idindex+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
                                 <option value="Proposition">Proposition</option>\n\
                                 <option value="Lemma">Lemma</option>\n\
@@ -138,27 +146,27 @@ function makeRefTheorem()
                             </select>');
                 
     var theoremTitle = $("<span class='msm_element_title'><b> THEOREM </b></span>");
-    var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theoremref_title_input-'+_index+'" name="msm_theoremref_title_input-'+_index+'" placeholder=" Title of Theorem"/>');
+    var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theoremref_title_input-'+idindex+'" name="msm_theoremref_title_input-'+idindex+'" placeholder=" Title of Theorem"/>');
             
-    var theoremContentWrapper = $('<div class="msm_theoremref_content_containers" id="msm_theoremref_content_container-'+_index+'"></div>');
+    var theoremContentWrapper = $('<div class="msm_theoremref_content_containers" id="msm_theoremref_content_container-'+idindex+'"></div>');
             
-    var theoremStatementWrapper = $('<div class="msm_theoremref_statement_containers" id="msm_theoremref_statement_container-'+_index+'"></div>');
+    var theoremStatementWrapper = $('<div class="msm_theoremref_statement_containers" id="msm_theoremref_statement_container-'+idindex+'"></div>');
             
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
-    var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theoremref_content_input-'+_index+'" name="msm_theoremref_content_input-'+_index+'"/>');
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefcontent'+_index+'"></div>');
-    //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
+    var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theoremref_content_input-'+idindex+'" name="msm_theoremref_content_input-'+idindex+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefcontent'+idindex+'"></div>');
+    //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+idindex+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+idindex+'"></div>');
             
-    var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+_index+'"></div>');
+    var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+idindex+'"></div>');
             
-    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theoremref_child_button-'+_index+'" type="button" onclick="addrefTheoremContent(event, '+_index+')" value="Add content"/>');
-    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+_index+'" type="button" onclick="addrefTheoremPart(event, '+_index+')" value="Add more parts"/>');
-    var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theoremref_description_label-"+_index+"' for='msm_theoremref_description_input-"+_index+"'>Description: </label>");
-    var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theoremref_description_input-"+_index+"' name='msm_theoremref_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theoremref_child_button-'+idindex+'" type="button" onclick="addrefTheoremContent(event, \''+idindex+'\')" value="Add content"/>');
+    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idindex+'" type="button" onclick="addrefTheoremPart(event, \''+idindex+'\')" value="Add more parts"/>');
+    var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theoremref_description_label-"+idindex+"' for='msm_theoremref_description_input-"+idindex+"'>Description: </label>");
+    var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theoremref_description_input-"+idindex+"' name='msm_theoremref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
             
-    clonedCurrentElement.attr("id", "copied_msm_theoremref-"+_index);
+    clonedCurrentElement.attr("id", "copied_msm_theoremref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
     theoremPartWrapper.append(theoremPartButton);
@@ -183,27 +191,27 @@ function makeRefTheorem()
     return clonedCurrentElement;
 }
 
-function makeRefComment()
+function makeRefComment(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
-    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+_index+'" onclick="deleteRefElement(event);">x</a>');
-    var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+_index+'">\n\
+    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+idindex+'" onclick="deleteRefElement(event);">x</a>');
+    var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+idindex+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Information">Information</option>\n\
                             </select>');
     var commentTitle = $("<span class='msm_element_title'><b> COMMENT </b></span>");
-    var commentTitleField = $('<input class="msm_unit_child_title" id="msm_commentref_title_input-'+_index+'" name="msm_commentref_title_input-'+_index+'" placeholder=" Title of Comment"/>');
+    var commentTitleField = $('<input class="msm_unit_child_title" id="msm_commentref_title_input-'+idindex+'" name="msm_commentref_title_input-'+idindex+'" placeholder=" Title of Comment"/>');
           
-    var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_commentref_content_input-'+_index+'" name="msm_commentref_content_input-'+_index+'"/>');
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-commentrefcontent'+_index+'"></div>');
-    //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
+    var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_commentref_content_input-'+idindex+'" name="msm_commentref_content_input-'+idindex+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-commentrefcontent'+idindex+'"></div>');
+    //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+idindex+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-commentrefcontent'+_index+'"></div>');
-    var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_commentref_description_label-"+_index+"' for='msm_commentref_description_input-"+_index+"'>Description: </label>");
-    var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+_index+"' name='msm_commentref_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-commentrefcontent'+idindex+'"></div>');
+    var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_commentref_description_label-"+idindex+"' for='msm_commentref_description_input-"+idindex+"'>Description: </label>");
+    var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+idindex+"' name='msm_commentref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
             
-    clonedCurrentElement.attr("id", "copied_msm_commentref-"+_index);
+    clonedCurrentElement.attr("id", "copied_msm_commentref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
     clonedCurrentElement.append(commentCloseButton);
@@ -251,23 +259,28 @@ function deleteRefElement(e)
 
 function addrefTheoremContent(event, idNumber)
 {
-    var newId = idNumber;
+    console.log("addrefTheoremContent: "+idNumber);
+    
+    var newId = 0;
     
     $(".msm_theoremref_content_containers > div").each(function(index) {
         newId++;
     })
     
-    var theoremStatementWrapper = $('<div class="msm_theoremref_statement_containers" id="msm_theoremref_statement_container-'+newId+'"></div>');
+    var theoremStatementWrapper = $('<div class="msm_theoremref_statement_containers" id="msm_theoremref_statement_container-'+idNumber+'-'+newId+'"></div>');
     var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
     var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
-    var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+newId+'" name="msm_theoremref_content_input-'+newId+'"/>');    
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefcontent'+newId+'"></div>');
+    var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+idNumber+'-'+newId+'" name="msm_theoremref_content_input-'+idNumber+'-'+newId+'"/>');    
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefcontent'+idNumber+'-'+newId+'"></div>');
     //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+idNumber+'-'+newId+'"></div>');
    
-    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+newId+'" type="button" onclick="addrefTheoremPart(event, '+newId+')" value="Add more parts"/>');
-    var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+newId+'"></div>');
+    var param = idNumber+"-"+newId;
+    console.log("param: " + param);
+   
+    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addrefTheoremPart(event, \''+param+'\')" value="Add more parts"/>');
+    var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+idNumber+'-'+newId+'"></div>');
             
     theoremPartWrapper.append(theoremPartButton);
             
@@ -283,7 +296,7 @@ function addrefTheoremContent(event, idNumber)
     
     tinyMCE.init({
         mode:"exact",
-        elements: "msm_theoremref_content_input-"+newId,        
+        elements: "msm_theoremref_content_input-"+idNumber+'-'+newId,        
         plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
@@ -348,7 +361,9 @@ function addrefTheoremContent(event, idNumber)
 
 function addrefTheoremPart(event, idNumber)
 {
-    var newId = idNumber;
+    console.log("addrefTheoremPart: "+idNumber);
+    
+    var newId = 0;
     
     $("#msm_theoremref_part_droparea-"+idNumber+" > div").each(function(index, element) {
         newId++;

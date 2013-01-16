@@ -30,6 +30,9 @@ class EditorInfo extends EditorElement
     // idNumber --> parentid-currentelementid
     public function getFormData($idNumber, $position)
     {
+//        echo "idNumber passed to editorInfo class: " . "\n";
+//        print_object($idNumber);
+        
         $this->position = $position;
         
         $subid = explode("|", $idNumber);
@@ -90,9 +93,12 @@ class EditorInfo extends EditorElement
                 $this->errorArray[] = 'msm_info_content-' . $idNumber . '_ifr';
             }
 
-            $refType = $_POST['msm_associate_reftype-' . $idNumber];
+            $refType = $_POST['msm_associate_reftype-' . $idNumber];             
 
             $indexNumber = explode("-", $idNumber); // indexNumber[0] = parent id number
+            
+//            echo "idNumber in info after explode -: " . "\n";
+//            print_object($indexNumber);
 
             $param = $indexNumber[0] . "|ref";
 

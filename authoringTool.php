@@ -66,6 +66,7 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/sup
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/css/subordinate.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
 //echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jflowplayer/skin/minimalist.css'/>";
 
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
@@ -93,6 +94,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery.jstree.js'></script>";
 
 //echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/tiny_mce.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
@@ -282,6 +284,25 @@ $formContent .= '<div id="msm_editor_container">
 
                 <div id="msm_editor_right">
                     <h2> XML Hierarchy </h2>
+                    <div id="msm_unit_tree">
+                    // demo --> remove and dynamically generate ul and li elements when unit is saved
+                        <ul>
+                            <li id="phtml_1">
+                              <a href="#">Root node 1</a>
+                               <ul>
+                                  <li id="phtml_2">
+                                     <a href="#">Child node 1</a>
+                                  </li>
+                                  <li id="phtml_3">
+                                      <a href="#">Child node 2</a>
+                                  </li>
+                               </ul>
+                             </li>
+                             <li id="phtml_4">
+                                <a href="#">Root node 2</a>
+                             </li>
+                        </ul>
+                    </div>
                 </div>
             </div>            
         </div>
@@ -347,6 +368,14 @@ $formContent .= '<script type="text/javascript">
                     limit: 100,
                     position: "80%"
                 });   
+                
+                $("#msm_unit_tree").jstree({
+                    "plugins": ["themes", "html_data", "ui", "dnd"],
+                    "dnd": {
+                        "drop_target": false,
+                        "drag_target": false
+                    }
+                }); 
                             
             });               
         </script>';

@@ -37,6 +37,9 @@ class EditorTheorem extends EditorElement
     {
         $this->position = $position;
         $this->errorArray = array();
+        
+        echo "theorem idNumber: " . "\n";
+        print_object($idNumber);
 
         $idNumberInfo = explode("|", $idNumber);
 
