@@ -31,8 +31,6 @@ class EditorStatementTheorem extends EditorElement
         $this->position = $position;
 
         $idInfo = explode("|", $idNumber);
-        
-//        print_object($_POST);
 
         if (sizeof($idInfo) > 1)
         {
@@ -98,6 +96,7 @@ class EditorStatementTheorem extends EditorElement
             }
         }
 
+//        print_object($this);
 
         return $this;
     }

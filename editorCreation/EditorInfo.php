@@ -31,16 +31,23 @@ class EditorInfo extends EditorElement
     public function getFormData($idNumber, $position)
     {
         $this->position = $position;
-
-        $subid = explode("|", $idNumber);
         
-//        print_object($subid);
+        $subid = explode("|", $idNumber);
 
         if (sizeof($subid) > 1)
         {
             $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
 //        
-            $allSubordinates = explode(",", $allSubordinateValues);
+            $tempallSubordinates = explode(",", $allSubordinateValues);
+
+            // copying the array from string processing above (due to it ending in comma, the last
+            // element is empty)
+            $allSubordinates = array();
+
+            for ($i = 0; $i < sizeof($tempallSubordinates) - 1; $i++)
+            {
+                $allSubordinates[] = $tempallSubordinates[$i];
+            }
 
             $i = 0;
             foreach ($allSubordinates as $index => $subordinate)
@@ -50,13 +57,13 @@ class EditorInfo extends EditorElement
                 if (strpos($idValuePair[0], $subid[0]) !== false)
                 {
                     if (strpos($idValuePair[0], 'info') !== false)
-                    {                        
-                        if($idValuePair[0] == 'msm_subordinate_infoTitle-' . $subid[0])
+                    {
+                        if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $subid[0])
                         {
                             // converting &gt;..etc back to html characters 
                             $this->caption = htmlspecialchars_decode($idValuePair[1]);
                         }
-                        else if($idValuePair[0] == 'msm_subordinate_infoContent-' . $subid[0])
+                        else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $subid[0])
                         {
                             $this->content = htmlspecialchars_decode($idValuePair[1]);
                         }
@@ -65,15 +72,15 @@ class EditorInfo extends EditorElement
             }
             // add reference processing stuff
         }
-        else
+        else if (sizeof($subid) == 1)
         {
             $this->caption = $_POST['msm_info_title-' . $idNumber];
 
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_info_content-' . $idNumber];
-                
-                 foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
@@ -112,6 +119,7 @@ class EditorInfo extends EditorElement
                     break;
             }
         }
+        
         return $this;
     }
 
@@ -138,10 +146,10 @@ class EditorInfo extends EditorElement
         {
             $this->ref->insertData($parentid, $this->compid, $msmid);
         }
-        
-        
+
+
         $subordinate_sibling = 0;
-        foreach($this->subordinates as $subordinate)
+        foreach ($this->subordinates as $subordinate)
         {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;

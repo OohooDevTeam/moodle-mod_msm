@@ -21,6 +21,7 @@ $(document).ready(function(){
         
         var subordinateArray = [];
         $("textarea").each(function(){ 
+            // process information from textarea that are not related to info elements
             if(!this.id.match(/info/))
             {             
                 subordinateArray.push(prepareSubordinate(this.id));
@@ -28,7 +29,16 @@ $(document).ready(function(){
                 this.value = tinymce.get(this.id).getContent({
                     format: "html"
                 });
-            }   
+            }
+            // process associate information
+            else if(this.id.match(/_info_/))
+            {
+                subordinateArray.push(prepareSubordinate(this.id));
+                
+                this.value = tinymce.get(this.id).getContent({
+                    format: "html"
+                });
+            }
         });
                 
         var urlParam = window.location.search;
