@@ -247,7 +247,7 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         $(this).val(tinymce.get(this.id).getContent({
             format: "html"
         }));  
-//            $(this).val(tinymce.get(this.id).getContent());  
+    //            $(this).val(tinymce.get(this.id).getContent());  
     
     });    
     
@@ -340,8 +340,10 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     
     if(!hasError)
     {
+        
+        
         // insert the div storing the result of subordinate form as nextsibling of textarea that triggered the subordinate plugin
-        var resultcontainer = document.getElementById("msm_subordinate_result_container-"+id);        
+        var resultcontainer = document.getElementById("msm_subordinate_result_container-"+id);                
         resultcontainer.appendChild(subResultContainer);
         
         var resultDialog = createInfoDialog(id+"-"+sId, infoTitleVal, infoContentVal);
@@ -444,18 +446,25 @@ function loadValues(ed, id)
         
         $("#"+matchedElement.id+" > div").each(function() {
             var divid = this.id.split("-");
-            var formid;
+            var formid = '';
             
             // eliminate the last number in id that indicates which anchored element it belongs to
             // b/c the editor id does not reflect this
-            if(divid.length > 3)
+            
+            for(var i=0; i < divid.length-2; i++)
             {
-                formid = divid[0]+"-"+divid[1]+"-"+divid[2];
+                formid += divid[i]+"-"
             }
-            else
-            {
-                formid = divid[0]+"-"+divid[1];
-            }
+            formid += divid[divid.length-2];
+            
+            //            if(divid.length > 3)
+            //            {
+            //                formid = divid[0]+"-"+divid[1]+"-"+divid[2];
+            //            }
+            //            else
+            //            {
+            //                formid = divid[0]+"-"+divid[1];
+            //            }
             
             var formData = this.innerHTML;            
             var editor = tinymce.get(formid);
@@ -543,29 +552,30 @@ function loadValues(ed, id)
  *  @param id          the id number attached to the div to specify the subordinate data in question
  */
 function findSubordinateResult(selected, id)
-{
-    var resultNumber;
-    var selectedNumber;
-    var matchedElement;
+{   
+    var matchedElement;    
+    var selectedId = selected.id.split("-"); 
     
-    var selectedId = selected.id.split("-");  
-        
     $("#msm_subordinate_result_container-"+id + " > div").each(function() {
-        
         if(this.id.match(/result/))
         {
+            var resultNumber = '';
+            var selectedNumber = '';
+    
             var resultid = this.id.split("-"); 
             
-            if(resultid.length > 3)
+            for(var i=1; i < resultid.length-1; i++)
             {
-                resultNumber = resultid[1] + "-" + resultid[2] + "-" + resultid[3];
-                selectedNumber = selectedId[1] + "-" + selectedId[2] + "-" + selectedId[3];
+                resultNumber += resultid[i]+"-";
             }
-            else
+            
+            for (var i=1; i < selectedId.length-1; i++)
             {
-                resultNumber = resultid[1] + "-" + resultid[2];
-                selectedNumber = selectedId[1] + "-" + selectedId[2];
+                selectedNumber += selectedId[i]+"-";
             }
+                
+            resultNumber += resultid[resultid.length-1];
+            selectedNumber += selectedId[selectedId.length-1];
             
             if(resultNumber == selectedNumber)
             {           

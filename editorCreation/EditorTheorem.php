@@ -37,9 +37,6 @@ class EditorTheorem extends EditorElement
     {
         $this->position = $position;
         $this->errorArray = array();
-        
-        echo "theorem idNumber: " . "\n";
-        print_object($idNumber);
 
         $idNumberInfo = explode("|", $idNumber);
 
@@ -50,19 +47,26 @@ class EditorTheorem extends EditorElement
             $this->description = $_POST['msm_theoremref_description_input-' . $idNumberInfo[0]];
             $this->title = $_POST['msm_theoremref_title_input-' . $idNumberInfo[0]];
 
-            $contentmatch = '/^msm_theoremref_content_input-.*/';
+//            $contentmatch = '/^msm_theoremref_content_input-.*/';
+            $contentmatch = '/msm_theoremref_content_input-' . $idNumberInfo[0] . '-\d+$/';
 
             $i = 0; //position for the part theorem
 
             foreach ($_POST as $id => $value)
-            {
-                $idParam = $idNumberInfo[0] . "|ref";
-                
+            {                
                 if (preg_match($contentmatch, $id))
                 {
                     $indexNumber = explode("-", $id);
+                    
+                    $newId = '';
+                    for($i = 1; $i < sizeof($indexNumber)-1; $i++)
+                    {
+                        $newId .= $indexNumber[$i] . "-";
+                    }
+                    $newId .= $indexNumber[sizeof($indexNumber)-1] . "|ref";
+                    
                     $statementRefTheorem = new EditorStatementTheorem();
-                    $statementRefTheorem->getFormData($idParam, $i);
+                    $statementRefTheorem->getFormData($newId, $i);
                     $this->content[] = $statementRefTheorem;
                     $i++;
                 }
@@ -146,6 +150,9 @@ class EditorTheorem extends EditorElement
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;
         }
+        
+        
+//        echo "insert theorem";
     }
 
 }

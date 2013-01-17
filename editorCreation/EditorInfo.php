@@ -30,12 +30,12 @@ class EditorInfo extends EditorElement
     // idNumber --> parentid-currentelementid
     public function getFormData($idNumber, $position)
     {
-//        echo "idNumber passed to editorInfo class: " . "\n";
-//        print_object($idNumber);
-        
         $this->position = $position;
         
         $subid = explode("|", $idNumber);
+        
+//        print_object($idNumber);
+//        print_object($subid);
 
         if (sizeof($subid) > 1)
         {
@@ -51,10 +51,13 @@ class EditorInfo extends EditorElement
             {
                 $allSubordinates[] = $tempallSubordinates[$i];
             }
+            
+//            print_object($allSubordinates);
 
             $i = 0;
             foreach ($allSubordinates as $index => $subordinate)
             {
+//                print_object($subordinate);
                 $idValuePair = explode("|", $subordinate);
 
                 if (strpos($idValuePair[0], $subid[0]) !== false)
@@ -97,9 +100,6 @@ class EditorInfo extends EditorElement
 
             $indexNumber = explode("-", $idNumber); // indexNumber[0] = parent id number
             
-//            echo "idNumber in info after explode -: " . "\n";
-//            print_object($indexNumber);
-
             $param = $indexNumber[0] . "|ref";
 
             switch ($refType)
@@ -111,7 +111,7 @@ class EditorInfo extends EditorElement
                     break;
                 case "Theorem":
                     $theorem = new EditorTheorem();
-                    $theorem->getFormData($param, '');
+                    $theorem->getFormData($idNumber . "|ref", '');
                     $this->ref = $theorem;
                     break;
                 case "Comment":

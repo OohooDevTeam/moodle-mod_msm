@@ -74,6 +74,8 @@ class EditorSubordinate extends EditorElement
         {
             $this->info->insertData($this->compid, 0, $msmid);
         }
+        
+//        echo "insert subordinate";
     }
 
 }

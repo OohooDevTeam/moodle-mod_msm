@@ -35,13 +35,11 @@ class EditorPartTheorem extends EditorElement
 
         if (sizeof($idParam) > 1)
         {
-            $idInfo = explode("-", $idParam[0]);
+            $this->caption = $_POST['msm_theoremref_part_title-' . $idParam[0]];
 
-            $this->caption = $_POST['msm_theoremref_part_title-' . $idInfo[1] . '-' . $idInfo[2]];
-
-            if ($_POST['msm_theoremref_part_content-' . $idInfo[1] . '-' . $idInfo[2]] != '')
+            if ($_POST['msm_theoremref_part_content-' .  $idParam[0]] != '')
             {
-                $this->content = $_POST['msm_theoremref_part_content-' . $idInfo[1] . '-' . $idInfo[2]];
+                $this->content = $_POST['msm_theoremref_part_content-' .  $idParam[0]];
                 
                 foreach($this->processSubordinate($this->content) as $key=>$subordinates)
                 {
@@ -51,7 +49,7 @@ class EditorPartTheorem extends EditorElement
             }
             else
             {
-                $this->errorArray[] = 'msm_theoremref_part_content-' . $idInfo[1] . '-' . $idInfo[2] . '_ifr';
+                $this->errorArray[] = 'msm_theoremref_part_content-' .  $idParam[0] . '_ifr';
             }
         }
         else if (sizeof($idParam) == 1)

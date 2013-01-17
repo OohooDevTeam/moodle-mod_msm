@@ -137,6 +137,8 @@ class EditorDefinition extends EditorElement
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
+        
+//        echo "insert def";
     }
 
 }

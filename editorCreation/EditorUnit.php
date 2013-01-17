@@ -42,7 +42,7 @@ class EditorUnit extends EditorElement
 
     public function insertData($parentid, $siblingid, $msmid)
     {
-        global $DB;
+        global $DB;        
 
         $data = new stdClass();
         $data->title = $this->title;

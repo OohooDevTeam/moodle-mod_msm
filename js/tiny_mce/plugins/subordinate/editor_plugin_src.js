@@ -31,16 +31,16 @@
                 var type = ed.editorId.split("_");   
                 var lasttype = type[2].split("-");
                 
-                idNumber= ed.editorId.split("-");              
+                idNumber= ed.editorId.split("-");  
                 
-                if(idNumber.length > 2)
-                {
-                    indexNumber = type[1]+lasttype[0]+idNumber[1]+"-"+idNumber[2];
-                }
-                else
-                {
-                    indexNumber = type[1]+lasttype[0]+idNumber[1];
-                }
+                indexNumber = type[1]+lasttype[0];
+                
+                for(var i=1; i < idNumber.length-1; i++)
+                    {
+                        indexNumber += idNumber[i] + "-";
+                    }
+                    
+                indexNumber += idNumber[idNumber.length-1];
                 
                 makeSubordinateDialog(ed, indexNumber);
                          

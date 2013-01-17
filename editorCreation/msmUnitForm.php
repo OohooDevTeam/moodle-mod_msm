@@ -198,8 +198,8 @@ if ($hasError)
 }
 else
 {
+    
     $unit->insertData(0, 0, $msmId);
-
     // need code fo insert unit information to unitdatabase before procesing the child so that
     // the parentid exists when the child elements are being inserted to the db
 

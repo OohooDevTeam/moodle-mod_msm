@@ -23,7 +23,7 @@ $(document).ready(function(){
         $("textarea").each(function(){ 
             // process information from textarea that are not related to info elements
             if(!this.id.match(/info/))
-            {             
+            {  
                 subordinateArray.push(prepareSubordinate(this.id));
                 
                 this.value = tinymce.get(this.id).getContent({
@@ -54,7 +54,7 @@ $(document).ready(function(){
             {
                 subordinateData += key+"|"+subordinateArray[i][key]+",";
             }
-        }
+        }        
         
         $("#msm_unit_subordinate_container").val(subordinateData);
         
@@ -70,6 +70,8 @@ $(document).ready(function(){
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
+                
+                //                console.log(ids);
                 
                 if(ids instanceof Array)
                 {
@@ -144,34 +146,32 @@ $(document).ready(function(){
 
 function prepareSubordinate(id)
 {
-    var param;
     var subordinates = [];
     var inst = tinyMCE.getInstanceById(id);    
-    var hotwords = inst.getBody().getElementsByTagName("a");
+    var hotwords = inst.getBody().getElementsByTagName("a");  
     
     for(var i=0; i < hotwords.length; i++)
     {
+        
+        var param = '';
         var currentWord = hotwords[i];
            
-        var idInfo = currentWord.id.split("-");        
+        var idInfo = currentWord.id.split("-");     
         
-        if(idInfo.length > 3)
+        for(var j=1; j < idInfo.length-2; j++)
         {
-            param = idInfo[1]+"-"+idInfo[2];
-        }
-        else
-        {
-            param = idInfo[1];
-        }
-        var matchedElement = findSubordinateResult(currentWord, param);
+            param += idInfo[j]+"-";
+        }            
+        param += idInfo[idInfo.length-2];
+        
+        var matchedElement = findSubordinateResult(currentWord, param);        
         
         $(matchedElement).children("div").each(function() {
             subordinates[this.id] = $(this).html();
         });
     }
     
-    return subordinates;
-    
+    return subordinates;    
 }
 
 function removeTinymceEditor()

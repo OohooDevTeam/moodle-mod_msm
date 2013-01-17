@@ -31,14 +31,13 @@ class EditorStatementTheorem extends EditorElement
         $this->position = $position;
 
         $idInfo = explode("|", $idNumber);
-
         if (sizeof($idInfo) > 1)
         {
-            if ($_POST['msm_theoremref_content_input-' . $idInfo[0]] != '')
+            if ($_POST["msm_theoremref_content_input-" . $idInfo[0]] != '')
             {
                 $this->content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
-                
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
@@ -48,7 +47,7 @@ class EditorStatementTheorem extends EditorElement
                 $this->errorArray[] = 'msm_theoremref_content_input-' . $idInfo[0] . '_ifr';
             }
 
-            $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-.*/";
+            $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-\d+$/";
 
             $i = 0;
 
@@ -56,9 +55,17 @@ class EditorStatementTheorem extends EditorElement
             {
                 if (preg_match($partmatch, $id))
                 {
-                    $idParam = $id . "|ref";
+                    $indexNumber = explode("-", $id);
+                    
+                    $newId = '';
+                    for($i = 1; $i < sizeof($indexNumber)-1; $i++)
+                    {
+                        $newId .= $indexNumber[$i] . "-";
+                    }
+                    $newId .= $indexNumber[sizeof($indexNumber)-1] . "|ref";
+//                    $idParam = $id . "|ref";
                     $partTheorem = new EditorPartTheorem();
-                    $partTheorem->getFormData($idParam, $i);
+                    $partTheorem->getFormData($newId, $i);
                     $this->children[] = $partTheorem;
                     $i++;
                 }
@@ -69,8 +76,8 @@ class EditorStatementTheorem extends EditorElement
             if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
-                
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
@@ -95,8 +102,6 @@ class EditorStatementTheorem extends EditorElement
                 }
             }
         }
-
-//        print_object($this);
 
         return $this;
     }
@@ -126,7 +131,7 @@ class EditorStatementTheorem extends EditorElement
             $partTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $partTheorem->compid;
         }
-        
+
         $subordinate_sibling = 0;
         foreach ($this->subordinates as $subordinate)
         {
