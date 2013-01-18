@@ -9,7 +9,7 @@ function insertUnitStructure(dbId)
     var treediv = document.getElementById("msm_unit_tree");
     
     var listChild = $("<li></li>");
-    listChild.id = "msm_unit-"+dbId;
+    $(listChild).attr("id", "msm_unit-"+dbId);
     
     var linkElement = $("<a href='#'></a>");
     
@@ -27,14 +27,40 @@ function insertUnitStructure(dbId)
     else
     {
         $("#msm_unit_tree > ul").append(listChild);
-    }
+    }   
     
-    $("#msm_unit_tree").jstree({
+    $("#msm_unit_tree")
+    .jstree({
         "plugins": ["themes", "html_data", "ui", "dnd"],
         "dnd": {
             "drop_target": false,
             "drag_target": false
         }
+    })
+    .bind("select_node.jstree", function(event, data) {
+        var dbInfo = [];
+        
+        $.ajax({
+            type: "POST",
+            url: "editorCreation/msmLoadUnit.php",
+            data: {
+                'id': data.rslt.obj.attr("id")
+            },
+            success: function(data)
+            {
+                dbInfo = JSON.parse(data);                
+                console.log(dbInfo);
+            },
+            error: function(data)
+            {
+                console.log(JSON.parse(data));
+                alert("ajax error in loading unit");
+            }
+        })
+        
+    })
+    .delegate("a", "click", function(event, data){
+        event.preventDefault();
     }); 
    
 }

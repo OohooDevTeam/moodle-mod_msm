@@ -352,13 +352,15 @@ $formContent .= '<script type="text/javascript">
                     position: "80%"
                 });   
                 
-                $("#msm_unit_tree").jstree({
-                    "plugins": ["themes", "html_data", "ui", "dnd"],
-                    "dnd": {
-                        "drop_target": false,
-                        "drag_target": false
-                    }
-                }); 
+//                $("#msm_unit_tree").jstree({
+//                    "plugins": ["themes", "html_data", "ui", "dnd"],
+//                    "dnd": {
+//                        "drop_target": false,
+//                        "drag_target": false
+//                    }
+//                }).bind("select_node.jstree", function(event, data) {
+//                    alert(data.rslt.obj.attr("id"));
+//                }).delegate("a", "click", function(event, data){event.preventDefault();}); 
                             
             });               
         </script>';

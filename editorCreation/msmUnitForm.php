@@ -211,6 +211,7 @@ else
         $siblingCompid = $element->compid;
     }
 
-    echo json_encode($unit->id);
+    // need both compid(in case the same unit was inserted multiple times in the composition) and the id of the unit
+    echo json_encode($unit->compid . "-" . $unit->id);
 }
 ?>
