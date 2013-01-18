@@ -88,6 +88,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/superfish.js'
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/authorNav.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorCore.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorActions.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorUtility.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveMethod.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
@@ -284,25 +285,7 @@ $formContent .= '<div id="msm_editor_container">
 
                 <div id="msm_editor_right">
                     <h2> XML Hierarchy </h2>
-                    <div id="msm_unit_tree">
-                    // demo --> remove and dynamically generate ul and li elements when unit is saved
-                        <ul>
-                            <li id="phtml_1">
-                              <a href="#">Root node 1</a>
-                               <ul>
-                                  <li id="phtml_2">
-                                     <a href="#">Child node 1</a>
-                                  </li>
-                                  <li id="phtml_3">
-                                      <a href="#">Child node 2</a>
-                                  </li>
-                               </ul>
-                             </li>
-                             <li id="phtml_4">
-                                <a href="#">Root node 2</a>
-                             </li>
-                        </ul>
-                    </div>
+                    <div id="msm_unit_tree"></div>
                 </div>
             </div>            
         </div>

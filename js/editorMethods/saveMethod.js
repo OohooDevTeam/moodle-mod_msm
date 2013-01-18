@@ -8,7 +8,14 @@ $(document).ready(function(){
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();
               
-        var children =  document.getElementById("msm_child_appending_area").childNodes;
+        submitForm();
+            
+    });
+});
+
+function submitForm()
+{
+    var children =  document.getElementById("msm_child_appending_area").childNodes;
 
         var idString = "";
         for(var i=0; i<children.length; i++)
@@ -134,15 +141,15 @@ $(document).ready(function(){
                             previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
                         });
                     });
+                                        
+                    insertUnitStructure(ids);
                 }
             },
             error: function() {
                 alert("error in ajax at saveMethod.js");
             }
         });
-            
-    });
-});
+}
 
 function prepareSubordinate(id)
 {
@@ -404,3 +411,5 @@ function previewInfo(elementid, dialogid)
         });
     });
 } 
+
+

@@ -211,6 +211,6 @@ else
         $siblingCompid = $element->compid;
     }
 
-    echo json_encode("true");
+    echo json_encode($unit->id);
 }
 ?>
