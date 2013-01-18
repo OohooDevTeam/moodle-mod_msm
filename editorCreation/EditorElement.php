@@ -32,7 +32,7 @@ abstract class EditorElement
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
-                if ($child->tagName == "p")
+                if (($child->tagName == "p")||(preg_match('/h\d/', $child->tagName)=== 1))
                 {
                     $para = new EditorPara();
                     $para->getFormData($child, $key);

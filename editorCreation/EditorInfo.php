@@ -100,7 +100,8 @@ class EditorInfo extends EditorElement
 
             $indexNumber = explode("-", $idNumber); // indexNumber[0] = parent id number
             
-            $param = $indexNumber[0] . "|ref";
+//            $param = $indexNumber[0] . "|ref";
+            $param = $idNumber . "|ref";
 
             switch ($refType)
             {
@@ -111,7 +112,7 @@ class EditorInfo extends EditorElement
                     break;
                 case "Theorem":
                     $theorem = new EditorTheorem();
-                    $theorem->getFormData($idNumber . "|ref", '');
+                    $theorem->getFormData($param, '');
                     $this->ref = $theorem;
                     break;
                 case "Comment":
