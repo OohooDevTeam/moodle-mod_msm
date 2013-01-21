@@ -264,12 +264,13 @@ $formContent .= '<div id="msm_editor_container">
                 <div id="msm_editor_middle" >
                     <h2> ' . $topContainer . ' Design Area </h2> <!-- grab the string from the setting values -->
                     <form id="msm_unit_form" name="msm_unit_form" action="editorCreation/msmUnitForm.php" method="post">
+                        <div id = "msm_unit_info_div">
                         <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">' . $topContainer . ' title: </label>
                         <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this ' . $topContainer . '." onkeypress="validateBorder()"/>
 
                         <label class="msm_unit_description_labels" id="msm_unit_description_label" for="msm_unit_description_input">Description: </label>
                         <input class="msm_unit_description_inputs" id="msm_unit_description_input" name="msm_unit_description_input" placeholder="Insert description to search this element in future."/>
-
+                        </div>
                         <div id="msm_editor_middle_droparea">                        
                             <div id="msm_child_appending_area">
                             </div>
@@ -307,7 +308,7 @@ $formContent .= '<script type="text/javascript">
                     theme_advanced_toolbar_align : "left",
                     theme_advanced_statusbar_location : "bottom",
                     skin : "o2k7",
-                    skin_variant : "silver",
+                    skin_variant : "silver"
                });
                $(".msm_subordinate_info_dialogs").dialog({
                     autoOpen: false,
@@ -352,16 +353,6 @@ $formContent .= '<script type="text/javascript">
                     position: "80%"
                 });   
                 
-//                $("#msm_unit_tree").jstree({
-//                    "plugins": ["themes", "html_data", "ui", "dnd"],
-//                    "dnd": {
-//                        "drop_target": false,
-//                        "drag_target": false
-//                    }
-//                }).bind("select_node.jstree", function(event, data) {
-//                    alert(data.rslt.obj.attr("id"));
-//                }).delegate("a", "click", function(event, data){event.preventDefault();}); 
-                            
             });               
         </script>';
 

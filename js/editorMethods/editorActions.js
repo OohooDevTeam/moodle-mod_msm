@@ -15,7 +15,6 @@
 // e = event
 function processReftype(e)
 {
-    //    _index++;
     var selectedReftype = e.target.selectedIndex;
     
     var selectedId = e.target.id;    
@@ -29,11 +28,7 @@ function processReftype(e)
     $(idString).each(function() {
         $(this).empty().remove();   
     })
-        
-//    var currentId = 0;
-//    var indexnumber = 1;
-    var currentId;
-    
+    var currentId;    
     var associateInfo = selectedId.split("-");
     
     var indexNumber = associateInfo[1]+"-"+associateInfo[2];
@@ -45,22 +40,16 @@ function processReftype(e)
         case 1: //comment
             element = makeRefComment(indexNumber);
             $(element).insertAfter("#"+selectedId); 
-            //            indexnumber= element[0].id.split("-");
-            //            currentId = 'msm_commentref_content_input-'+indexnumber[1];
             currentId = 'msm_commentref_content_input-'+indexNumber;
             break;
         case 2: //def
             element = makeRefDefinition(indexNumber);
-            $(element).insertAfter("#"+selectedId);           
-            //            indexnumber= element[0].id.split("-");
-            //            currentId = 'msm_defref_content_input-'+indexnumber[1];
+            $(element).insertAfter("#"+selectedId); 
             currentId = 'msm_defref_content_input-'+indexNumber;
             break;
         case 3: //theorem
             element = makeRefTheorem(indexNumber);
             $(element).insertAfter("#"+selectedId);
-            //            indexnumber= element[0].id.split("-");
-            //            currentId = 'msm_theoremref_content_input-'+indexnumber[1];
             currentId = 'msm_theoremref_content_input-'+indexNumber+"-1";
             break;            
         case 4:
@@ -82,11 +71,9 @@ function processReftype(e)
         theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image, cleanup,help,code,|,insertdate,inserttime,preview",
         theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        //        theme_advanced_toolbar_location : "external",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
-        //        file_browser_callback: "myFileBrowser",
         skin : "o2k7",
         skin_variant : "silver"
     });
@@ -323,10 +310,8 @@ function addrefTheoremContent(event, idNumber)
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
-            // this code along with the one in stop is needed for enabling sortable on the div containing
+            
+             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
@@ -417,9 +402,7 @@ function addrefTheoremPart(event, idNumber)
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
+            
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_theorem_content').each(function() {

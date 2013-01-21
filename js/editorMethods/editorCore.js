@@ -207,22 +207,35 @@ function processDroppedChild(e, droppedId)
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
+            
             $(this).find('.msm_unit_child_content').each(function() { 
-                tinymce.execCommand('mceRemoveControl', false, $(this).attr("id")); 
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {            
+                    tinymce.execCommand('mceRemoveControl', false, $(this).attr("id"));
+                }                
             });                        
             $(this).find('.msm_intro_child_contents').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id"));
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id"));                
+                    tinymce.execCommand('mceRemoveControl', false, $(this).attr("id")); 
+                } 
             });
             $(this).find('.msm_info_titles').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id"));
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id"));                
+                    tinymce.execCommand('mceRemoveControl', false, $(this).attr("id")); 
+                } 
             });
             $(this).find('.msm_info_contents').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id"));
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id"));                
+                    tinymce.execCommand('mceRemoveControl', false, $(this).attr("id")); 
+                } 
             });
-           
+             
         },
         stop: function(event, ui)
         {
@@ -242,7 +255,7 @@ function processDroppedChild(e, droppedId)
                 theme_advanced_toolbar_align : "left",
                 theme_advanced_statusbar_location : "bottom",
                 skin : "o2k7",
-                skin_variant : "silver"            
+                skin_variant : "silver"    
             },{
                 mode:"none",           
                 plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
@@ -260,26 +273,40 @@ function processDroppedChild(e, droppedId)
                 skin_variant : "silver"
             }];
             
-            $(this).find('.msm_unit_child_content').each(function() { 
-                tinymce.settings = configArray[0];
-                tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
-                $(this).sortable("refresh");
+            $(this).find('.msm_unit_child_content').each(function() {                         
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.settings = configArray[0];
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                } 
             });
-            
+                    
             //             if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
-                tinymce.settings = configArray[0];
-                tinyMCE.execCommand("mceAddControl", true, $(this).attr("id")); 
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.settings = configArray[0];
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                }
             });
-            
+                    
             $(this).find('.msm_info_titles').each(function() {
-                tinyMCE.settings = configArray[1];
-                tinyMCE.execCommand('mceAddControl', true, $(this).attr("id"));
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.settings = configArray[1];
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                }
             });
             $(this).find('.msm_info_contents').each(function() {
-                tinyMCE.settings = configArray[0];
-                tinyMCE.execCommand('mceAddControl', true, $(this).attr("id"));
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.settings = configArray[0];
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                }
             });
         }
     });    
@@ -461,9 +488,7 @@ function addIntroContent(idNumber)
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
+            
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_intro_child_contents').each(function() {
@@ -551,9 +576,7 @@ function addTheoremContent(event, idNumber)
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
+            
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
@@ -654,9 +677,7 @@ function addTheoremPart(event, idNumber)
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
+            
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_theorem_content').each(function() {
@@ -716,16 +737,16 @@ function addAssociateForm(index, type)
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Exploration">Exploration</option>\n\
                                 <option value="Proof">Proof</option>\n\
-                            </select></div><br>');
+                            </select></div>');
     }
     
     var infoHeader = $('<span class="msm_info_header">Information</span><br>');
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
-    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'" name="msm_info_title-'+index + '-' + newId+'"/><br>');    
+    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'" name="msm_info_title-'+index + '-' + newId+'"/>');    
     
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'">content: </label>');
-    var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'" name="msm_info_content-'+index + '-' + newId+'"/><br><br>');
+    var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'" name="msm_info_content-'+index + '-' + newId+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infocontent'+index + '-' + newId+'"></div>');
     //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
 
@@ -770,7 +791,7 @@ function addAssociateForm(index, type)
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
-        skin_variant : "silver"            
+        skin_variant : "silver"     
     },{
         mode:"none",           
         plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
@@ -806,9 +827,7 @@ function addAssociateForm(index, type)
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
+            
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_info_titles').each(function() {
@@ -826,7 +845,6 @@ function addAssociateForm(index, type)
                     });
                 });
             });
-           
         },
         stop: function(event, ui)
         {
@@ -867,14 +885,57 @@ function makeDefinition()
     var clonedCurrentElement = $("<div></div>");
     
     var defCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
-    var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
-                                <option value="Notation">Notation</option>\n\
-                                <option value="Definition">Definition</option>\n\
-                                <option value="Agreement">Agreement</option>\n\
-                                <option value="Convention">Convention</option>\n\
-                                <option value="Axiom">Axiom</option>\n\
-                                <option value="Terminology">Terminology</option>\n\
-                            </select>');
+    
+    var defSelectMenu = document.createElement("select");
+    defSelectMenu.name = "msm_def_type_dropdown-"+_index;
+    defSelectMenu.id = "msm_def_type_dropdown-"+_index;
+    defSelectMenu.className ="msm_unit_child_dropdown";
+    
+    var defSelectOption1 = document.createElement("option");
+    defSelectOption1.setAttribute("value", "Notation");    
+    var defSelectOption1Text = document.createTextNode("Notation");
+    defSelectOption1.appendChild(defSelectOption1Text);
+    
+    var defSelectOption2 = document.createElement("option");
+    defSelectOption2.setAttribute("value", "Definition");    
+    var defSelectOption2Text = document.createTextNode("Definition");
+    defSelectOption2.appendChild(defSelectOption2Text);
+    
+    var defSelectOption3 = document.createElement("option");
+    defSelectOption3.setAttribute("value", "Agreement");    
+    var defSelectOption3Text = document.createTextNode("Agreement");
+    defSelectOption3.appendChild(defSelectOption3Text);
+    
+    var defSelectOption4 = document.createElement("option");
+    defSelectOption4.setAttribute("value", "Convention");    
+    var defSelectOption4Text = document.createTextNode("Convention");
+    defSelectOption4.appendChild(defSelectOption4Text);
+    
+    var defSelectOption5 = document.createElement("option");
+    defSelectOption5.setAttribute("value", "Axiom");    
+    var defSelectOption5Text = document.createTextNode("Axiom");
+    defSelectOption5.appendChild(defSelectOption5Text);
+    
+    var defSelectOption6 = document.createElement("option");
+    defSelectOption6.setAttribute("value", "Terminology");    
+    var defSelectOption6Text = document.createTextNode("Terminology");
+    defSelectOption6.appendChild(defSelectOption6Text);
+    
+    defSelectMenu.appendChild(defSelectOption1);
+    defSelectMenu.appendChild(defSelectOption2);
+    defSelectMenu.appendChild(defSelectOption3);
+    defSelectMenu.appendChild(defSelectOption4);
+    defSelectMenu.appendChild(defSelectOption5);
+    defSelectMenu.appendChild(defSelectOption6);
+    
+    //      var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
+    //                                <option value="Notation">Notation</option>\n\
+    //                                <option value="Definition">Definition</option>\n\
+    //                                <option value="Agreement">Agreement</option>\n\
+    //                                <option value="Convention">Convention</option>\n\
+    //                                <option value="Axiom">Axiom</option>\n\
+    //                                <option value="Terminology">Terminology</option>\n\
+    //                            </select>');
     var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
@@ -976,9 +1037,7 @@ function makeTheorem()
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-        },
-        beforeStop: function(event, ui)
-        {
+            
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {                

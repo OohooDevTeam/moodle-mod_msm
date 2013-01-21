@@ -61,7 +61,7 @@ function insertUnitStructure(dbId)
     })
     .delegate("a", "click", function(event, data){
         event.preventDefault();
-    }); 
+    });  // delegate for preventing the anchored element default action--> ie. navigating to another page/same page
    
 }
 

@@ -103,13 +103,12 @@ function changeForm(e, id) {
 
 function initInfoEditor(id)
 {
+    console.log("editor initiated");
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
    
-    // must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id
-    tinymce.execCommand('mceRemoveControl', false, titleid);
-    tinymce.execCommand('mceRemoveControl', false, contentid);
-    
+    // must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id   
+        
     tinymce.settings = 
     {
         mode:"none",   
@@ -128,6 +127,7 @@ function initInfoEditor(id)
         skin_variant : "silver"
     };
     
+  
     tinymce.execCommand('mceAddControl', false, titleid);
     tinymce.execCommand('mceAddControl', false, contentid);
 }
@@ -186,13 +186,27 @@ function makeInfoForm(id)
 
 function closeSubFormDialog(id)
 {
+    var titleid = "msm_subordinate_infoTitle-"+id;
+    var contentid = "msm_subordinate_infoContent-"+id;
+    
+    //    $('#msm_subordinate_container-'+id).dialog({
+    //        beforeClose: function() {
+    tinymce.execCommand('mceRemoveControl', false, titleid);
+    tinymce.execCommand('mceRemoveControl', false, contentid);  
+    
+    $('#msm_subordinate_container-'+id).empty();
+    
     $('#msm_subordinate_container-'+id).dialog("close");
 }
 
 // ed --> current editor that the plugin was triggered from
 function submitSubForm(ed, id)
 {
-    var selected = ed.selection.getSel().extentNode.parentNode; 
+    // focusNode seems to break it in IE
+    
+    var selected = ed.selection.getContent({
+        format: 'html'
+    });
     
     // checking if this selected text has already been submitted once 
     // if so, find the existing storage div and update the data with new ones
@@ -436,13 +450,24 @@ function loadValues(ed, id)
 {
     var matchedElement;
 
-    var selected = ed.selection.getSel().extentNode.parentNode; 
+    //    var selected = ed.selection.getSel().focusNode.parentNode; 
+
+    var selected = ed.selection.getContent({
+        format: 'html'
+    });
+    
+    console.log(ed.selection.getContent({
+        format: 'html'
+    }));
+    //    console.log(ed.selection.getSel().extentNode.parentNode)
     
     // previous value only exists if the node is already anchor element
     // if it's just a plain text element, then there are no existing values to be considered
     if(selected.tagName == 'A')
     {
         matchedElement = findSubordinateResult(selected, id);
+        
+        console.log(matchedElement);
         
         $("#"+matchedElement.id+" > div").each(function() {
             var divid = this.id.split("-");
@@ -502,6 +527,8 @@ function loadValues(ed, id)
                 document.getElementById(formid).value = formData;
             }
         });
+        
+        console.log(matchedElement);
         
     }
     // the element is not an anchor element --> empty out the form so user can fill it in again

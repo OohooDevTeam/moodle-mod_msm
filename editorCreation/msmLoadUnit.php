@@ -29,7 +29,7 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
-//echo json_encode($_POST);
+print_object($_POST);
 
 
 
