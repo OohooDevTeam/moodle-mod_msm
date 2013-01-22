@@ -189,7 +189,7 @@ function makeSubordinateDialog(ed, idNumber)
         
     selectTypeMenu.id = 'msm_subordinate_select-'+idNumber;
     selectTypeMenu.name = 'msm_subordinate_select-'+idNumber;
-    selectTypeMenu.onchange = function() {
+    selectTypeMenu.onchange = function(event) {
         changeForm(event, idNumber);
     };
         

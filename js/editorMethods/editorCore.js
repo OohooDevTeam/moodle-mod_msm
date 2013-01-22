@@ -886,56 +886,15 @@ function makeDefinition()
     
     var defCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
     
-    var defSelectMenu = document.createElement("select");
-    defSelectMenu.name = "msm_def_type_dropdown-"+_index;
-    defSelectMenu.id = "msm_def_type_dropdown-"+_index;
-    defSelectMenu.className ="msm_unit_child_dropdown";
+    var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
+                                    <option value="Notation">Notation</option>\n\
+                                    <option value="Definition">Definition</option>\n\
+                                    <option value="Agreement">Agreement</option>\n\
+                                    <option value="Convention">Convention</option>\n\
+                                    <option value="Axiom">Axiom</option>\n\
+                                    <option value="Terminology">Terminology</option>\n\
+                                </select>');
     
-    var defSelectOption1 = document.createElement("option");
-    defSelectOption1.setAttribute("value", "Notation");    
-    var defSelectOption1Text = document.createTextNode("Notation");
-    defSelectOption1.appendChild(defSelectOption1Text);
-    
-    var defSelectOption2 = document.createElement("option");
-    defSelectOption2.setAttribute("value", "Definition");    
-    var defSelectOption2Text = document.createTextNode("Definition");
-    defSelectOption2.appendChild(defSelectOption2Text);
-    
-    var defSelectOption3 = document.createElement("option");
-    defSelectOption3.setAttribute("value", "Agreement");    
-    var defSelectOption3Text = document.createTextNode("Agreement");
-    defSelectOption3.appendChild(defSelectOption3Text);
-    
-    var defSelectOption4 = document.createElement("option");
-    defSelectOption4.setAttribute("value", "Convention");    
-    var defSelectOption4Text = document.createTextNode("Convention");
-    defSelectOption4.appendChild(defSelectOption4Text);
-    
-    var defSelectOption5 = document.createElement("option");
-    defSelectOption5.setAttribute("value", "Axiom");    
-    var defSelectOption5Text = document.createTextNode("Axiom");
-    defSelectOption5.appendChild(defSelectOption5Text);
-    
-    var defSelectOption6 = document.createElement("option");
-    defSelectOption6.setAttribute("value", "Terminology");    
-    var defSelectOption6Text = document.createTextNode("Terminology");
-    defSelectOption6.appendChild(defSelectOption6Text);
-    
-    defSelectMenu.appendChild(defSelectOption1);
-    defSelectMenu.appendChild(defSelectOption2);
-    defSelectMenu.appendChild(defSelectOption3);
-    defSelectMenu.appendChild(defSelectOption4);
-    defSelectMenu.appendChild(defSelectOption5);
-    defSelectMenu.appendChild(defSelectOption6);
-    
-    //      var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
-    //                                <option value="Notation">Notation</option>\n\
-    //                                <option value="Definition">Definition</option>\n\
-    //                                <option value="Agreement">Agreement</option>\n\
-    //                                <option value="Convention">Convention</option>\n\
-    //                                <option value="Axiom">Axiom</option>\n\
-    //                                <option value="Terminology">Terminology</option>\n\
-    //                            </select>');
     var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
@@ -946,7 +905,7 @@ function makeDefinition()
     var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_description_input-"+_index+"' name='msm_def_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var defAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
     var type = "def";
-    var defAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
+    var defAssociateButton = $("<input type='button' class='msm_associate_buttons' id='msm_associate_button-"+_index+"' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
             
     clonedCurrentElement.attr("id", "copied_msm_def-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");

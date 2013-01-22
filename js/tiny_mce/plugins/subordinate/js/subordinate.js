@@ -12,7 +12,7 @@ function init(content, id){
 function changeForm(e, id) {
     var container = document.getElementById("msm_subordinate_content_form_container-"+id);
     var selectVal;
-    
+        
     switch(e)
     {
         case '':
@@ -108,28 +108,72 @@ function initInfoEditor(id)
     var contentid = "msm_subordinate_infoContent-"+id;
    
     // must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id   
-        
-    tinymce.settings = 
-    {
-        mode:"none",   
+    
+    tinyMCE.init({
+        mode:"exact",
+        elements: titleid,
         plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
         skin_variant : "silver"
-    };
+    });
+               
+    tinyMCE.init({
+        mode:"exact",
+        elements: contentid,
+        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+        width: "100%",
+        height: "70%",
+        theme: "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        skin : "o2k7",
+        skin_variant : "silver"
+    });
+        
+//    tinymce.settings = 
+//    {
+//        mode:"none",   
+//        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+//        width: "100%",
+//        height: "70%",
+//        theme: "advanced",
+//        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+//        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+//        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+//        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+//        theme_advanced_toolbar_location : "top",
+//        theme_advanced_toolbar_align : "left",
+//        theme_advanced_statusbar_location : "bottom",
+//        skin : "o2k7",
+//        skin_variant : "silver"
+//    };
     
-  
-    tinymce.execCommand('mceAddControl', false, titleid);
-    tinymce.execCommand('mceAddControl', false, contentid);
+//    if(tinymce.getInstanceById(titleid) == null)
+//    {
+//        tinymce.execCommand('mceAddControl', false, titleid);
+//
+//    }
+//    
+//    if(tinymce.getInstanceById(contentid) == null)
+//    {
+//        tinymce.execCommand('mceAddControl', false, contentid);
+//    }
+    
 }
 
 function makeInfoForm(id)
@@ -186,16 +230,7 @@ function makeInfoForm(id)
 
 function closeSubFormDialog(id)
 {
-    var titleid = "msm_subordinate_infoTitle-"+id;
-    var contentid = "msm_subordinate_infoContent-"+id;
-    
-    //    $('#msm_subordinate_container-'+id).dialog({
-    //        beforeClose: function() {
-    tinymce.execCommand('mceRemoveControl', false, titleid);
-    tinymce.execCommand('mceRemoveControl', false, contentid);  
-    
     $('#msm_subordinate_container-'+id).empty();
-    
     $('#msm_subordinate_container-'+id).dialog("close");
 }
 
@@ -258,17 +293,18 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     var infourl = null;
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
-        $(this).val(tinymce.get(this.id).getContent({
-            format: "html"
-        }));  
-    //            $(this).val(tinymce.get(this.id).getContent());  
-    
+        var childnodes = tinymce.get(this.id).getBody().childNodes;
+        for(var i=0; i < childnodes.length; i++)
+        {
+            this.appendChild(childnodes[i]);
+        }
     });    
     
-    var subSelectVal = $("#msm_subordinate_select-"+id).val();
-    var infoTitleVal = $("#msm_subordinate_infoTitle-"+id).val();
-    var infoContentVal = $("#msm_subordinate_infoContent-"+id).val();
+    var subSelectVal = $("#msm_subordinate_select-"+id).val();  
     
+    //    var infoTitleVal = $("#msm_subordinate_infoTitle-"+id).html();
+    //    var infoContentVal = $("#msm_subordinate_infoContent-"+id).html();
+      
     $("#"+subResultContainer.id).empty();
     
     var selectChoiceContainer = document.createElement("div");
@@ -279,20 +315,38 @@ function createSubordinateData(id, sId, ed, subResultContainer)
             
     var infoTitleContainer = document.createElement("div");
     infoTitleContainer.id = "msm_subordinate_infoTitle-"+id+"-"+sId;
+    
+    console.log("infotitle children: ");
+    
+    $('#msm_subordinate_infoTitle-'+id).clone().children().each(function() {
+        console.log(this);
+        infoTitleContainer.appendChild(this);
+    });    
             
-    var infoTitleContainerText = document.createTextNode(infoTitleVal);
-    infoTitleContainer.appendChild(infoTitleContainerText);
+    //    var infoTitleContainerText = document.createTextNode(infoTitleVal);
+    //    infoTitleContainer.appendChild(infoTitleContainerText);
             
     var infoContentContainer = document.createElement("div");
     infoContentContainer.id = "msm_subordinate_infoContent-"+id+"-"+sId;
     
-    if(infoContentVal != '')
+    var infoContentTextarea = document.getElementById("msm_subordinate_infoContent-"+id);
+    
+    
+    console.log("infocontent children: ");
+    
+    if(infoContentTextarea.hasChildNodes())
     {
-        var infoContentContainerText = document.createTextNode(infoContentVal);
-        infoContentContainer.appendChild(infoContentContainerText);  
+        console.log("infocontent has children");
+        $('#msm_subordinate_infoContent-'+id).clone().children().each(function() {
+            console.log("appended?: ");
+            console.log(this);
+            console.log(infoContentContainer);
+            infoContentContainer.appendChild(this);
+        });  
     }
     else
     {
+        console.log("infocontent children does not exist");
         hasError = true;
         errorArray.push("#msm_subordinate_infoContent-"+id+"_ifr");
     }
@@ -360,7 +414,7 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         var resultcontainer = document.getElementById("msm_subordinate_result_container-"+id);                
         resultcontainer.appendChild(subResultContainer);
         
-        var resultDialog = createInfoDialog(id+"-"+sId, infoTitleVal, infoContentVal);
+        var resultDialog = createInfoDialog(id+"-"+sId);
         resultcontainer.appendChild(resultDialog);
         
         // swapping selected text as anchor element 
@@ -395,14 +449,31 @@ function createSubordinateData(id, sId, ed, subResultContainer)
    
 }
 
-function createInfoDialog(idNumber, title, content)
+function createInfoDialog(idNumber)
 {
     var dialogDiv = document.createElement("div");
     dialogDiv.id = "msm_subordinate_info_dialog-"+idNumber;
     dialogDiv.className = "msm_subordinate_info_dialogs";
-    dialogDiv.setAttribute("title", title);
-    dialogDiv.innerHTML = content;
-    dialogDiv.setAttribute("style", "display:none;")
+    
+    var titleContainer = document.getElementById("msm_subordinate_infoTitle-"+idNumber);     
+    dialogDiv.setAttribute("title", titleContainer.innerHTML);
+    
+    var contentContainer = document.getElementById("msm_subordinate_infoContent-"+idNumber).childNodes;
+    
+    console.log(contentContainer);
+    
+    for(var i=0; i < contentContainer.length; i++)
+        {
+            console.log("loop: item-"+i);
+            console.log(contentContainer[i]);
+            dialogDiv.appendChild(contentContainer[i]);
+        }
+//    $("#msm_subordinate_infoContent-"+idNumber).children().each(function() {
+//        dialogDiv.appendChild(this);
+//    });
+    
+//        dialogDiv.innerHTML = contentContainer.innerHTML;
+//    dialogDiv.setAttribute("style", "display:none;");
     
     return dialogDiv;
 }
@@ -452,24 +523,28 @@ function loadValues(ed, id)
 
     //    var selected = ed.selection.getSel().focusNode.parentNode; 
 
-    var selected = ed.selection.getContent({
-        format: 'html'
-    });
-    
-    console.log(ed.selection.getContent({
-        format: 'html'
-    }));
+    var selected = ed.selection.getNode().nodeName;
+    //    
+    //    console.log(ed.selection.getNode().nodeName);
     //    console.log(ed.selection.getSel().extentNode.parentNode)
     
     // previous value only exists if the node is already anchor element
     // if it's just a plain text element, then there are no existing values to be considered
-    if(selected.tagName == 'A')
+    
+    //   var html = $(selected);
+    //   
+    //   console.log(ed.selection.getNode().id);
+    //   console.log(html.tagName);
+    console.log("loadValues");
+    console.log(selected);
+    if(selected == 'A')
     {
-        matchedElement = findSubordinateResult(selected, id);
-        
-        console.log(matchedElement);
+        matchedElement = findSubordinateResult(ed.selection.getNode(), id);
         
         $("#"+matchedElement.id+" > div").each(function() {
+            console.log("matchedElement div children: ");
+            console.log(this);
+            
             var divid = this.id.split("-");
             var formid = '';
             
@@ -490,8 +565,8 @@ function loadValues(ed, id)
             //            {
             //                formid = divid[0]+"-"+divid[1];
             //            }
-            
-            var formData = this.innerHTML;            
+            //            console.log(this);
+            var formData = $(this).html();            
             var editor = tinymce.get(formid);
             
             if(formid.match(/select/))
@@ -519,7 +594,23 @@ function loadValues(ed, id)
             
             if(typeof editor != "undefined")
             { 
-                editor.setContent(formData);
+                var initialP = editor.dom.select('p');        
+                editor.dom.remove(initialP[0]);
+
+                console.log("editor is not undefined!");
+
+//                $(this).children().each(function() {
+//                    console.log("child appended?: ");
+//                    console.log(this);
+//                    
+//                    editor.getBody().appendChild(this);
+//                });
+                $(this).clone().children().each(function() {
+                    console.log("child appended?: ");
+                    console.log(this);
+                    
+                    editor.getBody().appendChild(this);
+                });
             }
             
             if(formid.match(/url/))
@@ -527,8 +618,6 @@ function loadValues(ed, id)
                 document.getElementById(formid).value = formData;
             }
         });
-        
-        console.log(matchedElement);
         
     }
     // the element is not an anchor element --> empty out the form so user can fill it in again
@@ -579,7 +668,7 @@ function loadValues(ed, id)
  *  @param id          the id number attached to the div to specify the subordinate data in question
  */
 function findSubordinateResult(selected, id)
-{   
+{ 
     var matchedElement;    
     var selectedId = selected.id.split("-"); 
     

@@ -5,98 +5,98 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
     <head>
-        <title> TINYMCE TEST PAGE </title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!--<link href="css/subordinate.css" rel="stylesheet" type="text/css"/>-->
-        <link rel='stylesheet' href='development-bundle/themes/ui-lightness/jquery.ui.all.css'/>
-        <script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
-        <!--<script type="text/javascript" src="js/tiny_mce/tiny_mce_popup.js"></script>-->
-        <script src='development-bundle/jquery-1.7.1.js'></script>
-        <script src='development-bundle/external/jquery.bgiframe-2.1.2.js'></script>
-        <script src='development-bundle/ui/jquery.ui.core.js'></script>
-        <script src='development-bundle/ui/jquery.ui.widget.js'></script>
-        <script src='development-bundle/ui/jquery.ui.mouse.js'></script>
-        <script src='development-bundle/ui/jquery.ui.draggable.js'></script>
-        <script src='development-bundle/ui/jquery.ui.droppable.js'></script>
-        <script src='development-bundle/ui/jquery.ui.position.js'></script>
-        <script src='development-bundle/ui/jquery.ui.dialog.js'></script>
-        <script type='text/javascript' src='js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>
+                <!--<title> TINYMCE TEST PAGE </title>-->
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--                <link href="css/subordinate.css" rel="stylesheet" type="text/css"/>
+                <link rel='stylesheet' href='development-bundle/themes/ui-lightness/jquery.ui.all.css'/>
+                <script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+                <script type="text/javascript" src="js/tiny_mce/tiny_mce_popup.js"></script>
+                <script src='development-bundle/jquery-1.7.1.js'></script>
+                <script src='development-bundle/external/jquery.bgiframe-2.1.2.js'></script>
+                <script src='development-bundle/ui/jquery.ui.core.js'></script>
+                <script src='development-bundle/ui/jquery.ui.widget.js'></script>
+                <script src='development-bundle/ui/jquery.ui.mouse.js'></script>
+                <script src='development-bundle/ui/jquery.ui.draggable.js'></script>
+                <script src='development-bundle/ui/jquery.ui.droppable.js'></script>
+                <script src='development-bundle/ui/jquery.ui.position.js'></script>
+                <script src='development-bundle/ui/jquery.ui.dialog.js'></script>
+                <script type='text/javascript' src='js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>
+                
+                <script type="text/javascript" src='js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>
         
-        <script type="text/javascript" src='js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>
-
-        <script type="text/javascript">
-//            function closeSubFormDialog()
-//            {
-//                $('#test_tinymce').dialog("close");
-//            }
-//            
-            tinyMCE.init({
-                mode:"exact",
-                elements: "test_content",
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "96%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"
-            });
-            
-            function editFunction()
-            {
-                $()
-            }
-        </script>
+                <script type="text/javascript">
+        //            function closeSubFormDialog()
+        //            {
+        //                $('#test_tinymce').dialog("close");
+        //            }
+        //            
+                    tinyMCE.init({
+                        mode:"exact",
+                        elements: "test_content",
+                        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                        width: "96%",
+                        height: "70%",
+                        theme: "advanced",
+                        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+                        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+                        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+                        theme_advanced_toolbar_location : "top",
+                        theme_advanced_toolbar_align : "left",
+                        theme_advanced_statusbar_location : "bottom",
+                        skin : "o2k7",
+                        skin_variant : "silver"
+                    });
+                    
+                    function editFunction()
+                    {
+                        $()
+                    }
+                </script>-->
     </head>
     <body>
-        <label for="test_content">Test content: </label>
-        <textarea id="test_content"></textarea>
-        <div id="test_tinymce"></div>
-        
-        <input type="button" id="msm_button" onclick="editFunction();"/>
+        <div id="msm_editor_middle" class="left_panel" style="width: 1051.6px;">
+            <h2> Lecture Design Area </h2> <!-- grab the string from the setting values -->
+            <form method="post" action="editorCreation/msmUnitForm.php" name="msm_unit_form" id="msm_unit_form">
+                <div id="msm_unit_info_div">
+                    <label for="msm_unit_title" id="msm_unit_title_label" class="msm_unit_title_labels">Lecture title: </label>
+                    <input onkeypress="validateBorder()" placeholder=" Please enter the title of this Lecture." name="msm_unit_title" id="msm_unit_title" class="msm_title_input">
 
-<!--        <div id="msm_subordinate" style="display:none;" title="Create Subordinate">
-            <form id="msm_subordinate_form">
-                <div class="msm_subordinate_form_container">
-                    <label for="msm_subordinate_highlighted"> Selected Text: </label>
-                    <input id="msm_subordinate_highlighted" name="msm_subordinate_highlighted" class="text" disabled="disabled"/>
-                    <br/>
-                    <br/>
-                    <label for="msm_subordinate_select"> Subordinate Type : </label>
-                    <select id="msm_subordinate_select" name="msm_subordinate_select" onchange="changeForm(event);">
-                        <option>Please choose a type.</option>
-                        <option value="Information">Information</option>
-                        <option value="External Link">External Link</option>
-                        <option value="Internal Reference">Internal Reference</option>
-                        <option value="External Reference">External Reference</option>
-                    </select>   
-                    <br/>
-
-                    <div id="msm_subordinate_content_form_container">                    
-                    </div>
+                    <label for="msm_unit_description_input" id="msm_unit_description_label" class="msm_unit_description_labels">Description: </label>
+                    <input placeholder="Insert description to search this element in future." name="msm_unit_description_input" id="msm_unit_description_input" class="msm_unit_description_inputs">
                 </div>
-
-                <form onsubmit="//SubordinateDialog.insert();return false;" action="#">
-
-                	<p>Here is a subordinate dialog.</p>
-                        <p>Selected text: <input id="someval" name="someval" type="text" class="text" /></p>
-                        <p>Custom arg: <input id="somearg" name="somearg" type="text" class="text" /></p>
-                
-                        <div class="mceActionPanel">
-                                <input type="button" id="insert" name="insert" value="{#insert}" onclick="SubordinateDialog.insert();" />
-                                <input type="button" id="cancel" name="cancel" value="{#cancel}" onclick="tinyMCEPopup.close();" />
+                <div id="msm_editor_middle_droparea" class="ui-droppable">                        
+                    <div id="msm_child_appending_area" class="ui-sortable">
+                        <div id="copied_msm_def-1" class="copied_msm_structural_element">
+                            <a onclick="deleteElement(event);" class="msm_element_close">x</a>
+                            <select id="msm_def_type_dropdown-1" class="msm_unit_child_dropdown" name="msm_def_type_dropdown-1">
+                                <option value="Notation">Notation</option>
+                                <option value="Definition">Definition</option>
+                                <option value="Agreement">Agreement</option>
+                                <option value="Convention">Convention</option>
+                                <option value="Axiom">Axiom</option>
+                                <option value="Terminology">Terminology</option>
+                            </select>
+                            <span class="msm_element_title"><b> DEFINITION </b></span>
+                            <input placeholder=" Title of Definition" name="msm_def_title_input-1" id="msm_def_title_input-1" class="msm_unit_child_title">
+                            <textarea name="msm_def_content_input-1" id="msm_def_content_input-1" class="msm_unit_child_content" style="display: none;" aria-hidden="true"></textarea>
+                            <div id="msm_subordinate_container-defcontent1" class="msm_subordinate_containers"></div>
+                            <div id="msm_subordinate_result_container-defcontent1" class="msm_subordinate_result_containers"></div>
+                            <label for="msm_def_description_input-1" id="msm_def_description_label-1" class="msm_child_description_labels">Description: </label>
+                            <input placeholder="Insert description to search this element in future. " name="msm_def_description_input-1" id="msm_def_description_input-1" class="msm_child_description_inputs">
+                            <div id="msm_associate_container-1" class="msm_associate_containers">
+                                <input type="button" value="Add Associated Information" onclick="addAssociateForm(1, 'def')" id="msm_associate_button-1" class="msm_associate_buttons">
+                            </div>
                         </div>
-                <div class="msm_subordinate_button_container">
-                    <input type="submit" id="msm_subordinate_submit" class="msm_subordinate_button" value="Save"/>
-                    <input type="button" id="msm_subordinate_cancel" class="msm_subordinate_button" value="Cancel" onclick="closeSubFormDialog()"/>
-                </div>            
+                    </div>
+                    <input style="visibility: hidden;" name="msm_child_order" id="msm_child_order">
+                    <input style="visibility: hidden;" name="msm_unit_subordinate_container" id="msm_unit_subordinate_container">
+                </div>
+                <input type="button" value="Reset" onclick="resetUnit()" id="msm_editor_reset" class="msm_editor_buttons"> 
+                <input type="submit" value="Save" id="msm_editor_save" class="msm_editor_buttons" name="msm_editor_save">
+
+                <input value="Lecture,Part,Topic,Section,Subsection,1" style="visibility:hidden;" name="msm_unit_name_input" id="msm_unit_name_input"> 
             </form>
-        </div>-->
+        </div>
     </body>
 </html>
