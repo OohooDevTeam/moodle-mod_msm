@@ -105,74 +105,65 @@ function initInfoEditor(id)
 {
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
-   
-    // must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id   
     
-    tinyMCE.init({
-        mode:"exact",
-        elements: titleid,
+    tinymce.settings = 
+    {
+        mode:"none",   
         plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
         theme: "advanced",
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
         theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
         skin_variant : "silver"
-    });
-               
-    tinyMCE.init({
-        mode:"exact",
-        elements: contentid,
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });
-        
-//    tinymce.settings = 
-//    {
-//        mode:"none",   
+    };
+    
+    tinymce.execCommand('mceAddControl', false, titleid);
+    tinymce.execCommand('mceAddControl', false, contentid);
+   
+// must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id   
+//    
+//    tinyMCE.init({
+//        mode:"exact",
+//        elements: titleid,
 //        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
 //        width: "100%",
 //        height: "70%",
 //        theme: "advanced",
 //        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-//        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-//        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+//        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+//        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
 //        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
 //        theme_advanced_toolbar_location : "top",
 //        theme_advanced_toolbar_align : "left",
 //        theme_advanced_statusbar_location : "bottom",
 //        skin : "o2k7",
 //        skin_variant : "silver"
-//    };
-    
-//    if(tinymce.getInstanceById(titleid) == null)
-//    {
-//        tinymce.execCommand('mceAddControl', false, titleid);
-//
-//    }
-//    
-//    if(tinymce.getInstanceById(contentid) == null)
-//    {
-//        tinymce.execCommand('mceAddControl', false, contentid);
-//    }
-    
+//    });
+//               
+//    tinyMCE.init({
+//        mode:"exact",
+//        elements: contentid,
+//        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+//        width: "100%",
+//        height: "70%",
+//        theme: "advanced",
+//        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+//        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+//        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+//        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+//        theme_advanced_toolbar_location : "top",
+//        theme_advanced_toolbar_align : "left",
+//        theme_advanced_statusbar_location : "bottom",
+//        skin : "o2k7",
+//        skin_variant : "silver"
+//    });
 }
 
 function makeInfoForm(id)
@@ -238,33 +229,32 @@ function submitSubForm(ed, id)
 {
     // focusNode seems to break it in IE
     
-    var selected = ed.selection.getContent({
-        format: 'html'
-    });
-    
+    //    var selected = ed.selection.getContent({
+    //        format: 'html'
+    //    });
+    var selected = ed.selection.getNode();
+
+    var selectedNode = ed.selection.getNode().nodeName;
+        
     // checking if this selected text has already been submitted once 
     // if so, find the existing storage div and update the data with new ones
     // if not, then proceed to create a new storage div for the new subordinate data
-    if(selected.tagName == "A")
+    if(selectedNode == "A")
     {
         var foundElement = findSubordinateResult(selected, id);
         
         if(foundElement)
         {    
             var oldIndex = foundElement.id.split('-');
-            var oldId;
-            var oldsId;
+            var oldId='';
+            var oldsId='';
             
-            if(oldIndex.length > 3)
+            for(var i=1; i < oldIndex.length-2; i++)
             {
-                oldId = oldIndex[1] + "-" + oldIndex[2];
-                oldsId = oldIndex[3];
+                oldId += oldIndex[i]+"-";
             }
-            else
-            {
-                oldId = oldIndex[1];
-                oldsId = oldIndex[2];
-            }
+            oldId += oldIndex[oldIndex.length-2];
+            oldsId = oldIndex[oldIndex.length-1];
             
             var resultContainer = document.getElementById(foundElement.id);
             
@@ -293,9 +283,12 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
         var childnodes = tinymce.get(this.id).getBody().childNodes;        
+        console.log("items to be inserted to each textarea");
+        console.log(tinymce.get(this.id).getBody());
+        alert("each text area");
         
         var length = childnodes.length;
-        
+         
         // the childnodes array decreases in size as appendChild removes the first item of the 
         // array every time.  
         for(var i=0; i < length; i++)
@@ -318,6 +311,9 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     infoTitleContainer.id = "msm_subordinate_infoTitle-"+id+"-"+sId;
     
     $('#msm_subordinate_infoTitle-'+id).clone(true).children().each(function() {
+        console.log("appending to infoTitle:");
+        console.log(this);
+        
         infoTitleContainer.appendChild(this);
     });  
             
@@ -326,9 +322,13 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     
     var infoContentTextarea = document.getElementById("msm_subordinate_infoContent-"+id);
     
+    console.log(infoContentTextarea);
+    
     if(infoContentTextarea.hasChildNodes())
     {
-        $('#msm_subordinate_infoContent-'+id).clone(true).children().each(function() {           
+        $('#msm_subordinate_infoContent-'+id).clone(true).children().each(function() {       
+            console.log("appending to infoContent:");
+            console.log(this);
             infoContentContainer.appendChild(this);
         });  
     }
@@ -450,7 +450,7 @@ function createInfoDialog(idNumber)
     $("#msm_subordinate_infoContent-"+idNumber).clone(true).children().each(function() {
         dialogDiv.appendChild(this); 
     });
-        dialogDiv.setAttribute("style", "display:none;");
+    dialogDiv.setAttribute("style", "display:none;");
     
     return dialogDiv;
 }
@@ -610,7 +610,7 @@ function loadValues(ed, id)
  *  @param id          the id number attached to the div to specify the subordinate data in question
  */
 function findSubordinateResult(selected, id)
-{ 
+{    
     var matchedElement;    
     var selectedId = selected.id.split("-"); 
     

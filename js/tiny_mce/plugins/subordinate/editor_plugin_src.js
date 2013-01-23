@@ -36,13 +36,51 @@
                 indexNumber = type[1]+lasttype[0];
                 
                 for(var i=1; i < idNumber.length-1; i++)
-                    {
-                        indexNumber += idNumber[i] + "-";
-                    }
+                {
+                    indexNumber += idNumber[i] + "-";
+                }
                     
                 indexNumber += idNumber[idNumber.length-1];
                 
-                makeSubordinateDialog(ed, indexNumber);
+                var selected = ed.selection.getNode().nodeName;
+                
+                if(selected == 'A')
+                {
+                    var anchorid = ed.selection.getNode().id.split("-");
+                        
+                    var idInfo = '';
+                        
+                    for(var i=1; i < anchorid.length-1; i++)
+                    {
+                        idInfo += anchorid[i]+ "-";
+                    }
+                    idInfo += anchorid[anchorid.length-1];
+                }
+                
+                var existingDialog = document.getElementById("msm_subordinate_info_dialog-"+idInfo);
+                
+                console.log(idInfo);
+                console.log(existingDialog);
+                
+                if(existingDialog == null)
+                {
+                    console.log("make Dialog");
+                    makeSubordinateDialog(ed, indexNumber);
+                }
+                else if(existingDialog != null)
+                {
+                    console.log("removing editor");
+                    console.log(indexNumber);
+                    var titleid = "msm_subordinate_infoTitle-"+indexNumber;
+                    var contentid = "msm_subordinate_infoContent-"+indexNumber;
+                                        
+                    tinymce.execCommand('mceRemoveControl', false, titleid);
+                    tinymce.execCommand('mceRemoveControl', false, contentid);
+
+                    //                    $("#msm_subordinate_info_dialog-"+indexNumber).empty().remove();
+    
+                    makeSubordinateDialog(ed, indexNumber);
+                }
                          
                 init(ed.selection.getContent(), indexNumber);
                 
