@@ -297,7 +297,7 @@ $formContent .= '<script type="text/javascript">
                 tinyMCE.init({
                     mode:"textareas",
                     plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                    width: "96%",
+                    width: "100%",
                     height: "70%",
                     theme: "advanced",
                     theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",

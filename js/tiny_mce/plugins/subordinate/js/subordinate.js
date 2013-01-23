@@ -106,6 +106,9 @@ function initInfoEditor(id)
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
     
+    tinymce.execCommand('mceRemoveControl', false, titleid);
+    tinymce.execCommand('mceRemoveControl', false, contentid);
+    
     tinymce.settings = 
     {
         mode:"none",   
@@ -282,9 +285,7 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     var infourl = null;
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
-        var childnodes = tinymce.get(this.id).getBody().childNodes;        
-        console.log("items to be inserted to each textarea");
-        console.log(tinymce.get(this.id).getBody());
+        var childnodes = tinymce.get(this.id).getBody().childNodes;    
         alert("each text area");
         
         var length = childnodes.length;
@@ -310,10 +311,7 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     var infoTitleContainer = document.createElement("div");
     infoTitleContainer.id = "msm_subordinate_infoTitle-"+id+"-"+sId;
     
-    $('#msm_subordinate_infoTitle-'+id).clone(true).children().each(function() {
-        console.log("appending to infoTitle:");
-        console.log(this);
-        
+    $('#msm_subordinate_infoTitle-'+id).clone(true).children().each(function() {       
         infoTitleContainer.appendChild(this);
     });  
             
@@ -322,13 +320,9 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     
     var infoContentTextarea = document.getElementById("msm_subordinate_infoContent-"+id);
     
-    console.log(infoContentTextarea);
-    
     if(infoContentTextarea.hasChildNodes())
     {
-        $('#msm_subordinate_infoContent-'+id).clone(true).children().each(function() {       
-            console.log("appending to infoContent:");
-            console.log(this);
+        $('#msm_subordinate_infoContent-'+id).clone(true).children().each(function() {      
             infoContentContainer.appendChild(this);
         });  
     }
