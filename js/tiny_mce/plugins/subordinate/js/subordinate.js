@@ -103,7 +103,6 @@ function changeForm(e, id) {
 
 function initInfoEditor(id)
 {
-    console.log("editor initiated");
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
    
@@ -293,17 +292,19 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     var infourl = null;
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
-        var childnodes = tinymce.get(this.id).getBody().childNodes;
-        for(var i=0; i < childnodes.length; i++)
+        var childnodes = tinymce.get(this.id).getBody().childNodes;        
+        
+        var length = childnodes.length;
+        
+        // the childnodes array decreases in size as appendChild removes the first item of the 
+        // array every time.  
+        for(var i=0; i < length; i++)
         {
-            this.appendChild(childnodes[i]);
-        }
-    });    
+            this.appendChild(childnodes[0]);
+        }        
+    });   
     
-    var subSelectVal = $("#msm_subordinate_select-"+id).val();  
-    
-    //    var infoTitleVal = $("#msm_subordinate_infoTitle-"+id).html();
-    //    var infoContentVal = $("#msm_subordinate_infoContent-"+id).html();
+    var subSelectVal = $("#msm_subordinate_select-"+id).val(); 
       
     $("#"+subResultContainer.id).empty();
     
@@ -316,37 +317,23 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     var infoTitleContainer = document.createElement("div");
     infoTitleContainer.id = "msm_subordinate_infoTitle-"+id+"-"+sId;
     
-    console.log("infotitle children: ");
-    
-    $('#msm_subordinate_infoTitle-'+id).clone().children().each(function() {
-        console.log(this);
+    $('#msm_subordinate_infoTitle-'+id).clone(true).children().each(function() {
         infoTitleContainer.appendChild(this);
-    });    
-            
-    //    var infoTitleContainerText = document.createTextNode(infoTitleVal);
-    //    infoTitleContainer.appendChild(infoTitleContainerText);
+    });  
             
     var infoContentContainer = document.createElement("div");
     infoContentContainer.id = "msm_subordinate_infoContent-"+id+"-"+sId;
     
     var infoContentTextarea = document.getElementById("msm_subordinate_infoContent-"+id);
     
-    
-    console.log("infocontent children: ");
-    
     if(infoContentTextarea.hasChildNodes())
     {
-        console.log("infocontent has children");
-        $('#msm_subordinate_infoContent-'+id).clone().children().each(function() {
-            console.log("appended?: ");
-            console.log(this);
-            console.log(infoContentContainer);
+        $('#msm_subordinate_infoContent-'+id).clone(true).children().each(function() {           
             infoContentContainer.appendChild(this);
         });  
     }
     else
     {
-        console.log("infocontent children does not exist");
         hasError = true;
         errorArray.push("#msm_subordinate_infoContent-"+id+"_ifr");
     }
@@ -424,14 +411,12 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         {
             if(infourl)
             { 
-                //                ed.selection.setContent("<a href='http://"+infourl+"' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"' target='_blank' onmouseover=\"previewInfo('msm_subordinate_hotword-"+id+"-"+sId+"', '"+resultDialog.id+"');\">"+selectedText+"</a>");
                 ed.selection.setContent("<a href='http://"+infourl+"' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"' target='_blank'>"+selectedText+"</a>");
 
     
             }
             else
             {
-                //                var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"' onmouseover='previewInfo(\"msm_subordinate_hotword-"+id+"-"+sId+"\", \""+resultDialog.id+"\");'>"+selectedText+"</a>";
                 var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"'>"+selectedText+"</a>";
                 ed.selection.setContent(newContent); 
                 
@@ -455,25 +440,17 @@ function createInfoDialog(idNumber)
     dialogDiv.id = "msm_subordinate_info_dialog-"+idNumber;
     dialogDiv.className = "msm_subordinate_info_dialogs";
     
-    var titleContainer = document.getElementById("msm_subordinate_infoTitle-"+idNumber);     
-    dialogDiv.setAttribute("title", titleContainer.innerHTML);
+    var titleElements = '';
+    $("#msm_subordinate_infoTitle-"+idNumber).clone(true).children().each(function() {
+        titleElements += this;
+    });
     
-    var contentContainer = document.getElementById("msm_subordinate_infoContent-"+idNumber).childNodes;
+    dialogDiv.setAttribute("title", titleElements);
     
-    console.log(contentContainer);
-    
-    for(var i=0; i < contentContainer.length; i++)
-        {
-            console.log("loop: item-"+i);
-            console.log(contentContainer[i]);
-            dialogDiv.appendChild(contentContainer[i]);
-        }
-//    $("#msm_subordinate_infoContent-"+idNumber).children().each(function() {
-//        dialogDiv.appendChild(this);
-//    });
-    
-//        dialogDiv.innerHTML = contentContainer.innerHTML;
-//    dialogDiv.setAttribute("style", "display:none;");
+    $("#msm_subordinate_infoContent-"+idNumber).clone(true).children().each(function() {
+        dialogDiv.appendChild(this); 
+    });
+        dialogDiv.setAttribute("style", "display:none;");
     
     return dialogDiv;
 }
@@ -521,30 +498,15 @@ function loadValues(ed, id)
 {
     var matchedElement;
 
-    //    var selected = ed.selection.getSel().focusNode.parentNode; 
-
     var selected = ed.selection.getNode().nodeName;
-    //    
-    //    console.log(ed.selection.getNode().nodeName);
-    //    console.log(ed.selection.getSel().extentNode.parentNode)
     
     // previous value only exists if the node is already anchor element
     // if it's just a plain text element, then there are no existing values to be considered
-    
-    //   var html = $(selected);
-    //   
-    //   console.log(ed.selection.getNode().id);
-    //   console.log(html.tagName);
-    console.log("loadValues");
-    console.log(selected);
     if(selected == 'A')
     {
         matchedElement = findSubordinateResult(ed.selection.getNode(), id);
         
-        $("#"+matchedElement.id+" > div").each(function() {
-            console.log("matchedElement div children: ");
-            console.log(this);
-            
+        $("#"+matchedElement.id+" > div").each(function() {            
             var divid = this.id.split("-");
             var formid = '';
             
@@ -557,15 +519,6 @@ function loadValues(ed, id)
             }
             formid += divid[divid.length-2];
             
-            //            if(divid.length > 3)
-            //            {
-            //                formid = divid[0]+"-"+divid[1]+"-"+divid[2];
-            //            }
-            //            else
-            //            {
-            //                formid = divid[0]+"-"+divid[1];
-            //            }
-            //            console.log(this);
             var formData = $(this).html();            
             var editor = tinymce.get(formid);
             
@@ -596,19 +549,8 @@ function loadValues(ed, id)
             { 
                 var initialP = editor.dom.select('p');        
                 editor.dom.remove(initialP[0]);
-
-                console.log("editor is not undefined!");
-
-//                $(this).children().each(function() {
-//                    console.log("child appended?: ");
-//                    console.log(this);
-//                    
-//                    editor.getBody().appendChild(this);
-//                });
-                $(this).clone().children().each(function() {
-                    console.log("child appended?: ");
-                    console.log(this);
-                    
+                
+                $(this).clone(true).children().each(function() {
                     editor.getBody().appendChild(this);
                 });
             }
