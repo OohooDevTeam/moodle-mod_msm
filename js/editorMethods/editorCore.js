@@ -77,9 +77,10 @@ function processDroppedChild(e, droppedId)
             if(!isPresent)
             {
                 var introCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-                var introTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin: 2% 43%;"> INTRODUCTION </b></div>'); 
+                var introTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 43%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> INTRODUCTION </b></div>'); 
+                var introTitlehidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
 
-                 var introTitleContainer = $("<div style='margin-top: 2%;'></div>")
+                var introTitleContainer = $("<div style='margin-top: 2%;'></div>")
                 var introTitleLabel = $('<label class="msm_unit_intro_title_labels" id="msm_intro_title_label-'+_index+'" for="msm_intro_title_input-'+_index+'">Title:</label>');
                 var introTitleField = $('<input class="msm_unit_intro_title" id="msm_intro_title_input-'+_index+'" name="msm_intro_title_input-'+_index+'" placeholder="Optional Title for the introduction"/>');     
 
@@ -96,6 +97,8 @@ function processDroppedChild(e, droppedId)
                 
                 introTitleContainer.append(introTitleLabel);
                 introTitleContainer.append(introTitleField);
+                
+                introTitle.append(introTitlehidden);
             
                 clonedCurrentElement.append(introCloseButton);
                 clonedCurrentElement.append(introTitle); 
@@ -128,7 +131,8 @@ function processDroppedChild(e, droppedId)
         case "msm_body":
             var clonedCurrentElement = $("<div></div>");
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-            var bodyTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin: 2% 45%;"> CONTENT </b></div>'); 
+            var bodyTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 45%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> CONTENT </b></div>'); 
+            var bodyTitlehidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
             var bodyTitleContainer = $("<div style='margin-top: 2%;'></div>");
             var bodyTitleLabel = $('<label class="msm_unit_body_title_labels" id="msm_body_title_label-'+_index+'" for="msm_body_title_input-'+_index+'">Title:</label>');
             var bodyTitleField = $('<input class="msm_unit_body_title" id="msm_body_title_input-'+_index+'" name="msm_body_title_input-'+_index+'" placeholder="Optional Title for this content"/>');  
@@ -138,6 +142,8 @@ function processDroppedChild(e, droppedId)
 
             bodyTitleContainer.append(bodyTitleLabel);
             bodyTitleContainer.append(bodyTitleField);
+            
+            bodyTitle.append(bodyTitlehidden);
 
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -319,6 +325,35 @@ function processDroppedChild(e, droppedId)
             });
         }
     });    
+    
+    $("#msm_element_title_container-"+_index).mouseover(function () {
+        $(this).children("span").css({
+            "visibility": "visible", 
+            "color": "#4e6632", 
+            "opacity": "0.5"
+        });
+    });
+    $("#msm_element_title_container-"+_index).mouseout(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+    $("#msm_element_title_container-"+_index).mouseup(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+    
+    $("#msm_theorem_statement_title_container-"+_index).mouseover(function () {
+        $(this).children("span").css({
+            "visibility": "visible", 
+            "color": "#4e6632", 
+            "opacity": "0.5"
+        });
+    });
+    $("#msm_theorem_statement_title_container-"+_index).mouseout(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+    $("#msm_theorem_statement_title_container-"+_index).mouseup(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+               
                 
 //    $("#msm_child_appending_area").disableSelection();
 }
@@ -405,6 +440,7 @@ function addIntroContent(idNumber)
     var introCloseButton = document.createElement("a");
     introCloseButton.className = "msm_element_close";
     introCloseButton.onclick = function(e) {
+        console.log(e.target);
         var currentElement = e.target.parentElement.id;
         $("<div class='dialogs' id='msm_deleteIntroChild'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this content from introduction? </div>").appendTo('#'+currentElement);
         $( "#msm_deleteIntroChild" ).dialog({
@@ -431,6 +467,19 @@ function addIntroContent(idNumber)
     introChildTitleLabel.className = "msm_intro_child_title_labels";
     introChildTitleLabel.setAttribute("for", "msm_intro_child_title-"+newId);
     
+    var dragArea =document.createElement("div");
+    var dragText = document.createElement("span");
+    var dragTextNode = document.createTextNode("Drag here to move the element");
+    
+    dragText.setAttribute("style", "visibility: hidden");
+    
+    dragArea.className = "msm_intro_child_dragareas";
+    dragArea.id = "msm_intro_child_dragarea-"+newId;
+    dragText.appendChild(dragTextNode);
+    dragArea.appendChild(dragText);
+        
+    var titleContainer = document.createElement("div");
+    
     var titleLabel = document.createTextNode("Title:");
     introChildTitleLabel.appendChild(titleLabel);
     
@@ -439,6 +488,9 @@ function addIntroContent(idNumber)
     introChildTitle.className = "msm_intro_child_titles";
     introChildTitle.name = "msm_intro_child_title-"+newId;
     introChildTitle.setAttribute("placeholder", "Optional Title for the Content");
+    
+    titleContainer.appendChild(titleLabel);
+    titleContainer.appendChild(introChildTitle);
     
     var introChildContent = document.createElement("textarea");
     introChildContent.id = "msm_intro_child_content-"+newId;
@@ -455,8 +507,11 @@ function addIntroContent(idNumber)
     subordinateResult.className = "msm_subordiante_result_containers";
     
     introChildDiv.appendChild(introCloseButton);
-    introChildDiv.appendChild(introChildTitleLabel);
-    introChildDiv.appendChild(introChildTitle);
+    introChildDiv.appendChild(dragArea);
+
+    introChildDiv.appendChild(titleContainer);
+    //    introChildDiv.appendChild(introChildTitleLabel);
+    //    introChildDiv.appendChild(introChildTitle);
     introChildDiv.appendChild(introChildContent);
     introChildDiv.appendChild(subordinateContainer);
     introChildDiv.appendChild(subordinateResult);
@@ -489,7 +544,8 @@ function addIntroContent(idNumber)
         connectWith: "msm_intro_child_container",
         cursor: "move",
         tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",        
+        placeholder: "msm_sortable_placeholder",   
+        handle: ".msm_intro_child_dragareas",
         start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
@@ -508,6 +564,23 @@ function addIntroContent(idNumber)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
+            tinyMCE.settings = {
+                mode:"none",   
+                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                width: "100%",
+                height: "70%",
+                theme: "advanced",
+                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                skin : "o2k7",
+                skin_variant : "silver"     
+            };
+            
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
@@ -515,22 +588,47 @@ function addIntroContent(idNumber)
             });
         }
     });    
+    
+    $("#msm_intro_child_dragarea-"+newId).mouseover(function () {
+        $(this).children("span").css({
+            "visibility": "visible", 
+            "color": "#4e6632", 
+            "opacity": "0.5"
+        });
+    });
+    $("#msm_intro_child_dragarea-"+newId).mouseout(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+    $("#msm_intro_child_dragarea-"+newId).mouseup(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
                 
-    $("#msm_intro_child_container").disableSelection();
+//    $("#msm_intro_child_container").disableSelection();
      
 }
 
 function addTheoremContent(event, idNumber)
 {
-    var newId = idNumber;
     
-    $(".msm_theorem_content_containers > div").each(function() {
-        newId++;
-    })
+    var newId = 1;
+        
+    if($("#msm_theorem_content_container-"+idNumber).children("div").length > 0)
+    {
+        while(document.getElementById('msm_theorem_statement_container-'+newId) != null)
+        {
+            newId++;
+        }
+    }
+    //    var newId = idNumber;
+    //    
+    //    $(".msm_theorem_content_containers > div").each(function() {
+    //        newId++;
+    //    })
     
     var theoremStatementWrapper = $('<div class="msm_theorem_statement_containers" id="msm_theorem_statement_container-'+newId+'"></div>');
     var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-    var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
+    var theoremContentTitleContainer = $('<div class="msm_theorem_statement_title_containers" id="msm_theorem_statement_title_container-'+newId+'"><b> Theorem Content </b></div>');
+    var theoremContentTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theorem_content_input-'+newId+'" name="msm_theorem_content_input-'+newId+'"/>');    
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremcontent'+newId+'"></div>');
     //    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-'+_index+'"></div>');
@@ -542,9 +640,11 @@ function addTheoremContent(event, idNumber)
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+newId+'"></div>');
             
     theoremPartWrapper.append(theoremPartButton);
+    
+    theoremContentTitleContainer.append(theoremContentTitleHidden);
             
     theoremStatementWrapper.append(theoremCloseButton);
-    theoremStatementWrapper.append(theoremContentHeader);
+    theoremStatementWrapper.append(theoremContentTitleContainer);
     theoremStatementWrapper.append(theoremContentField);
     theoremStatementWrapper.append(subordinateContainer);
     theoremStatementWrapper.append(subordinateResult);
@@ -577,7 +677,8 @@ function addTheoremContent(event, idNumber)
         connectWith: "msm_theorem_content_container-"+idNumber,
         cursor: "move",
         tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",        
+        placeholder: "msm_sortable_placeholder",   
+        handle: ".msm_theorem_statement_title_containers",
         start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
@@ -604,6 +705,23 @@ function addTheoremContent(event, idNumber)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
+            tinyMCE.settings = {
+                mode:"none",   
+                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                width: "100%",
+                height: "70%",
+                theme: "advanced",
+                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                skin : "o2k7",
+                skin_variant : "silver"       
+            };
+            
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
@@ -621,21 +739,58 @@ function addTheoremContent(event, idNumber)
             });
         }
     });    
+    
+    $("#msm_theorem_statement_title_container-"+newId).mouseover(function () {
+        $(this).children("span").css({
+            "visibility": "visible", 
+            "color": "#4e6632", 
+            "opacity": "0.5"
+        });
+    });
+    $("#msm_theorem_statement_title_container-"+newId).mouseout(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+    $("#msm_theorem_statement_title_container-"+newId).mouseup(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
                 
-    $("#msm_theorem_content_container-"+idNumber).disableSelection();
+//    $("#msm_theorem_content_container-"+idNumber).disableSelection();
 }
 
 function addTheoremPart(event, idNumber)
 {
-    var newId = idNumber;
+    var newId = 1;
+        
+    if($("#msm_theorem_part_droparea-"+idNumber).children("div").length > 0)
+    {
+        while(document.getElementById('msm_theorem_part_container-'+idNumber+'-'+newId) != null)
+        {
+            newId++;
+        }
+    }
+        
+        
+    //    var newId = idNumber;
+    //    
+    //    if(document.getElementById('msm_theorem_part_container-'+idNumber+'-'+newId) == null)
+    //    {
+    //        console.log(document.getElementById('msm_theorem_part_container-'+idNumber+'-'+newId));
+    //    }
     
-    $(".msm_theorem_part_dropareas > div").each(function() {
-        newId++;
-    })
+    //    
+    //    $(".msm_theorem_part_dropareas > div").each(function() {
+    //        newId++;
+    //    });
     
-    var theoremPartContainer = $('<div class="msm_theorem_child" id="msm_theorem_part_container-'+newId+'"></div>');
+    
+    //    var theoremPartContainer = $('<div class="msm_theorem_child" id="msm_theorem_part_container-'+newId+'"></div>');
+    
+    var theoremPartContainer = $('<div class="msm_theorem_child" id="msm_theorem_part_container-'+idNumber+'-'+newId+'"></div>');
     
     var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+    
+    var theoremPartTitleContainer = $('<div class="msm_theorem_part_title_containers" id="msm_theorem_part_title_container-'+idNumber+'-'+newId+'"></div>');
+    var theoremPartTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
     
     var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theorem_part_title-'+idNumber+'-'+newId+'">Part Theorem title: </label>');
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theorem_part_title-'+idNumber+'-'+newId+'" name="msm_theorem_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
@@ -645,7 +800,10 @@ function addTheoremPart(event, idNumber)
 
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theorempart'+idNumber+'-'+newId+'"></div>');
             
+    theoremPartTitleContainer.append(theoremPartTitleHidden);
+            
     theoremPartContainer.append(theoremCloseButton);
+    theoremPartContainer.append(theoremPartTitleContainer)
     theoremPartContainer.append(theoremPartLabel);
     theoremPartContainer.append(theoremPartTitle);
     theoremPartContainer.append(theoremPartContentField);
@@ -654,9 +812,10 @@ function addTheoremPart(event, idNumber)
     
     $(theoremPartContainer).insertBefore("#"+event.target.id);
     
-    tinyMCE.init({
-        mode:"exact",
-        elements: "msm_theorem_part_content-"+idNumber+"-"+newId,  
+    tinyMCE.settings = {
+        mode: "none",
+        //        mode:"exact",
+        //        elements: "msm_theorem_part_content-"+idNumber+"-"+newId,  
         plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
         height: "70%",
@@ -671,14 +830,22 @@ function addTheoremPart(event, idNumber)
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
         skin_variant : "silver"
-    });
+    };
+    
+    if(tinymce.getInstanceById("msm_theorem_part_content-"+idNumber+"-"+newId))
+    {
+        tinymce.execCommand("mceRemoveControl", false, "msm_theorem_part_content-"+idNumber+"-"+newId);
+    }
+        
+    tinymce.execCommand("mceAddControl", false, "msm_theorem_part_content-"+idNumber+"-"+newId);
     
     $("#msm_theorem_part_droparea-"+idNumber).sortable({
         appendTo: "msm_theorem_part_droparea-"+idNumber,
         connectWith: "msm_theorem_part_droparea-"+idNumber,
         cursor: "move",
         tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",        
+        placeholder: "msm_sortable_placeholder",    
+        handle: ".msm_theorem_part_title_containers",
         start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
@@ -697,6 +864,23 @@ function addTheoremPart(event, idNumber)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
+            tinyMCE.settings = {
+                mode:"none",   
+                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                width: "100%",
+                height: "70%",
+                theme: "advanced",
+                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                skin : "o2k7",
+                skin_variant : "silver"       
+            };
+            
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id"));
@@ -704,8 +888,22 @@ function addTheoremPart(event, idNumber)
             });
         }
     });    
+    
+    $("#msm_theorem_part_title_container-"+idNumber+'-'+newId).mouseover(function () {
+        $(this).children("span").css({
+            "visibility": "visible", 
+            "color": "#4e6632", 
+            "opacity": "0.5"
+        });
+    });
+    $("#msm_theorem_part_title_container-"+idNumber+'-'+newId).mouseout(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+    $("#msm_theorem_part_title_container-"+idNumber+'-'+newId).mouseup(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
                 
-    $("#msm_theorem_content_container-"+idNumber).disableSelection();
+//    $("#msm_theorem_content_container-"+idNumber).disableSelection();
 }
 
 // index is the ending id number for associate
@@ -713,11 +911,21 @@ function addTheoremPart(event, idNumber)
 // ** make sure that the form input areas have both index number and their own unique idnumber so can order them according to their parents
 function addAssociateForm(index, type)
 {
-    var newId = 1; // index number = parent id number, newId = child id number
+    var newId = 1;
+        
+    if($("#msm_associate_container-"+index).children("div").length > 0)
+    {
+        while(document.getElementById('msm_associate_childs-'+index+'-'+newId) != null)
+        {
+            newId++;
+        }
+    }
     
-    $("#msm_associate_container-"+index+" > div").each(function() {
-        newId++;
-    })
+    //    var newId = 1; // index number = parent id number, newId = child id number
+    //    
+    //    $("#msm_associate_container-"+index+" > div").each(function() {
+    //        newId++;
+    //    })
     
     var associateInfoDiv = $('<div class="msm_associate_childs" id="msm_associate_childs-' + index + '-' + newId + '"></div>');
  
@@ -733,7 +941,7 @@ function addAssociateForm(index, type)
                                 <option value="Illustration">Illustration</option>\n\
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Exploration">Exploration</option>\n\
-                            </select></div><br>');    
+                            </select></div>');    
     }
     else if(type == "theorem")
     {
@@ -749,7 +957,11 @@ function addAssociateForm(index, type)
                             </select></div>');
     }
     
-    var infoHeader = $('<span class="msm_info_header">Information</span><br>');
+    var infoHeader = $('<div class="msm_associate_info_headers" id="msm_associate_info_header-' + index + '-' + newId + '"></div>');
+    var infoheadertext = $('<b> ASSOCIATED INFORMATION </b>');
+    var infoheadertexthidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
+    
+    //    var infoHeader = $('<span class="msm_info_header">Information</span><br>');
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
     var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'" name="msm_info_title-'+index + '-' + newId+'"/>');    
@@ -773,9 +985,12 @@ function addAssociateForm(index, type)
     
     var associateCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
   
+    infoHeader.append(infoheadertext);
+    infoHeader.append(infoheadertexthidden);
+  
     associateInfoDiv.append(associateCloseButton);
-    associateInfoDiv.append(typeDropdown);
     associateInfoDiv.append(infoHeader);
+    associateInfoDiv.append(typeDropdown);
     associateInfoDiv.append(infoTitleLabel);
     associateInfoDiv.append(infoTitleInput);
     associateInfoDiv.append(infoContentLabel);
@@ -818,6 +1033,17 @@ function addAssociateForm(index, type)
         skin_variant : "silver"
     }];
     // setting different config for title and content tinymces
+    
+    if(tinymce.getInstanceById("msm_info_content-"+index+"-"+newId) != null)
+    {
+        tinyMCE.execCommand('mceRemoveControl', true, "msm_info_content-"+index+"-"+newId);
+    }
+        
+    if(tinymce.getInstanceById("msm_info_title-"+index+"-"+newId) != null) 
+    {
+        tinyMCE.execCommand('mceRemoveControl', true, "msm_info_title-"+index+"-"+newId);
+    }
+    
     tinyMCE.settings = configArray[0];
     tinyMCE.execCommand('mceAddControl', true, "msm_info_content-"+index+"-"+newId);
     tinyMCE.settings = configArray[1];
@@ -828,7 +1054,8 @@ function addAssociateForm(index, type)
         connectWith: "msm_associate_container-"+index,
         cursor: "move",
         tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",        
+        placeholder: "msm_sortable_placeholder",      
+        handle: ".msm_associate_info_headers",
         start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
@@ -884,8 +1111,22 @@ function addAssociateForm(index, type)
         //            
         }
     });    
+    
+    $("#msm_associate_info_header-"+index+"-"+newId).mouseover(function () {
+        $(this).children("span").css({
+            "visibility": "visible", 
+            "color": "#4e6632", 
+            "opacity": "0.5"
+        });
+    });
+    $("#msm_associate_info_header-"+index+"-"+newId).mouseout(function () {
+        $(this).children("span").css("visibility", "hidden");
+    });
+    $("#msm_associate_info_header-"+index+"-"+newId).mouseup(function () {
+        $(this).children("span").css("visibility", "hidden");
+    })
                 
-    $("#msm_associate_container-"+index).disableSelection();
+//    $("#msm_associate_container-"+index).disableSelection();
      
 }
 
@@ -903,7 +1144,8 @@ function makeDefinition()
                                     <option value="Axiom">Axiom</option>\n\
                                     <option value="Terminology">Terminology</option>\n\
                                 </select>');
-    var defTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%; margin-right: 28%"> DEFINITION </b></div>');
+    var defTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%;"> DEFINITION </b></div>');
+    var defTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');   
     //    var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
@@ -920,6 +1162,8 @@ function makeDefinition()
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
     defAssociateDiv.append(defAssociateButton);
+    
+    defTitleContainer.append(defTitleHidden);
             
     clonedCurrentElement.append(defCloseButton);
     clonedCurrentElement.append(defSelectMenu);
@@ -947,7 +1191,8 @@ function makeTheorem()
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
     
-    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%; margin-right: 28%"> THEOREM </b></div>');                
+    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%;"> THEOREM </b></div>');   
+    var theoremTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');       
     //    var theoremTitle = $("<span class='msm_element_title'><b> THEOREM </b></span>");
     var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title_input-'+_index+'" placeholder=" Title of Theorem"/>');
             
@@ -955,7 +1200,10 @@ function makeTheorem()
             
     var theoremStatementWrapper = $('<div class="msm_theorem_statement_containers" id="msm_theorem_statement_container-'+_index+'"></div>');
             
-    var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
+    var theoremContentTitleContainer = $('<div class="msm_theorem_statement_title_containers" id="msm_theorem_statement_title_container-'+_index+'"><b> Theorem Content </b></div>');
+    var theoremContentTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');        
+    
+    //    var theoremContentHeader = $('<span class="msm_theorem_content_header"><b>Theorem Content</b></span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'" name="msm_theorem_content_input-'+_index+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremcontent'+_index+'"></div>');
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremcontent'+_index+'"></div>');
@@ -974,8 +1222,12 @@ function makeTheorem()
             
     theoremPartWrapper.append(theoremPartButton);
     theoremAssociateDiv.append(theoremAssociateButton);
+    
+    theoremTitleContainer.append(theoremTitleHidden);
+    
+    theoremContentTitleContainer.append(theoremContentTitleHidden);
             
-    theoremStatementWrapper.append(theoremContentHeader);
+    theoremStatementWrapper.append(theoremContentTitleContainer);
     theoremStatementWrapper.append(theoremContentField); 
     theoremStatementWrapper.append(subordinateContainer); 
     theoremStatementWrapper.append(subordinateResult);
@@ -998,7 +1250,8 @@ function makeTheorem()
         connectWith: "msm_theorem_content_container-"+_index,
         cursor: "move",
         tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",        
+        placeholder: "msm_sortable_placeholder",   
+        handle: ".msm_theorem_statement_title_containers",
         start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
@@ -1016,6 +1269,23 @@ function makeTheorem()
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+            tinyMCE.settings = {
+                mode:"none",   
+                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                width: "100%",
+                height: "70%",
+                theme: "advanced",
+                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                skin : "o2k7",
+                skin_variant : "silver"     
+            };
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
@@ -1023,8 +1293,8 @@ function makeTheorem()
             });
         }
     });    
-                
-    $("#msm_theorem_content_container-"+_index).disableSelection();
+    
+    //    $("#msm_theorem_content_container-"+_index).disableSelection();
             
     return clonedCurrentElement;
 }
@@ -1038,7 +1308,8 @@ function makeComment()
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Information">Information</option>\n\
                             </select>');
-    var commentTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%; margin-right: 28%"> COMMENT </b></div>'); 
+    var commentTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%"> COMMENT </b></div>'); 
+    var commentTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
     //    var commentTitle = $("<span class='msm_element_title'><b> COMMENT </b></span>");
     var commentTitleField = $('<input class="msm_unit_child_title" id="msm_comment_title_input-'+_index+'" name="msm_comment_title_input-'+_index+'" placeholder=" Title of Comment"/>');
           
@@ -1055,6 +1326,8 @@ function makeComment()
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
     commentAssociateDiv.append(commentAssociateButton);
+    
+    commentTitleContainer.append(commentTitleHidden);
             
     clonedCurrentElement.append(commentCloseButton);
     clonedCurrentElement.append(commentSelectMenu);

@@ -209,23 +209,6 @@
     padding-bottom: 2%;
 }
 
-.msm_element_title_containers
-{   
-    display: inline;
-/*    margin-left: auto;
-    margin-right: auto;
-    min-width: 31.7%;
-    min-height: 3%;
-    text-align: center;*/
-    padding-top: 0.9%;
-}
-
-.msm_element_title_containers:hover
-{
-    cursor: move;
-}
-
-
 .msm_element_close 
 {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
@@ -585,3 +568,68 @@ table.mceLayout
 {
     display: none;
 }
+
+
+.msm_element_title_containers
+{   
+    display: inline;
+    margin-bottom: 2%;
+    padding-bottom: 1%;
+    text-align: center;
+    padding-top: 0.9%;
+}
+
+.msm_theorem_statement_title_containers, .msm_theoremref_statement_title_containers
+{
+    width: 74%;
+    margin-bottom: 2%;
+    padding-left: 27%;
+    text-align: center;
+    /*border: 2px solid black*/
+}
+
+.msm_theorem_part_title_containers, .msm_theoremref_part_title_containers
+{
+    width: 95%;
+    text-align: center;
+    /*border: 2px solid black*/
+}
+
+
+.msm_intro_child_dragareas
+{
+    width: 96%;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 2%;
+    text-align: center;
+    /*border: 2px solid black*/
+}
+
+.msm_associate_info_headers
+{
+    width: 70%;
+    margin-bottom: 2%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    padding-left: 25%;
+    text-align: center;
+}
+
+.msm_associate_info_headers > span, .msm_element_title_containers > span,
+.msm_theorem_statement_title_containers > span, .msm_theorem_part_title_containers > span,
+.msm_theoremref_statement_title_containers > span, .msm_theoremref_part_title_containers > span
+{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 1%;
+}
+
+.msm_intro_child_dragareas:hover, .msm_associate_info_headers:hover, .msm_element_title_containers:hover,
+.msm_theorem_statement_title_containers:hover, .msm_theorem_part_title_containers:hover, 
+.msm_theoremref_statement_title_containers:hover, .msm_theoremref_part_title_containers:hover
+{
+    cursor: move;
+}
+
+

@@ -298,6 +298,15 @@ function disableEditorFunction()
     
     $(".msm_structural_element").draggable("destroy");
     $("#msm_editor_middle_droparea").droppable("destroy");
+    
+    $("..msm_intro_child_dragareas > span").css("display", "none");
+    $(".msm_associate_info_headers > span").css("display", "none");
+    $("..msm_element_title_containers > span").css("display", "none");
+    $("..msm_theorem_statement_title_containers > span").css("display", "none");
+    $("..msm_theorem_part_title_containers > span").css("display", "none");    
+    $("...msm_theoremref_statement_title_containers > span").css("display", "none");
+    $("...msm_theoremref_part_title_containers > span").css("display", "none");   
+    
 }
 
 /**
