@@ -77,8 +77,9 @@ function processDroppedChild(e, droppedId)
             if(!isPresent)
             {
                 var introCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-                var introTitle = $("<span class='msm_element_title'><b> INTRODUCTION </b></span><br><br>");        
-            
+                var introTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin: 2% 43%;"> INTRODUCTION </b></div>'); 
+
+                 var introTitleContainer = $("<div style='margin-top: 2%;'></div>")
                 var introTitleLabel = $('<label class="msm_unit_intro_title_labels" id="msm_intro_title_label-'+_index+'" for="msm_intro_title_input-'+_index+'">Title:</label>');
                 var introTitleField = $('<input class="msm_unit_intro_title" id="msm_intro_title_input-'+_index+'" name="msm_intro_title_input-'+_index+'" placeholder="Optional Title for the introduction"/>');     
 
@@ -91,11 +92,14 @@ function processDroppedChild(e, droppedId)
             
                 clonedCurrentElement.attr("id", "copied_msm_intro-"+_index);
                 clonedCurrentElement.attr("class", "copied_msm_structural_element");
+                clonedCurrentElement.attr("style", "padding-top: 2%;");
+                
+                introTitleContainer.append(introTitleLabel);
+                introTitleContainer.append(introTitleField);
             
                 clonedCurrentElement.append(introCloseButton);
                 clonedCurrentElement.append(introTitle); 
-                clonedCurrentElement.append(introTitleLabel);
-                clonedCurrentElement.append(introTitleField);
+                clonedCurrentElement.append(introTitleContainer);
                 clonedCurrentElement.append(introContentField);
                 clonedCurrentElement.append(subordinateContainer);
                 clonedCurrentElement.append(subordinateResult);
@@ -124,19 +128,23 @@ function processDroppedChild(e, droppedId)
         case "msm_body":
             var clonedCurrentElement = $("<div></div>");
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-            var bodyTitle = $("<span class='msm_element_title'><b> CONTENT </b></span><br><br>");
+            var bodyTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin: 2% 45%;"> CONTENT </b></div>'); 
+            var bodyTitleContainer = $("<div style='margin-top: 2%;'></div>");
             var bodyTitleLabel = $('<label class="msm_unit_body_title_labels" id="msm_body_title_label-'+_index+'" for="msm_body_title_input-'+_index+'">Title:</label>');
             var bodyTitleField = $('<input class="msm_unit_body_title" id="msm_body_title_input-'+_index+'" name="msm_body_title_input-'+_index+'" placeholder="Optional Title for this content"/>');  
             var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
             var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-bodycontent'+_index+'"></div>');
             var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-bodycontent'+_index+'"></div>');
 
+            bodyTitleContainer.append(bodyTitleLabel);
+            bodyTitleContainer.append(bodyTitleField);
+
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
+            clonedCurrentElement.attr("style", "padding-top: 2%;");
             clonedCurrentElement.append(bodyCloseButton);
             clonedCurrentElement.append(bodyTitle);
-            clonedCurrentElement.append(bodyTitleLabel);
-            clonedCurrentElement.append(bodyTitleField);
+            clonedCurrentElement.append(bodyTitleContainer);
             clonedCurrentElement.append(bodyContentField);
             clonedCurrentElement.append(subordinateContainer);
             clonedCurrentElement.append(subordinateResult);
@@ -200,6 +208,7 @@ function processDroppedChild(e, droppedId)
         cursor: "move",
         tolerance: "pointer",
         placeholder: "msm_sortable_placeholder",
+        handle: ".msm_element_title_containers",
         start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
@@ -311,7 +320,7 @@ function processDroppedChild(e, droppedId)
         }
     });    
                 
-    $("#msm_child_appending_area").disableSelection();
+//    $("#msm_child_appending_area").disableSelection();
 }
 
 /**
@@ -884,7 +893,7 @@ function makeDefinition()
 {
     var clonedCurrentElement = $("<div></div>");
     
-    var defCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
+    var defCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event);">x</a>');
     
     var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
                                     <option value="Notation">Notation</option>\n\
@@ -894,8 +903,8 @@ function makeDefinition()
                                     <option value="Axiom">Axiom</option>\n\
                                     <option value="Terminology">Terminology</option>\n\
                                 </select>');
-    
-    var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
+    var defTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%; margin-right: 28%"> DEFINITION </b></div>');
+    //    var defTitle = $("<span class='msm_element_title'><b> DEFINITION </b></span>");
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
     var defContentField = $('<textarea class="msm_unit_child_content" id="msm_def_content_input-'+_index+'" name="msm_def_content_input-'+_index+'"/>');
@@ -914,7 +923,7 @@ function makeDefinition()
             
     clonedCurrentElement.append(defCloseButton);
     clonedCurrentElement.append(defSelectMenu);
-    clonedCurrentElement.append(defTitle);
+    clonedCurrentElement.append(defTitleContainer);
     clonedCurrentElement.append(defTitleField);
     clonedCurrentElement.append(defContentField);
     clonedCurrentElement.append(subordinateContainer);
@@ -929,7 +938,7 @@ function makeDefinition()
 function makeTheorem()
 {
     var clonedCurrentElement = $("<div></div>");
-    var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+    var theoremCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event)">x</a>');
 
     var theoremSelectMenu = $('<select name="msm_theorem_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_theorem_type_dropdown-'+_index+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
@@ -937,8 +946,9 @@ function makeTheorem()
                                 <option value="Lemma">Lemma</option>\n\
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
-                
-    var theoremTitle = $("<span class='msm_element_title'><b> THEOREM </b></span>");
+    
+    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%; margin-right: 28%"> THEOREM </b></div>');                
+    //    var theoremTitle = $("<span class='msm_element_title'><b> THEOREM </b></span>");
     var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title_input-'+_index+'" placeholder=" Title of Theorem"/>');
             
     var theoremContentWrapper = $('<div class="msm_theorem_content_containers" id="msm_theorem_content_container-'+_index+'"></div>');
@@ -976,7 +986,7 @@ function makeTheorem()
             
     clonedCurrentElement.append(theoremCloseButton);
     clonedCurrentElement.append(theoremSelectMenu);
-    clonedCurrentElement.append(theoremTitle);
+    clonedCurrentElement.append(theoremTitleContainer);
     clonedCurrentElement.append(theoremTitleField);
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(theoremDescriptionLabel);
@@ -1022,13 +1032,14 @@ function makeTheorem()
 function makeComment()
 {
     var clonedCurrentElement = $("<div></div>");
-    var commentCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
+    var commentCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event);">x</a>');
     var commentSelectMenu = $('<select name="msm_comment_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_comment_type_dropdown-'+_index+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Information">Information</option>\n\
                             </select>');
-    var commentTitle = $("<span class='msm_element_title'><b> COMMENT </b></span>");
+    var commentTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%; margin-right: 28%"> COMMENT </b></div>'); 
+    //    var commentTitle = $("<span class='msm_element_title'><b> COMMENT </b></span>");
     var commentTitleField = $('<input class="msm_unit_child_title" id="msm_comment_title_input-'+_index+'" name="msm_comment_title_input-'+_index+'" placeholder=" Title of Comment"/>');
           
     var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_comment_content_input-'+_index+'" name="msm_comment_content_input-'+_index+'"/>');
@@ -1047,7 +1058,7 @@ function makeComment()
             
     clonedCurrentElement.append(commentCloseButton);
     clonedCurrentElement.append(commentSelectMenu);
-    clonedCurrentElement.append(commentTitle);
+    clonedCurrentElement.append(commentTitleContainer);
     clonedCurrentElement.append(commentTitleField);
     clonedCurrentElement.append(commentContentField);
     clonedCurrentElement.append(subordinateContainer);
