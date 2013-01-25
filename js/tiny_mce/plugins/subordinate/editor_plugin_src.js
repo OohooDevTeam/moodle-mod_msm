@@ -249,8 +249,6 @@ function makeSubordinateDialog(ed, idNumber)
     else
     {
         $('#msm_subordinate_container-'+idNumber+" textarea").each(function() {
-            console.log($(this).attr("id"));
-            console.log(tinymce.getInstanceById($(this).attr("id")));
             if(tinymce.getInstanceById($(this).attr("id")) != null)
             {
                 tinymce.execCommand('mceFocus', false, $(this).attr("id"));  

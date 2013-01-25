@@ -74,8 +74,6 @@ function changeForm(e, id) {
         
     // erasing any previously appended children from previous choices made by the user
     $('#msm_subordinate_content_form_container-'+id+" textarea").each(function() {
-        console.log($(this).attr("id"));
-        console.log(tinymce.getInstanceById($(this).attr("id")));
         if(tinymce.getInstanceById($(this).attr("id")) != null)
         {
             tinymce.execCommand('mceFocus', false, $(this).attr("id"));  
@@ -115,18 +113,6 @@ function initInfoEditor(id)
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
     
-    //    if(tinymce.getInstanceById(titleid) != null)
-    //    {
-    //        tinymce.execCommand('mceFocus', false, titleid);  
-    //        tinymce.execCommand('mceRemoveControl', false, titleid);
-    //    }
-    //        
-    //    if(tinymce.getInstanceById(contentid) != null)
-    //    {
-    //        tinymce.execCommand('mceFocus', false, contentid);  
-    //        tinymce.execCommand('mceRemoveControl', false, contentid);
-    //    }
-    
     tinymce.settings = 
     {
         mode:"none",   
@@ -148,43 +134,6 @@ function initInfoEditor(id)
     tinymce.execCommand('mceAddControl', false, titleid);
     tinymce.execCommand('mceAddControl', false, contentid);
    
-// must remove the instance of editor that is being reinitialized, otherwise it creates multiple instances of the editor with the same id   
-//    
-//    tinyMCE.init({
-//        mode:"exact",
-//        elements: titleid,
-//        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-//        width: "100%",
-//        height: "70%",
-//        theme: "advanced",
-//        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-//        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-//        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-//        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-//        theme_advanced_toolbar_location : "top",
-//        theme_advanced_toolbar_align : "left",
-//        theme_advanced_statusbar_location : "bottom",
-//        skin : "o2k7",
-//        skin_variant : "silver"
-//    });
-//               
-//    tinyMCE.init({
-//        mode:"exact",
-//        elements: contentid,
-//        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-//        width: "100%",
-//        height: "70%",
-//        theme: "advanced",
-//        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-//        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-//        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-//        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-//        theme_advanced_toolbar_location : "top",
-//        theme_advanced_toolbar_align : "left",
-//        theme_advanced_statusbar_location : "bottom",
-//        skin : "o2k7",
-//        skin_variant : "silver"
-//    });
 }
 
 function makeInfoForm(id)
@@ -242,8 +191,6 @@ function makeInfoForm(id)
 function closeSubFormDialog(id)
 {
     $('#msm_subordinate_container-'+id+" textarea").each(function() {
-        console.log($(this).attr("id"));
-        console.log(tinymce.getInstanceById($(this).attr("id")));
         if(tinymce.getInstanceById($(this).attr("id")) != null)
         {
             tinymce.execCommand('mceFocus', false, $(this).attr("id"));  
