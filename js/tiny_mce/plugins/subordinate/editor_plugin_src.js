@@ -40,7 +40,7 @@
                     indexNumber += idNumber[i] + "-";
                 }
                     
-                indexNumber += idNumber[idNumber.length-1];               
+                indexNumber += idNumber[idNumber.length-1]; 
                 
                 makeSubordinateDialog(ed, indexNumber);
                 //               

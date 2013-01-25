@@ -375,6 +375,8 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         // swapping selected text as anchor element 
         var selectedText = ed.selection.getContent();
         
+        console.dir(selectedText);
+        
         if(ed.selection.getNode().tagName != "A")
         {
             if(infourl)
