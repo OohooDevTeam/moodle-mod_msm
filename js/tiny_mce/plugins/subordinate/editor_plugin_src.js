@@ -40,43 +40,10 @@
                     indexNumber += idNumber[i] + "-";
                 }
                     
-                indexNumber += idNumber[idNumber.length-1];
+                indexNumber += idNumber[idNumber.length-1];               
                 
-                var selected = ed.selection.getNode().nodeName;
-                
-                if(selected == 'A')
-                {
-                    var anchorid = ed.selection.getNode().id.split("-");
-                        
-                    var idInfo = '';
-                        
-                    for(var i=1; i < anchorid.length-1; i++)
-                    {
-                        idInfo += anchorid[i]+ "-";
-                    }
-                    idInfo += anchorid[anchorid.length-1];
-                }
-                
-//                var existingDialog = document.getElementById("msm_subordinate_info_dialog-"+idInfo);
-//                
-//                if(existingDialog == null)
-//                {
-                    makeSubordinateDialog(ed, indexNumber);
-//                }
-//                else if(existingDialog != null)
-//                {
-//                    console.log("removing editor");
-//                    console.log(indexNumber);
-//                    var titleid = "msm_subordinate_infoTitle-"+indexNumber;
-//                    var contentid = "msm_subordinate_infoContent-"+indexNumber;
-//                                        
-//                    tinymce.execCommand('mceRemoveControl', false, titleid);
-//                    tinymce.execCommand('mceRemoveControl', false, contentid);
-//
-//                    //                    $("#msm_subordinate_info_dialog-"+indexNumber).empty().remove();
-//    
-//                    makeSubordinateDialog(ed, indexNumber);
-//                }
+                makeSubordinateDialog(ed, indexNumber);
+                //               
                          
                 init(ed.selection.getContent(), indexNumber);
                 
@@ -281,7 +248,18 @@ function makeSubordinateDialog(ed, idNumber)
     }
     else
     {
+        $('#msm_subordinate_container-'+idNumber+" textarea").each(function() {
+            console.log($(this).attr("id"));
+            console.log(tinymce.getInstanceById($(this).attr("id")));
+            if(tinymce.getInstanceById($(this).attr("id")) != null)
+            {
+                tinymce.execCommand('mceFocus', false, $(this).attr("id"));  
+                tinymce.execCommand('mceRemoveControl', false, $(this).attr("id"));
+            }
+        });
         $('#msm_subordinate_container-'+idNumber).empty();
         container.appendChild(dialogwhole);
     }
+    
+    
 }

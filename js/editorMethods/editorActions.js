@@ -366,11 +366,13 @@ function addrefTheoremContent(event, idNumber)
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
             
             $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
         },
         stop: function(event, ui)
@@ -491,7 +493,8 @@ function addrefTheoremPart(event, idNumber)
     
     if(tinymce.getInstanceById("msm_theoremref_part_content-"+idNumber+"-"+newId))
     {
-        tinymce.execCommand("mceRemoveControl", false, "msm_theoremref_part_content-"+idNumber+"-"+newId);
+        tinyMCE.execCommand('mceFocus', false, "msm_theoremref_part_content-"+idNumber+"-"+newId);          
+        tinymce.execCommand('mceRemoveControl', true, "msm_theoremref_part_content-"+idNumber+"-"+newId);
     }
         
     tinymce.execCommand("mceAddControl", false, "msm_theoremref_part_content-"+idNumber+"-"+newId);
@@ -534,7 +537,8 @@ function addrefTheoremPart(event, idNumber)
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
         },
         stop: function(event, ui)

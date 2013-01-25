@@ -73,6 +73,15 @@ function changeForm(e, id) {
     //-----------------------------end of external url form---------------------------------//
         
     // erasing any previously appended children from previous choices made by the user
+    $('#msm_subordinate_content_form_container-'+id+" textarea").each(function() {
+        console.log($(this).attr("id"));
+        console.log(tinymce.getInstanceById($(this).attr("id")));
+        if(tinymce.getInstanceById($(this).attr("id")) != null)
+        {
+            tinymce.execCommand('mceFocus', false, $(this).attr("id"));  
+            tinymce.execCommand('mceRemoveControl', false, $(this).attr("id"));
+        }
+    });
     if(container.hasChildNodes())
     {
         while(container.firstChild)
@@ -106,8 +115,17 @@ function initInfoEditor(id)
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
     
-    tinymce.execCommand('mceRemoveControl', false, titleid);
-    tinymce.execCommand('mceRemoveControl', false, contentid);
+    //    if(tinymce.getInstanceById(titleid) != null)
+    //    {
+    //        tinymce.execCommand('mceFocus', false, titleid);  
+    //        tinymce.execCommand('mceRemoveControl', false, titleid);
+    //    }
+    //        
+    //    if(tinymce.getInstanceById(contentid) != null)
+    //    {
+    //        tinymce.execCommand('mceFocus', false, contentid);  
+    //        tinymce.execCommand('mceRemoveControl', false, contentid);
+    //    }
     
     tinymce.settings = 
     {
@@ -223,6 +241,16 @@ function makeInfoForm(id)
 
 function closeSubFormDialog(id)
 {
+    $('#msm_subordinate_container-'+id+" textarea").each(function() {
+        console.log($(this).attr("id"));
+        console.log(tinymce.getInstanceById($(this).attr("id")));
+        if(tinymce.getInstanceById($(this).attr("id")) != null)
+        {
+            tinymce.execCommand('mceFocus', false, $(this).attr("id"));  
+            tinymce.execCommand('mceRemoveControl', false, $(this).attr("id"));
+        }
+    });
+    
     $('#msm_subordinate_container-'+id).empty();
     $('#msm_subordinate_container-'+id).dialog("close");
 }
@@ -286,7 +314,6 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     
     $("#msm_subordinate-"+id+" textarea").each(function(){ 
         var childnodes = tinymce.get(this.id).getBody().childNodes;    
-        alert("each text area");
         
         var length = childnodes.length;
          
