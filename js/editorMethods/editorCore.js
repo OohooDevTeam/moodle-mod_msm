@@ -393,8 +393,17 @@ function resetUnit()
  */
 function deleteElement(e)
 {
+        console.log(e);
+
+    var currentElement = e.target.parentElement.id;
+    
+    if(currentElement == '')
+        {
+            // in firefox, sometimes the target ends up being the textnode "x" instead of the <a> element
+            currentElement = e.target.parentElement.parentElement.id;
+        }
     //e.rangeParent always is the <a> element that the deleteElement was triggered at
-    var currentElement = e.rangeParent.parentElement.parentElement.id
+//    var currentElement = e.rangeParent.parentElement.parentElement.id;    
     
     $("#"+currentElement+" textarea").each(function() {
         if(tinymce.getInstanceById($(this).attr("id")) != null)
