@@ -187,6 +187,16 @@ class EditorBlock extends EditorElement
         return $this;
     }
 
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
+
 }
 
 ?>

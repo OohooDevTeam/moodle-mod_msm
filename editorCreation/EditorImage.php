@@ -41,6 +41,16 @@ class EditorImage extends EditorElement
         
         $compData = new stdClass();
     }
+
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
     
     
 }

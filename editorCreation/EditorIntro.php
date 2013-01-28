@@ -56,6 +56,16 @@ class EditorIntro extends EditorElement
         $this->compid = $siblingid;
     }
 
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
+
 }
 
 ?>

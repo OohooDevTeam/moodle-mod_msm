@@ -375,20 +375,33 @@ function createSubordinateData(id, sId, ed, subResultContainer)
         // swapping selected text as anchor element 
         var selectedText = ed.selection.getContent();
         
-        console.dir(selectedText);
+        var selectedNode = null;
         
-        if(ed.selection.getNode().tagName != "A")
+        if($.browser.msie)
+        {
+            selectedNode = ed.selection.getNode().childNodes[0].tagName;
+        }
+        else
+        {
+            selectedNode = ed.selection.getNode().tagName;
+        }
+       
+        if(selectedNode != "A")
         {
             if(infourl)
             { 
-                ed.selection.setContent("<a href='http://"+infourl+"' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"' target='_blank'>"+selectedText+"</a>");
-
-    
+                ed.selection.setContent("<a href='http://"+infourl+"' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"' target='_blank'>"+selectedText+"</a>");    
             }
             else
             {
+//                console.dir("before switch at non anchor element");
+//                console.dir(ed.selection.getNode());
+                
                 var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"'>"+selectedText+"</a>";
                 ed.selection.setContent(newContent); 
+                
+//                 console.dir("after switch at non anchor element");
+//                 console.dir(ed.selection.getContent());
                 
             }
         }

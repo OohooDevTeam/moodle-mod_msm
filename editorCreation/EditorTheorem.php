@@ -155,6 +155,16 @@ class EditorTheorem extends EditorElement
 //        echo "insert theorem";
     }
 
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
+
 }
 
 ?>

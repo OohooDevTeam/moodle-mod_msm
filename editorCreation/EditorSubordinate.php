@@ -78,6 +78,16 @@ class EditorSubordinate extends EditorElement
 //        echo "insert subordinate";
     }
 
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
+
 }
 
 ?>

@@ -140,6 +140,16 @@ class EditorStatementTheorem extends EditorElement
         }
     }
 
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
+
 }
 
 ?>

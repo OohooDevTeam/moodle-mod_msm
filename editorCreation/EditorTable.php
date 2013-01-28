@@ -52,6 +52,16 @@ class EditorTable extends EditorElement
         
         $this->compid = $DB->insert_record('msm_compositor', $compData);
     }
+
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
     
     
 }

@@ -372,7 +372,7 @@ function enableEditorFunction()
         }
     });    
                 
-    $("#msm_child_appending_area").disableSelection();
+//    $("#msm_child_appending_area").disableSelection();
                     
 }
 

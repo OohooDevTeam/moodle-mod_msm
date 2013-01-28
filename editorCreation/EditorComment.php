@@ -21,7 +21,7 @@ class EditorComment extends EditorElement
     public $compid;
     public $children = array(); //associate
     public $subordinates = array();
-    
+
     function __construct()
     {
         $this->tablename = "msm_comment";
@@ -43,8 +43,8 @@ class EditorComment extends EditorElement
             if ($_POST['msm_commentref_content_input-' . $idInfo[0]] != '')
             {
                 $this->content = $_POST['msm_commentref_content_input-' . $idInfo[0]];
-                
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
@@ -66,8 +66,8 @@ class EditorComment extends EditorElement
             if ($_POST['msm_comment_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_comment_content_input-' . $idNumber];
-                
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
@@ -125,13 +125,73 @@ class EditorComment extends EditorElement
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;
         }
-        
+
         $subordinate_sibling = 0;
-        foreach($this->subordinates as $subordinate)
+        foreach ($this->subordinates as $subordinate)
         {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
+    }
+
+    public function displayData()
+    {
+        $htmlContent = '';
+
+        $htmlContent .= "<div id='copied_msm_comment-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<select id='msm_comment_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_comment_type_dropdown-$this->compid' disabled='disabled'>";
+
+        switch ($this->type)
+        {
+            case "Comment":
+                $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Information'>Information</option>";
+                break;
+            case "Remark":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Remark' selected='selected'>Remark</option>";
+                $htmlContent .= "<option value='Information'>Information</option>";
+                break;
+            case "Information":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Information' selected='selected'>Information</option>";
+                break;
+        }
+        $htmlContent .= "</select>";
+        
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 30%;'> COMMENT </b>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<input id='msm_comment_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_comment_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "<div id='msm_comment_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= $this->content;
+        $htmlContent .= "</div>";
+        $htmlContent .= "</div>";
+
+        return $htmlContent;
+    }
+
+    public function loadData($compid)
+    {
+        global $DB;
+
+        $commentCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
+        $this->compid = $compid;
+        $this->id = $commentCompRecord->unit_id;
+
+        $commentRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
+        $this->type = $commentRecord->comment_type;
+        $this->title = $commentRecord->caption;
+        $this->content = $commentRecord->comment_content;
+
+        // need to process content to find all <a> and match with subordinate data..etc
+        // need to process child elements
+
+        return $this;
     }
 
 }

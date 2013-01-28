@@ -16,6 +16,8 @@ abstract class EditorElement
     abstract function getFormData($idNumber, $position);
 
     abstract function insertData($parentid, $siblingid, $msmid);
+    abstract function loadData($compid);
+    abstract function displayData();
 
     function processContent($oldContent)
     {

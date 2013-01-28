@@ -42,6 +42,9 @@
                     
                 indexNumber += idNumber[idNumber.length-1]; 
                 
+//                console.dir("what is selected?");
+//                console.dir(ed.selection.getContent());
+//                
                 makeSubordinateDialog(ed, indexNumber);
                 //               
                          

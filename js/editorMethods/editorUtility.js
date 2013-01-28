@@ -48,8 +48,11 @@ function insertUnitStructure(dbId)
             },
             success: function(data)
             {
+                // dbInfo is all data making up the one unit in HTML format
                 dbInfo = JSON.parse(data);                
                 console.log(dbInfo);
+                // need to process the info to append appropriate domElements to correct parent elements
+//                processUnitData(dbInfo); // need to also change the unit title --> need to get value of label in title and get unitName and replace <h2> under middle editor panel
             },
             error: function(data)
             {
@@ -68,6 +71,9 @@ function insertUnitStructure(dbId)
 function newUnit()
 {
     $("#msm_child_appending_area").empty();
+    
+    $("#msm_unit_title").val('');
+    $("#msm_unit_description_input").val('');
     
     $("#msm_unit_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");
@@ -118,9 +124,7 @@ function newUnit()
                 $(this).sortable("refresh");
             });
         }
-    });    
-                
-    $("#msm_child_appending_area").disableSelection();
+    });                    
     
     $("#msm_editor_save").click(function(event) { 
         //         prevents navigation to msmUnitForm.php
@@ -130,3 +134,9 @@ function newUnit()
             
     });
 }
+
+function saveComp()
+{
+    
+}
+

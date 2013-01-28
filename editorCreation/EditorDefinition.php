@@ -141,6 +141,16 @@ class EditorDefinition extends EditorElement
 //        echo "insert def";
     }
 
+    public function displayData()
+    {
+        
+    }
+
+    public function loadData($compid)
+    {
+        
+    }
+
 }
 
 ?>
