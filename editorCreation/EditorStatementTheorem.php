@@ -31,8 +31,11 @@ class EditorStatementTheorem extends EditorElement
         $this->position = $position;
 
         $idInfo = explode("|", $idNumber);
+
         if (sizeof($idInfo) > 1)
         {
+
+
             if ($_POST["msm_theoremref_content_input-" . $idInfo[0]] != '')
             {
                 $this->content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
@@ -55,17 +58,9 @@ class EditorStatementTheorem extends EditorElement
             {
                 if (preg_match($partmatch, $id))
                 {
-                    $indexNumber = explode("-", $id);
-                    
-                    $newId = '';
-                    for($i = 1; $i < sizeof($indexNumber)-1; $i++)
-                    {
-                        $newId .= $indexNumber[$i] . "-";
-                    }
-                    $newId .= $indexNumber[sizeof($indexNumber)-1] . "|ref";
-//                    $idParam = $id . "|ref";
+                    $idParam = $idInfo[0] . "|ref";
                     $partTheorem = new EditorPartTheorem();
-                    $partTheorem->getFormData($newId, $i);
+                    $partTheorem->getFormData($idParam, $i);
                     $this->children[] = $partTheorem;
                     $i++;
                 }
@@ -87,7 +82,7 @@ class EditorStatementTheorem extends EditorElement
                 $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
             }
 
-            $partmatch = "/^msm_theorem_part_content-$idNumber-.*/";
+            $partmatch = "/^msm_theorem_part_content-$idNumber-\d+$/";
 
             $i = 0;
 
@@ -95,8 +90,17 @@ class EditorStatementTheorem extends EditorElement
             {
                 if (preg_match($partmatch, $id))
                 {
+                    $indexNumber = explode("-", $id);
+
+                    $newId = '';
+                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
+                    {
+                        $newId .= $indexNumber[$i] . "-";
+                    }
+                    $newId .= $indexNumber[sizeof($indexNumber) - 1];
+
                     $partTheorem = new EditorPartTheorem();
-                    $partTheorem->getFormData($id, $i);
+                    $partTheorem->getFormData($newId, $i);
                     $this->children[] = $partTheorem;
                     $i++;
                 }
@@ -141,13 +145,35 @@ class EditorStatementTheorem extends EditorElement
     }
 
     public function displayData()
-    {
+    {        
+        $id = $this->compid + "-" + $this->id;
         
+        $htmlContent = '';
+        
+        $htmlContent .= "<div id='msm_theorem_statement_container-$id' class='msm_theorem_statement_containers'>";
+        $htmlContent .= "<div id='msm_theorem_statement_title_container-$id' class='msm_theorem_statement_title_containers'>";
+        $htmlContent .= "<b> Theorem Content </b>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<div id='msm_theorem_content_input-$id' class='msm_editor_content'>";
+        $htmlContent .= $this->content;
+        $htmlContent .= "</div>";
+        $htmlContent .= "</div>";
+
+        return $htmlContent;
     }
 
     public function loadData($compid)
     {
-        
+        global $DB;
+
+        $statementCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+        $this->compid = $compid;
+        $this->id = $statementCompRecord->unit_id;
+
+        $statementRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+        $this->content = $statementRecord->statement_content;
+
+        return $this;
     }
 
 }

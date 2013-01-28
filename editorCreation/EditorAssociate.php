@@ -35,17 +35,25 @@ class EditorAssociate extends EditorElement
         foreach ($_POST as $id => $value)
         {
             if (preg_match($infomatch, $id))
-            {                
+            {
                 $idInfo = explode("-", $id);
-                $indexNumber = $idInfo[1] . "-" . $idInfo[2];                
+
+                $newId = '';
+                for ($i = 1; $i < sizeof($idInfo) - 1; $i++)
+                {
+                    $newId .= $idInfo[$i] . "-";
+                }
+                $newId .= $idInfo[sizeof($idInfo) - 1];
+
+//                $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                 $info = new EditorInfo();
-                $info->getFormData($indexNumber, $i);
+                $info->getFormData($newId, $i);
                 $this->infos[] = $info;
 
                 $i++;
             }
         }
-        
+
         return $this;
     }
 

@@ -34,46 +34,42 @@ class EditorPartTheorem extends EditorElement
         $idParam = explode("|", $idNumber);
 
         if (sizeof($idParam) > 1)
-        {
+        {//           
             $this->caption = $_POST['msm_theoremref_part_title-' . $idParam[0]];
 
-            if ($_POST['msm_theoremref_part_content-' .  $idParam[0]] != '')
+            if ($_POST['msm_theoremref_part_content-' . $idParam[0]] != '')
             {
-                $this->content = $_POST['msm_theoremref_part_content-' .  $idParam[0]];
-                
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                $this->content = $_POST['msm_theoremref_part_content-' . $idParam[0]];
+
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
-                
             }
             else
             {
-                $this->errorArray[] = 'msm_theoremref_part_content-' .  $idParam[0] . '_ifr';
+                $this->errorArray[] = 'msm_theoremref_part_content-' . $idParam[0] . '_ifr';
             }
         }
         else if (sizeof($idParam) == 1)
         {
-            $idInfo = explode("-", $idNumber);
 
-            $this->caption = $_POST['msm_theorem_part_title-' . $idInfo[1] . '-' . $idInfo[2]];
+            $this->caption = $_POST['msm_theorem_part_title-' . $idNumber];
 
-            if ($_POST['msm_theorem_part_content-' . $idInfo[1] . '-' . $idInfo[2]] != '')
+            if ($_POST['msm_theorem_part_content-' . $idNumber] != '')
             {
-                $this->content = $_POST['msm_theorem_part_content-' . $idInfo[1] . '-' . $idInfo[2]];
-                
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                $this->content = $_POST['msm_theorem_part_content-' . $idNumber];
+
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
             }
             else
             {
-                $this->errorArray[] = 'msm_theorem_part_content-' . $idInfo[1] . '-' . $idInfo[2] . '_ifr';
+                $this->errorArray[] = 'msm_theorem_part_content-' . $idNumber . '_ifr';
             }
         }
-        
-//        print_object($this);
 
         return $this;
     }
@@ -99,9 +95,9 @@ class EditorPartTheorem extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
-        
+
         $subordinate_sibling = 0;
-        foreach($this->subordinates as $subordinate)
+        foreach ($this->subordinates as $subordinate)
         {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
