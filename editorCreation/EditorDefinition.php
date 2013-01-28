@@ -35,7 +35,7 @@ class EditorDefinition extends EditorElement
     function getFormData($idNumber, $position)
     {
         $this->position = $position;
-        
+
         $idInfo = explode("|", $idNumber);
 
         // processing definitions as reference material
@@ -50,7 +50,7 @@ class EditorDefinition extends EditorElement
                 $this->content = $_POST['msm_defref_content_input-' . $idInfo[0]];
 
                 // grab all anchored elements in content --> it is only from subordinate
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
@@ -73,7 +73,7 @@ class EditorDefinition extends EditorElement
                 $this->content = $_POST['msm_def_content_input-' . $idNumber];
 
                 // grab all anchored elements in content --> it is only from subordinate
-                foreach($this->processSubordinate($this->content) as $key=>$subordinates)
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
@@ -111,6 +111,7 @@ class EditorDefinition extends EditorElement
         $data->def_type = $this->type;
         $data->caption = $this->title;
         $data->def_content = $this->content;
+        $data->description = $this->description;
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
@@ -137,18 +138,99 @@ class EditorDefinition extends EditorElement
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
-        
-//        echo "insert def";
     }
 
     public function displayData()
     {
-        
+        $htmlContent = '';
+
+        $htmlContent .= "<div id='copied_msm_def-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<select id='msm_def_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_def_type_dropdown-$this->compid' disabled='disabled'>";
+
+        switch ($this->type)
+        {
+            case "Definition":
+                $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
+                $htmlContent .= "<option value='Notation'>Notation</option>";
+                $htmlContent .= "<option value='Convention'>Convention</option>";
+                $htmlContent .= "<option value='Agreement'>Agreement</option>";
+                $htmlContent .= "<option value='Axiom'>Axiom</option>";
+                $htmlContent .= "<option value='Terminology'>Terminology</option>";
+                break;
+            case "Notation":
+                $htmlContent .= "<option value='Definition'>Definition</option>";
+                $htmlContent .= "<option value='Notation' selected='selected'>Notation</option>";
+                $htmlContent .= "<option value='Convention'>Convention</option>";
+                $htmlContent .= "<option value='Agreement'>Agreement</option>";
+                $htmlContent .= "<option value='Axiom'>Axiom</option>";
+                $htmlContent .= "<option value='Terminology'>Terminology</option>";
+                break;
+            case "Convention":
+                $htmlContent .= "<option value='Definition'>Definition</option>";
+                $htmlContent .= "<option value='Notation'>Notation</option>";
+                $htmlContent .= "<option value='Convention' selected='selected'>Convention</option>";
+                $htmlContent .= "<option value='Agreement'>Agreement</option>";
+                $htmlContent .= "<option value='Axiom'>Axiom</option>";
+                $htmlContent .= "<option value='Terminology'>Terminology</option>";
+                break;
+            case "Agreement":
+                $htmlContent .= "<option value='Definition'>Definition</option>";
+                $htmlContent .= "<option value='Notation'>Notation</option>";
+                $htmlContent .= "<option value='Convention'>Convention</option>";
+                $htmlContent .= "<option value='Agreement' selected='selected'>Agreement</option>";
+                $htmlContent .= "<option value='Axiom'>Axiom</option>";
+                $htmlContent .= "<option value='Terminology'>Terminology</option>";
+                break;
+            case "Axiom":
+                $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
+                $htmlContent .= "<option value='Notation'>Notation</option>";
+                $htmlContent .= "<option value='Convention'>Convention</option>";
+                $htmlContent .= "<option value='Agreement'>Agreement</option>";
+                $htmlContent .= "<option value='Axiom' selected='selected'>Axiom</option>";
+                $htmlContent .= "<option value='Terminology'>Terminology</option>";
+                break;
+            case "Terminology":
+                $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
+                $htmlContent .= "<option value='Notation'>Notation</option>";
+                $htmlContent .= "<option value='Convention'>Convention</option>";
+                $htmlContent .= "<option value='Agreement'>Agreement</option>";
+                $htmlContent .= "<option value='Axiom'>Axiom</option>";
+                $htmlContent .= "<option value='Terminology' selected='selected'>Terminology</option>";
+                break;
+        }
+        $htmlContent .= "</select>";
+
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 30%;'> DEFINITION </b>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<input id='msm_def_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_def_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= $this->content;
+        $htmlContent .= "</div>";
+        $htmlContent .= "<label id='msm_def_description_label-$this->compid' class='msm_child_description_labels' for='msm_def_description_label-$this->compid'>Description: </label>";
+        $htmlContent .= "<input id='msm_def_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_def_description_input-$this->compid'/>";
+        $htmlContent .= "</div>";
+
+        return $htmlContent;
     }
 
     public function loadData($compid)
     {
-        
+        global $DB;
+
+        $defCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
+        $this->compid = $compid;
+        $this->id = $defCompRecord->unit_id;
+
+        $defRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
+        $this->type = $defRecord->def_type;
+        $this->title = $defRecord->caption;
+        $this->description = $defRecord->description;
+        $this->content = $defRecord->def_content;
+
+        return $this;
     }
 
 }

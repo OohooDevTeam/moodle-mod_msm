@@ -106,6 +106,7 @@ class EditorComment extends EditorElement
         $data->comment_type = $this->type;
         $data->caption = $this->title;
         $data->comment_content = $this->content;
+        $data->description = $this->description;
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
@@ -168,6 +169,8 @@ class EditorComment extends EditorElement
         $htmlContent .= "<div id='msm_comment_content_input-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
+        $htmlContent .= "<label id='msm_comment_description_label-$this->compid' class='msm_child_description_labels' for='msm_comment_description_input-$this->compid'>Description: </label>";
+        $htmlContent .= "<input id='msm_comment_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_comment_description_input-$this->compid'/>";
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -187,6 +190,7 @@ class EditorComment extends EditorElement
         $this->type = $commentRecord->comment_type;
         $this->title = $commentRecord->caption;
         $this->content = $commentRecord->comment_content;
+        $this->description = $commentRecord->description;
 
         // need to process content to find all <a> and match with subordinate data..etc
         // need to process child elements

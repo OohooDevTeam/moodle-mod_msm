@@ -52,7 +52,7 @@ function insertUnitStructure(dbId)
                 dbInfo = JSON.parse(data);                
                 console.log(dbInfo);
                 // need to process the info to append appropriate domElements to correct parent elements
-//                processUnitData(dbInfo); // need to also change the unit title --> need to get value of label in title and get unitName and replace <h2> under middle editor panel
+                processUnitData(dbInfo, dbId); // need to also change the unit title --> need to get value of label in title and get unitName and replace <h2> under middle editor panel
             },
             error: function(data)
             {
@@ -133,6 +133,19 @@ function newUnit()
         submitForm();
             
     });
+}
+
+function processUnitData(htmlData, idpair)
+{
+    $('#msm_unit_form').empty();
+    
+    $('#msm_unit_form').append(htmlData);
+    
+//    var titleLabel = $('#msm_unit_title_label-'+idpair).val();
+//    
+//    var titleLabelInfo = titleLabel.split("-");
+//    
+//    $("#msm_editor_middle > h2").val(titleLabelInfo[0] + " Design Area");
 }
 
 function saveComp()

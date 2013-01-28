@@ -95,6 +95,9 @@ class EditorUnit extends EditorElement
                     $this->children[] = $comment;
                     break;
                 case "msm_def":
+                    $def = new EditorDefinition();
+                    $def->loadData($child->id);
+                    $this->children[] = $def;
                     break;
                 case "msm_theorem":
                     break;
@@ -141,10 +144,10 @@ class EditorUnit extends EditorElement
         
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label-$id' class='msm_unit_title_labels' for='msm_unit_title-$id'>$this->unitName title: </label>";
-        $htmlContent .= "<input id='msm_unit_title-$id' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title-$id' value='$this->title'/>";
+        $htmlContent .= "<input id='msm_unit_title-$id' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title-$id' value='$this->title' disabled='disabled'/>";
         
         $htmlContent .= "<label id='msm_unit_description_label-$id' class='msm_unit_description_labels' for='msm_unit_description_input-$id'>Description: </label>";
-        $htmlContent .= "<input id='msm_unit_description_input-$id' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input-$id' value='$this->description'/>";
+        $htmlContent .= "<input id='msm_unit_description_input-$id' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input-$id' value='$this->description'  disabled='disabled'/>";
         $htmlContent .= "</div>";
                             
         $htmlContent .= "<div id='msm_editor_middle_droparea'>";

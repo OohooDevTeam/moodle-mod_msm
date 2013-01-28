@@ -2151,7 +2151,22 @@ function xmldb_msm_upgrade($oldversion)
     }
 
 
+    if ($oldversion < 2013012800)
+    {
 
+        // Define field description to be added to msm_comment
+        $table = new xmldb_table('msm_comment');
+        $field = new xmldb_field('description', XMLDB_TYPE_TEXT, null, null, null, null, null, 'comment_content');
+
+        // Conditionally launch add field description
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2013012800, 'msm');
+    }
 
 
     // And that's all. Please, examine and understand the 3 example blocks above. Also
