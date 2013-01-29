@@ -182,7 +182,7 @@ class EditorDefinition extends EditorElement
                 $htmlContent .= "<option value='Terminology'>Terminology</option>";
                 break;
             case "Axiom":
-                $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
+                $htmlContent .= "<option value='Definition'>Definition</option>";
                 $htmlContent .= "<option value='Notation'>Notation</option>";
                 $htmlContent .= "<option value='Convention'>Convention</option>";
                 $htmlContent .= "<option value='Agreement'>Agreement</option>";
@@ -190,7 +190,7 @@ class EditorDefinition extends EditorElement
                 $htmlContent .= "<option value='Terminology'>Terminology</option>";
                 break;
             case "Terminology":
-                $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
+                $htmlContent .= "<option value='Definition'>Definition</option>";
                 $htmlContent .= "<option value='Notation'>Notation</option>";
                 $htmlContent .= "<option value='Convention'>Convention</option>";
                 $htmlContent .= "<option value='Agreement'>Agreement</option>";
@@ -209,6 +209,15 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_def_description_label-$this->compid' class='msm_child_description_labels' for='msm_def_description_label-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_def_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_def_description_input-$this->compid'/>";
+        
+        $htmlContent .= "<div id='msm_associate_container-$this->compid' class='msm_associate_containers'>";
+        foreach($this->children as $associate)
+        {
+            $htmlContent .= $associate->displayData();
+        }
+        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"def\")' disabled='disabled'/>";
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -229,6 +238,23 @@ class EditorDefinition extends EditorElement
         $this->title = $defRecord->caption;
         $this->description = $defRecord->description;
         $this->content = $defRecord->def_content;
+        
+        $childRecords = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        
+        foreach($childRecords as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
+            
+            switch($childTable->tablename)
+            {
+                case "msm_associate":
+                    $associate = new EditorAssociate();
+                    $associate->loadData($child->id);
+                    $this->children[] = $associate;
+                    break;
+                //add subordinate later
+            }
+        }
 
         return $this;
     }

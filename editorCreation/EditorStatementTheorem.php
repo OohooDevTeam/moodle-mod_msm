@@ -153,23 +153,23 @@ class EditorStatementTheorem extends EditorElement
 
     public function displayData()
     {        
-        $id = $this->compid + "-" + $this->id;
+//        $id = $this->compid + "-" + $this->id;
         
         $htmlContent = '';
         
-        $htmlContent .= "<div id='msm_theorem_statement_container-$id' class='msm_theorem_statement_containers'>";
-        $htmlContent .= "<div id='msm_theorem_statement_title_container-$id' class='msm_theorem_statement_title_containers'>";
+        $htmlContent .= "<div id='msm_theorem_statement_container-$this->compid' class='msm_theorem_statement_containers'>";
+        $htmlContent .= "<div id='msm_theorem_statement_title_container-$this->compid' class='msm_theorem_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<div id='msm_theorem_content_input-$id' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_theorem_content_input-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        $htmlContent .= "<div id='msm_theorem_part_droparea-$id' class='msm_theorem_part_dropareas'>";
+        $htmlContent .= "<div id='msm_theorem_part_droparea-$this->compid' class='msm_theorem_part_dropareas'>";
         foreach($this->children as $partTheorem)
         {
             $htmlContent .= $partTheorem->displayData();
         }
-        $htmlContent .= "<input id='msm_theorem_part_button-$id' class='msm_theorem_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event, $id)' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theorem_part_button-$this->compid' class='msm_theorem_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event, $this->compid)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
 
@@ -187,7 +187,7 @@ class EditorStatementTheorem extends EditorElement
         $statementRecord = $DB->get_record($this->tablename, array('id' => $this->id));
         $this->content = $statementRecord->statement_content;
         
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid));
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
         
         foreach($childElements as $child)
         {

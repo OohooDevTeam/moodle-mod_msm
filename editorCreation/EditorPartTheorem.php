@@ -106,15 +106,15 @@ class EditorPartTheorem extends EditorElement
 
     public function displayData()
     {
-        $id = $this->compid . "-" . $this->id;
+//        $id = $this->compid . "-" . $this->id;
         
         $htmlContent = '';        
-        $htmlContent .= "<div id='msm_theorem_part_container-$id' class='msm_theorem_child'>";
-        $htmlContent .= "<div id='msm_theorem_part_title_container-$id' class='msm_theorem_part_title_containers'>";        
+        $htmlContent .= "<div id='msm_theorem_part_container-$this->compid' class='msm_theorem_child'>";
+        $htmlContent .= "<div id='msm_theorem_part_title_container-$this->compid' class='msm_theorem_part_title_containers'>";        
         $htmlContent .= "</div>";
-        $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$id'>Part Theorem title: </label>";
-        $htmlContent .= "<input id='msm_theorem_part_title-$id' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$id' disabled='disabled'/>";
-        $htmlContent .= "<div id='msm_theorem_part_content-$id' class='msm_editor_content'>";
+        $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$this->compid'>Part Theorem title: </label>";
+        $htmlContent .= "<input id='msm_theorem_part_title-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$this->compid' disabled='disabled'/>";
+        $htmlContent .= "<div id='msm_theorem_part_content-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";

@@ -166,13 +166,36 @@ class EditorInfo extends EditorElement
 
     public function displayData()
     {
+        $htmlContent = '';
         
+        $htmlContent .= "<label for='msm_info_title-$this->compid'>title: </label>";
+        $htmlContent .= "<div id='msm_info_title-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= $this->caption;
+        $htmlContent .= "</div>";
+        $htmlContent .= "<label for='msm_info_content-$this->compid'>content: </label>";
+        $htmlContent .= "<div id='msm_info_content-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= $this->content;
+        $htmlContent .= "</div>";
+        
+        return $htmlContent;
     }
 
 
     public function loadData($compid)
     {
+        global $DB;
         
+        $infoCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+        
+        $this->compid = $compid;
+        $this->id = $infoCompRecord->unit_id;
+        
+        $infoRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
+        
+        $this->caption = $infoRecord->caption;
+        $this->content = $infoRecord->info_content;
+        
+        return $this;
     }
 
 }

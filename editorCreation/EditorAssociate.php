@@ -85,12 +85,117 @@ class EditorAssociate extends EditorElement
 
     public function displayData()
     {
+//        $id = $this->compid . "-" . $this->id;
+        $htmlContent = '';
         
+        $htmlContent .= "<div id='msm_associate_childs-$this->compid' class='msm_associate_childs'>";
+        $htmlContent .= "<div id='msm_associate_info_header-$this->compid' class='msm_associate_info_headers'>";
+        $htmlContent .= "<b> ASSOCIATED INFORMATION </b>";
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div class='msm_associate_optionarea'>";
+        $htmlContent .= "<span class='msm_associate_option_label'>Type of information: </span>";
+        $htmlContent .= "<select id='msm_associate_dropdown-$this->compid' class='msm_associated_dropdown' name='msm_associate_dropdown-$this->compid' disabled='disabled'>";
+         switch ($this->type)
+        {
+            case "Comment":
+                $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
+                $htmlContent .= "<option value='Explanation'>Explanation</option>";
+                $htmlContent .= "<option value='Example'>Example</option>";
+                $htmlContent .= "<option value='Illustration'>Illustration</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Exploration'>Exploration</option>";
+                break;
+            case "Explanation":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Explanation' selected='selected'>Explanation</option>";
+                $htmlContent .= "<option value='Example'>Example</option>";
+                $htmlContent .= "<option value='Illustration'>Illustration</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Exploration'>Exploration</option>";
+                break;
+            case "Example":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Explanation'>Explanation</option>";
+                $htmlContent .= "<option value='Example' selected='selected'>Example</option>";
+                $htmlContent .= "<option value='Illustration'>Illustration</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Exploration'>Exploration</option>";
+                break;
+            case "Illustration":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Explanation'>Explanation</option>";
+                $htmlContent .= "<option value='Example'>Example</option>";
+                $htmlContent .= "<option value='Illustration' selected='selected'>Illustration</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Exploration'>Exploration</option>";
+                break;
+            case "Remark":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Explanation'>Explanation</option>";
+                $htmlContent .= "<option value='Example'>Example</option>";
+                $htmlContent .= "<option value='Illustration'>Illustration</option>";
+                $htmlContent .= "<option value='Remark' selected='selected'>Remark</option>";
+                $htmlContent .= "<option value='Exploration'>Exploration</option>";
+                break;
+            case "Exploration":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Explanation'>Explanation</option>";
+                $htmlContent .= "<option value='Example'>Example</option>";
+                $htmlContent .= "<option value='Illustration'>Illustration</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Exploration' selected='selected'>Exploration</option>";
+                break;
+        }
+        $htmlContent .= "</select>";
+        $htmlContent .= "</div>";
+        
+        foreach($this->infos as $info)
+        {
+            $htmlContent .= $info->displayData();
+        }
+        
+        $htmlContent .= "<div id='msm_associate_reftype_option-$this->compid' class='msm_associate_reftype_optionarea'>";
+        //where the references go?
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "</div>";
+        
+        return $htmlContent;
     }
 
     public function loadData($compid)
     {
+        global $DB;
         
+        $associateCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+        
+        $this->compid = $compid;
+        $this->id = $associateCompRecord->unit_id;
+        
+        $associateRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
+        
+        $this->type = $associateRecord->description;
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+                
+        foreach($childElements as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
+            
+            switch($childTable->tablename)
+            {
+                case "msm_info":
+                    $info = new EditorInfo();
+                    $info->loadData($child->id);
+                    $this->infos[] = $info;
+                    break;
+                default:  // debugging case
+                    echo "associate child element that is not info" + $childTable->tablename;
+            }
+        }
+        
+        return $this;       
     }
 
 }
