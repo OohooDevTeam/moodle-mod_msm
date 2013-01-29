@@ -108,14 +108,11 @@ class EditorUnit extends EditorElement
                     $intro = new EditorIntro();
                     $intro->loadData($child->id);
                     $this->children[] = $intro;
-                    break;
-                case "msm_content":
-                    break;
-                case "msm_table":
-                    break;
-                case "msm_para":
-                    break;
+                    break;                
                 case "msm_unit":
+                    $block = new EditorBlock();
+                    $block->loadData($child->id);
+                    $this->children[] = $block;
                     break;
 //                default:
 //                    echo "other tag" + $childTable->tablename;
