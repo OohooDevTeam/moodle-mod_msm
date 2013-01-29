@@ -105,6 +105,9 @@ class EditorUnit extends EditorElement
                     $this->children[] = $theorem;
                     break;
                 case "msm_intro":
+                    $intro = new EditorIntro();
+                    $intro->loadData($child->id);
+                    $this->children[] = $intro;
                     break;
                 case "msm_content":
                     break;

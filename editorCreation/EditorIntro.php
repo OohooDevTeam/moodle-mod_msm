@@ -58,12 +58,48 @@ class EditorIntro extends EditorElement
 
     public function displayData()
     {
+        $htmlContent = '';
+        $htmlContent .= "<div id='copied_msm_intro-$this->compid' class='copied_msm_structural_element' style='padding-top:2%;'>";
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 43%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;'> INTRODUCTION </b>";
+        $htmlContent .= "</div>";
         
+        $blockcaption = $this->blocks[0]->title;
+        
+        $htmlContent .= "<div style='margin-top: 2%;'>";
+        $htmlContent .= "<label id='msm_intro_title_label-$this->compid' class='msm_unit_intro_title_labels' for='msm_intro_title_input-$this->compid'>Title: </label>";
+        $htmlContent .= "<input id='msm_intro_title_input-$this->compid' class='msm+unit_intro_title' placeholder='Optional Title for the introduction.' name='msm_intro_title_input-$this->compid' disabled='disabled' value='$blockcaption'/>";
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div id='msm_intro_content-input-$this->compid' class='msm_editor_content'>";
+        foreach($this->blocks[0]->content as $content)
+        {
+            $htmlContent .= $content->displayData();
+        }
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div id='msm_intro_child_container'>";
+        for($i = 1; $i < sizeof($this->blocks); $i++)
+        {
+            $htmlContent .= $this->blocks[$i]->displayData();
+        }
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<input id='msm_intro_child_button-$this->compid' class='msm_intro_child_buttons' type='button' value='Add additional content' onclick='addIntroContent($this->compid)' disabled='disabled'/>";
+        $htmlContent .= "</div>";
+        
+        return $htmlContent;
     }
 
     public function loadData($compid)
-    {
+    {        
+        $this->compid = $compid;
+       
+        $block = new EditorBlock();
+        $block->loadData($this->compid);
+        $this->blocks[] = $block;
         
+        return $this;
     }
 
 }

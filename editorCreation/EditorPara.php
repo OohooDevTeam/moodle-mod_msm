@@ -95,12 +95,29 @@ class EditorPara extends EditorElement
 
     public function displayData()
     {
+        $htmlContent = '';
         
+        $htmlContent .= $this->content;
+        
+        return $htmlContent;
     }
 
     public function loadData($compid)
     {
+        global $DB;
         
+        $paraCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+        
+        $this->compid = $compid;
+        $this->id = $paraCompRecord->unit_id;
+        
+        $paraRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
+        
+        $this->align = $paraRecord->para_align;
+        $this->content = $paraRecord->para_content;
+        $this->description = $paraRecord->description;
+        
+        return $this;
     }
 
 }

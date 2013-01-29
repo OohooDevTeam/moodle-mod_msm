@@ -189,12 +189,66 @@ class EditorBlock extends EditorElement
 
     public function displayData()
     {
+        $htmlContent = '';
         
+        $htmlContent .= "<div id='msm_intro_child_div-$this->compid' class='msm_intro_child'>";
+        $htmlContent .= "<div id='msm_intro_child_dragarea-$this->compid' class='msm_intro_child_dragareas'>";
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div>";
+        $htmlContent .= "Title: ";
+        $htmlContent .= "<input id='msm_intro_child_title-$this->compid' class='msm_intro_child_titles' name='msm_intro_child_title-$this->compid' placeholder='Optional Title for the Content' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div id='msm_intro_child_content-$this->compid' class='msm_editor_content'>";
+        foreach($this->content as $content)
+        {
+            $htmlContent .= $content->displayData();
+        }
+        $htmlContent .= "</div>";
+        $htmlContent .= "</div>";
+        
+        return $htmlContent;
     }
 
+    //compid = intro/unit comp id
     public function loadData($compid)
     {
+        global $DB;
         
+        $compRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+        
+        // both id's are for either intro/unit
+        $this->compid = $compid;
+        $this->id = $compRecord->unit_id;
+        
+        $tableRecord = $DB->get_record('msm_table_collection', array('id'=>$compRecord->table_id));
+        
+        $record = $DB->get_record($tableRecord->tablename, array('id'=>$this->id));
+        
+        $this->title = $record->block_caption;
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        
+        foreach($childElements as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
+            
+            switch($childTable->tablename)
+            {
+                case "msm_para":
+                    $para = new EditorPara();
+                    $para->loadData($child->id);
+                    $this->content[] = $para;
+                    break;
+                case "msm_content":
+                    break;
+                case "msm_table":
+                    break;
+            }
+        }
+        
+        return $this;
     }
 
 }
