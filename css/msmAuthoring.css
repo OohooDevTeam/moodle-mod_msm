@@ -18,14 +18,12 @@
 
 .msm_unit_title_labels
 {
-    /*float: left;*/
     margin-bottom: 2%;
     margin-left: 2%;
 }
 
 .msm_title_input
 {
-    /*float: right;*/
     width: 85%;
     margin-bottom: 2%;
     margin-left: 1.5%;
@@ -71,7 +69,6 @@
 {
     background-color: lightpink;
     min-height: 700px;
-    /*overflow-y: scroll;*/
 }
 
 #msm_editor_middle_droparea{
@@ -85,16 +82,7 @@
     overflow-x: hidden;
     border: 1px solid black;
     height: 70%;
-    /*padding-bottom: 2%;*/
 }
-/*
-#msm_child_appending_area
-{
-    padding: 0; 
-    height: 100%;
-    padding-bottom: 25%;
-    padding-top: 2%;
-}*/
 
 .msm_sortable_placeholder
 { 
@@ -198,7 +186,6 @@
     border: 2px dashed black;
     width: 90%;
     height: 25%;
-    /*text-align: center;*/
     /* The following two properties are there so that chrome does not
     return auto from getComputedStyle javascript function*/
     left: 0;
@@ -265,11 +252,6 @@
     z-index: 2002; /*to prevent resizable borders to have effect in dialog box*/
 }
 
-/*.msm_titleinput_close
-{
-   float: right;
-   width: auto;
-}*/
 .msm_unit_pic_title_labels, .msm_unit_intro_title_labels, .msm_unit_body_title_labels, .msm_intro_child_title_labels, .msm_theorem_part_tlabel 
 {
     float:left;
@@ -279,12 +261,10 @@
 .msm_unit_intro_title, .msm_unit_body_title, .msm_intro_child_titles
 {
     width: 94%;
-    /*margin-bottom: 2%;*/
 }
 
 .msm_theorem_part_title{
     width: 81%;
-    /*margin-bottom: 2%;*/
 }
 
 .msm_unit_pic_title 
@@ -297,7 +277,6 @@
 .msm_pic_filepicker
 {
     float: left;
-    /*margin-left: 2%;*/
     width:auto;
     margin-bottom: 2%;
 }
@@ -307,8 +286,6 @@
     float: left;
     width: 96%;
     height: auto;
-    /*    margin: 1%;
-        padding: 1%;*/
     overflow: hidden;
 }
 
@@ -318,19 +295,16 @@
     overflow:hidden;
     border: 2px solid orange;
     margin: 1% auto;
-    /*padding: 2%;*/
 }
 
 .msm_unit_description_labels
 {
-    /*float: left;*/
     margin-bottom: 2%;
     margin-left: 2%;    
 }
 
 .msm_unit_description_inputs
 {
-    /*float: right;*/
     width: 85%;
     margin-bottom: 2%;
     margin-left: 19px; /*to line up with input box above*/
@@ -338,18 +312,14 @@
 
 .msm_child_description_labels
 {
-    /*float:left;*/
-    /*margin-top: 2%;*/
     margin-bottom: 2%;
     margin-left: 0 !important;
-    /*margin-right: 1%;*/
 }
 
 .msm_child_description_inputs
 {
     float: right;
     width: 90%;
-    /*margin-top: 2%;*/
     margin-bottom: 2%;
 }
 
@@ -364,15 +334,12 @@
     margin-right: 2%;
     width: auto;
     margin-top: 2%;
-    /*margin-bottom: 2%;*/
 }
 
 .msm_introTitle
 {
-    /*float: left;*/
     margin-right: 2%;
     width: auto;
-    /*margin-bottom: 2%;*/
 }
 
 .msm_unit_child_dropdown
@@ -383,10 +350,6 @@
 }
 .msm_unit_child_content, .msm_intro_child_contents
 {
-    /*margin-left: 2%;*/
-    /*margin-right: 2%;*/
-    /*    margin-bottom: 2%;
-        margin-top: 2%;*/
     height: auto;
     width: 96%;
     min-width: 300px;
@@ -452,7 +415,6 @@
 {
     margin-left: 45%;
     margin-right: 45%;
-    /*margin-top: 2%;*/
     float: bottom;
 }
 
@@ -462,12 +424,6 @@
     padding: 1% 2%;
     margin: 2% 0;
 }
-
-/* border added for debugging purpose! --> remove when project is done */
-/*#msm_intro_child_container
-{
-    border: 2px ridge orange;
-}*/
 
 #msm_setting_container
 {
@@ -481,22 +437,24 @@
 
 .msm_theorem_content_containers, .msm_theoremref_content_containers
 {
-    /*border: 2px solid black;*/
-    /*margin-top: 2%;*/
-    text-align: center;
+    /*text-align: center !important;*/
     margin-bottom: 1%;
+}
+
+.msm_theorem_part_buttons
+{
+    margin-left: 40%;
+}
+
+.msm_theorem_child_buttons
+{
+    margin-left: 41.5%;
 }
 
 .msm_theorem_child
 {
     padding: 2%;
 }
-
-/*.msm_theorem_child_buttons, .msm_theorem_part_buttons
-{
-    margin-left: auto;
-    margin-right: auto;
-}*/
 
 .msm_theorem_part_content
 {
@@ -506,8 +464,8 @@
     overflow: auto;
     resize: none;
 }
-/*
-*/.msm_theorem_statement_containers, .msm_theoremref_statement_containers
+
+.msm_theorem_statement_containers, .msm_theoremref_statement_containers
 {
     border: 2px dotted red;
     padding: 2%;
@@ -529,7 +487,7 @@
     text-align: center;
     position: relative;
     padding: 2px;
-    left: 40%; /*to center the button*/
+    left: 36%; /*to center the button*/
 
 }
 .msm_associate_childs{
@@ -549,14 +507,6 @@
 .msm_info_header{
     font-weight: bold;
 }
-
-/*.msm_editor_content td
-{
-    border-width: 2px;
-    border-color: maroon;
-    border-collapse: separate !important;
-    border-spacing: 2px;
-}*/
 
 table.mceLayout
 {
@@ -583,16 +533,21 @@ table.mceLayout
 {
     width: 74%;
     margin-bottom: 2%;
-    padding-left: 27%;
-    text-align: center;
-    /*border: 2px solid black*/
+    padding-left: 39%;
+    /*text-align: center;*/
 }
 
-.msm_theorem_part_title_containers, .msm_theoremref_part_title_containers
+.msm_theorem_part_title_containers
 {
     width: 95%;
     text-align: center;
-    /*border: 2px solid black*/
+}
+
+.msm_theoremref_part_title_containers
+{
+    width: 95%;
+    text-align: center;
+    margin-bottom: 1%;
 }
 
 
@@ -603,15 +558,14 @@ table.mceLayout
     font-weight: bold;
     margin-bottom: 2%;
     text-align: center;
-    /*border: 2px solid black*/
 }
 
 .msm_associate_info_headers
 {
     width: 70%;
-    margin-bottom: 2%;
+    /*margin-bottom: 2%;*/
     padding-bottom: 1%;
-    padding-top: 1%;
+    /*padding-top: 1%;*/
     padding-left: 25%;
     text-align: center;
 }

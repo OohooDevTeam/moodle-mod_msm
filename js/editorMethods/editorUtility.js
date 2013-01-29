@@ -49,14 +49,12 @@ function insertUnitStructure(dbId)
             success: function(data)
             {
                 // dbInfo is all data making up the one unit in HTML format
-                dbInfo = JSON.parse(data);                
-                console.log(dbInfo);
+                dbInfo = JSON.parse(data);  
                 // need to process the info to append appropriate domElements to correct parent elements
                 processUnitData(dbInfo, dbId); // need to also change the unit title --> need to get value of label in title and get unitName and replace <h2> under middle editor panel
             },
             error: function(data)
             {
-                console.log(JSON.parse(data));
                 alert("ajax error in loading unit");
             }
         })

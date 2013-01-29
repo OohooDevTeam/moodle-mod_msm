@@ -78,17 +78,17 @@ function processReftype(e)
         skin_variant : "silver"
     });
     
-    $("#msm_theoremref_title_container-"+_index).mouseover(function () {
+    $("#msm_theoremref_title_container-"+indexNumber).mouseover(function () {
         $(this).children("span").css({
             "visibility": "visible", 
             "color": "#4e6632", 
             "opacity": "0.5"
         });
     });
-    $("#msm_theoremref_title_container-"+_index).mouseout(function () {
+    $("#msm_theoremref_title_container-"+indexNumber).mouseout(function () {
         $(this).children("span").css("visibility", "hidden");
     });
-    $("#msm_theoremref_title_container-"+_index).mouseup(function () {
+    $("#msm_theoremref_title_container-"+indexNumber).mouseup(function () {
         $(this).children("span").css("visibility", "hidden");
     });
     
@@ -150,7 +150,7 @@ function makeRefDefinition(idindex)
 function makeRefTheorem(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
-    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+idindex+'" onclick="deleteRefElement(event)">x</a>');
+    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event)">x</a>');
 
     var theoremSelectMenu = $('<select name="msm_theoremref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_theoremref_type_dropdown-'+idindex+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
@@ -159,8 +159,8 @@ function makeRefTheorem(idindex)
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
     
-    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_theoremref_title_container-'+idindex+'"><b style="margin-left: 30%;"> THEOREM </b></div>');   
-    var theoremTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');     
+    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_theoremref_title_container-'+idindex+'"><b style="margin-left: 31%;"> THEOREM </b></div>');   
+    var theoremTitleHidden = $('<span style="visibility: hidden; display:block;">Drag here to move this element.</span>');     
                 
     var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theoremref_title_input-'+idindex+'" name="msm_theoremref_title_input-'+idindex+'" placeholder=" Title of Theorem"/>');
             
@@ -201,8 +201,8 @@ function makeRefTheorem(idindex)
             
     clonedCurrentElement.append(theoremCloseButton);
     clonedCurrentElement.append(theoremSelectMenu);
-    clonedCurrentElement.append(theoremTitleContainer);
     clonedCurrentElement.append(theoremTitleField);
+    clonedCurrentElement.append(theoremTitleContainer);    
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
@@ -428,12 +428,12 @@ function addrefTheoremPart(event, idNumber)
     
     var theoremPartContainer = $('<div class="msm_theorem_child" id="msm_theoremref_part_container-'+idNumber+'-'+newId+'"></div>');
     
-    var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+    var theoremCloseButton = $('<a style="margin-bottom:1%;" class="msm_element_close" onclick="deleteElement(event)">x</a>');
     
-    var theoremPartTitleContainer = $('<div class="msm_theoremref_part_title_containers" id="msm_theoremref_statement_part_container-'+idNumber+'-'+newId+'"></div>');
+    var theoremPartTitleContainer = $('<div class="msm_theoremref_part_title_containers" id="msm_theoremref_part_title_container-'+idNumber+'-'+newId+'"></div>');
     var theoremPartTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
     
-    var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theoremref_part_title-0">Part Theorem title: </label>');
+    var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theoremref_part_title-'+idNumber+'-'+newId+'">Part Theorem title: </label>');
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theoremref_part_title-'+idNumber+'-'+newId+'" name="msm_theoremref_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
     var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theoremref_part_content-'+idNumber+'-'+newId+'" name="msm_theoremref_part_content-'+idNumber+'-'+newId+'"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefpart'+idNumber+'-'+newId+'"></div>');

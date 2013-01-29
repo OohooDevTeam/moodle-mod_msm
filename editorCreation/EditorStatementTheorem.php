@@ -34,8 +34,6 @@ class EditorStatementTheorem extends EditorElement
 
         if (sizeof($idInfo) > 1)
         {
-
-
             if ($_POST["msm_theoremref_content_input-" . $idInfo[0]] != '')
             {
                 $this->content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
@@ -58,7 +56,16 @@ class EditorStatementTheorem extends EditorElement
             {
                 if (preg_match($partmatch, $id))
                 {
-                    $idParam = $idInfo[0] . "|ref";
+                    $indexNumber = explode("-", $id);
+
+                    $newId = '';
+                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
+                    {
+                        $newId .= $indexNumber[$i] . "-";
+                    }
+                    $newId .= $indexNumber[sizeof($indexNumber) - 1];
+                    
+                    $idParam = $newId . "|ref";
                     $partTheorem = new EditorPartTheorem();
                     $partTheorem->getFormData($idParam, $i);
                     $this->children[] = $partTheorem;
@@ -157,6 +164,13 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theorem_content_input-$id' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
+        $htmlContent .= "<div id='msm_theorem_part_droparea-$id' class='msm_theorem_part_dropareas'>";
+        foreach($this->children as $partTheorem)
+        {
+            $htmlContent .= $partTheorem->displayData();
+        }
+        $htmlContent .= "<input id='msm_theorem_part_button-$id' class='msm_theorem_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event, $id)' disabled='disabled'/>";
+        $htmlContent .= "</div>";
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -172,6 +186,23 @@ class EditorStatementTheorem extends EditorElement
 
         $statementRecord = $DB->get_record($this->tablename, array('id' => $this->id));
         $this->content = $statementRecord->statement_content;
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid));
+        
+        foreach($childElements as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
+            
+            switch($childTable->tablename)
+            {
+                case "msm_part_theorem":
+                    $partTheorem = new EditorPartTheorem();
+                    $partTheorem->loadData($child->id);
+                    $this->children[] = $partTheorem;
+                    break;
+                //can have associate/subordinates...etc
+            }
+        }
 
         return $this;
     }

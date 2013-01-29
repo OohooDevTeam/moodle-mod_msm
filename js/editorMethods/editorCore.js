@@ -337,17 +337,17 @@ function processDroppedChild(e, droppedId)
         $(this).children("span").css("visibility", "hidden");
     });
     
-    $("#msm_theorem_statement_title_container-"+_index).mouseover(function () {
+    $("#msm_theorem_statement_title_container-"+_index+"-1").mouseover(function () {
         $(this).children("span").css({
             "visibility": "visible", 
             "color": "#4e6632", 
             "opacity": "0.5"
         });
     });
-    $("#msm_theorem_statement_title_container-"+_index).mouseout(function () {
+    $("#msm_theorem_statement_title_container-"+_index+"-1").mouseout(function () {
         $(this).children("span").css("visibility", "hidden");
     });
-    $("#msm_theorem_statement_title_container-"+_index).mouseup(function () {
+    $("#msm_theorem_statement_title_container-"+_index+"-1").mouseup(function () {
         $(this).children("span").css("visibility", "hidden");
     });               
                 
@@ -1158,7 +1158,7 @@ function makeTheorem()
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
     
-    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%;"> THEOREM </b></div>');   
+    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 31%;"> THEOREM </b></div>');   
     var theoremTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');       
     var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title_input-'+_index+'" placeholder=" Title of Theorem"/>');
             
