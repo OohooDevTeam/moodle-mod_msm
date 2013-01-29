@@ -145,7 +145,6 @@ class EditorBlock extends EditorElement
             else
             {
                 $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1] . '_ifr';
-                ;
             }
         }
 
@@ -175,7 +174,6 @@ class EditorBlock extends EditorElement
         else
         {
             $this->errorArray[] = 'msm_body_content_input-' . $idInfo[1] . '_ifr';
-            ;
         }
 
         $this->type = "unit";
