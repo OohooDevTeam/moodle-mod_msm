@@ -216,6 +216,15 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_theorem_description_label-$this->compid' class='msm_child_description_labels' for='msm_theorem_description_label-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_theorem_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theorem_description_input-$this->compid'/>";
+        
+        $htmlContent .= "<div id='msm_associate_container-$this->compid' class='msm_associate_containers'>";
+        foreach ($this->children as $associate)
+        {
+            $htmlContent .= $associate->displayData();
+        }
+        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"def\")' disabled='disabled'/>";
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -249,11 +258,69 @@ class EditorTheorem extends EditorElement
                     $statementTheorem->loadData($child->id);
                     $this->content[] = $statementTheorem;
                     break;
+                case "msm_associate":
+                    $associate = new EditorAssociate();
+                    $associate->loadData($child->id);
+                    $this->children[] = $associate;
+                    break;
                 //associate, proof...etc
             }
         }
 
         return $this;
+    }
+    
+    function displayRefData()
+    {
+         $htmlContent = '';
+
+        $htmlContent .= "<div id='copied_msm_theoremref-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<select id='msm_theoremref_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_theoremref_type_dropdown-$this->compid' disabled='disabled'>";
+
+        switch ($this->type)
+        {
+            case "Theorem":
+                $htmlContent .= "<option value='Theorem' selected='selected'>Theorem</option>";
+                $htmlContent .= "<option value='Proposition'>Proposition</option>";
+                $htmlContent .= "<option value='Lemma'>Lemma</option>";
+                $htmlContent .= "<option value='Corollary'>Corollary</option>";
+                break;
+            case "Proposition":
+                $htmlContent .= "<option value='Theorem'>Theorem</option>";
+                $htmlContent .= "<option value='Proposition' selected='selected'>Proposition</option>";
+                $htmlContent .= "<option value='Lemma'>Lemma</option>";
+                $htmlContent .= "<option value='Corollary'>Corollary</option>";
+                break;
+            case "Lemma":
+                $htmlContent .= "<option value='Theorem'>Theorem</option>";
+                $htmlContent .= "<option value='Proposition'>Proposition</option>";
+                $htmlContent .= "<option value='Lemma' selected='selected'>Lemma</option>";
+                $htmlContent .= "<option value='Corollary'>Corollary</option>";
+                break;
+            case "Corollary":
+                $htmlContent .= "<option value='Theorem'>Theorem</option>";
+                $htmlContent .= "<option value='Proposition'>Proposition</option>";
+                $htmlContent .= "<option value='Lemma'>Lemma</option>";
+                $htmlContent .= "<option value='Corollary' selected='selected'>Corollary</option>";
+                break;
+        }
+        $htmlContent .= "</select>";
+
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<input id='msm_theoremref_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "<div id='msm_theoremref_content_input-$this->compid' class='msm_editor_content'>";
+        foreach ($this->content as $content)
+        {
+            $htmlContent .= $content->displayRefData();
+        }
+        $htmlContent .= "</div>";
+        $htmlContent .= "<label id='msm_theoremref_description_label-$this->compid' class='msm_child_description_labels' for='msm_theoremref_description_label-$this->compid'>Description: </label>";
+        $htmlContent .= "<input id='msm_theoremref_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$this->compid'/>";
+        $htmlContent .= "</div>";
+
+        return $htmlContent;
     }
 
 }

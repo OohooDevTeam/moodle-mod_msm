@@ -225,8 +225,8 @@ class EditorInfo extends EditorElement
         }
         $htmlContent .= "</select>";        
         
-        $htmlContent .= $this->ref->displayRefData();
-//        
+        $htmlContent .= $this->ref->displayRefData();        
+        
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -260,10 +260,16 @@ class EditorInfo extends EditorElement
                     $this->ref = $def;
                     break;
                 case "msm_comment":
+                    $comment = new EditorComment();
+                    $comment->loadData($ref->id);
+                    $this->ref = $comment;
                     break;
                 case "msm_unit":
                     break;
                 case "msm_theorem":
+                    $theorem = new EditorComment();
+                    $theorem->loadData($ref->id);
+                    $this->ref = $theorem;
                     break;
             }
         }

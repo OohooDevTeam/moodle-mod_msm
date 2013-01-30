@@ -152,9 +152,7 @@ class EditorStatementTheorem extends EditorElement
     }
 
     public function displayData()
-    {        
-//        $id = $this->compid + "-" + $this->id;
-        
+    {   
         $htmlContent = '';
         
         $htmlContent .= "<div id='msm_theorem_statement_container-$this->compid' class='msm_theorem_statement_containers'>";
@@ -205,6 +203,28 @@ class EditorStatementTheorem extends EditorElement
         }
 
         return $this;
+    }
+    function displayRefData()
+    {
+        $htmlContent = '';
+        
+        $htmlContent .= "<div id='msm_theoremref_statement_container-$this->compid' class='msm_theoremref_statement_containers'>";
+        $htmlContent .= "<div id='msm_theoremref_statement_title_container-$this->compid' class='msm_theoremref_statement_title_containers'>";
+        $htmlContent .= "<b> Theorem Content </b>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<div id='msm_theoremref_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= $this->content;
+        $htmlContent .= "</div>";
+        $htmlContent .= "<div id='msm_theoremref_part_droparea-$this->compid' class='msm_theoremref_part_dropareas'>";
+        foreach($this->children as $partTheorem)
+        {
+            $htmlContent .= $partTheorem->displayRefData();
+        }
+        $htmlContent .= "<input id='msm_theoremref_part_button-$this->compid' class='msm_theoremref_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event, $this->compid)' disabled='disabled'/>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "</div>";
+
+        return $htmlContent;
     }
 
 }

@@ -161,7 +161,7 @@ class EditorComment extends EditorElement
                 break;
         }
         $htmlContent .= "</select>";
-        
+
         $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 30%;'> COMMENT </b>";
         $htmlContent .= "</div>";
@@ -171,6 +171,15 @@ class EditorComment extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_comment_description_label-$this->compid' class='msm_child_description_labels' for='msm_comment_description_input-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_comment_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_comment_description_input-$this->compid'/>";
+
+        $htmlContent .= "<div id='msm_associate_container-$this->compid' class='msm_associate_containers'>";
+        foreach ($this->children as $associate)
+        {
+            $htmlContent .= $associate->displayData();
+        }
+        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"def\")' disabled='disabled'/>";
+        $htmlContent .= "</div>";
+
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -192,10 +201,68 @@ class EditorComment extends EditorElement
         $this->content = $commentRecord->comment_content;
         $this->description = $commentRecord->description;
 
+        $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        foreach ($childRecords as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            switch ($childTable->tablename)
+            {
+                case "msm_associate":
+                    $associate = new EditorAssociate();
+                    $associate->loadData($child->id);
+                    $this->children[] = $associate;
+                    break;
+                //add subordinate later
+            }
+        }
+
         // need to process content to find all <a> and match with subordinate data..etc
         // need to process child elements
 
         return $this;
+    }
+
+    function displayRefData()
+    {
+        $htmlContent = '';
+
+        $htmlContent .= "<div id='copied_msm_commentref-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<select id='msm_commentref_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_commentref_type_dropdown-$this->compid' disabled='disabled'>";
+
+        switch ($this->type)
+        {
+            case "Comment":
+                $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Information'>Information</option>";
+                break;
+            case "Remark":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Remark' selected='selected'>Remark</option>";
+                $htmlContent .= "<option value='Information'>Information</option>";
+                break;
+            case "Information":
+                $htmlContent .= "<option value='Comment'>Comment</option>";
+                $htmlContent .= "<option value='Remark'>Remark</option>";
+                $htmlContent .= "<option value='Information' selected='selected'>Information</option>";
+                break;
+        }
+        $htmlContent .= "</select>";
+
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 30%;'> COMMENT </b>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<input id='msm_commentref_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_commentref_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "<div id='msm_commentref_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= $this->content;
+        $htmlContent .= "</div>";
+        $htmlContent .= "<label id='msm_commentref_description_label-$this->compid' class='msm_child_description_labels' for='msm_commentref_description_input-$this->compid'>Description: </label>";
+        $htmlContent .= "<input id='msm_commentref_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_commentref_description_input-$this->compid'/>";
+        $htmlContent .= "</div>";
+
+        return $htmlContent;
     }
 
 }
