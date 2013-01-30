@@ -30,16 +30,17 @@ require_once('../XMLImporter/TableCollection.php');
 global $DB;
 
 //print_object($_POST);
-
 // id passed in form of an array with id index and value of msm_unit-#compid-#unitid
 $unitidInfo = explode('-', $_POST['id']);
 
 $unitData = new EditorUnit();
 $unitData->loadData($unitidInfo[1]);
 
+echo "children?";
+print_object($unitData);
+
 $htmlContent = '';
 $htmlContent .= $unitData->displayData();
 
 echo json_encode($htmlContent);
-
 ?>

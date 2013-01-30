@@ -31,8 +31,9 @@ class EditorSubordinate extends EditorElement
     // contents (of various classes such as EditorDefinition/EditorTheorem...etc)
     public function getFormData($idNumber, $position)
     {
+        $doc = new DOMDocument;
         $this->position = $position;
-        $this->hot = $idNumber->nodeValue;
+        $this->hot = $doc->saveHTML($doc->importNode($idNumber, true));
 
         $id = $idNumber->getAttribute("id");
 
@@ -74,18 +75,43 @@ class EditorSubordinate extends EditorElement
         {
             $this->info->insertData($this->compid, 0, $msmid);
         }
-        
-//        echo "insert subordinate";
     }
 
     public function displayData()
     {
+        $htmlContent = '';
         
+        return $htmlContent;
     }
 
     public function loadData($compid)
     {
+        global $DB;
         
+        $subordinateCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+        
+        $this->compid = $compid;
+        $this->id = $subordinateCompRecord->unit_id;
+        
+        $subordinateRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
+        
+        $this->hot = $subordinateRecord->hot;
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
+        
+        foreach($childElements as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
+            
+            if($childTable->tablename == 'msm_info')
+            {
+                $info = new EditorInfo();
+                $info->loadData($child->id);
+                $this->info = $info;
+            }
+        }
+        
+        return $this;
     }
 
 }

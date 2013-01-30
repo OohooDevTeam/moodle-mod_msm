@@ -84,10 +84,10 @@ class EditorUnit extends EditorElement
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
         $introids = '';
-        $insertionKey = null;  
+        $insertionKey = null;
         $children = array();
 
-        $index=0; //keys responds to db id's so need index number for the array
+        $index = 0; //keys responds to db id's so need index number for the array
         foreach ($childRecords as $child)
         {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
@@ -146,12 +146,19 @@ class EditorUnit extends EditorElement
                 }
 
                 // insert intro at the right plce in the array and copy back to class propery
-                $result = array_merge(array_slice($tempArray, 0, $insertionKey, true), array($insertionKey => $intro), array_slice($tempArray, $insertionKey, count($tempArray)-1, false));
+                $result = array_merge(array_slice($tempArray, 0, $insertionKey, true), array($insertionKey => $intro), array_slice($tempArray, $insertionKey, count($tempArray) - 1, false));
 
                 foreach ($result as $resultItem)
                 {
                     $this->children[] = $resultItem;
                 }
+            }
+        }
+        else
+        {
+            foreach ($children as $item)
+            {
+                $this->children[] = $item;
             }
         }
         return $this;
