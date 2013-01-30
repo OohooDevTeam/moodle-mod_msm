@@ -411,6 +411,20 @@
     margin-bottom: 2%;
 }
 
+.msm_editor_content table
+{
+    border-collapse: separate !important;
+    border-spacing: 2px;
+    border: thin solid maroon;
+}
+
+.msm_editor_content table td
+{
+    border-collapse: separate !important;
+    border-spacing: 2px;
+    border: thin solid maroon;
+}
+
 .msm_intro_child_buttons
 {
     margin-left: 45%;

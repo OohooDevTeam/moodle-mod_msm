@@ -70,7 +70,7 @@ class EditorBlock extends EditorElement
                 }
                 foreach ($this->content as $content)
                 {
-                    $content->insertData($parentid, $sibling_id, $msmid);
+                    $content->insertData($this->compid, $sibling_id, $msmid);
                     $sibling_id = $content->compid;
                 }
             }
@@ -183,7 +183,7 @@ class EditorBlock extends EditorElement
 
     public function displayData()
     {
-        $htmlContent = '';
+        $htmlContent = '';        
 
         if ($this->type == 'msm_intro')
         {
@@ -217,8 +217,8 @@ class EditorBlock extends EditorElement
             $htmlContent .= "<input id='msm_body_title_input-$this->compid' class='msm_unit_body_title' placeholder='OPtional Title for this Content' name='msm_body_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div id='msm_body_content_input-$this->compid' class='msm_editor_content'>";
-
+            $htmlContent .= "<div id='msm_body_content_input-$this->compid' class='msm_editor_content'>";            
+            
             foreach ($this->content as $content)
             {
                 $htmlContent .= $content->displayData();
@@ -265,8 +265,17 @@ class EditorBlock extends EditorElement
                     $this->content[] = $para;
                     break;
                 case "msm_content":
+                    $inContent = new EditorInContent();
+                    $inContent->loadData($child->id);
+                    $this->content[] = $inContent;
                     break;
                 case "msm_table":
+                    $table = new EditorTable();
+                    $table->loadData($child->id);
+                    $this->content[] = $table;
+                    break;
+                default:
+                    echo "what tablename? " . $childTable->tablename;
                     break;
             }
         }

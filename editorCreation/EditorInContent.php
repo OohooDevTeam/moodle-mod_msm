@@ -20,7 +20,7 @@ class EditorInContent extends EditorElement
     public $type;
     public $content;
     public $position;
-    public $suboridnates = array();
+    public $subordinates = array();
 
     function __construct()
     {
@@ -104,12 +104,29 @@ class EditorInContent extends EditorElement
 
     public function displayData()
     {
+        $htmlContent = '';
         
+        $htmlContent .= $this->content;
+        
+        return $htmlContent;
     }
 
     public function loadData($compid)
     {
+        global $DB;
         
+        $inContentCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+        
+        $this->compid = $compid;
+        $this->id = $inContentCompRecord->unit_id;
+        
+        $inContentRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
+        
+        $this->additional_attribute = $inContentRecord->additional_attribute;
+        $this->type = $inContentRecord->type;
+        $this->content = $inContentRecord->content;
+        
+        return $this;
     }
 
 }
