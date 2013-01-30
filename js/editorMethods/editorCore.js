@@ -926,7 +926,7 @@ function addAssociateForm(index, type)
     
     var infoHeader = $('<div class="msm_associate_info_headers" id="msm_associate_info_header-' + index + '-' + newId + '"></div>');
     var infoheadertext = $('<b> ASSOCIATED INFORMATION </b>');
-    var infoheadertexthidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
+    var infoheadertexthidden = $('<span style="visibility: hidden; display:none;">     Drag here to move this element.</span>');
     
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
@@ -1084,16 +1084,17 @@ function addAssociateForm(index, type)
     
     $("#msm_associate_info_header-"+index+"-"+newId).mouseover(function () {
         $(this).children("span").css({
+            "display": "inline",
             "visibility": "visible", 
             "color": "#4e6632", 
             "opacity": "0.5"
         });
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseout(function () {
-        $(this).children("span").css("visibility", "hidden");
+        $(this).children("span").css({"visibility":"hidden", "display":"none"});
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseup(function () {
-        $(this).children("span").css("visibility", "hidden");
+        $(this).children("span").css({"visibility":"hidden", "display":"none"});
     });           
      
 }

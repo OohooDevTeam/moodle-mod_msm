@@ -31,11 +31,8 @@ class EditorInfo extends EditorElement
     public function getFormData($idNumber, $position)
     {
         $this->position = $position;
-        
+
         $subid = explode("|", $idNumber);
-        
-//        print_object($idNumber);
-//        print_object($subid);
 
         if (sizeof($subid) > 1)
         {
@@ -51,7 +48,7 @@ class EditorInfo extends EditorElement
             {
                 $allSubordinates[] = $tempallSubordinates[$i];
             }
-            
+
 //            print_object($allSubordinates);
 
             $i = 0;
@@ -96,10 +93,9 @@ class EditorInfo extends EditorElement
                 $this->errorArray[] = 'msm_info_content-' . $idNumber . '_ifr';
             }
 
-            $refType = $_POST['msm_associate_reftype-' . $idNumber];             
+            $refType = $_POST['msm_associate_reftype-' . $idNumber];
 
             $indexNumber = explode("-", $idNumber); // indexNumber[0] = parent id number
-            
 //            $param = $indexNumber[0] . "|ref";
             $param = $idNumber . "|ref";
 
@@ -126,7 +122,7 @@ class EditorInfo extends EditorElement
                     break;
             }
         }
-        
+
         return $this;
     }
 
@@ -163,11 +159,10 @@ class EditorInfo extends EditorElement
         }
     }
 
-
     public function displayData()
     {
         $htmlContent = '';
-        
+
         $htmlContent .= "<label for='msm_info_title-$this->compid'>title: </label>";
         $htmlContent .= "<div id='msm_info_title-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->caption;
@@ -176,25 +171,103 @@ class EditorInfo extends EditorElement
         $htmlContent .= "<div id='msm_info_content-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
+
+        $htmlContent .= "<div id='msm_associate_reftype_option-$this->compid' class='msm_associate_reftype_optionarea'>";
+        $htmlContent .= "<span class='msm_associate_reftype_label'>Type of reference to add: </span>";
+        $htmlContent .= "<select id='msm_associate_reftype-$this->compid' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$this->compid' disabled='disabled'>";
+
+        if (empty($this->ref))
+        {
+            $htmlContent .= "<option value='None' selected='selected'>None</option>";
+            $htmlContent .= "<option value='Comment'>Comment</option>";
+            $htmlContent .= "<option value='Definition'>Definition</option>";
+            $htmlContent .= "<option value='Theorem'>Theorem</option>";
+            $htmlContent .= "<option value='Example'>Example</option>";
+            $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+        }
+        else
+        {
+            switch (get_class($this->ref))
+            {
+                case "EditorDefinition":
+                    $htmlContent .= "<option value='None'>None</option>";
+                    $htmlContent .= "<option value='Comment'>Comment</option>";
+                    $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
+                    $htmlContent .= "<option value='Theorem'>Theorem</option>";
+                    $htmlContent .= "<option value='Example'>Example</option>";
+                    $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+                    break;
+                case "EditorComment":
+                    $htmlContent .= "<option value='None'>None</option>";
+                    $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
+                    $htmlContent .= "<option value='Definition'>Definition</option>";
+                    $htmlContent .= "<option value='Theorem'>Theorem</option>";
+                    $htmlContent .= "<option value='Example'>Example</option>";
+                    $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+                    break;
+                case "EditorTheorem":
+                    $htmlContent .= "<option value='None'>None</option>";
+                    $htmlContent .= "<option value='Comment'>Comment</option>";
+                    $htmlContent .= "<option value='Definition'>Definition</option>";
+                    $htmlContent .= "<option value='Theorem' selected='selected'>Theorem</option>";
+                    $htmlContent .= "<option value='Example'>Example</option>";
+                    $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+                    break;
+                case "EditorUnit":
+                    $htmlContent .= "<option value='None'>None</option>";
+                    $htmlContent .= "<option value='Comment'>Comment</option>";
+                    $htmlContent .= "<option value='Definition'>Definition</option>";
+                    $htmlContent .= "<option value='Theorem'>Theorem</option>";
+                    $htmlContent .= "<option value='Example'>Example</option>";
+                    $htmlContent .= "<option value='Section of this Composition' selected='selected'>Section of this Composition</option>";
+                    break;
+            }
+        }
+        $htmlContent .= "</select>";        
         
+        $htmlContent .= $this->ref->displayRefData();
+//        
+        $htmlContent .= "</div>";
+
         return $htmlContent;
     }
-
 
     public function loadData($compid)
     {
         global $DB;
-        
-        $infoCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
-        
+
+        $infoCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
         $this->compid = $compid;
         $this->id = $infoCompRecord->unit_id;
-        
-        $infoRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
-        
+
+        $infoRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
-        
+
+        $referenceRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
+
+        foreach ($referenceRecords as $ref)
+        {
+            $refTable = $DB->get_record('msm_table_collection', array('id' => $ref->table_id));
+
+            switch ($refTable->tablename)
+            {
+                case "msm_def":
+                    $def = new EditorDefinition();
+                    $def->loadData($ref->id);
+                    $this->ref = $def;
+                    break;
+                case "msm_comment":
+                    break;
+                case "msm_unit":
+                    break;
+                case "msm_theorem":
+                    break;
+            }
+        }
+
         return $this;
     }
 

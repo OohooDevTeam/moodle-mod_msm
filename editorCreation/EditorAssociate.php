@@ -153,11 +153,7 @@ class EditorAssociate extends EditorElement
         foreach($this->infos as $info)
         {
             $htmlContent .= $info->displayData();
-        }
-        
-        $htmlContent .= "<div id='msm_associate_reftype_option-$this->compid' class='msm_associate_reftype_optionarea'>";
-        //where the references go?
-        $htmlContent .= "</div>";
+        }      
         
         $htmlContent .= "</div>";
         
@@ -190,8 +186,7 @@ class EditorAssociate extends EditorElement
                     $info->loadData($child->id);
                     $this->infos[] = $info;
                     break;
-                default:  // debugging case
-                    echo "associate child element that is not info" + $childTable->tablename;
+               
             }
         }
         
