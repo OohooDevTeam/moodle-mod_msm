@@ -17,138 +17,138 @@ function submitForm()
 {
     var children =  document.getElementById("msm_child_appending_area").childNodes;
 
-        var idString = "";
-        for(var i=0; i<children.length; i++)
+    var idString = "";
+    for(var i=0; i<children.length; i++)
+    {
+        if(children[i].tagName == "DIV")
         {
-            if(children[i].tagName == "DIV")
-            {
-                idString += children[i].id + ",";
-            }           
+            idString += children[i].id + ",";
+        }           
+    }
+        
+    var subordinateArray = [];
+    $("textarea").each(function(){ 
+        // process information from textarea that are not related to info elements
+        if(!this.id.match(/info/))
+        {  
+            subordinateArray.push(prepareSubordinate(this.id));
+                
+            this.value = tinymce.get(this.id).getContent({
+                format: "html"
+            });
         }
-        
-        var subordinateArray = [];
-        $("textarea").each(function(){ 
-            // process information from textarea that are not related to info elements
-            if(!this.id.match(/info/))
-            {  
-                subordinateArray.push(prepareSubordinate(this.id));
-                
-                this.value = tinymce.get(this.id).getContent({
-                    format: "html"
-                });
-            }
-            // process associate information
-            else if(this.id.match(/_info_/))
-            {
-                subordinateArray.push(prepareSubordinate(this.id));
-                
-                this.value = tinymce.get(this.id).getContent({
-                    format: "html"
-                });
-            }
-        });
-                
-        var urlParam = window.location.search;
-       
-        var urlParamInfo = urlParam.split("=");
-       
-        $("#msm_child_order").val(idString+urlParamInfo[1]);
-        
-        var subordinateData = '';
-        for(var i=0; i < subordinateArray.length; i++)
+        // process associate information
+        else if(this.id.match(/_info_/))
         {
-            for(var key in subordinateArray[i])
+            subordinateArray.push(prepareSubordinate(this.id));
+                
+            this.value = tinymce.get(this.id).getContent({
+                format: "html"
+            });
+        }
+    });
+                
+    var urlParam = window.location.search;
+       
+    var urlParamInfo = urlParam.split("=");
+       
+    $("#msm_child_order").val(idString+urlParamInfo[1]);
+        
+    var subordinateData = '';
+    for(var i=0; i < subordinateArray.length; i++)
+    {
+        for(var key in subordinateArray[i])
+        {
+            subordinateData += key+"|"+subordinateArray[i][key]+",";
+        }
+    }        
+        
+    $("#msm_unit_subordinate_container").val(subordinateData);
+        
+    var formData = $("#msm_unit_form").serializeArray();
+    var targetURL = $("#msm_unit_form").attr("action");
+    var ids = [];         
+        
+    $.ajax({
+        type: "POST",
+        url: targetURL,
+        data: formData,
+        success: function(data) { 
+            // this section of the code is for detecting empty contents and it gives the user 
+            // a warning dialog box and highlights the contents that are empty
+            ids = JSON.parse(data);
+                
+            //                console.log(ids);
+                
+            if(ids instanceof Array)
             {
-                subordinateData += key+"|"+subordinateArray[i][key]+",";
-            }
-        }        
-        
-        $("#msm_unit_subordinate_container").val(subordinateData);
-        
-        var formData = $("#msm_unit_form").serializeArray();
-        var targetURL = $("#msm_unit_form").attr("action");
-        var ids = [];         
-        
-        $.ajax({
-            type: "POST",
-            url: targetURL,
-            data: formData,
-            success: function(data) { 
-                // this section of the code is for detecting empty contents and it gives the user 
-                // a warning dialog box and highlights the contents that are empty
-                ids = JSON.parse(data);
-                
-                //                console.log(ids);
-                
-                if(ids instanceof Array)
+                for(var i=0; i < ids.length; i++)
                 {
-                    for(var i=0; i < ids.length; i++)
+                    var numOfContent = ids[i].match(/content/);
+                        
+                    if(numOfContent)
                     {
-                        var numOfContent = ids[i].match(/content/);
-                        
-                        if(numOfContent)
-                        {
-                            $('#'+ids[i]).parent().css("border", "solid 4px #FFA500");
-                        }
-                        else
-                        {
-                            alert("not matched to content");
-                            $('#'+ids[i]).css("border-color", "#FFA500");
-                        }
-                        
+                        $('#'+ids[i]).parent().css("border", "solid 4px #FFA500");
                     }
-                    $("<div class=\"dialogs\" id=\"msm_emptyContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo("#msm_unit_title");
+                    else
+                    {
+                        alert("not matched to content");
+                        $('#'+ids[i]).css("border-color", "#FFA500");
+                    }
+                        
+                }
+                $("<div class=\"dialogs\" id=\"msm_emptyContent\"> Please fill out the highlighted areas to complete the form. </div>").appendTo("#msm_unit_title");
 
-                    $("#msm_emptyContent").dialog({
-                        modal: true,
-                        buttons: {
-                            Ok: function() {
-                                $(this).dialog("close");
-                            }
+                $("#msm_emptyContent").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function() {
+                            $(this).dialog("close");
                         }
-                    });  
-                }
-                else
-                {
-                    // replace save and reset button to edit and new buttons, respectively
-                    $("#msm_editor_save").remove();
-                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                    
-                    $("#msm_editor_reset").remove();
-                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New </button>").appendTo("#msm_editor_middle");
-                    
-                    // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
-                    // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
-                    // to display the html format properly.  Therefore div was created to replace it.
-                    removeTinymceEditor();
-                                        
-                    // disabling all input/selection areas in editor and also disabling all jquery actions such as 
-                    // sortable, draggable and droppable
-                    disableEditorFunction();      
-                    
-                    $(".msm_subordinate_hotwords").each(function(i, element) {
-                        var idInfo = this.id.split("-");                        
-                        var newid = '';
-                        
-                        for(var i=1; i < idInfo.length-1; i++)
-                        {
-                            newid += idInfo[i]+"-";
-                        }
-                            
-                        newid += idInfo[idInfo.length-1];
-                        
-                        $(this).on('mouseover', function(){
-                            previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
-                        });
-                    });
-                                        
-                    insertUnitStructure(ids);
-                }
-            },
-            error: function() {
-                alert("error in ajax at saveMethod.js");
+                    }
+                });  
             }
-        });
+            else
+            {
+                // replace save and reset button to edit and new buttons, respectively
+                $("#msm_editor_save").remove();
+                $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+                    
+                $("#msm_editor_reset").remove();
+                $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New </button>").appendTo("#msm_editor_middle");
+                    
+                // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
+                // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
+                // to display the html format properly.  Therefore div was created to replace it.
+                removeTinymceEditor();
+                                        
+                // disabling all input/selection areas in editor and also disabling all jquery actions such as 
+                // sortable, draggable and droppable
+                disableEditorFunction();      
+                    
+                $(".msm_subordinate_hotwords").each(function(i, element) {
+                    var idInfo = this.id.split("-");                        
+                    var newid = '';
+                        
+                    for(var i=1; i < idInfo.length-1; i++)
+                    {
+                        newid += idInfo[i]+"-";
+                    }
+                            
+                    newid += idInfo[idInfo.length-1];
+                        
+                    $(this).on('mouseover', function(){
+                        previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
+                    });
+                });
+                                        
+                insertUnitStructure(ids);
+            }
+        },
+        error: function() {
+            alert("error in ajax at saveMethod.js");
+        }
+    });
 }
 
 function prepareSubordinate(id)
@@ -384,7 +384,7 @@ function previewInfo(elementid, dialogid)
         height: "auto",
         modal: false,
         width: 605
-    });
+    });    
     
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse  

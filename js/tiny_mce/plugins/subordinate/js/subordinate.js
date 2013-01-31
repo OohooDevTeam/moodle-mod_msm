@@ -255,11 +255,11 @@ function submitSubForm(ed, id)
 
 function createSubordinateData(id, sId, ed, subResultContainer)
 {   
-    var hasError;
+    var hasError = false;
     var errorArray = [];
     var infourl = null;
     
-    $("#msm_subordinate-"+id+" textarea").each(function(){ 
+    $("#msm_subordinate-"+id+" textarea").each(function(){         
         var childnodes = tinymce.get(this.id).getBody().childNodes;    
         
         var length = childnodes.length;
@@ -292,13 +292,13 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     var infoContentContainer = document.createElement("div");
     infoContentContainer.id = "msm_subordinate_infoContent-"+id+"-"+sId;
     
-    var infoContentTextarea = document.getElementById("msm_subordinate_infoContent-"+id);
+    var infoContentTextarea = document.getElementById("msm_subordinate_infoContent-"+id);   
     
     if(infoContentTextarea.hasChildNodes())
     {
-        $('#msm_subordinate_infoContent-'+id).clone(true).children().each(function() {      
+        $('#msm_subordinate_infoContent-'+id).clone(true).children().each(function() {             
             infoContentContainer.appendChild(this);
-        });  
+        });         
     }
     else
     {
@@ -394,14 +394,14 @@ function createSubordinateData(id, sId, ed, subResultContainer)
             }
             else
             {
-//                console.dir("before switch at non anchor element");
-//                console.dir(ed.selection.getNode());
+                //                console.dir("before switch at non anchor element");
+                //                console.dir(ed.selection.getNode());
                 
                 var newContent = "<a href='#' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+id+"-"+sId+"'>"+selectedText+"</a>";
                 ed.selection.setContent(newContent); 
                 
-//                 console.dir("after switch at non anchor element");
-//                 console.dir(ed.selection.getContent());
+            //                 console.dir("after switch at non anchor element");
+            //                 console.dir(ed.selection.getContent());
                 
             }
         }
@@ -411,7 +411,7 @@ function createSubordinateData(id, sId, ed, subResultContainer)
     }
     // null values are present
     else
-    {          
+    {  
         nullErrorWarning(errorArray, id);
     }
    
@@ -422,13 +422,15 @@ function createInfoDialog(idNumber)
     var dialogDiv = document.createElement("div");
     dialogDiv.id = "msm_subordinate_info_dialog-"+idNumber;
     dialogDiv.className = "msm_subordinate_info_dialogs";
+
+    //    var titleElements = '';
+    //    $("#msm_subordinate_infoTitle-"+idNumber).clone(true).children().each(function() {
+    //        titleElements += this;
+    //    });    
+    //    
+    //    console.log($("#msm_subordinate_infoTitle-"+idNumber).html());
     
-    var titleElements = '';
-    $("#msm_subordinate_infoTitle-"+idNumber).clone(true).children().each(function() {
-        titleElements += this;
-    });
-    
-    dialogDiv.setAttribute("title", titleElements);
+    dialogDiv.setAttribute("title", $("#msm_subordinate_infoTitle-"+idNumber).html());
     
     $("#msm_subordinate_infoContent-"+idNumber).clone(true).children().each(function() {
         dialogDiv.appendChild(this); 
@@ -446,13 +448,13 @@ function nullErrorWarning(errorArray, id)
             
         if(match)
         {
-            //            var invalidornull = errorArray[i].split("|");
+            var invalidornull = errorArray[i].split("|");
             
-            //            if(invalidornull.length > 1)
-            //            {
-            //                $("#msm_invalid_url_span").css("display","block");
-            //                $(invalidornull[0]).css("border", "solid 4px #FFA500");
-            //            }
+            if(invalidornull.length > 1)
+            {
+                $("#msm_invalid_url_span").css("display","block");
+                $(invalidornull[0]).css("border", "solid 4px #FFA500");
+            }
             //            else
             //            {
             $(errorArray[i]).css("border", "solid 4px #FFA500");
@@ -585,13 +587,13 @@ function loadValues(ed, id)
 }
 
 /**
- *  This function finds the subordinate data submitted stored in the div and returns the 
- *  HTML element itself. Used to load the information that were submitted by the user already and
- *  allows for an editting function.
- *  
- *  @param selected    the element with highlighted text in editor
- *  @param id          the id number attached to the div to specify the subordinate data in question
- */
+     *  This function finds the subordinate data submitted stored in the div and returns the 
+     *  HTML element itself. Used to load the information that were submitted by the user already and
+     *  allows for an editting function.
+     *  
+     *  @param selected    the element with highlighted text in editor
+     *  @param id          the id number attached to the div to specify the subordinate data in question
+     */
 function findSubordinateResult(selected, id)
 {    
     var matchedElement;    

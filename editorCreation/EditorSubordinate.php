@@ -79,7 +79,9 @@ class EditorSubordinate extends EditorElement
 
     public function displayData()
     {
-        $htmlContent = '';
+        $htmlContent = '';        
+        
+        $htmlContent .= $this->info->displayData();
         
         return $htmlContent;
     }

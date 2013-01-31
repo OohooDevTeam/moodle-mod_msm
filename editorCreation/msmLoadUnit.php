@@ -36,9 +36,6 @@ $unitidInfo = explode('-', $_POST['id']);
 $unitData = new EditorUnit();
 $unitData->loadData($unitidInfo[1]);
 
-echo "children?";
-print_object($unitData);
-
 $htmlContent = '';
 $htmlContent .= $unitData->displayData();
 

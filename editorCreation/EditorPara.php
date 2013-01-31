@@ -83,10 +83,10 @@ class EditorPara extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
-        
+
         $subordinate_sibling = 0;
-        
-        foreach($this->subordinates as $subordinate)
+
+        foreach ($this->subordinates as $subordinate)
         {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
@@ -96,34 +96,39 @@ class EditorPara extends EditorElement
     public function displayData()
     {
         $htmlContent = '';
-        
+
         $htmlContent .= $this->content;
         
+        foreach($this->subordinates as $subordinate)
+        {
+            $htmlContent .= $subordinate->displayData();
+        }
+
         return $htmlContent;
     }
 
     public function loadData($compid)
     {
         global $DB;
-        
-        $paraCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
-        
+
+        $paraCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
         $this->compid = $compid;
         $this->id = $paraCompRecord->unit_id;
-        
-        $paraRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
-        
+
+        $paraRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
         $this->align = $paraRecord->para_align;
         $this->content = $paraRecord->para_content;
         $this->description = $paraRecord->description;
-        
-        $childRecords = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
-        
-        foreach($childRecords as $child)
+
+        $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+        foreach ($childRecords as $child)
         {
-            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
-            
-            if($childTable->tablename == 'msm_subordinate')
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            if ($childTable->tablename == 'msm_subordinate')
             {
                 $subordinate = new EditorSubordinate();
                 $subordinate->loadData($child->id);
@@ -134,7 +139,7 @@ class EditorPara extends EditorElement
                 echo "another child of para? " . $childTable->tablename;
             }
         }
-        
+
         return $this;
     }
 
