@@ -139,6 +139,21 @@ function processUnitData(htmlData, idpair)
     
     $('#msm_unit_form').append(htmlData);
     
+    $(".msm_subordinate_hotwords").each(function(i, element) {
+        var idInfo = this.id.split("-");                        
+        var newid = '';
+                        
+        for(var i=1; i < idInfo.length-1; i++)
+        {
+            newid += idInfo[i]+"-";
+        }
+                            
+        newid += idInfo[idInfo.length-1];
+                        
+        $(this).on('mouseover', function(){
+            previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
+        });
+    });
 //    var titleLabel = $('#msm_unit_title_label-'+idpair).val();
 //    
 //    var titleLabelInfo = titleLabel.split("-");

@@ -49,12 +49,9 @@ class EditorInfo extends EditorElement
                 $allSubordinates[] = $tempallSubordinates[$i];
             }
 
-//            print_object($allSubordinates);
-
             $i = 0;
             foreach ($allSubordinates as $index => $subordinate)
             {
-//                print_object($subordinate);
                 $idValuePair = explode("|", $subordinate);
 
                 if (strpos($idValuePair[0], $subid[0]) !== false)
@@ -164,8 +161,7 @@ class EditorInfo extends EditorElement
         global $DB;
 
         $htmlContent = '';
-
-
+        
         $infoCompRecord = $DB->get_record('msm_compositor', array('id' => $this->compid));
 
         $parentRecord = $DB->get_record('msm_compositor', array('id' => $infoCompRecord->parent_id));
@@ -243,14 +239,11 @@ class EditorInfo extends EditorElement
         {
             if (empty($this->caption))
             {
-                $htmlContent .= "<div id='msm_subordinate_info_dialog-$this->compid' class='msm_subordinate_info_dialogs'>";
+                $htmlContent .= "<div id='msm_subordinate_info_dialog-$this->compid' class='msm_subordinate_info_dialogs' style='display:none;'>";
             }
             else
             {
-                $doc = new DOMDocument;
-                $doc->loadHTML($this->caption);
-                $title = $doc->saveHTML();
-                $htmlContent .= "<div id='msm_subordinate_info_dialog-$this->compid' class='msm_subordinate_info_dialogs' title='$title'>";
+                $htmlContent .= "<div id='msm_subordinate_info_dialog-$this->compid' class='msm_subordinate_info_dialogs' title='$this->caption' style='display:none;'>";
             }
             
             $htmlContent .= $this->content;

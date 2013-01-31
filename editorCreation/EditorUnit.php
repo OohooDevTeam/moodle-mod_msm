@@ -85,7 +85,6 @@ class EditorUnit extends EditorElement
 
         $introids = '';
         $insertionKey = null;
-        $children = array();
 
         $index = 0; //keys responds to db id's so need index number for the array
         foreach ($childRecords as $child)
@@ -97,17 +96,17 @@ class EditorUnit extends EditorElement
                 case "msm_comment":
                     $comment = new EditorComment();
                     $comment->loadData($child->id);
-                    $children[] = $comment;
+                    $this->children[] = $comment;
                     break;
                 case "msm_def":
                     $def = new EditorDefinition();
                     $def->loadData($child->id);
-                    $children[] = $def;
+                    $this->children[] = $def;
                     break;
                 case "msm_theorem":
                     $theorem = new EditorTheorem();
                     $theorem->loadData($child->id);
-                    $children[] = $theorem;
+                    $this->children[] = $theorem;
                     break;
                 case "msm_intro":
                     // intro needs to be processed differently as only one intro is allowed on editor
@@ -122,7 +121,12 @@ class EditorUnit extends EditorElement
                 case "msm_unit":
                     $block = new EditorBlock();
                     $block->loadData($child->id);
-                    $children[] = $block;
+                    $this->children[] = $block;
+                    break;
+                default: //only para/content/table should go to this condition
+                    $block = new EditorBlock();
+                    $block->loadData($this->compid);
+                    $this->children[] = $block;
                     break;
 //                default:
 //                    echo "other tag" + $childTable->tablename;
@@ -131,16 +135,17 @@ class EditorUnit extends EditorElement
             $index++;
         }
 
+        
         // to process intro elements
         if ($introids != '')
         {
             $intro = new EditorIntro();
             $intro->loadData($introids);
-
-            if (!empty($insertionKey))
+                        
+            if ($insertionKey !== null)
             {
                 $tempArray = array();
-                foreach ($children as $item)
+                foreach ($this->children as $item)
                 {
                     $tempArray[] = $item;
                 }
@@ -148,19 +153,15 @@ class EditorUnit extends EditorElement
                 // insert intro at the right plce in the array and copy back to class propery
                 $result = array_merge(array_slice($tempArray, 0, $insertionKey, true), array($insertionKey => $intro), array_slice($tempArray, $insertionKey, count($tempArray) - 1, false));
 
+                $this->children = array();
+                
                 foreach ($result as $resultItem)
                 {
                     $this->children[] = $resultItem;
                 }
             }
         }
-        else
-        {
-            foreach ($children as $item)
-            {
-                $this->children[] = $item;
-            }
-        }
+                        
         return $this;
     }
 
@@ -192,7 +193,7 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "<div id='msm_editor_middle_droparea'>";
         $htmlContent .= "<div id='msm_child_appending_area'>";
-
+        
         foreach ($this->children as $childElement)
         {
             $htmlContent .= $childElement->displayData();

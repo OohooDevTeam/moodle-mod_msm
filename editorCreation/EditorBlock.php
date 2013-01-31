@@ -67,11 +67,19 @@ class EditorBlock extends EditorElement
 
                     $this->compid = $DB->insert_record("msm_compositor", $compData);
 //                    
+                    foreach ($this->content as $content)
+                    {
+                        $content->insertData($this->compid, $sibling_id, $msmid);
+                        $sibling_id = $content->compid;
+                    }
                 }
-                foreach ($this->content as $content)
+                else
                 {
-                    $content->insertData($this->compid, $sibling_id, $msmid);
-                    $sibling_id = $content->compid;
+                    foreach ($this->content as $content)
+                    {
+                        $content->insertData($parentid, $sibling_id, $msmid);
+                        $sibling_id = $content->compid;
+                    }
                 }
             }
             else if ($this->type == "intro")
@@ -183,7 +191,7 @@ class EditorBlock extends EditorElement
 
     public function displayData()
     {
-        $htmlContent = '';        
+        $htmlContent = '';
 
         if ($this->type == 'msm_intro')
         {
@@ -214,11 +222,11 @@ class EditorBlock extends EditorElement
 
             $htmlContent .= "<div style='margin-top: 2%;'>";
             $htmlContent .= "<label id='msm_body_title_label-$this->compid' class='msm_unit_body_title_labels' for='msm_body_title_input-$this->compid'>Title: </label>";
-            $htmlContent .= "<input id='msm_body_title_input-$this->compid' class='msm_unit_body_title' placeholder='OPtional Title for this Content' name='msm_body_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+            $htmlContent .= "<input id='msm_body_title_input-$this->compid' class='msm_unit_body_title' placeholder='Optional Title for this Content' name='msm_body_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div id='msm_body_content_input-$this->compid' class='msm_editor_content'>";            
-            
+            $htmlContent .= "<div id='msm_body_content_input-$this->compid' class='msm_editor_content'>";
+                        
             foreach ($this->content as $content)
             {
                 $htmlContent .= $content->displayData();
