@@ -180,7 +180,13 @@ function saveComp(e)
        success: function(data)
             {
                 ids = JSON.parse(data);
-                console.log(ids);
+                if(ids == 'done')
+                    {
+                        $.ajax({
+                           type: 'POST',
+                           url: "view.php"
+                        });
+                    }
             },
             error: function(data)
             {

@@ -45,6 +45,7 @@ global $PAGE, $OUTPUT;
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('n', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 
+print_object($m);
 if ($id)
 {
     $cm = get_coursemodule_from_id('msm', $id, 0, false, MUST_EXIST);

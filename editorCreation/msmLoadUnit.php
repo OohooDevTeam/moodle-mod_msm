@@ -54,7 +54,13 @@ else if (isset($_POST['tree_content']))
     
     processTreeContent($ulElement, 0);
     
-    echo json_encode("done");
+    $midString = parse_url($_SERVER['PATH_INFO'], PHP_URL_QUERY);
+    
+    print_object($midString);
+    
+    $midInfo = explode("=", $midString);
+    
+    echo json_encode($midInfo[1]);
 }
 
 function processTreeContent($DomElement, $parentNode)
