@@ -163,8 +163,31 @@ function processUnitData(htmlData, idpair)
 //    $("#msm_editor_middle > h2").val(titleLabelInfo[0] + " Design Area");
 }
 
-function saveComp()
+function saveComp(e)
 {
+    // TODO need to ask dialog to save unit that is currently focused on in middle panel if it is in edit mode
+    
+    e.preventDefault();
+    
+   var treeInnerHTML = $("#msm_unit_tree").html();
+   
+   var params = {tree_content: treeInnerHTML};
+   var ids = [];
+   $.ajax({
+       type: 'POST',
+       url:"editorCreation/msmLoadUnit.php",
+       data: params,
+       success: function(data)
+            {
+                ids = JSON.parse(data);
+                console.log(ids);
+            },
+            error: function(data)
+            {
+                alert("ajax error in loading unit");
+            }
+   }); 
+     
+// TODO navigate to view page once the db is updated
     
 }
-

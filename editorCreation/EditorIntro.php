@@ -68,7 +68,7 @@ class EditorIntro extends EditorElement
 
         $htmlContent .= "<div style='margin-top: 2%;'>";
         $htmlContent .= "<label id='msm_intro_title_label-$this->compid' class='msm_unit_intro_title_labels' for='msm_intro_title_input-$this->compid'>Title: </label>";
-        $htmlContent .= "<input id='msm_intro_title_input-$this->compid' class='msm+unit_intro_title' placeholder='Optional Title for the introduction.' name='msm_intro_title_input-$this->compid' disabled='disabled' value='$blockcaption'/>";
+        $htmlContent .= "<input id='msm_intro_title_input-$this->compid' class='msm_unit_intro_title' placeholder='Optional Title for the introduction.' name='msm_intro_title_input-$this->compid' disabled='disabled' value='$blockcaption'/>";
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_intro_content-input-$this->compid' class='msm_editor_content'>";

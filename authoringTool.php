@@ -290,7 +290,7 @@ $formContent .= '<div id="msm_editor_container">
                 </div>
             </div>            
         </div>
-        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp()"> Done </button>';
+        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>';
 
 $formContent .= '<script type="text/javascript">    
             $(document).ready(function() {  

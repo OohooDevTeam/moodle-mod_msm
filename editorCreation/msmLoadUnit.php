@@ -29,15 +29,83 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
-//print_object($_POST);
+if (isset($_POST['id']))
+{
+    //print_object($_POST);
 // id passed in form of an array with id index and value of msm_unit-#compid-#unitid
-$unitidInfo = explode('-', $_POST['id']);
+    $unitidInfo = explode('-', $_POST['id']);
 
-$unitData = new EditorUnit();
-$unitData->loadData($unitidInfo[1]);
+    $unitData = new EditorUnit();
+    $unitData->loadData($unitidInfo[1]);
 
-$htmlContent = '';
-$htmlContent .= $unitData->displayData();
+    $htmlContent = '';
+    $htmlContent .= $unitData->displayData();
 
-echo json_encode($htmlContent);
+    echo json_encode($htmlContent);
+}
+else if (isset($_POST['tree_content']))
+{
+    $doc = new DOMDocument();
+    $doc->loadHTML($_POST['tree_content']);
+
+    $rootElement = $doc->documentElement;
+    
+    $ulElement = $rootElement->childNodes->item(0)->childNodes->item(0);
+    
+    processTreeContent($ulElement, 0);
+    
+    echo json_encode("done");
+}
+
+function processTreeContent($DomElement, $parentNode)
+{
+    $parent = $parentNode;
+    
+    if ($DomElement->hasChildNodes())
+    {
+        foreach ($DomElement->childNodes as $child)
+        {
+            if ($child->nodeType == XML_ELEMENT_NODE)
+            {
+                switch ($child->tagName)
+                {
+                    case "ul":
+                        processTreeContent($child, $parent);
+                        break;
+                    case "li":
+                        processTreeContent($child, $parent);
+                        break;
+                    case "a":
+                        if ($child->hasChildNodes())
+                        {
+                            foreach($child->childNodes as $grandChild)
+                            {
+                                if($grandChild->nodeType == XML_TEXT_NODE)
+                                {
+                                    $unit = new EditorUnit();
+                                    $updateId = $unit->updateCompRecord($grandChild->nodeValue, $parent);
+                                    
+                                    if(!empty($child->nextSibling))
+                                    {
+                                        if($child->nextSibling->nodeType == XML_ELEMENT_NODE)
+                                        {
+                                            if($child->nextSibling->tagName == "ul")
+                                            {
+                                                $parent = $updateId;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+    }
+}
 ?>

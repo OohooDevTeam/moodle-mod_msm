@@ -63,6 +63,80 @@ class EditorUnit extends EditorElement
         $this->compid = $DB->insert_record('msm_compositor', $compData);
     }
 
+    public function updateCompRecord($idPair, $parent)
+    {
+        global $DB;
+
+        $idInfo = explode("-", $idPair);
+
+        $unitCompRecord = $DB->get_record("msm_compositor", array('id' => $idInfo[0]));
+        $unitRecord = $DB->get_record($this->tablename, array('id' => $unitCompRecord->unit_id));
+
+        if ($parent != 0)
+        {
+            $otherCompRecords = $DB->get_records('msm_compositor', array('parent_id' => $parent, 'table_id' => $unitCompRecord->table_id), 'prev_sibling_id');
+
+            $tempArray = array();
+
+            if (sizeof($otherCompRecords) > 0)
+            {
+                foreach ($otherCompRecords as $rec)
+                {
+                    $tempArray[] = $rec;
+                }
+
+                if (end($tempArray)->prev_sibling_id == 0)
+                {
+                    $lastSibling = $tempArray[0]->id;
+                }
+                else
+                {
+                    $lastSibling = end($tempArray)->id;
+                }
+            }
+            else
+            {
+                $lastSibling = 0;
+            }
+
+
+            $parentCompRecord = $DB->get_record("msm_compositor", array('id' => $parent));
+            $parentUnitRecord = $DB->get_record($this->tablename, array('id' => $parentCompRecord->unit_id));
+
+            $parentCompTypeRecord = $DB->get_record("msm_unit_name", array('id' => $parentUnitRecord->compchildtype));
+
+            $currentUnitDepth = $parentCompTypeRecord->depth + 1;
+            $currentUnitCompType = $DB->get_record("msm_unit_name", array('depth' => $currentUnitDepth, 'msmid' => $parentCompRecord->msm_id));
+
+            $newUnitData = new stdClass();
+            $newUnitData->id = $unitRecord->id;
+            $newUnitData->standalone = $unitRecord->standalone;
+            $newUnitData->string_id = $unitRecord->string_id;
+            $newUnitData->compchildtype = $currentUnitCompType->id;
+            $newUnitData->title = $unitRecord->title;
+            $newUnitData->plain_title = $unitRecord->plain_title;
+            $newUnitData->creationdate = $unitRecord->creationdate;
+            $newUnitData->last_revision_date = $unitRecord->last_revision_date;
+            $newUnitData->block_caption = $unitRecord->block_caption;
+            $newUnitData->acknowledgements = $unitRecord->acknowledgements;
+            $newUnitData->description = $unitRecord->description;
+
+            $DB->update_record($this->tablename, $newUnitData);
+
+            $newCompData = new stdClass();
+            $newCompData->id = $unitCompRecord->id;
+            $newCompData->msm_id = $unitCompRecord->msm_id;
+            $newCompData->table_id = $unitCompRecord->table_id;
+            $newCompData->unit_id = $unitRecord->id;
+            $newCompData->parent_id = $parent;
+            $newCompData->prev_sibling_id = $lastSibling;
+
+            $DB->update_record("msm_compositor", $newCompData);
+        }
+
+        return $unitCompRecord->id;
+    }
+
     public function loadData($compid)
     {
         global $DB;
@@ -119,9 +193,13 @@ class EditorUnit extends EditorElement
                     }
                     break;
                 case "msm_unit":
-                    $block = new EditorBlock();
-                    $block->loadData($child->id);
-                    $this->children[] = $block;
+                    $unitRecord = $DB->get_record("msm_unit", array('id' => $child->unit_id));
+                    if ($unitRecord->block_caption != null)
+                    {
+                        $block = new EditorBlock();
+                        $block->loadData($child->id);
+                        $this->children[] = $block;
+                    }
                     break;
                 default: //only para/content/table should go to this condition
                     $block = new EditorBlock();
