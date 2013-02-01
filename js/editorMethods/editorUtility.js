@@ -73,6 +73,8 @@ function newUnit()
     $("#msm_unit_title").val('');
     $("#msm_unit_description_input").val('');
     
+    $("#msm_child_order").val('');
+    
     $("#msm_unit_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");
     

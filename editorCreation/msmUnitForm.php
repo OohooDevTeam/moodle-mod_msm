@@ -28,8 +28,6 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
-//print_object($_POST);
-
 $childOrder = $_POST['msm_child_order'];
 
 $arrayOfChild = explode(",", $childOrder);
@@ -163,24 +161,6 @@ foreach ($unitcontent as $unitchild)
             }
         }
     }
-
-//    if ((get_class($unitchild) == 'EditorDefinition')||(get_class($unitchild) == 'EditorComment'))
-//    {
-//        foreach ($unitchild->associates as $associate)
-//        {
-//            foreach ($associate->infos as $info)
-//            {
-//                if (!empty($info->errorArray))
-//                {
-//                    $hasError = true;F
-//                    foreach ($info->errorArray as $infoError)
-//                    {
-//                        $errorArray[] = $infoError;
-//                    }
-//                }
-//            }
-//        }
-//    }
     if (!empty($unitchild->errorArray))
     {
         $hasError = true;

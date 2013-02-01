@@ -135,13 +135,13 @@ class EditorUnit extends EditorElement
             $index++;
         }
 
-        
+
         // to process intro elements
         if ($introids != '')
         {
             $intro = new EditorIntro();
             $intro->loadData($introids);
-                        
+
             if ($insertionKey !== null)
             {
                 $tempArray = array();
@@ -154,14 +154,14 @@ class EditorUnit extends EditorElement
                 $result = array_merge(array_slice($tempArray, 0, $insertionKey, true), array($insertionKey => $intro), array_slice($tempArray, $insertionKey, count($tempArray) - 1, false));
 
                 $this->children = array();
-                
+
                 foreach ($result as $resultItem)
                 {
                     $this->children[] = $resultItem;
                 }
             }
         }
-                        
+
         return $this;
     }
 
@@ -184,28 +184,53 @@ class EditorUnit extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='msm_unit_info_div'>";
-        $htmlContent .= "<label id='msm_unit_title_label-$this->compid' class='msm_unit_title_labels' for='msm_unit_title-$this->compid'>$this->unitName title: </label>";
-        $htmlContent .= "<input id='msm_unit_title-$this->compid' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title-$this->compid' value='$this->title' disabled='disabled'/>";
+        $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
+        $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->title' disabled='disabled'/>";
 
-        $htmlContent .= "<label id='msm_unit_description_label-$this->compid' class='msm_unit_description_labels' for='msm_unit_description_input-$this->compid'>Description: </label>";
-        $htmlContent .= "<input id='msm_unit_description_input-$this->compid' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input-$this->compid' value='$this->description'  disabled='disabled'/>";
+        $htmlContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
+        $htmlContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' value='$this->description'  disabled='disabled'/>";
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_editor_middle_droparea'>";
         $htmlContent .= "<div id='msm_child_appending_area'>";
-        
+
+        $childOrderString = '';
         foreach ($this->children as $childElement)
         {
             $htmlContent .= $childElement->displayData();
+
+            $className = get_class($childElement);
+            switch ($className)
+            {
+                case "EditorDefinition":
+                    $childOrderString .= "copied_msm_def-$childElement->compid";
+                    break;
+                case "EditorTheorem":
+                    $childOrderString .= "copied_msm_theorem-$childElement->compid";
+                    break;
+                case "EditorComment":
+                    $childOrderString .= "copied_msm_comment-$childElement->compid";
+                    break;
+                case "EditorIntro":
+                    $childOrderString .= "copied_msm_intro-$childElement->compid";
+                    break;
+                case "EditorBlock":
+                    $childOrderString .= "copied_msm_body-$childElement->compid";
+                    break;
+            }
+            $childOrderString .= ",";
         }
+
+        $childOrderString .= $unitCompRecord->msm_id;
+        $htmlContent .= "</div>";
+        $htmlContent .= "<input id='msm_child_order' style='visibility:hidden;' name='msm_child_order' value='$childOrderString'/>";
 
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
-        $htmlContent .= "</div>";
+
 
         return $htmlContent;
     }
 
 }
-
 ?>
