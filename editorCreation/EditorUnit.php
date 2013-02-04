@@ -51,6 +51,7 @@ class EditorUnit extends EditorElement
         // when saving the unit for the first time, no structure is given(ie no subunit is specified until user structures the unit in hierarchy column)
         // so the default value is the name of the top unit specified by the user
         $data->compchildtype = $this->unitName;
+        $data->standalone = 'false';
 
         $this->id = $DB->insert_record($this->tablename, $data);
 

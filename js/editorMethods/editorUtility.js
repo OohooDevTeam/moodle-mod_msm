@@ -180,12 +180,10 @@ function saveComp(e)
        success: function(data)
             {
                 ids = JSON.parse(data);
-                if(ids == 'done')
+                var idInfos = ids.split("-");
+                if(ids != '')
                     {
-                        $.ajax({
-                           type: 'POST',
-                           url: "view.php"
-                        });
+                        window.location = "view.php?msmid="+idInfos[0]+"&unitid="+idInfos[1];                        
                     }
             },
             error: function(data)

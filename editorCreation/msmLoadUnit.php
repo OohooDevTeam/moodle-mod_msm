@@ -49,24 +49,35 @@ else if (isset($_POST['tree_content']))
     $doc->loadHTML($_POST['tree_content']);
 
     $rootElement = $doc->documentElement;
-    
+
     $ulElement = $rootElement->childNodes->item(0)->childNodes->item(0);
-    
+
     processTreeContent($ulElement, 0);
-    
-    $midString = parse_url($_SERVER['PATH_INFO'], PHP_URL_QUERY);
-    
-    print_object($midString);
-    
-    $midInfo = explode("=", $midString);
-    
-    echo json_encode($midInfo[1]);
+
+    $aElements = $ulElement->getElementsByTagName('a');
+
+    $idPair = null;
+
+    if ($aElements->item(0)->hasChildNodes())
+    {
+        foreach ($aElements->item(0)->childNodes as $child)
+        {
+            if ($child->nodeType == XML_TEXT_NODE)
+            {
+                $idPair = explode("-", $child->wholeText);
+            }
+        }
+    }
+
+    $elementRecord = $DB->get_record('msm_compositor', array('id' => $idPair[0]));
+
+    echo json_encode($elementRecord->msm_id . "-" . $idPair[0]);
 }
 
 function processTreeContent($DomElement, $parentNode)
 {
     $parent = $parentNode;
-    
+
     if ($DomElement->hasChildNodes())
     {
         foreach ($DomElement->childNodes as $child)
@@ -84,27 +95,23 @@ function processTreeContent($DomElement, $parentNode)
                     case "a":
                         if ($child->hasChildNodes())
                         {
-                            foreach($child->childNodes as $grandChild)
+                            foreach ($child->childNodes as $grandChild)
                             {
-                                if($grandChild->nodeType == XML_TEXT_NODE)
+                                if ($grandChild->nodeType == XML_TEXT_NODE)
                                 {
                                     $unit = new EditorUnit();
                                     $updateId = $unit->updateCompRecord($grandChild->nodeValue, $parent);
-                                    
-                                    if(!empty($child->nextSibling))
+
+                                    if (!empty($child->nextSibling))
                                     {
-                                        if($child->nextSibling->nodeType == XML_ELEMENT_NODE)
+                                        if ($child->nextSibling->nodeType == XML_ELEMENT_NODE)
                                         {
-                                            if($child->nextSibling->tagName == "ul")
+                                            if ($child->nextSibling->tagName == "ul")
                                             {
                                                 $parent = $updateId;
                                             }
                                         }
                                     }
-//                                    else
-//                                    {
-//                                        
-//                                    }
                                 }
                             }
                         }

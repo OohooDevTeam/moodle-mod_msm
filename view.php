@@ -45,7 +45,6 @@ global $PAGE, $OUTPUT;
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('n', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 
-print_object($m);
 if ($id)
 {
     $cm = get_coursemodule_from_id('msm', $id, 0, false, MUST_EXIST);
@@ -60,7 +59,18 @@ elseif ($m)
 }
 else
 {
-    error('You must specify a course_module ID or an instance ID');
+    // for displaying units created by the editor
+    if (!empty($_REQUEST['msmid']))
+    {
+        $m = $_REQUEST['msmid'];
+        $msm = $DB->get_record('msm', array('id' => $m), '*', MUST_EXIST);
+        $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
+        $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
+    }
+    else
+    {
+        error('You must specify a course_module ID or an instance ID');
+    }
 }
 
 if (!$units = $DB->get_records('msm_compositor', array('msm_id' => $msm->id)))
@@ -70,31 +80,39 @@ if (!$units = $DB->get_records('msm_compositor', array('msm_id' => $msm->id)))
     redirect($url);
 }
 
-$rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0), '*', MUST_EXIST);
+if(!empty($_REQUEST['unitid'])) // for displaying units created by the editor
+{
+    $rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'id'=>$_REQUEST['unitid'], 'parent_id' => 0, 'prev_sibling_id' => 0), '*', MUST_EXIST);
+}
+else // for displaying units from the XML legacy material
+{
+   $rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0), '*', MUST_EXIST); 
+}
+
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 
-add_to_log($course->id, 'msm', 'view', "view.php?id={$cm->id}", $msm->name, $cm->id);
+add_to_log($course->id, 'msm', 'view', "view.php?id={$cm->id}&mid={$msm->id}", $msm->name, $cm->id);
 
 /// Print the page header
 
-$PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id));
+$PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id, 'mid'=>$msm->id));
 $PAGE->set_title(format_string($msm->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
 //*********************************************************************************************************
 // activate later when editor is done
-//if ($PAGE->user_allowed_editing())
-//{
-//    $buttons = '<form method="get" action="' . $CFG->wwwroot . '/course/mod.php"><div>' .
-//            '<input type="hidden" name="update" value="' . $cm->id . '" />' .
-//            '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';
-//    $PAGE->set_button($buttons);
-//}
+if ($PAGE->user_allowed_editing())
+{
+    $buttons = '<form method="get" action="' . $CFG->wwwroot . '/mod/msm/authoringTool.php?mid=' . $msm->id . '"><div>' .
+            '<input type="hidden" name="update" value="' . $cm->id . '" />' .
+            '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';
+    $PAGE->set_button($buttons);
+}
 //*********************************************************************************************************
-//$PAGE->set_cacheable(true);
+$PAGE->set_cacheable(true);
 //$PAGE->set_focuscontrol('some-html-id');
 //$PAGE->add_body_class('msm-'.$somevar);
 // Output starts here
@@ -173,6 +191,7 @@ $string = '';
 $stack = $compositor->makeStack($rootcomp);
 
 $stack = array_reverse($stack); // needed to access the contents in proper order
+
 //last element is added separately to prevent having ending comma
 for ($i = 0; $i < sizeof($stack) - 1; $i++)
 {
@@ -180,14 +199,7 @@ for ($i = 0; $i < sizeof($stack) - 1; $i++)
 }
 $string .= $stack[sizeof($stack) - 1]->id . "/" . $stack[sizeof($stack) - 1]->unit_id . "/" . $stack[sizeof($stack) - 1]->parent_id . "/" . $stack[sizeof($stack) - 1]->prev_sibling_id;
 
-//foreach ($stack as $key => $record)
-//{
-//    $string .= $record->id . "/" . $record->unit_id . "/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
-//}
-
 $content.= $compositor->loadAndDisplay(null, $string, null, '');
-//print_object($stack);
-//die;
 
 $content .= "</div>"; //features
 

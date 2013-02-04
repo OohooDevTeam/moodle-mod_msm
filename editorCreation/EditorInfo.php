@@ -161,7 +161,7 @@ class EditorInfo extends EditorElement
         global $DB;
 
         $htmlContent = '';
-        
+
         $infoCompRecord = $DB->get_record('msm_compositor', array('id' => $this->compid));
 
         $parentRecord = $DB->get_record('msm_compositor', array('id' => $infoCompRecord->parent_id));
@@ -231,7 +231,10 @@ class EditorInfo extends EditorElement
             }
             $htmlContent .= "</select>";
 
-            $htmlContent .= $this->ref->displayRefData();
+            if (!empty($this->ref))
+            {
+                $htmlContent .= $this->ref->displayRefData();
+            }
 
             $htmlContent .= "</div>";
         }
@@ -245,11 +248,11 @@ class EditorInfo extends EditorElement
             {
                 $htmlContent .= "<div id='msm_subordinate_info_dialog-$this->compid' class='msm_subordinate_info_dialogs' title='$this->caption' style='display:none;'>";
             }
-            
+
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
         }
-        
+
         return $htmlContent;
     }
 

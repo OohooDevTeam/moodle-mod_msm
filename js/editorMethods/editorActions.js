@@ -82,7 +82,8 @@ function processReftype(e)
         $(this).children("span").css({
             "visibility": "visible", 
             "color": "#4e6632", 
-            "opacity": "0.5"
+            "opacity": "0.5",
+            "cursor": "move"
         });
     });
     $("#msm_theoremref_title_container-"+indexNumber).mouseout(function () {
@@ -96,7 +97,8 @@ function processReftype(e)
         $(this).children("span").css({
             "visibility": "visible", 
             "color": "#4e6632", 
-            "opacity": "0.5"
+            "opacity": "0.5",
+            "cursor": "move"
         });
     });
     $("#msm_theoremref_statement_title_container-"+indexNumber+'-1').mouseout(function () {
@@ -400,7 +402,8 @@ function addrefTheoremContent(event, idNumber)
         $(this).children("span").css({
             "visibility": "visible", 
             "color": "#4e6632", 
-            "opacity": "0.5"
+            "opacity": "0.5",
+            "cursor": "move"
         });
     });
     $("#msm_theoremref_statement_title_container-"+idNumber+'-'+newId).mouseout(function () {
@@ -532,7 +535,8 @@ function addrefTheoremPart(event, idNumber)
         $(this).children("span").css({
             "visibility": "visible", 
             "color": "#4e6632", 
-            "opacity": "0.5"
+            "opacity": "0.5",
+            "cursor": "move"
         });
     });
     $("#msm_theoremref_part_title_container-"+idNumber+'-'+newId).mouseout(function () {
