@@ -227,6 +227,19 @@ foreach ($DB->get_records('msm_unit_name', array('msmid' => $msm->id), 'depth') 
 }
 $unitNames .= $msm->id;
 
+$unittable = $DB->get_record('msm_table_collection', array('tablename'=>'msm_unit'));
+
+$existingUnit = $DB->get_record('msm_compositor', array('msm_id'=>$msm->id, 'table_id'=>$unittable->id, 'parent_id'=>0, 'prev_sibling_id'=>0));
+
+$treeContent = '';
+
+if(!empty($existingUnit))
+{
+   $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id); 
+}
+
+print_object($treeContent);
+
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
@@ -358,4 +371,30 @@ $formContent .= '<script type="text/javascript">
 
 echo $OUTPUT->box($msm_nav . $formContent);
 echo $OUTPUT->footer();
+
+
+function makeUnitTree($compid, $unitid)
+{
+    global $DB;
+    
+    $unittableid = $DB->get_record('msm_table_collection', array('tablename'=>'msm_unit'))->id;
+    
+    $treeHtml = '';
+    
+    $treeHtml .= "<ul>";
+    $treeHtml .= "<li id='$compid-$unitid'>";
+    $treeHtml .= "<a href='#'>$compid-$unitid</a>";
+    
+    $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid, 'table_id'=>$unittableid), 'prev_sibling_id');
+    
+    foreach($childElements as $childUnit)
+    {
+        $treeHtml .= makeUnitTree($childUnit->id, $childUnit->unit_id);
+    }
+    
+    $treeHtml .= "</li>";
+    $treeHtml .= "</ul>";
+    
+    return $treeHtml;
+}
 ?>

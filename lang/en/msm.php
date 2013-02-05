@@ -68,5 +68,6 @@ $string['addchildbutton'] = '(+) Add more child elements';
 
 $string['msmsubmit'] = ' Save and Proceed ';
 
-$string['importbutton'] = 'Import from Existing XML';
+$string['import'] = 'Import from Existing XML';
+$string['importElement'] = 'Please specify the XML file to import.';
 
