@@ -466,9 +466,9 @@ class MathComment extends Element
             $content .= "<span class='commenttitle'>" . $this->caption . "</span>";
         }
 
-        if (!empty($this->def_type))
+        if (!empty($this->comment_type))
         {
-            $content .= "<span class='commentype'>" . $this->comment_type . "</span>";
+            $content .= "<span class='commenttype'>" . $this->comment_type . "</span>";
         }
         $content .= "<br/>";
 

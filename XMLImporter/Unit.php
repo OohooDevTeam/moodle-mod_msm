@@ -1009,6 +1009,8 @@ class Unit extends Element
 
         $this->authors = array();
         $this->childs = array();
+        
+        print_object($this->childs);
 
         foreach ($childElements as $child)
         {
@@ -1037,12 +1039,15 @@ class Unit extends Element
                         break;
                     case('msm_def'):
                         $def = new Definition();
-                        $def->loadFromDb($child->unit_id, $child->id);
+                        $def->loadFromDb($child->unit_id, $child->id);                        
                         $this->childs[] = $def;
                         break;
 
                     case('msm_para'):
                         $para = new Para();
+                        
+                        echo "para is a child of unit";
+                        
                         $para->loadFromDb($child->unit_id, $child->id);
                         $this->childs[] = $para;
                         break;
@@ -1082,6 +1087,7 @@ class Unit extends Element
                         $comment->loadFromDb($child->unit_id, $child->id);
                         $this->childs[] = $comment;
                         break;
+                   
                 }
             }
             else
@@ -1113,6 +1119,9 @@ class Unit extends Element
 
                     case('msm_para'):
                         $para = new Para();
+                        
+                        echo "para is a child of unit-ref";
+                        
                         $para->loadFromDb($child->unit_id, $child->id);
                         $this->childs[] = $para;
                         break;
@@ -1211,7 +1220,7 @@ class Unit extends Element
         }
 
         foreach ($this->childs as $child)
-        {
+        {          
             $content .= $child->displayhtml($isindex);
         }
 

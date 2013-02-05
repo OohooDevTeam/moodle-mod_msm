@@ -534,6 +534,12 @@ class Associate extends Element
                     $def->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $def;
                     break;
+                
+                case('msm_comment'):
+                    $comment = new MathComment();
+                    $comment->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $comment;
+                    break;
 
                 case('msm_unit'):
                     $unit = new Unit();

@@ -300,61 +300,43 @@ function disableEditorFunction()
     $("#msm_editor_middle_droparea").droppable("destroy");
     
     $(".msm_associate_info_headers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+        $(this).unbind("mouseover");
     });
     
     $(".msm_intro_child_dragareas").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+        $(this).children("span").css("display", "none");
+        $(this).unbind("mouseover");
     });
     
-     $(".msm_element_title_containers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+    $(".msm_element_title_containers").each(function() {
+        $(this).children("span").css("display", "none");
+        $(this).unbind("mouseover");
     });
     
     $(".msm_theorem_statement_title_containers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+        $(this).children("span").css("display", "none");
+        $(this).unbind("mouseover");
     });
     
-     $(".msm_theorem_part_title_containers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+    $(".msm_theorem_part_title_containers").each(function() {
+        $(this).children("span").css("display", "none");
+        $(this).unbind("mouseover");
     });
     
     $(".msm_theoremref_title_containers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+        $(this).children("span").css("display", "none");
+        $(this).unbind("mouseover");
     });
     
     $(".msm_theoremref_statement_title_containers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+        $(this).children("span").css("display", "none");
+        $(this).unbind("mouseover");
     });
     
     $(".msm_theoremref_part_title_containers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css("display", "none");
-        });
+        $(this).children("span").css("display", "none");
+        $(this).unbind("mouseover");
     });
-    
-    
-//    $(".msm_intro_child_dragareas > span").css("display", "none");
-//    $(".msm_associate_info_headers > span").css("display", "none");
-//    $(".msm_element_title_containers > span").css("display", "none");
-//    $(".msm_theorem_statement_title_containers > span").css("display", "none");
-//    $(".msm_theorem_part_title_containers > span").css("display", "none");    
-//    $(".msm_theoremref_statement_title_containers > span").css("display", "none");
-//    $(".msm_theoremref_part_title_containers > span").css("display", "none");   
     
 }
 
@@ -419,10 +401,7 @@ function enableEditorFunction()
                 $(this).sortable("refresh");
             });
         }
-    });    
-                
-//    $("#msm_child_appending_area").disableSelection();
-                    
+    });                        
 }
 
 // to activate the dialog box for display purposes

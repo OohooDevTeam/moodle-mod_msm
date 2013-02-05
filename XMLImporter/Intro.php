@@ -107,7 +107,6 @@ class Intro extends Element
     function displayhtml($isindex = false)
     {
         $content = '';
-        $content .= "<h2> Introduction </h2>";
         $content .= $this->block->displayhtml($isindex);
         
         return $content;

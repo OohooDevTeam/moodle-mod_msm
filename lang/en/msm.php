@@ -55,7 +55,7 @@ $string['msm:addinstance'] = 'MSM Creation Tool';
 $string['msmtype'] = 'Type of Composition';
 $string['msmtype_help'] = 'Replace with explanation of each types...';
 
-$string['levelsetting'] = 'Names for the Hierarachical Elements';
+$string['levelsetting'] = 'Names for the Hierarchical Elements';
 $string['levelsetting_help'] = 'This setting specifies the name of each hierarchical elements that will make up this composition.
     The values stated in the input fields are the default value for each type in the select menu above.';
 $string['toplevel'] = 'Name of top level container';
