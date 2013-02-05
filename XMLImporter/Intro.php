@@ -22,6 +22,8 @@
 class Intro extends Element
 {
 
+    public $blocks = array();
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -109,6 +111,12 @@ class Intro extends Element
                     $block->loadFromDb($child->unit_id, $child->id); //this should be compositor id
                     $this->blocks[] = $block;
                 }
+                else
+                {
+                    $block = new Block();
+                    $block->loadFromDb('', $child->id); //this should be compositor id
+                    $this->blocks[] = $block;
+                }
             }
 
             if (empty($childElements))
@@ -118,7 +126,7 @@ class Intro extends Element
                 $this->blocks[] = $block;
             }
         }
-
+        
         return $this;
     }
 

@@ -544,11 +544,13 @@ class Block extends Element
 
         $blockCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
 
-        if (!empty($blockCompRecord))
+        $tableName = $DB->get_record('msm_table_collection', array('id' => $blockCompRecord->table_id))->tablename;
+
+        if ($tableName == 'msm_block')
         {
             $this->compid = $blockCompRecord->id;
-            $this->id = $id;
-            $blockRecord = $DB->get_record('msm_block', array('id' => $id));
+            $this->id = $blockCompRecord->unit_id;
+            $blockRecord = $DB->get_record('msm_block', array('id' => $this->id));
 
             $this->title = $blockRecord->block_caption;
 
@@ -601,52 +603,52 @@ class Block extends Element
         }
         else
         {
-            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+            $childRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+//
+//            foreach ($childElements as $child)
+//            {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $childRecord->table_id))->tablename;
 
-            foreach ($childElements as $child)
+            switch ($childtablename)
             {
-                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-                switch ($childtablename)
-                {
+                case('msm_para'):
+                    $para = new Para();
+                    $para->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $this->childs[] = $para;
+                    break;
 
-                    case('msm_para'):
-                        $para = new Para();
-                        $para->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $para;
-                        break;
+                case('msm_content'):
+                    $incontent = new InContent();
+                    $incontent->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $this->childs[] = $incontent;
+                    break;
 
-                    case('msm_content'):
-                        $incontent = new InContent();
-                        $incontent->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $incontent;
-                        break;
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $this->childs[] = $matharray;
+                    break;
 
-                    case('msm_math_array'):
-                        $matharray = new MathArray();
-                        $matharray->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $matharray;
-                        break;
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $this->childs[] = $media;
+                    break;
 
-                    case('msm_media'):
-                        $media = new Media();
-                        $media->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $media;
-                        break;
-
-                    case('msm_comment'):
-                        $comment = new MathComment();
-                        $comment->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $comment;
-                        break;
+                case('msm_comment'):
+                    $comment = new MathComment();
+                    $comment->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $this->childs[] = $comment;
+                    break;
 //               
-                    case('msm_table'):
-                        $table = new Table();
-                        $table->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $table;
-                        break;
-                }
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $this->childs[] = $table;
+                    break;
             }
+//            }
         }
         return $this;
     }
