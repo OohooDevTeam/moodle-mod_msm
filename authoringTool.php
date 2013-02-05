@@ -227,15 +227,15 @@ foreach ($DB->get_records('msm_unit_name', array('msmid' => $msm->id), 'depth') 
 }
 $unitNames .= $msm->id;
 
-$unittable = $DB->get_record('msm_table_collection', array('tablename'=>'msm_unit'));
+$unittable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'));
 
-$existingUnit = $DB->get_record('msm_compositor', array('msm_id'=>$msm->id, 'table_id'=>$unittable->id, 'parent_id'=>0, 'prev_sibling_id'=>0));
+$existingUnit = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'table_id' => $unittable->id, 'parent_id' => 0, 'prev_sibling_id' => 0));
 
 $treeContent = '';
 
-if(!empty($existingUnit))
+if (!empty($existingUnit))
 {
-   $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id); 
+    $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id);
 }
 
 $formContent .= '<div id="msm_editor_container">
@@ -298,13 +298,13 @@ $formContent .= '<div id="msm_editor_container">
                 <div id="msm_editor_right">
                     <h2> XML Hierarchy </h2>
                     <div id="msm_unit_tree">';
-                    
-if(!empty($treeContent))
+// adding preexistng unit strcuture
+if (!empty($treeContent))
 {
     $formContent .= $treeContent;
 }
 
-$formContent .=    '</div>
+$formContent .= '</div>
                 </div>
             </div>            
        </div>
@@ -371,15 +371,15 @@ $formContent .= '<script type="text/javascript">
                     position: "80%"
                 });   
                 
-                    $("#msm_unit_tree")
-                    .jstree({
-                        "plugins": ["themes", "html_data", "ui", "dnd"],
-                        "dnd": {
-                            "drop_target": false,
-                            "drag_target": false
-                        }
-                    });
-                    
+               // need it for the loading of jstree when in edit mode
+               $("#msm_unit_tree")
+               .jstree({
+                  "plugins": ["themes", "html_data", "ui", "dnd"],
+                  "dnd": {
+                      "drop_target": false,
+                      "drag_target": false
+                  }
+              });                   
                 
             });               
         </script>';
@@ -387,29 +387,29 @@ $formContent .= '<script type="text/javascript">
 echo $OUTPUT->box($msm_nav . $formContent);
 echo $OUTPUT->footer();
 
-
 function makeUnitTree($compid, $unitid)
 {
     global $DB;
-    
-    $unittableid = $DB->get_record('msm_table_collection', array('tablename'=>'msm_unit'))->id;
-    
+
+    $unittableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+
     $treeHtml = '';
-    
+
     $treeHtml .= "<ul>";
     $treeHtml .= "<li id='$compid-$unitid'>";
     $treeHtml .= "<a href='#'>$compid-$unitid</a>";
-    
-    $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid, 'table_id'=>$unittableid), 'prev_sibling_id');
-    
-    foreach($childElements as $childUnit)
+
+    $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid, 'table_id' => $unittableid), 'prev_sibling_id');
+
+    foreach ($childElements as $childUnit)
     {
         $treeHtml .= makeUnitTree($childUnit->id, $childUnit->unit_id);
     }
-    
+
     $treeHtml .= "</li>";
     $treeHtml .= "</ul>";
-    
+
     return $treeHtml;
 }
+
 ?>
