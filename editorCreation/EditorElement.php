@@ -25,8 +25,6 @@ abstract class EditorElement
         $doc->loadHTML($oldContent);
 //
         $rootElement = $doc->getElementsByTagName('body')->item(0);
-//        
-//        $rootElement = $doc->documentElement;
 
         $newContent = array();
 

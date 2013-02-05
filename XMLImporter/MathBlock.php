@@ -24,6 +24,9 @@ class Block extends Element
 
     public $position;
     public $root;
+    public $title;
+    public $compid;
+    public $id;
 
     function __construct($xmlpath = '')
     {
@@ -539,65 +542,133 @@ class Block extends Element
 
         $this->childs = array();
 
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $blockCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
 
-        foreach ($childElements as $child)
+        if (!empty($blockCompRecord))
         {
-            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+            $this->compid = $blockCompRecord->id;
+            $this->id = $id;
+            $blockRecord = $DB->get_record('msm_block', array('id' => $id));
 
-            switch ($childtablename)
+            $this->title = $blockRecord->block_caption;
+
+            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+            foreach ($childElements as $child)
             {
+                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-                case('msm_para'):
-                    $para = new Para();
-                    $para->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $para;
-                    break;
+                switch ($childtablename)
+                {
 
-                case('msm_content'):
-                    $incontent = new InContent();
-                    $incontent->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $incontent;
-                    break;
+                    case('msm_para'):
+                        $para = new Para();
+                        $para->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $para;
+                        break;
 
-                case('msm_math_array'):
-                    $matharray = new MathArray();
-                    $matharray->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $matharray;
-                    break;
+                    case('msm_content'):
+                        $incontent = new InContent();
+                        $incontent->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $incontent;
+                        break;
 
-                case('msm_media'):
-                    $media = new Media();
-                    $media->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $media;
-                    break;
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $matharray;
+                        break;
 
-                case('msm_comment'):
-                    $comment = new MathComment();
-                    $comment->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $comment;
-                    break;
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $media;
+                        break;
+
+                    case('msm_comment'):
+                        $comment = new MathComment();
+                        $comment->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $comment;
+                        break;
 //               
-                case('msm_table'):
-                    $table = new Table();
-                    $table->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $table;
-                    break;
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $table;
+                        break;
+                }
             }
         }
+        else
+        {
+            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
+            foreach ($childElements as $child)
+            {
+                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+                switch ($childtablename)
+                {
+
+                    case('msm_para'):
+                        $para = new Para();
+                        $para->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $para;
+                        break;
+
+                    case('msm_content'):
+                        $incontent = new InContent();
+                        $incontent->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $incontent;
+                        break;
+
+                    case('msm_math_array'):
+                        $matharray = new MathArray();
+                        $matharray->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $matharray;
+                        break;
+
+                    case('msm_media'):
+                        $media = new Media();
+                        $media->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $media;
+                        break;
+
+                    case('msm_comment'):
+                        $comment = new MathComment();
+                        $comment->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $comment;
+                        break;
+//               
+                    case('msm_table'):
+                        $table = new Table();
+                        $table->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $table;
+                        break;
+                }
+            }
+        }
         return $this;
     }
 
-    function displayhtml($isindex=false)
+    function displayhtml($isindex = false, $flag = false)
     {
-        $content = '';  
-        
+        $content = '';
+
+        if (!empty($this->title))
+        {
+            // first title is same as intro title
+            if (!$flag)
+            {
+                $content .= "<h3>$this->title</h3>";
+            }
+        }
+
         foreach ($this->childs as $child)
         {
             $content .= $child->displayhtml($isindex);
         }
-        
+
         return $content;
     }
 

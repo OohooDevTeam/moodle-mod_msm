@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Intro
@@ -62,7 +62,7 @@ class Intro extends Element
         global $DB;
         $data = new stdClass();
         $data->string_id = $this->string_id;
-        $data->block_caption = $this->caption;
+        $data->intro_caption = $this->caption;
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
@@ -84,31 +84,66 @@ class Intro extends Element
             $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $msmid, $this->compid);
         }
     }
-    
+
     function loadFromDb($id, $compid)
     {
         global $DB;
-        
-        $introrecord  = $DB->get_record($this->tablename, array('id'=>$id));
-        
-        if(!empty($introrecord))
+
+        $introrecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($introrecord))
         {
+            $this->compid = $compid;
             $this->id = $introrecord->id;
-            $this->caption = $introrecord->block_caption;
+            $this->caption = $introrecord->intro_caption;
+
+            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+            foreach ($childElements as $child)
+            {
+                $childTable = $DB->get_record("msm_table_collection", array('id' => $child->table_id));
+
+                if ($childTable->tablename == 'msm_block')
+                {
+                    $block = new Block();
+                    $block->loadFromDb($child->unit_id, $child->id); //this should be compositor id
+                    $this->blocks[] = $block;
+                }
+            }
+
+            if (empty($childElements))
+            {
+                $block = new Block();
+                $block->loadFromDb('', $compid); //this should be compositor id
+                $this->blocks[] = $block;
+            }
         }
-              
-        $block = new Block();
-        $block->loadFromDb('', $compid); //this should be compositor id
-        $this->block = $block;
-        
-        return $this;       
+
+        return $this;
     }
-    
+
     function displayhtml($isindex = false)
     {
         $content = '';
-        $content .= $this->block->displayhtml($isindex);
-        
+
+        if (!empty($this->caption))
+        {
+            $content .= "<h3>$this->caption</h3>";
+        }
+
+        foreach ($this->blocks as $key => $block)
+        {
+            if ($key == 0)
+            {
+                $content .= $block->displayhtml($isindex, true);
+            }
+            else
+            {
+                $content .= $block->displayhtml($isindex);
+            }
+        }
+
+
         return $content;
     }
 

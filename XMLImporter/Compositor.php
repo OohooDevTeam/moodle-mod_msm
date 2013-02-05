@@ -62,12 +62,9 @@ class Compositor
             $checkedUnit = $DB->get_record('msm_unit', array('id' => $unitRecord->unit_id));
             if ($checkedUnit->standalone == 'false')
             {
-                if ($checkedUnit->block_caption == null)
+                foreach ($this->makeStack($unitRecord) as $child)
                 {
-                    foreach ($this->makeStack($unitRecord) as $child)
-                    {
-                        array_push($childs, $child);
-                    }
+                    array_push($childs, $child);
                 }
             }
         }
@@ -237,23 +234,23 @@ class Compositor
 
                 //                   $('.unit').append('<input id="stack" type="text" name="stackstring"/>'); 
                 $('#stack').val(stackstring); 
-                                                                                                                                                                
+                                                                                                                                                                        
                 var currentString = "<?php echo $currentRecord; ?>";
                 $('.unit').append('<input id="current" type="text" name="currentvalue" style="visibility:hidden;"/>');
                 //$('.unit').append('<input id="current" type="text" name="currentvalue"/>');
                 $('#current').val(currentString);
-                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                        
                 var prevString = "<?php echo $prevRecordString; ?>";
                 $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visibility:hidden;"/>');
                 //$('.unit').append('<input id="prevstack" type="text" name="prevstackstring"/>');
                 $('#prevstack').val(prevString);
-                                                                                                                                                                                                                
+                                                                                                                                                                                                                        
                 var functionstring = "<?php echo $functionString; ?>";
                 $('.unit').append('<input id="functioninput" type="text" name="functionstring" style="visibility:hidden;"/>');
                 //$('.unit').append('<input id="functioninput" type="text" name="functionstring"/>');
                 $('#functioninput').val(functionstring); 
             });
-                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                            
         </script>
 
         <?php

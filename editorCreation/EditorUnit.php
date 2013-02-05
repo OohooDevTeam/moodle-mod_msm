@@ -118,7 +118,6 @@ class EditorUnit extends EditorElement
             $newUnitData->plain_title = $unitRecord->plain_title;
             $newUnitData->creationdate = $unitRecord->creationdate;
             $newUnitData->last_revision_date = $unitRecord->last_revision_date;
-            $newUnitData->block_caption = $unitRecord->block_caption;
             $newUnitData->acknowledgements = $unitRecord->acknowledgements;
             $newUnitData->description = $unitRecord->description;
 
@@ -158,10 +157,6 @@ class EditorUnit extends EditorElement
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
-        $introids = '';
-        $insertionKey = null;
-
-        $index = 0; //keys responds to db id's so need index number for the array
         foreach ($childRecords as $child)
         {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
@@ -184,63 +179,26 @@ class EditorUnit extends EditorElement
                     $this->children[] = $theorem;
                     break;
                 case "msm_intro":
-                    // intro needs to be processed differently as only one intro is allowed on editor
-                    // but when saved to db, due to multiple blocks, it can have multiple intro db data
-                    $introids .= $child->id . "|";
-                    // index number of $this->children array where first intro belongs
-                    if ($insertionKey == null)
-                    {
-                        $insertionKey = $index;
-                    }
+                    $intro = new EditorIntro();
+                    $intro->loadData($child->id);
+                    $this->children[] = $intro;
                     break;
-                case "msm_unit":
-                    $unitRecord = $DB->get_record("msm_unit", array('id' => $child->unit_id));
-                    if ($unitRecord->block_caption != null)
-                    {
-                        $block = new EditorBlock();
-                        $block->loadData($child->id);
-                        $this->children[] = $block;
-                    }
-                    break;
-                default: //only para/content/table should go to this condition
-                    $block = new EditorBlock();
-                    $block->loadData($this->compid);
-                    $this->children[] = $block;
-                    break;
-//                default:
-//                    echo "other tag" + $childTable->tablename;
-                //missing other ones
-            }
-            $index++;
-        }
-
-
-        // to process intro elements
-        if ($introids != '')
-        {
-            $intro = new EditorIntro();
-            $intro->loadData($introids);
-
-            if ($insertionKey !== null)
-            {
-                $tempArray = array();
-                foreach ($this->children as $item)
-                {
-                    $tempArray[] = $item;
-                }
-
-                // insert intro at the right plce in the array and copy back to class propery
-                $result = array_merge(array_slice($tempArray, 0, $insertionKey, true), array($insertionKey => $intro), array_slice($tempArray, $insertionKey, count($tempArray) - 1, false));
-
-                $this->children = array();
-
-                foreach ($result as $resultItem)
-                {
-                    $this->children[] = $resultItem;
-                }
+//                case "msm_unit":
+//                    $unitRecord = $DB->get_record("msm_unit", array('id' => $child->unit_id));
+//                    if ($unitRecord->block_caption != null)
+//                    {
+//                        $block = new EditorBlock();
+//                        $block->loadData($child->id);
+//                        $this->children[] = $block;
+//                    }
+//                    break;
+               case "msm_block":
+                   $block = new EditorBlock();
+                   $block->loadData($child->id);
+                   $this->children[] = $block;
+                   break;
             }
         }
-
         return $this;
     }
 

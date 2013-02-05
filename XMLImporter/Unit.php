@@ -494,39 +494,38 @@ class Unit extends Element
         $data->plain_title = $this->plain_title;
         $data->creationdate = $this->creation;
         $data->last_revision_date = $this->last_revision;
-        
-        if($parentid == '')
+
+        if ($parentid == '')
         {
-            $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid"=>$msmid, "depth"=>0))->id;
+            $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => 0))->id;
         }
         else
         {
             // get parent record and check if it belongs to unit 
             // if parent is unit --> need to increment depth and put the compositor type id from unit_name to this new unit
-            $parentRecord = $DB->get_record("msm_compositor", array("id"=>$parentid));
-            
-            if(!empty($parentRecord))
+            $parentRecord = $DB->get_record("msm_compositor", array("id" => $parentid));
+
+            if (!empty($parentRecord))
             {
-                 $parentUnitType = $parentRecord->table_id;                 
+                $parentUnitType = $parentRecord->table_id;
             }
-           
-            
-            $unittableid = $DB->get_record("msm_table_collection", array("tablename"=>"msm_unit"))->id;
-            
-            if($unittableid == $parentUnitType)
+
+
+            $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
+
+            if ($unittableid == $parentUnitType)
             {
-                $parentUnitRecord = $DB->get_record("msm_unit", array("id"=>$parentRecord->unit_id));
-                
+                $parentUnitRecord = $DB->get_record("msm_unit", array("id" => $parentRecord->unit_id));
+
                 $parentCompType = $parentUnitRecord->compchildtype;
-                
-                $compTypeDepth = $DB->get_record('msm_unit_name', array("msmid"=>$msmid, "id"=>$parentCompType))->depth;
-              
-                $data->compchildtype = $DB->get_record("msm_unit_name", array("msmid"=>$msmid, "depth"=>$compTypeDepth+1))->id;
-                
+
+                $compTypeDepth = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "id" => $parentCompType))->depth;
+
+                $data->compchildtype = $DB->get_record("msm_unit_name", array("msmid" => $msmid, "depth" => $compTypeDepth + 1))->id;
             }
             else
             {
-                $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid"=>$msmid, "depth"=>0))->id;
+                $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => 0))->id;
             }
         }
 
@@ -534,7 +533,7 @@ class Unit extends Element
         {
             $data->acknowledgement = $this->acknowledgement;
         }
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
 
         // for inserting unit records in to compositor table
@@ -1009,8 +1008,6 @@ class Unit extends Element
 
         $this->authors = array();
         $this->childs = array();
-        
-        print_object($this->childs);
 
         foreach ($childElements as $child)
         {
@@ -1039,15 +1036,12 @@ class Unit extends Element
                         break;
                     case('msm_def'):
                         $def = new Definition();
-                        $def->loadFromDb($child->unit_id, $child->id);                        
+                        $def->loadFromDb($child->unit_id, $child->id);
                         $this->childs[] = $def;
                         break;
 
                     case('msm_para'):
                         $para = new Para();
-                        
-                        echo "para is a child of unit";
-                        
                         $para->loadFromDb($child->unit_id, $child->id);
                         $this->childs[] = $para;
                         break;
@@ -1087,7 +1081,12 @@ class Unit extends Element
                         $comment->loadFromDb($child->unit_id, $child->id);
                         $this->childs[] = $comment;
                         break;
-                   
+
+                    case('msm_block'):
+                        $block = new Block();
+                        $block->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $block;
+                        break;
                 }
             }
             else
@@ -1119,9 +1118,6 @@ class Unit extends Element
 
                     case('msm_para'):
                         $para = new Para();
-                        
-                        echo "para is a child of unit-ref";
-                        
                         $para->loadFromDb($child->unit_id, $child->id);
                         $this->childs[] = $para;
                         break;
@@ -1160,6 +1156,12 @@ class Unit extends Element
                         $comment = new MathComment();
                         $comment->loadFromDb($child->unit_id, $child->id, true);
                         $this->childs[] = $comment;
+                        break;
+
+                    case('msm_block'):
+                        $block = new Block();
+                        $block->loadFromDb($child->unit_id, $child->id);
+                        $this->childs[] = $block;
                         break;
                 }
             }
@@ -1219,12 +1221,10 @@ class Unit extends Element
             }
         }
 
-        foreach ($this->childs as $child)
-        {          
+        foreach ($this->childs as $key => $child)
+        {
             $content .= $child->displayhtml($isindex);
         }
-
-//        $content .= "</div>";
 
         return $content;
     }

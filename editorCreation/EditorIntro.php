@@ -14,7 +14,11 @@ class EditorIntro extends EditorElement
 {
 
     public $position;
+    public $id;
     public $compid;
+    public $title;
+    public $errorArray = array();
+    public $blocks = array();
 
     function __construct()
     {
@@ -23,8 +27,7 @@ class EditorIntro extends EditorElement
 
     public function getFormData($idNumber, $position)
     {
-        $this->position = $position;
-        $this->blocks = array();
+       $this->position = $position;
 
         $intromatch = '/^msm_intro_content_.*/';
         $childmatch = '/^msm_intro_child_content-.*/';
@@ -47,13 +50,29 @@ class EditorIntro extends EditorElement
 
     public function insertData($parentid, $siblingid, $msmid)
     {
+        global $DB;
+
+        $data = new stdClass();
+        $data->intro_caption = $this->blocks[0]->title;
+
+        $this->id = $DB->insert_record($this->tablename, $data);        
+
+        $compData = new stdClass();
+        $compData->msm_id = $msmid;
+        $compData->unit_id = $this->id;
+        $compData->table_id = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename))->id;
+        $compData->parent_id = $parentid;
+        $compData->prev_sibling_id = $siblingid;
+
+        $this->compid = $DB->insert_record('msm_compositor', $compData);
+
+        $sibling_id = 0;
+
         foreach ($this->blocks as $block)
         {
-            $block->insertData($parentid, $siblingid, $msmid);
-            $siblingid = $block->compid;
+            $block->insertData($this->compid, $sibling_id, $msmid);
+            $sibling_id = $block->compid;
         }
-
-        $this->compid = $siblingid;
     }
 
     public function displayData()
@@ -64,11 +83,9 @@ class EditorIntro extends EditorElement
         $htmlContent .= "<b style='margin-left: 43%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;'> INTRODUCTION </b>";
         $htmlContent .= "</div>";
 
-        $blockcaption = $this->blocks[0]->title;
-
         $htmlContent .= "<div style='margin-top: 2%;'>";
         $htmlContent .= "<label id='msm_intro_title_label-$this->compid' class='msm_unit_intro_title_labels' for='msm_intro_title_input-$this->compid'>Title: </label>";
-        $htmlContent .= "<input id='msm_intro_title_input-$this->compid' class='msm_unit_intro_title' placeholder='Optional Title for the introduction.' name='msm_intro_title_input-$this->compid' disabled='disabled' value='$blockcaption'/>";
+        $htmlContent .= "<input id='msm_intro_title_input-$this->compid' class='msm_unit_intro_title' placeholder='Optional Title for the introduction.' name='msm_intro_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_intro_content-input-$this->compid' class='msm_editor_content'>";
@@ -94,22 +111,36 @@ class EditorIntro extends EditorElement
     // compid in this case is string of all intro compid's under same unit
     public function loadData($compid)
     {
-        $introids = explode("|", $compid);
-
-        $this->compid = $introids[0];
-
-        foreach ($introids as $introcompid)
+        global $DB;
+        
+        $introCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+        
+        $this->compid = $compid;
+        $this->id = $introCompRecord->unit_id;
+        
+        $introRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
+        
+        $this->title = $introRecord->intro_caption;
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
+        
+        foreach($childElements as $child)
         {
-            if (!empty($introcompid))
+            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
+            
+            if($childTable->tablename == 'msm_block')
             {
                 $block = new EditorBlock();
-                $block->loadData($introcompid);
-                $this->blocks[] = $block;
+                $block->loadData($child->id);
+                $this->block[] = $block;
+            }
+            else
+            {
+                echo "intro has another child element" . $childTable->tablename;
+                break;
             }
         }
-
-
-
+        
         return $this;
     }
 

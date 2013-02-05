@@ -21,6 +21,11 @@ class EditorBlock extends EditorElement
     public $content = array();
     public $type;
 
+    function __construct()
+    {
+        $this->tablename = "msm_block";
+    }
+
     // idNumber is a bit different--> it's the actual key of the POST object
     public function getFormData($idNumber, $position)
     {
@@ -45,66 +50,24 @@ class EditorBlock extends EditorElement
     {
         global $DB;
 
-        if (sizeof($this->content) > 0)
+        $data = new stdClass();
+        $data->block_caption = $this->title;
+        $this->id = $DB->insert_record($this->tablename, $data);
+
+        $compData = new stdClass();
+        $compData->msm_id = $msmid;
+        $compData->table_id = $DB->get_record('msm_table_collection', array("tablename" => $this->tablename))->id;
+        $compData->unit_id = $this->id;
+        $compData->parent_id = $parentid;
+        $compData->prev_sibling_id = $siblingid;
+
+        $this->compid = $DB->insert_record("msm_compositor", $compData);
+
+        $sibling_id = 0;
+        foreach ($this->content as $content)
         {
-            if ($this->type == "unit")
-            {
-                $sibling_id = 0;
-
-                if (!empty($this->title))
-                {
-                    $data = new stdClass();
-                    $data->block_caption = $this->title;
-
-                    $this->id = $DB->insert_record("msm_unit", $data);
-
-                    $compData = new stdClass();
-                    $compData->msm_id = $msmid;
-                    $compData->table_id = $DB->get_record('msm_table_collection', array("tablename" => "msm_unit"))->id;
-                    $compData->unit_id = $this->id;
-                    $compData->parent_id = $parentid;
-                    $compData->prev_sibling_id = $siblingid;
-
-                    $this->compid = $DB->insert_record("msm_compositor", $compData);
-//                    
-                    foreach ($this->content as $content)
-                    {
-                        $content->insertData($this->compid, $sibling_id, $msmid);
-                        $sibling_id = $content->compid;
-                    }
-                }
-                else
-                {
-                    foreach ($this->content as $content)
-                    {
-                        $content->insertData($parentid, $sibling_id, $msmid);
-                        $sibling_id = $content->compid;
-                    }
-                }
-            }
-            else if ($this->type == "intro")
-            {
-                $data = new stdClass();
-                $data->block_caption = $this->title;
-
-                $this->id = $DB->insert_record('msm_intro', $data);
-
-                $compData = new stdClass();
-                $compData->msm_id = $msmid;
-                $compData->table_id = $DB->get_record("msm_table_collection", array('tablename' => 'msm_intro'))->id;
-                $compData->unit_id = $this->id;
-                $compData->parent_id = $parentid;
-                $compData->prev_sibling_id = $siblingid;
-
-                $this->compid = $DB->insert_record("msm_compositor", $compData);
-
-                $sibling_id = 0;
-                foreach ($this->content as $content)
-                {
-                    $content->insertData($this->compid, $sibling_id, $msmid);
-                    $sibling_id = $content->compid;
-                }
-            }
+            $content->insertData($this->compid, $sibling_id, $msmid);
+            $sibling_id = $content->compid;
         }
     }
 
@@ -226,7 +189,7 @@ class EditorBlock extends EditorElement
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div id='msm_body_content_input-$this->compid' class='msm_editor_content'>";
-                        
+
             foreach ($this->content as $content)
             {
                 $htmlContent .= $content->displayData();
@@ -240,24 +203,18 @@ class EditorBlock extends EditorElement
         return $htmlContent;
     }
 
-    //compid = intro/unit comp id
     public function loadData($compid)
     {
         global $DB;
 
-        $compRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+        $blockCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
 
-        // both id's are for either intro/unit
         $this->compid = $compid;
-        $this->id = $compRecord->unit_id;
+        $this->id = $blockCompRecord->unit_id;
 
-        $tableRecord = $DB->get_record('msm_table_collection', array('id' => $compRecord->table_id));
+        $blockRecord = $DB->get_record($this->tablename, array('id' => $this->id));
 
-        $this->type = $tableRecord->tablename;
-
-        $record = $DB->get_record($tableRecord->tablename, array('id' => $this->id));
-
-        $this->title = $record->block_caption;
+        $this->title = $blockRecord->block_caption;
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 

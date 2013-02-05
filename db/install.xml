@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20130128" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20130205" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -44,9 +44,8 @@
         <FIELD NAME="title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="compchildtype" NEXT="plain_title"/>
         <FIELD NAME="plain_title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="title" NEXT="creationdate"/>
         <FIELD NAME="creationdate" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="plain_title" NEXT="last_revision_date"/>
-        <FIELD NAME="last_revision_date" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="creationdate" NEXT="block_caption"/>
-        <FIELD NAME="block_caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="last_revision_date" NEXT="acknowledgements"/>
-        <FIELD NAME="acknowledgements" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="block_caption" NEXT="description"/>
+        <FIELD NAME="last_revision_date" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="creationdate" NEXT="acknowledgements"/>
+        <FIELD NAME="acknowledgements" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="last_revision_date" NEXT="description"/>
         <FIELD NAME="description" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="acknowledgements"/>
       </FIELDS>
       <KEYS>
@@ -56,8 +55,8 @@
     <TABLE NAME="msm_intro" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_unit" NEXT="msm_def">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="string_id"/>
-        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="block_caption"/>
-        <FIELD NAME="block_caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="intro_caption"/>
+        <FIELD NAME="intro_caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -581,12 +580,21 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="msm_unit_name" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_image_mapping">
+    <TABLE NAME="msm_unit_name" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_image_mapping" NEXT="msm_block">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="msmid"/>
         <FIELD NAME="msmid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="unitname"/>
         <FIELD NAME="unitname" TYPE="char" LENGTH="250" NOTNULL="false" SEQUENCE="false" PREVIOUS="msmid" NEXT="depth"/>
         <FIELD NAME="depth" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="unitname"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_block" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_unit_name">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="block_caption"/>
+        <FIELD NAME="block_caption" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
