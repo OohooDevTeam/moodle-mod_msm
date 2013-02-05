@@ -238,8 +238,6 @@ if(!empty($existingUnit))
    $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id); 
 }
 
-print_object($treeContent);
-
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
@@ -299,7 +297,14 @@ $formContent .= '<div id="msm_editor_container">
 
                 <div id="msm_editor_right">
                     <h2> XML Hierarchy </h2>
-                    <div id="msm_unit_tree"></div>
+                    <div id="msm_unit_tree">';
+                    
+if(!empty($treeContent))
+{
+    $formContent .= $treeContent;
+}
+
+$formContent .=    '</div>
                 </div>
             </div>            
        </div>
@@ -365,6 +370,16 @@ $formContent .= '<script type="text/javascript">
                     limit: 100,
                     position: "80%"
                 });   
+                
+                    $("#msm_unit_tree")
+                    .jstree({
+                        "plugins": ["themes", "html_data", "ui", "dnd"],
+                        "dnd": {
+                            "drop_target": false,
+                            "drag_target": false
+                        }
+                    });
+                    
                 
             });               
         </script>';
