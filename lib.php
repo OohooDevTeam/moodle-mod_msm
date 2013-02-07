@@ -200,8 +200,14 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         }
 //    }
 //        
-        $table_collection = new TableCollection();
-        $tableid = $table_collection->insertTablename();
+        $tableRecords = $DB->count_records('msm_table_collection');
+
+        if ($tableRecords == 0)
+        {
+            $table_collection = new TableCollection();
+            $tableid = $table_collection->insertTablename();
+        }
+
 //
 //        $parser = new DOMDocument();
 //        //define('parser', $parser);

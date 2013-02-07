@@ -31,7 +31,6 @@ global $DB;
 
 if (isset($_POST['id']))
 {
-    //print_object($_POST);
 // id passed in form of an array with id index and value of msm_unit-#compid-#unitid
     $unitidInfo = explode('-', $_POST['id']);
 

@@ -372,15 +372,41 @@ $formContent .= '<script type="text/javascript">
                 });   
                 
                // need it for the loading of jstree when in edit mode
-               $("#msm_unit_tree")
-               .jstree({
-                  "plugins": ["themes", "html_data", "ui", "dnd"],
-                  "dnd": {
-                      "drop_target": false,
-                      "drag_target": false
-                  }
-              });                   
-                
+                $("#msm_unit_tree")
+                    .jstree({
+                        "plugins": ["themes", "html_data", "ui", "dnd"],
+                        "dnd": {
+                            "drop_target": false,
+                            "drag_target": false
+                        }
+                    })
+                    .bind("select_node.jstree", function(event, data) {
+                        var dbInfo = [];
+
+                        $.ajax({
+                            type: "POST",
+                            url: "editorCreation/msmLoadUnit.php",
+                            data: {
+                                "id": "msm_unit-"+data.rslt.obj.attr("id")
+                            },
+                            success: function(data)
+                            {
+                                dbInfo = JSON.parse(data);  
+                                processUnitData(dbInfo); 
+                            },
+                            error: function(data)
+                            {
+                                alert("ajax error in loading unit");
+                            }
+                        })
+
+                    })
+                    .bind("loaded.jstree", function(event, data) {
+                        console.log("jsTree loaded");
+                    })
+                    .delegate("a", "click", function(event, data){
+                        event.preventDefault();
+                    });                   
             });               
         </script>';
 
