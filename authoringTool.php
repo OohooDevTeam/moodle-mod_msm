@@ -1,5 +1,4 @@
 <?php
-
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -15,6 +14,23 @@
  * ************************************************************************ */
 require_once('../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
+require_once('editorCreation/EditorElement.php');
+require_once('editorCreation/EditorUnit.php');
+require_once('editorCreation/EditorDefinition.php');
+require_once('editorCreation/EditorTheorem.php');
+require_once('editorCreation/EditorComment.php');
+require_once('editorCreation/EditorImage.php');
+require_once('editorCreation/EditorIntro.php');
+require_once('editorCreation/EditorBlock.php');
+require_once('editorCreation/EditorPara.php');
+require_once('editorCreation/EditorInContent.php');
+require_once('editorCreation/EditorPartTheorem.php');
+require_once('editorCreation/EditorStatementTheorem.php');
+require_once('editorCreation/EditorAssociate.php');
+require_once('editorCreation/EditorInfo.php');
+require_once('editorCreation/EditorTable.php');
+require_once('editorCreation/EditorSubordinate.php');
+
 //require_once("editorCreation/msmUnitForm.php");
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
@@ -232,10 +248,12 @@ $unittable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_u
 $existingUnit = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'table_id' => $unittable->id, 'parent_id' => 0, 'prev_sibling_id' => 0));
 
 $treeContent = '';
+$rootUnit = '';
 
 if (!empty($existingUnit))
 {
     $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id);
+    $rootUnit .= displayRootUnit($existingUnit->id);
 }
 
 $formContent .= '<div id="msm_editor_container">
@@ -283,8 +301,14 @@ $formContent .= '<div id="msm_editor_container">
                         <input class="msm_unit_description_inputs" id="msm_unit_description_input" name="msm_unit_description_input" placeholder="Insert description to search this element in future."/>
                         </div>
                         <div id="msm_editor_middle_droparea">                        
-                            <div id="msm_child_appending_area">
-                            </div>
+                            <div id="msm_child_appending_area">';
+
+if (!empty($rootUnit))
+{
+    $formContent .= $rootUnit;
+}
+
+$formContent .= '</div>
                             <input id="msm_child_order" name="msm_child_order" style="visibility: hidden;"/>
                             <input id="msm_unit_subordinate_container" name="msm_unit_subordinate_container" style="visibility: hidden;"/>
                         </div>
@@ -311,7 +335,7 @@ $formContent .= '</div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>';
 
 $formContent .= '<script type="text/javascript">    
-            $(document).ready(function() {  
+            $(document).ready(function() {            
                 tinyMCE.init({
                     mode:"textareas",
                     plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
@@ -369,12 +393,17 @@ $formContent .= '<script type="text/javascript">
                     orientation: "vertical",
                     limit: 100,
                     position: "80%"
-                });   
-                
-               // need it for the loading of jstree when in edit mode
+                });';
+
+//
+if (!empty($existingUnit))
+{
+    $formContent .= '// need it for the loading of jstree when in edit mode
                 $("#msm_unit_tree")
                     .jstree({
                         "plugins": ["themes", "html_data", "ui", "dnd"],
+                        "core" : { "initially_open" : ["' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
+                        "ui" : {"initially_select" : ["' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
                         "dnd": {
                             "drop_target": false,
                             "drag_target": false
@@ -401,14 +430,18 @@ $formContent .= '<script type="text/javascript">
                         })
 
                     })
-                    .bind("loaded.jstree", function(event, data) {
-                        console.log("jsTree loaded");
-                    })
                     .delegate("a", "click", function(event, data){
                         event.preventDefault();
-                    });                   
-            });               
+                    });
+              });               
         </script>';
+}
+else
+{
+    $formContent .= '});               
+        </script>';
+}
+
 
 echo $OUTPUT->box($msm_nav . $formContent);
 echo $OUTPUT->footer();
@@ -438,4 +471,39 @@ function makeUnitTree($compid, $unitid)
     return $treeHtml;
 }
 
+function displayRootUnit($unitcompid)
+{
+    global $DB;
+
+    $unitCompRecord = $DB->get_record('msm_compositor', array('id' => $unitcompid));
+
+    $unitRecord = $DB->get_record('msm_unit', array('id' => $unitCompRecord->unit_id));
+    ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var titleString = "<?php echo $unitRecord->title ?>";
+            $('#msm_unit_title').val(titleString);
+            var descriptionString = "<?php echo $unitRecord->description ?>";
+            $("#msm_unit_description_input").val(descriptionString);
+                
+            $("#msm_editor_save").remove();
+            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+                        
+            $("#msm_editor_reset").remove();
+            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+        });
+    </script>
+    <?php
+    $rootUnitHtml = '';
+
+    $rootUnit = new EditorUnit();
+    $rootUnit->loadData($unitcompid);
+
+    foreach ($rootUnit->children as $childElement)
+    {
+        $rootUnitHtml .= $childElement->displayData();
+    }
+
+    return $rootUnitHtml;
+}
 ?>

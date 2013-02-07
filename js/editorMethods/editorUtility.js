@@ -170,28 +170,30 @@ function saveComp(e)
     
     e.preventDefault();
     
-   var treeInnerHTML = $("#msm_unit_tree").html();
+    var treeInnerHTML = $("#msm_unit_tree").html();
    
-   var params = {tree_content: treeInnerHTML};
-   var ids = [];
-   $.ajax({
-       type: 'POST',
-       url:"editorCreation/msmLoadUnit.php",
-       data: params,
-       success: function(data)
+    var params = {
+        tree_content: treeInnerHTML
+    };
+    var ids = [];
+    $.ajax({
+        type: 'POST',
+        url:"editorCreation/msmLoadUnit.php",
+        data: params,
+        success: function(data)
+        {
+            ids = JSON.parse(data);
+            var idInfos = ids.split("-");
+            if(ids != '')
             {
-                ids = JSON.parse(data);
-                var idInfos = ids.split("-");
-                if(ids != '')
-                    {
-                        window.location = "view.php?msmid="+idInfos[0]+"&unitid="+idInfos[1];                        
-                    }
-            },
-            error: function(data)
-            {
-                alert("ajax error in loading unit");
+                window.location = "view.php?msmid="+idInfos[0]+"&unitid="+idInfos[1];                        
             }
-   }); 
+        },
+        error: function(data)
+        {
+            alert("ajax error in loading unit");
+        }
+    }); 
      
 // TODO navigate to view page once the db is updated
     
