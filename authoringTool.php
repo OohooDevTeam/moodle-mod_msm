@@ -259,27 +259,28 @@ if (!empty($existingUnit))
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
+                
+                <div id="msm_editor_leftleft">
+                    <div class="msm_structural_element" id="msm_def">
+                    </div>
+                    <span class="msm_element_label">Definition</span>
+                     <div class="msm_structural_element" id="msm_comment">
+                    </div>
+                    <span class="msm_element_label">Comment</span>
+                    <div class="msm_structural_element" id="msm_intro">
+                    </div>
+                    <span class="msm_element_label">Intro</span>
+                </div>
+                <div id="msm_editor_leftright">
+                    <div class="msm_structural_element" id="msm_theorem">
+                    </div>
+                    <span class="msm_element_label">Theorem</span>
 
-                <div class="msm_structural_element" id="msm_def">
-                    Drag to add Definition
-                </div>
-                <br />
-                <div class="msm_structural_element" id="msm_theorem">
-                    Drag to add Theorem
-                </div>
-                <br />
-                <div class="msm_structural_element" id="msm_comment">
-                    Drag to add Comment
-                </div>
-                <br />
-                <div class="msm_structural_element" id="msm_body">
-                    Drag to add content
-                </div>
-                <br />
-                <div class="msm_structural_element" id="msm_intro">
-                    Drag to add Intro
-                </div>
-                <br />
+
+                    <div class="msm_structural_element" id="msm_body">
+                    </div>
+                    <span class="msm_element_label">Content</span>
+                </div>     
                 <!--div class="msm_structural_element" id="msm_pic">
                     Drag to add Images
                 </div>
