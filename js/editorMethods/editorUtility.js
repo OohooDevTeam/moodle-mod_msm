@@ -198,3 +198,72 @@ function saveComp(e)
 // TODO navigate to view page once the db is updated
     
 }
+
+// triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
+function editUnit()
+{
+    enableEditorFunction();    
+     
+    $(".msm_editor_content").each(function() {
+        var currentId = this.id;
+                
+        tinyMCE.init({
+            mode:"exact",
+            elements: currentId,
+            plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+            width: "100%",
+            height: "70%",
+            theme: "advanced",
+            theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image, cleanup,help,code,|,insertdate,inserttime,preview",
+            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+            theme_advanced_toolbar_location : "top",
+            theme_advanced_toolbar_align : "left",
+            theme_advanced_statusbar_location : "bottom",
+            skin : "o2k7",
+            skin_variant : "silver"
+        });
+        
+        tinymce.get(currentId).setContent($(this).html());
+       
+    });
+    
+    $("#msm_editor_edit").remove();
+    $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");
+                    
+    $("#msm_editor_new").remove();
+    $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit()"> Cancel </button>').appendTo("#msm_editor_middle");
+}
+
+// triggered by 'Remove this Unit' button due to transition from view to edit
+// should remove the unit --> javascript code should remove all the display functions then have AJAX call to a php page that will
+// update the compositor and related db information (ie. delete unit from table data, update all parent/sibling information)
+function removeUnit()
+{
+    
+}
+
+// triggered by cancel button during edit mode after save has been already implemented.  basically its role is to popup a warning message about
+// losing unsaved content and ignore any changes done if answered yes otherwise just close the popup window.  When yes is triggered, just load screen back to
+// display of previous state
+function cancelUnit()
+{
+    
+}
+//
+//function updateUnit()
+//{
+//    var formData = $("#msm_unit_form").serializeArray();
+//    var targetURL = $("#msm_unit_form").attr("action");
+//    
+//    $.ajax({
+//        type: "POST",
+//        url: targetURL,
+//        data: formData,
+//        success: function(data)
+//        {
+//            console.log(data);
+//        }
+//    });
+//}

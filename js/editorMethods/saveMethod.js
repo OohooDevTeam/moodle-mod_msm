@@ -7,8 +7,18 @@ $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();
-              
+        
+        //        var jsTree = document.getElementById("msm_unit_tree");
+        //        
+        //        // if jsTree exists then this is a unit update not new unit creation
+        //        if(jsTree.hasChildNodes())
+        //        {
+        //            updateUnit();
+        //        }
+        //        else
+        //        {
         submitForm();
+    //        }        
             
     });
 });
@@ -120,7 +130,7 @@ function submitForm()
                 // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
                 // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
                 // to display the html format properly.  Therefore div was created to replace it.
-                removeTinymceEditor();
+                removeTinymceEditor(ids);
                                         
                 // disabling all input/selection areas in editor and also disabling all jquery actions such as 
                 // sortable, draggable and droppable
@@ -181,14 +191,18 @@ function prepareSubordinate(id)
     return subordinates;    
 }
 
-function removeTinymceEditor()
+function removeTinymceEditor(dbIds)
 {   
+    var dbIdInfo = dbIds.split("-");
+    
     $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {
+        console.log($(this).attr("id"));
+        var currentId = $(this).attr("id").split("-");
                         
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
         var editorContent = document.createElement("div");
-        editorContent.id = $(this).attr("id");
+        editorContent.id = currentId[0]+"-"+dbIdInfo[0];
         editorContent.className = "msm_editor_content";
         var content = $(this).val();
                         
@@ -198,10 +212,12 @@ function removeTinymceEditor()
                     
     $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function() {
                         
+        var currentId = $(this).attr("id").split("-");
+         
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
         var editorContent = document.createElement("div");
-        editorContent.id = $(this).attr("id");
+        editorContent.id = currentId[0]+"-"+dbIdInfo[0];
         editorContent.className = "msm_editor_content";
         var content = $(this).val();
                         
@@ -211,11 +227,13 @@ function removeTinymceEditor()
     
     $('.msm_theorem_part_dropareas').each(function() {
         $(this).find('.msm_theorem_content').each(function() {
+            
+            var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = $(this).attr("id");
+            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         
@@ -226,11 +244,13 @@ function removeTinymceEditor()
     
     $('.msm_theoremref_part_dropareas').each(function() {
         $(this).find('.msm_theorem_content').each(function() {
+            
+            var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = $(this).attr("id");
+            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         
@@ -241,11 +261,13 @@ function removeTinymceEditor()
     
     $('.msm_associate_containers').each(function() {
         $(this).find('.msm_info_titles').each(function() {
+            
+            var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = $(this).attr("id");
+            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         
@@ -253,11 +275,13 @@ function removeTinymceEditor()
             $(this).replaceWith(editorContent);
         });
         $(this).find('.msm_info_contents').each(function() {
+            
+            var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = $(this).attr("id");
+            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         
@@ -356,8 +380,8 @@ function enableEditorFunction()
     
     // reattach all close buttons for deletion of element
     $(".copied_msm_structural_element").each(function(i) {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');        
-        $(this).append(closeButton);
+        var closeButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event)">x</a>');        
+        $(this).prepend(closeButton);
     });
     
     // reinitalize all jquery actions

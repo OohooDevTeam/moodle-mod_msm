@@ -28,6 +28,11 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
+if ($DB->count_records('msm_unit') > 0)
+{
+    print_object($_POST);
+}
+
 $childOrder = $_POST['msm_child_order'];
 
 $arrayOfChild = explode(",", $childOrder);
@@ -106,19 +111,19 @@ foreach ($unitcontent as $unitchild)
             }
         }
     }
-    
-    if(get_class($unitchild) == "EditorBlock")
+
+    if (get_class($unitchild) == "EditorBlock")
     {
-       if (!empty($unitchild->errorArray))
+        if (!empty($unitchild->errorArray))
+        {
+            $hasError = true;
+            foreach ($unitchild->errorArray as $blockerrorid)
             {
-                $hasError = true;
-                foreach ($unitchild->errorArray as $blockerrorid)
-                {
-                    $errorArray[] = $blockerrorid;
-                }
+                $errorArray[] = $blockerrorid;
             }
+        }
     }
-    
+
     if (get_class($unitchild) == 'EditorTheorem')
     {
         foreach ($unitchild->content as $statementTheorem)
@@ -178,7 +183,7 @@ if ($hasError)
 }
 else
 {
-    
+
     $unit->insertData(0, 0, $msmId);
     // need code fo insert unit information to unitdatabase before procesing the child so that
     // the parentid exists when the child elements are being inserted to the db

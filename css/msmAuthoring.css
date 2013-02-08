@@ -101,7 +101,7 @@
     position: relative;
     float: left;
 }
-#msm_editor_reset, #msm_editor_new, #msm_editor_remove
+#msm_editor_reset, #msm_editor_new, #msm_editor_remove, #msm_editor_cancel
 {
     left: 60%;
     min-width: 10%;
