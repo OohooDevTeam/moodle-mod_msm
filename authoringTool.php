@@ -259,28 +259,25 @@ if (!empty($existingUnit))
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
-                
-                <div id="msm_editor_leftleft">
-                    <div class="msm_structural_element" id="msm_def">
-                    </div>
-                    <span class="msm_element_label">Definition</span>
-                     <div class="msm_structural_element" id="msm_comment">
-                    </div>
-                    <span class="msm_element_label">Comment</span>
-                    <div class="msm_structural_element" id="msm_intro">
-                    </div>
-                    <span class="msm_element_label">Intro</span>
+
+                <div class="msm_structural_element" id="msm_def">
                 </div>
-                <div id="msm_editor_leftright">
-                    <div class="msm_structural_element" id="msm_theorem">
-                    </div>
-                    <span class="msm_element_label">Theorem</span>
-
-
-                    <div class="msm_structural_element" id="msm_body">
-                    </div>
-                    <span class="msm_element_label">Content</span>
-                </div>     
+                <span class="msm_element_label">Definition</span>
+                <div class="msm_structural_element" id="msm_theorem">
+                </div>
+                <span class="msm_element_label">Theorem</span>
+                <br />
+                <div class="msm_structural_element" id="msm_comment">
+                </div>
+                <span class="msm_element_label">Comment</span>
+                <div class="msm_structural_element" id="msm_body">
+                </div>
+                <span class="msm_element_label">Content</span>
+                <br />
+                <div class="msm_structural_element" id="msm_intro">
+                </div>
+                <span class="msm_element_label" style="margin-left: 41%;">Intro</span>
+                <br />
                 <!--div class="msm_structural_element" id="msm_pic">
                     Drag to add Images
                 </div>
@@ -387,13 +384,13 @@ $formContent .= '<script type="text/javascript">
                 $("#msm_editor_container").split({
                     orientation: "vertical",
                     limit: 100,
-                    position: "20%"
+                    position: "15%"
                 });
                 
                 $("#msm_editor_middleright").split({
                     orientation: "vertical",
                     limit: 100,
-                    position: "80%"
+                    position: "82%"
                 });';
 
 //
