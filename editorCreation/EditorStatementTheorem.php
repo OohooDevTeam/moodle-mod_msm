@@ -49,7 +49,7 @@ class EditorStatementTheorem extends EditorElement
             }
 
             $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-\d+$/";
-
+            
             $i = 0;
 
             foreach ($_POST as $id => $content)
@@ -66,6 +66,7 @@ class EditorStatementTheorem extends EditorElement
                     $newId .= $indexNumber[sizeof($indexNumber) - 1];
                     
                     $idParam = $newId . "|ref";
+            
                     $partTheorem = new EditorPartTheorem();
                     $partTheorem->getFormData($idParam, $i);
                     $this->children[] = $partTheorem;

@@ -95,7 +95,7 @@ class EditorInfo extends EditorElement
             $indexNumber = explode("-", $idNumber); // indexNumber[0] = parent id number
 //            $param = $indexNumber[0] . "|ref";
             $param = $idNumber . "|ref";
-
+            
             switch ($refType)
             {
                 case "Definition":

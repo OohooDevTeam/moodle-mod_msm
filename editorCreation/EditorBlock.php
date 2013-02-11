@@ -209,7 +209,7 @@ class EditorBlock extends EditorElement
 
         $blockCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));      
 
-        $this->compid = $compid;
+        $this->compid = $blockCompRecord->id;
         $this->id = $blockCompRecord->unit_id;
         
         $blockParentRecord = $DB->get_record('msm_compositor', array('id'=>$blockCompRecord->parent_id));        

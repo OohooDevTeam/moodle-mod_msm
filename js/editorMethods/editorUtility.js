@@ -183,7 +183,8 @@ function saveComp(e)
         success: function(data)
         {
             ids = JSON.parse(data);
-            var idInfos = ids.split("-");
+            
+            var idInfos = ids[0].split("-");
             if(ids != '')
             {
                 window.location = "view.php?msmid="+idInfos[0]+"&unitid="+idInfos[1];                        
@@ -200,12 +201,48 @@ function saveComp(e)
 }
 
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
-function editUnit()
+function editUnit(dbIds)
 {
     enableEditorFunction();    
      
-    $(".msm_editor_content").each(function() {
+    $(".msm_editor_content").each(function() {        
         var currentId = this.id;
+        var currentHTMLvalue = $(this).html();
+        var idInfo = currentId.split("-");
+        
+        var newTextarea = document.createElement("textarea");
+        newTextarea.id = currentId;
+      
+        if((idInfo[0] == "msm_theorem_content_input")||(idInfo[0] == "msm_theoremref_content_input"))
+        {
+            newTextarea.className = "msm_unit_child_content msm_theorem_content";
+        }
+        else if((idInfo[0] == "msm_theoremref_part_content")||(idInfo[0] == "msm_theorem_part_content"))
+        {
+            newTextarea.className = "msm_theorem_content";
+        }
+        else if(idInfo[0] == "msm_intro_child_content")
+        {
+            newTextarea.className = "msm_intro_child_contents";
+        }
+        else if(idInfo[0] == "msm_info_title")
+        {
+            newTextarea.className = "msm_info_titles";
+        }
+        else if(idInfo[0] == "msm_info_content")
+        {
+            newTextarea.className = "msm_info_contents";
+        }
+        else
+        {
+            newTextarea.className = "msm_unit_child_content";
+        }
+        
+        $(newTextarea).val(currentHTMLvalue);
+            
+        this.parentNode.insertBefore(newTextarea, this);
+        this.parentNode.removeChild(this);
+            
                 
         tinyMCE.init({
             mode:"exact",
@@ -224,16 +261,28 @@ function editUnit()
             skin : "o2k7",
             skin_variant : "silver"
         });
-        
-        tinymce.get(currentId).setContent($(this).html());
+//        
+//        console.log(tinymce);
+//        console.log(tinymce.activeEditor);
+//        
+//        tinymce.get(currentId).setContent(currentHTMLvalue);
        
     });
     
     $("#msm_editor_edit").remove();
     $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");
                     
+    $("#msm_editor_remove").remove();
     $("#msm_editor_new").remove();
     $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit()"> Cancel </button>').appendTo("#msm_editor_middle");
+    
+    $("#msm_editor_save").click(function(event) { 
+        //         prevents navigation to msmUnitForm.php
+        event.preventDefault();
+              
+        submitForm();
+            
+    });
 }
 
 // triggered by 'Remove this Unit' button due to transition from view to edit

@@ -28,6 +28,8 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
+//print_object($_POST);
+
 $childOrder = $_POST['msm_child_order'];
 
 $arrayOfChild = explode(",", $childOrder);
@@ -121,7 +123,7 @@ foreach ($unitcontent as $unitchild)
 
     if (get_class($unitchild) == 'EditorTheorem')
     {
-        foreach ($unitchild->content as $statementTheorem)
+        foreach ($unitchild->contents as $statementTheorem)
         {
             if (!empty($statementTheorem->errorArray))
             {

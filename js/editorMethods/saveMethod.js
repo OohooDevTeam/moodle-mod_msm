@@ -8,18 +8,7 @@ $(document).ready(function(){
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();
         
-        //        var jsTree = document.getElementById("msm_unit_tree");
-        //        
-        //        // if jsTree exists then this is a unit update not new unit creation
-        //        if(jsTree.hasChildNodes())
-        //        {
-        //            updateUnit();
-        //        }
-        //        else
-        //        {
-        submitForm();
-    //        }        
-            
+        submitForm();            
     });
 });
 
@@ -122,7 +111,7 @@ function submitForm()
             {
                 // replace save and reset button to edit and new buttons, respectively
                 $("#msm_editor_save").remove();
-                $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+                $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
                     
                 $("#msm_editor_reset").remove();
                 $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New </button>").appendTo("#msm_editor_middle");
@@ -193,16 +182,15 @@ function prepareSubordinate(id)
 
 function removeTinymceEditor(dbIds)
 {   
-    var dbIdInfo = dbIds.split("-");
+    //    var dbIdInfo = dbIds.split("-");
     
-    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {
-        console.log($(this).attr("id"));
+    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function(index, element) {
         var currentId = $(this).attr("id").split("-");
                         
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
         var editorContent = document.createElement("div");
-        editorContent.id = currentId[0]+"-"+dbIdInfo[0];
+        editorContent.id = currentId[0]+"-"+index;
         editorContent.className = "msm_editor_content";
         var content = $(this).val();
                         
@@ -210,14 +198,14 @@ function removeTinymceEditor(dbIds)
         $(this).replaceWith(editorContent);
     });
                     
-    $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function() {
+    $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function(index, element) {
                         
         var currentId = $(this).attr("id").split("-");
          
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
         var editorContent = document.createElement("div");
-        editorContent.id = currentId[0]+"-"+dbIdInfo[0];
+        editorContent.id = currentId[0]+"-"+index;
         editorContent.className = "msm_editor_content";
         var content = $(this).val();
                         
@@ -225,15 +213,15 @@ function removeTinymceEditor(dbIds)
         $(this).replaceWith(editorContent);
     });
     
-    $('.msm_theorem_part_dropareas').each(function() {
-        $(this).find('.msm_theorem_content').each(function() {
+    $('.msm_theorem_part_dropareas').each(function(index, element) {
+        $(this).find('.msm_theorem_content').each(function(j, el) {
             
             var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
+            editorContent.id = currentId[0]+"-"+j;
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         
@@ -242,15 +230,15 @@ function removeTinymceEditor(dbIds)
         });
     });
     
-    $('.msm_theoremref_part_dropareas').each(function() {
-        $(this).find('.msm_theorem_content').each(function() {
+    $('.msm_theoremref_part_dropareas').each(function(index, element) {
+        $(this).find('.msm_theorem_content').each(function(j, el) {
             
             var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
+            editorContent.id = currentId[0]+"-"+j;
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         
@@ -259,29 +247,29 @@ function removeTinymceEditor(dbIds)
         });
     });
     
-    $('.msm_associate_containers').each(function() {
-        $(this).find('.msm_info_titles').each(function() {
+    $('.msm_associate_containers').each(function(index, element) {
+        $(this).find('.msm_info_titles').each(function(j, el) {
             
             var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
+            editorContent.id = currentId[0]+"-"+j;
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         
             $(editorContent).html(content);
             $(this).replaceWith(editorContent);
         });
-        $(this).find('.msm_info_contents').each(function() {
+        $(this).find('.msm_info_contents').each(function(k, el2) {
             
             var currentId = $(this).attr("id").split("-");
                         
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
-            editorContent.id = currentId[0]+"-"+dbIdInfo[0];
+            editorContent.id = currentId[0]+"-"+k;
             editorContent.className = "msm_editor_content";
             var content = $(this).val();
                         

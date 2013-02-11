@@ -56,22 +56,46 @@ else if (isset($_POST['tree_content']))
 
     $aElements = $ulElement->getElementsByTagName('a');
 
-    $idPair = null;
+    $compidArray = array();
 
-    if ($aElements->item(0)->hasChildNodes())
+    foreach ($aElements as $aEl)
     {
-        foreach ($aElements->item(0)->childNodes as $child)
+        if ($aEl->hasChildNodes())
         {
-            if ($child->nodeType == XML_TEXT_NODE)
+            foreach ($aEl->childNodes as $child)
             {
-                $idPair = explode("-", $child->wholeText);
+                if ($child->nodeType == XML_TEXT_NODE)
+                {
+                    $string = explode("-", $child->wholeText);
+                    $compidArray[] = $string[0];
+                }
             }
         }
     }
 
-    $elementRecord = $DB->get_record('msm_compositor', array('id' => $idPair[0]));
+//    if ($aElements->item(0)->hasChildNodes())
+//    {
+//        foreach ($aElements->item(0)->childNodes as $child)
+//        {
+//            if ($child->nodeType == XML_TEXT_NODE)
+//            {
+//                $idPair[] = explode("-", $child->wholeText);
+//            }
+//        }
+//    }
 
-    echo json_encode($elementRecord->msm_id . "-" . $idPair[0]);
+    $idPairs = array();
+    
+    foreach($compidArray as $compid)
+    {
+        $elementRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+        $idPairs[] = $elementRecord->msm_id . "-" . $compid;
+    }
+    
+    
+    echo json_encode($idPairs);
+
+//    echo json_encode($elementRecord->msm_id . "-" . $idPair[0]);
 }
 
 function processTreeContent($DomElement, $parentNode)
@@ -121,4 +145,5 @@ function processTreeContent($DomElement, $parentNode)
         }
     }
 }
+
 ?>

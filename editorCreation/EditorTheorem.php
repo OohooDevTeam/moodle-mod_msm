@@ -42,13 +42,13 @@ class EditorTheorem extends EditorElement
 
         // reference material
         if (sizeof($idNumberInfo) > 1)
-        {
+        {            
             $this->type = $_POST['msm_theoremref_type_dropdown-' . $idNumberInfo[0]];
             $this->description = $_POST['msm_theoremref_description_input-' . $idNumberInfo[0]];
             $this->title = $_POST['msm_theoremref_title_input-' . $idNumberInfo[0]];
 
 //            $contentmatch = '/^msm_theoremref_content_input-.*/';
-            $contentmatch = '/msm_theoremref_content_input-' . $idNumberInfo[0] . '-\d+$/';
+            $contentmatch = '/msm_theoremref_content_input-' . $idNumberInfo[0] . '-\d+.*$/';
 
             $i = 0; //position for the part theorem
 
@@ -67,7 +67,7 @@ class EditorTheorem extends EditorElement
 
                     $statementRefTheorem = new EditorStatementTheorem();
                     $statementRefTheorem->getFormData($newId, $i);
-                    $this->content[] = $statementRefTheorem;
+                    $this->contents[] = $statementRefTheorem;
                     $i++;
                 }
             }
@@ -97,7 +97,7 @@ class EditorTheorem extends EditorElement
 
                     $statementTheorem = new EditorStatementTheorem();
                     $statementTheorem->getFormData($newId, $i);
-                    $this->content[] = $statementTheorem;
+                    $this->contents[] = $statementTheorem;
                     $i++;
                 }
             }
@@ -153,7 +153,7 @@ class EditorTheorem extends EditorElement
         $this->compid = $DB->insert_record("msm_compositor", $compData);
 
         $sibling_id = 0;
-        foreach ($this->content as $statementTheorem)
+        foreach ($this->contents as $statementTheorem)
         {
             $statementTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $statementTheorem->compid;
@@ -209,7 +209,7 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_theorem_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theorem_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_theorem_content_input-$this->compid' class='msm_editor_content'>";
-        foreach ($this->content as $content)
+        foreach ($this->contents as $content)
         {
             $htmlContent .= $content->displayData();
         }
@@ -256,7 +256,7 @@ class EditorTheorem extends EditorElement
                 case "msm_statement_theorem":
                     $statementTheorem = new EditorStatementTheorem();
                     $statementTheorem->loadData($child->id);
-                    $this->content[] = $statementTheorem;
+                    $this->contents[] = $statementTheorem;
                     break;
                 case "msm_associate":
                     $associate = new EditorAssociate();
@@ -311,7 +311,7 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_theoremref_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_theoremref_content_input-$this->compid' class='msm_editor_content'>";
-        foreach ($this->content as $content)
+        foreach ($this->contents as $content)
         {
             $htmlContent .= $content->displayRefData();
         }
