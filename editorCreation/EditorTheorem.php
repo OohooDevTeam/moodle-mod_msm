@@ -208,7 +208,7 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_theorem_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theorem_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
-        $htmlContent .= "<div id='msm_theorem_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_theorem_content_container-$this->compid' class='msm_theorem_content_containers'>";
         foreach ($this->contents as $content)
         {
             $htmlContent .= $content->displayData();

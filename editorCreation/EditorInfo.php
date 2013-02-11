@@ -291,7 +291,7 @@ class EditorInfo extends EditorElement
                 case "msm_unit":
                     break;
                 case "msm_theorem":
-                    $theorem = new EditorComment();
+                    $theorem = new EditorTheorem();
                     $theorem->loadData($ref->id);
                     $this->ref = $theorem;
                     break;

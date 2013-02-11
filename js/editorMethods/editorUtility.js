@@ -205,9 +205,12 @@ function editUnit(dbIds)
 {
     enableEditorFunction();    
      
-    $(".msm_editor_content").each(function() {        
+    $(".msm_editor_content").each(function() {  
         var currentId = this.id;
         var currentHTMLvalue = $(this).html();
+        console.log(this.id);
+        console.log($(this).html());
+        
         var idInfo = currentId.split("-");
         
         var newTextarea = document.createElement("textarea");
@@ -261,11 +264,6 @@ function editUnit(dbIds)
             skin : "o2k7",
             skin_variant : "silver"
         });
-//        
-//        console.log(tinymce);
-//        console.log(tinymce.activeEditor);
-//        
-//        tinymce.get(currentId).setContent(currentHTMLvalue);
        
     });
     
