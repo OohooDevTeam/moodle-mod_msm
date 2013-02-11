@@ -207,10 +207,15 @@ class EditorBlock extends EditorElement
     {
         global $DB;
 
-        $blockCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+        $blockCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));      
 
         $this->compid = $compid;
         $this->id = $blockCompRecord->unit_id;
+        
+        $blockParentRecord = $DB->get_record('msm_compositor', array('id'=>$blockCompRecord->parent_id));        
+        $blockParentTable = $DB->get_record("msm_table_collection", array('id'=>$blockParentRecord->table_id));
+        
+        $this->type = $blockParentTable->tablename;
 
         $blockRecord = $DB->get_record($this->tablename, array('id' => $this->id));
 

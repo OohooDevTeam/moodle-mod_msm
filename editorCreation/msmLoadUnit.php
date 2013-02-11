@@ -36,6 +36,7 @@ if (isset($_POST['id']))
 
     $unitData = new EditorUnit();
     $unitData->loadData($unitidInfo[1]);
+//    print_object($unitData);
 
     $htmlContent = '';
     $htmlContent .= $unitData->displayData();

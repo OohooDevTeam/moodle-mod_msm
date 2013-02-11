@@ -89,6 +89,7 @@ class EditorIntro extends EditorElement
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_intro_content-input-$this->compid' class='msm_editor_content'>";
+        
         foreach ($this->blocks[0]->content as $content)
         {
             $htmlContent .= $content->displayData();
@@ -132,7 +133,7 @@ class EditorIntro extends EditorElement
             {
                 $block = new EditorBlock();
                 $block->loadData($child->id);
-                $this->block[] = $block;
+                $this->blocks[] = $block;
             }
             else
             {
