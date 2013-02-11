@@ -215,6 +215,7 @@ function editUnit(dbIds)
         
         var newTextarea = document.createElement("textarea");
         newTextarea.id = currentId;
+        newTextarea.name = currentId;
       
         if((idInfo[0] == "msm_theorem_content_input")||(idInfo[0] == "msm_theoremref_content_input"))
         {

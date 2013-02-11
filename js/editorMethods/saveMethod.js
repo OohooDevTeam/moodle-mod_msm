@@ -31,7 +31,7 @@ function submitForm()
         if(!this.id.match(/info/))
         {  
             subordinateArray.push(prepareSubordinate(this.id));
-                
+                        
             this.value = tinymce.get(this.id).getContent({
                 format: "html"
             });
@@ -66,7 +66,9 @@ function submitForm()
         
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
-    var ids = [];         
+    var ids = [];  
+    
+    console.log(formData);
         
     $.ajax({
         type: "POST",
@@ -113,6 +115,7 @@ function submitForm()
                 $("#msm_editor_save").remove();
                 $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
                     
+                $("#msm_editor_cancel").remove();
                 $("#msm_editor_reset").remove();
                 $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New </button>").appendTo("#msm_editor_middle");
                     
