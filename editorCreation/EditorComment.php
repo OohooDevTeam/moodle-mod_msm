@@ -16,7 +16,6 @@ class EditorComment extends EditorElement
     public $type;
     public $description;
     public $title;
-    public $position;
     public $id;
     public $compid;
     public $children = array(); //associate
@@ -27,7 +26,7 @@ class EditorComment extends EditorElement
         $this->tablename = "msm_comment";
     }
 
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
 
@@ -36,7 +35,6 @@ class EditorComment extends EditorElement
             $this->type = $_POST['msm_commentref_type_dropdown-' . $idInfo[0]];
             $this->description = $_POST['msm_commentref_description_input-' . $idInfo[0]];
             $this->title = $_POST['msm_commentref_title_input-' . $idInfo[0]];
-            $this->position = $position;
 
             $this->errorArray = array();
 
@@ -59,7 +57,6 @@ class EditorComment extends EditorElement
             $this->type = $_POST['msm_comment_type_dropdown-' . $idNumber];
             $this->description = $_POST['msm_comment_description_input-' . $idNumber];
             $this->title = $_POST['msm_comment_title_input-' . $idNumber];
-            $this->position = $position;
 
             $this->errorArray = array();
 
@@ -88,7 +85,7 @@ class EditorComment extends EditorElement
                     $idInfo = explode("-", $id);
                     $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                     $associate = new EditorAssociate();
-                    $associate->getFormData($indexNumber, $i);
+                    $associate->getFormData($indexNumber);
                     $this->children[] = $associate;
                     $i++;
                 }

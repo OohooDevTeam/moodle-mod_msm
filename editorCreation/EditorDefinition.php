@@ -19,7 +19,6 @@ class EditorDefinition extends EditorElement
     public $title;
     public $content;
     public $tablename;
-    public $position;
     public $description;
     public $errorArray = array();
     public $children = array(); //associate
@@ -32,10 +31,8 @@ class EditorDefinition extends EditorElement
 
     // $idNumber can be just a parent index number or if it is a reference, it's a string
     // containing parent_id#|ref to have separate processing steps
-    function getFormData($idNumber, $position)
+    function getFormData($idNumber)
     {
-        $this->position = $position;
-
         $idInfo = explode("|", $idNumber);
 
         // processing definitions as reference material
@@ -94,7 +91,7 @@ class EditorDefinition extends EditorElement
                     $idInfo = explode("-", $id);
                     $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                     $associate = new EditorAssociate();
-                    $associate->getFormData($indexNumber, $i);
+                    $associate->getFormData($indexNumber);
                     $this->children[] = $associate;
                     $i++;
                 }

@@ -12,7 +12,6 @@
  */
 class EditorTable extends EditorElement
 {
-    public $position;
     public $id;
     public $compid;
     public $content;
@@ -23,10 +22,8 @@ class EditorTable extends EditorElement
     }
 
     // idNumber is the DOMElement with Table element as a root
-    public function getFormData($idNumber, $position)
-    {
-        $this->position = $position;
-        
+    public function getFormData($idNumber)
+    {        
         $doc = new DOMDocument();
         $paraNode = $doc->importNode($idNumber, true);
         $this->content = $doc->saveXML($paraNode);

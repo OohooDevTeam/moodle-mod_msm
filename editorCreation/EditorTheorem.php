@@ -22,7 +22,6 @@ class EditorTheorem extends EditorElement
     public $contents = array();
     public $associateType;
     public $tablename;
-    public $position;
     public $description;
     public $children = array(); //associates
 
@@ -33,9 +32,8 @@ class EditorTheorem extends EditorElement
 
     // theorem as reference material would result in $idNumber being "parentid#|ref" while
     // for main unit content, it would just be a parentid#
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-        $this->position = $position;
         $this->errorArray = array();
 
         $idNumberInfo = explode("|", $idNumber);
@@ -66,7 +64,7 @@ class EditorTheorem extends EditorElement
                     $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
 
                     $statementRefTheorem = new EditorStatementTheorem();
-                    $statementRefTheorem->getFormData($newId, $i);
+                    $statementRefTheorem->getFormData($newId);
                     $this->contents[] = $statementRefTheorem;
                     $i++;
                 }
@@ -96,7 +94,7 @@ class EditorTheorem extends EditorElement
                     $newId .= $indexNumber[sizeof($indexNumber) - 1];
 
                     $statementTheorem = new EditorStatementTheorem();
-                    $statementTheorem->getFormData($newId, $i);
+                    $statementTheorem->getFormData($newId);
                     $this->contents[] = $statementTheorem;
                     $i++;
                 }
@@ -121,7 +119,7 @@ class EditorTheorem extends EditorElement
                     
 //                    $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                     $associate = new EditorAssociate();
-                    $associate->getFormData($newId, $i);
+                    $associate->getFormData($newId);
                     $this->children[] = $associate;
                     $i++;
                 }

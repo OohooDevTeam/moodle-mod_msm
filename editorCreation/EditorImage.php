@@ -12,7 +12,6 @@
  */
 class EditorImage extends EditorElement
 {
-    public $position;
     public $id;
     public $compid;
     public $src;
@@ -26,9 +25,8 @@ class EditorImage extends EditorElement
         $this->tablename = 'msm_img';
     }
 
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-        $this->position = $position;
         
         return $this;
     }

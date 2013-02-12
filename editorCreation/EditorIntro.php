@@ -25,10 +25,8 @@ class EditorIntro extends EditorElement
         $this->tablename = "msm_intro";
     }
 
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-       $this->position = $position;
-
         $intromatch = '/^msm_intro_content_.*/';
         $childmatch = '/^msm_intro_child_content-.*/';
 
@@ -38,7 +36,7 @@ class EditorIntro extends EditorElement
             if ((preg_match($intromatch, $elementID)) || (preg_match($childmatch, $elementID)))
             {
                 $block = new EditorBlock();
-                $block->getFormData($elementID, $i);
+                $block->getFormData($elementID);
 
                 $this->blocks[] = $block;
             }

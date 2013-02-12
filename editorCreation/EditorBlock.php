@@ -14,7 +14,6 @@ class EditorBlock extends EditorElement
 {
 
     public $title;
-    public $position;
     public $id;
     public $compid;
     public $errorArray = array();
@@ -27,10 +26,8 @@ class EditorBlock extends EditorElement
     }
 
     // idNumber is a bit different--> it's the actual key of the POST object
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-        $this->position = $position;
-
         $intromatch = '/^msm_intro_.*/';
         $bodymatch = '/^copied_msm_body-.*/';
 

@@ -17,7 +17,6 @@ class EditorUnit extends EditorElement
     public $compid;
     public $title;
     public $description;
-    public $position;
     public $unitName;
     public $children = array(); // need it for load/display part
 
@@ -27,10 +26,9 @@ class EditorUnit extends EditorElement
     }
 
     // idNumber contains the msm id number
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
         global $DB;
-        $this->position = $position;
         $this->errorArray = array();
 
         $this->title = $_POST['msm_unit_title'];

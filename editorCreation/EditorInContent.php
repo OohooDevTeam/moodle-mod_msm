@@ -19,7 +19,6 @@ class EditorInContent extends EditorElement
     public $additional_attribute;
     public $type;
     public $content;
-    public $position;
     public $subordinates = array();
 
     function __construct()
@@ -27,10 +26,8 @@ class EditorInContent extends EditorElement
         $this->tablename = 'msm_content';
     }
 
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-        $this->position = $position;
-
         $doc = new DOMDocument();
         $listElement = $doc->importNode($idNumber, true);
 

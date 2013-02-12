@@ -12,8 +12,6 @@
  */
 class EditorPartTheorem extends EditorElement
 {
-
-    public $position;
     public $id;
     public $compid;
     public $content;
@@ -27,10 +25,8 @@ class EditorPartTheorem extends EditorElement
     }
 
     // idNumber is actually a id name from HTML form
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-        $this->position = $position;
-
         $idParam = explode("|", $idNumber);
 
         if (sizeof($idParam) > 1)

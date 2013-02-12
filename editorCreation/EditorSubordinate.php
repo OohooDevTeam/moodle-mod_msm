@@ -16,7 +16,6 @@ class EditorSubordinate extends EditorElement
     public $id;
     public $compid;
     public $hot;
-    public $position;
     public $info;
 
     // no errorArray necessary b/c null input has been checked already
@@ -29,10 +28,9 @@ class EditorSubordinate extends EditorElement
 
     // idNumber in this case is the anchored element passed from
     // contents (of various classes such as EditorDefinition/EditorTheorem...etc)
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
         $doc = new DOMDocument;
-        $this->position = $position;
         $this->hot = $doc->saveHTML($doc->importNode($idNumber, true));
 
         $id = $idNumber->getAttribute("id");
@@ -47,7 +45,7 @@ class EditorSubordinate extends EditorElement
         $idEnding .= $idInfo[sizeof($idInfo) - 1];
 
         $info = new EditorInfo();
-        $info->getFormData($idEnding . "|sub", $position);
+        $info->getFormData($idEnding . "|sub");
         $this->info = $info;
 
         return $this;

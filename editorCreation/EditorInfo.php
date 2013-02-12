@@ -17,7 +17,6 @@ class EditorInfo extends EditorElement
     public $compid;
     public $caption;
     public $content;
-    public $position;
     public $errorArray = array();
     public $subordinates = array();
     public $ref;
@@ -28,10 +27,8 @@ class EditorInfo extends EditorElement
     }
 
     // idNumber --> parentid-currentelementid
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-        $this->position = $position;
-
         $subid = explode("|", $idNumber);
 
         if (sizeof($subid) > 1)
@@ -92,25 +89,23 @@ class EditorInfo extends EditorElement
 
             $refType = $_POST['msm_associate_reftype-' . $idNumber];
 
-            $indexNumber = explode("-", $idNumber); // indexNumber[0] = parent id number
-//            $param = $indexNumber[0] . "|ref";
             $param = $idNumber . "|ref";
             
             switch ($refType)
             {
                 case "Definition":
                     $def = new EditorDefinition();
-                    $def->getFormData($param, '');
+                    $def->getFormData($param);
                     $this->ref = $def;
                     break;
                 case "Theorem":
                     $theorem = new EditorTheorem();
-                    $theorem->getFormData($param, '');
+                    $theorem->getFormData($param);
                     $this->ref = $theorem;
                     break;
                 case "Comment":
                     $comment = new EditorComment();
-                    $comment->getFormData($param, '');
+                    $comment->getFormData($param);
                     $this->ref = $comment;
                     break;
                 case "Example":

@@ -208,8 +208,6 @@ function editUnit(dbIds)
     $(".msm_editor_content").each(function() {  
         var currentId = this.id;
         var currentHTMLvalue = $(this).html();
-        console.log(this.id);
-        console.log($(this).html());
         
         var idInfo = currentId.split("-");
         

@@ -13,7 +13,7 @@
 abstract class EditorElement
 {
 
-    abstract function getFormData($idNumber, $position);
+    abstract function getFormData($idNumber);
 
     abstract function insertData($parentid, $siblingid, $msmid);
     abstract function loadData($compid);
@@ -35,19 +35,19 @@ abstract class EditorElement
                 if (($child->tagName == "p")||(preg_match('/h\d/', $child->tagName)=== 1))
                 {
                     $para = new EditorPara();
-                    $para->getFormData($child, $key);
+                    $para->getFormData($child);
                     $newContent[] = $para;
                 }
                 else if (($child->tagName == "ol") || ($child->tagName == "ul"))
                 {
                     $inContent = new EditorInContent();
-                    $inContent->getFormData($child, $key);
+                    $inContent->getFormData($child);
                     $newContent[] = $inContent;
                 }
                 else if ($child->tagName == "table")
                 {
                     $table = new EditorTable();
-                    $table->getFormData($child, $key);
+                    $table->getFormData($child);
                     $newContent[] = $table;
                 }
 //                else
@@ -72,7 +72,7 @@ abstract class EditorElement
         foreach ($aElements as $key => $a)
         {
             $hotword = new EditorSubordinate();
-            $hotword->getFormData($a, $key);
+            $hotword->getFormData($a);
             $subordinates[] = $hotword;
         }
         

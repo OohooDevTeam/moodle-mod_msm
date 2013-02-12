@@ -16,7 +16,6 @@ class EditorPara extends EditorElement
     public $align;
     public $description;
     public $content;
-    public $position;
     public $id;
     public $compid;
     public $subordinates = array();
@@ -32,7 +31,7 @@ class EditorPara extends EditorElement
      * @param type $position
      * @return \EditorPara
      */
-    function getFormData($idNumber, $position)
+    function getFormData($idNumber)
     {
         $doc = new DOMDocument();
         $paraNode = $doc->importNode($idNumber, true);
@@ -56,8 +55,6 @@ class EditorPara extends EditorElement
         {
             $this->subordinates[] = $subordinates;
         }
-
-        $this->position = $position;
 
         return $this;
     }

@@ -25,7 +25,7 @@ class EditorAssociate extends EditorElement
     }
 
     // idNumber = parent_number-currentelement_number
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
 
@@ -45,9 +45,8 @@ class EditorAssociate extends EditorElement
                 }
                 $newId .= $idInfo[sizeof($idInfo) - 1];
 
-//                $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                 $info = new EditorInfo();
-                $info->getFormData($newId, $i);
+                $info->getFormData($newId);
                 $this->infos[] = $info;
 
                 $i++;

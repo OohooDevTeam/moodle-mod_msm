@@ -13,7 +13,6 @@
 class EditorStatementTheorem extends EditorElement
 {
 
-    public $position;
     public $id;
     public $compid;
     public $errorArray = array();
@@ -26,10 +25,8 @@ class EditorStatementTheorem extends EditorElement
         $this->tablename = 'msm_statement_theorem';
     }
 
-    public function getFormData($idNumber, $position)
+    public function getFormData($idNumber)
     {
-        $this->position = $position;
-
         $idInfo = explode("|", $idNumber);
 
         if (sizeof($idInfo) > 1)
@@ -68,7 +65,7 @@ class EditorStatementTheorem extends EditorElement
                     $idParam = $newId . "|ref";
             
                     $partTheorem = new EditorPartTheorem();
-                    $partTheorem->getFormData($idParam, $i);
+                    $partTheorem->getFormData($idParam);
                     $this->children[] = $partTheorem;
                     $i++;
                 }
@@ -108,7 +105,7 @@ class EditorStatementTheorem extends EditorElement
                     $newId .= $indexNumber[sizeof($indexNumber) - 1];
 
                     $partTheorem = new EditorPartTheorem();
-                    $partTheorem->getFormData($newId, $i);
+                    $partTheorem->getFormData($newId);
                     $this->children[] = $partTheorem;
                     $i++;
                 }

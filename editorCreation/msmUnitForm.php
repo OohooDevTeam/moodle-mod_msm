@@ -47,7 +47,7 @@ $DB->delete_records('msm_table_collection');
 $tableCollection = new TableCollection();
 $tableCollection->insertTablename();
 $unit = new EditorUnit();
-$unit->getFormData($msmId, '');
+$unit->getFormData($msmId);
 
 for ($i = 0; $i < $lengthOfArray - 1; $i++)
 {
@@ -57,31 +57,31 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
     {
         case "copied_msm_def":
             $definition = new EditorDefinition();
-            $definition->getFormData($childIdInfo[1], $i);
+            $definition->getFormData($childIdInfo[1]);
             $unitcontent[] = $definition;
             break;
 
         case "copied_msm_theorem":
             $theorem = new EditorTheorem();
-            $theorem->getFormData($childIdInfo[1], $i);
+            $theorem->getFormData($childIdInfo[1]);
             $unitcontent[] = $theorem;
             break;
 
         case "copied_msm_comment":
             $comment = new EditorComment();
-            $comment->getFormData($childIdInfo[1], $i);
+            $comment->getFormData($childIdInfo[1]);
             $unitcontent[] = $comment;
             break;
 
         case "copied_msm_intro":
             $intro = new EditorIntro();
-            $intro->getFormData($childIdInfo[1], $i);
+            $intro->getFormData($childIdInfo[1]);
             $unitcontent[] = $intro;
             break;
 
         case "copied_msm_body":
             $body = new EditorBlock();
-            $body->getFormData($arrayOfChild[$i], $i);
+            $body->getFormData($arrayOfChild[$i]);
             $unitcontent[] = $body;
             break;
         default:
