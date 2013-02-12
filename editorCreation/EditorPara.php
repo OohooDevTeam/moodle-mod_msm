@@ -131,10 +131,10 @@ class EditorPara extends EditorElement
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
             }
-            else
-            {
-                echo "another child of para? " . $childTable->tablename;
-            }
+//            else
+//            {
+//                echo "another child of para? " . $childTable->tablename;
+//            }
         }
 
         return $this;

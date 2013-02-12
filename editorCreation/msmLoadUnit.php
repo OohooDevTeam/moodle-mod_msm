@@ -83,7 +83,7 @@ else if (isset($_POST['tree_content']))
 //            }
 //        }
 //    }
-
+    
     $idPairs = array();
     
     foreach($compidArray as $compid)
@@ -91,7 +91,7 @@ else if (isset($_POST['tree_content']))
         $elementRecord = $DB->get_record('msm_compositor', array('id' => $compid));
         $idPairs[] = $elementRecord->msm_id . "-" . $compid;
     }
-    
+
     
     echo json_encode($idPairs);
 

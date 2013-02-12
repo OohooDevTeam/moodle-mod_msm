@@ -333,7 +333,7 @@ $formContent .= '</div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>';
 
 $formContent .= '<script type="text/javascript">    
-            $(document).ready(function() {            
+            $(document).ready(function() {              
                 tinyMCE.init({
                     mode:"textareas",
                     plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
@@ -420,6 +420,8 @@ if (!empty($existingUnit))
                             {
                                 dbInfo = JSON.parse(data);  
                                 processUnitData(dbInfo); 
+                                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
+
                             },
                             error: function(data)
                             {
@@ -479,14 +481,14 @@ function displayRootUnit($unitcompid)
     ?>
     <script type="text/javascript">
         $(document).ready(function() {
-            var titleString = "<?php echo $unitRecord->title ?>";
+            var titleString = "<?php echo $unitRecord->plain_title ?>";
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                
+                    
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                        
+                            
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

@@ -16,6 +16,7 @@ class EditorUnit extends EditorElement
     public $id;
     public $compid;
     public $title;
+    public $plain_title;
     public $description;
     public $unitName;
     public $children = array(); // need it for load/display part
@@ -146,6 +147,7 @@ class EditorUnit extends EditorElement
 
         $unitRecord = $DB->get_record("msm_unit", array('id' => $this->id));
 
+        $this->plain_title = $unitRecord->plain_title;
         $this->title = $unitRecord->title;
         $this->description = $unitRecord->description;
 
@@ -180,6 +182,22 @@ class EditorUnit extends EditorElement
                     $intro = new EditorIntro();
                     $intro->loadData($child->id);
                     $this->children[] = $intro;
+                    break;
+                
+                case "msm_para":
+                    $para = new EditorPara();
+                    $para->loadData($child->id);
+                    $this->children[] = $para;
+                    break;
+                case "msm_content":
+                    $inContent = new EditorInContent();
+                    $inContent->loadData($child->id);
+                    $this->children[] = $inContent;
+                    break;
+                case "msm_table":
+                    $table = new EditorTable();
+                    $table->loadData($child->id);
+                    $this->children[] = $table;
                     break;
 //                case "msm_unit":
 //                    $unitRecord = $DB->get_record("msm_unit", array('id' => $child->unit_id));
@@ -220,7 +238,7 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
-        $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->title' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' disabled='disabled'/>";
 
         $htmlContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
         $htmlContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' value='$this->description'  disabled='disabled'/>";

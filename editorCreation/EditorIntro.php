@@ -53,7 +53,7 @@ class EditorIntro extends EditorElement
         $data = new stdClass();
         $data->intro_caption = $this->blocks[0]->title;
 
-        $this->id = $DB->insert_record($this->tablename, $data);        
+        $this->id = $DB->insert_record($this->tablename, $data);
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;
@@ -87,18 +87,37 @@ class EditorIntro extends EditorElement
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_intro_content-input-$this->compid' class='msm_editor_content'>";
-        
-        foreach ($this->blocks[0]->content as $content)
-        {
-            $htmlContent .= $content->displayData();
-        }
-        $htmlContent .= "</div>";
 
-        $htmlContent .= "<div id='msm_intro_child_container'>";
-        for ($i = 1; $i < sizeof($this->blocks); $i++)
+        if (!empty($this->children))
         {
-            $htmlContent .= $this->blocks[$i]->displayData();
+            foreach ($this->children as $content)
+            {
+                $htmlContent .= $content->displayData();
+            }
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div id='msm_intro_child_container'>";
+//            for ($i = 1; $i < sizeof($this->children); $i++)
+//            {
+//                $htmlContent .= $this->children->displayData();
+//            }
         }
+        else
+        {
+            foreach ($this->blocks[0]->content as $content)
+            {
+                $htmlContent .= $content->displayData();
+            }
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div id='msm_intro_child_container'>";
+            for ($i = 1; $i < sizeof($this->blocks); $i++)
+            {
+                $htmlContent .= $this->blocks[$i]->displayData();
+            }
+        }
+
+
         $htmlContent .= "</div>";
 
         $htmlContent .= "<input id='msm_intro_child_button-$this->compid' class='msm_intro_child_buttons' type='button' value='Add additional content' onclick='addIntroContent($this->compid)' disabled='disabled'/>";
@@ -111,35 +130,64 @@ class EditorIntro extends EditorElement
     public function loadData($compid)
     {
         global $DB;
-        
-        $introCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
-        
+
+        $this->children = array();
+
+        $introCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
         $this->compid = $compid;
         $this->id = $introCompRecord->unit_id;
-        
-        $introRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
-        
+
+        $introRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
         $this->title = $introRecord->intro_caption;
-        
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
-        
-        foreach($childElements as $child)
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
         {
-            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
-            
-            if($childTable->tablename == 'msm_block')
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            switch ($childTable->tablename)
             {
-                $block = new EditorBlock();
-                $block->loadData($child->id);
-                $this->blocks[] = $block;
+                case "msm_block":
+                    $block = new EditorBlock();
+                    $block->loadData($child->id);
+                    $this->blocks[] = $block;
+                    break;
+                // need these for the legacy material to load properly for now
+                // due to changing the db structure to include block table
+                // delete after demo
+                case "msm_para":
+                    $para = new EditorPara();
+                    $para->loadData($child->id);
+                    $this->children[] = $para;
+                    break;
+                case "msm_content":
+                    $inContent = new EditorInContent();
+                    $inContent->loadData($child->id);
+                    $this->children[] = $inContent;
+                    break;
+                case "msm_table":
+                    $table = new EditorTable();
+                    $table->loadData($child->id);
+                    $this->children[] = $table;
+                    break;
             }
-            else
-            {
-                echo "intro has another child element" . $childTable->tablename;
-                break;
-            }
+
+//            if ($childTable->tablename == 'msm_block')
+//            {
+//                $block = new EditorBlock();
+//                $block->loadData($child->id);
+//                $this->blocks[] = $block;
+//            }
+//            else
+//            {
+//                echo "intro has another child element" . $childTable->tablename;
+//                break;
+//            }
         }
-        
+
         return $this;
     }
 
