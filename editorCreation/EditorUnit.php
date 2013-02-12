@@ -46,6 +46,8 @@ class EditorUnit extends EditorElement
 
         $data = new stdClass();
         $data->title = $this->title;
+        // TODO temporary value --> later will need to fix this
+        $data->plain_title = $this->title;
         $data->description = $this->description;
         // when saving the unit for the first time, no structure is given(ie no subunit is specified until user structures the unit in hierarchy column)
         // so the default value is the name of the top unit specified by the user

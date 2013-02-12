@@ -66,7 +66,7 @@ function submitForm()
         
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
-    var ids = [];  
+    var ids = []; 
     
     $.ajax({
         type: "POST",
@@ -76,8 +76,6 @@ function submitForm()
             // this section of the code is for detecting empty contents and it gives the user 
             // a warning dialog box and highlights the contents that are empty
             ids = JSON.parse(data);
-                
-            //                console.log(ids);
                 
             if(ids instanceof Array)
             {
@@ -108,7 +106,7 @@ function submitForm()
                 });  
             }
             else
-            {
+            {                
                 // replace save and reset button to edit and new buttons, respectively
                 $("#msm_editor_save").remove();
                 $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");

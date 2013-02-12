@@ -330,10 +330,18 @@ $formContent .= '</div>
                 </div>
             </div>            
        </div>
-        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>';
+        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
+        <button id="msm_comp_fullscreen" onclick="hideBlock();"> Full Screen </button>';
+        
 
 $formContent .= '<script type="text/javascript">    
-            $(document).ready(function() {              
+           function hideBlock()
+           {           
+                $("#page-header").css("display", "none");
+//                 $(".block").parents(".depth_2").addClass("collapsed");    
+           }
+            
+            $(document).ready(function() {        
                 tinyMCE.init({
                     mode:"textareas",
                     plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",

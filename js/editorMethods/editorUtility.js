@@ -6,14 +6,27 @@
 
 function insertUnitStructure(dbId)
 {
+    var dbIdInfo = dbId.split("|");
+    
+    
+    if(dbIdInfo.length > 1)
+    {
+        $("#msm_unit_tree").find("li").each(function() {
+            if(this.id == dbInfo[1])
+            {
+                $(this).empty().remove();
+            }
+        })
+    }   
+    
     var treediv = document.getElementById("msm_unit_tree");
     
     var listChild = $("<li></li>");
-    $(listChild).attr("id", "msm_unit-"+dbId);
+    $(listChild).attr("id", "msm_unit-"+dbIdInfo[0]);
     
     var linkElement = $("<a href='#'></a>");
     
-    var linkText = document.createTextNode(dbId);
+    var linkText = document.createTextNode(dbIdInfo[0]);
     $(linkElement).append(linkText);    
     $(listChild).append(linkElement);
     
@@ -27,7 +40,28 @@ function insertUnitStructure(dbId)
     else
     {
         $("#msm_unit_tree > ul").append(listChild);
-    }   
+    }    
+    
+    var currentUnit = document.getElementById('msm_currentUnit_id');
+                
+    if((currentUnit == null)||(currentUnit == "undefined"))
+    {
+        var newInputField = document.createElement("input");
+        newInputField.id = "msm_currentUnit_id";
+        newInputField.name = "msm_currentUnit_id";
+        newInputField.setAttribute("style", "display:none;");
+        newInputField.value = dbId;
+                        
+        var form = document.getElementById("msm_unit_form");
+                        
+        form.appendChild(newInputField);
+    }
+    else
+    {
+        $("msm_currentUnit_id").val(dbId);
+    }
+    
+    
     
     $("#msm_unit_tree")
     .jstree({
@@ -53,7 +87,7 @@ function insertUnitStructure(dbId)
                 
                 // need to process the info to append appropriate domElements to correct parent elements
                 processUnitData(dbInfo); // need to also change the unit title --> need to get value of label in title and get unitName and replace <h2> under middle editor panel
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);     // need to load mathjax in content
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);     // need to load mathjax in content               
             },
             error: function(data)
             {

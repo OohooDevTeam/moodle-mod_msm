@@ -28,7 +28,20 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
-//print_object($_POST);
+if ($DB->count_records("msm_compositor") > 0)
+{
+    print_object($_POST);
+}
+
+if (!empty($_POST['msm_currentUnit_id']))
+{
+    $idInfo = explode("-", $_POST['msm_currentUnit_id']);
+
+    $compid = $idInfo[0];
+    $unitid = $idInfo[1];
+
+    deleteCurrentUnit($compid, $unitid);
+}
 
 $childOrder = $_POST['msm_child_order'];
 
@@ -194,6 +207,62 @@ else
     }
 
     // need both compid(in case the same unit was inserted multiple times in the composition) and the id of the unit
-    echo json_encode($unit->compid . "-" . $unit->id);
+
+    if (!empty($_POST['msm_currentUnit_id']))
+    {
+        echo json_encode($unit->compid . "-" . $unit->id . "|" . $_POST['msm_currentUnit_id']);
+    }
+    else
+    {
+        echo json_encode($unit->compid . "-" . $unit->id);
+    }
 }
+
+function deleteCurrentUnit($comp, $unit)
+{
+    global $DB;
+
+    $currentComprecord = $DB->get_record("msm_compositor", array('id' => $comp));
+
+    echo "currentCompRecord";
+    print_object($currentComprecord);
+
+    print_object($comp);
+    print_object($unit);
+
+    $prevSiblingId = $currentComprecord->prev_sibling_id;
+    $tablename = $DB->get_record("msm_table_collection", array("id" => $currentComprecord->table_id))->tablename;
+
+    $unitTableId = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
+
+    $siblingRecords = $DB->get_records("msm_compositor", array("table_id" => $unitTableId, "prev_sibling_id" => $comp));
+
+    // for any record with current unit as previous sibling should be updated to have previous sibling id of the current unit's previous sibling
+    foreach ($siblingRecords as $sibling)
+    {
+        $newData = new stdClass();
+        $newData->id = $sibling->id;
+        $newData->msm_id = $sibling->msm_id;
+        $newData->unit_id = $sibling->unit_id;
+        $newData->table_id = $sibling->table_id;
+        $newData->parent_id = $sibling->parent_id;
+        $newData->prev_sibling_id = $prevSiblingId;
+
+        $DB->update_record("msm_compositor", $newData);
+    }
+
+//    $childRecords = $DB->get_records("msm_compositor", array('parent_id' => $comp));
+//
+//    foreach ($childRecords as $child)
+//    {
+//        echo "childRecords: ";
+//        print_object($child);
+//
+//        deleteCurrentUnit($child->id, $child->unit_id);
+//    }
+
+    $DB->delete_records("msm_compositor", array('id' => $comp));
+    $DB->delete_records($tablename, array('id' => $unit));
+}
+
 ?>
