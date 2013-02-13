@@ -13,8 +13,15 @@ function insertUnitStructure(dbId)
     {
         $("#msm_unit_tree").find("li").each(function() {
             var stringid = "msm_unit-"+dbIdInfo[1];
+            var parent = $(this);
             if(this.id == stringid)
             {
+                console.log(this);
+                $(this).children("ul").children("li").each(function() {
+                    console.log($(this));
+                    $(this).insertBefore(parent);
+                });
+               
                 $(this).empty().remove();
             }
         })
