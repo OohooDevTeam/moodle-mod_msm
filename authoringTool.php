@@ -332,7 +332,7 @@ $formContent .= '</div>
        </div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
         <button id="msm_comp_fullscreen" onclick="hideBlock();"> Full Screen </button>';
-        
+
 
 $formContent .= '<script type="text/javascript">    
            function hideBlock()
@@ -416,18 +416,33 @@ if (!empty($existingUnit))
                         }
                     })
                     .bind("select_node.jstree", function(event, data) {
-                        var dbInfo = [];
+                        var dbInfo = [];                 
+        
+                        var nodeId = data.rslt.obj.attr("id");      
+                        var match = nodeId.match(/msm_unit-.+/);
+                        var nodeInfo = "";
+                        if(match)
+                        {
+                           var tempInfo = nodeId.split("-");
+                           nodeInfo = tempInfo[1]+"-"+tempInfo[2];
+                        }
+                        else
+                        {
+                            nodeInfo = nodeId;
+                        }
+
 
                         $.ajax({
                             type: "POST",
                             url: "editorCreation/msmLoadUnit.php",
                             data: {
-                                "id": "msm_unit-"+data.rslt.obj.attr("id")
+                                "id": "msm_unit-"+nodeInfo
                             },
                             success: function(data)
                             {
                                 dbInfo = JSON.parse(data);  
                                 processUnitData(dbInfo); 
+                                $("#msm_currentUnit_id").val(nodeInfo);
                                 MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
                             },
@@ -493,10 +508,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                    
+                                
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                            
+                                        
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

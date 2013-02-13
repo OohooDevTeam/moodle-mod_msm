@@ -65,7 +65,7 @@ class EditorUnit extends EditorElement
         $this->compid = $DB->insert_record('msm_compositor', $compData);
     }
 
-    public function updateCompRecord($idPair, $parent)
+    public function updateUnitStructure($idPair, $parent)
     {
         global $DB;
 
@@ -185,7 +185,7 @@ class EditorUnit extends EditorElement
                     $intro->loadData($child->id);
                     $this->children[] = $intro;
                     break;
-                
+
                 case "msm_para":
                     $para = new EditorPara();
                     $para->loadData($child->id);
@@ -210,11 +210,11 @@ class EditorUnit extends EditorElement
 //                        $this->children[] = $block;
 //                    }
 //                    break;
-               case "msm_block":
-                   $block = new EditorBlock();
-                   $block->loadData($child->id);
-                   $this->children[] = $block;
-                   break;
+                case "msm_block":
+                    $block = new EditorBlock();
+                    $block->loadData($child->id);
+                    $this->children[] = $block;
+                    break;
             }
         }
         return $this;
@@ -287,5 +287,37 @@ class EditorUnit extends EditorElement
         return $htmlContent;
     }
 
+    function updateDbRecord($compid)
+    {
+        global $DB;
+
+        $oldCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+
+        $newCompData = new stdClass();
+        $newUnitData = new stdClass();
+
+        $newCompData->id = $compid;
+        $newCompData->table_id = $oldCompRecord->table_id;
+        $newCompData->msm_id = $oldCompRecord->msm_id;
+        $newCompData->unit_id = $oldCompRecord->unit_id;
+        $newCompData->parent_id = 0;
+        $newCompData->prev_sibling_id = 0;
+
+        $DB->update_record("msm_compositor", $newCompData);
+
+        $newUnitData->id = $oldCompRecord->unit_id;
+        $newUnitData->title = $this->title;
+        $newUnitData->plain_title = $this->title;
+        $newUnitData->description = $this->description;
+        $newUnitData->compchildtype = $this->unitName;
+        $newUnitData->standalone = 'false';
+
+        $DB->update_record($this->tablename, $newUnitData);
+
+        $this->compid = $compid;
+        $this->id = $oldCompRecord->unit_id;
+    }
+
 }
+
 ?>

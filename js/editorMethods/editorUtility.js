@@ -12,7 +12,8 @@ function insertUnitStructure(dbId)
     if(dbIdInfo.length > 1)
     {
         $("#msm_unit_tree").find("li").each(function() {
-            if(this.id == dbInfo[1])
+            var stringid = "msm_unit-"+dbIdInfo[1];
+            if(this.id == stringid)
             {
                 $(this).empty().remove();
             }
@@ -43,7 +44,7 @@ function insertUnitStructure(dbId)
     }    
     
     var currentUnit = document.getElementById('msm_currentUnit_id');
-                
+   
     if((currentUnit == null)||(currentUnit == "undefined"))
     {
         var newInputField = document.createElement("input");
@@ -58,10 +59,8 @@ function insertUnitStructure(dbId)
     }
     else
     {
-        $("msm_currentUnit_id").val(dbId);
-    }
-    
-    
+        $("#msm_currentUnit_id").val(dbId);
+    } 
     
     $("#msm_unit_tree")
     .jstree({
@@ -72,34 +71,46 @@ function insertUnitStructure(dbId)
         }
     })
     .bind("select_node.jstree", function(event, data) {
-        var dbInfo = [];
+        var dbInfo = [];                 
         
+        var nodeId = data.rslt.obj.attr("id");      
+        var match = nodeId.match(/msm_unit-.+/);
+        var nodeInfo = "";
+        if(match)
+        {
+            var tempInfo = nodeId.split("-");
+            nodeInfo = tempInfo[1]+"-"+tempInfo[2];
+        }
+        else
+        {
+            nodeInfo = nodeId;
+        }
+
+
         $.ajax({
             type: "POST",
             url: "editorCreation/msmLoadUnit.php",
             data: {
-                'id': data.rslt.obj.attr("id")
+                "id": "msm_unit-"+nodeInfo
             },
             success: function(data)
             {
-                // dbInfo is all data making up the one unit in HTML format
                 dbInfo = JSON.parse(data);  
-                
-                // need to process the info to append appropriate domElements to correct parent elements
-                processUnitData(dbInfo); // need to also change the unit title --> need to get value of label in title and get unitName and replace <h2> under middle editor panel
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);     // need to load mathjax in content               
+                processUnitData(dbInfo); 
+                $("#msm_currentUnit_id").val(nodeInfo);
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
+
             },
             error: function(data)
             {
                 alert("ajax error in loading unit");
             }
         })
-        
+
     })
     .delegate("a", "click", function(event, data){
         event.preventDefault();
-    });  // delegate for preventing the anchored element default action--> ie. navigating to another page/same page
-   
+    });
 }
 
 function newUnit()
@@ -110,6 +121,7 @@ function newUnit()
     $("#msm_unit_description_input").val('');
     
     $("#msm_child_order").val('');
+    $("#msm_currentUnit_id").val('');
     
     $("#msm_unit_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");
@@ -176,6 +188,20 @@ function processUnitData(htmlData)
     $('#msm_unit_form').empty();
     
     $('#msm_unit_form').append(htmlData);
+    
+    var currentUnit = document.getElementById('msm_currentUnit_id');
+   
+    if((currentUnit == null)||(currentUnit == "undefined"))
+    {
+        var newInputField = document.createElement("input");
+        newInputField.id = "msm_currentUnit_id";
+        newInputField.name = "msm_currentUnit_id";
+        newInputField.setAttribute("style", "display:none;");
+                        
+        var form = document.getElementById("msm_unit_form");
+                        
+        form.appendChild(newInputField);
+    }
     
     $(".msm_subordinate_hotwords").each(function(i, element) {
         var idInfo = this.id.split("-");                        

@@ -124,7 +124,7 @@ function processTreeContent($DomElement, $parentNode)
                                 if ($grandChild->nodeType == XML_TEXT_NODE)
                                 {
                                     $unit = new EditorUnit();
-                                    $updateId = $unit->updateCompRecord($grandChild->nodeValue, $parent);
+                                    $updateId = $unit->updateUnitStructure($grandChild->nodeValue, $parent);
 
                                     if (!empty($child->nextSibling))
                                     {
