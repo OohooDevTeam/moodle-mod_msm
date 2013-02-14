@@ -36,7 +36,6 @@ if (isset($_POST['id']))
 
     $unitData = new EditorUnit();
     $unitData->loadData($unitidInfo[1]);
-//    print_object($unitData);
 
     $htmlContent = '';
     $htmlContent .= $unitData->displayData();
@@ -52,7 +51,7 @@ else if (isset($_POST['tree_content']))
 
     $ulElement = $rootElement->childNodes->item(0)->childNodes->item(0);
 
-    processTreeContent($ulElement, 0);
+    processTreeContent($ulElement, 0, 0);
 
     $aElements = $ulElement->getElementsByTagName('a');
 
@@ -73,35 +72,20 @@ else if (isset($_POST['tree_content']))
         }
     }
 
-//    if ($aElements->item(0)->hasChildNodes())
-//    {
-//        foreach ($aElements->item(0)->childNodes as $child)
-//        {
-//            if ($child->nodeType == XML_TEXT_NODE)
-//            {
-//                $idPair[] = explode("-", $child->wholeText);
-//            }
-//        }
-//    }
-    
     $idPairs = array();
-    
-    foreach($compidArray as $compid)
+
+    foreach ($compidArray as $compid)
     {
         $elementRecord = $DB->get_record('msm_compositor', array('id' => $compid));
         $idPairs[] = $elementRecord->msm_id . "-" . $compid;
     }
 
-    
-    echo json_encode($idPairs);
 
-//    echo json_encode($elementRecord->msm_id . "-" . $idPair[0]);
+    echo json_encode($idPairs);
 }
 
-function processTreeContent($DomElement, $parentNode)
+function processTreeContent($DomElement, $parentId, $siblingId)
 {
-    $parent = $parentNode;
-
     if ($DomElement->hasChildNodes())
     {
         foreach ($DomElement->childNodes as $child)
@@ -111,34 +95,33 @@ function processTreeContent($DomElement, $parentNode)
                 switch ($child->tagName)
                 {
                     case "ul":
-                        processTreeContent($child, $parent);
+                        processTreeContent($child, $parentId, $siblingId);
                         break;
                     case "li":
-                        processTreeContent($child, $parent);
-                        break;
-                    case "a":
-                        if ($child->hasChildNodes())
-                        {
-                            foreach ($child->childNodes as $grandChild)
-                            {
-                                if ($grandChild->nodeType == XML_TEXT_NODE)
-                                {
-                                    $unit = new EditorUnit();
-                                    $updateId = $unit->updateUnitStructure($grandChild->nodeValue, $parent);
+                        $childId = $child->getAttribute("id");
+                        $childIdInfo = explode("-", $childId);
+                                                
+                        $idPair = $childIdInfo[1] . "-" . $childIdInfo[2];
+                        $unit = new EditorUnit();
+                        $unit->updateUnitStructure($idPair, $parentId, $siblingId);
 
-                                    if (!empty($child->nextSibling))
+                        $siblingId = $childIdInfo[1];
+                        
+                        if($child->hasChildNodes())
+                        {
+                            foreach($child->childNodes as $grandChild)
+                            {
+                                if($grandChild->nodeType == XML_ELEMENT_NODE)
+                                {
+                                    if($grandChild->tagName == "ul")
                                     {
-                                        if ($child->nextSibling->nodeType == XML_ELEMENT_NODE)
-                                        {
-                                            if ($child->nextSibling->tagName == "ul")
-                                            {
-                                                $parent = $updateId;
-                                            }
-                                        }
+                                        processTreeContent($grandChild, $childIdInfo[1], 0);
                                     }
                                 }
                             }
                         }
+                            
+                        
                         break;
                 }
             }

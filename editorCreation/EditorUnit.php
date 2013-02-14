@@ -65,7 +65,7 @@ class EditorUnit extends EditorElement
         $this->compid = $DB->insert_record('msm_compositor', $compData);
     }
 
-    public function updateUnitStructure($idPair, $parent)
+    public function updateUnitStructure($idPair, $parent, $sibling)
     {
         global $DB;
 
@@ -76,32 +76,6 @@ class EditorUnit extends EditorElement
 
         if ($parent != 0)
         {
-            $otherCompRecords = $DB->get_records('msm_compositor', array('parent_id' => $parent, 'table_id' => $unitCompRecord->table_id), 'prev_sibling_id');
-
-            $tempArray = array();
-
-            if (sizeof($otherCompRecords) > 0)
-            {
-                foreach ($otherCompRecords as $rec)
-                {
-                    $tempArray[] = $rec;
-                }
-
-                if (end($tempArray)->prev_sibling_id == 0)
-                {
-                    $lastSibling = $tempArray[0]->id;
-                }
-                else
-                {
-                    $lastSibling = end($tempArray)->id;
-                }
-            }
-            else
-            {
-                $lastSibling = 0;
-            }
-
-
             $parentCompRecord = $DB->get_record("msm_compositor", array('id' => $parent));
             $parentUnitRecord = $DB->get_record($this->tablename, array('id' => $parentCompRecord->unit_id));
 
@@ -130,12 +104,10 @@ class EditorUnit extends EditorElement
             $newCompData->table_id = $unitCompRecord->table_id;
             $newCompData->unit_id = $unitRecord->id;
             $newCompData->parent_id = $parent;
-            $newCompData->prev_sibling_id = $lastSibling;
+            $newCompData->prev_sibling_id = $sibling;
 
             $DB->update_record("msm_compositor", $newCompData);
         }
-
-        return $unitCompRecord->id;
     }
 
     public function loadData($compid)

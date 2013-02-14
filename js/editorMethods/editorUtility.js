@@ -24,9 +24,6 @@ function insertUnitStructure(dbId)
             {
                 currentId = this.id;
             }
-
-            console.log("this id: "+currentId);
-            console.log("stringid: "+stringid);
             if(currentId == stringid)
             {
                 $(this).children("ul").children("li").each(function() {
@@ -374,19 +371,3 @@ function cancelUnit()
 {
     
 }
-//
-//function updateUnit()
-//{
-//    var formData = $("#msm_unit_form").serializeArray();
-//    var targetURL = $("#msm_unit_form").attr("action");
-//    
-//    $.ajax({
-//        type: "POST",
-//        url: targetURL,
-//        data: formData,
-//        success: function(data)
-//        {
-//            console.log(data);
-//        }
-//    });
-//}
