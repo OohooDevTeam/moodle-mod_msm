@@ -252,7 +252,12 @@ $rootUnit = '';
 
 if (!empty($existingUnit))
 {
+    $treeContent .= '<ul>';
+    $treeContent .= "<li id='$existingUnit->id-$existingUnit->unit_id'>";
+    $treeContent .= "<a href='#'>$existingUnit->id-$existingUnit->unit_id</a>";
     $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id);
+    $treeContent .= "</li>";
+    $treeContent .= '</ul>';
     $rootUnit .= displayRootUnit($existingUnit->id);
 }
 
@@ -473,23 +478,41 @@ function makeUnitTree($compid, $unitid)
 {
     global $DB;
 
-    $unittableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
-
     $treeHtml = '';
 
+    $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
+
     $treeHtml .= "<ul>";
-    $treeHtml .= "<li id='$compid-$unitid'>";
-    $treeHtml .= "<a href='#'>$compid-$unitid</a>";
 
-    $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid, 'table_id' => $unittableid), 'prev_sibling_id');
+    $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid, "table_id" => $unittableid), "prev_sibling_id");
 
-    foreach ($childElements as $childUnit)
+    foreach ($childElements as $child)
     {
-        $treeHtml .= makeUnitTree($childUnit->id, $childUnit->unit_id);
+        $treeHtml .= "<li id='$child->id-$child->unit_id'>";
+        $treeHtml .= "<a href='#'>$child->id-$child->unit_id</a>";
+        $treeHtml .= makeUnitTree($child->id, $child->unit_id);
+        $treeHtml .= "</li>";
     }
 
-    $treeHtml .= "</li>";
     $treeHtml .= "</ul>";
+
+//    $unittableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+//
+//    $treeHtml = '';
+//
+//    $treeHtml .= "<ul>";
+//    $treeHtml .= "<li id='$compid-$unitid'>";
+//    $treeHtml .= "<a href='#'>$compid-$unitid</a>";
+//
+//    $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid, 'table_id' => $unittableid), 'prev_sibling_id');
+//
+//    foreach ($childElements as $childUnit)
+//    {
+//        $treeHtml .= makeUnitTree($childUnit->id, $childUnit->unit_id);
+//    }
+//
+//    $treeHtml .= "</li>";
+//    $treeHtml .= "</ul>";
 
     return $treeHtml;
 }
@@ -508,10 +531,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                
+                                            
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                        
+                                                    
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

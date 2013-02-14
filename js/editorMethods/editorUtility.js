@@ -11,17 +11,27 @@ function insertUnitStructure(dbId)
     
     if(dbIdInfo.length > 1)
     {
-        $("#msm_unit_tree").find("li").each(function() {
+        $("#msm_unit_tree").find("li").each(function() {           
             var stringid = "msm_unit-"+dbIdInfo[1];
             var parent = $(this);
-            if(this.id == stringid)
+            var match = this.id.match(/msm_unit-.+/);
+            var currentId = '';
+            if(!match)
             {
-                console.log(this);
+                currentId = "msm_unit-"+this.id;
+            }
+            else
+            {
+                currentId = this.id;
+            }
+
+            console.log("this id: "+currentId);
+            console.log("stringid: "+stringid);
+            if(currentId == stringid)
+            {
                 $(this).children("ul").children("li").each(function() {
-                    console.log($(this));
                     $(this).insertBefore(parent);
-                });
-               
+                });               
                 $(this).empty().remove();
             }
         })
