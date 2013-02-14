@@ -28,6 +28,38 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
+// to remove unit when triggered by Remove this Unit button
+if (!empty($_POST["removeUnit"]))
+{
+    $idInfo = explode("-", $_POST['removeUnit']);
+
+    $compid = $idInfo[0];
+
+    $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+
+    $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid));
+
+    foreach ($oldUnitChildRecords as $oldchild)
+    {
+        $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
+
+        if ($oldchild->table_id != $unittableid)
+        {
+            deleteOldChildRecord($oldchild->id);
+        }
+    }
+    $DB->delete_records("msm_unit", array("id" => $idInfo[1]));
+    $DB->delete_records("msm_compositor", array("id" => $compid));
+    
+    $rootdocument = new EditorUnit();
+    $rootdocument->loadData(1);
+    $rootHtml = $rootdocument->displayData();
+    
+    echo json_encode($rootHtml);
+    
+    return;
+}
+
 $childOrder = $_POST['msm_child_order'];
 
 $arrayOfChild = explode(",", $childOrder);

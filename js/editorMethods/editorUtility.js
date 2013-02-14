@@ -88,13 +88,13 @@ function insertUnitStructure(dbId)
         var dbInfo = [];         
 
         $(".msm_editor_buttons").remove();
-//        $("#msm_editor_edit").remove();
+        //        $("#msm_editor_edit").remove();
         $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
 
-//        $("#msm_editor_new").remove();
-//        $("#msm_editor_remove").remove();
-//        $("#msm_editor_cancel").remove();
-        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+        //        $("#msm_editor_new").remove();
+        //        $("#msm_editor_remove").remove();
+        //        $("#msm_editor_cancel").remove();
+        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         
         var nodeId = data.rslt.obj.attr("id");      
         var match = nodeId.match(/msm_unit-.+/);
@@ -284,7 +284,7 @@ function saveComp(e)
 }
 
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
-function editUnit(dbIds)
+function editUnit()
 {
     enableEditorFunction();    
      
@@ -354,7 +354,7 @@ function editUnit(dbIds)
                     
     $("#msm_editor_remove").remove();
     $("#msm_editor_new").remove();
-    $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit()"> Cancel </button>').appendTo("#msm_editor_middle");
+    $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");
     
     $("#msm_editor_save").click(function(event) { 
         //         prevents navigation to msmUnitForm.php
@@ -368,15 +368,89 @@ function editUnit(dbIds)
 // triggered by 'Remove this Unit' button due to transition from view to edit
 // should remove the unit --> javascript code should remove all the display functions then have AJAX call to a php page that will
 // update the compositor and related db information (ie. delete unit from table data, update all parent/sibling information)
-function removeUnit()
+function removeUnit(e)
 {
+    e.preventDefault();
+    
+    var currentUnitIdPair = $("#msm_currentUnit_id").val();
+    
+    var param = {
+        removeUnit:currentUnitIdPair
+    };
+    
+    var ids = [];
+    
+    $.ajax({
+        type: 'POST',
+        url:"editorCreation/msmUnitForm.php",
+        data: param,
+        success: function(data)
+        {
+            ids = JSON.parse(data);
+            
+            // show root Unit
+            processUnitData(ids); 
+            $("#msm_currentUnit_id").val(currentUnitIdPair);
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
+            
+        },
+        error: function(data)
+        {
+            alert("ajax error in loading unit");
+        }
+    });
     
 }
 
 // triggered by cancel button during edit mode after save has been already implemented.  basically its role is to popup a warning message about
 // losing unsaved content and ignore any changes done if answered yes otherwise just close the popup window.  When yes is triggered, just load screen back to
 // display of previous state
-function cancelUnit()
+function cancelUnit(e)
 {
+    e.preventDefault();
     
+    var currentUnitIdPair = $("#msm_currentUnit_id").val();
+    
+    var param = {
+        cancelUnit:currentUnitIdPair
+    };
+    
+    var ids = [];
+    
+    $.ajax({
+        type: 'POST',
+        url:"editorCreation/msmLoadUnit.php",
+        data: param,
+        success: function(data)
+        {
+            ids = JSON.parse(data);
+            
+            $("#msm_unit_tree").find("li").each(function() {           
+                var stringid = "msm_unit-"+ids[0];
+                var parent = $(this);
+                var match = this.id.match(/msm_unit-.+/);
+                var currentId = '';
+                if(!match)
+                {
+                    currentId = "msm_unit-"+this.id;
+                }
+                else
+                {
+                    currentId = this.id;
+                }
+                if(currentId == stringid)
+                {
+                    $(this).children("ul").children("li").each(function() {
+                        $(this).insertBefore(parent);
+                    });               
+                    $(this).empty().remove();
+                }
+            });
+            
+        },
+        error: function(data)
+        {
+            alert("ajax error in loading unit");
+        }
+    });
 }

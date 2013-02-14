@@ -83,6 +83,18 @@ else if (isset($_POST['tree_content']))
 
     echo json_encode($idPairs);
 }
+else if($_POST["cancelUnit"]) // from cancelUnit js function
+{
+    $unitidInfo = explode('-', $_POST['cancelUnit']);
+
+    $unitData = new EditorUnit();
+    $unitData->loadData($unitidInfo[0]);
+
+    $htmlContent = '';
+    $htmlContent .= $unitData->displayData();
+
+    echo json_encode($htmlContent);
+}
 
 function processTreeContent($DomElement, $parentId, $siblingId)
 {

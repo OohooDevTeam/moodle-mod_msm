@@ -430,7 +430,7 @@ if (!empty($existingUnit))
                         $("#msm_editor_new").remove();
                         $("#msm_editor_remove").remove();
                         $("#msm_editor_cancel").remove();
-                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         
                         var nodeId = data.rslt.obj.attr("id");      
                         var match = nodeId.match(/msm_unit-.+/);
@@ -527,7 +527,7 @@ function displayRootUnit($unitcompid)
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
                                                             
             $("#msm_editor_reset").remove();
-            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });
     </script>
     <?php
