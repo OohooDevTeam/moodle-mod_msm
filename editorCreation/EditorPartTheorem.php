@@ -107,7 +107,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theorem_part_title_container-$this->compid' class='msm_theorem_part_title_containers'>";        
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$this->compid'>Part Theorem title: </label>";
-        $htmlContent .= "<input id='msm_theorem_part_title-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$this->compid' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theorem_part_title-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$this->compid' disabled='disabled' value='$this->caption'/>";
         $htmlContent .= "<div id='msm_theorem_part_content-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
@@ -140,7 +140,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theoremref_part_title_container-$this->compid' class='msm_theoremref_part_title_containers'>";        
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theoremref_part_tlabel' for='msm_theorerefm_part_title-$this->compid'>Part Theorem title: </label>";
-        $htmlContent .= "<input id='msm_theoremref_part_title-$this->compid' class='msm_theoremref_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$this->compid' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theoremref_part_title-$this->compid' class='msm_theoremref_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$this->compid' disabled='disabled' value='$this->caption'/>";
         $htmlContent .= "<div id='msm_theoremref_part_content-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";

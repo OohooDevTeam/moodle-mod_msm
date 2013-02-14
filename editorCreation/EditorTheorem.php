@@ -76,7 +76,7 @@ class EditorTheorem extends EditorElement
             $this->description = $_POST['msm_theorem_description_input-' . $idNumber];
             $this->title = $_POST['msm_theorem_title_input-' . $idNumber];
 
-            $contentmatch = '/^msm_theorem_content_input-.*/';
+            $contentmatch = "/^msm_theorem_content_input-$idNumber-.*/";
 
             $i = 0; //position for the part theorem
 
