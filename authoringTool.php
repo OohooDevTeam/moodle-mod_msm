@@ -496,24 +496,6 @@ function makeUnitTree($compid, $unitid)
 
     $treeHtml .= "</ul>";
 
-//    $unittableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
-//
-//    $treeHtml = '';
-//
-//    $treeHtml .= "<ul>";
-//    $treeHtml .= "<li id='$compid-$unitid'>";
-//    $treeHtml .= "<a href='#'>$compid-$unitid</a>";
-//
-//    $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid, 'table_id' => $unittableid), 'prev_sibling_id');
-//
-//    foreach ($childElements as $childUnit)
-//    {
-//        $treeHtml .= makeUnitTree($childUnit->id, $childUnit->unit_id);
-//    }
-//
-//    $treeHtml .= "</li>";
-//    $treeHtml .= "</ul>";
-
     return $treeHtml;
 }
 

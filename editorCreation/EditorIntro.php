@@ -51,14 +51,7 @@ class EditorIntro extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        if (!empty($this->blocks))
-        {
-            $data->intro_caption = $this->blocks[0]->title;
-        }
-        else
-        {
-            print_object($this);
-        }
+        $data->intro_caption = $this->blocks[0]->title;
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
@@ -104,10 +97,6 @@ class EditorIntro extends EditorElement
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div id='msm_intro_child_container'>";
-//            for ($i = 1; $i < sizeof($this->children); $i++)
-//            {
-//                $htmlContent .= $this->children->displayData();
-//            }
         }
         else
         {

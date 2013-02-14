@@ -50,10 +50,6 @@ function submitForm()
     var urlParam = window.location.search;
        
     var urlParamInfo = urlParam.split("=");
-    
-//    console.log(document.getElementById("msm_child_order"));
-//    
-//    alert(idString+urlParamInfo[1]);    
        
     $("#msm_child_order").val(idString+urlParamInfo[1]);
         

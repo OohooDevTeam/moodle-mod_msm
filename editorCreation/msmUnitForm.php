@@ -178,7 +178,6 @@ foreach ($unitcontent as $unitchild)
 
 if ($hasError)
 {
-//    print_object($errorArray);
     echo json_encode($errorArray);
 }
 else
@@ -188,7 +187,6 @@ else
         $idInfo = explode("-", $_POST['msm_currentUnit_id']);
 
         $compid = $idInfo[0];
-//        $unitid = $idInfo[1];
 
         $unit->updateDbRecord($compid);
 
@@ -252,7 +250,6 @@ function deleteOldChildRecord($compid)
 
     if ($compid != 0)
     {
-//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $compid));
         $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
 
         foreach ($childElements as $child)
@@ -263,24 +260,8 @@ function deleteOldChildRecord($compid)
         $childRecord = $DB->get_record("msm_compositor", array('id' => $compid));
         $childTablename = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id))->tablename;
 
-//        if ($childTablename != "msm_unit")
-//        {
         $DB->delete_records($childTablename, array("id" => $childRecord->unit_id));
         $DB->delete_records("msm_compositor", array("id" => $compid));
-//        }
-//        else
-//        {
-//            // update the parent id of the child so that it corresponts to parent id of the current unit element
-//            $updateData = new stdClass();
-//            $updateData->id = $childRecord->id;
-//            $updateData->msm_id = $childRecord->msm_id;
-//            $updateData->table_id = $childRecord->table_id;
-//            $updateData->unit_id = $childRecord->unit_id;
-//            $updateData->parent_id = $currentRecord->parent_id;
-//            $updateData->prev_sibling_id = $childRecord->prev_sibling_id;
-//
-//            $DB->update_record("msm_compositor", $updateData);
-//        }
     }
 }
 
