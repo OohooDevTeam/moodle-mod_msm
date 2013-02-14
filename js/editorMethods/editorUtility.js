@@ -85,7 +85,16 @@ function insertUnitStructure(dbId)
         }
     })
     .bind("select_node.jstree", function(event, data) {
-        var dbInfo = [];                 
+        var dbInfo = [];         
+
+        $(".msm_editor_buttons").remove();
+//        $("#msm_editor_edit").remove();
+        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+
+//        $("#msm_editor_new").remove();
+//        $("#msm_editor_remove").remove();
+//        $("#msm_editor_cancel").remove();
+        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit()\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         
         var nodeId = data.rslt.obj.attr("id");      
         var match = nodeId.match(/msm_unit-.+/);
