@@ -50,6 +50,10 @@ function submitForm()
     var urlParam = window.location.search;
        
     var urlParamInfo = urlParam.split("=");
+    
+//    console.log(document.getElementById("msm_child_order"));
+//    
+//    alert(idString+urlParamInfo[1]);    
        
     $("#msm_child_order").val(idString+urlParamInfo[1]);
         
@@ -68,6 +72,9 @@ function submitForm()
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 
     
+//    console.log(formData);
+//    alert("formData");
+//    
     $.ajax({
         type: "POST",
         url: targetURL,

@@ -197,15 +197,14 @@ function processUnitData(htmlData)
     $('#msm_unit_form').append(htmlData);
     
     var currentUnit = document.getElementById('msm_currentUnit_id');
+    var form = document.getElementById("msm_unit_form");
    
     if((currentUnit == null)||(currentUnit == "undefined"))
     {
         var newInputField = document.createElement("input");
         newInputField.id = "msm_currentUnit_id";
         newInputField.name = "msm_currentUnit_id";
-        newInputField.setAttribute("style", "display:none;");
-                        
-        var form = document.getElementById("msm_unit_form");
+        newInputField.setAttribute("style", "display:none;");      
                         
         form.appendChild(newInputField);
     }

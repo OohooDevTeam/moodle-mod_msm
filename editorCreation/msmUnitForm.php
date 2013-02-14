@@ -210,6 +210,14 @@ else
 
     foreach ($unitcontent as $element)
     {
+        if(get_class($element) == "EditorIntro")
+        {
+            if(empty($element->blocks))
+            {
+                print_object($unit->compid);
+                print_object($_POST);
+            }
+        }
         $element->insertData($unit->compid, $siblingCompid, $msmId);
         $siblingCompid = $element->compid;
     }
