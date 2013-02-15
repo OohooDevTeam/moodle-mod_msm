@@ -391,6 +391,34 @@ function removeUnit(e)
             // show root Unit
             processUnitData(ids); 
             $("#msm_currentUnit_id").val(currentUnitIdPair);
+            
+            $("#msm_unit_tree").find("li").each(function() {           
+                var stringid = "msm_unit-"+currentUnitIdPair;
+                var parent = $(this);
+                var match = this.id.match(/msm_unit-.+/);
+                var currentId = '';
+                if(!match)
+                {
+                    currentId = "msm_unit-"+this.id;
+                }
+                else
+                {
+                    currentId = this.id;
+                }
+                if(currentId == stringid)
+                {
+                    $(this).children("ul").children("li").each(function() {
+                        // to prevent having two elements indicated as the last leaf
+                        if(this.className == "jstree-leaf jstree-last")
+                        {
+                            this.className = "jstree-leaf";
+                        }
+                        $(this).insertBefore(parent);
+                    });               
+                    $(this).empty().remove();
+                }
+            })
+            
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
             
         },
