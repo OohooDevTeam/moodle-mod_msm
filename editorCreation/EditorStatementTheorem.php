@@ -151,13 +151,17 @@ class EditorStatementTheorem extends EditorElement
 
     public function displayData()
     {   
+        global $DB;
+        
+        $currentCompRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
+        
         $htmlContent = '';
         
         $htmlContent .= "<div id='msm_theorem_statement_container-$this->compid' class='msm_theorem_statement_containers'>";
         $htmlContent .= "<div id='msm_theorem_statement_title_container-$this->compid' class='msm_theorem_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<div id='msm_theorem_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_theorem_content_input-$currentCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_part_droparea-$this->compid' class='msm_theorem_part_dropareas'>";
@@ -204,13 +208,16 @@ class EditorStatementTheorem extends EditorElement
     }
     function displayRefData()
     {
+        global $DB;
+        
+        $currentRefCompRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
         $htmlContent = '';
         
         $htmlContent .= "<div id='msm_theoremref_statement_container-$this->compid' class='msm_theoremref_statement_containers'>";
         $htmlContent .= "<div id='msm_theoremref_statement_title_container-$this->compid' class='msm_theoremref_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<div id='msm_theoremref_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_theoremref_content_input-$currentRefCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theoremref_part_droparea-$this->compid' class='msm_theoremref_part_dropareas'>";

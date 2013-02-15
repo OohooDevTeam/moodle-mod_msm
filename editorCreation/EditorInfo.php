@@ -161,21 +161,23 @@ class EditorInfo extends EditorElement
 
         $parentRecord = $DB->get_record('msm_compositor', array('id' => $infoCompRecord->parent_id));
         $parentTable = $DB->get_record('msm_table_collection', array('id' => $parentRecord->table_id));
+        
+        $parentElementRecord = $DB->get_record("msm_compositor", array("id"=>$parentRecord->parent_id));
 
         if ($parentTable->tablename == 'msm_associate')
         {
-            $htmlContent .= "<label for='msm_info_title-$this->compid'>title: </label>";
-            $htmlContent .= "<div id='msm_info_title-$this->compid' class='msm_editor_content'>";
+            $htmlContent .= "<label for='msm_info_title-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid'>title: </label>";
+            $htmlContent .= "<div id='msm_info_title-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid' class='msm_editor_content'>";
             $htmlContent .= $this->caption;
             $htmlContent .= "</div>";
-            $htmlContent .= "<label for='msm_info_content-$this->compid'>content: </label>";
-            $htmlContent .= "<div id='msm_info_content-$this->compid' class='msm_editor_content'>";
+            $htmlContent .= "<label for='msm_info_content-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid'>content: </label>";
+            $htmlContent .= "<div id='msm_info_content-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid' class='msm_editor_content'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div id='msm_associate_reftype_option-$this->compid' class='msm_associate_reftype_optionarea'>";
             $htmlContent .= "<span class='msm_associate_reftype_label'>Type of reference to add: </span>";
-            $htmlContent .= "<select id='msm_associate_reftype-$this->compid' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$this->compid' disabled='disabled'>";
+            $htmlContent .= "<select id='msm_associate_reftype-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid' disabled='disabled'>";
 
             if (empty($this->ref))
             {
@@ -237,11 +239,11 @@ class EditorInfo extends EditorElement
         {
             if (empty($this->caption))
             {
-                $htmlContent .= "<div id='msm_subordinate_info_dialog-$this->compid' class='msm_subordinate_info_dialogs' style='display:none;'>";
+                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid' class='msm_subordinate_info_dialogs' style='display:none;'>";
             }
             else
             {
-                $htmlContent .= "<div id='msm_subordinate_info_dialog-$this->compid' class='msm_subordinate_info_dialogs' title='$this->caption' style='display:none;'>";
+                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentElementRecord->parent_id-$parentRecord->parent_id-$this->compid' class='msm_subordinate_info_dialogs' title='$this->caption' style='display:none;'>";
             }
 
             $htmlContent .= $this->content;

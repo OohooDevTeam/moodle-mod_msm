@@ -174,7 +174,7 @@ class EditorComment extends EditorElement
         {
             $htmlContent .= $associate->displayData();
         }
-        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"def\")' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"comment\")' disabled='disabled'/>";
         $htmlContent .= "</div>";
 
         $htmlContent .= "</div>";

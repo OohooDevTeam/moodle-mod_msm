@@ -29,7 +29,7 @@ class EditorAssociate extends EditorElement
     {
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
 
-        $infomatch = "/^msm_info_content-$idNumber/";
+        $infomatch = "/^msm_info_content-$idNumber.*$/";
 
         $i = 0;
         foreach ($_POST as $id => $value)
@@ -84,7 +84,10 @@ class EditorAssociate extends EditorElement
 
     public function displayData()
     {
-//        $id = $this->compid . "-" . $this->id;
+        global $DB;
+        
+        $currentAssociateRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
+        
         $htmlContent = '';
         
         $htmlContent .= "<div id='msm_associate_childs-$this->compid' class='msm_associate_childs'>";
@@ -94,7 +97,7 @@ class EditorAssociate extends EditorElement
         
         $htmlContent .= "<div class='msm_associate_optionarea'>";
         $htmlContent .= "<span class='msm_associate_option_label'>Type of information: </span>";
-        $htmlContent .= "<select id='msm_associate_dropdown-$this->compid' class='msm_associated_dropdown' name='msm_associate_dropdown-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<select id='msm_associate_dropdown-$currentAssociateRecord->parent_id-$this->compid' class='msm_associated_dropdown' name='msm_associate_dropdown-$currentAssociateRecord->parent_id-$this->compid' disabled='disabled'>";
          switch ($this->type)
         {
             case "Comment":

@@ -6,8 +6,7 @@
 
 function insertUnitStructure(dbId)
 {
-    var dbIdInfo = dbId.split("|");
-    
+    var dbIdInfo = dbId.split("|");    
     
     if(dbIdInfo.length > 1)
     {
@@ -82,6 +81,9 @@ function insertUnitStructure(dbId)
         "dnd": {
             "drop_target": false,
             "drag_target": false
+        },
+        "ui": {
+            "initally_select": ["msm_unit-"+dbIdInfo[0]]
         }
     })
     .bind("select_node.jstree", function(event, data) {
@@ -149,10 +151,11 @@ function newUnit()
     $("#msm_unit_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");
     
-    $("#msm_editor_edit").remove();
+    $("#msm_editor_edit").remove();    
     $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
                     
     $("#msm_editor_new").remove();
+     $("#msm_editor_remove").remove();
     $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
     
     $(".msm_structural_element").draggable({
@@ -240,11 +243,6 @@ function processUnitData(htmlData)
             previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
         });
     });
-//    var titleLabel = $('#msm_unit_title_label-'+idpair).val();
-//    
-//    var titleLabelInfo = titleLabel.split("-");
-//    
-//    $("#msm_editor_middle > h2").val(titleLabelInfo[0] + " Design Area");
 }
 
 function saveComp(e)
@@ -408,16 +406,19 @@ function removeUnit(e)
                 if(currentId == stringid)
                 {
                     $(this).children("ul").children("li").each(function() {
-                        // to prevent having two elements indicated as the last leaf
-                        if(this.className == "jstree-leaf jstree-last")
-                        {
-                            this.className = "jstree-leaf";
-                        }
+                        // to prevent having two elements indicated as the last leaf --> problem with this code = also removes 
+                        // indicator for the last leaf at the leaf that is actually last in the list
+                        //                        if(this.className == "jstree-leaf jstree-last")
+                        //                        {
+                        //                            this.className = "jstree-leaf";
+                        //                        }
                         $(this).insertBefore(parent);
                     });               
                     $(this).empty().remove();
                 }
-            })
+            });
+            
+            newUnit();
             
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
             

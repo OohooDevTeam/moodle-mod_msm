@@ -35,7 +35,17 @@ if (!empty($_POST["removeUnit"]))
 
     $compid = $idInfo[0];
 
+//    echo "compid passed";
+//    print_object($compid);
+
+
     $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+
+//    echo "currentUnitRecord?";
+//    print_object($currentUnitRecord);
+//    die;
+
+    $msmId = $currentUnitRecord->msm_id;
 
     $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid));
 
@@ -50,13 +60,42 @@ if (!empty($_POST["removeUnit"]))
     }
     $DB->delete_records("msm_unit", array("id" => $idInfo[1]));
     $DB->delete_records("msm_compositor", array("id" => $compid));
-    
-    $rootdocument = new EditorUnit();
-    $rootdocument->loadData(1);
-    $rootHtml = $rootdocument->displayData();
-    
-    echo json_encode($rootHtml);
-    
+
+    $unitNameArray = $DB->get_records("msm_unit_name", array("msmid" => $msmId), "depth");
+    $topUnitName = $DB->get_record("msm_unit_name", array("msmid" => $msmId, "depth" => 0));
+
+    $unitNameString = '';
+    foreach ($unitNameArray as $unitName)
+    {
+        $unitNameString .= $unitName->unitname . ",";
+    }
+    $unitNameString .= $msmId;
+
+    $emptyUnitContent = '';
+
+    $emptyUnitContent .= "<div id='msm_unit_info_div'>";
+    $emptyUnitContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$topUnitName->unitname title: </label>";
+    $emptyUnitContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $topUnitName->unitname.' name='msm_unit_title' disabled='disabled'/>";
+
+    $emptyUnitContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
+    $emptyUnitContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' disabled='disabled'/>";
+    $emptyUnitContent .= "</div>";
+
+    $emptyUnitContent .= "<div id='msm_editor_middle_droparea'>";
+    $emptyUnitContent .= "<div id='msm_child_appending_area'>";
+
+    $emptyUnitContent .= "</div>";
+    $emptyUnitContent .= "<input id='msm_child_order' style='visibility:hidden;' name='msm_child_order'/>";
+
+    $emptyUnitContent .= "</div>";
+    $emptyUnitContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
+
+//    $rootdocument = new EditorUnit();
+//    $rootdocument->loadData(1);
+//    $rootHtml = $rootdocument->displayData();
+
+    echo json_encode($emptyUnitContent);
+
     return;
 }
 
@@ -211,6 +250,9 @@ else
 {
     if (!empty($_POST['msm_currentUnit_id']))
     {
+//        print_object($_POST);
+//        print_object($unitcontent);
+
         $idInfo = explode("-", $_POST['msm_currentUnit_id']);
 
         $compid = $idInfo[0];
