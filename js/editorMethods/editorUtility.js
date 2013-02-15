@@ -81,21 +81,17 @@ function insertUnitStructure(dbId)
         "dnd": {
             "drop_target": false,
             "drag_target": false
-        },
-        "ui": {
-            "initally_select": ["msm_unit-"+dbIdInfo[0]]
-        }
+        }       
+    })
+    .bind("load.jstree", function(){
+        $("#msm_unit_tree").jstree("select_node", "msm_unit-"+dbIdInfo[0]).trigger("select_node.jstree");
     })
     .bind("select_node.jstree", function(event, data) {
         var dbInfo = [];         
 
         $(".msm_editor_buttons").remove();
-        //        $("#msm_editor_edit").remove();
         $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-
-        //        $("#msm_editor_new").remove();
-        //        $("#msm_editor_remove").remove();
-        //        $("#msm_editor_cancel").remove();
+        
         $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         
         var nodeId = data.rslt.obj.attr("id");      
@@ -155,7 +151,7 @@ function newUnit()
     $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
                     
     $("#msm_editor_new").remove();
-     $("#msm_editor_remove").remove();
+    $("#msm_editor_remove").remove();
     $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
     
     $(".msm_structural_element").draggable({

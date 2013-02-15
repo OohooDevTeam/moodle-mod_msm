@@ -413,13 +413,16 @@ if (!empty($existingUnit))
                 $("#msm_unit_tree")
                     .jstree({
                         "plugins": ["themes", "html_data", "ui", "dnd"],
-                        "core" : { "initially_open" : ["' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
-                        "ui" : {"initially_select" : ["' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
+                        "core" : { "initially_open" : ["msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
+                        "ui" : {"initially_select" : ["msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
                         "dnd": {
                             "drop_target": false,
                             "drag_target": false
                         }
                     })
+                      .bind("load.jstree", function(){
+                            $("#msm_unit_tree").jstree("select_node", "msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '").trigger("select_node.jstree");
+                        })
                     .bind("select_node.jstree", function(event, data) {
                         var dbInfo = [];      
                         
