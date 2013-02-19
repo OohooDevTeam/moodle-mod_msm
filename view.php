@@ -106,7 +106,6 @@ $PAGE->set_context($context);
 // activate later when editor is done
 if ($PAGE->user_allowed_editing())
 {
-    print_object($msm->id);
     $buttons = '<form method="get" action="' . $CFG->wwwroot . '/mod/msm/authoringTool.php"><div>' .
             '<input type="hidden" name="mid" value="' . $msm->id . '" />' .
             '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';

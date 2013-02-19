@@ -348,6 +348,7 @@ function editUnit()
                     
     $("#msm_editor_remove").remove();
     $("#msm_editor_new").remove();
+    $("#msm_editor_reset").remove();
     $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");
     
     $("#msm_editor_save").click(function(event) { 

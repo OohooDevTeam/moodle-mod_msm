@@ -38,13 +38,29 @@ class EditorDefinition extends EditorElement
         // processing definitions as reference material
         if (sizeof($idInfo) > 1)
         {
-            $this->type = $_POST['msm_defref_type_dropdown-' . $idInfo[0]];
-            $this->description = $_POST['msm_defref_description_input-' . $idInfo[0]];
-            $this->title = $_POST['msm_defref_title_input-' . $idInfo[0]];
-
-            if ($_POST['msm_defref_content_input-' . $idInfo[0]] != '')
+            $match = "/^msm_defref_content_input-$idInfo[0].*$/";
+            
+            $newId = '';
+            foreach($_POST as $id=>$value)
             {
-                $this->content = $_POST['msm_defref_content_input-' . $idInfo[0]];
+                if(preg_match($match, $id))
+                {
+                    $tempidInfo = explode("-", $id);                    
+                    for($i=1; $i<sizeof($tempidInfo)-1; $i++)
+                    {
+                        $newId .= $tempidInfo[$i] . "-";
+                    }
+                    $newId .= $tempidInfo[sizeof($tempidInfo)-1];
+                    break;
+                }
+            }
+            $this->type = $_POST['msm_defref_type_dropdown-' . $newId];
+            $this->description = $_POST['msm_defref_description_input-' . $newId];
+            $this->title = $_POST['msm_defref_title_input-' . $newId];
+
+            if ($_POST['msm_defref_content_input-' . $newId] != '')
+            {
+                $this->content = $_POST['msm_defref_content_input-' . $newId];
 
                 // grab all anchored elements in content --> it is only from subordinate
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
@@ -54,7 +70,7 @@ class EditorDefinition extends EditorElement
             }
             else
             {
-                $this->errorArray[] = 'msm_defref_content_input-' . $idInfo[0] . '_ifr';
+                $this->errorArray[] = 'msm_defref_content_input-' . $newId . '_ifr';
             }
         }
         // processing definition as main part of unit
@@ -258,10 +274,17 @@ class EditorDefinition extends EditorElement
 
     function displayRefData()
     {
+        global $DB;
+        
+        $currentRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
+        
+        $parentRecord = $DB->get_record("msm_compositor", array("id"=>$currentRecord->parent_id)); // associate record
+        // $parentRecord->parent_id == parent def/comment/theorem where associate is a child of
+        
         $htmlContent = '';
 
-        $htmlContent .= "<div id='copied_msm_defref-$this->compid' class='copied_msm_structural_element'>";
-        $htmlContent .= "<select id='msm_defref_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_defref_type_dropdown-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div id='copied_msm_defref-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<select id='msm_defref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_dropdown' name='msm_defref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -320,14 +343,14 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<b style='margin-left: 30%;'> DEFINITION </b>";
         $htmlContent .= "</span>";
         
-        $htmlContent .= "<input id='msm_defref_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "<input id='msm_defref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled' value='$this->title'/>";
         
-        $htmlContent .= "<div id='msm_defref_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_defref_content_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         
-        $htmlContent .= "<label id='msm_defref_description_label-$this->compid' class='msm_child_description_labels' for='msm_defref_description_label-$this->compid'>Description: </label>";
-        $htmlContent .= "<input id='msm_defref_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_defref_description_input-$this->compid'/>";
+        $htmlContent .= "<label id='msm_defref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_labels' for='msm_defref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid'>Description: </label>";
+        $htmlContent .= "<input id='msm_defref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_defref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid'/>";
         
         $htmlContent .= "</div>";
 
