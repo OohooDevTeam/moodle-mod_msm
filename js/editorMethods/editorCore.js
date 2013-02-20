@@ -251,9 +251,9 @@ function processDroppedChild(e, droppedId)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");           
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");    
             
-            var configArray = [{
+            tinyMCE.settings = {
                 mode:"none",   
                 plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
                 width: "100%",
@@ -267,28 +267,12 @@ function processDroppedChild(e, droppedId)
                 theme_advanced_toolbar_align : "left",
                 theme_advanced_statusbar_location : "bottom",
                 skin : "o2k7",
-                skin_variant : "silver"    
-            },{
-                mode:"none",           
-                plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "external",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"
-            }];    
+                skin_variant : "silver"     
+            };
             
             $(this).find('.msm_unit_child_content').each(function() {                         
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.settings = configArray[0];
                     tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
                     $(this).sortable("refresh");
                 } 
@@ -298,7 +282,6 @@ function processDroppedChild(e, droppedId)
             $(this).find('.msm_intro_child_contents').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.settings = configArray[0];
                     tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
                     $(this).sortable("refresh");
                 }
@@ -307,7 +290,6 @@ function processDroppedChild(e, droppedId)
             $(this).find('.msm_info_titles').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.settings = configArray[1];
                     tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
                     $(this).sortable("refresh");
                 }
@@ -315,7 +297,6 @@ function processDroppedChild(e, droppedId)
             $(this).find('.msm_info_contents').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.settings = configArray[0];
                     tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
                     $(this).sortable("refresh");
                 }
@@ -971,7 +952,7 @@ function addAssociateForm(index, type)
      
     $(associateInfoDiv).insertBefore("#msm_associate_button-"+index);
     
-    var configArray = [{
+    tinyMCE.settings = {
         mode:"none",   
         plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
         width: "100%",
@@ -986,24 +967,8 @@ function addAssociateForm(index, type)
         theme_advanced_statusbar_location : "bottom",
         skin : "o2k7",
         skin_variant : "silver"     
-    },{
-        mode:"none",           
-        plugins : "autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "external",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    }];
-    // setting different config for title and content tinymces
-    
+    };
+        
     if(tinymce.getInstanceById("msm_info_content-"+index+"-"+newId) != null)
     {
         tinyMCE.execCommand('mceFocus', false,"msm_info_content-"+index+"-"+newId);          
@@ -1016,9 +981,7 @@ function addAssociateForm(index, type)
         tinymce.execCommand('mceRemoveControl', true, "msm_info_title-"+index+"-"+newId);
     }
     
-    tinyMCE.settings = configArray[0];
     tinyMCE.execCommand('mceAddControl', true, "msm_info_content-"+index+"-"+newId);
-    tinyMCE.settings = configArray[1];
     tinyMCE.execCommand('mceAddControl', true, "msm_info_title-"+index+"-"+newId);
        
     $("#msm_associate_container-"+index).sortable({
@@ -1063,12 +1026,10 @@ function addAssociateForm(index, type)
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_info_titles').each(function() {
-                tinyMCE.settings = configArray[1];
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
             });
             $(this).find('.msm_info_contents').each(function() {
-                tinyMCE.settings = configArray[0];
                 tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
             });
@@ -1077,7 +1038,6 @@ function addAssociateForm(index, type)
                 $(this).find('.copied_msm_structural_element').each(function() {
                     $(this).find('.msm_unit_child_content').each(function()
                     {
-                        tinyMCE.settings = configArray[0];
                         tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                     });
                 });
@@ -1097,10 +1057,16 @@ function addAssociateForm(index, type)
         });
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseout(function () {
-        $(this).children("span").css({"visibility":"hidden", "display":"none"});
+        $(this).children("span").css({
+            "visibility":"hidden", 
+            "display":"none"
+        });
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseup(function () {
-        $(this).children("span").css({"visibility":"hidden", "display":"none"});
+        $(this).children("span").css({
+            "visibility":"hidden", 
+            "display":"none"
+        });
     });           
      
 }

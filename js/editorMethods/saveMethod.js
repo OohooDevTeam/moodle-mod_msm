@@ -362,8 +362,8 @@ function enableEditorFunction()
         scroll: true,
         cursor: "move",
         helper: "clone"                   
-    });              
-        
+    });      
+            
     $("#msm_editor_middle_droparea").droppable({
         accept: "#msm_editor_left > div",
         hoverClass: "ui-state-hover",
@@ -396,7 +396,7 @@ function enableEditorFunction()
                 $(this).sortable("refresh");
             });
         }
-    });                        
+    });          
 }
 
 // to activate the dialog box for display purposes

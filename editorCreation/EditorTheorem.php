@@ -40,9 +40,9 @@ class EditorTheorem extends EditorElement
 
         // reference material
         if (sizeof($idNumberInfo) > 1)
-        {          
+        {
             $match = "/^msm_theoremref_type_dropdown-$idNumberInfo[0].*$/";
-            
+
 //            echo "idNumberInfo: " . $idNumberInfo[0];
 //            print_object($_POST);
 
@@ -63,35 +63,65 @@ class EditorTheorem extends EditorElement
                     break;
                 }
             }
-            
+
 //            print_object($newId);
-            
+
             $this->type = $_POST['msm_theoremref_type_dropdown-' . $newId];
             $this->description = $_POST['msm_theoremref_description_input-' . $newId];
             $this->title = $_POST['msm_theoremref_title_input-' . $newId];
 
 //            $contentmatch = '/^msm_theoremref_content_input-.*/';
-            $contentmatch = '/msm_theoremref_content_input-' . $theoremId . '-\d+.*$/';
 
-            $i = 0; //position for the part theorem
-
-            foreach ($_POST as $id => $value)
+            if (empty($_POST["msm_currentUnit_id"]))
             {
-                if (preg_match($contentmatch, $id))
+                $contentmatch = '/msm_theoremref_content_input-' . $idNumberInfo[0] . '-\d+.*$/';
+
+                $i = 0; //position for the part theorem
+
+                foreach ($_POST as $id => $value)
                 {
-                    $indexNumber = explode("-", $id);
-
-                    $newId = '';
-                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
+                    if (preg_match($contentmatch, $id))
                     {
-                        $newId .= $indexNumber[$i] . "-";
-                    }
-                    $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
+                        $indexNumber = explode("-", $id);
 
-                    $statementRefTheorem = new EditorStatementTheorem();
-                    $statementRefTheorem->getFormData($newId);
-                    $this->contents[] = $statementRefTheorem;
-                    $i++;
+                        $newId = '';
+                        for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
+                        {
+                            $newId .= $indexNumber[$i] . "-";
+                        }
+                        $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
+
+                        $statementRefTheorem = new EditorStatementTheorem();
+                        $statementRefTheorem->getFormData($newId);
+                        $this->contents[] = $statementRefTheorem;
+                        $i++;
+                    }
+                }
+            }
+            else
+            {
+                $contentmatch = '/msm_theoremref_content_input-' . $theoremId . '-\d+.*$/';
+
+                $i = 0; //position for the part theorem
+
+                foreach ($_POST as $id => $value)
+                {
+                    if (preg_match($contentmatch, $id))
+                    {
+                        $indexNumber = explode("-", $id);
+
+                        $newId = '';
+                        for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
+                        {
+                            $newId .= $indexNumber[$i] . "-";
+                        }
+                        $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
+
+                        $statementRefTheorem = new EditorStatementTheorem();
+                        $statementRefTheorem->getFormData($newId);
+                        $this->contents[] = $statementRefTheorem;
+                        $i++;
+                    }
                 }
             }
         }
@@ -134,7 +164,7 @@ class EditorTheorem extends EditorElement
                 if (preg_match($match, $id))
                 {
                     $idInfo = explode("-", $id);
-                    
+
                     $newId = '';
                     for ($i = 1; $i < sizeof($idInfo) - 1; $i++)
                     {
@@ -237,7 +267,7 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_theorem_description_label-$this->compid' class='msm_child_description_labels' for='msm_theorem_description_label-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_theorem_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theorem_description_input-$this->compid'/>";
-        
+
         $htmlContent .= "<div id='msm_associate_container-$this->compid' class='msm_associate_containers'>";
         foreach ($this->children as $associate)
         {
@@ -245,7 +275,7 @@ class EditorTheorem extends EditorElement
         }
         $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"theorem\")' disabled='disabled'/>";
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -290,16 +320,16 @@ class EditorTheorem extends EditorElement
 
         return $this;
     }
-    
+
     function displayRefData()
     {
         global $DB;
-        
-        $currentRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
-        
-        $parentRecord = $DB->get_record("msm_compositor", array("id"=>$currentRecord->parent_id));
-        
-         $htmlContent = '';
+
+        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
+
+        $parentRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
+
+        $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_theoremref-$this->compid' class='copied_msm_structural_element'>";
         $htmlContent .= "<select id='msm_theoremref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_dropdown' name='msm_theoremref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled'>";
@@ -335,6 +365,7 @@ class EditorTheorem extends EditorElement
 
         $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_theoremref_content_input-$this->compid' class='msm_theoremref_content_containers'>";

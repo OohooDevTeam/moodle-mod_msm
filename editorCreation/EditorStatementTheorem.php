@@ -160,6 +160,7 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theorem_statement_container-$this->compid' class='msm_theorem_statement_containers'>";
         $htmlContent .= "<div id='msm_theorem_statement_title_container-$this->compid' class='msm_theorem_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_content_input-$currentCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
@@ -216,6 +217,7 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theoremref_statement_container-$this->compid' class='msm_theorem_statement_containers'>";
         $htmlContent .= "<div id='msm_theoremref_statement_title_container-$this->compid' class='msm_theoremref_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theoremref_content_input-$currentRefCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;

@@ -111,6 +111,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent = '';
         $htmlContent .= "<div id='msm_theorem_part_container-$this->compid' class='msm_theorem_child'>";
         $htmlContent .= "<div id='msm_theorem_part_title_container-$this->compid' class='msm_theorem_part_title_containers'>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>Part Theorem title: </label>";
         $htmlContent .= "<input id='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' disabled='disabled' value='$this->caption'/>";
@@ -148,6 +149,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent = '';
         $htmlContent .= "<div id='msm_theoremref_part_container-$this->compid' class='msm_theorem_child'>";
         $htmlContent .= "<div id='msm_theoremref_part_title_container-$this->compid' class='msm_theoremref_part_title_containers'>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theoremref_part_tlabel' for='msm_theorerefm_part_title-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid'>Part Theorem title: </label>";
         $htmlContent .= "<input id='msm_theoremref_part_title-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid' class='msm_theoremref_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid' disabled='disabled' value='$this->caption'/>";

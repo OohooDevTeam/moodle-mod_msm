@@ -351,6 +351,160 @@ function editUnit()
     $("#msm_editor_reset").remove();
     $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");
     
+    
+    $("#msm_child_appending_area").sortable({
+        appendTo: "#msm_child_appending_area",
+        connectWith: "#msm_child_appending_area",
+        cursor: "move",
+        tolerance: "pointer",
+        placeholder: "msm_sortable_placeholder",
+        handle: ".msm_element_title_containers",
+        start: function(event,ui)
+        {
+            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+            
+            $(this).find('.msm_unit_child_content').each(function() { 
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {            
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }                
+            });                        
+            $(this).find('.msm_intro_child_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                } 
+            });
+            $(this).find('.msm_info_titles').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                } 
+            });
+            $(this).find('.msm_info_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                } 
+            });
+             
+        },
+        stop: function(event, ui)
+        {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");    
+            
+            tinyMCE.settings = {
+                mode:"none",   
+                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                width: "100%",
+                height: "70%",
+                theme: "advanced",
+                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
+                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                skin : "o2k7",
+                skin_variant : "silver"     
+            };
+            
+            $(this).find('.msm_unit_child_content').each(function() {                         
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                } 
+            });
+                            
+            //             if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_intro_child_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                }
+            });
+                            
+            $(this).find('.msm_info_titles').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                }
+            });
+            $(this).find('.msm_info_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    $(this).sortable("refresh");
+                }
+            });
+        }
+    });    
+    
+    $(".msm_element_title_containers").each(function() {
+        $(this).mouseover(function() {
+            $(this).children("span").css({
+                "visibility": "visible", 
+                "color": "#4e6632", 
+                "opacity": "0.5",
+                "cursor": "move"
+            });
+        });
+        $(this).mouseout(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+        $(this).mouseup(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+    });
+    
+    $(".msm_associate_info_headers").each(function() {
+        $(this).mouseover(function() {
+            $(this).children("span").css({
+                "visibility": "visible", 
+                "color": "#4e6632", 
+                "opacity": "0.5",
+                "cursor": "move"
+            });
+        });
+        $(this).mouseout(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+        $(this).mouseup(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+    })
+     
+    
+    $(".msm_theorem_statement_title_containers").each(function(){
+        $(this).mouseover(function() {
+            $(this).children("span").css({
+                "visibility": "visible", 
+                "color": "#4e6632", 
+                "opacity": "0.5",
+                "cursor": "move"
+            });
+        });
+        $(this).mouseout(function() {
+             $(this).children("span").css("visibility", "hidden");
+        });
+        $(this).mouseup(function() {
+             $(this).children("span").css("visibility", "hidden");
+        });
+    });
+        
+    
     $("#msm_editor_save").click(function(event) { 
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();
@@ -472,6 +626,15 @@ function cancelUnit(e)
                     $(this).empty().remove();
                 }
             });
+            
+            removeTinymceEditor();
+                  
+            disableEditorFunction();   
+            
+            $(".msm_editor_buttons").remove();
+            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+        
+            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
             
         },
         error: function(data)

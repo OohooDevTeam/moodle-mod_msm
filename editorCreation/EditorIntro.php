@@ -79,6 +79,7 @@ class EditorIntro extends EditorElement
         $htmlContent .= "<div id='copied_msm_intro-$this->compid' class='copied_msm_structural_element' style='padding-top:2%;'>";
         $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 43%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;'> INTRODUCTION </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div style='margin-top: 2%;'>";
