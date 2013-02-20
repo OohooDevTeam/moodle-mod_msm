@@ -678,14 +678,18 @@ function swapButtons(e) {
     $("#msm_comp_fullscreen").click(function(event) {
         $("#page-header").css("display", "none");
         $(".block").addClass("dock_on_load");
-        $("#region-main").addClass("nomargin");
+        $("#region-main").addClass("nomargin"); 
+        $("#msm_editor_container").trigger("spliter.resize");
+        $("#msm_editor_middleright").trigger("spliter.resize");
         swapButtons(event);
     });
                 
     $("#msm_comp_basicwindow").click(function(event) {
         $("#page-header").css("display", "block");
         $(".block").removeClass("dock_on_load");
-        $("#region-main").removeClass("nomargin");//        
+        $("#region-main").removeClass("nomargin");   
+        $("#msm_editor_container").trigger("spliter.resize");
+        $("#msm_editor_middleright").trigger("spliter.resize");
         swapButtons(event);
     });   
     

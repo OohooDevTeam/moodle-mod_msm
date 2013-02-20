@@ -1,16 +1,16 @@
 /**
- **************************************************************************
- **                              MSM                                     **
- **************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
- **************************************************************************
- **************************************************************************/
+**************************************************************************
+** MSM **
+**************************************************************************
+* @package mod **
+* @subpackage msm **
+* @name msm **
+* @copyright University of Alberta **
+* @link http://ualberta.ca **
+* @author Ga Young Kim **
+* @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+**************************************************************************
+**************************************************************************/
 #msm_unit_info_div
 {
     padding: 1%;
@@ -90,15 +90,15 @@
 }
 
 .msm_sortable_placeholder
-{ 
-    border: 1px dotted red; 
-    visibility: visible !important; 
+{
+    border: 1px dotted red;
+    visibility: visible !important;
     margin: 3% 2%;
 
 }
-.msm_sortable_placeholder * 
+.msm_sortable_placeholder *
 {
-    visibility: hidden; 
+    visibility: hidden;
 }
 
 .msm_editor_buttons
@@ -120,7 +120,7 @@
     margin-top: 1%;
 }
 
-.custom-state-highlight{               
+.custom-state-highlight{
     background-color: yellow !important;
     border: 2px solid yellow !important;
     background-position: 0 0;
@@ -128,24 +128,24 @@
 }
 
 .msm_tab {
-    overflow:auto;     
-    display: none; 
-    position:absolute; 
-    height:auto; 
-    bottom:0; 
-    top:0; 
-    left:0; 
-    right:0; 
-    margin-top:50px; 
-    margin-bottom:10px; 
-    margin-right:0px; 
+    overflow:auto;
+    display: none;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    margin-top:50px;
+    margin-bottom:10px;
+    margin-right:0px;
     margin-left:0px;
     font-size: 3;
 }
 
-#msm_setting_type 
+#msm_setting_type
 {
-    height:85%; 
+    height:85%;
 }
 
 .dialogs{
@@ -193,7 +193,7 @@
     width:25%;
     margin-top: 8%;
     margin-left: 36%;
-    /*margin-right: 10%;*/   
+    /*margin-right: 10%;*/
 }
 .msm_structural_element:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #aae3b5), color-stop(1, #8ecc9b) );
@@ -215,7 +215,7 @@
     width: 90%;
     height: 25%;
     /* The following two properties are there so that chrome does not
-    return auto from getComputedStyle javascript function*/
+return auto from getComputedStyle javascript function*/
     left: 0;
     top: 0;
     padding-top: 0;
@@ -224,7 +224,7 @@
     padding-bottom: 2%;
 }
 
-.msm_element_close 
+.msm_element_close
 {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
     background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
@@ -243,7 +243,7 @@
     text-decoration:none !important;
     float: right;
 }
-.msm_element_close:hover 
+.msm_element_close:hover
 {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
     background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
@@ -252,7 +252,7 @@
     background-color:#fb9e25;
     cursor: pointer;
 }
-.msm_element_close:active 
+.msm_element_close:active
 {
     position:relative;
     top:1px;
@@ -266,7 +266,7 @@
     height: 25%;
     text-align: center;
     /* The following two properties are there so that chrome does not
-    return auto from getComputedStyle javascript function*/
+return auto from getComputedStyle javascript function*/
     left: 0;
     top: 0;
 }
@@ -280,7 +280,7 @@
     z-index: 2002; /*to prevent resizable borders to have effect in dialog box*/
 }
 
-.msm_unit_pic_title_labels, .msm_unit_intro_title_labels, .msm_unit_body_title_labels, .msm_intro_child_title_labels, .msm_theorem_part_tlabel 
+.msm_unit_pic_title_labels, .msm_unit_intro_title_labels, .msm_unit_body_title_labels, .msm_intro_child_title_labels, .msm_theorem_part_tlabel
 {
     float:left;
     margin-right: 2%;
@@ -295,10 +295,10 @@
     width: 81%;
 }
 
-.msm_unit_pic_title 
+.msm_unit_pic_title
 {
     margin-bottom: 1%;
-    min-width: 158px; 
+    min-width: 158px;
     width: 83%;
 }
 
@@ -328,7 +328,7 @@
 .msm_unit_description_labels
 {
     margin-bottom: 2%;
-    margin-left: 2%;    
+    margin-left: 2%;
 }
 
 .msm_unit_description_inputs
@@ -382,7 +382,7 @@
     width: 96%;
     min-width: 300px;
     overflow: auto;
-    resize: none;     
+    resize: none;
 }
 
 
@@ -425,8 +425,8 @@
 }
 
 #msm_trash_icon
-{   
-    margin-left: 43%; 
+{
+    margin-left: 43%;
 }
 
 .msm_editor_content
@@ -563,7 +563,7 @@ table.mceLayout
 
 
 .msm_element_title_containers
-{   
+{
     display: inline;
     margin-bottom: 2%;
     padding-bottom: 1%;
@@ -624,3 +624,5 @@ table.mceLayout
 .nomargin{
     margin-left: 0 !important;
 }
+
+

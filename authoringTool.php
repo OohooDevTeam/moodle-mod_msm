@@ -83,6 +83,7 @@ echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/them
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/css/subordinate.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
+//echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/splitter/splitter.css'/>";
 //echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jflowplayer/skin/minimalist.css'/>";
 
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
@@ -112,7 +113,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery.jstree.js'></script>";
-
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/splitter/splitter.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/tiny_mce.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
 //echo "<script type='text/javascript src='$CFG->wwwroot/lib/editor/tinymce/3.4.6/tiny_mce_jquery.js></script>";
@@ -333,7 +334,7 @@ if (!empty($treeContent))
 
 $formContent .= '</div>
                 </div>
-            </div>            
+                </div>     
        </div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
         <button id="msm_comp_fullscreen"> Full Screen </button>';
@@ -346,7 +347,11 @@ $formContent .= '<script type="text/javascript">
                          $("#page-header").css("display", "none");
                          $(".block").addClass("dock_on_load");
                          $("#region-main").addClass("nomargin");
-                         swapButtons(event);
+                         
+                         $("#msm_editor_container").trigger("spliter.resize");
+                         $("#msm_editor_middleright").trigger("spliter.resize");
+                
+                          swapButtons(event);
                 });
            
                 tinyMCE.init({
@@ -394,8 +399,8 @@ $formContent .= '<script type="text/javascript">
                     autoArrows: false
                 });             
 
-                $("#msm_setting_type").tabs();  
-                
+                $("#msm_setting_type").tabs();                
+              
                 $("#msm_editor_container").split({
                     orientation: "vertical",
                     limit: 100,
@@ -406,7 +411,8 @@ $formContent .= '<script type="text/javascript">
                     orientation: "vertical",
                     limit: 100,
                     position: "82%"
-                });';
+                });
+                ';
 
 //
 if (!empty($existingUnit))
@@ -527,10 +533,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                    
+                                                        
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                            
+                                                                
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

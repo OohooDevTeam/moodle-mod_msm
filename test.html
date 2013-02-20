@@ -5,98 +5,81 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
     <head>
-                <!--<title> TINYMCE TEST PAGE </title>-->
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--                <link href="css/subordinate.css" rel="stylesheet" type="text/css"/>
-                <link rel='stylesheet' href='development-bundle/themes/ui-lightness/jquery.ui.all.css'/>
-                <script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
-                <script type="text/javascript" src="js/tiny_mce/tiny_mce_popup.js"></script>
-                <script src='development-bundle/jquery-1.7.1.js'></script>
-                <script src='development-bundle/external/jquery.bgiframe-2.1.2.js'></script>
-                <script src='development-bundle/ui/jquery.ui.core.js'></script>
-                <script src='development-bundle/ui/jquery.ui.widget.js'></script>
-                <script src='development-bundle/ui/jquery.ui.mouse.js'></script>
-                <script src='development-bundle/ui/jquery.ui.draggable.js'></script>
-                <script src='development-bundle/ui/jquery.ui.droppable.js'></script>
-                <script src='development-bundle/ui/jquery.ui.position.js'></script>
-                <script src='development-bundle/ui/jquery.ui.dialog.js'></script>
-                <script type='text/javascript' src='js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>
-                
-                <script type="text/javascript" src='js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>
-        
-                <script type="text/javascript">
-        //            function closeSubFormDialog()
-        //            {
-        //                $('#test_tinymce').dialog("close");
-        //            }
-        //            
-                    tinyMCE.init({
-                        mode:"exact",
-                        elements: "test_content",
-                        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                        width: "96%",
-                        height: "70%",
-                        theme: "advanced",
-                        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-                        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-                        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                        theme_advanced_toolbar_location : "top",
-                        theme_advanced_toolbar_align : "left",
-                        theme_advanced_statusbar_location : "bottom",
-                        skin : "o2k7",
-                        skin_variant : "silver"
-                    });
-                    
-                    function editFunction()
-                    {
-                        $()
-                    }
-                </script>-->
+        <link rel='stylesheet' type='text/css' href='css/msmAuthoring.css'/>   
+        <link rel="stylesheet" type="text/css" href="js/splitter/splitter.css"/>
+        <script src='development-bundle/jquery-1.7.1.js'></script>
+        <script type='text/javascript' src='js/splitter/splitter.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#msm_editor_container").splitter({  
+                    splitVertical:true,
+                    A:$('#msm_editor_left'),
+                    B:$('#msm_editor_middleright'),
+                    slave:  $("#msm_editor_middleright")
+                });
+                $("#msm_editor_middleright").splitter({
+                    splitVertical:true,
+                    A:$('#msm_editor_middle'),
+                    B:$('#msm_editor_right')
+                });
+            });
+        </script>
     </head>
     <body>
-        <div id="msm_editor_middle" class="left_panel" style="width: 1051.6px;">
-            <h2> Lecture Design Area </h2> <!-- grab the string from the setting values -->
-            <form method="post" action="editorCreation/msmUnitForm.php" name="msm_unit_form" id="msm_unit_form">
-                <div id="msm_unit_info_div">
-                    <label for="msm_unit_title" id="msm_unit_title_label" class="msm_unit_title_labels">Lecture title: </label>
-                    <input onkeypress="validateBorder()" placeholder=" Please enter the title of this Lecture." name="msm_unit_title" id="msm_unit_title" class="msm_title_input">
+        <div id="msm_editor_container">
+            <div id="msm_editor_left">
+                <h2> Structural Elements </h2>
 
-                    <label for="msm_unit_description_input" id="msm_unit_description_label" class="msm_unit_description_labels">Description: </label>
-                    <input placeholder="Insert description to search this element in future." name="msm_unit_description_input" id="msm_unit_description_input" class="msm_unit_description_inputs">
+                <div class="msm_structural_element" id="msm_def">
                 </div>
-                <div id="msm_editor_middle_droparea" class="ui-droppable">                        
-                    <div id="msm_child_appending_area" class="ui-sortable">
-                        <div id="copied_msm_def-1" class="copied_msm_structural_element">
-                            <a onclick="deleteElement(event);" class="msm_element_close">x</a>
-                            <select id="msm_def_type_dropdown-1" class="msm_unit_child_dropdown" name="msm_def_type_dropdown-1">
-                                <option value="Notation">Notation</option>
-                                <option value="Definition">Definition</option>
-                                <option value="Agreement">Agreement</option>
-                                <option value="Convention">Convention</option>
-                                <option value="Axiom">Axiom</option>
-                                <option value="Terminology">Terminology</option>
-                            </select>
-                            <span class="msm_element_title"><b> DEFINITION </b></span>
-                            <input placeholder=" Title of Definition" name="msm_def_title_input-1" id="msm_def_title_input-1" class="msm_unit_child_title">
-                            <textarea name="msm_def_content_input-1" id="msm_def_content_input-1" class="msm_unit_child_content" style="display: none;" aria-hidden="true"></textarea>
-                            <div id="msm_subordinate_container-defcontent1" class="msm_subordinate_containers"></div>
-                            <div id="msm_subordinate_result_container-defcontent1" class="msm_subordinate_result_containers"></div>
-                            <label for="msm_def_description_input-1" id="msm_def_description_label-1" class="msm_child_description_labels">Description: </label>
-                            <input placeholder="Insert description to search this element in future. " name="msm_def_description_input-1" id="msm_def_description_input-1" class="msm_child_description_inputs">
-                            <div id="msm_associate_container-1" class="msm_associate_containers">
-                                <input type="button" value="Add Associated Information" onclick="addAssociateForm(1, 'def')" id="msm_associate_button-1" class="msm_associate_buttons">
-                            </div>
+                <span class="msm_element_label">Definition</span>
+                <div class="msm_structural_element" id="msm_theorem">
+                </div>
+                <span class="msm_element_label">Theorem</span>
+                <br />
+                <div class="msm_structural_element" id="msm_comment">
+                </div>
+                <span class="msm_element_label">Comment</span>
+                <div class="msm_structural_element" id="msm_body">
+                </div>
+                <span class="msm_element_label">Content</span>
+                <br />
+                <div class="msm_structural_element" id="msm_intro">
+                </div>
+                <span class="msm_element_label" style="margin-left: 41%;">Intro</span>
+                <br />
+
+            </div>
+            <div id="msm_editor_middleright">
+                <div id="msm_editor_middle" >
+                    <h2> Design Area </h2> <!-- grab the string from the setting values -->
+                    <form id="msm_unit_form" name="msm_unit_form" action="editorCreation/msmUnitForm.php" method="post">
+                        <div id = "msm_unit_info_div">
+                            <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">title: </label>
+                            <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this" onkeypress="validateBorder()"/>
+
+                            <label class="msm_unit_description_labels" id="msm_unit_description_label" for="msm_unit_description_input">Description: </label>
+                            <input class="msm_unit_description_inputs" id="msm_unit_description_input" name="msm_unit_description_input" placeholder="Insert description to search this element in future."/>
                         </div>
-                    </div>
-                    <input style="visibility: hidden;" name="msm_child_order" id="msm_child_order">
-                    <input style="visibility: hidden;" name="msm_unit_subordinate_container" id="msm_unit_subordinate_container">
-                </div>
-                <input type="button" value="Reset" onclick="resetUnit()" id="msm_editor_reset" class="msm_editor_buttons"> 
-                <input type="submit" value="Save" id="msm_editor_save" class="msm_editor_buttons" name="msm_editor_save">
+                        <div id="msm_editor_middle_droparea">                        
+                            <div id="msm_child_appending_area"></div>
+                            <input id="msm_child_order" name="msm_child_order" style="visibility: hidden;"/>
+                            <input id="msm_unit_subordinate_container" name="msm_unit_subordinate_container" style="visibility: hidden;"/>
+                        </div>
+                        <input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
+                        <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
 
-                <input value="Lecture,Part,Topic,Section,Subsection,1" style="visibility:hidden;" name="msm_unit_name_input" id="msm_unit_name_input"> 
-            </form>
+                        <input id="msm_unit_name_input" name="msm_unit_name_input" style="visibility:hidden;" value="' . $unitNames . '"/> 
+                    </form>
+                </div>
+
+                <div id="msm_editor_right">
+                    <h2> XML Hierarchy </h2>
+                    <div id="msm_unit_tree"></div>
+                </div>
+            </div>
         </div>
+        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
+        <button id="msm_comp_fullscreen"> Full Screen </button>
     </body>
 </html>
