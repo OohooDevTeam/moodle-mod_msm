@@ -103,6 +103,9 @@ function submitForm()
                     modal: true,
                     buttons: {
                         Ok: function() {
+                            // scroll to top of the editting area and close the warning message
+                            var middlePanel = document.getElementById("msm_editor_middle");
+                            middlePanel.scrollTop = 0;
                             $(this).dialog("close");
                         }
                     }
