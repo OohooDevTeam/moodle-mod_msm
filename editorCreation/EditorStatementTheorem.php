@@ -213,7 +213,7 @@ class EditorStatementTheorem extends EditorElement
         $currentRefCompRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
         $htmlContent = '';
         
-        $htmlContent .= "<div id='msm_theoremref_statement_container-$this->compid' class='msm_theoremref_statement_containers'>";
+        $htmlContent .= "<div id='msm_theoremref_statement_container-$this->compid' class='msm_theorem_statement_containers'>";
         $htmlContent .= "<div id='msm_theoremref_statement_title_container-$this->compid' class='msm_theoremref_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "</div>";

@@ -477,18 +477,18 @@
     height: 100%;
 }
 
-.msm_theorem_content_containers, .msm_theoremref_content_containers
+.msm_theorem_content_containers
 {
     /*text-align: center !important;*/
     margin-bottom: 1%;
 }
 
-.msm_theorem_part_buttons
+.msm_theorem_part_buttons, .msm_theoremref_part_buttons
 {
     margin-left: 40%;
 }
 
-.msm_theorem_child_buttons
+.msm_theorem_child_buttons, .msm_theoremref_child_buttons
 {
     margin-left: 41.5%;
 }
