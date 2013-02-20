@@ -295,6 +295,7 @@ function disableEditorFunction()
     $("#msm_editor_middle_droparea").droppable("destroy");
     
     $(".msm_associate_info_headers").each(function() {
+        $(this).children("span").css("display", "none");
         $(this).unbind("mouseover");
     });
     
