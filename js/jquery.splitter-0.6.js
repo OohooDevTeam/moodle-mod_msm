@@ -183,7 +183,7 @@
             if(pos < self.limit) pos = self.limit + 1;
             self.position(pos);
         });
-        
+               
         if (spliters.length == 0) { // first time bind events to document
             $(document.documentElement).bind('mousedown.spliter', function(e) {
                 if (spliter_id !== null) {

@@ -658,8 +658,6 @@ function swapButtons(e) {
         text = document.createTextNode("Basic Window");
             
         basicWindow.appendChild(text);
-        
-        console.log(basicWindow);
             
         $(basicWindow).insertBefore($("#msm_comp_fullscreen"));
         $("#msm_comp_fullscreen").remove();
@@ -673,20 +671,22 @@ function swapButtons(e) {
             
         fullScreen.appendChild(text);
             
-        $(fullScreen).insertBefore($("#msm_comp_fullscreen"));
+        $(fullScreen).insertBefore($("#msm_comp_basicwindow"));
         $("#msm_comp_basicwindow").remove();
     }
     
     $("#msm_comp_fullscreen").click(function(event) {
         $("#page-header").css("display", "none");
         $(".block").addClass("dock_on_load");
+        $("#region-main").addClass("nomargin");
         swapButtons(event);
     });
                 
     $("#msm_comp_basicwindow").click(function(event) {
         $("#page-header").css("display", "block");
         $(".block").removeClass("dock_on_load");
+        $("#region-main").removeClass("nomargin");//        
         swapButtons(event);
-    });
+    });   
     
 }

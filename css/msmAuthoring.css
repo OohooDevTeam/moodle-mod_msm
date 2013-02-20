@@ -621,11 +621,6 @@ table.mceLayout
     margin-left: 1%;
 }
 
-/*.msm_intro_child_dragareas:hover, .msm_associate_info_headers:hover, .msm_element_title_containers:hover,
-.msm_theorem_statement_title_containers:hover, .msm_theorem_part_title_containers:hover, 
-.msm_theoremref_statement_title_containers:hover, .msm_theoremref_part_title_containers:hover
-{
-    cursor: move;
-}*/
-
-
+.nomargin{
+    margin-left: 0 !important;
+}

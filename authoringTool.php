@@ -345,6 +345,7 @@ $formContent .= '<script type="text/javascript">
                 $("#msm_comp_fullscreen").click(function(event) {
                          $("#page-header").css("display", "none");
                          $(".block").addClass("dock_on_load");
+                         $("#region-main").addClass("nomargin");
                          swapButtons(event);
                 });
            
