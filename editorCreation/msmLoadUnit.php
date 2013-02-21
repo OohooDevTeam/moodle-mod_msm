@@ -74,7 +74,9 @@ else if (isset($_POST['childElementId']))
     if(preg_match($intromatch, $_POST["childElementId"]))
     {
         $intro = new EditorIntro();
-        $intro->loadData($copiedElements[$i]->id);
+        $intro->loadData($copiedElements[$_POST["order"]]->id);
+        
+        print_object($copiedElements[$_POST["order"]]->id);
         
         echo json_encode($intro);
     }
