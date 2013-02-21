@@ -284,6 +284,29 @@ function editUnit()
      
     $(".msm_editor_content").each(function() {  
         var currentId = this.id;
+        
+        var unitInfo = [];
+        var index = 0;
+        $.ajax({
+            type:"POST",
+            url: "editorCreation/msmLoadUnit.php",
+            data: {
+                "childElementId": currentId,
+                "childOrder": $("#msm_child_order").val(),
+                "currentUnit": $("#msm_currentUnit_id").val(),
+                "order": index
+            },
+            success: function(data) {                
+                unitInfo = JSON.parse(data);
+                
+                console.log(unitInfo);
+                index++;
+            },
+            error: function() {
+                
+            }
+        });
+        
         var currentHTMLvalue = $(this).html();
         
         var idInfo = currentId.split("-");

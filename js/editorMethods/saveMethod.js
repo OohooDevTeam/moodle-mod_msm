@@ -145,7 +145,7 @@ function submitForm()
                         previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
                     });
                 });
-                                        
+                  MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
                 insertUnitStructure(ids);
             }
         },

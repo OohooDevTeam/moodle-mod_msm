@@ -42,6 +42,76 @@ if (isset($_POST['id']))
 
     echo json_encode($htmlContent);
 }
+else if (isset($_POST['childElementId']))
+{    
+    $unitCompidInfo = explode("-", $_POST['currentUnit']);
+    $unitCompid = $unitCompidInfo[0];
+    
+    $childElements = $DB->get_records("msm_compositor", array("id"=>$unitCompid), "prev_sibling_id");
+    // copy to have incremental index instead of db id
+    $copiedElements = array();    
+    foreach($childElements as $child)
+    {
+        $copiedElements[] = $child;
+    }
+
+    $intromatch = "/^msm_intro_content_input-\d+$/";
+    $introchildmatch = "/^msm_intro_child_content-\d+$/";
+    $bodymatch = "/^msm_body_content_input-\d+$/";
+    $defmatch = "/^msm_def_content_input-\d+$/";
+    $defrefmatch = "/^msm_defref_content_input-\d+$/";
+    $theoremmatch = "/^msm_theorem_content_input-.+$/";
+    $theoremrefmatch = "/^msm_theoremref_content_input-.+$/";
+    $theoremcontentmatch = "/^msm_theorem_part_content-.+$/";
+    $theoremrefcontentmatch = "/^msm_theoremref_part_content-.+$/";
+    $theorempartmatch = "/^msm_theorem_part_content-.+$/";
+    $theoremrefpartmatch = "/^msm_theoremref_part_content-.+$/";
+    $commentmatch = "/^msm_comment_content_input-\d+$/";
+    $commentrefmatch = "/^msm_commentref_content_input-.+$/";
+    $infotitlematch = "/^msm_info_title-.+$/";
+    $infocontentmatch = "/^msm_info_content-.+$/";
+    
+    if(preg_match($intromatch, $_POST["childElementId"]))
+    {
+        $intro = new EditorIntro();
+        $intro->loadData($copiedElements[$i]->id);
+        
+        echo json_encode($intro);
+    }
+    else if((preg_match($introchildmatch, $_POST["childElementId"]))||(preg_match($bodymatch, $_POST["childElementId"])))
+    {
+        
+    }
+    else if((preg_match($defmatch, $_POST["childElementId"]))||(preg_match($defrefmatch, $_POST["childElementId"])))
+    {
+        
+    }
+    else if((preg_match($theoremmatch, $_POST["childElementId"]))||(preg_match($theoremrefmatch, $_POST["childElementId"])))
+    {
+        
+    }
+    else if((preg_match($theoremcontentmatch, $_POST["childElementId"]))||(preg_match($theoremrefcontentmatch, $_POST["childElementId"])))
+    {
+        
+    }
+    else if((preg_match($theorempartmatch, $_POST["childElementId"]))||(preg_match($theoremrefpartmatch, $_POST["childElementId"])))
+    {
+        
+    }
+    else if((preg_match($commentmatch, $_POST["childElementId"]))||(preg_match($commentrefmatch, $_POST["childElementId"])))
+    {
+        
+    }
+    else if(preg_match($infotitlematch, $_POST["childElementId"]))
+    {
+        
+    }
+    else if(preg_match($infocontentmatch, $_POST["childElementId"]))
+    {
+        
+    } 
+    
+}
 else if (isset($_POST['tree_content']))
 {
     $doc = new DOMDocument();
@@ -83,7 +153,7 @@ else if (isset($_POST['tree_content']))
 
     echo json_encode($idPairs);
 }
-else if($_POST["cancelUnit"]) // from cancelUnit js function
+else if ($_POST["cancelUnit"]) // from cancelUnit js function
 {
     $unitidInfo = explode('-', $_POST['cancelUnit']);
 
@@ -112,28 +182,28 @@ function processTreeContent($DomElement, $parentId, $siblingId)
                     case "li":
                         $childId = $child->getAttribute("id");
                         $childIdInfo = explode("-", $childId);
-                                                
+
                         $idPair = $childIdInfo[1] . "-" . $childIdInfo[2];
                         $unit = new EditorUnit();
                         $unit->updateUnitStructure($idPair, $parentId, $siblingId);
 
                         $siblingId = $childIdInfo[1];
-                        
-                        if($child->hasChildNodes())
+
+                        if ($child->hasChildNodes())
                         {
-                            foreach($child->childNodes as $grandChild)
+                            foreach ($child->childNodes as $grandChild)
                             {
-                                if($grandChild->nodeType == XML_ELEMENT_NODE)
+                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
                                 {
-                                    if($grandChild->tagName == "ul")
+                                    if ($grandChild->tagName == "ul")
                                     {
                                         processTreeContent($grandChild, $childIdInfo[1], 0);
                                     }
                                 }
                             }
                         }
-                            
-                        
+
+
                         break;
                 }
             }
