@@ -60,23 +60,7 @@ function processReftype(e)
             break; 
     }
     
-    tinyMCE.init({
-        mode:"exact",
-        elements: currentId,
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image, cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });
+    initEditor(currentId);  
     
     $("#msm_theoremref_title_container-"+indexNumber).mouseover(function () {
         $(this).children("span").css({
@@ -318,24 +302,7 @@ function addrefTheoremContent(event, idNumber)
     
     $(theoremStatementWrapper).insertBefore("#"+event.target.id);    
     
-    tinyMCE.init({
-        mode:"exact",
-        elements: "msm_theoremref_content_input-"+idNumber+'-'+newId,        
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        //        theme_advanced_toolbar_location : "external",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });
+    initEditor("msm_theoremref_content_input-"+idNumber+'-'+newId);
     
     $("#msm_theoremref_content_container-"+idNumber).sortable({
         appendTo: "msm_theoremref_content_container-"+idNumber,
@@ -359,40 +326,23 @@ function addrefTheoremContent(event, idNumber)
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
             
-            $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-            });
+//            $(this).find('.msm_theorem_content').each(function() {
+//                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+//                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+//            });
         },
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
-            tinyMCE.settings = {
-                mode:"none",   
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"     
-            };
-            
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
             
             $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
         }
@@ -455,30 +405,13 @@ function addrefTheoremPart(event, idNumber)
     
     $(theoremPartContainer).insertBefore("#"+event.target.id);
     
-    tinyMCE.settings = {
-        mode: "none",
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    };
-    
     if(tinymce.getInstanceById("msm_theoremref_part_content-"+idNumber+"-"+newId))
     {
         tinyMCE.execCommand('mceFocus', false, "msm_theoremref_part_content-"+idNumber+"-"+newId);          
         tinymce.execCommand('mceRemoveControl', true, "msm_theoremref_part_content-"+idNumber+"-"+newId);
     }
-        
-    tinymce.execCommand("mceAddControl", false, "msm_theoremref_part_content-"+idNumber+"-"+newId);
+    
+    initEditor("msm_theoremref_part_content-"+idNumber+"-"+newId);         
     
     $("#msm_theoremref_part_droparea-"+idNumber).sortable({
         appendTo: "msm_theoremref_part_droparea-"+idNumber,
@@ -506,26 +439,9 @@ function addrefTheoremPart(event, idNumber)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
-            tinyMCE.settings = {
-                mode:"none",   
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"     
-            };
-            
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {                 
-                tinyMCE.execCommand("mceAddControl", true, $(this).attr("id"));
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
         }

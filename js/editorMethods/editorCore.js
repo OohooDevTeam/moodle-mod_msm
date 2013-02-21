@@ -168,42 +168,10 @@ function processDroppedChild(e, droppedId)
     }
     
     // has to be exact mode b/c if it is initiated twice, the editor function gives it a random id and breaks the save method
-    tinyMCE.init({
-        mode:"exact",
-        elements: currentContentid,
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });
+     
+    initEditor(currentContentid);
+    initEditor(currenttheoremPart);
     
-    tinyMCE.init({
-        mode:"exact",
-        elements: currenttheoremPart,
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image, cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });  
-   
     $("#msm_child_appending_area").sortable({
         appendTo: "#msm_child_appending_area",
         connectWith: "#msm_child_appending_area",
@@ -252,28 +220,11 @@ function processDroppedChild(e, droppedId)
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");    
-            
-            tinyMCE.settings = {
-                mode:"none",   
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"     
-            };
-            
+                 
             $(this).find('.msm_unit_child_content').each(function() {                         
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    initEditor(this.id);                    
                     $(this).sortable("refresh");
                 } 
             });
@@ -282,7 +233,7 @@ function processDroppedChild(e, droppedId)
             $(this).find('.msm_intro_child_contents').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    initEditor(this.id);                    
                     $(this).sortable("refresh");
                 }
             });
@@ -290,14 +241,14 @@ function processDroppedChild(e, droppedId)
             $(this).find('.msm_info_titles').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    initEditor(this.id);                    
                     $(this).sortable("refresh");
                 }
             });
             $(this).find('.msm_info_contents').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    tinymce.execCommand("mceAddControl", false, $(this).attr("id")); 
+                    initEditor(this.id);                    
                     $(this).sortable("refresh");
                 }
             });
@@ -334,6 +285,39 @@ function processDroppedChild(e, droppedId)
         $(this).children("span").css("visibility", "hidden");
     });               
                 
+}
+
+function initEditor(elId)
+{
+    YUI().use('editor_tinymce', function(Y) {
+        console.log(M.editor_tinymce);
+        M.editor_tinymce.init_editor(Y, elId, {
+            mode:"exact",
+            elements: elId,
+            plugins:"safari,table,style,layer,advhr,advlink,emotions,inlinepopups,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
+            width: "100%",
+            height: "70%",
+            theme_advanced_font_sizes:"1,2,3,4,5,6,7",
+            theme_advanced_layout_manager:"SimpleLayout",
+            theme_advanced_toolbar_align:"left",
+            theme_advanced_fonts:"Trebuchet=Trebuchet MS,Verdana,Arial,Helvetica,sans-serif;Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;Georgia=georgia,times new roman,times,serif;Tahoma=tahoma,arial,helvetica,sans-serif;Times New Roman=times new roman,times,serif;Verdana=verdana,arial,helvetica,sans-serif;Impact=impact;Wingdings=wingdings",
+            theme_advanced_resize_horizontal:true,
+            theme_advanced_resizing:true,
+            theme_advanced_resizing_min_height:30,
+            min_height:30,
+            theme_advanced_toolbar_location:"top",
+            theme_advanced_statusbar_location:"bottom",
+            language_load:false,
+            langrev:-1,
+            theme_advanced_buttons1:"fontselect,fontsizeselect,formatselect,|,undo,redo,|,search,replace,|,fullscreen",
+            theme_advanced_buttons2:"bold,italic,underline,strikethrough,sub,sup,|,justifyleft,justifycenter,justifyright,|,cleanup,removeformat,pastetext,pasteword,|,forecolor,backcolor,|,ltr,rtl",
+            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,|,image,moodlemedia,dragmath,nonbreaking,charmap,table,|,code,spellchecker",
+            moodle_init_plugins:"dragmath:loader.php\/dragmath\/-1\/editor_plugin.js,moodlenolink:loader.php\/moodlenolink\/-1\/editor_plugin.js,spellchecker:loader.php\/spellchecker\/-1\/editor_plugin.js,moodleimage:loader.php\/moodleimage\/-1\/editor_plugin.js,moodlemedia:loader.php\/moodlemedia\/-1\/editor_plugin.js",
+            file_browser_callback:"M.editor_tinymce.filepicker"
+        })
+        
+        M.editor_tinymce.init_filepicker(Y, elId, tinymce_filepicker_options);
+    });
 }
 
 /**
@@ -407,7 +391,7 @@ function deleteElement(e)
                 $("#"+currentElement+" textarea").each(function() {
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
-                        tinymce.execCommand('mceAddControl', true, $(this).attr("id"));
+                        initEditor(this.id); 
                     }
                 });
                 $( this ).dialog( "close" );                   
@@ -511,25 +495,9 @@ function addIntroContent(idNumber)
     introChildDiv.appendChild(subordinateContainer);
     introChildDiv.appendChild(subordinateResult);
     
-    $(introChildDiv).appendTo("#msm_intro_child_container");    
+    $(introChildDiv).appendTo("#msm_intro_child_container"); 
     
-    tinyMCE.init({
-        mode:"exact",
-        elements: "msm_intro_child_content-"+newId,   
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });
+    initEditor("msm_intro_child_content-"+newId);
     
     $("#msm_intro_child_container").sortable({
         appendTo: "msm_intro_child_container",
@@ -557,26 +525,9 @@ function addIntroContent(idNumber)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
-            tinyMCE.settings = {
-                mode:"none",   
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"     
-            };
-            
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
         }
@@ -637,26 +588,10 @@ function addTheoremContent(event, idNumber)
    
     theoremStatementWrapper.append(theoremPartWrapper);
     
-    $(theoremStatementWrapper).insertBefore("#"+event.target.id);    
+    $(theoremStatementWrapper).insertBefore("#"+event.target.id);   
     
-    tinyMCE.init({
-        mode:"exact",
-        elements: "msm_theorem_content_input-"+idNumber+'-'+newId,   
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    });
-    
+    initEditor("msm_theorem_content_input-"+idNumber+'-'+newId); 
+        
     $("#msm_theorem_content_container-"+idNumber).sortable({
         appendTo: "msm_theorem_content_container-"+idNumber,
         connectWith: "msm_theorem_content_container-"+idNumber,
@@ -687,29 +622,12 @@ function addTheoremContent(event, idNumber)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
-            tinyMCE.settings = {
-                mode:"none",   
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"       
-            };
-            
             var id = $(this).attr("id");
             
             $("#"+id+" textarea").each(function() {
                 if(tinymce.getInstanceById($(this).attr("id")) == null)
                 {
-                    tinymce.execCommand('mceAddControl', true, $(this).attr("id"));
+                    initEditor(this.id);                    
                     $(this).sortable("refresh");
                 }
             });
@@ -771,27 +689,9 @@ function addTheoremPart(event, idNumber)
     
     $(theoremPartContainer).insertBefore("#"+event.target.id);
     
-    tinyMCE.settings = {
-        mode: "none",
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"
-    };
-    
     if(tinymce.getInstanceById("msm_theorem_part_content-"+idNumber+"-"+newId) == null)
     {
-        tinymce.execCommand("mceAddControl", false, "msm_theorem_part_content-"+idNumber+"-"+newId);
- 
+        initEditor("msm_theorem_part_content-"+idNumber+"-"+newId);  
     }
     
     $("#msm_theorem_part_droparea-"+idNumber).sortable({
@@ -823,26 +723,9 @@ function addTheoremPart(event, idNumber)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
-            tinyMCE.settings = {
-                mode:"none",   
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"       
-            };
-            
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id"));
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
         }
@@ -951,23 +834,6 @@ function addAssociateForm(index, type)
     associateInfoDiv.append(refTypeDropdown);
      
     $(associateInfoDiv).insertBefore("#msm_associate_button-"+index);
-    
-    tinyMCE.settings = {
-        mode:"none",   
-        plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-        width: "100%",
-        height: "70%",
-        theme: "advanced",
-        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-        theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-        theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-        theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        skin : "o2k7",
-        skin_variant : "silver"     
-    };
         
     if(tinymce.getInstanceById("msm_info_content-"+index+"-"+newId) != null)
     {
@@ -980,9 +846,8 @@ function addAssociateForm(index, type)
         tinyMCE.execCommand('mceFocus', false, "msm_info_title-"+index+"-"+newId);          
         tinymce.execCommand('mceRemoveControl', true, "msm_info_title-"+index+"-"+newId);
     }
-    
-    tinyMCE.execCommand('mceAddControl', true, "msm_info_content-"+index+"-"+newId);
-    tinyMCE.execCommand('mceAddControl', true, "msm_info_title-"+index+"-"+newId);
+    initEditor("msm_info_content-"+index+"-"+newId);   
+    initEditor("msm_info_title-"+index+"-"+newId); 
        
     $("#msm_associate_container-"+index).sortable({
         appendTo: "msm_associate_container-"+index,
@@ -1026,11 +891,11 @@ function addAssociateForm(index, type)
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_info_titles').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
             $(this).find('.msm_info_contents').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
             
@@ -1038,7 +903,8 @@ function addAssociateForm(index, type)
                 $(this).find('.copied_msm_structural_element').each(function() {
                     $(this).find('.msm_unit_child_content').each(function()
                     {
-                        tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                        initEditor(this.id);                    
+                        $(this).sortable("refresh");
                     });
                 });
             });
@@ -1212,25 +1078,9 @@ function makeTheorem()
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
-            tinyMCE.settings = {
-                mode:"none",   
-                plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                width: "100%",
-                height: "70%",
-                theme: "advanced",
-                theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,help,code,|,insertdate,inserttime,preview",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,iespell,advhr,|,ltr,rtl,|,subordinate",
-                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                skin : "o2k7",
-                skin_variant : "silver"     
-            };
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
         }

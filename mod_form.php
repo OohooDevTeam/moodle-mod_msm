@@ -130,6 +130,8 @@ class mod_msm_mod_form extends moodleform_mod
                 }
                 "
         );
+        
+//        $mform->addElement('editor', 'editor', get_string('toplevel', 'msm'));
 
         $mform->addElement('select', 'comptype', get_string('msmtype', 'msm'), $msm_types, $selectattr);
         $mform->addHelpButton('comptype', 'msmtype', 'msm');

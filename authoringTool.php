@@ -83,8 +83,6 @@ echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/them
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/css/subordinate.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
-//echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/splitter/splitter.css'/>";
-//echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jflowplayer/skin/minimalist.css'/>";
 
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/external/jquery.bgiframe-2.1.2.js'></script>";
@@ -111,10 +109,11 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/plugins/subordinate/js/subordinate.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery.jstree.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/splitter/splitter.js'></script>";
-//echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/tiny_mce.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/tiny_mce.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/module.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jflowplayer/flowplayer.min.js'></script>";
 //echo "<script type='text/javascript src='$CFG->wwwroot/lib/editor/tinymce/3.4.6/tiny_mce_jquery.js></script>";
 //echo "<script type='text/javascript;"
@@ -339,8 +338,55 @@ $formContent .= '</div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
         <button id="msm_comp_fullscreen"> Full Screen </button>';
 
+//Replace this with your current context
+            //You can replace this with the default > $CFG->maxbytes
+            $options['maxbytes'] = $CFG->maxbytes;
+
+            $draftitemid = file_get_unused_draft_itemid();
+
+            //The options
+            $fpoptions = array();
+
+            $args = new stdClass();
+            // need these three to filter repositories list
+            $args->accepted_types = array('web_image');
+            $args->return_types = (FILE_INTERNAL | FILE_EXTERNAL);
+            $args->context = $context;
+            $args->env = 'filepicker';
+
+            // advimage plugin
+            $image_options = initialise_filepicker($args);
+            $image_options->context = $context;
+            $image_options->client_id = uniqid();
+            $image_options->maxbytes = $options['maxbytes'];
+            $image_options->env = 'editor';
+            $image_options->itemid = $draftitemid;
+
+            // moodlemedia plugin
+            $args->accepted_types = array('video', 'audio');
+            $media_options = initialise_filepicker($args);
+            $media_options->context = $context;
+            $media_options->client_id = uniqid();
+            $media_options->maxbytes  = $options['maxbytes'];
+            $media_options->env = 'editor';
+            $media_options->itemid = $draftitemid;
+
+            // advlink plugin
+            $args->accepted_types = '*';
+            $link_options = initialise_filepicker($args);
+            $link_options->context = $context;
+            $link_options->client_id = uniqid();
+            $link_options->maxbytes  = $options['maxbytes'];
+            $link_options->env = 'editor';
+            $link_options->itemid = $draftitemid;
+
+            $fpoptions['image'] = $image_options;
+            $fpoptions['media'] = $media_options;
+            $fpoptions['link'] = $link_options;
+
 
 $formContent .= '<script type="text/javascript"> 
+            var tinymce_filepicker_options = '.json_encode($fpoptions).'
             $(document).ready(function() {  
             
                 $("#msm_comp_fullscreen").click(function(event) {
@@ -352,24 +398,23 @@ $formContent .= '<script type="text/javascript">
                          $("#msm_editor_middleright").trigger("spliter.resize");
                 
                           swapButtons(event);
-                });
-           
-                tinyMCE.init({
-                    mode:"textareas",
-                    plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                    width: "100%",
-                    height: "70%",
-                    theme: "advanced",
-                    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                    theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
-                    theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
-                    theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
-                    theme_advanced_toolbar_location : "top",
-                    theme_advanced_toolbar_align : "left",
-                    theme_advanced_statusbar_location : "bottom",
-                    skin : "o2k7",
-                    skin_variant : "silver"
-               });
+                });          
+//                tinyMCE.init({
+//                    mode:"textareas",
+//                    plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+//                    width: "100%",
+//                    height: "70%",
+//                    theme: "advanced",
+//                    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+//                    theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+//                    theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,ltr,rtl,|,subordinate",
+//                    theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,forecolor,backcolor",
+//                    theme_advanced_toolbar_location : "top",
+//                    theme_advanced_toolbar_align : "left",
+//                    theme_advanced_statusbar_location : "bottom",
+//                    skin : "o2k7",
+//                    skin_variant : "silver"
+//               });
                $(".msm_subordinate_info_dialogs").dialog({
                     autoOpen: false,
                     height: "auto",

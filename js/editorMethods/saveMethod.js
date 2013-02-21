@@ -68,9 +68,9 @@ function submitForm()
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 
     
-//    console.log(formData);
-//    alert("formData");
-//    
+    //    console.log(formData);
+    //    alert("formData");
+    //    
     $.ajax({
         type: "POST",
         url: targetURL,
@@ -145,7 +145,7 @@ function submitForm()
                         previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
                     });
                 });
-                  MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
                 insertUnitStructure(ids);
             }
         },
@@ -396,7 +396,7 @@ function enableEditorFunction()
         stop: function(event, ui)
         {
             $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
         }
