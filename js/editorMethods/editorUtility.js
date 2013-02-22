@@ -280,73 +280,22 @@ function saveComp(e)
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
 function editUnit()
 {
-    enableEditorFunction();    
-     
-    $(".msm_editor_content").each(function() {  
-        var currentId = this.id;
-        
-        var unitInfo = [];
-        var index = 0;
-        $.ajax({
-            type:"POST",
-            url: "editorCreation/msmLoadUnit.php",
-            data: {
-                "childElementId": currentId,
-                "childOrder": $("#msm_child_order").val(),
-                "currentUnit": $("#msm_currentUnit_id").val(),
-                "order": index
-            },
-            success: function(data) {                
-                unitInfo = JSON.parse(data);
-                
-                console.log(unitInfo);
-                index++;
-            },
-            error: function() {
-                
-            }
-        });
-        
-        var currentHTMLvalue = $(this).html();
-        
-        var idInfo = currentId.split("-");
-        
-        var newTextarea = document.createElement("textarea");
-        newTextarea.id = currentId;
-        newTextarea.name = currentId;
-      
-        if((idInfo[0] == "msm_theorem_content_input")||(idInfo[0] == "msm_theoremref_content_input"))
-        {
-            newTextarea.className = "msm_unit_child_content msm_theorem_content";
+    enableEditorFunction();   
+    
+    var unitInfo = [];
+    $.ajax({
+        type:"POST",
+        url: "editorCreation/msmLoadUnit.php",
+        data: {
+            "mode": "edit",
+            "childOrder": $("#msm_child_order").val(),
+            "currentUnit": $("#msm_currentUnit_id").val()
+        },
+        success: function(data) {                
+            unitInfo = JSON.parse(data);
+            enableContentEditors(unitInfo);
         }
-        else if((idInfo[0] == "msm_theoremref_part_content")||(idInfo[0] == "msm_theorem_part_content"))
-        {
-            newTextarea.className = "msm_theorem_content";
-        }
-        else if(idInfo[0] == "msm_intro_child_content")
-        {
-            newTextarea.className = "msm_intro_child_contents";
-        }
-        else if(idInfo[0] == "msm_info_title")
-        {
-            newTextarea.className = "msm_info_titles";
-        }
-        else if(idInfo[0] == "msm_info_content")
-        {
-            newTextarea.className = "msm_info_contents";
-        }
-        else
-        {
-            newTextarea.className = "msm_unit_child_content";
-        }
-        
-        $(newTextarea).val(currentHTMLvalue);
-            
-        this.parentNode.insertBefore(newTextarea, this);
-        this.parentNode.removeChild(this);
-        
-        initEditor(currentId);         
-    });
+    });    
     
     $("#msm_editor_edit").remove();
     $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");
@@ -409,7 +358,7 @@ function editUnit()
             $(this).find('.msm_unit_child_content').each(function() {                         
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                   initEditor(this.id);                    
+                    initEditor(this.id);                    
                     $(this).sortable("refresh");
                 } 
             });
@@ -500,6 +449,189 @@ function editUnit()
         submitForm();
             
     });
+}
+
+function enableContentEditors(unitArray)
+{
+    var unitChildInfo = $("#msm_child_order").val().split(",");
+    
+    var intromatch = /^copied_msm_intro-\d+$/;
+    var bodymatch = /^copied_msm_body-\d+$/;
+    var defmatch = /^copied_msm_def-\d+$/;
+    var commentmatch = /^copied_msm_comment-\d+$/;
+    var theoremmatch = /^copied_msm_theorem-\d+$/;   
+    
+    for(var i = 0; i < unitChildInfo.length-1; i++) // last element is msm_id which is not needed
+    {
+        if(unitChildInfo[i].match(intromatch))
+        {
+            createIntroText(unitChildInfo, unitArray, i);
+        } 
+        else if(unitChildInfo[i].match(bodymatch))
+        {
+            createBodyText(unitChildInfo, unitArray, i);    
+        }
+        else if(unitChildInfo[i].match(defmatch))
+        {
+            createDefText(unitChildInfo, unitArray, i);                    
+        }
+        else if(unitChildInfo[i].match(commentmatch))
+        {
+            createCommentText(unitChildInfo, unitArray, i);                     
+        }
+        else if(unitChildInfo[i].match(theoremmatch))
+        {
+            createTheoremText(unitChildInfo, unitArray, i);                    
+        }
+    }
+    
+}
+
+function createTheoremText(child, unitArray, key)
+{
+    var unitInfo = unitArray["children"][key];
+    
+    var theoremidInfo = $("#"+child[key]).attr("id").split("-"); //  get theorem id number;
+    
+    var theoremStatementInfo = $("#"+child[key]).find(".msm_theorem_statement_containers");
+    
+    console.log(theoremStatementInfo);
+    
+    for(var i = 0; i < theoremStatementInfo.length; i++)
+    {
+        var statementidInfo = theoremStatementInfo[i].id.split("-");
+            
+        var statementid = '';
+        for(var j = 1; j < statementidInfo.length-1; j++)
+        {
+            statementid += statementidInfo[j]+"-";
+        }
+                
+        statementid += statementidInfo[statementidInfo.length-1]; // now containering theoremid-statementid pair for first content then for rest it's theoremid-topstatementid-statementid
+    }
+    
+   
+}
+
+function createCommentText(child, unitArray, key)
+{
+    var unitInfo = unitArray["children"][key];
+    
+    var commentcontent = unitInfo["content"];
+    
+    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    
+    var commentInfo = currentId.split("-");
+                
+    var commentTextArea = document.createElement("textarea");
+    commentTextArea.id = "msm_def_content_input-"+commentInfo[1];
+    commentTextArea.name = "msm_def_content_input-"+commentInfo[1];
+    commentTextArea.className = "msm_unit_child_content";
+            
+    $(commentTextArea).val(commentcontent);   
+    
+    $("#"+currentId).replaceWith(commentTextArea);    
+        
+    initEditor(commentTextArea.id);    
+}
+
+function createDefText(child, unitArray, key)
+{
+    var unitInfo = unitArray["children"][key];
+    
+    var defcontent = unitInfo["content"];
+    
+    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    
+    var defInfo = currentId.split("-");
+                
+    var defTextArea = document.createElement("textarea");
+    defTextArea.id = "msm_def_content_input-"+defInfo[1];
+    defTextArea.name = "msm_def_content_input-"+defInfo[1];
+    defTextArea.className = "msm_unit_child_content";
+            
+    $(defTextArea).val(defcontent);   
+    
+    $("#"+currentId).replaceWith(defTextArea);    
+        
+    initEditor(defTextArea.id);    
+}
+
+function createIntroText(child, unitArray, key)
+{
+    var unitInfo = unitArray["children"][key];
+               
+    var introcontent = '';
+    for(var index=0; index < unitInfo["blocks"][0]["content"].length; index++)
+    {
+        introcontent += unitInfo["blocks"][0]["content"][index]["content"];
+    }
+    
+    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    
+    var introInfo = currentId.split("-");
+                
+    var introTextArea = document.createElement("textarea");
+    introTextArea.id = "msm_intro_content_input-"+introInfo[1];
+    introTextArea.name = "msm_intro_content_input-"+introInfo[1];
+    introTextArea.className = "msm_unit_child_content";
+            
+    $(introTextArea).val(introcontent);   
+    
+    $("#"+currentId).replaceWith(introTextArea);    
+        
+    initEditor(introTextArea.id);     
+               
+    // intro has children
+    for(var j = 1; j < unitInfo["blocks"].length; j++)
+    {
+        var introchildcontent = '';
+
+        for(var k=0; k < unitInfo["blocks"][j]["content"].length; k++)
+        {
+            introchildcontent += unitInfo["blocks"][j]["content"][k]["content"];
+        }        
+        
+        var childArray = $("#msm_intro_child_container").children(".msm_intro_child");
+        
+        var childidInfo = childArray[j-1].id.split("-"); 
+                
+        var introChildTextArea = document.createElement("textarea");
+        introChildTextArea.id = "msm_intro_child_content-"+childidInfo[1];
+        introChildTextArea.name = "msm_intro_child_content-"+childidInfo[1];
+        introChildTextArea.className = "msm_intro_child_contents";                
+          
+        $(introChildTextArea).val(introchildcontent);
+        
+        $("#msm_intro_child_content-"+childidInfo[1]).replaceWith(introChildTextArea); 
+        
+        initEditor(introChildTextArea.id);  
+    }
+}
+
+function createBodyText(child, unitArray, key)
+{
+    var unitInfo = unitArray["children"][key];
+    
+    var bodycontent = '';
+    for(var index=0; index < unitInfo["content"].length; index++)
+    {
+        bodycontent += unitInfo["content"][index]["content"];
+    }
+    
+    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    var bodyInfo = currentId.split("-");
+                
+    var bodyTextArea = document.createElement("textarea");
+    bodyTextArea.id = "msm_body_content_input-"+bodyInfo[1];
+    bodyTextArea.name = "msm_body_content_input-"+bodyInfo[1];
+    bodyTextArea.className = "msm_unit_child_content";
+            
+    $(bodyTextArea).val(bodycontent);
+    
+    $("#"+currentId).replaceWith(bodyTextArea);    
+        
+    initEditor(bodyTextArea.id);     
 }
 
 // triggered by 'Remove this Unit' button due to transition from view to edit

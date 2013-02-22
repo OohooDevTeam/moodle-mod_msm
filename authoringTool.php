@@ -398,7 +398,8 @@ $formContent .= '<script type="text/javascript">
                          $("#msm_editor_middleright").trigger("spliter.resize");
                 
                           swapButtons(event);
-                });          
+                });    
+                
 //                tinyMCE.init({
 //                    mode:"textareas",
 //                    plugins : "subordinate,autolink,lists,advlist,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
