@@ -72,7 +72,7 @@ class EditorStatementTheorem extends EditorElement
             }
         }
         else if (sizeof($idInfo) == 1)
-        {
+        {            
             if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_theorem_content_input-' . $idNumber];

@@ -491,14 +491,11 @@ function createTheoremText(child, unitArray, key)
 {
     var unitInfo = unitArray["children"][key];
     
-    var theoremidInfo = $("#"+child[key]).attr("id").split("-"); //  get theorem id number;
-    
     var theoremStatementInfo = $("#"+child[key]).find(".msm_theorem_statement_containers");
-    
-    console.log(theoremStatementInfo);
     
     for(var i = 0; i < theoremStatementInfo.length; i++)
     {
+        var theoremcontent = unitInfo["contents"][i]["content"];
         var statementidInfo = theoremStatementInfo[i].id.split("-");
             
         var statementid = '';
@@ -508,6 +505,23 @@ function createTheoremText(child, unitArray, key)
         }
                 
         statementid += statementidInfo[statementidInfo.length-1]; // now containering theoremid-statementid pair for first content then for rest it's theoremid-topstatementid-statementid
+        
+        console.log(statementid);
+        console.log("old statement theorem id: "+theoremStatementInfo[i].id);
+        
+        var theoremStatementTextArea = document.createElement("textarea");
+        theoremStatementTextArea.id = "msm_theorem_content_input-"+statementid;
+        theoremStatementTextArea.name = "msm_theorem_content_input-"+statementid;
+        theoremStatementTextArea.className = "msm_unit_child_content";
+            
+        $(theoremStatementTextArea).val(theoremcontent);   
+        
+        $("#"+theoremStatementInfo[i].id).children(".msm_editor_content").each(function(index, element){            
+            $(this).replaceWith(theoremStatementTextArea);   
+        });     
+        
+        initEditor(theoremStatementTextArea.id);
+    
     }
     
    
@@ -524,8 +538,8 @@ function createCommentText(child, unitArray, key)
     var commentInfo = currentId.split("-");
                 
     var commentTextArea = document.createElement("textarea");
-    commentTextArea.id = "msm_def_content_input-"+commentInfo[1];
-    commentTextArea.name = "msm_def_content_input-"+commentInfo[1];
+    commentTextArea.id = "msm_comment_content_input-"+commentInfo[1];
+    commentTextArea.name = "msm_comment_content_input-"+commentInfo[1];
     commentTextArea.className = "msm_unit_child_content";
             
     $(commentTextArea).val(commentcontent);   
