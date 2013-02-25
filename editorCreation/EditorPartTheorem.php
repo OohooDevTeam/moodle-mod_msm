@@ -109,7 +109,7 @@ class EditorPartTheorem extends EditorElement
         $parentStatementTheoremRecord = $DB->get_record("msm_compositor", array("id"=>$currentCompRecord->parent_id));
 
         $htmlContent = '';
-        $htmlContent .= "<div id='msm_theorem_part_container-$this->compid' class='msm_theorem_child'>";
+        $htmlContent .= "<div id='msm_theorem_part_container-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_child'>";
         $htmlContent .= "<div id='msm_theorem_part_title_container-$this->compid' class='msm_theorem_part_title_containers'>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";

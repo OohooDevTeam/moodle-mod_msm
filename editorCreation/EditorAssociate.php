@@ -97,7 +97,7 @@ class EditorAssociate extends EditorElement
         
         $htmlContent = '';
         
-        $htmlContent .= "<div id='msm_associate_childs-$this->compid' class='msm_associate_childs'>";
+        $htmlContent .= "<div id='msm_associate_childs-$currentAssociateRecord->parent_id-$this->compid' class='msm_associate_childs'>";
         $htmlContent .= "<div id='msm_associate_info_header-$this->compid' class='msm_associate_info_headers'>";
         $htmlContent .= "<b> ASSOCIATED INFORMATION </b>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";

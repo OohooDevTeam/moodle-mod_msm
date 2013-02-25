@@ -157,7 +157,7 @@ class EditorStatementTheorem extends EditorElement
         
         $htmlContent = '';
         
-        $htmlContent .= "<div id='msm_theorem_statement_container-$this->compid' class='msm_theorem_statement_containers'>";
+        $htmlContent .= "<div id='msm_theorem_statement_container-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_statement_containers'>";
         $htmlContent .= "<div id='msm_theorem_statement_title_container-$this->compid' class='msm_theorem_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
