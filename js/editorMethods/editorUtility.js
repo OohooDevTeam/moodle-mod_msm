@@ -306,6 +306,31 @@ function editUnit()
     $("#msm_editor_reset").remove();
     $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");      
     
+    // reattach all close buttons for deletion of element
+    $(".copied_msm_structural_element").each(function(i) {
+        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+        $(this).prepend(closeButton); //can't use insertBefore since the reference element to insert before can change (eg. intro is header while def is select)
+    });
+    $(".msm_theorem_statement_title_containers").each(function() {
+        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+        $(closeButton).insertBefore($(this));
+    });
+    
+    $(".msm_theorem_part_title_containers").each(function() {
+        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+        $(closeButton).insertBefore($(this));
+    });
+    
+    $(".msm_associate_info_headers").each(function() {
+        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+        $(closeButton).insertBefore($(this));
+    });
+    
+    $(".msm_intro_child_dragareas").each(function() {
+        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+        $(closeButton).insertBefore($(this));
+    });
+    
     $("#msm_editor_save").click(function(event) { 
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();
@@ -328,11 +353,6 @@ function enableEditorFunction()
     $(".copied_msm_structural_element select").removeAttr("disabled");
     $(".copied_msm_structural_element input").removeAttr("disabled");
     
-    // reattach all close buttons for deletion of element
-    $(".copied_msm_structural_element").each(function(i) {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
-        $(this).prepend(closeButton);
-    });
         
     // reinitalize all jquery actions
     $(".msm_structural_element").draggable({
