@@ -157,6 +157,7 @@ class EditorBlock extends EditorElement
         {
             $htmlContent .= "<div id='msm_intro_child_div-$this->compid' class='msm_intro_child'>";
             $htmlContent .= "<div id='msm_intro_child_dragarea-$this->compid' class='msm_intro_child_dragareas'>";
+            $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div>";
