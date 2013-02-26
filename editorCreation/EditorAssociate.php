@@ -31,8 +31,11 @@ class EditorAssociate extends EditorElement
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
         
         $indexNumber = explode("-", $idNumber);
+        
+//        echo "indexNumber";
+//        print_object($indexNumber);
 
-        $infomatch = "/^msm_info_content-$indexNumber[0].*$/";
+        $infomatch = "/^msm_info_content-$idNumber.*$/";
         
 //        print_object($idNumber);
 

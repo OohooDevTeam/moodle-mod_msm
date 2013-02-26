@@ -377,6 +377,72 @@ function enableEditorFunction()
         }
     }); 
     
+    $(".msm_associate_containers").each(function() {
+        $("#"+this.id).sortable({
+            appendTo: this.id,
+            connectWith: this.id,
+            cursor: "move",
+            tolerance: "pointer",
+            placeholder: "msm_sortable_placeholder",      
+            handle: ".msm_associate_info_headers",
+            start: function(event,ui)
+            {
+                $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+                $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+                $(".msm_sortable_placeholder").css("background-color","#DC143C");
+                $(".msm_sortable_placeholder").css("opacity","0.5");
+                $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+            
+                // this code along with the one in stop is needed for enabling sortable on the div containing
+                // the tinymce editor so the iframe part of the editor doesn't become disabled
+                $(this).find('.msm_info_titles').each(function() {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                });
+                $(this).find('.msm_info_contents').each(function() {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                });
+            
+                $(this).find('.msm_associate_reftype_optionarea').each(function() {
+                    $(this).find('.copied_msm_structural_element').each(function() {
+                        $(this).find('.msm_unit_child_content').each(function()
+                        {
+                            tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                            tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                        });
+                    });
+                });
+            },
+            stop: function(event, ui)
+            {
+                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+                // if there are children in intro element, need to refresh the ifram of its editors
+                $(this).find('.msm_info_titles').each(function() {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                });
+                $(this).find('.msm_info_contents').each(function() {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                });
+            
+                $(this).find('.msm_associate_reftype_optionarea').each(function() {
+                    $(this).find('.copied_msm_structural_element').each(function() {
+                        $(this).find('.msm_unit_child_content').each(function()
+                        {
+                            initEditor(this.id);                    
+                            $(this).sortable("refresh");
+                        });
+                    });
+                });
+            
+            //            
+            }
+        });    
+    });
+    
     
     $("#msm_child_appending_area").sortable({
         appendTo: "#msm_child_appending_area",
@@ -384,23 +450,178 @@ function enableEditorFunction()
         cursor: "move",
         tolerance: "pointer",
         placeholder: "msm_sortable_placeholder",
-        start: function(event, ui)
+        handle: ".msm_element_title_containers",
+        start: function(event,ui)
         {
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+                
+            $(this).find('.msm_unit_child_content').each(function() { 
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {            
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }                
+            });                        
+            $(this).find('.msm_intro_child_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                } 
+            });
+            $(this).find('.msm_info_titles').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                } 
+            });
+            $(this).find('.msm_info_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                } 
+            });
+                 
+        },
+        stop: function(event, ui)
+        {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");  
+                
+            $(this).find('.msm_unit_child_content').each(function() {                         
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                } 
+            });
+                                
+            //             if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_intro_child_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
+            });
+                                
+            $(this).find('.msm_info_titles').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
+            });
+            $(this).find('.msm_info_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
+            });
+        }
+    });
+    
+    
+    
+    
+    $("#msm_intro_child_container").sortable({
+        appendTo: "msm_intro_child_container",
+        connectWith: "msm_intro_child_container",
+        cursor: "move",
+        tolerance: "pointer",
+        placeholder: "msm_sortable_placeholder",   
+        handle: ".msm_intro_child_dragareas",
+        start: function(event,ui)
+        {
+            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+            
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
-            $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
+            $(this).find('.msm_intro_child_contents').each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
         },
         stop: function(event, ui)
         {
-            $(this).find('.msm_unit_child_content').each(function() {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+            // if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_intro_child_contents').each(function() {
                 initEditor(this.id);                    
                 $(this).sortable("refresh");
             });
         }
-    });          
+    });    
+    
+    
+    
+    $(".msm_element_title_containers").each(function() {
+        $(this).mouseover(function() {
+            $(this).children("span").each(function(){
+                $(this).css({
+                    "visibility": "visible",
+                    "color": "#4e6632",
+                    "opacity": "0.5",
+                    "cursor": "move",
+                    "display": "inline"
+                });
+            });
+        });
+        $(this).mouseout(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+        $(this).mouseup(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+    });
+    
+    $(".msm_associate_info_headers").each(function() {
+        $(this).mouseover(function() {
+            $(this).children("span").css({
+                "visibility": "visible",
+                "color": "#4e6632",
+                "opacity": "0.5",
+                "cursor": "move",
+                "display": "inline"
+            });
+        });
+        $(this).mouseout(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+        $(this).mouseup(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+    })
+     
+    
+    $(".msm_theorem_statement_title_containers").each(function(){
+        $(this).mouseover(function() {
+            $(this).children("span").css({
+                "visibility": "visible",
+                "color": "#4e6632",
+                "opacity": "0.5",
+                "cursor": "move",
+                "display": "inline"
+            });
+        });
+        $(this).mouseout(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+        $(this).mouseup(function() {
+            $(this).children("span").css("visibility", "hidden");
+        });
+    });
 }
 
 // to activate the dialog box for display purposes

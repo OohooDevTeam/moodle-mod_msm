@@ -190,7 +190,8 @@ function newUnit()
         stop: function(event, ui)
         {
             $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
+                initEditor(this.id);
+                //                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
                 $(this).sortable("refresh");
             });
         }
@@ -280,7 +281,6 @@ function saveComp(e)
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
 function editUnit()
 {
-    enableEditorFunction();   
     
     var unitInfo = [];
     $.ajax({
@@ -293,7 +293,9 @@ function editUnit()
         },
         success: function(data) {                
             unitInfo = JSON.parse(data);
-            enableContentEditors(unitInfo);
+            enableContentEditors(unitInfo);  
+                enableEditorFunction();   
+
         }
     });    
     
@@ -303,144 +305,7 @@ function editUnit()
     $("#msm_editor_remove").remove();
     $("#msm_editor_new").remove();
     $("#msm_editor_reset").remove();
-    $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");
-    
-    
-    $("#msm_child_appending_area").sortable({
-        appendTo: "#msm_child_appending_area",
-        connectWith: "#msm_child_appending_area",
-        cursor: "move",
-        tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",
-        handle: ".msm_element_title_containers",
-        start: function(event,ui)
-        {
-            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
-            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
-            $(".msm_sortable_placeholder").css("background-color","#DC143C");
-            $(".msm_sortable_placeholder").css("opacity","0.5");
-            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
-            
-            $(this).find('.msm_unit_child_content').each(function() { 
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {            
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                }                
-            });                        
-            $(this).find('.msm_intro_child_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                } 
-            });
-            $(this).find('.msm_info_titles').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                } 
-            });
-            $(this).find('.msm_info_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                } 
-            });
-             
-        },
-        stop: function(event, ui)
-        {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");  
-            
-            $(this).find('.msm_unit_child_content').each(function() {                         
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                } 
-            });
-                            
-            //             if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_intro_child_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                }
-            });
-                            
-            $(this).find('.msm_info_titles').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                }
-            });
-            $(this).find('.msm_info_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                }
-            });
-        }
-    });    
-    
-    $(".msm_element_title_containers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css({
-                "visibility": "visible", 
-                "color": "#4e6632", 
-                "opacity": "0.5",
-                "cursor": "move"
-            });
-        });
-        $(this).mouseout(function() {
-            $(this).children("span").css("visibility", "hidden");
-        });
-        $(this).mouseup(function() {
-            $(this).children("span").css("visibility", "hidden");
-        });
-    });
-    
-    $(".msm_associate_info_headers").each(function() {
-        $(this).mouseover(function() {
-            $(this).children("span").css({
-                "visibility": "visible", 
-                "color": "#4e6632", 
-                "opacity": "0.5",
-                "cursor": "move"
-            });
-        });
-        $(this).mouseout(function() {
-            $(this).children("span").css("visibility", "hidden");
-        });
-        $(this).mouseup(function() {
-            $(this).children("span").css("visibility", "hidden");
-        });
-    })
-     
-    
-    $(".msm_theorem_statement_title_containers").each(function(){
-        $(this).mouseover(function() {
-            $(this).children("span").css({
-                "visibility": "visible", 
-                "color": "#4e6632", 
-                "opacity": "0.5",
-                "cursor": "move"
-            });
-        });
-        $(this).mouseout(function() {
-            $(this).children("span").css("visibility", "hidden");
-        });
-        $(this).mouseup(function() {
-            $(this).children("span").css("visibility", "hidden");
-        });
-    });
-        
+    $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");      
     
     $("#msm_editor_save").click(function(event) { 
         //         prevents navigation to msmUnitForm.php
@@ -487,6 +352,145 @@ function enableContentEditors(unitArray)
     
 }
 
+function enableEditSortable()
+{
+//    $("#msm_child_appending_area").sortable("destroy");
+//    $("#msm_child_appending_area").sortable({
+//        appendTo: "#msm_child_appending_area",
+//        connectWith: "#msm_child_appending_area",
+//        cursor: "move",
+//        tolerance: "pointer",
+//        placeholder: "msm_sortable_placeholder",
+//        handle: ".msm_element_title_containers",
+//        start: function(event,ui)
+//        {
+//            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+//            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+//            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+//            $(".msm_sortable_placeholder").css("opacity","0.5");
+//            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+//                
+//            $(this).find('.msm_unit_child_content').each(function() { 
+//                if(tinymce.getInstanceById($(this).attr("id")) != null)
+//                {            
+//                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+//                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+//                }                
+//            });                        
+//            $(this).find('.msm_intro_child_contents').each(function() {
+//                if(tinymce.getInstanceById($(this).attr("id")) != null)
+//                {
+//                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+//                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+//                } 
+//            });
+//            $(this).find('.msm_info_titles').each(function() {
+//                if(tinymce.getInstanceById($(this).attr("id")) != null)
+//                {
+//                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+//                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+//                } 
+//            });
+//            $(this).find('.msm_info_contents').each(function() {
+//                if(tinymce.getInstanceById($(this).attr("id")) != null)
+//                {
+//                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+//                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+//                } 
+//            });
+//                 
+//        },
+//        stop: function(event, ui)
+//        {
+//            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");  
+//                
+//            $(this).find('.msm_unit_child_content').each(function() {                         
+//                if(tinymce.getInstanceById($(this).attr("id"))==null)
+//                {
+//                    initEditor(this.id);                    
+//                    $(this).sortable("refresh");
+//                } 
+//            });
+//                                
+//            //             if there are children in intro element, need to refresh the ifram of its editors
+//            $(this).find('.msm_intro_child_contents').each(function() {
+//                if(tinymce.getInstanceById($(this).attr("id"))==null)
+//                {
+//                    initEditor(this.id);                    
+//                    $(this).sortable("refresh");
+//                }
+//            });
+//                                
+//            $(this).find('.msm_info_titles').each(function() {
+//                if(tinymce.getInstanceById($(this).attr("id"))==null)
+//                {
+//                    initEditor(this.id);                    
+//                    $(this).sortable("refresh");
+//                }
+//            });
+//            $(this).find('.msm_info_contents').each(function() {
+//                if(tinymce.getInstanceById($(this).attr("id"))==null)
+//                {
+//                    initEditor(this.id);                    
+//                    $(this).sortable("refresh");
+//                }
+//            });
+//        }
+//    });
+//
+//    $(".msm_element_title_containers").each(function() {
+//        $(this).mouseover(function() {
+//            $(this).children("span").css({
+//                "visibility": "visible",
+//                "color": "#4e6632",
+//                "opacity": "0.5",
+//                "cursor": "move"
+//            });
+//        });
+//        $(this).mouseout(function() {
+//            $(this).children("span").css("visibility", "hidden");
+//        });
+//        $(this).mouseup(function() {
+//            $(this).children("span").css("visibility", "hidden");
+//        });
+//    });
+//    
+//    $(".msm_associate_info_headers").each(function() {
+//        $(this).mouseover(function() {
+//            $(this).children("span").css({
+//                "visibility": "visible",
+//                "color": "#4e6632",
+//                "opacity": "0.5",
+//                "cursor": "move"
+//            });
+//        });
+//        $(this).mouseout(function() {
+//            $(this).children("span").css("visibility", "hidden");
+//        });
+//        $(this).mouseup(function() {
+//            $(this).children("span").css("visibility", "hidden");
+//        });
+//    })
+//     
+//    
+//    $(".msm_theorem_statement_title_containers").each(function(){
+//        $(this).mouseover(function() {
+//            $(this).children("span").css({
+//                "visibility": "visible",
+//                "color": "#4e6632",
+//                "opacity": "0.5",
+//                "cursor": "move"
+//            });
+//        });
+//        $(this).mouseout(function() {
+//            $(this).children("span").css("visibility", "hidden");
+//        });
+//        $(this).mouseup(function() {
+//            $(this).children("span").css("visibility", "hidden");
+//        });
+//    });
+}
+
 function createTheoremText(child, unitArray, key)
 {
     var unitInfo = unitArray["children"][key];
@@ -520,14 +524,10 @@ function createTheoremText(child, unitArray, key)
         initEditor(theoremStatementTextArea.id);
         
         var theoremPartInfo = $("#"+theoremStatementInfo[i].id).find(".msm_theorem_child");
-        
-        console.log(theoremPartInfo);
      
         for(var k=0; k < theoremPartInfo.length; k++)
         {
             var theoremPartContent = unitInfo["contents"][i]["children"][k]["content"];
-            
-            console.log(theoremPartContent);
             var partidInfo = theoremPartInfo[k].id.split("-");
              
             var partid = '';
@@ -537,8 +537,6 @@ function createTheoremText(child, unitArray, key)
             }
                 
             partid += partidInfo[partidInfo.length-1]; 
-            
-            console.log("partid: "+partid);
         
             var theoremPartTextArea = document.createElement("textarea");
             theoremPartTextArea.id = "msm_theorem_part_content-"+partid;
@@ -556,20 +554,68 @@ function createTheoremText(child, unitArray, key)
                     elementid += elementidInfo[n] + "-";
                 }
                 elementid += elementidInfo[elementidInfo.length-1];
-                    
-                console.log("elementid: "+elementid);
-                console.log("partid: "+partid);
-                    
                 if(elementid == partid)
                 {
                     $(this).replaceWith(theoremPartTextArea);  
                 }                 
             });     
-            initEditor(theoremPartTextArea.id);        
+            initEditor(theoremPartTextArea.id);   
+            
         }        
         
-    }   
-   
+    }
+    
+    createAssociateText(child, unitInfo, key);
+    
+    enableEditSortable();
+}
+
+
+function createAssociateText(mainElement, aArray, key)
+{
+    var associateArray = aArray["children"];
+    
+    var associateIds = $("#"+mainElement[key]).find(".msm_associate_childs");
+    
+    for(var i = 0; i < associateIds.length; i++)
+    {
+        var infos = $("#"+associateIds[i].id).find(".msm_editor_content");
+        
+        var currentInfo = infos[0].id.split("-");
+        
+        var infoid = '';
+        for(var j=1; j < currentInfo.length-1; j++)
+        {
+            infoid += currentInfo[j]+"-";
+        }
+        infoid += currentInfo[currentInfo.length-1];
+        
+        var associateTitle = associateArray[i]["infos"][0]["caption"];
+        var associateContent = associateArray[i]["infos"][0]["content"];
+  
+        var infoTitleArea = document.createElement("textarea");
+        infoTitleArea.id = "msm_info_title-"+infoid;
+        infoTitleArea.name = "msm_info_title-"+infoid;
+        infoTitleArea.className = "msm_info_titles";
+        
+        var infoContentArea = document.createElement("textarea");
+        infoContentArea.id = "msm_info_content-"+infoid;
+        infoContentArea.name = "msm_info_content-"+infoid;
+        infoContentArea.className = "msm_info_contents";
+        
+        $(infoTitleArea).val(associateTitle);   
+    
+        $("#"+infos[0].id).replaceWith(infoTitleArea);    
+        
+        initEditor(infoTitleArea.id);    
+        
+        $(infoContentArea).val(associateContent);   
+    
+        $("#"+infos[1].id).replaceWith(infoContentArea);    
+        
+        initEditor(infoContentArea.id);    
+    }
+    enableEditSortable();
 }
 
 function createCommentText(child, unitArray, key)
@@ -592,6 +638,9 @@ function createCommentText(child, unitArray, key)
     $("#"+currentId).replaceWith(commentTextArea);    
         
     initEditor(commentTextArea.id);    
+    
+    createAssociateText(child, unitInfo, key);
+    enableEditSortable();
 }
 
 function createDefText(child, unitArray, key)
@@ -613,8 +662,14 @@ function createDefText(child, unitArray, key)
     
     $("#"+currentId).replaceWith(defTextArea);    
         
-    initEditor(defTextArea.id);    
+    initEditor(defTextArea.id); 
+    
+    createAssociateText(child, unitInfo, key);
+    
+    enableEditSortable();
+   
 }
+
 
 function createIntroText(child, unitArray, key)
 {
@@ -666,6 +721,7 @@ function createIntroText(child, unitArray, key)
         
         initEditor(introChildTextArea.id);  
     }
+    enableEditSortable();
 }
 
 function createBodyText(child, unitArray, key)
@@ -690,7 +746,8 @@ function createBodyText(child, unitArray, key)
     
     $("#"+currentId).replaceWith(bodyTextArea);    
         
-    initEditor(bodyTextArea.id);     
+    initEditor(bodyTextArea.id); 
+    enableEditSortable();    
 }
 
 // triggered by 'Remove this Unit' button due to transition from view to edit
