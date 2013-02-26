@@ -308,8 +308,23 @@ function editUnit()
     
     // reattach all close buttons for deletion of element
     $(".copied_msm_structural_element").each(function(i) {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
-        $(this).prepend(closeButton); //can't use insertBefore since the reference element to insert before can change (eg. intro is header while def is select)
+        var referencematch = this.id.match(/copied_msm_(defref|theoremref|commentref)-.+/);
+        
+        if(!referencematch)
+        {
+            var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+        
+            var intromatch = this.id.match(/copied_msm_intro-.+/);
+            var bodymatch = this.id.match(/copied_msm_body-.+/);
+        
+            if((!intromatch)&&(!bodymatch))
+            {
+                $(closeButton).attr("style", "margin-top: 2%;");
+            }
+        
+            $(this).prepend(closeButton); //can't use insertBefore since the reference element to insert before can change (eg. intro is header while def is select)
+        }
+       
     });
     $(".msm_theorem_statement_title_containers").each(function() {
         var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
@@ -320,6 +335,17 @@ function editUnit()
         var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
         $(closeButton).insertBefore($(this));
     });
+
+    $(".msm_theoremref_statement_title_containers").each(function() {
+        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+        $(closeButton).insertBefore($(this));
+    });
+    
+    $(".msm_theoremref_part_title_containers").each(function() {
+        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+        $(closeButton).insertBefore($(this));
+    });
+    
     
     $(".msm_associate_info_headers").each(function() {
         var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
@@ -815,9 +841,6 @@ function enableContentEditors(unitArray)
             createTheoremText(unitChildInfo, unitArray, i);                    
         }
     }
-//        enableEditorFunction();
-
-    
 }
 
 function createTheoremText(child, unitArray, key)
@@ -888,10 +911,8 @@ function createTheoremText(child, unitArray, key)
                     $(this).replaceWith(theoremPartTextArea);  
                 }                 
             });     
-            initEditor(theoremPartTextArea.id);   
-            
-        }        
-        
+            initEditor(theoremPartTextArea.id);  
+        }    
     }
     
     createAssociateText(child, unitInfo, key);
@@ -902,13 +923,12 @@ function createTheoremText(child, unitArray, key)
 function createAssociateText(mainElement, aArray, key)
 {
     var associateArray = aArray["children"];
-    
     var associateIds = $("#"+mainElement[key]).find(".msm_associate_childs");
     
     for(var i = 0; i < associateIds.length; i++)
     {
-        var infos = $("#"+associateIds[i].id).find(".msm_editor_content");
-        
+        var infos = $("#"+associateIds[i].id).find(".msm_editor_content"); // includes the reference
+       
         var currentInfo = infos[0].id.split("-");
         
         var infoid = '';
@@ -917,6 +937,8 @@ function createAssociateText(mainElement, aArray, key)
             infoid += currentInfo[j]+"-";
         }
         infoid += currentInfo[currentInfo.length-1];
+        
+        //-------------------processing info----------------------
         
         var associateTitle = associateArray[i]["infos"][0]["caption"];
         var associateContent = associateArray[i]["infos"][0]["content"];
@@ -942,6 +964,118 @@ function createAssociateText(mainElement, aArray, key)
         $("#"+infos[1].id).replaceWith(infoContentArea);    
         
         initEditor(infoContentArea.id);    
+        
+        //-------------------processing references----------------------
+        
+        if(infos.length >2)
+        {
+            var refIdInfo = infos[2].id.split("-");
+        
+            var refid = '';
+            for(var n=1; n < refIdInfo.length-1; n++)
+            {
+                refid += refIdInfo[n]+"-";
+            }
+            refid += refIdInfo[refIdInfo.length-1];
+        
+            var refContent = associateArray[i]["infos"][0]["ref"]["content"];
+            var refTableName = associateArray[i]["infos"][0]["ref"]["tablename"];
+            switch(refTableName)
+            {
+                case "msm_def":
+                    var defrefTextArea = document.createElement("textarea");
+                    defrefTextArea.id = "msm_defref_content_input-"+refid;
+                    defrefTextArea.name = "msm_defref_content_input-"+refid;
+                    defrefTextArea.className = "msm_unit_child_content";
+                    
+                    $(defrefTextArea).val(refContent);   
+                    $("#"+infos[2].id).replaceWith(defrefTextArea); 
+                    initEditor(defrefTextArea.id);
+                    break;
+                case "msm_theorem":
+                    var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoid).find(".msm_theoremref_statement_containers");
+    
+                    for(var ind = 0; ind < theoremStatementInfo.length; ind++)
+                    {
+                        var theoremcontent = associateArray[i]["infos"][0]["ref"]["contents"][ind]["content"];
+                        var statementidInfo = theoremStatementInfo[ind].id.split("-");
+            
+                        var statementid = '';
+                        for(var j = 1; j < statementidInfo.length-1; j++)
+                        {
+                            statementid += statementidInfo[j]+"-";
+                        }
+                
+                        statementid += statementidInfo[statementidInfo.length-1]; // now containering theoremid-statementid pair for first content then for rest it's theoremid-topstatementid-statementid        
+        
+                        var theoremStatementTextArea = document.createElement("textarea");
+                        theoremStatementTextArea.id = "msm_theoremref_content_input-"+statementid;
+                        theoremStatementTextArea.name = "msm_theoremref_content_input-"+statementid;
+                        theoremStatementTextArea.className = "msm_unit_child_content msm_theorem_content";
+            
+                        $(theoremStatementTextArea).val(theoremcontent);   
+        
+                        $("#"+theoremStatementInfo[ind].id).children(".msm_editor_content").each(function(index, element){     
+                            $(this).replaceWith(theoremStatementTextArea);   
+                        });  
+        
+                        initEditor(theoremStatementTextArea.id);
+        
+                        var theoremPartInfo = $("#"+theoremStatementInfo[ind].id).find(".msm_theorem_child");
+     
+                        for(var k=0; k < theoremPartInfo.length; k++)
+                        {
+                            var theoremPartContent = associateArray[i]["infos"][0]["ref"]["contents"][ind]["children"][k]["content"];
+                            var partidInfo = theoremPartInfo[k].id.split("-");
+             
+                            var partid = '';
+                            for(var m = 1; m < partidInfo.length-1; m++)
+                            {
+                                partid += partidInfo[m]+"-";
+                            }
+                
+                            partid += partidInfo[partidInfo.length-1]; 
+        
+                            var theoremPartTextArea = document.createElement("textarea");
+                            theoremPartTextArea.id = "msm_theoremref_part_content-"+partid;
+                            theoremPartTextArea.name = "msm_theoremref_part_content-"+partid;
+                            theoremPartTextArea.className = "msm_theorem_content";
+            
+                            $(theoremPartTextArea).val(theoremPartContent);   
+        
+                            $("#"+theoremPartInfo[k].id).children(".msm_editor_content").each(function(index, element){ 
+                                var elementidInfo = this.id.split("-");
+                
+                                var elementid = '';
+                                for(var n=1; n < elementidInfo.length-1; n++)
+                                {
+                                    elementid += elementidInfo[n] + "-";
+                                }
+                                elementid += elementidInfo[elementidInfo.length-1];
+                                
+                                if(elementid == partid)
+                                {
+                                    $(this).replaceWith(theoremPartTextArea);  
+                                }                 
+                            });     
+                            initEditor(theoremPartTextArea.id);               
+                        }        
+                    }
+                    break;
+                case "msm_comment":
+                    var commentrefTextArea = document.createElement("textarea");
+                    commentrefTextArea.id = "msm_commentref_content_input-"+refid;
+                    commentrefTextArea.name = "msm_commentref_content_input-"+refid;
+                    commentrefTextArea.className = "msm_unit_child_content";
+                    
+                    $(commentrefTextArea).val(refContent);   
+                    $("#"+infos[2].id).replaceWith(commentrefTextArea); 
+                    initEditor(commentrefTextArea.id);
+                    break;
+            }
+        } 
+            
+       
     }
     enableEditorFunction();
 }

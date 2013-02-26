@@ -99,7 +99,7 @@ function makeRefDefinition(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
     
-    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
+//    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
     var defSelectMenu = $('<select name="msm_defref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_defref_type_dropdown-'+idindex+'">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
@@ -120,7 +120,7 @@ function makeRefDefinition(idindex)
     clonedCurrentElement.attr("id", "copied_msm_defref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
    
-    clonedCurrentElement.append(defCloseButton);
+//    clonedCurrentElement.append(defCloseButton);
     clonedCurrentElement.append(defSelectMenu);
     clonedCurrentElement.append(defTitle);
     clonedCurrentElement.append(defTitleField);
@@ -136,7 +136,7 @@ function makeRefDefinition(idindex)
 function makeRefTheorem(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
-    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event)">x</a>');
+//    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event)">x</a>');
 
     var theoremSelectMenu = $('<select name="msm_theoremref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_theoremref_type_dropdown-'+idindex+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
@@ -185,7 +185,7 @@ function makeRefTheorem(idindex)
     theoremContentWrapper.append(theoremStatementWrapper);
     theoremContentWrapper.append(theoremChildButton);
             
-    clonedCurrentElement.append(theoremCloseButton);
+//    clonedCurrentElement.append(theoremCloseButton);
     clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleField);
     clonedCurrentElement.append(theoremTitleContainer);    
@@ -199,7 +199,7 @@ function makeRefTheorem(idindex)
 function makeRefComment(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
-    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
+//    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
     var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+idindex+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
@@ -218,7 +218,7 @@ function makeRefComment(idindex)
     clonedCurrentElement.attr("id", "copied_msm_commentref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
-    clonedCurrentElement.append(commentCloseButton);
+//    clonedCurrentElement.append(commentCloseButton);
     clonedCurrentElement.append(commentSelectMenu);
     clonedCurrentElement.append(commentTitle);
     clonedCurrentElement.append(commentTitleField);

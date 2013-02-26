@@ -194,7 +194,7 @@ class EditorInfo extends EditorElement
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div id='msm_associate_reftype_option-$this->compid' class='msm_associate_reftype_optionarea'>";
+            $htmlContent .= "<div id='msm_associate_reftype_option-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_associate_reftype_optionarea'>";
             $htmlContent .= "<span class='msm_associate_reftype_label'>Type of reference to add: </span>";
             $htmlContent .= "<select id='msm_associate_reftype-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled'>";
 

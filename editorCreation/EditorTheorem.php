@@ -367,7 +367,6 @@ class EditorTheorem extends EditorElement
 
         $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
-        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_theoremref_content_input-$this->compid' class='msm_theoremref_content_containers'>";
