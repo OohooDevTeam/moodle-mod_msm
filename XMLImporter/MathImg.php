@@ -78,13 +78,29 @@ class MathImg extends Element
 
         if (count($sourcefolders) == 2)
         {
-            $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
-                    . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+            if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
+            {
+                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+            }
+            else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
+            {
+                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+            }
         }
         else if (count($sourcefolders) == 1) // to account for src in xml that does not include the ims folder in its path
         {
-            $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
-                    . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
+            if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
+            {
+                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+                        . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
+            }
+            else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
+            {
+                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+                        . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
+            }
         }
         else
         {

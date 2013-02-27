@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
-      unitid="Chap_SequencesSeries">
+      unitid="Chap_SequencesSeries"
+      standalone="false">
    <titles>
       <title>Sequences and Series</title>
       <plain.title>Sequences and Series</plain.title>

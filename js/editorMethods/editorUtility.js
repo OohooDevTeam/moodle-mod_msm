@@ -1136,53 +1136,67 @@ function createDefText(child, unitArray, key)
 function createIntroText(child, unitArray, key)
 {
     var unitInfo = unitArray["children"][key];
+    
+    console.log(unitInfo);
+    
+     var introcontent = '';
                
-    var introcontent = '';
-    for(var index=0; index < unitInfo["blocks"][0]["content"].length; index++)
+    if(unitInfo["blocks"] == '')
     {
-        introcontent += unitInfo["blocks"][0]["content"][index]["content"];
+         for(var index=0; index < unitInfo["children"].length; index++)
+             {
+                 introcontent += unitInfo["children"][index]["content"];
+             }
     }
-    
-    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
-    
-    var introInfo = currentId.split("-");
-                
-    var introTextArea = document.createElement("textarea");
-    introTextArea.id = "msm_intro_content_input-"+introInfo[1];
-    introTextArea.name = "msm_intro_content_input-"+introInfo[1];
-    introTextArea.className = "msm_unit_child_content";
-            
-    $(introTextArea).val(introcontent);   
-    
-    $("#"+currentId).replaceWith(introTextArea);    
-        
-    initEditor(introTextArea.id);     
-               
-    // intro has children
-    for(var j = 1; j < unitInfo["blocks"].length; j++)
-    {
-        var introchildcontent = '';
-
-        for(var k=0; k < unitInfo["blocks"][j]["content"].length; k++)
+    else
+    {       
+        for(var index=0; index < unitInfo["blocks"][0]["content"].length; index++)
         {
-            introchildcontent += unitInfo["blocks"][j]["content"][k]["content"];
-        }        
-        
-        var childArray = $("#msm_intro_child_container").children(".msm_intro_child");
-        
-        var childidInfo = childArray[j-1].id.split("-"); 
-                
-        var introChildTextArea = document.createElement("textarea");
-        introChildTextArea.id = "msm_intro_child_content-"+childidInfo[1];
-        introChildTextArea.name = "msm_intro_child_content-"+childidInfo[1];
-        introChildTextArea.className = "msm_intro_child_contents";                
-          
-        $(introChildTextArea).val(introchildcontent);
-        
-        $("#msm_intro_child_content-"+childidInfo[1]).replaceWith(introChildTextArea); 
-        
-        initEditor(introChildTextArea.id);  
+            introcontent += unitInfo["blocks"][0]["content"][index]["content"];
+        }
     }
+    
+        var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    
+        var introInfo = currentId.split("-");
+                
+        var introTextArea = document.createElement("textarea");
+        introTextArea.id = "msm_intro_content_input-"+introInfo[1];
+        introTextArea.name = "msm_intro_content_input-"+introInfo[1];
+        introTextArea.className = "msm_unit_child_content";
+            
+        $(introTextArea).val(introcontent);   
+    
+        $("#"+currentId).replaceWith(introTextArea);    
+        
+        initEditor(introTextArea.id);     
+               
+        // intro has children
+        for(var j = 1; j < unitInfo["blocks"].length; j++)
+        {
+            var introchildcontent = '';
+
+            for(var k=0; k < unitInfo["blocks"][j]["content"].length; k++)
+            {
+                introchildcontent += unitInfo["blocks"][j]["content"][k]["content"];
+            }        
+        
+            var childArray = $("#msm_intro_child_container").children(".msm_intro_child");
+        
+            var childidInfo = childArray[j-1].id.split("-"); 
+                
+            var introChildTextArea = document.createElement("textarea");
+            introChildTextArea.id = "msm_intro_child_content-"+childidInfo[1];
+            introChildTextArea.name = "msm_intro_child_content-"+childidInfo[1];
+            introChildTextArea.className = "msm_intro_child_contents";                
+          
+            $(introChildTextArea).val(introchildcontent);
+        
+            $("#msm_intro_child_content-"+childidInfo[1]).replaceWith(introChildTextArea); 
+        
+            initEditor(introChildTextArea.id);  
+        }                   
+    
     enableEditorFunction();
 }
 

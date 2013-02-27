@@ -247,13 +247,13 @@ class StatementTheorem extends Element
 
                     if (empty($sibling_id))
                     {
-                        $indexauthor = $this->subordinates[$indexauthorString[1]];
+                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
                         $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid);
                         $sibling_id = $indexauthor->compid;
                     }
                     else
                     {
-                        $indexauthor = $this->subordinates[$indexauthorString[1]];
+                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
                         $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexauthor->compid;
                     }

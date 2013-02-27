@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Subordinate
@@ -40,9 +40,6 @@ class Subordinate extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         global $DB;
-
-        $this->position = $position;
-
         $this->infos = array();
         $this->companions = array();
         $this->external_refs = array();
@@ -50,53 +47,58 @@ class Subordinate extends Element
         $this->cites = array();
         $this->external_links = array();
 
-        foreach ($DomElement->childNodes as $child)
+        if ($DomElement != null)
         {
-            if ($child->nodeType == XML_ELEMENT_NODE)
+            $this->position = $position;
+            
+            foreach ($DomElement->childNodes as $child)
             {
-                $childname = $child->tagName;
-
-                switch ($childname)
+                if ($child->nodeType == XML_ELEMENT_NODE)
                 {
-                    case('hot'):
-                        $this->hot = $this->getContent($child);
-                        break;
+                    $childname = $child->tagName;
 
-                    case('info'):
-                        $position++;
-                        $info = new MathInfo($this->xmlpath);
-                        $info->loadFromXml($child, $position);
-                        $this->infos[] = $info;
-                        break;
+                    switch ($childname)
+                    {
+                        case('hot'):
+                            $this->hot = $this->getContent($child);
+                            break;
 
-                    case('companion'):
-                        $position++;
-                        $companion = new Companion($this->xmlpath);
-                        $companion->loadFromXml($child, $position);
-                        $this->companions[] = $companion;
-                        break;
+                        case('info'):
+                            $position++;
+                            $info = new MathInfo($this->xmlpath);
+                            $info->loadFromXml($child, $position);
+                            $this->infos[] = $info;
+                            break;
 
-                    // external ref has the same children as crossref
-                    case('crossref'):
-                        $position++;
-                        $crossref = new Crossref($this->xmlpath);
-                        $crossref->loadFromXml($child, $position);
-                        $this->crossrefs[] = $crossref;
-                        break;
+                        case('companion'):
+                            $position++;
+                            $companion = new Companion($this->xmlpath);
+                            $companion->loadFromXml($child, $position);
+                            $this->companions[] = $companion;
+                            break;
 
-                    case('cite'):
-                        $position = $position + 1;
-                        $cite = new Cite($this->xmlpath);
-                        $cite->loadFromXml($child, $position);
-                        $this->cites[] = $cite;
-                        break;
-                    
-                    case('external.link'):
-                        $position = $position + 1;
-                        $link = new ExternalLink($this->xmlpath);
-                        $link->loadFromXml($child, $position);
-                        $this->external_links[] = $link;
-                        break;
+                        // external ref has the same children as crossref
+                        case('crossref'):
+                            $position++;
+                            $crossref = new Crossref($this->xmlpath);
+                            $crossref->loadFromXml($child, $position);
+                            $this->crossrefs[] = $crossref;
+                            break;
+
+                        case('cite'):
+                            $position = $position + 1;
+                            $cite = new Cite($this->xmlpath);
+                            $cite->loadFromXml($child, $position);
+                            $this->cites[] = $cite;
+                            break;
+
+                        case('external.link'):
+                            $position = $position + 1;
+                            $link = new ExternalLink($this->xmlpath);
+                            $link->loadFromXml($child, $position);
+                            $this->external_links[] = $link;
+                            break;
+                    }
                 }
             }
         }
@@ -240,7 +242,7 @@ class Subordinate extends Element
 
                 case(preg_match("/^(crossref.\d+)$/", $element) ? true : false):
                     $crossrefString = explode('-', $element);
-                    
+
                     if (empty($sibling_id))
                     {
                         $crossref = $this->crossrefs[$crossrefString[1]];
@@ -334,7 +336,7 @@ class Subordinate extends Element
                     $externallink->loadFromDb($child->unit_id, $child->id);
                     $this->external_links[] = $externallink;
                     break;
-                
+
                 case('msm_theorem'):
                     $theorem = new Theorem();
                     $theorem->loadFromDb($child->unit_id, $child->id);
@@ -363,6 +365,7 @@ class Subordinate extends Element
 
         return $this;
     }
+
 }
 
 ?>

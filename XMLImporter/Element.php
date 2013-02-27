@@ -317,8 +317,12 @@ abstract class Element
         {
             $position = $position + 1;
             $subordinate = new Subordinate($this->xmlpath);
+
             $subordinate->loadFromXml($subordinates->item($i), $position);
-            $arrayOfSubordinates[] = $subordinate;
+            if (!empty($subordinate->position))
+            {
+                $arrayOfSubordinates[] = $subordinate;
+            }
         }
         return $arrayOfSubordinates;
     }
@@ -488,7 +492,10 @@ abstract class Element
             $position = $position + 1;
             $indexauthor = new MathIndex($this->xmlpath);
             $indexauthor->loadFromXml($indexauthors->item($i), $position);
-            $arrayOfIndexAuthor[] = $indexauthor;
+            if (!empty($indexauthor->position))
+            {
+                $arrayOfIndexAuthor[] = $indexauthor;
+            }
         }
         return $arrayOfIndexAuthor;
     }
@@ -508,13 +515,17 @@ abstract class Element
         $arrayOfIndexGlossary = array();
 
         $indexglossarys = $DomElement->getElementsByTagName('index.glossary');
+
         $iglength = $indexglossarys->length;
         for ($i = 0; $i < $iglength; $i++)
         {
             $position = $position + 1;
             $indexglossary = new MathIndex($this->xmlpath);
             $indexglossary->loadFromXml($indexglossarys->item($i), $position);
-            $arrayOfIndexGlossary[] = $indexglossary;
+            if (!empty($indexglossary->position))
+            {
+                $arrayOfIndexGlossary[] = $indexglossary;
+            }
         }
         return $arrayOfIndexGlossary;
     }
@@ -540,7 +551,10 @@ abstract class Element
             $position = $position + 1;
             $indexsymbol = new MathIndex($this->xmlpath);
             $indexsymbol->loadFromXml($indexsymbols->item($i), $position);
-            $arrayOfIndexSymbol[] = $indexsymbol;
+            if (!empty($indexsymbol->position))
+            {
+                $arrayOfIndexSymbol[] = $indexsymbol;
+            }
         }
         return $arrayOfIndexSymbol;
     }
@@ -944,7 +958,7 @@ abstract class Element
                             }
 
                             $hottagid = $hottag->getAttribute('id');
-                            
+
                             if ($positionvalue == $hottagid)
                             {
 

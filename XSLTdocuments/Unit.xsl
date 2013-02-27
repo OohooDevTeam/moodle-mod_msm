@@ -275,13 +275,13 @@
                         <xsl:value-of>false</xsl:value-of>
                     </xsl:attribute>
                
-                <xsl:apply-templates select="bk:book.part[position()=$i]/bk:headers"/>
+                    <xsl:apply-templates select="bk:book.part[position()=$i]/bk:headers"/>
                
-                <xsl:if test="bk:book.part[position()=$i]/bk:chapter != ''">
-                    <xsl:element name="legitimate.children" namespace="Unit">
-                        <xsl:apply-templates select="bk:book.part[position()=$i]/node()[not(name()='headers')]"/>
-                    </xsl:element>
-                </xsl:if>  
+                    <xsl:if test="bk:book.part[position()=$i]/bk:chapter != ''">
+                        <xsl:element name="legitimate.children" namespace="Unit">
+                            <xsl:apply-templates select="bk:book.part[position()=$i]/node()[not(name()='headers')]"/>
+                        </xsl:element>
+                    </xsl:if>  
                 </xsl:element>
             </xsl:result-document>
         </xsl:if>
@@ -315,6 +315,9 @@
                     <xsl:attribute name="xsi:schemaLocation">Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd</xsl:attribute>
                     <xsl:attribute name="unitid">
                         <xsl:value-of select="bk:chapter[position()=$i]/@id"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="standalone">
+                        <xsl:value-of>false</xsl:value-of>
                     </xsl:attribute>
                     
                     <xsl:apply-templates select="bk:chapter[position()=$i]/bk:headers"/>

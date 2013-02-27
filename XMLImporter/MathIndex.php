@@ -43,73 +43,76 @@ class MathIndex extends Element
      */
     public function loadFromXml($DomElement, $position = '')
     {
-        $this->position = $position;
-
-        $nameofElement = $DomElement->tagName;
-
-        $this->infos = array();
-        $this->names = array();
-
-        switch ($nameofElement)
+        if ($DomElement != null)
         {
-            case('index.symbol'):
-                $this->symbol = $this->getContent($DomElement->getElementsByTagName('symbol')->item(0));
-                $this->symbol_type = $DomElement->getElementsByTagName('symbol')->item(0)->getAttribute('type');
-                $this->sortstring = $this->getDomAttribute($DomElement->getElementsByTagName('sortstring'));
+            $this->position = $position;
 
-                $infos = $DomElement->getElementsByTagName('info');
+            $nameofElement = $DomElement->tagName;
 
-                foreach ($infos as $i)
-                {
+            $this->infos = array();
+            $this->names = array();
+
+            switch ($nameofElement)
+            {
+                case('index.symbol'):
+                    $this->symbol = $this->getContent($DomElement->getElementsByTagName('symbol')->item(0));
+                    $this->symbol_type = $DomElement->getElementsByTagName('symbol')->item(0)->getAttribute('type');
+                    $this->sortstring = $this->getDomAttribute($DomElement->getElementsByTagName('sortstring'));
+
+                    $infos = $DomElement->getElementsByTagName('info');
+
+                    foreach ($infos as $i)
+                    {
+                        $position = $position + 1;
+                        $info = new MathInfo($this->xmlpath);
+                        $info->loadFromXml($i, $position);
+                        $this->infos[] = $info;
+                    }
+
+                    break;
+
+                case('index.glossary'):
+                    $terms = $DomElement->getElementsByTagName('term');
+                    $string = '';
+
+                    foreach ($terms as $t)
+                    {
+                        $term = $this->getContent($t);
+                        $string = $string . trim($term) . '/';
+                        $this->term = $string;
+                    }
+
+                    $infos = $DomElement->getElementsByTagName('info');
+
+                    foreach ($infos as $i)
+                    {
+                        $position = $position + 1;
+                        $info = new MathInfo($this->xmlpath);
+                        $info->loadFromXml($i, $position);
+                        $this->infos[] = $info;
+                    }
+
+                    break;
+
+                case('index.author'):
+
                     $position = $position + 1;
-                    $info = new MathInfo($this->xmlpath);
-                    $info->loadFromXml($i, $position);
-                    $this->infos[] = $info;
-                }
+                    $name = new Person($this->xmlpath);
+                    $name->loadFromXml($DomElement, $position);
+                    $this->names[] = $name;
 
-                break;
+                    $infos = $DomElement->getElementsByTagName('info');
 
-            case('index.glossary'):
-                $terms = $DomElement->getElementsByTagName('term');
-                $string = '';
+                    foreach ($infos as $i)
+                    {
+                        $position = $position + 1;
+                        $info = new MathInfo($this->xmlpath);
+                        $info->loadFromXml($i, $position);
+                        $this->infos[] = $info;
+                    }
 
-                foreach ($terms as $t)
-                {
-                    $term = $this->getContent($t);
-                    $string = $string . trim($term) . '/';
-                    $this->term = $string;
-                }
-
-                $infos = $DomElement->getElementsByTagName('info');
-
-                foreach ($infos as $i)
-                {
-                    $position = $position + 1;
-                    $info = new MathInfo($this->xmlpath);
-                    $info->loadFromXml($i, $position);
-                    $this->infos[] = $info;
-                }
-
-                break;
-
-            case('index.author'):
-
-                $position = $position + 1;
-                $name = new Person($this->xmlpath);
-                $name->loadFromXml($DomElement, $position);
-                $this->names[] = $name;
-
-                $infos = $DomElement->getElementsByTagName('info');
-
-                foreach ($infos as $i)
-                {
-                    $position = $position + 1;
-                    $info = new MathInfo($this->xmlpath);
-                    $info->loadFromXml($i, $position);
-                    $this->infos[] = $info;
-                }
-
-                break;
+                    break;
+            }
         }
     }
 

@@ -21,7 +21,7 @@
  */
 class Block extends Element
 {
-
+    public $caption;
     public $position;
     public $root;
     public $title;
