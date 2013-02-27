@@ -312,7 +312,8 @@ function initEditor(elId)
             theme_advanced_buttons2:"bold,italic,underline,strikethrough,sub,sup,|,justifyleft,justifycenter,justifyright,|,cleanup,removeformat,pastetext,pasteword,|,forecolor,backcolor,|,ltr,rtl",
             theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,subordinate,|,image,moodlemedia,dragmath,nonbreaking,charmap,table,|,code,spellchecker",
             moodle_init_plugins:"dragmath:loader.php/dragmath/-1/editor_plugin.js,moodlenolink:loader.php/moodlenolink/-1/editor_plugin.js,spellchecker:loader.php/spellchecker/-1/editor_plugin.js,moodleimage:loader.php/moodleimage/-1/editor_plugin.js,moodlemedia:loader.php/moodlemedia/-1/editor_plugin.js",
-            file_browser_callback:"M.editor_tinymce.filepicker"
+            file_browser_callback:"M.editor_tinymce.filepicker",
+            moodle_plugin_base: M.cfg.wwwroot+"/lib/editor/plugins/"
         })
         
         M.editor_tinymce.init_filepicker(Y, elId, tinymce_filepicker_options);

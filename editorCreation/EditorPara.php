@@ -121,21 +121,21 @@ class EditorPara extends EditorElement
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
-        foreach ($childRecords as $child)
-        {
-            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
-
-            if ($childTable->tablename == 'msm_subordinate')
-            {
-                $subordinate = new EditorSubordinate();
-                $subordinate->loadData($child->id);
-                $this->subordinates[] = $subordinate;
-            }
+//        foreach ($childRecords as $child)
+//        {
+//            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+//
+//            if ($childTable->tablename == 'msm_subordinate')
+//            {
+//                $subordinate = new EditorSubordinate();
+//                $subordinate->loadData($child->id);
+//                $this->subordinates[] = $subordinate;
+//            }
 //            else
 //            {
 //                echo "another child of para? " . $childTable->tablename;
 //            }
-        }
+//        }
 
         return $this;
     }
