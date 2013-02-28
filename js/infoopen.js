@@ -29,7 +29,6 @@ function infoopen(i) {
     
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse
-    
     $('#defminibutton-'+i).unbind('click'); 
     $('#defminibutton-'+i).click(
         function() {
@@ -51,7 +50,8 @@ function infoopen(i) {
         $('#defminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.clientX+5, e.clientY+5]
-            });            
+            });     
+            console.log($("#dialog-"+i));
             $('#dialog-'+i).dialog('open');
         });
          

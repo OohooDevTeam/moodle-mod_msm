@@ -119,7 +119,6 @@ function submitForm()
             {        
                 if(typeof mode !== 'undefined')
                 {
-                    console.log("not undefined mode");
                     $(".leftbox").append(ids); 
                        
                     var wWidth = $(window).width();
@@ -140,15 +139,9 @@ function submitForm()
                         }
                     });    
                     
-//                     $(".dialogs").dialog({
-//                                autoOpen: false,
-//                                height: "auto",
-//                                width: 605
-//                            });  
                 }
                 else if(typeof mode === 'undefined')
                 {
-                    console.log("undefined mode");
                     // replace save and reset button to edit and new buttons, respectively
                     $("#msm_editor_save").remove();
                     $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
