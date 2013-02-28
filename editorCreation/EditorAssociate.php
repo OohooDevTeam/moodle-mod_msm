@@ -205,6 +205,101 @@ class EditorAssociate extends EditorElement
         
         return $this;       
     }
+    
+    public function displayPreview($prevClass='', $id='')
+    {
+        $previewHtml = '';
+        if ($prevClass == 'def')
+        {
+          
+                if (!empty($this->infos[0]->ref))
+                {
+                    $previewHtml .= "<li class='defminibutton' id='defminibutton-$id' onmouseover='infoopen($id)'>";
+                    $previewHtml .= "<span style='cursor:pointer'>";
+                    $previewHtml .= $this->type;
+                    $previewHtml .= "</span>";
+                    $previewHtml .= "</li>";
+                    $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
+//                    foreach ($this->childs as $child)
+//                    {
+                        $previewHtml .= $this->infos[0]->ref->displayPreview($id);
+//                    }
+                    $previewHtml .= "</div>";
+                }
+                else
+                {
+                    $content .= "<li class='defminibutton' id='defminibutton-" . $id . "' onmouseover='popup(" . $id . ")'>";
+                    $content .= "<span style='cursor:pointer'>";
+                    $content .= $this->type;
+                    $content .= "</span>";
+                    $content .= "</li>";
+                }
+
+                $previewHtml .= $this->infos[0]->displayPreview($id);
+        }
+
+        if ($prevClass == 'theorem')
+        {
+                if (!empty($this->infos[0]->ref))
+                {
+//                    $previewHtml .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                    $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='infoopen($id)'>";
+                    $previewHtml .= "<span style='cursor:pointer'>";
+                    $previewHtml .= $this->type;
+                    $previewHtml .= "</span>";
+                    $previewHtml .= "</li>";
+                    $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
+//                    foreach ($this->childs as $child)
+//                    {
+                        $previewHtml .= $this->infos[0]->ref->displayPreview($id);
+//                    }
+                    $previewHtml .= "</div>";
+                }
+                else
+                {
+                    $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='popup($id)'>";
+                    $previewHtml .= "<span style='cursor:pointer'>";
+                    $previewHtml .= $this->type;
+                    $previewHtml .= "</span>";
+                    $previewHtml .= "</li>";
+                }
+                
+                $previewHtml .= $this->infos[0]->displayPreview($id);
+
+            }
+        
+
+        if ($prevClass == 'comment')
+        {
+            if (!empty($this->infos[0]->ref))
+            {
+//                $previewHtml .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                $previewHtml .= "<li class='commentminibutton' id='commentminibutton-$id' onmouseover='infoopen($id)'>";
+                $previewHtml .= "<span style='cursor:pointer'>";
+                $previewHtml .= $this->type;
+                $previewHtml .= "</span>";
+                $previewHtml .= "</li>";
+                $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
+//                foreach ($this->childs as $child)
+//                {
+                    $previewHtml .= $this->infos[0]->ref->displayPreview($id);
+//                }
+                $previewHtml .= "</div>";
+            }
+            else
+            {
+                $previewHtml .= "<li class='commentminibutton' id='commentminibutton-$id' onmouseover='popup($id)'>";
+                $previewHtml .= "<span style='cursor:pointer'>";
+                $previewHtml .= $this->type;
+                $previewHtml .= "</span>";
+                $previewHtml .= "</li>";
+            }
+
+           $previewHtml .= $this->infos[0]->displayPreview($id);
+        }
+
+        return $previewHtml;
+    }
 
 }
 

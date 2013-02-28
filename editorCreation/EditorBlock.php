@@ -251,6 +251,27 @@ class EditorBlock extends EditorElement
 
         return $this;
     }
+    
+    public function displayPreview($id='')
+    {
+        $previewHtml = '';      
+
+        if (!empty($this->title))
+        {
+            // first title is same as intro title
+            if (!$flag)
+            {
+                $previewHtml .= "<h3>$this->title</h3>";
+            }
+        }
+
+        foreach ($this->content as $key=>$child)
+        {
+            $previewHtml .= $child->displayPreview($key);
+        }
+
+        return $previewHtml;
+    }
 
 }
 

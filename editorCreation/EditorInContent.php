@@ -125,6 +125,15 @@ class EditorInContent extends EditorElement
         
         return $this;
     }
+    
+    public function displayPreview()
+    {
+        $previewHtml = '';
+        
+        $previewHtml .= $this->content;
+        
+        return $previewHtml;
+    }
 
 }
 

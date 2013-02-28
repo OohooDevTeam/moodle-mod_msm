@@ -264,7 +264,7 @@ class EditorTheorem extends EditorElement
         {
             $htmlContent .= $content->displayData();
         }
-        
+
         $htmlContent .= "<input id='msm_theorem_child_button-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addTheoremContent(event, $this->compid)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_theorem_description_label-$this->compid' class='msm_child_description_labels' for='msm_theorem_description_label-$this->compid'>Description: </label>";
@@ -380,6 +380,46 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "</div>";
 
         return $htmlContent;
+    }
+
+    public function displayPreview()
+    {
+        $previewHtml = '';
+
+        $previewHtml .= "<br />";
+        $previewHtml .= "<div class='theorem'>";
+        if (!empty($this->title))
+        {
+            $previewHtml .= "<span class='theoremtitle'>" . $this->title . "</span>";
+        }
+
+        if (!empty($this->type))
+        {
+            $previewHtml .= "<span class='theoremtype'>" . $this->type . "</span>";
+        }
+        $previewHtml .= "<br/>";
+
+        $previewHtml .= "<div class='mathcontent'>";
+        foreach ($this->contents as $statementTheorem)
+        {
+            $previewHtml .= $statementTheorem->displayPreview($id);
+        }
+        $previewHtml .= "</div>";
+
+        $previewHtml .= "<br />";
+
+        $previewHtml .= "<ul class='minibuttons'>";
+        foreach ($this->children as $key => $associate)
+        {
+            $previewHtml .= $associate->displayPreview("theorem", $id ."-". $key);
+        }
+        $previewHtml .= "</ul>";
+
+
+        $previewHtml .= "</div>";
+        $previewHtml .= "<br />";
+
+        return $previewHtml;
     }
 
 }

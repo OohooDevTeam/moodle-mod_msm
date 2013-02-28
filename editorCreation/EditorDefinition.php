@@ -39,18 +39,18 @@ class EditorDefinition extends EditorElement
         if (sizeof($idInfo) > 1)
         {
             $match = "/^msm_defref_content_input-$idInfo[0].*$/";
-            
+
             $newId = '';
-            foreach($_POST as $id=>$value)
+            foreach ($_POST as $id => $value)
             {
-                if(preg_match($match, $id))
+                if (preg_match($match, $id))
                 {
-                    $tempidInfo = explode("-", $id);                    
-                    for($i=1; $i<sizeof($tempidInfo)-1; $i++)
+                    $tempidInfo = explode("-", $id);
+                    for ($i = 1; $i < sizeof($tempidInfo) - 1; $i++)
                     {
                         $newId .= $tempidInfo[$i] . "-";
                     }
-                    $newId .= $tempidInfo[sizeof($tempidInfo)-1];
+                    $newId .= $tempidInfo[sizeof($tempidInfo) - 1];
                     break;
                 }
             }
@@ -276,12 +276,12 @@ class EditorDefinition extends EditorElement
     function displayRefData()
     {
         global $DB;
-        
-        $currentRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
-        
-        $parentRecord = $DB->get_record("msm_compositor", array("id"=>$currentRecord->parent_id)); // associate record
+
+        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
+
+        $parentRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id)); // associate record
         // $parentRecord->parent_id == parent def/comment/theorem where associate is a child of
-        
+
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_defref-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='copied_msm_structural_element'>";
@@ -343,19 +343,60 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<span class='msm_element_title'>";
         $htmlContent .= "<b style='margin-left: 30%;'> DEFINITION </b>";
         $htmlContent .= "</span>";
-        
+
         $htmlContent .= "<input id='msm_defref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled' value='$this->title'/>";
-        
+
         $htmlContent .= "<div id='msm_defref_content_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<label id='msm_defref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_labels' for='msm_defref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_defref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_defref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid'/>";
-        
+
         $htmlContent .= "</div>";
 
         return $htmlContent;
+    }
+
+    public function displayPreview($id='')
+    {
+        $previewHtml = '';
+
+        $previewHtml .= "<br />";
+        $previewHtml .= "<div class='def'>";
+        if (!empty($this->title))
+        {
+            $previewHtml .= "<span class='deftitle'>" . $this->title . "</span>";
+        }
+
+        if (!empty($this->type))
+        {
+            $previewHtml .= "<span class='deftype'>" . $this->type . "</span>";
+        }
+        $previewHtml .= "<br/>";
+
+
+        $previewHtml .= "<div class='mathcontent'>";
+        $previewHtml .= $this->content;
+        $previewHtml .= "<br />";
+        $previewHtml .= "</div>";
+
+        $previewHtml .= "<br />";
+
+        if (!empty($this->children))
+        {
+            $previewHtml .= "<ul class='defminibuttons'>";
+            foreach ($this->children as $key => $associate)
+            {
+                $previewHtml .= $associate->displayPreview("def", $id ."-". $key);
+            }
+            $previewHtml .= "</ul>";
+        }
+        
+        $previewHtml .= "</div>";
+        $previewHtml .= "<br />";
+
+        return $previewHtml;
     }
 
 }

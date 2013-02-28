@@ -67,10 +67,14 @@ function submitForm()
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 
-    
-    //    console.log(formData);
-    //    alert("formData");
     //    
+    var mode = $("#msm_mode_info").val();
+    //    
+    //    console.log(mode);
+    //    console.log(formData);
+    
+    //        if(mode == '')
+    //        {
     $.ajax({
         type: "POST",
         url: targetURL,
@@ -112,47 +116,98 @@ function submitForm()
                 });  
             }
             else
-            {                
-                // replace save and reset button to edit and new buttons, respectively
-                $("#msm_editor_save").remove();
-                $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
+            {        
+                if(typeof mode !== 'undefined')
+                {
+                    console.log("not undefined mode");
+                    $(".leftbox").append(ids); 
+                       
+                    var wWidth = $(window).width();
+                    var wHeight = $(window).height();
+                
+                    var dWidth = wWidth*0.8;
+                    var dHeight = wHeight*0.8;
+                    $( "#msm_preview_dialog" ).dialog({
+                        resizable: false,
+                        modal: true,
+                        height: dHeight,
+                        width: dWidth,
+                        open: function() {
+                            $('#MySplitter').split({
+                                orientation: 'vertical',
+                                position: '50%'
+                            });//                           
+                        }
+                    });    
                     
-                $("#msm_editor_cancel").remove();
-                $("#msm_editor_reset").remove();
-                $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New </button>").appendTo("#msm_editor_middle");
+//                     $(".dialogs").dialog({
+//                                autoOpen: false,
+//                                height: "auto",
+//                                width: 605
+//                            });  
+                }
+                else if(typeof mode === 'undefined')
+                {
+                    console.log("undefined mode");
+                    // replace save and reset button to edit and new buttons, respectively
+                    $("#msm_editor_save").remove();
+                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
                     
-                // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
-                // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
-                // to display the html format properly.  Therefore div was created to replace it.
-                removeTinymceEditor();
+                    $("#msm_editor_cancel").remove();
+                    $("#msm_editor_reset").remove();
+                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New </button>").appendTo("#msm_editor_middle");
+                    
+                    // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
+                    // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
+                    // to display the html format properly.  Therefore div was created to replace it.
+                    removeTinymceEditor();
                                         
-                // disabling all input/selection areas in editor and also disabling all jquery actions such as 
-                // sortable, draggable and droppable
-                disableEditorFunction();      
+                    // disabling all input/selection areas in editor and also disabling all jquery actions such as 
+                    // sortable, draggable and droppable
+                    disableEditorFunction();      
                     
-                $(".msm_subordinate_hotwords").each(function(i, element) {
-                    var idInfo = this.id.split("-");                        
-                    var newid = '';
+                    $(".msm_subordinate_hotwords").each(function(i, element) {
+                        var idInfo = this.id.split("-");                        
+                        var newid = '';
                         
-                    for(var i=1; i < idInfo.length-1; i++)
-                    {
-                        newid += idInfo[i]+"-";
-                    }
+                        for(var i=1; i < idInfo.length-1; i++)
+                        {
+                            newid += idInfo[i]+"-";
+                        }
                             
-                    newid += idInfo[idInfo.length-1];
+                        newid += idInfo[idInfo.length-1];
                         
-                    $(this).on('mouseover', function(){
-                        previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
+                        $(this).on('mouseover', function(){
+                            previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
+                        });
                     });
-                });
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
-                insertUnitStructure(ids);
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
+                    insertUnitStructure(ids);
+                }
+                   
             }
         },
         error: function() {
             alert("error in ajax at saveMethod.js");
         }
     });
+//    }
+//    else
+//    {
+//        $.ajax({
+//            type: "POST",
+//            url: targetURL,
+//            data: formData,
+//            success: function(data) { 
+//                
+//            },
+//            error: function() {
+//                alert("error in ajax at saveMethod.js");
+//            }
+//        });
+//    }
+    
+   
 }
 
 function prepareSubordinate(id)

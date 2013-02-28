@@ -328,7 +328,30 @@ function showUnitPreview()
 {
     makePreviewDialog();
     
-    // get unit info and append it to jshowoff box in function below
+    var indicatorField = document.createElement("input");
+    indicatorField.id = "msm_mode_info";
+    indicatorField.name = "msm_mode_info";
+    indicatorField.style = {
+        "visibility": "hidden", 
+        "display":"none"
+    };
+    indicatorField.value = "preview";    
+    
+    $("#msm_unit_form").append(indicatorField);
+    
+    var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
+    
+    if(editorDivs.length > 0)  // editor is in display mode
+    {
+            // parse HTML to get needed contents... but still need to put in ajax to can use PHP class functions
+    }
+    else // editor is in edit mode
+    {
+        $("#msm_unit_form").trigger("submit");
+    }
+    
+//    $("#msm_unit_form").trigger("submit");
+// get unit info and append it to jshowoff box in function below
 }
 
 function makePreviewDialog()
@@ -345,12 +368,12 @@ function makePreviewDialog()
         var leftCol = $("<div id='leftcol'></div>");
         var leftBox = $("<div class='leftbox'></div>");
     
-        var jshowoffBox = $("<div id='features'></div>");
+//        var jshowoffBox = $("<div id='features'></div>");
     
         var rightCol = $("<div id='rightcol'></div>");
         var rightBox = $("<div class='rightbox'></div>");
     
-        $(leftBox).append(jshowoffBox);
+//        $(leftBox).append(jshowoffBox);
         $(leftCol).append(leftBox);
         $(rightCol).append(rightBox);
     
@@ -359,25 +382,7 @@ function makePreviewDialog()
     
         $(dialogBox).append(splitterBox);
     
-        $(dialogBox).insertAfter($("#msm_nav_preview"));     
-        var wWidth = $(window).width();
-        var wHeight = $(window).height();
-                
-        var dWidth = wWidth*0.8;
-        var dHeight = wHeight*0.8;
-        $( "#msm_preview_dialog" ).dialog({
-            resizable: false,
-            modal: true,
-            height: dHeight,
-            width: dWidth,
-            open: function() {
-                $('#MySplitter').split({
-                    orientation: 'vertical',
-                    position: '50%'
-                });
-            }
-        });        
-          
+        $(dialogBox).insertAfter($("#msm_nav_preview"));         
         
     }
     else

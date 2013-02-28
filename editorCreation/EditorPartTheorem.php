@@ -160,6 +160,22 @@ class EditorPartTheorem extends EditorElement
 
         return $htmlContent;
     }
+    
+    public function displayPreview()
+    {
+        $previewHtml = '';
+        
+         $content .= "<li>";
+        if (!empty($this->caption))
+        {
+            $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
+        }
+        $content .= $this->content;
+        $content .= "</li>";
+        $content .= "<br />";
+        
+        return $previewHtml;
+    }
 
 }
 

@@ -77,41 +77,48 @@ class EditorSubordinate extends EditorElement
 
     public function displayData()
     {
-        $htmlContent = ''; 
-        
+        $htmlContent = '';
+
         $htmlContent .= $this->info->displayData();
-        
+
         return $htmlContent;
     }
 
     public function loadData($compid)
     {
         global $DB;
-        
-        $subordinateCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
-        
+
+        $subordinateCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
         $this->compid = $compid;
         $this->id = $subordinateCompRecord->unit_id;
-        
-        $subordinateRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
-        
+
+        $subordinateRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
         $this->hot = $subordinateRecord->hot;
-        
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
-        
-        foreach($childElements as $child)
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
         {
-            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
-            
-            if($childTable->tablename == 'msm_info')
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            if ($childTable->tablename == 'msm_info')
             {
                 $info = new EditorInfo();
                 $info->loadData($child->id);
                 $this->info = $info;
             }
         }
-        
+
         return $this;
+    }
+
+    public function displayPreview()
+    {
+        $previewHtml = '';
+
+        return $previewHtml;
     }
 
 }

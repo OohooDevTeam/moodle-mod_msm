@@ -73,6 +73,17 @@ class EditorTable extends EditorElement
         return $this;
     }
     
+    public function displayPreview()
+    {
+        $previewHtml = '';
+        
+        $previewHtml .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "' style='width:100% !important;'>";
+        $previewHtml .= $this->content;
+        $previewHtml.= "</table>";
+        
+        return $previewHtml;
+    }
+    
     
 }
 

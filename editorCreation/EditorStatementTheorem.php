@@ -233,6 +233,22 @@ class EditorStatementTheorem extends EditorElement
 
         return $htmlContent;
     }
+    
+    public function displayPreview($id)
+    {
+        $previewHtml = '';
+        
+        $previewHtml .= $this->content;
+
+        $previewHtml .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
+        foreach ($this->children as $childComponent)
+        {
+            $previewHtml .= $childComponent->displayhtml($id);
+        }
+        $previewHtml .= "</ol>";
+        
+        return $previewHtml;
+    }
 
 }
 

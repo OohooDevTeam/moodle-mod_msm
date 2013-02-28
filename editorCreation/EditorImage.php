@@ -50,6 +50,13 @@ class EditorImage extends EditorElement
         
     }
     
+    public function displayPreview()
+    {
+        $previewHtml = '';
+        
+        return $previewHtml;
+    }
+    
     
 }
 

@@ -188,6 +188,24 @@ class EditorIntro extends EditorElement
         return $this;
     }
 
+    public function displayPreview($id = '')
+    {
+        $previewHtml = '';
+
+
+        if (!empty($this->title))
+        {
+            $content .= "<h3>$this->title</h3>";
+        }
+
+        foreach ($this->blocks as $key => $block)
+        {
+            $content .= $block->displayhtml($id);
+        }
+
+        return $previewHtml;
+    }
+
 }
 
 ?>

@@ -31,6 +31,8 @@ class EditorUnit extends EditorElement
     {
         global $DB;
         $this->errorArray = array();
+        
+//        print_object($_POST);
 
         $this->title = $_POST['msm_unit_title'];
         $this->description = $_POST['msm_unit_description_input'];
@@ -288,6 +290,28 @@ class EditorUnit extends EditorElement
 
         $this->compid = $compid;
         $this->id = $oldCompRecord->unit_id;
+    }
+
+    public function displayPreview()
+    {
+        $previewHtml = '';
+
+        if (!empty($this->title))
+        {
+            $previewHtml .= "<div class='title'>";
+            $previewHtml .= $this->title;
+            $previewHtml .= "</div>";
+        }
+//
+//        foreach ($this->children as $key => $child)
+//        {
+//            echo "unit";
+//            print_object($child);
+//            print_object($key);
+//            $previewHtml .= $child->displayPreview($key);
+//        }
+
+        return $previewHtml;
     }
 
 }

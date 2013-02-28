@@ -286,6 +286,48 @@ class EditorComment extends EditorElement
         return $htmlContent;
     }
 
+    public function displayPreview($id = '')
+    {
+        $previewHtml = '';
+
+        $previewHtml .= "<br />";
+        $previewHtml .= "<div class='comment'>";
+        if (!empty($this->title))
+        {
+            $previewHtml .= "<span class='commenttitle'>" . $this->title . "</span>";
+        }
+
+        if (!empty($this->type))
+        {
+            $previewHtml .= "<span class='commenttype'>" . $this->type . "</span>";
+        }
+        $previewHtml .= "<br/>";
+
+        $previewHtml .= "<div class='mathcontent'>";
+        $previewHtml .= $this->content;
+        $previewHtml .= "<br />";
+        $previewHtml .= "</div>";
+
+        $previewHtml .= "<br />";
+
+        if (!empty($this->children))
+        {
+            $previewHtml .= "<ul class='commentminibuttons'>";
+            foreach ($this->children as $key => $associate)
+            {
+                $previewHtml .= $associate->displayPreview("comment", $id ."-". $key);
+            }
+            $previewHtml .= "</ul>";
+        }
+
+
+        $previewHtml .= "</div>";
+        $previewHtml .= "<br />";
+
+
+        return $previewHtml;
+    }
+
 }
 
 ?>

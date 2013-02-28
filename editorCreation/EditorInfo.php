@@ -70,7 +70,7 @@ class EditorInfo extends EditorElement
 //            // add reference processing stuff
 //        }
 //        else if (sizeof($subid) == 1)
-        if(sizeof($subid) == 1)
+        if (sizeof($subid) == 1)
         {
             $this->caption = $_POST['msm_info_title-' . $idNumber];
 
@@ -316,6 +316,17 @@ class EditorInfo extends EditorElement
         }
 
         return $this;
+    }
+
+    public function displayPreview($id = '')
+    {
+        $previewHtml = '';
+
+        $previewHtml .= "<div id='dialog-$id' class='dialogs' title=' . $this->caption . '>";
+        $previewHtml .= $this->content;
+        $previewHtml .= "</div>";
+
+        return $previewHtml;
     }
 
 }

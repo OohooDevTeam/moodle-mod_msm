@@ -110,6 +110,11 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
 
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'></script>";
+
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/subordinate/js/subordinate.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery.jstree.js'></script>";
@@ -399,7 +404,7 @@ $formContent .= '<script type="text/javascript">
                          $("#msm_editor_middleright").trigger("spliter.resize");
                 
                           swapButtons(event);
-                });  
+                });               
                 
                $(".msm_subordinate_info_dialogs").dialog({
                     autoOpen: false,

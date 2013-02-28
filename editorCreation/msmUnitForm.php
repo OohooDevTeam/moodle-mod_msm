@@ -28,6 +28,7 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
+//print_object($_POST);
 // to remove unit when triggered by Remove this Unit button
 if (!empty($_POST["removeUnit"]))
 {
@@ -35,15 +36,7 @@ if (!empty($_POST["removeUnit"]))
 
     $compid = $idInfo[0];
 
-//    echo "compid passed";
-//    print_object($compid);
-
-
     $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
-
-//    echo "currentUnitRecord?";
-//    print_object($currentUnitRecord);
-//    die;
 
     $msmId = $currentUnitRecord->msm_id;
 
@@ -248,68 +241,83 @@ if ($hasError)
 }
 else
 {
-    if (!empty($_POST['msm_currentUnit_id']))
+    if (empty($_POST["msm_mode_info"]))
     {
+        if (!empty($_POST['msm_currentUnit_id']))
+        {
 //        print_object($_POST);
 //        print_object($unitcontent);
 
-        $idInfo = explode("-", $_POST['msm_currentUnit_id']);
+            $idInfo = explode("-", $_POST['msm_currentUnit_id']);
 
-        $compid = $idInfo[0];
+            $compid = $idInfo[0];
 
-        $unit->updateDbRecord($compid);
+            $unit->updateDbRecord($compid);
 
-        $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+            $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
 
-        $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid));
+            $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid));
 
-        foreach ($oldUnitChildRecords as $oldchild)
-        {
-            $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
-
-            if ($oldchild->table_id != $unittableid)
+            foreach ($oldUnitChildRecords as $oldchild)
             {
-                deleteOldChildRecord($oldchild->id);
-            }
-            else
-            {
-                // update the parent id of the child so that it corresponts to parent id of the current unit element
-                $updateData = new stdClass();
-                $updateData->id = $oldchild->id;
-                $updateData->msm_id = $oldchild->msm_id;
-                $updateData->table_id = $oldchild->table_id;
-                $updateData->unit_id = $oldchild->unit_id;
-                $updateData->parent_id = $currentUnitRecord->parent_id;
-                $updateData->prev_sibling_id = $oldchild->prev_sibling_id;
+                $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
 
-                $DB->update_record("msm_compositor", $updateData);
+                if ($oldchild->table_id != $unittableid)
+                {
+                    deleteOldChildRecord($oldchild->id);
+                }
+                else
+                {
+                    // update the parent id of the child so that it corresponts to parent id of the current unit element
+                    $updateData = new stdClass();
+                    $updateData->id = $oldchild->id;
+                    $updateData->msm_id = $oldchild->msm_id;
+                    $updateData->table_id = $oldchild->table_id;
+                    $updateData->unit_id = $oldchild->unit_id;
+                    $updateData->parent_id = $currentUnitRecord->parent_id;
+                    $updateData->prev_sibling_id = $oldchild->prev_sibling_id;
+
+                    $DB->update_record("msm_compositor", $updateData);
+                }
             }
         }
-    }
-    else
-    {
-        $unit->insertData(0, 0, $msmId);
-    }
-    // need code fo insert unit information to unitdatabase before procesing the child so that
-    // the parentid exists when the child elements are being inserted to the db
+        else
+        {
+            $unit->insertData(0, 0, $msmId);
+        }
+        // need code fo insert unit information to unitdatabase before procesing the child so that
+        // the parentid exists when the child elements are being inserted to the db
 
-    $siblingCompid = 0;
+        $siblingCompid = 0;
 
-    foreach ($unitcontent as $element)
-    {
-        $element->insertData($unit->compid, $siblingCompid, $msmId);
-        $siblingCompid = $element->compid;
+        foreach ($unitcontent as $element)
+        {
+            $element->insertData($unit->compid, $siblingCompid, $msmId);
+            $siblingCompid = $element->compid;
+        }
+
+        // need both compid(in case the same unit was inserted multiple times in the composition) and the id of the unit
+
+        if (!empty($_POST['msm_currentUnit_id']))
+        {
+            echo json_encode($unit->compid . "-" . $unit->id . "|" . $_POST['msm_currentUnit_id']);
+        }
+        else
+        {
+            echo json_encode($unit->compid . "-" . $unit->id);
+        }
     }
-
-    // need both compid(in case the same unit was inserted multiple times in the composition) and the id of the unit
-
-    if (!empty($_POST['msm_currentUnit_id']))
+    else if (!empty($_POST['msm_mode_info']))
     {
-        echo json_encode($unit->compid . "-" . $unit->id . "|" . $_POST['msm_currentUnit_id']);
-    }
-    else
-    {
-        echo json_encode($unit->compid . "-" . $unit->id);
+        $previewHtml = '';
+
+        $previewHtml .= $unit->displayPreview();
+
+        foreach ($unitcontent as $key=>$unitchild)
+        {
+            $previewHtml .= $unitchild->displayPreview($key);
+        }
+        echo json_encode($previewHtml);
     }
 }
 
