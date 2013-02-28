@@ -324,4 +324,77 @@ function processChange(e)
 
 }
 
+function showUnitPreview()
+{
+    makePreviewDialog();
+    
+    // get unit info and append it to jshowoff box in function below
+}
+
+function makePreviewDialog()
+{
+    
+    var jsTree = document.getElementById("msm_unit_tree");
+    if(jsTree.hasChildNodes())
+    {
+        $("#msm_preview_dialog").empty().remove();
+    
+        var dialogBox = $("<div class='dialogs' id='msm_preview_dialog'></div>");
+    
+        var splitterBox = $("<div id='MySplitter'></div>");
+        var leftCol = $("<div id='leftcol'></div>");
+        var leftBox = $("<div class='leftbox'></div>");
+    
+        var jshowoffBox = $("<div id='features'></div>");
+    
+        var rightCol = $("<div id='rightcol'></div>");
+        var rightBox = $("<div class='rightbox'></div>");
+    
+        $(leftBox).append(jshowoffBox);
+        $(leftCol).append(leftBox);
+        $(rightCol).append(rightBox);
+    
+        $(splitterBox).append(leftCol);
+        $(splitterBox).append(rightCol);
+    
+        $(dialogBox).append(splitterBox);
+    
+        $(dialogBox).insertAfter($("#msm_nav_preview"));     
+        var wWidth = $(window).width();
+        var wHeight = $(window).height();
+                
+        var dWidth = wWidth*0.8;
+        var dHeight = wHeight*0.8;
+        $( "#msm_preview_dialog" ).dialog({
+            resizable: false,
+            modal: true,
+            height: dHeight,
+            width: dWidth,
+            open: function() {
+                $('#MySplitter').split({
+                    orientation: 'vertical',
+                    position: '50%'
+                });
+            }
+        });        
+          
+        
+    }
+    else
+    {
+        $("<div class='dialogs' id='msm_preview_nounit'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>There are no contents to preview.</div>").appendTo('#msm_editor_middle');
+        $( "#msm_preview_nounit" ).dialog({
+            resizable: false,
+            height:180,
+            modal: true,
+            buttons: {
+                "OK": function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
+    
+}
+
 

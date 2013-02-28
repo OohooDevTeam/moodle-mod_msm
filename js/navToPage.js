@@ -160,8 +160,6 @@ function navToPage(unitid)
             
                 // at selected index
                 newCurrentData= prevArray.pop();
-                
-                console.log(prevArray);
             
                 for(var i=0; i < prevArray.length-1; i++)
                 {

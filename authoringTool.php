@@ -78,9 +78,11 @@ $PAGE->set_context($context);
 echo $OUTPUT->header();
 
 echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
+echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jshowoff.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/superfish.css' media='screen'/> ";
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmDisplay.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/subordinate/css/subordinate.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
 
@@ -171,7 +173,7 @@ $msm_nav .= '<ul class="sf-menu">
                 </ul>
             </li>
             <li>
-                <a href="#c"> <span>View</span></a>                 
+                <a id="msm_nav_preview" onclick="showUnitPreview()"> <span>View</span></a>                 
             </li>
             <li>
                 <a href="#d"> <span>Sound</span></a>  
