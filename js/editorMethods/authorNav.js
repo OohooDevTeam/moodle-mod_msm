@@ -343,8 +343,74 @@ function showUnitPreview()
     var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
     
     if(editorDivs.length > 0)  // editor is in display mode
-    {
-            // parse HTML to get needed contents... but still need to put in ajax to can use PHP class functions
+    {  
+        var dataArray = {};    
+        dataArray["msm_child_order"] = $("#msm_child_order").val();
+        dataArray["msm_mode_info"] = "preview";
+        dataArray["msm_unit_title"] = $("#msm_unit_title").val();
+        dataArray["msm_unit_description"] = $("#msm_unit_description").val();
+    
+        $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });
+        $("#msm_child_appending_area").find(".msm_unit_child_title").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });
+    
+        $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+            dataArray[this.id] = $(this).html(); 
+        });
+    
+        $("#msm_child_appending_area").find(".msm_child_description_inputs").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });
+               
+        var ids = [];
+        $.ajax({
+            type: "POST",
+            url: "editorCreation/msmUnitForm.php",
+            data: $.param(dataArray),
+           
+            success: function(data) { 
+                // this section of the code is for detecting empty contents and it gives the user 
+                // a warning dialog box and highlights the contents that are empty
+                ids = JSON.parse(data);
+                        
+                $(".leftbox").append(ids); 
+                               
+                var wWidth = $(window).width();
+                var wHeight = $(window).height();
+                        
+                var dWidth = wWidth*0.8;
+                var dHeight = wHeight*0.8;
+                $( "#msm_preview_dialog" ).dialog({
+                    resizable: false,
+                    modal: true,
+                    height: dHeight,
+                    width: dWidth,
+                    open: function() {
+                        $('#MySplitter').split({
+                            orientation: 'vertical',
+                            position: '50%'
+                        });                           
+                    },
+                    close: function() {
+                        $("#msm_mode_info").empty().remove();
+                    }
+                }); 
+                            
+                $(".msm_info_dialogs").dialog({
+                    resizable: false,
+                    autoOpen: false,
+                    height: 'auto',
+                    modal: false
+                });
+            },
+            error: function () {
+                    
+            }
+        });
+    // parse HTML to get needed contents... but still need to put in ajax to can use PHP class functions
     }
     else // editor is in edit mode
     {
@@ -352,6 +418,14 @@ function showUnitPreview()
     }
     
 }
+
+function createDataString()
+{
+    
+    
+    return dataArray;
+}
+
 
 function makePreviewDialog()
 {
@@ -368,12 +442,12 @@ function makePreviewDialog()
         var leftCol = $("<div id='leftcol'></div>");
         var leftBox = $("<div class='leftbox'></div>");
     
-//        var jshowoffBox = $("<div id='features'></div>");
+        //        var jshowoffBox = $("<div id='features'></div>");
     
         var rightCol = $("<div id='rightcol'></div>");
         var rightBox = $("<div class='rightbox'></div>");
     
-//        $(leftBox).append(jshowoffBox);
+        //        $(leftBox).append(jshowoffBox);
         $(leftCol).append(leftBox);
         $(rightCol).append(rightBox);
     
