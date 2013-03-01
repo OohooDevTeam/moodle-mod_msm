@@ -195,12 +195,12 @@ class EditorIntro extends EditorElement
 
         if (!empty($this->title))
         {
-            $content .= "<h3>$this->title</h3>";
+            $previewHtml .= "<h3>$this->title</h3>";
         }
 
         foreach ($this->blocks as $key => $block)
         {
-            $content .= $block->displayhtml($id);
+            $previewHtml .= $block->displayPreview($id);
         }
 
         return $previewHtml;

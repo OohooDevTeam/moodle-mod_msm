@@ -214,7 +214,7 @@ class EditorStatementTheorem extends EditorElement
         $currentRefCompRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
         $htmlContent = '';
         
-        $htmlContent .= "<div id='msm_theoremref_statement_container-$this->compid' class='msm_theoremref_statement_containers'>";
+        $htmlContent .= "<div id='msm_theoremref_statement_container-$currentRefCompRecord->parent_id-$this->compid' class='msm_theoremref_statement_containers'>";
         $htmlContent .= "<div id='msm_theoremref_statement_title_container-$this->compid' class='msm_theoremref_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
@@ -243,7 +243,7 @@ class EditorStatementTheorem extends EditorElement
         $previewHtml .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->children as $childComponent)
         {
-            $previewHtml .= $childComponent->displayhtml($id);
+            $previewHtml .= $childComponent->displayPreview($id);
         }
         $previewHtml .= "</ol>";
         

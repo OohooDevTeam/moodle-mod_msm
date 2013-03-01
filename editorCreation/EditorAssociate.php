@@ -29,14 +29,14 @@ class EditorAssociate extends EditorElement
     {
 //        print_object($_POST);
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
-        
+
         $indexNumber = explode("-", $idNumber);
-        
+
 //        echo "indexNumber";
 //        print_object($indexNumber);
 
         $infomatch = "/^msm_info_content-$idNumber.*$/";
-        
+
 //        print_object($idNumber);
 
         $i = 0;
@@ -95,21 +95,21 @@ class EditorAssociate extends EditorElement
     public function displayData()
     {
         global $DB;
-        
-        $currentAssociateRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
-        
+
+        $currentAssociateRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
+
         $htmlContent = '';
-        
+
         $htmlContent .= "<div id='msm_associate_childs-$currentAssociateRecord->parent_id-$this->compid' class='msm_associate_childs'>";
         $htmlContent .= "<div id='msm_associate_info_header-$this->compid' class='msm_associate_info_headers'>";
         $htmlContent .= "<b> ASSOCIATED INFORMATION </b>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<div class='msm_associate_optionarea'>";
         $htmlContent .= "<span class='msm_associate_option_label'>Type of information: </span>";
         $htmlContent .= "<select id='msm_associate_dropdown-$currentAssociateRecord->parent_id-$this->compid' class='msm_associated_dropdown' name='msm_associate_dropdown-$currentAssociateRecord->parent_id-$this->compid' disabled='disabled'>";
-         switch ($this->type)
+        switch ($this->type)
         {
             case "Comment":
                 $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
@@ -162,128 +162,126 @@ class EditorAssociate extends EditorElement
         }
         $htmlContent .= "</select>";
         $htmlContent .= "</div>";
-        
-        foreach($this->infos as $info)
+
+        foreach ($this->infos as $info)
         {
             $htmlContent .= $info->displayData();
-        }      
-        
+        }
+
         $htmlContent .= "</div>";
-        
+
         return $htmlContent;
     }
 
     public function loadData($compid)
     {
         global $DB;
-        
-        $associateCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
-        
+
+        $associateCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
         $this->compid = $compid;
         $this->id = $associateCompRecord->unit_id;
-        
-        $associateRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
-        
+
+        $associateRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
         $this->type = $associateRecord->description;
-        
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
-                
-        foreach($childElements as $child)
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
         {
-            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
-            
-            switch($childTable->tablename)
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            switch ($childTable->tablename)
             {
                 case "msm_info":
                     $info = new EditorInfo();
                     $info->loadData($child->id);
                     $this->infos[] = $info;
                     break;
-               
             }
         }
-        
-        return $this;       
+
+        return $this;
     }
-    
-    public function displayPreview($prevClass='', $id='')
+
+    public function displayPreview($prevClass = '', $id = '')
     {
         $previewHtml = '';
         if ($prevClass == 'def')
         {
-          
-                if (!empty($this->infos[0]->ref))
-                {
-                    $previewHtml .= "<li class='defminibutton' id='defminibutton-$id' onmouseover='infoopen(\"$id\")'>";
-                    $previewHtml .= "<span style='cursor:pointer'>";
-                    $previewHtml .= $this->type;
-                    $previewHtml .= "</span>";
-                    $previewHtml .= "</li>";
-                    $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
-//                    foreach ($this->childs as $child)
-//                    {
-                        $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-//                    }
-                    $previewHtml .= "</div>";
-                }
-                else
-                {
-                    $content .= "<li class='defminibutton' id='defminibutton-" . $id . "' onmouseover='popup(\"$id\")'>";
-                    $content .= "<span style='cursor:pointer'>";
-                    $content .= $this->type;
-                    $content .= "</span>";
-                    $content .= "</li>";
-                }
 
-                $previewHtml .= $this->infos[0]->displayPreview($id);
+            if (!empty($this->infos[0]->ref))
+            {
+                $previewHtml .= "<li class='defminibutton' id='defminibutton-$id' onmouseover='infoopen(\"$id\")'>";
+                $previewHtml .= "<span style='cursor:pointer'>";
+                $previewHtml .= $this->type;
+                $previewHtml .= "</span>";
+                $previewHtml .= "</li>";
+                $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
+// foreach ($this->childs as $child)
+// {
+                $previewHtml .= $this->infos[0]->ref->displayPreview($id);
+// }
+                $previewHtml .= "</div>";
+            }
+            else
+            {
+                $previewHtml .= "<li class='defminibutton' id='defminibutton-" . $id . "' onmouseover='popup(\"$id\")'>";
+                $previewHtml .= "<span style='cursor:pointer'>";
+                $previewHtml .= $this->type;
+                $previewHtml .= "</span>";
+                $previewHtml .= "</li>";
+            }
+
+            $previewHtml .= $this->infos[0]->displayPreview($id);
         }
 
         if ($prevClass == 'theorem')
         {
-                if (!empty($this->infos[0]->ref))
-                {
-//                    $previewHtml .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
-                    $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='infoopen(\"$id\")'>";
-                    $previewHtml .= "<span style='cursor:pointer'>";
-                    $previewHtml .= $this->type;
-                    $previewHtml .= "</span>";
-                    $previewHtml .= "</li>";
-                    $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
-//                    foreach ($this->childs as $child)
-//                    {
-                        $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-//                    }
-                    $previewHtml .= "</div>";
-                }
-                else
-                {
-                    $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='popup(\"$id\")'>";
-                    $previewHtml .= "<span style='cursor:pointer'>";
-                    $previewHtml .= $this->type;
-                    $previewHtml .= "</span>";
-                    $previewHtml .= "</li>";
-                }
-                
-                $previewHtml .= $this->infos[0]->displayPreview($id);
-
+            if (!empty($this->infos[0]->ref))
+            {
+// $previewHtml .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='infoopen(\"$id\")'>";
+                $previewHtml .= "<span style='cursor:pointer'>";
+                $previewHtml .= $this->type;
+                $previewHtml .= "</span>";
+                $previewHtml .= "</li>";
+                $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
+// foreach ($this->childs as $child)
+// {
+                $previewHtml .= $this->infos[0]->ref->displayPreview($id);
+// }
+                $previewHtml .= "</div>";
             }
-        
+            else
+            {
+                $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='popup(\"$id\")'>";
+                $previewHtml .= "<span style='cursor:pointer'>";
+                $previewHtml .= $this->type;
+                $previewHtml .= "</span>";
+                $previewHtml .= "</li>";
+            }
+
+            $previewHtml .= $this->infos[0]->displayPreview($id);
+        }
+
 
         if ($prevClass == 'comment')
         {
             if (!empty($this->infos[0]->ref))
             {
-//                $previewHtml .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+// $previewHtml .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
                 $previewHtml .= "<li class='commentminibutton' id='commentminibutton-$id' onmouseover='infoopen(\"$id\")'>";
                 $previewHtml .= "<span style='cursor:pointer'>";
                 $previewHtml .= $this->type;
                 $previewHtml .= "</span>";
                 $previewHtml .= "</li>";
                 $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
-//                foreach ($this->childs as $child)
-//                {
-                    $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-//                }
+// foreach ($this->childs as $child)
+// {
+                $previewHtml .= $this->infos[0]->ref->displayPreview($id);
+// }
                 $previewHtml .= "</div>";
             }
             else
@@ -295,7 +293,7 @@ class EditorAssociate extends EditorElement
                 $previewHtml .= "</li>";
             }
 
-           $previewHtml .= $this->infos[0]->displayPreview($id);
+            $previewHtml .= $this->infos[0]->displayPreview($id);
         }
 
         return $previewHtml;

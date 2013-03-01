@@ -298,18 +298,12 @@ class EditorUnit extends EditorElement
 
         if (!empty($this->title))
         {
-            $previewHtml .= "<div class='title'>";
+            $previewHtml .= "<div class='title' style='text-align: center;'>";
+            $previewHtml .= "<h2>";
             $previewHtml .= $this->title;
+            $previewHtml .= "</h2>";
             $previewHtml .= "</div>";
         }
-//
-//        foreach ($this->children as $key => $child)
-//        {
-//            echo "unit";
-//            print_object($child);
-//            print_object($key);
-//            $previewHtml .= $child->displayPreview($key);
-//        }
 
         return $previewHtml;
     }

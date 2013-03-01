@@ -1137,8 +1137,6 @@ function createIntroText(child, unitArray, key)
 {
     var unitInfo = unitArray["children"][key];
     
-    console.log(unitInfo);
-    
      var introcontent = '';
                
     if(unitInfo["blocks"] == '')

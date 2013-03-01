@@ -331,13 +331,14 @@ function showUnitPreview()
     var indicatorField = document.createElement("input");
     indicatorField.id = "msm_mode_info";
     indicatorField.name = "msm_mode_info";
-    indicatorField.style = {
-        "visibility": "hidden", 
-        "display":"none"
-    };
     indicatorField.value = "preview";    
     
     $("#msm_unit_form").append(indicatorField);
+    
+    $("#msm_mode_info").css({
+        "visibility": "hidden", 
+        "display":"none"
+    });
     
     var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
     
@@ -350,15 +351,14 @@ function showUnitPreview()
         $("#msm_unit_form").trigger("submit");
     }
     
-//    $("#msm_unit_form").trigger("submit");
-// get unit info and append it to jshowoff box in function below
 }
 
 function makePreviewDialog()
 {
     
     var jsTree = document.getElementById("msm_unit_tree");
-    if(jsTree.hasChildNodes())
+    var middleEditor = document.getElementById("msm_editor_middle_droparea");
+    if((jsTree.hasChildNodes()) || (middleEditor.hasChildNodes()))
     {
         $("#msm_preview_dialog").empty().remove();
     
@@ -398,6 +398,8 @@ function makePreviewDialog()
                 }
             }
         });
+        
+        
     }
     
 }

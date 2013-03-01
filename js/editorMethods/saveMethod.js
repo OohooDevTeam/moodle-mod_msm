@@ -135,9 +135,19 @@ function submitForm()
                             $('#MySplitter').split({
                                 orientation: 'vertical',
                                 position: '50%'
-                            });//                           
+                            });                           
+                        },
+                        close: function() {
+                            $("#msm_mode_info").empty().remove();
                         }
-                    });    
+                    }); 
+                    
+                    $(".msm_info_dialogs").dialog({
+                        resizable: false,
+                        autoOpen: false,
+                        height: 'auto',
+                        modal: false
+                    });
                     
                 }
                 else if(typeof mode === 'undefined')

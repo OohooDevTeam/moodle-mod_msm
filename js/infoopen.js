@@ -43,20 +43,19 @@ function infoopen(i) {
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
-            
+             
         });
     
     $('#defminibutton-'+i).ready(function(e){
         $('#defminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.clientX+5, e.clientY+5]
-            });     
-            console.log($("#dialog-"+i));
-            $('#dialog-'+i).dialog('open');
+            });  
+            $('#dialog-'+i).dialog('open').css({"display":"block", "visibility":"visible"});
         });
          
         $('#defminibutton-'+i).mouseout(function(){
-            $('#dialog-'+i).dialog('close');
+            $('#dialog-'+i).dialog('close').css({"display":"none", "visibility":"hidden"});
         });   
     });
         

@@ -322,7 +322,7 @@ class EditorInfo extends EditorElement
     {
         $previewHtml = '';
 
-        $previewHtml .= "<div id='dialog-$id' class='dialogs' title=' . $this->caption . '>";
+        $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$this->caption'>";
         $previewHtml .= $this->content;
         $previewHtml .= "</div>";
 

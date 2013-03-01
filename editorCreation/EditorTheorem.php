@@ -43,16 +43,12 @@ class EditorTheorem extends EditorElement
         {
             $match = "/^msm_theoremref_type_dropdown-$idNumberInfo[0].*$/";
 
-//            echo "idNumberInfo: " . $idNumberInfo[0];
-//            print_object($_POST);
-
             $newId = '';
             $theoremId = '';
             foreach ($_POST as $id => $value)
             {
                 if (preg_match($match, $id))
                 {
-//                    print_object($id);
                     $tempidInfo = explode("-", $id);
                     for ($i = 1; $i < sizeof($tempidInfo) - 1; $i++)
                     {
@@ -63,14 +59,10 @@ class EditorTheorem extends EditorElement
                     break;
                 }
             }
-
-//            print_object($newId);
-
+            
             $this->type = $_POST['msm_theoremref_type_dropdown-' . $newId];
             $this->description = $_POST['msm_theoremref_description_input-' . $newId];
             $this->title = $_POST['msm_theoremref_title_input-' . $newId];
-
-//            $contentmatch = '/^msm_theoremref_content_input-.*/';
 
             if (empty($_POST["msm_currentUnit_id"]))
             {
@@ -382,7 +374,7 @@ class EditorTheorem extends EditorElement
         return $htmlContent;
     }
 
-    public function displayPreview()
+    public function displayPreview($id='')
     {
         $previewHtml = '';
 

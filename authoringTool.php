@@ -346,55 +346,56 @@ $formContent .= '</div>
         <button id="msm_comp_fullscreen"> Full Screen </button>';
 
 //Replace this with your current context
-            //You can replace this with the default > $CFG->maxbytes
-            $options['maxbytes'] = $CFG->maxbytes;
+//You can replace this with the default > $CFG->maxbytes
+$options['maxbytes'] = $CFG->maxbytes;
 
-            $draftitemid = file_get_unused_draft_itemid();
+$draftitemid = file_get_unused_draft_itemid();
 
-            //The options
-            $fpoptions = array();
+//The options
+$fpoptions = array();
 
-            $args = new stdClass();
-            // need these three to filter repositories list
-            $args->accepted_types = array('web_image');
-            $args->return_types = (FILE_INTERNAL | FILE_EXTERNAL);
-            $args->context = $context;
-            $args->env = 'filepicker';
+$args = new stdClass();
+// need these three to filter repositories list
+$args->accepted_types = array('web_image');
+$args->return_types = (FILE_INTERNAL | FILE_EXTERNAL);
+$args->context = $context;
+$args->env = 'filepicker';
 
-            // advimage plugin
-            $image_options = initialise_filepicker($args);
-            $image_options->context = $context;
-            $image_options->client_id = uniqid();
-            $image_options->maxbytes = $options['maxbytes'];
-            $image_options->env = 'editor';
-            $image_options->itemid = $draftitemid;
+// advimage plugin
+$image_options = initialise_filepicker($args);
+$image_options->context = $context;
+$image_options->client_id = uniqid();
+$image_options->maxbytes = $options['maxbytes'];
+$image_options->env = 'editor';
+$image_options->itemid = $draftitemid;
 
-            // moodlemedia plugin
-            $args->accepted_types = array('video', 'audio');
-            $media_options = initialise_filepicker($args);
-            $media_options->context = $context;
-            $media_options->client_id = uniqid();
-            $media_options->maxbytes  = $options['maxbytes'];
-            $media_options->env = 'editor';
-            $media_options->itemid = $draftitemid;
+// moodlemedia plugin
+$args->accepted_types = array('video', 'audio');
+$media_options = initialise_filepicker($args);
+$media_options->context = $context;
+$media_options->client_id = uniqid();
+$media_options->maxbytes = $options['maxbytes'];
+$media_options->env = 'editor';
+$media_options->itemid = $draftitemid;
 
-            // advlink plugin
-            $args->accepted_types = '*';
-            $link_options = initialise_filepicker($args);
-            $link_options->context = $context;
-            $link_options->client_id = uniqid();
-            $link_options->maxbytes  = $options['maxbytes'];
-            $link_options->env = 'editor';
-            $link_options->itemid = $draftitemid;
+// advlink plugin
+$args->accepted_types = '*';
+$link_options = initialise_filepicker($args);
+$link_options->context = $context;
+$link_options->client_id = uniqid();
+$link_options->maxbytes = $options['maxbytes'];
+$link_options->env = 'editor';
+$link_options->itemid = $draftitemid;
 
-            $fpoptions['image'] = $image_options;
-            $fpoptions['media'] = $media_options;
-            $fpoptions['link'] = $link_options;
+$fpoptions['image'] = $image_options;
+$fpoptions['media'] = $media_options;
+$fpoptions['link'] = $link_options;
 
 
 $formContent .= '<script type="text/javascript"> 
-            var tinymce_filepicker_options = '.json_encode($fpoptions).'
+            var tinymce_filepicker_options = ' . json_encode($fpoptions) . '
             $(document).ready(function() {  
+                
                 $("#msm_comp_fullscreen").click(function(event) {
                          $("#page-header").css("display", "none");
                          $(".block").addClass("dock_on_load");
@@ -569,10 +570,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                        
+                                                                
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                
+                                                                        
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });
