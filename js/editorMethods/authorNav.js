@@ -348,7 +348,7 @@ function showUnitPreview()
         dataArray["msm_child_order"] = $("#msm_child_order").val();
         dataArray["msm_mode_info"] = "preview";
         dataArray["msm_unit_title"] = $("#msm_unit_title").val();
-        dataArray["msm_unit_description"] = $("#msm_unit_description").val();
+        dataArray["msm_unit_description_input"] = $("#msm_unit_description_input").val();
     
         $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
             dataArray[this.id] = $(this).val(); 
@@ -364,6 +364,23 @@ function showUnitPreview()
         $("#msm_child_appending_area").find(".msm_child_description_inputs").each(function() {
             dataArray[this.id] = $(this).val(); 
         });
+        
+        $("#msm_child_appending_area").find(".msm_theorem_part_title").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });   
+        
+        $("#msm_child_appending_area").find(".msm_associated_dropdown").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        }); 
+        
+         $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        }); 
+        
+        $("#msm_child_appending_area").find(".msm_theoremref_part_title").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });   
+        
                
         var ids = [];
         $.ajax({
