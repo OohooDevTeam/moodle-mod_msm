@@ -190,9 +190,11 @@ function newUnit()
         stop: function(event, ui)
         {
             $(this).find('.msm_unit_child_content').each(function() {
-                initEditor(this.id);
-                //                tinyMCE.execCommand("mceAddControl", false, $(this).attr("id")); 
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
         }
     });                    
@@ -423,6 +425,7 @@ function enableEditorFunction()
             $(this).find('.msm_intro_child_contents').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id")) != null)
                 {
+                    console.log("enableEditorFunction remove editor: "+this.id);
                     tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
                     tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                 } 
@@ -524,20 +527,29 @@ function enableEditorFunction()
             
                 // if there are children in intro element, need to refresh the ifram of its editors
                 $(this).find('.msm_info_titles').each(function() {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
+                    if(tinymce.getInstanceById($(this).attr("id"))==null)
+                    {
+                        initEditor(this.id);                    
+                        $(this).sortable("refresh");
+                    }
                 });
                 $(this).find('.msm_info_contents').each(function() {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
+                    if(tinymce.getInstanceById($(this).attr("id"))==null)
+                    {
+                        initEditor(this.id);                    
+                        $(this).sortable("refresh");
+                    }
                 });
             
                 $(this).find('.msm_associate_reftype_optionarea').each(function() {
                     $(this).find('.copied_msm_structural_element').each(function() {
                         $(this).find('.msm_unit_child_content').each(function()
                         {
-                            initEditor(this.id);                    
-                            $(this).sortable("refresh");
+                            if(tinymce.getInstanceById($(this).attr("id"))==null)
+                            {
+                                initEditor(this.id);                    
+                                $(this).sortable("refresh");
+                            }
                         });
                     });
                 });
@@ -575,8 +587,11 @@ function enableEditorFunction()
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
         }
     });
@@ -656,8 +671,11 @@ function enableEditorFunction()
             
                 // if there are children in intro element, need to refresh the ifram of its editors
                 $(this).find('.msm_theorem_content').each(function() {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
+                    if(tinymce.getInstanceById($(this).attr("id"))==null)
+                    {
+                        initEditor(this.id);                    
+                        $(this).sortable("refresh");
+                    }
                 });
             }
         });
@@ -1137,14 +1155,14 @@ function createIntroText(child, unitArray, key)
 {
     var unitInfo = unitArray["children"][key];
     
-     var introcontent = '';
+    var introcontent = '';
                
     if(unitInfo["blocks"] == '')
     {
-         for(var index=0; index < unitInfo["children"].length; index++)
-             {
-                 introcontent += unitInfo["children"][index]["content"];
-             }
+        for(var index=0; index < unitInfo["children"].length; index++)
+        {
+            introcontent += unitInfo["children"][index]["content"];
+        }
     }
     else
     {       
@@ -1154,46 +1172,46 @@ function createIntroText(child, unitArray, key)
         }
     }
     
-        var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
     
-        var introInfo = currentId.split("-");
+    var introInfo = currentId.split("-");
                 
-        var introTextArea = document.createElement("textarea");
-        introTextArea.id = "msm_intro_content_input-"+introInfo[1];
-        introTextArea.name = "msm_intro_content_input-"+introInfo[1];
-        introTextArea.className = "msm_unit_child_content";
+    var introTextArea = document.createElement("textarea");
+    introTextArea.id = "msm_intro_content_input-"+introInfo[1];
+    introTextArea.name = "msm_intro_content_input-"+introInfo[1];
+    introTextArea.className = "msm_unit_child_content";
             
-        $(introTextArea).val(introcontent);   
+    $(introTextArea).val(introcontent);   
     
-        $("#"+currentId).replaceWith(introTextArea);    
+    $("#"+currentId).replaceWith(introTextArea);    
         
-        initEditor(introTextArea.id);     
+    initEditor(introTextArea.id);     
                
-        // intro has children
-        for(var j = 1; j < unitInfo["blocks"].length; j++)
-        {
-            var introchildcontent = '';
+    // intro has children
+    for(var j = 1; j < unitInfo["blocks"].length; j++)
+    {
+        var introchildcontent = '';
 
-            for(var k=0; k < unitInfo["blocks"][j]["content"].length; k++)
-            {
-                introchildcontent += unitInfo["blocks"][j]["content"][k]["content"];
-            }        
+        for(var k=0; k < unitInfo["blocks"][j]["content"].length; k++)
+        {
+            introchildcontent += unitInfo["blocks"][j]["content"][k]["content"];
+        }        
         
-            var childArray = $("#msm_intro_child_container").children(".msm_intro_child");
+        var childArray = $("#msm_intro_child_container").children(".msm_intro_child");
         
-            var childidInfo = childArray[j-1].id.split("-"); 
+        var childidInfo = childArray[j-1].id.split("-"); 
                 
-            var introChildTextArea = document.createElement("textarea");
-            introChildTextArea.id = "msm_intro_child_content-"+childidInfo[1];
-            introChildTextArea.name = "msm_intro_child_content-"+childidInfo[1];
-            introChildTextArea.className = "msm_intro_child_contents";                
+        var introChildTextArea = document.createElement("textarea");
+        introChildTextArea.id = "msm_intro_child_content-"+childidInfo[1];
+        introChildTextArea.name = "msm_intro_child_content-"+childidInfo[1];
+        introChildTextArea.className = "msm_intro_child_contents";                
           
-            $(introChildTextArea).val(introchildcontent);
+        $(introChildTextArea).val(introchildcontent);
         
-            $("#msm_intro_child_content-"+childidInfo[1]).replaceWith(introChildTextArea); 
+        $("#msm_intro_child_content-"+childidInfo[1]).replaceWith(introChildTextArea); 
         
-            initEditor(introChildTextArea.id);  
-        }                   
+        initEditor(introChildTextArea.id);  
+    }                   
     
     enableEditorFunction();
 }

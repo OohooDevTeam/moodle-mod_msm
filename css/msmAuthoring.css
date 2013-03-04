@@ -411,7 +411,7 @@ return auto from getComputedStyle javascript function*/
     margin-left: 2%;
     margin-right: 2%;
 }
-#msm_trash_droparea
+/*#msm_trash_droparea
 {
     position: relative;
     float: right;
@@ -422,12 +422,12 @@ return auto from getComputedStyle javascript function*/
     display: none;
     background-color: red;
     opacity: 0.5;
-}
-
+}*/
+/*
 #msm_trash_icon
 {
     margin-left: 43%;
-}
+}*/
 
 .msm_editor_content
 {
@@ -605,10 +605,7 @@ table.mceLayout
 .msm_associate_info_headers
 {
     width: 100%;
-    /*margin-bottom: 2%;*/
     padding-bottom: 1%;
-    /*padding-top: 1%;*/
-    /*padding-left: 25%;*/
     text-align: center;
 }
 

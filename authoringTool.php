@@ -405,7 +405,12 @@ $formContent .= '<script type="text/javascript">
                          $("#msm_editor_middleright").trigger("spliter.resize");
                 
                           swapButtons(event);
-                });               
+                });   
+                
+                $(window).resize(function() {               
+                    $("#msm_editor_container").trigger("spliter.resize");
+                         $("#msm_editor_middleright").trigger("spliter.resize");
+                });
                 
                $(".msm_subordinate_info_dialogs").dialog({
                     autoOpen: false,
@@ -570,10 +575,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                
+                                                                    
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                        
+                                                                            
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

@@ -436,14 +436,6 @@ function showUnitPreview()
     
 }
 
-function createDataString()
-{
-    
-    
-    return dataArray;
-}
-
-
 function makePreviewDialog()
 {
     

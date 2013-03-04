@@ -508,6 +508,7 @@ function addIntroContent(idNumber)
         handle: ".msm_intro_child_dragareas",
         start: function(event,ui)
         {
+            console.log("start core");
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
             $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
@@ -517,6 +518,7 @@ function addIntroContent(idNumber)
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_intro_child_contents').each(function() {
+                 console.log("remove Editor: "+this.id);
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
@@ -527,8 +529,12 @@ function addIntroContent(idNumber)
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    console.log("init Editor: "+this.id);
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
         }
     });    
@@ -542,6 +548,8 @@ function addIntroContent(idNumber)
         });
     });
     $("#msm_intro_child_dragarea-"+newId).mouseout(function () {
+                console.log($(this).children("span"));
+
         $(this).children("span").css("visibility", "hidden");
     });
     $("#msm_intro_child_dragarea-"+newId).mouseup(function () {
@@ -725,8 +733,11 @@ function addTheoremPart(event, idNumber)
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
         }
     });    
@@ -846,6 +857,7 @@ function addAssociateForm(index, type)
         tinyMCE.execCommand('mceFocus', false, "msm_info_title-"+index+"-"+newId);          
         tinymce.execCommand('mceRemoveControl', true, "msm_info_title-"+index+"-"+newId);
     }
+    
     initEditor("msm_info_content-"+index+"-"+newId);   
     initEditor("msm_info_title-"+index+"-"+newId); 
        
@@ -891,20 +903,29 @@ function addAssociateForm(index, type)
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_info_titles').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
             $(this).find('.msm_info_contents').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
             
             $(this).find('.msm_associate_reftype_optionarea').each(function() {
                 $(this).find('.copied_msm_structural_element').each(function() {
                     $(this).find('.msm_unit_child_content').each(function()
                     {
-                        initEditor(this.id);                    
-                        $(this).sortable("refresh");
+                        if(tinymce.getInstanceById($(this).attr("id"))==null)
+                        {
+                            initEditor(this.id);                    
+                            $(this).sortable("refresh");
+                        }
                     });
                 });
             });
@@ -924,14 +945,14 @@ function addAssociateForm(index, type)
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseout(function () {
         $(this).children("span").css({
-            "visibility":"hidden", 
-            "display":"none"
+            "visibility":"hidden"
+//            "display":"none"
         });
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseup(function () {
         $(this).children("span").css({
-            "visibility":"hidden", 
-            "display":"none"
+            "visibility":"hidden" 
+//            "display":"none"
         });
     });           
      
@@ -1080,8 +1101,11 @@ function makeTheorem()
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_unit_child_content').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
         }
     });    
