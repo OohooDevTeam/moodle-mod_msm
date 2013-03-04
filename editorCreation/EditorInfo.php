@@ -78,10 +78,10 @@ class EditorInfo extends EditorElement
             {
                 $this->content = $_POST['msm_info_content-' . $idNumber];
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
-                    $this->subordinates[] = $subordinates;
-                }
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {
@@ -90,7 +90,7 @@ class EditorInfo extends EditorElement
 
             $refType = $_POST['msm_associate_reftype-' . $idNumber];
 
-            if (!empty($_POST['msm_currentUnit_id']))
+            if ((!empty($_POST['msm_currentUnit_id'])) ||(!empty($_POST["msm_mode_info"])))
             {
                 $indexNumber = explode("-", $idNumber);
 
@@ -100,17 +100,14 @@ class EditorInfo extends EditorElement
                     $newId .= $indexNumber[$i] . "-";
                 }
                 $newId .= $indexNumber[sizeof($indexNumber) - 2];
-
+                
                 $param = $newId . "|ref";
             }
             else
             {
                 $param = $idNumber . "|ref";
             }
-//
-//            echo "param";
-//            print_object($param);
-
+            
             switch ($refType)
             {
                 case "Definition":

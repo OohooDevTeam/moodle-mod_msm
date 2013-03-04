@@ -59,10 +59,10 @@ class EditorComment extends EditorElement
             {
                 $this->content = $_POST['msm_commentref_content_input-' . $newId];
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
-                    $this->subordinates[] = $subordinates;
-                }
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {
@@ -80,11 +80,11 @@ class EditorComment extends EditorElement
             if ($_POST['msm_comment_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_comment_content_input-' . $idNumber];
-
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
-                    $this->subordinates[] = $subordinates;
-                }
+//
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {

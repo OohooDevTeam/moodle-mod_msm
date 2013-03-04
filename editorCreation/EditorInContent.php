@@ -63,10 +63,10 @@ class EditorInContent extends EditorElement
 
         $this->content = $doc->saveHTML($listElement);
         
-        foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-        {
-            $this->subordinates[] = $subordinates;
-        }
+//        foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//        {
+//            $this->subordinates[] = $subordinates;
+//        }
 
         return $this;
     }

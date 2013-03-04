@@ -38,10 +38,10 @@ class EditorPartTheorem extends EditorElement
             {
                 $this->content = $_POST['msm_theoremref_part_content-' . $idParam[0]];
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
-                    $this->subordinates[] = $subordinates;
-                }
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {
@@ -57,10 +57,10 @@ class EditorPartTheorem extends EditorElement
             {
                 $this->content = $_POST['msm_theorem_part_content-' . $idNumber];
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
-                    $this->subordinates[] = $subordinates;
-                }
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {

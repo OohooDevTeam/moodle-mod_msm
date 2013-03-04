@@ -34,10 +34,10 @@ class EditorDefinition extends EditorElement
     function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
-
+        
         // processing definitions as reference material
         if (sizeof($idInfo) > 1)
-        {
+        {           
             $match = "/^msm_defref_content_input-$idInfo[0].*$/";
 
             $newId = '';
@@ -63,10 +63,10 @@ class EditorDefinition extends EditorElement
                 $this->content = $_POST['msm_defref_content_input-' . $newId];
 
                 // grab all anchored elements in content --> it is only from subordinate
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
-                    $this->subordinates[] = $subordinates;
-                }
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {
@@ -86,10 +86,10 @@ class EditorDefinition extends EditorElement
                 $this->content = $_POST['msm_def_content_input-' . $idNumber];
 
                 // grab all anchored elements in content --> it is only from subordinate
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
-                    $this->subordinates[] = $subordinates;
-                }
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {
