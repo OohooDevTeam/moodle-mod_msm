@@ -98,7 +98,7 @@ $(document).ready(function () {
                     }
                     else
                     {
-                        $('#msm_unit_name_input').val(inputValue);
+                        $('#msm_unit_name_input').val(errorids);
                         $("#msm_setting_dialog").dialog("close");
                     }
                 },

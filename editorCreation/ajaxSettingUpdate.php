@@ -97,7 +97,16 @@ else
             $DB->delete_records('msm_unit_name', array('id' => $dbValue->id));
         }
     }
+    
+    $newString = '';    
+    
+    for ($i = 0; $i < sizeof($userInputArray)-1; $i++)
+    {
+        $newString .= $userInputArray[$i] . ",";
+    }
+    $newString .= $userInputArray[sizeof($userInputArray)-1];
+    
 
-    echo json_encode("true");
+    echo json_encode($newString);
 }
 ?>
