@@ -56,7 +56,8 @@ function processReftype(e)
             selectedtext = "Example";
             break;
         case 5:
-            selectedtext = "Section of this Composition";
+//            element = makeCompositionRef();
+//            $(element).insertAfter("#"+selectedId);
             break; 
     }
     
@@ -93,6 +94,13 @@ function processReftype(e)
     });
    
 }
+
+//function makeCompositionRef()
+//{
+//    var clonedCurrentElement = $("<div></div>");
+//    
+//    var referenceTypeMenu = $("<select name='msm_compref_type_dropdown-'+")
+//}
 
 
 function makeRefDefinition(idindex)
