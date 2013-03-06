@@ -23,7 +23,7 @@ $(document).ready(function () {
                         modal: true,
                         buttons: {
                             Ok: function () {
-                                $('#msm_type_specifiedType').css('border-color', '#FFA500');
+                                $('#msm_type_specifiedType').addClass("empty_content_error");
                                 $(this).dialog("close");
                             }
                         }
@@ -57,13 +57,17 @@ $(document).ready(function () {
                     
                     if(errorids instanceof Array)
                     {
+                        $("#msm_setting_form").find(".empty_content_error").each(function() {
+                            $(this).removeClass("empty_content_error");
+                        });
+                        
                         for(var i=0; i < errorids.length; i++)
                         {
                             
                             if(errorids[i] == 'msm_strcutre_input_top')
                             {
                                 flag = true;
-                                $('#'+errorids[i]).css("border-color", "#FFA500"); 
+                                $('#'+errorids[i]).addClass("empty_content_error"); 
                             }
                             else
                             {
@@ -72,7 +76,7 @@ $(document).ready(function () {
                                 if(idNumber[1] <= 3)
                                 {
                                     flag = true
-                                    $('#'+errorids[i]).css("border-color", "#FFA500");
+                                    $('#'+errorids[i]).addClass("empty_content_error");
                                 }
                             }
                         }

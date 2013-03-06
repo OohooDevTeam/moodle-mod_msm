@@ -97,14 +97,12 @@ function submitForm()
                         
                     if(numOfContent)
                     {
-                        //                        $('#'+ids[i]).parent().css("border", "solid 4px #FFA500");
-
                         $("#"+ids[i]).parent().addClass("empty_content_error");
                     }
                     else
                     {
                         alert("not matched to content");
-                        $('#'+ids[i]).css("border-color", "#FFA500");
+                        $('#'+ids[i]).addClass("empty_content_error");
                     }
                         
                 }
