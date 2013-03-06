@@ -56,8 +56,8 @@ function processReftype(e)
             selectedtext = "Example";
             break;
         case 5:
-//            element = makeCompositionRef();
-//            $(element).insertAfter("#"+selectedId);
+            //            element = makeCompositionRef();
+            //            $(element).insertAfter("#"+selectedId);
             break; 
     }
     
@@ -107,7 +107,7 @@ function makeRefDefinition(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
     
-//    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
+    //    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
     var defSelectMenu = $('<select name="msm_defref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_defref_type_dropdown-'+idindex+'">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
@@ -128,7 +128,7 @@ function makeRefDefinition(idindex)
     clonedCurrentElement.attr("id", "copied_msm_defref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
    
-//    clonedCurrentElement.append(defCloseButton);
+    //    clonedCurrentElement.append(defCloseButton);
     clonedCurrentElement.append(defSelectMenu);
     clonedCurrentElement.append(defTitle);
     clonedCurrentElement.append(defTitleField);
@@ -144,7 +144,7 @@ function makeRefDefinition(idindex)
 function makeRefTheorem(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
-//    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event)">x</a>');
+    //    var theoremCloseButton = $('<a class="msm_element_close" id="msm_theorem_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event)">x</a>');
 
     var theoremSelectMenu = $('<select name="msm_theoremref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_theoremref_type_dropdown-'+idindex+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
@@ -193,13 +193,72 @@ function makeRefTheorem(idindex)
     theoremContentWrapper.append(theoremStatementWrapper);
     theoremContentWrapper.append(theoremChildButton);
             
-//    clonedCurrentElement.append(theoremCloseButton);
+    //    clonedCurrentElement.append(theoremCloseButton);
     clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleField);
     clonedCurrentElement.append(theoremTitleContainer);    
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
+    
+    $("#msm_theoremref_content_container-"+idindex+"-1").sortable({
+        appendTo: "msm_theoremref_content_container-"+idindex+"-1",
+        connectWith: "msm_theoremref_content_container-"+idindex+"-1",
+        cursor: "move",
+        tolerance: "pointer",
+        placeholder: "msm_sortable_placeholder",     
+        handle: ".msm_theoremref_statement_title_containers",
+        start: function(event,ui)
+        {
+            $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+            $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+            $(".msm_sortable_placeholder").css("background-color","#DC143C");
+            $(".msm_sortable_placeholder").css("opacity","0.5");
+            $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+            
+            // this code along with the one in stop is needed for enabling sortable on the div containing
+            // the tinymce editor so the iframe part of the editor doesn't become disabled
+            var id = $(this).attr("id");
+            
+            $("#"+id+" textarea").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+        },
+        stop: function(event, ui)
+        {
+            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+            // if there are children in intro element, need to refresh the ifram of its editors
+            var id = $(this).attr("id");
+            
+            $("#"+id+" textarea").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
+            });
+        }
+    });   
+    
+    //    $("#msm_theoremref_statement_title_container-"+idNumber+'-'+newId).mouseover(function () {
+    //        $(this).children("span").css({
+    //            "visibility": "visible", 
+    //            "color": "#4e6632", 
+    //            "opacity": "0.5",
+    //            "cursor": "move"
+    //        });
+    //    });
+    //    $("#msm_theoremref_statement_title_container-"+idNumber+'-'+newId).mouseout(function () {
+    //        $(this).children("span").css("visibility", "hidden");
+    //    });
+    //    $("#msm_theoremref_statement_title_container-"+idNumber+'-'+newId).mouseup(function () {
+    //        $(this).children("span").css("visibility", "hidden");
+    //    });
             
     return clonedCurrentElement;
 }
@@ -207,7 +266,7 @@ function makeRefTheorem(idindex)
 function makeRefComment(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
-//    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
+    //    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
     var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+idindex+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
@@ -226,7 +285,7 @@ function makeRefComment(idindex)
     clonedCurrentElement.attr("id", "copied_msm_commentref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
-//    clonedCurrentElement.append(commentCloseButton);
+    //    clonedCurrentElement.append(commentCloseButton);
     clonedCurrentElement.append(commentSelectMenu);
     clonedCurrentElement.append(commentTitle);
     clonedCurrentElement.append(commentTitleField);
@@ -329,29 +388,30 @@ function addrefTheoremContent(event, idNumber)
             
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
-            $(this).find('.msm_unit_child_content').each(function() {
-                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            var id = $(this).attr("id");
+            
+            $("#"+id+" textarea").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
             });
             
-//            $(this).find('.msm_theorem_content').each(function() {
-//                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-//                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-//            });
         },
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
             
             // if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_unit_child_content').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
-            });
+            var id = $(this).attr("id");
             
-            $(this).find('.msm_theorem_content').each(function() {
-                initEditor(this.id);                    
-                $(this).sortable("refresh");
+            $("#"+id+" textarea").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initEditor(this.id);                    
+                    $(this).sortable("refresh");
+                }
             });
         }
     });   
@@ -419,7 +479,11 @@ function addrefTheoremPart(event, idNumber)
         tinymce.execCommand('mceRemoveControl', true, "msm_theoremref_part_content-"+idNumber+"-"+newId);
     }
     
-    initEditor("msm_theoremref_part_content-"+idNumber+"-"+newId);         
+    if(tinymce.getInstanceById("msm_theoremref_part_content-"+idNumber+"-"+newId) == null)
+    {
+        initEditor("msm_theoremref_part_content-"+idNumber+"-"+newId);         
+    }
+    
     
     $("#msm_theoremref_part_droparea-"+idNumber).sortable({
         appendTo: "msm_theoremref_part_droparea-"+idNumber,

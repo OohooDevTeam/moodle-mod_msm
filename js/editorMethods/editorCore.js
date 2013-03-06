@@ -187,33 +187,14 @@ function processDroppedChild(e, droppedId)
             $(".msm_sortable_placeholder").css("opacity","0.5");
             $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
             
-            $(this).find('.msm_unit_child_content').each(function() { 
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {            
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                }                
-            });                        
-            $(this).find('.msm_intro_child_contents').each(function() {
+            var id = $(this).attr("id");
+            
+            $("#"+id+" textarea").each(function() {
                 if(tinymce.getInstanceById($(this).attr("id")) != null)
                 {
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
                     tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                } 
-            });
-            $(this).find('.msm_info_titles').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                } 
-            });
-            $(this).find('.msm_info_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {
-                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                } 
+                }
             });
              
         },
@@ -221,32 +202,10 @@ function processDroppedChild(e, droppedId)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");    
                  
-            $(this).find('.msm_unit_child_content').each(function() {                         
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                } 
-            });
-                            
-            //             if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_intro_child_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                }
-            });
-                            
-            $(this).find('.msm_info_titles').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                }
-            });
-            $(this).find('.msm_info_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
+            var id = $(this).attr("id");
+            
+            $("#"+id+" textarea").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
                 {
                     initEditor(this.id);                    
                     $(this).sortable("refresh");
@@ -518,7 +477,6 @@ function addIntroContent(idNumber)
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
             $(this).find('.msm_intro_child_contents').each(function() {
-                 console.log("remove Editor: "+this.id);
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
@@ -531,7 +489,6 @@ function addIntroContent(idNumber)
             $(this).find('.msm_intro_child_contents').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    console.log("init Editor: "+this.id);
                     initEditor(this.id);                    
                     $(this).sortable("refresh");
                 }
@@ -548,7 +505,7 @@ function addIntroContent(idNumber)
         });
     });
     $("#msm_intro_child_dragarea-"+newId).mouseout(function () {
-                console.log($(this).children("span"));
+        console.log($(this).children("span"));
 
         $(this).children("span").css("visibility", "hidden");
     });
@@ -860,7 +817,7 @@ function addAssociateForm(index, type)
     
     initEditor("msm_info_content-"+index+"-"+newId);   
     initEditor("msm_info_title-"+index+"-"+newId); 
-       
+           
     $("#msm_associate_container-"+index).sortable({
         appendTo: "msm_associate_container-"+index,
         connectWith: "msm_associate_container-"+index,
@@ -878,59 +835,31 @@ function addAssociateForm(index, type)
             
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
-            $(this).find('.msm_info_titles').each(function() {
-                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-            });
-            $(this).find('.msm_info_contents').each(function() {
-                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-            });
+
+            var id = $(this).attr("id");            
             
-            $(this).find('.msm_associate_reftype_optionarea').each(function() {
-                $(this).find('.copied_msm_structural_element').each(function() {
-                    $(this).find('.msm_unit_child_content').each(function()
-                    {
-                        tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
-                        tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                    });
-                });
+            $("#"+id+" textarea").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
             });
         },
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+           
+            var id = $(this).attr("id");
             
-            // if there are children in intro element, need to refresh the ifram of its editors
-            $(this).find('.msm_info_titles').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
+            
+            $("#"+id+" textarea").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
                 {
                     initEditor(this.id);                    
                     $(this).sortable("refresh");
                 }
             });
-            $(this).find('.msm_info_contents').each(function() {
-                if(tinymce.getInstanceById($(this).attr("id"))==null)
-                {
-                    initEditor(this.id);                    
-                    $(this).sortable("refresh");
-                }
-            });
-            
-            $(this).find('.msm_associate_reftype_optionarea').each(function() {
-                $(this).find('.copied_msm_structural_element').each(function() {
-                    $(this).find('.msm_unit_child_content').each(function()
-                    {
-                        if(tinymce.getInstanceById($(this).attr("id"))==null)
-                        {
-                            initEditor(this.id);                    
-                            $(this).sortable("refresh");
-                        }
-                    });
-                });
-            });
-            
-        //            
         }
     });    
     
@@ -946,13 +875,13 @@ function addAssociateForm(index, type)
     $("#msm_associate_info_header-"+index+"-"+newId).mouseout(function () {
         $(this).children("span").css({
             "visibility":"hidden"
-//            "display":"none"
+        //            "display":"none"
         });
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseup(function () {
         $(this).children("span").css({
             "visibility":"hidden" 
-//            "display":"none"
+        //            "display":"none"
         });
     });           
      
