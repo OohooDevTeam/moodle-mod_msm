@@ -1339,7 +1339,7 @@ function cancelUnit(e)
         cancelUnit:currentUnitIdPair
     };
     
-    var ids = [];
+    var htmlstring = '';
     
     $.ajax({
         type: 'POST',
@@ -1347,29 +1347,41 @@ function cancelUnit(e)
         data: param,
         success: function(data)
         {
-            ids = JSON.parse(data);
+            htmlstring = JSON.parse(data);
             
-            $("#msm_unit_tree").find("li").each(function() {           
-                var stringid = "msm_unit-"+ids[0];
-                var parent = $(this);
-                var match = this.id.match(/msm_unit-.+/);
-                var currentId = '';
-                if(!match)
-                {
-                    currentId = "msm_unit-"+this.id;
-                }
-                else
-                {
-                    currentId = this.id;
-                }
-                if(currentId == stringid)
-                {
-                    $(this).children("ul").children("li").each(function() {
-                        $(this).insertBefore(parent);
-                    });               
-                    $(this).empty().remove();
-                }
-            });
+//            $("#msm_unit_tree").find("li").each(function() {           
+//                var stringid = "msm_unit-"+currentUnitIdPair;
+//                var parent = $(this);
+//                var match = this.id.match(/msm_unit-.+/);
+//                var currentId = '';
+//                if(!match)
+//                {
+//                    currentId = "msm_unit-"+this.id;
+//                }
+//                else
+//                {
+//                    currentId = this.id;
+//                }
+//                if(currentId == stringid)
+//                {
+//                    $(this).children("ul").children("li").each(function() {
+//                        $(this).insertBefore(parent);
+//                    });               
+//                    $(this).empty().remove();
+//                }
+//            });
+            
+            $("#msm_unit_form").empty();
+            
+            $("#msm_unit_form").html(htmlstring);
+            
+            var currentUnitId = document.createElement("input");
+            currentUnitId.id = "msm_currentUnit_id";
+            currentUnitId.name = "msm_currentUnit_id";
+            currentUnitId.setAttribute("style", "display:none;");
+            currentUnitId.value = currentUnitIdPair;
+       
+            $("#msm_unit_form").append($(currentUnitId));
             
             removeTinymceEditor();
                   
