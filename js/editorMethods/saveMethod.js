@@ -6,7 +6,7 @@
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
-        event.preventDefault();
+        event.preventDefault();      
         
         submitForm();            
     });
@@ -86,13 +86,20 @@ function submitForm()
                 
             if(ids instanceof Array)
             {
+                
+                $("#msm_unit_form").find(".empty_content_error").each(function() {
+                    $(this).removeClass("empty_content_error");
+                });
+                
                 for(var i=0; i < ids.length; i++)
                 {
                     var numOfContent = ids[i].match(/content/);
                         
                     if(numOfContent)
                     {
-                        $('#'+ids[i]).parent().css("border", "solid 4px #FFA500");
+                        //                        $('#'+ids[i]).parent().css("border", "solid 4px #FFA500");
+
+                        $("#"+ids[i]).parent().addClass("empty_content_error");
                     }
                     else
                     {
@@ -194,23 +201,6 @@ function submitForm()
             alert("error in ajax at saveMethod.js");
         }
     });
-//    }
-//    else
-//    {
-//        $.ajax({
-//            type: "POST",
-//            url: targetURL,
-//            data: formData,
-//            success: function(data) { 
-//                
-//            },
-//            error: function() {
-//                alert("error in ajax at saveMethod.js");
-//            }
-//        });
-//    }
-    
-   
 }
 
 function prepareSubordinate(id)

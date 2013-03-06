@@ -611,6 +611,91 @@ function enableEditorFunction()
             }
         });
     })
+    
+    $(".msm_theoremref_content_containers").each(function() {
+        $("#"+this.id).sortable({
+            appendTo: this.id,
+            connectWith: this.id,
+            cursor: "move",
+            tolerance: "pointer",
+            placeholder: "msm_sortable_placeholder",   
+            handle: ".msm_theoremref_statement_title_containers",
+            start: function(event,ui)
+            {
+                $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+                $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+                $(".msm_sortable_placeholder").css("background-color","#DC143C");
+                $(".msm_sortable_placeholder").css("opacity","0.5");
+                $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+            
+                var id = $(this).attr("id");
+            
+                $("#"+id+" textarea").each(function() {
+                    if(tinymce.getInstanceById($(this).attr("id")) != null)
+                    {
+                        tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                        tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                    }
+                });
+            
+            },
+            stop: function(event, ui)
+            {
+                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+                var id = $(this).attr("id");
+            
+                $("#"+id+" textarea").each(function() {
+                    if(tinymce.getInstanceById($(this).attr("id")) == null)
+                    {
+                        initEditor(this.id);                    
+                        $(this).sortable("refresh");
+                    }
+                });
+            }
+        });
+    });
+    $(".msm_theoremref_part_dropareas").each(function(){
+        $("#"+this.id).sortable({
+            appendTo: this.id,
+            connectWith: this.id,
+            cursor: "move",
+            tolerance: "pointer",
+            placeholder: "msm_sortable_placeholder",    
+            handle: ".msm_theoremref_part_title_containers",
+            start: function(event,ui)
+            {
+                $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
+                $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
+                $(".msm_sortable_placeholder").css("background-color","#DC143C");
+                $(".msm_sortable_placeholder").css("opacity","0.5");
+                $("#"+ui.item.context.id).css("background-color", "#F1EDC2");
+            
+                // this code along with the one in stop is needed for enabling sortable on the div containing
+                // the tinymce editor so the iframe part of the editor doesn't become disabled
+                $(this).find('.msm_theorem_content').each(function() {
+                    if(tinymce.getInstanceById($(this).attr("id")) != null)
+                    {
+                        tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                        tinymce.execCommand('mceRemoveControl', true, $(this).attr("id")); 
+                    }                
+                });
+            },
+            stop: function(event, ui)
+            {
+                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            
+                // if there are children in intro element, need to refresh the ifram of its editors
+                $(this).find('.msm_theorem_content').each(function() {
+                    if(tinymce.getInstanceById($(this).attr("id"))==null)
+                    {
+                        initEditor(this.id);                    
+                        $(this).sortable("refresh");
+                    }
+                });
+            }
+        });
+    })
     enableDragTitleToggle();
 }
 

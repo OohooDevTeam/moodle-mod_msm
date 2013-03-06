@@ -622,4 +622,9 @@ table.mceLayout
     margin-left: 0 !important;
 }
 
+.empty_content_error
+{
+    border: solid 4px #FFA500 !important;
+}
+
 
