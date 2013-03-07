@@ -331,6 +331,10 @@ function deleteRefElement(e)
 function addrefTheoremContent(event, idNumber)
 {    
     var newId = 1;
+    
+    console.log("idNumber: "+idNumber);
+    console.log("newId: "+newId);
+        
         
     if($("#msm_theoremref_content_container-"+idNumber).children("div").length > 0)
     {
@@ -437,8 +441,8 @@ function addrefTheoremContent(event, idNumber)
 function addrefTheoremPart(event, idNumber)
 {  
     
-    var newId = 1;
-        
+    var newId = 1;    
+    
     if($("#msm_theoremref_part_droparea-"+idNumber).children("div").length > 0)
     {
         while(document.getElementById('msm_theoremref_part_container-'+idNumber+'-'+newId) != null)

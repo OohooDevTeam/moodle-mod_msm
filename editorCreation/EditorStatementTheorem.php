@@ -1,15 +1,15 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 /**
- * Description of EditorStatementTheorem
- *
- * @author User
- */
+* Description of EditorStatementTheorem
+*
+* @author User
+*/
 class EditorStatementTheorem extends EditorElement
 {
 
@@ -35,10 +35,10 @@ class EditorStatementTheorem extends EditorElement
             {
                 $this->content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
 
-//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-//                {
-//                    $this->subordinates[] = $subordinates;
-//                }
+// foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+// {
+// $this->subordinates[] = $subordinates;
+// }
             }
             else
             {
@@ -72,15 +72,15 @@ class EditorStatementTheorem extends EditorElement
             }
         }
         else if (sizeof($idInfo) == 1)
-        {            
+        {
             if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
 
-//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-//                {
-//                    $this->subordinates[] = $subordinates;
-//                }
+// foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+// {
+// $this->subordinates[] = $subordinates;
+// }
             }
             else
             {
@@ -150,7 +150,7 @@ class EditorStatementTheorem extends EditorElement
     }
 
     public function displayData()
-    {   
+    {
         global $DB;
         
         $currentCompRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
@@ -227,7 +227,7 @@ class EditorStatementTheorem extends EditorElement
         {
             $htmlContent .= $partTheorem->displayRefData();
         }
-        $htmlContent .= "<input id='msm_theoremref_part_button-$this->compid' class='msm_theoremref_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event, $this->compid)' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theoremref_part_button-$this->compid' class='msm_theoremref_part_buttons' type='button' value='Add more parts' onclick='addrefTheoremPart(event, $this->compid)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
 

@@ -3,15 +3,15 @@
 //
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 /**
- * Description of EditorTheorem
- *
- * @author User
- */
+* Description of EditorTheorem
+*
+* @author User
+*/
 class EditorTheorem extends EditorElement
 {
 
@@ -361,11 +361,12 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled' value='$this->title'/>";
-        $htmlContent .= "<div id='msm_theoremref_content_input-$this->compid' class='msm_theoremref_content_containers'>";
+        $htmlContent .= "<div id='msm_theoremref_content_container-$this->compid' class='msm_theoremref_content_containers'>";
         foreach ($this->contents as $content)
         {
             $htmlContent .= $content->displayRefData();
         }
+        $htmlContent .= "<input id='msm_theoremref_child_button-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addrefTheoremContent(event, $this->compid)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_theoremref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_labels' for='msm_theoremref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_theoremref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid'/>";
