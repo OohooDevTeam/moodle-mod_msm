@@ -3,15 +3,15 @@
 //
 
 /*
-* To change this template, choose Tools | Templates
-* and open the template in the editor.
-*/
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 /**
-* Description of EditorTheorem
-*
-* @author User
-*/
+ * Description of EditorTheorem
+ *
+ * @author User
+ */
 class EditorTheorem extends EditorElement
 {
 
@@ -36,8 +36,10 @@ class EditorTheorem extends EditorElement
     {
         $this->errorArray = array();
 
-        $idNumberInfo = explode("|", $idNumber);
+//        print_object($idNumber);
+        print_object($_POST);
 
+        $idNumberInfo = explode("|", $idNumber);
         // reference material
         if (sizeof($idNumberInfo) > 1)
         {
@@ -45,6 +47,7 @@ class EditorTheorem extends EditorElement
 
             $newId = '';
             $theoremId = '';
+            $dbsetId = '';
             foreach ($_POST as $id => $value)
             {
                 if (preg_match($match, $id))
@@ -56,64 +59,55 @@ class EditorTheorem extends EditorElement
                     }
                     $newId .= $tempidInfo[sizeof($tempidInfo) - 1];
                     $theoremId = $tempidInfo[sizeof($tempidInfo) - 1];
+                    $dbsetId = $tempidInfo[sizeof($tempidInfo) - 2];
                     break;
                 }
             }
-            
+
             $this->type = $_POST['msm_theoremref_type_dropdown-' . $newId];
             $this->description = $_POST['msm_theoremref_description_input-' . $newId];
             $this->title = $_POST['msm_theoremref_title_input-' . $newId];
 
-            if (empty($_POST["msm_currentUnit_id"]))
+            print_object($dbsetId);
+
+            $contentmatch = '/msm_theoremref_content_input-' . $theoremId . '-\d+.*$/';
+            $dbcontentmatch = '/msm_theoremref_content_input-' . $dbsetId . '-\d+.*$/';
+
+
+//            print_object($theoremId);
+
+            $i = 0; //position for the part theorem
+            $chosenId = null;
+            foreach ($_POST as $id => $value)
             {
-                $contentmatch = '/msm_theoremref_content_input-' . $idNumberInfo[0] . '-\d+.*$/';
-
-                $i = 0; //position for the part theorem
-
-                foreach ($_POST as $id => $value)
+                if (preg_match($dbcontentmatch, $id))
                 {
-                    if (preg_match($contentmatch, $id))
-                    {
-                        $indexNumber = explode("-", $id);
-
-                        $newId = '';
-                        for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
-                        {
-                            $newId .= $indexNumber[$i] . "-";
-                        }
-                        $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
-
-                        $statementRefTheorem = new EditorStatementTheorem();
-                        $statementRefTheorem->getFormData($newId);
-                        $this->contents[] = $statementRefTheorem;
-                        $i++;
-                    }
+                    echo "chosen db";
+                    print_object($id);
+                    $chosenId = $id;
                 }
-            }
-            else
-            {
-                $contentmatch = '/msm_theoremref_content_input-' . $theoremId . '-\d+.*$/';
-
-                $i = 0; //position for the part theorem
-
-                foreach ($_POST as $id => $value)
+                else if (preg_match($contentmatch, $id))
                 {
-                    if (preg_match($contentmatch, $id))
+                    echo "chosen content";
+                    print_object($id);
+                    $chosenId = $id;
+                }
+
+                if (!empty($chosenId))
+                {
+                    $indexNumber = explode("-", $chosenId);
+
+                    $newId = '';
+                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
                     {
-                        $indexNumber = explode("-", $id);
-
-                        $newId = '';
-                        for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
-                        {
-                            $newId .= $indexNumber[$i] . "-";
-                        }
-                        $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
-
-                        $statementRefTheorem = new EditorStatementTheorem();
-                        $statementRefTheorem->getFormData($newId);
-                        $this->contents[] = $statementRefTheorem;
-                        $i++;
+                        $newId .= $indexNumber[$i] . "-";
                     }
+                    $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
+
+                    $statementRefTheorem = new EditorStatementTheorem();
+                    $statementRefTheorem->getFormData($newId);
+                    $this->contents[] = $statementRefTheorem;
+                    $i++;
                 }
             }
         }
@@ -375,7 +369,7 @@ class EditorTheorem extends EditorElement
         return $htmlContent;
     }
 
-    public function displayPreview($id='')
+    public function displayPreview($id = '')
     {
         $previewHtml = '';
 
@@ -404,7 +398,7 @@ class EditorTheorem extends EditorElement
         $previewHtml .= "<ul class='minibuttons'>";
         foreach ($this->children as $key => $associate)
         {
-            $previewHtml .= $associate->displayPreview("theorem", $id ."-". $key);
+            $previewHtml .= $associate->displayPreview("theorem", $id . "-" . $key);
         }
         $previewHtml .= "</ul>";
 

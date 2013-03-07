@@ -50,11 +50,6 @@ abstract class EditorElement
                     $table->getFormData($child);
                     $newContent[] = $table;
                 }
-//                else
-//                {
-//                    print_object($child->tagName);
-//                    print_object($child->nodeValue);
-//                }
             }
         }
 

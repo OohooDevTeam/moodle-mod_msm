@@ -244,9 +244,6 @@ else
     {
         if (!empty($_POST['msm_currentUnit_id']))
         {
-//        print_object($_POST);
-//        print_object($unitcontent);
-
             $idInfo = explode("-", $_POST['msm_currentUnit_id']);
 
             $compid = $idInfo[0];

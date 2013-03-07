@@ -27,24 +27,16 @@ class EditorAssociate extends EditorElement
     // idNumber = parent_number-currentelement_number
     public function getFormData($idNumber)
     {
-//        print_object($_POST);
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
 
         $indexNumber = explode("-", $idNumber);
 
-//        echo "indexNumber";
-//        print_object($indexNumber);
-
         $infomatch = "/^msm_info_content-$idNumber.*$/";
-
-//        print_object($idNumber);
-
         $i = 0;
         foreach ($_POST as $id => $value)
         {
             if (preg_match($infomatch, $id))
             {
-//                print_object($id);
                 $idInfo = explode("-", $id);
 
                 $newId = '';
@@ -61,8 +53,6 @@ class EditorAssociate extends EditorElement
                 $i++;
             }
         }
-//        print_object($this);
-
         return $this;
     }
 

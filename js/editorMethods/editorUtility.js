@@ -227,21 +227,21 @@ function processUnitData(htmlData)
         form.appendChild(newInputField);
     }
     
-    $(".msm_subordinate_hotwords").each(function(i, element) {
-        var idInfo = this.id.split("-");                        
-        var newid = '';
-                        
-        for(var i=1; i < idInfo.length-1; i++)
-        {
-            newid += idInfo[i]+"-";
-        }
-                            
-        newid += idInfo[idInfo.length-1];
-                        
-        $(this).on('mouseover', function(){
-            previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
-        });
-    });
+//    $(".msm_subordinate_hotwords").each(function(i, element) {
+//        var idInfo = this.id.split("-");                        
+//        var newid = '';
+//                        
+//        for(var i=1; i < idInfo.length-1; i++)
+//        {
+//            newid += idInfo[i]+"-";
+//        }
+//                            
+//        newid += idInfo[idInfo.length-1];
+//                        
+//        $(this).on('mouseover', function(){
+//            previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
+//        });
+//    });
 }
 
 function saveComp(e)
@@ -420,7 +420,6 @@ function enableEditorFunction()
             $("#"+id+" textarea").each(function() {
                 if(tinymce.getInstanceById($(this).attr("id")) != null)
                 {
-                    console.log("removing this editor: "+$(this).attr("id"));
                     tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
                     tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                 }
@@ -466,7 +465,6 @@ function enableEditorFunction()
                 $("#"+id+" textarea").each(function() {
                     if(tinymce.getInstanceById($(this).attr("id")) != null)
                     {
-                        console.log("removing this editor: "+$(this).attr("id"));
                         tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
                         tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                     }
@@ -1028,7 +1026,7 @@ function createAssociateText(mainElement, aArray, key)
                     break;
                 case "msm_theorem":
                     var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoid).find(".msm_theoremref_statement_containers");
-    
+                    
                     for(var ind = 0; ind < theoremStatementInfo.length; ind++)
                     {
                         var theoremcontent = associateArray[i]["infos"][0]["ref"]["contents"][ind]["content"];
@@ -1349,27 +1347,27 @@ function cancelUnit(e)
         {
             htmlstring = JSON.parse(data);
             
-//            $("#msm_unit_tree").find("li").each(function() {           
-//                var stringid = "msm_unit-"+currentUnitIdPair;
-//                var parent = $(this);
-//                var match = this.id.match(/msm_unit-.+/);
-//                var currentId = '';
-//                if(!match)
-//                {
-//                    currentId = "msm_unit-"+this.id;
-//                }
-//                else
-//                {
-//                    currentId = this.id;
-//                }
-//                if(currentId == stringid)
-//                {
-//                    $(this).children("ul").children("li").each(function() {
-//                        $(this).insertBefore(parent);
-//                    });               
-//                    $(this).empty().remove();
-//                }
-//            });
+            //            $("#msm_unit_tree").find("li").each(function() {           
+            //                var stringid = "msm_unit-"+currentUnitIdPair;
+            //                var parent = $(this);
+            //                var match = this.id.match(/msm_unit-.+/);
+            //                var currentId = '';
+            //                if(!match)
+            //                {
+            //                    currentId = "msm_unit-"+this.id;
+            //                }
+            //                else
+            //                {
+            //                    currentId = this.id;
+            //                }
+            //                if(currentId == stringid)
+            //                {
+            //                    $(this).children("ul").children("li").each(function() {
+            //                        $(this).insertBefore(parent);
+            //                    });               
+            //                    $(this).empty().remove();
+            //                }
+            //            });
             
             $("#msm_unit_form").empty();
             

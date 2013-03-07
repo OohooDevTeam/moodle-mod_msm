@@ -349,6 +349,7 @@ function showUnitPreview()
         dataArray["msm_mode_info"] = "preview";
         dataArray["msm_unit_title"] = $("#msm_unit_title").val();
         dataArray["msm_unit_description_input"] = $("#msm_unit_description_input").val();
+        dataArray["msm_currentUnit_id"] = $("#msm_currentUnit_id").val();
     
         $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
             dataArray[this.id] = $(this).val(); 
@@ -451,12 +452,10 @@ function makePreviewDialog()
         var leftCol = $("<div id='leftcol'></div>");
         var leftBox = $("<div class='leftbox'></div>");
     
-        //        var jshowoffBox = $("<div id='features'></div>");
     
         var rightCol = $("<div id='rightcol'></div>");
         var rightBox = $("<div class='rightbox'></div>");
     
-        //        $(leftBox).append(jshowoffBox);
         $(leftCol).append(leftBox);
         $(rightCol).append(rightBox);
     

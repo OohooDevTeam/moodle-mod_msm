@@ -31,8 +31,6 @@ class EditorUnit extends EditorElement
     {
         global $DB;
         $this->errorArray = array();
-        
-//        print_object($_POST);
 
         $this->title = $_POST['msm_unit_title'];
         $this->description = $_POST['msm_unit_description_input'];

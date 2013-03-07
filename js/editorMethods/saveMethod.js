@@ -30,7 +30,7 @@ function submitForm()
         // process information from textarea that are not related to info elements
         if(!this.id.match(/info/))
         {  
-//            subordinateArray.push(prepareSubordinate(this.id));
+            //            subordinateArray.push(prepareSubordinate(this.id));
                         
             this.value = tinymce.get(this.id).getContent({
                 format: "html"
@@ -39,7 +39,7 @@ function submitForm()
         // process associate information
         else if(this.id.match(/_info_/))
         {
-//            subordinateArray.push(prepareSubordinate(this.id));
+            //            subordinateArray.push(prepareSubordinate(this.id));
                 
             this.value = tinymce.get(this.id).getContent({
                 format: "html"
@@ -67,14 +67,7 @@ function submitForm()
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 
-    //    
-    var mode = $("#msm_mode_info").val();
-    //    
-    //    console.log(mode);
-    //    console.log(formData);
     
-    //        if(mode == '')
-    //        {
     $.ajax({
         type: "POST",
         url: targetURL,
