@@ -37,13 +37,13 @@ class EditorTheorem extends EditorElement
         $this->errorArray = array();
 
 //        print_object($idNumber);
-        print_object($_POST);
+//        print_object($_POST);
 
         $idNumberInfo = explode("|", $idNumber);
         // reference material
         if (sizeof($idNumberInfo) > 1)
         {
-            $match = "/^msm_theoremref_type_dropdown-$idNumberInfo[0].*$/";
+            $match = "/^msm_theoremref_type_dropdown-$idNumberInfo[0][-]{0,1}.*$/";
 
             $newId = '';
             $theoremId = '';
@@ -68,30 +68,59 @@ class EditorTheorem extends EditorElement
             $this->description = $_POST['msm_theoremref_description_input-' . $newId];
             $this->title = $_POST['msm_theoremref_title_input-' . $newId];
 
-            print_object($dbsetId);
+//            echo "idNumberInfo: " . $idNumberInfo[0] . "\n";
+//            echo "theoremid: " . $theoremId . "\n";
+//            echo "dbsetId: " . $dbsetId . "\n";
 
             $contentmatch = '/msm_theoremref_content_input-' . $theoremId . '-\d+.*$/';
             $dbcontentmatch = '/msm_theoremref_content_input-' . $dbsetId . '-\d+.*$/';
 
 
 //            print_object($theoremId);
-
-            $i = 0; //position for the part theorem
-            $chosenId = null;
+//            $i = 0; //position for the part theorem            
             foreach ($_POST as $id => $value)
             {
-                if (preg_match($dbcontentmatch, $id))
+                $chosenId = null;
+                if (!empty($_POST['msm_currentUnit_id']))
                 {
-                    echo "chosen db";
-                    print_object($id);
-                    $chosenId = $id;
+                    if (preg_match($dbcontentmatch, $id))
+                    {
+//                        echo "not empty currentUnit with db match";
+//                        print_object($id);
+                        $chosenId = $id;
+                    }
+                    else if (preg_match($contentmatch, $id))
+                    {
+//                        echo "not empty currentUnit with theoremid match";
+//                        print_object($id);
+                        $chosenId = $id;
+                    }
                 }
-                else if (preg_match($contentmatch, $id))
+                else if (!empty($_POST['msm_mode_info']))
                 {
-                    echo "chosen content";
-                    print_object($id);
-                    $chosenId = $id;
+                    if (preg_match($dbcontentmatch, $id))
+                    {
+//                        echo "not empty currentUnit with db match";
+//                        print_object($id);
+                        $chosenId = $id;
+                    }
+                    else if (preg_match($contentmatch, $id))
+                    {
+//                        echo "not empty currentUnit with theoremid match";
+//                        print_object($id);
+                        $chosenId = $id;
+                    }
                 }
+                else
+                {
+                    if (preg_match($dbcontentmatch, $id))
+                    {
+//                        echo "empty currentUnit with initial match";
+//                        print_object($id);
+                        $chosenId = $id;
+                    }
+                }
+
 
                 if (!empty($chosenId))
                 {
@@ -107,9 +136,11 @@ class EditorTheorem extends EditorElement
                     $statementRefTheorem = new EditorStatementTheorem();
                     $statementRefTheorem->getFormData($newId);
                     $this->contents[] = $statementRefTheorem;
-                    $i++;
+//                    $i++;
                 }
             }
+
+//            print_object($this);
         }
         else if (sizeof($idNumberInfo) == 1) // main unit content
         {

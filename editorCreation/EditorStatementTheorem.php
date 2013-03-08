@@ -29,7 +29,7 @@ class EditorStatementTheorem extends EditorElement
     {
         $idInfo = explode("|", $idNumber);
         
-        print_object($idInfo);
+//        print_object($idInfo);
 
         if (sizeof($idInfo) > 1)
         {

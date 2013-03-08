@@ -67,6 +67,7 @@ function submitForm()
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 
+    var mode = $("#msm_mode_info").val();
     
     $.ajax({
         type: "POST",
@@ -115,6 +116,7 @@ function submitForm()
             }
             else
             {        
+                console.log(mode);
                 if(typeof mode !== 'undefined')
                 {
                     $(".leftbox").append(ids); 

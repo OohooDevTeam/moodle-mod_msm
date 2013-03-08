@@ -29,7 +29,7 @@ class EditorInfo extends EditorElement
     // idNumber --> parentid-currentelementid
     public function getFormData($idNumber)
     {
-        $subid = explode("|", $idNumber);
+        $subid = explode("|", $idNumber); // subordinate info results in ---|sub as $idNumber
 
 //        if (sizeof($subid) > 1)
 //        {
@@ -107,7 +107,6 @@ class EditorInfo extends EditorElement
             {
                 $param = $idNumber . "|ref";
             }
-
             switch ($refType)
             {
                 case "Definition":

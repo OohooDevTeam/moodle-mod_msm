@@ -40,12 +40,12 @@ function processReftype(e)
         case 1: //comment
             element = makeRefComment(indexNumber);
             $(element).insertAfter("#"+selectedId); 
-            currentId = 'msm_commentref_content_input-'+indexNumber;
+            currentId = 'msm_commentref_content_input-'+indexNumber+"-1";
             break;
         case 2: //def
             element = makeRefDefinition(indexNumber);
             $(element).insertAfter("#"+selectedId); 
-            currentId = 'msm_defref_content_input-'+indexNumber;
+            currentId = 'msm_defref_content_input-'+indexNumber+"-1";
             break;
         case 3: //theorem
             element = makeRefTheorem(indexNumber);
@@ -108,7 +108,7 @@ function makeRefDefinition(idindex)
     var clonedCurrentElement = $("<div></div>");
     
     //    var defCloseButton = $('<a class="msm_element_close" id="msm_def_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
-    var defSelectMenu = $('<select name="msm_defref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_defref_type_dropdown-'+idindex+'">\n\
+    var defSelectMenu = $('<select name="msm_defref_type_dropdown-'+idindex+'-1" class="msm_unit_child_dropdown" id="msm_defref_type_dropdown-'+idindex+'-1">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
                                 <option value="Agreement">Agreement</option>\n\
@@ -117,13 +117,13 @@ function makeRefDefinition(idindex)
                                 <option value="Terminology">Terminology</option>\n\
                             </select>');
     var defTitle = $("<span class='msm_element_title'><b style='margin-left: 30%;'> DEFINITION </b></span>");
-    var defTitleField = $('<input class="msm_unit_child_title" id="msm_defref_title_input-'+idindex+'" name="msm_defref_title_input-'+idindex+'" placeholder=" Title of Definition"/>');
+    var defTitleField = $('<input class="msm_unit_child_title" id="msm_defref_title_input-'+idindex+'-1" name="msm_defref_title_input-'+idindex+'-1" placeholder=" Title of Definition"/>');
           
-    var defContentField = $('<textarea class="msm_unit_child_content" id="msm_defref_content_input-'+idindex+'" name="msm_defref_content_input-'+idindex+'"/>');
+    var defContentField = $('<textarea class="msm_unit_child_content" id="msm_defref_content_input-'+idindex+'-1" name="msm_defref_content_input-'+idindex+'-1"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-defrefcontent'+idindex+'"></div>');
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-defrefcontent'+idindex+'"></div>');
-    var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_defref_description_label-"+idindex+"' for='msm_defref_description_input-"+idindex+"'>Description: </label>");
-    var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+idindex+"' name='msm_defref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
+    var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_defref_description_label-"+idindex+"-1' for='msm_defref_description_input-"+idindex+"-1'>Description: </label>");
+    var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+idindex+"-1' name='msm_defref_description_input-"+idindex+"-1' placeholder='Insert description to search this element in future. '/>");
                
     clonedCurrentElement.attr("id", "copied_msm_defref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -269,20 +269,20 @@ function makeRefComment(idindex)
 {
     var clonedCurrentElement = $("<div></div>");
     //    var commentCloseButton = $('<a class="msm_element_close" id="msm_comment_element_closebutton-'+idindex+'" style="margin-top: 2%;" onclick="deleteRefElement(event);">x</a>');
-    var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+idindex+'">\n\
+    var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+idindex+'-1" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+idindex+'-1">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Information">Information</option>\n\
                             </select>');
     var commentTitle = $("<span class='msm_element_title'><b style='margin-left: 30%;'> COMMENT </b></span>");
-    var commentTitleField = $('<input class="msm_unit_child_title" id="msm_commentref_title_input-'+idindex+'" name="msm_commentref_title_input-'+idindex+'" placeholder=" Title of Comment"/>');
+    var commentTitleField = $('<input class="msm_unit_child_title" id="msm_commentref_title_input-'+idindex+'-1" name="msm_commentref_title_input-'+idindex+'-1" placeholder=" Title of Comment"/>');
           
-    var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_commentref_content_input-'+idindex+'" name="msm_commentref_content_input-'+idindex+'"/>');
+    var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_commentref_content_input-'+idindex+'-1" name="msm_commentref_content_input-'+idindex+'-1"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-commentrefcontent'+idindex+'"></div>');
 
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-commentrefcontent'+idindex+'"></div>');
-    var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_commentref_description_label-"+idindex+"' for='msm_commentref_description_input-"+idindex+"'>Description: </label>");
-    var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+idindex+"' name='msm_commentref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
+    var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_commentref_description_label-"+idindex+"-1' for='msm_commentref_description_input-"+idindex+"-1'>Description: </label>");
+    var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+idindex+"-1' name='msm_commentref_description_input-"+idindex+"-1' placeholder='Insert description to search this element in future. '/>");
             
     clonedCurrentElement.attr("id", "copied_msm_commentref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
