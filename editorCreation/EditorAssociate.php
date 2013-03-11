@@ -1,21 +1,21 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 /**
- * Description of EditorAssociate
- *
- * @author User
- */
+* Description of EditorAssociate
+*
+* @author User
+*/
 class EditorAssociate extends EditorElement
 {
 
     public $id;
     public $compid;
-//    public $errorArray = array();
+// public $errorArray = array();
     public $type; // in db--> description of the associate
     public $infos = array();
 
@@ -29,10 +29,10 @@ class EditorAssociate extends EditorElement
     {
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
 
-        $indexNumber = explode("-", $idNumber);
+//        $indexNumber = explode("-", $idNumber);
 
         $infomatch = "/^msm_info_content-$idNumber.*$/";
-        $i = 0;
+       
         foreach ($_POST as $id => $value)
         {
             if (preg_match($infomatch, $id))
@@ -50,7 +50,6 @@ class EditorAssociate extends EditorElement
                 $info->getFormData($newId);
                 $this->infos[] = $info;
 
-                $i++;
             }
         }
         return $this;
@@ -209,10 +208,7 @@ class EditorAssociate extends EditorElement
                 $previewHtml .= "</span>";
                 $previewHtml .= "</li>";
                 $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
-// foreach ($this->childs as $child)
-// {
                 $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-// }
                 $previewHtml .= "</div>";
             }
             else
@@ -231,17 +227,13 @@ class EditorAssociate extends EditorElement
         {
             if (!empty($this->infos[0]->ref))
             {
-// $previewHtml .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
                 $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='infoopen(\"$id\")'>";
                 $previewHtml .= "<span style='cursor:pointer'>";
                 $previewHtml .= $this->type;
                 $previewHtml .= "</span>";
                 $previewHtml .= "</li>";
                 $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
-// foreach ($this->childs as $child)
-// {
                 $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-// }
                 $previewHtml .= "</div>";
             }
             else
@@ -261,17 +253,13 @@ class EditorAssociate extends EditorElement
         {
             if (!empty($this->infos[0]->ref))
             {
-// $previewHtml .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
                 $previewHtml .= "<li class='commentminibutton' id='commentminibutton-$id' onmouseover='infoopen(\"$id\")'>";
                 $previewHtml .= "<span style='cursor:pointer'>";
                 $previewHtml .= $this->type;
                 $previewHtml .= "</span>";
                 $previewHtml .= "</li>";
                 $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
-// foreach ($this->childs as $child)
-// {
                 $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-// }
                 $previewHtml .= "</div>";
             }
             else

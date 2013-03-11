@@ -1,15 +1,15 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 /**
- * Description of EditorStatementTheorem
- *
- * @author User
- */
+* Description of EditorStatementTheorem
+*
+* @author User
+*/
 class EditorStatementTheorem extends EditorElement
 {
 
@@ -28,8 +28,6 @@ class EditorStatementTheorem extends EditorElement
     public function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
-        
-//        print_object($idInfo);
 
         if (sizeof($idInfo) > 1)
         {
@@ -48,7 +46,9 @@ class EditorStatementTheorem extends EditorElement
             }
 
             $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-\d+$/";
-
+//            print_object($_POST);
+//            print_object($idInfo[0]);
+            
             $i = 0;
 
             foreach ($_POST as $id => $content)
@@ -63,9 +63,9 @@ class EditorStatementTheorem extends EditorElement
                         $newId .= $indexNumber[$i] . "-";
                     }
                     $newId .= $indexNumber[sizeof($indexNumber) - 1];
-
+                    
                     $idParam = $newId . "|ref";
-
+            
                     $partTheorem = new EditorPartTheorem();
                     $partTheorem->getFormData($idParam);
                     $this->children[] = $partTheorem;
@@ -154,11 +154,11 @@ class EditorStatementTheorem extends EditorElement
     public function displayData()
     {
         global $DB;
-
-        $currentCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
-
+        
+        $currentCompRecord = $DB->get_record("msm_compositor", array("id"=>$this->compid));
+        
         $htmlContent = '';
-
+        
         $htmlContent .= "<div id='msm_theorem_statement_container-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_statement_containers'>";
         $htmlContent .= "<div id='msm_theorem_statement_title_container-$this->compid' class='msm_theorem_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
@@ -168,7 +168,7 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_part_droparea-$this->compid' class='msm_theorem_part_dropareas'>";
-        foreach ($this->children as $partTheorem)
+        foreach($this->children as $partTheorem)
         {
             $htmlContent .= $partTheorem->displayData();
         }
@@ -189,14 +189,14 @@ class EditorStatementTheorem extends EditorElement
 
         $statementRecord = $DB->get_record($this->tablename, array('id' => $this->id));
         $this->content = $statementRecord->statement_content;
-
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-
-        foreach ($childElements as $child)
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        
+        foreach($childElements as $child)
         {
-            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
-
-            switch ($childTable->tablename)
+            $childTable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id));
+            
+            switch($childTable->tablename)
             {
                 case "msm_part_theorem":
                     $partTheorem = new EditorPartTheorem();
@@ -209,38 +209,36 @@ class EditorStatementTheorem extends EditorElement
 
         return $this;
     }
-
-    function displayRefData()
+    function displayRefData($parentId)
     {
         global $DB;
-
-        $currentRefCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
+        
         $htmlContent = '';
-
-        $htmlContent .= "<div id='msm_theoremref_statement_container-$currentRefCompRecord->parent_id-$this->compid' class='msm_theoremref_statement_containers'>";
-        $htmlContent .= "<div id='msm_theoremref_statement_title_container-$this->compid' class='msm_theoremref_statement_title_containers'>";
+        
+        $htmlContent .= "<div id='msm_theoremref_statement_container-$parentId-$this->compid' class='msm_theoremref_statement_containers'>";
+        $htmlContent .= "<div id='msm_theoremref_statement_title_container-$parentId-$this->compid' class='msm_theoremref_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<div id='msm_theoremref_content_input-$currentRefCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_theoremref_content_input-$parentId-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        $htmlContent .= "<div id='msm_theoremref_part_droparea-$currentRefCompRecord->parent_id-$this->compid' class='msm_theoremref_part_dropareas'>";
-        foreach ($this->children as $partTheorem)
+        $htmlContent .= "<div id='msm_theoremref_part_droparea-$parentId-$this->compid' class='msm_theoremref_part_dropareas'>";
+        foreach($this->children as $partTheorem)
         {
-            $htmlContent .= $partTheorem->displayRefData();
+            $htmlContent .= $partTheorem->displayRefData("$parentId-$this->compid");
         }
-        $htmlContent .= "<input id='msm_theoremref_part_button-$this->compid' class='msm_theoremref_part_buttons' type='button' value='Add more parts' onclick='addrefTheoremPart(event)' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theoremref_part_button-$parentId-$this->compid' class='msm_theoremref_part_buttons' type='button' value='Add more parts' onclick='addrefTheoremPart(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
 
         return $htmlContent;
     }
-
+    
     public function displayPreview($id)
     {
         $previewHtml = '';
-
+        
         $previewHtml .= $this->content;
 
         $previewHtml .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
@@ -249,7 +247,7 @@ class EditorStatementTheorem extends EditorElement
             $previewHtml .= $childComponent->displayPreview($id);
         }
         $previewHtml .= "</ol>";
-
+        
         return $previewHtml;
     }
 

@@ -34,20 +34,17 @@ class EditorTheorem extends EditorElement
     // for main unit content, it would just be a parentid#
     public function getFormData($idNumber)
     {
+//        print_object($_POST);
         $this->errorArray = array();
 
-//        print_object($idNumber);
-//        print_object($_POST);
-
         $idNumberInfo = explode("|", $idNumber);
+
         // reference material
         if (sizeof($idNumberInfo) > 1)
         {
-            $match = "/^msm_theoremref_type_dropdown-$idNumberInfo[0][-]{0,1}.*$/";
-
-            $newId = '';
-            $theoremId = '';
-            $dbsetId = '';
+            $match = "/^msm_theoremref_type_dropdown-$idNumberInfo[0].*$/";
+            
+            $newTid = '';
             foreach ($_POST as $id => $value)
             {
                 if (preg_match($match, $id))
@@ -55,76 +52,25 @@ class EditorTheorem extends EditorElement
                     $tempidInfo = explode("-", $id);
                     for ($i = 1; $i < sizeof($tempidInfo) - 1; $i++)
                     {
-                        $newId .= $tempidInfo[$i] . "-";
+                        $newTid .= $tempidInfo[$i] . "-";
                     }
-                    $newId .= $tempidInfo[sizeof($tempidInfo) - 1];
-                    $theoremId = $tempidInfo[sizeof($tempidInfo) - 1];
-                    $dbsetId = $tempidInfo[sizeof($tempidInfo) - 2];
+                    $newTid .= $tempidInfo[sizeof($tempidInfo) - 1];
                     break;
                 }
             }
+            $this->type = $_POST['msm_theoremref_type_dropdown-' . $newTid];
+            $this->description = $_POST['msm_theoremref_description_input-' . $newTid];
+            $this->title = $_POST['msm_theoremref_title_input-' . $newTid];
+//
+            $contentmatch = '/msm_theoremref_content_input-' . $newTid . '-\d+.*$/';
 
-            $this->type = $_POST['msm_theoremref_type_dropdown-' . $newId];
-            $this->description = $_POST['msm_theoremref_description_input-' . $newId];
-            $this->title = $_POST['msm_theoremref_title_input-' . $newId];
+            $i = 0; //position for the part theorem
 
-//            echo "idNumberInfo: " . $idNumberInfo[0] . "\n";
-//            echo "theoremid: " . $theoremId . "\n";
-//            echo "dbsetId: " . $dbsetId . "\n";
-
-            $contentmatch = '/msm_theoremref_content_input-' . $theoremId . '-\d+.*$/';
-            $dbcontentmatch = '/msm_theoremref_content_input-' . $dbsetId . '-\d+.*$/';
-
-
-//            print_object($theoremId);
-//            $i = 0; //position for the part theorem            
             foreach ($_POST as $id => $value)
             {
-                $chosenId = null;
-                if (!empty($_POST['msm_currentUnit_id']))
+                if (preg_match($contentmatch, $id))
                 {
-                    if (preg_match($dbcontentmatch, $id))
-                    {
-//                        echo "not empty currentUnit with db match";
-//                        print_object($id);
-                        $chosenId = $id;
-                    }
-                    else if (preg_match($contentmatch, $id))
-                    {
-//                        echo "not empty currentUnit with theoremid match";
-//                        print_object($id);
-                        $chosenId = $id;
-                    }
-                }
-                else if (!empty($_POST['msm_mode_info']))
-                {
-                    if (preg_match($dbcontentmatch, $id))
-                    {
-//                        echo "not empty currentUnit with db match";
-//                        print_object($id);
-                        $chosenId = $id;
-                    }
-                    else if (preg_match($contentmatch, $id))
-                    {
-//                        echo "not empty currentUnit with theoremid match";
-//                        print_object($id);
-                        $chosenId = $id;
-                    }
-                }
-                else
-                {
-                    if (preg_match($dbcontentmatch, $id))
-                    {
-//                        echo "empty currentUnit with initial match";
-//                        print_object($id);
-                        $chosenId = $id;
-                    }
-                }
-
-
-                if (!empty($chosenId))
-                {
-                    $indexNumber = explode("-", $chosenId);
+                    $indexNumber = explode("-", $id);
 
                     $newId = '';
                     for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
@@ -136,11 +82,9 @@ class EditorTheorem extends EditorElement
                     $statementRefTheorem = new EditorStatementTheorem();
                     $statementRefTheorem->getFormData($newId);
                     $this->contents[] = $statementRefTheorem;
-//                    $i++;
+                    $i++;
                 }
             }
-
-//            print_object($this);
         }
         else if (sizeof($idNumberInfo) == 1) // main unit content
         {
@@ -340,18 +284,15 @@ class EditorTheorem extends EditorElement
         return $this;
     }
 
-    function displayRefData()
+    function displayRefData($parentId)
     {
         global $DB;
 
-        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
-
-        $parentRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
-
+//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
         $htmlContent = '';
 
-        $htmlContent .= "<div id='copied_msm_theoremref-$this->compid' class='copied_msm_structural_element'>";
-        $htmlContent .= "<select id='msm_theoremref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_dropdown' name='msm_theoremref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div id='copied_msm_theoremref-$parentId-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<select id='msm_theoremref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_theoremref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -382,19 +323,19 @@ class EditorTheorem extends EditorElement
         }
         $htmlContent .= "</select>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<div id='msm_element_title_container-$parentId-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<input id='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled' value='$this->title'/>";
-        $htmlContent .= "<div id='msm_theoremref_content_container-$this->compid' class='msm_theoremref_content_containers'>";
+        $htmlContent .= "<input id='msm_theoremref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "<div id='msm_theoremref_content_container-$parentId-$this->compid' class='msm_theoremref_content_containers'>";
         foreach ($this->contents as $content)
         {
-            $htmlContent .= $content->displayRefData();
+            $htmlContent .= $content->displayRefData("$parentId-$this->compid");
         }
-        $htmlContent .= "<input id='msm_theoremref_child_button-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addrefTheoremContent(event, $this->compid)' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theoremref_child_button-$parentId-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addrefTheoremContent(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<label id='msm_theoremref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_labels' for='msm_theoremref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid'>Description: </label>";
-        $htmlContent .= "<input id='msm_theoremref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid'/>";
+        $htmlContent .= "<label id='msm_theoremref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_theoremref_description_label-$parentId-$this->compid'>Description: </label>";
+        $htmlContent .= "<input id='msm_theoremref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$parentId-$this->compid'/>";
         $htmlContent .= "</div>";
 
         return $htmlContent;

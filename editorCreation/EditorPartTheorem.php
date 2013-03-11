@@ -140,21 +140,18 @@ class EditorPartTheorem extends EditorElement
         return $this;
     }
 
-    function displayRefData()
+    function displayRefData($parentId)
     {
         global $DB;
-
-        $currentRefCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
-        $parentStatementTheoremRefRecord = $DB->get_record("msm_compositor", array("id"=>$currentRefCompRecord->parent_id));
         
         $htmlContent = '';
-        $htmlContent .= "<div id='msm_theoremref_part_container-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid' class='msm_theorem_child'>";
-        $htmlContent .= "<div id='msm_theoremref_part_title_container-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid' class='msm_theoremref_part_title_containers'>";
+        $htmlContent .= "<div id='msm_theoremref_part_container-$parentId-$this->compid' class='msm_theorem_child'>";
+        $htmlContent .= "<div id='msm_theoremref_part_title_container-$parentId-$this->compid' class='msm_theoremref_part_title_containers'>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<label class='msm_theoremref_part_tlabel' for='msm_theoremref_part_title-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid'>Part Theorem title: </label>";
-        $htmlContent .= "<input id='msm_theoremref_part_title-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid' class='msm_theoremref_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid' disabled='disabled' value='$this->caption'/>";
-        $htmlContent .= "<div id='msm_theoremref_part_content-$parentStatementTheoremRefRecord->parent_id-$currentRefCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<label class='msm_theoremref_part_tlabel' for='msm_theoremref_part_title-$parentId-$this->compid'>Part Theorem title: </label>";
+        $htmlContent .= "<input id='msm_theoremref_part_title-$parentId-$this->compid' class='msm_theoremref_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$parentId-$this->compid' disabled='disabled' value='$this->caption'/>";
+        $htmlContent .= "<div id='msm_theoremref_part_content-$parentId-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
@@ -181,5 +178,3 @@ class EditorPartTheorem extends EditorElement
 }
 
 ?>
-
-

@@ -273,31 +273,24 @@ $formContent .= '<div id="msm_editor_container">
                 <h2> Structural Elements </h2>
 
                 <div class="msm_structural_element" id="msm_def">
-                </div>
-                <span class="msm_element_label">Definition</span>
+                    <span class="msm_element_label">Definition</span>
+                </div>                
                 <div class="msm_structural_element" id="msm_theorem">
-                </div>
-                <span class="msm_element_label">Theorem</span>
+                    <span class="msm_element_label">Theorem</span>
+                </div>                
                 <br />
                 <div class="msm_structural_element" id="msm_comment">
-                </div>
-                <span class="msm_element_label">Comment</span>
+                    <span class="msm_element_label">Comment</span>
+                </div>                
                 <div class="msm_structural_element" id="msm_body">
-                </div>
-                <span class="msm_element_label">Content</span>
+                    <span class="msm_element_label">Content</span>
+                </div>                
                 <br />
                 <div class="msm_structural_element" id="msm_intro">
-                </div>
-                <span class="msm_element_label" style="margin-left: 41%;">Intro</span>
+                    <span class="msm_element_label" style="margin-left: 25%;">Intro</span>
+                </div>                
                 <br />
-                <!--div class="msm_structural_element" id="msm_pic">
-                    Drag to add Images
-                </div>
-                <br />
-                <div class="msm_structural_element" id="msm_media">
-                    Drag to add Other Media types
-                </div>
-                <br /-->
+                
             </div>
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle" >

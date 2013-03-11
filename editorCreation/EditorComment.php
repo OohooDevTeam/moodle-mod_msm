@@ -239,18 +239,18 @@ class EditorComment extends EditorElement
         return $this;
     }
 
-    function displayRefData()
+    function displayRefData($parentId)
     {
         global $DB;
 
-        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
+//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
 
-        $parentRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id)); // associate record
+//        $parentRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id)); // associate record
 
         $htmlContent = '';
 
-        $htmlContent .= "<div id='copied_msm_commentref-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='copied_msm_structural_element'>";
-        $htmlContent .= "<select id='msm_commentref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_dropdown' name='msm_commentref_type_dropdown-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div id='copied_msm_commentref-$parentId-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<select id='msm_commentref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_commentref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -272,15 +272,15 @@ class EditorComment extends EditorElement
         }
         $htmlContent .= "</select>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<div id='msm_element_title_container-$parentId-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 30%;'> COMMENT </b>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<input id='msm_commentref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_commentref_title_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled' value='$this->title'/>";
-        $htmlContent .= "<div id='msm_commentref_content_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<input id='msm_commentref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_commentref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "<div id='msm_commentref_content_input-$parentId-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        $htmlContent .= "<label id='msm_commentref_description_label-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_labels' for='msm_commentref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid'>Description: </label>";
-        $htmlContent .= "<input id='msm_commentref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_commentref_description_input-$parentRecord->parent_id-$parentRecord->id-$this->compid'/>";
+        $htmlContent .= "<label id='msm_commentref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_commentref_description_input-$parentId-$this->compid'>Description: </label>";
+        $htmlContent .= "<input id='msm_commentref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_commentref_description_input-$parentId-$this->compid'/>";
         $htmlContent .= "</div>";
 
         return $htmlContent;

@@ -742,12 +742,12 @@ function addAssociateForm(index, type)
                                 <option value="Illustration">Illustration</option>\n\
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Exploration">Exploration</option>\n\
-                            </select></div>');    
+                            </select></div>');
     }
     else if(type == "theorem")
     {
         typeDropdown = $('<div class="msm_associate_optionarea"><span class="msm_associate_option_label"> Type of information: </span>\n\
-                           <select name="msm_associate_dropdown-'+index + '-' + newId+'" class="msm_associated_dropdown" id="msm_associate_dropdown-'+index + '-' + newId+'">\n\
+                            <select name="msm_associate_dropdown-'+index + '-' + newId+'" class="msm_associated_dropdown" id="msm_associate_dropdown-'+index + '-' + newId+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Explanation">Explanation</option>\n\
                                 <option value="Example">Example</option>\n\
@@ -760,27 +760,27 @@ function addAssociateForm(index, type)
     
     var infoHeader = $('<div class="msm_associate_info_headers" id="msm_associate_info_header-' + index + '-' + newId + '"></div>');
     var infoheadertext = $('<b> ASSOCIATED INFORMATION </b>');
-    var infoheadertexthidden = $('<span style="visibility: hidden; display:none;">     Drag here to move this element.</span>');
+    var infoheadertexthidden = $('<span style="visibility: hidden; display:none;"> Drag here to move this element.</span>');
     
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'-1">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
-    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'-1" name="msm_info_title-'+index + '-' + newId+'-1"/>');    
+    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'-1" name="msm_info_title-'+index + '-' + newId+'-1"/>');
     
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'-1">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'-1" name="msm_info_content-'+index + '-' + newId+'-1"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infocontent'+index + '-' + newId+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infocontent'+index + '-' + newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infocontent'+index + '-' + newId+'-1"></div>');
 
     var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"-1'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
-                                    <select name='msm_associate_reftype-"+index + "-" + newId+"-1' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"-1' onchange='processReftype(event);'>\n\
+                                <select name='msm_associate_reftype-"+index + "-" + newId+"-1' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"-1' onchange='processReftype(event);'>\n\
                                     <option value='None'>None</option>\n\
                                     <option value='Comment'>Comment</option>\n\
                                     <option value='Definition'>Definition</option>\n\
                                     <option value='Theorem'>Theorem</option>\n\
                                     <option value='Example'>Example</option> \n\
                                     <option value='Section of this Composition'>Section of this Composition</option>\n\
-                               </select></div>");
+                                </select></div>");
     
     var associateCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
   
@@ -800,27 +800,27 @@ function addAssociateForm(index, type)
      
     $(associateInfoDiv).insertBefore("#msm_associate_button-"+index);
         
-    if(tinymce.getInstanceById("msm_info_content-"+index+"-"+newId+'-1') != null)
+    if(tinymce.getInstanceById("msm_info_content-"+index+"-"+newId+"-1") != null)
     {
-        tinyMCE.execCommand('mceFocus', false,"msm_info_content-"+index+"-"+newId+'-1');          
-        tinymce.execCommand('mceRemoveControl', true, "msm_info_content-"+index+"-"+newId+'-1');
+        tinyMCE.execCommand('mceFocus', false,"msm_info_content-"+index+"-"+newId+"-1");
+        tinymce.execCommand('mceRemoveControl', true, "msm_info_content-"+index+"-"+newId+"-1");
     }
         
-    if(tinymce.getInstanceById("msm_info_title-"+index+"-"+newId+'-1') != null) 
+    if(tinymce.getInstanceById("msm_info_title-"+index+"-"+newId+"-1") != null)
     {
-        tinyMCE.execCommand('mceFocus', false, "msm_info_title-"+index+"-"+newId+'-1');          
-        tinymce.execCommand('mceRemoveControl', true, "msm_info_title-"+index+"-"+newId+'-1');
+        tinyMCE.execCommand('mceFocus', false, "msm_info_title-"+index+"-"+newId+"-1");
+        tinymce.execCommand('mceRemoveControl', true, "msm_info_title-"+index+"-"+newId+"-1");
     }
     
-    initEditor("msm_info_content-"+index+"-"+newId+'-1');   
-    initEditor("msm_info_title-"+index+"-"+newId+'-1'); 
-           
+    initEditor("msm_info_content-"+index+"-"+newId+"-1");
+    initEditor("msm_info_title-"+index+"-"+newId+"-1");
+       
     $("#msm_associate_container-"+index).sortable({
         appendTo: "msm_associate_container-"+index,
         connectWith: "msm_associate_container-"+index,
         cursor: "move",
         tolerance: "pointer",
-        placeholder: "msm_sortable_placeholder",      
+        placeholder: "msm_sortable_placeholder",
         handle: ".msm_associate_info_headers",
         start: function(event,ui)
         {
@@ -832,39 +832,67 @@ function addAssociateForm(index, type)
             
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
-
-            var id = $(this).attr("id");            
+            $(this).find('.msm_info_titles').each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
+            $(this).find('.msm_info_contents').each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
             
-            $("#"+id+" textarea").each(function() {
-                if(tinymce.getInstanceById($(this).attr("id")) != null)
-                {
-                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
-                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
-                }
+            $(this).find('.msm_associate_reftype_optionarea').each(function() {
+                $(this).find('.copied_msm_structural_element').each(function() {
+                    $(this).find('.msm_unit_child_content').each(function()
+                    {
+                        tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                        tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                    });
+                });
             });
         },
         stop: function(event, ui)
         {
             $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
-           
-            var id = $(this).attr("id");
             
-            
-            $("#"+id+" textarea").each(function() {
-                if(tinymce.getInstanceById($(this).attr("id")) == null)
+            // if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_info_titles').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    initEditor(this.id);                    
+                    initEditor(this.id);
                     $(this).sortable("refresh");
                 }
             });
+            $(this).find('.msm_info_contents').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initEditor(this.id);
+                    $(this).sortable("refresh");
+                }
+            });
+            
+            $(this).find('.msm_associate_reftype_optionarea').each(function() {
+                $(this).find('.copied_msm_structural_element').each(function() {
+                    $(this).find('.msm_unit_child_content').each(function()
+                    {
+                        if(tinymce.getInstanceById($(this).attr("id"))==null)
+                        {
+                            initEditor(this.id);
+                            $(this).sortable("refresh");
+                        }
+                    });
+                });
+            });
+            
+        //
         }
-    });    
+    });
     
     $("#msm_associate_info_header-"+index+"-"+newId).mouseover(function () {
         $(this).children("span").css({
             "display": "inline",
-            "visibility": "visible", 
-            "color": "#4e6632", 
+            "visibility": "visible",
+            "color": "#4e6632",
             "opacity": "0.5",
             "cursor": "move"
         });
@@ -872,15 +900,15 @@ function addAssociateForm(index, type)
     $("#msm_associate_info_header-"+index+"-"+newId).mouseout(function () {
         $(this).children("span").css({
             "visibility":"hidden"
-        //            "display":"none"
+// "display":"none"
         });
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseup(function () {
         $(this).children("span").css({
-            "visibility":"hidden" 
-        //            "display":"none"
+            "visibility":"hidden"
+// "display":"none"
         });
-    });           
+    });
      
 }
 
