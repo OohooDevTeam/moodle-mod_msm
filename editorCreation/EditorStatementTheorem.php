@@ -155,19 +155,19 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent = '';
         
         $htmlContent .= "<div id='msm_theorem_statement_container-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_statement_containers'>";
-        $htmlContent .= "<div id='msm_theorem_statement_title_container-$this->compid' class='msm_theorem_statement_title_containers'>";
+        $htmlContent .= "<div id='msm_theorem_statement_title_container-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_statement_title_containers'>";
         $htmlContent .= "<b> Theorem Content </b>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_content_input-$currentCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        $htmlContent .= "<div id='msm_theorem_part_droparea-$this->compid' class='msm_theorem_part_dropareas'>";
+        $htmlContent .= "<div id='msm_theorem_part_droparea-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_dropareas'>";
         foreach($this->children as $partTheorem)
         {
             $htmlContent .= $partTheorem->displayData();
         }
-        $htmlContent .= "<input id='msm_theorem_part_button-$this->compid' class='msm_theorem_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event)' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theorem_part_button-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
 

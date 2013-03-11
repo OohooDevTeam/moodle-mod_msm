@@ -110,7 +110,7 @@ class EditorPartTheorem extends EditorElement
 
         $htmlContent = '';
         $htmlContent .= "<div id='msm_theorem_part_container-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_child'>";
-        $htmlContent .= "<div id='msm_theorem_part_title_container-$this->compid' class='msm_theorem_part_title_containers'>";
+        $htmlContent .= "<div id='msm_theorem_part_title_container-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_title_containers'>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>Part Theorem title: </label>";
