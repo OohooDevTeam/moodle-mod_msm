@@ -22,15 +22,22 @@
     margin: 1% 0;
 }
 
-.msm_unit_title_labels
+.msm_unit_title_labels, .msm_unit_short_title_labels
 {
     margin-bottom: 2%;
     margin-left: 2%;
 }
 
-.msm_title_input
+.msm_title_input 
 {
     width: 85%;
+    margin-bottom: 2%;
+    margin-left: 1.5%;
+}
+
+.msm_unit_short_titles
+{
+    width: 82%;
     margin-bottom: 2%;
     margin-left: 1.5%;
 }

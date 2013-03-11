@@ -19,6 +19,7 @@ class EditorUnit extends EditorElement
     public $plain_title;
     public $description;
     public $unitName;
+    public $short_name;
     public $children = array(); // need it for load/display part
 
     public function __construct()
@@ -34,6 +35,7 @@ class EditorUnit extends EditorElement
 
         $this->title = $_POST['msm_unit_title'];
         $this->description = $_POST['msm_unit_description_input'];
+        $this->short_name = $_POST['msm_unit_short_title'];
 
         $this->unitName = $DB->get_record('msm_unit_name', array('msmid' => $idNumber, 'depth' => 0))->id;
 
@@ -49,6 +51,7 @@ class EditorUnit extends EditorElement
         // TODO temporary value --> later will need to fix this
         $data->plain_title = $this->title;
         $data->description = $this->description;
+        $data->short_name = $this->short_name;
         // when saving the unit for the first time, no structure is given(ie no subunit is specified until user structures the unit in hierarchy column)
         // so the default value is the name of the top unit specified by the user
         $data->compchildtype = $this->unitName;
@@ -91,6 +94,7 @@ class EditorUnit extends EditorElement
             $newUnitData->compchildtype = $currentUnitCompType->id;
             $newUnitData->title = $unitRecord->title;
             $newUnitData->plain_title = $unitRecord->plain_title;
+            $newUnitData->short_name = $unitRecord->short_name;
             $newUnitData->creationdate = $unitRecord->creationdate;
             $newUnitData->last_revision_date = $unitRecord->last_revision_date;
             $newUnitData->acknowledgements = $unitRecord->acknowledgements;
@@ -121,6 +125,7 @@ class EditorUnit extends EditorElement
 
         $unitRecord = $DB->get_record("msm_unit", array('id' => $this->id));
 
+        $this->short_name = $unitRecord->short_name;
         $this->plain_title = $unitRecord->plain_title;
         $this->title = $unitRecord->title;
         $this->description = $unitRecord->description;
@@ -213,6 +218,9 @@ class EditorUnit extends EditorElement
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
         $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' disabled='disabled'/>";
+        
+        $htmlContent .=  '<label class="msm_unit_short_title_labels" for="msm_unit_short_title"> XML hierarchy Name: </label>';
+        $htmlContent .= ' <input class="msm_unit_short_titles" id="msm_unit_short_title" placeholder="Please enter short title for this ' . $this->unitName . '. name="msm_unit_short_title" value=' . $this->short_name .'/>';
 
         $htmlContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
         $htmlContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' value='$this->description'  disabled='disabled'/>";

@@ -299,6 +299,10 @@ $formContent .= '<div id="msm_editor_container">
                         <div id = "msm_unit_info_div">
                         <label class="msm_unit_title_labels" id="msm_unit_title_label" for="msm_unit_title">' . $topContainer . ' title: </label>
                         <input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" placeholder=" Please enter the title of this ' . $topContainer . '." onkeypress="validateBorder()"/>
+                            
+                        <label class="msm_unit_short_title_labels" for="msm_unit_short_title"> XML hierarchy
+                        Name: </label>
+                        <input class="msm_unit_short_titles" id="msm_unit_short_title" placeholder="Please enter short title for this ' . $topContainer . '." name="msm_unit_short_title"/> 
 
                         <label class="msm_unit_description_labels" id="msm_unit_description_label" for="msm_unit_description_input">Description: </label>
                         <input class="msm_unit_description_inputs" id="msm_unit_description_input" name="msm_unit_description_input" placeholder="Insert description to search this element in future."/>

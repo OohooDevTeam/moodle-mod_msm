@@ -116,7 +116,6 @@ function submitForm()
             }
             else
             {        
-                console.log(mode);
                 if(typeof mode !== 'undefined')
                 {
                     $(".leftbox").append(ids); 
@@ -313,6 +312,7 @@ function removeTinymceEditor()
 function disableEditorFunction()
 {
     $('.msm_title_input').attr("disabled", "disabled");
+    $('.msm_unit_short_titles').attr("disabled", "disabled");
     $('.msm_unit_description_inputs').attr("disabled", "disabled");
                     
     $(".copied_msm_structural_element select").attr("disabled", "disabled");

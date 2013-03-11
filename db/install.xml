@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20130205" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20130311" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -42,8 +42,9 @@
         <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="standalone" NEXT="compchildtype"/>
         <FIELD NAME="compchildtype" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false" PREVIOUS="string_id" NEXT="title"/>
         <FIELD NAME="title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="compchildtype" NEXT="plain_title"/>
-        <FIELD NAME="plain_title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="title" NEXT="creationdate"/>
-        <FIELD NAME="creationdate" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="plain_title" NEXT="last_revision_date"/>
+        <FIELD NAME="plain_title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="title" NEXT="short_name"/>
+        <FIELD NAME="short_name" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="plain_title" NEXT="creationdate"/>
+        <FIELD NAME="creationdate" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="short_name" NEXT="last_revision_date"/>
         <FIELD NAME="last_revision_date" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="creationdate" NEXT="acknowledgements"/>
         <FIELD NAME="acknowledgements" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="last_revision_date" NEXT="description"/>
         <FIELD NAME="description" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="acknowledgements"/>

@@ -139,12 +139,14 @@ function newUnit()
     $("#msm_child_appending_area").empty();
     
     $("#msm_unit_title").val('');
+     $("#msm_unit_short_title").val('');
     $("#msm_unit_description_input").val('');
     
     $("#msm_child_order").val('');
     $("#msm_currentUnit_id").val('');
     
     $("#msm_unit_title").removeAttr("disabled");
+     $("#msm_unit_short_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");
     
     $("#msm_editor_edit").remove();    

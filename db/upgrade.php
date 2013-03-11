@@ -2167,28 +2167,31 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2013012800, 'msm');
     }
-    
-     if ($oldversion < 2013020500) {
+
+    if ($oldversion < 2013020500)
+    {
 
         // Define field block_caption to be dropped from msm_unit
         $table = new xmldb_table('msm_unit');
         $field = new xmldb_field('block_caption');
 
         // Conditionally launch drop field block_caption
-        if ($dbman->field_exists($table, $field)) {
+        if ($dbman->field_exists($table, $field))
+        {
             $dbman->drop_field($table, $field);
         }
-        
-         // Define field block_caption to be dropped from msm_intro
+
+        // Define field block_caption to be dropped from msm_intro
         $table = new xmldb_table('msm_intro');
         $field = new xmldb_field('block_caption');
 
         // Conditionally launch drop field block_caption
-        if ($dbman->field_exists($table, $field)) {
+        if ($dbman->field_exists($table, $field))
+        {
             $dbman->drop_field($table, $field);
         }
-        
-         // Define table msm_block to be created
+
+        // Define table msm_block to be created
         $table = new xmldb_table('msm_block');
 
         // Adding fields to table msm_block
@@ -2199,28 +2202,49 @@ function xmldb_msm_upgrade($oldversion)
         $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
 
         // Conditionally launch create table for msm_block
-        if (!$dbman->table_exists($table)) {
+        if (!$dbman->table_exists($table))
+        {
             $dbman->create_table($table);
         }
 
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2013020500, 'msm');
     }
-    
-    if ($oldversion < 2013020501) {
+
+    if ($oldversion < 2013020501)
+    {
 
         // Define field intro_caption to be added to msm_intro
         $table = new xmldb_table('msm_intro');
         $field = new xmldb_field('intro_caption', XMLDB_TYPE_CHAR, '500', null, null, null, null, 'string_id');
 
         // Conditionally launch add field intro_caption
-        if (!$dbman->field_exists($table, $field)) {
+        if (!$dbman->field_exists($table, $field))
+        {
             $dbman->add_field($table, $field);
         }
 
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2013020501, 'msm');
     }
+
+    if ($oldversion < 2013031100)
+    {
+
+        // Define field short_name to be added to msm_unit
+        $table = new xmldb_table('msm_unit');
+        $field = new xmldb_field('short_name', XMLDB_TYPE_CHAR, '50', null, null, null, null, 'plain_title');
+
+        // Conditionally launch add field short_name
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2013031100, 'msm');
+    }
+
 
 
 
