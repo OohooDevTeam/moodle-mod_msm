@@ -45,11 +45,7 @@ class EditorStatementTheorem extends EditorElement
                 $this->errorArray[] = 'msm_theoremref_content_input-' . $idInfo[0] . '_ifr';
             }
 
-            $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-\d+$/";
-//            print_object($_POST);
-//            print_object($idInfo[0]);
-            
-            $i = 0;
+            $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-\d+$/";            
 
             foreach ($_POST as $id => $content)
             {
@@ -69,7 +65,6 @@ class EditorStatementTheorem extends EditorElement
                     $partTheorem = new EditorPartTheorem();
                     $partTheorem->getFormData($idParam);
                     $this->children[] = $partTheorem;
-                    $i++;
                 }
             }
         }
@@ -172,7 +167,7 @@ class EditorStatementTheorem extends EditorElement
         {
             $htmlContent .= $partTheorem->displayData();
         }
-        $htmlContent .= "<input id='msm_theorem_part_button-$this->compid' class='msm_theorem_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event, $this->compid)' disabled='disabled'/>";
+        $htmlContent .= "<input id='msm_theorem_part_button-$this->compid' class='msm_theorem_part_buttons' type='button' value='Add more parts' onclick='addTheoremPart(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
 
