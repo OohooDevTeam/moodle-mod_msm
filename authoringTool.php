@@ -336,8 +336,16 @@ if (!empty($treeContent))
     $formContent .= $treeContent;
 }
 
-$formContent .= '</div>
-                </div>
+$formContent .= '</div>';
+if(empty($treeContent))
+{
+    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()" disabled="disabled"> New </button>';
+}
+else
+{
+    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()"> New </button>';
+}
+$formContent .=' </div>
                 </div>     
        </div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
@@ -474,14 +482,11 @@ if (!empty($existingUnit))
                     .bind("select_node.jstree", function(event, data) {
                         var dbInfo = [];      
                         
-                        $("#msm_editor_save").remove();
-                        $("#msm_editor_edit").remove();
-                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-
-                        $("#msm_editor_new").remove();
-                        $("#msm_editor_remove").remove();
-                        $("#msm_editor_cancel").remove();
+                        $(".msm_editor_buttons").remove();
+                        
+                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");              
                         $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
         
                         var nodeId = data.rslt.obj.attr("id");      
                         var match = nodeId.match(/msm_unit-.+/);

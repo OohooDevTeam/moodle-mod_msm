@@ -49,16 +49,26 @@ function insertUnitStructure(dbId)
     $(linkElement).append(linkText);    
     $(listChild).append(linkElement);
     
+    var rootul = $("<ul></ul>");
+    
     if(!treediv.hasChildNodes())
-    {
-        var rootul = $("<ul></ul>");
-            
+    {            
         rootul.append(listChild);
         $("#msm_unit_tree").append(rootul);
     }
     else
     {
-        $("#msm_unit_tree > ul").append(listChild);
+        var childUls = $("#msm_unit_tree > ul > li").find("ul");        
+        
+        if(childUls.length == 0)
+        {
+            rootul.append(listChild);
+            $("#msm_unit_tree > ul > li").first().append(rootul);
+        }
+        else
+        {
+            $("#msm_unit_tree > ul > li").first().children("ul").append(listChild);          
+        }
     }    
     
     var currentUnit = document.getElementById('msm_currentUnit_id');
@@ -144,20 +154,20 @@ function newUnit()
     $("#msm_child_appending_area").empty();
     
     $("#msm_unit_title").val('');
-     $("#msm_unit_short_title").val('');
+    $("#msm_unit_short_title").val('');
     $("#msm_unit_description_input").val('');
     
     $("#msm_child_order").val('');
     $("#msm_currentUnit_id").val('');
     
     $("#msm_unit_title").removeAttr("disabled");
-     $("#msm_unit_short_title").removeAttr("disabled");
+    $("#msm_unit_short_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");
     
     $("#msm_editor_edit").remove();    
     $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
                     
-    $("#msm_editor_new").remove();
+    //    $("#msm_editor_new").remove();
     $("#msm_editor_remove").remove();
     $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
     
@@ -307,11 +317,11 @@ function editUnit()
         }
     });    
     
+    $("#msm_editor_new").attr("disabled", "disabled");
     $("#msm_editor_edit").remove();
     $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");
                     
     $("#msm_editor_remove").remove();
-    $("#msm_editor_new").remove();
     $("#msm_editor_reset").remove();
     $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");      
     
@@ -1275,7 +1285,7 @@ function removeUnit(e)
     e.preventDefault();
     
     var currentUnitIdPair = $("#msm_currentUnit_id").val();
-    
+    console.log(currentUnitIdPair);
     var param = {
         removeUnit:currentUnitIdPair
     };
@@ -1321,6 +1331,13 @@ function removeUnit(e)
                     $(this).empty().remove();
                 }
             });
+            
+            var liElements = $("#msm_unit_tree").find("li");
+            
+            if(liElements.length == 0)
+            {
+                $("#msm_editor_new").attr("disabled", "disabled");
+            }
             
             newUnit();
             
@@ -1395,7 +1412,7 @@ function cancelUnit(e)
             removeTinymceEditor();
                   
             disableEditorFunction();   
-            
+           
             $(".msm_editor_buttons").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
         

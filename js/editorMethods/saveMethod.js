@@ -152,12 +152,12 @@ function submitForm()
                 else if(typeof mode === 'undefined')
                 {
                     // replace save and reset button to edit and new buttons, respectively
-                    $("#msm_editor_save").remove();
-                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
                     
-                    $("#msm_editor_cancel").remove();
-                    $("#msm_editor_reset").remove();
-                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New </button>").appendTo("#msm_editor_middle");
+                    $(".msm_editor_buttons").remove();
+                    
+                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
+                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+                    $("#msm_editor_new").removeAttr("disabled");
                     
                     // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
                     // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
