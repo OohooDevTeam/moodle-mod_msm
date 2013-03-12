@@ -259,9 +259,10 @@ $rootUnit = '';
 
 if (!empty($existingUnit))
 {
+    $unitRecord = $DB->get_record("msm_unit", array("id"=>$existingUnit->unit_id));
     $treeContent .= '<ul>';
     $treeContent .= "<li id='msm_unit-$existingUnit->id-$existingUnit->unit_id'>";
-    $treeContent .= "<a href='#'>$existingUnit->id-$existingUnit->unit_id</a>";
+    $treeContent .= "<a href='#'>$unitRecord->short_name</a>";
     $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id);
     $treeContent .= "</li>";
     $treeContent .= '</ul>';
@@ -547,8 +548,9 @@ function makeUnitTree($compid, $unitid)
 
     foreach ($childElements as $child)
     {
+        $childUnitElement = $DB->get_record("msm_unit", array("id"=>$child->unit_id));
         $treeHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
-        $treeHtml .= "<a href='#'>$child->id-$child->unit_id</a>";
+        $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
         $treeHtml .= makeUnitTree($child->id, $child->unit_id);
         $treeHtml .= "</li>";
     }

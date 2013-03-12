@@ -63,23 +63,28 @@ else if (isset($_POST['tree_content']))
 
     processTreeContent($ulElement, 0, 0);
 
-    $aElements = $ulElement->getElementsByTagName('a');
+    $liElements = $ulElement->getElementsByTagName('li');
 
     $compidArray = array();
 
-    foreach ($aElements as $aEl)
+    foreach ($liElements as $liEl)
     {
-        if ($aEl->hasChildNodes())
-        {
-            foreach ($aEl->childNodes as $child)
-            {
-                if ($child->nodeType == XML_TEXT_NODE)
-                {
-                    $string = explode("-", $child->wholeText);
-                    $compidArray[] = $string[0];
-                }
-            }
-        }
+        $id = $liEl->getAttribute("id");
+        
+        $string = explode("-", $id);
+                
+        $compidArray[] = $string[1];
+//        if ($aEl->hasChildNodes())
+//        {
+//            foreach ($aEl->childNodes as $child)
+//            {
+//                if ($child->nodeType == XML_TEXT_NODE)
+//                {
+//                    $string = explode("-", $child->wholeText);
+//                    $compidArray[] = $string[0];
+//                }
+//            }
+//        }
     }
 
     $idPairs = array();
@@ -89,7 +94,6 @@ else if (isset($_POST['tree_content']))
         $elementRecord = $DB->get_record('msm_compositor', array('id' => $compid));
         $idPairs[] = $elementRecord->msm_id . "-" . $compid;
     }
-
 
     echo json_encode($idPairs);
 }

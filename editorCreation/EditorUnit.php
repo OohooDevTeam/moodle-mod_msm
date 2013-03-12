@@ -31,6 +31,9 @@ class EditorUnit extends EditorElement
     public function getFormData($idNumber)
     {
         global $DB;
+        
+//        print_object($_POST);
+        
         $this->errorArray = array();
 
         $this->title = $_POST['msm_unit_title'];
@@ -219,8 +222,8 @@ class EditorUnit extends EditorElement
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
         $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' disabled='disabled'/>";
         
-        $htmlContent .=  '<label class="msm_unit_short_title_labels" for="msm_unit_short_title"> XML hierarchy Name: </label>';
-        $htmlContent .= ' <input class="msm_unit_short_titles" id="msm_unit_short_title" placeholder="Please enter short title for this ' . $this->unitName . '. name="msm_unit_short_title" value=' . $this->short_name .'/>';
+        $htmlContent .=  "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
+        $htmlContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $this->unitName' name='msm_unit_short_title' value='$this->short_name' disabled='disabled'/>";
 
         $htmlContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
         $htmlContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' value='$this->description'  disabled='disabled'/>";
@@ -288,6 +291,7 @@ class EditorUnit extends EditorElement
         $newUnitData->id = $oldCompRecord->unit_id;
         $newUnitData->title = $this->title;
         $newUnitData->plain_title = $this->title;
+        $newUnitData->short_name = $this->short_name;
         $newUnitData->description = $this->description;
         $newUnitData->compchildtype = $this->unitName;
         $newUnitData->standalone = 'false';

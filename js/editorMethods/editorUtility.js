@@ -6,12 +6,17 @@
 
 function insertUnitStructure(dbId)
 {
-    var dbIdInfo = dbId.split("|");    
+    var ajaxInfo = dbId.split("|");
+
+    var unitInfo = ajaxInfo[0].split("-");
     
-    if(dbIdInfo.length > 1)
+    var unitName = unitInfo[0];
+    var idPair = unitInfo[1]+"-"+unitInfo[2];
+    
+    if(ajaxInfo.length > 1)
     {
         $("#msm_unit_tree").find("li").each(function() {           
-            var stringid = "msm_unit-"+dbIdInfo[1];
+            var stringid = "msm_unit-"+ajaxInfo[1];
             var parent = $(this);
             var match = this.id.match(/msm_unit-.+/);
             var currentId = '';
@@ -36,11 +41,11 @@ function insertUnitStructure(dbId)
     var treediv = document.getElementById("msm_unit_tree");
     
     var listChild = $("<li></li>");
-    $(listChild).attr("id", "msm_unit-"+dbIdInfo[0]);
+    $(listChild).attr("id", "msm_unit-"+idPair);
     
     var linkElement = $("<a href='#'></a>");
     
-    var linkText = document.createTextNode(dbIdInfo[0]);
+    var linkText = document.createTextNode(unitName);
     $(linkElement).append(linkText);    
     $(listChild).append(linkElement);
     
@@ -84,7 +89,7 @@ function insertUnitStructure(dbId)
         }       
     })
     .bind("load.jstree", function(){
-        $("#msm_unit_tree").jstree("select_node", "msm_unit-"+dbIdInfo[0]).trigger("select_node.jstree");
+        $("#msm_unit_tree").jstree("select_node", "msm_unit-"+idPair).trigger("select_node.jstree");
     })
     .bind("select_node.jstree", function(event, data) {
         var dbInfo = [];         
@@ -378,6 +383,7 @@ function editUnit()
 function enableEditorFunction()
 {
     $('.msm_title_input').removeAttr("disabled");
+    $('.msm_unit_short_titles').removeAttr("disabled");
     $('.msm_unit_description_inputs').removeAttr("disabled");
                     
     $(".copied_msm_structural_element select").removeAttr("disabled");

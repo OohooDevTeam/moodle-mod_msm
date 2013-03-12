@@ -69,6 +69,9 @@ if (!empty($_POST["removeUnit"]))
     $emptyUnitContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$topUnitName->unitname title: </label>";
     $emptyUnitContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $topUnitName->unitname.' name='msm_unit_title' disabled='disabled'/>";
 
+    $htmlContent .=  "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
+        $htmlContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $topUnitName->unitName' name='msm_unit_short_title' value='$topUnitName->short_name' disabled='disabled'/>";
+
     $emptyUnitContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
     $emptyUnitContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' disabled='disabled'/>";
     $emptyUnitContent .= "</div>";
@@ -81,10 +84,6 @@ if (!empty($_POST["removeUnit"]))
 
     $emptyUnitContent .= "</div>";
     $emptyUnitContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
-
-//    $rootdocument = new EditorUnit();
-//    $rootdocument->loadData(1);
-//    $rootHtml = $rootdocument->displayData();
 
     echo json_encode($emptyUnitContent);
 
@@ -296,11 +295,26 @@ else
 
         if (!empty($_POST['msm_currentUnit_id']))
         {
-            echo json_encode($unit->compid . "-" . $unit->id . "|" . $_POST['msm_currentUnit_id']);
+            if (!empty($unit->short_name))
+            {
+                echo json_encode($unit->short_name . "-" . $unit->compid . "-" . $unit->id . "|" . $_POST['msm_currentUnit_id']);
+            }
+            else
+            {
+                echo json_encode($unit->compid . "-" . $unit->id . "|" . $_POST['msm_currentUnit_id']);
+            }
+//            
         }
         else
         {
-            echo json_encode($unit->compid . "-" . $unit->id);
+            if (!empty($unit->short_name))
+            {
+                echo json_encode($unit->short_name . "-" . $unit->compid . "-" . $unit->id);
+            }
+            else
+            {
+                echo json_encode($unit->compid . "-" . $unit->id);
+            }
         }
     }
     else if (!empty($_POST['msm_mode_info']))
@@ -309,7 +323,7 @@ else
 
         $previewHtml .= $unit->displayPreview();
 
-        foreach ($unitcontent as $key=>$unitchild)
+        foreach ($unitcontent as $key => $unitchild)
         {
             $previewHtml .= $unitchild->displayPreview($key);
         }
