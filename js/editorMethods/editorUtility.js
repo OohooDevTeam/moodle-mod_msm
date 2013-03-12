@@ -51,10 +51,16 @@ function insertUnitStructure(dbId)
     
     var rootul = $("<ul></ul>");
     
+    var treeChildren = $("#msm_unit_tree > ul").first().children("li");    
+    
     if(!treediv.hasChildNodes())
-    {            
+    { 
         rootul.append(listChild);
         $("#msm_unit_tree").append(rootul);
+    }
+    else if(treeChildren.length == 0)
+    {
+        $("#msm_unit_tree > ul").append(listChild);
     }
     else
     {
