@@ -264,8 +264,6 @@ function addrefTheoremContent(event)
         idNumber += buttonIdInfo[i]+"-";
     }
     idNumber += buttonIdInfo[buttonIdInfo.length-1];
-    
-    console.log(idNumber);
         
     if($("#msm_theoremref_content_container-"+idNumber).children("div").length > 0)
     {
@@ -374,8 +372,6 @@ function addrefTheoremPart(event)
         idNumber += buttonIdInfo[i]+"-";
     }
     idNumber += buttonIdInfo[buttonIdInfo.length-1];
-    
-    console.log(idNumber);
         
     if($("#msm_theoremref_part_droparea-"+idNumber).children("div").length > 0)
     {

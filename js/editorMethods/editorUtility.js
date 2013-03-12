@@ -60,12 +60,12 @@ function insertUnitStructure(dbId)
     {
         var childUls = $("#msm_unit_tree > ul > li").find("ul");        
         
-        if(childUls.length == 0)
+        if(childUls.length == 0)  // no ul appended to top unit node to add more nested node to
         {
             rootul.append(listChild);
             $("#msm_unit_tree > ul > li").first().append(rootul);
         }
-        else
+        else // already there is subunit attached to the top unit so just append another item to the list
         {
             $("#msm_unit_tree > ul > li").first().children("ul").append(listChild);          
         }
@@ -1050,8 +1050,6 @@ function createAssociateText(mainElement, aArray, key)
                         var theoremcontent = associateArray[i]["infos"][0]["ref"]["contents"][ind]["content"];
                         var statementidInfo = theoremStatementInfo[ind].id.split("-");
             
-                        console.log("statementidInfo: "+statementidInfo);
-            
                         var statementid = '';
                         for(var j = 1; j < statementidInfo.length-1; j++)
                         {
@@ -1068,7 +1066,6 @@ function createAssociateText(mainElement, aArray, key)
                         $(theoremStatementTextArea).val(theoremcontent);
         
                         $("#"+theoremStatementInfo[ind].id).children(".msm_editor_content").each(function(index, element){
-                            console.log("div that is being replaced: "+$(this).attr("id"));
                             $(this).replaceWith(theoremStatementTextArea);
                         });
         
@@ -1285,7 +1282,6 @@ function removeUnit(e)
     e.preventDefault();
     
     var currentUnitIdPair = $("#msm_currentUnit_id").val();
-    console.log(currentUnitIdPair);
     var param = {
         removeUnit:currentUnitIdPair
     };

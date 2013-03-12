@@ -31,9 +31,6 @@ class EditorUnit extends EditorElement
     public function getFormData($idNumber)
     {
         global $DB;
-        
-//        print_object($_POST);
-        
         $this->errorArray = array();
 
         $this->title = $_POST['msm_unit_title'];

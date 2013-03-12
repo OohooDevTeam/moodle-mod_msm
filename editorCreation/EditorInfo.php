@@ -99,8 +99,6 @@ class EditorInfo extends EditorElement
             }
             $newId .= $idNumberInfo[sizeof($idNumberInfo)-2];
             $param = $newId . "|ref";
-            
-//            print_object($param);
 
             switch ($refType)
             {

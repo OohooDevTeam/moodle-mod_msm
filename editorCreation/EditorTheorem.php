@@ -34,7 +34,6 @@ class EditorTheorem extends EditorElement
     // for main unit content, it would just be a parentid#
     public function getFormData($idNumber)
     {
-//        print_object($_POST);
         $this->errorArray = array();
 
         $idNumberInfo = explode("|", $idNumber);
