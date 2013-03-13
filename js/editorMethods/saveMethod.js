@@ -185,6 +185,36 @@ function submitForm()
                     });
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
                     insertUnitStructure(ids);
+                    $(".copied_msm_sturctural_element").unbind("hover");
+                    $(".copied_msm_structural_element").hover(
+                        function() {
+                            var idNumber = $(this).attr("id").split("-");
+                            var overlayheight = $(this).height();
+                            var offset = $(this).offset();
+                            
+                            console.log($(this));
+                            
+                            $("#msm_element_overlay-"+idNumber[1]).css("top", offset.top/2+20);
+                            
+//                            var overlayoffset = $("#msm_element_overlay-"+idNumber[1]).offset(); 
+//                            overlayoffset.top = offset.top;
+                            
+//                            console.log(overlayoffset.top);
+                            $(".msm_element_overlays").css("display", "block");
+                            
+                            $("#msm_element_overlay-"+idNumber[1]).animate({
+                                height: overlayheight+20
+                            }, 700);                      
+                        },
+                        function() {   
+                            var idNumber = $(this).attr("id").split("-");
+                            
+                            $("#msm_element_overlay-"+idNumber[1]).animate({
+                                height: "30px"
+                            }, 300);
+                            $(".msm_element_overlays").css("display", "none");
+                        }
+                        );
                 }
                    
             }
@@ -226,7 +256,7 @@ function prepareSubordinate(id)
 }
 
 function removeTinymceEditor()
-{   
+{ 
     $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {                        
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
@@ -306,9 +336,9 @@ function removeTinymceEditor()
 }
 
 /**
- * disabling all input/selection areas in editor and also disabling all jquery actions such as 
- * sortable, draggable and droppable
- */
+* disabling all input/selection areas in editor and also disabling all jquery actions such as 
+* sortable, draggable and droppable
+*/
 function disableEditorFunction()
 {
     $('.msm_title_input').attr("disabled", "disabled");

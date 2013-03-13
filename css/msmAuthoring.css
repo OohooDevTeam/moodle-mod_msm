@@ -646,4 +646,24 @@ table.mceLayout
     border: solid 4px #FFA500 !important;
 }
 
+.msm_element_overlays
+{
+    position: absolute;
+    background-color: black;
+    opacity: 0.5;
+    width: 86%;
+    height: 30px;
+}
+
+.msm_element_overlay_spans
+{
+    /*background: #fc9;*/
+    width:100%;
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+
 
