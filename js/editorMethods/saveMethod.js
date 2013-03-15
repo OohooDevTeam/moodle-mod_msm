@@ -184,37 +184,7 @@ function submitForm()
                         });
                     });
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
-                    insertUnitStructure(ids);
-                    $(".copied_msm_sturctural_element").unbind("hover");
-                    $(".copied_msm_structural_element").hover(
-                        function() {
-                            var idNumber = $(this).attr("id").split("-");
-                            var overlayheight = $(this).height();
-                            var offset = $(this).offset();
-                            
-                            console.log($(this));
-                            
-                            $("#msm_element_overlay-"+idNumber[1]).css("top", offset.top/2+20);
-                            
-//                            var overlayoffset = $("#msm_element_overlay-"+idNumber[1]).offset(); 
-//                            overlayoffset.top = offset.top;
-                            
-//                            console.log(overlayoffset.top);
-                            $(".msm_element_overlays").css("display", "block");
-                            
-                            $("#msm_element_overlay-"+idNumber[1]).animate({
-                                height: overlayheight+20
-                            }, 700);                      
-                        },
-                        function() {   
-                            var idNumber = $(this).attr("id").split("-");
-                            
-                            $("#msm_element_overlay-"+idNumber[1]).animate({
-                                height: "30px"
-                            }, 300);
-                            $(".msm_element_overlays").css("display", "none");
-                        }
-                        );
+                    insertUnitStructure(ids);                  
                 }
                    
             }
@@ -407,6 +377,32 @@ function disableEditorFunction()
         $(this).children("span").css("display", "none");
         $(this).unbind("mouseover");
     });
+    
+    $(".copied_msm_structural_element").unbind();
+    $(".copied_msm_structural_element").hover(
+        function() {
+            var idNumber = $(this).attr("id").split("-");
+            var overlayheight = $(this).height();
+            var offset = $(this).offset();
+                            
+            $("#msm_element_overlay-"+idNumber[1]).css("top", offset.top/2+20);
+//            $("#msm_element_overlay-"+idNumber[1]).css("left", offset.left/2-20);
+                            
+            $(".msm_element_overlays").css("display", "block");
+                            
+            $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
+                height: overlayheight+50
+            }, 700);                      
+        },
+        function() {   
+            var idNumber = $(this).attr("id").split("-");
+                            
+            $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
+                height: "30px"
+            }, 300);
+            $(".msm_element_overlays").css("display", "none");
+        }
+        );
     
 }
 

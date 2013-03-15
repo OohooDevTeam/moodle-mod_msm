@@ -649,20 +649,10 @@ table.mceLayout
 .msm_element_overlays
 {
     position: absolute;
-    background-color: black;
+    background-color: #C0C0C0;
     opacity: 0.5;
     width: 86%;
     height: 30px;
-}
-
-.msm_element_overlay_spans
-{
-    /*background: #fc9;*/
-    width:100%;
-    position: absolute;
-    text-align: center;
-    color: white;
-    font-weight: bold;
 }
 
 

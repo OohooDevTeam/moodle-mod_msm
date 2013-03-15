@@ -259,10 +259,17 @@ $rootUnit = '';
 
 if (!empty($existingUnit))
 {
-    $unitRecord = $DB->get_record("msm_unit", array("id"=>$existingUnit->unit_id));
+    $unitRecord = $DB->get_record("msm_unit", array("id" => $existingUnit->unit_id));
     $treeContent .= '<ul>';
     $treeContent .= "<li id='msm_unit-$existingUnit->id-$existingUnit->unit_id'>";
-    $treeContent .= "<a href='#'>$unitRecord->short_name</a>";
+    if (!empty($unitRecord->short_name))
+    {
+        $treeContent .= "<a href='#'>$unitRecord->short_name</a>";
+    }
+    else
+    {
+        $treeContent .= "<a href='#'>$existingUnit->id-$existingUnit->unit_id</a>";
+    }
     $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id);
     $treeContent .= "</li>";
     $treeContent .= '</ul>';
@@ -337,7 +344,7 @@ if (!empty($treeContent))
 }
 
 $formContent .= '</div>';
-if(empty($treeContent))
+if (empty($treeContent))
 {
     $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()" disabled="disabled"> New </button>';
 }
@@ -400,8 +407,7 @@ $fpoptions['link'] = $link_options;
 
 $formContent .= '<script type="text/javascript"> 
             var tinymce_filepicker_options = ' . json_encode($fpoptions) . '
-            $(document).ready(function() {  
-                
+            $(document).ready(function() {                  
                 $("#msm_comp_fullscreen").click(function(event) {
                          $("#page-header").css("display", "none");
                          $(".block").addClass("dock_on_load");
@@ -424,8 +430,7 @@ $formContent .= '<script type="text/javascript">
                     modal: false,
                     width: 605
                 });
-
-                
+                    
                 $(".msm_structural_element").draggable({
                     appendTo: "msm_editor_middle_droparea",
                     containment: "msm_editor_middle_droparea",
@@ -553,7 +558,7 @@ function makeUnitTree($compid, $unitid)
 
     foreach ($childElements as $child)
     {
-        $childUnitElement = $DB->get_record("msm_unit", array("id"=>$child->unit_id));
+        $childUnitElement = $DB->get_record("msm_unit", array("id" => $child->unit_id));
         $treeHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
         $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
         $treeHtml .= makeUnitTree($child->id, $child->unit_id);
@@ -579,10 +584,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                    
+                                                                                
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                            
+                                                                                        
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

@@ -43,14 +43,14 @@ if (isset($_POST['id']))
     echo json_encode($htmlContent);
 }
 else if (isset($_POST['mode']))
-{    
+{
     $unitCompidInfo = explode("-", $_POST['currentUnit']);
     $unitCompid = $unitCompidInfo[0];
-    
+
     $unit = new EditorUnit();
     $unit->loadData($unitCompid);
-    
-    echo json_encode($unit);  
+
+    echo json_encode($unit);
 }
 else if (isset($_POST['tree_content']))
 {
@@ -70,21 +70,10 @@ else if (isset($_POST['tree_content']))
     foreach ($liElements as $liEl)
     {
         $id = $liEl->getAttribute("id");
-        
+
         $string = explode("-", $id);
-                
+
         $compidArray[] = $string[1];
-//        if ($aEl->hasChildNodes())
-//        {
-//            foreach ($aEl->childNodes as $child)
-//            {
-//                if ($child->nodeType == XML_TEXT_NODE)
-//                {
-//                    $string = explode("-", $child->wholeText);
-//                    $compidArray[] = $string[0];
-//                }
-//            }
-//        }
     }
 
     $idPairs = array();

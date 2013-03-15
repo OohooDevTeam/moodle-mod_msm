@@ -132,7 +132,6 @@ function processDroppedChild(e, droppedId)
             var clonedCurrentElement = $("<div></div>");
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
-            var overlaySpan = $('<span class="msm_element_overlay_spans"> More Option </span>');
             var bodyTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 45%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> CONTENT </b></div>'); 
             var bodyTitlehidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
             var bodyTitleContainer = $("<div style='margin-top: 2%;'></div>");
@@ -145,9 +144,7 @@ function processDroppedChild(e, droppedId)
             bodyTitleContainer.append(bodyTitleLabel);
             bodyTitleContainer.append(bodyTitleField);
             
-            bodyTitle.append(bodyTitlehidden);
-            
-            overlayMenu.append(overlaySpan);
+            bodyTitle.append(bodyTitlehidden);            
             
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
