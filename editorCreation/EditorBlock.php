@@ -155,7 +155,8 @@ class EditorBlock extends EditorElement
 
         if ($this->type == 'msm_intro')
         {
-            $htmlContent .= "<div id='msm_intro_child_div-$this->compid' class='msm_intro_child'>";
+            $htmlContent .= "<div id='msm_intro_child_div-$this->compid' class='msm_intro_child'>";        
+
             $htmlContent .= "<div id='msm_intro_child_dragarea-$this->compid' class='msm_intro_child_dragareas'>";
             $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
             $htmlContent .= "</div>";
@@ -177,6 +178,11 @@ class EditorBlock extends EditorElement
         {
             $htmlContent .= "<div id='copied_msm_body-$this->compid' class='copied_msm_structural_element' style='padding-top: 2%;'>";
             $htmlContent .= "<div class='msm_element_overlays' id='msm_element_overlay-$this->compid' style='display: none;'>";
+
+            $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid'> Edit </a>";
+            $htmlContent .="<a class='msm_overlayButtons' id='msm_overlayButton_move-$this->compid'> Move </a>";
+            $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteElement(event);'> Delete </a>";
+
             // insert 3 buttons
             $htmlContent .= "</div>";
             $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";

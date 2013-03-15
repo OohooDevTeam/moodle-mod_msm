@@ -230,7 +230,7 @@
 .copied_msm_structural_element
 {
     margin: 3% 2%;
-    border: 2px dashed black;
+    /*border: 2px dashed black;*/
     width: 90%;
     height: 25%;
     /* The following two properties are there so that chrome does not
@@ -430,23 +430,6 @@ return auto from getComputedStyle javascript function*/
     margin-left: 2%;
     margin-right: 2%;
 }
-/*#msm_trash_droparea
-{
-    position: relative;
-    float: right;
-    bottom: 0;
-    border: 2px solid black;
-    padding: 2px;
-    width: 100%;
-    display: none;
-    background-color: red;
-    opacity: 0.5;
-}*/
-/*
-#msm_trash_icon
-{
-    margin-left: 43%;
-}*/
 
 .msm_editor_content
 {
@@ -649,11 +632,35 @@ table.mceLayout
 .msm_element_overlays
 {
     position: absolute;
-    background-color: #C0C0C0;
+    background-color: #fae4bd;
     opacity: 0.5;
-    width: 86%;
+    width: 87%;
     height: 30px;
+    left: 5%;
 }
 
-
+.msm_overlayButtons {   
+    background-color:#fae4bd;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    display:inline-block;
+    color:#eeb44f;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none !important;
+    float: right;
+    margin: 1% 2%;
+}
+.msm_overlayButtons:hover {
+    background-color:#fae4bd;
+    border: solid 1px #eeb44f;
+    cursor: pointer;
+}
+.msm_overlayButtons:active {
+    position:relative;
+    top:1px;
+}
 

@@ -144,11 +144,13 @@ function insertUnitStructure(dbId)
             function() {
                 var idNumber = $(this).attr("id").split("-");
                 var overlayheight = $(this).height();
-                var offset = $(this).offset();
+//                var offset = $(this).offset();
                             
-                $("#msm_element_overlay-"+idNumber[1]).css("top", offset.top/2+20);
+                console.log($(this));
                             
-                $(".msm_element_overlays").css("display", "block");
+                $("#msm_element_overlay-"+idNumber[1]).css("top", this.offsetTop);
+                            
+                $("#msm_element_overlay-"+idNumber[1]).css("display", "block");
                             
                 $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
                     height: overlayheight+50
@@ -313,11 +315,10 @@ function processUnitData(htmlData)
         function() {
             var idNumber = $(this).attr("id").split("-");
             var overlayheight = $(this).height();
-            var offset = $(this).offset();
 
-            $("#msm_element_overlay-"+idNumber[1]).css("top", offset.top/2+20);
+            $("#msm_element_overlay-"+idNumber[1]).css("top", this.offsetTop);
 
-            $(".msm_element_overlays").css("display", "block");
+            $("#msm_element_overlay-"+idNumber[1]).css("display", "block");
 
             $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
                 height: overlayheight+50
