@@ -218,7 +218,7 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_def_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_def_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
-        $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_def_description_label-$this->compid' class='msm_child_description_labels' for='msm_def_description_label-$this->compid'>Description: </label>";
@@ -346,7 +346,7 @@ class EditorDefinition extends EditorElement
 
         $htmlContent .= "<input id='msm_defref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
 
-        $htmlContent .= "<div id='msm_defref_content_input-$parentId-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_defref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
 

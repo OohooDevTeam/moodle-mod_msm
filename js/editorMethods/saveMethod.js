@@ -6,7 +6,7 @@
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
-        event.preventDefault();      
+        event.preventDefault();  
         
         submitForm();            
     });
@@ -26,24 +26,29 @@ function submitForm()
     }
         
     var subordinateArray = [];
-    $("textarea").each(function(){ 
+    $("textarea").each(function(){
         // process information from textarea that are not related to info elements
         if(!this.id.match(/info/))
         {  
             //            subordinateArray.push(prepareSubordinate(this.id));
-                        
-            this.value = tinymce.get(this.id).getContent({
-                format: "html"
-            });
+            if(typeof tinymce.get(this.id) !== "undefined")
+            {
+                this.value = tinymce.get(this.id).getContent({
+                    format: "html"
+                });
+            }
+           
         }
         // process associate information
         else if(this.id.match(/_info_/))
         {
             //            subordinateArray.push(prepareSubordinate(this.id));
-                
-            this.value = tinymce.get(this.id).getContent({
-                format: "html"
-            });
+            if(typeof tinymce.get(this.id) !== "undefined")
+            {
+                this.value = tinymce.get(this.id).getContent({
+                    format: "html"
+                });
+            }
         }
     });
                 
@@ -125,7 +130,7 @@ function submitForm()
                 
                     var dWidth = wWidth*0.8;
                     var dHeight = wHeight*0.8;
-                    $( "#msm_preview_dialog" ).dialog({
+                    $( "#msm_preview_dialog").dialog({
                         resizable: false,
                         modal: true,
                         height: dHeight,
@@ -158,6 +163,11 @@ function submitForm()
                     $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
                     $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
                     $("#msm_editor_new").removeAttr("disabled");
+                    
+                    $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+                        console.log(this);
+                        $(this).empty().remove();
+                    })
                     
                     // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
                     // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
@@ -232,9 +242,11 @@ function removeTinymceEditor()
                         
         var editorContent = document.createElement("div");
         editorContent.id = this.id;
-        editorContent.className = "msm_editor_content";
+        editorContent.className = this.className+" msm_editor_content";
         var content = $(this).val();
-                        
+        
+        console.log(content);
+        
         $(editorContent).html(content);
         $(this).replaceWith(editorContent);
     });
@@ -244,7 +256,7 @@ function removeTinymceEditor()
                         
         var editorContent = document.createElement("div");
         editorContent.id = this.id;
-        editorContent.className = "msm_editor_content";
+        editorContent.className = this.className+" msm_editor_content";
         var content = $(this).val();
                         
         $(editorContent).html(content);
@@ -257,7 +269,7 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = "msm_editor_content";
+            editorContent.className = this.className+" msm_editor_content";
             var content = $(this).val();
                         
             $(editorContent).html(content);
@@ -271,7 +283,7 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = "msm_editor_content";
+            editorContent.className = this.className+" msm_editor_content";
             var content = $(this).val();
                         
             $(editorContent).html(content);
@@ -285,7 +297,7 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = "msm_editor_content";
+            editorContent.className = this.className+" msm_editor_content";
             var content = $(this).val();
                         
             $(editorContent).html(content);
@@ -296,7 +308,7 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = "msm_editor_content";
+            editorContent.className = this.className+" msm_editor_content";
             var content = $(this).val();
                         
             $(editorContent).html(content);
@@ -383,10 +395,10 @@ function disableEditorFunction()
         function() {
             var idNumber = $(this).attr("id").split("-");
             var overlayheight = $(this).height();
-//            var offset = $(this).offset();
+            //            var offset = $(this).offset();
                             
             $("#msm_element_overlay-"+idNumber[1]).css("top", this.offsetTop);
-//            $("#msm_element_overlay-"+idNumber[1]).css("left", offset.left/2-20);
+            //            $("#msm_element_overlay-"+idNumber[1]).css("left", offset.left/2-20);
                             
             $("#msm_element_overlay-"+idNumber[1]).css("display", "block");
                             

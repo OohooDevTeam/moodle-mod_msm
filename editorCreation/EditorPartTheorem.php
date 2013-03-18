@@ -115,7 +115,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>Part Theorem title: </label>";
         $htmlContent .= "<input id='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' disabled='disabled' value='$this->caption'/>";
-        $htmlContent .= "<div id='msm_theorem_part_content-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_theorem_part_content-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
@@ -151,7 +151,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theoremref_part_tlabel' for='msm_theoremref_part_title-$parentId-$this->compid'>Part Theorem title: </label>";
         $htmlContent .= "<input id='msm_theoremref_part_title-$parentId-$this->compid' class='msm_theoremref_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$parentId-$this->compid' disabled='disabled' value='$this->caption'/>";
-        $htmlContent .= "<div id='msm_theoremref_part_content-$parentId-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_theoremref_part_content-$parentId-$this->compid' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";

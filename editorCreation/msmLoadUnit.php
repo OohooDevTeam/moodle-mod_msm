@@ -46,11 +46,49 @@ else if (isset($_POST['mode']))
 {
     $unitCompidInfo = explode("-", $_POST['currentUnit']);
     $unitCompid = $unitCompidInfo[0];
-
-    $unit = new EditorUnit();
-    $unit->loadData($unitCompid);
-
-    echo json_encode($unit);
+    
+    $unitChildElementRecords = $DB->get_records("msm_compositor", array("parent_id"=>$unitCompid), "prev_sibling_id");
+    
+    // need to copy unitChildElementRecords to have index as incrementing numbers from zero to n instead of it being compositor id
+    $unitChildElements = array();
+    foreach($unitChildElementRecords as $childRecord)
+    {
+        $unitChildElements[] = $childRecord;
+    }
+    
+//    print_object($unitChildElements);
+    
+    $childOrderArray = explode(",", $_POST['childOrder']);
+    
+    $indexElement = null;
+    foreach($childOrderArray as $key=>$value)
+    {
+        if($value == $_POST["currentElement"])
+        {
+            $indexElement = $key;
+        }
+    }
+    
+    $currentElement = $unitChildElements[$indexElement];
+    $currentElementTable = $DB->get_record("msm_table_collection", array("id"=>$currentElement->table_id))->tablename;
+    
+    switch($currentElementTable)
+    {
+        case "msm_intro":
+            break;
+        case "msm_block":
+            $block = new EditorBlock();
+            $block->loadData($currentElement->id);
+            echo json_encode($block);
+            break;
+        case "msm_def":
+            break;
+        case "msm_theorem":
+            break;
+        case "msm_comment":
+            break;
+    }
+    
 }
 else if (isset($_POST['tree_content']))
 {

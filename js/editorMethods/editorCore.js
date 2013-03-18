@@ -81,8 +81,7 @@ function processDroppedChild(e, droppedId)
                 var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
             
                 var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit"> Edit </a>');
-                var overlayButtonMove = $('<a class="msm_overlayButtons" id="msm_overlayButton_move"> Move </a>');
-                var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete" onclick="deleteElement(event);"> Delete </a>');
+                var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete" onclick="deleteOverlayElement(event);"> Delete </a>');
                 
                 var introTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 43%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> INTRODUCTION </b></div>'); 
                 var introTitlehidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
@@ -105,9 +104,8 @@ function processDroppedChild(e, droppedId)
                 introTitleContainer.append(introTitleLabel);
                 introTitleContainer.append(introTitleField);
                 
-                overlayMenu.append(overlayButtonEdit);
-                overlayMenu.append(overlayButtonMove);
-                overlayMenu.append(overlayButtonDelete);
+                overlayMenu.append(overlayButtonDelete);                
+                overlayMenu.append(overlayButtonEdit);               
                 
                 introTitle.append(introTitlehidden);
             
@@ -145,9 +143,8 @@ function processDroppedChild(e, droppedId)
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
             
-            var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit"> Edit </a>');
-            var overlayButtonMove = $('<a class="msm_overlayButtons" id="msm_overlayButton_move"> Move </a>');
-            var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete" onclick="deleteElement(event);"> Delete </a>');
+            var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit" onclick=editUnit(event)> Edit </a>');
+            var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete" onclick="deleteOverlayElement(event);"> Delete </a>');
             
             var bodyTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 45%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> CONTENT </b></div>'); 
             var bodyTitlehidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
@@ -163,9 +160,8 @@ function processDroppedChild(e, droppedId)
             
             bodyTitle.append(bodyTitlehidden);   
             
-            overlayMenu.append(overlayButtonEdit);
-            overlayMenu.append(overlayButtonMove);
-            overlayMenu.append(overlayButtonDelete);
+            overlayMenu.append(overlayButtonDelete);                
+            overlayMenu.append(overlayButtonEdit);        
             
             clonedCurrentElement.attr("id", "copied_msm_body-"+_index);
             clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -341,7 +337,7 @@ function deleteElement(e)
     if(currentElement == '')
     {
         // in firefox, sometimes the target ends up being the textnode "x" instead of the <a> element
-        currentElement = e.target.parentElement.parentElement.id;
+        currentElement = e.target.parentElement.parentElement.id;       
     }
     
     $("#"+currentElement+" textarea").each(function() {

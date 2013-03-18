@@ -118,15 +118,15 @@ function insertUnitStructure(dbId)
         newInputField.id = "msm_currentUnit_id";
         newInputField.name = "msm_currentUnit_id";
         newInputField.setAttribute("style", "display:none;");
-        newInputField.value = dbId;
-                        
+        newInputField.value = idPair;
+        
         var form = document.getElementById("msm_unit_form");
                         
         form.appendChild(newInputField);
     }
     else
     {
-        $("#msm_currentUnit_id").val(dbId);
+        $("#msm_currentUnit_id").val(idPair);
     } 
     
     $("#msm_unit_tree")
@@ -140,31 +140,29 @@ function insertUnitStructure(dbId)
     .bind("load.jstree", function(){
         $("#msm_unit_tree").jstree("select_node", "msm_unit-"+idPair).trigger("select_node.jstree");
         $(".copied_msm_structural_element").unbind();
-        $(".copied_msm_structural_element").hover(
+        $(".copied_msm_structural_element").mouseenter(
             function() {
                 var idNumber = $(this).attr("id").split("-");
                 var overlayheight = $(this).height();
-//                var offset = $(this).offset();
-                            
-                console.log($(this));
-                            
+
                 $("#msm_element_overlay-"+idNumber[1]).css("top", this.offsetTop);
-                            
+
                 $("#msm_element_overlay-"+idNumber[1]).css("display", "block");
-                            
+
                 $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
                     height: overlayheight+50
                 }, 700);                      
-            },
-            function() {   
-                var idNumber = $(this).attr("id").split("-");
-                            
-                $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
-                    height: "30px"
-                }, 300);
-                $(".msm_element_overlays").css("display", "none");
-            }
-            );
+            });
+        $(".copied_msm_structural_element").mouseleave(function() {   
+            var idNumber = $(this).attr("id").split("-");
+
+            $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
+                height: "30px"
+            }, 300);
+            $("#msm_element_overlay-"+idNumber[1]).css("display", "none");
+        }
+        );
+        
     })
     .bind("select_node.jstree", function(event, data) {
         var dbInfo = [];         
@@ -311,7 +309,7 @@ function processUnitData(htmlData)
     }
     
     $(".copied_msm_structural_element").unbind();
-    $(".copied_msm_structural_element").hover(
+    $(".copied_msm_structural_element").mouseenter(
         function() {
             var idNumber = $(this).attr("id").split("-");
             var overlayheight = $(this).height();
@@ -323,16 +321,16 @@ function processUnitData(htmlData)
             $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
                 height: overlayheight+50
             }, 700);                      
-        },
-        function() {   
-            var idNumber = $(this).attr("id").split("-");
+        });
+    $(".copied_msm_structural_element").mouseleave(function() {   
+        var idNumber = $(this).attr("id").split("-");
 
-            $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
-                height: "30px"
-            }, 300);
-            $(".msm_element_overlays").css("display", "none");
-        }
-        );
+        $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
+            height: "30px"
+        }, 300);
+        $("#msm_element_overlay-"+idNumber[1]).css("display", "none");
+    }
+    );
     
 //    $(".msm_subordinate_hotwords").each(function(i, element) {
 //        var idInfo = this.id.split("-");                        
@@ -388,91 +386,112 @@ function saveComp(e)
 }
 
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
-function editUnit()
-{
+function editUnit(e)
+{    
+    var targetElement = e.target.parentElement.parentElement.id;
     
-    var unitInfo = [];
+    var elementInfo = [];
+    
     $.ajax({
-        type:"POST",
+        type: "POST",
         url: "editorCreation/msmLoadUnit.php",
-        data: {
-            "mode": "edit",
+        data:{
+            "mode":"edit",
             "childOrder": $("#msm_child_order").val(),
+            "currentElement": targetElement,
             "currentUnit": $("#msm_currentUnit_id").val()
         },
-        success: function(data) {                
-            unitInfo = JSON.parse(data);
-            enableContentEditors(unitInfo);  
-            enableEditorFunction();   
-        }
-    });    
-    $("#msm_editor_new").attr("disabled", "disabled");
-    $("#msm_editor_edit").remove();
-    $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");
-                    
-    $("#msm_editor_remove").remove();
-    $("#msm_editor_reset").remove();
-    $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");      
-    
-    // reattach all close buttons for deletion of element
-    $(".copied_msm_structural_element").each(function(i) {
-        var referencematch = this.id.match(/copied_msm_(defref|theoremref|commentref)-.+/);
-        
-        if(!referencematch)
+        success: function(data)
         {
+            elementInfo = JSON.parse(data);
+            enableContentEditors(elementInfo, targetElement);  
+            enableEditorFunction();   
+            
             var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
-        
-            var intromatch = this.id.match(/copied_msm_intro-.+/);
-            var bodymatch = this.id.match(/copied_msm_body-.+/);
+            //        
+            var intromatch = targetElement.match(/copied_msm_intro-.+/);
+            var bodymatch = targetElement.match(/copied_msm_body-.+/);
         
             if((!intromatch)&&(!bodymatch))
             {
                 $(closeButton).attr("style", "margin-top: 2%;");
             }
         
-            $(this).prepend(closeButton); //can't use insertBefore since the reference element to insert before can change (eg. intro is header while def is select)
-        }
-       
-    });
-    $(".msm_theorem_statement_title_containers").each(function() {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
-        $(closeButton).insertBefore($(this));
-    });
-    
-    $(".msm_theorem_part_title_containers").each(function() {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
-        $(closeButton).insertBefore($(this));
-    });
-
-    $(".msm_theoremref_statement_title_containers").each(function() {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
-        $(closeButton).insertBefore($(this));
-    });
-    
-    $(".msm_theoremref_part_title_containers").each(function() {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
-        $(closeButton).insertBefore($(this));
-    });
-    
-    
-    $(".msm_associate_info_headers").each(function() {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-        $(closeButton).insertBefore($(this));
-    });
-    
-    $(".msm_intro_child_dragareas").each(function() {
-        var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
-        $(closeButton).insertBefore($(this));
-    });
-    
-    $("#msm_editor_save").click(function(event) { 
-        //         prevents navigation to msmUnitForm.php
-        event.preventDefault();
-              
-        submitForm();
+            $("#"+targetElement).prepend(closeButton); //can't use insertBefore since the reference element to insert before can change (eg. intro is header while def is select)
             
+            $("#msm_editor_new").attr("disabled", "disabled");
+            
+            var saveButton = document.getElementById("msm_editor_save");
+            
+            if(saveButton == null)
+            {
+                $(".msm_editor_buttons").remove();
+                $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");          
+                $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");  
+            } 
+            
+            $(".msm_theorem_statement_title_containers").each(function() {
+                var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+                $(closeButton).insertBefore($(this));
+            });
+    
+            $(".msm_theorem_part_title_containers").each(function() {
+                var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+                $(closeButton).insertBefore($(this));
+            });
+
+            $(".msm_theoremref_statement_title_containers").each(function() {
+                var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+                $(closeButton).insertBefore($(this));
+            });
+    
+            $(".msm_theoremref_part_title_containers").each(function() {
+                var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
+                $(closeButton).insertBefore($(this));
+            });
+    
+    
+            $(".msm_associate_info_headers").each(function() {
+                var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+                $(closeButton).insertBefore($(this));
+            });
+    
+            $(".msm_intro_child_dragareas").each(function() {
+                var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+                $(closeButton).insertBefore($(this));
+            });
+    
+            $("#msm_editor_save").click(function(event) { 
+                //         prevents navigation to msmUnitForm.php
+                event.preventDefault();
+                
+                // enabling all input that was disabled to submit the form
+                $("#msm_unit_title").removeAttr("disabled");
+                $("#msm_unit_short_title").removeAttr("disabled");
+                $("#msm_unit_description_input").removeAttr("disabled");
+                $(".copied_msm_structural_element select").removeAttr("disabled");
+                $(".copied_msm_structural_element input").removeAttr("disabled");
+                              
+                $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+                    $(this).removeClass("msm_editor_content");
+                    var newdata = document.createElement("textarea");
+                    newdata.id = this.id;
+                    newdata.name = this.id;
+                    newdata.className = this.className;
+        
+                    newdata.value = $(this).html();
+                    $(this).replaceWith(newdata);
+                   
+                });
+                
+                submitForm();
+            
+            });    
+    
+        }
     });
 }
+
 
 
 /**
@@ -481,14 +500,6 @@ function editUnit()
  */
 function enableEditorFunction()
 {
-    $('.msm_title_input').removeAttr("disabled");
-    $('.msm_unit_short_titles').removeAttr("disabled");
-    $('.msm_unit_description_inputs').removeAttr("disabled");
-                    
-    $(".copied_msm_structural_element select").removeAttr("disabled");
-    $(".copied_msm_structural_element input").removeAttr("disabled");
-    
-        
     // reinitalize all jquery actions
     $(".msm_structural_element").draggable({
         appendTo: "msm_editor_middle_droparea",
@@ -505,8 +516,15 @@ function enableEditorFunction()
         drop: function( event, ui ) { 
             processDroppedChild(event, ui.draggable.context.id);                        
         }
-    }); 
+    });    
     
+    moveElements();
+    
+    enableDragTitleToggle();
+}
+
+function moveElements() 
+{
     $("#msm_child_appending_area").sortable({
         appendTo: "#msm_child_appending_area",
         connectWith: "#msm_child_appending_area",
@@ -801,7 +819,6 @@ function enableEditorFunction()
             }
         });
     })
-    enableDragTitleToggle();
 }
 
 
@@ -947,40 +964,40 @@ function enableDragTitleToggle()
     });
 }
 
-function enableContentEditors(unitArray)
+function enableContentEditors(unitArray, currentElement)
 {
-    var unitChildInfo = $("#msm_child_order").val().split(",");
-    
+    //    var unitChildInfo = $("#msm_child_order").val().split(",");
+    //    
     var intromatch = /^copied_msm_intro-\d+$/;
     var bodymatch = /^copied_msm_body-\d+$/;
     var defmatch = /^copied_msm_def-\d+$/;
     var commentmatch = /^copied_msm_comment-\d+$/;
     var theoremmatch = /^copied_msm_theorem-\d+$/;   
-    
-    for(var i = 0; i < unitChildInfo.length-1; i++) // last element is msm_id which is not needed
+    //    
+    //    for(var i = 0; i < unitChildInfo.length-1; i++) // last element is msm_id which is not needed
+    //    {
+    //        if(unitChildInfo[i].match(intromatch))
+    //        {
+    //            createIntroText(unitChildInfo, unitArray, i);
+    //        } 
+    if(currentElement.match(bodymatch))
     {
-        if(unitChildInfo[i].match(intromatch))
-        {
-            createIntroText(unitChildInfo, unitArray, i);
-        } 
-        else if(unitChildInfo[i].match(bodymatch))
-        {
-            createBodyText(unitChildInfo, unitArray, i);    
-        }
-        else if(unitChildInfo[i].match(defmatch))
-        {
-            createDefText(unitChildInfo, unitArray, i);                    
-        }
-        else if(unitChildInfo[i].match(commentmatch))
-        {
-            createCommentText(unitChildInfo, unitArray, i);                     
-        }
-        else if(unitChildInfo[i].match(theoremmatch))
-        {
-            createTheoremText(unitChildInfo, unitArray, i);                    
-        }
+        createBodyText(currentElement, unitArray);    
     }
-    
+    //        else if(unitChildInfo[i].match(defmatch))
+    //        {
+    //            createDefText(unitChildInfo, unitArray, i);                    
+    //        }
+    //        else if(unitChildInfo[i].match(commentmatch))
+    //        {
+    //            createCommentText(unitChildInfo, unitArray, i);                     
+    //        }
+    //        else if(unitChildInfo[i].match(theoremmatch))
+    //        {
+    //            createTheoremText(unitChildInfo, unitArray, i);                    
+    //        }
+    //    }
+    //    
     $(".copied_msm_structural_element").unbind();
 }
 
@@ -1339,9 +1356,15 @@ function createIntroText(child, unitArray, key)
     enableEditorFunction();
 }
 
-function createBodyText(child, unitArray, key)
+function createBodyText(element, unitInfo)
 {
-    var unitInfo = unitArray["children"][key];
+    $("#"+element).find(".msm_unit_body_title").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+    $("#"+element).find(".msm_element_overlays").each(function() {
+        $(this).css("display", "none");
+    })
     
     var bodycontent = '';
     for(var index=0; index < unitInfo["content"].length; index++)
@@ -1349,7 +1372,7 @@ function createBodyText(child, unitArray, key)
         bodycontent += unitInfo["content"][index]["content"];
     }
     
-    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    var currentId = $("#"+element).children(".msm_editor_content").first().attr("id");
     var bodyInfo = currentId.split("-");
                 
     var bodyTextArea = document.createElement("textarea");
@@ -1561,5 +1584,51 @@ function swapButtons(e) {
         $("#msm_editor_middleright").trigger("spliter.resize");
         swapButtons(event);
     });   
+    
+}
+
+function deleteOverlayElement(e)
+{
+    var currentElement = e.target.parentElement.parentElement.id;
+        
+    $("#"+currentElement+" textarea").each(function() {
+        if(tinymce.getInstanceById($(this).attr("id")) != null)
+        {
+            tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+            tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+        }
+    });
+    //    
+    $("<div class='dialogs' id='msm_deleteComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
+    $( "#msm_deleteComposition" ).dialog({
+        resizable: false,
+        height:180,
+        modal: true,
+        buttons: {
+            "Yes": function() {
+                $('#'+currentElement).empty().remove();
+                    
+                // if deleted the last item then disable the save button
+                if($("#msm_child_appending_area").children().length < 1)
+                {
+                    $("#msm_editor_save").attr("disabled", "disabled");
+                }                
+                
+                $( this ).dialog( "close" );
+                $(".msm_editor_buttons").remove();
+                $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");          
+                $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");
+            },
+            "No": function() {
+                $("#"+currentElement+" textarea").each(function() {
+                    if(tinymce.getInstanceById($(this).attr("id")) == null)
+                    {
+                        initEditor(this.id); 
+                    }
+                });
+                $( this ).dialog( "close" );                   
+            }
+        }
+    });  
     
 }

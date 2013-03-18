@@ -174,11 +174,11 @@ class EditorInfo extends EditorElement
         if ($parentTable->tablename == 'msm_associate')
         {
             $htmlContent .= "<label for='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid'>title: </label>";
-            $htmlContent .= "<div id='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_editor_content'>";
+            $htmlContent .= "<div id='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_titles msm_editor_content'>";
             $htmlContent .= $this->caption;
             $htmlContent .= "</div>";
             $htmlContent .= "<label for='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid'>content: </label>";
-            $htmlContent .= "<div id='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_editor_content'>";
+            $htmlContent .= "<div id='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_contents msm_editor_content'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
