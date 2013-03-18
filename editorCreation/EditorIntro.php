@@ -81,7 +81,7 @@ class EditorIntro extends EditorElement
         $htmlContent .= "<div class='msm_element_overlays' id='msm_element_overlay-$this->compid' style='display: none;'>";
 
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
-        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid'> Edit </a>";
+        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
 
         $htmlContent .= "</div>";
 

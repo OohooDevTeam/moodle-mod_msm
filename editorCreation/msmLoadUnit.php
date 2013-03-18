@@ -46,35 +46,38 @@ else if (isset($_POST['mode']))
 {
     $unitCompidInfo = explode("-", $_POST['currentUnit']);
     $unitCompid = $unitCompidInfo[0];
-    
-    $unitChildElementRecords = $DB->get_records("msm_compositor", array("parent_id"=>$unitCompid), "prev_sibling_id");
-    
+
+    $unitChildElementRecords = $DB->get_records("msm_compositor", array("parent_id" => $unitCompid), "prev_sibling_id");
+
     // need to copy unitChildElementRecords to have index as incrementing numbers from zero to n instead of it being compositor id
     $unitChildElements = array();
-    foreach($unitChildElementRecords as $childRecord)
+    foreach ($unitChildElementRecords as $childRecord)
     {
         $unitChildElements[] = $childRecord;
     }
-    
+
 //    print_object($unitChildElements);
-    
+
     $childOrderArray = explode(",", $_POST['childOrder']);
-    
+
     $indexElement = null;
-    foreach($childOrderArray as $key=>$value)
+    foreach ($childOrderArray as $key => $value)
     {
-        if($value == $_POST["currentElement"])
+        if ($value == $_POST["currentElement"])
         {
             $indexElement = $key;
         }
     }
-    
+
     $currentElement = $unitChildElements[$indexElement];
-    $currentElementTable = $DB->get_record("msm_table_collection", array("id"=>$currentElement->table_id))->tablename;
-    
-    switch($currentElementTable)
+    $currentElementTable = $DB->get_record("msm_table_collection", array("id" => $currentElement->table_id))->tablename;
+
+    switch ($currentElementTable)
     {
         case "msm_intro":
+            $intro = new EditorIntro();
+            $intro->loadData($currentElement->id);
+            echo json_encode($intro);
             break;
         case "msm_block":
             $block = new EditorBlock();
@@ -88,7 +91,6 @@ else if (isset($_POST['mode']))
         case "msm_comment":
             break;
     }
-    
 }
 else if (isset($_POST['tree_content']))
 {

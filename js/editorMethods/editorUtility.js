@@ -984,6 +984,10 @@ function enableContentEditors(unitArray, currentElement)
     {
         createBodyText(currentElement, unitArray);    
     }
+    else if(currentElement.match(intromatch))
+    {
+        createIntroText(currentElement, unitArray);
+    }
     //        else if(unitChildInfo[i].match(defmatch))
     //        {
     //            createDefText(unitChildInfo, unitArray, i);                    
@@ -1291,9 +1295,23 @@ function createDefText(child, unitArray, key)
 }
 
 
-function createIntroText(child, unitArray, key)
+function createIntroText(element, unitInfo)
 {
-    var unitInfo = unitArray["children"][key];
+    $("#"+element).find(".msm_unit_intro_title").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+     $("#"+element).find(".msm_intro_child_titles").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+    $("#"+element).find(".msm_element_overlays").each(function() {
+        $(this).css("display", "none");
+    });
+    
+    var elementIdInfo = element.split("-");
+    
+    $("#msm_intro_child_button-"+elementIdInfo[1]).removeAttr("disabled");
     
     var introcontent = '';
                
@@ -1312,7 +1330,7 @@ function createIntroText(child, unitArray, key)
         }
     }
     
-    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    var currentId = $("#"+element).children(".msm_editor_content").first().attr("id");
     
     var introInfo = currentId.split("-");
                 
@@ -1364,7 +1382,7 @@ function createBodyText(element, unitInfo)
     
     $("#"+element).find(".msm_element_overlays").each(function() {
         $(this).css("display", "none");
-    })
+    });
     
     var bodycontent = '';
     for(var index=0; index < unitInfo["content"].length; index++)

@@ -80,7 +80,7 @@ function processDroppedChild(e, droppedId)
                 
                 var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
             
-                var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit"> Edit </a>');
+                var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit"  onclick="editUnit(event);"> Edit </a>');
                 var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete" onclick="deleteOverlayElement(event);"> Delete </a>');
                 
                 var introTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 43%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> INTRODUCTION </b></div>'); 
