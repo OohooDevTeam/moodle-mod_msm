@@ -1185,17 +1185,33 @@ function createAssociateText(mainElement, aArray)
     enableEditorFunction();
 }
 
-function createTheoremRefText(element, refid, aArray, index, infoId)
-{
-    $("#msm_theoremref_type_dropdown-"+refid).removeAttr("disabled");
-    $("#msm_theoremref_title_input-"+refid).removeAttr("disabled");
-    $("#msm_theoremref_description_input-"+refid).removeAttr("disabled");
-    $("#msm_theoremref_child_button-"+refid).removeAttr("disabled");
-    
+function createTheoremRefText(element, aArray, index, infoId)
+{    
     $("#"+element).find(".msm_theoremref_part_buttons").each(function() {
         $(this).removeAttr("disabled");
     });
-                    
+          
+    $("#"+element).find(".msm_theoremref_part_title").each(function() {
+        $(this).removeAttr("disabled");
+    });
+   
+    $("#"+element).find(".msm_child_description_inputs").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+    $("#"+element).find(".msm_unit_child_title").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+    $("#"+element).find(".msm_unit_child_dropdown").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+    $("#"+element).find(".msm_theorem_child_buttons").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+
     var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoId).find(".msm_theoremref_statement_containers");
     
     for(var ind = 0; ind < theoremStatementInfo.length; ind++)
