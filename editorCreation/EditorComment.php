@@ -1,14 +1,24 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
- * Description of EditorComment
+ * EditorComment class inherits from the EditorElement class and it represents the
+ * comment elements in the MSM editor.  This class can be representing comment element as 
+ * a child of unit element or it can also be a reference meterial linked by an associate
+ * element.
  *
- * @author User
  */
 class EditorComment extends EditorElement
 {
@@ -18,18 +28,29 @@ class EditorComment extends EditorElement
     public $title;
     public $id;
     public $compid;
+    public $errorArray = array(); // ids to indicate empty content
     public $children = array(); //associate
     public $subordinates = array();
 
+    // constructor for the class
     function __construct()
     {
-        $this->tablename = "msm_comment";
+        $this->tablename = "msm_comment"; 
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorAssociate) to process its
+     * children's data.
+     * 
+     * @param string $idNumber          represents information needed to identify needed key for the POST object(for reference material, has "|ref" ending)
+     * @return \EditorComment
+     */
     public function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
 
+        // the idNumber param contains "|ref" ending meaning that this comment is a reference material
         if (sizeof($idInfo) > 1)
         {
             $match = "/^msm_commentref_content_input-$idInfo[0].*$/";
@@ -53,8 +74,6 @@ class EditorComment extends EditorElement
             $this->description = $_POST['msm_commentref_description_input-' . $newId];
             $this->title = $_POST['msm_commentref_title_input-' . $newId];
 
-            $this->errorArray = array();
-
             if ($_POST['msm_commentref_content_input-' . $newId] != '')
             {
                 $this->content = $_POST['msm_commentref_content_input-' . $newId];
@@ -66,9 +85,11 @@ class EditorComment extends EditorElement
             }
             else
             {
+                // empty content
                 $this->errorArray[] = 'msm_commentref_content_input-' . $newId . "_ifr";
             }
         }
+         // the idNumber param does not contain "|ref" ending meaning that this comment is part of unit element
         else if (sizeof($idInfo) == 1)
         {
             $this->type = $_POST['msm_comment_type_dropdown-' . $idNumber];
@@ -88,6 +109,7 @@ class EditorComment extends EditorElement
             }
             else
             {
+                 // empty content
                 $this->errorArray[] = 'msm_comment_content_input-' . $idNumber . "_ifr";
             }
 
@@ -112,6 +134,17 @@ class EditorComment extends EditorElement
         }
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_comment table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorAssociate and EditorSubordinate classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -149,6 +182,13 @@ class EditorComment extends EditorElement
         }
     }
 
+    /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
+     * displayData from the EditorAssociate class.
+     * 
+     * @return HTML string
+     */
     public function displayData()
     {
         $htmlContent = '';
@@ -208,6 +248,16 @@ class EditorComment extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_comment table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorAssociate 
+     * class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorComment
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -247,6 +297,14 @@ class EditorComment extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is called by the EditorInfo class to display the comment as a reference material.
+     * The information is hidden until the user triggers the display by clicking on the associate mini buttons.
+     * 
+     * @global moodle_database $DB
+     * @param string $parentId          End of HTML ID that made the parent(ie. associate) HTML element unique
+     * @return HTML string
+     */
     function displayRefData($parentId)
     {
         global $DB;
@@ -290,6 +348,15 @@ class EditorComment extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * The method in this class is called by info elements with associate as a parent and is responsible for preparing the HTML code
+     * needed to display the comment.  For cases where comments are a reference material, it will not appear till the associate button is 
+     * triggered by a click.
+     * 
+     * @param string $id        String to be added to HTML ID of this comment and its components to make them unique
+     * @return string
+     */
     public function displayPreview($id = '')
     {
         $previewHtml = '';

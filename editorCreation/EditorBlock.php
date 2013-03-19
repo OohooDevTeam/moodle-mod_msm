@@ -1,14 +1,25 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
- * Description of EditorBlock
+ * EditorBlock class is inherited from the abstract class EditorElement and contains 
+ * four abstract methods (getFormData, insertData, loadData and displayData).  This class
+ * represents all the content block of unit composition(ie. body of the unit/intro). It is
+ * a parent class for all content related classes such as EditorPara/EditorInContent and EditorTable.
  *
- * @author User
  */
 class EditorBlock extends EditorElement
 {
@@ -16,16 +27,29 @@ class EditorBlock extends EditorElement
     public $title;
     public $id;
     public $compid;
-    public $errorArray = array();
+    public $errorArray = array(); // contains the id of the component with an empty/null content
     public $content = array();
-    public $type;
+    public $type; // indicates the parent of the block --> used to do separate display process 
 
+    // constructor for the class
     function __construct()
     {
         $this->tablename = "msm_block";
     }
 
-    // idNumber is a bit different--> it's the actual key of the POST object
+    /**
+     * This method is an abstract method from EditorElement that extracts 
+     * appropriate information from the POST object.  It calls two methods,
+     * processIntroContent and processBodyContent, to process blocks in two different
+     * situations.  One case is that the block has EditorIntro as a parent in which case
+     * it is processing contents for the intro element of the editor.  Second case is when
+     * the block has EditorUnit as a parent which means that the block is a component of 
+     * the unit.  For more information on these methods, read comments for those two
+     * methods.
+     * 
+     * @param string $idNumber          A key of the POST object
+     * @return \EditorBlock
+     */
     public function getFormData($idNumber)
     {
         $intromatch = '/^msm_intro_.*/';
@@ -43,6 +67,123 @@ class EditorBlock extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is to process blocks that are part of the intro element
+     * in the unit.  It looks for specific keys of the POST object to 
+     * obtain the appropriate information to be inserted to the database tables.
+     * This method calls the processContent method from the EditorElement to call
+     * getFormData methods for all the other content related classes.
+     * (ie. EditorPara/EditorInContent and EditorTable)
+     * 
+     * @param string $idNumber          A key of the POST object
+     * @return \EditorBlock
+     */
+    function processIntroContent($idNumber)
+    {
+        $match = "/^msm_intro_child_.*/";
+
+        $idInfo = explode("-", $idNumber);
+
+        if (preg_match($match, $idNumber))
+        {
+            if (!empty($_POST['msm_intro_child_title-' . $idInfo[1]]))
+            {
+                $this->title = $_POST['msm_intro_child_title-' . $idInfo[1]];
+            }
+
+            if (!empty($_POST['msm_intro_child_content-' . $idInfo[1]]))
+            {
+                $rawintrocontent = $_POST['msm_intro_child_content-' . $idInfo[1]];
+
+                foreach ($this->processContent($rawintrocontent) as $content)
+                {
+                    $this->content[] = $content;
+                }
+            }
+            else
+            {
+                 // empty content needs to be flagged to give user a warning
+                $this->errorArray[] = 'msm_intro_child_content-' . $idInfo[1] . '_ifr';
+            }
+        }
+        else
+        {
+            if (!empty($_POST['msm_intro_title_input-' . $idInfo[1]]))
+            {
+                $this->title = $_POST['msm_intro_title_input-' . $idInfo[1]];
+            }
+            if (!empty($_POST['msm_intro_content_input-' . $idInfo[1]]))
+            {
+                $rawintrocontent = $_POST['msm_intro_content_input-' . $idInfo[1]];
+
+                foreach ($this->processContent($rawintrocontent) as $content)
+                {
+                    $this->content[] = $content;
+                }
+            }
+            else
+            {
+                 // empty content needs to be flagged to give user a warning
+                $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1] . '_ifr';
+            }
+        }
+
+        $this->type = "intro";
+
+        return $this;
+    }
+
+    /**
+     * This method is to process blocks that are part of the unit element.
+     * It looks for specific keys of the POST object to 
+     * obtain the appropriate information to be inserted to the database tables.
+     * This method calls the processContent method from the EditorElement to call
+     * getFormData methods for all the other content related classes.
+     * (ie. EditorPara/EditorInContent and EditorTable)
+     * 
+     * @param string $formKey          A key of the POST object
+     * @return \EditorBlock
+     */
+    function processBodyContent($formKey)
+    {
+        $idInfo = explode("-", $formKey);
+
+        if (!empty($_POST['msm_body_title_input-' . $idInfo[1]]))
+        {
+            $this->title = $_POST['msm_body_title_input-' . $idInfo[1]];
+        }
+
+        if (!empty($_POST['msm_body_content_input-' . $idInfo[1]]))
+        {
+            $rawintrocontent = $_POST['msm_body_content_input-' . $idInfo[1]];
+
+            foreach ($this->processContent($rawintrocontent) as $content)
+            {
+                $this->content[] = $content;
+            }
+        }
+        else
+        {
+            // empty content needs to be flagged to give user a warning
+            $this->errorArray[] = 'msm_body_content_input-' . $idInfo[1] . '_ifr';
+        }
+
+        $this->type = "unit";
+
+        return $this;
+    }
+
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_block table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorPara/EditorInContent/EditorTable class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         The ID of the parent of this object(ie. Intro/Unit) in compositor table.
+     * @param integer $siblingid        The ID of the previous sibling of this object in compositor table.
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -68,87 +209,13 @@ class EditorBlock extends EditorElement
         }
     }
 
-    function processIntroContent($idNumber)
-    {
-        $match = "/^msm_intro_child_.*/";
-
-        $idInfo = explode("-", $idNumber);
-
-        if (preg_match($match, $idNumber))
-        {
-            if (!empty($_POST['msm_intro_child_title-' . $idInfo[1]]))
-            {
-                $this->title = $_POST['msm_intro_child_title-' . $idInfo[1]];
-            }
-
-            if (!empty($_POST['msm_intro_child_content-' . $idInfo[1]]))
-            {
-                $rawintrocontent = $_POST['msm_intro_child_content-' . $idInfo[1]];
-
-                foreach ($this->processContent($rawintrocontent) as $content)
-                {
-                    $this->content[] = $content;
-                }
-            }
-            else
-            {
-                $this->errorArray[] = 'msm_intro_child_content-' . $idInfo[1] . '_ifr';
-            }
-        }
-        else
-        {
-            if (!empty($_POST['msm_intro_title_input-' . $idInfo[1]]))
-            {
-                $this->title = $_POST['msm_intro_title_input-' . $idInfo[1]];
-            }
-            if (!empty($_POST['msm_intro_content_input-' . $idInfo[1]]))
-            {
-                $rawintrocontent = $_POST['msm_intro_content_input-' . $idInfo[1]];
-
-                foreach ($this->processContent($rawintrocontent) as $content)
-                {
-                    $this->content[] = $content;
-                }
-            }
-            else
-            {
-                $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1] . '_ifr';
-            }
-        }
-
-        $this->type = "intro";
-
-        return $this;
-    }
-
-    function processBodyContent($formKey)
-    {
-        $idInfo = explode("-", $formKey);
-
-        if (!empty($_POST['msm_body_title_input-' . $idInfo[1]]))
-        {
-            $this->title = $_POST['msm_body_title_input-' . $idInfo[1]];
-        }
-
-        if (!empty($_POST['msm_body_content_input-' . $idInfo[1]]))
-        {
-            $rawintrocontent = $_POST['msm_body_content_input-' . $idInfo[1]];
-
-            foreach ($this->processContent($rawintrocontent) as $content)
-            {
-                $this->content[] = $content;
-            }
-        }
-        else
-        {
-            $this->errorArray[] = 'msm_body_content_input-' . $idInfo[1] . '_ifr';
-        }
-
-        $this->type = "unit";
-
-        return $this;
-    }
-
+    /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
+     * displayData from the EdtiorPara/EditorInContent/EditorTable class.
+     * 
+     * @return HTML string
+     */
     public function displayData()
     {
         $htmlContent = '';
@@ -208,6 +275,16 @@ class EditorBlock extends EditorElement
         return $htmlContent;
     }
 
+   /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_block table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the 
+     * EditorPara/EditorInContent/EditorTable class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorAssociate
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -258,6 +335,14 @@ class EditorBlock extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * The method in this class is called by Unit/Intro and is responsible for showing the appropriate components of the block element.
+     * This method, in turn, calls the displayPreview of the EditorPara/EditorInContent/EditorTable to display the appropriate UI dialog windows.
+     * 
+     * @param string $id
+     * @return HTML string
+     */
     public function displayPreview($id = '')
     {
         $previewHtml = '';

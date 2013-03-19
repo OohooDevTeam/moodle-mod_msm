@@ -1,35 +1,52 @@
 <?php
 
-/*
-* To change this template, choose Tools | Templates
-* and open the template in the editor.
-*/
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
-* Description of EditorAssociate
-*
-* @author User
+ * EditorAssociate class represents the associate elements that will be created by 
+ * the MSM editor which is responsible for creating the tools for the user to be able to
+ * link associated materials to the specified definition/theorem/comments with/without 
+ * reference materials either created new or existing ones eithe within or outside of the current
+ * composition.  
+ * 
 */
 class EditorAssociate extends EditorElement
 {
 
     public $id;
     public $compid;
-// public $errorArray = array();
     public $type; // in db--> description of the associate
     public $infos = array();
 
+    // constructor for the class
     function __construct()
     {
         $this->tablename = 'msm_associate';
     }
 
-    // idNumber = parent_number-currentelement_number
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorInfo) to process its
+     * children's data.
+     * 
+     * @param string $idNumber          it contains string that consist of parent_HTML_ID_number-current_HTML_ID_number
+     * @return \EditorAssociate
+     */
     public function getFormData($idNumber)
     {
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
-
-//        $indexNumber = explode("-", $idNumber);
 
         $infomatch = "/^msm_info_content-$idNumber.*$/";
        
@@ -55,6 +72,17 @@ class EditorAssociate extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_associate table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorInfo class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         The ID of the parent of this object(ie. Def/Theorem/Comment) in compositor table.
+     * @param integer $siblingid        The ID of the previous sibling of this object(ie. anther associate) in compositor table.
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -81,6 +109,14 @@ class EditorAssociate extends EditorElement
         }
     }
 
+    /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
+     * displayData from the EditorInfo class.
+     * 
+     * @global moodle_database $DB
+     * @return HTML string
+     */
     public function displayData()
     {
         global $DB;
@@ -162,6 +198,16 @@ class EditorAssociate extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_associate table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorInfo 
+     * class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorAssociate
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -194,6 +240,16 @@ class EditorAssociate extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * The method in this class is called by theorem/comment or definition and is responsible for showing the appropriate components
+     * of the associate element.  This method, in turn, calls the displayPreview of the EditorInfo to display the appropriate UI dialog
+     * windows.
+     * 
+     * @param string $prevClass         This string indicates which class triggered this method.  
+     * @param string $id                This string is a pair of integers with '-' in middle to be inserted into HTML ID to make them unique
+     * @return HTML string
+     */
     public function displayPreview($prevClass = '', $id = '')
     {
         $previewHtml = '';
