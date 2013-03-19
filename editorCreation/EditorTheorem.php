@@ -184,6 +184,14 @@ class EditorTheorem extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_theorem-$this->compid' class='copied_msm_structural_element'>";
+        
+        $htmlContent .= "<div class='msm_element_overlays' id='msm_element_overlay-$this->compid' style='display: none;'>";
+
+        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
+        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
+
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "<select id='msm_theorem_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_theorem_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
@@ -217,6 +225,7 @@ class EditorTheorem extends EditorElement
 
         $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_theorem_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theorem_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_theorem_content_container-$this->compid' class='msm_theorem_content_containers'>";
@@ -286,8 +295,6 @@ class EditorTheorem extends EditorElement
     function displayRefData($parentId)
     {
         global $DB;
-
-//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_theoremref-$parentId-$this->compid' class='copied_msm_structural_element'>";

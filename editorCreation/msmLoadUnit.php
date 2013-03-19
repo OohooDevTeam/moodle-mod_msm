@@ -85,10 +85,19 @@ else if (isset($_POST['mode']))
             echo json_encode($block);
             break;
         case "msm_def":
+            $def = new EditorDefinition();
+            $def->loadData($currentElement->id);
+            echo json_encode($def);
             break;
         case "msm_theorem":
+            $theorem = new EditorTheorem();
+            $theorem->loadData($currentElement->id);
+            echo json_encode($theorem);
             break;
         case "msm_comment":
+            $comment = new EditorComment();
+            $comment->loadData($currentElement->id);
+            echo json_encode($comment);
             break;
     }
 }

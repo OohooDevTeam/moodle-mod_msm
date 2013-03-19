@@ -6,7 +6,7 @@
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
-        event.preventDefault();  
+        event.preventDefault();          
         
         submitForm();            
     });
@@ -165,7 +165,6 @@ function submitForm()
                     $("#msm_editor_new").removeAttr("disabled");
                     
                     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
-                        console.log(this);
                         $(this).empty().remove();
                     })
                     
@@ -242,10 +241,17 @@ function removeTinymceEditor()
                         
         var editorContent = document.createElement("div");
         editorContent.id = this.id;
-        editorContent.className = this.className+" msm_editor_content";
-        var content = $(this).val();
-        
-        console.log(content);
+        var content = null;
+        if($(this).hasClass("msm_editor_content"))
+        {
+            editorContent.className = this.className;
+            content = $(this).html();
+        }
+        else
+        {
+            editorContent.className = this.className+" msm_editor_content";
+            content = $(this).val();
+        }        
         
         $(editorContent).html(content);
         $(this).replaceWith(editorContent);
@@ -253,11 +259,20 @@ function removeTinymceEditor()
                     
     $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function() {
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-                        
+       
         var editorContent = document.createElement("div");
         editorContent.id = this.id;
-        editorContent.className = this.className+" msm_editor_content";
-        var content = $(this).val();
+        var content = null;
+        if($(this).hasClass("msm_editor_content"))
+        {
+            editorContent.className = this.className;
+            content = $(this).html();
+        }
+        else
+        {
+            editorContent.className = this.className+" msm_editor_content";
+            content = $(this).val();
+        }   
                         
         $(editorContent).html(content);
         $(this).replaceWith(editorContent);
@@ -269,8 +284,17 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = this.className+" msm_editor_content";
-            var content = $(this).val();
+            var content = null;
+            if($(this).hasClass("msm_editor_content"))
+            {
+                editorContent.className = this.className;
+                content = $(this).html();
+            }
+            else
+            {
+                editorContent.className = this.className+" msm_editor_content";
+                content = $(this).val();
+            }   
                         
             $(editorContent).html(content);
             $(this).replaceWith(editorContent);
@@ -283,8 +307,17 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = this.className+" msm_editor_content";
-            var content = $(this).val();
+            var content = null;
+            if($(this).hasClass("msm_editor_content"))
+            {
+                editorContent.className = this.className;
+                content = $(this).html();
+            }
+            else
+            {
+                editorContent.className = this.className+" msm_editor_content";
+                content = $(this).val();
+            }   
                         
             $(editorContent).html(content);
             $(this).replaceWith(editorContent);
@@ -297,8 +330,17 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = this.className+" msm_editor_content";
-            var content = $(this).val();
+            var content = null;
+            if($(this).hasClass("msm_editor_content"))
+            {
+                editorContent.className = this.className;
+                content = $(this).html();
+            }
+            else
+            {
+                editorContent.className = this.className+" msm_editor_content";
+                content = $(this).val();
+            }   
                         
             $(editorContent).html(content);
             $(this).replaceWith(editorContent);
@@ -308,8 +350,17 @@ function removeTinymceEditor()
                         
             var editorContent = document.createElement("div");
             editorContent.id = this.id;
-            editorContent.className = this.className+" msm_editor_content";
-            var content = $(this).val();
+            var content = null;
+            if($(this).hasClass("msm_editor_content"))
+            {
+                editorContent.className = this.className;
+                content = $(this).html();
+            }
+            else
+            {
+                editorContent.className = this.className+" msm_editor_content";
+                content = $(this).val();
+            }   
                         
             $(editorContent).html(content);
             $(this).replaceWith(editorContent);
@@ -391,30 +442,28 @@ function disableEditorFunction()
     });
     
     $(".copied_msm_structural_element").unbind();
-    $(".copied_msm_structural_element").hover(
-        function() {
+    $("#msm_child_appending_area > .copied_msm_structural_element").mouseenter(
+        function() {                
             var idNumber = $(this).attr("id").split("-");
             var overlayheight = $(this).height();
-            //            var offset = $(this).offset();
-                            
+
             $("#msm_element_overlay-"+idNumber[1]).css("top", this.offsetTop);
-            //            $("#msm_element_overlay-"+idNumber[1]).css("left", offset.left/2-20);
-                            
+
             $("#msm_element_overlay-"+idNumber[1]).css("display", "block");
-                            
+
             $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
                 height: overlayheight+50
             }, 700);                      
-        },
-        function() {   
-            var idNumber = $(this).attr("id").split("-");
-                            
-            $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
-                height: "30px"
-            }, 300);
-            $(".msm_element_overlays").css("display", "none");
-        }
-        );
+        });
+    $("#msm_child_appending_area > .copied_msm_structural_element").mouseleave(function() {   
+        var idNumber = $(this).attr("id").split("-");
+
+        $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
+            height: "30px"
+        }, 300);
+        $("#msm_element_overlay-"+idNumber[1]).css("display", "none");
+    }
+    );
     
 }
 

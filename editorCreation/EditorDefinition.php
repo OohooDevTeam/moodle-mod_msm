@@ -34,10 +34,10 @@ class EditorDefinition extends EditorElement
     function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
-        
+
         // processing definitions as reference material
         if (sizeof($idInfo) > 1)
-        {           
+        {
             $match = "/^msm_defref_content_input-$idInfo[0].*$/";
 
             $newId = '';
@@ -158,6 +158,14 @@ class EditorDefinition extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_def-$this->compid' class='copied_msm_structural_element'>";
+        
+        $htmlContent .= "<div class='msm_element_overlays' id='msm_element_overlay-$this->compid' style='display: none;'>";
+
+        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
+        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
+
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "<select id='msm_def_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_def_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
@@ -277,14 +285,10 @@ class EditorDefinition extends EditorElement
     {
         global $DB;
 
-//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
-
-//        $parentRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id)); // associate record
-        // $parentRecord->parent_id == parent def/comment/theorem where associate is a child of
-
         $htmlContent = '';
 
-        $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";
+        $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";       
+
         $htmlContent .= "<select id='msm_defref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_defref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
@@ -358,7 +362,7 @@ class EditorDefinition extends EditorElement
         return $htmlContent;
     }
 
-    public function displayPreview($id='')
+    public function displayPreview($id = '')
     {
         $previewHtml = '';
 
@@ -388,11 +392,11 @@ class EditorDefinition extends EditorElement
             $previewHtml .= "<ul class='defminibuttons'>";
             foreach ($this->children as $key => $associate)
             {
-                $previewHtml .= $associate->displayPreview("def", $id ."-". $key);
+                $previewHtml .= $associate->displayPreview("def", $id . "-" . $key);
             }
             $previewHtml .= "</ul>";
         }
-        
+
         $previewHtml .= "</div>";
         $previewHtml .= "<br />";
 

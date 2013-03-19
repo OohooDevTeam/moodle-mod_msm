@@ -140,8 +140,8 @@ function insertUnitStructure(dbId)
     .bind("load.jstree", function(){
         $("#msm_unit_tree").jstree("select_node", "msm_unit-"+idPair).trigger("select_node.jstree");
         $(".copied_msm_structural_element").unbind();
-        $(".copied_msm_structural_element").mouseenter(
-            function() {
+        $("#msm_child_appending_area > .copied_msm_structural_element").mouseenter(
+            function() {                
                 var idNumber = $(this).attr("id").split("-");
                 var overlayheight = $(this).height();
 
@@ -153,7 +153,7 @@ function insertUnitStructure(dbId)
                     height: overlayheight+50
                 }, 700);                      
             });
-        $(".copied_msm_structural_element").mouseleave(function() {   
+        $("#msm_child_appending_area > .copied_msm_structural_element").mouseleave(function() {   
             var idNumber = $(this).attr("id").split("-");
 
             $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
@@ -309,7 +309,7 @@ function processUnitData(htmlData)
     }
     
     $(".copied_msm_structural_element").unbind();
-    $(".copied_msm_structural_element").mouseenter(
+    $("#msm_child_appending_area > .copied_msm_structural_element").mouseenter(
         function() {
             var idNumber = $(this).attr("id").split("-");
             var overlayheight = $(this).height();
@@ -322,7 +322,7 @@ function processUnitData(htmlData)
                 height: overlayheight+50
             }, 700);                      
         });
-    $(".copied_msm_structural_element").mouseleave(function() {   
+    $("#msm_child_appending_area > .copied_msm_structural_element").mouseleave(function() {       
         var idNumber = $(this).attr("id").split("-");
 
         $("#msm_element_overlay-"+idNumber[1]).stop(true, true).animate({
@@ -416,7 +416,7 @@ function editUnit(e)
             {
                 $(closeButton).attr("style", "margin-top: 2%;");
             }
-        
+            
             $("#"+targetElement).prepend(closeButton); //can't use insertBefore since the reference element to insert before can change (eg. intro is header while def is select)
             
             $("#msm_editor_new").attr("disabled", "disabled");
@@ -430,41 +430,41 @@ function editUnit(e)
                 $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");  
             } 
             
-            $(".msm_theorem_statement_title_containers").each(function() {
+            $("#"+targetElement).find(".msm_theorem_statement_title_containers").each(function() {
                 var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
                 $(closeButton).insertBefore($(this));
             });
     
-            $(".msm_theorem_part_title_containers").each(function() {
+            $("#"+targetElement).find(".msm_theorem_part_title_containers").each(function() {
                 var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
                 $(closeButton).insertBefore($(this));
             });
 
-            $(".msm_theoremref_statement_title_containers").each(function() {
+            $("#"+targetElement).find(".msm_theoremref_statement_title_containers").each(function() {
                 var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
                 $(closeButton).insertBefore($(this));
             });
     
-            $(".msm_theoremref_part_title_containers").each(function() {
+            $("#"+targetElement).find(".msm_theoremref_part_title_containers").each(function() {
                 var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
                 $(closeButton).insertBefore($(this));
             });
     
     
-            $(".msm_associate_info_headers").each(function() {
+            $("#"+targetElement).find(".msm_associate_info_headers").each(function() {
                 var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
                 $(closeButton).insertBefore($(this));
             });
     
-            $(".msm_intro_child_dragareas").each(function() {
+            $("#"+targetElement).find(".msm_intro_child_dragareas").each(function() {
                 var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
                 $(closeButton).insertBefore($(this));
             });
     
+            $("#msm_editor_save").unbind("click");
             $("#msm_editor_save").click(function(event) { 
                 //         prevents navigation to msmUnitForm.php
                 event.preventDefault();
-                
                 // enabling all input that was disabled to submit the form
                 $("#msm_unit_title").removeAttr("disabled");
                 $("#msm_unit_short_title").removeAttr("disabled");
@@ -965,21 +965,13 @@ function enableDragTitleToggle()
 }
 
 function enableContentEditors(unitArray, currentElement)
-{
-    //    var unitChildInfo = $("#msm_child_order").val().split(",");
-    //    
+{ 
     var intromatch = /^copied_msm_intro-\d+$/;
     var bodymatch = /^copied_msm_body-\d+$/;
     var defmatch = /^copied_msm_def-\d+$/;
     var commentmatch = /^copied_msm_comment-\d+$/;
     var theoremmatch = /^copied_msm_theorem-\d+$/;   
-    //    
-    //    for(var i = 0; i < unitChildInfo.length-1; i++) // last element is msm_id which is not needed
-    //    {
-    //        if(unitChildInfo[i].match(intromatch))
-    //        {
-    //            createIntroText(unitChildInfo, unitArray, i);
-    //        } 
+    
     if(currentElement.match(bodymatch))
     {
         createBodyText(currentElement, unitArray);    
@@ -988,28 +980,37 @@ function enableContentEditors(unitArray, currentElement)
     {
         createIntroText(currentElement, unitArray);
     }
-    //        else if(unitChildInfo[i].match(defmatch))
-    //        {
-    //            createDefText(unitChildInfo, unitArray, i);                    
-    //        }
-    //        else if(unitChildInfo[i].match(commentmatch))
-    //        {
-    //            createCommentText(unitChildInfo, unitArray, i);                     
-    //        }
-    //        else if(unitChildInfo[i].match(theoremmatch))
-    //        {
-    //            createTheoremText(unitChildInfo, unitArray, i);                    
-    //        }
-    //    }
-    //    
-    $(".copied_msm_structural_element").unbind();
+    else if(currentElement.match(defmatch))
+    {
+        createDefText(currentElement, unitArray)
+    }
+    else if(currentElement.match(commentmatch))
+    {
+        createCommentText(currentElement, unitArray)
+    }
+    else if(currentElement.match(theoremmatch))
+    {
+        createTheoremText(currentElement, unitArray)
+    }
+    
 }
 
-function createTheoremText(child, unitArray, key)
+function createTheoremText(element, unitInfo)
 {
-    var unitInfo = unitArray["children"][key];
+    var elementIdInfo = element.split("-");
     
-    var theoremStatementInfo = $("#"+child[key]).find(".msm_theorem_statement_containers");
+    $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
+    $("#msm_theorem_type_dropdown-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_theorem_title_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_theorem_description_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_theorem_child_button-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_associate_button-"+elementIdInfo[1]).removeAttr("disabled");
+    
+    $("#"+element).find(".msm_theorem_part_buttons").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+    var theoremStatementInfo = $("#"+element).find(".msm_theorem_statement_containers");
     
     for(var i = 0; i < theoremStatementInfo.length; i++)
     {
@@ -1059,7 +1060,7 @@ function createTheoremText(child, unitArray, key)
             
             $(theoremPartTextArea).val(theoremPartContent);
         
-            $("#"+theoremPartInfo[k].id).children(".msm_editor_content").each(function(index, element){
+            $("#"+theoremPartInfo[k].id).children(".msm_editor_content").each(function(){
                 var elementidInfo = this.id.split("-");
                 
                 var elementid = '';
@@ -1076,16 +1077,24 @@ function createTheoremText(child, unitArray, key)
             initEditor(theoremPartTextArea.id);
         }
     }
-    
-    createAssociateText(child, unitInfo, key);
+    $("#"+element).unbind();
+    createAssociateText(element, unitInfo);
     enableEditorFunction();
 }
 
 
-function createAssociateText(mainElement, aArray, key)
+function createAssociateText(mainElement, aArray)
 {
+    $("#"+mainElement).find(".msm_associated_dropdown").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
+    $("#"+mainElement).find(".msm_associate_reftype_dropdown").each(function() {
+        $(this).removeAttr("disabled");
+    });
+    
     var associateArray = aArray["children"];
-    var associateIds = $("#"+mainElement[key]).find(".msm_associate_childs");
+    var associateIds = $("#"+mainElement).find(".msm_associate_childs");
     
     for(var i = 0; i < associateIds.length; i++)
     {
@@ -1145,6 +1154,10 @@ function createAssociateText(mainElement, aArray, key)
             switch(refTableName)
             {
                 case "msm_def":
+                    $("#msm_defref_type_dropdown-"+refid).removeAttr("disabled");
+                    $("#msm_defref_title_input-"+refid).removeAttr("disabled");
+                    $("#msm_defref_description_input-"+refid).removeAttr("disabled");
+                    
                     var defrefTextArea = document.createElement("textarea");
                     defrefTextArea.id = "msm_defref_content_input-"+refid;
                     defrefTextArea.name = "msm_defref_content_input-"+refid;
@@ -1155,74 +1168,7 @@ function createAssociateText(mainElement, aArray, key)
                     initEditor(defrefTextArea.id);
                     break;
                 case "msm_theorem":
-                    var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoid).find(".msm_theoremref_statement_containers");
-    
-                    for(var ind = 0; ind < theoremStatementInfo.length; ind++)
-                    {
-                        var theoremcontent = associateArray[i]["infos"][0]["ref"]["contents"][ind]["content"];
-                        var statementidInfo = theoremStatementInfo[ind].id.split("-");
-            
-                        var statementid = '';
-                        for(var j = 1; j < statementidInfo.length-1; j++)
-                        {
-                            statementid += statementidInfo[j]+"-";
-                        }
-                
-                        statementid += statementidInfo[statementidInfo.length-1]; // now containering theoremid-statementid pair for first content then for rest it's theoremid-topstatementid-statementid
-        
-                        var theoremStatementTextArea = document.createElement("textarea");
-                        theoremStatementTextArea.id = "msm_theoremref_content_input-"+statementid;
-                        theoremStatementTextArea.name = "msm_theoremref_content_input-"+statementid;
-                        theoremStatementTextArea.className = "msm_unit_child_content msm_theorem_content";
-            
-                        $(theoremStatementTextArea).val(theoremcontent);
-        
-                        $("#"+theoremStatementInfo[ind].id).children(".msm_editor_content").each(function(index, element){
-                            $(this).replaceWith(theoremStatementTextArea);
-                        });
-        
-                        initEditor(theoremStatementTextArea.id);
-        
-                        var theoremPartInfo = $("#"+theoremStatementInfo[ind].id).find(".msm_theorem_child");
-     
-                        for(var k=0; k < theoremPartInfo.length; k++)
-                        {
-                            var theoremPartContent = associateArray[i]["infos"][0]["ref"]["contents"][ind]["children"][k]["content"];
-                            var partidInfo = theoremPartInfo[k].id.split("-");
-             
-                            var partid = '';
-                            for(var m = 1; m < partidInfo.length-1; m++)
-                            {
-                                partid += partidInfo[m]+"-";
-                            }
-                
-                            partid += partidInfo[partidInfo.length-1];
-        
-                            var theoremPartTextArea = document.createElement("textarea");
-                            theoremPartTextArea.id = "msm_theoremref_part_content-"+partid;
-                            theoremPartTextArea.name = "msm_theoremref_part_content-"+partid;
-                            theoremPartTextArea.className = "msm_theorem_content";
-            
-                            $(theoremPartTextArea).val(theoremPartContent);
-        
-                            $("#"+theoremPartInfo[k].id).children(".msm_editor_content").each(function(index, element){
-                                var elementidInfo = this.id.split("-");
-                
-                                var elementid = '';
-                                for(var n=1; n < elementidInfo.length-1; n++)
-                                {
-                                    elementid += elementidInfo[n] + "-";
-                                }
-                                elementid += elementidInfo[elementidInfo.length-1];
-                                
-                                if(elementid == partid)
-                                {
-                                    $(this).replaceWith(theoremPartTextArea);
-                                }
-                            });
-                            initEditor(theoremPartTextArea.id);
-                        }
-                    }
+                    createTheoremRefText(mainElement, refid, associateArray, i, infoid);                    
                     break;
                 case "msm_comment":
                     var commentrefTextArea = document.createElement("textarea");
@@ -1235,20 +1181,105 @@ function createAssociateText(mainElement, aArray, key)
                     initEditor(commentrefTextArea.id);
                     break;
             }
-        }
-            
-       
+        }      
     }
     enableEditorFunction();
 }
 
-function createCommentText(child, unitArray, key)
+function createTheoremRefText(element, refid, aArray, index, infoId)
 {
-    var unitInfo = unitArray["children"][key];
+    $("#msm_theoremref_type_dropdown-"+refid).removeAttr("disabled");
+    $("#msm_theoremref_title_input-"+refid).removeAttr("disabled");
+    $("#msm_theoremref_description_input-"+refid).removeAttr("disabled");
+    $("#msm_theoremref_child_button-"+refid).removeAttr("disabled");
+    
+    $("#"+element).find(".msm_theoremref_part_buttons").each(function() {
+        $(this).removeAttr("disabled");
+    });
+                    
+    var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoId).find(".msm_theoremref_statement_containers");
+    
+    for(var ind = 0; ind < theoremStatementInfo.length; ind++)
+    {
+        var theoremcontent = aArray[index]["infos"][0]["ref"]["contents"][ind]["content"];
+        var statementidInfo = theoremStatementInfo[ind].id.split("-");
+            
+        var statementid = '';
+        for(var j = 1; j < statementidInfo.length-1; j++)
+        {
+            statementid += statementidInfo[j]+"-";
+        }
+                
+        statementid += statementidInfo[statementidInfo.length-1]; // now containing theoremid-statementid pair for first content then for rest it's theoremid-topstatementid-statementid
+        
+        var theoremStatementTextArea = document.createElement("textarea");
+        theoremStatementTextArea.id = "msm_theoremref_content_input-"+statementid;
+        theoremStatementTextArea.name = "msm_theoremref_content_input-"+statementid;
+        theoremStatementTextArea.className = "msm_unit_child_content msm_theorem_content";
+            
+        $(theoremStatementTextArea).val(theoremcontent);
+        
+        $("#"+theoremStatementInfo[ind].id).children(".msm_editor_content").each(function(index, element){
+            $(this).replaceWith(theoremStatementTextArea);
+        });
+        
+        initEditor(theoremStatementTextArea.id);
+        
+        var theoremPartInfo = $("#"+theoremStatementInfo[ind].id).find(".msm_theorem_child");
+     
+        for(var k=0; k < theoremPartInfo.length; k++)
+        {
+            var theoremPartContent = aArray[index]["infos"][0]["ref"]["contents"][ind]["children"][k]["content"];
+            var partidInfo = theoremPartInfo[k].id.split("-");
+             
+            var partid = '';
+            for(var m = 1; m < partidInfo.length-1; m++)
+            {
+                partid += partidInfo[m]+"-";
+            }
+                
+            partid += partidInfo[partidInfo.length-1];
+        
+            var theoremPartTextArea = document.createElement("textarea");
+            theoremPartTextArea.id = "msm_theoremref_part_content-"+partid;
+            theoremPartTextArea.name = "msm_theoremref_part_content-"+partid;
+            theoremPartTextArea.className = "msm_theorem_content";
+            
+            $(theoremPartTextArea).val(theoremPartContent);
+        
+            $("#"+theoremPartInfo[k].id).children(".msm_editor_content").each(function(index, element){
+                var elementidInfo = this.id.split("-");
+                
+                var elementid = '';
+                for(var n=1; n < elementidInfo.length-1; n++)
+                {
+                    elementid += elementidInfo[n] + "-";
+                }
+                elementid += elementidInfo[elementidInfo.length-1];
+                                
+                if(elementid == partid)
+                {
+                    $(this).replaceWith(theoremPartTextArea);
+                }
+            });
+            initEditor(theoremPartTextArea.id);
+        }
+    }
+}
+
+function createCommentText(element, unitInfo)
+{
+    var elementIdInfo = element.split("-");
+    
+    $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
+    $("#msm_comment_type_dropdown-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_comment_title_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_comment_description_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_associate_button-"+elementIdInfo[1]).removeAttr("disabled");
     
     var commentcontent = unitInfo["content"];
     
-    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    var currentId = $("#"+element).children(".msm_editor_content").first().attr("id");
     
     var commentInfo = currentId.split("-");
                 
@@ -1262,18 +1293,24 @@ function createCommentText(child, unitArray, key)
     $("#"+currentId).replaceWith(commentTextArea);    
         
     initEditor(commentTextArea.id);    
-    
-    createAssociateText(child, unitInfo, key);
+    $("#"+element).unbind();
+    createAssociateText(element, unitInfo);
     enableEditorFunction();
 }
 
-function createDefText(child, unitArray, key)
+function createDefText(element, unitInfo)
 {
-    var unitInfo = unitArray["children"][key];
+    var elementIdInfo = element.split("-");
+    
+    $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
+    $("#msm_def_type_dropdown-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_def_title_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_def_description_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_associate_button-"+elementIdInfo[1]).removeAttr("disabled");
     
     var defcontent = unitInfo["content"];
     
-    var currentId = $("#"+child[key]).children(".msm_editor_content").first().attr("id");
+    var currentId = $("#"+element).children(".msm_editor_content").first().attr("id");
     
     var defInfo = currentId.split("-");
                 
@@ -1287,8 +1324,8 @@ function createDefText(child, unitArray, key)
     $("#"+currentId).replaceWith(defTextArea);    
         
     initEditor(defTextArea.id); 
-    
-    createAssociateText(child, unitInfo, key);
+    $("#"+element).unbind();
+    createAssociateText(element, unitInfo);
     
     enableEditorFunction();
    
@@ -1297,19 +1334,13 @@ function createDefText(child, unitArray, key)
 
 function createIntroText(element, unitInfo)
 {
-    $("#"+element).find(".msm_unit_intro_title").each(function() {
-        $(this).removeAttr("disabled");
-    });
-    
-     $("#"+element).find(".msm_intro_child_titles").each(function() {
-        $(this).removeAttr("disabled");
-    });
-    
-    $("#"+element).find(".msm_element_overlays").each(function() {
-        $(this).css("display", "none");
-    });
-    
     var elementIdInfo = element.split("-");
+    $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
+    $("#msm_intro_title_input-"+elementIdInfo[1]).removeAttr("disabled");
+        
+    $("#"+element).find(".msm_intro_child_titles").each(function() {
+        $(this).removeAttr("disabled");
+    });
     
     $("#msm_intro_child_button-"+elementIdInfo[1]).removeAttr("disabled");
     
@@ -1370,19 +1401,16 @@ function createIntroText(element, unitInfo)
         
         initEditor(introChildTextArea.id);  
     }                   
-    
+    $("#"+element).unbind();
     enableEditorFunction();
 }
 
 function createBodyText(element, unitInfo)
 {
-    $("#"+element).find(".msm_unit_body_title").each(function() {
-        $(this).removeAttr("disabled");
-    });
+    var elementIdInfo = element.split("-");
     
-    $("#"+element).find(".msm_element_overlays").each(function() {
-        $(this).css("display", "none");
-    });
+    $("#msm_body_title_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
     
     var bodycontent = '';
     for(var index=0; index < unitInfo["content"].length; index++)
@@ -1403,6 +1431,7 @@ function createBodyText(element, unitInfo)
     $("#"+currentId).replaceWith(bodyTextArea);    
         
     initEditor(bodyTextArea.id); 
+    $("#"+element).unbind();
     enableEditorFunction();    
 }
 

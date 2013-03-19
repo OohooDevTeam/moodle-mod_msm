@@ -154,6 +154,14 @@ class EditorComment extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_comment-$this->compid' class='copied_msm_structural_element'>";
+        
+        $htmlContent .= "<div class='msm_element_overlays' id='msm_element_overlay-$this->compid' style='display: none;'>";
+
+        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
+        $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
+
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "<select id='msm_comment_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_comment_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
@@ -242,10 +250,6 @@ class EditorComment extends EditorElement
     function displayRefData($parentId)
     {
         global $DB;
-
-//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
-
-//        $parentRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id)); // associate record
 
         $htmlContent = '';
 

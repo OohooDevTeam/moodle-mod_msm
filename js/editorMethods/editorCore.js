@@ -80,8 +80,8 @@ function processDroppedChild(e, droppedId)
                 
                 var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
             
-                var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit"  onclick="editUnit(event);"> Edit </a>');
-                var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete" onclick="deleteOverlayElement(event);"> Delete </a>');
+                var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick="editUnit(event);"> Edit </a>');
+                var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
                 
                 var introTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 43%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> INTRODUCTION </b></div>'); 
                 var introTitlehidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
@@ -143,8 +143,8 @@ function processDroppedChild(e, droppedId)
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
             
-            var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit" onclick=editUnit(event)> Edit </a>');
-            var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete" onclick="deleteOverlayElement(event);"> Delete </a>');
+            var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
+            var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
             
             var bodyTitle = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 45%; margin-right: 0%; margin-top: 2%; margin-bottom: 2%;"> CONTENT </b></div>'); 
             var bodyTitlehidden = $('<span style="visibility: hidden;">     Drag here to move this element.</span>');
@@ -953,6 +953,11 @@ function makeDefinition()
     
     var defCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event);">x</a>');
     
+    var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
+            
+    var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
+    var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
+    
     var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
                                     <option value="Notation">Notation</option>\n\
                                     <option value="Definition">Definition</option>\n\
@@ -980,8 +985,12 @@ function makeDefinition()
     defAssociateDiv.append(defAssociateButton);
     
     defTitleContainer.append(defTitleHidden);
+    
+    overlayMenu.append(overlayButtonDelete);
+    overlayMenu.append(overlayButtonEdit);
             
     clonedCurrentElement.append(defCloseButton);
+    clonedCurrentElement.append(overlayMenu);
     clonedCurrentElement.append(defSelectMenu);
     clonedCurrentElement.append(defTitleContainer);
     clonedCurrentElement.append(defTitleField);
@@ -999,6 +1008,11 @@ function makeTheorem()
 {
     var clonedCurrentElement = $("<div></div>");
     var theoremCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event)">x</a>');
+    
+    var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
+            
+    var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
+    var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
 
     var theoremSelectMenu = $('<select name="msm_theorem_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_theorem_type_dropdown-'+_index+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
@@ -1049,8 +1063,12 @@ function makeTheorem()
             
     theoremContentWrapper.append(theoremStatementWrapper);
     theoremContentWrapper.append(theoremChildButton);
+    
+    overlayMenu.append(overlayButtonDelete);
+    overlayMenu.append(overlayButtonEdit);
             
     clonedCurrentElement.append(theoremCloseButton);
+    clonedCurrentElement.append(overlayMenu);
     clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleContainer);
     clonedCurrentElement.append(theoremTitleField);
@@ -1106,6 +1124,12 @@ function makeComment()
 {
     var clonedCurrentElement = $("<div></div>");
     var commentCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event);">x</a>');
+    
+    var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
+            
+    var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
+    var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
+    
     var commentSelectMenu = $('<select name="msm_comment_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_comment_type_dropdown-'+_index+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
@@ -1129,9 +1153,13 @@ function makeComment()
             
     commentAssociateDiv.append(commentAssociateButton);
     
-    commentTitleContainer.append(commentTitleHidden);
+    commentTitleContainer.append(commentTitleHidden);    
+   
+    overlayMenu.append(overlayButtonDelete);
+    overlayMenu.append(overlayButtonEdit);
             
     clonedCurrentElement.append(commentCloseButton);
+    clonedCurrentElement.append(overlayMenu);
     clonedCurrentElement.append(commentSelectMenu);
     clonedCurrentElement.append(commentTitleContainer);
     clonedCurrentElement.append(commentTitleField);
