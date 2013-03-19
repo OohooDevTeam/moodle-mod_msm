@@ -166,7 +166,7 @@ class EditorBlock extends EditorElement
             $htmlContent .= "<input id='msm_intro_child_title-$this->compid' class='msm_intro_child_titles' name='msm_intro_child_title-$this->compid' placeholder='Optional Title for the Content' disabled='disabled' value='$this->title'/>";
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div id='msm_intro_child_content-$this->compid' class='msm_editor_content'>";
+            $htmlContent .= "<div id='msm_intro_child_content-$this->compid' class='msm_intro_child_contents msm_editor_content'>";
             foreach ($this->content as $content)
             {
                 $htmlContent .= $content->displayData();

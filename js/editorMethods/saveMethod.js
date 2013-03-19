@@ -265,6 +265,7 @@ function removeTinymceEditor()
         var content = null;
         if($(this).hasClass("msm_editor_content"))
         {
+            console.log(this.className);
             editorContent.className = this.className;
             content = $(this).html();
         }

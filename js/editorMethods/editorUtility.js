@@ -483,7 +483,6 @@ function editUnit(e)
                     $(this).replaceWith(newdata);
                    
                 });
-                
                 submitForm();
             
             });    

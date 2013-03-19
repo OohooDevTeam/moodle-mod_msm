@@ -95,7 +95,7 @@ class EditorIntro extends EditorElement
         $htmlContent .= "<input id='msm_intro_title_input-$this->compid' class='msm_unit_intro_title' placeholder='Optional Title for the introduction.' name='msm_intro_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "</div>";
 
-        $htmlContent .= "<div id='msm_intro_content_input-$this->compid' class='msm_editor_content'>";
+        $htmlContent .= "<div id='msm_intro_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
 
         if (!empty($this->children))
         {
