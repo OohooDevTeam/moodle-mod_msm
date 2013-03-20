@@ -32,7 +32,7 @@ class EditorUnit extends EditorElement
     {
         global $DB;
         $this->errorArray = array();
-
+        
         $this->title = $_POST['msm_unit_title'];
         $this->description = $_POST['msm_unit_description_input'];
         $this->short_name = $_POST['msm_unit_short_title'];

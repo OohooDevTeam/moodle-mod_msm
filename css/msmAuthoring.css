@@ -664,3 +664,7 @@ table.mceLayout
     top:1px;
 }
 
+.msm_subordinate_results
+{
+    display:none;
+}
