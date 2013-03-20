@@ -1167,7 +1167,7 @@ function createAssociateText(mainElement, aArray)
                     initEditor(defrefTextArea.id);
                     break;
                 case "msm_theorem":
-                    createTheoremRefText(mainElement, refid, associateArray, i, infoid);                    
+                    createTheoremRefText(mainElement, associateArray, i, infoid);                    
                     break;
                 case "msm_comment":
                     var commentrefTextArea = document.createElement("textarea");
@@ -1210,7 +1210,6 @@ function createTheoremRefText(element, aArray, index, infoId)
     $("#"+element).find(".msm_theorem_child_buttons").each(function() {
         $(this).removeAttr("disabled");
     });
-    
 
     var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoId).find(".msm_theoremref_statement_containers");
     
@@ -1235,6 +1234,8 @@ function createTheoremRefText(element, aArray, index, infoId)
         $(theoremStatementTextArea).val(theoremcontent);
         
         $("#"+theoremStatementInfo[ind].id).children(".msm_editor_content").each(function(index, element){
+            console.log("this");
+            console.log(this);
             $(this).replaceWith(theoremStatementTextArea);
         });
         
