@@ -30,7 +30,7 @@ function submitForm()
         // process information from textarea that are not related to info elements
         if(!this.id.match(/info/))
         {  
-            //            subordinateArray.push(prepareSubordinate(this.id));
+            subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {
                 this.value = tinymce.get(this.id).getContent({
@@ -42,7 +42,7 @@ function submitForm()
         // process associate information
         else if(this.id.match(/_info_/))
         {
-            //            subordinateArray.push(prepareSubordinate(this.id));
+            subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {
                 this.value = tinymce.get(this.id).getContent({
@@ -50,8 +50,8 @@ function submitForm()
                 });
             }
         }
-    });
-                
+    });   
+    
     var urlParam = window.location.search;
        
     var urlParamInfo = urlParam.split("=");
@@ -65,14 +65,13 @@ function submitForm()
         {
             subordinateData += key+"|"+subordinateArray[i][key]+",";
         }
-    }        
-        
+    }
+    
     $("#msm_unit_subordinate_container").val(subordinateData);
         
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 
-    var mode = $("#msm_mode_info").val();
     
     $.ajax({
         type: "POST",
@@ -218,19 +217,22 @@ function prepareSubordinate(id)
            
         var idInfo = currentWord.id.split("-");     
         
-        for(var j=1; j < idInfo.length-2; j++)
+        for(var j=1; j < idInfo.length-1; j++)
         {
             param += idInfo[j]+"-";
         }            
-        param += idInfo[idInfo.length-2];
+        param += idInfo[idInfo.length-1];
         
-        var matchedElement = findSubordinateResult(currentWord, param);        
-        
-        $(matchedElement).children("div").each(function() {
-            subordinates[this.id] = $(this).html();
+                
+        $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {
+            if(this.id == "msm_subordinate_result-"+param)
+            {
+                $(this).children("div").each(function() {
+                    subordinates[this.id] = $(this).html();
+                })
+            }
         });
     }
-    
     return subordinates;    
 }
 
