@@ -877,7 +877,7 @@ abstract class Element
         global $DB;
         $content = '';
         $doc = new DOMDocument();
-        $doc->preserveWhiteSpace = true;
+        $doc->preserveWhiteSpace = true;        
 
         @$doc->loadXML($XMLcontent);
 

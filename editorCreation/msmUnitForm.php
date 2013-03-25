@@ -330,6 +330,7 @@ else
         {
             $previewHtml .= $unitchild->displayPreview($key);
         }
+        
         echo json_encode($previewHtml);
     }
 }

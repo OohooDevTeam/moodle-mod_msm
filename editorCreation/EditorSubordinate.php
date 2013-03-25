@@ -31,8 +31,16 @@ class EditorSubordinate extends EditorElement
     public function getFormData($idNumber)
     {
         $doc = new DOMDocument;
-        $this->hot = $doc->saveHTML($doc->importNode($idNumber, true));
-
+        
+        $hotNode = $doc->importNode($idNumber, true);
+        $hotNodeId = $hotNode->getAttribute("id");
+        $hotNodeText = $hotNode->textContent;
+        
+        $this->hot = $hotNodeId . "," . $hotNodeText;
+        
+//        $this->hot = $doc->saveHTML($doc->importNode($idNumber, true));
+//                print_object($this->hot);
+                
         $id = $idNumber->getAttribute("id");
 
         $idInfo = explode("-", $id);
@@ -77,7 +85,7 @@ class EditorSubordinate extends EditorElement
 
     public function displayData()
     {
-        $htmlContent = '';
+        $htmlContent = '';        
 
         $htmlContent .= $this->info->displayData();
 
@@ -114,9 +122,11 @@ class EditorSubordinate extends EditorElement
         return $this;
     }
 
-    public function displayPreview()
+    public function displayPreview($index)
     {
         $previewHtml = '';
+        
+        $previewHtml .= $this->info->displayPreview($index);
 
         return $previewHtml;
     }

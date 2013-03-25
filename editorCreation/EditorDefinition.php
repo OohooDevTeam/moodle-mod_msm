@@ -151,7 +151,7 @@ class EditorDefinition extends EditorElement
         $data = new stdClass();
         $data->def_type = $this->type;
         $data->caption = $this->title;
-        $data->def_content = $this->content;
+        $data->def_content = "<div>$this->content</div>";
         $data->description = $this->description;
 
         $this->id = $DB->insert_record($this->tablename, $data);
@@ -304,7 +304,15 @@ class EditorDefinition extends EditorElement
         $this->type = $defRecord->def_type;
         $this->title = $defRecord->caption;
         $this->description = $defRecord->description;
-        $this->content = $defRecord->def_content;
+        
+        $htmlParser = new DOMDocument();
+        $htmlParser->loadHTML($defRecord->def_content);
+        
+        foreach($htmlParser->documentElement->childNodes as $child)
+        {
+            $this->content .= $htmlParser->saveHTML($child);
+        }
+//        $this->content = $defRecord->def_content;
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
@@ -319,7 +327,11 @@ class EditorDefinition extends EditorElement
                     $associate->loadData($child->id);
                     $this->children[] = $associate;
                     break;
-                //add subordinate later
+                case "msm_subordinate":
+                    $subordinate = new EditorSubordinate();
+                    $subordinate->loadData($child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
             }
         }
 
@@ -443,7 +455,9 @@ class EditorDefinition extends EditorElement
 
 
         $previewHtml .= "<div class='mathcontent'>";
-        $previewHtml .= $this->content;
+        
+//        print_object($this->subordinates);
+        $previewHtml .= $this->previewSubordinate("<div>$this->content</div>", $this->subordinates);
         $previewHtml .= "<br />";
         $previewHtml .= "</div>";
 

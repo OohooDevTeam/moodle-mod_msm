@@ -350,7 +350,7 @@ function showUnitPreview()
         dataArray["msm_unit_title"] = $("#msm_unit_title").val();
         dataArray["msm_unit_description_input"] = $("#msm_unit_description_input").val();
         dataArray["msm_unit_short_title"] = $("#msm_unit_short_title").val();
-//        dataArray["msm_currentUnit_id"] = $("#msm_currentUnit_id").val();
+        //        dataArray["msm_currentUnit_id"] = $("#msm_currentUnit_id").val();
     
         $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
             dataArray[this.id] = $(this).val(); 
@@ -375,13 +375,29 @@ function showUnitPreview()
             dataArray[this.id] = $(this).val(); 
         }); 
         
-         $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
+        $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
             dataArray[this.id] = $(this).val(); 
         }); 
         
         $("#msm_child_appending_area").find(".msm_theoremref_part_title").each(function() {
             dataArray[this.id] = $(this).val(); 
-        });   
+        });  
+        
+        var subordinates = [];
+        
+        $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {
+            $(this).children("div").each(function() {
+                subordinates.push(this.id+"|"+$(this).html());
+            });
+        });
+        
+        var subordinateString = '';
+        for(var i = 0; i < subordinates.length-1; i++)
+        {
+            subordinateString += subordinates[i] + ",";
+        }            
+        subordinateString += subordinates[subordinates.length-1];
+        dataArray["msm_unit_subordinate_container"] = subordinateString;
         
                
         var ids = [];
@@ -395,7 +411,7 @@ function showUnitPreview()
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
                         
-                $(".leftbox").append(ids); 
+                $("#msm_preview_dialog > .leftbox").append(ids); 
                                
                 var wWidth = $(window).width();
                 var wHeight = $(window).height();

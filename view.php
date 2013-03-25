@@ -275,7 +275,7 @@ $content .= "
                     height: 'auto',
                     width: 605
                 });  
-                
+                               
                 $('#features').jshowoff({
                     autoplay:false,
                     links:true                  
