@@ -14,6 +14,11 @@ $(document).ready(function(){
 
 function submitForm()
 {
+    
+    $("#msm_unit_title").removeAttr("disabled");
+    $("#msm_unit_short_title").removeAttr("disabled");
+    $("#msm_unit_description_input").removeAttr("disabled");
+    
     var children =  document.getElementById("msm_child_appending_area").childNodes;
 
     var idString = "";
@@ -73,7 +78,7 @@ function submitForm()
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 
     var mode = $("#msm_mode_info").val();
-    
+       
     $.ajax({
         type: "POST",
         url: targetURL,
@@ -124,7 +129,7 @@ function submitForm()
                 if(typeof mode !== 'undefined')
                 {
                     $(".leftbox").append(ids); 
-                       
+                    
                     var wWidth = $(window).width();
                     var wHeight = $(window).height();
                 
@@ -142,15 +147,22 @@ function submitForm()
                             });                           
                         },
                         close: function() {
-                            $("#msm_mode_info").empty().remove();
+                            $("#msm_mode_info").empty().remove();                            
                         }
                     }); 
                     
-                    $(".msm_info_dialogs").dialog({
-                        resizable: false,
-                        autoOpen: false,
-                        height: 'auto',
-                        modal: false
+                    $(".msm_subordinate_hotwords").each(function(i, element) {
+                        var idInfo = this.id.split("-");                        
+                        var newid = '';
+                        
+                        for(var i=1; i < idInfo.length-1; i++)
+                        {
+                            newid += idInfo[i]+"-";
+                        }
+                            
+                        newid += idInfo[idInfo.length-1];
+                        
+                        previewInfo(this.id, "dialog-"+newid); 
                     });
                     
                 }
@@ -175,23 +187,8 @@ function submitForm()
                                         
                     // disabling all input/selection areas in editor and also disabling all jquery actions such as 
                     // sortable, draggable and droppable
-                    disableEditorFunction();      
+                    disableEditorFunction();                    
                     
-                    $(".msm_subordinate_hotwords").each(function(i, element) {
-                        var idInfo = this.id.split("-");                        
-                        var newid = '';
-                        
-                        for(var i=1; i < idInfo.length-1; i++)
-                        {
-                            newid += idInfo[i]+"-";
-                        }
-                            
-                        newid += idInfo[idInfo.length-1];
-                        
-                        $(this).on('mouseover', function(){
-                            previewInfo(this.id, "msm_subordinate_info_dialog-"+newid); 
-                        });
-                    });
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
                     insertUnitStructure(ids);                  
                 }
@@ -268,7 +265,6 @@ function removeTinymceEditor()
         var content = null;
         if($(this).hasClass("msm_editor_content"))
         {
-            console.log(this.className);
             editorContent.className = this.className;
             content = $(this).html();
         }
@@ -475,7 +471,7 @@ function disableEditorFunction()
 // to activate the dialog box for display purposes
 function previewInfo(elementid, dialogid)
 {
-    $(".msm_subordinate_info_dialogs").dialog({
+    $(".msm_info_dialogs").dialog({
         autoOpen: false,
         height: "auto",
         modal: false,
@@ -503,12 +499,14 @@ function previewInfo(elementid, dialogid)
 
     });
 
-    $("#"+elementid).ready(function(e){        
+    $("#"+elementid).ready(function(e){     
+        console.log(elementid + " is ready");
         $("#"+elementid).mousemove(function (e) {
             $("#"+dialogid).dialog("option", {
                 position: [e.clientX+5, e.clientY+5]
             });
             $("#"+dialogid).dialog('open').css("display", "block");
+            console.log("opened dialog -->"+dialogid);
         });
 
         $("#"+elementid).mouseout(function(){

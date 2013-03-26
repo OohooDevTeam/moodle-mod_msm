@@ -196,17 +196,17 @@ div.controller{
     min-width: 200px;
 }
 
-.hottag, .activehottag
+.hottag, .activehottag, .msm_subordinate_hotwords
 {
     color: #229C79;   
 }
 
-.hottag:hover, .activehottag:hover
+.hottag:hover, .activehottag:hover, .msm_subordinate_hotwords:hover
 {
     cursor: pointer;
     color:blue;
 }
-.hottag:visited, .activehottag:visited
+.hottag:visited, .activehottag:visited, .msm_subordinate_hotwords:visited
 {
     color:mediumorchid;
 }

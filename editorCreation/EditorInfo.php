@@ -41,7 +41,7 @@ class EditorInfo extends EditorElement
             // element is empty)
             $allSubordinates = array();
 
-            for ($i = 0; $i < sizeof($tempallSubordinates) - 1; $i++)
+            for ($i = 0; $i < sizeof($tempallSubordinates); $i++)
             {
                 $allSubordinates[] = $tempallSubordinates[$i];
             }
@@ -274,7 +274,7 @@ class EditorInfo extends EditorElement
 
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
-
+        
         $referenceRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
 
         foreach ($referenceRecords as $ref)
@@ -311,6 +311,7 @@ class EditorInfo extends EditorElement
         $previewHtml = '';
 
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$this->caption'>";
+//        print_object($this->content);
         $previewHtml .= $this->content;
         $previewHtml .= "</div>";
 

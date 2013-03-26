@@ -35,12 +35,12 @@ class EditorSubordinate extends EditorElement
         $hotNode = $doc->importNode($idNumber, true);
         $hotNodeId = $hotNode->getAttribute("id");
         $hotNodeText = $hotNode->textContent;
-        
+
         $this->hot = $hotNodeId . "," . $hotNodeText;
-        
+
 //        $this->hot = $doc->saveHTML($doc->importNode($idNumber, true));
 //                print_object($this->hot);
-                
+
         $id = $idNumber->getAttribute("id");
 
         $idInfo = explode("-", $id);
@@ -85,7 +85,7 @@ class EditorSubordinate extends EditorElement
 
     public function displayData()
     {
-        $htmlContent = '';        
+        $htmlContent = '';
 
         $htmlContent .= $this->info->displayData();
 
@@ -122,11 +122,21 @@ class EditorSubordinate extends EditorElement
         return $this;
     }
 
-    public function displayPreview($index)
+    public function displayPreview()
     {
         $previewHtml = '';
-        
-        $previewHtml .= $this->info->displayPreview($index);
+
+        $idInfo = explode(",", $this->hot);
+        $indexInfo = explode("-", $idInfo[0]);
+
+        $id = '';
+        for ($i = 1; $i < sizeof($indexInfo) - 1; $i++)
+        {
+            $id .= $indexInfo[$i] . "-";
+        }
+        $id .= $indexInfo[sizeof($indexInfo) - 1];
+
+        $previewHtml .= $this->info->displayPreview($id);
 
         return $previewHtml;
     }

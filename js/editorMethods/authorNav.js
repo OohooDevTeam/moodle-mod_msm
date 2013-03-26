@@ -399,7 +399,6 @@ function showUnitPreview()
         subordinateString += subordinates[subordinates.length-1];
         dataArray["msm_unit_subordinate_container"] = subordinateString;
         
-               
         var ids = [];
         $.ajax({
             type: "POST",
@@ -410,8 +409,8 @@ function showUnitPreview()
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
-                        
-                $("#msm_preview_dialog > .leftbox").append(ids); 
+                
+                $("#msm_preview_dialog .leftbox").append(ids); 
                                
                 var wWidth = $(window).width();
                 var wHeight = $(window).height();
@@ -427,36 +426,48 @@ function showUnitPreview()
                         $('#MySplitter').split({
                             orientation: 'vertical',
                             position: '50%'
-                        });                           
+                        });  
                     },
                     close: function() {
                         $("#msm_mode_info").empty().remove();
                     }
                 }); 
+                
+                console.log( $(".msm_subordinate_hotwords"));
+                
+                $(".msm_subordinate_hotwords").each(function(i, element) {
+                    console.log("looping through subordinate hotwords-displaymode");
+                    var idInfo = this.id.split("-");                        
+                    var newid = '';
+                        
+                    for(var i=1; i < idInfo.length-1; i++)
+                    {
+                        newid += idInfo[i]+"-";
+                    }
                             
-                $(".msm_info_dialogs").dialog({
-                    resizable: false,
-                    autoOpen: false,
-                    height: 'auto',
-                    modal: false
-                });
-            },
-            error: function () {
+                    newid += idInfo[idInfo.length-1];  
                     
+//                    $(this).on("mouseover", function() {
+                        previewInfo(this.id, "dialog-"+newid); 
+
+//                    })
+                        
+                });
             }
         });
     // parse HTML to get needed contents... but still need to put in ajax to can use PHP class functions
     }
     else // editor is in edit mode
     {
-        $("#msm_unit_form").trigger("submit");
+        $("#msm_unit_form").trigger("submit");     
+        
     }
+    
     
 }
 
 function makePreviewDialog()
-{
-    
+{    
     var jsTree = document.getElementById("msm_unit_tree");
     var middleEditor = document.getElementById("msm_editor_middle_droparea");
     if((jsTree.hasChildNodes()) || (middleEditor.hasChildNodes()))
@@ -467,8 +478,7 @@ function makePreviewDialog()
     
         var splitterBox = $("<div id='MySplitter'></div>");
         var leftCol = $("<div id='leftcol'></div>");
-        var leftBox = $("<div class='leftbox'></div>");
-    
+        var leftBox = $("<div class='leftbox'></div>");    
     
         var rightCol = $("<div id='rightcol'></div>");
         var rightBox = $("<div class='rightbox'></div>");
