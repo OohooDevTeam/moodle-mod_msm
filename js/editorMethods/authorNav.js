@@ -399,6 +399,10 @@ function showUnitPreview()
         subordinateString += subordinates[subordinates.length-1];
         dataArray["msm_unit_subordinate_container"] = subordinateString;
         
+        console.log("preparing for the preview function");
+        console.log(subordinateString);
+        console.log(dataArray);
+        
         var ids = [];
         $.ajax({
             type: "POST",

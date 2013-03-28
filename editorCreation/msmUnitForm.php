@@ -322,6 +322,7 @@ else
     }
     else if (!empty($_POST['msm_mode_info']))
     {
+//        print_object($_POST);
         $previewHtml = '';
 
         $previewHtml .= $unit->displayPreview();

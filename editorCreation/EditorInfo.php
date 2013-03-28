@@ -245,17 +245,46 @@ class EditorInfo extends EditorElement
         }
         else if ($parentTable->tablename == 'msm_subordinate')
         {
+            $parentUnitRecord = $DB->get_record("msm_subordinate", array("id" => $parentRecord->unit_id));
+            $hotIdInfo = explode(",", $parentUnitRecord->hot);
+
+            $idInfo = explode("-", $hotIdInfo[0]);
+
+            $idEnding = '';
+            for ($i = 1; $i < sizeof($idInfo) - 1; $i++)
+            {
+                $idEnding .= $idInfo[$i] . "-";
+            }
+            $idEnding .= $idInfo[sizeof($idInfo) - 1];
+
+
             if (empty($this->caption))
             {
-                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_subordinate_info_dialogs' style='display:none;'>";
+                $htmlContent .= "<div id='msm_subordinate_infoTitle-$idEnding'>";
+                $htmlContent .= "</div>";
             }
             else
             {
-                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_subordinate_info_dialogs' title='$this->caption' style='display:none;'>";
+                $htmlContent .= "<div id='msm_subordinate_infoTitle-$idEnding'>";
+                $htmlContent .= $this->caption;
+                $htmlContent .= "</div>";
             }
 
+            $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
+
+//            if (empty($this->caption))
+//            {
+//                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_subordinate_info_dialogs' style='display:none;'>";
+//            }
+//            else
+//            {
+//                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_subordinate_info_dialogs' title='$this->caption' style='display:none;'>";
+//            }
+//
+//            $htmlContent .= $this->content;
+//            $htmlContent .= "</div>";
         }
 
         return $htmlContent;
@@ -274,7 +303,7 @@ class EditorInfo extends EditorElement
 
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
-        
+
         $referenceRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
 
         foreach ($referenceRecords as $ref)

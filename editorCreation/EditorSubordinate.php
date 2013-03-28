@@ -31,7 +31,7 @@ class EditorSubordinate extends EditorElement
     public function getFormData($idNumber)
     {
         $doc = new DOMDocument;
-        
+
         $hotNode = $doc->importNode($idNumber, true);
         $hotNodeId = $hotNode->getAttribute("id");
         $hotNodeText = $hotNode->textContent;
@@ -55,6 +55,9 @@ class EditorSubordinate extends EditorElement
         $info = new EditorInfo();
         $info->getFormData($idEnding . "|sub");
         $this->info = $info;
+//        print_object($idEnding);
+//        print_object($_POST);
+//        echo "in getFormData";
 
         return $this;
     }
@@ -85,10 +88,38 @@ class EditorSubordinate extends EditorElement
 
     public function displayData()
     {
+        global $DB;
+        $subChild = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
+        $childTable = $DB->get_record("msm_table_collection", array("id" => $subChild->table_id))->tablename;
+
         $htmlContent = '';
 
-        $htmlContent .= $this->info->displayData();
+        $hotIdInfo = explode(",", $this->hot);
+        $idInfo = explode("-", $hotIdInfo[0]);
+        
+        $idEnding = '';
+        for($i = 1; $i < sizeof($idInfo)-1; $i++)
+        {
+            $idEnding .= $idInfo[$i] . "-";
+        }
+        $idEnding .= $idInfo[sizeof($idInfo)-1];
 
+        $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
+        $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
+        if ($childTable == "msm_info")
+        {
+            $htmlContent .= "Information";
+        }
+        else if ($childTable == "msm_external_link")
+        {
+            $htmlContent .= "External Link";
+        }
+        $htmlContent .= "</div>";
+        
+         $htmlContent .= $this->info->displayData();        
+        
+        $htmlContent .= "</div>";
+       
         return $htmlContent;
     }
 
@@ -118,6 +149,7 @@ class EditorSubordinate extends EditorElement
                 $this->info = $info;
             }
         }
+//        echo "in load";
 
         return $this;
     }
@@ -135,6 +167,8 @@ class EditorSubordinate extends EditorElement
             $id .= $indexInfo[$i] . "-";
         }
         $id .= $indexInfo[sizeof($indexInfo) - 1];
+        
+//        print_object($this->info);
 
         $previewHtml .= $this->info->displayPreview($id);
 

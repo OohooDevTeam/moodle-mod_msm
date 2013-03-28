@@ -264,6 +264,17 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
+        
+        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-$this->compid'>";
+        
+        foreach($this->subordinates as $subordinate)
+        {
+            $htmlContent .= $subordinate->displayData();
+        }
+        
+        $htmlContent .= "</div>";
+
+        
         $htmlContent .= "<label id='msm_def_description_label-$this->compid' class='msm_child_description_labels' for='msm_def_description_label-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_def_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_def_description_input-$this->compid'/>";
 
