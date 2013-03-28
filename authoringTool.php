@@ -429,7 +429,7 @@ $formContent .= '<script type="text/javascript">
                     height: "auto",
                     modal: false,
                     width: 605
-                });
+                });               
                     
                 $(".msm_structural_element").draggable({
                     appendTo: "msm_editor_middle_droparea",

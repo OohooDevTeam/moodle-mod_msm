@@ -456,12 +456,10 @@ class EditorDefinition extends EditorElement
 
         $previewHtml .= "<div class='mathcontent'>";
         
-//        print_object($this->subordinates);
         $previewHtml .= $this->content;
         
         if(!empty($this->subordinates))
         {
-//            print_object($this->subordinates);
             foreach($this->subordinates as $subordinate)
             {
                 $previewHtml .= $subordinate->displayPreview();

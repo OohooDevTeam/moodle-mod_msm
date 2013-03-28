@@ -409,7 +409,8 @@ function showUnitPreview()
                 // this section of the code is for detecting empty contents and it gives the user 
                 // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
-                
+                $(".msm_info_dialogs").dialog("destroy");
+                $(".msm_info_dialogs").empty().remove();
                 $("#msm_preview_dialog .leftbox").append(ids); 
                                
                 var wWidth = $(window).width();
@@ -427,17 +428,21 @@ function showUnitPreview()
                             orientation: 'vertical',
                             position: '50%'
                         });  
+                        $(".msm_info_dialogs").dialog({
+                            autoOpen: false,
+                            height: "auto",
+                            modal: false,
+                            width: 605
+                        });  
                     },
                     close: function() {
+                        $(".msm_info_dialogs").dialog("destroy");
                         $("#msm_mode_info").empty().remove();
                     }
-                }); 
+                });   
                 
-                console.log( $(".msm_subordinate_hotwords"));
-                
-                $(".msm_subordinate_hotwords").each(function(i, element) {
-                    console.log("looping through subordinate hotwords-displaymode");
-                    var idInfo = this.id.split("-");                        
+                $("#msm_preview_dialog .leftbox").find(".msm_subordinate_hotwords").each(function(i, element) {
+                    var idInfo = this.id.split("-");
                     var newid = '';
                         
                     for(var i=1; i < idInfo.length-1; i++)
@@ -445,13 +450,16 @@ function showUnitPreview()
                         newid += idInfo[i]+"-";
                     }
                             
-                    newid += idInfo[idInfo.length-1];  
+                    newid += idInfo[idInfo.length-1];
                     
-//                    $(this).on("mouseover", function() {
-                        previewInfo(this.id, "dialog-"+newid); 
-
-//                    })
+                    $("#dialog-"+newid).dialog({
+                        autoOpen: false,
+                        height: "auto",
+                        modal: false,
+                        width: 605
+                    });  
                         
+                    previewInfo(this.id, "dialog-"+newid);
                 });
             }
         });

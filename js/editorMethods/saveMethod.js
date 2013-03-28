@@ -127,8 +127,8 @@ function submitForm()
             else
             {        
                 if(typeof mode !== 'undefined')
-                {
-                    $(".leftbox").append(ids); 
+                {                    
+                    $("#msm_preview_dialog .leftbox").append(ids); 
                     
                     var wWidth = $(window).width();
                     var wHeight = $(window).height();
@@ -147,12 +147,20 @@ function submitForm()
                             });                           
                         },
                         close: function() {
+                            $(".msm_info_dialogs").dialog("destroy");
                             $("#msm_mode_info").empty().remove();                            
-                        }
+                        } 
                     }); 
+
+                    $(".msm_info_dialogs").dialog({
+                        autoOpen: false,
+                        height: "auto",
+                        modal: false,
+                        width: 605
+                    });  
                     
-                    $(".msm_subordinate_hotwords").each(function(i, element) {
-                        var idInfo = this.id.split("-");                        
+                    $("#msm_preview_dialog .leftbox").find(".msm_subordinate_hotwords").each(function(i, element) {
+                        var idInfo = this.id.split("-");
                         var newid = '';
                         
                         for(var i=1; i < idInfo.length-1; i++)
@@ -162,7 +170,7 @@ function submitForm()
                             
                         newid += idInfo[idInfo.length-1];
                         
-                        previewInfo(this.id, "dialog-"+newid); 
+                        previewInfo(this.id, "dialog-"+newid);
                     });
                     
                 }
@@ -470,48 +478,37 @@ function disableEditorFunction()
 
 // to activate the dialog box for display purposes
 function previewInfo(elementid, dialogid)
-{
-    $(".msm_info_dialogs").dialog({
-        autoOpen: false,
-        height: "auto",
-        modal: false,
-        width: 605
-    });    
-    
+{       
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse  
 
-    $("#"+elementid).unbind("click");
-    $("#"+elementid).click(function(e) {
+    $("#msm_preview_dialog #"+elementid).unbind("click");
+    $("#msm_preview_dialog #"+elementid).click(function(e) {
         x = e.clientX+5;
         y = e.clientY+5;
-
+    
         $("#"+dialogid).dialog('open').css("display", "block");
-        $("#"+elementid).mousemove(function () {
+        $("#msm_preview_dialog #"+elementid).mousemove(function () {
             $("#"+dialogid).dialog("option", {
                 position: [x, y]
             });
         });
-
-        $("#"+elementid).mouseout(function(){
+    
+        $("#msm_preview_dialog #"+elementid).mouseout(function(){
             $("#"+dialogid).dialog('open').css("display", "block");
         });
-
+    
+    });    
+   
+    $("#msm_preview_dialog #"+elementid).mouseover(function (e) {
+        $("#"+dialogid).dialog("option", {
+            position: [e.clientX+5, e.clientY+5]
+        });
+        $("#"+dialogid).dialog('open').css("display", "block");
     });
-
-    $("#"+elementid).ready(function(e){     
-        console.log(elementid + " is ready");
-        $("#"+elementid).mousemove(function (e) {
-            $("#"+dialogid).dialog("option", {
-                position: [e.clientX+5, e.clientY+5]
-            });
-            $("#"+dialogid).dialog('open').css("display", "block");
-            console.log("opened dialog -->"+dialogid);
-        });
-
-        $("#"+elementid).mouseout(function(){
-            $("#"+dialogid).dialog("close").css("display", "none");
-        });
+    
+    $("#msm_preview_dialog #"+elementid).mouseout(function(){
+        $("#"+dialogid).dialog("close").css("display", "none");
     });
 } 
 
