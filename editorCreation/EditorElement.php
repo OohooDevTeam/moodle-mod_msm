@@ -19,7 +19,7 @@ abstract class EditorElement
 
     abstract function loadData($compid);
 
-    abstract function displayData();
+//    abstract function displayData();
 
     function processContent($oldContent)
     {

@@ -13,8 +13,7 @@ $(document).ready(function(){
 });
 
 function submitForm()
-{
-    
+{    
     $("#msm_unit_title").removeAttr("disabled");
     $("#msm_unit_short_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");
@@ -172,6 +171,9 @@ function submitForm()
                         previewInfo(this.id, "dialog-"+newid);
                     });
                     
+                    $("#msm_unit_title").attr("disabled", "disabled");
+                    $("#msm_unit_short_title").attr("disabled", "disabled");
+                    $("#msm_unit_description_input").attr("disabled", "disabled");                    
                 }
                 else if(typeof mode === 'undefined')
                 {
@@ -212,32 +214,37 @@ function prepareSubordinate(id)
 {
     var subordinates = [];
     var inst = tinyMCE.getInstanceById(id);    
-    var hotwords = inst.getBody().getElementsByTagName("a");  
     
-    for(var i=0; i < hotwords.length; i++)
+    if(typeof inst !== 'undefined')
     {
-        
-        var param = '';
-        var currentWord = hotwords[i];
-           
-        var idInfo = currentWord.id.split("-");     
-        
-        for(var j=1; j < idInfo.length-1; j++)
+        var hotwords = inst.getBody().getElementsByTagName("a");  
+    
+        for(var i=0; i < hotwords.length; i++)
         {
-            param += idInfo[j]+"-";
-        }            
-        param += idInfo[idInfo.length-1];
+        
+            var param = '';
+            var currentWord = hotwords[i];
+           
+            var idInfo = currentWord.id.split("-");     
+        
+            for(var j=1; j < idInfo.length-1; j++)
+            {
+                param += idInfo[j]+"-";
+            }            
+            param += idInfo[idInfo.length-1];
         
                 
-        $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {
-            if(this.id == "msm_subordinate_result-"+param)
-            {
-                $(this).children("div").each(function() {
-                    subordinates[this.id] = $(this).html();
-                })
-            }
-        });
+            $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {
+                if(this.id == "msm_subordinate_result-"+param)
+                {
+                    $(this).children("div").each(function() {
+                        subordinates[this.id] = $(this).html();
+                    })
+                }
+            });
+        }
     }
+   
     return subordinates;    
 }
 

@@ -80,7 +80,7 @@ class EditorSubordinate extends EditorElement
         }
     }
 
-    public function displayData()
+    public function displayData($parentid='')
     {
         global $DB;
         $subChild = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
@@ -91,15 +91,16 @@ class EditorSubordinate extends EditorElement
         $hotIdInfo = explode(",", $this->hot);
         $idInfo = explode("-", $hotIdInfo[0]);
         
-        $idEnding = '';
-        for($i = 1; $i < sizeof($idInfo)-1; $i++)
+        $idEnding = $parentid;
+        for($i = 2; $i < sizeof($idInfo); $i++)
         {
-            $idEnding .= $idInfo[$i] . "-";
+            $idEnding .= "-" . $idInfo[$i];
         }
-        $idEnding .= $idInfo[sizeof($idInfo)-1];
+//        $idEnding .= $idInfo[sizeof($idInfo)-1];
 
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
+        
         if ($childTable == "msm_info")
         {
             $htmlContent .= "Information";
@@ -110,7 +111,7 @@ class EditorSubordinate extends EditorElement
         }
         $htmlContent .= "</div>";
         
-         $htmlContent .= $this->info->displayData();        
+         $htmlContent .= $this->info->displayData($idEnding);        
         
         $htmlContent .= "</div>";
        

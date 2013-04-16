@@ -471,7 +471,7 @@ function editUnit(e)
                 $("#msm_unit_description_input").removeAttr("disabled");
                 $(".copied_msm_structural_element select").removeAttr("disabled");
                 $(".copied_msm_structural_element input").removeAttr("disabled");
-                              
+                      
                 $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                     $(this).removeClass("msm_editor_content");
                     var newdata = document.createElement("textarea");

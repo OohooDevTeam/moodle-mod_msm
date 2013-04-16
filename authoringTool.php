@@ -423,7 +423,7 @@ $formContent .= '<script type="text/javascript">
                     $("#msm_editor_container").trigger("spliter.resize");
                          $("#msm_editor_middleright").trigger("spliter.resize");
                 });
-                
+                               
                $(".msm_subordinate_info_dialogs").dialog({
                     autoOpen: false,
                     height: "auto",

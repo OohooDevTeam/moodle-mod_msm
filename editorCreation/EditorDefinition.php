@@ -265,11 +265,14 @@ class EditorDefinition extends EditorElement
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
         
-        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-$this->compid'>";
+        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-defcontent$this->compid'>";
+        $htmlContent .= "</div>";
+        
+        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-defcontent$this->compid'>";
         
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData();
+            $htmlContent .= $subordinate->displayData("defcontent$this->compid");
         }
         
         $htmlContent .= "</div>";
