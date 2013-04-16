@@ -1234,8 +1234,6 @@ function createTheoremRefText(element, aArray, index, infoId)
         $(theoremStatementTextArea).val(theoremcontent);
         
         $("#"+theoremStatementInfo[ind].id).children(".msm_editor_content").each(function(index, element){
-            console.log("this");
-            console.log(this);
             $(this).replaceWith(theoremStatementTextArea);
         });
         

@@ -38,9 +38,6 @@ class EditorSubordinate extends EditorElement
 
         $this->hot = $hotNodeId . "," . $hotNodeText;
 
-//        $this->hot = $doc->saveHTML($doc->importNode($idNumber, true));
-//                print_object($this->hot);
-
         $id = $idNumber->getAttribute("id");
 
         $idInfo = explode("-", $id);
@@ -55,9 +52,6 @@ class EditorSubordinate extends EditorElement
         $info = new EditorInfo();
         $info->getFormData($idEnding . "|sub");
         $this->info = $info;
-//        print_object($idEnding);
-//        print_object($_POST);
-//        echo "in getFormData";
 
         return $this;
     }
@@ -149,8 +143,6 @@ class EditorSubordinate extends EditorElement
                 $this->info = $info;
             }
         }
-//        echo "in load";
-
         return $this;
     }
 
@@ -167,8 +159,6 @@ class EditorSubordinate extends EditorElement
             $id .= $indexInfo[$i] . "-";
         }
         $id .= $indexInfo[sizeof($indexInfo) - 1];
-        
-//        print_object($this->info);
 
         $previewHtml .= $this->info->displayPreview($id);
 

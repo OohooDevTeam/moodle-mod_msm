@@ -259,6 +259,7 @@ class EditorUnit extends EditorElement
         $childOrderString .= $unitCompRecord->msm_id;
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_child_order' style='visibility:hidden;' name='msm_child_order' value='$childOrderString'/>";
+        $htmlContent .= "<input id='msm_unit_subordinate_container' name='msm_unit_subordinate_container' style='visibility: hidden;'/>";
 
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
