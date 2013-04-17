@@ -29,6 +29,8 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
+//print_object($_POST);
+
 if (isset($_POST['id']))
 {
 // id passed in form of an array with id index and value of msm_unit-#compid-#unitid

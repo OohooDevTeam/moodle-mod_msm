@@ -161,7 +161,7 @@ class EditorInfo extends EditorElement
         }
     }
 
-    public function displayData($subordinateId='')
+    public function displayData()
     {
         global $DB;
 
@@ -245,32 +245,32 @@ class EditorInfo extends EditorElement
         }
         else if ($parentTable->tablename == 'msm_subordinate')
         {
-//            $parentUnitRecord = $DB->get_record("msm_subordinate", array("id" => $parentRecord->unit_id));
-//            $hotIdInfo = explode(",", $parentUnitRecord->hot);
-//
-//            $idInfo = explode("-", $hotIdInfo[0]);
-//
-//            $idEnding = '';
-//            for ($i = 1; $i < sizeof($idInfo) - 1; $i++)
-//            {
-//                $idEnding .= $idInfo[$i] . "-";
-//            }
-//            $idEnding .= $idInfo[sizeof($idInfo) - 1];
+            $parentUnitRecord = $DB->get_record("msm_subordinate", array("id" => $parentRecord->unit_id));
+            $hotIdInfo = explode(",", $parentUnitRecord->hot);
+
+            $idInfo = explode("-", $hotIdInfo[0]);
+
+            $idEnding = '';
+            for ($i = 1; $i < sizeof($idInfo) - 1; $i++)
+            {
+                $idEnding .= $idInfo[$i] . "-";
+            }
+            $idEnding .= $idInfo[sizeof($idInfo) - 1];
 
 
             if (empty($this->caption))
             {
-                $htmlContent .= "<div id='msm_subordinate_infoTitle-$subordinateId'>";
+                $htmlContent .= "<div id='msm_subordinate_infoTitle-$idEnding'>";
                 $htmlContent .= "</div>";
             }
             else
             {
-                $htmlContent .= "<div id='msm_subordinate_infoTitle-$subordinateId'>";
+                $htmlContent .= "<div id='msm_subordinate_infoTitle-$idEnding'>";
                 $htmlContent .= $this->caption;
                 $htmlContent .= "</div>";
             }
 
-            $htmlContent .= "<div id='msm_subordinate_infoContent-$subordinateId'>";
+            $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 

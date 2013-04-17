@@ -62,7 +62,7 @@ function submitForm()
        
     $("#msm_child_order").val(idString+urlParamInfo[1]);
         
-    var subordinateData = '';
+    var subordinateData = '';    
     for(var i=0; i < subordinateArray.length; i++)
     {
         for(var key in subordinateArray[i])
@@ -218,10 +218,9 @@ function prepareSubordinate(id)
     if(typeof inst !== 'undefined')
     {
         var hotwords = inst.getBody().getElementsByTagName("a");  
-    
-        for(var i=0; i < hotwords.length; i++)
-        {
         
+        for(var i=0; i < hotwords.length; i++)
+        {        
             var param = '';
             var currentWord = hotwords[i];
            
@@ -234,7 +233,7 @@ function prepareSubordinate(id)
             param += idInfo[idInfo.length-1];
         
                 
-            $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {
+            $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {             
                 if(this.id == "msm_subordinate_result-"+param)
                 {
                     $(this).children("div").each(function() {
@@ -244,7 +243,7 @@ function prepareSubordinate(id)
             });
         }
     }
-   
+    console.log(subordinates);
     return subordinates;    
 }
 

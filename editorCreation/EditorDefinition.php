@@ -272,7 +272,7 @@ class EditorDefinition extends EditorElement
         
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData("defcontent$this->compid");
+            $htmlContent .= $subordinate->displayData();
         }
         
         $htmlContent .= "</div>";
