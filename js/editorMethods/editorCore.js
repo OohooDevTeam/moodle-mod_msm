@@ -672,9 +672,9 @@ function addTheoremPart(event)
     var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theorem_part_title-'+idNumber+'-'+newId+'">Part Theorem title: </label>');
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theorem_part_title-'+idNumber+'-'+newId+'" name="msm_theorem_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
     var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theorem_part_content-'+idNumber+'-'+newId+'" name="msm_theorem_part_content-'+idNumber+'-'+newId+'"/>');
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-parrtheoremcontent'+idNumber+'-'+newId+'"></div>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-parttheoremcontent'+idNumber+'-'+newId+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-parrtheoremcontent'+idNumber+'-'+newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-parttheoremcontent'+idNumber+'-'+newId+'"></div>');
             
     theoremPartTitleContainer.append(theoremPartTitleHidden);
             

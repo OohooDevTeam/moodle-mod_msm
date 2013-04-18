@@ -1,15 +1,15 @@
 <?php
 
 /*
-* To change this template, choose Tools | Templates
-* and open the template in the editor.
-*/
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 /**
-* Description of EditorPartTheorem
-*
-* @author User
-*/
+ * Description of EditorPartTheorem
+ *
+ * @author User
+ */
 class EditorPartTheorem extends EditorElement
 {
 
@@ -38,10 +38,10 @@ class EditorPartTheorem extends EditorElement
             {
                 $this->content = $_POST['msm_theoremref_part_content-' . $idParam[0]];
 
-// foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-// {
-// $this->subordinates[] = $subordinates;
-// }
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -57,10 +57,10 @@ class EditorPartTheorem extends EditorElement
             {
                 $this->content = $_POST['msm_theorem_part_content-' . $idNumber];
 
-// foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-// {
-// $this->subordinates[] = $subordinates;
-// }
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -106,7 +106,7 @@ class EditorPartTheorem extends EditorElement
         global $DB;
 
         $currentCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
-        $parentStatementTheoremRecord = $DB->get_record("msm_compositor", array("id"=>$currentCompRecord->parent_id));
+        $parentStatementTheoremRecord = $DB->get_record("msm_compositor", array("id" => $currentCompRecord->parent_id));
 
         $htmlContent = '';
         $htmlContent .= "<div id='msm_theorem_part_container-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_child'>";
@@ -118,6 +118,16 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theorem_part_content-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
+
+        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-parttheoremcontent$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-parttheoremcontent$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>";
+        foreach ($this->subordinates as $subordinate)
+        {
+            $htmlContent .= $subordinate->displayData();
+        }
+        $htmlContent .= "</div>";
+
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -137,13 +147,27 @@ class EditorPartTheorem extends EditorElement
         $this->caption = $partRecord->caption;
         $this->content = $partRecord->part_content;
 
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            switch ($childTable->tablename)
+            {
+                case "msm_subordinate":
+                    $subordinate = new EditorSubordinate();
+                    $subordinate->loadData($child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+            }
+        }
+
         return $this;
     }
 
     function displayRefData($parentId)
     {
-        global $DB;
-        
         $htmlContent = '';
         $htmlContent .= "<div id='msm_theoremref_part_container-$parentId-$this->compid' class='msm_theorem_child'>";
         $htmlContent .= "<div id='msm_theoremref_part_title_container-$parentId-$this->compid' class='msm_theoremref_part_title_containers'>";
@@ -158,20 +182,29 @@ class EditorPartTheorem extends EditorElement
 
         return $htmlContent;
     }
-    
+
     public function displayPreview()
     {
         $previewHtml = '';
-        
-         $previewHtml .= "<li>";
+
+        $previewHtml .= "<li>";
         if (!empty($this->caption))
         {
             $previewHtml .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
         }
         $previewHtml .= $this->content;
+
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $subordinate)
+            {
+                $previewHtml .= $subordinate->displayPreview();
+            }
+        }
+
         $previewHtml .= "</li>";
         $previewHtml .= "<br />";
-        
+
         return $previewHtml;
     }
 
