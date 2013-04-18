@@ -42,7 +42,7 @@ class EditorTheorem extends EditorElement
         if (sizeof($idNumberInfo) > 1)
         {
             $match = "/^msm_theoremref_type_dropdown-$idNumberInfo[0].*$/";
-            
+
             $newTid = '';
             foreach ($_POST as $id => $value)
             {
@@ -184,14 +184,14 @@ class EditorTheorem extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_theorem-$this->compid' class='copied_msm_structural_element'>";
-        
+
         $htmlContent .= "<div class='msm_element_overlays' id='msm_element_overlay-$this->compid' style='display: none;'>";
 
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
 
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<select id='msm_theorem_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_theorem_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
@@ -236,6 +236,20 @@ class EditorTheorem extends EditorElement
 
         $htmlContent .= "<input id='msm_theorem_child_button-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addTheoremContent(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
+
+//        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-statementtheoremcontent$this->compid'>";
+//        $htmlContent .= "</div>";
+//        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-statementtheoremcontent$this->compid'>";
+//        foreach ($this->contents as $content)
+//        {
+//            foreach ($content->subordinates as $subordinate)
+//            {
+//                $htmlContent .= $subordinate->displayData();
+//            }
+//        }
+//
+//        $htmlContent .= "</div>";
+
         $htmlContent .= "<label id='msm_theorem_description_label-$this->compid' class='msm_child_description_labels' for='msm_theorem_description_label-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_theorem_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theorem_description_input-$this->compid'/>";
 

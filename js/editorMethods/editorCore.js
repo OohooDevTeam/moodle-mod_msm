@@ -559,9 +559,9 @@ function addTheoremContent(event)
     var theoremContentTitleContainer = $('<div class="msm_theorem_statement_title_containers" id="msm_theorem_statement_title_container-'+idNumber+'-'+newId+'"><b> Theorem Content </b></div>');
     var theoremContentTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theorem_content_input-'+idNumber+'-'+newId+'" name="msm_theorem_content_input-'+idNumber+'-'+newId+'"/>');    
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremcontent'+idNumber+'-'+newId+'"></div>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-statementtheoremcontent'+idNumber+'-'+newId+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremcontent'+idNumber+'-'+newId+'"></div>');   
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-statementtheoremcontent'+idNumber+'-'+newId+'"></div>');   
        
     var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addTheoremPart(event)" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+idNumber+'-'+newId+'"></div>');
@@ -672,9 +672,9 @@ function addTheoremPart(event)
     var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theorem_part_title-'+idNumber+'-'+newId+'">Part Theorem title: </label>');
     var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theorem_part_title-'+idNumber+'-'+newId+'" name="msm_theorem_part_title-'+idNumber+'-'+newId+'" placeholder=" Title for this part of the theorem."/>');
     var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theorem_part_content-'+idNumber+'-'+newId+'" name="msm_theorem_part_content-'+idNumber+'-'+newId+'"/>');
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theorempart'+idNumber+'-'+newId+'"></div>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-parrtheoremcontent'+idNumber+'-'+newId+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theorempart'+idNumber+'-'+newId+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-parrtheoremcontent'+idNumber+'-'+newId+'"></div>');
             
     theoremPartTitleContainer.append(theoremPartTitleHidden);
             
@@ -1037,8 +1037,8 @@ function makeTheorem()
     var theoremContentTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');        
     
     var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'-1" name="msm_theorem_content_input-'+_index+'-1"/>');
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremcontent'+_index+'-1"></div>');
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremcontent'+_index+'-1"></div>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-statementtheoremcontent'+_index+'-1"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-statementtheoremcontent'+_index+'-1"></div>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+_index+'-1"></div>');
             
     var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent(event)" value="Add content"/>');
