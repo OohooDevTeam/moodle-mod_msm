@@ -340,6 +340,17 @@ function showUnitPreview()
         "display":"none"
     });
     
+    // update the child order values incase some were rearranged
+    var childOrderString = '';
+    $('#msm_child_appending_area').children("div").each(function() {
+        childOrderString += this.id +",";
+    });
+    
+    var urlParam = window.location.search;       
+    var urlParamInfo = urlParam.split("=");
+    
+    $("#msm_child_order").val(childOrderString+urlParamInfo[1]);
+    
     var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
     
     if(editorDivs.length > 0)  // editor is in display mode
@@ -350,7 +361,6 @@ function showUnitPreview()
         dataArray["msm_unit_title"] = $("#msm_unit_title").val();
         dataArray["msm_unit_description_input"] = $("#msm_unit_description_input").val();
         dataArray["msm_unit_short_title"] = $("#msm_unit_short_title").val();
-        //        dataArray["msm_currentUnit_id"] = $("#msm_currentUnit_id").val();
     
         $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
             dataArray[this.id] = $(this).val(); 
@@ -386,7 +396,6 @@ function showUnitPreview()
         $("textarea").each(function(){        
             if(typeof tinymce.get(this.id) !== "undefined")
             {
-                console.log("active tinymce content id: "+this.id);
                 dataArray[this.id] = tinymce.get(this.id).getContent({
                     format: "html"
                 });     
