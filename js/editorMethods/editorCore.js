@@ -61,6 +61,7 @@ function processDroppedChild(e, droppedId)
             break;
             
         case "msm_intro":
+            checkIndexNumber("copied_msm_intro-"+_index);
             var clonedCurrentElement = $("<div></div>");
             // additional code to only allow for one intro in unit
             var isPresent = false;
@@ -139,6 +140,7 @@ function processDroppedChild(e, droppedId)
             break;
             
         case "msm_body":
+            checkIndexNumber("copied_msm_body-"+_index);
             var clonedCurrentElement = $("<div></div>");
             var bodyCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
             var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
@@ -949,6 +951,7 @@ function addAssociateForm(index, type)
 
 function makeDefinition()
 {
+    checkIndexNumber("copied_msm_def-"+_index);
     var clonedCurrentElement = $("<div></div>");
     
     var defCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event);">x</a>');
@@ -1006,6 +1009,7 @@ function makeDefinition()
 
 function makeTheorem()
 {
+    checkIndexNumber("copied_msm_theorem-"+_index);
     var clonedCurrentElement = $("<div></div>");
     var theoremCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event)">x</a>');
     
@@ -1122,6 +1126,7 @@ function makeTheorem()
 
 function makeComment()
 {
+    checkIndexNumber("copied_msm_comment-"+_index);
     var clonedCurrentElement = $("<div></div>");
     var commentCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event);">x</a>');
     
@@ -1171,4 +1176,14 @@ function makeComment()
     clonedCurrentElement.append(commentAssociateDiv);
     
     return clonedCurrentElement;
+}
+
+function checkIndexNumber(oldid)
+{
+    $("#msm_child_appending_area").find(".copied_msm_structural_element").each(function() {
+        if(this.id == oldid)
+            {
+                _index++;                
+            }
+    })
 }

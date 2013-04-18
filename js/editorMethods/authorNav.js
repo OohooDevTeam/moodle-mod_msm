@@ -382,6 +382,16 @@ function showUnitPreview()
         $("#msm_child_appending_area").find(".msm_theoremref_part_title").each(function() {
             dataArray[this.id] = $(this).val(); 
         });  
+        // for any tinymces that is active
+        $("textarea").each(function(){        
+            if(typeof tinymce.get(this.id) !== "undefined")
+            {
+                console.log("active tinymce content id: "+this.id);
+                dataArray[this.id] = tinymce.get(this.id).getContent({
+                    format: "html"
+                });     
+            }
+        });   
         
         var subordinates = [];
         
