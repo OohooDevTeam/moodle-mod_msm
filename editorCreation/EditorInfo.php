@@ -274,17 +274,6 @@ class EditorInfo extends EditorElement
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
-//            if (empty($this->caption))
-//            {
-//                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_subordinate_info_dialogs' style='display:none;'>";
-//            }
-//            else
-//            {
-//                $htmlContent .= "<div id='msm_subordinate_info_dialog-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_subordinate_info_dialogs' title='$this->caption' style='display:none;'>";
-//            }
-//
-//            $htmlContent .= $this->content;
-//            $htmlContent .= "</div>";
         }
 
         return $htmlContent;
@@ -340,7 +329,6 @@ class EditorInfo extends EditorElement
         $previewHtml = '';
 
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$this->caption'>";
-//        print_object($this->content);
         $previewHtml .= $this->content;
         $previewHtml .= "</div>";
 

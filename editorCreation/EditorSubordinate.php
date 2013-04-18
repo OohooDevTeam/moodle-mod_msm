@@ -100,9 +100,7 @@ class EditorSubordinate extends EditorElement
 
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
-
-//        $htmlContent .= "<div id='msm_subordinate_result-$this->compid' class='msm_subordinate_results'>";
-//        $htmlContent .= "<div id='msm_subordinate_select-$this->compid'>";
+        
         if ($childTable == "msm_info")
         {
             $htmlContent .= "Information";
@@ -137,20 +135,6 @@ class EditorSubordinate extends EditorElement
 
         $subordinateRecord = $DB->get_record($this->tablename, array('id' => $this->id));
         $this->hot = $subordinateRecord->hot;
-//        $oldHotIdValue = $subordinateRecord->hot;
-
-//        $subordinateHotData = explode(",", $oldHotIdValue);
-//        $subordinateHotInfo = explode("-", $subordinateHotData[0]);
-//
-//        $updateData = new stdClass();
-//        $updateData->id = $this->id;
-//        $updateData->hot = "$subordinateHotInfo[0]-$this->compid,$subordinateHotData[1]";
-//
-//        $this->hot = $updateData->hot;
-//
-//        $DB->update_record('msm_subordinate', $updateData);
-
-//        $this->replaceAnchorElements($subordinateCompRecord->parent_id, $subordinateHotData[0], "$subordinateHotInfo[0]-$this->compid");
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
@@ -186,73 +170,6 @@ class EditorSubordinate extends EditorElement
 
         return $previewHtml;
     }
-
-    /**
-     * 
-     * @global moodle_database $DB
-     * @param type $parentId
-     * @param type $oldId
-     * @param type $newId
-     */
-//    function replaceAnchorElements($parentId, $oldId, $newId)
-//    {
-//        global $DB;
-//
-//        $parentRecord = $DB->get_record("msm_compositor", array("id" => $parentId));
-//
-//        $parentTable = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
-//
-//        $parentContent = null;
-//        $parentUnitRecord = $DB->get_record($parentTable->tablename, array("id" => $parentRecord->unit_id));
-//
-//        switch ($parentTable->tablename)
-//        {
-//            case "msm_def":
-//                $parentContent = $parentUnitRecord->def_content;
-//                break;
-//            case "msm_comment":
-//                $parentContent = $parentUnitRecord->comment_content;
-//                break;
-//            case "msm_statement_theorem":
-//                $parentContent = $parentUnitRecord->statement_content;
-//                break;
-//            case "msm_part_theorem":
-//                $parentContent = $parentUnitRecord->part_content;
-//                break;
-//            case "msm_content":
-//                $parentContent = $parentUnitRecord->content;
-//                break;
-//            case "msm_para":
-//                $parentContent = $parentUnitRecord->para_content;
-//                break;
-//            default:
-//                echo "tablename: $parentTable->tablename";
-//                break;
-//        }
-//
-//        $htmlParser = new DOMDocument();
-//        $htmlParser->loadHTML($parentContent);
-//
-//        $aElements = $htmlParser->getElementsByTagName('a');
-//
-//        foreach ($aElements as $a)
-//        {
-//            $aId = $a->getAttribute("id");
-//           
-//            if ($aId == $oldId)
-//            {
-//                echo "sameId";
-//                print_object($aId);
-//                print_object($oldId);
-//                $a->removeAttribute("id");
-//                print_object($newId);
-//                $a->setAttribute("id", $newId);
-//                print_object($htmlParser->saveHTML($htmlParser->documentElement));
-//            }
-//        }
-//                
-//        
-//    }
 
 }
 

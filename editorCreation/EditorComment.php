@@ -78,10 +78,11 @@ class EditorComment extends EditorElement
             {
                 $this->content = $_POST['msm_commentref_content_input-' . $newId];
 
-//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-//                {
-//                    $this->subordinates[] = $subordinates;
-//                }
+                // grab all anchored elements in content --> it is only from subordinate
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -101,11 +102,12 @@ class EditorComment extends EditorElement
             if ($_POST['msm_comment_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_comment_content_input-' . $idNumber];
-//
-//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-//                {
-//                    $this->subordinates[] = $subordinates;
-//                }
+
+                // grab all anchored elements in content --> it is only from subordinate
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -231,7 +233,17 @@ class EditorComment extends EditorElement
         $htmlContent .= "<input id='msm_comment_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_comment_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_comment_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
+        $htmlContent .= "</div>";        
+        
+        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentcontent$this->compid'>";
+        $htmlContent .= "</div>";        
+        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentcontent$this->compid'>";        
+        foreach($this->subordinates as $subordinate)
+        {
+            $htmlContent .= $subordinate->displayData();
+        }        
         $htmlContent .= "</div>";
+        
         $htmlContent .= "<label id='msm_comment_description_label-$this->compid' class='msm_child_description_labels' for='msm_comment_description_input-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_comment_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_comment_description_input-$this->compid'/>";
 
@@ -287,6 +299,12 @@ class EditorComment extends EditorElement
                     $associate->loadData($child->id);
                     $this->children[] = $associate;
                     break;
+                
+                case "msm_subordinate":
+                    $subordinate = new EditorSubordinate();
+                    $subordinate->loadData($child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
                 //add subordinate later
             }
         }
@@ -340,7 +358,7 @@ class EditorComment extends EditorElement
         $htmlContent .= "<input id='msm_commentref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_commentref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_commentref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
-        $htmlContent .= "</div>";
+        $htmlContent .= "</div>";        
         $htmlContent .= "<label id='msm_commentref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_commentref_description_input-$parentId-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_commentref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_commentref_description_input-$parentId-$this->compid'/>";
         $htmlContent .= "</div>";
@@ -376,6 +394,14 @@ class EditorComment extends EditorElement
 
         $previewHtml .= "<div class='mathcontent'>";
         $previewHtml .= $this->content;
+        
+        if(!empty($this->subordinates))
+        {
+            foreach($this->subordinates as $subordinate)
+            {
+                $previewHtml .= $subordinate->displayPreview();
+            }
+        }
         $previewHtml .= "<br />";
         $previewHtml .= "</div>";
 

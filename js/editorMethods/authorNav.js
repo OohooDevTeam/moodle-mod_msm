@@ -486,8 +486,7 @@ function showUnitPreview()
     }
     else // editor is in edit mode
     {
-        $("#msm_unit_form").trigger("submit");     
-        
+        $("#msm_unit_form").trigger("submit");             
     }
     
     

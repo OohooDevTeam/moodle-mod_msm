@@ -34,8 +34,8 @@ function submitForm()
         // process information from textarea that are not related to info elements
         if(!this.id.match(/info/))
         {  
-//            subordinateArray.push(prepareSubordinate(this));
-                        subordinateArray.push(prepareSubordinate(this.id));
+            //            subordinateArray.push(prepareSubordinate(this));
+            subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {
                 this.value = tinymce.get(this.id).getContent({
@@ -47,8 +47,8 @@ function submitForm()
         // process associate information
         else if(this.id.match(/_info_/))
         {
-//            subordinateArray.push(prepareSubordinate(this));
-                        subordinateArray.push(prepareSubordinate(this.id));
+            //            subordinateArray.push(prepareSubordinate(this));
+            subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {
                 this.value = tinymce.get(this.id).getContent({
@@ -214,45 +214,12 @@ function submitForm()
 
 function prepareSubordinate(id)
 {
-//    console.log("prepareSubordinate id: "+id);
     var subordinates = [];
-//    var inst = tinyMCE.getInstanceById(id);    
-    
-//    if(typeof inst !== 'undefined')
-//    {
-//        var hotwords = inst.getBody().getElementsByTagName("a");  
-//        
-//        for(var i=0; i < hotwords.length; i++)
-//        {        
-//            var param = '';
-//            var currentWord = hotwords[i];
-//           
-//            var idInfo = currentWord.id.split("-");     
-//        
-//            for(var j=1; j < idInfo.length-1; j++)
-//            {
-//                param += idInfo[j]+"-";
-//            }            
-//            param += idInfo[idInfo.length-1];
-//        
-//                
-            $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {             
-//                if(this.id == "msm_subordinate_result-"+param)
-//                {
-                    $(this).children("div").each(function() {
-                        subordinates[this.id] = $(this).html();
-                    })
-//                }
-            });
-//        }
-//    }
-//    $("textarea").each(function() {
-//        if(this.id == id)
-//        {
-//            console.log(this.getElementsByTagName("a"));
-//        }
-//    })
-//    console.log(subordinates);
+    $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() { 
+        $(this).children("div").each(function() {
+            subordinates[this.id] = $(this).html();
+        })
+    });
     return subordinates;    
 }
 
@@ -492,7 +459,7 @@ function disableEditorFunction()
 
 // to activate the dialog box for display purposes
 function previewInfo(elementid, dialogid)
-{       
+{ 
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse  
 
