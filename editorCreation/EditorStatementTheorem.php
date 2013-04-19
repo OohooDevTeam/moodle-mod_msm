@@ -1,14 +1,24 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorStatementTheorem
+ * EditorStatementTheorem class inherits from the EditorElement class and it represents the
+ * statement theorem elements(ie. main content body elments of theorem) in the MSM editor.
+ * EditorTheorem class calls the methods associated with this class.
+ * This class can also represent statement theorem elements in theorem as a reference material.
  *
- * @author User
  */
 class EditorStatementTheorem extends EditorElement
 {
@@ -25,10 +35,19 @@ class EditorStatementTheorem extends EditorElement
         $this->tablename = 'msm_statement_theorem';
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  This method is called by EditorTheorem and this method calls 
+     * EditorSubordinate and EditorPartTheorem classes.
+     * 
+     * @param string $idNumber          the string id given in HTML form and if it is a reference material, it ends with "|ref"
+     * @return \EditorStatementTheorem
+     */
     public function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
 
+        // the statement theorem is a part of a reference theorem material
         if (sizeof($idInfo) > 1)
         {
             if ($_POST["msm_theoremref_content_input-" . $idInfo[0]] != '')
@@ -68,7 +87,7 @@ class EditorStatementTheorem extends EditorElement
                 }
             }
         }
-        else if (sizeof($idInfo) == 1)
+        else if (sizeof($idInfo) == 1) // the statement theorem is a part of a theorem material
         {
             if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
             {
@@ -112,6 +131,17 @@ class EditorStatementTheorem extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_statement_theorem table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorSubordinate and EditorPartTheorem classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -146,6 +176,14 @@ class EditorStatementTheorem extends EditorElement
         }
     }
 
+    /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
+     * displayData from the EditorSubordinate and EditorPartTheorem classes.
+     * 
+     * @global moodle_database $DB
+     * @return HTML string
+     */
     public function displayData()
     {
         global $DB;
@@ -184,6 +222,16 @@ class EditorStatementTheorem extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_statement_theorem table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorPartTheorem 
+     * and EditorSubordinate classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorStatementTheorem
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -213,17 +261,21 @@ class EditorStatementTheorem extends EditorElement
                     $partTheorem->loadData($child->id);
                     $this->children[] = $partTheorem;
                     break;
-                //can have associate/subordinates...etc
             }
         }
 
         return $this;
     }
 
+    /**
+     * This method is called by the EditorInfo class to display the statement theorem as a reference material.
+     * The information is hidden until the user triggers the display by clicking on the associate mini buttons.
+     * 
+     * @param string $parentId          End of HTML ID that made the parent(ie. theorem) HTML element unique
+     * @return HTML string
+     */
     function displayRefData($parentId)
     {
-        global $DB;
-
         $htmlContent = '';
 
         $htmlContent .= "<div id='msm_theoremref_statement_container-$parentId-$this->compid' class='msm_theoremref_statement_containers'>";
@@ -246,6 +298,17 @@ class EditorStatementTheorem extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database.
+     * For cases where the statement theorem are a part of a reference theorem material, it will not appear till the associate button is 
+     * triggered by a click.
+     * 
+     * @param string $id          String to be added to HTML ID of this definition and its components to make them unique
+     * @return HTML string 
+     */
     public function displayPreview($id)
     {
         $previewHtml = '';

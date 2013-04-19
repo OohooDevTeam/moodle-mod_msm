@@ -4,15 +4,15 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
  * EditorAssociate class represents the associate elements that will be created by 
@@ -275,7 +275,7 @@ class EditorAssociate extends EditorElement
                 $previewHtml .= "</li>";
                 $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
                 $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-                print_object($this->infos[0]->ref);
+//                print_object($this->infos[0]->ref);
                 $previewHtml .= "</div>";
             }
             else

@@ -1,14 +1,24 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorInContent
- *
- * @author User
+ *  EditorInContent class inherits from the EditorElement class and it represents the
+ * ordered or unordered list elements in the HTML content of tinyMCE editor.  Usually the
+ * parent class that calls this class function is EditorBlock, EditorIntro or EditorUnit classes.
+ * 
  */
 class EditorInContent extends EditorElement
 {
@@ -21,11 +31,22 @@ class EditorInContent extends EditorElement
     public $content;
     public $subordinates = array();
 
+    /**
+     * constructor for the class
+     */
     function __construct()
     {
         $this->tablename = 'msm_content';
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorSubordinate) to process its
+     * children's data.
+     * 
+     * @param DOMElement $idNumber corresponds to ol/ul child from content
+     * @return \EditorInContent
+     */
     public function getFormData($idNumber)
     {
         $doc = new DOMDocument();
@@ -62,15 +83,26 @@ class EditorInContent extends EditorElement
         }
 
         $this->content = $doc->saveHTML($listElement);
-        
-//        foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-//        {
-//            $this->subordinates[] = $subordinates;
-//        }
+
+        foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+        {
+            $this->subordinates[] = $subordinates;
+        }
 
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_content table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorSubordinate class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -90,48 +122,94 @@ class EditorInContent extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
-        
+
         $subordinate_sibling = 0;
-        foreach($this->subordinates as $subordinate)
+        foreach ($this->subordinates as $subordinate)
         {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
     }
 
+     /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  
+     * 
+     * @return HTML string
+     */
     public function displayData()
     {
         $htmlContent = '';
-        
+
         $htmlContent .= $this->content;
-        
+
         return $htmlContent;
     }
 
+     /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_content table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorSubordinate 
+     * class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorInContent
+     */
     public function loadData($compid)
     {
         global $DB;
-        
-        $inContentCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
-        
+
+        $inContentCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
+
         $this->compid = $compid;
         $this->id = $inContentCompRecord->unit_id;
-        
-        $inContentRecord = $DB->get_record($this->tablename, array('id'=>$this->id));
-        
+
+        $inContentRecord = $DB->get_record($this->tablename, array('id' => $this->id));
+
         $this->additional_attribute = $inContentRecord->additional_attribute;
         $this->type = $inContentRecord->type;
         $this->content = $inContentRecord->content;
         
+        $childRecords = $DB->get_records("msm_compositor", array("parent_id"=>$compid), "prev_sibiling_id");
+        
+        foreach($childRecords as $child)
+        {
+            $childTable = $DB->get_record("msm_table_collection", array("id"=>$child->table_id));
+            
+            if($childTable->tablename == "msm_subordinate")
+            {
+                $subordinate = new EditorSubordinate();
+                $subordinate->loadData($child->id);
+                $this->subordinates[] = $subordinate;
+            }
+        }
+
         return $this;
     }
-    
+
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database.
+     * 
+     * @return HTML string
+     */
     public function displayPreview()
     {
         $previewHtml = '';
-        
+
         $previewHtml .= $this->content;
         
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $subordinate)
+            {
+                $previewHtml .= $subordinate->displayPreview();
+            }
+        }
+
         return $previewHtml;
     }
 

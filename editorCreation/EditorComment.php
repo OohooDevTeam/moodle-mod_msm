@@ -3,15 +3,15 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
  * EditorComment class inherits from the EditorElement class and it represents the
@@ -368,8 +368,9 @@ class EditorComment extends EditorElement
 
     /**
      * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
-     * The method in this class is called by info elements with associate as a parent and is responsible for preparing the HTML code
-     * needed to display the comment.  For cases where comments are a reference material, it will not appear till the associate button is 
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database.  For cases where comments are a reference material, it will not appear till the associate button is 
      * triggered by a click.
      * 
      * @param string $id        String to be added to HTML ID of this comment and its components to make them unique

@@ -1,14 +1,23 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorPara
- *
- * @author User
+ *  EditorPara class inherits from the EditorElement class and it represents the
+ * paragraph elements in the HTML content of tinyMCE editor.  Usually the
+ * parent class that calls this class function is EditorBlock, EditorIntro or EditorUnit classes.
+ * 
  */
 class EditorPara extends EditorElement
 {
@@ -26,9 +35,11 @@ class EditorPara extends EditorElement
     }
 
     /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorSubordinate) to process its
+     * children's data.
      * 
-     * @param DOMElement $idNumber corresponds to para child from content
-     * @param type $position
+     * @param DOMElement $idNumber corresponds to <p> elements from content
      * @return \EditorPara
      */
     function getFormData($idNumber)
@@ -59,6 +70,17 @@ class EditorPara extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_para table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorSubordinate class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -90,51 +112,29 @@ class EditorPara extends EditorElement
         }
     }
 
+     /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  
+     * 
+     * @return HTML string
+     */
     public function displayData()
     {
-        global $DB;
-        
         $htmlContent = '';
         $htmlContent .= $this->content;
-
-//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
-//        $blockRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
-//        $parentRecord = $DB->get_record("msm_compositor", array("id" => $blockRecord->parent_id));
-//
-//        $tableRecord = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
-//        
-//        if ($tableRecord->tablename == "msm_intro")
-//        {
-//            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-introcontent$parentRecord->id'>";
-//            $htmlContent .= "</div>";
-//
-//            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-introcontent$parentRecord->id'>";
-//
-//            foreach ($this->subordinates as $subordinate)
-//            {
-//                $htmlContent .= $subordinate->displayData();
-//            }
-//
-//            $htmlContent .= "</div>";
-//        }
-//        else
-//        {
-//            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-bodycontent$parentRecord->id'>";
-//            $htmlContent .= "</div>";
-//
-//            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-bodycontent$parentRecord->id'>";
-//
-//            foreach ($this->subordinates as $subordinate)
-//            {
-//                $htmlContent .= $subordinate->displayData();
-//            }
-//
-//            $htmlContent .= "</div>";
-//        }
-
         return $htmlContent;
     }
 
+    /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_para table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorSubordinate 
+     * class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorPara
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -171,6 +171,14 @@ class EditorPara extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database.
+     * 
+     * @return HTML string
+     */
     public function displayPreview()
     {
         $previewHtml = '';

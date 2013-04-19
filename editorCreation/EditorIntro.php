@@ -1,14 +1,23 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorIntro
- *
- * @author User
+ *  EditorIntro class inherits from the EditorElement class and it represents the
+ * intro elements in the MSM editor.  It is called by EditorUnit.
+ * 
  */
 class EditorIntro extends EditorElement
 {
@@ -25,6 +34,14 @@ class EditorIntro extends EditorElement
         $this->tablename = "msm_intro";
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorBlock) to process its
+     * children's data.
+     * 
+     * @param string $idNumber          contains parent_HTML_id ending number
+     * @return \EditorIntro
+     */
     public function getFormData($idNumber)
     {
         $intromatch = '/^msm_intro_content_.*/';
@@ -46,6 +63,17 @@ class EditorIntro extends EditorElement
         return $this;
     }
 
+     /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_intro table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorBlock class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -73,6 +101,12 @@ class EditorIntro extends EditorElement
         }
     }
 
+    /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  
+     * 
+     * @return HTML string
+     */
     public function displayData()
     {
         $htmlContent = '';
@@ -97,6 +131,7 @@ class EditorIntro extends EditorElement
 
         $htmlContent .= "<div id='msm_intro_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
 
+        // this intro has child content elements
         if (!empty($this->children))
         {
             foreach ($this->children as $content)
@@ -121,7 +156,7 @@ class EditorIntro extends EditorElement
 
             $htmlContent .= "<div id='msm_intro_child_container'>";
         }
-        else
+        else // this intro does not have any child contents
         {
             foreach ($this->blocks[0]->content as $content)
             {
@@ -158,7 +193,17 @@ class EditorIntro extends EditorElement
         return $htmlContent;
     }
 
-    // compid in this case is string of all intro compid's under same unit
+    /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_content table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorSubordinate 
+     * class.
+     * 
+     * @global moodle_database $DB
+     * @param string $compid            string of all ids in msm_compositor with table_id associated with id of 
+     *                                  msm_intro table under the same parent_id(ie. from the same unit)
+     * @return \EditorIntro
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -206,27 +251,22 @@ class EditorIntro extends EditorElement
                     $this->children[] = $table;
                     break;
             }
-
-//            if ($childTable->tablename == 'msm_block')
-//            {
-//                $block = new EditorBlock();
-//                $block->loadData($child->id);
-//                $this->blocks[] = $block;
-//            }
-//            else
-//            {
-//                echo "intro has another child element" . $childTable->tablename;
-//                break;
-//            }
         }
 
         return $this;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * committ to saving it in the database.
+     * 
+     * @return HTML string
+     */
     public function displayPreview($id = '')
     {
         $previewHtml = '';
-
 
         if (!empty($this->title))
         {

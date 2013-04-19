@@ -1,14 +1,31 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorUnit
+ * EditorUnit class inherits from the EditorElement class and it represents the
+ * unit elements in the MSM editor.  The unit element in MSM is the top element
+ * that can contain all the other elements as its child elements.  It can also have 
+ * itself as a child element which creates nested structure.  These unit elements can be customized by 
+ * user to be named differently according to the nested nature of the element.  For example,
+ * the very top unit can be called a book then the child unit element of book can be named a book part,
+ * then the next nested child element can be named chapter and so on.  When using the databased to access
+ * data in other database tables representing other MSM elements, all elements can be accessed by parent-child
+ * relationship to the unit by using the msm_compositor table.  Therefore, this class has both direct or indirect access
+ * to all the other classes used in MSM.
  *
- * @author User
  */
 class EditorUnit extends EditorElement
 {
@@ -27,12 +44,19 @@ class EditorUnit extends EditorElement
         $this->tablename = 'msm_unit';
     }
 
-    // idNumber contains the msm id number
+    /**
+     *  This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  
+     * 
+     * @global moodle_database $DB
+     * @param integer $idNumber         represents MSM instace id passed through URL
+     * @return \EditorUnit
+     */
     public function getFormData($idNumber)
     {
         global $DB;
         $this->errorArray = array();
-        
+
         $this->title = $_POST['msm_unit_title'];
         $this->description = $_POST['msm_unit_description_input'];
         $this->short_name = $_POST['msm_unit_short_title'];
@@ -42,6 +66,16 @@ class EditorUnit extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_unit table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. 
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -68,6 +102,16 @@ class EditorUnit extends EditorElement
         $this->compid = $DB->insert_record('msm_compositor', $compData);
     }
 
+    /**
+     * This method is called by processTreeContent method in msmLoadUnit.php which is triggered to load by ajax call.
+     * It's main function is to update the structural information in msm_compositor database table when the user
+     * changes the unit structure by moving the hierarchy tree given on right panel of the MSM editting screen.
+     * 
+     * @global moodle_database $DB
+     * @param string $idPair            contains the unit compositorID-unitID pairing given by jsTree id
+     * @param integer $parent           this unit's parent compositor ID
+     * @param integer $sibling          this unit's previous sibling compositor ID
+     */
     public function updateUnitStructure($idPair, $parent, $sibling)
     {
         global $DB;
@@ -114,6 +158,17 @@ class EditorUnit extends EditorElement
         }
     }
 
+    /**
+     * This abstract method from EditoElement extracts appropriate information from the 
+     * msm_unit table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorTheorem,
+     * EditorDefinition, EditorComment, EditorPara, EditorInContent, EditorTable, EditorIntro and
+     * EditorBlock classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorUnit
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -197,7 +252,15 @@ class EditorUnit extends EditorElement
         return $this;
     }
 
-//    
+    /** 
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
+     * displayData from the EditorTheorem, EditorDefinition, EditorComment, EditorIntro and
+     * EditorBlock classes.
+     * 
+     * @global moodle_database $DB
+     * @return HTML string
+     */
     public function displayData()
     {
         global $DB;
@@ -218,8 +281,8 @@ class EditorUnit extends EditorElement
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
         $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' disabled='disabled'/>";
-        
-        $htmlContent .=  "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
+
+        $htmlContent .= "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
         $htmlContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $this->unitName' name='msm_unit_short_title' value='$this->short_name' disabled='disabled'/>";
 
         $htmlContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
@@ -268,6 +331,13 @@ class EditorUnit extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This method updates the msm_unit database table whenever any of the information associated with unit is
+     * editted(eg. unit title, description...etc).
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           the database id from msm_compositor of the changed unit
+     */
     function updateDbRecord($compid)
     {
         global $DB;
@@ -300,6 +370,14 @@ class EditorUnit extends EditorElement
         $this->id = $oldCompRecord->unit_id;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database.
+     * 
+     * @return HTML string
+     */
     public function displayPreview()
     {
         $previewHtml = '';
