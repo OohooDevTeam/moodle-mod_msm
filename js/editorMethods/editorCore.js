@@ -300,6 +300,39 @@ function initEditor(elId)
     });
 }
 
+function noSubInitEditor(elId)
+{
+    YUI().use('editor_tinymce', function(Y) {
+        M.editor_tinymce.init_editor(Y, elId, {
+            mode:"exact",
+            elements: elId,
+            plugins:"safari,table,style,layer,advhr,advlink,emotions,inlinepopups,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
+            width: "100%",
+            height: "70%",
+            theme_advanced_font_sizes:"1,2,3,4,5,6,7",
+            theme_advanced_layout_manager:"SimpleLayout",
+            theme_advanced_toolbar_align:"left",
+            theme_advanced_fonts:"Trebuchet=Trebuchet MS,Verdana,Arial,Helvetica,sans-serif;Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;Georgia=georgia,times new roman,times,serif;Tahoma=tahoma,arial,helvetica,sans-serif;Times New Roman=times new roman,times,serif;Verdana=verdana,arial,helvetica,sans-serif;Impact=impact;Wingdings=wingdings",
+            theme_advanced_resize_horizontal:true,
+            theme_advanced_resizing:true,
+            theme_advanced_resizing_min_height:30,
+            min_height:30,
+            theme_advanced_toolbar_location:"top",
+            theme_advanced_statusbar_location:"bottom",
+            language_load:false,
+            langrev:-1,
+            theme_advanced_buttons1:"fontselect,fontsizeselect,formatselect,|,undo,redo,|,search,replace,|,fullscreen",
+            theme_advanced_buttons2:"bold,italic,underline,strikethrough,sub,sup,|,justifyleft,justifycenter,justifyright,|,cleanup,removeformat,pastetext,pasteword,|,forecolor,backcolor,|,ltr,rtl",
+            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,|,image,moodlemedia,dragmath,nonbreaking,charmap,table,|,code,spellchecker",
+            moodle_init_plugins:"dragmath:loader.php/dragmath/-1/editor_plugin.js,moodlenolink:loader.php/moodlenolink/-1/editor_plugin.js,spellchecker:loader.php/spellchecker/-1/editor_plugin.js,moodleimage:loader.php/moodleimage/-1/editor_plugin.js,moodlemedia:loader.php/moodlemedia/-1/editor_plugin.js",
+            file_browser_callback:"M.editor_tinymce.filepicker",
+            moodle_plugin_base: M.cfg.wwwroot+"/lib/editor/tinymce/plugins/"
+        })
+        
+        M.editor_tinymce.init_filepicker(Y, elId, tinymce_filepicker_options);
+    });
+}
+
 /**
  * needs to ask if the user wants to save the content if save button has not been pressed, if was saved, then call saveUnit and close dialog,
  * else if not save then empty out content in middle, save button disabled while reset is abled
@@ -809,13 +842,15 @@ function addAssociateForm(index, type)
     
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'-1">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
-    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'-1" name="msm_info_title-'+index + '-' + newId+'-1"/>');
+    var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'-1" name="msm_info_title-'+index + '-' + newId+'-1"/>');    
+//    var subordinateTitleContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infotitle'+index + '-' + newId+'"></div>');
+//    var subordinateTitleResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infotitle'+index + '-' + newId+'-1"></div>');
     
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'-1">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'-1" name="msm_info_content-'+index + '-' + newId+'-1"/>');
-    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infocontent'+index + '-' + newId+'"></div>');
+    var subordinateContentContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infocontent'+index + '-' + newId+'-1"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infocontent'+index + '-' + newId+'-1"></div>');
+    var subordinateContentResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infocontent'+index + '-' + newId+'-1"></div>');
 
     var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"-1'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
                                 <select name='msm_associate_reftype-"+index + "-" + newId+"-1' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"-1' onchange='processReftype(event);'>\n\
@@ -837,10 +872,12 @@ function addAssociateForm(index, type)
     associateInfoDiv.append(typeDropdown);
     associateInfoDiv.append(infoTitleLabel);
     associateInfoDiv.append(infoTitleInput);
+//    associateInfoDiv.append(subordinateTitleContainer);
+//    associateInfoDiv.append(subordinateTitleResult);
     associateInfoDiv.append(infoContentLabel);
     associateInfoDiv.append(infoContentInput);
-    associateInfoDiv.append(subordinateContainer);
-    associateInfoDiv.append(subordinateResult);
+    associateInfoDiv.append(subordinateContentContainer);
+    associateInfoDiv.append(subordinateContentResult);
     associateInfoDiv.append(refTypeDropdown);
      
     $(associateInfoDiv).insertBefore("#msm_associate_button-"+index);
@@ -858,7 +895,9 @@ function addAssociateForm(index, type)
     }
     
     initEditor("msm_info_content-"+index+"-"+newId+"-1");
-    initEditor("msm_info_title-"+index+"-"+newId+"-1");
+    noSubInitEditor("msm_info_title-"+index+"-"+newId+"-1");
+    // info title cannot have subordinate 
+    
        
     $("#msm_associate_container-"+index).sortable({
         appendTo: "msm_associate_container-"+index,
@@ -904,7 +943,7 @@ function addAssociateForm(index, type)
             $(this).find('.msm_info_titles').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    initEditor(this.id);
+                    noSubInitEditor(this.id);
                     $(this).sortable("refresh");
                 }
             });

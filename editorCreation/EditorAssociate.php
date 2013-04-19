@@ -21,7 +21,7 @@
  * reference materials either created new or existing ones eithe within or outside of the current
  * composition.  
  * 
-*/
+ */
 class EditorAssociate extends EditorElement
 {
 
@@ -49,7 +49,7 @@ class EditorAssociate extends EditorElement
         $this->type = $_POST['msm_associate_dropdown-' . $idNumber];
 
         $infomatch = "/^msm_info_content-$idNumber.*$/";
-       
+
         foreach ($_POST as $id => $value)
         {
             if (preg_match($infomatch, $id))
@@ -66,7 +66,6 @@ class EditorAssociate extends EditorElement
                 $info = new EditorInfo();
                 $info->getFormData($newId);
                 $this->infos[] = $info;
-
             }
         }
         return $this;
@@ -193,6 +192,17 @@ class EditorAssociate extends EditorElement
             $htmlContent .= $info->displayData();
         }
 
+//        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
+//        $htmlContent .= "</div>";
+//
+//        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
+//
+//        foreach ($this->subordinates as $subordinate)
+//        {
+//            $htmlContent .= $subordinate->displayData();
+//        }
+//        $htmlContent .= "</div>";
+
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -265,6 +275,7 @@ class EditorAssociate extends EditorElement
                 $previewHtml .= "</li>";
                 $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
                 $previewHtml .= $this->infos[0]->ref->displayPreview($id);
+                print_object($this->infos[0]->ref);
                 $previewHtml .= "</div>";
             }
             else

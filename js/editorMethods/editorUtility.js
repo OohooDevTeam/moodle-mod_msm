@@ -544,7 +544,14 @@ function moveElements()
             $("#"+id+" textarea").each(function() {
                 if(tinymce.getInstanceById($(this).attr("id")) == null)
                 {
-                    initEditor(this.id);                    
+                    if(this.className == "msm_info_titles")
+                    {
+                        noSubInitEditor(this.id);
+                    }
+                    else
+                    {
+                        initEditor(this.id); 
+                    }                 
                     $(this).sortable("refresh");
                 }
             });
@@ -589,6 +596,7 @@ function moveElements()
                 $("#"+id+" textarea").each(function() {
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
+                        console.log(this.id);
                         initEditor(this.id);                    
                         $(this).sortable("refresh");
                     }
@@ -1112,7 +1120,7 @@ function createAssociateText(mainElement, aArray)
     
         $("#"+infos[0].id).replaceWith(infoTitleArea);
         
-        initEditor(infoTitleArea.id);
+        noSubInitEditor(infoTitleArea.id);
         
         $(infoContentArea).val(associateContent);
     
@@ -1669,7 +1677,14 @@ function deleteOverlayElement(e)
                 $("#"+currentElement+" textarea").each(function() {
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
-                        initEditor(this.id); 
+                        if(this.className == "msm_info_titles")
+                        {
+                            noSubInitEditor(this.id);
+                        }
+                        else
+                        {
+                            initEditor(this.id); 
+                        }
                     }
                 });
                 $( this ).dialog( "close" );                   

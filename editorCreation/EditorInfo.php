@@ -71,18 +71,24 @@ class EditorInfo extends EditorElement
         }
         else if (sizeof($subid) == 1)
         {
-//        if (sizeof($subid) == 1)
-//        {
             $this->caption = $_POST['msm_info_title-' . $idNumber];
+
+//            if (!empty($this->caption))
+//            {
+//                foreach ($this->processSubordinate($this->caption) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
+//            }
 
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_info_content-' . $idNumber];
 
-// foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-// {
-// $this->subordinates[] = $subordinates;
-// }
+//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+//                {
+//                    $this->subordinates[] = $subordinates;
+//                }
             }
             else
             {
@@ -178,6 +184,18 @@ class EditorInfo extends EditorElement
             $htmlContent .= "<div id='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_titles msm_editor_content'>";
             $htmlContent .= $this->caption;
             $htmlContent .= "</div>";
+
+//             $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
+//        $htmlContent .= "</div>";
+//
+//        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
+//       
+//            foreach ($this->subordinates as $subordinate)
+//            {
+//                $htmlContent .= $subordinate->displayData();
+//            }
+//        $htmlContent .= "</div>";
+
             $htmlContent .= "<label for='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid'>content: </label>";
             $htmlContent .= "<div id='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_contents msm_editor_content'>";
             $htmlContent .= $this->content;
@@ -273,7 +291,6 @@ class EditorInfo extends EditorElement
             $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
-
         }
 
         return $htmlContent;
@@ -293,31 +310,36 @@ class EditorInfo extends EditorElement
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
 
-        $referenceRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
+        $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
 
-        foreach ($referenceRecords as $ref)
+        foreach ($childRecords as $child)
         {
-            $refTable = $DB->get_record('msm_table_collection', array('id' => $ref->table_id));
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
-            switch ($refTable->tablename)
+            switch ($childTable->tablename)
             {
                 case "msm_def":
                     $def = new EditorDefinition();
-                    $def->loadData($ref->id);
+                    $def->loadData($child->id);
                     $this->ref = $def;
                     break;
                 case "msm_comment":
                     $comment = new EditorComment();
-                    $comment->loadData($ref->id);
+                    $comment->loadData($child->id);
                     $this->ref = $comment;
                     break;
                 case "msm_unit":
                     break;
                 case "msm_theorem":
                     $theorem = new EditorTheorem();
-                    $theorem->loadData($ref->id);
+                    $theorem->loadData($child->id);
                     $this->ref = $theorem;
                     break;
+//                case "msm_subordinate":
+//                    $subordinate = new EditorSubordinate();
+//                    $subordinate->loadData($child->id);
+//                    $this->subordinates[] = $subordinate;
+//                    break;
             }
         }
 
@@ -330,6 +352,15 @@ class EditorInfo extends EditorElement
 
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$this->caption'>";
         $previewHtml .= $this->content;
+
+//        if (!empty($this->subordinates))
+//        {
+//            foreach ($this->subordinates as $subordinate)
+//            {
+//                $previewHtml .= $subordinate->displayPreview();
+//            }
+//        }
+
         $previewHtml .= "</div>";
 
         return $previewHtml;
