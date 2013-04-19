@@ -369,6 +369,18 @@ function showUnitPreview()
             dataArray[this.id] = $(this).val(); 
         });
     
+        $("#msm_child_appending_area").find(".msm_unit_intro_title").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });
+        
+        $("#msm_child_appending_area").find(".msm_unit_body_title").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });
+        
+        $("#msm_child_appending_area").find(".msm_intro_child_titles").each(function() {
+            dataArray[this.id] = $(this).val(); 
+        });
+    
         $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
             dataArray[this.id] = $(this).html(); 
         });
