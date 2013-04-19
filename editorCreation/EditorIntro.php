@@ -105,6 +105,20 @@ class EditorIntro extends EditorElement
             }
             $htmlContent .= "</div>";
 
+
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-introcontent$this->compid'>";
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-introcontent$this->compid'>";
+            foreach ($this->children as $content)
+            {
+                foreach ($content->subordinates as $subordinate)
+                {
+                    $htmlContent .= $subordinate->displayData();
+                }
+            }
+            $htmlContent .= "</div>";
+
             $htmlContent .= "<div id='msm_intro_child_container'>";
         }
         else
@@ -112,6 +126,19 @@ class EditorIntro extends EditorElement
             foreach ($this->blocks[0]->content as $content)
             {
                 $htmlContent .= $content->displayData();
+            }
+            $htmlContent .= "</div>";
+            
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-introcontent$this->compid'>";
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-introcontent$this->compid'>";
+            foreach ($this->blocks[0]->content as $content)
+            {
+                foreach ($content->subordinates as $subordinate)
+                {
+                    $htmlContent .= $subordinate->displayData();
+                }
             }
             $htmlContent .= "</div>";
 

@@ -396,6 +396,14 @@ function addIntroContent(idNumber)
     
     var newId = idNumber + childNumber;
     
+    // preventing duplicate ID from being created...so check if the ID already exists
+    $(".msm_intro_child").each(function() {
+        if("msm_intro_child_div-"+newId == this.id)
+        {
+            newId++;
+        }
+    });
+    
     var introChildDiv = document.createElement("div");
     introChildDiv.id = "msm_intro_child_div-"+newId;
     introChildDiv.className = "msm_intro_child";
@@ -1182,8 +1190,8 @@ function checkIndexNumber(oldid)
 {
     $("#msm_child_appending_area").find(".copied_msm_structural_element").each(function() {
         if(this.id == oldid)
-            {
-                _index++;                
-            }
+        {
+            _index++;                
+        }
     })
 }

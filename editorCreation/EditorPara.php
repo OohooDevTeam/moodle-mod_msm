@@ -51,10 +51,10 @@ class EditorPara extends EditorElement
 
         $this->content = $doc->saveHTML($paraNode);
 
-//        foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-//        {
-//            $this->subordinates[] = $subordinates;
-//        }
+        foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+        {
+            $this->subordinates[] = $subordinates;
+        }
 
         return $this;
     }
@@ -92,14 +92,45 @@ class EditorPara extends EditorElement
 
     public function displayData()
     {
-        $htmlContent = '';
-
-        $htmlContent .= $this->content;
+        global $DB;
         
-        foreach($this->subordinates as $subordinate)
-        {
-            $htmlContent .= $subordinate->displayData();
-        }
+        $htmlContent = '';
+        $htmlContent .= $this->content;
+
+//        $currentRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
+//        $blockRecord = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
+//        $parentRecord = $DB->get_record("msm_compositor", array("id" => $blockRecord->parent_id));
+//
+//        $tableRecord = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
+//        
+//        if ($tableRecord->tablename == "msm_intro")
+//        {
+//            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-introcontent$parentRecord->id'>";
+//            $htmlContent .= "</div>";
+//
+//            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-introcontent$parentRecord->id'>";
+//
+//            foreach ($this->subordinates as $subordinate)
+//            {
+//                $htmlContent .= $subordinate->displayData();
+//            }
+//
+//            $htmlContent .= "</div>";
+//        }
+//        else
+//        {
+//            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-bodycontent$parentRecord->id'>";
+//            $htmlContent .= "</div>";
+//
+//            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-bodycontent$parentRecord->id'>";
+//
+//            foreach ($this->subordinates as $subordinate)
+//            {
+//                $htmlContent .= $subordinate->displayData();
+//            }
+//
+//            $htmlContent .= "</div>";
+//        }
 
         return $htmlContent;
     }
@@ -121,31 +152,39 @@ class EditorPara extends EditorElement
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
-//        foreach ($childRecords as $child)
-//        {
-//            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
-//
-//            if ($childTable->tablename == 'msm_subordinate')
-//            {
-//                $subordinate = new EditorSubordinate();
-//                $subordinate->loadData($child->id);
-//                $this->subordinates[] = $subordinate;
-//            }
-//            else
-//            {
-//                echo "another child of para? " . $childTable->tablename;
-//            }
-//        }
+        foreach ($childRecords as $child)
+        {
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            if ($childTable->tablename == 'msm_subordinate')
+            {
+                $subordinate = new EditorSubordinate();
+                $subordinate->loadData($child->id);
+                $this->subordinates[] = $subordinate;
+            }
+            else
+            {
+                echo "another child of para? " . $childTable->tablename;
+            }
+        }
 
         return $this;
     }
-    
+
     public function displayPreview()
     {
         $previewHtml = '';
-        
+
         $previewHtml .= $this->content;
-        
+
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $subordinate)
+            {
+                $previewHtml .= $subordinate->displayPreview();
+            }
+        }
+
         return $previewHtml;
     }
 

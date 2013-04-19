@@ -32,6 +32,7 @@ class EditorBlock extends EditorElement
     public $type; // indicates the parent of the block --> used to do separate display process 
 
     // constructor for the class
+
     function __construct()
     {
         $this->tablename = "msm_block";
@@ -102,7 +103,7 @@ class EditorBlock extends EditorElement
             }
             else
             {
-                 // empty content needs to be flagged to give user a warning
+                // empty content needs to be flagged to give user a warning
                 $this->errorArray[] = 'msm_intro_child_content-' . $idInfo[1] . '_ifr';
             }
         }
@@ -123,7 +124,7 @@ class EditorBlock extends EditorElement
             }
             else
             {
-                 // empty content needs to be flagged to give user a warning
+                // empty content needs to be flagged to give user a warning
                 $this->errorArray[] = 'msm_intro_content_input-' . $idInfo[1] . '_ifr';
             }
         }
@@ -219,7 +220,7 @@ class EditorBlock extends EditorElement
     public function displayData()
     {
         $htmlContent = '';
-
+        
         if ($this->type == 'msm_intro')
         {
             $htmlContent .= "<div id='msm_intro_child_div-$this->compid' class='msm_intro_child'>";
@@ -239,6 +240,20 @@ class EditorBlock extends EditorElement
                 $htmlContent .= $content->displayData();
             }
             $htmlContent .= "</div>";
+            
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-introchild$this->compid'>";
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-introchild$this->compid'>";
+            foreach ($this->content as $content)
+            {
+                foreach ($content->subordinates as $subordinate)
+                {
+                    $htmlContent .= $subordinate->displayData();
+                }
+            }
+            $htmlContent .= "</div>";
+            
             $htmlContent .= "</div>";
         }
         else if ($this->type == 'msm_unit')
@@ -268,14 +283,27 @@ class EditorBlock extends EditorElement
             }
 
             $htmlContent .= "</div>";
+            
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-bodycontent$this->compid'>";
+            $htmlContent .= "</div>";
 
+            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-bodycontent$this->compid'>";
+            foreach ($this->content as $content)
+            {
+                foreach ($content->subordinates as $subordinate)
+                {
+                    $htmlContent .= $subordinate->displayData();
+                }
+            }
+            $htmlContent .= "</div>";
+            
             $htmlContent .= "</div>";
         }
 
         return $htmlContent;
     }
 
-   /**
+    /**
      * This abstract method from EditoElement extracts appropriate information from the 
      * msm_block table and also triggers extraction of data from its children using the 
      * data given by the msm_compositor table. It calls the loadData method from the 
