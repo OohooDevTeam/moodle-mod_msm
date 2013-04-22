@@ -173,6 +173,30 @@ function submitForm()
                         previewInfo(this.id, "dialog-"+newid);
                     });
                     
+                    // for reference material
+                    $("#msm_preview_dialog .rightbox").find(".copymsm_subordinate_hotwords").each(function(i, element) {
+                        console.log("in saveMethod");
+                        console.log($(this));
+                        var idInfo = this.id.split("-");
+                        var newid = '';
+                        
+                        for(var i=1; i < idInfo.length-1; i++)
+                        {
+                            newid += idInfo[i]+"-";
+                        }
+                            
+                        newid += idInfo[idInfo.length-1];
+                    
+                        $("#dialog-"+newid).dialog({
+                            autoOpen: false,
+                            height: "auto",
+                            modal: false,
+                            width: 605
+                        });  
+                        
+                        previewInfo(this.id, "dialog-"+newid);
+                    });
+                    
                     $("#msm_unit_title").attr("disabled", "disabled");
                     $("#msm_unit_short_title").attr("disabled", "disabled");
                     $("#msm_unit_description_input").attr("disabled", "disabled");                    
@@ -459,7 +483,7 @@ function disableEditorFunction()
 
 // to activate the dialog box for display purposes
 function previewInfo(elementid, dialogid)
-{ 
+{     
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse  
 

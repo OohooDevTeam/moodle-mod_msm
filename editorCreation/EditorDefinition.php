@@ -484,15 +484,8 @@ class EditorDefinition extends EditorElement
 
         $previewHtml .= "<div class='mathcontent'>";
         
-        $previewHtml .= $this->content;
-        
-        if(!empty($this->subordinates))
-        {
-            foreach($this->subordinates as $subordinate)
-            {
-                $previewHtml .= $subordinate->displayPreview();
-            }
-        }
+        $previewHtml .= $this->content;        
+       
 //        $previewHtml .= $this->previewSubordinate("<div>$this->content</div>", $this->subordinates);
         $previewHtml .= "<br />";
         $previewHtml .= "</div>";
@@ -508,9 +501,17 @@ class EditorDefinition extends EditorElement
             }
             $previewHtml .= "</ul>";
         }
+        
+         if(!empty($this->subordinates))
+        {
+            foreach($this->subordinates as $subordinate)
+            {
+                $previewHtml .= $subordinate->displayPreview();
+            }
+        }
 
         $previewHtml .= "</div>";
-        $previewHtml .= "<br />";
+        $previewHtml .= "<br />";        
 
         return $previewHtml;
     }

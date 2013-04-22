@@ -349,6 +349,9 @@ class EditorInfo extends EditorElement
     public function displayPreview($id)
     {
         $previewHtml = '';
+        
+//        echo "info ID";
+//        print_object($id);
 
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$this->caption'>";
         $previewHtml .= $this->content;

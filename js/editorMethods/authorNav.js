@@ -492,6 +492,7 @@ function showUnitPreview()
                         
                     previewInfo(this.id, "dialog-"+newid);
                 });
+                               
             }
         });
     // parse HTML to get needed contents... but still need to put in ajax to can use PHP class functions
@@ -548,6 +549,61 @@ function makePreviewDialog()
         
         
     }
+    
+}
+
+function previewinfoopen(triggerId, idEnding)
+{    
+    $("#"+triggerId).unbind('click');
+    $("#"+triggerId).click(function() {
+        $('.rightbox').empty();
+        var cloned = $('#refcontent-'+idEnding).clone();
+        cloned.find('*').each(function(){
+            var currentid = $(this).attr('id');
+            if(typeof currentid != 'undefined')
+            {
+                $(this).attr('id', 'copy'+currentid);
+//                $(this).attr('class', 'copy'+this.className);
+            }
+        });
+        cloned.appendTo($('.rightbox')).css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        
+        $("#msm_preview_dialog .rightbox").find(".msm_subordinate_hotwords").each(function(i, element) {
+            var idInfo = this.id.split("-");
+            var newid = '';
+                        
+            for(var i=1; i < idInfo.length-1; i++)
+            {
+                newid += idInfo[i]+"-";
+            }
+                            
+            newid += idInfo[idInfo.length-1];
+                    
+            $("#dialog-"+newid).dialog({
+                autoOpen: false,
+                height: "auto",
+                modal: false,
+                width: 605
+            });  
+            previewInfo(this.id, "dialog-"+newid);
+        });
+    });
+    
+    $("#"+triggerId).ready(function(e){        
+        $("#"+triggerId).mousemove(function (e) {
+            $('#dialog-'+idEnding).dialog('option', {
+                position: [e.clientX+5, e.clientY+5]
+            });
+            $('#dialog-'+idEnding).dialog('open');
+        });
+         
+        $("#"+triggerId).mouseout(function(){
+            $('#dialog-'+idEnding).dialog('close');
+        });
+   
+    });
+    
     
 }
 

@@ -268,7 +268,7 @@ class EditorAssociate extends EditorElement
 
             if (!empty($this->infos[0]->ref))
             {
-                $previewHtml .= "<li class='defminibutton' id='defminibutton-$id' onmouseover='infoopen(\"$id\")'>";
+                $previewHtml .= "<li class='defminibutton' id='defminibutton-$id' onmouseover='previewinfoopen(\"defminibutton-$id\", \"$id\")'>";
                 $previewHtml .= "<span style='cursor:pointer'>";
                 $previewHtml .= $this->type;
                 $previewHtml .= "</span>";
@@ -294,7 +294,7 @@ class EditorAssociate extends EditorElement
         {
             if (!empty($this->infos[0]->ref))
             {
-                $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='infoopen(\"$id\")'>";
+                $previewHtml .= "<li class='minibutton' id='minibutton-$id' onmouseover='previewinfoopen(\"minibutton-$id\", \"$id\")'>";
                 $previewHtml .= "<span style='cursor:pointer'>";
                 $previewHtml .= $this->type;
                 $previewHtml .= "</span>";
@@ -320,7 +320,7 @@ class EditorAssociate extends EditorElement
         {
             if (!empty($this->infos[0]->ref))
             {
-                $previewHtml .= "<li class='commentminibutton' id='commentminibutton-$id' onmouseover='infoopen(\"$id\")'>";
+                $previewHtml .= "<li class='commentminibutton' id='commentminibutton-$id' onmouseover='previewinfoopen(\"commentminibutton-$id\", \"$id\")'>";
                 $previewHtml .= "<span style='cursor:pointer'>";
                 $previewHtml .= $this->type;
                 $previewHtml .= "</span>";

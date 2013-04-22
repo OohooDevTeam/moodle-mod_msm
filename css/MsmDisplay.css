@@ -196,17 +196,17 @@ div.controller{
     min-width: 200px;
 }
 
-.hottag, .activehottag, .msm_subordinate_hotwords
+.hottag, .activehottag, .msm_subordinate_hotwords, .copymsm_subordinate_hotwords
 {
     color: #229C79 !important;   
 }
 
-.hottag:hover, .activehottag:hover, .msm_subordinate_hotwords:hover
+.hottag:hover, .activehottag:hover, .msm_subordinate_hotwords:hover, .copymsm_subordinate_hotwords:hover
 {
     cursor: pointer !important;
     color:blue !important;   
 }
-.hottag:visited, .activehottag:visited, .msm_subordinate_hotwords:visited
+.hottag:visited, .activehottag:visited, .msm_subordinate_hotwords:visited, .copymsm_subordinate_hotwords:visited
 {
     color:mediumorchid !important;
 }

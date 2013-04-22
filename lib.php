@@ -208,19 +208,19 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             $tableid = $table_collection->insertTablename();
         }
 
+////
+//        $parser = new DOMDocument();
+//        //define('parser', $parser);
+//        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
+////        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
 //
-        $parser = new DOMDocument();
-        //define('parser', $parser);
-        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
-//        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
-
-        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
-//        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
-        $position = 1;
-
-        $unit->loadFromXml($parser->documentElement, $position);
-
-        $unit->saveIntoDb($unit->position, $msm->id);
+//        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
+////        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
+//        $position = 1;
+//
+//        $unit->loadFromXml($parser->documentElement, $position);
+//
+//        $unit->saveIntoDb($unit->position, $msm->id);
     }
 //    echo "done";
 //    die;
