@@ -596,7 +596,6 @@ function moveElements()
                 $("#"+id+" textarea").each(function() {
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
-                        console.log(this.id);
                         initEditor(this.id);                    
                         $(this).sortable("refresh");
                     }
