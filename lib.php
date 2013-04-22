@@ -208,7 +208,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             $tableid = $table_collection->insertTablename();
         }
 
-
+//
 //        $parser = new DOMDocument();
 //        //define('parser', $parser);
 //        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');

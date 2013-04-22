@@ -171,7 +171,7 @@ class EditorInContent extends EditorElement
         $this->type = $inContentRecord->type;
         $this->content = $inContentRecord->content;
         
-        $childRecords = $DB->get_records("msm_compositor", array("parent_id"=>$compid), "prev_sibiling_id");
+        $childRecords = $DB->get_records("msm_compositor", array("parent_id"=>$compid), "prev_sibling_id");
         
         foreach($childRecords as $child)
         {

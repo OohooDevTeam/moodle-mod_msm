@@ -192,7 +192,7 @@ div.controller{
 {
     margin-left:auto;
     margin-right:auto;
-    max-width: 300px;
+    /*max-width: 300px;*/
     min-width: 200px;
 }
 
@@ -403,20 +403,17 @@ table.matharray
 
 .mathtable
 {
-    border-color: maroon;
     border-collapse: separate !important;
     border-spacing: 2px;
+    border: thin solid maroon;
 }
 
 .mathtable td
 {
-    /*    border: 1px solid maroon;*/
-    border-color: maroon;
     border-collapse: separate !important;
     border-spacing: 2px;
-    /*    max-width: 90%;*/
+    border: thin solid maroon;
 }
-
 div.dialogs{
     margin: 0;
     display: none;
