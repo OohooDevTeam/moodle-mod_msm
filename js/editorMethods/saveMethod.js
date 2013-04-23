@@ -173,10 +173,7 @@ function submitForm()
                         previewInfo(this.id, "dialog-"+newid);
                     });
                     
-                    // for reference material
-                    $("#msm_preview_dialog .rightbox").find(".copymsm_subordinate_hotwords").each(function(i, element) {
-                        console.log("in saveMethod");
-                        console.log($(this));
+                    $(".msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
                         var idInfo = this.id.split("-");
                         var newid = '';
                         
@@ -186,13 +183,16 @@ function submitForm()
                         }
                             
                         newid += idInfo[idInfo.length-1];
-                    
-                        $("#dialog-"+newid).dialog({
-                            autoOpen: false,
-                            height: "auto",
-                            modal: false,
-                            width: 605
-                        });  
+                        
+//                        $("#dialog-"+newid).dialog({
+//                            autoOpen: false,
+//                            height: "auto",
+//                            modal: false,
+//                            width: 605
+//                        });
+                        
+                        console.log("id: "+this.id);
+                        console.log("id ending: "+newid);
                         
                         previewInfo(this.id, "dialog-"+newid);
                     });
@@ -515,6 +515,38 @@ function previewInfo(elementid, dialogid)
     $("#msm_preview_dialog #"+elementid).mouseout(function(){
         $("#"+dialogid).dialog("close").css("display", "none");
     });
+    
+    
+    $(".msm_info_dialogs").find("#"+elementid).unbind("click");
+    $(".msm_info_dialogs").find("#"+elementid).click(function(e) {
+        x = e.clientX+5;
+        y = e.clientY+5;
+    
+        $("#"+dialogid).dialog('open').css("display", "block");
+        $(".msm_info_dialogs").find("#"+elementid).mousemove(function () {
+            $("#"+dialogid).dialog("option", {
+                position: [x, y]
+            });
+        });
+    
+        $(".msm_info_dialogs").find("#"+elementid).mouseout(function(){
+            $("#"+dialogid).dialog('open').css("display", "block");
+        });
+    
+    });    
+   
+    $(".msm_info_dialogs").find("#"+elementid).mouseover(function (e) {
+        $("#"+dialogid).dialog("option", {
+            position: [e.clientX+5, e.clientY+5]
+        });
+        $("#"+dialogid).dialog('open').css("display", "block");
+    });
+    
+    $(".msm_info_dialogs").find("#"+elementid).mouseout(function(){
+        $("#"+dialogid).dialog("close").css("display", "none");
+    });
+    
+    
 } 
 
 

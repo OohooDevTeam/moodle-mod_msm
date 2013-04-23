@@ -471,7 +471,7 @@ function showUnitPreview()
                         $("#msm_mode_info").empty().remove();
                     }
                 });   
-                
+                                
                 $("#msm_preview_dialog .leftbox").find(".msm_subordinate_hotwords").each(function(i, element) {
                     var idInfo = this.id.split("-");
                     var newid = '';
@@ -489,6 +489,27 @@ function showUnitPreview()
                         modal: false,
                         width: 605
                     });  
+                        
+                    previewInfo(this.id, "dialog-"+newid);
+                });
+                
+                $(".msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
+                    var idInfo = this.id.split("-");
+                    var newid = '';
+                        
+                    for(var i=1; i < idInfo.length-1; i++)
+                    {
+                        newid += idInfo[i]+"-";
+                    }
+                            
+                    newid += idInfo[idInfo.length-1];
+                        
+                    $("#dialog-"+newid).dialog({
+                        autoOpen: false,
+                        height: "auto",
+                        modal: false,
+                        width: 605
+                    }); 
                         
                     previewInfo(this.id, "dialog-"+newid);
                 });

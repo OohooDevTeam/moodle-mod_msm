@@ -286,7 +286,7 @@ class MathInfo extends Element
             }
             else
             {
-                $this->caption = $infoRecord->caption;
+                $this->caption = htmlentities($infoRecord->caption);
             }
             $this->info_content = $infoRecord->info_content;
             $this->id = $infoRecord->id;
@@ -338,12 +338,12 @@ class MathInfo extends Element
         }
         else
         {
-            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->caption . '">';
+            $content .= "<div id='dialog-$this->compid' class='dialogs' title='$this->caption'>";
         }
         
         $content .= $this->displayContent($this, $this->info_content);
 
-        $content .= "</div>";
+        $content .= "</div>";        
 
         return $content;
     }

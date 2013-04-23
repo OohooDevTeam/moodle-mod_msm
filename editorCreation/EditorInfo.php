@@ -73,22 +73,14 @@ class EditorInfo extends EditorElement
         {
             $this->caption = $_POST['msm_info_title-' . $idNumber];
 
-//            if (!empty($this->caption))
-//            {
-//                foreach ($this->processSubordinate($this->caption) as $key => $subordinates)
-//                {
-//                    $this->subordinates[] = $subordinates;
-//                }
-//            }
-
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_info_content-' . $idNumber];
 
-//                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-//                {
-//                    $this->subordinates[] = $subordinates;
-//                }
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
+                    $this->subordinates[] = $subordinates;
+                }
             }
             else
             {
@@ -182,23 +174,23 @@ class EditorInfo extends EditorElement
         {
             $htmlContent .= "<label for='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid'>title: </label>";
             $htmlContent .= "<div id='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_titles msm_editor_content'>";
-            $htmlContent .= $this->caption;
+            $htmlContent .= htmlentities($this->caption);
             $htmlContent .= "</div>";
-
-//             $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
-//        $htmlContent .= "</div>";
-//
-//        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
-//       
-//            foreach ($this->subordinates as $subordinate)
-//            {
-//                $htmlContent .= $subordinate->displayData();
-//            }
-//        $htmlContent .= "</div>";
 
             $htmlContent .= "<label for='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid'>content: </label>";
             $htmlContent .= "<div id='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_contents msm_editor_content'>";
             $htmlContent .= $this->content;
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$parentRecord->parent_id-$parentRecord->id-$this->compid'>";
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$parentRecord->parent_id-$parentRecord->id-$this->compid'>";
+
+            foreach ($this->subordinates as $subordinate)
+            {
+                $htmlContent .= $subordinate->displayData();
+            }
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div id='msm_associate_reftype_option-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_associate_reftype_optionarea'>";
@@ -335,11 +327,11 @@ class EditorInfo extends EditorElement
                     $theorem->loadData($child->id);
                     $this->ref = $theorem;
                     break;
-//                case "msm_subordinate":
-//                    $subordinate = new EditorSubordinate();
-//                    $subordinate->loadData($child->id);
-//                    $this->subordinates[] = $subordinate;
-//                    break;
+                case "msm_subordinate":
+                    $subordinate = new EditorSubordinate();
+                    $subordinate->loadData($child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
             }
         }
 
@@ -349,20 +341,17 @@ class EditorInfo extends EditorElement
     public function displayPreview($id)
     {
         $previewHtml = '';
-        
-//        echo "info ID";
-//        print_object($id);
-
-        $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$this->caption'>";
+        $titleString = htmlentities($this->caption);
+        $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
         $previewHtml .= $this->content;
 
-//        if (!empty($this->subordinates))
-//        {
-//            foreach ($this->subordinates as $subordinate)
-//            {
-//                $previewHtml .= $subordinate->displayPreview();
-//            }
-//        }
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $subordinate)
+            {
+                $previewHtml .= $subordinate->displayPreview();
+            }
+        }
 
         $previewHtml .= "</div>";
 
