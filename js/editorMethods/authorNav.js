@@ -355,64 +355,7 @@ function showUnitPreview()
     
     if(editorDivs.length > 0)  // editor is in display mode
     {  
-        var dataArray = {};    
-        dataArray["msm_child_order"] = $("#msm_child_order").val();
-        dataArray["msm_mode_info"] = "preview";
-        dataArray["msm_unit_title"] = $("#msm_unit_title").val();
-        dataArray["msm_unit_description_input"] = $("#msm_unit_description_input").val();
-        dataArray["msm_unit_short_title"] = $("#msm_unit_short_title").val();
-    
-        $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });
-        $("#msm_child_appending_area").find(".msm_unit_child_title").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });
-    
-        $("#msm_child_appending_area").find(".msm_unit_intro_title").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });
-        
-        $("#msm_child_appending_area").find(".msm_unit_body_title").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });
-        
-        $("#msm_child_appending_area").find(".msm_intro_child_titles").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });
-    
-        $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
-            dataArray[this.id] = $(this).html(); 
-        });
-    
-        $("#msm_child_appending_area").find(".msm_child_description_inputs").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });
-        
-        $("#msm_child_appending_area").find(".msm_theorem_part_title").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });   
-        
-        $("#msm_child_appending_area").find(".msm_associated_dropdown").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        }); 
-        
-        $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        }); 
-        
-        $("#msm_child_appending_area").find(".msm_theoremref_part_title").each(function() {
-            dataArray[this.id] = $(this).val(); 
-        });  
-        // for any tinymces that is active
-        $("textarea").each(function(){        
-            if(typeof tinymce.get(this.id) !== "undefined")
-            {
-                dataArray[this.id] = tinymce.get(this.id).getContent({
-                    format: "html"
-                });     
-            }
-        });   
+        var dataArray  = getDisabledData();
         
         var subordinates = [];
         
@@ -521,9 +464,71 @@ function showUnitPreview()
     else // editor is in edit mode
     {
         $("#msm_unit_form").trigger("submit");             
-    }
+    }   
+}
+
+function getDisabledData()
+{
+    var dataArray = {};    
+    dataArray["msm_child_order"] = $("#msm_child_order").val();
+    dataArray["msm_mode_info"] = "preview";
+    dataArray["msm_unit_title"] = $("#msm_unit_title").val();
+    dataArray["msm_unit_description_input"] = $("#msm_unit_description_input").val();
+    dataArray["msm_unit_short_title"] = $("#msm_unit_short_title").val();
     
+    $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });
+    $("#msm_child_appending_area").find(".msm_unit_child_title").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });
     
+    $("#msm_child_appending_area").find(".msm_unit_intro_title").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });
+        
+    $("#msm_child_appending_area").find(".msm_unit_body_title").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });
+        
+    $("#msm_child_appending_area").find(".msm_intro_child_titles").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });
+    
+    $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+        dataArray[this.id] = $(this).html(); 
+    });
+    
+    $("#msm_child_appending_area").find(".msm_child_description_inputs").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });
+        
+    $("#msm_child_appending_area").find(".msm_theorem_part_title").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });   
+        
+    $("#msm_child_appending_area").find(".msm_associated_dropdown").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    }); 
+        
+    $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    }); 
+        
+    $("#msm_child_appending_area").find(".msm_theoremref_part_title").each(function() {
+        dataArray[this.id] = $(this).val(); 
+    });  
+    // for any tinymces that is active
+    $("textarea").each(function(){        
+        if(typeof tinymce.get(this.id) !== "undefined")
+        {
+            dataArray[this.id] = tinymce.get(this.id).getContent({
+                format: "html"
+            });     
+        }
+    });  
+        
+    return dataArray;
 }
 
 function makePreviewDialog()

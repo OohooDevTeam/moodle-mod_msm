@@ -150,7 +150,6 @@ class EditorInfo extends EditorElement
             $this->ref->insertData($parentid, $this->compid, $msmid);
         }
 
-
         $subordinate_sibling = 0;
         foreach ($this->subordinates as $subordinate)
         {
@@ -174,7 +173,7 @@ class EditorInfo extends EditorElement
         {
             $htmlContent .= "<label for='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid'>title: </label>";
             $htmlContent .= "<div id='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_titles msm_editor_content'>";
-            $htmlContent .= htmlentities($this->caption);
+            $htmlContent .= $this->caption;
             $htmlContent .= "</div>";
 
             $htmlContent .= "<label for='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid'>content: </label>";
@@ -283,6 +282,17 @@ class EditorInfo extends EditorElement
             $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
+
+//            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$idEnding'>";
+//            $htmlContent .= "</div>";
+//
+//            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$idEnding'>";
+//
+//            foreach ($this->subordinates as $subordinate)
+//            {
+//                $htmlContent .= $subordinate->displayData();
+//            }
+//            $htmlContent .= "</div>";
         }
 
         return $htmlContent;
@@ -327,12 +337,16 @@ class EditorInfo extends EditorElement
                     $theorem->loadData($child->id);
                     $this->ref = $theorem;
                     break;
-                case "msm_subordinate":
-                    $subordinate = new EditorSubordinate();
-                    $subordinate->loadData($child->id);
-                    $this->subordinates[] = $subordinate;
-                    break;
             }
+        }
+
+        $subordinateRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        foreach ($subordinateRecords as $sub)
+        {
+            $subordinate = new EditorSubordinate();
+            $subordinate->loadData($sub->id);
+            $this->subordinates[] = $subordinate;
         }
 
         return $this;

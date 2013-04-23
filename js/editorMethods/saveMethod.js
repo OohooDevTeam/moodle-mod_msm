@@ -183,17 +183,7 @@ function submitForm()
                         }
                             
                         newid += idInfo[idInfo.length-1];
-                        
-//                        $("#dialog-"+newid).dialog({
-//                            autoOpen: false,
-//                            height: "auto",
-//                            modal: false,
-//                            width: 605
-//                        });
-                        
-                        console.log("id: "+this.id);
-                        console.log("id ending: "+newid);
-                        
+                                               
                         previewInfo(this.id, "dialog-"+newid);
                     });
                     
@@ -516,7 +506,7 @@ function previewInfo(elementid, dialogid)
         $("#"+dialogid).dialog("close").css("display", "none");
     });
     
-    
+    // for displaying dialog boxes from hotwords in associate info boxes
     $(".msm_info_dialogs").find("#"+elementid).unbind("click");
     $(".msm_info_dialogs").find("#"+elementid).click(function(e) {
         x = e.clientX+5;

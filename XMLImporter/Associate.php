@@ -598,7 +598,7 @@ class Associate extends Element
                 }
 
                 $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
-                $content .= $this->infos[0]->info_content;
+                $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
                 $content .= "</div>";
             }
         }
@@ -632,7 +632,7 @@ class Associate extends Element
                 }
 
                 $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
-                $content .= $this->infos[0]->info_content;
+                $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
                 $content .= "</div>";
             }
         }
@@ -664,7 +664,7 @@ class Associate extends Element
             }
 
             $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
-            $content .= $this->infos[0]->info_content;
+            $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
             $content .= "</div>";
         }
 

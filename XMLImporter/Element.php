@@ -877,7 +877,7 @@ abstract class Element
         global $DB;
         $content = '';
         $doc = new DOMDocument();
-        $doc->preserveWhiteSpace = true;        
+        $doc->preserveWhiteSpace = true;  
 
         @$doc->loadXML($XMLcontent);
 
@@ -885,7 +885,7 @@ abstract class Element
         $imgs = $doc->getElementsByTagName('img');
         $hottags = $doc->getElementsByTagName('a');
         $matharrays = $doc->getElementsByTagName('math.array');
-
+        
         $newElementdoc = new DOMDocument();
 
         if ((empty($tables)) && (empty($imgs)) && (empty($hottags)) && (empty($matharrays)))
@@ -1035,7 +1035,7 @@ abstract class Element
                             }
 
                             $hottagid = $hottag->getAttribute('id');
-
+                            
                             if (trim($positionvalue) == trim($hottagid))
                             {
                                 $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
