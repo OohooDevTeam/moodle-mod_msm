@@ -563,7 +563,6 @@ function previewinfoopen(triggerId, idEnding)
             if(typeof currentid != 'undefined')
             {
                 $(this).attr('id', 'copy'+currentid);
-//                $(this).attr('class', 'copy'+this.className);
             }
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');

@@ -487,7 +487,7 @@ class EditorDefinition extends EditorElement
         $previewHtml .= $this->content;        
        
 //        $previewHtml .= $this->previewSubordinate("<div>$this->content</div>", $this->subordinates);
-        $previewHtml .= "<br />";
+//        $previewHtml .= "<br />";
         $previewHtml .= "</div>";
 
         $previewHtml .= "<br />";

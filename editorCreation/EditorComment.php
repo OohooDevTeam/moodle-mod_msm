@@ -358,7 +358,17 @@ class EditorComment extends EditorElement
         $htmlContent .= "<input id='msm_commentref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_commentref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_commentref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
+        $htmlContent .= "</div>";   
+        
+        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentrefcontent$this->compid'>";
         $htmlContent .= "</div>";        
+        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentrefcontent$this->compid'>";        
+        foreach($this->subordinates as $subordinate)
+        {
+            $htmlContent .= $subordinate->displayData();
+        }        
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "<label id='msm_commentref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_commentref_description_input-$parentId-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_commentref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_commentref_description_input-$parentId-$this->compid'/>";
         $htmlContent .= "</div>";
@@ -403,7 +413,7 @@ class EditorComment extends EditorElement
                 $previewHtml .= $subordinate->displayPreview();
             }
         }
-        $previewHtml .= "<br />";
+//        $previewHtml .= "<br />";
         $previewHtml .= "</div>";
 
         $previewHtml .= "<br />";

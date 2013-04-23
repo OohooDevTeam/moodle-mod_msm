@@ -286,6 +286,16 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theoremref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
+        
+        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefcontent$parentId-$this->compid'>";
+        $htmlContent .= "</div>";        
+        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefcontent$parentId-$this->compid'>";        
+        foreach($this->subordinates as $subordinate)
+        {
+            $htmlContent .= $subordinate->displayData();
+        }        
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "<div id='msm_theoremref_part_droparea-$parentId-$this->compid' class='msm_theoremref_part_dropareas'>";
         foreach ($this->children as $partTheorem)
         {
