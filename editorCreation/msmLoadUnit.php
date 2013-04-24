@@ -1,8 +1,26 @@
 <?php
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This script is called by an AJAX call in editorUtility.js and its main role is to
+ * load the correct unit when triggered.  The possible triggers can be when the user clicks on 
+ * a specific node of a jsTree on right panel to open an already created unit, when the user
+ * triggers the edit function from view.php page, when the user decides to cancel all the changes
+ * made to the unit, or when the user triggers to go to view.php by pressing the "done" button in MSM
+ * editor panel.
+ * 
  */
 
 require_once('../../../config.php');
@@ -31,6 +49,7 @@ global $DB;
 
 //print_object($_POST);
 
+// user triggered a specific node of a jstree to view a particular unit
 if (isset($_POST['id']))
 {
 // id passed in form of an array with id index and value of msm_unit-#compid-#unitid
@@ -44,6 +63,7 @@ if (isset($_POST['id']))
 
     echo json_encode($htmlContent);
 }
+// user has triggered the edit mode from the view.php
 else if (isset($_POST['mode']))
 {
     $unitCompidInfo = explode("-", $_POST['currentUnit']);
@@ -57,8 +77,6 @@ else if (isset($_POST['mode']))
     {
         $unitChildElements[] = $childRecord;
     }
-
-//    print_object($unitChildElements);
 
     $childOrderArray = explode(",", $_POST['childOrder']);
 
@@ -103,6 +121,7 @@ else if (isset($_POST['mode']))
             break;
     }
 }
+// when triggered to view.php from MSM editor panel
 else if (isset($_POST['tree_content']))
 {
     $doc = new DOMDocument();
@@ -137,6 +156,7 @@ else if (isset($_POST['tree_content']))
 
     echo json_encode($idPairs);
 }
+// user triggered to discard any changes made to the unit
 else if ($_POST["cancelUnit"]) // from cancelUnit js function
 {
     $unitidInfo = explode('-', $_POST['cancelUnit']);
@@ -150,6 +170,18 @@ else if ($_POST["cancelUnit"]) // from cancelUnit js function
     echo json_encode($htmlContent);
 }
 
+/**
+ * This function is used to parse the HTML string generated from the
+ * jsTree that is used to describe the structural relationship between 
+ * units in a composition when the user changes the tree structure(ie. changing
+ * the unit structure). This function finds the list items which has an id 
+ * stirng of "unit_composition_id-unit_table_id" pair and calls the updateUnitStructure
+ * function from EditorUnit class to update records in msm_compositor.
+ * 
+ * @param DOMElement $DomElement
+ * @param Integer $parentId
+ * @param Integer $siblingId
+ */
 function processTreeContent($DomElement, $parentId, $siblingId)
 {
     if ($DomElement->hasChildNodes())
@@ -186,7 +218,6 @@ function processTreeContent($DomElement, $parentId, $siblingId)
                                 }
                             }
                         }
-
 
                         break;
                 }

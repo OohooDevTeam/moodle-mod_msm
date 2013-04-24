@@ -1,9 +1,27 @@
 <?php
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This script is called by an AJAX call in autorNav.js, saveMethod.js and editorUtility.js and its main role is to
+ * remove the unit specified by the user and to insert data in the MSM editor to the correct database tables.
+ * This script calls most of the classes in EditorCreation folder to get data from POST object of ajax call, insert
+ * data into database, load from database for display and then finally for the display of the data.  This script is
+ * also essential for the preview feature of the MSM as it triggeres displayPreview function in each of the classes.
+ * 
  */
+
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 
@@ -101,8 +119,9 @@ $lengthOfArray = sizeOf($arrayOfChild);
 
 $msmId = $arrayOfChild[$lengthOfArray - 1];
 
-$unitcontent = array();
+$unitcontent = array(); // all the children of the unit such as def/comment/theorem...etc
 
+// these two variables are used to check for null/empty content errors
 $hasError = false;
 $errorArray = array();
 
@@ -236,14 +255,18 @@ foreach ($unitcontent as $unitchild)
     }
 }
 
+// there was an empty content detected 
 if ($hasError)
 {
+    // return array with all id of input fields/text fields that are missing content
     echo json_encode($errorArray);
 }
 else
 {
     if (empty($_POST["msm_mode_info"]))
     {
+        // when the new unit is triggered to save, if there are existing child elements
+        // with this unit, then delete these children and insert new records of child elements (?notsure)
         if (!empty($_POST['msm_currentUnit_id']))
         {
             $idInfo = explode("-", $_POST['msm_currentUnit_id']);
@@ -266,7 +289,7 @@ else
                 }
                 else
                 {
-                    // update the parent id of the child so that it corresponts to parent id of the current unit element
+                    // update the parent id of the child so that it corresponds to parent id of the current unit element
                     $updateData = new stdClass();
                     $updateData->id = $oldchild->id;
                     $updateData->msm_id = $oldchild->msm_id;
@@ -320,6 +343,7 @@ else
             }
         }
     }
+    // user triggered the view button on navigation menu to get a preview of the unit
     else if (!empty($_POST['msm_mode_info']))
     {
         $previewHtml = '';
@@ -335,6 +359,14 @@ else
     }
 }
 
+/**
+ * This method is used to search for all the child elements associated with the unit specified by the $compid and
+ * it deletes all the child and any child elements associated with it to prevent having duplicate data associated
+ * with the same unit.
+ * 
+ * @global moodle_datbase $DB
+ * @param integer $compid
+ */
 function deleteOldChildRecord($compid)
 {
     global $DB;

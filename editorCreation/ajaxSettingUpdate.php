@@ -1,17 +1,33 @@
 <?php
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This script is called by an AJAX call in saveSettings.js which is called when user saves 
+ * any changes made to the MSM settngs menu.  This script's main function is to update the
+ * msm_unit_name table with new type of composition and/or new names of the subunits.
+ * 
  */
-
 require_once(dirname(dirname(dirname(dirname(__FILE__)))) . '/config.php');
 require_once(dirname(dirname(__FILE__)) . '/lib.php');
 
 global $DB;
 
-$userInputArray = array();
-$hasError = false;
+$userInputArray = array(); // changed values by user
+
+// following two variables are used to detect null/empty content error
+$hasError = false; 
 $errorArray = array();
 
 if (isset($_POST['msm_structure_input_top']))
@@ -42,7 +58,8 @@ foreach ($_POST as $id => $inputs)
         }
     }
 }
-
+// if there is a null/empty content error, return the id of the input field with empty content 
+// which is passed to a part of a code where it highlights the input field with missing content
 if ($hasError)
 {
     echo json_encode($errorArray);
@@ -64,6 +81,7 @@ else
     {
         if (!empty($userInput))
         {
+           // for the case where user deleted initially set sub unit (ie. there are less nesting units available than before setting update)
             if ($index < sizeof($copiedArray))
             {
                 if ($copiedArray[$index]->unitname != $userInput)
@@ -107,6 +125,7 @@ else
     $newString .= $userInputArray[sizeof($userInputArray)-1];
     
 
+    // new value to be put into the hidden input field with all unit names
     echo json_encode($newString);
 }
 ?>
