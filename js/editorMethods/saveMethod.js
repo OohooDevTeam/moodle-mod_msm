@@ -72,6 +72,7 @@ function submitForm()
             subordinateData += key+"|"+subordinateArray[i][key]+",";
         }
     }
+    
     $("#msm_unit_subordinate_container").val(subordinateData);
         
     var formData = $("#msm_unit_form").serializeArray();

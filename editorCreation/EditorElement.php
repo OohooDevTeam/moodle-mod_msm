@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -110,6 +111,43 @@ abstract class EditorElement
 
         return $subordinates;
     }
+
+//    function convertSubordinateId($subordinates, $content)
+//    {
+//        $convertedContent = '';
+//
+//        $doc = new DOMDocument();
+//        $doc->loadHTML($content);
+//
+//        $aElements = $doc->getElementsByTagName("a");
+//
+//        foreach ($aElements as $aEl)
+//        {
+//            $aId = $aEl->getAttribute("id");
+//            $ahref = $aEl->getAttribute("href");
+//
+//            foreach ($subordinates as $sub)
+//            {
+//                $subId = explode(",", $sub->hot);
+//
+//                if (trim($aId) == trim($subId[0]))
+//                {
+//                    $newTag = "<a href='$ahref' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-$subId[0]'>$subId[1]</a>";
+//
+//                    $newTagDoc = new DOMDocument();
+//                    $newTagDoc->loadHTML($newTag);
+//                    $newANode = $newTagDoc->getElementsByTagName("a")->item(0);
+//
+//                    $aEl->parentNode->replaceChild($doc->importNode($newANode, true), $aEl);
+//                    
+//                    $convertedContent .= $doc->saveHTML();
+//                }
+//            }
+//        }
+//
+//        return $convertedContent;
+//    }
+
 }
 
 ?>

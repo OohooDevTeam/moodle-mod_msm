@@ -63,6 +63,11 @@ class EditorInfo extends EditorElement
                         else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $subid[0])
                         {
                             $this->content = htmlspecialchars_decode($idValuePair[1]);
+
+                            foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                            {
+                                $this->subordinates[] = $subordinates;
+                            }
                         }
                     }
                 }
@@ -280,19 +285,22 @@ class EditorInfo extends EditorElement
             }
 
             $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
+//            $htmlContent .= $this->convertSubordinateId($this->subordinates, $this->content);
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
-//            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$idEnding'>";
-//            $htmlContent .= "</div>";
-//
-//            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$idEnding'>";
-//
-//            foreach ($this->subordinates as $subordinate)
-//            {
-//                $htmlContent .= $subordinate->displayData();
-//            }
-//            $htmlContent .= "</div>";
+            $containerId = subStr($idEnding, 0, -2);
+            
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-$containerId'>";
+            $htmlContent .= "</div>";
+
+            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$idEnding'>";
+
+            foreach ($this->subordinates as $subordinate)
+            {
+                $htmlContent .= $subordinate->displayData();
+            }
+            $htmlContent .= "</div>";
         }
 
         return $htmlContent;
