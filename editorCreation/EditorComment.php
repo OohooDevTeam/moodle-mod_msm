@@ -232,6 +232,8 @@ class EditorComment extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_comment_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_comment_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_comment_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
+//        echo "before convertSubordinateId function call";
+//        $htmlContent .= $this->convertSubordinateId($this, $this->content);
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";        
         

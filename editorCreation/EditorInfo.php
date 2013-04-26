@@ -270,8 +270,7 @@ class EditorInfo extends EditorElement
                 $idEnding .= $idInfo[$i] . "-";
             }
             $idEnding .= $idInfo[sizeof($idInfo) - 1];
-
-
+            
             if (empty($this->caption))
             {
                 $htmlContent .= "<div id='msm_subordinate_infoTitle-$idEnding'>";
@@ -285,13 +284,13 @@ class EditorInfo extends EditorElement
             }
 
             $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
-//            $htmlContent .= $this->convertSubordinateId($this->subordinates, $this->content);
+// $htmlContent .= $this->convertSubordinateId($this->subordinates, $this->content);
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
-            $containerId = subStr($idEnding, 0, -2);
-            
-            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-$containerId'>";
+//            $containerId = subStr($idEnding, 0, -2);
+
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-$idEnding'>";
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$idEnding'>";

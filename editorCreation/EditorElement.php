@@ -111,9 +111,12 @@ abstract class EditorElement
 
         return $subordinates;
     }
-
-//    function convertSubordinateId($subordinates, $content)
+//
+//    function convertSubordinateId($object, $content)
 //    {
+//        global $DB;
+//
+//        $returnContent = '';
 //        $convertedContent = '';
 //
 //        $doc = new DOMDocument();
@@ -125,27 +128,57 @@ abstract class EditorElement
 //        {
 //            $aId = $aEl->getAttribute("id");
 //            $ahref = $aEl->getAttribute("href");
-//
-//            foreach ($subordinates as $sub)
+//            
+//            foreach ($object->subordinates as $sub)
 //            {
 //                $subId = explode(",", $sub->hot);
 //
 //                if (trim($aId) == trim($subId[0]))
 //                {
-//                    $newTag = "<a href='$ahref' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-$subId[0]'>$subId[1]</a>";
+//                    $aIdInfo = explode("-", $aId);
+//
+//                    $newEnding = substr($aIdInfo[1], 0, -1) . $object->compid;
+//
+//                    for ($i = 2; $i < sizeof($aIdInfo); $i++)
+//                    {
+//                        $newEnding .= "-" . $aIdInfo[$i];
+//                    }
+//                    
+//                    $newTag = "<a href='$ahref' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-$newEnding'>$subId[1]</a>";
 //
 //                    $newTagDoc = new DOMDocument();
 //                    $newTagDoc->loadHTML($newTag);
 //                    $newANode = $newTagDoc->getElementsByTagName("a")->item(0);
 //
 //                    $aEl->parentNode->replaceChild($doc->importNode($newANode, true), $aEl);
+//
+//                    $root = $doc->documentElement;
+//
+//                    $body = $root->getElementsByTagName("body")->item(0);
+//
+//                    foreach ($body->childNodes as $child)
+//                    {
+////                        print_object($doc->saveHTML($doc->importNode($child, true)));
+//                        $convertedContent .= $doc->saveHTML($doc->importNode($child, true));
+//                    }
 //                    
-//                    $convertedContent .= $doc->saveHTML();
+////                    $returnContent = $convertedContent;
+//
+//                    $newData = new stdClass();
+//                    $newData->id = $sub->id;
+//                    $newData->hot = $aIdInfo[0] . "-" . $newEnding . "," . $subId[1];
+//                    $DB->update_record("msm_subordinate", $newData);
 //                }
+//                $returnContent = $convertedContent;                
 //            }
 //        }
+////
+//        if ($aElements->length == 0)
+//        {
+//            $returnContent = $content;
+//        }
 //
-//        return $convertedContent;
+//        return $returnContent;
 //    }
 
 }
