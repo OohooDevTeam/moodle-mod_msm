@@ -25,8 +25,25 @@ class EditorImage extends EditorElement
         $this->tablename = 'msm_img';
     }
 
+    // code only implements plain texts w/o maps...etc
+    // idNumber == DOMElement with tag name of img
     public function getFormData($idNumber)
     {
+        $doc = new DOMDocument();
+        $imgNode = $doc->importNode($idNumber, true);
+        
+        $src = $imgNode->getAttribute("src");
+        
+        $srcInfo = explode("/", $src);
+//        
+//        $draftitemid = $srcInfo[6];
+//        $contextid = $srcInfo[3];
+//        $component = $srcInfo[4];
+//        $filearea = 
+        
+        print_object($srcInfo);
+        
+//        $string = file_prepare_draft_area($draftitemid, $contextid, $component, $filearea, $itemid);
         
         return $this;
     }

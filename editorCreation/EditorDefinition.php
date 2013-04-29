@@ -33,6 +33,7 @@ class EditorDefinition extends EditorElement
     public $errorArray = array(); // has ids of empty contents
     public $children = array(); //associate
     public $subordinates = array();
+    public $images = array();
 
     // constructor for the class
     public function __construct()
@@ -106,6 +107,11 @@ class EditorDefinition extends EditorElement
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
+                }
+                
+                foreach($this->processImage($this->content) as $key=>$image)
+                {
+                    $this->images[] = $image;
                 }
             }
             else

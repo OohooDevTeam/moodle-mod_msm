@@ -37,7 +37,7 @@ abstract class EditorElement
 
     // This method is generates the HTML code with appropriate clas information to display the data.  The
     // specific implementation differs between classes.
-    abstract function displayData();
+//    abstract function displayData();
 
     /**
      * This function parses a raw HTML string content and looks for the HTML elements considered to be
@@ -79,6 +79,12 @@ abstract class EditorElement
                     $table->getFormData($child);
                     $newContent[] = $table;
                 }
+                else if ($child->tagName == "img")
+                {
+                    $image = new EditorImage();
+                    $image->getFormData($child);
+                    $newContent[] = $image;
+                }
             }
         }
 
@@ -111,75 +117,24 @@ abstract class EditorElement
 
         return $subordinates;
     }
-//
-//    function convertSubordinateId($object, $content)
-//    {
-//        global $DB;
-//
-//        $returnContent = '';
-//        $convertedContent = '';
-//
-//        $doc = new DOMDocument();
-//        $doc->loadHTML($content);
-//
-//        $aElements = $doc->getElementsByTagName("a");
-//
-//        foreach ($aElements as $aEl)
-//        {
-//            $aId = $aEl->getAttribute("id");
-//            $ahref = $aEl->getAttribute("href");
-//            
-//            foreach ($object->subordinates as $sub)
-//            {
-//                $subId = explode(",", $sub->hot);
-//
-//                if (trim($aId) == trim($subId[0]))
-//                {
-//                    $aIdInfo = explode("-", $aId);
-//
-//                    $newEnding = substr($aIdInfo[1], 0, -1) . $object->compid;
-//
-//                    for ($i = 2; $i < sizeof($aIdInfo); $i++)
-//                    {
-//                        $newEnding .= "-" . $aIdInfo[$i];
-//                    }
-//                    
-//                    $newTag = "<a href='$ahref' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-$newEnding'>$subId[1]</a>";
-//
-//                    $newTagDoc = new DOMDocument();
-//                    $newTagDoc->loadHTML($newTag);
-//                    $newANode = $newTagDoc->getElementsByTagName("a")->item(0);
-//
-//                    $aEl->parentNode->replaceChild($doc->importNode($newANode, true), $aEl);
-//
-//                    $root = $doc->documentElement;
-//
-//                    $body = $root->getElementsByTagName("body")->item(0);
-//
-//                    foreach ($body->childNodes as $child)
-//                    {
-////                        print_object($doc->saveHTML($doc->importNode($child, true)));
-//                        $convertedContent .= $doc->saveHTML($doc->importNode($child, true));
-//                    }
-//                    
-////                    $returnContent = $convertedContent;
-//
-//                    $newData = new stdClass();
-//                    $newData->id = $sub->id;
-//                    $newData->hot = $aIdInfo[0] . "-" . $newEnding . "," . $subId[1];
-//                    $DB->update_record("msm_subordinate", $newData);
-//                }
-//                $returnContent = $convertedContent;                
-//            }
-//        }
-////
-//        if ($aElements->length == 0)
-//        {
-//            $returnContent = $content;
-//        }
-//
-//        return $returnContent;
-//    }
+
+    function processImage($content)
+    {
+        $images = array();
+        $htmlParser = new DOMDocument;
+
+        $htmlParser->loadHTML($content);
+
+        $imgElements = $htmlParser->getElementsByTagName('img');
+        foreach ($imgElements as $key => $img)
+        {
+            $image = new EditorImage();
+            $image->getFormData($img);
+            $images[] = $image;
+        }
+
+        return $images;
+    }
 
 }
 

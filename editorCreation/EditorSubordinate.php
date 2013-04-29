@@ -80,7 +80,7 @@ class EditorSubordinate extends EditorElement
         }
     }
 
-    public function displayData()
+    public function displayData($flag = false)
     {
         global $DB;
         $subChild = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
@@ -111,7 +111,7 @@ class EditorSubordinate extends EditorElement
         }
         $htmlContent .= "</div>";
 
-        $htmlContent .= $this->info->displayData();
+        $htmlContent .= $this->info->displayData($flag);
 
         $htmlContent .= "</div>";
 
