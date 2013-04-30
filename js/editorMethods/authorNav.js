@@ -361,14 +361,14 @@ function showUnitPreview()
         
         $("#msm_child_appending_area").find(".msm_subordinate_results").each(function() {
             $(this).children("div").each(function() {
-                subordinates.push(this.id+"|"+$(this).html());
+                subordinates.push(this.id+"||"+$(this).html());
             });
         });
         
         var subordinateString = '';
         for(var i = 0; i < subordinates.length-1; i++)
         {
-            subordinateString += subordinates[i] + ",";
+            subordinateString += subordinates[i] + "//|";
         }            
         subordinateString += subordinates[subordinates.length-1];
         dataArray["msm_unit_subordinate_container"] = subordinateString;

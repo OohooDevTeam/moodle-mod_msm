@@ -69,11 +69,14 @@ function submitForm()
     {
         for(var key in subordinateArray[i])
         {
-            subordinateData += key+"|"+subordinateArray[i][key]+",";
+            subordinateData += key+"||"+subordinateArray[i][key]+"//|";
         }
     }
     
     $("#msm_unit_subordinate_container").val(subordinateData);
+    
+    console.log("subordinateData");
+    console.log(subordinateData);
         
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");

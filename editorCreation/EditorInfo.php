@@ -35,7 +35,7 @@ class EditorInfo extends EditorElement
         {
             $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
 //
-            $tempallSubordinates = explode(",", $allSubordinateValues);
+            $tempallSubordinates = explode("//|", $allSubordinateValues);
 
             // copying the array from string processing above (due to it ending in comma, the last
             // element is empty)
@@ -49,7 +49,7 @@ class EditorInfo extends EditorElement
             $i = 0;
             foreach ($allSubordinates as $index => $subordinate)
             {
-                $idValuePair = explode("|", $subordinate);
+                $idValuePair = explode("||", $subordinate);
 
                 if (strpos($idValuePair[0], $subid[0]) !== false)
                 {
