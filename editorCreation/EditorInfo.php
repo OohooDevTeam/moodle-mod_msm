@@ -163,7 +163,7 @@ class EditorInfo extends EditorElement
         }
     }
 
-    public function displayData($flag = false)
+    public function displayData($parentId = '', $idEnding = '')
     {
         global $DB;
 
@@ -259,30 +259,18 @@ class EditorInfo extends EditorElement
         }
         else if ($parentTable->tablename == 'msm_subordinate')
         {
-            $parentUnitRecord = $DB->get_record("msm_subordinate", array("id" => $parentRecord->unit_id));
-            $hotIdInfo = explode(",", $parentUnitRecord->hot);
 
-            $idInfo = explode("-", $hotIdInfo[0]);
+            $idEndingInfo = explode("-", $idEnding);
 
-            $idEnding = '';
-
-            if ($flag)
+            if (sizeof($idEndingInfo) > 2)
             {
-                for ($i = 1; $i < sizeof($idInfo) - 2; $i++)
-                {
-                    $idEnding .= $idInfo[$i] . "-";
-                }
-                $idEnding .= $idInfo[sizeof($idInfo) - 2];
+                // only for nested subordinates
+                $containerId = substr($idEnding, 0, -2);
             }
             else
             {
-                for ($i = 1; $i < sizeof($idInfo) - 1; $i++)
-                {
-                    $idEnding .= $idInfo[$i] . "-";
-                }
-                $idEnding .= $idInfo[sizeof($idInfo) - 1];
+                $containerId = $idEnding;
             }
-
 
             if (empty($this->caption))
             {
@@ -300,18 +288,17 @@ class EditorInfo extends EditorElement
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
+            $htmlContent .= "</div>"; // end of msm_subordinate_results div
+
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-$containerId'>";
+            $htmlContent .= "</div>";
+
             if (sizeof($this->subordinates) > 0)
             {
-                $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-$idEnding'>";
-                $htmlContent .= "</div>";
-
-                $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$idEnding'>";
-
                 foreach ($this->subordinates as $subordinate)
                 {
-                    $htmlContent .= $subordinate->displayData(true);
+                    $htmlContent .= $subordinate->displayData($parentId);
                 }
-                $htmlContent .= "</div>";
             }
         }
 

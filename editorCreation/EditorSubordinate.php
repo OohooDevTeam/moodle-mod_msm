@@ -80,7 +80,7 @@ class EditorSubordinate extends EditorElement
         }
     }
 
-    public function displayData($flag = false)
+    public function displayData($parentId)
     {
         global $DB;
         $subChild = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
@@ -90,13 +90,14 @@ class EditorSubordinate extends EditorElement
 
         $hotIdInfo = explode(",", $this->hot);
         $idInfo = explode("-", $hotIdInfo[0]);
-
-        $idEnding = '';
-        for ($i = 1; $i < sizeof($idInfo) - 1; $i++)
+        
+        // swapping out arbitrary number given to parent element for id with database compositor id
+        $idEnding = preg_replace('/^{(subordinateinfoContent)}*(\S+)(\d+)$/', "$1$2$parentId", trim($idInfo[1]));
+        
+        for ($i = 2; $i < sizeof($idInfo); $i++)
         {
-            $idEnding .= $idInfo[$i] . "-";
+            $idEnding .= "-" . $idInfo[$i];
         }
-        $idEnding .= $idInfo[sizeof($idInfo) - 1];
 
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
@@ -110,10 +111,12 @@ class EditorSubordinate extends EditorElement
             $htmlContent .= "External Link";
         }
         $htmlContent .= "</div>";
-
-        $htmlContent .= $this->info->displayData($flag);
-
+        
+        $htmlContent .= "<div id='msm_subordinate_hotword_match-$idEnding' class='msm_subordinate_hotword_matchs'>";
+        $htmlContent .= $hotIdInfo[0];
         $htmlContent .= "</div>";
+
+        $htmlContent .= $this->info->displayData($parentId, $idEnding);        
 
         return $htmlContent;
     }

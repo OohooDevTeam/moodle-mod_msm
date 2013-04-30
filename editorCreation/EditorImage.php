@@ -41,9 +41,9 @@ class EditorImage extends EditorElement
 //        $component = $srcInfo[4];
 //        $filearea = 
         
-        print_object($srcInfo);
+//        print_object($srcInfo);
         
-//        $string = file_prepare_draft_area($draftitemid, $contextid, $component, $filearea, $itemid);
+        $string = file_prepare_draft_area($draftitemid, $contextid, $component, $filearea, $itemid);
         
         return $this;
     }
