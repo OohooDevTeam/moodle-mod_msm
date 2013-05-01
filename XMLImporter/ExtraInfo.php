@@ -300,41 +300,52 @@ class ExtraInfo extends Element
 
         if (!empty($extrainfoRecord))
         {
-            $this->caption = $extrainfoRecord->caption;
-            $this->extra_info_content = $extrainfoRecord->extra_info_content;
+//            $this->caption = $extrainfoRecord->caption;
+//            $this->extra_info_content = $extrainfoRecord->extra_info_content;
             $this->extra_info_name = $extrainfoRecord->extra_info_name;
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->tables = array();
+//        $this->subordinates = array();
+//        $this->medias = array();
+//        $this->tables = array();
+        $this->blocks = array();
 
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
-
-            switch ($childtablename)
+            
+            if($childtablename->tablename ==  "msm_block")
             {
-                case('msm_subordinate'):
-                    $subordinate = new Subordinate();
-                    $subordinate->loadFromDb($child->unit_id, $child->id);
-                    $this->subordinates[] = $subordinate;
-                    break;
-
-                case('msm_media'):
-                    $media = new Media();
-                    $media->loadFromDb($child->unit_id, $child->id);
-                    $this->medias[] = $media;
-                    break;
-
-                case('msm_table'):
-                    $table = new Table();
-                    $table->loadFromDb($child->unit_id, $child->id);
-                    $this->tables[] = $table;
-                    break;
+                $block = new Block();
+                $block->loadFromDb($child->unit_id, $child->id);
+                $this->blocks[] = $block;
             }
+
+//            switch ($childtablename)
+//            {
+//                case('msm_subordinate'):
+//                    $subordinate = new Subordinate();
+//                    $subordinate->loadFromDb($child->unit_id, $child->id);
+//                    $this->subordinates[] = $subordinate;
+//                    break;
+//
+//                case('msm_media'):
+//                    $media = new Media();
+//                    $media->loadFromDb($child->unit_id, $child->id);
+//                    $this->medias[] = $media;
+//                    break;
+//
+//                case('msm_table'):
+//                    $table = new Table();
+//                    $table->loadFromDb($child->unit_id, $child->id);
+//                    $this->tables[] = $table;
+//                    break;
+//                
+//                case 'msm_block':
+//                    
+//            }
         }
 
         return $this;
@@ -345,14 +356,10 @@ class ExtraInfo extends Element
         $content = '';
         $content .= "<div class='extrainfo'>";
 
-        $content .= "<span class='extrainfoname'>" . $this->name . "</span>";
-        if (!empty($this->caption))
-        {
-            $content .= "<span class='extrainfocaption'>" . $this->caption . "</span>";
-        }
-
+        $content .= "<span class='extrainfoname'>" . $this->extra_info_name . "</span>";
+        
         $content .= "<div class='mathcontent'>";
-        $content .= $this->displayContent($this, $this->content, $isindex);
+        $content .= $this->blocks[0]->displayhtml();
         $content .= "</div>";
 
         $content .= "</div>";

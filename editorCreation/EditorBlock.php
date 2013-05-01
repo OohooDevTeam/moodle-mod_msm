@@ -55,6 +55,7 @@ class EditorBlock extends EditorElement
     {
         $intromatch = '/^msm_intro_.*/';
         $bodymatch = '/^copied_msm_body-.*/';
+        $extramatch = '/^msm_extra_.*/';
 
         if (preg_match($intromatch, $idNumber))
         {
@@ -63,6 +64,10 @@ class EditorBlock extends EditorElement
         else if (preg_match($bodymatch, $idNumber))
         {
             $this->processBodyContent($idNumber);
+        }
+        else if (preg_match($extramatch, $idNumber))
+        {
+            $this->processExtraContent($idNumber);
         }
 
         return $this;
@@ -174,6 +179,35 @@ class EditorBlock extends EditorElement
         return $this;
     }
 
+    function processExtraContent($formKey)
+    {
+        $idInfo = explode("-", $formKey);
+
+        if (!empty($_POST['msm_extra_title_input-' . $idInfo[1]]))
+        {
+            $this->title = $_POST['msm_extra_title_input-' . $idInfo[1]];
+        }
+
+        if (!empty($_POST['msm_extra_content_input-' . $idInfo[1]]))
+        {
+            $rawextracontent = $_POST['msm_extra_content_input-' . $idInfo[1]];
+
+            foreach ($this->processContent($rawextracontent) as $content)
+            {
+                $this->content[] = $content;
+            }
+        }
+        else
+        {
+            // empty content needs to be flagged to give user a warning
+            $this->errorArray[] = 'msm_extra_content_input-' . $idInfo[1] . '_ifr';
+        }
+
+        $this->type = "extra";
+
+        return $this;
+    }
+
     /**
      * This method is an abstract method inherited from EditorElement.  Its main purpose is to
      * insert the data obtained from the POST object via method above to the msm_block table and to 
@@ -217,10 +251,10 @@ class EditorBlock extends EditorElement
      * 
      * @return HTML string
      */
-    public function displayData()
+    public function displayData($name = '')
     {
         $htmlContent = '';
-        
+
         if ($this->type == 'msm_intro')
         {
             $htmlContent .= "<div id='msm_intro_child_div-$this->compid' class='msm_intro_child'>";
@@ -240,7 +274,7 @@ class EditorBlock extends EditorElement
                 $htmlContent .= $content->displayData();
             }
             $htmlContent .= "</div>";
-            
+
             $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-introchild$this->compid'>";
             $htmlContent .= "</div>";
 
@@ -253,7 +287,7 @@ class EditorBlock extends EditorElement
                 }
             }
             $htmlContent .= "</div>";
-            
+
             $htmlContent .= "</div>";
         }
         else if ($this->type == 'msm_unit')
@@ -283,7 +317,7 @@ class EditorBlock extends EditorElement
             }
 
             $htmlContent .= "</div>";
-            
+
             $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-bodycontent$this->compid'>";
             $htmlContent .= "</div>";
 
@@ -296,9 +330,10 @@ class EditorBlock extends EditorElement
                 }
             }
             $htmlContent .= "</div>";
-            
+
             $htmlContent .= "</div>";
         }
+        
 
         return $htmlContent;
     }

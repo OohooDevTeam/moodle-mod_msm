@@ -961,7 +961,8 @@ function enableContentEditors(unitArray, currentElement)
     var bodymatch = /^copied_msm_body-\d+$/;
     var defmatch = /^copied_msm_def-\d+$/;
     var commentmatch = /^copied_msm_comment-\d+$/;
-    var theoremmatch = /^copied_msm_theorem-\d+$/;   
+    var theoremmatch = /^copied_msm_theorem-\d+$/;  
+    var extrainfomatch = /^copied_msm_extra_info-\d+$/;
     
     if(currentElement.match(bodymatch))
     {
@@ -982,6 +983,10 @@ function enableContentEditors(unitArray, currentElement)
     else if(currentElement.match(theoremmatch))
     {
         createTheoremText(currentElement, unitArray)
+    }
+    else if(currentElement.match(extrainfomatch))
+    {
+        createExtraInfoText(currentElement, unitArray);
     }
     
 }
@@ -1437,6 +1442,37 @@ function createBodyText(element, unitInfo)
     $("#"+currentId).replaceWith(bodyTextArea);    
         
     initEditor(bodyTextArea.id); 
+    $("#"+element).unbind();
+    enableEditorFunction();    
+}
+
+function createExtraInfoText(element, unitInfo)
+{
+    var elementIdInfo = element.split("-");
+    
+    $("#msm_extra_type_dropdown-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_extra_title_input-"+elementIdInfo[1]).removeAttr("disabled");
+    $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
+    
+    var extracontent = '';
+    for(var index=0; index < unitInfo["blocks"][0]["content"].length; index++)
+    {
+        extracontent += unitInfo["blocks"][0]["content"][index]["content"];
+    }
+    
+    var currentId = $("#"+element).children(".msm_editor_content").first().attr("id");
+    var extraInfo = currentId.split("-");
+                
+    var extraTextArea = document.createElement("textarea");
+    extraTextArea.id = "msm_extra_content_input-"+extraInfo[1];
+    extraTextArea.name = "msm_extra_content_input-"+extraInfo[1];
+    extraTextArea.className = "msm_unit_child_content";
+            
+    $(extraTextArea).val(extracontent);
+    
+    $("#"+currentId).replaceWith(extraTextArea);    
+        
+    initEditor(extraTextArea.id); 
     $("#"+element).unbind();
     enableEditorFunction();    
 }

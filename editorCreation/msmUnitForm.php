@@ -41,6 +41,7 @@ require_once('EditorAssociate.php');
 require_once('EditorInfo.php');
 require_once('EditorTable.php');
 require_once('EditorSubordinate.php');
+require_once('EditorExtraInfo.php');
 
 require_once('../XMLImporter/TableCollection.php');
 
@@ -154,6 +155,12 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             $comment->getFormData($childIdInfo[1]);
             $unitcontent[] = $comment;
             break;
+        
+        case "copied_msm_extra_info":
+            $extraInfo = new EditorExtraInfo();
+            $extraInfo->getFormData($childIdInfo[1]);
+            $unitcontent[] = $extraInfo;
+            break;
 
         case "copied_msm_intro":
             $intro = new EditorIntro();
@@ -176,7 +183,7 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
 foreach ($unitcontent as $unitchild)
 {
     // intro does not have errorArray property but its content blocks do
-    if (get_class($unitchild) == "EditorIntro")
+    if ((get_class($unitchild) == "EditorIntro")||(get_class($unitchild) == "EditorExtraInfo"))
     {
         foreach ($unitchild->blocks as $introContent)
         {
@@ -228,7 +235,7 @@ foreach ($unitcontent as $unitchild)
             }
         }
     }
-    if ((get_class($unitchild) != 'EditorIntro') && (get_class($unitchild) != 'EditorBlock'))
+    if ((get_class($unitchild) != 'EditorIntro') && (get_class($unitchild) != 'EditorBlock') && (get_class($unitchild) != 'EditorExtraInfo'))
     {
         foreach ($unitchild->children as $associate)
         {

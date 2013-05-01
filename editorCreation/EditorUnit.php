@@ -212,6 +212,13 @@ class EditorUnit extends EditorElement
                     $theorem->loadData($child->id);
                     $this->children[] = $theorem;
                     break;
+                
+                case "msm_extra_info":
+                    $extraInfo = new EditorExtraInfo();
+                    $extraInfo->loadData($child->id);
+                    $this->children[] = $extraInfo;
+                    break;
+                
                 case "msm_intro":
                     $intro = new EditorIntro();
                     $intro->loadData($child->id);
@@ -314,6 +321,10 @@ class EditorUnit extends EditorElement
                     break;
                 case "EditorBlock":
                     $childOrderString .= "copied_msm_body-$childElement->compid";
+                    break;
+                
+                case "EditorExtraInfo":
+                    $childOrderString .= "copied_msm_extra_info-$childElement->compid";
                     break;
             }
             $childOrderString .= ",";

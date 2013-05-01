@@ -75,9 +75,6 @@ function submitForm()
     
     $("#msm_unit_subordinate_container").val(subordinateData);
     
-    console.log("subordinateData");
-    console.log(subordinateData);
-        
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
     var ids = []; 

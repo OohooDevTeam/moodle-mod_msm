@@ -14,6 +14,7 @@ class EditorImage extends EditorElement
 {
     public $id;
     public $compid;
+    public $string_id; // save the alt name
     public $src;
     public $description;
     public $caption;
@@ -32,18 +33,11 @@ class EditorImage extends EditorElement
         $doc = new DOMDocument();
         $imgNode = $doc->importNode($idNumber, true);
         
-        $src = $imgNode->getAttribute("src");
-        
-        $srcInfo = explode("/", $src);
-//        
-//        $draftitemid = $srcInfo[6];
-//        $contextid = $srcInfo[3];
-//        $component = $srcInfo[4];
-//        $filearea = 
-        
-//        print_object($srcInfo);
-        
-        $string = file_prepare_draft_area($draftitemid, $contextid, $component, $filearea, $itemid);
+        $this->src = $imgNode->getAttribute("src");
+      
+        $this->height = $imgNode->getAttribute("height");
+        $this->width = $imgNode->getAttribute("width");
+        $this->string_id = $imgNode->getAttribute("alt");
         
         return $this;
     }

@@ -2244,6 +2244,22 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2013031100, 'msm');
     }
+    
+    if ($oldversion < 2013050100) {
+
+        // Define field block_caption to be dropped from msm_extra_info
+        $table = new xmldb_table('msm_extra_info');
+        $field = new xmldb_field('block_caption');
+
+        // Conditionally launch drop field block_caption
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2013050100, 'msm');
+    }
+
 
 
 

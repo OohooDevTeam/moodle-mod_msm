@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20130311" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20130501" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -465,8 +465,7 @@
     <TABLE NAME="msm_extra_info" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_ext" NEXT="msm_person">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="extra_info_name"/>
-        <FIELD NAME="extra_info_name" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="block_caption"/>
-        <FIELD NAME="block_caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="extra_info_name"/>
+        <FIELD NAME="extra_info_name" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

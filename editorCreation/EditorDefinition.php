@@ -109,10 +109,10 @@ class EditorDefinition extends EditorElement
                     $this->subordinates[] = $subordinates;
                 }
                 
-                foreach($this->processImage($this->content) as $key=>$image)
-                {
-                    $this->images[] = $image;
-                }
+//                foreach($this->processImage($this->content) as $key=>$image)
+//                {
+//                    $this->images[] = $image;
+//                }
             }
             else
             {

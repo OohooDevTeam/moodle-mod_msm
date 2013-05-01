@@ -30,6 +30,7 @@ require_once('editorCreation/EditorAssociate.php');
 require_once('editorCreation/EditorInfo.php');
 require_once('editorCreation/EditorTable.php');
 require_once('editorCreation/EditorSubordinate.php');
+require_once('editorCreation/EditorExtraInfo.php');
 
 //require_once("editorCreation/msmUnitForm.php");
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
@@ -294,6 +295,10 @@ $formContent .= '<div id="msm_editor_container">
                     <span class="msm_element_label">Content</span>
                 </div>                
                 <br />
+                <div class="msm_structural_element" id="msm_extra_info">
+                    <span class="msm_element_label" style="margin-top: 20%;">Extra
+                    Information</span>
+                </div>
                 <div class="msm_structural_element" id="msm_intro">
                     <span class="msm_element_label" style="margin-left: 25%;">Intro</span>
                 </div>                

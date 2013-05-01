@@ -662,7 +662,7 @@ class Block extends Element
             // first title is same as intro title
             if (!$flag)
             {
-                $content .= "<h3>$this->title</h3>";
+                $content .= "<div style='text-align:center;'><h3>$this->title</h3></div>";
             }
         }
 

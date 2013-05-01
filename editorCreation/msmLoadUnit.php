@@ -42,6 +42,7 @@ require_once('EditorAssociate.php');
 require_once('EditorInfo.php');
 require_once('EditorTable.php');
 require_once('EditorSubordinate.php');
+require_once('EditorExtraInfo.php');
 
 require_once('../XMLImporter/TableCollection.php');
 
@@ -118,6 +119,11 @@ else if (isset($_POST['mode']))
             $comment = new EditorComment();
             $comment->loadData($currentElement->id);
             echo json_encode($comment);
+            break;
+        case "msm_extra_info":
+            $extraInfo = new EditorExtraInfo();
+            $extraInfo->loadData($currentElement->id);
+            echo json_encode($extraInfo);
             break;
     }
 }

@@ -60,6 +60,13 @@ function processDroppedChild(e, droppedId)
             currentContentid = 'msm_comment_content_input-'+_index;
             break;
             
+        case "msm_extra_info":
+            element = makeExtraInfo();
+            element.appendTo("#msm_child_appending_area");
+            
+            currentContentid = 'msm_extra_content_input-'+_index;
+            break;
+            
         case "msm_intro":
             checkIndexNumber("copied_msm_intro-"+_index);
             var clonedCurrentElement = $("<div></div>");
@@ -1221,6 +1228,53 @@ function makeComment()
     clonedCurrentElement.append(commentDescriptionLabel);
     clonedCurrentElement.append(commentDescriptionField);
     clonedCurrentElement.append(commentAssociateDiv);
+    
+    return clonedCurrentElement;
+}
+
+function makeExtraInfo()
+{
+    checkIndexNumber("copied_msm_extra_info-"+_index);
+    
+    var clonedCurrentElement = $("<div></div>");
+    var extraInfoCloseButton = $('<a class="msm_element_close" style="margin-top: 2%;" onclick="deleteElement(event);">x</a>');
+    
+    var overlayMenu = $('<div class="msm_element_overlays" id="msm_element_overlay-'+_index+'" style="display: none;"></div>');
+            
+    var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
+    var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
+    
+    var extraSelectMenu = $('<select name="msm_extra_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_extra_type_dropdown-'+_index+'">\n\
+                                <option value="Summary">Summary</option>\n\
+                                <option value="Historical">Historical Notes</option>\n\
+                                <option value="Trailer">Trailer</option>\n\
+                                <option value="Acknowledgements">Acknowledgements</option>\n\
+                                <option value="Preface">Preface</option>\n\
+                           </select>');
+    var extraTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 20%;"> Extra Information </b></div>'); 
+    var extraTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
+    var extraTitleField = $('<input class="msm_unit_child_title" id="msm_extra_title_input-'+_index+'" name="msm_extra_title_input-'+_index+'" placeholder=" Title of this extra information"/>');
+          
+    var extraContentField = $('<textarea class="msm_unit_child_content" id="msm_extra_content_input-'+_index+'" name="msm_extra_content_input-'+_index+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-extracontent'+_index+'"></div>');
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-extracontent'+_index+'"></div>');
+    
+    clonedCurrentElement.attr("id", "copied_msm_extra_info-"+_index);
+    clonedCurrentElement.attr("class", "copied_msm_structural_element");
+    
+    extraTitleContainer.append(extraTitleHidden);    
+   
+    overlayMenu.append(overlayButtonDelete);
+    overlayMenu.append(overlayButtonEdit);
+            
+    clonedCurrentElement.append(extraInfoCloseButton);
+    clonedCurrentElement.append(overlayMenu);
+    clonedCurrentElement.append(extraSelectMenu);
+    clonedCurrentElement.append(extraTitleContainer);
+    clonedCurrentElement.append(extraTitleField);
+    clonedCurrentElement.append(extraContentField);
+    clonedCurrentElement.append(subordinateContainer);
+    clonedCurrentElement.append(subordinateResult);
     
     return clonedCurrentElement;
 }
