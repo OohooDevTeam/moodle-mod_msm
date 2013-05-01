@@ -108,11 +108,6 @@ class EditorDefinition extends EditorElement
                 {
                     $this->subordinates[] = $subordinates;
                 }
-                
-//                foreach($this->processImage($this->content) as $key=>$image)
-//                {
-//                    $this->images[] = $image;
-//                }
             }
             else
             {
@@ -446,7 +441,7 @@ class EditorDefinition extends EditorElement
         
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData();
+            $htmlContent .= $subordinate->displayData($this->compid);
         }
         
         $htmlContent .= "</div>";

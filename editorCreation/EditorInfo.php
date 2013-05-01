@@ -193,7 +193,7 @@ class EditorInfo extends EditorElement
 
             foreach ($this->subordinates as $subordinate)
             {
-                $htmlContent .= $subordinate->displayData();
+                $htmlContent .= $subordinate->displayData($parentId);
             }
             $htmlContent .= "</div>";
 

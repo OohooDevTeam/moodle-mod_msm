@@ -240,7 +240,7 @@ class EditorComment extends EditorElement
         $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentcontent$this->compid'>";        
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData();
+            $htmlContent .= $subordinate->displayData($this->compid);
         }        
         $htmlContent .= "</div>";
         
@@ -365,7 +365,7 @@ class EditorComment extends EditorElement
         $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentrefcontent$this->compid'>";        
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData();
+            $htmlContent .= $subordinate->displayData($this->compid);
         }        
         $htmlContent .= "</div>";
         

@@ -171,7 +171,7 @@ class EditorExtraInfo extends EditorElement
         {
             foreach ($content->subordinates as $subordinate)
             {
-                $htmlContent .= $subordinate->displayData();
+                $htmlContent .= $subordinate->displayData($this->compid);
             }
         }
         $htmlContent .= "</div>";

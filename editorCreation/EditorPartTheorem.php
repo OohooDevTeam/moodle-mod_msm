@@ -158,7 +158,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-parttheoremcontent$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>";
         foreach ($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData();
+            $htmlContent .= $subordinate->displayData($this->compid);
         }
         $htmlContent .= "</div>";
 
@@ -235,7 +235,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefpart$parentId-$this->compid'>";        
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData();
+            $htmlContent .= $subordinate->displayData($this->compid);
         }        
         $htmlContent .= "</div>";
         
