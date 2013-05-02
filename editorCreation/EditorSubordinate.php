@@ -90,18 +90,21 @@ class EditorSubordinate extends EditorElement
 
         $hotIdInfo = explode(",", $this->hot);
         $idInfo = explode("-", $hotIdInfo[0]);
-        
-        // swapping out arbitrary number given to parent element for id with database compositor id
-        $idEnding = preg_replace('/^{(subordinateinfoContent)}*(\S+)(\d+)$/', "$1$2$parentId", trim($idInfo[1]));
-        
+
+        $matchString = $idInfo[1];
         for ($i = 2; $i < sizeof($idInfo); $i++)
         {
-            $idEnding .= "-" . $idInfo[$i];
+            $matchString .= "-" . $idInfo[$i];
         }
+
+        // swapping out arbitrary number given to parent element for id with database compositor id        
+        $idEnding = preg_replace('/([A-Za-z]*?)\d+((?:-\d+)*)/', "$1", trim($matchString));
+        $idEnding .= $parentId;
+        $idEnding .= preg_replace('/([A-Za-z]*?)\d+((?:-\d+)*)/', "$2", trim($matchString));
 
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
-        
+
         if ($childTable == "msm_info")
         {
             $htmlContent .= "Information";
@@ -111,12 +114,12 @@ class EditorSubordinate extends EditorElement
             $htmlContent .= "External Link";
         }
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<div id='msm_subordinate_hotword_match-$idEnding' class='msm_subordinate_hotword_matchs'>";
         $htmlContent .= $hotIdInfo[0];
         $htmlContent .= "</div>";
 
-        $htmlContent .= $this->info->displayData($parentId, $idEnding);        
+        $htmlContent .= $this->info->displayData($parentId, $idEnding);
 
         return $htmlContent;
     }
