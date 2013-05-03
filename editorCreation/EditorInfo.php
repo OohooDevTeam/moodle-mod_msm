@@ -29,6 +29,7 @@ class EditorInfo extends EditorElement
     // idNumber --> parentid-currentelementid
     public function getFormData($idNumber)
     {
+        $flag = false;
         $subid = explode("|", $idNumber);
 
         if (sizeof($subid) > 1)
@@ -67,6 +68,58 @@ class EditorInfo extends EditorElement
                             foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                             {
                                 $this->subordinates[] = $subordinates;
+                            }
+                            $flag = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if ((!$flag) && (strpos($subid[0], "subordinateinfoContent") !== false))
+            {
+                $newsubid = '';
+                foreach ($allSubordinates as $index => $subordinate)
+                {
+                    $idValuePair = explode("||", $subordinate);
+
+                    if (strpos($idValuePair[0], "msm_subordinate_hotword_match") !== false)
+                    {
+                        if (strpos($idValuePair[1], $subid[0]))
+                        {
+                            $newIdInfo = explode("-", $idValuePair[0]);
+
+                            for ($i = 1; $i < sizeof($newIdInfo) - 1; $i++)
+                            {
+                                $newsubid .= $newIdInfo[$i] . "-";
+                            }
+                            $newsubid .= $newIdInfo[sizeof($newIdInfo) - 1];
+                        }
+                    }
+                }
+                
+                foreach ($allSubordinates as $index => $subordinate)
+                {
+                    $idValuePair = explode("||", $subordinate);
+
+                    if (strpos($idValuePair[0], $newsubid) !== false)
+                    {
+                        if (strpos($idValuePair[0], 'info') !== false)
+                        {
+                            if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $newsubid)
+                            {
+                                // converting &gt;..etc back to html characters
+                                $this->caption = htmlspecialchars_decode($idValuePair[1]);
+                            }
+                            else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $newsubid)
+                            {
+                                $this->content = htmlspecialchars_decode($idValuePair[1]);
+
+                                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                                {
+                                    $this->subordinates[] = $subordinates;
+                                }
+                                break;
                             }
                         }
                     }
@@ -127,7 +180,6 @@ class EditorInfo extends EditorElement
                     break;
             }
         }
-
         return $this;
     }
 

@@ -35,7 +35,7 @@ class EditorSubordinate extends EditorElement
         $hotNode = $doc->importNode($idNumber, true);
         $hotNodeId = $hotNode->getAttribute("id");
         $hotNodeText = $hotNode->textContent;
-
+        
         $this->hot = $hotNodeId . "," . $hotNodeText;
 
         $id = $idNumber->getAttribute("id");
