@@ -37,7 +37,7 @@ class EditorInfo extends EditorElement
             $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
 //
             $tempallSubordinates = explode("//|", $allSubordinateValues);
-            
+
             // copying the array from string processing above (due to it ending in comma, the last
             // element is empty)
             $allSubordinates = array();
@@ -46,7 +46,7 @@ class EditorInfo extends EditorElement
             {
                 $allSubordinates[] = $tempallSubordinates[$i];
             }
-
+            
             $i = 0;
             foreach ($allSubordinates as $index => $subordinate)
             {
@@ -94,32 +94,36 @@ class EditorInfo extends EditorElement
                                 $newsubid .= $newIdInfo[$i] . "-";
                             }
                             $newsubid .= $newIdInfo[sizeof($newIdInfo) - 1];
+                            break;
                         }
                     }
                 }
 
-                foreach ($allSubordinates as $index => $subordinate)
+                if ($newsubid !== '')
                 {
-                    $idValuePair = explode("||", $subordinate);
-
-                    if (strpos($idValuePair[0], $newsubid) !== false)
+                    foreach ($allSubordinates as $index => $subordinate)
                     {
-                        if (strpos($idValuePair[0], 'info') !== false)
-                        {
-                            if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $newsubid)
-                            {
-                                // converting &gt;..etc back to html characters
-                                $this->caption = htmlspecialchars_decode($idValuePair[1]);
-                            }
-                            else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $newsubid)
-                            {
-                                $this->content = htmlspecialchars_decode($idValuePair[1]);
+                        $idValuePair = explode("||", $subordinate);
 
-                                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                        if (strpos($idValuePair[0], $newsubid) !== false)
+                        {
+                            if (strpos($idValuePair[0], 'info') !== false)
+                            {
+                                if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $newsubid)
                                 {
-                                    $this->subordinates[] = $subordinates;
+                                    // converting &gt;..etc back to html characters
+                                    $this->caption = htmlspecialchars_decode($idValuePair[1]);
                                 }
-                                break;
+                                else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $newsubid)
+                                {
+                                    $this->content = htmlspecialchars_decode($idValuePair[1]);
+
+                                    foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                                    {
+                                        $this->subordinates[] = $subordinates;
+                                    }
+                                    break;
+                                }
                             }
                         }
                     }
@@ -419,7 +423,7 @@ class EditorInfo extends EditorElement
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
         $previewHtml .= $this->content;
         $previewHtml .= "</div>";
-        
+
         if (!empty($this->subordinates))
         {
             foreach ($this->subordinates as $subordinate)

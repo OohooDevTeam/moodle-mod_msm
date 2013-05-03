@@ -513,7 +513,7 @@ function addIntroContent(idNumber)
     
     var subordinateResult = document.createElement("div");
     subordinateResult.id = "msm_subordinate_result_container-introchild"+newId;
-    subordinateResult.className = "msm_subordiante_result_containers";
+    subordinateResult.className = "msm_subordinate_result_containers";
     
     introChildDiv.appendChild(introCloseButton);
     introChildDiv.appendChild(dragArea);
