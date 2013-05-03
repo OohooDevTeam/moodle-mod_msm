@@ -171,7 +171,7 @@ class EditorSubordinate extends EditorElement
             $id .= $indexInfo[$i] . "-";
         }
         $id .= $indexInfo[sizeof($indexInfo) - 1];
-
+        
         $previewHtml .= $this->info->displayPreview($id);
 
         return $previewHtml;

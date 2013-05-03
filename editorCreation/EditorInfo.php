@@ -37,7 +37,7 @@ class EditorInfo extends EditorElement
             $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
 //
             $tempallSubordinates = explode("//|", $allSubordinateValues);
-
+            
             // copying the array from string processing above (due to it ending in comma, the last
             // element is empty)
             $allSubordinates = array();
@@ -76,7 +76,7 @@ class EditorInfo extends EditorElement
                 }
             }
 
-            if ((!$flag) && (strpos($subid[0], "subordinateinfoContent") !== false))
+            if (!$flag)
             {
                 $newsubid = '';
                 foreach ($allSubordinates as $index => $subordinate)
@@ -97,7 +97,7 @@ class EditorInfo extends EditorElement
                         }
                     }
                 }
-                
+
                 foreach ($allSubordinates as $index => $subordinate)
                 {
                     $idValuePair = explode("||", $subordinate);
@@ -399,7 +399,7 @@ class EditorInfo extends EditorElement
             }
         }
 
-        $subordinateRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $subordinateRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
         foreach ($subordinateRecords as $sub)
         {
@@ -415,9 +415,11 @@ class EditorInfo extends EditorElement
     {
         $previewHtml = '';
         $titleString = htmlentities($this->caption);
+
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
         $previewHtml .= $this->content;
-
+        $previewHtml .= "</div>";
+        
         if (!empty($this->subordinates))
         {
             foreach ($this->subordinates as $subordinate)
@@ -426,7 +428,6 @@ class EditorInfo extends EditorElement
             }
         }
 
-        $previewHtml .= "</div>";
 
         return $previewHtml;
     }
