@@ -189,19 +189,8 @@ class EditorAssociate extends EditorElement
 
         foreach ($this->infos as $info)
         {
-            $htmlContent .= $info->displayData();
+            $htmlContent .= $info->displayData($currentAssociateRecord->parent_id-$this->compid, '');
         }
-
-//        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
-//        $htmlContent .= "</div>";
-//
-//        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$currentAssociateRecord->parent_id-$this->compid'>";
-//
-//        foreach ($this->subordinates as $subordinate)
-//        {
-//            $htmlContent .= $subordinate->displayData();
-//        }
-//        $htmlContent .= "</div>";
 
         $htmlContent .= "</div>";
 

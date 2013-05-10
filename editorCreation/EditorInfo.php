@@ -232,20 +232,24 @@ class EditorInfo extends EditorElement
 
         if ($parentTable->tablename == 'msm_associate')
         {
-            $htmlContent .= "<label for='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid'>title: </label>";
-            $htmlContent .= "<div id='msm_info_title-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_titles msm_editor_content'>";
+            $assoIdEnding =  "$parentRecord->parent_id-$parentRecord->id-$this->compid";
+            
+            print_object($assoIdEnding);
+            
+            $htmlContent .= "<label for='msm_info_title-$assoIdEnding'>title: </label>";
+            $htmlContent .= "<div id='msm_info_title-$assoIdEnding' class='msm_info_titles msm_editor_content'>";
             $htmlContent .= $this->caption;
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<label for='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid'>content: </label>";
-            $htmlContent .= "<div id='msm_info_content-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_info_contents msm_editor_content'>";
+            $htmlContent .= "<label for='msm_info_content-$assoIdEnding'>content: </label>";
+            $htmlContent .= "<div id='msm_info_content-$assoIdEnding' class='msm_info_contents msm_editor_content'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$parentRecord->parent_id-$parentRecord->id-$this->compid'>";
+            $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$assoIdEnding'>";
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$parentRecord->parent_id-$parentRecord->id-$this->compid'>";
+            $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$assoIdEnding'>";
 
             foreach ($this->subordinates as $subordinate)
             {
@@ -253,9 +257,9 @@ class EditorInfo extends EditorElement
             }
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div id='msm_associate_reftype_option-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_associate_reftype_optionarea'>";
+            $htmlContent .= "<div id='msm_associate_reftype_option-$assoIdEnding' class='msm_associate_reftype_optionarea'>";
             $htmlContent .= "<span class='msm_associate_reftype_label'>Type of reference to add: </span>";
-            $htmlContent .= "<select id='msm_associate_reftype-$parentRecord->parent_id-$parentRecord->id-$this->compid' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$parentRecord->parent_id-$parentRecord->id-$this->compid' disabled='disabled'>";
+            $htmlContent .= "<select id='msm_associate_reftype-$assoIdEnding' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$assoIdEnding' disabled='disabled'>";
 
             if (empty($this->ref))
             {
