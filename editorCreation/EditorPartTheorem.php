@@ -141,24 +141,26 @@ class EditorPartTheorem extends EditorElement
 
         $currentCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
         $parentStatementTheoremRecord = $DB->get_record("msm_compositor", array("id" => $currentCompRecord->parent_id));
-
+        
+        $idEnding = "$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid";
+        
         $htmlContent = '';
-        $htmlContent .= "<div id='msm_theorem_part_container-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_child'>";
-        $htmlContent .= "<div id='msm_theorem_part_title_container-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_title_containers'>";
+        $htmlContent .= "<div id='msm_theorem_part_container-$idEnding' class='msm_theorem_child'>";
+        $htmlContent .= "<div id='msm_theorem_part_title_container-$idEnding' class='msm_theorem_part_title_containers'>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>Part Theorem title: </label>";
-        $htmlContent .= "<input id='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' disabled='disabled' value='$this->caption'/>";
-        $htmlContent .= "<div id='msm_theorem_part_content-$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_content msm_editor_content'>";
+        $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$idEnding'>Part Theorem title: </label>";
+        $htmlContent .= "<input id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$idEnding' disabled='disabled' value='$this->caption'/>";
+        $htmlContent .= "<div id='msm_theorem_part_content-$idEnding' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
 
-        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-parttheoremcontent$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>";
+        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-parttheoremcontent$idEnding'>";
         $htmlContent .= "</div>";
-        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-parttheoremcontent$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid'>";
+        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-parttheoremcontent$idEnding'>";
         foreach ($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData($this->compid);
+            $htmlContent .= $subordinate->displayData($idEnding);
         }
         $htmlContent .= "</div>";
 

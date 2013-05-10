@@ -879,7 +879,7 @@ abstract class Element
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;  
 
-        @$doc->loadXML($XMLcontent);
+        $doc->loadHTML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');
@@ -1034,7 +1034,7 @@ abstract class Element
                                 $newtag .= "</span>";
                             }
 
-                            $hottagid = $hottag->getAttribute('id');
+                            $hottagid = $hottag->getAttribute('id');                            
                             
                             if (trim($positionvalue) == trim($hottagid))
                             {
