@@ -264,7 +264,6 @@ class EditorAssociate extends EditorElement
                 $previewHtml .= "</li>";
                 $previewHtml .= "<div class='refcontent' id='refcontent-$id' style='display:none;'>";
                 $previewHtml .= $this->infos[0]->ref->displayPreview($id);
-//                print_object($this->infos[0]->ref);
                 $previewHtml .= "</div>";
             }
             else

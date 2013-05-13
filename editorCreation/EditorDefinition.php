@@ -441,7 +441,7 @@ class EditorDefinition extends EditorElement
         
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData($this->compid);
+            $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
         }
         
         $htmlContent .= "</div>";

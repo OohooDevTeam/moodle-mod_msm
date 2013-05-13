@@ -360,12 +360,12 @@ class EditorComment extends EditorElement
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";   
         
-        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentrefcontent$this->compid'>";
+        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentrefcontent$parentId-$this->compid'>";
         $htmlContent .= "</div>";        
-        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentrefcontent$this->compid'>";        
+        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentrefcontent$parentId-$this->compid'>";        
         foreach($this->subordinates as $subordinate)
         {
-            $htmlContent .= $subordinate->displayData($this->compid);
+            $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
         }        
         $htmlContent .= "</div>";
         
