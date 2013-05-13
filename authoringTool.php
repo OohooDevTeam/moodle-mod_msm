@@ -360,6 +360,7 @@ else
 $formContent .=' </div>
                 </div>     
        </div>
+       <div class="msm_loadingscreen"></div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
         <button id="msm_comp_fullscreen"> Full Screen </button>';
 
@@ -412,7 +413,15 @@ $fpoptions['link'] = $link_options;
 
 $formContent .= '<script type="text/javascript"> 
             var tinymce_filepicker_options = ' . json_encode($fpoptions) . '
-            $(document).ready(function() {                  
+            $(document).ready(function() {  
+                $(".msm_loadingscreen").on({
+                    ajaxStart: function() {
+                        $(this).show();
+                    },
+                    ajaxStop: function() {
+                        $(this).hide();
+                    }
+                });
                 $("#msm_comp_fullscreen").click(function(event) {
                          $("#page-header").css("display", "none");
                          $(".block").addClass("dock_on_load");
