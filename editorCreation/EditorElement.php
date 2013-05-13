@@ -48,7 +48,7 @@ abstract class EditorElement
      * @param string $oldContent  raw content HTML string that needs to be processsed as mentioned above
      * @return array              array containing all content class objects
      */
-    function processContent($oldContent)
+    function processContent($oldContent, $edName='')
     {
         $doc = new DOMDocument();
         $doc->loadHTML($oldContent);
@@ -64,7 +64,7 @@ abstract class EditorElement
                 if (($child->tagName == "p") || (preg_match('/h\d/', $child->tagName) === 1))
                 {
                     $para = new EditorPara();
-                    $para->getFormData($child);
+                    $para->getFormData($child, $edName);
                     $newContent[] = $para;
                 }
                 else if (($child->tagName == "ol") || ($child->tagName == "ul"))
@@ -79,12 +79,12 @@ abstract class EditorElement
                     $table->getFormData($child);
                     $newContent[] = $table;
                 }
-                else if ($child->tagName == "img")
-                {
-                    $image = new EditorImage();
-                    $image->getFormData($child);
-                    $newContent[] = $image;
-                }
+//                else if ($child->tagName == "img")
+//                {
+//                    $image = new EditorImage();
+//                    $image->getFormData($child);
+//                    $newContent[] = $image;
+//                }
             }
         }
 
@@ -118,7 +118,7 @@ abstract class EditorElement
         return $subordinates;
     }
 
-    function processImage($content)
+    function processImage($content, $edName)
     {
         $images = array();
         $htmlParser = new DOMDocument;
@@ -129,7 +129,7 @@ abstract class EditorElement
         foreach ($imgElements as $key => $img)
         {
             $image = new EditorImage();
-            $image->getFormData($img);
+            $image->getFormData($img, $edName);
             $images[] = $image;
         }
 

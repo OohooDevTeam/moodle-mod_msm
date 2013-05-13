@@ -27,6 +27,7 @@ class EditorPara extends EditorElement
     public $content;
     public $id;
     public $compid;
+    public $imgs = array();
     public $subordinates = array();
 
     function __construct()
@@ -42,7 +43,7 @@ class EditorPara extends EditorElement
      * @param DOMElement $idNumber corresponds to <p> elements from content
      * @return \EditorPara
      */
-    function getFormData($idNumber)
+    function getFormData($idNumber, $edName='')
     {
         $doc = new DOMDocument();
         $paraNode = $doc->importNode($idNumber, true);
@@ -61,6 +62,11 @@ class EditorPara extends EditorElement
         }
 
         $this->content = $doc->saveHTML($paraNode);
+        
+        foreach ($this->processImage($this->content, $edName) as $key => $image)
+        {
+            $this->imgs[] = $image;
+        }
 
         foreach ($this->processSubordinate($this->content) as $key => $subordinates)
         {
@@ -104,6 +110,13 @@ class EditorPara extends EditorElement
         $this->compid = $DB->insert_record('msm_compositor', $compData);
 
         $subordinate_sibling = 0;
+        $img_sibling = 0;
+        
+        foreach($this->imgs as $img)
+        {
+            $img->insertData($this->compid, $img_sibling, $msmid);
+            $img_sibling = $img->compid;
+        }
 
         foreach ($this->subordinates as $subordinate)
         {

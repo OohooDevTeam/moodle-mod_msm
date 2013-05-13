@@ -163,7 +163,7 @@ class EditorBlock extends EditorElement
         {
             $rawintrocontent = $_POST['msm_body_content_input-' . $idInfo[1]];
 
-            foreach ($this->processContent($rawintrocontent) as $content)
+            foreach ($this->processContent($rawintrocontent, 'msm_body_content_input-' . $idInfo[1]) as $content)
             {
                 $this->content[] = $content;
             }

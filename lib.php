@@ -590,16 +590,27 @@ function msm_get_file_areas($course, $cm, $context)
  */
 function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload)
 {
-    global $DB, $CFG;
+    global $CFG, $DB;
 
-    if ($context->contextlevel != CONTEXT_MODULE)
+    require_once("$CFG->libdir/resourcelib.php");
+
+    if ($context->contextlevel != CONTEXT_SYSTEM)
     {
-        send_file_not_found();
+        return false;
     }
 
-    require_login($course, true, $cm);
+    require_course_login(1, true, $cm);
 
-    send_file_not_found();
+
+    $msmid = (int) array_shift($args);
+
+    $fs = get_file_storage();
+    $relativepath = implode('/', $args);
+    $fullpath = "/$context->id/mod_msm/$filearea/$msmid/$relativepath";
+    $file = $fs->get_file_by_hash(sha1($fullpath));
+
+    // finally send the file
+    send_stored_file($file, 86400, 0, $forcedownload);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
