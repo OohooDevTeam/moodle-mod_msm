@@ -189,7 +189,7 @@ class EditorAssociate extends EditorElement
 
         foreach ($this->infos as $info)
         {
-            $htmlContent .= $info->displayData($currentAssociateRecord->parent_id-$this->compid, '');
+            $htmlContent .= $info->displayData("$currentAssociateRecord->parent_id-$this->compid", '');
         }
 
         $htmlContent .= "</div>";

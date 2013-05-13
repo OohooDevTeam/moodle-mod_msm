@@ -234,8 +234,6 @@ class EditorInfo extends EditorElement
         {
             $assoIdEnding =  "$parentRecord->parent_id-$parentRecord->id-$this->compid";
             
-            print_object($assoIdEnding);
-            
             $htmlContent .= "<label for='msm_info_title-$assoIdEnding'>title: </label>";
             $htmlContent .= "<div id='msm_info_title-$assoIdEnding' class='msm_info_titles msm_editor_content'>";
             $htmlContent .= $this->caption;
@@ -250,7 +248,7 @@ class EditorInfo extends EditorElement
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$assoIdEnding'>";
-
+            
             foreach ($this->subordinates as $subordinate)
             {
                 $htmlContent .= $subordinate->displayData($parentId);
