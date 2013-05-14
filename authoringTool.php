@@ -31,6 +31,7 @@ require_once('editorCreation/EditorInfo.php');
 require_once('editorCreation/EditorTable.php');
 require_once('editorCreation/EditorSubordinate.php');
 require_once('editorCreation/EditorExtraInfo.php');
+require_once('editorCreation/EditorMedia.php');
 
 //require_once("editorCreation/msmUnitForm.php");
 //$id = optional_param('id', 0, PARAM_INT); // course_module ID, or

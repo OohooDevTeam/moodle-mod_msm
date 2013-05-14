@@ -120,7 +120,7 @@ abstract class EditorElement
 
     function processImage($content)
     {
-        $images = array();
+        $medias = array();
         $htmlParser = new DOMDocument;
 
         $htmlParser->loadHTML($content);
@@ -128,12 +128,15 @@ abstract class EditorElement
         $imgElements = $htmlParser->getElementsByTagName('img');
         foreach ($imgElements as $key => $img)
         {
-            $image = new EditorImage();
-            $image->getFormData($img);
-            $images[] = $image;
+            $media = new EditorMedia();
+            $media->getFormData($img);
+            $medias[] = $media;
+//            $image = new EditorImage();
+//            $image->getFormData($img);
+//            $images[] = $image;
         }
 
-        return $images;
+        return $medias;
     }
 
     function replaceImages($index, $imgObj, $content, $tagName)
@@ -153,7 +156,7 @@ abstract class EditorElement
         {
             if ($key == $index)
             {
-                 $imgNode->parentNode->replaceChild($newImgNode, $imgNode);
+                $imgNode->parentNode->replaceChild($newImgNode, $imgNode);
             }
         }
 

@@ -610,7 +610,7 @@ function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedo
     $fullpath = "/$context->id/mod_msm/$filearea/$msmid/$relativepath";
     
     $file = $fs->get_file_by_hash(sha1($fullpath));
-
+   
     // finally send the file
     send_stored_file($file, 86400, 0, $forcedownload);
 }

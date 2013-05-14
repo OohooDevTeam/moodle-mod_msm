@@ -22,7 +22,9 @@
 class MathImg extends Element
 {
 
+    public $id;
     public $position;
+    public $msm_id;
 
     function __construct($xmlpath = '')
     {
@@ -159,10 +161,14 @@ class MathImg extends Element
     {
         global $DB;
 
+        $imgCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+
         $imgRecord = $DB->get_record($this->tablename, array('id' => $id));
 
         if (!empty($imgRecord))
         {
+            $this->id = $imgRecord->id;
+            $this->msm_id = $imgCompRecord->msm_id;
             $this->compid = $compid;
             $this->src = $imgRecord->src;
             $this->height = $imgRecord->height;
@@ -190,14 +196,47 @@ class MathImg extends Element
 
     function displayhtml($inline, $isindex = false)
     {
+        global $DB, $CFG;
+
         $content = '';
 
         //getting the name of the image file to tag each image with name
         $srcfile = explode('/', $this->src);
+
+        if (sizeof($srcfile) < 3)
+        {
+            $fs = get_file_storage();
+
+            $msm = $DB->get_record('msm', array('id' => $this->msm_id), '*', MUST_EXIST);
+            $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
+            $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
+            $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+
+            $files = $fs->get_area_files($context->id, 'mod_msm', 'editor', $this->id);
+            foreach ($files as $file)
+            {
+                $filesize = $file->get_filesize();
+
+                if ($filesize > 0)
+                {
+                    $filename = $file->get_filename();
+                    $url = "{$CFG->wwwroot}/pluginfile.php/{$file->get_contextid()}/mod_msm/editor";
+                    $fileurlname = str_replace(' ', '%20', $filename);
+                    $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $fileurlname;
+                    $this->src = $fileurl;
+                }
+            }
+        }
+        else
+        {
+                   $imageinfo = getimagesize($this->src); 
+        }
+        
+        print_object($this->src);
+
         $filename = explode('.', end($srcfile));
 
         // getting the "natural size" of the image
-        $imageinfo = getimagesize($this->src);
 
         if (!empty($imageinfo))
         {
@@ -281,7 +320,7 @@ class MathImg extends Element
                 }
             }
         }
-
+        
         return $content;
     }
 
