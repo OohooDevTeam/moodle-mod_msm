@@ -224,6 +224,7 @@ class MathImg extends Element
                     $fileurlname = str_replace(' ', '%20', $filename);
                     $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $fileurlname;
                     $this->src = $fileurl;
+                    $imageinfo = "new material";
                 }
             }
         }
@@ -231,8 +232,6 @@ class MathImg extends Element
         {
                    $imageinfo = getimagesize($this->src); 
         }
-        
-        print_object($this->src);
 
         $filename = explode('.', end($srcfile));
 
