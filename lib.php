@@ -207,6 +207,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             $table_collection = new TableCollection();
             $tableid = $table_collection->insertTablename();
         }
+        
 
 ////
 //        $parser = new DOMDocument();
@@ -594,7 +595,7 @@ function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedo
 
     require_once("$CFG->libdir/resourcelib.php");
 
-    if ($context->contextlevel != CONTEXT_SYSTEM)
+    if ($context->contextlevel != CONTEXT_MODULE)
     {
         return false;
     }
@@ -607,6 +608,7 @@ function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedo
     $fs = get_file_storage();
     $relativepath = implode('/', $args);
     $fullpath = "/$context->id/mod_msm/$filearea/$msmid/$relativepath";
+    
     $file = $fs->get_file_by_hash(sha1($fullpath));
 
     // finally send the file

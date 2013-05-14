@@ -14,7 +14,6 @@
  * ************************************************************************ */
 require_once('../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
-//require_once($CFG->libdir . '/filelib.php');
 require_once('editorCreation/EditorElement.php');
 require_once('editorCreation/EditorUnit.php');
 require_once('editorCreation/EditorDefinition.php');
@@ -69,6 +68,8 @@ else
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+
+//print_object($context);
 
 add_to_log($course->id, 'createbook', 'createbook', 'view.php?id=' . $cm->id, $msm->id);
 
@@ -383,7 +384,7 @@ $args->env = 'filepicker';
 
 // advimage plugin
 $image_options = initialise_filepicker($args);
-$image_options->context = $context;
+$image_options->context = $context->id;
 $image_options->client_id = uniqid();
 $image_options->maxbytes = $options['maxbytes'];
 $image_options->env = 'editor';
@@ -392,7 +393,7 @@ $image_options->itemid = $draftitemid;
 // moodlemedia plugin
 $args->accepted_types = array('video', 'audio');
 $media_options = initialise_filepicker($args);
-$media_options->context = $context;
+$media_options->context = $context->id;
 $media_options->client_id = uniqid();
 $media_options->maxbytes = $options['maxbytes'];
 $media_options->env = 'editor';
@@ -401,7 +402,7 @@ $media_options->itemid = $draftitemid;
 // advlink plugin
 $args->accepted_types = '*';
 $link_options = initialise_filepicker($args);
-$link_options->context = $context;
+$link_options->context = $context->id;
 $link_options->client_id = uniqid();
 $link_options->maxbytes = $options['maxbytes'];
 $link_options->env = 'editor';
@@ -599,10 +600,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                
+                                                                                    
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                                        
+                                                                                            
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

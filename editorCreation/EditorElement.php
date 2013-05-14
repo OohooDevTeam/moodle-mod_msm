@@ -48,7 +48,7 @@ abstract class EditorElement
      * @param string $oldContent  raw content HTML string that needs to be processsed as mentioned above
      * @return array              array containing all content class objects
      */
-    function processContent($oldContent, $edName='')
+    function processContent($oldContent)
     {
         $doc = new DOMDocument();
         $doc->loadHTML($oldContent);
@@ -64,7 +64,7 @@ abstract class EditorElement
                 if (($child->tagName == "p") || (preg_match('/h\d/', $child->tagName) === 1))
                 {
                     $para = new EditorPara();
-                    $para->getFormData($child, $edName);
+                    $para->getFormData($child);
                     $newContent[] = $para;
                 }
                 else if (($child->tagName == "ol") || ($child->tagName == "ul"))
@@ -118,7 +118,7 @@ abstract class EditorElement
         return $subordinates;
     }
 
-    function processImage($content, $edName)
+    function processImage($content)
     {
         $images = array();
         $htmlParser = new DOMDocument;
@@ -129,7 +129,7 @@ abstract class EditorElement
         foreach ($imgElements as $key => $img)
         {
             $image = new EditorImage();
-            $image->getFormData($img, $edName);
+            $image->getFormData($img);
             $images[] = $image;
         }
 

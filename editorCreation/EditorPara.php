@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -43,7 +44,7 @@ class EditorPara extends EditorElement
      * @param DOMElement $idNumber corresponds to <p> elements from content
      * @return \EditorPara
      */
-    function getFormData($idNumber, $edName='')
+    function getFormData($idNumber)
     {
         $doc = new DOMDocument();
         $paraNode = $doc->importNode($idNumber, true);
@@ -63,11 +64,11 @@ class EditorPara extends EditorElement
 
         $this->content = $doc->saveHTML($paraNode);
         
-        foreach ($this->processImage($this->content, $edName) as $key => $image)
+        foreach ($this->processImage($this->content) as $key => $image)
         {
             $this->imgs[] = $image;
         }
-
+        
         foreach ($this->processSubordinate($this->content) as $key => $subordinates)
         {
             $this->subordinates[] = $subordinates;
@@ -111,8 +112,8 @@ class EditorPara extends EditorElement
 
         $subordinate_sibling = 0;
         $img_sibling = 0;
-        
-        foreach($this->imgs as $img)
+
+        foreach ($this->imgs as $img)
         {
             $img->insertData($this->compid, $img_sibling, $msmid);
             $img_sibling = $img->compid;
@@ -125,7 +126,7 @@ class EditorPara extends EditorElement
         }
     }
 
-     /**
+    /**
      * This method is an abstract method from EditorElement that has a purpose of displaying the 
      * data extracted from DB from loadData method by outputting the HTML code.  
      * 
