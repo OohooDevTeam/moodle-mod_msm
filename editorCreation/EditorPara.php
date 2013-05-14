@@ -113,11 +113,18 @@ class EditorPara extends EditorElement
         $subordinate_sibling = 0;
         $img_sibling = 0;
 
-        foreach ($this->imgs as $img)
+        foreach ($this->imgs as $key=>$img)
         {
             $img->insertData($this->compid, $img_sibling, $msmid);
             $img_sibling = $img->compid;
+            
+            $content = $this->replaceImages($key, $img, $this->content, "p");
         }
+        $this->content = $content;
+        
+        $data->id = $this->id;
+        $data->para_content = $this->content;
+        $this->id = $DB->update_record($this->tablename, $data);
 
         foreach ($this->subordinates as $subordinate)
         {

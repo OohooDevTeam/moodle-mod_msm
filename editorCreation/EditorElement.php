@@ -136,6 +136,32 @@ abstract class EditorElement
         return $images;
     }
 
+    function replaceImages($index, $imgObj, $content, $tagName)
+    {
+        $htmlParser = new DOMDocument();
+        $htmlParser->loadHTML($content);
+
+        $imgNodes = $htmlParser->getElementsByTagName("img");
+
+        $newImgNode = $htmlParser->createElement("img");
+        $newImgNode->setAttribute("src", $imgObj->src);
+        $newImgNode->setAttribute("alt", $imgObj->string_id);
+        $newImgNode->setAttribute("height", $imgObj->height);
+        $newImgNode->setAttribute("width", $imgObj->width);
+
+        foreach ($imgNodes as $key => $imgNode)
+        {
+            if ($key == $index)
+            {
+                 $imgNode->parentNode->replaceChild($newImgNode, $imgNode);
+            }
+        }
+
+        $newcontent = $htmlParser->saveHTML($htmlParser->importNode($htmlParser->getElementsByTagName($tagName)->item(0), true));
+
+        return $newcontent;
+    }
+
 }
 
 ?>
