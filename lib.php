@@ -593,26 +593,34 @@ function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedo
 {
     global $CFG, $DB;
 
-    require_once("$CFG->libdir/resourcelib.php");
+    //The following code is for security
+    require_course_login($course, true, $cm);
 
     if ($context->contextlevel != CONTEXT_MODULE)
     {
         return false;
     }
 
-    require_course_login(1, true, $cm);
-
-
+    $fileareas = array('editor');
+    if (!in_array($filearea, $fileareas))
+    {
+        return false;
+    }
+    //id of the content row
     $msmid = (int) array_shift($args);
 
+    //Now gather file information
     $fs = get_file_storage();
     $relativepath = implode('/', $args);
     $fullpath = "/$context->id/mod_msm/$filearea/$msmid/$relativepath";
-    
-    $file = $fs->get_file_by_hash(sha1($fullpath));
-   
+
+    if (!$file = $fs->get_file_by_hash(sha1($fullpath)) or $file->is_directory())
+    {
+        return false;
+    }
+
     // finally send the file
-    send_stored_file($file, 86400, 0, $forcedownload);
+    send_stored_file($file, 0, 0, $forcedownload);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
