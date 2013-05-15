@@ -606,7 +606,7 @@ function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedo
     {
         return false;
     }
-    //id of the content row
+   
     $msmid = (int) array_shift($args);
 
     //Now gather file information

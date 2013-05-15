@@ -78,6 +78,8 @@ function submitForm()
    var fileoptions = $("<input id='msm_file_options' name='msm_file_options' style='display:none;'/>");
    $(fileoptions).val(JSON.stringify(tinymce_filepicker_options));
    
+//   console.log(JSON.stringify(tinymce_filepicker_options));
+   
    $(fileoptions).appendTo($("#msm_unit_form"));
     
     var formData = $("#msm_unit_form").serializeArray();

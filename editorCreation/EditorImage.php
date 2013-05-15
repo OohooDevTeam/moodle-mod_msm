@@ -57,7 +57,7 @@ class EditorImage extends EditorElement
         return $this;
     }
 
-    public function insertData($parentid, $siblingid, $msmid)
+    public function insertData($parentid, $siblingid, $msmid, $key='')
     {
         global $DB, $CFG;
 
@@ -87,15 +87,8 @@ class EditorImage extends EditorElement
         $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
         $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
         $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-        $src = file_save_draft_area_files($this->fileoptions->itemid, $context->id, "mod_msm", $this->fileoptions->env, $this->id, array('subdirs' => 0, 'maxbytes' => 10000000, 'maxfiles' => 1), $this->src);
-//        $files = $fs->get_area_files($context->id, "mod_msm", $this->fileoptions->env);
-//        $file = $files[0];
-//        
-//        $url = "{$CFG->wwwroot}/pluginfile.php/{$file->get_contextid()}/mod_msm/editor";
-//        $filename = $file->get_filename();
-//        $fileurlname = str_replace(' ', '%20', $filename);
-//        $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $fileurlname;        
-
+        $src = file_save_draft_area_files($this->fileoptions->itemid, $context->id, "mod_msm", $this->fileoptions->env, $this->id, null, $this->src);  
+                
         $this->src = $src;
 
         $data->id = $this->id;
@@ -111,7 +104,7 @@ class EditorImage extends EditorElement
 
     public function loadData($compid)
     {
-        global $DB, $CFG;
+        global $DB;
 
         $imgCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
 
@@ -119,9 +112,7 @@ class EditorImage extends EditorElement
         $this->id = $imgCompRecord->unit_id;
 
         $imgRecord = $DB->get_record($this->tablename, array("id" => $this->id));
-
-        $src = $imgRecord->src;
-
+        
         $this->height = $imgRecord->height;
         $this->width = $imgRecord->width;
         $this->string_id = $imgRecord->string_id;

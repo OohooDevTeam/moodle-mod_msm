@@ -19,7 +19,6 @@ class EditorMedia extends EditorElement
     public $active;
     public $inline;
     public $media_type;
-    public $imagemaps = array();
     public $image;
 
 //    public $images = array();
@@ -43,7 +42,7 @@ class EditorMedia extends EditorElement
         return $this;
     }
 
-    public function insertData($parentid, $siblingid, $msmid)
+    public function insertData($parentid, $siblingid, $msmid, $key='')
     {
         global $DB;
 
@@ -67,7 +66,32 @@ class EditorMedia extends EditorElement
 
     public function loadData($compid)
     {
-        
+        global $DB;
+
+        $mediaCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+
+        $this->id = $mediaCompRecord->unit_id;
+        $this->compid = $mediaCompRecord->id;
+
+        $mediaRecord = $DB->get_record($this->tablename, array("id" => $this->id));
+
+        $this->inline = $mediaRecord->inline;
+        $this->active = $mediaRecord->active;
+
+        $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->id));
+
+        if (!empty($childRecord))
+        {
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id));
+
+            if ($childTable->tablename == "msm_img")
+            {
+                $this->media_type = "images";
+                $image = new EditorImage();
+                $image->loadData($childRecord->id);
+                $this->image = $image;
+            }
+        }
     }
 
     public function displayData()

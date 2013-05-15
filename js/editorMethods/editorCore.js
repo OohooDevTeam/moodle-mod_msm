@@ -163,6 +163,9 @@ function processDroppedChild(e, droppedId)
             var bodyContentField = $('<textarea class="msm_unit_child_content" id="msm_body_content_input-'+_index+'" name="msm_body_content_input-'+_index+'" placeholder=" Need to add moodle form here?"/>');
             var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-bodycontent'+_index+'"></div>');
             var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-bodycontent'+_index+'"></div>');
+            
+            var imagemappingContainer = $('<div class="msm_imagemapping_containers" id="msm_imagemapping_container-bodycontent'+_index+'"></div>');
+            var imagemappingResult = $('<div class="msm_imagemapping_result_containers" id="msm_imagemapping_result_container-bodycontent'+_index+'"></div>');
 
             bodyTitleContainer.append(bodyTitleLabel);
             bodyTitleContainer.append(bodyTitleField);
@@ -182,6 +185,8 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(bodyContentField);
             clonedCurrentElement.append(subordinateContainer);
             clonedCurrentElement.append(subordinateResult);
+            clonedCurrentElement.append(imagemappingContainer);
+            clonedCurrentElement.append(imagemappingResult);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_body_content_input-'+_index;
@@ -275,12 +280,12 @@ function processDroppedChild(e, droppedId)
 }
 
 function initEditor(elId)
-{    
+{        
     YUI().use('editor_tinymce', function(Y) {
         M.editor_tinymce.init_editor(Y, elId, {
             mode:"exact",
             elements: elId,
-            plugins:"safari,table,style,layer,advhr,advlink,emotions,inlinepopups,subordinate,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
+            plugins:"safari,table,style,layer,advhr,advlink,emotions,inlinepopups,imagemapper,subordinate,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
             width: "100%",
             height: "70%",
             theme_advanced_font_sizes:"1,2,3,4,5,6,7",
@@ -297,14 +302,30 @@ function initEditor(elId)
             langrev:-1,
             theme_advanced_buttons1:"fontselect,fontsizeselect,formatselect,|,undo,redo,|,search,replace,|,fullscreen",
             theme_advanced_buttons2:"bold,italic,underline,strikethrough,sub,sup,|,justifyleft,justifycenter,justifyright,|,cleanup,removeformat,pastetext,pasteword,|,forecolor,backcolor,|,ltr,rtl",
-            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,subordinate,|,image,moodlemedia,dragmath,nonbreaking,charmap,table,|,code,spellchecker",
+            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,subordinate,|,image,imagemapper,moodlemedia,dragmath,nonbreaking,charmap,table,|,code,spellchecker",
             moodle_init_plugins:"dragmath:loader.php/dragmath/-1/editor_plugin.js,moodlenolink:loader.php/moodlenolink/-1/editor_plugin.js,spellchecker:loader.php/spellchecker/-1/editor_plugin.js,moodleimage:loader.php/moodleimage/-1/editor_plugin.js,moodlemedia:loader.php/moodlemedia/-1/editor_plugin.js",
             file_browser_callback:"M.editor_tinymce.filepicker",
             moodle_plugin_base: M.cfg.wwwroot+"/lib/editor/tinymce/plugins/"
         })
-        
         M.editor_tinymce.init_filepicker(Y, elId, tinymce_filepicker_options);
     });
+//    var urlParam = window.location.search;
+//       
+//    var urlParamInfo = urlParam.split("=");
+//    
+//    $.ajax({
+//        type: "POST",
+//        url: "../msm/editorCreation/updateFileOption.php",
+//        data: {"msmid":urlParamInfo[1]},
+//        global: false,
+//        success: function(data) { 
+//            tinymce_filepicker_options = JSON.parse(data);
+//        },
+//        error: function() {
+//            alert("ajax error");
+//        }
+//    });
+    
 }
 
 function noSubInitEditor(elId)
@@ -850,8 +871,8 @@ function addAssociateForm(index, type)
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'-1">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
     var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'-1" name="msm_info_title-'+index + '-' + newId+'-1"/>');    
-//    var subordinateTitleContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infotitle'+index + '-' + newId+'"></div>');
-//    var subordinateTitleResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infotitle'+index + '-' + newId+'-1"></div>');
+    //    var subordinateTitleContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infotitle'+index + '-' + newId+'"></div>');
+    //    var subordinateTitleResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infotitle'+index + '-' + newId+'-1"></div>');
     
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'-1">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'-1" name="msm_info_content-'+index + '-' + newId+'-1"/>');
@@ -879,8 +900,8 @@ function addAssociateForm(index, type)
     associateInfoDiv.append(typeDropdown);
     associateInfoDiv.append(infoTitleLabel);
     associateInfoDiv.append(infoTitleInput);
-//    associateInfoDiv.append(subordinateTitleContainer);
-//    associateInfoDiv.append(subordinateTitleResult);
+    //    associateInfoDiv.append(subordinateTitleContainer);
+    //    associateInfoDiv.append(subordinateTitleResult);
     associateInfoDiv.append(infoContentLabel);
     associateInfoDiv.append(infoContentInput);
     associateInfoDiv.append(subordinateContentContainer);

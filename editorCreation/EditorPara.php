@@ -62,14 +62,11 @@ class EditorPara extends EditorElement
             }
         }
 
-        $this->content = $doc->saveHTML($paraNode);
-        
-        
+        $this->content = $doc->saveHTML($paraNode);      
         
         foreach ($this->processImage($this->content) as $key => $media)
         {
             $this->medias[] = $media;
-//            $this->imgs[] = $img;
         }
         
         foreach ($this->processSubordinate($this->content) as $key => $subordinates)
@@ -118,19 +115,10 @@ class EditorPara extends EditorElement
         $content = '';
         foreach($this->medias as $key=>$media)
         {
-            $media->insertData($this->compid, $media_sibliing, $msmid);
+            $media->insertData($this->compid, $media_sibliing, $msmid, $key);
             $media_sibliing = $media->compid;
              $content = $this->replaceImages($key, $media->image, $this->content, "p");
         }
-//        $img_sibling = 0;
-//
-//        foreach ($this->imgs as $key=>$img)
-//        {
-//            $img->insertData($this->compid, $img_sibling, $msmid);
-//            $img_sibling = $img->compid;
-//            
-//            $content = $this->replaceImages($key, $img, $this->content, "p");
-//        }
         $this->content = $content;
         
         $data->id = $this->id;
@@ -152,8 +140,13 @@ class EditorPara extends EditorElement
      */
     public function displayData()
     {
-        $htmlContent = '';         
-        $htmlContent .= $this->content;
+        $htmlContent = '';     
+        $content = '';
+        foreach($this->medias as $key=>$media)
+        {
+            $content = $this->replaceImages($key, $media->image, $this->content, "p");
+        }       
+        $htmlContent .= $content;        
         return $htmlContent;
     }
 
@@ -194,13 +187,12 @@ class EditorPara extends EditorElement
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
             }
-//            else if($childTable->tablename == 'msm_media')
-//            {
-//                print_object($child);
-//                $image = new EditorImage();
-//                $image->loadData($child->id);
-//                $this->imgs[] = $image;
-//            }
+            else if($childTable->tablename == 'msm_media')
+            {
+                $media = new EditorMedia();
+                $media->loadData($child->id);
+                $this->medias[] = $media;
+            }
             else
             {
                 echo "another child of para? " . $childTable->tablename;

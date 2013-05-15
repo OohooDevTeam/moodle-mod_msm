@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -33,7 +34,7 @@ class EditorDefinition extends EditorElement
     public $errorArray = array(); // has ids of empty contents
     public $children = array(); //associate
     public $subordinates = array();
-    public $images = array();
+    public $medias = array();
 
     // constructor for the class
     public function __construct()
@@ -80,6 +81,11 @@ class EditorDefinition extends EditorElement
             {
                 $this->content = $_POST['msm_defref_content_input-' . $newId];
 
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
+                    $this->medias[] = $media;
+                }
+
                 // grab all anchored elements in content --> it is only from subordinate
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
@@ -102,6 +108,11 @@ class EditorDefinition extends EditorElement
             if ($_POST['msm_def_content_input-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_def_content_input-' . $idNumber];
+
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
+                    $this->medias[] = $media;
+                }
 
                 // grab all anchored elements in content --> it is only from subordinate
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
@@ -152,7 +163,20 @@ class EditorDefinition extends EditorElement
         $data = new stdClass();
         $data->def_type = $this->type;
         $data->caption = $this->title;
-        $data->def_content = "<div>$this->content</div>";
+
+        $pParser = new DOMDocument();
+        $pParser->loadHTML($this->content);
+        $divs = $pParser->getElementsByTagName("div");
+
+        if ($divs->length > 0)
+        {
+            $data->def_content = $this->content;
+        }
+        else
+        {
+            $data->def_content = "<div>$this->content</div>";
+        }
+
         $data->description = $this->description;
 
         $this->id = $DB->insert_record($this->tablename, $data);
@@ -174,6 +198,21 @@ class EditorDefinition extends EditorElement
             $sibling_id = $associate->compid;
         }
 
+        $media_sibliing = 0;
+        $content = '';
+        foreach ($this->medias as $key => $media)
+        {
+            $media->insertData($this->compid, $media_sibliing, $msmid, $key);
+            $media_sibliing = $media->compid;
+            $content = $this->replaceImages($key, $media->image, $data->def_content, "div");
+        }
+        $this->content = $content;
+
+        $data->id = $this->id;
+        $data->para_content = $this->content;
+        $this->id = $DB->update_record($this->tablename, $data);
+
+
         $subordinate_sibling = 0;
         foreach ($this->subordinates as $subordinate)
         {
@@ -194,14 +233,14 @@ class EditorDefinition extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_def-$this->compid' class='copied_msm_structural_element'>";
-        
+
         $htmlContent .= "<div class='msm_element_overlays' id='msm_element_overlay-$this->compid' style='display: none;'>";
 
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
 
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<select id='msm_def_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_def_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
@@ -265,20 +304,20 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        
-        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-defcontent$this->compid'>";
+
+        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-defcontent$this->compid'>";
         $htmlContent .= "</div>";
-        
-        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-defcontent$this->compid'>";
-        
-        foreach($this->subordinates as $subordinate)
+
+        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-defcontent$this->compid'>";
+
+        foreach ($this->subordinates as $subordinate)
         {
             $htmlContent .= $subordinate->displayData($this->compid);
         }
-        
+
         $htmlContent .= "</div>";
 
-        
+
         $htmlContent .= "<label id='msm_def_description_label-$this->compid' class='msm_child_description_labels' for='msm_def_description_label-$this->compid'>Description: </label>";
         $htmlContent .= "<input id='msm_def_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_def_description_input-$this->compid'/>";
 
@@ -319,11 +358,11 @@ class EditorDefinition extends EditorElement
         $this->type = $defRecord->def_type;
         $this->title = $defRecord->caption;
         $this->description = $defRecord->description;
-        
+
         $htmlParser = new DOMDocument();
         $htmlParser->loadHTML($defRecord->def_content);
-        
-        foreach($htmlParser->documentElement->childNodes as $child)
+
+        foreach ($htmlParser->documentElement->childNodes as $child)
         {
             $this->content .= $htmlParser->saveHTML($child);
         }
@@ -367,7 +406,7 @@ class EditorDefinition extends EditorElement
 
         $htmlContent = '';
 
-        $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";       
+        $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";
 
         $htmlContent .= "<select id='msm_defref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_defref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
@@ -433,17 +472,17 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<div id='msm_defref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        
-        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-defrefcontent$parentId-$this->compid'>";
+
+        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-defrefcontent$parentId-$this->compid'>";
         $htmlContent .= "</div>";
-        
-        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-defrefcontent$parentId-$this->compid'>";
-        
-        foreach($this->subordinates as $subordinate)
+
+        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-defrefcontent$parentId-$this->compid'>";
+
+        foreach ($this->subordinates as $subordinate)
         {
             $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
         }
-        
+
         $htmlContent .= "</div>";
 
         $htmlContent .= "<label id='msm_defref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_defref_description_label-$parentId-$this->compid'>Description: </label>";
@@ -484,9 +523,9 @@ class EditorDefinition extends EditorElement
 
 
         $previewHtml .= "<div class='mathcontent'>";
-        
-        $previewHtml .= $this->content;        
-       
+
+        $previewHtml .= $this->content;
+
 //        $previewHtml .= $this->previewSubordinate("<div>$this->content</div>", $this->subordinates);
 //        $previewHtml .= "<br />";
         $previewHtml .= "</div>";
@@ -502,17 +541,17 @@ class EditorDefinition extends EditorElement
             }
             $previewHtml .= "</ul>";
         }
-        
-         if(!empty($this->subordinates))
+
+        if (!empty($this->subordinates))
         {
-            foreach($this->subordinates as $subordinate)
+            foreach ($this->subordinates as $subordinate)
             {
                 $previewHtml .= $subordinate->displayPreview();
             }
         }
 
         $previewHtml .= "</div>";
-        $previewHtml .= "<br />";        
+        $previewHtml .= "<br />";
 
         return $previewHtml;
     }

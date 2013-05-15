@@ -30,6 +30,7 @@ class EditorInContent extends EditorElement
     public $type;
     public $content;
     public $subordinates = array();
+    public $medias = array();
 
     /**
      * constructor for the class
@@ -84,6 +85,11 @@ class EditorInContent extends EditorElement
 
         $this->content = $doc->saveHTML($listElement);
 
+        foreach ($this->processImage($this->content) as $key => $media)
+        {
+            $this->medias[] = $media;
+        }
+
         foreach ($this->processSubordinate($this->content) as $key => $subordinates)
         {
             $this->subordinates[] = $subordinates;
@@ -123,6 +129,27 @@ class EditorInContent extends EditorElement
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
 
+        $media_sibliing = 0;
+        $content = '';
+        foreach ($this->medias as $key => $media)
+        {
+            $media->insertData($this->compid, $media_sibliing, $msmid, $key);
+            $media_sibliing = $media->compid;
+            if ($this->type == "ordered")
+            {
+                $content = $this->replaceImages($key, $media->image, $this->content, "ol");
+            }
+            else
+            {
+                $content = $this->replaceImages($key, $media->image, $this->content, "ul");
+            }
+        }
+        $this->content = $content;
+
+        $data->id = $this->id;
+        $data->para_content = $this->content;
+        $this->id = $DB->update_record($this->tablename, $data);
+
         $subordinate_sibling = 0;
         foreach ($this->subordinates as $subordinate)
         {
@@ -131,7 +158,7 @@ class EditorInContent extends EditorElement
         }
     }
 
-     /**
+    /**
      * This method is an abstract method from EditorElement that has a purpose of displaying the 
      * data extracted from DB from loadData method by outputting the HTML code.  
      * 
@@ -146,7 +173,7 @@ class EditorInContent extends EditorElement
         return $htmlContent;
     }
 
-     /**
+    /**
      * This abstract method from EditoElement extracts appropriate information from the 
      * msm_content table and also triggers extraction of data from its children using the 
      * data given by the msm_compositor table. It calls the loadData method from the EditorSubordinate 
@@ -170,18 +197,24 @@ class EditorInContent extends EditorElement
         $this->additional_attribute = $inContentRecord->additional_attribute;
         $this->type = $inContentRecord->type;
         $this->content = $inContentRecord->content;
-        
-        $childRecords = $DB->get_records("msm_compositor", array("parent_id"=>$compid), "prev_sibling_id");
-        
-        foreach($childRecords as $child)
+
+        $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid), "prev_sibling_id");
+
+        foreach ($childRecords as $child)
         {
-            $childTable = $DB->get_record("msm_table_collection", array("id"=>$child->table_id));
-            
-            if($childTable->tablename == "msm_subordinate")
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+
+            if ($childTable->tablename == "msm_subordinate")
             {
                 $subordinate = new EditorSubordinate();
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
+            }
+            else if ($childTable->tablename == "msm_media")
+            {
+                $media = new EditorMedia();
+                $media->loadData($child->id);
+                $this->medias[] = $media;
             }
         }
 
@@ -201,7 +234,7 @@ class EditorInContent extends EditorElement
         $previewHtml = '';
 
         $previewHtml .= $this->content;
-        
+
         if (!empty($this->subordinates))
         {
             foreach ($this->subordinates as $subordinate)

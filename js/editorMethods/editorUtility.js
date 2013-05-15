@@ -1332,8 +1332,7 @@ function createDefText(element, unitInfo)
             
     $(defTextArea).val(defcontent);   
     
-    $("#"+currentId).replaceWith(defTextArea);    
-        
+    $("#"+currentId).replaceWith(defTextArea);   
     initEditor(defTextArea.id); 
     $("#"+element).unbind();
     createAssociateText(element, unitInfo);
