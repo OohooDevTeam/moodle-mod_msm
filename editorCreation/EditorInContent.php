@@ -133,7 +133,7 @@ class EditorInContent extends EditorElement
         $content = '';
         foreach ($this->medias as $key => $media)
         {
-            $media->insertData($this->compid, $media_sibliing, $msmid, $key);
+            $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
             if ($this->type == "ordered")
             {

@@ -205,7 +205,7 @@ class EditorComment extends EditorElement
         $content = '';
         foreach ($this->medias as $key => $media)
         {
-            $media->insertData($this->compid, $media_sibliing, $msmid, $key);
+            $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
             $content = $this->replaceImages($key, $media->image, $data->comment_content, "div");
         }

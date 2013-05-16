@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -12,7 +13,6 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
  * ************************************************************************* */
-
 /**
  * This script is called by an AJAX call in autorNav.js, saveMethod.js and editorUtility.js and its main role is to
  * remove the unit specified by the user and to insert data in the MSM editor to the correct database tables.
@@ -21,7 +21,6 @@
  * also essential for the preview feature of the MSM as it triggeres displayPreview function in each of the classes.
  * 
  */
-
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 
@@ -49,7 +48,6 @@ require_once('../XMLImporter/TableCollection.php');
 global $DB;
 
 //print_object($_POST);
-
 // to remove unit when triggered by Remove this Unit button
 if (!empty($_POST["removeUnit"]))
 {
@@ -121,8 +119,14 @@ $lengthOfArray = sizeOf($arrayOfChild);
 
 $msmId = $arrayOfChild[$lengthOfArray - 1];
 
-$unitcontent = array(); // all the children of the unit such as def/comment/theorem...etc
+$msm = $DB->get_record('msm', array('id' => $msmId), '*', MUST_EXIST);
+$course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
+$cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
 
+require_login($course, true, $cm);
+$context = get_context_instance(CONTEXT_MODULE, $cm->id);
+
+$unitcontent = array(); // all the children of the unit such as def/comment/theorem...etc
 // these two variables are used to check for null/empty content errors
 $hasError = false;
 $errorArray = array();
@@ -156,7 +160,7 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
             $comment->getFormData($childIdInfo[1]);
             $unitcontent[] = $comment;
             break;
-        
+
         case "copied_msm_extra_info":
             $extraInfo = new EditorExtraInfo();
             $extraInfo->getFormData($childIdInfo[1]);
@@ -184,7 +188,7 @@ for ($i = 0; $i < $lengthOfArray - 1; $i++)
 foreach ($unitcontent as $unitchild)
 {
     // intro does not have errorArray property but its content blocks do
-    if ((get_class($unitchild) == "EditorIntro")||(get_class($unitchild) == "EditorExtraInfo"))
+    if ((get_class($unitchild) == "EditorIntro") || (get_class($unitchild) == "EditorExtraInfo"))
     {
         foreach ($unitchild->blocks as $introContent)
         {
@@ -317,6 +321,10 @@ else
         // need code fo insert unit information to unitdatabase before procesing the child so that
         // the parentid exists when the child elements are being inserted to the db
 
+
+        $fileoptions = json_decode($_POST["msm_file_options"])->image;
+        file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
+
         $siblingCompid = 0;
 
         foreach ($unitcontent as $element)
@@ -324,7 +332,6 @@ else
             $element->insertData($unit->compid, $siblingCompid, $msmId);
             $siblingCompid = $element->compid;
         }
-
         // need both compid(in case the same unit was inserted multiple times in the composition) and the id of the unit
 
         if (!empty($_POST['msm_currentUnit_id']))
@@ -362,7 +369,7 @@ else
         {
             $previewHtml .= $unitchild->displayPreview($key);
         }
-        
+
         echo json_encode($previewHtml);
     }
 }

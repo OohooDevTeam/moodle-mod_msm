@@ -25,6 +25,7 @@ class MathImg extends Element
     public $id;
     public $position;
     public $msm_id;
+    public $itemid;
 
     function __construct($xmlpath = '')
     {
@@ -167,10 +168,19 @@ class MathImg extends Element
 
         if (!empty($imgRecord))
         {
+            $srcInfo = explode("||", $imgRecord->src);
             $this->id = $imgRecord->id;
             $this->msm_id = $imgCompRecord->msm_id;
             $this->compid = $compid;
-            $this->src = $imgRecord->src;
+            $this->src = $srcInfo[0];
+            if (sizeof($srcInfo) > 1)
+            {
+                $this->itemid = $srcInfo[1];
+            }
+            else
+            {
+                $this->itemid = null;
+            }
             $this->height = $imgRecord->height;
             $this->width = $imgRecord->width;
         }
@@ -199,9 +209,12 @@ class MathImg extends Element
         global $DB, $CFG;
 
         $content = '';
+        $imageinfo = '';
 
         //getting the name of the image file to tag each image with name
         $srcfile = explode('/', $this->src);
+        
+        $src = '';
 
         if (sizeof($srcfile) < 3)
         {
@@ -212,25 +225,29 @@ class MathImg extends Element
             $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
             $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 
-            $files = $fs->get_area_files($context->id, 'mod_msm', 'editor', $this->id);
+            $files = $fs->get_area_files($context->id, 'mod_msm', 'editor', $msm->id);
+
             foreach ($files as $file)
             {
                 $filesize = $file->get_filesize();
-
                 if ($filesize > 0)
                 {
-                    $filename = $file->get_filename();
-                    $url = "{$CFG->wwwroot}/pluginfile.php/{$file->get_contextid()}/mod_msm/editor";
-                    $fileurlname = str_replace(' ', '%20', $filename);
-                    $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $fileurlname;
-                    $this->src = $fileurl;
-                    $imageinfo = "new material";
+                    if (($file->get_itemid() == $this->itemid) && ($file->get_filename()) == end($srcfile))
+                    {
+                        $filename = $file->get_filename();
+                        $url = "{$CFG->wwwroot}/pluginfile.php/{$file->get_contextid()}/mod_msm/editor";
+                        $fileurlname = str_replace(' ', '%20', $filename);
+                        $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $fileurlname;
+                        $this->src = $fileurl;
+                        $imageinfo = "newcontent";
+                        
+                    }
                 }
             }
         }
         else
         {
-                   $imageinfo = getimagesize($this->src); 
+            $imageinfo = getimagesize($this->src);
         }
 
         $filename = explode('.', end($srcfile));
@@ -319,7 +336,7 @@ class MathImg extends Element
                 }
             }
         }
-        
+
         return $content;
     }
 

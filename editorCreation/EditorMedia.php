@@ -42,7 +42,7 @@ class EditorMedia extends EditorElement
         return $this;
     }
 
-    public function insertData($parentid, $siblingid, $msmid, $key='')
+    public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
 
@@ -61,6 +61,7 @@ class EditorMedia extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record("msm_compositor", $compData);
+        
         $this->image->insertData($this->compid, 0, $msmid);
     }
 

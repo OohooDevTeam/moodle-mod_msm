@@ -28,8 +28,9 @@ class EditorPara extends EditorElement
     public $content;
     public $id;
     public $compid;
-    public $imgs = array();
+//    public $imgs = array();
     public $subordinates = array();
+    public $medias = array();
 
     function __construct()
     {
@@ -73,7 +74,7 @@ class EditorPara extends EditorElement
         {
             $this->subordinates[] = $subordinates;
         }
-
+        
         return $this;
     }
 
@@ -113,9 +114,10 @@ class EditorPara extends EditorElement
         $subordinate_sibling = 0;
         $media_sibliing = 0;
         $content = '';
+        
         foreach($this->medias as $key=>$media)
         {
-            $media->insertData($this->compid, $media_sibliing, $msmid, $key);
+            $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
              $content = $this->replaceImages($key, $media->image, $this->content, "p");
         }
