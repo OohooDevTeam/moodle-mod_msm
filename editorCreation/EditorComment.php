@@ -209,11 +209,14 @@ class EditorComment extends EditorElement
             $media_sibliing = $media->compid;
             $content = $this->replaceImages($key, $media->image, $data->comment_content, "div");
         }
-        $this->content = $content;
+        if (!empty($this->medias))
+        {
+            $this->content = $content;
 
-        $data->id = $this->id;
-        $data->para_content = $this->content;
-        $this->id = $DB->update_record($this->tablename, $data);
+            $data->id = $this->id;
+            $data->comment_content = $this->content;
+            $this->id = $DB->update_record($this->tablename, $data);
+        }
 
         $subordinate_sibling = 0;
         foreach ($this->subordinates as $subordinate)

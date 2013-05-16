@@ -79,7 +79,7 @@ class EditorMedia extends EditorElement
         $this->inline = $mediaRecord->inline;
         $this->active = $mediaRecord->active;
 
-        $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->id));
+        $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $compid));
 
         if (!empty($childRecord))
         {
@@ -93,6 +93,7 @@ class EditorMedia extends EditorElement
                 $this->image = $image;
             }
         }
+        return $this;
     }
 
     public function displayData()

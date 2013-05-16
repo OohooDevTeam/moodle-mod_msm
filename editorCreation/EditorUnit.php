@@ -337,7 +337,7 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
-
+        $htmlContent .= "<input id='msm_file_options' name='msm_file_options' style='display:none;'/>";
 
         return $htmlContent;
     }

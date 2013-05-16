@@ -324,6 +324,8 @@ else
 
         $fileoptions = json_decode($_POST["msm_file_options"])->image;
         file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
+        
+//        echo "filesave done";
 
         $siblingCompid = 0;
 

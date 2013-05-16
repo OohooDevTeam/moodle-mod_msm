@@ -216,7 +216,7 @@ class MathImg extends Element
         
         $src = '';
 
-        if (sizeof($srcfile) < 3)
+        if (!empty($this->itemid))
         {
             $fs = get_file_storage();
 

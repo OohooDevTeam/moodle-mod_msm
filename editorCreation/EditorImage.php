@@ -36,22 +36,32 @@ class EditorImage extends EditorElement
 
         $doc = new DOMDocument();
         $imgNode = $doc->importNode($idNumber, true);
+        $src = null;
 
         // processing the src value to add the wwwroot to the front of the string and remove the 
         // ../../ due to relative pathing
-        $srcInfo = explode("/", $imgNode->getAttribute("src"));
-        $src = $CFG->wwwroot;
-        for ($i = 2; $i < sizeof($srcInfo); $i++)
-        {
-            $src .= "/" . $srcInfo[$i];
-        }
 
+        $srcAttr = $imgNode->getAttribute("src");
+
+        if (strpos($CFG->wwwroot, $srcAttr))
+        {
+            $src = $srcAttr;
+        }
+        else
+        {
+            $srcInfo = explode("/", $srcAttr);
+            $src = $CFG->wwwroot;
+            for ($i = 2; $i < sizeof($srcInfo); $i++)
+            {
+                $src .= "/" . $srcInfo[$i];
+            }
+        }
         $this->src = $src;
 
         $this->height = $imgNode->getAttribute("height");
         $this->width = $imgNode->getAttribute("width");
         $this->string_id = $imgNode->getAttribute("alt");
-        
+
         $this->fileoptions = json_decode($_POST["msm_file_options"])->image;
         return $this;
     }
@@ -60,13 +70,11 @@ class EditorImage extends EditorElement
     {
         global $DB, $CFG;
 
-        require_once("$CFG->libdir/filelib.php");
-
         $data = new stdClass();
         $data->string_id = $this->string_id;
 // $data->description = $this->description;
 // $data->extended_caption = $this->caption;
-        $data->src = $this->src;
+        $data->src = $this->src . "||" . $msmid;
         $data->height = $this->height;
         $data->width = $this->width;
 
@@ -80,45 +88,6 @@ class EditorImage extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record("msm_compositor", $compData);
-
-//        echo "image received key";
-//        print_object($key);
-//        
-//        if ($key == 0)
-//        {
-            $msm = $DB->get_record('msm', array('id' => $msmid), '*', MUST_EXIST);
-            $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
-            $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
-            $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-//
-//            $src = file_save_draft_area_files($this->fileoptions->itemid, $context->id, "mod_msm", $this->fileoptions->env, $this->id, null);
-//        }
-////
-//        $files = file_get_drafarea_files($this->fileoptions->itemid);
-//        $file = $files[$key];
-
-            
-        $src = file_rewrite_urls_to_pluginfile($this->src, $this->fileoptions->itemid);
-        
-        
-        $this->src = $src;
-
-        $data->id = $this->id;
-        $data->src = $this->src . "||" . $msm->id;
-        // update the img record with the converted url with @@PLUGINFILE@@
-        $this->id = $DB->update_record($this->tablename, $data);
-
-
-
-
-//        // converting src from draft file url to pluginfile url that moodle recognizes for db
-//        $msm = $DB->get_record('msm', array('id' => $msmid), '*', MUST_EXIST);
-//        $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
-//        $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
-//        $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-//
-//        $src = file_save_draft_area_files($this->fileoptions->itemid, $context->id, "mod_msm", $this->fileoptions->env, $this->id, null, $this->src);
-//               
     }
 
     public function displayData()
@@ -137,9 +106,14 @@ class EditorImage extends EditorElement
 
         $imgRecord = $DB->get_record($this->tablename, array("id" => $this->id));
 
+        $srcInfo = explode("||", $imgRecord->src);
+
+        $this->src = $srcInfo[0];
         $this->height = $imgRecord->height;
         $this->width = $imgRecord->width;
         $this->string_id = $imgRecord->string_id;
+
+        return $this;
     }
 
     public function displayPreview()

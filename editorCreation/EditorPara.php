@@ -63,18 +63,17 @@ class EditorPara extends EditorElement
             }
         }
 
-        $this->content = $doc->saveHTML($paraNode);      
-        
+        $this->content = $doc->saveHTML($paraNode);
+
         foreach ($this->processImage($this->content) as $key => $media)
         {
             $this->medias[] = $media;
         }
-        
+
         foreach ($this->processSubordinate($this->content) as $key => $subordinates)
         {
             $this->subordinates[] = $subordinates;
         }
-        
         return $this;
     }
 
@@ -114,18 +113,22 @@ class EditorPara extends EditorElement
         $subordinate_sibling = 0;
         $media_sibliing = 0;
         $content = '';
-        
-        foreach($this->medias as $key=>$media)
+
+        foreach ($this->medias as $key => $media)
         {
             $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
-             $content = $this->replaceImages($key, $media->image, $this->content, "p");
+            $content = $this->replaceImages($key, $media->image, $this->content, "p");
         }
-        $this->content = $content;
-        
-        $data->id = $this->id;
-        $data->para_content = $this->content;
-        $this->id = $DB->update_record($this->tablename, $data);
+
+        if (!empty($this->medias))
+        {
+            $this->content = $content;
+
+            $data->id = $this->id;
+            $data->para_content = $this->content;
+            $this->id = $DB->update_record($this->tablename, $data);
+        }
 
         foreach ($this->subordinates as $subordinate)
         {
@@ -142,13 +145,21 @@ class EditorPara extends EditorElement
      */
     public function displayData()
     {
-        $htmlContent = '';     
+        $htmlContent = '';
         $content = '';
-        foreach($this->medias as $key=>$media)
+        if (!empty($this->medias))
         {
-            $content = $this->replaceImages($key, $media->image, $this->content, "p");
-        }       
-        $htmlContent .= $content;        
+            foreach ($this->medias as $key => $media)
+            {
+                $content = $this->replaceImages($key, $media->image, $this->content, "p");
+            }
+        }
+        else
+        {
+            $content = $this->content;
+        }
+
+        $htmlContent .= $content;
         return $htmlContent;
     }
 
@@ -189,7 +200,7 @@ class EditorPara extends EditorElement
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
             }
-            else if($childTable->tablename == 'msm_media')
+            else if ($childTable->tablename == 'msm_media')
             {
                 $media = new EditorMedia();
                 $media->loadData($child->id);
@@ -200,7 +211,7 @@ class EditorPara extends EditorElement
                 echo "another child of para? " . $childTable->tablename;
             }
         }
-        
+
         return $this;
     }
 

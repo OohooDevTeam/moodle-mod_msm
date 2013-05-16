@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -12,7 +13,6 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
  * ************************************************************************* */
-
 /**
  * This script is called by an AJAX call in editorUtility.js and its main role is to
  * load the correct unit when triggered.  The possible triggers can be when the user clicks on 
@@ -22,7 +22,6 @@
  * editor panel.
  * 
  */
-
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 
@@ -48,8 +47,6 @@ require_once("EditorMedia.php");
 require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
-
-//print_object($_POST);
 
 // user triggered a specific node of a jstree to view a particular unit
 if (isset($_POST['id']))

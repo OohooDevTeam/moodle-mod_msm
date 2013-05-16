@@ -131,9 +131,6 @@ abstract class EditorElement
             $media = new EditorMedia();
             $media->getFormData($img);
             $medias[] = $media;
-//            $image = new EditorImage();
-//            $image->getFormData($img);
-//            $images[] = $image;
         }
 
         return $medias;
@@ -141,13 +138,15 @@ abstract class EditorElement
 
     function replaceImages($index, $imgObj, $content, $tagName)
     {
+        global $DB;
+        
         $htmlParser = new DOMDocument();
         $htmlParser->loadHTML($content);
 
         $imgNodes = $htmlParser->getElementsByTagName("img");
 
         $newImgNode = $htmlParser->createElement("img");
-        $newImgNode->setAttribute("src", $imgObj->src);
+        $newImgNode->setAttribute("src", $imgObj->src);        
         $newImgNode->setAttribute("alt", $imgObj->string_id);
         $newImgNode->setAttribute("height", $imgObj->height);
         $newImgNode->setAttribute("width", $imgObj->width);

@@ -75,12 +75,12 @@ function submitForm()
     
     $("#msm_unit_subordinate_container").val(subordinateData);
     
-   var fileoptions = $("<input id='msm_file_options' name='msm_file_options' style='display:none;'/>");
-   $(fileoptions).val(JSON.stringify(tinymce_filepicker_options));
+//   var fileoptions = $("<input id='msm_file_options' name='msm_file_options' style='display:none;'/>");
+   $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
    
 //   console.log(JSON.stringify(tinymce_filepicker_options));
    
-   $(fileoptions).appendTo($("#msm_unit_form"));
+//   $("#msm_file_options").appendTo($("#msm_unit_form"));
     
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");

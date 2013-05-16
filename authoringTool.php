@@ -338,6 +338,7 @@ $formContent .= '</div>
                         <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
 
                         <input id="msm_unit_name_input" name="msm_unit_name_input" style="visibility:hidden;" value="' . $unitNames . '"/> 
+                        <input id="msm_file_options" name="msm_file_options" style="display:none;"/>
                     </form>
                 </div>
 
@@ -415,7 +416,9 @@ $fpoptions['link'] = $link_options;
 
 $formContent .= '<script type="text/javascript"> 
             var tinymce_filepicker_options = ' . json_encode($fpoptions) . '
+            
             $(document).ready(function() {  
+            $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
                 $(".msm_loadingscreen").on({
                     ajaxStart: function() {
                         $(this).show();
