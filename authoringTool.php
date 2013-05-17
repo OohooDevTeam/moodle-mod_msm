@@ -33,29 +33,9 @@ require_once('editorCreation/EditorSubordinate.php');
 require_once('editorCreation/EditorExtraInfo.php');
 require_once('editorCreation/EditorMedia.php');
 
-//require_once("editorCreation/msmUnitForm.php");
-//$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 //// to get the msm instance id when the save button is clicked
-//if ($m == 0)
-//{
-//    $rawString = $_POST['msm_child_order'];
-//    
-//    print_object($rawString);
-//    
-//    if($rawString != '')
-//    {
-//        $m = $rawString;
-//    }
-//    
-////    $lastElement = $stringArray[sizeof($stringArray)-1];
-//   
-////    if(is_int($rawString))
-////    {
-////       $m =  $rawString;
-////    }
-////    
-//}
+
 if ($m)
 {
     $msm = $DB->get_record('msm', array('id' => $m), '*', MUST_EXIST);
@@ -69,8 +49,6 @@ else
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-
-//print_object($context);
 
 add_to_log($course->id, 'createbook', 'createbook', 'view.php?id=' . $cm->id, $msm->id);
 
@@ -371,7 +349,25 @@ $formContent .=' </div>
 //You can replace this with the default > $CFG->maxbytes
 $options['maxbytes'] = $CFG->maxbytes;
 
+$imgTableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_img"))->id;
+$existingImg = $DB->get_records("msm_compositor", array("msm_id" => $msm->id, "table_id" => $imgTableid));
+
 $draftitemid = file_get_unused_draft_itemid();
+
+// added code to prevent moodle from generating a new draft itemid when this page is triggered to edit already existing unit
+// if a new draft itemid is generated, the moodle file system does not know where to find the already existing files created from 
+// the first time the editor was loaded.
+if (!empty($existingImg))
+{
+    $arrayvalues = array_values($existingImg);
+    $firstRecord = array_shift($arrayvalues);
+
+    $imgRecord = $DB->get_record("msm_img", array("id" => $firstRecord->unit_id));
+
+    $srcInfo = explode("/", $imgRecord->src);
+
+    $draftitemid = $srcInfo[sizeof($srcInfo) - 2];
+}
 
 //The options
 $fpoptions = array();
@@ -415,7 +411,7 @@ $fpoptions['link'] = $link_options;
 
 
 $formContent .= '<script type="text/javascript"> 
-            var tinymce_filepicker_options = ' . json_encode($fpoptions) . '
+            var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
             
             $(document).ready(function() {  
             $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
@@ -603,10 +599,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                    
+                                                                                                        
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                                            
+                                                                                                                
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

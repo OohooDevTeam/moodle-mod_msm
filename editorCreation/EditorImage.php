@@ -37,7 +37,6 @@ class EditorImage extends EditorElement
         $doc = new DOMDocument();
         $imgNode = $doc->importNode($idNumber, true);
         $src = null;
-
         // processing the src value to add the wwwroot to the front of the string and remove the 
         // ../../ due to relative pathing
 
@@ -61,8 +60,8 @@ class EditorImage extends EditorElement
         $this->height = $imgNode->getAttribute("height");
         $this->width = $imgNode->getAttribute("width");
         $this->string_id = $imgNode->getAttribute("alt");
-
         $this->fileoptions = json_decode($_POST["msm_file_options"])->image;
+
         return $this;
     }
 

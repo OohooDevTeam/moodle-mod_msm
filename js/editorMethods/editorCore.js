@@ -280,7 +280,7 @@ function processDroppedChild(e, droppedId)
 }
 
 function initEditor(elId)
-{        
+{ 
     YUI().use('editor_tinymce', function(Y) {
         M.editor_tinymce.init_editor(Y, elId, {
             mode:"exact",
@@ -309,23 +309,6 @@ function initEditor(elId)
         })
         M.editor_tinymce.init_filepicker(Y, elId, tinymce_filepicker_options);
     });
-//    var urlParam = window.location.search;
-//       
-//    var urlParamInfo = urlParam.split("=");
-//    
-//    $.ajax({
-//        type: "POST",
-//        url: "../msm/editorCreation/updateFileOption.php",
-//        data: {"msmid":urlParamInfo[1]},
-//        global: false,
-//        success: function(data) { 
-//            tinymce_filepicker_options = JSON.parse(data);
-//        },
-//        error: function() {
-//            alert("ajax error");
-//        }
-//    });
-    
 }
 
 function noSubInitEditor(elId)
