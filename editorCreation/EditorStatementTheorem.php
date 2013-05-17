@@ -29,6 +29,7 @@ class EditorStatementTheorem extends EditorElement
     public $content;
     public $children = array(); // part.theorem
     public $subordinates = array();
+    public $medias = array();
 
     function __construct()
     {
@@ -57,6 +58,11 @@ class EditorStatementTheorem extends EditorElement
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
+                }
+                
+                foreach($this->processImage($this->content) as $key => $media)
+                {
+                    $this->medias[] = $media;
                 }
             }
             else
@@ -96,6 +102,11 @@ class EditorStatementTheorem extends EditorElement
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
+                }
+                
+                foreach($this->processImage($this->content) as $key => $media)
+                {
+                    $this->medias[] = $media;
                 }
             }
             else
@@ -149,7 +160,18 @@ class EditorStatementTheorem extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        $data->statement_content = $this->content;
+        $pParser = new DOMDocument();
+        $pParser->loadHTML($this->content);
+        $divs = $pParser->getElementsByTagName("div");
+
+        if ($divs->length > 0)
+        {
+            $data->statement_content = $this->content;
+        }
+        else
+        {
+            $data->statement_content = "<div>$this->content</div>";
+        }
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
@@ -168,6 +190,24 @@ class EditorStatementTheorem extends EditorElement
         {
             $partTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $partTheorem->compid;
+        }
+        
+        $media_sibliing = 0;
+        $content = '';
+        foreach ($this->medias as $key => $media)
+        {
+            $media->insertData($this->compid, $media_sibliing, $msmid);
+            $media_sibliing = $media->compid;
+            $content = $this->replaceImages($key, $media->image, $data->statement_content, "div");
+        }
+
+        if (!empty($this->medias))
+        {
+            $this->content = $content;
+
+            $data->id = $this->id;
+            $data->statement_content = $this->content;
+            $this->id = $DB->update_record($this->tablename, $data);
         }
 
         $subordinate_sibling = 0;
@@ -200,7 +240,18 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_content_input-$currentCompRecord->parent_id-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        if (!empty($this->medias))
+        {
+            foreach ($this->medias as $key => $media)
+            {
+                $content = $this->replaceImages($key, $media->image, $this->content, "div");
+            }
+        }
+        else
+        {
+            $content = $this->content;
+        }
+        $htmlContent .= $content;
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-statementtheoremcontent$currentCompRecord->parent_id-$this->compid'>";
@@ -262,6 +313,11 @@ class EditorStatementTheorem extends EditorElement
                     $partTheorem = new EditorPartTheorem();
                     $partTheorem->loadData($child->id);
                     $this->children[] = $partTheorem;
+                    break;
+                case "msm_media":
+                    $media = new EditorMedia();
+                    $media->loadData($child->id);
+                    $this->medias[] = $media;
                     break;
             }
         }

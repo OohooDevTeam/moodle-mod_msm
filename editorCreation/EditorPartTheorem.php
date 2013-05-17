@@ -27,6 +27,7 @@ class EditorPartTheorem extends EditorElement
     public $caption;
     public $errorArray = array();
     public $subordinates = array();
+    public $medias = array();
 
     function __construct()
     {
@@ -52,6 +53,11 @@ class EditorPartTheorem extends EditorElement
             if ($_POST['msm_theoremref_part_content-' . $idParam[0]] != '')
             {
                 $this->content = $_POST['msm_theoremref_part_content-' . $idParam[0]];
+                
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
+                    $this->medias[] = $media;
+                }
 
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
@@ -71,6 +77,11 @@ class EditorPartTheorem extends EditorElement
             if ($_POST['msm_theorem_part_content-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_theorem_part_content-' . $idNumber];
+                
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
+                    $this->medias[] = $media;
+                }
 
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
@@ -106,7 +117,18 @@ class EditorPartTheorem extends EditorElement
         $data->counter = null;
         $data->equivalence_mark = null;
         $data->caption = $this->caption;
-        $data->part_content = $this->content;
+        $pParser = new DOMDocument();
+        $pParser->loadHTML($this->content);
+        $divs = $pParser->getElementsByTagName("div");
+
+        if ($divs->length > 0)
+        {
+            $data->part_content = $this->content;
+        }
+        else
+        {
+            $data->part_content = "<div>$this->content</div>";
+        }
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
@@ -118,6 +140,24 @@ class EditorPartTheorem extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
+        
+        $media_sibliing = 0;
+        $content = '';
+        foreach ($this->medias as $key => $media)
+        {
+            $media->insertData($this->compid, $media_sibliing, $msmid);
+            $media_sibliing = $media->compid;
+            $content = $this->replaceImages($key, $media->image, $data->part_content, "div");
+        }
+
+        if (!empty($this->medias))
+        {
+            $this->content = $content;
+
+            $data->id = $this->id;
+            $data->part_content = $this->content;
+            $this->id = $DB->update_record($this->tablename, $data);
+        }
 
         $subordinate_sibling = 0;
         foreach ($this->subordinates as $subordinate)
@@ -152,7 +192,18 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$idEnding'>Part Theorem title: </label>";
         $htmlContent .= "<input id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$idEnding' disabled='disabled' value='$this->caption'/>";
         $htmlContent .= "<div id='msm_theorem_part_content-$idEnding' class='msm_theorem_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        if (!empty($this->medias))
+        {
+            foreach ($this->medias as $key => $media)
+            {
+                $content = $this->replaceImages($key, $media->image, $this->content, "div");
+            }
+        }
+        else
+        {
+            $content = $this->content;
+        }
+        $htmlContent .= $content;
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-parttheoremcontent$idEnding'>";
@@ -205,6 +256,11 @@ class EditorPartTheorem extends EditorElement
                     $subordinate = new EditorSubordinate();
                     $subordinate->loadData($child->id);
                     $this->subordinates[] = $subordinate;
+                    break;
+                case "msm_media":
+                    $media = new EditorMedia();
+                    $media->loadData($child->id);
+                    $this->medias[] = $media;
                     break;
             }
         }
