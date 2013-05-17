@@ -210,12 +210,6 @@ class EditorInContent extends EditorElement
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
             }
-            else if ($childTable->tablename == "msm_media")
-            {
-                $media = new EditorMedia();
-                $media->loadData($child->id);
-                $this->medias[] = $media;
-            }
         }
 
         return $this;

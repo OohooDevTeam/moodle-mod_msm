@@ -19,6 +19,7 @@ class EditorInfo extends EditorElement
     public $content;
     public $errorArray = array();
     public $subordinates = array();
+    public $medias = array();
     public $ref;
 
     function __construct()
@@ -46,7 +47,7 @@ class EditorInfo extends EditorElement
             {
                 $allSubordinates[] = $tempallSubordinates[$i];
             }
-            
+
             $i = 0;
             foreach ($allSubordinates as $index => $subordinate)
             {
@@ -64,6 +65,11 @@ class EditorInfo extends EditorElement
                         else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $subid[0])
                         {
                             $this->content = htmlspecialchars_decode($idValuePair[1]);
+
+                            foreach ($this->processImage($this->content) as $key => $media)
+                            {
+                                $this->medias[] = $media;
+                            }
 
                             foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                             {
@@ -118,6 +124,11 @@ class EditorInfo extends EditorElement
                                 {
                                     $this->content = htmlspecialchars_decode($idValuePair[1]);
 
+                                    foreach ($this->processImage($this->content) as $key => $media)
+                                    {
+                                        $this->medias[] = $media;
+                                    }
+
                                     foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                                     {
                                         $this->subordinates[] = $subordinates;
@@ -138,6 +149,11 @@ class EditorInfo extends EditorElement
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
                 $this->content = $_POST['msm_info_content-' . $idNumber];
+
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
+                    $this->medias[] = $media;
+                }
 
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
@@ -193,7 +209,19 @@ class EditorInfo extends EditorElement
 
         $data = new stdClass();
         $data->caption = $this->caption;
-        $data->info_content = $this->content;
+        
+        $pParser = new DOMDocument();
+        $pParser->loadHTML($this->content);
+        $divs = $pParser->getElementsByTagName("div");
+
+        if ($divs->length > 0)
+        {
+            $data->info_content = $this->content;
+        }
+        else
+        {
+            $data->info_content = "<div>$this->content</div>";
+        }
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
@@ -209,6 +237,24 @@ class EditorInfo extends EditorElement
         if (!empty($this->ref))
         {
             $this->ref->insertData($parentid, $this->compid, $msmid);
+        }
+        
+        $media_sibliing = 0;
+        $content = '';
+        foreach ($this->medias as $key => $media)
+        {
+            $media->insertData($this->compid, $media_sibliing, $msmid);
+            $media_sibliing = $media->compid;
+            $content = $this->replaceImages($key, $media->image, $data->info_content, "div");
+        }
+
+        if (!empty($this->medias))
+        {
+            $this->content = $content;
+
+            $data->id = $this->id;
+            $data->info_content = $this->content;
+            $this->id = $DB->update_record($this->tablename, $data);
         }
 
         $subordinate_sibling = 0;
@@ -232,8 +278,8 @@ class EditorInfo extends EditorElement
 
         if ($parentTable->tablename == 'msm_associate')
         {
-            $assoIdEnding =  "$parentRecord->parent_id-$parentRecord->id-$this->compid";
-            
+            $assoIdEnding = "$parentRecord->parent_id-$parentRecord->id-$this->compid";
+
             $htmlContent .= "<label for='msm_info_title-$assoIdEnding'>title: </label>";
             $htmlContent .= "<div id='msm_info_title-$assoIdEnding' class='msm_info_titles msm_editor_content'>";
             $htmlContent .= $this->caption;
@@ -248,7 +294,7 @@ class EditorInfo extends EditorElement
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$assoIdEnding'>";
-            
+
             foreach ($this->subordinates as $subordinate)
             {
                 $htmlContent .= $subordinate->displayData($parentId);

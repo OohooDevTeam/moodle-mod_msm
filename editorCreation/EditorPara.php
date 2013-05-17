@@ -146,20 +146,7 @@ class EditorPara extends EditorElement
     public function displayData()
     {
         $htmlContent = '';
-        $content = '';
-        if (!empty($this->medias))
-        {
-            foreach ($this->medias as $key => $media)
-            {
-                $content = $this->replaceImages($key, $media->image, $this->content, "p");
-            }
-        }
-        else
-        {
-            $content = $this->content;
-        }
-
-        $htmlContent .= $content;
+        $htmlContent .= $this->content;
         return $htmlContent;
     }
 
@@ -200,16 +187,10 @@ class EditorPara extends EditorElement
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
             }
-            else if ($childTable->tablename == 'msm_media')
-            {
-                $media = new EditorMedia();
-                $media->loadData($child->id);
-                $this->medias[] = $media;
-            }
-            else
-            {
-                echo "another child of para? " . $childTable->tablename;
-            }
+//            else
+//            {
+//                echo "another child of para? " . $childTable->tablename;
+//            }
         }
 
         return $this;

@@ -192,17 +192,7 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$idEnding'>Part Theorem title: </label>";
         $htmlContent .= "<input id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$idEnding' disabled='disabled' value='$this->caption'/>";
         $htmlContent .= "<div id='msm_theorem_part_content-$idEnding' class='msm_theorem_content msm_editor_content'>";
-        if (!empty($this->medias))
-        {
-            foreach ($this->medias as $key => $media)
-            {
-                $content = $this->replaceImages($key, $media->image, $this->content, "div");
-            }
-        }
-        else
-        {
-            $content = $this->content;
-        }
+        $htmlContent .= $this->content;
         $htmlContent .= $content;
         $htmlContent .= "</div>";
 
@@ -256,11 +246,6 @@ class EditorPartTheorem extends EditorElement
                     $subordinate = new EditorSubordinate();
                     $subordinate->loadData($child->id);
                     $this->subordinates[] = $subordinate;
-                    break;
-                case "msm_media":
-                    $media = new EditorMedia();
-                    $media->loadData($child->id);
-                    $this->medias[] = $media;
                     break;
             }
         }
