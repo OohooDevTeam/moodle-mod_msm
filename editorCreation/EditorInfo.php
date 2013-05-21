@@ -209,7 +209,7 @@ class EditorInfo extends EditorElement
 
         $data = new stdClass();
         $data->caption = $this->caption;
-        
+
         $pParser = new DOMDocument();
         $pParser->loadHTML($this->content);
         $divs = $pParser->getElementsByTagName("div");
@@ -238,7 +238,7 @@ class EditorInfo extends EditorElement
         {
             $this->ref->insertData($parentid, $this->compid, $msmid);
         }
-        
+
         $media_sibliing = 0;
         $content = '';
         foreach ($this->medias as $key => $media)
@@ -423,41 +423,52 @@ class EditorInfo extends EditorElement
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
 
-        $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
+        $subordinateChildRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
 
-        foreach ($childRecords as $child)
+        foreach ($subordinateChildRecords as $subchild)
         {
-            $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+            $childTable = $DB->get_record('msm_table_collection', array('id' => $subchild->table_id));
 
             switch ($childTable->tablename)
             {
                 case "msm_def":
                     $def = new EditorDefinition();
-                    $def->loadData($child->id);
+                    $def->loadData($subchild->id);
                     $this->ref = $def;
                     break;
                 case "msm_comment":
                     $comment = new EditorComment();
-                    $comment->loadData($child->id);
+                    $comment->loadData($subchild->id);
                     $this->ref = $comment;
                     break;
                 case "msm_unit":
                     break;
                 case "msm_theorem":
                     $theorem = new EditorTheorem();
-                    $theorem->loadData($child->id);
+                    $theorem->loadData($subchild->id);
                     $this->ref = $theorem;
                     break;
             }
         }
 
-        $subordinateRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+        $infoChildRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
-        foreach ($subordinateRecords as $sub)
+        foreach ($infoChildRecords as $infoChild)
         {
-            $subordinate = new EditorSubordinate();
-            $subordinate->loadData($sub->id);
-            $this->subordinates[] = $subordinate;
+            $infoChildTable = $DB->get_record("msm_table_collection", array("id" => $infoChild->table_id));
+
+            if ($infoChildTable->tablename == "msm_subordinate")
+            {
+                $subordinate = new EditorSubordinate();
+                $subordinate->loadData($infoChild->id);
+                $this->subordinates[] = $subordinate;
+            }
+            else if($infoChildTable->tablename == "msm_media")
+            {
+                $media = new EditorMedia();
+                $media->loadData($infoChild->id);
+                $this->medias[] = $media;
+            }
         }
 
         return $this;

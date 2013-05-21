@@ -118,7 +118,7 @@ class EditorSubordinate extends EditorElement
         $htmlContent .= "<div id='msm_subordinate_hotword_match-$idEnding' class='msm_subordinate_hotword_matchs'>";
         $htmlContent .= $hotIdInfo[0];
         $htmlContent .= "</div>";
-
+        
         $htmlContent .= $this->info->displayData($parentId, $idEnding);
 
         return $htmlContent;

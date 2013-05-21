@@ -33,8 +33,7 @@ function submitForm()
     $("textarea").each(function(){
         // process information from textarea that are not related to info elements
         if(!this.id.match(/info/))
-        {  
-            //            subordinateArray.push(prepareSubordinate(this));
+        { 
             subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {
