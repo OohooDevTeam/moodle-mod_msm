@@ -371,7 +371,9 @@ function showUnitPreview()
             subordinateString += subordinates[i] + "//|";
         }            
         subordinateString += subordinates[subordinates.length-1];
-        dataArray["msm_unit_subordinate_container"] = subordinateString;
+        dataArray["msm_unit_subordinate_container"] = subordinateString;       
+        
+        dataArray["msm_file_options"] = JSON.stringify(tinymce_filepicker_options);
                 
         var ids = [];
         $.ajax({
