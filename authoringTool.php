@@ -65,6 +65,7 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/sup
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmDisplay.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/imageMapperDisplay.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/subordinate/css/subordinate.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/imagemapper/css/imagemapper.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
@@ -81,6 +82,7 @@ echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.resizab
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.tabs.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.sortable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.accordion.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.js'></script>";
@@ -413,7 +415,7 @@ $fpoptions['link'] = $link_options;
 $formContent .= '<script type="text/javascript"> 
             var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
             
-            $(document).ready(function() {  
+            $(document).ready(function() {   
             $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
                 $(".msm_loadingscreen").on({
                     ajaxStart: function() {

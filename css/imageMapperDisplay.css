@@ -1,0 +1,46 @@
+/* 
+    Document   : imageMapperDisplay
+    Created on : May 21, 2013, 2:35:20 PM
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.msm_imagemapper_containers
+{
+    padding: 2px 2%;
+}
+
+.msm_image_accordiondivs
+{
+    position: relative;
+    border: 1px solid blue;
+    background-color: white;
+}
+/*
+.msm_image_infodivs
+{
+    border: 1px solid red;
+    position: relative;
+    background-color: white;
+}*/
+
+.msm_image_divs
+{
+    border: 1px solid green;
+    position: relative;
+    width: 95%;
+    background-color: white;
+    padding: 2%;
+}
+
+.msm_image_divs img
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
