@@ -388,23 +388,23 @@ function disableEditorFunction()
                     
     $(".copied_msm_structural_element .msm_element_close").remove();
                     
-    $("#msm_child_appending_area").sortable("destroy");
-    $("#msm_intro_child_container").sortable("destroy");
-    
-    $(".msm_theorem_content_containers").each(function(){
-        $(this).sortable("destroy");
-    });
-    
-    $(".msm_theorem_part_dropareas").each(function() {
-        $(this).sortable("destroy");
-    });  
-    
-    $(".msm_associate_containers").each(function() {
-        $(this).sortable("destroy");
-    });
-    
-    $(".msm_structural_element").draggable("destroy");
-    $("#msm_editor_middle_droparea").droppable("destroy");
+//    $("#msm_child_appending_area").sortable("destroy");
+//    $("#msm_intro_child_container").sortable("destroy");
+//    
+//    $(".msm_theorem_content_containers").each(function(){
+//        $(this).sortable("destroy");
+//    });
+//    
+//    $(".msm_theorem_part_dropareas").each(function() {
+//        $(this).sortable("destroy");
+//    });  
+//    
+//    $(".msm_associate_containers").each(function() {
+//        $(this).sortable("destroy");
+//    });
+//    
+//    $(".msm_structural_element").draggable("destroy");
+//    $("#msm_editor_middle_droparea").droppable("destroy");
     
     $(".msm_associate_info_headers").each(function() {
         $(this).children("span").css("display", "none");

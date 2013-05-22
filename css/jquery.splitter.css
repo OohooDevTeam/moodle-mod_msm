@@ -24,7 +24,7 @@
 .spliter_panel .vspliter {
     background-color: white;
     cursor: col-resize;
-    z-index:900;
+    /*z-index:900;*/ /* interfering with dialog boxes */
     width: 4px;
 }
 

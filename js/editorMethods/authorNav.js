@@ -545,10 +545,10 @@ function makePreviewDialog()
     
         var splitterBox = $("<div id='MySplitter'></div>");
         var leftCol = $("<div id='leftcol'></div>");
-        var leftBox = $("<div class='leftbox' style='padding: 2%;'></div>");    
+        var leftBox = $("<div class='leftbox'></div>");    
     
         var rightCol = $("<div id='rightcol'></div>");
-        var rightBox = $("<div class='rightbox' style='padding: 2%;'></div>");
+        var rightBox = $("<div class='rightbox'></div>");
     
         $(leftCol).append(leftBox);
         $(rightCol).append(rightBox);

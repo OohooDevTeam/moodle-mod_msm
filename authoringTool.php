@@ -62,27 +62,26 @@ echo $OUTPUT->header();
 echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
 echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jshowoff.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/superfish.css' media='screen'/> ";
-echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/imageMapperDisplay.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/subordinate/css/subordinate.css'/>";
-echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/imagemapper/css/imagemapper.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
 
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/external/jquery.bgiframe-2.1.2.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.core.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.widget.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.mouse.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.draggable.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.droppable.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.position.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.resizable.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.tabs.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.sortable.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.accordion.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>"; // can't use 1.9.1 due to jssplitter not being compatible with it
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.core.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.widget.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.button.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.mouse.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.draggable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.droppable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.position.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.resizable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.dialog.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.tabs.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.sortable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.accordion.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.js'></script>";
@@ -100,12 +99,21 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'>
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'></script>";
 
-echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/subordinate/js/subordinate.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/plugins/imagemapper/js/imagemapper.js'></script>";
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/tiny_mce/tiny_mce.js'></script>";
+// getting the relative path for tinymce editor
+$tinymce = new tinymce_texteditor();
+// need to remove the moodle/.. part since it's included in $CFG->wwwroot path
+$basepath = explode("/", $tinymce->get_tinymce_base_url()->get_path());
+
+$editorpath = $basepath[2];
+for($i = 3; $i < sizeof($basepath); $i++)
+{
+    $editorpath .= "/" . $basepath[$i];
+}
+
+echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/plugins/subordinate/js/subordinate.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/plugins/imagemapper/js/imagemapper.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery.jstree.js'></script>";
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/splitter/splitter.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/tiny_mce/3.5.7b/tiny_mce.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/tiny_mce.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/module.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
@@ -601,10 +609,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                                        
+                                                                                                            
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                                                                
+                                                                                                                    
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });
