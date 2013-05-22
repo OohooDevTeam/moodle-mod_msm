@@ -352,7 +352,7 @@ function showUnitPreview()
     $("#msm_child_order").val(childOrderString+urlParamInfo[1]);
     
     var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
-    
+      
     if(editorDivs.length > 0)  // editor is in display mode
     {  
         var dataArray  = getDisabledData();
@@ -410,6 +410,7 @@ function showUnitPreview()
                             modal: false,
                             width: 605
                         });  
+                        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
                     },
                     close: function() {
                         $(".msm_info_dialogs").dialog("destroy");
@@ -498,7 +499,32 @@ function getDisabledData()
     });
     
     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
-        dataArray[this.id] = $(this).html(); 
+        var currentContent = $(this).clone();
+        
+        $(currentContent).find(".MathJax_Preview").each(function() {
+            $(this).empty().remove();
+        });
+        $(currentContent).find(".MathJax_Display").each(function() {
+            $(this).empty().remove();
+        });
+        
+        $(currentContent).find("script").each(function() {
+            var content = $(this).text();
+            var typeInfo = $(this).attr("type").split(";");
+            
+            // if the mathjax is defined as display then there is an additional part to 
+            // type attribute in form of type='math/tex;mode=display'
+            if(typeInfo.length >1)
+            {
+                $(this).replaceWith("\\["+content+"\\]");
+            }
+            else
+            {
+                $(this).replaceWith("\\("+content+"\\)");
+            }
+        });
+        
+        dataArray[this.id] = $(currentContent).html();
     });
     
     $("#msm_child_appending_area").find(".msm_child_description_inputs").each(function() {
