@@ -139,10 +139,15 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addElement('header', 'settinggeneral', get_string('levelsetting', 'msm'));
         $mform->addHelpButton('settinggeneral', 'levelsetting', 'msm');
         $mform->addElement('text', 'toplevel', get_string('toplevel', 'msm'), array('size' => '64', 'value' => 'Lecture'));
+        $mform->setType('toplevel', PARAM_TEXT);
         $mform->addElement('text', 'childlevel1', get_string('childlevel1', 'msm'), array('size' => '64', 'value' => 'Part'));
+        $mform->setType('childlevel1', PARAM_TEXT);
         $mform->addElement('text', 'childlevel2', get_string('childlevel2', 'msm'), array('size' => '64', 'value' => 'Topic'));
+        $mform->setType('childlevel2', PARAM_TEXT);
         $mform->addElement('text', 'childlevel3', get_string('childlevel3', 'msm'), array('size' => '64', 'value' => 'Section'));
+        $mform->setType('childlevel3', PARAM_TEXT);
         $mform->addElement('text', 'childlevel4', get_string('childlevel4', 'msm'), array('size' => '64', 'value' => 'Subsection'));
+        $mform->setType('childlevel4', PARAM_TEXT);
 
         $mform->addRule('toplevel', null, 'required', null, 'client');
         $mform->addRule('childlevel1', null, 'required', null, 'client');
