@@ -74,7 +74,7 @@ echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jq
 echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jshowoff.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/superfish.css' media='screen'/> ";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmDisplay.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/imageMapperDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/$editorpath/plugins/subordinate/css/subordinate.css'/>";
@@ -93,6 +93,7 @@ echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.u
 echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.tabs.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.sortable.js'></script>";
 echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.accordion.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.menu.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/hoverIntent.js'></script>";

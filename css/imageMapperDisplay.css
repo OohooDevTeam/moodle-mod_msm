@@ -39,3 +39,41 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.msm_image_des_inputs
+{
+    width: 90%;
+}
+
+.msm_img_saveButtons
+{
+    width: 5%;    
+    margin: 2% 25%;
+}
+
+.msm_img_cancelButtons
+{
+    width: 5%;
+    margin: 2% 10%;
+}
+.msm_imagemap_formdivs
+{
+    margin-top: 1%;
+
+}
+.msm_imagemap_formdivs fieldset
+{
+    background-color: white;
+}
+.msm_imagemap_radiuss
+{
+    width: 95%;
+}
+.msm_imagemap_circledivs h4
+{
+    margin: 1% 0;
+}
+.msm_imagemap_circledivs input
+{
+    margin-bottom: 1%;
+}

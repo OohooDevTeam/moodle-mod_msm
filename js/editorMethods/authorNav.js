@@ -499,6 +499,8 @@ function getDisabledData()
     });
     
     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+        // need to deal with mathjax code before sending it off to server side to be
+        // processed
         var currentContent = $(this).clone();
         
         $(currentContent).find(".MathJax_Preview").each(function() {
@@ -518,7 +520,7 @@ function getDisabledData()
             {
                 $(this).replaceWith("\\["+content+"\\]");
             }
-            else
+            else // inline mathjax
             {
                 $(this).replaceWith("\\("+content+"\\)");
             }
