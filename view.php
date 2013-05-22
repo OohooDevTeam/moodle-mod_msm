@@ -122,22 +122,26 @@ echo $OUTPUT->header();
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.8.2.js'></script>";
 //echo "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
 
-echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/slideNav.css'/>";
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jquery.treeview.css'/>";
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/external/jquery.bgiframe-2.1.2.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.core.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.widget.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.mouse.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.draggable.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.position.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.resizable.js'></script>";
-echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/js/jquery-1.7.1.js'></script>"; // can't use 1.9.1 due to jssplitter not being compatible with it
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.core.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.widget.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.button.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.mouse.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.draggable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.droppable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.position.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.resizable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.dialog.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.tabs.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.sortable.js'></script>";
+echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/ui/jquery.ui.accordion.js'></script>";
 
 // these js files need to be after the development-bundle
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitter-0.6.js'></script>";
