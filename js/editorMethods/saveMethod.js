@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 function submitForm()
 {    
+    console.log("got to submitForm?");
     $("#msm_unit_title").removeAttr("disabled");
     $("#msm_unit_short_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");

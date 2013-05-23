@@ -65,7 +65,7 @@ $tinymce = new tinymce_texteditor();
 $basepath = explode("/", $tinymce->get_tinymce_base_url()->get_path());
 
 $editorpath = $basepath[2];
-for($i = 3; $i < sizeof($basepath); $i++)
+for ($i = 3; $i < sizeof($basepath); $i++)
 {
     $editorpath .= "/" . $basepath[$i];
 }
@@ -244,10 +244,32 @@ $unitNames .= $msm->id;
 
 $unittable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'));
 
-$existingUnit = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'table_id' => $unittable->id, 'parent_id' => 0, 'prev_sibling_id' => 0));
+$existingUnits = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'table_id' => $unittable->id, 'parent_id' => 0, 'prev_sibling_id' => 0));
+
+$existingUnit = null;
+
+if (sizeof($existingUnits) == 1)
+{
+    $tempvalue = array_values($existingUnits);
+    $existingUnit = array_shift($tempvalue);
+}
+else
+{
+    foreach ($existingUnits as $unit)
+    {
+        $unitRecord = $DB->get_record("msm_unit", array("id" => $unit->unit_id));
+        if (!$unitRecord->standalone)
+        {
+            $existingUnit = $unit;
+            break;
+        }
+    }
+}
 
 $treeContent = '';
 $rootUnit = '';
+
+$standaloneTree = '';
 
 if (!empty($existingUnit))
 {
@@ -262,10 +284,14 @@ if (!empty($existingUnit))
     {
         $treeContent .= "<a href='#'>$existingUnit->id-$existingUnit->unit_id</a>";
     }
-    $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id);
+
+    $contentArray = makeUnitTree($existingUnit->id, $existingUnit->unit_id);
+    $treeContent .= $contentArray['main'];
     $treeContent .= "</li>";
     $treeContent .= '</ul>';
     $rootUnit .= displayRootUnit($existingUnit->id);
+
+    $standaloneTree .= $contentArray['standalone'];
 }
 
 $formContent .= '<div id="msm_editor_container">
@@ -333,23 +359,41 @@ $formContent .= '</div>
 
                 <div id="msm_editor_right">
                     <h2> XML Hierarchy </h2>
-                    <div id="msm_unit_tree">';
+                    <ul><li><h3> Main Composition </h3></li></ul>
+                    <div id="msm_unit_tree">
+                        <ul>
+                            <li id="msm_composition_default"><a href="#">Empty Tree</a>';
 // adding preexistng unit strcuture
 if (!empty($treeContent))
 {
     $formContent .= $treeContent;
 }
 
-$formContent .= '</div>';
+$formContent .= ' </li>
+                </ul>
+               </div>
+                <ul><li><h3> Reference/standalone materials </h3></li></ul>
+                <div id="msm_standalone_tree">
+                    <ul>
+                        <li id="msm_standalone_root"><a href="#">References/standalone documents</a></li>';
+if (!empty($standaloneTree))
+{
+    $formContent .= '<ul id="msm_standalone_addpoint">';
+    $formContent .= $standaloneTree;
+    $formContent .= '</ul>';
+}
+$formContent .= '</ul>
+                </div>';
+
 if (empty($treeContent))
 {
-    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()" disabled="disabled"> New </button>';
+    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()" disabled="disabled"> New Unit </button>';
 }
 else
 {
-    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()"> New </button>';
+    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()"> New Unit</button>';
 }
-$formContent .=' </div>
+$formContent .=' </div>                
                 </div>     
        </div>
        <div class="msm_loadingscreen"></div>
@@ -491,32 +535,16 @@ $formContent .= '<script type="text/javascript">
                     limit: 100,
                     position: "82%"
                 });
-                ';
-
-//
-if (!empty($existingUnit))
-{
-    $formContent .= '// need it for the loading of jstree when in edit mode
-                $("#msm_unit_tree")
+                
+$("#msm_unit_tree")
                     .jstree({
-                        "plugins": ["themes", "html_data", "ui", "dnd"],
-                        "core" : { "initially_open" : ["msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
-                        "ui" : {"initially_select" : ["msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
-                        "dnd": {
-                            "drop_target": false,
-                            "drag_target": false
-                        }
+                        "plugins": ["themes", "html_data", "ui", "dnd"]
                     })
-                      .bind("load.jstree", function(){
-                            $("#msm_unit_tree").jstree("select_node", "msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '").trigger("select_node.jstree");
-                        })
                     .bind("select_node.jstree", function(event, data) {
                         var dbInfo = [];      
                         
                         $(".msm_editor_buttons").remove();
-                        
-                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");              
-                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+                        $("#msm_editor_new").remove();
                         $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
         
                         var nodeId = data.rslt.obj.attr("id");      
@@ -557,6 +585,125 @@ if (!empty($existingUnit))
                     .delegate("a", "click", function(event, data){
                         event.preventDefault();
                     });
+                    
+                $("#msm_standalone_tree")
+                    .jstree({
+                        "plugins": ["themes", "html_data", "ui", "dnd"]
+                    })
+                    .bind("select_node.jstree", function(event, data) {
+                        var dbInfo = [];      
+                        
+                        $(".msm_editor_buttons").remove();
+                        $("#msm_editor_new").remove();
+                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
+        
+                        var nodeId = data.rslt.obj.attr("id");      
+                        var match = nodeId.match(/msm_unit-.+/);
+                        var nodeInfo = "";
+                        if(match)
+                        {
+                           var tempInfo = nodeId.split("-");
+                           nodeInfo = tempInfo[1]+"-"+tempInfo[2];
+                        }
+                        else if(nodeId != "msm_standalone_root")
+                        {
+                            nodeInfo = nodeId;
+                        }
+                        else if(nodeId == "msm_standalone_root")
+                         {
+                            $("#msm_editor_new").attr("disabled", "disabled");
+                            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
+                            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+                            $("#msm_child_appending_area").empty();
+                        }
+
+                        if(nodeInfo != "")
+                        {
+                            $.ajax({
+                                type: "POST",
+                                url: "editorCreation/msmLoadUnit.php",
+                                data: {
+                                    "id": "msm_unit-"+nodeInfo
+                                },
+                                success: function(data)
+                                {
+                                    dbInfo = JSON.parse(data);  
+                                    processUnitData(dbInfo); 
+                                    $("#msm_currentUnit_id").val(nodeInfo);
+                                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
+
+                                },
+                                error: function(data)
+                                {
+                                    alert("ajax error in loading unit");
+                                }
+                            }); 
+                        }     
+
+                    })
+                    .delegate("a", "click", function(event, data){
+                        event.preventDefault();
+                    });
+                ';
+
+//
+if (!empty($existingUnit))
+{
+    $formContent .= '// need it for the loading of jstree when in edit mode
+                $("#msm_unit_tree")
+                    .jstree({
+                        "plugins": ["themes", "html_data", "ui", "dnd"],
+                        "core" : { "initially_open" : ["msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]},
+                        "ui" : {"initially_select" : ["msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '"]}
+                    })
+                    .bind("load.jstree", function(){
+                         $("#msm_unit_tree").jstree("select_node", "msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '").trigger("select_node.jstree");
+                     })
+                    .bind("select_node.jstree", function(event, data) {
+                        var dbInfo = [];      
+                        
+                        $(".msm_editor_buttons").remove();
+                        $("#msm_editor_new").remove();
+                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
+        
+                        var nodeId = data.rslt.obj.attr("id");      
+                        var match = nodeId.match(/msm_unit-.+/);
+                        var nodeInfo = "";
+                        if(match)
+                        {
+                           var tempInfo = nodeId.split("-");
+                           nodeInfo = tempInfo[1]+"-"+tempInfo[2];
+                        }
+                        else
+                        {
+                            nodeInfo = nodeId;
+                        }
+
+
+                        $.ajax({
+                            type: "POST",
+                            url: "editorCreation/msmLoadUnit.php",
+                            data: {
+                                "id": "msm_unit-"+nodeInfo
+                            },
+                            success: function(data)
+                            {
+                                dbInfo = JSON.parse(data);  
+                                processUnitData(dbInfo); 
+                                $("#msm_currentUnit_id").val(nodeInfo);
+                                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
+
+                            },
+                            error: function(data)
+                            {
+                                alert("ajax error in loading unit");
+                            }
+                        })
+
+                    })
+                    .delegate("a", "click", function(event, data){
+                        event.preventDefault();
+                    });                    
               });               
         </script>';
 }
@@ -574,7 +721,10 @@ function makeUnitTree($compid, $unitid)
 {
     global $DB;
 
+    $treematerial = array();
+
     $treeHtml = '';
+    $standaloneHtml = '';
 
     $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
 
@@ -585,15 +735,27 @@ function makeUnitTree($compid, $unitid)
     foreach ($childElements as $child)
     {
         $childUnitElement = $DB->get_record("msm_unit", array("id" => $child->unit_id));
-        $treeHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
-        $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
-        $treeHtml .= makeUnitTree($child->id, $child->unit_id);
-        $treeHtml .= "</li>";
+        if (!$childUnitElement->standalone)
+        {
+            $treeHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
+            $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
+            $treeHtml .= makeUnitTree($child->id, $child->unit_id);
+            $treeHtml .= "</li>";
+        }
+        else
+        {
+            $standaloneHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
+            $standaloneHtml .= "<a href='#'>$childUnitElement->short_name</a>";
+            $standaloneHtml .= "</li>";
+        }
     }
 
     $treeHtml .= "</ul>";
 
-    return $treeHtml;
+    $treematerial['main'] = $treeHtml;
+    $treematerial['standalone'] = $standaloneHtml;
+
+    return $treematerial;
 }
 
 function displayRootUnit($unitcompid)
@@ -610,10 +772,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                                            
+                                                                                                                                            
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                                                                    
+                                                                                                                                                    
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });
