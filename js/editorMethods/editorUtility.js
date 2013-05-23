@@ -61,7 +61,7 @@ function insertUnitStructure(dbId)
         })
     }   
     
-    var treediv = document.getElementById("msm_unit_tree");
+    var treetopli = $("#msm_composition_default").children("ul");
     
     var listChild = $("<li></li>");
     $(listChild).attr("id", "msm_unit-"+idPair);
@@ -84,29 +84,29 @@ function insertUnitStructure(dbId)
     
     var rootul = $("<ul></ul>");
     
-    var treeChildren = $("#msm_unit_tree > ul").first().children("li");    
+    var treeChildren = $("#msm_composition_default > ul").first().children("li");    
     
-    if(!treediv.hasChildNodes())
+    if(treetopli.length == 0)
     { 
         rootul.append(listChild);
-        $("#msm_unit_tree").append(rootul);
+        $("#msm_composition_default").append(rootul);
     }
     else if(treeChildren.length == 0)
     {
-        $("#msm_unit_tree > ul").append(listChild);
+        $("#msm_composition_default > ul").append(listChild);
     }
     else
     {
-        var childUls = $("#msm_unit_tree > ul > li").find("ul");        
+        var childUls = $("#msm_composition_default > ul > li").find("ul");        
         
         if(childUls.length == 0)  // no ul appended to top unit node to add more nested node to
         {
             rootul.append(listChild);
-            $("#msm_unit_tree > ul > li").first().append(rootul);
+            $("#msm_composition_default > ul > li").first().append(rootul);
         }
         else // already there is subunit attached to the top unit so just append another item to the list
         {
-            $("#msm_unit_tree > ul > li").first().children("ul").append(listChild);          
+            $("#msm_composition_default > ul > li").first().children("ul").append(listChild);          
         }
     }    
     
@@ -129,7 +129,7 @@ function insertUnitStructure(dbId)
         $("#msm_currentUnit_id").val(idPair);
     } 
     
-   initTrees(idPair);
+    initTrees(idPair);
     
 }
 
@@ -162,11 +162,11 @@ function initTrees(idPair)
                 height: "30px"
             }, 300);
             $("#msm_element_overlay-"+idNumber[1]).css("display", "none");
-        }
-        );
+        });
         
     })
     .bind("select_node.jstree", function(event, data) {
+        $("#msm_standalone_tree").jstree("deselect_all");
         var dbInfo = [];         
 
         $(".msm_editor_buttons").remove();
@@ -176,35 +176,45 @@ function initTrees(idPair)
         var nodeInfo = "";
         if(match)
         {
+            $("#msm_editor_new").removeAttr("disabled");
             var tempInfo = nodeId.split("-");
             nodeInfo = tempInfo[1]+"-"+tempInfo[2];
         }
-        else
+        else if(nodeId != "msm_composition_default")
         {
+            $("#msm_editor_new").removeAttr("disabled");
             nodeInfo = nodeId;
         }
+        else if(nodeId == "msm_composition_default")
+        {
+            $("#msm_editor_new").attr("disabled", "disabled");
+            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
+            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+            $("#msm_child_appending_area").empty();
+        }
 
+        if(nodeInfo != '')
+        {
+            $.ajax({
+                type: "POST",
+                url: "editorCreation/msmLoadUnit.php",
+                data: {
+                    "id": "msm_unit-"+nodeInfo
+                },
+                success: function(data)
+                {
+                    dbInfo = JSON.parse(data);  
+                    processUnitData(dbInfo); 
+                    $("#msm_currentUnit_id").val(nodeInfo);
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
-        $.ajax({
-            type: "POST",
-            url: "editorCreation/msmLoadUnit.php",
-            data: {
-                "id": "msm_unit-"+nodeInfo
-            },
-            success: function(data)
-            {
-                dbInfo = JSON.parse(data);  
-                processUnitData(dbInfo); 
-                $("#msm_currentUnit_id").val(nodeInfo);
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
-
-            },
-            error: function(data)
-            {
-                alert("ajax error in loading unit");
-            }
-        })
-
+                },
+                error: function(data)
+                {
+                    alert("ajax error in loading unit");
+                }
+            })
+        }
     })
     .delegate("a", "click", function(event, data){
         event.preventDefault();
@@ -215,6 +225,7 @@ function initTrees(idPair)
         "plugins": ["themes", "html_data", "ui", "dnd"]
     })
     .bind("select_node.jstree", function(event, data) {
+        $("#msm_unit_tree").jstree("deselect_all");
         var dbInfo = [];         
 
         $(".msm_editor_buttons").remove();
@@ -394,10 +405,17 @@ function saveComp(e)
     
     e.preventDefault();
     
-    var treeInnerHTML = $("#msm_unit_tree").html();
+    var treeInnerHTML = $("#msm_composition_default > ul").html();
+    
+    
+    var standaloneTree = '';
+    $("#msm_standalone_root").find("li").each(function() {
+      standaloneTree += $(this).attr("id") + ",";  
+    });
    
     var params = {
-        tree_content: treeInnerHTML
+        tree_content: treeInnerHTML,
+        standalone_content: standaloneTree
     };
     var ids = [];
     $.ajax({
@@ -407,8 +425,8 @@ function saveComp(e)
         success: function(data)
         {
             ids = JSON.parse(data);
-            
-            var idInfos = ids[0].split("-");
+//            console.log(ids);
+            var idInfos = ids.split("-");
             if(ids != '')
             {
                 window.location = "view.php?msmid="+idInfos[0]+"&unitid="+idInfos[1];                        

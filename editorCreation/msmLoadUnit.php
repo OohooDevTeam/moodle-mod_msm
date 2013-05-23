@@ -133,7 +133,9 @@ else if (isset($_POST['tree_content']))
 
     $rootElement = $doc->documentElement;
 
-    $ulElement = $rootElement->childNodes->item(0)->childNodes->item(0);
+    $ulElement = $rootElement->childNodes->item(0);
+    
+//    print_object($doc->saveHTML($doc->importNode($ulElement, true)));
 
     processTreeContent($ulElement, 0, 0);
 
@@ -148,7 +150,7 @@ else if (isset($_POST['tree_content']))
         $string = explode("-", $id);
 
         $compidArray[] = $string[1];
-    }
+    }    
 
     $idPairs = array();
 
@@ -158,7 +160,7 @@ else if (isset($_POST['tree_content']))
         $idPairs[] = $elementRecord->msm_id . "-" . $compid;
     }
 
-    echo json_encode($idPairs);
+    echo json_encode($idPairs[0]);
 }
 // user triggered to discard any changes made to the unit
 else if ($_POST["cancelUnit"]) // from cancelUnit js function

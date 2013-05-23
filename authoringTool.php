@@ -285,13 +285,12 @@ if (!empty($existingUnit))
         $treeContent .= "<a href='#'>$existingUnit->id-$existingUnit->unit_id</a>";
     }
 
-    $contentArray = makeUnitTree($existingUnit->id, $existingUnit->unit_id);
-    $treeContent .= $contentArray['main'];
+    $treeContent .= makeUnitTree($existingUnit->id, $existingUnit->unit_id);
     $treeContent .= "</li>";
     $treeContent .= '</ul>';
     $rootUnit .= displayRootUnit($existingUnit->id);
 
-    $standaloneTree .= $contentArray['standalone'];
+    $standaloneTree .= makeStandaloneTree($msm->id);
 }
 
 $formContent .= '<div id="msm_editor_container">
@@ -362,7 +361,7 @@ $formContent .= '</div>
                     <ul><li><h3> Main Composition </h3></li></ul>
                     <div id="msm_unit_tree">
                         <ul>
-                            <li id="msm_composition_default"><a href="#">Empty Tree</a>';
+                            <li id="msm_composition_default"><a href="#">Composition</a>';
 // adding preexistng unit strcuture
 if (!empty($treeContent))
 {
@@ -534,63 +533,14 @@ $formContent .= '<script type="text/javascript">
                     orientation: "vertical",
                     limit: 100,
                     position: "82%"
-                });
-                
-$("#msm_unit_tree")
-                    .jstree({
-                        "plugins": ["themes", "html_data", "ui", "dnd"]
-                    })
-                    .bind("select_node.jstree", function(event, data) {
-                        var dbInfo = [];      
-                        
-                        $(".msm_editor_buttons").remove();
-                        $("#msm_editor_new").remove();
-                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
-        
-                        var nodeId = data.rslt.obj.attr("id");      
-                        var match = nodeId.match(/msm_unit-.+/);
-                        var nodeInfo = "";
-                        if(match)
-                        {
-                           var tempInfo = nodeId.split("-");
-                           nodeInfo = tempInfo[1]+"-"+tempInfo[2];
-                        }
-                        else
-                        {
-                            nodeInfo = nodeId;
-                        }
-
-
-                        $.ajax({
-                            type: "POST",
-                            url: "editorCreation/msmLoadUnit.php",
-                            data: {
-                                "id": "msm_unit-"+nodeInfo
-                            },
-                            success: function(data)
-                            {
-                                dbInfo = JSON.parse(data);  
-                                processUnitData(dbInfo); 
-                                $("#msm_currentUnit_id").val(nodeInfo);
-                                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
-
-                            },
-                            error: function(data)
-                            {
-                                alert("ajax error in loading unit");
-                            }
-                        })
-
-                    })
-                    .delegate("a", "click", function(event, data){
-                        event.preventDefault();
-                    });
+                });                  
                     
                 $("#msm_standalone_tree")
                     .jstree({
                         "plugins": ["themes", "html_data", "ui", "dnd"]
                     })
                     .bind("select_node.jstree", function(event, data) {
+                    $("#msm_unit_tree").jstree("deselect_all");
                         var dbInfo = [];      
                         
                         $(".msm_editor_buttons").remove();
@@ -602,11 +552,13 @@ $("#msm_unit_tree")
                         var nodeInfo = "";
                         if(match)
                         {
+                         $("#msm_editor_new").removeAttr("disabled");
                            var tempInfo = nodeId.split("-");
                            nodeInfo = tempInfo[1]+"-"+tempInfo[2];
                         }
                         else if(nodeId != "msm_standalone_root")
                         {
+                         $("#msm_editor_new").removeAttr("disabled");
                             nodeInfo = nodeId;
                         }
                         else if(nodeId == "msm_standalone_root")
@@ -659,7 +611,8 @@ if (!empty($existingUnit))
                     .bind("load.jstree", function(){
                          $("#msm_unit_tree").jstree("select_node", "msm_unit-' . $existingUnit->id . '-' . $existingUnit->unit_id . '").trigger("select_node.jstree");
                      })
-                    .bind("select_node.jstree", function(event, data) {
+                    .bind("select_node.jstree", function(event, data) {                        
+                        $("#msm_standalone_tree").jstree("deselect_all");
                         var dbInfo = [];      
                         
                         $(".msm_editor_buttons").remove();
@@ -671,34 +624,44 @@ if (!empty($existingUnit))
                         var nodeInfo = "";
                         if(match)
                         {
+                         $("#msm_editor_new").removeAttr("disabled");
                            var tempInfo = nodeId.split("-");
                            nodeInfo = tempInfo[1]+"-"+tempInfo[2];
                         }
-                        else
+                        else if(nodeId != "msm_composition_default")
                         {
+                         $("#msm_editor_new").removeAttr("disabled");
                             nodeInfo = nodeId;
                         }
+                        else if(nodeId == "msm_composition_default")
+                        {
+                            $("#msm_editor_new").attr("disabled", "disabled");
+                            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
+                            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+                            $("#msm_child_appending_area").empty();
+                        }
+                        if(nodeInfo != "")
+                        {
+                            $.ajax({
+                                type: "POST",
+                                url: "editorCreation/msmLoadUnit.php",
+                                data: {
+                                    "id": "msm_unit-"+nodeInfo
+                                },
+                                success: function(data)
+                                {
+                                    dbInfo = JSON.parse(data);  
+                                    processUnitData(dbInfo); 
+                                    $("#msm_currentUnit_id").val(nodeInfo);
+                                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
-
-                        $.ajax({
-                            type: "POST",
-                            url: "editorCreation/msmLoadUnit.php",
-                            data: {
-                                "id": "msm_unit-"+nodeInfo
-                            },
-                            success: function(data)
-                            {
-                                dbInfo = JSON.parse(data);  
-                                processUnitData(dbInfo); 
-                                $("#msm_currentUnit_id").val(nodeInfo);
-                                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
-
-                            },
-                            error: function(data)
-                            {
-                                alert("ajax error in loading unit");
-                            }
-                        })
+                                },
+                                error: function(data)
+                                {
+                                    alert("ajax error in loading unit");
+                                }
+                            })
+                        }
 
                     })
                     .delegate("a", "click", function(event, data){
@@ -709,7 +672,68 @@ if (!empty($existingUnit))
 }
 else
 {
-    $formContent .= '});               
+    $formContent .= '
+            $("#msm_unit_tree")
+                    .jstree({
+                        "plugins": ["themes", "html_data", "ui", "dnd"]
+                    })
+                    .bind("select_node.jstree", function(event, data) {
+                    $("#msm_standalone_tree").jstree("deselect_all");
+                        var dbInfo = [];      
+                        
+                        $(".msm_editor_buttons").remove();
+                        $("#msm_editor_new").remove();
+                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
+        
+                        var nodeId = data.rslt.obj.attr("id");      
+                        var match = nodeId.match(/msm_unit-.+/);
+                        var nodeInfo = "";
+                        if(match)
+                        {
+                         $("#msm_editor_new").removeAttr("disabled");
+                           var tempInfo = nodeId.split("-");
+                           nodeInfo = tempInfo[1]+"-"+tempInfo[2];
+                        }
+                       else if(nodeId != "msm_composition_default")
+                        {
+                         $("#msm_editor_new").removeAttr("disabled");
+                            nodeInfo = nodeId;
+                        }
+                        else if(nodeId == "msm_composition_default")
+                        {
+                            $("#msm_editor_new").attr("disabled", "disabled");
+                            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
+                            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+                            $("#msm_child_appending_area").empty();
+                        }
+                        if(nodeInfo != "")
+                        {
+                            $.ajax({
+                                type: "POST",
+                                url: "editorCreation/msmLoadUnit.php",
+                                data: {
+                                    "id": "msm_unit-"+nodeInfo
+                                },
+                                success: function(data)
+                                {
+                                    dbInfo = JSON.parse(data);  
+                                    processUnitData(dbInfo); 
+                                    $("#msm_currentUnit_id").val(nodeInfo);
+                                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
+
+                                },
+                                error: function(data)
+                                {
+                                    alert("ajax error in loading unit");
+                                }
+                            })
+                        }
+
+                    })
+                    .delegate("a", "click", function(event, data){
+                        event.preventDefault();
+                    });
+            });               
         </script>';
 }
 
@@ -721,10 +745,7 @@ function makeUnitTree($compid, $unitid)
 {
     global $DB;
 
-    $treematerial = array();
-
     $treeHtml = '';
-    $standaloneHtml = '';
 
     $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
 
@@ -735,27 +756,50 @@ function makeUnitTree($compid, $unitid)
     foreach ($childElements as $child)
     {
         $childUnitElement = $DB->get_record("msm_unit", array("id" => $child->unit_id));
-        if (!$childUnitElement->standalone)
+        if ($childUnitElement->standalone == 'false')
         {
             $treeHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
-            $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
+            if (!empty($childUnitElement->short_name))
+            {
+                $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
+            }
+            else
+            {
+                $treeHtml .= "<a href='#'>$child->id-$child->unit_id</a>";
+            }
             $treeHtml .= makeUnitTree($child->id, $child->unit_id);
             $treeHtml .= "</li>";
-        }
-        else
-        {
-            $standaloneHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
-            $standaloneHtml .= "<a href='#'>$childUnitElement->short_name</a>";
-            $standaloneHtml .= "</li>";
         }
     }
 
     $treeHtml .= "</ul>";
 
-    $treematerial['main'] = $treeHtml;
-    $treematerial['standalone'] = $standaloneHtml;
+    return $treeHtml;
+}
 
-    return $treematerial;
+function makeStandaloneTree($msmid)
+{
+    global $DB;
+
+    $standaloneHTML = '';
+    $standaloneHTML .= "<ul>";
+    $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
+    $possiblestandaloneUnits = $DB->get_records("msm_compositor", array("msm_id" => $msmid, "table_id" => $unittableid, "parent_id" => 0, "prev_sibling_id" => 0));
+
+    foreach ($possiblestandaloneUnits as $possibleUnit)
+    {
+        $unitRecord = $DB->get_record("msm_unit", array("id" => $possibleUnit->unit_id));
+
+        if ($unitRecord->standalone == "true")
+        {
+            $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";
+            $standaloneHTML .= "<a href='#'>$unitRecord->short_name</a>";
+            $standaloneHTML .= "</li>";
+        }
+    }
+    $standaloneHTML .= "</ul>";
+
+    return $standaloneHTML;
 }
 
 function displayRootUnit($unitcompid)
@@ -772,10 +816,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                                                                            
+                                                                                                                                                        
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                                                                                                    
+                                                                                                                                                                
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });
