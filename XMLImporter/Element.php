@@ -877,15 +877,20 @@ abstract class Element
         global $DB;
         $content = '';
         $doc = new DOMDocument();
-        $doc->preserveWhiteSpace = true; 
+        $doc->preserveWhiteSpace = true;
 
-        $doc->loadHTML($XMLcontent);
+        print_object($XMLcontent);
+        
+        if(!$doc->loadXML($XMLcontent))
+        {
+            $doc->loadHTML($XMLcontent);
+        }
 
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');
         $hottags = $doc->getElementsByTagName('a');
         $matharrays = $doc->getElementsByTagName('math.array');
-        
+
         $newElementdoc = new DOMDocument();
 
         if ((empty($tables)) && (empty($imgs)) && (empty($hottags)) && (empty($matharrays)))
@@ -1034,8 +1039,8 @@ abstract class Element
                                 $newtag .= "</span>";
                             }
 
-                            $hottagid = $hottag->getAttribute('id');                            
-                            
+                            $hottagid = $hottag->getAttribute('id');
+
                             if (trim($positionvalue) == trim($hottagid))
                             {
                                 $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);

@@ -497,7 +497,14 @@ class Unit extends Element
 
         if ($parentid == '')
         {
-            $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => 0))->id;
+            if ($this->standalone == "false")
+            {
+                $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => 0))->id;
+            }
+            else
+            {
+                $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => -1))->id;
+            }
         }
         else
         {

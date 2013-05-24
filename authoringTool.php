@@ -786,7 +786,7 @@ function makeStandaloneTree($msmid)
 
     $standaloneHTML = '';
     $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
-    $possiblestandaloneUnits = $DB->get_records("msm_compositor", array("msm_id" => $msmid, "table_id" => $unittableid, "parent_id" => 0, "prev_sibling_id" => 0));
+    $possiblestandaloneUnits = $DB->get_records("msm_compositor", array("msm_id" => $msmid, "table_id" => $unittableid));
 
     foreach ($possiblestandaloneUnits as $possibleUnit)
     {
