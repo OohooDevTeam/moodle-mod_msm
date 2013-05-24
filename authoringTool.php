@@ -210,7 +210,9 @@ $msm_nav .= '<ul class="sf-menu">
                                     <span class="msm_structure_top_names">Top Unit :  </span>
                                     <input class="msm_structure_top_input" id="msm_structure_input_top" name="msm_structure_input_top"/>
                                     <span style="color: red;">*</span>
-                                    <br />                            
+                                    <div style="text-align: center;"><span class="msm_structure_alone_names" style="float: left;">Reference Unit :  </span></div>
+                                    <input class="msm_structure_alone_input" id="msm_structure_input_alone" name="msm_structure_input_alone"/>
+                                    <span style="color: red;">*</span>
                                     <button id="msm_child_add" type="button" onclick="addChildUnit()"> (+) Add more Units </button>
                                 </div> 
                             </div> 
@@ -822,10 +824,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                                                                                            
+                                                                                                                                                                
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                                                                                                                    
+                                                                                                                                                                        
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

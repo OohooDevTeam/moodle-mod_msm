@@ -43,26 +43,30 @@ function openNavDialog()
         {
             var allUnitNames = $('#msm_unit_name_input').val().split(",");
             
-            switch(allUnitNames[0])
+            switch(allUnitNames[1])
             {
                 case "Lecture":
                     $('#msm_type_lecture').attr("checked", "true");
-                    $('#msm_structure_input_top').attr("value", allUnitNames[0]);
+                    $('#msm_structure_input_top').attr("value", allUnitNames[1]);
+                    $('#msm_structure_input_alone').attr("value", allUnitNames[0]);
                     break;
                 case "Book":
                     $('#msm_type_book').attr("checked", "true");
-                    $('#msm_structure_input_top').attr("value", allUnitNames[0]);
+                    $('#msm_structure_input_top').attr("value", allUnitNames[1]);
+                    $('#msm_structure_input_alone').attr("value", allUnitNames[0]);
                     break;
                 case "Work Book":
                     $('#msm_type_wbook').attr("checked", "true");
-                    $('#msm_structure_input_top').attr("value", allUnitNames[0]);
+                    $('#msm_structure_input_top').attr("value", allUnitNames[1]);
+                    $('#msm_structure_input_alone').attr("value", allUnitNames[0]);
                     break;
                 case "Others":
                     $('#msm_type_others').attr("checked", "true");
-                    $('#msm_structure_input_top').attr("value", allUnitNames[0]);
+                    $('#msm_structure_input_top').attr("value", allUnitNames[1]);
+                    $('#msm_structure_input_alone').attr("value", allUnitNames[0]);
                     break;
             } 
-            for(var i=1; i < allUnitNames.length-1; i++)
+            for(var i=2; i < allUnitNames.length-1; i++)
             {
                 if(allUnitNames[i] != '')
                 {

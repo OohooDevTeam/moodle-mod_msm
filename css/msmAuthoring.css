@@ -190,7 +190,8 @@
 }
 .msm_structure_input
 {
-    width: 400px;
+    width: 320px;
+    margin-left: 20%;
 }
 
 .msm_structure_names
@@ -200,7 +201,14 @@
 
 .msm_structure_top_input
 {
-    width: 400px;
+    width: 320px;
+    margin-left: 21%;
+}
+
+.msm_structure_alone_input
+{
+    width: 320px;
+    margin-left: 14.2%;
 }
 
 .msm_structure_top_names

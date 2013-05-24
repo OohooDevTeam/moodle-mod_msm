@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -12,7 +13,6 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
  * ************************************************************************* */
-
 /**
  * This script is called by an AJAX call in saveSettings.js which is called when user saves 
  * any changes made to the MSM settngs menu.  This script's main function is to update the
@@ -25,15 +25,20 @@ require_once(dirname(dirname(__FILE__)) . '/lib.php');
 global $DB;
 
 $userInputArray = array(); // changed values by user
-
 // following two variables are used to detect null/empty content error
-$hasError = false; 
+$hasError = false;
 $errorArray = array();
+
+if (isset($_POST['msm_structure_input_alone']))
+{
+    $aloneCompName = $_POST['msm_structure_input_alone'];
+    array_push($userInputArray, $aloneCompName);
+}
 
 if (isset($_POST['msm_structure_input_top']))
 {
     $topCompName = $_POST['msm_structure_input_top'];
-    $userInputArray[] = $topCompName;
+    array_push($userInputArray, $topCompName);
 }
 else
 {
@@ -81,7 +86,7 @@ else
     {
         if (!empty($userInput))
         {
-           // for the case where user deleted initially set sub unit (ie. there are less nesting units available than before setting update)
+            // for the case where user deleted initially set sub unit (ie. there are less nesting units available than before setting update)
             if ($index < sizeof($copiedArray))
             {
                 if ($copiedArray[$index]->unitname != $userInput)
@@ -101,7 +106,7 @@ else
                 $newRecord = new stdClass();
                 $newRecord->unitname = $userInput;
                 $newRecord->msmid = $_POST['msm_instance_id'];
-                $newRecord->depth = $index;
+                $newRecord->depth = $index-1;
 
                 $id = $DB->insert_record('msm_unit_name', $newRecord);
             }
@@ -110,20 +115,20 @@ else
 
     foreach ($copiedArray as $key => $dbValue)
     {
-        if ($key > sizeof($userInputArray)-1)
+        if ($key > sizeof($userInputArray) - 1)
         {
             $DB->delete_records('msm_unit_name', array('id' => $dbValue->id));
         }
     }
-    
-    $newString = '';    
-    
-    for ($i = 0; $i < sizeof($userInputArray)-1; $i++)
+
+    $newString = '';
+
+    for ($i = 0; $i < sizeof($userInputArray) - 1; $i++)
     {
         $newString .= $userInputArray[$i] . ",";
     }
-    $newString .= $userInputArray[sizeof($userInputArray)-1];
-    
+    $newString .= $userInputArray[sizeof($userInputArray) - 1];
+
 
     // new value to be put into the hidden input field with all unit names
     echo json_encode($newString);
