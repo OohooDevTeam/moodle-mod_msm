@@ -157,6 +157,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     {
         // matching all the property defining the unit names
         $match = '/^(top|child)level(\d+)*$/';
+        
 
         $depth = 0;
         foreach ($msm as $property => $value)
@@ -181,6 +182,14 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //                    $DB->insert_record('msm_unit_name', $unitNameTableData);
 //                    $depth++;
 //                }
+            }
+            else if(trim($property) == "standalone")
+            {
+                $unitNameTableData = new stdClass();
+                $unitNameTableData->msmid = $msm->id;
+                $unitNameTableData->unitname = $value;
+                $unitNameTableData->depth = -1;
+                $DB->insert_record('msm_unit_name', $unitNameTableData);
             }
             else if (trim($property) == 'additionalChild')
             {

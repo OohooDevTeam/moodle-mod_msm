@@ -120,6 +120,7 @@ class EditorUnit extends EditorElement
 
         $unitCompRecord = $DB->get_record("msm_compositor", array('id' => $idInfo[0]));
         $unitRecord = $DB->get_record($this->tablename, array('id' => $unitCompRecord->unit_id));
+        $unittableRecord = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
 
         if ($parent != 0)
         {
@@ -133,7 +134,7 @@ class EditorUnit extends EditorElement
 
             $newUnitData = new stdClass();
             $newUnitData->id = $unitRecord->id;
-            $newUnitData->standalone = $unitRecord->standalone;
+            $newUnitData->standalone = "false";
             $newUnitData->string_id = $unitRecord->string_id;
             $newUnitData->compchildtype = $currentUnitCompType->id;
             $newUnitData->title = $unitRecord->title;
@@ -155,6 +156,33 @@ class EditorUnit extends EditorElement
             $newCompData->prev_sibling_id = $sibling;
 
             $DB->update_record("msm_compositor", $newCompData);
+        }
+        else if($parent === '')
+        {
+            $unitChildCompRecords = $DB->get_records("msm_compositor", array("parent_id" => $unitCompRecord->id, "table_id" => $unittableRecord->id));
+
+            $unitParentCompRecords = $DB->get_records("msm_compositor", array("id" => $unitCompRecord->parent_id, "table_id" => $unittableRecord->id));
+
+            if ((empty($unitChildCompRecords)) && (empty($unitParentCompRecords)))
+            {
+                $currentUnitDepth = -1;
+                $currentUnitCompType = $DB->get_record("msm_unit_name", array('depth' => $currentUnitDepth, 'msmid' => $unitCompRecord->msm_id));
+              
+                $standData = new stdClass();
+                $standData->id = $unitRecord->id;
+                $standData->standalone = "true";
+                $standData->string_id = $unitRecord->string_id;
+                $standData->compchildtype = $currentUnitCompType->id;
+                $standData->title = $unitRecord->title;
+                $standData->plain_title = $unitRecord->plain_title;
+                $standData->short_name = $unitRecord->short_name;
+                $standData->creationdate = $unitRecord->creationdate;
+                $standData->last_revision_date = $unitRecord->last_revision_date;
+                $standData->acknowledgements = $unitRecord->acknowledgements;
+                $standData->description = $unitRecord->description;
+
+                $DB->update_record($this->tablename, $standData);
+            }
         }
     }
 
@@ -212,13 +240,13 @@ class EditorUnit extends EditorElement
                     $theorem->loadData($child->id);
                     $this->children[] = $theorem;
                     break;
-                
+
                 case "msm_extra_info":
                     $extraInfo = new EditorExtraInfo();
                     $extraInfo->loadData($child->id);
                     $this->children[] = $extraInfo;
                     break;
-                
+
                 case "msm_intro":
                     $intro = new EditorIntro();
                     $intro->loadData($child->id);
@@ -259,7 +287,7 @@ class EditorUnit extends EditorElement
         return $this;
     }
 
-    /** 
+    /**
      * This method is an abstract method from EditorElement that has a purpose of displaying the 
      * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
      * displayData from the EditorTheorem, EditorDefinition, EditorComment, EditorIntro and
@@ -322,7 +350,7 @@ class EditorUnit extends EditorElement
                 case "EditorBlock":
                     $childOrderString .= "copied_msm_body-$childElement->compid";
                     break;
-                
+
                 case "EditorExtraInfo":
                     $childOrderString .= "copied_msm_extra_info-$childElement->compid";
                     break;
@@ -373,7 +401,7 @@ class EditorUnit extends EditorElement
         $newUnitData->short_name = $this->short_name;
         $newUnitData->description = $this->description;
         $newUnitData->compchildtype = $this->unitName;
-        $newUnitData->standalone = 'false';
+        $newUnitData->standalone = $this->standalone;
 
         $DB->update_record($this->tablename, $newUnitData);
 

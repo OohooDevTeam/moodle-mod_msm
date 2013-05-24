@@ -258,7 +258,7 @@ else
     foreach ($existingUnits as $unit)
     {
         $unitRecord = $DB->get_record("msm_unit", array("id" => $unit->unit_id));
-        if (!$unitRecord->standalone)
+        if ($unitRecord->standalone == 'false')
         {
             $existingUnit = $unit;
             break;
@@ -292,6 +292,7 @@ if (!empty($existingUnit))
 
     $standaloneTree .= makeStandaloneTree($msm->id);
 }
+
 
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
@@ -371,17 +372,17 @@ if (!empty($treeContent))
 $formContent .= ' </li>
                 </ul>
                </div>
-                <ul><li><h3> Reference/standalone materials </h3></li></ul>
+                <ul><li><h3> Reference/stand-alone materials </h3></li></ul>
                 <div id="msm_standalone_tree">
                     <ul>
-                        <li id="msm_standalone_root"><a href="#">References/standalone documents</a></li>';
+                        <li id="msm_standalone_root"><a href="#">References/stand-alone documents</a>';
 if (!empty($standaloneTree))
 {
     $formContent .= '<ul id="msm_standalone_addpoint">';
     $formContent .= $standaloneTree;
     $formContent .= '</ul>';
 }
-$formContent .= '</ul>
+$formContent .= '</li></ul>
                 </div>';
 
 if (empty($treeContent))
@@ -782,7 +783,6 @@ function makeStandaloneTree($msmid)
     global $DB;
 
     $standaloneHTML = '';
-    $standaloneHTML .= "<ul>";
     $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
     $possiblestandaloneUnits = $DB->get_records("msm_compositor", array("msm_id" => $msmid, "table_id" => $unittableid, "parent_id" => 0, "prev_sibling_id" => 0));
 
@@ -793,11 +793,17 @@ function makeStandaloneTree($msmid)
         if ($unitRecord->standalone == "true")
         {
             $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";
-            $standaloneHTML .= "<a href='#'>$unitRecord->short_name</a>";
+            if (empty($unitRecord->shortname))
+            {
+                $standaloneHTML .= "<a href='#'>$possibleUnit->id-$possibleUnit->unit_id</a>";
+            }
+            else
+            {
+                $standaloneHTML .= "<a href='#'>$unitRecord->short_name</a>";
+            }
             $standaloneHTML .= "</li>";
         }
     }
-    $standaloneHTML .= "</ul>";
 
     return $standaloneHTML;
 }
@@ -816,10 +822,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                                                                                        
+                                                                                                                                                            
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
-                                                                                                                                                                
+                                                                                                                                                                    
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });

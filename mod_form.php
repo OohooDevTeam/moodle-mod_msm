@@ -140,6 +140,8 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addHelpButton('settinggeneral', 'levelsetting', 'msm');
         $mform->addElement('text', 'toplevel', get_string('toplevel', 'msm'), array('size' => '64', 'value' => 'Lecture'));
         $mform->setType('toplevel', PARAM_TEXT);
+        $mform->addElement('text', 'standalone', get_string('standalone', 'msm'), array('size' => '64', 'value' => 'Simplepage'));
+        $mform->setType('standalone', PARAM_TEXT);
         $mform->addElement('text', 'childlevel1', get_string('childlevel1', 'msm'), array('size' => '64', 'value' => 'Part'));
         $mform->setType('childlevel1', PARAM_TEXT);
         $mform->addElement('text', 'childlevel2', get_string('childlevel2', 'msm'), array('size' => '64', 'value' => 'Topic'));
@@ -150,6 +152,7 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->setType('childlevel4', PARAM_TEXT);
 
         $mform->addRule('toplevel', null, 'required', null, 'client');
+        $mform->addRule('standalone', null, 'required', null, 'client');
         $mform->addRule('childlevel1', null, 'required', null, 'client');
         $mform->addRule('childlevel2', null, 'required', null, 'client');
         $mform->addRule('childlevel3', null, 'required', null, 'client');

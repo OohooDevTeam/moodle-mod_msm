@@ -59,6 +59,7 @@ $string['levelsetting'] = 'Names for the Hierarchical Elements';
 $string['levelsetting_help'] = 'This setting specifies the name of each hierarchical elements that will make up this composition.
     The values stated in the input fields are the default value for each type in the select menu above.';
 $string['toplevel'] = 'Name of top level container';
+$string['standalone'] = 'Name of reference/stand-alone materials';
 $string['childlevel1'] = 'Name of first child element';
 $string['childlevel2'] = 'Name of second child element';
 $string['childlevel3'] = 'Name of third child element';

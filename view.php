@@ -80,15 +80,28 @@ if (!$units = $DB->get_records('msm_compositor', array('msm_id' => $msm->id)))
     redirect($url);
 }
 
+
 if(!empty($_REQUEST['unitid'])) // for displaying units created by the editor
 {
-    $rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'id'=>$_REQUEST['unitid'], 'parent_id' => 0, 'prev_sibling_id' => 0), '*', MUST_EXIST);
+    $rootcomps = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'id'=>$_REQUEST['unitid'], 'parent_id' => 0, 'prev_sibling_id' => 0));
 }
 else // for displaying units from the XML legacy material
 {
-   $rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0), '*', MUST_EXIST); 
+   $rootcomps = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0)); 
 }
 
+$rootcomp = null;
+
+foreach($rootcomps as $root)
+{
+    $rootUnitRecord = $DB->get_record("msm_unit", array("id"=>$root->unit_id));
+    
+    if($rootUnitRecord->standalone == "false")
+    {
+        $rootcomp = $root;
+        break;
+    }
+}
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);

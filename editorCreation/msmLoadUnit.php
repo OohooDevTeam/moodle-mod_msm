@@ -131,13 +131,27 @@ else if (isset($_POST['tree_content']))
     $doc = new DOMDocument();
     $doc->loadHTML($_POST['tree_content']);
 
+    $standaloneIds = $_POST["standalone_content"];
+    $standaloneIdInfos = explode(",", $standaloneIds);
+
     $rootElement = $doc->documentElement;
 
     $ulElement = $rootElement->childNodes->item(0);
-    
-//    print_object($doc->saveHTML($doc->importNode($ulElement, true)));
 
     processTreeContent($ulElement, 0, 0);
+
+    // updating standalone units to change the standalone status in the msm_unit table
+    foreach ($standaloneIdInfos as $idInfo)
+    {
+        if (!empty($idInfo))
+        {
+            $idsets = explode("-", $idInfo);
+
+            $idPair = $idsets[1] . "-" . $idsets[2];
+            $unit = new EditorUnit();
+            $unit->updateUnitStructure($idPair, '', '');
+        }
+    }
 
     $liElements = $ulElement->getElementsByTagName('li');
 
@@ -150,7 +164,7 @@ else if (isset($_POST['tree_content']))
         $string = explode("-", $id);
 
         $compidArray[] = $string[1];
-    }    
+    }
 
     $idPairs = array();
 
