@@ -28,7 +28,141 @@ class ExportUnit extends ExportElement
 
     public function exportData()
     {
+        $XMLcreator = new DOMDocument();
+        $XMLcreator->formatOutput = true;
+
+        $unitNode = $XMLcreator->createElement($this->unittag);
+        $unitNode->setAttribute("unitid", $this->compid);
+
+        $descriptionNode = null;
+        $titlesNode = null;
+//        $authorNode = null;
+        $ackNode = null;
+        $datesNode = null;
+
+
+        if (!empty($this->description))
+        {
+            $descriptionNode = $XMLcreator->createElement("description");
+            $descriptionText = $XMLcreator->createTextNode($this->description);
+            $descriptionNode->appendChild($descriptionText);
+        }
+
+        if ((!empty($this->title)) || (!empty($this->shortname)))
+        {
+            $titlesNode = $XMLcreator->createElement("titles");
+
+            $titleNode = null;
+            $plaintitleNode = null;
+
+            if (!empty($this->title))
+            {
+                $titleNode = $XMLcreator->createElement("title");
+                $titleText = $XMLcreator->createTextNode($this->title);
+                $titleNode->appendChild($titleText);
+            }
+            if (!empty($this->shortname))
+            {
+                $plaintitleNode = $XMLcreator->createElement("plain.title");
+                $plaintitleText = $XMLcreator->createTextNode($this->shortname);
+                $plaintitleNode->appendChild($plaintitleText);
+            }
+
+            $titlesNode->appendChild($titleNode);
+            $titlesNode->appendChild($plaintitleNode);
+        }
+
+        // currently empty
+//        if(!empty($this->authors))
+//        {
+//            
+//        }
+
+        if (!empty($this->acknowledgement))
+        {
+            $ackNode = $XMLcreator->createElement("acknowledgements");
+            $ackText = $XMLcreator->createTextNode($this->acknowledgement);
+            $ackNode->appendChild($ackText);
+        }
+
+        if (!empty($this->dates))
+        {
+            $datesNode = $XMLcreator->createElement("dates");
+
+            $createdateString = explode("-", $this->dates["creation"]);
+
+            $lastdateString = '';
+            if (!empty($this->dates["lastrevision"]))
+            {
+                $lastdateString = explode("-", $this->dates["lastrevision"]);
+            }
+            else
+            {
+                $lastdateString = explode("-", $this->dates["creation"]);
+            }
+
+            $creationNode = $XMLcreator->createElement("creation");
+            $creationDateNode = $XMLcreator->createElement("date");
+            $creationMonthNode = $XMLcreator->createElement("month");
+            $creationMonthText = $XMLcreator->createTextNode($createdateString[1]);
+            $creationDayNode = $XMLcreator->createElement("day");
+            $creationDayText = $XMLcreator->createTextNode($createdateString[2]);
+            $creationYearNode = $XMLcreator->createElement("year");
+            $creationYearText = $XMLcreator->createTextNode($createdateString[0]);
+
+            $creationMonthNode->appendChild($creationMonthText);
+            $creationDayNode->appendChild($creationDayText);
+            $creationYearNode->appendChild($creationYearText);
+
+            $creationDateNode->appendChild($creationMonthNode);
+            $creationDateNode->appendChild($creationDayNode);
+            $creationDateNode->appendChild($creationYearNode);
+
+            $creationNode->appendChild($creationDateNode);
+
+            $lastRevNode = $XMLcreator->createElement("last.revision");
+            $lastRevDateNode = $XMLcreator->createElement("date");
+            $lastRevMonthNode = $XMLcreator->createElement("month");
+            $lastRevMonthText = $XMLcreator->createTextNode($lastdateString[1]);
+            $lastRevDayNode = $XMLcreator->createElement("day");
+            $lastRevDayText = $XMLcreator->createTextNode($lastdateString[2]);
+            $lastRevYearNode = $XMLcreator->createElement("year");
+            $lastRevYearText = $XMLcreator->createTextNode($lastdateString[0]);
+
+            $lastRevMonthNode->appendChild($lastRevMonthText);
+            $lastRevDayNode->appendChild($lastRevDayText);
+            $lastRevYearNode->appendChild($lastRevYearText);
+
+            $lastRevDateNode->appendChild($lastRevMonthNode);
+            $lastRevDateNode->appendChild($lastRevDayNode);
+            $lastRevDateNode->appendChild($lastRevYearNode);
+
+            $lastRevNode->appendChild($lastRevDateNode);
+
+            $datesNode->appendChild($creationNode);
+            $datesNode->appendChild($lastRevNode);
+        }
+
+        if (!empty($descriptionNode))
+        {
+            $unitNode->appendChild($descriptionNode);
+        }
+        if (!empty($titlesNode))
+        {
+            $unitNode->appendChild($titlesNode);
+        }
+        if (!empty($ackNode))
+        {
+            $unitNode->appendChild($ackNode);
+        }
+        if (!empty($datesNode))
+        {
+            $unitNode->appendChild($datesNode);
+        }
         
+        $XMLcreator->appendChild($unitNode);
+
+        return $XMLcreator;
     }
 
     public function loadDbData($compid)
@@ -42,6 +176,7 @@ class ExportUnit extends ExportElement
         $this->compid = $compid;
         $this->id = $unitRecord->id;
         $this->title = $unitRecord->title;
+//        $this->authors = $unitRecord->authors;
         $this->shortname = $unitRecord->short_name;
         $this->description = $unitRecord->description;
         $this->standalone = $unitRecord->standalone;
@@ -56,6 +191,13 @@ class ExportUnit extends ExportElement
             $date = new DateTime();
             $date->setTimestamp($msmRecord->timecreated);
             $this->dates["creation"] = $date->format("Y-m-d");
+
+            if ($msmRecord->timemodified > 0)
+            {
+                $date = new DateTime();
+                $date->setTimestamp($msmRecord->timemodified);
+                $this->dates["lastrevision"] = $date->format("Y-m-d");
+            }
         }
 
         $unitTableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));

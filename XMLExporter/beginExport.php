@@ -43,19 +43,13 @@ foreach($topUnits as $topUnit)
     $unitObjects[] = $unit;
 }
 
-print_object($unitObjects);
-die;
-
 foreach($unitObjects as $unitObj)
 {
-   $topunitElement = $unitObj->exportData();
-   createExportFiles($topunitElement);
+   $topunitDocument = $unitObj->exportData();
    
+   print_object($topunitDocument->saveXML());
+   die;
 }
 
-function createExportFiles($DomElement)
-{
-    
-}
 
 ?>
