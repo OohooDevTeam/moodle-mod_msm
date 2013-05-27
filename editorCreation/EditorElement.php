@@ -159,7 +159,7 @@ abstract class EditorElement
             }
         }
 
-        $newcontent = $htmlParser->saveHTML($htmlParser->importNode($htmlParser->getElementsByTagName($tagName)->item(0), true));
+        $newcontent = $htmlParser->saveXML($htmlParser->importNode($htmlParser->getElementsByTagName($tagName)->item(0), true));
 
         return $newcontent;
     }

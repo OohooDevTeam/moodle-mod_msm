@@ -35,7 +35,7 @@ class EditorSubordinate extends EditorElement
         $hotNode = $doc->importNode($idNumber, true);
         $hotNodeId = $hotNode->getAttribute("id");
         $hotNodeText = $hotNode->textContent;
-        
+
         $this->hot = $hotNodeId . "," . $hotNodeText;
 
         $id = $idNumber->getAttribute("id");
@@ -91,16 +91,23 @@ class EditorSubordinate extends EditorElement
         $hotIdInfo = explode(",", $this->hot);
         $idInfo = explode("-", $hotIdInfo[0]);
 
-        $matchString = $idInfo[1];
-        for ($i = 2; $i < sizeof($idInfo); $i++)
+        if (sizeof($idInfo) > 1)
         {
-            $matchString .= "-" . $idInfo[$i];
-        }
+            $matchString = $idInfo[1];
+            for ($i = 2; $i < sizeof($idInfo); $i++)
+            {
+                $matchString .= "-" . $idInfo[$i];
+            }
 
-        // swapping out arbitrary number given to parent element for id with database compositor id        
-        $idEnding = preg_replace('/([A-Za-z]*?)\d+((?:-\d+)*)/', "$1", trim($matchString));
-        $idEnding .= $parentId;
-        $idEnding .= preg_replace('/([A-Za-z]*?)\d+((?:-\d+)*)/', "$2", trim($matchString));
+            // swapping out arbitrary number given to parent element for id with database compositor id        
+            $idEnding = preg_replace('/([A-Za-z]*?)\d+((?:-\d+)*)/', "$1", trim($matchString));
+            $idEnding .= $parentId;
+            $idEnding .= preg_replace('/([A-Za-z]*?)\d+((?:-\d+)*)/', "$2", trim($matchString));
+        }
+        else
+        {
+            $idEnding = $idInfo[0];
+        }
 
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
@@ -118,7 +125,7 @@ class EditorSubordinate extends EditorElement
         $htmlContent .= "<div id='msm_subordinate_hotword_match-$idEnding' class='msm_subordinate_hotword_matchs'>";
         $htmlContent .= $hotIdInfo[0];
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= $this->info->displayData($parentId, $idEnding);
 
         return $htmlContent;
@@ -171,7 +178,7 @@ class EditorSubordinate extends EditorElement
             $id .= $indexInfo[$i] . "-";
         }
         $id .= $indexInfo[sizeof($indexInfo) - 1];
-        
+
         $previewHtml .= $this->info->displayPreview($id);
 
         return $previewHtml;

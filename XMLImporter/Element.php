@@ -879,12 +879,7 @@ abstract class Element
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
 
-        print_object($XMLcontent);
-        
-        if(!$doc->loadXML($XMLcontent))
-        {
-            $doc->loadHTML($XMLcontent);
-        }
+        @$doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');

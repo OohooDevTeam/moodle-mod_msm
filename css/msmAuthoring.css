@@ -96,6 +96,8 @@
 {
     background-color: #fffdeb;
     min-height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #msm_editor_middle_droparea{

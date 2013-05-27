@@ -134,14 +134,14 @@ $msm_nav .= '<ul class="sf-menu">
                         <a href="#ab"> <span>Save</span></a>
                     </li>
                     <li>
-                        <a href="#ac"> <span>Save as...</span></a>
+                        <a href="#" id="msm_nav_export" onclick="exportComposition();"> <span>Export as XML</span></a>
                     </li>
                     <li>
                         <a href="#ad"> <span>Rename Composition</span></a>
                     </li>
                 </ul>
             </li>
-            <li>
+            <!--li>
                 <a href="#b"> <span>Edit</span></a>       
                 <span class="sf-sub-indicator"> >> </span>
                 <ul>
@@ -168,7 +168,7 @@ $msm_nav .= '<ul class="sf-menu">
                         <a href="#bg"> <span>Select All</span></a>
                     </li>
                 </ul>
-            </li>
+            </li-->
             <li>
                 <a id="msm_nav_preview" onclick="showUnitPreview()"> <span>View</span></a>                 
             </li>

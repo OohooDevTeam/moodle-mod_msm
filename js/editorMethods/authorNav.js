@@ -666,4 +666,57 @@ function previewinfoopen(triggerId, idEnding)
     
 }
 
+function exportComposition()
+{
+    var unitnames = $("#msm_unit_name_input").val();
+    
+    var unitInfo = unitnames.split(",");
+    
+    var msmid = unitInfo[unitInfo.length-1];
+    
+    $.ajax({
+        type: "POST",
+        url: "XMLExporter/beginExport.php",
+        data: {
+            msm_id: msmid
+        },           
+        success: function(data) { 
+            var ids = JSON.parse(data);
+                
+            if(ids[0] != "success")
+            {
+                var exportError = $("<div id='msm_export_error' class='dialogs' title='Export Error'><p> The export process was not able to finish successfully. </p></div>");
+                    
+                $("#msm_editor_middle").append(exportError);
+                    
+                $("#msm_export_error").dialog({
+                    modal:false,
+                    buttons: {
+                        Ok: function(){
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            }
+            else
+            {
+                var exportConfirm = $("<div id='msm_export_confirm' class='dialogs' title='Export Complete'><p> Your composition has been successfully exported to designated folder. </p></div>");
+                    
+                $("#msm_editor_middle").append(exportConfirm);
+                    
+                $("#msm_export_confirm").dialog({
+                    modal:false,
+                    buttons: {
+                        Ok: function(){
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            }
+            
+        },
+        error: function() {}
+    }); 
+}
+
 
