@@ -31,6 +31,16 @@ class ExportExtraInfo extends ExportElement
         
         $this->id = $extraUnitRecord->id;
         $this->compid = $compid;
+        
+        switch($extraUnitRecord->extra_info_name)
+        {
+            case "Historical Notes":
+                $this->name = "historical.notes";
+                break;
+            default:
+                $this->name = strtolower($extraUnitRecord->extra_info_name);
+                break;
+        }
         $this->name = $extraUnitRecord->extra_info_name;
         
         $childRecords = $DB->get_records("msm_compositor", array("parent_id"=>$this->compid), "prev_sibling_id");

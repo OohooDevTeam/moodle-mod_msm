@@ -23,7 +23,13 @@ class ExportTable extends ExportElement
     
     public function exportData()
     {
+        $tableCreator = new DOMDocument();
+
+        $tableCreator->loadXML($this->content);
         
+        $tableNode = $tableCreator->documentElement;
+
+        return $tableNode;
     }
 
     public function loadDbData($compid)

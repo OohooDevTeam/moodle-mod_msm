@@ -20,7 +20,24 @@ class ExportAssociate extends ExportElement
     //put your code here
     public function exportData()
     {
+        $associateCreator = new DOMDocument();
         
+        $associateNode = $associateCreator->createElement("associate");
+        $associateNode->setAttribute("type", $this->description);
+        
+        if(!empty($this->info))
+        {
+            $infoNode = $this->info->exportData();            
+            $newinfoNode = $associateCreator->importNode($infoNode, true);            
+            $associateNode->appendChild($newinfoNode);
+        }
+        
+        if(!empty($this->ref))
+        {
+            // need method to deal with ref
+        }
+        
+        return $associateNode;
     }
 
     public function loadDbData($compid)

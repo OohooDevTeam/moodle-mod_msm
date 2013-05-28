@@ -14,13 +14,26 @@ class ExportPara extends ExportElement
 {
     public $id;
     public $compid;
+    public $align;
     public $subordinates = array();
     public $content;
     public $medias = array();
     //put your code here
     public function exportData()
     {
+        $paraCreator = new DOMDocument();
         
+        $paraNode = $paraCreator->createElement("para");
+        $paraNode->setAttribute("align", $this->align);
+        $paraNode->setAttribute("id", $this->compid);
+        
+        $parabodyNode = $paraCreator->createElement("para.body");
+        $parabodyText = $paraCreator->createTextNode($this->content);
+        $parabodyNode->appendChild($parabodyText);
+        
+        $paraNode->appendChild($parabodyNode);
+        
+        return $paraNode;
     }
 
     public function loadDbData($compid)
@@ -32,6 +45,7 @@ class ExportPara extends ExportElement
         
         $this->id = $paraUnitRecord->id;
         $this->compid = $compid;
+        $this->align = $paraUnitRecord->para_align;
         $this->content = $paraUnitRecord->para_content;
         
         $childRecords = $DB->get_records("msm_compositor", array("parent_id"=>$this->id), "prev_sibling_id");

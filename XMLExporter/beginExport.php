@@ -48,7 +48,6 @@ foreach($unitObjects as $unitObj)
    $topunitDocument = $unitObj->exportData();
    
    print_object($topunitDocument->saveXML());
-   die;
 }
 
 

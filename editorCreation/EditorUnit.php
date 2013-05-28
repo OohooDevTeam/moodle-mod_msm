@@ -157,7 +157,7 @@ class EditorUnit extends EditorElement
 
             $DB->update_record("msm_compositor", $newCompData);
         }
-        else if($parent === '')
+        else if ($parent === '')
         {
             $unitChildCompRecords = $DB->get_records("msm_compositor", array("parent_id" => $unitCompRecord->id, "table_id" => $unittableRecord->id));
 
@@ -167,7 +167,7 @@ class EditorUnit extends EditorElement
             {
                 $currentUnitDepth = -1;
                 $currentUnitCompType = $DB->get_record("msm_unit_name", array('depth' => $currentUnitDepth, 'msmid' => $unitCompRecord->msm_id));
-              
+
                 $standData = new stdClass();
                 $standData->id = $unitRecord->id;
                 $standData->standalone = "true";
@@ -395,13 +395,15 @@ class EditorUnit extends EditorElement
 
         $DB->update_record("msm_compositor", $newCompData);
 
+        $oldUnitRecord = $DB->get_record($this->tablename, array("id" => $oldCompRecord->unit_id));
+
         $newUnitData->id = $oldCompRecord->unit_id;
         $newUnitData->title = $this->title;
         $newUnitData->plain_title = $this->title;
         $newUnitData->short_name = $this->short_name;
         $newUnitData->description = $this->description;
         $newUnitData->compchildtype = $this->unitName;
-        $newUnitData->standalone = $this->standalone;
+        $newUnitData->standalone = $oldUnitRecord->standalone;
 
         $DB->update_record($this->tablename, $newUnitData);
 

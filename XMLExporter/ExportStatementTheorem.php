@@ -12,36 +12,63 @@
  */
 class ExportStatementTheorem extends ExportElement
 {
+
     public $id;
     public $compid;
     public $content;
     public $subordinates = array();
     public $medias = array();
     public $parts = array();
+
     //put your code here
     public function exportData()
     {
-        
+        $statementCreator = new DOMDocument();
+        $statementNode = $statementCreator->createElement("statement.theorem");
+
+        $patterns = array();
+        $patterns[0] = "/<div.*?>/";
+        $patterns[1] = "/<\/div>/";
+        $replacements = array();
+        $replacements[0] = '';
+        $replacements[1] = '';
+        $modifiedContent = preg_replace($patterns, $replacements, $this->content);
+
+        $statementText = $statementCreator->createTextNode($modifiedContent);
+
+        $statementNode->appendChild($statementText);
+
+        if (!empty($this->parts))
+        {
+            foreach ($this->parts as $part)
+            {
+                $partNode = $part->exportData();
+                $newpartNode = $statementCreator->importNode($partNode, true);
+                $statementNode->appendChild($newpartNode);
+            }
+        }
+
+        return $statementNode;
     }
 
     public function loadDbData($compid)
     {
         global $DB;
-        
-        $statementCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
-        $statementUnitRecord = $DB->get_record("msm_statement_theorem", array("id"=>$statementCompRecord->unit_id));
-        
+
+        $statementCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+        $statementUnitRecord = $DB->get_record("msm_statement_theorem", array("id" => $statementCompRecord->unit_id));
+
         $this->id = $statementUnitRecord->id;
         $this->compid = $compid;
         $this->content = $statementUnitRecord->statement_content;
-        
-        $childRecords = $DB->get_records("msm_compositor", array("parent_id"=>$this->compid), "prev_sibling_id");
-        
-        foreach($childRecords as $child)
+
+        $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
+
+        foreach ($childRecords as $child)
         {
-            $childtable = $DB->get_record("msm_table_collection", array("id"=>$child->table_id));
-            
-            switch($childtable->tablename)
+            $childtable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+
+            switch ($childtable->tablename)
             {
                 case "msm_subordinate":
                     $subordinate = new ExportSubordinate();
@@ -60,9 +87,10 @@ class ExportStatementTheorem extends ExportElement
                     break;
             }
         }
-        
+
         return $this;
     }
+
 }
 
 ?>

@@ -22,7 +22,29 @@ class ExportInfo extends ExportElement
 
     public function exportData()
     {
-        
+        $infoCreator = new DOMDocument();
+        $infoNode = $infoCreator->createElement("info");
+
+        if (!empty($this->caption))
+        {
+            $captionNode = $infoCreator->createElement("info.caption");
+            $captionText = $infoCreator->createTextNode($this->caption);
+            $captionNode->appendChild($captionText);
+            $infoNode->appendChild($captionNode);
+        }
+
+        $patterns = array();
+        $patterns[0] = "/<div.*?>/";
+        $patterns[1] = "/<\/div>/";
+        $replacements = array();
+        $replacements[0] = '';
+        $replacements[1] = '';
+        $modifiedContent = preg_replace($patterns, $replacements, $this->content);
+
+        $infoText = $infoCreator->createTextNode($modifiedContent);
+        $infoNode->appendChild($infoText);
+
+        return $infoNode;
     }
 
     public function loadDbData($compid)

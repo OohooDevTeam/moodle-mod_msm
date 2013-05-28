@@ -18,9 +18,35 @@ class ExportBlock extends ExportElement
     public $content = array();
     
     //put your code here
-    public function exportData()
+    public function exportData($captionNode = '')
     {
+        $blockCreator = new DOMDocument();
         
+        $blockNode = $blockCreator->createElement("block");
+        
+        if(!empty($captionNode))
+        {
+            $blockNode->appendChild($captionNode);
+        }
+        else if(!empty($this->caption))
+        {
+            $captionNode = $blockCreator->createElement("caption");
+            $captionText = $blockCreator->createTextNode($this->caption);
+            $captionNode->appendChild($captionText);
+            $blockNode->appendChild($captionNode);
+        }
+        
+        $blockbodyNode = $blockCreator->createElement("block.body");
+        
+        foreach($this->content as $content)
+        {
+            $contentNode = $content->exportData();
+            $newcontentNode = $blockCreator->importNode($contentNode, true);   
+            $blockbodyNode->appendChild($newcontentNode);
+        }
+        $blockNode->appendChild($blockbodyNode);
+        
+        return $blockNode;
     }
 
     public function loadDbData($compid)

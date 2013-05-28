@@ -23,7 +23,53 @@ class ExportComment extends ExportElement
     
     public function exportData()
     {
+        $commentCreator = new DOMDocument();
         
+        $commentNode = $commentCreator->createElement("comment");
+        $commentNode->setAttribute("type", $this->type);
+        $commentNode->setAttribute("id", $this->compid);
+        
+        if(!empty($this->caption))
+        {
+            $captionNode = $commentCreator->createElement("caption");
+            $captionText = $commentCreator->createTextNode($this->caption);
+            $captionNode->appendChild($captionText);
+            $commentNode->appendChild($captionNode);
+        }
+        
+        if(!empty($this->description))
+        {
+            $descriptionNode = $commentCreator->createElement("description");
+            $descriptionText = $commentCreator->createTextNode($this->description);
+            $descriptionNode->appendChild($descriptionText);
+            $commentNode->appendChild($descriptionNode);
+        }
+        
+          $commentbodyNode = $commentCreator->createElement("comment.body");
+          
+          // removing root div to replace with comment.body
+          $patterns = array();
+          $patterns[0] = "/<div.*?>/";
+          $patterns[1] = "/<\/div>/";
+          $replacements = array();
+          $replacements[0] = '';
+          $replacements[1] = '';          
+          $modifiedContent = preg_replace($patterns, $replacements, $this->content);
+          $commentbodyText = $commentCreator->createTextNode($modifiedContent);
+          $commentbodyNode->appendChild($commentbodyText);
+          $commentNode->appendChild($commentbodyNode);
+          
+          if(!empty($this->associates))
+          {
+              foreach($this->associates as $associate)
+              {
+                  $associateNode = $associate->exportData();
+                  $newassociateNode = $commentCreator->importNode($associateNode, true);   
+                  $commentNode->appendChild($newassociateNode);
+              }
+          }
+        
+        return $commentNode;
     }
 
     public function loadDbData($compid)
@@ -54,7 +100,7 @@ class ExportComment extends ExportElement
             else if ($childTable->tablename == "msm_associate")
             {
                 $associate = new ExportAssociate();
-                $associate->loadDbData($asso->id);
+                $associate->loadDbData($child->id);
                 $this->associates[] = $associate;
             }
         }

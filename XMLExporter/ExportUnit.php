@@ -28,17 +28,23 @@ class ExportUnit extends ExportElement
 
     public function exportData()
     {
+        global $CFG;
+        
         $XMLcreator = new DOMDocument();
+        // to format the resulting XML document
         $XMLcreator->formatOutput = true;
-
-        $unitNode = $XMLcreator->createElement($this->unittag);
+        $XMLcreator->schemaValidate("$CFG->dirroot/msm/NewSchemas/Unit.xsd");
+        $unitNode = $XMLcreator->createElement("unit");
+        $unitNode->setAttribute("tagname", $this->unittag);
         $unitNode->setAttribute("unitid", $this->compid);
+        $unitNode->setAttribute("standalone", $this->standalone);
 
         $descriptionNode = null;
         $titlesNode = null;
 //        $authorNode = null;
         $ackNode = null;
         $datesNode = null;
+        $childrenNode = null;
 
 
         if (!empty($this->description))
@@ -46,6 +52,7 @@ class ExportUnit extends ExportElement
             $descriptionNode = $XMLcreator->createElement("description");
             $descriptionText = $XMLcreator->createTextNode($this->description);
             $descriptionNode->appendChild($descriptionText);
+            $unitNode->appendChild($descriptionNode);
         }
 
         if ((!empty($this->title)) || (!empty($this->shortname)))
@@ -70,6 +77,7 @@ class ExportUnit extends ExportElement
 
             $titlesNode->appendChild($titleNode);
             $titlesNode->appendChild($plaintitleNode);
+            $unitNode->appendChild($titlesNode);
         }
 
         // currently empty
@@ -83,6 +91,7 @@ class ExportUnit extends ExportElement
             $ackNode = $XMLcreator->createElement("acknowledgements");
             $ackText = $XMLcreator->createTextNode($this->acknowledgement);
             $ackNode->appendChild($ackText);
+            $unitNode->appendChild($ackNode);
         }
 
         if (!empty($this->dates))
@@ -141,26 +150,88 @@ class ExportUnit extends ExportElement
 
             $datesNode->appendChild($creationNode);
             $datesNode->appendChild($lastRevNode);
-        }
-
-        if (!empty($descriptionNode))
-        {
-            $unitNode->appendChild($descriptionNode);
-        }
-        if (!empty($titlesNode))
-        {
-            $unitNode->appendChild($titlesNode);
-        }
-        if (!empty($ackNode))
-        {
-            $unitNode->appendChild($ackNode);
-        }
-        if (!empty($datesNode))
-        {
             $unitNode->appendChild($datesNode);
         }
-        
+
+        if (!empty($this->contentchildren))
+        {
+            $isbody = false;
+            $bodyNode = null;
+            foreach ($this->contentchildren as $content)
+            {
+                switch (get_class($content))
+                {
+                    case "ExportExtraInfo":
+                        if ($isbody)
+                        {
+                            $unitNode->appendChild($bodyNode);
+                            $isbody = false;
+                        }
+                        $extraInfoNode = $content->exportData();
+                        $newextraInfoNode = $XMLcreator->importNode($extraInfoNode, true);
+                        $unitNode->appendChild($newextraInfoNode);
+                        break;
+                    case "ExportIntro":
+                        if ($isbody)
+                        {
+                            $unitNode->appendChild($bodyNode);
+                            $isbody = false;
+                        }
+                        $introNode = $content->exportData();
+                        $newintroNode = $XMLcreator->importNode($introNode, true);
+                        $unitNode->appendChild($newintroNode);
+                        break;
+                    default:
+                        if (!$isbody)
+                        {
+                            $bodyNode = $XMLcreator->createElement("body");
+                            $isbody = true;
+                        }
+
+                        if (get_class($content) != "ExportBlock")
+                        {
+                            $blockNode = $XMLcreator->createElement("block");
+                            $blockbodyNode = $XMLcreator->createElement("block.body");
+
+                            $contentNode = $content->exportData();
+                            $newcontentNode = $XMLcreator->importNode($contentNode, true);
+                            $blockbodyNode->appendChild($newcontentNode);
+                            $blockNode->appendChild($blockbodyNode);
+                            $bodyNode->appendChild($blockNode);
+                        }
+                        else
+                        {
+                            $contentNode = $content->exportData();
+                            $newcontentNode = $XMLcreator->importNode($contentNode, true);
+                            $bodyNode->appendChild($newcontentNode);
+                        }
+                }
+            }
+            if ($isbody)
+            {
+                $unitNode->appendChild($bodyNode);
+                $isbody = false;
+            }
+        }
+
+        if (!empty($this->unitchildren))
+        {
+            $childrenNode = $XMLcreator->createElement("legitimate.children");
+            foreach ($this->unitchildren as $child)
+            {
+                $unitchoiceNode = $XMLcreator->createElement("unit.choice");
+                $unitchoiceNode->setAttribute("unitId", $child->compid);
+                $childrenNode->appendChild($unitchoiceNode);
+            }
+            $unitNode->appendChild($childrenNode);
+        }
         $XMLcreator->appendChild($unitNode);
+
+//        $this->makeExportFile($XMLcreator);
+//        foreach($this->unitchildren as $subunit)
+//        {
+//            $subunit->exportData();
+//        }
 
         return $XMLcreator;
     }
