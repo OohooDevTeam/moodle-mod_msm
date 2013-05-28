@@ -4,7 +4,7 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Illu_OrientedVolume"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Unit.xsd"
       standalone="true">
    <titles>
       <title>Oriented Volume - Illustration</title>

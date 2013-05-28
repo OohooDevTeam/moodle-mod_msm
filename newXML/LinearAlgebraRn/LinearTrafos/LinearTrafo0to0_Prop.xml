@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Proposition"
          id="Thm_LinearTrafo0To0"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Linear map <math>
          <latex>L</latex>
       </math> satisfies <math>

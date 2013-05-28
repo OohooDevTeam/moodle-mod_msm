@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Corollary"
          id="Thm_ChangeCoordinatesLinearMap"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Matrix and change of coordinates</caption>
    <statement.theorem>
       <para>

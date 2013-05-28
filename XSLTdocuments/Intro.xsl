@@ -32,7 +32,7 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd</xsl:attribute>
+                <xsl:attribute name="xsi:schemaLocation">Unit <xsl:sequence select="resolve-uri('Unit.xsd')"/></xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">
                 <xsl:attribute name="xi">

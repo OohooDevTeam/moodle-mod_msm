@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Proposition"
          id="Thm_MatrixScalarMultiplicationProperties"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
    <statement.theorem>
       <para>
          <para.body>The scalar multiplication of a matrix by a number has the following properties</para.body>

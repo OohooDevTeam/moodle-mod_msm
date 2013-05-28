@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Proposition"
          id="Thm_LineToLine"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Linear maps transform lines to lines</caption>
    <associate type="Explanation">
       <info>

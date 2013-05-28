@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Proposition"
          id="Thm_MatrixGivesLinearMap"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Matrix gives linear map</caption>
    <associate type="Explanation">
       <unit.ref unitId="Expla_MatrixGivesLinearMap"/>

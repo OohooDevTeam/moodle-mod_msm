@@ -32,7 +32,7 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd</xsl:attribute>
+                <xsl:attribute name="xsi:schemaLocation">Compositor <xsl:sequence select="resolve-uri('Compositor.xsd')"/></xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">
                 <xsl:attribute name="xi">
@@ -71,12 +71,6 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
-    <!--xsl:template match="exe:caption">
-        <xsl:element name="caption" namespace="Compositor">
-            <xsl:apply-templates/>
-        </xsl:element>
-    </xsl:template-->
     
     <xsl:template match="exe:caption">
         <xsl:choose>

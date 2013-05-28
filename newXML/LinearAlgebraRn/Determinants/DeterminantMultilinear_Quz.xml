@@ -4,7 +4,7 @@
 <quiz.pack xmlns="Compositor"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            id="Qz_DeterminantMultilinear"
-           xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+           xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Compositor.xsd">
 	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Quiz on the Multilinearity Property of Determinants</title>

@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Corollary"
          id="Thm_DeterminantInvertibilityTest"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Determinant tests invertibility of a matrix</caption>
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_DeterminantInvertibility"/>

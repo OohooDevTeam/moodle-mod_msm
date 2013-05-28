@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Proposition"
          id="Thm_ConvergentSeriesOnlyFromNullSequence"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Condition for convergence to a number</caption>
    <associate type="Comment">
       <showme.pack.ref showmePackID="Exa_HarmonicSeries"/>

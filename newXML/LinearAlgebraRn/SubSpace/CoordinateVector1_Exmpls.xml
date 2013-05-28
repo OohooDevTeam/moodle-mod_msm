@@ -4,7 +4,7 @@
 <showme.pack xmlns="Compositor"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_CoordinateVectorONB"
-             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Compositor.xsd">
 	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Coordinate Vector with Respect to an ONB: Examples</title>

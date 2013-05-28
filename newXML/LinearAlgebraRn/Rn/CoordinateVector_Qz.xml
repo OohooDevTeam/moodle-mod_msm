@@ -4,7 +4,7 @@
 <quiz.pack xmlns="Compositor"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            id="Qz_CoordinateVector"
-           xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+           xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Compositor.xsd">
 	  <title>Quizzes on Coordinate Vectors</title>
 	  <caption>Quizzes on Coordinate Vectors</caption>
 	

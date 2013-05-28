@@ -4,7 +4,7 @@
 <exercise.pack xmlns="Compositor"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                id="Exe_GeometricSeries"
-               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Compositor.xsd">
 	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	  <title>Exercises: Geometric Series</title>
 	  <exercise>

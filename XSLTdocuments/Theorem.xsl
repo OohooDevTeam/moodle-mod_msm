@@ -39,7 +39,7 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd</xsl:attribute>
+                <xsl:attribute name="xsi:schemaLocation">Theorem <xsl:sequence select="resolve-uri('Theorem.xsd')"/></xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">
                 <xsl:attribute name="xi">
@@ -54,25 +54,6 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
-    <!--<xsl:template match="thm:caption">
-        <xsl:choose>
-            <xsl:when test="parent::node()[name()='proof']">
-                <xsl:apply-templates select="child::node()[name()= 'partref']"/>
-                <xsl:element name="caption" namespace="Theorem">
-                    <xsl:value-of select="child::node()[name()='partref']"/>
-                </xsl:element>               
-            </xsl:when>
-            <xsl:when test="parent::node()[name()='info']">                
-                <xsl:apply-templates/>                      
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:element name="caption" namespace="Theorem">
-                    <xsl:apply-templates/>
-                </xsl:element>
-            </xsl:otherwise>
-        </xsl:choose>     
-    </xsl:template>-->
     
     <xsl:template match="thm:caption">
         <xsl:choose>
