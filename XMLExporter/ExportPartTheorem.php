@@ -48,20 +48,10 @@ class ExportPartTheorem extends ExportElement
         }
 
         $partbodyNode = $partCreator->createElement("part.body");
+        $createdbodyNode = $this->createXmlContent($partCreator, $this->content, $partbodyNode);
+        $bodyNode = $partCreator->importNode($createdbodyNode, true);
+        $partNode->appendChild($bodyNode);
 
-        $patterns = array();
-        $patterns[0] = "/<div.*?>/";
-        $patterns[1] = "/<\/div>/";
-        $replacements = array();
-        $replacements[0] = '';
-        $replacements[1] = '';
-        $modifiedContent = preg_replace($patterns, $replacements, $this->content);
-
-        $partbodyText = $partCreator->createTextNode($modifiedContent);
-        $partbodyNode->appendChild($partbodyText);
-
-        $partNode->appendChild($partbodyNode);
-        
         return $partNode;
     }
 

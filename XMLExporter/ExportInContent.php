@@ -42,22 +42,10 @@ class ExportInContent extends ExportElement
                 $incontentNode->setAttribute("bullet", $this->attr);
             }
         }
-
-        $patterns = array();
-        $patterns[0] = "/<ul.*?>/";
-        $patterns[1] = "/<\/ul>/";
-        $patterns[2] = "/<ol.*?>/";
-        $patterns[3] = "/<\/ol>/";
-        $replacements = array();
-        $replacements[0] = '';
-        $replacements[1] = '';
-        $replacements[2] = '';
-        $replacements[3] = '';
-        $modifiedContent = preg_replace($patterns, $replacements, $this->content);
-        $incontentText = $incontentCreator->createTextNode($modifiedContent);
-        $incontentNode->appendChild($incontentText);
-
-        return $incontentNode;
+        
+        $createdbodyNode = $this->createXmlContent($incontentCreator, $this->content, $incontentNode);
+        $bodyNode = $incontentCreator->importNode($createdbodyNode, true);       
+        return $bodyNode;
     }
 
     public function loadDbData($compid)

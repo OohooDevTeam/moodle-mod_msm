@@ -24,19 +24,9 @@ class ExportStatementTheorem extends ExportElement
     public function exportData()
     {
         $statementCreator = new DOMDocument();
-        $statementNode = $statementCreator->createElement("statement.theorem");
-
-        $patterns = array();
-        $patterns[0] = "/<div.*?>/";
-        $patterns[1] = "/<\/div>/";
-        $replacements = array();
-        $replacements[0] = '';
-        $replacements[1] = '';
-        $modifiedContent = preg_replace($patterns, $replacements, $this->content);
-
-        $statementText = $statementCreator->createTextNode($modifiedContent);
-
-        $statementNode->appendChild($statementText);
+        $bodyNode = $statementCreator->createElement("statement.theorem");
+        $createdbodyNode = $this->createXmlContent($statementCreator, $this->content, $bodyNode);
+        $statementNode = $statementCreator->importNode($createdbodyNode, true);
 
         if (!empty($this->parts))
         {

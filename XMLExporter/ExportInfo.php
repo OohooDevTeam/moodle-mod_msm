@@ -28,23 +28,17 @@ class ExportInfo extends ExportElement
         if (!empty($this->caption))
         {
             $captionNode = $infoCreator->createElement("info.caption");
-            $captionText = $infoCreator->createTextNode($this->caption);
-            $captionNode->appendChild($captionText);
-            $infoNode->appendChild($captionNode);
+            
+            $newcaptionNode = $this->createXmlContent($infoCreator, "<div>$this->caption</div>", $captionNode);
+            $newCaption = $infoCreator->importNode($newcaptionNode, true);
+            $infoNode->appendChild($newCaption);
         }
+        
+         $createdbodyNode = $this->createXmlContent($infoCreator, $this->content, $infoNode);
 
-        $patterns = array();
-        $patterns[0] = "/<div.*?>/";
-        $patterns[1] = "/<\/div>/";
-        $replacements = array();
-        $replacements[0] = '';
-        $replacements[1] = '';
-        $modifiedContent = preg_replace($patterns, $replacements, $this->content);
+        $bodyNode = $infoCreator->importNode($createdbodyNode, true);
 
-        $infoText = $infoCreator->createTextNode($modifiedContent);
-        $infoNode->appendChild($infoText);
-
-        return $infoNode;
+        return $bodyNode;
     }
 
     public function loadDbData($compid)

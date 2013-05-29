@@ -12,6 +12,7 @@
  */
 class ExportComment extends ExportElement
 {
+
     public $id;
     public $compid;
     public $caption;
@@ -20,72 +21,63 @@ class ExportComment extends ExportElement
     public $content;
     public $associate = array();
     public $subordinates = array();
-    
+
     public function exportData()
     {
         $commentCreator = new DOMDocument();
-        
+
         $commentNode = $commentCreator->createElement("comment");
         $commentNode->setAttribute("type", $this->type);
         $commentNode->setAttribute("id", $this->compid);
-        
-        if(!empty($this->caption))
+
+        if (!empty($this->caption))
         {
             $captionNode = $commentCreator->createElement("caption");
             $captionText = $commentCreator->createTextNode($this->caption);
             $captionNode->appendChild($captionText);
             $commentNode->appendChild($captionNode);
         }
-        
-        if(!empty($this->description))
+
+        if (!empty($this->description))
         {
             $descriptionNode = $commentCreator->createElement("description");
             $descriptionText = $commentCreator->createTextNode($this->description);
             $descriptionNode->appendChild($descriptionText);
             $commentNode->appendChild($descriptionNode);
         }
-        
-          $commentbodyNode = $commentCreator->createElement("comment.body");
-          
-          // removing root div to replace with comment.body
-          $patterns = array();
-          $patterns[0] = "/<div.*?>/";
-          $patterns[1] = "/<\/div>/";
-          $replacements = array();
-          $replacements[0] = '';
-          $replacements[1] = '';          
-          $modifiedContent = preg_replace($patterns, $replacements, $this->content);
-          $commentbodyText = $commentCreator->createTextNode($modifiedContent);
-          $commentbodyNode->appendChild($commentbodyText);
-          $commentNode->appendChild($commentbodyNode);
-          
-          if(!empty($this->associates))
-          {
-              foreach($this->associates as $associate)
-              {
-                  $associateNode = $associate->exportData();
-                  $newassociateNode = $commentCreator->importNode($associateNode, true);   
-                  $commentNode->appendChild($newassociateNode);
-              }
-          }
-        
+
+        $commentbodyNode = $commentCreator->createElement("comment.body");
+        $createdbodyNode = $this->createXmlContent($commentCreator, $this->content, $commentbodyNode);
+        $bodyNode = $commentCreator->importNode($createdbodyNode, true);
+        $commentNode->appendChild($bodyNode);
+
+        if (!empty($this->associates))
+        {
+            foreach ($this->associates as $associate)
+            {
+                $associateNode = $associate->exportData();
+                $newassociateNode = $commentCreator->importNode($associateNode, true);
+                $commentNode->appendChild($newassociateNode);
+            }
+        }
+
         return $commentNode;
     }
 
     public function loadDbData($compid)
     {
         global $DB;
-        
-        $commentCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
-        $commentRecord = $DB->get_record("msm_comment", array("id"=>$commentCompRecord->unit_id));
-        
+
+        $commentCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+        $commentRecord = $DB->get_record("msm_comment", array("id" => $commentCompRecord->unit_id));
+
         $this->id = $commentRecord->id;
         $this->compid = $compid;
         $this->caption = $commentRecord->caption;
         $this->description = $commentRecord->description;
         $this->type = $commentRecord->comment_type;
         $this->content = $commentRecord->comment_content;
-        
+
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), 'prev_sibling_id');
 
         foreach ($childRecords as $child)
@@ -104,9 +96,10 @@ class ExportComment extends ExportElement
                 $this->associates[] = $associate;
             }
         }
-        
+
         return $this;
     }
+
 }
 
 ?>
