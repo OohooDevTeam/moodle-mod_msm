@@ -55,7 +55,7 @@ class ExportInfo extends ExportElement
         $this->caption = $infoUnitRecord->caption;
         $this->content = $infoUnitRecord->info_content;
 
-        $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->id), "prev_sibling_id");
+        $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
         foreach ($childRecords as $child)
         {
@@ -73,8 +73,8 @@ class ExportInfo extends ExportElement
                 $media->loadDbData($child->id);
                 $this->medias[] = $media;
             }
-        }
-
+        }    
+        
         return $this;
     }
 

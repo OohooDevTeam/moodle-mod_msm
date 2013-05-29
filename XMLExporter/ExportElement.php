@@ -28,7 +28,7 @@ abstract class ExportElement
         $contentDoc->formatOutput = true;
         $contentDoc->preserveWhiteSpace = false;
         $contentDoc->loadXML(utf8_encode(html_entity_decode($content)));
-        $divNode = $contentDoc->documentElement; 
+        $divNode = $contentDoc->documentElement;
 
         foreach ($divNode->childNodes as $child)
         {
@@ -55,13 +55,16 @@ abstract class ExportElement
                                     break;
                                 }
                             }
-                            $initsubordinateNode = $targetSub->exportData();
+                            if (!empty($targetSub))
+                            {
+                                $initsubordinateNode = $targetSub->exportData();
 
-                            $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
-                            $a->parentNode->replaceChild($subordinateNode, $a);
+                                $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
+                                $a->parentNode->replaceChild($subordinateNode, $a);
+                            }
                         }
                     }
-                    $newChildNode = $this->replacePTags($DomDocument, $child);                   
+                    $newChildNode = $this->replacePTags($DomDocument, $child);
                     $childNode = $DomDocument->importNode($newChildNode, true);
                 }
                 else
@@ -115,7 +118,7 @@ abstract class ExportElement
                                 }
                             }
                             $initsubordinateNode = $targetSub->exportData();
-                            $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);                          
+                            $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
 
                             $a->parentNode->replaceChild($subordinateNode, $a);
                         }

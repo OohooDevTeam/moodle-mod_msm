@@ -62,6 +62,10 @@ class ExportSubordinate extends ExportElement
             $info->loadDbData($infoRecord->id);
             $this->info = $info;
         }
+        else
+        {
+            echo "empty info record";
+        }
 
         return $this;
     }
