@@ -29,7 +29,6 @@ require_once("ExportImage.php");
 global $DB;
 
 $msmid = $_POST["msm_id"];
-$content = '';
 
 $unittable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
 
