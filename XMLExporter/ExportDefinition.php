@@ -25,6 +25,8 @@ class ExportDefinition extends ExportElement
     public function exportData()
     {
         $defCreator = new DOMDocument();
+        $defCreator->formatOutput = true;
+        $defCreator->preserveWhiteSpace = false;
         $defNode = $defCreator->createElement("def");
         $defNode->setAttribute("type", $this->type);
         $defNode->setAttribute("id", $this->compid);
@@ -46,7 +48,7 @@ class ExportDefinition extends ExportElement
         }
 
         $defbodyNode = $defCreator->createElement("def.body");
-        $createdbodyNode = $this->createXmlContent($defCreator, $this->content, $defbodyNode);
+        $createdbodyNode = $this->createXmlContent($defCreator, $this->content, $defbodyNode, $this);
         $bodyNode = $defCreator->importNode($createdbodyNode, true);
 
         $defNode->appendChild($bodyNode);

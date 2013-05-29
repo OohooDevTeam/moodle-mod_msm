@@ -23,6 +23,8 @@ class ExportTheorem extends ExportElement
     public function exportData()
     {
         $theoremCreator = new DOMDocument();
+        $theoremCreator->formatOutput = true;
+        $theoremCreator->preserveWhiteSpace = false;
         $theoremNode = $theoremCreator->createElement("theorem");
         $theoremNode->setAttribute("id", $this->compid);
         $theoremNode->setAttribute("type", $this->type);

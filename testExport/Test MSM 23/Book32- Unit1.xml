@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<unit tagname="Book" unitid="32" standalone="false">
+  <description> Unit1</description>
+  <titles>
+    <title>Unit1</title>
+    <plain.title> Unit1</plain.title>
+  </titles>
+  <dates>
+    <creation>
+      <date>
+        <month>05</month>
+        <day>29</day>
+        <year>2013</year>
+      </date>
+    </creation>
+    <last.revision>
+      <date>
+        <month>05</month>
+        <day>29</day>
+        <year>2013</year>
+      </date>
+    </last.revision>
+  </dates>
+  <body>
+    <block>
+      <block.body>
+        <def type="Notation" id="33">
+          <caption>def 1</caption>
+          <description>def 1</description>
+          <def.body>
+            <para align="left">
+              <para.body>definiton content</para.body>
+            </para>
+          </def.body>
+          <associate type="Comment">
+            <info>
+              <info.caption>
+                <para align="left">
+                  <para.body>comment title</para.body>
+                </para>
+              </info.caption>
+              <para align="left">
+                <para.body>comment content</para.body>
+              </para>
+            </info>
+          </associate>
+        </def>
+      </block.body>
+    </block>
+  </body>
+  <legitimate.children>
+    <unit.choice unitId="36"/>
+    <unit.choice unitId="44"/>
+  </legitimate.children>
+</unit>

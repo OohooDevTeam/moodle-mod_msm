@@ -25,7 +25,8 @@ class ExportComment extends ExportElement
     public function exportData()
     {
         $commentCreator = new DOMDocument();
-
+        $commentCreator->formatOutput = true;
+        $commentCreator->preserveWhiteSpace = false;
         $commentNode = $commentCreator->createElement("comment");
         $commentNode->setAttribute("type", $this->type);
         $commentNode->setAttribute("id", $this->compid);
@@ -47,7 +48,7 @@ class ExportComment extends ExportElement
         }
 
         $commentbodyNode = $commentCreator->createElement("comment.body");
-        $createdbodyNode = $this->createXmlContent($commentCreator, $this->content, $commentbodyNode);
+        $createdbodyNode = $this->createXmlContent($commentCreator, $this->content, $commentbodyNode, $this);
         $bodyNode = $commentCreator->importNode($createdbodyNode, true);
         $commentNode->appendChild($bodyNode);
 

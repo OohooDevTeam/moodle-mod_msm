@@ -24,7 +24,8 @@ class ExportInContent extends ExportElement
     public function exportData()
     {
         $incontentCreator = new DOMDocument();
-
+        $incontentCreator->formatOutput = true;
+        $incontentCreator->preserveWhiteSpace = false;
         $incontentNode = null;
         if ($this->type == "ordered")
         {
@@ -42,9 +43,9 @@ class ExportInContent extends ExportElement
                 $incontentNode->setAttribute("bullet", $this->attr);
             }
         }
-        
-        $createdbodyNode = $this->createXmlContent($incontentCreator, $this->content, $incontentNode);
-        $bodyNode = $incontentCreator->importNode($createdbodyNode, true);       
+
+        $createdbodyNode = $this->createXmlContent($incontentCreator, $this->content, $incontentNode, $this);
+        $bodyNode = $incontentCreator->importNode($createdbodyNode, true);
         return $bodyNode;
     }
 

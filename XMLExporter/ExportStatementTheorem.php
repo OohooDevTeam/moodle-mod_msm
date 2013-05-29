@@ -24,8 +24,10 @@ class ExportStatementTheorem extends ExportElement
     public function exportData()
     {
         $statementCreator = new DOMDocument();
+        $statementCreator->formatOutput = true;
+        $statementCreator->preserveWhiteSpace = false;
         $bodyNode = $statementCreator->createElement("statement.theorem");
-        $createdbodyNode = $this->createXmlContent($statementCreator, $this->content, $bodyNode);
+        $createdbodyNode = $this->createXmlContent($statementCreator, $this->content, $bodyNode, $this);
         $statementNode = $statementCreator->importNode($createdbodyNode, true);
 
         if (!empty($this->parts))

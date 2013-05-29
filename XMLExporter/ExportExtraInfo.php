@@ -21,6 +21,8 @@ class ExportExtraInfo extends ExportElement
     public function exportData()
     {
         $extraInfoCreator = new DOMDocument();
+        $extraInfoCreator->formatOutput = true;
+        $extraInfoCreator->preserveWhiteSpace = false;
         $extraInfoNode = $extraInfoCreator->createElement($this->name);
 
         foreach ($this->blocks as $key => $block)

@@ -682,8 +682,7 @@ function exportComposition()
         },           
         success: function(data) { 
             var ids = JSON.parse(data);
-                
-            if(ids[0] != "success")
+            if(ids != "success")
             {
                 var exportError = $("<div id='msm_export_error' class='dialogs' title='Export Error'><p> The export process was not able to finish successfully. </p></div>");
                     

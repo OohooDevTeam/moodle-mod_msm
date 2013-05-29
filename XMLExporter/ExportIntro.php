@@ -21,7 +21,8 @@ class ExportIntro extends ExportElement
     public function exportData()
     {
         $introCreator = new DOMDocument();
-
+        $introCreator->formatOutput = true;
+        $introCreator->preserveWhiteSpace = false;
         $introNode = $introCreator->createElement("intro");
         $introNode->setAttribute("id", $this->compid);
 
@@ -45,8 +46,8 @@ class ExportIntro extends ExportElement
             {
                 $blockNode = $block->exportData();
             }
-            $newblockNode = $introCreator->importNode($blockNode, true); 
-            
+            $newblockNode = $introCreator->importNode($blockNode, true);
+
             $introNode->appendChild($newblockNode);
         }
         return $introNode;

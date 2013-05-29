@@ -23,18 +23,20 @@ class ExportInfo extends ExportElement
     public function exportData()
     {
         $infoCreator = new DOMDocument();
+        $infoCreator->formatOutput = true;
+        $infoCreator->preserveWhiteSpace = false;
         $infoNode = $infoCreator->createElement("info");
 
         if (!empty($this->caption))
         {
             $captionNode = $infoCreator->createElement("info.caption");
             
-            $newcaptionNode = $this->createXmlContent($infoCreator, "<div>$this->caption</div>", $captionNode);
+            $newcaptionNode = $this->createXmlContent($infoCreator, "<div>$this->caption</div>", $captionNode, '');
             $newCaption = $infoCreator->importNode($newcaptionNode, true);
             $infoNode->appendChild($newCaption);
         }
         
-         $createdbodyNode = $this->createXmlContent($infoCreator, $this->content, $infoNode);
+         $createdbodyNode = $this->createXmlContent($infoCreator, $this->content, $infoNode, $this);
 
         $bodyNode = $infoCreator->importNode($createdbodyNode, true);
 

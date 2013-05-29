@@ -22,12 +22,13 @@ abstract class ExportElement
         // function to create XML files and save into moodle file system
     }
 
-    function createXmlContent($DomDocument, $content, $DomNode)
+    function createXmlContent($DomDocument, $content, $DomNode, $object = '')
     {
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
+        $contentDoc->preserveWhiteSpace = false;
         $contentDoc->loadXML(utf8_encode(html_entity_decode($content)));
-        $divNode = $contentDoc->documentElement;
+        $divNode = $contentDoc->documentElement; 
 
         foreach ($divNode->childNodes as $child)
         {
@@ -35,7 +36,32 @@ abstract class ExportElement
             {
                 if ($child->tagName == "p")
                 {
-                    $newChildNode = $this->replacePTags($DomDocument, $child);
+
+                    if (!empty($object))
+                    {
+                        $atags = $child->getElementsByTagName("a");
+
+                        foreach ($atags as $a)
+                        {
+                            $targetSub = null;
+                            $id = $a->getAttribute("id");
+
+                            foreach ($object->subordinates as $subordinate)
+                            {
+                                $hotInfo = explode(",", $subordinate->hot);
+                                if (trim($id) == trim($hotInfo[0]))
+                                {
+                                    $targetSub = $subordinate;
+                                    break;
+                                }
+                            }
+                            $initsubordinateNode = $targetSub->exportData();
+
+                            $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
+                            $a->parentNode->replaceChild($subordinateNode, $a);
+                        }
+                    }
+                    $newChildNode = $this->replacePTags($DomDocument, $child);                   
                     $childNode = $DomDocument->importNode($newChildNode, true);
                 }
                 else
@@ -54,6 +80,8 @@ abstract class ExportElement
                     foreach ($litags as $li)
                     {
                         $liDoc = new DOMDocument();
+                        $liDoc->formatOutput = true;
+                        $liDoc->preserveWhiteSpace = false;
                         $newliTag = $liDoc->createElement("li");
                         $newPTag = $liDoc->createElement("para");
                         $newPbodyTag = $liDoc->createElement("para.body");
@@ -65,12 +93,35 @@ abstract class ExportElement
                         $newPTag->appendChild($newPbodyTag);
                         $newliTag->appendChild($newPTag);
                         $newLi = $contentDoc->importNode($newliTag, true);
-                      
+
                         $li->parentNode->replaceChild($newLi, $li);
+                    }
+                    if (!empty($object))
+                    {
+                        $atags = $child->getElementsByTagName("a");
+
+                        foreach ($atags as $a)
+                        {
+                            $targetSub = null;
+                            $id = $a->getAttribute("id");
+
+                            foreach ($object->subordinates as $subordinate)
+                            {
+                                $hotInfo = explode(",", $subordinate->hot);
+                                if (trim($id) == trim($hotInfo[0]))
+                                {
+                                    $targetSub = $subordinate;
+                                    break;
+                                }
+                            }
+                            $initsubordinateNode = $targetSub->exportData();
+                            $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);                          
+
+                            $a->parentNode->replaceChild($subordinateNode, $a);
+                        }
                     }
                     $childNode = $DomDocument->importNode($child, true);
                 }
-                $DomDocument->formatOutput = true;
                 $DomNode->appendChild($childNode);
             }
         }
@@ -91,8 +142,14 @@ abstract class ExportElement
             $paraNode->setAttribute("align", "left");
         }
         $parabody = $DomDocument->createElement("para.body");
-        $parabodyText = $DomDocument->createTextNode($DomElement->textContent);
-        $parabody->appendChild($parabodyText);
+
+        foreach ($DomElement->childNodes as $child)
+        {
+            $childNode = $DomDocument->importNode($child, true);
+            $parabody->appendChild($childNode);
+        }
+//        $parabodyText = $DomDocument->createTextNode($DomElement->textContent);
+//        $parabody->appendChild($parabodyText);
         $paraNode->appendChild($parabody);
 
         return $paraNode;

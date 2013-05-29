@@ -26,6 +26,8 @@ class ExportPartTheorem extends ExportElement
     public function exportData()
     {
         $partCreator = new DOMDocument();
+        $partCreator->formatOutput = true;
+        $partCreator->preserveWhiteSpace = false;
         $partNode = $partCreator->createElement("part.theorem");
         $partNode->setAttribute("partid", $this->compid);
 
@@ -48,7 +50,7 @@ class ExportPartTheorem extends ExportElement
         }
 
         $partbodyNode = $partCreator->createElement("part.body");
-        $createdbodyNode = $this->createXmlContent($partCreator, $this->content, $partbodyNode);
+        $createdbodyNode = $this->createXmlContent($partCreator, $this->content, $partbodyNode, $this);
         $bodyNode = $partCreator->importNode($createdbodyNode, true);
         $partNode->appendChild($bodyNode);
 

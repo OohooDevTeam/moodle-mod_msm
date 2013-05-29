@@ -24,7 +24,8 @@ class ExportPara extends ExportElement
     public function exportData()
     {
         $paraCreator = new DOMDocument();
-
+        $paraCreator->formatOutput = true;
+        $paraCreator->preserveWhiteSpace = false;
         $paraNode = $paraCreator->createElement("para");
         if (!empty($this->align))
         {
