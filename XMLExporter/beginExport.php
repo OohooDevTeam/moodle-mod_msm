@@ -28,11 +28,11 @@ require_once("ExportImage.php");
 
 global $DB;
 
-$msmid = $_POST["msm_id"];
+$msm_id = $_POST["msm_id"];
 
 $unittable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
 
-$topUnits = $DB->get_records("msm_compositor", array("msm_id" => $msmid, "table_id" => $unittable->id, "parent_id" => 0, "prev_sibling_id" => 0));
+$topUnits = $DB->get_records("msm_compositor", array("msm_id" => $msm_id, "table_id" => $unittable->id, "parent_id" => 0, "prev_sibling_id" => 0));
 
 $unitObjects = array();
 
@@ -43,8 +43,17 @@ foreach ($topUnits as $topUnit)
     $unitObjects[] = $unit;
 }
 
-foreach ($unitObjects as $unitObj)
+foreach ($unitObjects as $unitobject)
 {
+    exportToFile($unitobject, $msm_id, true);
+}
+
+echo json_encode("success");
+
+function exportToFile($unitObj, $msmid, $isTop)
+{
+    global $DB;
+
     $topunitDocument = $unitObj->exportData();
     $msmRecord = $DB->get_record("msm", array("id" => $msmid));
     $filename = null;
@@ -130,13 +139,50 @@ foreach ($unitObjects as $unitObj)
     {
         if (file_exists($parentDirectory))
         {
-            if (!empty($unitObj->shortname))
+            if ($isTop)
             {
-                $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
+                if (!empty($unitObj->shortname))
+                {
+                    $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
+                }
+                else
+                {
+                    $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                }
             }
             else
             {
-                $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                $filepath = $parentDirectory . "Nested Units/";
+
+                if (file_exists($filepath))
+                {
+                    if (!empty($unitObj->shortname))
+                    {
+                        $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
+                    }
+                    else
+                    {
+                        $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                    }
+                }
+                else
+                {
+                    if (mkdir($filepath))
+                    {
+                        if (!empty($unitObj->shortname))
+                        {
+                            $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
+                        }
+                        else
+                        {
+                            $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                        }
+                    }
+                    else
+                    {
+                        echo "error making parent directory";
+                    }
+                }
             }
         }
         else
@@ -169,7 +215,11 @@ foreach ($unitObjects as $unitObj)
     {
         echo json_encode("error");
     }
-}
 
-echo json_encode("success");
+    foreach ($unitObj->unitchildren as $subunit)
+    {
+        exportToFile($subunit, $msmid, false);
+    }
+}
 ?>
+
