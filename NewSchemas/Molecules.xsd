@@ -99,10 +99,10 @@
 							<xsd:element name="cell" maxOccurs="unbounded">
 								<xsd:complexType mixed="false">
 									<xsd:group ref="content_block" maxOccurs="unbounded"/>
-									<xsd:attribute name="colspan" type="xsd:positiveInteger" use="optional"
-										default="1"/>
-									<xsd:attribute name="rowspan" type="xsd:positiveInteger" use="optional"
-										default="1"/>
+									<xsd:attribute name="colspan" type="xsd:positiveInteger"
+										use="optional" default="1"/>
+									<xsd:attribute name="rowspan" type="xsd:positiveInteger"
+										use="optional" default="1"/>
 									<xsd:attribute name="align" use="optional" default="center">
 										<xsd:simpleType>
 											<xsd:restriction base="xsd:string">
@@ -142,8 +142,10 @@
 			<xsd:attribute name="bordercolor" type="xsd:NCName" use="optional"/>
 			<xsd:attribute name="bordercolordark" type="xsd:NCName" use="optional"/>
 			<xsd:attribute name="bordercolorlight" type="xsd:NCName" use="optional"/>
-			<xsd:attribute name="cellpadding" type="xsd:nonNegativeInteger" use="optional" default="0"/>
-			<xsd:attribute name="cellspacing" type="xsd:nonNegativeInteger" use="optional" default="0"/>
+			<xsd:attribute name="cellpadding" type="xsd:nonNegativeInteger" use="optional"
+				default="0"/>
+			<xsd:attribute name="cellspacing" type="xsd:nonNegativeInteger" use="optional"
+				default="0"/>
 			<xsd:attribute name="class" type="xsd:NCName" use="optional"/>
 			<xsd:attribute name="cols" type="xsd:positiveInteger" use="optional" default="1"/>
 			<xsd:attribute name="datapagesize" type="xsd:NCName" use="optional"/>
@@ -604,7 +606,8 @@
 											</xsd:restriction>
 										</xsd:simpleType>
 									</xsd:attribute>
-									<xsd:attribute name="coords" type="xsd:normalizedString" use="required"/>
+									<xsd:attribute name="coords" type="xsd:normalizedString"
+										use="required"/>
 								</xsd:complexType>
 							</xsd:element>
 						</xsd:sequence>
@@ -669,7 +672,8 @@
 										</xsd:choice>
 										<xsd:element minOccurs="0" ref="companion"/>
 									</xsd:sequence>
-									<xsd:attribute default="1" name="colspan" type="xsd:nonNegativeInteger"/>
+									<xsd:attribute default="1" name="colspan"
+										type="xsd:nonNegativeInteger"/>
 									<xsd:attribute default="center" name="halign">
 										<xsd:simpleType>
 											<xsd:restriction base="xsd:string">

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    xmlns:ns1="Example" xmlns:ns2="Exercise" targetNamespace="Compositor"
-    xmlns:compositor="Compositor">
+    xmlns:ns1="Example" xmlns:ns2="Exercise" targetNamespace="http://www.w3.org/2001/Compositor"
+    xmlns:compositor="http://www.w3.org/2001/Compositor">
 
     <xs:include schemaLocation="Atoms.xsd"/>
-    <xs:import namespace="Unit" schemaLocation="Unit.xsd"/>
+    <xs:import namespace="http://www.w3.org/2001/Unit"/>
     <xs:element name="example.pack">
         <xs:annotation>
             <xs:documentation>For a pack of examples</xs:documentation>

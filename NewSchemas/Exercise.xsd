@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-	attributeFormDefault="unqualified" targetNamespace="Exercise"
-	xmlns="Exercise">
+	attributeFormDefault="unqualified" targetNamespace="Exercise" xmlns="Exercise">
 	<xsd:include schemaLocation="Molecules.xsd"/>
 	<xsd:include schemaLocation="CyberTutor.xsd"/>
 	<xsd:import schemaLocation="http://www.w3.org/2004/10/xml.xsd"

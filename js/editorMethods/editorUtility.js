@@ -339,11 +339,12 @@ function newUnit()
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
                     initEditor(this.id);                    
-                    $(this).sortable("refresh");
                 }
             });
         }
-    });                    
+    });         
+    $("#msm_child_appending_area").sortable("refresh");
+
     
     $("#msm_editor_save").click(function(event) { 
         //         prevents navigation to msmUnitForm.php
@@ -410,7 +411,7 @@ function saveComp(e)
     
     var standaloneTree = '';
     $("#msm_standalone_root").find("li").each(function() {
-      standaloneTree += $(this).attr("id") + ",";  
+        standaloneTree += $(this).attr("id") + ",";  
     });
    
     var params = {
@@ -425,7 +426,7 @@ function saveComp(e)
         success: function(data)
         {
             ids = JSON.parse(data);
-//            console.log(ids);
+            //            console.log(ids);
             var idInfos = ids.split("-");
             if(ids != '')
             {
@@ -624,11 +625,12 @@ function moveElements()
                     {
                         initEditor(this.id); 
                     }                 
-                    $(this).sortable("refresh");
+                    
                 }
             });
         }
     });
+    $("#msm_child_appending_area").sortable("refresh");
     
     $(".msm_associate_containers").each(function() {
         $("#"+this.id).sortable({
@@ -669,12 +671,14 @@ function moveElements()
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
                         initEditor(this.id);                    
-                        $(this).sortable("refresh");
                     }
                 });  
             }
-        });    
+        });   
+        $("#"+this.id).sortable("refresh");
     });    
+                            
+
     
     $("#msm_intro_child_container").sortable({
         appendTo: "msm_intro_child_container",
@@ -707,11 +711,12 @@ function moveElements()
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
                     initEditor(this.id);                    
-                    $(this).sortable("refresh");
                 }
             });
         }
     });
+    $("#msm_intro_child_container").sortable("refresh");
+
 
     $(".msm_theorem_content_containers").each(function() {
         $("#"+this.id).sortable({
@@ -750,11 +755,12 @@ function moveElements()
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
                         initEditor(this.id);                    
-                        $(this).sortable("refresh");
                     }
                 });
             }
         });
+        $("#"+this.id).sortable("refresh");
+
     });
     $(".msm_theorem_part_dropareas").each(function(){
         $("#"+this.id).sortable({
@@ -791,12 +797,12 @@ function moveElements()
                     if(tinymce.getInstanceById($(this).attr("id"))==null)
                     {
                         initEditor(this.id);                    
-                        $(this).sortable("refresh");
                     }
                 });
             }
         });
-    })
+        $("#"+this.id).sortable("refresh");
+    });
     
     $(".msm_theoremref_content_containers").each(function() {
         $("#"+this.id).sortable({
@@ -834,12 +840,12 @@ function moveElements()
                 $("#"+id+" textarea").each(function() {
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
-                        initEditor(this.id);                    
-                        $(this).sortable("refresh");
+                        initEditor(this.id); 
                     }
                 });
             }
         });
+        $("#"+this.id).sortable("refresh");
     });
     $(".msm_theoremref_part_dropareas").each(function(){
         $("#"+this.id).sortable({
@@ -875,13 +881,13 @@ function moveElements()
                 $(this).find('.msm_theorem_content').each(function() {
                     if(tinymce.getInstanceById($(this).attr("id"))==null)
                     {
-                        initEditor(this.id);                    
-                        $(this).sortable("refresh");
+                        initEditor(this.id);
                     }
                 });
             }
         });
-    })
+        $("#"+this.id).sortable("refresh");
+    });
 }
 
 
