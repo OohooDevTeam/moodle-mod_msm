@@ -286,7 +286,7 @@ class MathInfo extends Element
             }
             else
             {
-                $this->caption = htmlentities($infoRecord->caption);
+                $this->caption = $infoRecord->caption;
             }
             $this->info_content = $infoRecord->info_content;
             $this->id = $infoRecord->id;
@@ -338,7 +338,18 @@ class MathInfo extends Element
         }
         else
         {
-            $content .= "<div id='dialog-$this->compid' class='dialogs' title='$this->caption'>";
+            // removing HTML tags since new jquery UI dialog titles cannot have HTML tags
+            $patterns = array();
+            $replacements = array();            
+            $patterns[0] = "/<p.*?>/";
+            $patterns[1] = "/<\/p>/";
+            $replacements[0] = "";
+            $replacements[1] = "";
+            
+            $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);       
+            $caption = htmlentities($modifiedCaption);
+            
+            $content .= "<div id='dialog-$this->compid' class='dialogs' title='$caption'>";
         }
         
         $content .= $this->displayContent($this, $this->info_content);
