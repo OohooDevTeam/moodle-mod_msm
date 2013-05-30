@@ -136,16 +136,7 @@
     margin-top: 1%;
 }
 
-#msm_editor_new
-{
-    position: absolute;
-    left: 25%;
-    min-width: 50%;
-    bottom: 0;
-    margin-bottom: 5%;
-}
-
-#msm_editor_save, #msm_editor_edit
+#msm_editor_save, #msm_editor_new
 {
     left: 20%;
     width: 10%;

@@ -463,7 +463,7 @@ class EditorInfo extends EditorElement
                 $subordinate->loadData($infoChild->id);
                 $this->subordinates[] = $subordinate;
             }
-            else if($infoChildTable->tablename == "msm_media")
+            else if ($infoChildTable->tablename == "msm_media")
             {
                 $media = new EditorMedia();
                 $media->loadData($infoChild->id);
@@ -477,7 +477,20 @@ class EditorInfo extends EditorElement
     public function displayPreview($id)
     {
         $previewHtml = '';
-        $titleString = htmlentities($this->caption);
+
+        $patterns = array();
+        $replacements = array();
+        $patterns[0] = "/<p.*?>/";
+        $patterns[1] = "/<\/p>/";
+        $patterns[2] = "/<span.*?>/";
+        $patterns[3] = "/<\/span>/";
+        $replacements[0] = "";
+        $replacements[1] = "";
+        $replacements[2] = "";
+        $replacements[3] = "";
+
+        $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
+        $titleString = htmlentities($modifiedCaption);
 
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
         $previewHtml .= $this->content;

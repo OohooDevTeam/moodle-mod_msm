@@ -37,7 +37,7 @@ class ExportUnit extends ExportElement
 //        $XMLcreator->schemaValidate("$CFG->dirroot/mod/msm/NewSchemas/Unit.xsd");
         $unitNode = $XMLcreator->createElement("unit");
         $unitNode->setAttribute("tagname", $this->unittag);
-        $unitNode->setAttribute("unitid", $this->compid);
+        $unitNode->setAttribute("unitid", $this->id);
         $unitNode->setAttribute("standalone", $this->standalone);
 
         $descriptionNode = null;

@@ -350,9 +350,20 @@ if (!empty($rootUnit))
 $formContent .= '</div>
                             <input id="msm_child_order" name="msm_child_order" style="visibility: hidden;"/>
                             <input id="msm_unit_subordinate_container" name="msm_unit_subordinate_container" style="visibility: hidden;"/>
-                        </div>
-                        <input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
-                        <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>
+                        </div>';
+
+if (empty($treeContent))
+{
+    $formContent .= '<input class="msm_editor_buttons" id="msm_editor_reset" type="button" onclick="resetUnit()" value="Reset"/> 
+                        <input type="submit" name="msm_editor_save" class="msm_editor_buttons" id="msm_editor_save" disabled="disabled" value="Save"/>';
+}
+else
+{
+    $formContent .= '<input class="msm_editor_buttons" id="msm_editor_new" type="button" onclick="newUnit()" value="New Unit"/> 
+                        <input type="button" class="msm_editor_buttons" id="msm_editor_remove" onclick="removeUnit(event)" value="Remove this Unit"/>';
+}
+
+$formContent .= '       
 
                         <input id="msm_unit_name_input" name="msm_unit_name_input" style="visibility:hidden;" value="' . $unitNames . '"/> 
                         <input id="msm_file_options" name="msm_file_options" style="display:none;"/>
@@ -387,14 +398,6 @@ if (!empty($standaloneTree))
 $formContent .= '</li></ul>
                 </div>';
 
-if (empty($treeContent))
-{
-    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()" disabled="disabled"> New Unit </button>';
-}
-else
-{
-    $formContent .= '<button id="msm_editor_new" type="button" onclick="newUnit()"> New Unit</button>';
-}
 $formContent .=' </div>                
                 </div>     
        </div>
@@ -547,9 +550,7 @@ $formContent .= '<script type="text/javascript">
                         var dbInfo = [];      
                         
                         $(".msm_editor_buttons").remove();
-                        $("#msm_editor_new").remove();
-                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
-        
+                               
                         var nodeId = data.rslt.obj.attr("id");      
                         var match = nodeId.match(/msm_unit-.+/);
                         var nodeInfo = "";
@@ -619,9 +620,7 @@ if (!empty($existingUnit))
                         var dbInfo = [];      
                         
                         $(".msm_editor_buttons").remove();
-                        $("#msm_editor_new").remove();
-                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
-        
+                                
                         var nodeId = data.rslt.obj.attr("id");      
                         var match = nodeId.match(/msm_unit-.+/);
                         var nodeInfo = "";
@@ -685,8 +684,6 @@ else
                         var dbInfo = [];      
                         
                         $(".msm_editor_buttons").remove();
-                        $("#msm_editor_new").remove();
-                        $("<button id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_right");
         
                         var nodeId = data.rslt.obj.attr("id");      
                         var match = nodeId.match(/msm_unit-.+/);
@@ -826,7 +823,7 @@ function displayRootUnit($unitcompid)
             $("#msm_unit_description_input").val(descriptionString);
                                                                                                                                                                 
             $("#msm_editor_save").remove();
-            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
                                                                                                                                                                         
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");

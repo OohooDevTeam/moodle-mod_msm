@@ -360,10 +360,13 @@ class EditorUnit extends EditorElement
 
         $childOrderString .= $unitCompRecord->msm_id;
         $htmlContent .= "</div>";
+
         $htmlContent .= "<input id='msm_child_order' style='visibility:hidden;' name='msm_child_order' value='$childOrderString'/>";
         $htmlContent .= "<input id='msm_unit_subordinate_container' name='msm_unit_subordinate_container' style='visibility: hidden;'/>";
 
         $htmlContent .= "</div>";
+        $htmlContent .= '<input class="msm_editor_buttons" id="msm_editor_new" type="button" onclick="newUnit()" value="New Unit"/> 
+                        <input type="button" class="msm_editor_buttons" id="msm_editor_remove" onclick="removeUnit(event)" value="Remove this Unit"/>';
         $htmlContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
         $htmlContent .= "<input id='msm_file_options' name='msm_file_options' style='display:none;'/>";
 

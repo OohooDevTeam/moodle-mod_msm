@@ -331,7 +331,7 @@ class MathInfo extends Element
     function displayhtml()
     {
         $content = '';
-        
+
         if (empty($this->caption))
         {
             $content .= '<div id="dialog-' . $this->compid . '" class="dialogs">';
@@ -340,21 +340,25 @@ class MathInfo extends Element
         {
             // removing HTML tags since new jquery UI dialog titles cannot have HTML tags
             $patterns = array();
-            $replacements = array();            
+            $replacements = array();
             $patterns[0] = "/<p.*?>/";
             $patterns[1] = "/<\/p>/";
+            $patterns[2] = "/<span.*?>/";
+            $patterns[3] = "/<\/span>/";
             $replacements[0] = "";
             $replacements[1] = "";
-            
-            $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);       
+            $replacements[2] = "";
+            $replacements[3] = "";
+
+            $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
             $caption = htmlentities($modifiedCaption);
-            
+
             $content .= "<div id='dialog-$this->compid' class='dialogs' title='$caption'>";
         }
-        
+
         $content .= $this->displayContent($this, $this->info_content);
 
-        $content .= "</div>";        
+        $content .= "</div>";
 
         return $content;
     }

@@ -180,7 +180,7 @@ else if (isset($_POST['tree_content']))
 else if ($_POST["cancelUnit"]) // from cancelUnit js function
 {
     $unitidInfo = explode('-', $_POST['cancelUnit']);
-
+    
     $unitData = new EditorUnit();
     $unitData->loadData($unitidInfo[0]);
 

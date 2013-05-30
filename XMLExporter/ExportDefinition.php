@@ -29,7 +29,7 @@ class ExportDefinition extends ExportElement
         $defCreator->preserveWhiteSpace = false;
         $defNode = $defCreator->createElement("def");
         $defNode->setAttribute("type", $this->type);
-        $defNode->setAttribute("id", $this->compid);
+        $defNode->setAttribute("id", $this->id);
 
         if (!empty($this->caption))
         {

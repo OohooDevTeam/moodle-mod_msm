@@ -75,7 +75,7 @@ function submitForm()
     
     $("#msm_unit_subordinate_container").val(subordinateData);
     
-   $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
+    $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
     
     var formData = $("#msm_unit_form").serializeArray();
     var targetURL = $("#msm_unit_form").attr("action");
@@ -200,9 +200,9 @@ function submitForm()
                     
                     $(".msm_editor_buttons").remove();
                     
-                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit('ids')\"> Edit </button>").appendTo("#msm_editor_middle");
+                    $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
+
                     $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
-                    $("#msm_editor_new").removeAttr("disabled");
                     
                     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                         $(this).empty().remove();
@@ -242,7 +242,16 @@ function prepareSubordinate(id)
 
 function removeTinymceEditor()
 { 
-    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {                        
+    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {           
+        var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
+        if(edInstance)
+        {
+            if (edInstance.isHidden())
+            {
+                tinyMCE.remove(edInstance);
+            }
+            tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
+        }
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
         var editorContent = document.createElement("div");
@@ -264,6 +273,15 @@ function removeTinymceEditor()
     });
                     
     $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function() {
+        var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
+        if(edInstance)
+        {
+            if (edInstance.isHidden())
+            {
+                tinyMCE.remove(edInstance);
+            }
+            tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
+        }
         tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
        
         var editorContent = document.createElement("div");
@@ -286,6 +304,15 @@ function removeTinymceEditor()
     
     $('.msm_theorem_part_dropareas').each(function() {
         $(this).find('.msm_theorem_content').each(function() {
+            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
+            if(edInstance)
+            {
+                if (edInstance.isHidden())
+                {
+                    tinyMCE.remove(edInstance);
+                }
+                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            }
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
@@ -309,6 +336,15 @@ function removeTinymceEditor()
     
     $('.msm_theoremref_part_dropareas').each(function() {
         $(this).find('.msm_theorem_content').each(function() {
+            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
+            if(edInstance)
+            {
+                if (edInstance.isHidden())
+                {
+                    tinyMCE.remove(edInstance);
+                }
+                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            }
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
@@ -332,6 +368,15 @@ function removeTinymceEditor()
     
     $('.msm_associate_containers').each(function() {
         $(this).find('.msm_info_titles').each(function() {
+            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
+            if(edInstance)
+            {
+                if (edInstance.isHidden())
+                {
+                    tinyMCE.remove(edInstance);
+                }
+                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            }
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
@@ -352,6 +397,15 @@ function removeTinymceEditor()
             $(this).replaceWith(editorContent);
         });
         $(this).find('.msm_info_contents').each(function() {
+            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
+            if(edInstance)
+            {
+                if (edInstance.isHidden())
+                {
+                    tinyMCE.remove(edInstance);
+                }
+                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            }
             tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
                         
             var editorContent = document.createElement("div");
@@ -388,25 +442,49 @@ function disableEditorFunction()
     $(".copied_msm_structural_element input").attr("disabled", "disabled");
                     
     $(".copied_msm_structural_element .msm_element_close").remove();
-                    
-//    $("#msm_child_appending_area").sortable("destroy");
-//    $("#msm_intro_child_container").sortable("destroy");
-//    
-//    $(".msm_theorem_content_containers").each(function(){
-//        $(this).sortable("destroy");
-//    });
-//    
-//    $(".msm_theorem_part_dropareas").each(function() {
-//        $(this).sortable("destroy");
-//    });  
-//    
-//    $(".msm_associate_containers").each(function() {
-//        $(this).sortable("destroy");
-//    });
-//    
-//    $(".msm_structural_element").draggable("destroy");
-//    $("#msm_editor_middle_droparea").droppable("destroy");
     
+    if($("#msm_child_appending_area").hasClass("ui-sortable"))
+    {
+        $("#msm_child_appending_area").sortable("destroy");
+    }
+    
+    if($("#msm_intro_child_container").hasClass("ui-sortable"))
+    {
+        $("#msm_intro_child_container").sortable("destroy");
+    }
+                    
+        
+    $(".msm_theorem_content_containers").each(function(){
+        if($(this).hasClass("ui-sortable"))
+        {
+            $(this).sortable("destroy");
+        }
+    });
+        
+    $(".msm_theorem_part_dropareas").each(function() {
+        if($(this).hasClass("ui-sortable"))
+        {
+            $(this).sortable("destroy");
+        }
+    });  
+        
+    $(".msm_associate_containers").each(function() {
+        if($(this).hasClass("ui-sortable"))
+        {
+            $(this).sortable("destroy");
+        }
+    });
+    
+    if($(".msm_structural_element").hasClass("ui-draggable"))
+    {
+        $(".msm_structural_element").draggable("destroy");
+    }
+        
+    if($("#msm_editor_middle_droparea").hasClass("ui-droppable"))
+    {
+        $("#msm_editor_middle_droparea").droppable("destroy");
+    }
+        
     $(".msm_associate_info_headers").each(function() {
         $(this).children("span").css("display", "none");
         $(this).unbind("mouseover");

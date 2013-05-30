@@ -446,6 +446,8 @@ function saveComp(e)
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
 function editUnit(e)
 {    
+    $("#msm_editor_new").attr("disabled", "disabled");
+
     var targetElement = e.target.parentElement.parentElement.id;
     
     var elementInfo = [];
@@ -1686,14 +1688,15 @@ function cancelUnit(e)
             $("#msm_unit_form").append($(currentUnitId));
             
             removeTinymceEditor();
-                  
+//                  
             disableEditorFunction();   
            
             $(".msm_editor_buttons").remove();
-            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
+//            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
         
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
-            
+//            
         },
         error: function(data)
         {

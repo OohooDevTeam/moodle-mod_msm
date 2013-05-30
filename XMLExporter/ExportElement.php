@@ -63,6 +63,15 @@ abstract class ExportElement
                                 $a->parentNode->replaceChild($subordinateNode, $a);
                             }
                         }
+                        
+//                        $imgTags = $child->getElementsByTagnName("img");
+//                        
+//                        foreach($imgTags as $img)
+//                        {
+//                            $targetImg = null;
+//                            
+//                            
+//                        }
                     }
                     $newChildNode = $this->replacePTags($DomDocument, $child);
                     $childNode = $DomDocument->importNode($newChildNode, true);

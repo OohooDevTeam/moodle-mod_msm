@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<unit tagname="Simplepage" unitid="16" standalone="true">
+  <description>unit3</description>
+  <titles>
+    <title>Unit 3</title>
+    <plain.title>Unit 3 </plain.title>
+  </titles>
+  <body>
+    <block>
+      <caption>content of unit 3</caption>
+      <block.body>
+        <para align="left" id="18">
+          <para.body>unit 3 content</para.body>
+        </para>
+      </block.body>
+    </block>
+  </body>
+</unit>

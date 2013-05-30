@@ -24,7 +24,7 @@ class ExportIntro extends ExportElement
         $introCreator->formatOutput = true;
         $introCreator->preserveWhiteSpace = false;
         $introNode = $introCreator->createElement("intro");
-        $introNode->setAttribute("id", $this->compid);
+        $introNode->setAttribute("id", $this->id);
 
         $captionNode = null;
 
