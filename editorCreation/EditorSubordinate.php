@@ -36,7 +36,7 @@ class EditorSubordinate extends EditorElement
         $hotNodeId = $hotNode->getAttribute("id");
         $hotNodeText = $hotNode->textContent;
 
-        $this->hot = $hotNodeId . "," . $hotNodeText;
+        $this->hot = $hotNodeId . "||" . $hotNodeText;
 
         $id = $idNumber->getAttribute("id");
 
@@ -88,7 +88,7 @@ class EditorSubordinate extends EditorElement
 
         $htmlContent = '';
 
-        $hotIdInfo = explode(",", $this->hot);
+        $hotIdInfo = explode("||", $this->hot);
         $idInfo = explode("-", $hotIdInfo[0]);
 
         if (sizeof($idInfo) > 1)
@@ -169,7 +169,7 @@ class EditorSubordinate extends EditorElement
     {
         $previewHtml = '';
 
-        $idInfo = explode(",", $this->hot);
+        $idInfo = explode("||", $this->hot);
         $indexInfo = explode("-", $idInfo[0]);
 
         $id = '';

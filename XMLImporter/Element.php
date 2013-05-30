@@ -900,6 +900,10 @@ abstract class Element
                 if (!empty($object->subordinates[$key]))
                 {
                     $subordinate = $object->subordinates[$key];
+                    
+                     $rawhotString = explode('||', $subordinate->hot);
+                        $positionvalue = $rawhotString[0];
+                        $rawhotContent = $rawhotString[1];
 
                     // this subordinate element has reference child elements
                     if (!empty($subordinate->childs))
@@ -916,28 +920,26 @@ abstract class Element
                                 $newtag = "<span>";
                             }
 
-                            $rawhotString = explode(',', $subordinate->hot);
+
 
                             // there are other commas in the content 
                             // therefore, get the position value from index 0 then concatenate the rest of the string
-                            if (sizeof($rawhotString) >= 3)
-                            {
-                                $positionvalue = $rawhotString[0];
-
-                                $rawhotContent = '';
-
-                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
-                                {
-                                    $rawhotContent .= $rawhotString[$i] . ',';
-                                }
-                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
-                            }
-                            // only comma in the hot string is the one separating the position value and the rest of the hot content
-                            else
-                            {
-                                $positionvalue = $rawhotString[0];
-                                $rawhotContent = $rawhotString[1];
-                            }
+//                            if (sizeof($rawhotString) >= 3)
+//                            {
+//                                $positionvalue = $rawhotString[0];
+//
+//                                $rawhotContent = '';
+//
+//                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
+//                                {
+//                                    $rawhotContent .= $rawhotString[$i] . ',';
+//                                }
+//                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
+//                            }
+//                            // only comma in the hot string is the one separating the position value and the rest of the hot content
+//                            else
+//                            {
+//                            }
 
                             if (is_string($subordinate->hot))
                             {
@@ -993,28 +995,28 @@ abstract class Element
                             {
                                 $newtag = "<span>";
                             }
-                            $rawhotString = explode(',', $subordinate->hot);
+//                            $rawhotString = explode('||', $subordinate->hot);
 
                             // there are other commas in the content 
                             // therefore, get the position value from index 0 then concatenate the rest of the string
-                            if (sizeof($rawhotString) >= 3)
-                            {
-                                $positionvalue = $rawhotString[0];
-
-                                $rawhotContent = '';
-
-                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
-                                {
-                                    $rawhotContent .= $rawhotString[$i] . ',';
-                                }
-                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
-                            }
-                            // only comma in the hot string is the one separating the position value and the rest of the hot content
-                            else
-                            {
-                                $positionvalue = $rawhotString[0];
-                                $rawhotContent = $rawhotString[1];
-                            }
+//                            if (sizeof($rawhotString) >= 3)
+//                            {
+//                                $positionvalue = $rawhotString[0];
+//
+//                                $rawhotContent = '';
+//
+//                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
+//                                {
+//                                    $rawhotContent .= $rawhotString[$i] . ',';
+//                                }
+//                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
+//                            }
+//                            // only comma in the hot string is the one separating the position value and the rest of the hot content
+//                            else
+//                            {
+//                            $positionvalue = $rawhotString[0];
+//                            $rawhotContent = $rawhotString[1];
+//                            }
 
                             if (is_string($subordinate->hot))
                             {
@@ -1064,28 +1066,28 @@ abstract class Element
                         {
                             $newtag = "<span>";
                         }
-                        $rawhotString = explode(',', $subordinate->hot);
+//                        $rawhotString = explode('||', $subordinate->hot);
 
                         // there are other commas in the content 
                         // therefore, get the position value from index 0 then concatenate the rest of the string
-                        if (sizeof($rawhotString) >= 3)
-                        {
-                            $positionvalue = $rawhotString[0];
-
-                            $rawhotContent = '';
-
-                            for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
-                            {
-                                $rawhotContent .= $rawhotString[$i] . ',';
-                            }
-                            $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
-                        }
-                        // only comma in the hot string is the one separating the position value and the rest of the hot content
-                        else
-                        {
-                            $positionvalue = $rawhotString[0];
-                            $rawhotContent = $rawhotString[1];
-                        }
+//                        if (sizeof($rawhotString) >= 3)
+//                        {
+//                            $positionvalue = $rawhotString[0];
+//
+//                            $rawhotContent = '';
+//
+//                            for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
+//                            {
+//                                $rawhotContent .= $rawhotString[$i] . ',';
+//                            }
+//                            $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
+//                        }
+//                        // only comma in the hot string is the one separating the position value and the rest of the hot content
+//                        else
+//                        {
+//                        $positionvalue = $rawhotString[0];
+//                        $rawhotContent = $rawhotString[1];
+//                        }
 
                         if (is_string($subordinate->hot))
                         {

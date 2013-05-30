@@ -27,7 +27,7 @@ class ExportSubordinate extends ExportElement
         $subordinateNode = $subordinateCreator->createElement("subordinate");
 
         $hotNode = $subordinateCreator->createElement("hot");
-        $hotInfo = explode(",", $this->hot);
+        $hotInfo = explode("||", $this->hot);
         $hotText = $subordinateCreator->createTextNode($hotInfo[1]);
 
         $hotNode->appendChild($hotText);

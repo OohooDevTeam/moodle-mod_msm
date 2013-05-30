@@ -48,7 +48,7 @@ abstract class ExportElement
 
                             foreach ($object->subordinates as $subordinate)
                             {
-                                $hotInfo = explode(",", $subordinate->hot);
+                                $hotInfo = explode("||", $subordinate->hot);
                                 if (trim($id) == trim($hotInfo[0]))
                                 {
                                     $targetSub = $subordinate;
@@ -110,7 +110,7 @@ abstract class ExportElement
 
                             foreach ($object->subordinates as $subordinate)
                             {
-                                $hotInfo = explode(",", $subordinate->hot);
+                                $hotInfo = explode("||", $subordinate->hot);
                                 if (trim($id) == trim($hotInfo[0]))
                                 {
                                     $targetSub = $subordinate;
