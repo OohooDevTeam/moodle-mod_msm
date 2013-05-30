@@ -534,7 +534,7 @@ class Associate extends Element
                     $def->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $def;
                     break;
-                
+
                 case('msm_comment'):
                     $comment = new MathComment();
                     $comment->loadFromDb($child->unit_id, $child->id);
@@ -597,7 +597,21 @@ class Associate extends Element
                     $content .= "</li>";
                 }
 
-                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
+                $patterns = array();
+                $replacements = array();
+                $patterns[0] = "/<p.*?>/";
+                $patterns[1] = "/<\/p>/";
+                $patterns[2] = "/<span.*?>/";
+                $patterns[3] = "/<\/span>/";
+                $replacements[0] = "";
+                $replacements[1] = "";
+                $replacements[2] = "";
+                $replacements[3] = "";
+
+                $modifiedCaption = preg_replace($patterns, $replacements, $this->infos[0]->caption);
+                $caption = htmlentities($modifiedCaption);
+
+                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
                 $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
                 $content .= "</div>";
             }
@@ -631,7 +645,21 @@ class Associate extends Element
                     $content .= "</li>";
                 }
 
-                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
+                $patterns = array();
+                $replacements = array();
+                $patterns[0] = "/<p.*?>/";
+                $patterns[1] = "/<\/p>/";
+                $patterns[2] = "/<span.*?>/";
+                $patterns[3] = "/<\/span>/";
+                $replacements[0] = "";
+                $replacements[1] = "";
+                $replacements[2] = "";
+                $replacements[3] = "";
+
+                $modifiedCaption = preg_replace($patterns, $replacements, $this->infos[0]->caption);
+                $caption = htmlentities($modifiedCaption);
+
+                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
                 $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
                 $content .= "</div>";
             }
@@ -663,7 +691,21 @@ class Associate extends Element
                 $content .= "</li>";
             }
 
-            $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
+            $patterns = array();
+            $replacements = array();
+            $patterns[0] = "/<p.*?>/";
+            $patterns[1] = "/<\/p>/";
+            $patterns[2] = "/<span.*?>/";
+            $patterns[3] = "/<\/span>/";
+            $replacements[0] = "";
+            $replacements[1] = "";
+            $replacements[2] = "";
+            $replacements[3] = "";
+
+            $modifiedCaption = preg_replace($patterns, $replacements, $this->infos[0]->caption);
+            $caption = htmlentities($modifiedCaption);
+
+            $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
             $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
             $content .= "</div>";
         }

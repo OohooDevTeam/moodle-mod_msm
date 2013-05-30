@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<unit tagname="Lecture" unitid="1" standalone="false">
+  <description>Unit1</description>
+  <titles>
+    <title>Unit 1</title>
+    <plain.title>Unit 1</plain.title>
+  </titles>
+  <dates>
+    <creation>
+      <date>
+        <month>05</month>
+        <day>30</day>
+        <year>2013</year>
+      </date>
+    </creation>
+    <last.revision>
+      <date>
+        <month>05</month>
+        <day>30</day>
+        <year>2013</year>
+      </date>
+    </last.revision>
+  </dates>
+  <body>
+    <block>
+      <block.body>
+        <def type="Convention" id="1">
+          <caption>Defintion 1</caption>
+          <description>def1 description</description>
+          <def.body>
+            <para align="left">
+              <para.body>def 1 content</para.body>
+            </para>
+            <para align="left">
+              <para.body>adding pics... now!</para.body>
+            </para>
+            <para align="left">
+              <para.body>
+                <media id="1" active="0" inline="0" type="images">
+                  <img id="1" src="../pics/Untitled.png" height="67" width="67"/>
+                </media>
+              </para.body>
+            </para>
+          </def.body>
+          <associate type="Comment">
+            <info>
+              <info.caption>
+                <para align="left">
+                  <para.body>comment associate title 1</para.body>
+                </para>
+              </info.caption>
+              <para align="left">
+                <para.body>content 1</para.body>
+              </para>
+            </info>
+          </associate>
+        </def>
+      </block.body>
+    </block>
+    <block>
+      <caption>content 1</caption>
+      <block.body>
+        <para align="left" id="8">
+          <para.body>content 1</para.body>
+        </para>
+        <para align="left" id="9">
+          <para.body>&#xA0;</para.body>
+        </para>
+        <para align="left" id="10">
+          <para.body>picture #2!</para.body>
+        </para>
+        <para align="left" id="11">
+          <para.body></para.body>
+        </para>
+      </block.body>
+    </block>
+  </body>
+</unit>

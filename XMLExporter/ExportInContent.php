@@ -18,8 +18,8 @@ class ExportInContent extends ExportElement
     public $content;
     public $attr;
     public $type;
-    public $medias = array();
     public $subordinates = array();
+    public $medias = array();
 
     public function exportData()
     {

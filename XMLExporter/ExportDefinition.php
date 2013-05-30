@@ -21,6 +21,7 @@ class ExportDefinition extends ExportElement
     public $content;
     public $associates = array();
     public $subordinates = array();
+    public $medias = array();
 
     public function exportData()
     {
@@ -29,7 +30,7 @@ class ExportDefinition extends ExportElement
         $defCreator->preserveWhiteSpace = false;
         $defNode = $defCreator->createElement("def");
         $defNode->setAttribute("type", $this->type);
-        $defNode->setAttribute("id", $this->id);
+        $defNode->setAttribute("id", $this->compid);
 
         if (!empty($this->caption))
         {
@@ -96,6 +97,12 @@ class ExportDefinition extends ExportElement
                 $associate = new ExportAssociate();
                 $associate->loadDbData($child->id);
                 $this->associates[] = $associate;
+            }
+            else if($childTable->tablename == "msm_media")
+            {
+                $media = new ExportMedia();
+                $media->loadDbData($child->id);
+                $this->medias[] = $media;
             }
         }
 

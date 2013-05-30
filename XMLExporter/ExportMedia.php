@@ -21,7 +21,21 @@ class ExportMedia extends ExportElement
     //put your code here
     public function exportData()
     {
+        $mediaCreator = new DOMDocument();
+        $mediaNode = $mediaCreator->createElement("media");
+        $mediaNode->setAttribute("id", $this->compid);
+        $mediaNode->setAttribute("active", $this->active);
+        $mediaNode->setAttribute("inline", $this->inline);
+        $mediaNode->setAttribute("type", $this->type);
         
+        if(!empty($this->img))
+        {
+            $imgNode = $this->img->exportData();
+            $newimgNode = $mediaCreator->importNode($imgNode, true);
+            $mediaNode->appendChild($newimgNode);
+        }
+        
+        return $mediaNode;
     }
 
     public function loadDbData($compid)

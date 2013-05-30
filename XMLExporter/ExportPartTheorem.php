@@ -29,7 +29,7 @@ class ExportPartTheorem extends ExportElement
         $partCreator->formatOutput = true;
         $partCreator->preserveWhiteSpace = false;
         $partNode = $partCreator->createElement("part.theorem");
-        $partNode->setAttribute("partid", $this->id);
+        $partNode->setAttribute("partid", $this->compid);
 
         if (!empty($this->counter))
         {

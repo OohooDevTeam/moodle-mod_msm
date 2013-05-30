@@ -21,6 +21,7 @@ class ExportComment extends ExportElement
     public $content;
     public $associate = array();
     public $subordinates = array();
+    public $medias = array();
 
     public function exportData()
     {
@@ -29,7 +30,7 @@ class ExportComment extends ExportElement
         $commentCreator->preserveWhiteSpace = false;
         $commentNode = $commentCreator->createElement("comment");
         $commentNode->setAttribute("type", $this->type);
-        $commentNode->setAttribute("id", $this->id);
+        $commentNode->setAttribute("id", $this->compid);
 
         if (!empty($this->caption))
         {
@@ -61,7 +62,7 @@ class ExportComment extends ExportElement
                 $commentNode->appendChild($newassociateNode);
             }
         }
-
+        
         return $commentNode;
     }
 
@@ -95,6 +96,12 @@ class ExportComment extends ExportElement
                 $associate = new ExportAssociate();
                 $associate->loadDbData($child->id);
                 $this->associates[] = $associate;
+            }
+            else if($childTable->tablename == "msm_media")
+            {
+                $media = new ExportMedia();
+                $media->loadData($child->id);
+                $this->medias[] = $media;
             }
         }
 

@@ -63,15 +63,19 @@ abstract class ExportElement
                                 $a->parentNode->replaceChild($subordinateNode, $a);
                             }
                         }
-                        
-//                        $imgTags = $child->getElementsByTagnName("img");
-//                        
-//                        foreach($imgTags as $img)
-//                        {
-//                            $targetImg = null;
-//                            
-//                            
-//                        }
+
+                        $imgTags = $child->getElementsByTagName("img");
+
+                        foreach ($imgTags as $key => $img)
+                        {
+                            if (isset($this->medias))
+                            {
+                                $media = $this->medias[$key];
+                                $mediaNode = $media->exportData();
+                                $mediaElement = $contentDoc->importNode($mediaNode, true);
+                                $img->parentNode->replaceChild($mediaElement, $img);
+                            }
+                        }
                     }
                     $newChildNode = $this->replacePTags($DomDocument, $child);
                     $childNode = $DomDocument->importNode($newChildNode, true);
@@ -132,6 +136,20 @@ abstract class ExportElement
                             $a->parentNode->replaceChild($subordinateNode, $a);
                         }
                     }
+
+                    $imgTags = $child->getElementsByTagName("img");
+
+                    foreach ($imgTags as $key => $img)
+                    {
+                        if (isset($this->medias))
+                        {
+                            $media = $this->medias[$key];
+                            $mediaNode = $media->exportData();
+                            $mediaElement = $contentDoc->importNode($mediaNode, true);
+                            $img->parentNode->replaceChild($mediaElement, $img);
+                        }
+                    }
+
                     $childNode = $DomDocument->importNode($child, true);
                 }
                 $DomNode->appendChild($childNode);
