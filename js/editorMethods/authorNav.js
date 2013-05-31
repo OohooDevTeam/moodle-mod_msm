@@ -110,10 +110,10 @@ function openNavDialog()
 }
 
 /**
- *  This function is activated when the add Children button is clicked in settings form.
- *  It adds more input fields for the users to fill out.
- *
- */
+*  This function is activated when the add Children button is clicked in settings form.
+*  It adds more input fields for the users to fill out.
+*
+*/
 function addChildUnit()
 {
     $('#msm_child_add').ready(function () {
@@ -150,10 +150,10 @@ function addChildUnit()
 }
 
 /**
- * This function is activated when the cancel button is pressed in the settings form.
- * It prompts the user for verification on their choice to close the settings form without saving.
- *
- */
+* This function is activated when the cancel button is pressed in the settings form.
+* It prompts the user for verification on their choice to close the settings form without saving.
+*
+*/
 function closeSetting()
 {
     $('#msm_setting_cancel').ready(function() {
@@ -178,10 +178,10 @@ function closeSetting()
 
 
 /**
- *  This method checks if the user tried to save without filling in required field (ie, different border color for field)
- *  then changes the border color when user fills in the field. (color change = orange --> green)
- *
- */
+*  This method checks if the user tried to save without filling in required field (ie, different border color for field)
+*  then changes the border color when user fills in the field. (color change = orange --> green)
+*
+*/
 function validateBorder()
 {
     if(document.getElementById('msm_type_specifiedType').style.borderColor == 'rgb(255, 165, 0)')
@@ -201,9 +201,9 @@ function validateBorder()
 }
 
 /**
- * This function is activated when radio buttons are triggered.  When the selection of the radio buttons are changed, then update the settings composition name
- * input area to be updated accordingly.
- */
+* This function is activated when radio buttons are triggered.  When the selection of the radio buttons are changed, then update the settings composition name
+* input area to be updated accordingly.
+*/
 function processChange(e)
 {
     $(".msm_setting_form").empty().remove();  
@@ -666,14 +666,16 @@ function previewinfoopen(triggerId, idEnding)
     
 }
 
-function exportComposition()
+function exportComposition(event)
 {
+    event.preventDefault();      
     var unitnames = $("#msm_unit_name_input").val();
     
     var unitInfo = unitnames.split(",");
     
     var msmid = unitInfo[unitInfo.length-1];
-    
+    var issuccess = false;
+    var ids = null;
     $.ajax({
         type: "POST",
         url: "XMLExporter/beginExport.php",
@@ -681,8 +683,27 @@ function exportComposition()
             msm_id: msmid
         },           
         success: function(data) { 
-            var ids = JSON.parse(data);
-            if(ids != "success")
+            ids = JSON.parse(data);
+            if(ids instanceof Object)
+            {
+                issuccess = true;
+                ids["flag"] = issuccess;
+            //               document.location = "XMLExporter/forceDownload.php";
+                
+            //                var exportConfirm = $("<div id='msm_export_confirm' class='dialogs' title='Export Complete'><p> Your composition has been successfully exported to designated folder. </p></div>");
+            //                    
+            //                $("#msm_editor_middle").append(exportConfirm);
+            //                    
+            //                $("#msm_export_confirm").dialog({
+            //                    modal:false,
+            //                    buttons: {
+            //                        Ok: function(){
+            //                            $(this).dialog("close");
+            //                        }
+            //                    }
+            //                });                
+            }
+            else
             {
                 var exportError = $("<div id='msm_export_error' class='dialogs' title='Export Error'><p> The export process was not able to finish successfully. </p></div>");
                     
@@ -697,25 +718,20 @@ function exportComposition()
                     }
                 });
             }
-            else
-            {
-                var exportConfirm = $("<div id='msm_export_confirm' class='dialogs' title='Export Complete'><p> Your composition has been successfully exported to designated folder. </p></div>");
-                    
-                $("#msm_editor_middle").append(exportConfirm);
-                    
-                $("#msm_export_confirm").dialog({
-                    modal:false,
-                    buttons: {
-                        Ok: function(){
-                            $(this).dialog("close");
-                        }
-                    }
-                });
-            }
             
         },
         error: function() {}
+    }).done(function() {
+        if(ids)
+        {
+            $.get(
+                'XMLExporter/forceDownload.php', 
+                {
+                    zipfilename: ids["zipfilename"]
+                });
+        }
     }); 
 }
+
 
 

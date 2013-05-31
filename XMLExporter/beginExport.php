@@ -26,7 +26,7 @@ require_once("ExportSubordinate.php");
 require_once("ExportMedia.php");
 require_once("ExportImage.php");
 
-global $DB;
+global $DB, $CFG;
 
 $msm_id = $_POST["msm_id"];
 
@@ -50,23 +50,92 @@ foreach ($topUnits as $topUnit)
     $unitObjects[] = $unit;
 }
 
-foreach ($unitObjects as $unitobject)
+$parentDir = $CFG->dataroot . "/temp/msmtempfiles/";
+$msmRecord = $DB->get_record("msm", array("id" => $msm_id));
+$CompDir = "$parentDir/$msmRecord->name$msmRecord->id/";
+
+if (file_exists($parentDir))
 {
-    exportToFile($unitobject, $msm_id, true);
+    if (file_exists($CompDir))
+    {
+        foreach ($unitObjects as $unitobject)
+        {
+            exportToFile($CompDir, $unitobject, $msm_id, true);
+        }
+
+        exportAllImages($CompDir, $context, $msm_id);
+    }
+    else
+    {
+        if (mkdir($CompDir))
+        {
+            foreach ($unitObjects as $unitobject)
+            {
+                exportToFile($CompDir, $unitobject, $msm_id, true);
+            }
+
+            exportAllImages($CompDir, $context, $msm_id);
+        }
+        else
+        {
+            echo "error with making comp folder in temp directory";
+        }
+    }
+}
+else
+{
+    if (mkdir($parentDir))
+    {
+        if (file_exists($CompDir))
+        {
+            foreach ($unitObjects as $unitobject)
+            {
+                exportToFile($CompDir, $unitobject, $msm_id, true);
+            }
+
+            exportAllImages($CompDir, $context, $msm_id);
+        }
+        else
+        {
+            if (mkdir($CompDir))
+            {
+                foreach ($unitObjects as $unitobject)
+                {
+                    exportToFile($CompDir, $unitobject, $msm_id, true);
+                }
+
+                exportAllImages($CompDir, $context, $msm_id);
+            }
+            else
+            {
+                echo "error with making comp folder in temp directory";
+            }
+        }
+    }
+    else
+    {
+        echo "error making msmtemp folder in temp directory";
+    }
 }
 
-exportAllImages($context, $msm_id);
+$downloadParam = array();
+//$downloadParam["source"] = $parentDir;
+$downloadParam["zipfilename"] = "$msmRecord->name$msmRecord->id";
 
-echo json_encode("success");
+echo json_encode($downloadParam);
 
-function exportAllImages($cntxt, $msmId)
+//echo json_encode(zipXmlFiles($parentDir, "$msmRecord->name$msmRecord->id"));
+
+
+
+function exportAllImages($parentPath, $cntxt, $msmId)
 {
     $fs = get_file_storage();
 
     foreach ($fs->get_area_files($cntxt->id, "mod_msm", "editor") as $file)
     {
         $filename = $file->get_filename();
-        $picFilePath = "../testExport/pics/";
+        $picFilePath = "$parentPath/pics/";
 
         if ($filename != ".")
         {
@@ -107,34 +176,36 @@ function exportAllImages($cntxt, $msmId)
             }
         }
     }
-
-//
-//        if ($file = $fs->get_file_by_hash(sha1($srcEnd)))
-//        {
-//            
-//        }
-//    }
 }
 
-function exportToFile($unitObj, $msmid, $isTop)
+function exportToFile($parentPath, $unitObj, $msmid, $isTop)
 {
-    global $DB;
-
     $topunitDocument = $unitObj->exportData();
-    $msmRecord = $DB->get_record("msm", array("id" => $msmid));
     $filename = null;
-    $parentDirectory = "../testExport/$msmRecord->name$msmRecord->id/";
 
     if ($unitObj->standalone == "true")
     {
-        if (file_exists($parentDirectory))
+        $directoryname = $parentPath . "standalones/";
+        if (file_exists($directoryname))
         {
-            $directoryname = $parentDirectory . "standalones/";
-            if (file_exists($directoryname))
+            if (!empty($unitObj->shortname))
+            {
+                $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+                $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitname.xml";
+            }
+            else
+            {
+                $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+            }
+        }
+        else
+        {
+            if (mkdir($directoryname))
             {
                 if (!empty($unitObj->shortname))
                 {
-                    $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
+                    $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+                    $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitname.xml";
                 }
                 else
                 {
@@ -143,88 +214,48 @@ function exportToFile($unitObj, $msmid, $isTop)
             }
             else
             {
-                if (mkdir($directoryname))
-                {
-                    if (!empty($unitObj->shortname))
-                    {
-                        $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
-                    }
-                    else
-                    {
-                        $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
-                    }
-                }
-                else
-                {
-                    echo "error in making the standalone directory!";
-                }
-            }
-        }
-        else
-        {
-            if (mkdir($parentDirectory))
-            {
-                $directoryname = $parentDirectory . "standalones/";
-                if (file_exists($directoryname))
-                {
-                    if (!empty($unitObj->shortname))
-                    {
-                        $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
-                    }
-                    else
-                    {
-                        $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
-                    }
-                }
-                else
-                {
-                    if (mkdir($directoryname))
-                    {
-                        if (!empty($unitObj->shortname))
-                        {
-                            $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
-                        }
-                        else
-                        {
-                            $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
-                        }
-                    }
-                    else
-                    {
-                        echo "error in making the standalone directory!";
-                    }
-                }
-            }
-            else
-            {
-                echo "error making parent directory";
+                echo "error in making the standalone directory!";
             }
         }
     }
     else
     {
-        if (file_exists($parentDirectory))
+        if ($isTop)
         {
-            if ($isTop)
+            if (!empty($unitObj->shortname))
+            {
+                $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+                $filename = "$parentPath$unitObj->unittag$unitObj->compid-$unitname.xml";
+            }
+            else
+            {
+                $filename = "$parentPath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+            }
+        }
+        else
+        {
+            $filepath = $parentPath . "Nested Units/";
+
+            if (file_exists($filepath))
             {
                 if (!empty($unitObj->shortname))
                 {
-                    $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
+                    $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+                    $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitname.xml";
                 }
                 else
                 {
-                    $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                    $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
                 }
             }
             else
             {
-                $filepath = $parentDirectory . "Nested Units/";
-
-                if (file_exists($filepath))
+                if (mkdir($filepath))
                 {
                     if (!empty($unitObj->shortname))
                     {
-                        $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
+                        $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+                        $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitname.xml";
                     }
                     else
                     {
@@ -233,40 +264,8 @@ function exportToFile($unitObj, $msmid, $isTop)
                 }
                 else
                 {
-                    if (mkdir($filepath))
-                    {
-                        if (!empty($unitObj->shortname))
-                        {
-                            $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
-                        }
-                        else
-                        {
-                            $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
-                        }
-                    }
-                    else
-                    {
-                        echo "error making parent directory";
-                    }
+                    echo "error making parent directory";
                 }
-            }
-        }
-        else
-        {
-            if (mkdir($parentDirectory))
-            {
-                if (!empty($unitObj->shortname))
-                {
-                    $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->shortname.xml";
-                }
-                else
-                {
-                    $filename = "$parentDirectory$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
-                }
-            }
-            else
-            {
-                echo "error making parent directory";
             }
         }
     }
@@ -283,8 +282,9 @@ function exportToFile($unitObj, $msmid, $isTop)
 
     foreach ($unitObj->unitchildren as $subunit)
     {
-        exportToFile($subunit, $msmid, false);
+        exportToFile($parentPath, $subunit, $msmid, false);
     }
 }
+
 ?>
 

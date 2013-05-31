@@ -134,7 +134,7 @@ $msm_nav .= '<ul class="sf-menu">
                         <a href="#ab"> <span>Save</span></a>
                     </li>
                     <li>
-                        <a href="#" id="msm_nav_export" onclick="exportComposition();"> <span>Export as XML</span></a>
+                        <a href="#" id="msm_nav_export" onclick="exportComposition(event);"> <span>Export as XML</span></a>
                     </li>
                     <li>
                         <a href="#ad"> <span>Rename Composition</span></a>
