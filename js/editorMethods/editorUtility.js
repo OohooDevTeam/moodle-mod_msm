@@ -1615,6 +1615,7 @@ function removeUnit(e)
             if(liElements.length == 0)
             {
                 $("#msm_editor_new").attr("disabled", "disabled");
+                $("#msm_comp_done").attr("disabled", "disabled");
             }
             
             newUnit();

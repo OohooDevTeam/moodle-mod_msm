@@ -6,15 +6,23 @@
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
-        event.preventDefault();          
+        event.preventDefault();             
         
         submitForm();            
     });
 });
 
 function submitForm()
-{    
-    console.log("got to submitForm?");
+{        
+    var disabled = $("#msm_comp_done").attr("disabled");
+        
+    console.log(disabled);
+        
+    if((typeof disabled !== "undefined") && (disabled !== false))
+    {
+        $("#msm_comp_done").removeAttr("disabled");
+    }
+        
     $("#msm_unit_title").removeAttr("disabled");
     $("#msm_unit_short_title").removeAttr("disabled");
     $("#msm_unit_description_input").removeAttr("disabled");

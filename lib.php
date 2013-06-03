@@ -98,67 +98,17 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     require_once("XMLImporter/TableCollection.php");
 
     $msm->timecreated = time();
-
 //
     $courseid = $msm->course;
 //    //only one instance in every system
     $sysctx = get_context_instance(CONTEXT_SYSTEM);
-//
-//
-//    //temporary delete records.
-//    $DB->delete_records('msm_unit');
-//    $DB->delete_records('msm_def');
-//    $DB->delete_records('msm_table_collection');
-//    $DB->delete_records('msm');
-//    $DB->delete_records('msm_intro');
-//    $DB->delete_records('msm_theorem');
-//    $DB->delete_records('msm_associate');
-//    $DB->delete_records('msm_info');
-//    $DB->delete_records('msm_extra_info');
-//    $DB->delete_records('msm_theorem');
-//    $DB->delete_records('msm_proof');
-//    $DB->delete_records('msm_proof_block');
-//    $DB->delete_records('msm_statement_theorem');
-//    $DB->delete_records('msm_comment');
-//    $DB->delete_records('msm_para');
-//    $DB->delete_records('msm_subordinate');
-//    $DB->delete_records('msm_person');
-//    $DB->delete_records('msm_content');
-//    $DB->delete_records('msm_index_glossary');
-//    $DB->delete_records('msm_index_symbol');
-//    $DB->delete_records('msm_table');
-//    $DB->delete_records('msm_answer');
-//    $DB->delete_records('msm_answer_exercise');
-//    $DB->delete_records('msm_answer_showme');
-//    $DB->delete_records('msm_packs');
-//    $DB->delete_records('msm_problem');
-//    $DB->delete_records('msm_exercise');
-//    $DB->delete_records('msm_example');
-//    $DB->delete_records('msm_showme');
-//    $DB->delete_records('msm_quiz');
-//    $DB->delete_records('msm_quiz_choice');
-//    $DB->delete_records('msm_part_exercise');
-//    $DB->delete_records('msm_part_example');
-//    $DB->delete_records('msm_part_theorem');
-//    $DB->delete_records('msm_ext');
-//    $DB->delete_records('msm_approach');
-//    $DB->delete_records('msm_solution');
-//    $DB->delete_records('msm_statement_example');
-//    $DB->delete_records('msm_media');
-//    $DB->delete_records('msm_img');
-//    $DB->delete_records('msm_pilot');
-//    $DB->delete_records('msm_step');
-//    $DB->delete_records('msm_external_link');
-//    $DB->delete_records('msm_cite');
-//    $DB->delete_records('msm_item');
-//    $DB->delete_records('msm_compositor');
+
+    print_object($msm);
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
         // matching all the property defining the unit names
         $match = '/^(top|child)level(\d+)*$/';
-        
-
         $depth = 0;
         foreach ($msm as $property => $value)
         {
@@ -183,7 +133,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //                    $depth++;
 //                }
             }
-            else if(trim($property) == "standalone")
+            else if (trim($property) == "standalone")
             {
                 $unitNameTableData = new stdClass();
                 $unitNameTableData->msmid = $msm->id;
@@ -207,7 +157,48 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 }
             }
         }
-//    }
+
+        $draftitemid = file_get_submitted_draft_itemid('importElement');
+
+        if (!empty($draftitemid))
+        {
+            file_save_draft_area_files($draftitemid, $sysctx->id, 'mod_msm', 'editor', $msm->importElement);
+            $fs = get_file_storage();
+            $files = $fs->get_area_files($sysctx->id, "mod_msm", 'editor', $draftitemid);
+
+            foreach ($files as $file)
+            {
+                $filename = $file->get_filename();
+                if ($filename != ".")
+                {
+                    $temppath = "$CFG->dataroot/temp/msmtempfiles/";
+                    
+                    if(!file_exists($temppath))
+                    {
+                        mkdir($temppath);
+                    }
+                    $url = "{$CFG->wwwroot}/pluginfile.php/{$file->get_contextid()}/mod_msm/editor";
+                    $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $filename;
+//                    if(move_uploaded_file($fileurl, $temppath))
+//                    {
+                        $zip = new ZipArchive();
+                        if($zip->open($fileurl))
+                        {
+                            $zip->extractTo($temppath);
+                            $zip->close();
+                            
+                            unlink($fileurl);
+                        }
+//                    }
+//                    else
+//                    {
+//                        echo "error in moving the file";
+//                    }
+                }
+            }
+//            
+        }
+
 //        
         $tableRecords = $DB->count_records('msm_table_collection');
 
@@ -216,7 +207,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             $table_collection = new TableCollection();
             $tableid = $table_collection->insertTablename();
         }
-        
+
 
 ////
 //        $parser = new DOMDocument();
@@ -615,7 +606,7 @@ function msm_pluginfile($course, $cm, $context, $filearea, array $args, $forcedo
     {
         return false;
     }
-   
+
     $msmid = (int) array_shift($args);
 
     //Now gather file information

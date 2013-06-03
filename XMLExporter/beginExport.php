@@ -61,6 +61,12 @@ $topUnits = $DB->get_records("msm_compositor", array("msm_id" => $msm_id, "table
 
 $unitObjects = array();
 
+if (sizeof($topUnits) == 0)
+{
+    echo json_encode("empty");
+    return;
+}
+
 foreach ($topUnits as $topUnit)
 {
     $unit = new ExportUnit();
@@ -96,7 +102,7 @@ if (file_exists($parentDir))
         }
         else
         {
-            echo "error with making comp folder in temp directory";
+            echo json_encode("error");
         }
     }
 }
@@ -126,13 +132,13 @@ else
             }
             else
             {
-                echo "error with making comp folder in temp directory";
+                echo json_encode("error");
             }
         }
     }
     else
     {
-        echo "error making msmtemp folder in temp directory";
+        echo json_encode("error");
     }
 }
 
@@ -192,21 +198,32 @@ function exportAllImages($parentPath, $cntxt, $msmId)
             {
                 if (mkdir($picFilePath))
                 {
-                    $newpath = $picFilePath . $filename;
+                    $fileInfo = explode(".", $filename);
 
-                    if ($imgfile = fopen($newpath, "w"))
+                    $ext = $fileInfo[sizeof($fileInfo) - 1];
+
+                    if (($ext == "jpg") || ($ext == "png") || ($ext == "gif") || ($ext == "jpeg") || ($ext == "bmp"))
                     {
-                        fwrite($imgfile, $file->get_content());
-                        fclose($imgfile);
+                        $newpath = $picFilePath . $filename;
+
+                        if ($imgfile = fopen($newpath, "w"))
+                        {
+                            fwrite($imgfile, $file->get_content());
+                            fclose($imgfile);
+                        }
+                        else
+                        {
+                            echo json_encode("error");
+                        }
                     }
                     else
                     {
-                        echo json_encode("error");
+                        continue;
                     }
                 }
                 else
                 {
-                    echo "error at pic directory creation";
+                    echo json_encode("error");
                 }
             }
         }

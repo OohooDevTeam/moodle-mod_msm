@@ -402,7 +402,7 @@ $formContent .=' </div>
                 </div>     
        </div>
        <div class="msm_loadingscreen"></div>
-        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)"> Done </button>
+        <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)" disabled="disabled"> Done </button>
         <button id="msm_comp_fullscreen"> Full Screen </button>';
 
 //Replace this with your current context

@@ -165,14 +165,13 @@ class mod_msm_mod_form extends moodleform_mod
         $repeateloptions = array();
         $repeateloptions['additionalChild']['default'] = '';
         $mform->setType('additionalChild', PARAM_TEXT);
-
-
         $this->repeat_elements($repeatedArray, $repeatno, $repeateloptions, 'option_repeats', 'option_add_fields', 1, get_string('addchildbutton', 'msm'));
 
-        $mform->addElement('header', 'general', get_string('import', 'msm'));
+        $mform->addElement('header', 'importgeneral', get_string('import', 'msm'));
+        $mform->addHelpButton('importgeneral', 'import', 'msm');
 
-//        $mform->addElement('filemanager', 'importElement', get_string('importElement', 'msm'), null,
-//                    array('maxfiles' => 50, 'accepted_types' => array('.xml','.txt', '.dtd') ));
+        $mform->addElement('filemanager', 'importElement', get_string('importElement', 'msm'), null,
+                    array('maxfiles' => 50, 'accepted_types' => array('*.zip') ));
 
         $this->standard_coursemodule_elements();
 

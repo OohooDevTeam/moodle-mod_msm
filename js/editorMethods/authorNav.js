@@ -684,7 +684,7 @@ function exportComposition(event)
         },           
         success: function(data) { 
             ids = JSON.parse(data);
-            if(ids != 'error')
+            if((ids != 'error') &&(ids != 'empty'))
             {
                 
                 var exportDownload = $("<div id='msm_export_download' class='dialogs' title='Download XML Export'>\n\
@@ -709,6 +709,21 @@ function exportComposition(event)
                         }
                     }
                 });                
+            }
+            else if(ids == "empty")
+            {
+                var exportEmpty = $("<div id='msm_export_empty' class='dialogs' title='Cannot Export'><p> There is no content in the database to be exported. </p></div>");
+                    
+                $("#msm_editor_middle").append(exportEmpty);
+                    
+                $("#msm_export_empty").dialog({
+                    modal:false,
+                    buttons: {
+                        Ok: function(){
+                            $(this).dialog("close");
+                        }
+                    }
+                });
             }
             else
             {

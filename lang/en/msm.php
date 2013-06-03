@@ -17,19 +17,18 @@
 
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
-
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 defined('MOODLE_INTERNAL') || die();
 
 $string['createbook'] = "Create Book";
@@ -70,5 +69,8 @@ $string['addchildbutton'] = '(+) Add more child elements';
 $string['msmsubmit'] = ' Save and Proceed ';
 
 $string['import'] = 'Import from Existing XML';
+$string['import_help'] = 'Please either upload the zip file produced from export from MSM editor or create a zip file with all the XML files.  If you are making your own zip file, please make sure that the file containeing
+                          the top XML element(ie. < unit >) is a directly below the top directory and contains the reference tags that links each child XML files to the top XML file.';
 $string['importElement'] = 'Please specify the XML file to import.';
+
 
