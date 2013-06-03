@@ -674,7 +674,7 @@ function exportComposition(event)
     var unitInfo = unitnames.split(",");
     
     var msmid = unitInfo[unitInfo.length-1];
-    var issuccess = false;
+    //    var issuccess = false;
     var ids = null;
     $.ajax({
         type: "POST",
@@ -684,24 +684,31 @@ function exportComposition(event)
         },           
         success: function(data) { 
             ids = JSON.parse(data);
-            if(ids instanceof Object)
+            if(ids != 'error')
             {
-                issuccess = true;
-                ids["flag"] = issuccess;
-            //               document.location = "XMLExporter/forceDownload.php";
                 
-            //                var exportConfirm = $("<div id='msm_export_confirm' class='dialogs' title='Export Complete'><p> Your composition has been successfully exported to designated folder. </p></div>");
-            //                    
-            //                $("#msm_editor_middle").append(exportConfirm);
-            //                    
-            //                $("#msm_export_confirm").dialog({
-            //                    modal:false,
-            //                    buttons: {
-            //                        Ok: function(){
-            //                            $(this).dialog("close");
-            //                        }
-            //                    }
-            //                });                
+                var exportDownload = $("<div id='msm_export_download' class='dialogs' title='Download XML Export'>\n\
+                                            <p> Please click the link below to donwload the XML files. </p>\n\
+                                            <p>"+ids+"</p></div>");
+                                
+                $("#msm_editor_middle").append(exportDownload);
+                                
+                $("#msm_export_download").dialog({
+                    modal:false,
+                    buttons: {
+                        Ok: function(){
+                            // ajax call to delete all the temporary files
+                            $.ajax({
+                                type: "POST",
+                                url: "XMLExporter/beginExport.php",
+                                data: {
+                                    mode: "delete"
+                                }
+                            });
+                            $(this).dialog("close");
+                        }
+                    }
+                });                
             }
             else
             {
@@ -721,16 +728,7 @@ function exportComposition(event)
             
         },
         error: function() {}
-    }).done(function() {
-        if(ids)
-        {
-            $.get(
-                'XMLExporter/forceDownload.php', 
-                {
-                    zipfilename: ids["zipfilename"]
-                });
-        }
-    }); 
+    });
 }
 
 

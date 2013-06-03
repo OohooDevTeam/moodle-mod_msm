@@ -28,6 +28,24 @@ require_once("ExportImage.php");
 
 global $DB, $CFG;
 
+if (isset($_POST["mode"]))
+{
+    $deletePath = $CFG->dataroot . "/temp/msmtempfiles/";
+    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($deletePath, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $path)
+    {
+        if ($path->isFile())
+        {
+            unlink($path->getPathname());
+        }
+        else
+        {
+            rmdir($path->getPathname());
+        }
+    }
+    rmdir($deletePath);
+    return true;
+}
+
 $msm_id = $_POST["msm_id"];
 
 $msm = $DB->get_record('msm', array('id' => $msm_id), '*', MUST_EXIST);
@@ -118,15 +136,32 @@ else
     }
 }
 
-$downloadParam = array();
-//$downloadParam["source"] = $parentDir;
-$downloadParam["zipfilename"] = "$msmRecord->name$msmRecord->id";
+zipXmlFiles($parentDir, "$msmRecord->name$msmRecord->id");
 
-echo json_encode($downloadParam);
+$fs = get_file_storage();
 
-//echo json_encode(zipXmlFiles($parentDir, "$msmRecord->name$msmRecord->id"));
+$filename = $msmRecord->name . $msmRecord->id . ".zip";
 
+$existingfile = $fs->get_file($context->id, 'mod_msm', 'editor', $msm->id, "/", $filename);
 
+if ($existingfile)
+{
+    $existingfile->delete();
+    $fs->delete_area_files($context->id, 'mod_msm', 'editor', $existingfile->get_itemid());
+}
+
+$file_record = array('contextid' => $context->id, 'component' => 'mod_msm', 'filearea' => 'editor',
+    'itemid' => $msm->id, 'filepath' => "/", 'filename' => $filename, 'timecreated' => time(), 'timemodified' => time());
+
+$pathname = str_replace("/", "\\", $parentDir . $filename);
+$servedfile = $fs->create_file_from_pathname($file_record, $pathname);
+
+$url = "{$CFG->wwwroot}/pluginfile.php/{$servedfile->get_contextid()}/mod_msm/editor";
+$filename = $servedfile->get_filename();
+$fileurl = $url . $servedfile->get_filepath() . $servedfile->get_itemid() . '/' . $filename;
+$downloadlink = html_writer::link($fileurl, "Click here to download $filename");
+
+echo json_encode($downloadlink);
 
 function exportAllImages($parentPath, $cntxt, $msmId)
 {
@@ -286,5 +321,55 @@ function exportToFile($parentPath, $unitObj, $msmid, $isTop)
     }
 }
 
+function zipXmlFiles($source, $zipfilename)
+{
+    $destination = $source . $zipfilename . ".zip";
+
+    if (!extension_loaded('zip') || !file_exists($source))
+    {
+        return false;
+    }
+
+    $zip = new ZipArchive();
+    if (!$zip->open($destination, ZIPARCHIVE::CREATE))
+    {
+        return false;
+    }
+
+    $source = str_replace('\\', '/', realpath($source));
+
+    if (is_dir($source) === true)
+    {
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
+
+        foreach ($files as $file)
+        {
+            $file = str_replace('\\', '/', $file);
+
+            // Ignore "." and ".." folders
+            if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..')))
+            {
+                continue;
+            }
+
+            $file = realpath($file);
+            $file = str_replace('\\', '/', $file); // realpath function gives pathnames with backslashes instead of forward slashes so replace them for string comparision with $source
+
+            if (is_dir($file) === true)
+            {
+                $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
+            }
+            else if (is_file($file) === true)
+            {
+                $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
+            }
+        }
+    }
+    else if (is_file($source) === true)
+    {
+        $zip->addFromString(basename($source), file_get_contents($source));
+    }
+    $zip->close();
+}
 ?>
 

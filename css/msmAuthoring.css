@@ -683,3 +683,8 @@ table.mceLayout
 {
     display:none;
 }
+
+#msm_export_download a
+{
+    color: #1C94C4;
+}
