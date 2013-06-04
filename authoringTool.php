@@ -471,9 +471,15 @@ $fpoptions['link'] = $link_options;
 
 
 $formContent .= '<script type="text/javascript"> 
-            var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
+        var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
             
-            $(document).ready(function() {   
+        $(document).ready(function() {   
+            
+            var lichilds = $("#msm_unit_tree").find("li");
+            if(lichilds.length > 0)
+            {
+                $("#msm_comp_done").removeAttr("disabled");
+            }
             $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
                 $(".msm_loadingscreen").on({
                     ajaxStart: function() {
@@ -791,8 +797,9 @@ function makeStandaloneTree($msmid)
 
         if ($unitRecord->standalone == "true")
         {
-            $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";
-            if (empty($unitRecord->shortname))
+            $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";          
+            
+            if (empty($unitRecord->short_name))
             {
                 $standaloneHTML .= "<a href='#'>$possibleUnit->id-$possibleUnit->unit_id</a>";
             }

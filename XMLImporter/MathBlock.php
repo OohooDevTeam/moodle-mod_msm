@@ -21,16 +21,28 @@
  */
 class Block extends Element
 {
+
     public $caption;
     public $position;
     public $root;
     public $title;
     public $compid;
     public $id;
+    public $defs = array();
+    public $theorems = array();
+    public $comments = array();
+    public $paras = array();
+    public $uls = array();
+    public $ols = array();
+    public $math_displays = array();
+    public $math_arrays = array();
+    public $tables = array();
+    public $medias = array();
 
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
+        $this->tablename = "msm_block";
     }
 
     function loadFromXml($DomElement, $position = '')
@@ -38,18 +50,6 @@ class Block extends Element
         global $DB;
 
         $this->position = $position;
-
-        $this->defs = array();
-        $this->theorems = array();
-        $this->comments = array();
-
-        $this->paras = array();
-        $this->uls = array();
-        $this->ols = array();
-        $this->math_displays = array();
-        $this->math_arrays = array();
-        $this->tables = array();
-        $this->medias = array();
 
         $this->caption = $this->getDomAttribute($DomElement->getElementsByTagName('caption'));
 
@@ -132,15 +132,20 @@ class Block extends Element
                             break;
 
                         case('def'):
-                            $defID = $child->getAttribute('id');
                             $position = $position + 1;
                             $def = new Definition($this->xmlpath);
                             $def->loadFromXml($child, $position);
                             $this->defs[] = $def;
                             break;
 
+                        case ("theorem"):
+                            $position++;
+                            $theorem = new Theorem($this->xmlpath);
+                            $theorem->loadFromXml($child, $position);
+                            $this->theorems[] = $theorem;
+                            break;
+
                         case('comment'):
-                            $commentID = $child->getAttribute('id');
                             $position = $position + 1;
                             $comment = new MathComment($this->xmlpath);
                             $comment->loadFromXml($child, $position);
@@ -168,9 +173,14 @@ class Block extends Element
     {
         global $DB;
 
+        $data = new stdClass();
+        $data->block_caption = $this->caption;
+
+        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+
         $elementPositions = array();
         $sibling_id = $siblingid;
-
 
         if (!empty($this->defs))
         {
@@ -419,13 +429,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $msmid, $parentid);
+                        $media->saveIntoDb($media->position, $msmid, $this->compid);
                         $sibling_id = $media->compid;
                     }
                     else
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $msmid, $parentid, $sibling_id);
+                        $media->saveIntoDb($media->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
                     }
                     break;
@@ -436,13 +446,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $para = $this->paras[$paraString[1]];
-                        $para->saveIntoDb($para->position, $msmid, $parentid);
+                        $para->saveIntoDb($para->position, $msmid, $this->compid);
                         $sibling_id = $para->compid;
                     }
                     else
                     {
                         $para = $this->paras[$paraString[1]];
-                        $para->saveIntoDb($para->position, $msmid, $parentid, $sibling_id);
+                        $para->saveIntoDb($para->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $para->compid;
                     }
                     break;
@@ -453,13 +463,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $ol = $this->ols[$olString[1]];
-                        $ol->saveIntoDb($ol->position, $msmid, $parentid);
+                        $ol->saveIntoDb($ol->position, $msmid, $this->compid);
                         $sibling_id = $ol->compid;
                     }
                     else
                     {
                         $ol = $this->ols[$olString[1]];
-                        $ol->saveIntoDb($ol->position, $msmid, $parentid, $sibling_id);
+                        $ol->saveIntoDb($ol->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $ol->compid;
                     }
                     break;
@@ -470,13 +480,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $ul = $this->uls[$ulString[1]];
-                        $ul->saveIntoDb($ul->position, $msmid, $parentid);
+                        $ul->saveIntoDb($ul->position, $msmid, $this->compid);
                         $sibling_id = $ul->compid;
                     }
                     else
                     {
                         $ul = $this->uls[$ulString[1]];
-                        $ul->saveIntoDb($ul->position, $msmid, $parentid, $sibling_id);
+                        $ul->saveIntoDb($ul->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $ul->compid;
                     }
                     break;
@@ -487,13 +497,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $mathdisplay = $this->math_displays[$mathdisplayString[1]];
-                        $mathdisplay->saveIntoDb($mathdisplay->position, $msmid, $parentid);
+                        $mathdisplay->saveIntoDb($mathdisplay->position, $msmid, $this->compid);
                         $sibling_id = $mathdisplay->compid;
                     }
                     else
                     {
                         $mathdisplay = $this->math_displays[$mathdisplayString[1]];
-                        $mathdisplay->saveIntoDb($mathdisplay->position, $msmid, $parentid, $sibling_id);
+                        $mathdisplay->saveIntoDb($mathdisplay->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $mathdisplay->compid;
                     }
                     break;
@@ -504,13 +514,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $matharray = $this->math_arrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $msmid, $parentid);
+                        $matharray->saveIntoDb($matharray->position, $msmid, $this->compid);
                         $sibling_id = $matharray->compid;
                     }
                     else
                     {
                         $matharray = $this->math_arrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $msmid, $parentid, $sibling_id);
+                        $matharray->saveIntoDb($matharray->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $matharray->compid;
                     }
                     break;
@@ -520,13 +530,13 @@ class Block extends Element
                     if (empty($sibling_id))
                     {
                         $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $msmid, $parentid);
+                        $table->saveIntoDb($table->position, $msmid, $this->compid);
                         $sibling_id = $table->compid;
                     }
                     else
                     {
                         $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $msmid, $parentid, $sibling_id);
+                        $table->saveIntoDb($table->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $table->compid;
                     }
                     break;

@@ -24,7 +24,7 @@ class ExportUnit extends ExportElement
     public $description;
     public $standalone;
     public $unittag;
-    public $acknowledgement;
+//    public $acknowledgement;
 
     public function exportData()
     {
@@ -37,13 +37,13 @@ class ExportUnit extends ExportElement
 //        $XMLcreator->schemaValidate("$CFG->dirroot/mod/msm/NewSchemas/Unit.xsd");
         $unitNode = $XMLcreator->createElement("unit");
         $unitNode->setAttribute("tagname", $this->unittag);
-        $unitNode->setAttribute("unitid", $this->id);
+        $unitNode->setAttribute("unitid", $this->compid);
         $unitNode->setAttribute("standalone", $this->standalone);
 
         $descriptionNode = null;
         $titlesNode = null;
 //        $authorNode = null;
-        $ackNode = null;
+//        $ackNode = null;
         $datesNode = null;
         $childrenNode = null;
 
@@ -86,14 +86,15 @@ class ExportUnit extends ExportElement
 //        {
 //            
 //        }
-
-        if (!empty($this->acknowledgement))
-        {
-            $ackNode = $XMLcreator->createElement("acknowledgements");
-            $ackText = $XMLcreator->createTextNode($this->acknowledgement);
-            $ackNode->appendChild($ackText);
-            $unitNode->appendChild($ackNode);
-        }
+//
+//        if (!empty($this->acknowledgement))
+//        {
+//            print_object($this->acknowledgement);
+//            $ackNode = $XMLcreator->createElement("acknowledgements");
+//            $ackText = $XMLcreator->createTextNode($this->acknowledgement);
+//            $ackNode->appendChild($ackText);
+//            $unitNode->appendChild($ackNode);
+//        }
 
         if (!empty($this->dates))
         {

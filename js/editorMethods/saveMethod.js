@@ -225,7 +225,7 @@ function submitForm()
                     // sortable, draggable and droppable
                     disableEditorFunction();                    
                     
-                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);                        
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);     
                     insertUnitStructure(ids);                  
                 }
                    

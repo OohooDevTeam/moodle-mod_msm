@@ -23,9 +23,8 @@ class ExtraInfo extends Element
 {
 
     public $name;
-    public $caption;
-    public $content;
-
+    public $blocks = array();
+    
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -43,6 +42,9 @@ class ExtraInfo extends Element
         $nameofElement = $DomElement->tagName;
         switch ($nameofElement)
         {
+            case ('acknowledgements'):
+                $this->name = 'Acknowledgements';
+                break;
             case('preface'):
                 $this->name = 'Preface';
                 break;
@@ -56,60 +58,14 @@ class ExtraInfo extends Element
                 $this->name = 'Historical';
                 break;
         }
-
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexsymbols = array();
-        $this->indexglossary = array();
-        $this->medias = array();
-        $this->tables = array();
-
-        foreach ($DomElement->childNodes as $child)
+        
+        $blocks = $DomElement->getElementsByTagName("block");
+        foreach($blocks as $b)
         {
-            if ($child->nodeType == XML_ELEMENT_NODE)
-            {
-                if ($child->tagName != 'caption')
-                {
-                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-                    {
-                        $this->indexauthors[] = $indexauthor;
-                    }
-
-                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-                    {
-                        $this->indexglossarys[] = $indexglossary;
-                    }
-
-                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-                    {
-                        $this->indexsymbols[] = $indexsymbol;
-                    }
-                    foreach ($this->processSubordinate($child, $position) as $subordinate)
-                    {
-                        $this->subordinates[] = $subordinate;
-                    }
-
-                    foreach ($this->processMedia($child, $position) as $media)
-                    {
-                        $this->medias[] = $media;
-                    }
-
-                    foreach ($this->processTable($child, $position) as $table)
-                    {
-                        $this->tables[] = $table;
-                    }
-
-                    foreach ($this->processContent($child, $position) as $content)
-                    {
-                        $this->content .= $content;
-                    }
-                }
-                else
-                {
-                    $this->caption = $this->getContent($child);
-                }
-            }
-        }
+            $block = new Block();
+            $block->loadFromXml($b);
+            $this->blocks[] = $block;
+        }        
     }
 
     /**
@@ -122,62 +78,20 @@ class ExtraInfo extends Element
         global $DB;
 
         $data = new stdClass();
-        $data->name = $this->name;
-        $data->caption = $this->caption;
-        $data->extra_info_content = $this->content;
+        $data->extra_info_name = $this->name;
 
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
+
         $elementPositions = array();
         $sibling_id = null;
 
-
-        if (!empty($this->subordinates))
+        if (!empty($this->blocks))
         {
-            foreach ($this->subordinates as $key => $subordinate)
+            foreach ($this->blocks as $key=>$block)
             {
-                $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
-            }
-        }
-
-        if (!empty($this->indexauthors))
-        {
-            foreach ($this->indexauthors as $key => $indexauthor)
-            {
-                $elementPositions['indexauthor' . '-' . $key] = $indexauthor->position;
-            }
-        }
-
-        if (!empty($this->indexglossarys))
-        {
-            foreach ($this->indexglossarys as $key => $indexglosary)
-            {
-                $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
-            }
-        }
-
-        if (!empty($this->indexsymbols))
-        {
-            foreach ($this->indexsymbols as $key => $indexsymbol)
-            {
-                $elementPositions['indexsymbol' . '-' . $key] = $indexsymbol->position;
-            }
-        }
-
-        if (!empty($this->medias))
-        {
-            foreach ($this->medias as $key => $media)
-            {
-                $elementPositions['media' . '-' . $key] = $media->position;
-            }
-        }
-
-        if (!empty($this->tables))
-        {
-            foreach ($this->tables as $key => $table)
-            {
-                $elementPositions['table' . '-' . $key] = $table->position;
+                $elementPositions["block-$key"] = $block->position;
             }
         }
 
@@ -187,105 +101,20 @@ class ExtraInfo extends Element
         {
             switch ($element)
             {
-                case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-                    $subordinateString = explode('-', $element);
+                case(preg_match("/^(block.\d+)$/", $element) ? true : false):
+                    $blockString = explode('-', $element);
 
                     if (empty($sibling_id))
                     {
-                        $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid);
-                        $sibling_id = $subordinate->compid;
+                        $block = $this->blocks[$blockString[1]];
+                        $block->saveIntoDb($block->position, $msmid, $this->compid);
+                        $sibling_id = $block->compid;
                     }
                     else
                     {
-                        $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid, $sibling_id);
-                        $sibling_id = $subordinate->compid;
-                    }
-                    break;
-
-                case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
-                    $indexauthorString = explode('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid);
-                        $sibling_id = $indexauthor->compid;
-                    }
-                    else
-                    {
-                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid, $sibling_id);
-                        $sibling_id = $indexauthor->compid;
-                    }
-                    break;
-
-                case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
-                    $indexsymbolString = explode('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid);
-                        $sibling_id = $indexsymbol->compid;
-                    }
-                    else
-                    {
-                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid, $sibling_id);
-                        $sibling_id = $indexsymbol->compid;
-                    }
-                    break;
-
-                case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
-                    $indexglossaryString = explode('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid);
-                        $sibling_id = $indexglossary->compid;
-                    }
-                    else
-                    {
-                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid, $sibling_id);
-                        $sibling_id = $indexglossary->compid;
-                    }
-                    break;
-
-                case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-                    $mediaString = explode('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $msmid, $this->compid);
-                        $sibling_id = $media->compid;
-                    }
-                    else
-                    {
-                        $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $msmid, $this->compid, $sibling_id);
-                        $sibling_id = $media->compid;
-                    }
-                    break;
-
-                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
-                    $tableString = explode('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $msmid, $this->compid);
-                        $sibling_id = $table->compid;
-                    }
-                    else
-                    {
-                        $table = $this->tables[$tableString[1]];
-                        $table->saveIntoDb($table->position, $msmid, $this->compid, $sibling_id);
-                        $sibling_id = $table->compid;
+                        $block = $this->blocks[$blockString[1]];
+                        $block->saveIntoDb($block->position, $msmid, $this->compid, $sibling_id);
+                        $sibling_id = $block->compid;
                     }
                     break;
             }
@@ -300,52 +129,24 @@ class ExtraInfo extends Element
 
         if (!empty($extrainfoRecord))
         {
-//            $this->caption = $extrainfoRecord->caption;
-//            $this->extra_info_content = $extrainfoRecord->extra_info_content;
             $this->extra_info_name = $extrainfoRecord->extra_info_name;
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-//        $this->subordinates = array();
-//        $this->medias = array();
-//        $this->tables = array();
         $this->blocks = array();
 
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
-            
-            if($childtablename->tablename ==  "msm_block")
+
+            if ($childtablename->tablename == "msm_block")
             {
                 $block = new Block();
                 $block->loadFromDb($child->unit_id, $child->id);
                 $this->blocks[] = $block;
             }
 
-//            switch ($childtablename)
-//            {
-//                case('msm_subordinate'):
-//                    $subordinate = new Subordinate();
-//                    $subordinate->loadFromDb($child->unit_id, $child->id);
-//                    $this->subordinates[] = $subordinate;
-//                    break;
-//
-//                case('msm_media'):
-//                    $media = new Media();
-//                    $media->loadFromDb($child->unit_id, $child->id);
-//                    $this->medias[] = $media;
-//                    break;
-//
-//                case('msm_table'):
-//                    $table = new Table();
-//                    $table->loadFromDb($child->unit_id, $child->id);
-//                    $this->tables[] = $table;
-//                    break;
-//                
-//                case 'msm_block':
-//                    
-//            }
         }
 
         return $this;
@@ -357,9 +158,12 @@ class ExtraInfo extends Element
         $content .= "<div class='extrainfo'>";
 
         $content .= "<span class='extrainfoname'>" . $this->extra_info_name . "</span>";
-        
+
         $content .= "<div class='mathcontent'>";
-        $content .= $this->blocks[0]->displayhtml();
+         foreach($this->blocks as $block)
+        {
+            $content .= $block->displayhtml();
+        }
         $content .= "</div>";
 
         $content .= "</div>";

@@ -76,7 +76,9 @@ foreach ($topUnits as $topUnit)
 
 $parentDir = $CFG->dataroot . "/temp/msmtempfiles/";
 $msmRecord = $DB->get_record("msm", array("id" => $msm_id));
-$CompDir = "$parentDir/$msmRecord->name$msmRecord->id/";
+
+$msmtrimName = preg_replace("/\s+/", '', $msmRecord->name);
+$CompDir = "$parentDir/$msmtrimName$msmRecord->id/";
 
 if (file_exists($parentDir))
 {
@@ -142,11 +144,11 @@ else
     }
 }
 
-zipXmlFiles($parentDir, "$msmRecord->name$msmRecord->id");
+zipXmlFiles($parentDir, "$msmtrimName$msmRecord->id");
 
 $fs = get_file_storage();
 
-$filename = $msmRecord->name . $msmRecord->id . ".zip";
+$filename = $msmtrimName . $msmRecord->id . ".zip";
 
 $existingfile = $fs->get_file($context->id, 'mod_msm', 'editor', $msm->id, "/", $filename);
 
@@ -235,6 +237,12 @@ function exportToFile($parentPath, $unitObj, $msmid, $isTop)
     $topunitDocument = $unitObj->exportData();
     $filename = null;
 
+    $trimmedTag = preg_replace('/\s+/', '', $unitObj->unittag);
+    if (!empty($unitObj->shortname))
+    {
+        $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+    }
+
     if ($unitObj->standalone == "true")
     {
         $directoryname = $parentPath . "standalones/";
@@ -242,12 +250,11 @@ function exportToFile($parentPath, $unitObj, $msmid, $isTop)
         {
             if (!empty($unitObj->shortname))
             {
-                $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
-                $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitname.xml";
+                $filename = "$directoryname$trimmedTag$unitObj->compid-$unitname.xml";
             }
             else
             {
-                $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                $filename = "$directoryname$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
             }
         }
         else
@@ -256,12 +263,11 @@ function exportToFile($parentPath, $unitObj, $msmid, $isTop)
             {
                 if (!empty($unitObj->shortname))
                 {
-                    $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
-                    $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitname.xml";
+                    $filename = "$directoryname$trimmedTag$unitObj->compid-$unitname.xml";
                 }
                 else
                 {
-                    $filename = "$directoryname$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                    $filename = "$directoryname$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
                 }
             }
             else
@@ -277,27 +283,26 @@ function exportToFile($parentPath, $unitObj, $msmid, $isTop)
             if (!empty($unitObj->shortname))
             {
                 $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
-                $filename = "$parentPath$unitObj->unittag$unitObj->compid-$unitname.xml";
+                $filename = "$parentPath$trimmedTag$unitObj->compid-$unitname.xml";
             }
             else
             {
-                $filename = "$parentPath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                $filename = "$parentPath$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
             }
         }
         else
         {
-            $filepath = $parentPath . "Nested Units/";
+            $filepath = $parentPath . "NestedUnits/";
 
             if (file_exists($filepath))
             {
                 if (!empty($unitObj->shortname))
                 {
-                    $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
-                    $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitname.xml";
+                    $filename = "$filepath$trimmedTag$unitObj->compid-$unitname.xml";
                 }
                 else
                 {
-                    $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                    $filename = "$filepath$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
                 }
             }
             else
@@ -306,12 +311,11 @@ function exportToFile($parentPath, $unitObj, $msmid, $isTop)
                 {
                     if (!empty($unitObj->shortname))
                     {
-                        $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
-                        $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitname.xml";
+                        $filename = "$filepath$trimmedTag$unitObj->compid-$unitname.xml";
                     }
                     else
                     {
-                        $filename = "$filepath$unitObj->unittag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
+                        $filename = "$filepath$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
                     }
                 }
                 else

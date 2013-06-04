@@ -23,7 +23,7 @@ class ExportExtraInfo extends ExportElement
         $extraInfoCreator = new DOMDocument();
         $extraInfoCreator->formatOutput = true;
         $extraInfoCreator->preserveWhiteSpace = false;
-        $extraInfoNode = $extraInfoCreator->createElement($this->name);
+        $extraInfoNode = $extraInfoCreator->createElement(strtolower($this->name));
 
         foreach ($this->blocks as $key => $block)
         {

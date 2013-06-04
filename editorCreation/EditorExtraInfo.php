@@ -26,7 +26,7 @@ class EditorExtraInfo extends EditorElement
     }
 
     public function getFormData($idNumber)
-    {
+    {        
         $this->name = $_POST["msm_extra_type_dropdown-$idNumber"];
 
         $block = new EditorBlock();

@@ -83,6 +83,9 @@ class Unit extends Element
     public $string_id;
     public $standalone;
     public $compchildtype;
+    public $title;
+    public $plain_title;
+    public $extraContents = array();
 
     function __construct($xmlpath = '')
     {
@@ -170,13 +173,6 @@ class Unit extends Element
                             $this->contributors[] = $person;
                         }
                     }
-                    else if ($child->tagName == 'acknowledgements')
-                    {
-                        $position = $position + 1;
-                        $content = new stdClass();
-                        $content = $this->getContent($acknowledgements->item(0), $position, $this->xmlpath);
-                        $this->acknowledgements = $content->content;
-                    }
                     else if ($child->tagName == 'dates')
                     {
                         foreach ($child->childNodes as $key => $grandChild)
@@ -191,13 +187,21 @@ class Unit extends Element
                                         $month = $this->getDomAttribute($date->item(0)->getElementsByTagName('month'));
                                         if ($month < 10) // to format the date as YYYYMMDD
                                         {
-                                            $month = '0' . $month;
+                                            // the legacy material has one digit while the newly exported material has 2 digits
+                                            // b/c it already has zero concatenated to it
+                                            if (strlen($month) == 1)
+                                            {
+                                                $month = '0' . $month;
+                                            }
                                         }
 
                                         $day = $this->getDomAttribute($date->item(0)->getElementsByTagName('day'));
                                         if ($day < 10)// to format the date as YYYYMMDD
                                         {
-                                            $day = '0' . $day;
+                                            if (strlen($day) == 1)
+                                            {
+                                                $day = '0' . $day;
+                                            }
                                         }
 
                                         $year = $this->getDomAttribute($date->item(0)->getElementsByTagName('year'));
@@ -213,13 +217,19 @@ class Unit extends Element
                                         $month = $this->getDomAttribute($date->item(0)->getElementsByTagName('month'));
                                         if ($month < 10) // to format the date as YYYYMMDD
                                         {
-                                            $month = '0' . $month;
+                                            if (strlen($month) == 1)
+                                            {
+                                                $month = '0' . $month;
+                                            }
                                         }
 
                                         $day = $this->getDomAttribute($date->item(0)->getElementsByTagName('day'));
                                         if ($day < 10)// to format the date as YYYYMMDD
                                         {
-                                            $day = '0' . $day;
+                                            if (strlen($day) == 1)
+                                            {
+                                                $day = '0' . $day;
+                                            }
                                         }
 
                                         $year = $this->getDomAttribute($date->item(0)->getElementsByTagName('year'));
@@ -237,12 +247,12 @@ class Unit extends Element
                             }
                         }//end of dates foreach statement
                     }
-                    else if ($child->tagName == 'preface')
+                    else if (($child->tagName == 'acknowledgements') || ($child->tagName == 'preface')|| ($child->tagName == 'summary') || ($child->tagName == 'historical.notes') || ($child->tagName == 'trailer'))
                     {
                         $position = $position + 1;
-                        $preface = new ExtraInfo($this->xmlpath);
-                        $preface->loadFromXml($child, $position);
-                        $this->preface = $preface;
+                        $extrainfo = new ExtraInfo($this->xmlpath);
+                        $extrainfo->loadFromXml($child, $position);
+                        $this->extraContents[] = $extrainfo;
                     }
                     else if ($child->tagName == 'intro')
                     {
@@ -267,53 +277,11 @@ class Unit extends Element
                             $intro->loadFromXml($element, $position);
                             $this->intro = $intro;
                         }
-                        else if ($element->tagName == 'summary')
-                        {
-                            $position = $position + 1;
-                            $summary = new ExtraInfo($this->xmlpath);
-                            $summary->loadFromXml($element, $position);
-                            $this->summary = $summary;
-                        }
-                        else if ($element->tagName == 'historical.notes')
-                        {
-                            $position = $position + 1;
-                            $historical = new ExtraInfo($this->xmlpath);
-                            $historical->loadFromXml($element, $position);
-                            $this->historical = $historical;
-                        }
-                        else if ($element->tagName == 'trailer')
-                        {
-                            $position = $position + 1;
-                            $trailer = new ExtraInfo($this->xmlpath);
-                            $trailer->loadFromXml($element, $position);
-                            $this->trailer = $trailer;
-                        }
                         else
                         {
                             echo "another tag?";
                             print_object($element->tagName);
                         }
-                    }
-                    else if ($child->tagName == 'historical.notes')
-                    {
-                        $position = $position + 1;
-                        $historical = new ExtraInfo($this->xmlpath);
-                        $historical->loadFromXml($child, $position);
-                        $this->historical = $historical;
-                    }
-                    else if ($child->tagName == 'summary')
-                    {
-                        $position = $position + 1;
-                        $summary = new ExtraInfo($this->xmlpath);
-                        $summary->loadFromXml($child, $position);
-                        $this->summary = $summary;
-                    }
-                    else if ($child->tagName == 'trailer')
-                    {
-                        $position = $position + 1;
-                        $trailer = new ExtraInfo($this->xmlpath);
-                        $trailer->loadFromXml($child, $position);
-                        $this->trailer = $trailer;
                     }
                     else if ($child->tagName == 'body')
                     {
@@ -342,7 +310,7 @@ class Unit extends Element
                                     $position = $position + 1;
                                     $exerciseID = $grandChild->getAttribute('exercisePackID');
 
-                                    $filepath = $this->findUnitFile($exerciseID);
+                                    $filepath = $this->findUnitFile($exerciseID, $this->xmlpath);
 
                                     $refdoc = new DOMDocument();
                                     @$refdoc->load($filepath);
@@ -361,7 +329,7 @@ class Unit extends Element
                                     $position = $position + 1;
                                     $exampleID = $grandChild->getAttribute('examplePackID');
 
-                                    $filepath = $this->findUnitFile($exampleID);
+                                    $filepath = $this->findUnitFile($exampleID, $this->xmlpath);
 
                                     $refdoc = new DOMDocument();
                                     @$refdoc->load($filepath);
@@ -392,10 +360,10 @@ class Unit extends Element
                                         $position = $position + 1;
                                         $unitrefID = $grandChild->getAttribute('unitId');
 
-                                        $filepath = $this->findUnitFile($unitrefID);
+                                        $filepath = $this->findUnitFile($unitrefID, $this->xmlpath);
 
                                         $refdoc = new DOMDocument();
-                                        @$refdoc->load($filepath);
+                                        $refdoc->load($filepath);
 
                                         $unitrefelement = $refdoc->documentElement;
 
@@ -536,11 +504,6 @@ class Unit extends Element
             }
         }
 
-        if (!empty($this->acknowledgement))
-        {
-            $data->acknowledgement = $this->acknowledgement;
-        }
-
         $this->id = $DB->insert_record($this->tablename, $data);
 
         // for inserting unit records in to compositor table
@@ -592,24 +555,32 @@ class Unit extends Element
                 $elementPositions['contributors' . '-' . $key] = $contributor->position;
             }
         }
-        if (!empty($this->preface))
-        {
-            $elementPositions['preface'] = $this->preface->position;
-        }
+//        if (!empty($this->preface))
+//        {
+//            $elementPositions['preface'] = $this->preface->position;
+//        }
+//
+//        if (!empty($this->historical))
+//        {
+//            $elementPositions['historical'] = $this->historical->position;
+//        }
+//
+//        if (!empty($this->trailer))
+//        {
+//            $elementPositions['trailer'] = $this->trailer->position;
+//        }
+//
+//        if (!empty($this->summary))
+//        {
+//            $elementPositions['summary'] = $this->summary->position;
+//        }
 
-        if (!empty($this->historical))
+        if (!empty($this->extraContents))
         {
-            $elementPositions['historical'] = $this->historical->position;
-        }
-
-        if (!empty($this->trailer))
-        {
-            $elementPositions['trailer'] = $this->trailer->position;
-        }
-
-        if (!empty($this->summary))
-        {
-            $elementPositions['summary'] = $this->summary->position;
+            foreach ($this->extraContents as $key => $extracontent)
+            {
+                $elementPositions["extra-$key"] = $extracontent->position;
+            }
         }
 
         if (!empty($this->stagedates))
@@ -779,6 +750,26 @@ class Unit extends Element
                         if (!empty($block->root))
                         {
                             $sibling_id = $block->root;
+                        }
+                    }
+                    break;
+
+                case(preg_match("/^(extra.\d+)$/", $element) ? true : false):
+                    $extraString = explode('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $extra = $this->extraContents[$extraString[1]];
+                        $extra->saveIntoDb($extra->position, $msmid, $this->compid);
+                        $sibling_id = $extra->root;
+                    }
+                    else
+                    {
+                        $extra = $this->extraContents[$extraString[1]];
+                        $extra->saveIntoDb($extracontent->position, $msmid, $this->compid, $sibling_id);
+                        if (!empty($extra->root))
+                        {
+                            $sibling_id = $extra->root;
                         }
                     }
 
@@ -1244,62 +1235,113 @@ class Unit extends Element
      * @param type $unitID the ID of the unit element that is specified in unit.choice element
      * @return type $path path to the file containing the specified unit ID
      */
-    function findUnitFile($unitID)
+    function findUnitFile($unitID, $path)
     {
-        $path = $this->xmlpath;
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
 
-        $dirOrFiles = scandir($path);
-
-        foreach ($dirOrFiles as $key => $file)
+        foreach ($files as $file)
         {
-            // first two items in the array $dirOrFiles refers to the current and parent directories
-            // which is not useful in this case
-            if ($key > 1)
+            $file = realpath($file);
+            $file = str_replace('\\', '/', $file);
+
+            if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..')))
             {
-                $ext = explode('.', $file);
+                continue;
+            }
+            if (is_dir($file))
+            {
 
-                if ((sizeof($ext) > 1) && ($ext[1] == 'xml'))
+                $path = $this->findUnitFile($unitID, $file);
+                return $path;
+            }
+            else
+            {
+                $fileInfo = explode(".", $file);
+                $fileExt = $fileInfo[sizeof($fileInfo) - 1];
+
+                if ($fileExt == "xml")
                 {
-                    $DomParser = new DOMDocument();
-                    @$DomParser->load($this->xmlpath . '/' . $file);
+                    $xmlParser = new DOMDocument();
+                    $xmlParser->load($file);
 
-                    $unit = $DomParser->getElementsByTagName("unit")->item(0);
-                    $exercise = $DomParser->getElementsByTagName('exercise.pack')->item(0);
-                    $example = $DomParser->getElementsByTagName('example.pack')->item(0);
+                    $topElement = $xmlParser->documentElement;
 
-                    if (!empty($unit))
+                    switch ($topElement->tagName)
                     {
-                        $unitstringID = $unit->getAttribute('unitid');
-
-                        if ($unitstringID == $unitID)
-                        {
-                            $path = $this->xmlpath . '/' . $file;
-                            return $path;
-                        }
-                    }
-                    if (!empty($exercise))
-                    {
-                        $exerciseID = $exercise->getAttribute('id');
-
-                        if ($exerciseID == $unitID)
-                        {
-                            $path = $this->xmlpath . '/' . $file;
-                            return $path;
-                        }
-                    }
-                    if (!empty($example))
-                    {
-                        $exampleID = $example->getAttribute('id');
-
-                        if ($exampleID == $unitID)
-                        {
-                            $path = $this->xmlpath . '/' . $file;
-                            return $path;
-                        }
+                        case "unit":
+                            if ($topElement->getAttribute("unitid") == $unitID)
+                            {
+                                return $file;
+                            }
+                            break;
+                        case "example.pack":
+                            if ($topElement->getAttribute("id") == $unitID)
+                            {
+                                return $file;
+                            }
+                            break;
+                        case "exercise.pack":
+                            if ($topElement->getAttribute("id") == $unitID)
+                            {
+                                return $file;
+                            }
+                            break;
                     }
                 }
             }
         }
+
+//        if (is_dir($newpath))
+//        {
+//            $fileArray = scandir($path);
+//
+//            foreach ($fileArray as $key => $file)
+//            {
+//                if ($key > 1)
+//                {
+//                    $new = $path . "/" . $file;
+//                    return $this->findUnitFile($unitID, $new);
+//                }
+//            }
+//        }
+//        else
+//        {
+//            $fileInfo = explode(".", $path);
+//            $fileExt = $fileInfo[sizeof($fileInfo) - 1];
+//
+//            if ($fileExt == "xml")
+//            {
+//                $xmlParser = new DOMDocument();
+//                $xmlParser->load($newpath);
+//
+//                $topElement = $xmlParser->documentElement;
+//
+//                switch ($topElement->tagName)
+//                {
+//                    case "unit":
+//                        if ($topElement->getAttribute("unitid") == $unitID)
+//                        {
+//                            return $newpath;
+//                        }
+//                        break;
+//                    case "example.pack":
+//                        if ($topElement->getAttribute("id") == $unitID)
+//                        {
+//                            return $newpath;
+//                        }
+//                        break;
+//                    case "exercise.pack":
+//                        if ($topElement->getAttribute("id") == $unitID)
+//                        {
+//                            return $newpath;
+//                        }
+//                        break;
+//                }
+//            }
+//        }
+//
+//        print_object($newpath);
+//        return $newpath;
     }
 
 }

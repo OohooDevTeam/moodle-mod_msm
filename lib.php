@@ -169,11 +169,15 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
         if (!empty($draftitemid))
         {
+         
+//            file_prepare_draft_area($draftitemid, $sysctx->id, 'mod_msm', 'editor', $msm->importElement);
             file_save_draft_area_files($draftitemid, $sysctx->id, 'mod_msm', 'editor', $msm->importElement);
             $fs = get_file_storage();
             $files = $fs->get_area_files($sysctx->id, "mod_msm", 'editor', $draftitemid);
-//
-            foreach ($files as $file)
+            
+            if(sizeof($files) > 0)
+            {
+                foreach ($files as $file)
             {
                 $filename = $file->get_filename();
                 if ($filename != ".")
@@ -197,6 +201,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                             $zip->close();
 
                             unlink($path);
+                            $file->delete();
                         }
                         if (file_exists("$CFG->dataroot/temp/$msm->name$msm->id/"))
                         {
@@ -208,11 +213,11 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             
             $newXMLfilepath = $CFG->dataroot . "/temp/msmtempfiles/";
             $msmdir = scandir($newXMLfilepath);
-            $msmdirpath = $newXMLfilepath . $msmdir[2] . "/";
+            $msmdirpath = $newXMLfilepath . $msmdir[2];
             
-            $xmlfiles = scandir($msmdirpath);
+            $xmlfiles = scandir($msmdirpath . "/");
             
-            $xmlpath = $msmdirpath;
+            $xmlpath = $msmdirpath . "/";
             foreach($xmlfiles as $xmlfile)
             {
                 $xmlfilepath = $xmlpath . $xmlfile;
@@ -223,14 +228,16 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 }
             }
             
-            print_object($xmlpath);
-//            $newXMLparser = new DOMDocument();
-//            $newXMLparser->load()
+            $newXMLparser = new DOMDocument();
+            $newXMLparser->load($xmlpath);
+            
+            $importedunit = new Unit($msmdirpath, $newXMLparser);
+            $position = 1;
+            $importedunit->loadFromXml($newXMLparser->documentElement, $position);
+            $importedunit->saveIntoDb($importedunit->position, $msm->id);
         }
-        
-
-
-////
+            }
+            
 //        $parser = new DOMDocument();
 //        //define('parser', $parser);
 //        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
