@@ -171,7 +171,7 @@ class mod_msm_mod_form extends moodleform_mod
         $mform->addHelpButton('importgeneral', 'import', 'msm');
 
         $mform->addElement('filemanager', 'importElement', get_string('importElement', 'msm'), null,
-                    array('maxfiles' => 50, 'accepted_types' => array('*.zip') ));
+                    array('subdirs'=>0, 'maxfiles' => 1, 'accepted_types' => array('*.zip') ));
 
         $this->standard_coursemodule_elements();
 

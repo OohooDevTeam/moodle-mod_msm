@@ -103,8 +103,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //    //only one instance in every system
     $sysctx = get_context_instance(CONTEXT_SYSTEM);
 
-    print_object($msm);
-
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
         // matching all the property defining the unit names
@@ -157,6 +155,15 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 }
             }
         }
+        
+        
+        $tableRecords = $DB->count_records('msm_table_collection');
+
+        if ($tableRecords == 0)
+        {
+            $table_collection = new TableCollection();
+            $tableid = $table_collection->insertTablename();
+        }
 
         $draftitemid = file_get_submitted_draft_itemid('importElement');
 
@@ -165,48 +172,62 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             file_save_draft_area_files($draftitemid, $sysctx->id, 'mod_msm', 'editor', $msm->importElement);
             $fs = get_file_storage();
             $files = $fs->get_area_files($sysctx->id, "mod_msm", 'editor', $draftitemid);
-
+//
             foreach ($files as $file)
             {
                 $filename = $file->get_filename();
                 if ($filename != ".")
                 {
                     $temppath = "$CFG->dataroot/temp/msmtempfiles/";
-                    
-                    if(!file_exists($temppath))
+
+                    if (!file_exists($temppath))
                     {
                         mkdir($temppath);
                     }
-                    $url = "{$CFG->wwwroot}/pluginfile.php/{$file->get_contextid()}/mod_msm/editor";
-                    $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $filename;
-//                    if(move_uploaded_file($fileurl, $temppath))
-//                    {
+
+                    $fileInfo = explode(".", $filename);
+                    if ($fileInfo[sizeof($fileInfo) - 1] == "zip")
+                    {
+                        $path = $file->copy_content_to_temp($msm->name . $msm->id);
+
                         $zip = new ZipArchive();
-                        if($zip->open($fileurl))
+                        if ($zip->open($path))
                         {
                             $zip->extractTo($temppath);
                             $zip->close();
-                            
-                            unlink($fileurl);
+
+                            unlink($path);
                         }
-//                    }
-//                    else
-//                    {
-//                        echo "error in moving the file";
-//                    }
+                        if (file_exists("$CFG->dataroot/temp/$msm->name$msm->id/"))
+                        {
+                            rmdir("$CFG->dataroot/temp/$msm->name$msm->id");
+                        }
+                    }
                 }
             }
-//            
+            
+            $newXMLfilepath = $CFG->dataroot . "/temp/msmtempfiles/";
+            $msmdir = scandir($newXMLfilepath);
+            $msmdirpath = $newXMLfilepath . $msmdir[2] . "/";
+            
+            $xmlfiles = scandir($msmdirpath);
+            
+            $xmlpath = $msmdirpath;
+            foreach($xmlfiles as $xmlfile)
+            {
+                $xmlfilepath = $xmlpath . $xmlfile;
+                if(is_file($xmlfilepath))
+                {
+                   $xmlpath .= $xmlfile;
+                   break;
+                }
+            }
+            
+            print_object($xmlpath);
+//            $newXMLparser = new DOMDocument();
+//            $newXMLparser->load()
         }
-
-//        
-        $tableRecords = $DB->count_records('msm_table_collection');
-
-        if ($tableRecords == 0)
-        {
-            $table_collection = new TableCollection();
-            $tableid = $table_collection->insertTablename();
-        }
+        
 
 
 ////
