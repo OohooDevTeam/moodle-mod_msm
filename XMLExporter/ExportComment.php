@@ -100,7 +100,7 @@ class ExportComment extends ExportElement
             else if($childTable->tablename == "msm_media")
             {
                 $media = new ExportMedia();
-                $media->loadData($child->id);
+                $media->loadDbData($child->id);
                 $this->medias[] = $media;
             }
         }
