@@ -141,14 +141,9 @@ class Definition extends Element
         }
 
         $data->description = $this->description;
-        
-        echo "in def";
-        print_object($this);
 
         if (!empty($this->def_content))
-        {
-            echo "setting up def content";
-           
+        {           
             $paracontent = '';
 
             $defbodyparser = new DOMDocument();
@@ -160,10 +155,10 @@ class Definition extends Element
             {
                 $paracontent .= $defbodyparser->saveXML($defbodyparser->importNode($child, true));
             }
+             
+             $this->def_content = "<div>$paracontent</div>";
             
-             print_object($paracontent);
-            
-            $data->def_content = "<div>$paracontent</div>";
+            $data->def_content = $this->def_content;
 
 //            $data->def_content = $this->def_content;
             $this->id = $DB->insert_record($this->tablename, $data);
@@ -171,7 +166,6 @@ class Definition extends Element
         }
         else // has def.body as child of def
         {
-             echo "empty def_content";
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
@@ -362,8 +356,6 @@ class Definition extends Element
                     break;
             }
         }
-        echo "checking for media";
-        print_object($this->medias);
 
         if (!empty($this->medias))
         {

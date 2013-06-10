@@ -784,25 +784,18 @@ class Unit extends Element
                     $subunitString = explode('-', $element);
                     $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
                     
-                    print_object($subunitRecord);
 
                     if (empty($subunitRecord))
                     {
                         if (empty($sibling_id))
                         {
-                            echo "empty sibling";
-                            $subunit = $this->subunits[$subunitString[1]];
-                            
-                            print_object($subunit);
-                            
+                            $subunit = $this->subunits[$subunitString[1]];                            
                             $subunit->saveIntoDb($subunit->position, $msmid, $this->compid);
                             $sibling_id = $subunit->compid;
                         }
                         else
                         {
-                            echo "not empty sibling";
                             $subunit = $this->subunits[$subunitString[1]];
-                             print_object($subunit);
                             $subunit->saveIntoDb($subunit->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $subunit->compid;
                         }
