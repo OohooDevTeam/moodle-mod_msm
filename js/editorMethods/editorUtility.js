@@ -1462,6 +1462,8 @@ function createIntroText(element, unitInfo)
             
     $(introTextArea).val(introcontent);   
     
+    console.log($(introTextArea).val());
+    
     $("#"+currentId).replaceWith(introTextArea);    
         
     initEditor(introTextArea.id);     

@@ -15,6 +15,7 @@ class ExportImage extends ExportElement
 
     public $id;
     public $compid;
+    public $msm_name;
     public $src;
     public $width;
     public $height;
@@ -32,7 +33,7 @@ class ExportImage extends ExportElement
 
         $modifiedsrc = explode("||", $srcInfo[sizeof($srcInfo) - 1]);
 
-        $src = "../pics/" . $modifiedsrc[0];
+        $src = "$this->msm_name/pics/" . $modifiedsrc[0];
 
         $imgNode->setAttribute("src", $src);
         $imgNode->setAttribute("height", $this->height);
@@ -47,8 +48,10 @@ class ExportImage extends ExportElement
 
         $imgCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
         $imgUnitRecord = $DB->get_record("msm_img", array("id" => $imgCompRecord->unit_id));
+        $msmData = $DB->get_record("msm", array("id"=>$imgCompRecord->msm_id));
 
         $this->id = $imgUnitRecord->id;
+        $this->msm_name = preg_replace("/\s+/", '', $msmData->name) . $imgCompRecord->msm_id;
         $this->compid = $compid;
         $this->src = $imgUnitRecord->src;
         $this->description = $imgUnitRecord->description;

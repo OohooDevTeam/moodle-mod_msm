@@ -85,6 +85,8 @@ class Unit extends Element
     public $compchildtype;
     public $title;
     public $plain_title;
+    public $short_name;
+    public $description;
     public $extraContents = array();
 
     function __construct($xmlpath = '')
@@ -140,12 +142,13 @@ class Unit extends Element
                 {
                     if ($child->tagName == 'description')
                     {
-                        $this->description = $child;
+                        $this->description = $child->textContent;
                     }
                     else if ($child->tagName == 'titles')
                     {
                         $this->title = $this->getContent($child->getElementsByTagName('title')->item(0));
                         $this->plain_title = $this->getDomAttribute($child->getElementsByTagName('plain.title'));
+                        $this->short_name = $this->plain_title;
                     }
                     else if ($child->tagName == 'authors')
                     {
@@ -460,6 +463,8 @@ class Unit extends Element
         $data->string_id = $this->string_id;
         $data->title = $this->title;
         $data->plain_title = $this->plain_title;
+        $data->short_name = $this->short_name;
+        $data->description = $this->description;
         $data->creationdate = $this->creation;
         $data->last_revision_date = $this->last_revision;
 
@@ -503,7 +508,7 @@ class Unit extends Element
                 $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => 0))->id;
             }
         }
-
+        
         $this->id = $DB->insert_record($this->tablename, $data);
 
         // for inserting unit records in to compositor table
@@ -778,18 +783,26 @@ class Unit extends Element
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = explode('-', $element);
                     $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
+                    
+                    print_object($subunitRecord);
 
                     if (empty($subunitRecord))
                     {
                         if (empty($sibling_id))
                         {
+                            echo "empty sibling";
                             $subunit = $this->subunits[$subunitString[1]];
+                            
+                            print_object($subunit);
+                            
                             $subunit->saveIntoDb($subunit->position, $msmid, $this->compid);
                             $sibling_id = $subunit->compid;
                         }
                         else
                         {
+                            echo "not empty sibling";
                             $subunit = $this->subunits[$subunitString[1]];
+                             print_object($subunit);
                             $subunit->saveIntoDb($subunit->position, $msmid, $this->compid, $sibling_id);
                             $sibling_id = $subunit->compid;
                         }

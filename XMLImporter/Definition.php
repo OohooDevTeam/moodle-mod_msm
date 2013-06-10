@@ -26,6 +26,17 @@ class Definition extends Element
     public $def_content;
     public $caption;
     public $string_id;
+    public $type;
+    public $description;
+    public $medias = array();
+    public $associates = array();
+    public $subordinates = array();
+    public $indexauthors = array();
+    public $indexglossarys = array();
+    public $indexsymbols = array();
+//        $this->medias = array();
+    public $tables = array();
+    public $matharrays = array();
 
     /**
      *
@@ -54,14 +65,7 @@ class Definition extends Element
 
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
-        $this->associates = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
+
 
         $associates = $DomElement->getElementsByTagName('associate');
 
@@ -127,9 +131,8 @@ class Definition extends Element
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
-        
-        $data = new stdClass();
 
+        $data = new stdClass();
         $data->def_type = $this->type;
         $data->string_id = $this->string_id;
         if (!empty($this->caption))
@@ -138,29 +141,43 @@ class Definition extends Element
         }
 
         $data->description = $this->description;
+        
+        echo "in def";
+        print_object($this);
 
         if (!empty($this->def_content))
         {
-            $data->def_content = $this->def_content;
+            echo "setting up def content";
+           
+            $paracontent = '';
+
+            $defbodyparser = new DOMDocument();
+            $defbodyparser->loadXML($this->def_content, true);
+
+            $defbodyNode = $defbodyparser->documentElement;
+
+            foreach ($defbodyNode->childNodes as $child)
+            {
+                $paracontent .= $defbodyparser->saveXML($defbodyparser->importNode($child, true));
+            }
+            
+             print_object($paracontent);
+            
+            $data->def_content = "<div>$paracontent</div>";
+
+//            $data->def_content = $this->def_content;
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
         else // has def.body as child of def
         {
+             echo "empty def_content";
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 
         $elementPositions = array();
         $sibling_id = null;
-
-//        if (!empty($this->associates))
-//        {
-//            foreach ($this->associates as $key => $associate)
-//            {
-//                $elementPositions['associate' . '-' . $key] = $associate->position;
-//            }
-//        }
 
         if (!empty($this->matharrays))
         {
@@ -217,7 +234,7 @@ class Definition extends Element
             {
                 $elementPositions['table' . '-' . $key] = $table->position;
             }
-        }
+        }     
 
         asort($elementPositions);
 
@@ -225,23 +242,6 @@ class Definition extends Element
         {
             switch ($element)
             {
-//                case(preg_match("/^(associate.\d+)$/", $element) ? true : false):
-//                    $associateString = explode('-', $element);
-//
-//                    if (empty($sibling_id))
-//                    {
-//                        $associate = $this->associates[$associateString[1]];
-//                        $associate->saveIntoDb($associate->position, $msmid, $this->compid);
-//                        $sibling_id = $associate->compid;
-//                    }
-//                    else
-//                    {
-//                        $associate = $this->associates[$associateString[1]];
-//                        $associate->saveIntoDb($associate->position, $msmid, $this->compid, $sibling_id);
-//                        $sibling_id = $associate->compid;
-//                    }
-//                    break;
-
                 case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
                     $matharrayString = explode('-', $element);
 
@@ -361,6 +361,26 @@ class Definition extends Element
                     }
                     break;
             }
+        }
+        echo "checking for media";
+        print_object($this->medias);
+
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->id = $this->id;
+            $newdata->def_type = $this->type;
+            $newdata->string_id = $this->string_id;
+            if (isset($this->caption))
+            {
+                $newdata->caption = $this->caption;
+            }
+
+            $newdata->description = $this->description;
+
+            $newdata->def_content = $this->processDbContent($this->def_content, $this);
+
+            $DB->update_record($this->tablename, $newdata);
         }
 
         $sibling_id = 0;
@@ -491,7 +511,7 @@ class Definition extends Element
         $content .= "</div>";
 
         $content .= "<br />";
-        
+
         if (!$isindex)
         {
             if (!empty($this->associates))

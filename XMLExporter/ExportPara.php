@@ -26,28 +26,27 @@ class ExportPara extends ExportElement
         $paraCreator = new DOMDocument();
         $paraCreator->formatOutput = true;
         $paraCreator->preserveWhiteSpace = false;
-        $paraNode = $paraCreator->createElement("para");
-        if (!empty($this->align))
-        {
-            $paraNode->setAttribute("align", $this->align);
-        }
-        else
-        {
-            $paraNode->setAttribute("align", "left");
-        }
-        $paraNode->setAttribute("id", $this->compid);
+        $paraNode = $this->processParaContent();
+        $newparaNode = $paraCreator->importNode($paraNode, true);
+//        $paraNode = $paraCreator->createElement("para");
+//        if (!empty($this->align))
+//        {
+//            $paraNode->setAttribute("align", $this->align);
+//        }
+//        else
+//        {
+//            $paraNode->setAttribute("align", "left");
+//        }
+//        $paraNode->setAttribute("id", $this->compid);       
+//
+//        $content = $this->processParaContent();
+//        $contentElement = $paraCreator->importNode($content, true);
+//
+//        $parabodyNode->appendChild($contentNode);
+//
+//        $paraNode->appendChild($parabodyNode);
 
-        $parabodyNode = $paraCreator->createElement("para.body");
-
-        $contentDoc = new DOMDocument();
-        $contentDoc->loadXML(utf8_encode(html_entity_decode($this->content)));
-        $topNode = $contentDoc->documentElement;
-        $contentNode = $paraCreator->createTextNode($topNode->textContent);
-        $parabodyNode->appendChild($contentNode);
-
-        $paraNode->appendChild($parabodyNode);
-
-        return $paraNode;
+        return $newparaNode;
     }
 
     public function loadDbData($compid)
@@ -62,7 +61,7 @@ class ExportPara extends ExportElement
         $this->align = $paraUnitRecord->para_align;
         $this->content = $paraUnitRecord->para_content;
 
-        $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->id), "prev_sibling_id");
+        $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
         foreach ($childRecords as $child)
         {
@@ -83,6 +82,59 @@ class ExportPara extends ExportElement
         }
 
         return $this;
+    }
+
+//
+    function processParaContent()
+    {
+        $contentDoc = new DOMDocument();
+        $contentDoc->loadXML(utf8_encode(html_entity_decode($this->content)));
+        $contentNode = $contentDoc->documentElement;
+
+        $atags = $contentNode->getElementsByTagName("a");
+
+        foreach ($atags as $a)
+        {
+            $targetSub = null;
+            $id = $a->getAttribute("id");
+
+            foreach ($this->subordinates as $subordinate)
+            {
+                $hotInfo = explode("||", $subordinate->hot);
+                
+                if (trim($id) == trim($hotInfo[0]))
+                {
+                    $targetSub = $subordinate;
+                    break;
+                }
+            }
+
+            if (!empty($targetSub))
+            {
+                $initsubordinateNode = $targetSub->exportData();
+
+                $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
+
+                $a->parentNode->replaceChild($subordinateNode, $a);
+            }
+        }
+
+        $imgTags = $contentNode->getElementsByTagName("img");
+
+        foreach ($imgTags as $key => $img)
+        {
+            if (isset($this->medias))
+            {
+                $media = $this->medias[$key];
+                $mediaNode = $media->exportData();
+                $mediaElement = $contentDoc->importNode($mediaNode, true);
+                $img->parentNode->replaceChild($mediaElement, $img);
+            }
+        }
+
+        $newpNode = $this->replacePTags($contentDoc, $contentNode);       
+
+        return $newpNode;
     }
 
 }

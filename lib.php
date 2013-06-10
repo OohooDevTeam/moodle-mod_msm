@@ -99,12 +99,15 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
     $msm->timecreated = time();
 //
-    $courseid = $msm->course;
+    $courseid = $msm->coursemodule;
 //    //only one instance in every system
     $sysctx = get_context_instance(CONTEXT_SYSTEM);
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
+        $DB->set_field('course_modules', 'instance', $msm->id, array('id' => $courseid));
+        $context = context_module::instance($courseid);
+        
         // matching all the property defining the unit names
         $match = '/^(top|child)level(\d+)*$/';
         $depth = 0;
@@ -155,8 +158,8 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 }
             }
         }
-        
-        
+
+
         $tableRecords = $DB->count_records('msm_table_collection');
 
         if ($tableRecords == 0)
@@ -169,75 +172,78 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
         if (!empty($draftitemid))
         {
-         
+
 //            file_prepare_draft_area($draftitemid, $sysctx->id, 'mod_msm', 'editor', $msm->importElement);
-            file_save_draft_area_files($draftitemid, $sysctx->id, 'mod_msm', 'editor', $msm->importElement);
+            file_save_draft_area_files($draftitemid, $context->id, 'mod_msm', 'editor', $msm->importElement);
             $fs = get_file_storage();
-            $files = $fs->get_area_files($sysctx->id, "mod_msm", 'editor', $draftitemid);
-            
-            if(sizeof($files) > 0)
+            $files = $fs->get_area_files($context->id, "mod_msm", 'editor', $draftitemid);
+
+            if (sizeof($files) > 0)
             {
                 foreach ($files as $file)
-            {
-                $filename = $file->get_filename();
-                if ($filename != ".")
                 {
-                    $temppath = "$CFG->dataroot/temp/msmtempfiles/";
-
-                    if (!file_exists($temppath))
+                    $filename = $file->get_filename();
+                    if ($filename != ".")
                     {
-                        mkdir($temppath);
-                    }
+                        $temppath = "$CFG->dataroot/temp/msmtempfiles/";
 
-                    $fileInfo = explode(".", $filename);
-                    if ($fileInfo[sizeof($fileInfo) - 1] == "zip")
-                    {
-                        $path = $file->copy_content_to_temp($msm->name . $msm->id);
-
-                        $zip = new ZipArchive();
-                        if ($zip->open($path))
+                        if (!file_exists($temppath))
                         {
-                            $zip->extractTo($temppath);
-                            $zip->close();
-
-                            unlink($path);
-                            $file->delete();
+                            mkdir($temppath);
                         }
-                        if (file_exists("$CFG->dataroot/temp/$msm->name$msm->id/"))
+
+                        $fileInfo = explode(".", $filename);
+                        if ($fileInfo[sizeof($fileInfo) - 1] == "zip")
                         {
-                            rmdir("$CFG->dataroot/temp/$msm->name$msm->id");
+                            $path = $file->copy_content_to_temp($msm->name . $msm->id);
+
+                            $zip = new ZipArchive();
+                            if ($zip->open($path))
+                            {
+                                $zip->extractTo($temppath);
+                                $zip->close();
+
+                                unlink($path);
+                                $file->delete();
+                            }
+                            if (file_exists("$CFG->dataroot/temp/$msm->name$msm->id/"))
+                            {
+                                rmdir("$CFG->dataroot/temp/$msm->name$msm->id");
+                            }
                         }
                     }
                 }
-            }
-            
-            $newXMLfilepath = $CFG->dataroot . "/temp/msmtempfiles/";
-            $msmdir = scandir($newXMLfilepath);
-            $msmdirpath = $newXMLfilepath . $msmdir[2];
-            
-            $xmlfiles = scandir($msmdirpath . "/");
-            
-            $xmlpath = $msmdirpath . "/";
-            foreach($xmlfiles as $xmlfile)
-            {
-                $xmlfilepath = $xmlpath . $xmlfile;
-                if(is_file($xmlfilepath))
+
+                $newXMLfilepath = $CFG->dataroot . "/temp/msmtempfiles/";
+                $msmdir = scandir($newXMLfilepath);
+                $msmdirpath = $newXMLfilepath . $msmdir[2];
+
+                $xmlfiles = scandir($msmdirpath . "/");
+
+                $xmlpath = $msmdirpath . "/";
+                foreach ($xmlfiles as $xmlfile)
                 {
-                   $xmlpath .= $xmlfile;
-                   break;
+                    $xmlfilepath = $xmlpath . $xmlfile;
+                    if (is_file($xmlfilepath))
+                    {
+                        $xmlpath .= $xmlfile;
+                        break;
+                    }
                 }
+
+                $newXMLparser = new DOMDocument();
+                $newXMLparser->load($xmlpath);
+
+                $importedunit = new Unit($msmdirpath, $newXMLparser);
+                $position = 1;
+                $importedunit->loadFromXml($newXMLparser->documentElement, $position);
+                
+//                print_object($importedunit);
+                
+                $importedunit->saveIntoDb($importedunit->position, $msm->id);
             }
-            
-            $newXMLparser = new DOMDocument();
-            $newXMLparser->load($xmlpath);
-            
-            $importedunit = new Unit($msmdirpath, $newXMLparser);
-            $position = 1;
-            $importedunit->loadFromXml($newXMLparser->documentElement, $position);
-            $importedunit->saveIntoDb($importedunit->position, $msm->id);
         }
-            }
-            
+
 //        $parser = new DOMDocument();
 //        //define('parser', $parser);
 //        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
@@ -251,8 +257,8 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //
 //        $unit->saveIntoDb($unit->position, $msm->id);
     }
-//    echo "done";
-//    die;
+    echo "done";
+    die;
 //    
     return $msm->id;
 }

@@ -23,7 +23,7 @@ class StatementTheorem extends Element
 {
 
     public $position;
-    public $content;
+    public $statement_content;
 
     function __construct($xmlpath = '')
     {
@@ -101,7 +101,7 @@ class StatementTheorem extends Element
 
                     foreach ($this->processContent($child, $position) as $content)
                     {
-                        $this->content .= $content;
+                        $this->statement_content .= $content;
                     }
                 }
             }
@@ -114,7 +114,7 @@ class StatementTheorem extends Element
         $data = new stdClass();
 
         // need to group all the children of statement.theorem for loadXML function in displaySubordinate function later...
-        $data->statement_content = "<statement.theorem>" . $this->content . "</statement.theorem>";
+        $data->statement_content = "<statement.theorem>" . $this->statement_content . "</statement.theorem>";
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
@@ -327,6 +327,15 @@ class StatementTheorem extends Element
                     }
                     break;
             }
+        }
+        
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->id = $this->id;
+            $newdata->statement_content = $this->processDbContent("<div>$this->statement_content</div>", $this);
+
+            $DB->update_record($this->tablename, $newdata);
         }
     }
 

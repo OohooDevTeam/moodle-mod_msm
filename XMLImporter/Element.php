@@ -164,6 +164,10 @@ abstract class Element
                         // to change \RNr to \RNr{}
                         $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $content);
                     }
+                    else
+                    {
+                        $content .= $doc->saveXML($child);
+                    }
                 }
                 // child is not an element node but a text node
                 else
@@ -900,10 +904,10 @@ abstract class Element
                 if (!empty($object->subordinates[$key]))
                 {
                     $subordinate = $object->subordinates[$key];
-                    
-                     $rawhotString = explode('||', $subordinate->hot);
-                        $positionvalue = $rawhotString[0];
-                        $rawhotContent = $rawhotString[1];
+
+                    $rawhotString = explode('||', $subordinate->hot);
+                    $positionvalue = $rawhotString[0];
+                    $rawhotContent = $rawhotString[1];
 
                     // this subordinate element has reference child elements
                     if (!empty($subordinate->childs))
@@ -996,7 +1000,6 @@ abstract class Element
                                 $newtag = "<span>";
                             }
 //                            $rawhotString = explode('||', $subordinate->hot);
-
                             // there are other commas in the content 
                             // therefore, get the position value from index 0 then concatenate the rest of the string
 //                            if (sizeof($rawhotString) >= 3)
@@ -1067,7 +1070,6 @@ abstract class Element
                             $newtag = "<span>";
                         }
 //                        $rawhotString = explode('||', $subordinate->hot);
-
                         // there are other commas in the content 
                         // therefore, get the position value from index 0 then concatenate the rest of the string
 //                        if (sizeof($rawhotString) >= 3)
@@ -1159,9 +1161,9 @@ abstract class Element
                 {
                     $media = $object->medias[$key];
 
-                    if (!empty($media->childs[0]))
+                    if (!empty($media->imgs[0]))
                     {
-                        $image = $media->childs[0];
+                        $image = $media->imgs[0];
 
                         $newtag = '';
                         $newtag .= $media->displayhtml($isindex);
@@ -1169,7 +1171,6 @@ abstract class Element
                         // so if there are other xml declarations were added, remove them
                         $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
                         @$newElementdoc->loadXML($newtag);
-
                         $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
                         $XMLcontent = $doc->saveXML();
                     }
@@ -1179,6 +1180,30 @@ abstract class Element
             $content = str_replace('<?xml version="1.0"?>', '', $content);
             return $content;
         }
+    }
+
+    function processDbContent($oldcontent, $object)
+    {
+        $parser = new DOMDocument();
+        $parser->loadXML($oldcontent);
+        $topElement = $parser->documentElement;
+
+        $imgs = $topElement->getElementsByTagName("img");
+
+        foreach ($imgs as $key => $image)
+        {
+            $image->removeAttribute("src");
+
+            if (isset($object->medias))
+            {
+                $imageobj = $object->medias[$key]->imgs[0];
+                $newsrcInfo = explode("||", $imageobj->src);
+                $image->setAttribute("src", $newsrcInfo[0]);
+            }
+        }
+
+        $newcontent = $parser->saveXML($topElement);
+        return $newcontent;
     }
 
 }

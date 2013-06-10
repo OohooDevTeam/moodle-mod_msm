@@ -26,6 +26,8 @@ class Media extends Element
     public $string_id;
     public $inline;
     public $type;
+    public $imgs = array();
+    public $infos = array();
 
 //    public $img;
 
@@ -47,9 +49,9 @@ class Media extends Element
         $this->active = $DomElement->getAttribute('active');
         $this->inline = $DomElement->getAttribute('inline');
         $this->type = $DomElement->getAttribute('type');
-
-        $this->imgs = array();
-        $this->infos = array();
+//
+//        $this->imgs = array();
+//        $this->infos = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -166,9 +168,9 @@ class Media extends Element
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-
-        $this->childs = array();
-        $this->infos = array();
+//
+//        $this->childs = array();
+//        $this->infos = array();
 
         foreach ($childElements as $child)
         {
@@ -178,7 +180,7 @@ class Media extends Element
             {
                 $img = new MathImg();
                 $img->loadFromDb($child->unit_id, $child->id);
-                $this->childs[] = $img;
+                $this->imgs[] = $img;
             }
             else
             {
@@ -198,7 +200,7 @@ class Media extends Element
 
         if (empty($this->infos))
         {
-            foreach ($this->childs as $childComponent)
+            foreach ($this->imgs as $childComponent)
             {
                 $content .= $childComponent->displayhtml($this->inline, $isindex);
             }
@@ -206,7 +208,7 @@ class Media extends Element
         else
         {
             $imagehtml = '';
-            foreach ($this->childs as $childComponent)
+            foreach ($this->imgs as $childComponent)
             {
                 $imagehtml .= $childComponent->displayhtml($this->inline, $isindex);
             }

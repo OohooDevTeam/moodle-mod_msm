@@ -24,12 +24,13 @@ class ExportUnit extends ExportElement
     public $description;
     public $standalone;
     public $unittag;
+
 //    public $acknowledgement;
 
     public function exportData()
     {
         global $CFG;
-        
+
         $XMLcreator = new DOMDocument();
         // to format the resulting XML document
         $XMLcreator->formatOutput = true;
@@ -76,8 +77,14 @@ class ExportUnit extends ExportElement
                 $plaintitleNode->appendChild($plaintitleText);
             }
 
-            $titlesNode->appendChild($titleNode);
-            $titlesNode->appendChild($plaintitleNode);
+            if (!empty($titleNode))
+            {
+                $titlesNode->appendChild($titleNode);
+            }
+            if (!empty($plaintitleNode))
+            {
+                $titlesNode->appendChild($plaintitleNode);
+            }
             $unitNode->appendChild($titlesNode);
         }
 

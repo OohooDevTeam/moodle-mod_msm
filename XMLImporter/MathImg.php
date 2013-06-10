@@ -73,6 +73,12 @@ class MathImg extends Element
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB, $CFG;
+//
+        $msm = $DB->get_record('msm', array('id' => $msmid), '*', MUST_EXIST);
+        $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
+        $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
+        $context = context_module::instance($cm->id);
+
 
         $data = new stdClass();
         $data->string_id = $this->string_id;
@@ -105,9 +111,27 @@ class MathImg extends Element
                         . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
             }
         }
-        else
+        else if (count($sourcefolders) == 3) // for new XML formed by the editor --> in ../pic/filename.ext format
         {
-            print_object(count($sourcefolders));
+            $pathofImg = "$CFG->dataroot/temp/msmtempfiles/$this->src";
+            $fs = get_file_storage();
+            $file_record = array('contextid' => $context->id, 'component' => 'mod_msm', 'filearea' => 'editor',
+                'itemid' => $msmid, 'filepath' => "/", 'filename' => $sourcefolders[2], 'timecreated' => time(), 'timemodified' => time());
+
+
+            if ($fs->file_exists($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[2]))
+            {
+                $existingFile = $fs->get_file($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[2]);
+                $existingFile->delete();
+            }
+
+            $storedFile = $fs->create_file_from_pathname($file_record, $pathofImg);
+
+            $url = "{$CFG->wwwroot}/pluginfile.php/{$context->id}/mod_msm/editor";
+            $fileurlname = str_replace(' ', '%20', $sourcefolders[2]);
+            $fileurl = $url . $storedFile->get_filepath() . $storedFile->get_itemid() . '/' . $fileurlname;
+            $this->src = $fileurl . "||" . $msmid;
+            $data->src = $this->src;
         }
 
         $data->height = $this->height;
@@ -213,7 +237,7 @@ class MathImg extends Element
 
         //getting the name of the image file to tag each image with name
         $srcfile = explode('/', $this->src);
-        
+
         $src = '';
 
         if (!empty($this->itemid))
@@ -240,7 +264,6 @@ class MathImg extends Element
                         $fileurl = $url . $file->get_filepath() . $file->get_itemid() . '/' . $fileurlname;
                         $this->src = $fileurl;
                         $imageinfo = "newcontent";
-                        
                     }
                 }
             }

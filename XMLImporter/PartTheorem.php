@@ -23,6 +23,7 @@ class PartTheorem extends Element
 {
 
     public $position;
+    public $part_content;
 
     function __construct($xmlpath = '')
     {
@@ -34,7 +35,7 @@ class PartTheorem extends Element
     {
         $this->position = $position;
 
-        $this->content = array();
+//        $this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -88,7 +89,7 @@ class PartTheorem extends Element
 
             foreach ($this->processContent($parb, $position) as $content)
             {
-                $this->content[] = $content;
+                $this->part_content .= $content;
             }
         }
     }
@@ -103,14 +104,14 @@ class PartTheorem extends Element
         $data->equivalence_mark = $this->equiv_mark;
         $data->caption = $this->caption;
 
-        if (!empty($this->content))
+        if (!empty($this->part_content))
         {
-            foreach ($this->content as $content)
-            {
-                $data->part_content = $content;
+//            foreach ($this->content as $content)
+//            {
+                $data->part_content = $this->part_content;
                 $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-            }
+//            }
         }
         else
         {
@@ -303,6 +304,19 @@ class PartTheorem extends Element
                     }
                     break;
             }
+        }
+        
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->id = $this->id;
+            $newdata->partid = $this->partid;
+            $newdata->counter = $this->counter;
+            $newdata->equivalence_mark = $this->equiv_mark;
+            $newdata->caption = $this->caption;
+            $newdata->part_content = $this->processDbContent("<div>$this->part_content</div>", $this);             
+
+            $DB->update_record($this->tablename, $newdata);
         }
     }
 

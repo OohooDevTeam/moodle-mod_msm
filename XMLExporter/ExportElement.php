@@ -68,9 +68,9 @@ abstract class ExportElement
 
                         foreach ($imgTags as $key => $img)
                         {
-                            if (isset($this->medias))
+                            if (isset($object->medias))
                             {
-                                $media = $this->medias[$key];
+                                $media = $object->medias[$key];
                                 $mediaNode = $media->exportData();
                                 $mediaElement = $contentDoc->importNode($mediaNode, true);
                                 $img->parentNode->replaceChild($mediaElement, $img);
@@ -141,9 +141,9 @@ abstract class ExportElement
 
                     foreach ($imgTags as $key => $img)
                     {
-                        if (isset($this->medias))
+                        if (isset($object->medias))
                         {
-                            $media = $this->medias[$key];
+                            $media = $object->medias[$key];
                             $mediaNode = $media->exportData();
                             $mediaElement = $contentDoc->importNode($mediaNode, true);
                             $img->parentNode->replaceChild($mediaElement, $img);
@@ -176,10 +176,9 @@ abstract class ExportElement
         foreach ($DomElement->childNodes as $child)
         {
             $childNode = $DomDocument->importNode($child, true);
-            $parabody->appendChild($childNode);
+            $paraContentNode = $childNode->cloneNode(true);
+            $parabody->appendChild($paraContentNode);
         }
-//        $parabodyText = $DomDocument->createTextNode($DomElement->textContent);
-//        $parabody->appendChild($parabodyText);
         $paraNode->appendChild($parabody);
 
         return $paraNode;

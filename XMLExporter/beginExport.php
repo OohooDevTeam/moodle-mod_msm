@@ -143,7 +143,6 @@ else
         echo json_encode("error");
     }
 }
-
 zipXmlFiles($parentDir, "$msmtrimName$msmRecord->id");
 
 $fs = get_file_storage();
@@ -155,7 +154,7 @@ $existingfile = $fs->get_file($context->id, 'mod_msm', 'editor', $msm->id, "/", 
 if ($existingfile)
 {
     $existingfile->delete();
-    $fs->delete_area_files($context->id, 'mod_msm', 'editor', $existingfile->get_itemid());
+//    $fs->delete_area_files($context->id, 'mod_msm', 'editor', $existingfile->get_itemid());
 }
 
 $file_record = array('contextid' => $context->id, 'component' => 'mod_msm', 'filearea' => 'editor',
@@ -184,16 +183,27 @@ function exportAllImages($parentPath, $cntxt, $msmId)
         {
             if (file_exists($picFilePath))
             {
-                $newpath = $picFilePath . $filename;
+                $fileInfo = explode(".", $filename);
 
-                if ($imgfile = fopen($newpath, "w"))
+                $ext = $fileInfo[sizeof($fileInfo) - 1];
+
+                if (($ext == "jpg") || ($ext == "png") || ($ext == "gif") || ($ext == "jpeg") || ($ext == "bmp"))
                 {
-                    fwrite($imgfile, $file->get_content());
-                    fclose($imgfile);
+                    $newpath = $picFilePath . $filename;
+
+                    if ($imgfile = fopen($newpath, "w"))
+                    {
+                        fwrite($imgfile, $file->get_content());
+                        fclose($imgfile);
+                    }
+                    else
+                    {
+                        echo json_encode("error");
+                    }
                 }
                 else
                 {
-                    echo json_encode("error");
+                    continue;
                 }
             }
             else

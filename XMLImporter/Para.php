@@ -23,6 +23,7 @@ class Para extends Element
 {
 
     public $position;
+    public $para_content;
 
     function __construct($xmlpath = '')
     {
@@ -52,7 +53,7 @@ class Para extends Element
         $this->medias = array();
         $this->tables = array();
 
-        $this->content = array();
+//        $this->content = array();
 
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
@@ -85,7 +86,7 @@ class Para extends Element
 
         foreach ($this->processContent($DomElement, $position) as $content)
         {
-            $this->content[] = $content;
+            $this->para_content .= $content;
         }
     }
 
@@ -104,16 +105,16 @@ class Para extends Element
         $data->caption = $this->caption;
         $data->description = $this->description;
 
-        if (!empty($this->content))
+        if (!empty($this->para_content))
         {
-            foreach ($this->content as $key => $content)
-            {
-                $data->para_content = $content;
+//            foreach ($this->content as $key => $content)
+//            {
+                $data->para_content = $this->para_content;
 
                 $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
                 $siblingid = $this->compid;
-            }
+//            }
         }
         else
         {
@@ -281,6 +282,24 @@ class Para extends Element
                     }
                     break;
             }
+        }
+
+        if (!empty($this->medias))
+        {
+            $newparadata = new stdClass();
+             $newparadata->id = $this->id;
+                $newparadata->string_id = $this->string_id;
+            $newparadata->para_align = $this->align;
+            $newparadata->caption = $this->caption;
+            $newparadata->description = $this->description;
+//            foreach ($this->content as $content)
+//            {
+//               
+
+                $newparadata->para_content = $this->processDbContent($this->para_content, $this);
+//            }
+
+            $DB->update_record($this->tablename, $newparadata);
         }
     }
 

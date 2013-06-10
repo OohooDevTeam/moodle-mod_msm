@@ -225,6 +225,9 @@ $content .= "</div>"; // leftbox
 $content .= "<div class='controller'>";
 $content .= "</div>";
 $content .= "</div>"; // leftcol
+//
+//print_object($content);
+//die;
 
 $content .= "<div id = 'rightcol'>";
 

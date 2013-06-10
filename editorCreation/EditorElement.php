@@ -160,6 +160,8 @@ abstract class EditorElement
         }
 
         $newcontent = $htmlParser->saveXML($htmlParser->importNode($htmlParser->getElementsByTagName($tagName)->item(0), true));
+        echo "seems like no replacement?";
+        print_object($newcontent);
 
         return $newcontent;
     }

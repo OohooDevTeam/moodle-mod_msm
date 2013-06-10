@@ -270,6 +270,8 @@ class Block extends Element
             {
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = explode('-', $element);
+                    
+                    print_object($this->defs);
 
                     if (is_object($this->defs[$defString[1]]))
                     {

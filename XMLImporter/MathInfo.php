@@ -49,9 +49,11 @@ class MathInfo extends Element
         $this->medias = array();
         $this->tables = array();
 
-        $this->caption = $this->getContent($DomElement->getElementsByTagName('info.caption')->item(0));
-
-
+//        $this->caption = $this->getContent($DomElement->getElementsByTagName('info.caption')->item(0));
+        //for now to just show text in title
+        $this->caption = $DomElement->getElementsByTagName("info.caption")->item(0)->textContent;
+        
+        
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
