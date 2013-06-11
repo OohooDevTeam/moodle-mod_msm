@@ -20,7 +20,7 @@ class ExportTheorem extends ExportElement
     public $type;
     public $associates = array();
 
-    public function exportData()
+    public function exportData($flag = '')
     {
         $theoremCreator = new DOMDocument();
         $theoremCreator->formatOutput = true;
@@ -64,7 +64,15 @@ class ExportTheorem extends ExportElement
                 $theoremNode->appendChild($newassociateNode);
             }
         }
-        return $theoremNode;
+        
+        if (!empty($flag))
+        {
+            $this->createXMLFile($this, $theoremNode);
+        }
+        else
+        {
+            return $theoremNode;
+        }
     }
 
     public function loadDbData($compid)

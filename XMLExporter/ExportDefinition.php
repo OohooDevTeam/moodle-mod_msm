@@ -19,11 +19,12 @@ class ExportDefinition extends ExportElement
     public $description;
     public $type;
     public $content;
+    public $msmid;
     public $associates = array();
     public $subordinates = array();
     public $medias = array();
 
-    public function exportData()
+    public function exportData($flag = '')
     {
         $defCreator = new DOMDocument();
         $defCreator->formatOutput = true;
@@ -64,7 +65,14 @@ class ExportDefinition extends ExportElement
             }
         }
 
-        return $defNode;
+        if (!empty($flag))
+        {
+            $this->createXMLFile($this, $defNode);
+        }
+        else
+        {
+            return $defNode;
+        }
     }
 
     public function loadDbData($compid)
@@ -80,6 +88,7 @@ class ExportDefinition extends ExportElement
         $this->description = $defRecord->description;
         $this->type = $defRecord->def_type;
         $this->content = $defRecord->def_content;
+        $this->msmid = $defCompRecord->msm_id;
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), 'prev_sibling_id');
 
@@ -98,7 +107,7 @@ class ExportDefinition extends ExportElement
                 $associate->loadDbData($child->id);
                 $this->associates[] = $associate;
             }
-            else if($childTable->tablename == "msm_media")
+            else if ($childTable->tablename == "msm_media")
             {
                 $media = new ExportMedia();
                 $media->loadDbData($child->id);

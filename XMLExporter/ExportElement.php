@@ -189,6 +189,72 @@ abstract class ExportElement
         return $paraNode;
     }
 
+    function createXMLFile($obj, $DomNode)
+    {
+        global $DB, $CFG;
+        
+        $DomParser = new DOMDocument();
+        $DomParser->importNode($DomNode, true);
+
+        $msmRecord = $DB->get_record("msm", array("id" => $obj->msmid));
+        $msmtrimName = preg_replace("/\s+/", '', $msmRecord->name);
+        $CompDir = $CFG->dataroot . "/temp/msmtempfiles/$msmtrimName$msmRecord->id/NestedUnits/";
+
+        $elementType = '';
+        switch (get_class($obj))
+        {
+            case "ExportDefinition":
+                $elementType = "definition";
+                break;
+            case "ExportTheorem":
+                $elementType = "theorem";
+                break;
+            case "ExportComment":
+                $elementType = "comment";
+                break;
+        }
+
+        if (file_exists($CompDir))
+        {
+            if (!empty($obj->caption))
+            {
+                $filename = $CompDir . $obj->caption . "-$elementType" . $obj->compid . ".xml";
+            }
+            else if (!empty($obj->type))
+            {
+                $filename = $CompDir . $obj->type . "-$elementType" . $obj->compid . ".xml";
+            }
+        }
+        else
+        {
+            if (mkdir($CompDir))
+            {
+                if (!empty($obj->caption))
+                {
+                    $filename = $CompDir . $obj->caption . "-$elementType" . $obj->compid . ".xml";
+                }
+                else if (!empty($obj->type))
+                {
+                    $filename = $CompDir . $obj->type . "-$elementType" . $obj->compid . ".xml";
+                }
+            }
+            else
+            {
+                echo "error with creating nestedUnit folder";
+            }
+        }
+
+        if ($xmlfile = fopen($filename, "w"))
+        {
+            fwrite($xmlfile, $DomParser->saveXML());
+            fclose($xmlfile);
+        }
+        else
+        {
+            echo json_encode("error");
+        }
+    }
+
     //need a function to look for subordinate and math
     // need a function to convert some HTML stuff to XML
 }

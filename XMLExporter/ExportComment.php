@@ -23,7 +23,7 @@ class ExportComment extends ExportElement
     public $subordinates = array();
     public $medias = array();
 
-    public function exportData()
+    public function exportData($flag = '')
     {
         $commentCreator = new DOMDocument();
         $commentCreator->formatOutput = true;
@@ -63,7 +63,14 @@ class ExportComment extends ExportElement
             }
         }
         
-        return $commentNode;
+        if (!empty($flag))
+        {
+            $this->createXMLFile($this, $commentNode);
+        }
+        else
+        {
+            return $commentNode;
+        }
     }
 
     public function loadDbData($compid)
