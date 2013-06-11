@@ -197,7 +197,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                             {
                                 rmdir("$CFG->dataroot/temp/$msm->name$msm->id");
                             }
-                            
                         }
                     }
                 }
@@ -244,6 +243,20 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //        $unit->loadFromXml($parser->documentElement, $position);
 //
 //        $unit->saveIntoDb($unit->position, $msm->id);
+
+        $deletePath = $CFG->dataroot . "/temp/msmtempfiles/";
+        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($deletePath, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $path)
+        {
+            if ($path->isFile())
+            {
+                unlink($path->getPathname());
+            }
+            else
+            {
+                rmdir($path->getPathname());
+            }
+        }
+        rmdir($deletePath);
     }
 //    echo "done";
 //    die;

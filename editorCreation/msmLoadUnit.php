@@ -72,9 +72,13 @@ else if (isset($_POST['mode']))
 
     // need to copy unitChildElementRecords to have index as incrementing numbers from zero to n instead of it being compositor id
     $unitChildElements = array();
+    $unitTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
     foreach ($unitChildElementRecords as $childRecord)
     {
-        $unitChildElements[] = $childRecord;
+        if ($childRecord->table_id != $unitTable->id)
+        {
+            $unitChildElements[] = $childRecord;
+        }
     }
 
     $childOrderArray = explode(",", $_POST['childOrder']);
@@ -87,7 +91,7 @@ else if (isset($_POST['mode']))
             $indexElement = $key;
         }
     }
-   
+
     $currentElement = $unitChildElements[$indexElement];
     $currentElementTable = $DB->get_record("msm_table_collection", array("id" => $currentElement->table_id))->tablename;
 
@@ -180,7 +184,7 @@ else if (isset($_POST['tree_content']))
 else if ($_POST["cancelUnit"]) // from cancelUnit js function
 {
     $unitidInfo = explode('-', $_POST['cancelUnit']);
-    
+
     $unitData = new EditorUnit();
     $unitData->loadData($unitidInfo[0]);
 

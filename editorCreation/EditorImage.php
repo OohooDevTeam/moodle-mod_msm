@@ -41,8 +41,9 @@ class EditorImage extends EditorElement
         // ../../ due to relative pathing
 
         $srcAttr = $imgNode->getAttribute("src");
+        $wwwroot = "$CFG->wwwroot/";
 
-        if (strpos($CFG->wwwroot, $srcAttr))
+        if (strstr(trim($srcAttr), trim($wwwroot)))
         {
             $src = $srcAttr;
         }
@@ -55,6 +56,7 @@ class EditorImage extends EditorElement
                 $src .= "/" . $srcInfo[$i];
             }
         }
+
         $this->src = $src;
 
         $this->height = $imgNode->getAttribute("height");

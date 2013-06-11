@@ -151,6 +151,8 @@ abstract class EditorElement
         $newImgNode->setAttribute("height", $imgObj->height);
         $newImgNode->setAttribute("width", $imgObj->width);
 
+//        print_object($imgObj->src);
+        
         foreach ($imgNodes as $key => $imgNode)
         {
             if ($key == $index)
@@ -160,9 +162,7 @@ abstract class EditorElement
         }
 
         $newcontent = $htmlParser->saveXML($htmlParser->importNode($htmlParser->getElementsByTagName($tagName)->item(0), true));
-        echo "seems like no replacement?";
-        print_object($newcontent);
-
+        
         return $newcontent;
     }
 

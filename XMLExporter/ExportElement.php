@@ -154,6 +154,11 @@ abstract class ExportElement
                 }
                 $DomNode->appendChild($childNode);
             }
+            else // info captions saved from imported XML does not have any tags other than top div tags --> b/c only takes textContent
+            {
+                $childNode = $DomDocument->importNode($child, true);
+                $DomNode->appendChild($childNode);
+            }
         }
 
         return $DomNode;

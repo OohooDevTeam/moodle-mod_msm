@@ -450,7 +450,10 @@ function editUnit(e)
     var targetElement = e.target.parentElement.parentElement.id;
     
     console.log("sometimes the targetElement is overlay instead of the content box --> so what is causing it?");
+    console.log(targetElement);
     console.log(e.target);
+    console.log(e.parentElement);
+    
     
     var elementInfo = [];
     

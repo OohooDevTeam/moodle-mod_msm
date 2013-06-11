@@ -119,6 +119,7 @@ class EditorPara extends EditorElement
             $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
             $content = $this->replaceImages($key, $media->image, $this->content, "p");
+            $this->content = $content;
         }
 
         if (!empty($this->medias))

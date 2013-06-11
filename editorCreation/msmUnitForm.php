@@ -324,8 +324,18 @@ else
         // need code fo insert unit information to unitdatabase before procesing the child so that
         // the parentid exists when the child elements are being inserted to the db
 
-//        $fileoptions = json_decode($_POST["msm_file_options"])->image;
-//
+//        $fs = get_file_storage();
+//        $files = $fs->get_area_files($context->id, "mod_msm", "editor", $msm->id);
+//        
+//        foreach($files as $file)
+//        {
+//           $file->
+//        }
+        
+        $fileoptions = json_decode($_POST["msm_file_options"])->image;
+        
+        file_prepare_draft_area($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id);
+
 //        file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
 
         $siblingCompid = 0;

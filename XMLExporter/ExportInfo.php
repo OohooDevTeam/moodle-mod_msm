@@ -30,13 +30,13 @@ class ExportInfo extends ExportElement
         if (!empty($this->caption))
         {
             $captionNode = $infoCreator->createElement("info.caption");
-            
+
             $newcaptionNode = $this->createXmlContent($infoCreator, "<div>$this->caption</div>", $captionNode, '');
             $newCaption = $infoCreator->importNode($newcaptionNode, true);
             $infoNode->appendChild($newCaption);
         }
-        
-         $createdbodyNode = $this->createXmlContent($infoCreator, $this->content, $infoNode, $this);
+
+        $createdbodyNode = $this->createXmlContent($infoCreator, $this->content, $infoNode, $this);
 
         $bodyNode = $infoCreator->importNode($createdbodyNode, true);
 
@@ -52,7 +52,7 @@ class ExportInfo extends ExportElement
 
         $this->id = $infoUnitRecord->id;
         $this->compid = $compid;
-        $this->caption = $infoUnitRecord->caption;
+        $this->caption = trim($infoUnitRecord->caption);
         $this->content = $infoUnitRecord->info_content;
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
@@ -73,8 +73,8 @@ class ExportInfo extends ExportElement
                 $media->loadDbData($child->id);
                 $this->medias[] = $media;
             }
-        }    
-        
+        }
+
         return $this;
     }
 
