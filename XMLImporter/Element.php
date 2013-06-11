@@ -390,6 +390,8 @@ abstract class Element
             // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
             $hot->setAttribute("id", $position);
+            $hot->setAttribute("class", "msm_subordinate_hotwords");
+            $hot->setAttribute("href", "#");
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
 
@@ -1217,6 +1219,8 @@ abstract class Element
         }
 
         $newcontent = $parser->saveXML($topElement);
+        
+//        print_object($newcontent);
         return $newcontent;
     }
 

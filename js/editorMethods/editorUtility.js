@@ -469,6 +469,7 @@ function editUnit(e)
         success: function(data)
         {
             elementInfo = JSON.parse(data);
+            console.log(elementInfo);
             enableContentEditors(elementInfo, targetElement);  
             enableEditorFunction();   
             
