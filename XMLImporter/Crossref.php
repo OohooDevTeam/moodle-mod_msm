@@ -360,7 +360,7 @@ class Crossref extends Element
 
                 case(preg_match("/^(pack.\d+)$/", $element) ? true : false):
                     $packString = explode('-', $element);
-                    $packRecord = $this->checkForRecord($this->packs[$packString[1]]);
+                    $packRecord = $this->checkForRecord($msmid, $this->packs[$packString[1]]);
 
                     if (empty($packRecord))
                     {
@@ -397,11 +397,11 @@ class Crossref extends Element
                     $commentString = explode('-', $element);
                     if (!empty($this->comments[$commentString[1]]->string_id))
                     {
-                        $commentRecord = $this->checkForRecord($this->comments[$commentString[1]]);
+                        $commentRecord = $this->checkForRecord($msmid, $this->comments[$commentString[1]]);
                     }
                     else
                     {
-                        $commentRecord = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                        $commentRecord = $this->checkForRecord($msmid, $this->comments[$commentString[1]], 'caption');
                     }
 
                     if (empty($commentRecord))
@@ -439,11 +439,11 @@ class Crossref extends Element
                     $defString = explode('-', $element);
                     if (!empty($this->defs[$defString[1]]->string_id))
                     {
-                        $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
+                        $defRecord = $this->checkForRecord($msmid, $this->defs[$defString[1]]);
                     }
                     else
                     {
-                        $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        $defRecord = $this->checkForRecord($msmid, $this->defs[$defString[1]], 'caption');
                     }
 
                     if (empty($defRecord))
@@ -479,7 +479,7 @@ class Crossref extends Element
 
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
                     $theoremString = explode('-', $element);
-                    $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
+                    $theoremRecord = $this->checkForRecord($msmid, $this->theorems[$theoremString[1]]);
 
                     if (empty($theoremRecord))
                     {
@@ -541,7 +541,7 @@ class Crossref extends Element
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = explode('-', $element);
-                    $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
+                    $subunitRecord = $this->checkForRecord($msmid, $this->subunits[$subunitString[1]]);
 
                     if (empty($subunitRecord))
                     {

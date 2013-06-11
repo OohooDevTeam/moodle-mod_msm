@@ -306,11 +306,11 @@ class Associate extends Element
                     $commentString = explode('-', $element);
                     if (!empty($this->comments[$commentString[1]]->string_id))
                     {
-                        $commentID = $this->checkForRecord($this->comments[$commentString[1]]);
+                        $commentID = $this->checkForRecord($msmid, $this->comments[$commentString[1]]);
                     }
                     else
                     {
-                        $commentID = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                        $commentID = $this->checkForRecord($msmid, $this->comments[$commentString[1]], 'caption');
                     }
 
                     if (empty($commentID))
@@ -346,7 +346,7 @@ class Associate extends Element
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = explode('-', $element);
-                    $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
+                    $subunitRecord = $this->checkForRecord($msmid, $this->subunits[$subunitString[1]]);
 
                     if (empty($subunitRecord))
                     {
@@ -383,11 +383,11 @@ class Associate extends Element
                     $defString = explode('-', $element);
                     if (!empty($this->defs[$defString[1]]->string_id))
                     {
-                        $defID = $this->checkForRecord($this->defs[$defString[1]]);
+                        $defID = $this->checkForRecord($msmid, $this->defs[$defString[1]]);
                     }
                     else
                     {
-                        $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        $defID = $this->checkForRecord($msmid, $this->defs[$defString[1]], 'caption');
                     }
 
                     if (empty($defID))
@@ -423,7 +423,7 @@ class Associate extends Element
 
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
                     $theoremString = explode('-', $element);
-                    $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
+                    $theoremRecord = $this->checkForRecord($msmid, $this->theorems[$theoremString[1]]);
 
                     if (empty($theoremRecord))
                     {
@@ -458,7 +458,7 @@ class Associate extends Element
 
                 case(preg_match("/^(ref.\d+)$/", $element) ? true : false):
                     $refString = explode('-', $element);
-                    $refRecord = $this->checkForRecord($this->refs[$refString[1]]);
+                    $refRecord = $this->checkForRecord($msmid, $this->refs[$refString[1]]);
 
                     if (empty($refRecord))
                     {

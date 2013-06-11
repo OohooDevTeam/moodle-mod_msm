@@ -106,12 +106,22 @@ class PartTheorem extends Element
 
         if (!empty($this->part_content))
         {
-//            foreach ($this->content as $content)
-//            {
-                $data->part_content = $this->part_content;
-                $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-//            }
+            $partcontent = '';
+            $contentparser = new DOMDocument();
+            $contentparser->loadXML($this->part_content, true);
+            $contentNode = $contentparser->documentElement;
+
+            foreach ($contentNode->childNodes as $child)
+            {
+                $partcontent .= $contentparser->saveXML($contentparser->importNode($child, true));
+            }
+
+            $this->part_content = "<div>$partcontent</div>";
+
+            $data->part_content = $this->part_content;
+//           
+            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
         else
         {
@@ -305,7 +315,7 @@ class PartTheorem extends Element
                     break;
             }
         }
-        
+
         if (!empty($this->medias))
         {
             $newdata = new stdClass();
@@ -314,7 +324,7 @@ class PartTheorem extends Element
             $newdata->counter = $this->counter;
             $newdata->equivalence_mark = $this->equiv_mark;
             $newdata->caption = $this->caption;
-            $newdata->part_content = $this->processDbContent("<div>$this->part_content</div>", $this);             
+            $newdata->part_content = $this->processDbContent($this->part_content, $this);
 
             $DB->update_record($this->tablename, $newdata);
         }

@@ -307,8 +307,11 @@ else
                     $updateData->msm_id = $oldchild->msm_id;
                     $updateData->table_id = $oldchild->table_id;
                     $updateData->unit_id = $oldchild->unit_id;
-                    $updateData->parent_id = $currentUnitRecord->parent_id;
-                    $updateData->prev_sibling_id = $oldchild->prev_sibling_id;
+//                    $updateData->parent_id = $currentUnitRecord->parent_id;
+//                    $updateData->prev_sibling_id = $oldchild->prev_sibling_id;  
+
+                    $updateData->parent_id = 0;
+                    $updateData->prev_sibling_id = 0;
 
                     $DB->update_record("msm_compositor", $updateData);
                 }
@@ -321,9 +324,9 @@ else
         // need code fo insert unit information to unitdatabase before procesing the child so that
         // the parentid exists when the child elements are being inserted to the db
 
-
-        $fileoptions = json_decode($_POST["msm_file_options"])->image;
-        file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
+//        $fileoptions = json_decode($_POST["msm_file_options"])->image;
+//
+//        file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
 
         $siblingCompid = 0;
 
@@ -402,5 +405,4 @@ function deleteOldChildRecord($compid)
         $DB->delete_records("msm_compositor", array("id" => $compid));
     }
 }
-
 ?>

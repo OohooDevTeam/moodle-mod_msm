@@ -16,8 +16,6 @@ function submitForm()
 {        
     var disabled = $("#msm_comp_done").attr("disabled");
         
-    console.log(disabled);
-        
     if((typeof disabled !== "undefined") && (disabled !== false))
     {
         $("#msm_comp_done").removeAttr("disabled");

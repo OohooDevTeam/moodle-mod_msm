@@ -782,8 +782,10 @@ class Unit extends Element
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = explode('-', $element);
-                    $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
+                    $subunitRecord = $this->checkForRecord($msmid, $this->subunits[$subunitString[1]]);   
                     
+//                    echo "is there  a subunit Record?";
+//                    print_object($subunitRecord);
 
                     if (empty($subunitRecord))
                     {
@@ -818,7 +820,7 @@ class Unit extends Element
 
                 case(preg_match("/^(exercisepack.\d+)$/", $element) ? true : false):
                     $exercisepackString = explode('-', $element);
-                    $exercisepackRecord = $this->checkForRecord($this->exercisepacks[$exercisepackString[1]]);
+                    $exercisepackRecord = $this->checkForRecord($msmid, $this->exercisepacks[$exercisepackString[1]]);
 
                     if (empty($exercisepackRecord))
                     {
@@ -844,7 +846,7 @@ class Unit extends Element
 
                 case(preg_match("/^(examplepack.\d+)$/", $element) ? true : false):
                     $examplepackString = explode('-', $element);
-                    $examplepackRecord = $this->checkForRecord($this->examplepacks[$examplepackString[1]]);
+                    $examplepackRecord = $this->checkForRecord($msmid, $this->examplepacks[$examplepackString[1]]);
 
                     if (empty($examplepackRecord))
                     {
@@ -872,7 +874,7 @@ class Unit extends Element
                 case(preg_match("/^(quizpack.\d+)$/", $element) ? true : false):
 
                     $quizpackString = explode('-', $element);
-                    $quizpackRecord = $this->checkForRecord($this->quizpacks[$quizpackString[1]]);
+                    $quizpackRecord = $this->checkForRecord($msmid, $this->quizpacks[$quizpackString[1]]);
 
                     if (empty($quizpackRecord))
                     {
@@ -899,7 +901,7 @@ class Unit extends Element
 
                 case(preg_match("/^(showmepack.\d+)$/", $element) ? true : false):
                     $showmepackString = explode('-', $element);
-                    $showmepackRecord = $this->checkForRecord($this->showmepacks[$showmepackString[1]]);
+                    $showmepackRecord = $this->checkForRecord($msmid, $this->showmepacks[$showmepackString[1]]);
 
                     if (empty($showmepackRecord))
                     {
@@ -927,7 +929,7 @@ class Unit extends Element
                 case(preg_match("/^(studyexercise.\d+)$/", $element) ? true : false):
                     $studyexerciseString = explode('-', $element);
 
-                    $studyexerciseRecord = $this->checkForRecord($this->studyexercises[$studyexerciseString[1]]);
+                    $studyexerciseRecord = $this->checkForRecord($msmid, $this->studyexercises[$studyexerciseString[1]]);
 
                     if (empty($studyexerciseRecord))
                     {
@@ -955,7 +957,7 @@ class Unit extends Element
                 case(preg_match("/^(studyexample.\d+)$/", $element) ? true : false):
                     $studyexampleString = explode('-', $element);
 
-                    $studyexampleRecord = $this->checkForRecord($this->studyexamples[$studyexampleString[1]]);
+                    $studyexampleRecord = $this->checkForRecord($msmid, $this->studyexamples[$studyexampleString[1]]);
 
                     if (empty($studyexampleRecord))
                     {

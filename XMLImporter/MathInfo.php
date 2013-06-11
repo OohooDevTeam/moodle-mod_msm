@@ -23,7 +23,7 @@ class MathInfo extends Element
 {
 
     public $position;
-    public $content;
+    public $info_content;
     public $caption;
 
     function __construct($xmlpath = '')
@@ -52,8 +52,8 @@ class MathInfo extends Element
 //        $this->caption = $this->getContent($DomElement->getElementsByTagName('info.caption')->item(0));
         //for now to just show text in title
         $this->caption = $DomElement->getElementsByTagName("info.caption")->item(0)->textContent;
-        
-        
+
+
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
@@ -85,7 +85,7 @@ class MathInfo extends Element
 
         foreach ($this->processContent($DomElement, $position) as $content)
         {
-            $this->content .= $content;
+            $this->info_content .= $content;
         }
     }
 
@@ -103,10 +103,23 @@ class MathInfo extends Element
         {
             $data->caption = $this->caption;
         }
-        if (!empty($this->content))
+        if (!empty($this->info_content))
         {
-            $data->info_content = $this->content;
+            $infocontent = '';
 
+            $contentparser = new DOMDocument();
+            $contentparser->loadXML($this->info_content, true);
+
+            $contentNode = $contentparser->documentElement;
+
+            foreach ($contentNode->childNodes as $child)
+            {
+                $infocontent .= $contentparser->saveXML($contentparser->importNode($child, true));
+            }
+
+            $this->info_content = "<div>$infocontent</div>";
+
+            $data->info_content = $this->info_content;
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
@@ -271,6 +284,20 @@ class MathInfo extends Element
                     }
                     break;
             }
+        }
+
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->id = $this->id;
+            if (isset($this->caption))
+            {
+                $newdata->caption = $this->caption;
+            }
+
+            $newdata->info_content = $this->processDbContent($this->info_content, $this);
+
+            $DB->update_record($this->tablename, $newdata);
         }
     }
 

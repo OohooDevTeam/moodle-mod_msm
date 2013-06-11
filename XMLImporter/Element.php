@@ -75,54 +75,68 @@ abstract class Element
      * @param String $propertyName      Represents the name of the property to be used to identify record in the database table
      * @return int/boolean              If a duplicate record is found, returns the ID number of the record.  Otherwise returns false.
      */
-    function checkForRecord($DomElement, $propertyName = '')
+    function checkForRecord($msm_id, $DomElement, $propertyName = '')
     {
         global $DB;
+        $foundRecord = null;
+        $foundIDs = null;
 
-        // if no property name is specified, then default is to check with string_id
+        // $propertyName is defined
         if (!empty($propertyName))
         {
             if (isset($DomElement->$propertyName))
             {
-                $foundID = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
-
-                if (!empty($foundID))
-                {
-                    return $foundID;
-                }
-                else
-                {
-                    return false;
-                }
+                $foundIDs = $DB->get_records($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
             }
             else
             {
                 return false;
             }
         }
-        // $propertyName is defined
+        // if no property name is specified, then default is to check with string_id
         else
         {
             if (isset($DomElement->string_id))
             {
                 if (!empty($DomElement->string_id))
                 {
-                    $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
-
-                    if (!empty($foundID))
-                    {
-                        return $foundID;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    $foundIDs = $DB->get_records($DomElement->tablename, array('string_id' => $DomElement->string_id));
                 }
                 else
                 {
                     return false;
                 }
             }
+        }
+
+        if (!empty($foundIDs))
+        {
+            $tableRecord = $DB->get_record("msm_table_collection", array("tablename" => $DomElement->tablename));
+            foreach ($foundIDs as $foundID)
+            {
+                if (!empty($foundID))
+                {
+                    $foundRecord = $DB->get_record("msm_compositor", array("table_id" => $tableRecord->id, "unit_id" => $foundID->id, "msm_id" => $msm_id));
+                    break;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (!empty($foundRecord))
+            {
+                return $foundRecord;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 

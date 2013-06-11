@@ -79,11 +79,13 @@ class Intro extends Element
 
         asort($elementPosition);
 
+        $sibling_id = 0;
         foreach ($elementPosition as $element => $value)
         {
             $blockString = explode('-', $element);
 
-            $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $msmid, $this->compid);
+            $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $msmid, $this->compid, $sibling_id);
+            $sibling_id = $this->blocks[$blockString[1]]->compid;
         }
     }
 

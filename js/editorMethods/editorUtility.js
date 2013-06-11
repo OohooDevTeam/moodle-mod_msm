@@ -426,7 +426,6 @@ function saveComp(e)
         success: function(data)
         {
             ids = JSON.parse(data);
-            //            console.log(ids);
             var idInfos = ids.split("-");
             if(ids != '')
             {
@@ -449,6 +448,9 @@ function editUnit(e)
     $("#msm_editor_new").attr("disabled", "disabled");
 
     var targetElement = e.target.parentElement.parentElement.id;
+    
+    console.log("sometimes the targetElement is overlay instead of the content box --> so what is causing it?");
+    console.log(e.target);
     
     var elementInfo = [];
     
@@ -1460,9 +1462,7 @@ function createIntroText(element, unitInfo)
     introTextArea.name = "msm_intro_content_input-"+introInfo[1];
     introTextArea.className = "msm_unit_child_content";
             
-    $(introTextArea).val(introcontent);   
-    
-    console.log($(introTextArea).val());
+    $(introTextArea).val(introcontent);  
     
     $("#"+currentId).replaceWith(introTextArea);    
         

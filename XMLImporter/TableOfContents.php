@@ -39,13 +39,13 @@ class TableOfContents
         $this->tabletable = 'msm_table_collection';
     }
 
-    function makeToc()
+    function makeToc($msm_id)
     {
         global $DB;
 
         $this->unitData = array();
 
-        foreach ($this->getTocData('root') as $unitTitleArray)
+        foreach ($this->getTocData('root', $msm_id) as $unitTitleArray)
         {
             $this->unitData[] = $unitTitleArray;
         }
@@ -104,7 +104,7 @@ class TableOfContents
         return $newString;
     }
 
-    private function getTocData($compRecord)
+    private function getTocData($compRecord, $msm_id)
     {
         global $DB;
         $unitData = array();
@@ -113,11 +113,11 @@ class TableOfContents
 
         if ($compRecord == 'root')
         {
-            $unitElements = $DB->get_records($this->comptable, array('parent_id' => 0, 'table_id' => $unittableid), 'prev_sibling_id');
+            $unitElements = $DB->get_records($this->comptable, array('parent_id' => 0, 'table_id' => $unittableid, 'msm_id'=>$msm_id), 'prev_sibling_id');
         }
         else
         {
-            $unitElements = $DB->get_records($this->comptable, array('parent_id' => $compRecord->id, 'table_id' => $unittableid), 'prev_sibling_id');
+            $unitElements = $DB->get_records($this->comptable, array('parent_id' => $compRecord->id, 'table_id' => $unittableid, 'msm_id'=>$msm_id), 'prev_sibling_id');
         }
 
         foreach ($unitElements as $unit)
@@ -129,10 +129,10 @@ class TableOfContents
                 $unitData[] = $unitRecord;
             }
 
-            $childElements = $DB->get_records($this->comptable, array('parent_id' => $unit->id, 'table_id' => $unittableid));
+            $childElements = $DB->get_records($this->comptable, array('parent_id' => $unit->id, 'table_id' => $unittableid, 'msm_id'=>$msm_id));
             if (sizeof($childElements) > 0)
             {
-                $unitData[] = $this->getTocData($unit);
+                $unitData[] = $this->getTocData($unit, $msm_id);
             }
         }
 

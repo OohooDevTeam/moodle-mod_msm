@@ -146,7 +146,7 @@ class EditorUnit extends EditorElement
             $newUnitData->description = $unitRecord->description;
 
             $DB->update_record($this->tablename, $newUnitData);
-
+            
             $newCompData = new stdClass();
             $newCompData->id = $unitCompRecord->id;
             $newCompData->msm_id = $unitCompRecord->msm_id;

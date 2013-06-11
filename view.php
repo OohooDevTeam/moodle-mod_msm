@@ -241,7 +241,7 @@ $content .= "</div>"; // splitter
 $content .= "<div id='tocpanel' class='panel'>";
 $content .="<div class='slidepanelcontent' id='toccontent'>";
 $tableofcontents = new TableOfContents();
-$content .= $tableofcontents->makeToc();
+$content .= $tableofcontents->makeToc($msm->id);
 $content .="</div>"; // end of slidepanelcontent
 $content .= "</div>"; // end of panel
 

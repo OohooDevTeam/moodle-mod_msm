@@ -114,7 +114,7 @@ class StatementTheorem extends Element
         $data = new stdClass();
 
         // need to group all the children of statement.theorem for loadXML function in displaySubordinate function later...
-        $data->statement_content = "<statement.theorem>" . $this->statement_content . "</statement.theorem>";
+        $data->statement_content = "<div>" . $this->statement_content . "</div>";
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 

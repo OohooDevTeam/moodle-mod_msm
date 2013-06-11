@@ -107,7 +107,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     {
         $DB->set_field('course_modules', 'instance', $msm->id, array('id' => $courseid));
         $context = context_module::instance($courseid);
-        
+
         // matching all the property defining the unit names
         $match = '/^(top|child)level(\d+)*$/';
         $depth = 0;
@@ -117,22 +117,10 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             {
                 $unitNameTableData = new stdClass();
                 $unitNameTableData->msmid = $msm->id;
-//                if (trim($property) == 'toplevel')
-//                {
                 $unitNameTableData->unitname = $value;
                 $unitNameTableData->depth = $depth;
                 $DB->insert_record('msm_unit_name', $unitNameTableData);
                 $depth++;
-//                }
-//                else
-//                {
-//                    $unitNameTableData->unitname = $value;
-//
-//                    // id number given to input field id starts with one
-//                    $unitNameTableData->depth = $depth;
-//                    $DB->insert_record('msm_unit_name', $unitNameTableData);
-//                    $depth++;
-//                }
             }
             else if (trim($property) == "standalone")
             {
@@ -173,7 +161,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         if (!empty($draftitemid))
         {
 
-//            file_prepare_draft_area($draftitemid, $sysctx->id, 'mod_msm', 'editor', $msm->importElement);
             file_save_draft_area_files($draftitemid, $context->id, 'mod_msm', 'editor', $msm->importElement);
             $fs = get_file_storage();
             $files = $fs->get_area_files($context->id, "mod_msm", 'editor', $draftitemid);
@@ -210,6 +197,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                             {
                                 rmdir("$CFG->dataroot/temp/$msm->name$msm->id");
                             }
+                            
                         }
                     }
                 }
@@ -237,9 +225,9 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 $importedunit = new Unit($msmdirpath, $newXMLparser);
                 $position = 1;
                 $importedunit->loadFromXml($newXMLparser->documentElement, $position);
-                
+
 //                print_object($importedunit);
-                
+
                 $importedunit->saveIntoDb($importedunit->position, $msm->id);
             }
         }
@@ -257,8 +245,8 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //
 //        $unit->saveIntoDb($unit->position, $msm->id);
     }
-    echo "done";
-    die;
+//    echo "done";
+//    die;
 //    
     return $msm->id;
 }

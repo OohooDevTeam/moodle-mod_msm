@@ -87,7 +87,7 @@ else if (isset($_POST['mode']))
             $indexElement = $key;
         }
     }
-
+   
     $currentElement = $unitChildElements[$indexElement];
     $currentElementTable = $DB->get_record("msm_table_collection", array("id" => $currentElement->table_id))->tablename;
 
