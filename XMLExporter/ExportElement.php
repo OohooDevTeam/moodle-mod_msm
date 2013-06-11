@@ -189,16 +189,13 @@ abstract class ExportElement
         return $paraNode;
     }
 
-    function createXMLFile($obj, $DomNode)
+    function createXMLFile($obj, $elementContent)
     {
         global $DB, $CFG;
-        
-        $DomParser = new DOMDocument();
-        $DomParser->importNode($DomNode, true);
 
         $msmRecord = $DB->get_record("msm", array("id" => $obj->msmid));
         $msmtrimName = preg_replace("/\s+/", '', $msmRecord->name);
-        $CompDir = $CFG->dataroot . "/temp/msmtempfiles/$msmtrimName$msmRecord->id/NestedUnits/";
+        $CompDir = $CFG->dataroot . "/temp/msmtempfiles/$msmtrimName$msmRecord->id/standalones/";
 
         $elementType = '';
         switch (get_class($obj))
@@ -240,13 +237,13 @@ abstract class ExportElement
             }
             else
             {
-                echo "error with creating nestedUnit folder";
+                echo "error with creating standalone folder";
             }
         }
 
         if ($xmlfile = fopen($filename, "w"))
         {
-            fwrite($xmlfile, $DomParser->saveXML());
+            fwrite($xmlfile, $elementContent);
             fclose($xmlfile);
         }
         else

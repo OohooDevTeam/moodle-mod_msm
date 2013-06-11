@@ -14,6 +14,7 @@ class ExportComment extends ExportElement
 {
 
     public $id;
+    public $msmid;
     public $compid;
     public $caption;
     public $description;
@@ -65,7 +66,7 @@ class ExportComment extends ExportElement
         
         if (!empty($flag))
         {
-            $this->createXMLFile($this, $commentNode);
+            $this->createXMLFile($this, $commentCreator->saveXML() . $commentCreator->saveXML($commentCreator->importNode($commentNode, true)));
         }
         else
         {
@@ -82,6 +83,7 @@ class ExportComment extends ExportElement
 
         $this->id = $commentRecord->id;
         $this->compid = $compid;
+        $this->msmid = $commentCompRecord->msm_id;
         $this->caption = $commentRecord->caption;
         $this->description = $commentRecord->description;
         $this->type = $commentRecord->comment_type;

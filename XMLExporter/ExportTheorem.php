@@ -13,6 +13,7 @@
 class ExportTheorem extends ExportElement
 {
     public $id;
+    public $msmid;
     public $compid;
     public $statements = array();
     public $description;
@@ -67,7 +68,7 @@ class ExportTheorem extends ExportElement
         
         if (!empty($flag))
         {
-            $this->createXMLFile($this, $theoremNode);
+            $this->createXMLFile($this, $theoremCreator->saveXML() . $theoremCreator->saveXML($theoremCreator->importNode($theoremNode, true)));
         }
         else
         {
@@ -84,6 +85,7 @@ class ExportTheorem extends ExportElement
 
         $this->id = $theoremUnitRecord->id;
         $this->compid = $compid;
+        $this->msmid = $theoremCompRecord->msm_id;
         $this->caption = $theoremUnitRecord->caption;
         $this->description = $theoremUnitRecord->description;
         $this->type = $theoremUnitRecord->theorem_type;

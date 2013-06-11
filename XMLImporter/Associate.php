@@ -66,17 +66,31 @@ class Associate extends Element
 
                                 $element = $parser->documentElement;
 
-                                $comments = $element->getElementsByTagName('comment');
-
-                                foreach ($comments as $c)
+                                if ($element->tagName == 'comment')
                                 {
-                                    $cID = $d->getAttribute('id');
+                                    $cID = $element->getAttribute('id');
                                     if ($cID == $commentrefID)
                                     {
                                         $position = $position + 1;
                                         $comment = new MathComment(dirname($filepath));
-                                        $comment->loadFromXml($c, $position);
+                                        $comment->loadFromXml($element, $position);
                                         $this->comments[] = $comment;
+                                    }
+                                }
+                                else
+                                {
+                                    $comments = $element->getElementsByTagName('comment');
+
+                                    foreach ($comments as $c)
+                                    {
+                                        $cID = $c->getAttribute('id');
+                                        if ($cID == $commentrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $comment = new MathComment(dirname($filepath));
+                                            $comment->loadFromXml($c, $position);
+                                            $this->comments[] = $comment;
+                                        }
                                     }
                                 }
                             }
@@ -96,17 +110,31 @@ class Associate extends Element
 
                                 $element = $parser->documentElement;
 
-                                $defs = $element->getElementsByTagName('def');
-
-                                foreach ($defs as $d)
+                                if ($element->tagName == 'def')
                                 {
-                                    $dID = $d->getAttribute('id');
+                                    $dID = $element->getAttribute('id');
                                     if ($dID == $definitionrefID)
                                     {
                                         $position = $position + 1;
                                         $def = new Definition(dirname($filepath));
-                                        $def->loadFromXml($d, $position);
+                                        $def->loadFromXml($element, $position);
                                         $this->defs[] = $def;
+                                    }
+                                }
+                                else
+                                {
+                                    $defs = $element->getElementsByTagName('def');
+
+                                    foreach ($defs as $d)
+                                    {
+                                        $dID = $d->getAttribute('id');
+                                        if ($dID == $definitionrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $def = new Definition(dirname($filepath));
+                                            $def->loadFromXml($d, $position);
+                                            $this->defs[] = $def;
+                                        }
                                     }
                                 }
                             }

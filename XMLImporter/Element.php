@@ -639,6 +639,15 @@ abstract class Element
                                     }
                                 }
                             }
+                            else if ($element->tagName == "comment")
+                            {
+                                $commentID = $element->getAttribute("id");
+                                if ($commentID == $elementID)
+                                {
+                                    $path = $filepath . '/' . $file;
+                                    return $path;
+                                }
+                            }
                             break;
 
                         case('def'):
@@ -654,6 +663,15 @@ abstract class Element
                                         $path = $filepath . '/' . $file;
                                         return $path;
                                     }
+                                }
+                            }
+                            else if ($element->tagName == "def")
+                            {
+                                $defID = $element->getAttribute("id");
+                                if ($defID == $elementID)
+                                {
+                                    $path = $filepath . '/' . $file;
+                                    return $path;
                                 }
                             }
                             break;
@@ -1219,7 +1237,7 @@ abstract class Element
         }
 
         $newcontent = $parser->saveXML($topElement);
-        
+
 //        print_object($newcontent);
         return $newcontent;
     }

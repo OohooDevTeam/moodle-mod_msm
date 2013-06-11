@@ -23,6 +23,8 @@ class MathComment extends Element
 {
 
     public $position;
+    public $comment_content;
+    public $description;
 
     //public $content;
 
@@ -44,9 +46,10 @@ class MathComment extends Element
         $this->string_id = $DomElement->getAttribute('id');
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
+        $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
         $this->associates = array();
-        $this->content = array();
+//        $this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -108,7 +111,7 @@ class MathComment extends Element
 
             foreach ($this->processContent($c, $position) as $content)
             {
-                $this->content[] = $content;
+                $this->comment_content .= $content;
             }
         }
     }
@@ -125,20 +128,35 @@ class MathComment extends Element
         $data = new stdClass();
         $data->comment_type = $this->comment_type;
         $data->string_id = $this->string_id;
+        $data->description = $this->description;
         if (!empty($this->caption))
         {
             $data->caption = $this->caption;
         }
 
-        if (!empty($this->content))
+        if (!empty($this->comment_content))
         {
-            foreach ($this->content as $key => $content)
-            {
-                $data->comment_content = $content;
+//            foreach ($this->content as $key => $content)
+//            {
+            $commentcontent = '';
 
-                $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+            $commentbodyparser = new DOMDocument();
+            $commentbodyparser->loadXML($this->comment_content, true);
+
+            $commentbodyNode = $commentbodyparser->documentElement;
+
+            foreach ($commentbodyNode->childNodes as $child)
+            {
+                $commentcontent .= $commentbodyparser->saveXML($commentbodyparser->importNode($child, true));
             }
+
+            $this->comment_content = "<div>$commentcontent</div>";
+
+            $data->comment_content = $this->comment_content;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+//            }
         }
         else
         {
@@ -357,6 +375,24 @@ class MathComment extends Element
                     break;
             }
         }
+
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->id = $this->id;
+            $newdata->comment_type = $this->comment_type;
+            $newdata->string_id = $this->string_id;
+            if (isset($this->caption))
+            {
+                $newdata->caption = $this->caption;
+            }
+
+            $newdata->description = $this->description;
+
+            $newdata->comment_content = $this->processDbContent($this->comment_content, $this);
+
+            $DB->update_record($this->tablename, $newdata);
+        }
     }
 
     function loadFromDb($id, $compid, $indexref = false)
@@ -371,6 +407,7 @@ class MathComment extends Element
             $this->comment_type = $commentRecord->comment_type;
             $this->caption = $commentRecord->caption;
             $this->comment_content = $commentRecord->comment_content;
+            $this->description = $commentRecord->description;
         }
 
         $childElement = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
@@ -472,12 +509,12 @@ class MathComment extends Element
         }
         $content .= "<br/>";
 
-            $content .= "<div class='mathcontent'>";
-            $content .= $this->displayContent($this, $this->comment_content, $isindex);
-            $content .= "<br />";
-            $content .= "</div>";
+        $content .= "<div class='mathcontent'>";
+        $content .= $this->displayContent($this, $this->comment_content, $isindex);
+        $content .= "<br />";
+        $content .= "</div>";
 
-            $content .= "<br />";
+        $content .= "<br />";
 
         if (!$isindex)
         {
@@ -491,7 +528,7 @@ class MathComment extends Element
                 $content .= "</ul>";
             }
         }
-        
+
         $content .= "</div>";
         $content .= "<br />";
 

@@ -37,22 +37,23 @@ class ExportAssociate extends ExportElement
 
         if (!empty($this->ref))
         {
-           switch(get_class($this->ref))
-           {
-               case "ExportDefinition":
-                   $refNode = $associateCreator->createElement("definition.ref");
-                   $refNode->setAttribute("definitionID", $this->ref->compid);
-                   break;
-               case "ExportTheorem":
-                   $refNode = $associateCreator->createElement("theorem.ref");
-                   $refNode->setAttribute("theoremID", $this->ref->compid);
-                   break;
-               case "ExportComment":
-                   $refNode = $associateCreator->createElement("comment.ref");
-                   $refNode->setAttribute("commentID", $this->ref->compid);
-                   break;
-           }
-           $this->ref->exportData("ref");
+            switch (get_class($this->ref))
+            {
+                case "ExportDefinition":
+                    $refNode = $associateCreator->createElement("definition.ref");
+                    $refNode->setAttribute("definitionID", $this->ref->compid);
+                    break;
+                case "ExportTheorem":
+                    $refNode = $associateCreator->createElement("theorem.ref");
+                    $refNode->setAttribute("theoremID", $this->ref->compid);
+                    break;
+                case "ExportComment":
+                    $refNode = $associateCreator->createElement("comment.ref");
+                    $refNode->setAttribute("commentID", $this->ref->compid);
+                    break;
+            }
+            $associateNode->appendChild($refNode);
+            $this->ref->exportData("ref");
         }
 
         return $associateNode;
@@ -69,22 +70,24 @@ class ExportAssociate extends ExportElement
         $this->compid = $compid;
         $this->description = $associateUnitRecord->description;
 
-        $infoTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_info"));
-        $infoChildRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid, "table_id" => $infoTable->id));
+//        $infoTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_info"));
+//        $infoChildRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid, "table_id" => $infoTable->id));
+//
+//        if (!empty($infoChildRecord))
+//        {
+//            $info = new ExportInfo();
+//            $info->loadDbData($infoChildRecord->id);
+//            $this->info = $info;
 
-        if (!empty($infoChildRecord))
+        $refCompRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid));
+
+        foreach ($refCompRecords as $refCompRecord)
         {
-            $info = new ExportInfo();
-            $info->loadDbData($infoChildRecord->id);
-            $this->info = $info;
-
-            $refCompRecord = $DB->get_record("msm_compositor", array("parent_id"=>$info->compid));
-            
-            if(!empty($refCompRecord))
+            if (!empty($refCompRecord))
             {
-                $refTable = $DB->get_record("msm_table_collection", array("id"=>$refCompRecord->table_id));
-                
-                switch($refTable->tablename)
+                $refTable = $DB->get_record("msm_table_collection", array("id" => $refCompRecord->table_id));
+
+                switch ($refTable->tablename)
                 {
                     case "msm_def":
                         $def = new ExportDefinition();
@@ -101,11 +104,17 @@ class ExportAssociate extends ExportElement
                         $comment->loadDbData($refCompRecord->id);
                         $this->ref = $comment;
                         break;
+                    case "msm_info":
+                        $info = new ExportInfo();
+                        $info->loadDbData($refCompRecord->id);
+                        $this->info = $info;
+                        break;
 //                    case "msm_unit":
 //                        break;
                 }
             }
         }
+//        }
 
         return $this;
     }

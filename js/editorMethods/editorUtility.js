@@ -1253,6 +1253,10 @@ function createAssociateText(mainElement, aArray)
                     createTheoremRefText(mainElement, associateArray, i, infoid);                    
                     break;
                 case "msm_comment":
+                    $("#msm_commentref_type_dropdown-"+refid).removeAttr("disabled");
+                    $("#msm_commentref_title_input-"+refid).removeAttr("disabled");
+                    $("#msm_commentref_description_input-"+refid).removeAttr("disabled");
+                    
                     var commentrefTextArea = document.createElement("textarea");
                     commentrefTextArea.id = "msm_commentref_content_input-"+refid;
                     commentrefTextArea.name = "msm_commentref_content_input-"+refid;
@@ -1695,15 +1699,15 @@ function cancelUnit(e)
             $("#msm_unit_form").append($(currentUnitId));
             
             removeTinymceEditor();
-//                  
+            //                  
             disableEditorFunction();   
            
             $(".msm_editor_buttons").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
-//            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+            //            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
         
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
-//            
+        //            
         },
         error: function(data)
         {

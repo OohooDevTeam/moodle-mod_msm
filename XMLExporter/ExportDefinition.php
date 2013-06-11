@@ -67,7 +67,7 @@ class ExportDefinition extends ExportElement
 
         if (!empty($flag))
         {
-            $this->createXMLFile($this, $defNode);
+            $this->createXMLFile($this, $defCreator->saveXML() . $defCreator->saveXML($defCreator->importNode($defNode, true)));
         }
         else
         {
