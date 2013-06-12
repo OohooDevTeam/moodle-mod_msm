@@ -99,7 +99,6 @@ function submitForm()
                 
             if(ids instanceof Array)
             {
-                
                 $("#msm_unit_form").find(".empty_content_error").each(function() {
                     $(this).removeClass("empty_content_error");
                 });

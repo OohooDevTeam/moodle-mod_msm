@@ -324,19 +324,32 @@ else
         // need code fo insert unit information to unitdatabase before procesing the child so that
         // the parentid exists when the child elements are being inserted to the db
 
-//        $fs = get_file_storage();
-//        $files = $fs->get_area_files($context->id, "mod_msm", "editor", $msm->id);
-//        
-//        foreach($files as $file)
-//        {
-//           $file->
-//        }
-        
-        $fileoptions = json_decode($_POST["msm_file_options"])->image;
-        
-        file_prepare_draft_area($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id);
+        $fs = get_file_storage();
+        $files = $fs->get_area_files($context->id, "mod_msm", "editor", $msm->id);
+        $fileExists = false;
+        foreach ($files as $file)
+        {
+            $fileExt = explode(".", $file->get_filename());
 
-        file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
+            if (sizeof($fileExt) > 1)
+            {
+                if ($fileExt != "zip")
+                {
+                    $fileExists = true;
+                }
+            }
+        }
+
+        $fileoptions = json_decode($_POST["msm_file_options"])->image;
+
+        if ($fileExists)
+        {
+            file_prepare_draft_area($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id);
+        }
+        else
+        {
+            file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
+        }
 
         $siblingCompid = 0;
 
@@ -415,4 +428,5 @@ function deleteOldChildRecord($compid)
         $DB->delete_records("msm_compositor", array("id" => $compid));
     }
 }
+
 ?>

@@ -694,9 +694,9 @@ function exportComposition(event)
                 $("#msm_editor_middle").append(exportDownload);
                                 
                 $("#msm_export_download").dialog({
+                    dialogClass: "no-close",
                     modal:false,
                     closeOnEscape: false,
-                    dialogClass: "no-close",
                     buttons: {
                         Ok: function(){
                             // ajax call to delete all the temporary files

@@ -6,6 +6,7 @@
 
 function insertUnitStructure(dbId)
 {
+    console.log(dbId);
     var ajaxInfo = dbId.split("|");
 
     var unitInfo = ajaxInfo[0].split("-");
@@ -35,13 +36,14 @@ function insertUnitStructure(dbId)
         {
             currentidPair = currentUnitInfo[0]+"-"+currentUnitInfo[1]; 
         }
-
         
-        $("#msm_unit_tree").find("li").each(function() {           
-            var stringid = "msm_unit-"+currentidPair;
-            var parent = $(this);
-            var match = this.id.match(/msm_unit-.+/);
+        //update the tree when the existing unit is editted
+        $("#msm_composition_default").find("li").each(function() {
+            var targetId = "msm_unit-"+currentidPair;
             var currentId = '';
+            var parent = $(this).parents("ul").eq(0);
+            var match = this.id.match(/msm_unit-.+/);
+            
             if(!match)
             {
                 currentId = "msm_unit-"+this.id;
@@ -50,15 +52,51 @@ function insertUnitStructure(dbId)
             {
                 currentId = this.id;
             }
-            
-            if(currentId == stringid)
+            var ul = $("<ul></ul>");
+            if(currentId == targetId)
             {
-                $(this).children("ul").children("li").each(function() {
-                    $(this).insertBefore(parent);
-                });               
-                $(this).empty().remove();
+                
+//                var copyofCurrent = $(this).clone();
+//                $(this).children("ul").each(function() {
+//                    $(ul).append($(this));              
+//                });
+//                $(copyofCurrent).append(ul);
+//                console.log("removing?");
+//                console.log($(this));
+//                $(this).empty().remove();
+//                $(copyofCurrent).insertAfter(parent);
+
+                
             }
+                
         })
+        
+    //        $("#msm_unit_tree").find("li").each(function() {           
+    //            var stringid = "msm_unit-"+currentidPair;
+    //            var parent = $(this).parents("ul").eq(0);
+    //            var match = this.id.match(/msm_unit-.+/);
+    //            var currentId = '';
+    //            if(!match)
+    //            {
+    //                currentId = "msm_unit-"+this.id;
+    //            }
+    //            else
+    //            {
+    //                currentId = this.id;
+    //            }
+    //            
+    //            console.log($(this));
+    //            // if the current unit already exists in the tree (ie. was editted instead of newly created)
+    //            if(currentId == stringid)
+    //            {
+    //                $(this).children("ul").children("li").each(function() {
+    //                    console.log('inserted before');
+    //                    console.log($(parent));
+    //                    $(this).insertAfter(parent);
+    //                });               
+    //                $(this).empty().remove();
+    //            }
+    //        })
     }   
     
     var treetopli = $("#msm_composition_default").children("ul");
@@ -89,10 +127,14 @@ function insertUnitStructure(dbId)
     if(treetopli.length == 0)
     { 
         rootul.append(listChild);
+        console.log("treetopli length is zero");
+        console.log(rootul);
         $("#msm_composition_default").append(rootul);
     }
     else if(treeChildren.length == 0)
     {
+        console.log("treeChildren length is zero");
+        console.log(listChild);
         $("#msm_composition_default > ul").append(listChild);
     }
     else
@@ -106,6 +148,11 @@ function insertUnitStructure(dbId)
         }
         else // already there is subunit attached to the top unit so just append another item to the list
         {
+            console.log("msm_composition_default > ul > li is what?");
+            console.log($("#msm_composition_default > ul > li"));
+            
+            console.log("2nd level?");
+            console.log(listChild);
             $("#msm_composition_default > ul > li").first().children("ul").append(listChild);          
         }
     }    
@@ -129,15 +176,20 @@ function insertUnitStructure(dbId)
         $("#msm_currentUnit_id").val(idPair);
     } 
     
-    initTrees(idPair);
+    var parentOfCurrent = $("#msm_unit-"+idPair).parents("li").eq(0).attr("id");
+    
+    initTrees(idPair, parentOfCurrent);
     
 }
 
-function initTrees(idPair)
+function initTrees(idPair, parent)
 {
     $("#msm_unit_tree")
     .jstree({
-        "plugins": ["themes", "html_data", "ui", "dnd"]
+        "plugins": ["themes", "html_data", "ui", "dnd"],
+        "core":{
+            "initially_open":[parent]
+        }
     })
     .bind("load.jstree", function(){
         $("#msm_unit_tree").jstree("select_node", "msm_unit-"+idPair).trigger("select_node.jstree");
@@ -222,7 +274,10 @@ function initTrees(idPair)
     
     $("#msm_standalone_tree")
     .jstree({
-        "plugins": ["themes", "html_data", "ui", "dnd"]
+        "plugins": ["themes", "html_data", "ui", "dnd"],
+        "core":{
+            "initially_open":["msm_standalone_root"]
+        }
     })
     .bind("select_node.jstree", function(event, data) {
         $("#msm_unit_tree").jstree("deselect_all");
@@ -446,14 +501,31 @@ function saveComp(e)
 function editUnit(e)
 {    
     $("#msm_editor_new").attr("disabled", "disabled");
+    if($("#msm_unit_title").attr("disabled"))
+    {
+        $("#msm_unit_title").removeAttr("disabled");
+    }
+    if($("#msm_unit_short_title").attr("disabled"))
+    {
+        $("#msm_unit_short_title").removeAttr("disabled");
+    }
+    if($("#msm_unit_description_input").attr("disabled"))
+    {
+        $("#msm_unit_description_input").removeAttr("disabled");
+    }
 
-    var targetElement = e.target.parentElement.parentElement.id;
+    var targetElement = '';
     
-    console.log("sometimes the targetElement is overlay instead of the content box --> so what is causing it?");
-    console.log(targetElement);
-    console.log(e.target);
-    console.log(e.parentElement);
+    console.log(e.target.tagName);
     
+    if(e.target.tagName == "A")
+    {
+        targetElement = e.target.parentElement.parentElement.id;
+    }
+    else if(e.target.tagName == "TEXTNODE")
+    {
+        targetElement = e.target.parentElement.parentElement.parentElement.id;
+    }
     
     var elementInfo = [];
     
@@ -469,7 +541,6 @@ function editUnit(e)
         success: function(data)
         {
             elementInfo = JSON.parse(data);
-            console.log(elementInfo);
             enableContentEditors(elementInfo, targetElement);  
             enableEditorFunction();   
             

@@ -29,11 +29,13 @@ class ExportInfo extends ExportElement
 
         if (!empty($this->caption))
         {
-            $captionNode = $infoCreator->createElement("info.caption");
+            $captionNode = $infoCreator->createElement("info.caption");            
+            $captionText = $infoCreator->createTextNode($this->caption);
+            $captionNode->appendChild($captionText);
 
-            $newcaptionNode = $this->createXmlContent($infoCreator, "<div>$this->caption</div>", $captionNode, '');
-            $newCaption = $infoCreator->importNode($newcaptionNode, true);
-            $infoNode->appendChild($newCaption);
+//            $newcaptionNode = $this->createXmlContent($infoCreator, "<div>$this->caption</div>", $captionNode, '');
+//            $newCaption = $infoCreator->importNode($newcaptionNode, true);
+            $infoNode->appendChild($captionNode);
         }
 
         $createdbodyNode = $this->createXmlContent($infoCreator, $this->content, $infoNode, $this);

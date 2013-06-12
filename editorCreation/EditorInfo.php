@@ -208,7 +208,24 @@ class EditorInfo extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        $data->caption = $this->caption;
+
+        $patterns = array();
+        $replacements = array();
+        $patterns[0] = "/<div.*?>/";
+        $patterns[1] = "/<\/div>/";
+        $patterns[0] = "/<p.*?>/";
+        $patterns[1] = "/<\/p>/";
+        $patterns[2] = "/<span.*?>/";
+        $patterns[3] = "/<\/span>/";
+        $replacements[0] = "";
+        $replacements[1] = "";
+        $replacements[2] = "";
+        $replacements[3] = "";
+
+        $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
+        $titleString = htmlentities($modifiedCaption);
+
+        $data->caption = $titleString;
 
         $pParser = new DOMDocument();
         $pParser->loadHTML($this->content);
