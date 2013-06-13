@@ -88,6 +88,8 @@ class ExportPara extends ExportElement
     function processParaContent()
     {
         $contentDoc = new DOMDocument();
+        $contentDoc->formatOutput = true;
+        $contentDoc->preserveWhiteSpace = false;
         $contentDoc->loadXML(utf8_encode(html_entity_decode($this->content)));
         $contentNode = $contentDoc->documentElement;
 
@@ -101,7 +103,7 @@ class ExportPara extends ExportElement
             foreach ($this->subordinates as $subordinate)
             {
                 $hotInfo = explode("||", $subordinate->hot);
-                
+
                 if (trim($id) == trim($hotInfo[0]))
                 {
                     $targetSub = $subordinate;
@@ -132,7 +134,7 @@ class ExportPara extends ExportElement
             }
         }
 
-        $newpNode = $this->replacePTags($contentDoc, $contentNode);       
+        $newpNode = $this->replacePTags($contentDoc, $contentNode);
 
         return $newpNode;
     }

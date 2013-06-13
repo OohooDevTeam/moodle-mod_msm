@@ -35,6 +35,7 @@ class ExportUnit extends ExportElement
         // to format the resulting XML document
         $XMLcreator->formatOutput = true;
         $XMLcreator->preserveWhiteSpace = false;
+        $XMLcreator->encoding = "UTF-8";
 //        $XMLcreator->schemaValidate("$CFG->dirroot/mod/msm/NewSchemas/Unit.xsd");
         $unitNode = $XMLcreator->createElement("unit");
         $unitNode->setAttribute("tagname", $this->unittag);

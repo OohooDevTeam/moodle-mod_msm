@@ -687,7 +687,7 @@ function exportComposition(event)
             if((ids != 'error') &&(ids != 'empty'))
             {
                 
-                var exportDownload = $("<div id='msm_export_download' class='dialogs' title='Download XML Export'>\n\
+                var exportDownload = $("<div id='msm_export_download' class='dialogs'>\n\
                                             <p> Please click the link below to donwload the XML files. </p>\n\
                                             <p>"+ids+"</p></div>");
                                 
@@ -695,7 +695,6 @@ function exportComposition(event)
                                 
                 $("#msm_export_download").dialog({
                     dialogClass: "no-close",
-                    modal:false,
                     closeOnEscape: false,
                     buttons: {
                         Ok: function(){
@@ -719,7 +718,6 @@ function exportComposition(event)
                 $("#msm_editor_middle").append(exportEmpty);
                     
                 $("#msm_export_empty").dialog({
-                    modal:false,
                     buttons: {
                         Ok: function(){
                             $(this).dialog("close");

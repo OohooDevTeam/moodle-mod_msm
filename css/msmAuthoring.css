@@ -688,3 +688,8 @@ table.mceLayout
 {
     color: #1C94C4;
 }
+
+.no-close .ui-dialog-titlebar-close
+{
+    display: none;
+}

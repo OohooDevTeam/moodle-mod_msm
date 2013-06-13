@@ -24,6 +24,8 @@ abstract class ExportElement
 
     function createXmlContent($DomDocument, $content, $DomNode, $object = '')
     {
+        $anchorArray = array();      
+
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
         $contentDoc->preserveWhiteSpace = false;
@@ -36,12 +38,19 @@ abstract class ExportElement
             {
                 if ($child->tagName == "p")
                 {
-
                     if (!empty($object))
                     {
                         $atags = $child->getElementsByTagName("a");
 
-                        foreach ($atags as $a)
+                        // need a copy of anchored element nodelist b/c 
+                        // when the anchored element is replaced with its XML counter part,
+                        // it loses items in the nodelist 
+                        foreach ($atags as $atag)
+                        {
+                            $anchorArray[] = $atag;
+                        }
+
+                        foreach ($anchorArray as $a)
                         {
                             $targetSub = null;
                             $id = $a->getAttribute("id");
@@ -58,7 +67,6 @@ abstract class ExportElement
                             if (!empty($targetSub))
                             {
                                 $initsubordinateNode = $targetSub->exportData();
-
                                 $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
                                 $a->parentNode->replaceChild($subordinateNode, $a);
                             }
@@ -115,8 +123,16 @@ abstract class ExportElement
                     if (!empty($object))
                     {
                         $atags = $child->getElementsByTagName("a");
+                        
+                        // need a copy of anchored element nodelist b/c 
+                        // when the anchored element is replaced with its XML counter part,
+                        // it loses items in the nodelist 
+                        foreach ($atags as $atag)
+                        {
+                            $anchorArray[] = $atag;
+                        }
 
-                        foreach ($atags as $a)
+                        foreach ($anchorArray as $a)
                         {
                             $targetSub = null;
                             $id = $a->getAttribute("id");
@@ -124,6 +140,7 @@ abstract class ExportElement
                             foreach ($object->subordinates as $subordinate)
                             {
                                 $hotInfo = explode("||", $subordinate->hot);
+
                                 if (trim($id) == trim($hotInfo[0]))
                                 {
                                     $targetSub = $subordinate;
@@ -132,7 +149,6 @@ abstract class ExportElement
                             }
                             $initsubordinateNode = $targetSub->exportData();
                             $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
-
                             $a->parentNode->replaceChild($subordinateNode, $a);
                         }
                     }
