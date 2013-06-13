@@ -6,7 +6,6 @@
 
 function insertUnitStructure(dbId)
 {
-    console.log(dbId);
     var ajaxInfo = dbId.split("|");
 
     var unitInfo = ajaxInfo[0].split("-");
@@ -40,8 +39,7 @@ function insertUnitStructure(dbId)
         //update the tree when the existing unit is editted
         $("#msm_composition_default").find("li").each(function() {
             var targetId = "msm_unit-"+currentidPair;
-            var currentId = '';
-            var parent = $(this).parents("ul").eq(0);
+            var currentId = '';            
             var match = this.id.match(/msm_unit-.+/);
             
             if(!match)
@@ -52,111 +50,67 @@ function insertUnitStructure(dbId)
             {
                 currentId = this.id;
             }
-            var ul = $("<ul></ul>");
             if(currentId == targetId)
-            {
-                
-//                var copyofCurrent = $(this).clone();
-//                $(this).children("ul").each(function() {
-//                    $(ul).append($(this));              
-//                });
-//                $(copyofCurrent).append(ul);
-//                console.log("removing?");
-//                console.log($(this));
-//                $(this).empty().remove();
-//                $(copyofCurrent).insertAfter(parent);
-
-                
-            }
-                
-        })
-        
-    //        $("#msm_unit_tree").find("li").each(function() {           
-    //            var stringid = "msm_unit-"+currentidPair;
-    //            var parent = $(this).parents("ul").eq(0);
-    //            var match = this.id.match(/msm_unit-.+/);
-    //            var currentId = '';
-    //            if(!match)
-    //            {
-    //                currentId = "msm_unit-"+this.id;
-    //            }
-    //            else
-    //            {
-    //                currentId = this.id;
-    //            }
-    //            
-    //            console.log($(this));
-    //            // if the current unit already exists in the tree (ie. was editted instead of newly created)
-    //            if(currentId == stringid)
-    //            {
-    //                $(this).children("ul").children("li").each(function() {
-    //                    console.log('inserted before');
-    //                    console.log($(parent));
-    //                    $(this).insertAfter(parent);
-    //                });               
-    //                $(this).empty().remove();
-    //            }
-    //        })
-    }   
-    
-    var treetopli = $("#msm_composition_default").children("ul");
-    
-    var listChild = $("<li></li>");
-    $(listChild).attr("id", "msm_unit-"+idPair);
-    
-    var linkElement = $("<a href='#'></a>");
-    
-    var linkText = null;    
-    
-    if(unitName != null)
-    {
-        linkText = document.createTextNode(unitName);
+            {                
+                var parent = $(this).parents("ul").eq(0);
+                var copyofCurrent = $(this).clone();
+                $(this).empty().remove();
+                $(copyofCurrent).appendTo(parent);                
+            }                
+        });
     }
     else
     {
-        linkText = document.createTextNode(idPair);
-    }
+        var treetopli = $("#msm_composition_default").children("ul");
     
-    $(linkElement).append(linkText);    
-    $(listChild).append(linkElement);
+        var listChild = $("<li></li>");
+        $(listChild).attr("id", "msm_unit-"+idPair);
     
-    var rootul = $("<ul></ul>");
+        var linkElement = $("<a href='#'></a>");
     
-    var treeChildren = $("#msm_composition_default > ul").first().children("li");    
+        var linkText = null;    
     
-    if(treetopli.length == 0)
-    { 
-        rootul.append(listChild);
-        console.log("treetopli length is zero");
-        console.log(rootul);
-        $("#msm_composition_default").append(rootul);
-    }
-    else if(treeChildren.length == 0)
-    {
-        console.log("treeChildren length is zero");
-        console.log(listChild);
-        $("#msm_composition_default > ul").append(listChild);
-    }
-    else
-    {
-        var childUls = $("#msm_composition_default > ul > li").find("ul");        
-        
-        if(childUls.length == 0)  // no ul appended to top unit node to add more nested node to
+        if(unitName != null)
         {
+            linkText = document.createTextNode(unitName);
+        }
+        else
+        {
+            linkText = document.createTextNode(idPair);
+        }
+    
+        $(linkElement).append(linkText);    
+        $(listChild).append(linkElement);
+    
+        var rootul = $("<ul></ul>");
+    
+        var treeChildren = $("#msm_composition_default > ul").first().children("li");    
+    
+        if(treetopli.length == 0)
+        { 
             rootul.append(listChild);
-            $("#msm_composition_default > ul > li").first().append(rootul);
+            $("#msm_composition_default").append(rootul);
         }
-        else // already there is subunit attached to the top unit so just append another item to the list
+        else if(treeChildren.length == 0)
         {
-            console.log("msm_composition_default > ul > li is what?");
-            console.log($("#msm_composition_default > ul > li"));
-            
-            console.log("2nd level?");
-            console.log(listChild);
-            $("#msm_composition_default > ul > li").first().children("ul").append(listChild);          
+            $("#msm_composition_default > ul").append(listChild);
         }
-    }    
-    
+        else
+        {
+            var childUls = $("#msm_composition_default > ul > li").find("ul");        
+        
+            if(childUls.length == 0)  // no ul appended to top unit node to add more nested node to
+            {
+                rootul.append(listChild);
+                $("#msm_composition_default > ul > li").first().append(rootul);
+            }
+            else // already there is subunit attached to the top unit so just append another item to the list
+            {
+                $("#msm_composition_default > ul > li").first().children("ul").append(listChild);          
+            }
+        }    
+    }
+        
     var currentUnit = document.getElementById('msm_currentUnit_id');
    
     if((currentUnit == null)||(currentUnit == "undefined"))
@@ -515,8 +469,6 @@ function editUnit(e)
     }
 
     var targetElement = '';
-    
-    console.log(e.target.tagName);
     
     if(e.target.tagName == "A")
     {
