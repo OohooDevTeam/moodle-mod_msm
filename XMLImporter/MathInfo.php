@@ -51,8 +51,18 @@ class MathInfo extends Element
 
 //        $this->caption = $this->getContent($DomElement->getElementsByTagName('info.caption')->item(0));
         //for now to just show text in title
-        $this->caption = $DomElement->getElementsByTagName("info.caption")->item(0)->textContent;
 
+        foreach ($DomElement->childNodes as $child)
+        {
+            if ($child->nodeType == XML_ELEMENT_NODE)
+            {
+                if ($child->tagName == "info.caption")
+                {
+                    $this->caption = $child->textContent;
+                    break;
+                }
+            }
+        }
 
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {

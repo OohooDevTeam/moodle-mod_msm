@@ -322,6 +322,14 @@ abstract class Element
                 {
                     $length++;
                 }
+                else if ($s->parentNode->parentNode->parentNode->tagName == 'info') // nested infos that have another nested info
+                {
+                    $currentNode = $s->parentNode->parentNode->parentNode;
+                    if ($currentNode->isSameNode($DomElement))
+                    {
+                        $length++;
+                    }
+                }
             }
             else
             {
@@ -329,8 +337,17 @@ abstract class Element
                 {
                     $length++;
                 }
+                else if ($s->parentNode->parentNode->parentNode->tagName == 'info')
+                {
+                    $currentNode = $s->parentNode->parentNode->parentNode;
+                    if ($currentNode->isSameNode($DomElement))
+                    {
+                        $length++;
+                    }
+                }
             }
         }
+
         for ($i = 0; $i < $length; $i++)
         {
             $position = $position + 1;
@@ -382,6 +399,14 @@ abstract class Element
             {
                 $length++;
             }
+            else if ($s->parentNode->parentNode->parentNode->tagName == 'info')
+            {
+                $currentNode = $s->parentNode->parentNode->parentNode;
+                if ($currentNode->isSameNode($DomElement))
+                {
+                    $length++;
+                }
+            }
         }
 
         for ($i = 0; $i < $length; $i++)
@@ -389,7 +414,7 @@ abstract class Element
             $position++;
             // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-            $hot->setAttribute("id", $position);
+            $hot->setAttribute("id", "msm_subordinate_hotword-" . $position);
             $hot->setAttribute("class", "msm_subordinate_hotwords");
             $hot->setAttribute("href", "#");
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
@@ -917,7 +942,7 @@ abstract class Element
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
 
-        @$doc->loadXML($XMLcontent);
+        $doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');
@@ -957,27 +982,6 @@ abstract class Element
                             {
                                 $newtag = "<span>";
                             }
-
-
-
-                            // there are other commas in the content 
-                            // therefore, get the position value from index 0 then concatenate the rest of the string
-//                            if (sizeof($rawhotString) >= 3)
-//                            {
-//                                $positionvalue = $rawhotString[0];
-//
-//                                $rawhotContent = '';
-//
-//                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
-//                                {
-//                                    $rawhotContent .= $rawhotString[$i] . ',';
-//                                }
-//                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
-//                            }
-//                            // only comma in the hot string is the one separating the position value and the rest of the hot content
-//                            else
-//                            {
-//                            }
 
                             if (is_string($subordinate->hot))
                             {
@@ -1033,27 +1037,6 @@ abstract class Element
                             {
                                 $newtag = "<span>";
                             }
-//                            $rawhotString = explode('||', $subordinate->hot);
-                            // there are other commas in the content 
-                            // therefore, get the position value from index 0 then concatenate the rest of the string
-//                            if (sizeof($rawhotString) >= 3)
-//                            {
-//                                $positionvalue = $rawhotString[0];
-//
-//                                $rawhotContent = '';
-//
-//                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
-//                                {
-//                                    $rawhotContent .= $rawhotString[$i] . ',';
-//                                }
-//                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
-//                            }
-//                            // only comma in the hot string is the one separating the position value and the rest of the hot content
-//                            else
-//                            {
-//                            $positionvalue = $rawhotString[0];
-//                            $rawhotContent = $rawhotString[1];
-//                            }
 
                             if (is_string($subordinate->hot))
                             {
@@ -1103,27 +1086,6 @@ abstract class Element
                         {
                             $newtag = "<span>";
                         }
-//                        $rawhotString = explode('||', $subordinate->hot);
-                        // there are other commas in the content 
-                        // therefore, get the position value from index 0 then concatenate the rest of the string
-//                        if (sizeof($rawhotString) >= 3)
-//                        {
-//                            $positionvalue = $rawhotString[0];
-//
-//                            $rawhotContent = '';
-//
-//                            for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
-//                            {
-//                                $rawhotContent .= $rawhotString[$i] . ',';
-//                            }
-//                            $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
-//                        }
-//                        // only comma in the hot string is the one separating the position value and the rest of the hot content
-//                        else
-//                        {
-//                        $positionvalue = $rawhotString[0];
-//                        $rawhotContent = $rawhotString[1];
-//                        }
 
                         if (is_string($subordinate->hot))
                         {

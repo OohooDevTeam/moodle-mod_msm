@@ -433,6 +433,10 @@ function showUnitPreview()
                             
                     newid += idInfo[idInfo.length-1];
                     
+                    console.log("msm_preview_dialog");
+                    console.log("newid: "+newid);
+                    console.log($("#dialog-"+newid));
+                    
                     $("#dialog-"+newid).dialog({
                         autoOpen: false,
                         height: "auto",
@@ -453,6 +457,10 @@ function showUnitPreview()
                     }
                             
                     newid += idInfo[idInfo.length-1];
+                    
+                    console.log("msm_info_dialogs");
+                    console.log("newid: "+newid);
+                    console.log($("#dialog-"+newid));
                         
                     $("#dialog-"+newid).dialog({
                         autoOpen: false,
