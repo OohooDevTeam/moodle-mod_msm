@@ -1080,7 +1080,7 @@ abstract class Element
                         $newtag = '';
                         if (!$isindex)
                         {
-                            $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target . "' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                            $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->infos[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target . "' onmouseover='popup(" . $subordinate->external_links[0]->infos[0]->compid . ")'>";
                         }
                         else
                         {

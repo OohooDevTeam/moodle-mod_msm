@@ -32,6 +32,8 @@ require_once('editorCreation/EditorTable.php');
 require_once('editorCreation/EditorSubordinate.php');
 require_once('editorCreation/EditorExtraInfo.php');
 require_once('editorCreation/EditorMedia.php');
+require_once('editorCreation/EditorExternalLink.php');
+
 
 $m = optional_param('mid', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 //// to get the msm instance id when the save button is clicked

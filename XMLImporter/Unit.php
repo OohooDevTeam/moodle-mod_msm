@@ -87,7 +87,9 @@ class Unit extends Element
     public $plain_title;
     public $short_name;
     public $description;
+    public $tagname;
     public $extraContents = array();
+    public $subunits = array();
 
     function __construct($xmlpath = '')
     {
@@ -106,12 +108,11 @@ class Unit extends Element
      */
     function loadFromXml($DomElement, $position = '')
     {
-        global $DB;
-
         $this->position = $position; // keeps track of order of contents
 
         $this->string_id = $DomElement->getAttribute('unitid');
         $this->standalone = $DomElement->getAttribute('standalone');
+        $this->tagname = $DomElement->getAttribute("tagname");
 
         $doc = new DOMDocument();
 
@@ -119,7 +120,6 @@ class Unit extends Element
         {
             $element = $doc->importNode($DomElement, true);
 
-            $this->subunits = array(); //stores all the subunits under legitimate.children element of XML file
             $this->authors = array();
             $this->block = array();
             $this->preface = array();
@@ -250,7 +250,7 @@ class Unit extends Element
                             }
                         }//end of dates foreach statement
                     }
-                    else if (($child->tagName == 'acknowledgements') || ($child->tagName == 'preface')|| ($child->tagName == 'summary') || ($child->tagName == 'historical.notes') || ($child->tagName == 'trailer'))
+                    else if (($child->tagName == 'acknowledgements') || ($child->tagName == 'preface') || ($child->tagName == 'summary') || ($child->tagName == 'historical.notes') || ($child->tagName == 'trailer'))
                     {
                         $position = $position + 1;
                         $extrainfo = new ExtraInfo($this->xmlpath);
@@ -508,7 +508,7 @@ class Unit extends Element
                 $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => 0))->id;
             }
         }
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
 
         // for inserting unit records in to compositor table
@@ -782,8 +782,8 @@ class Unit extends Element
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = explode('-', $element);
-                    $subunitRecord = $this->checkForRecord($msmid, $this->subunits[$subunitString[1]]);   
-                    
+                    $subunitRecord = $this->checkForRecord($msmid, $this->subunits[$subunitString[1]]);
+
 //                    echo "is there  a subunit Record?";
 //                    print_object($subunitRecord);
 
@@ -791,7 +791,7 @@ class Unit extends Element
                     {
                         if (empty($sibling_id))
                         {
-                            $subunit = $this->subunits[$subunitString[1]];                            
+                            $subunit = $this->subunits[$subunitString[1]];
                             $subunit->saveIntoDb($subunit->position, $msmid, $this->compid);
                             $sibling_id = $subunit->compid;
                         }
@@ -1350,6 +1350,23 @@ class Unit extends Element
 //
 //        print_object($newpath);
 //        return $newpath;
+    }
+
+    function updateUnitNames($oldnameArray, $msmid, $depth)
+    {
+        global $DB;
+
+        $updateData = new stdClass();
+        $updateData->id = $oldnameArray[$depth];
+        $updateData->depth = $depth;
+        $updateData->msmid = $msmid;
+        $updateData->unitname = $this->tagname;
+
+        $DB->update_record("msm_unit_name", $updateData);
+        if (!empty($this->subunits))
+        {
+            $this->subunits[0]->updateUnitNames($oldnameArray, $msmid, $depth + 1);
+        }
     }
 
 }

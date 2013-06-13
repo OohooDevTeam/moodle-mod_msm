@@ -42,6 +42,7 @@ require_once('EditorTable.php');
 require_once('EditorSubordinate.php');
 require_once('EditorExtraInfo.php');
 require_once('EditorMedia.php');
+require_once('EditorExternalLink.php');
 
 require_once('../XMLImporter/TableCollection.php');
 

@@ -21,7 +21,7 @@ class EditorInfo extends EditorElement
     public $subordinates = array();
     public $medias = array();
     public $ref;
-
+    
     function __construct()
     {
         $this->tablename = 'msm_info';
@@ -378,7 +378,7 @@ class EditorInfo extends EditorElement
 
             $htmlContent .= "</div>";
         }
-        else if ($parentTable->tablename == 'msm_subordinate')
+        else if (($parentTable->tablename == 'msm_subordinate') || ($parentTable->tablename == "msm_external_link"))
         {
 
             $idEndingInfo = explode("-", $idEnding);
@@ -436,7 +436,7 @@ class EditorInfo extends EditorElement
         $this->id = $infoCompRecord->unit_id;
 
         $infoRecord = $DB->get_record($this->tablename, array('id' => $this->id));
-
+        
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
 

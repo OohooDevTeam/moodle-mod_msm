@@ -111,6 +111,8 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         // matching all the property defining the unit names
         $match = '/^(top|child)level(\d+)*$/';
         $depth = 0;
+        $unitnameIdArray = array();
+
         foreach ($msm as $property => $value)
         {
             if (preg_match($match, trim($property)))
@@ -119,7 +121,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 $unitNameTableData->msmid = $msm->id;
                 $unitNameTableData->unitname = $value;
                 $unitNameTableData->depth = $depth;
-                $DB->insert_record('msm_unit_name', $unitNameTableData);
+                $unitnameIdArray[$depth] = $DB->insert_record('msm_unit_name', $unitNameTableData);
                 $depth++;
             }
             else if (trim($property) == "standalone")
@@ -128,7 +130,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 $unitNameTableData->msmid = $msm->id;
                 $unitNameTableData->unitname = $value;
                 $unitNameTableData->depth = -1;
-                $DB->insert_record('msm_unit_name', $unitNameTableData);
+                $unitnameIdArray[$depth] = $DB->insert_record('msm_unit_name', $unitNameTableData);
             }
             else if (trim($property) == 'additionalChild')
             {
@@ -140,7 +142,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                         $unitNameTableData->msmid = $msm->id;
                         $unitNameTableData->unitname = $moreChild;
                         $unitNameTableData->depth = $depth;
-                        $DB->insert_record('msm_unit_name', $unitNameTableData);
+                        $unitnameIdArray[$depth] = $$DB->insert_record('msm_unit_name', $unitNameTableData);
                         $depth++;
                     }
                 }
@@ -160,8 +162,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
         if (!empty($draftitemid))
         {
-
-            file_save_draft_area_files($draftitemid, $context->id, 'mod_msm', 'editor', $msm->importElement);
+            file_save_draft_area_files($draftitemid, $context->id, 'mod_msm', 'editor', $msm->importElement);            
             $fs = get_file_storage();
             $files = $fs->get_area_files($context->id, "mod_msm", 'editor', $draftitemid);
 
@@ -224,8 +225,8 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 $importedunit = new Unit($msmdirpath, $newXMLparser);
                 $position = 1;
                 $importedunit->loadFromXml($newXMLparser->documentElement, $position);
-
-//                print_object($importedunit);
+                
+                $importedunit->updateUnitNames($unitnameIdArray, $msm->id, 0);
 
                 $importedunit->saveIntoDb($importedunit->position, $msm->id);
             }
@@ -263,7 +264,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     }
 //    echo "done";
 //    die;
-    
+
     return $msm->id;
 }
 

@@ -17,6 +17,7 @@ class EditorSubordinate extends EditorElement
     public $compid;
     public $hot;
     public $info;
+    public $external_link;
 
     // no errorArray necessary b/c null input has been checked already
     // when the subordinate was made
@@ -49,9 +50,42 @@ class EditorSubordinate extends EditorElement
         }
         $idEnding .= $idInfo[sizeof($idInfo) - 1];
 
-        $info = new EditorInfo();
-        $info->getFormData($idEnding . "|sub");
-        $this->info = $info;
+        $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
+//
+        $tempallSubordinates = explode("//|", $allSubordinateValues);
+
+        // copying the array from string processing above (due to it ending in comma, the last
+        // element is empty)
+        $allSubordinates = array();
+
+        for ($i = 0; $i < sizeof($tempallSubordinates); $i++)
+        {
+            $allSubordinates[] = $tempallSubordinates[$i];
+        }
+
+        $hasLink = false;
+        foreach ($allSubordinates as $index => $subordinate)
+        {
+            $idValuePair = explode("||", $subordinate);
+
+            if (strpos($idValuePair[0], $idEnding) !== false)
+            {
+                if (strpos($idValuePair[0], 'url') !== false)
+                {
+                    $external_link = new EditorExternalLink();
+                    $external_link->getFormData($idEnding);
+                    $this->external_link = $external_link;
+                    $hasLink = true;
+                }
+            }
+        }
+
+        if (!$hasLink)
+        {
+            $info = new EditorInfo();
+            $info->getFormData($idEnding . "|sub");
+            $this->info = $info;
+        }
 
         return $this;
     }
@@ -73,6 +107,11 @@ class EditorSubordinate extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
+
+        if (!empty($this->external_link))
+        {
+            $this->external_link->insertData($this->compid, 0, $msmid);
+        }
 
         if (!empty($this->info))
         {
@@ -122,11 +161,27 @@ class EditorSubordinate extends EditorElement
         }
         $htmlContent .= "</div>";
 
-        $htmlContent .= "<div id='msm_subordinate_hotword_match-$idEnding' class='msm_subordinate_hotword_matchs'>";
-        $htmlContent .= $hotIdInfo[0];
-        $htmlContent .= "</div>";
+        if (!empty($this->external_link))
+        {
+            $htmlContent .= "<div id='msm_subordinate_url-$idEnding'>";
+            $htmlContent .= $this->external_link->href;
+            $htmlContent .= "</div>";
 
-        $htmlContent .= $this->info->displayData($parentId, $idEnding);
+            $htmlContent .= "<div id='msm_subordinate_hotword_match-$idEnding' class='msm_subordinate_hotword_matchs'>";
+            $htmlContent .= $hotIdInfo[0];
+            $htmlContent .= "</div>";
+
+            $htmlContent .= $this->external_link->info->displayData($parentId, $idEnding);
+        }
+        else
+        {
+            $htmlContent .= "<div id='msm_subordinate_hotword_match-$idEnding' class='msm_subordinate_hotword_matchs'>";
+            $htmlContent .= $hotIdInfo[0];
+            $htmlContent .= "</div>";
+
+            $htmlContent .= $this->info->displayData($parentId, $idEnding);
+        }
+
 
         return $htmlContent;
     }
@@ -161,6 +216,12 @@ class EditorSubordinate extends EditorElement
                 $info->loadData($child->id);
                 $this->info = $info;
             }
+            else if ($childTable->tablename == "msm_external_link")
+            {
+                $external_link = new EditorExternalLink();
+                $external_link->loadData($child->id);
+                $this->external_link = $external_link;
+            }
         }
         return $this;
     }
@@ -179,7 +240,15 @@ class EditorSubordinate extends EditorElement
         }
         $id .= $indexInfo[sizeof($indexInfo) - 1];
 
-        $previewHtml .= $this->info->displayPreview($id);
+        if (!empty($this->external_link))
+        {
+            $previewHtml .= $this->external_link->displayPreview($id);
+        }
+
+        if (!empty($this->info))
+        {
+            $previewHtml .= $this->info->displayPreview($id);
+        }
 
         return $previewHtml;
     }

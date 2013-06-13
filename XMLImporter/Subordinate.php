@@ -114,7 +114,7 @@ class Subordinate extends Element
         global $DB;
 
         $data = new stdClass();
-        $data->hot = $position . "|| " . $this->hot;
+        $data->hot = "msm_subordinate_hotword-" . $position . "|| " . $this->hot;
 
         // checking for duplicate records
         $numOfRecords = $DB->count_records($this->tablename);
