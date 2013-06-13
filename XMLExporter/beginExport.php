@@ -25,6 +25,7 @@ require_once("ExportInfo.php");
 require_once("ExportSubordinate.php");
 require_once("ExportMedia.php");
 require_once("ExportImage.php");
+require_once("ExportExternalLink.php");
 
 global $DB, $CFG;
 

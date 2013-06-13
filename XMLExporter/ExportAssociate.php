@@ -12,7 +12,6 @@
  */
 class ExportAssociate extends ExportElement
 {
-
     public $id;
     public $compid;
     public $description;

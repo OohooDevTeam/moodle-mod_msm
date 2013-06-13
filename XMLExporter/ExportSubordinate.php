@@ -17,6 +17,7 @@ class ExportSubordinate extends ExportElement
     public $compid;
     public $hot;
     public $info;
+    public $external_link;
 
     //put your code here
     public function exportData()
@@ -54,18 +55,22 @@ class ExportSubordinate extends ExportElement
         $this->compid = $compid;
         $this->hot = $subordinateUnitRecord->hot;
 
-        $infoRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
-
-        if (!empty($infoRecord))
+        $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
+        $childTable = $DB->get_record("msm_table_collection", array("id"=>$childRecord->table_id));
+        
+        if($childTable->tablename == "msm_info")
         {
             $info = new ExportInfo();
-            $info->loadDbData($infoRecord->id);
+            $info->loadDbData($childRecord->id);
             $this->info = $info;
         }
-        else
+        else if($childTable->tablename == "msm_external_link")
         {
-            echo "empty info record";
+            $externalLink = new ExportExternalLink();
+            $externalLink->loadDbData($childRecord->id);
+            $this->external_link = $externalLink;
         }
+
 
         return $this;
     }
