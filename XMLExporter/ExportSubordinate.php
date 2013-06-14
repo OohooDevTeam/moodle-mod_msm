@@ -40,6 +40,12 @@ class ExportSubordinate extends ExportElement
             $importInfoNode = $subordinateCreator->importNode($infoNode, true);
             $subordinateNode->appendChild($importInfoNode);
         }
+        if(!empty($this->external_link))
+        {
+            $extLinkNode = $this->external_link->exportData();
+            $importExtLinkNode = $subordinateCreator->importNode($extLinkNode, true);
+            $subordinateNode->appendChild($importExtLinkNode);
+        }
 
         return $subordinateNode;
     }

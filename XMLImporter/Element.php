@@ -416,7 +416,21 @@ abstract class Element
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
             $hot->setAttribute("id", "msm_subordinate_hotword-" . $position);
             $hot->setAttribute("class", "msm_subordinate_hotwords");
-            $hot->setAttribute("href", "#");
+            $externalLinks = $subordinates->item(0)->getElementsByTagName("external.link");
+
+            if ($externalLinks->length > 0)
+            {
+                $externalLink = $externalLinks->item(0);
+                $hrefAttr = $externalLink->getAttribute("href");
+                $targetAttr = $externalLink->getAttribute("target");
+                $hot->setAttribute("href", $hrefAttr);
+                $hot->setAttribute("target", $targetAttr);
+            }
+            else
+            {
+                $hot->setAttribute("href", "#");
+            }
+
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
 
@@ -941,6 +955,9 @@ abstract class Element
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
+        
+        // cannot have <br> b/c loadXML function reads it as mismatched tag
+        $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);
 
         $doc->loadXML($XMLcontent);
 
@@ -1078,6 +1095,7 @@ abstract class Element
                     if (!empty($subordinate->external_links[0]))
                     {
                         $newtag = '';
+
                         if (!$isindex)
                         {
                             $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->infos[0]->compid . "' class='externallink' target='" . $subordinate->external_links[0]->target . "' onmouseover='popup(" . $subordinate->external_links[0]->infos[0]->compid . ")'>";

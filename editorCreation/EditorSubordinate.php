@@ -72,10 +72,13 @@ class EditorSubordinate extends EditorElement
             {
                 if (strpos($idValuePair[0], 'url') !== false)
                 {
-                    $external_link = new EditorExternalLink();
-                    $external_link->getFormData($idEnding);
-                    $this->external_link = $external_link;
-                    $hasLink = true;
+                    if ($idValuePair[0] == 'msm_subordinate_url-' . $idEnding)
+                    {
+                        $external_link = new EditorExternalLink();
+                        $external_link->getFormData($idEnding);
+                        $this->external_link = $external_link;
+                        $hasLink = true;
+                    }
                 }
             }
         }
@@ -130,7 +133,11 @@ class EditorSubordinate extends EditorElement
         $hotIdInfo = explode("||", $this->hot);
         $idInfo = explode("-", $hotIdInfo[0]);
 
-        if (sizeof($idInfo) > 1)
+        if (sizeof($idInfo) == 2)
+        {
+            $idEnding = $idInfo[1];
+        }
+        else if (sizeof($idInfo) > 2)
         {
             $matchString = $idInfo[1];
             for ($i = 2; $i < sizeof($idInfo); $i++)

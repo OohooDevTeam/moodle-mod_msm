@@ -24,7 +24,7 @@ abstract class ExportElement
 
     function createXmlContent($DomDocument, $content, $DomNode, $object = '')
     {
-        $anchorArray = array();      
+        $anchorArray = array();
 
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
@@ -84,6 +84,8 @@ abstract class ExportElement
                                 $img->parentNode->replaceChild($mediaElement, $img);
                             }
                         }
+
+                        $this->processMath($child, $contentDoc);
                     }
                     $newChildNode = $this->replacePTags($DomDocument, $child);
                     $childNode = $DomDocument->importNode($newChildNode, true);
@@ -123,7 +125,7 @@ abstract class ExportElement
                     if (!empty($object))
                     {
                         $atags = $child->getElementsByTagName("a");
-                        
+
                         // need a copy of anchored element nodelist b/c 
                         // when the anchored element is replaced with its XML counter part,
                         // it loses items in the nodelist 
@@ -165,6 +167,7 @@ abstract class ExportElement
                             $img->parentNode->replaceChild($mediaElement, $img);
                         }
                     }
+                    $this->processMath($child, $contentDoc);
 
                     $childNode = $DomDocument->importNode($child, true);
                 }
@@ -178,6 +181,28 @@ abstract class ExportElement
         }
 
         return $DomNode;
+    }
+
+    function processMath($DomElement, $DomDocument)
+    {
+        $mathSpans = $DomElement->getElementsByTagName("span");
+
+        foreach ($mathSpans as $math)
+        {
+            if ($math->getAttribute("class") == "matheditor")
+            {
+                $mathNode = $DomDocument->createElement("math");
+                $latexNode = $DomDocument->createElement("latex");
+
+                $innerMathText = preg_replace("/\\(.*\\)/", "$1", $math->textContent);
+
+                $innerTextNode = $DomDocument->createTextNode($innerMathText);
+                $latexNode->appendChild($innerTextNode);
+                $mathNode->appendChild($latexNode);
+                
+                $math->parentNode->replaceChild($mathNode, $math);
+            }
+        }
     }
 
     function replacePTags($DomDocument, $DomElement)

@@ -44,7 +44,7 @@ class EditorExternalLink extends EditorElement
         foreach ($allSubordinates as $index => $subordinate)
         {
             $idValuePair = explode("||", $subordinate);
-
+            
             if (strpos($idValuePair[0], $idNumber) !== false)
             {
                 if (strpos($idValuePair[0], 'url') !== false)
@@ -117,6 +117,18 @@ class EditorExternalLink extends EditorElement
             $info->loadData($childRecord->id);
             $this->info = $info;
         }
+    }
+    
+    public function displayPreview($id)
+    {
+        $previewHtml = '';
+        
+        if (!empty($this->info))
+        {
+            $previewHtml .= $this->info->displayPreview($id);
+        }
+        
+        return $previewHtml;
     }
 
 }

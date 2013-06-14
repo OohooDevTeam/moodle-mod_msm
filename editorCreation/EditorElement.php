@@ -117,7 +117,7 @@ abstract class EditorElement
 
         return $subordinates;
     }
-
+    
     function processImage($content)
     {
         $medias = array();

@@ -155,6 +155,10 @@ function submitForm()
                             });                           
                         },
                         close: function() {
+                            $("#msm_preview_dialog").find(".msm_subordinate_hotwords").each(function() {
+                                console.log("unbindng click event in this element: " +this.id);
+                                $(this).unbind();
+                            });
                             $(".msm_info_dialogs").dialog("destroy");
                             $("#msm_mode_info").empty().remove();                            
                         } 
@@ -177,6 +181,8 @@ function submitForm()
                         }
                             
                         newid += idInfo[idInfo.length-1];
+                        
+                        console.log("calling previeInfo method with this element: "+this.id);
                         
                         previewInfo(this.id, "dialog-"+newid);
                     });
@@ -561,10 +567,10 @@ function disableEditorFunction()
 function previewInfo(elementid, dialogid)
 {     
     var x = 0; // stores the x-axis position of the mouse
-    var y = 0; // stores the y-axis position of the mouse  
-
-    $("#msm_preview_dialog #"+elementid).unbind("click");
-    $("#msm_preview_dialog #"+elementid).click(function(e) {
+    var y = 0; // stores the y-axis position of the mouse   
+ 
+    $("#msm_preview_dialog #"+elementid).unbind();
+    $("#msm_preview_dialog #"+elementid).click(function(e) { 
         x = e.clientX+5;
         y = e.clientY+5;
     

@@ -25,6 +25,12 @@ class Subordinate extends Element
     public $position;
     public $hot;
     public $subpage;
+    public $external_links = array();
+    public $infos = array();
+    public $companions = array();
+    public $external_refs = array();
+    public $crossrefs = array();
+    public $cites = array();
 
     function __construct($xmlpath = '')
     {
@@ -40,12 +46,6 @@ class Subordinate extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         global $DB;
-        $this->infos = array();
-        $this->companions = array();
-        $this->external_refs = array();
-        $this->crossrefs = array();
-        $this->cites = array();
-        $this->external_links = array();
 
         if ($DomElement != null)
         {
