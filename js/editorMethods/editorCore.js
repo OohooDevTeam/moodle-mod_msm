@@ -285,7 +285,7 @@ function initEditor(elId)
         M.editor_tinymce.init_editor(Y, elId, {
             mode:"exact",
             elements: elId,
-            plugins:"safari,table,style,layer,advhr,advlink,emotions,inlinepopups,imagemapper,subordinate,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
+            plugins:"matheditor,safari,table,style,layer,advhr,advlink,emotions,inlinepopups,imagemapper,subordinate,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
             width: "100%",
             height: "70%",
             theme_advanced_font_sizes:"1,2,3,4,5,6,7",
@@ -302,8 +302,8 @@ function initEditor(elId)
             langrev:-1,
             theme_advanced_buttons1:"fontselect,fontsizeselect,formatselect,|,undo,redo,|,search,replace,|,fullscreen",
             theme_advanced_buttons2:"bold,italic,underline,strikethrough,sub,sup,|,justifyleft,justifycenter,justifyright,|,cleanup,removeformat,pastetext,pasteword,|,forecolor,backcolor,|,ltr,rtl",
-            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,subordinate,|,image,imagemapper,moodlemedia,dragmath,nonbreaking,charmap,table,|,code,spellchecker",
-            moodle_init_plugins:"dragmath:loader.php/dragmath/-1/editor_plugin.js,moodlenolink:loader.php/moodlenolink/-1/editor_plugin.js,spellchecker:loader.php/spellchecker/-1/editor_plugin.js,moodleimage:loader.php/moodleimage/-1/editor_plugin.js,moodlemedia:loader.php/moodlemedia/-1/editor_plugin.js",
+            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,subordinate,|,image,imagemapper,moodlemedia,matheditor,nonbreaking,charmap,table,|,code,spellchecker",
+            moodle_init_plugins:"dragmath:loader.php/dragmath/-1/editor_plugin.js,moodlenolink:loader.php/moodlenolink/-1/editor_plugin.js,spellchecker:loader.php/spellchecker/-1/editor_plugin.js,moodleimage:loader.php/moodleimage/-1/editor_plugin.js,moodlemedia:loader.php/moodlemedia/-1/editor_plugin.js,matheditor:loader.php/matheditor/-1/editor_plugin.js",
             file_browser_callback:"M.editor_tinymce.filepicker",
             moodle_plugin_base: M.cfg.wwwroot+"/lib/editor/tinymce/plugins/"
         })
@@ -317,7 +317,7 @@ function noSubInitEditor(elId)
         M.editor_tinymce.init_editor(Y, elId, {
             mode:"exact",
             elements: elId,
-            plugins:"safari,table,style,layer,advhr,advlink,emotions,inlinepopups,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
+            plugins:"matheditor,safari,table,style,layer,advhr,advlink,emotions,inlinepopups,searchreplace,paste,directionality,fullscreen,nonbreaking,contextmenu,insertdatetime,save,iespell,preview,print,noneditable,visualchars,xhtmlxtras,template,pagebreak,-dragmath,-moodlenolink,-spellchecker,-moodleimage,-moodlemedia",
             width: "100%",
             height: "70%",
             theme_advanced_font_sizes:"1,2,3,4,5,6,7",
@@ -334,8 +334,8 @@ function noSubInitEditor(elId)
             langrev:-1,
             theme_advanced_buttons1:"fontselect,fontsizeselect,formatselect,|,undo,redo,|,search,replace,|,fullscreen",
             theme_advanced_buttons2:"bold,italic,underline,strikethrough,sub,sup,|,justifyleft,justifycenter,justifyright,|,cleanup,removeformat,pastetext,pasteword,|,forecolor,backcolor,|,ltr,rtl",
-            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,|,dragmath,nonbreaking,charmap,table,|,code,spellchecker",
-            moodle_init_plugins:"dragmath:loader.php/dragmath/-1/editor_plugin.js,moodlenolink:loader.php/moodlenolink/-1/editor_plugin.js,spellchecker:loader.php/spellchecker/-1/editor_plugin.js,moodleimage:loader.php/moodleimage/-1/editor_plugin.js,moodlemedia:loader.php/moodlemedia/-1/editor_plugin.js",
+            theme_advanced_buttons3:"bullist,numlist,outdent,indent,|,link,unlink,moodlenolink,|,matheditor,nonbreaking,charmap,table,|,code,spellchecker",
+            moodle_init_plugins:"dragmath:loader.php/dragmath/-1/editor_plugin.js,moodlenolink:loader.php/moodlenolink/-1/editor_plugin.js,spellchecker:loader.php/spellchecker/-1/editor_plugin.js,moodleimage:loader.php/moodleimage/-1/editor_plugin.js,moodlemedia:loader.php/moodlemedia/-1/editor_plugin.js,matheditor:loader.php/matheditor/-1/editor_plugin.js",
             file_browser_callback:"M.editor_tinymce.filepicker",
             moodle_plugin_base: M.cfg.wwwroot+"/lib/editor/tinymce/plugins/"
         })

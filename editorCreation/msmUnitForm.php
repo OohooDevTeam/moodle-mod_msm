@@ -388,6 +388,7 @@ else
     // user triggered the view button on navigation menu to get a preview of the unit
     else if (!empty($_POST['msm_mode_info']))
     {
+        print_object($_POST);
         $previewHtml = '';
 
         $previewHtml .= $unit->displayPreview();

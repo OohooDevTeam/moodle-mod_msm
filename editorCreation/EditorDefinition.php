@@ -215,7 +215,7 @@ class EditorDefinition extends EditorElement
             $data->def_content = $this->content;
             $this->id = $DB->update_record($this->tablename, $data);
         }
-        
+
         $subordinate_sibling = 0;
         foreach ($this->subordinates as $subordinate)
         {
@@ -509,6 +509,8 @@ class EditorDefinition extends EditorElement
      */
     public function displayPreview($id = '')
     {
+        global $DB;
+
         $previewHtml = '';
 
         $previewHtml .= "<br />";
@@ -529,6 +531,8 @@ class EditorDefinition extends EditorElement
 
         $previewHtml .= $this->content;
 
+
+//        print_object($this->content);
 //        $previewHtml .= $this->previewSubordinate("<div>$this->content</div>", $this->subordinates);
 //        $previewHtml .= "<br />";
         $previewHtml .= "</div>";
