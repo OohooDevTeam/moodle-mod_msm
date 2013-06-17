@@ -162,15 +162,16 @@ abstract class Element
                 if ($child->nodeType == XML_ELEMENT_NODE)
                 {
                     // if the child node is math, then convert the XML to a string then replace the tags with appropriate
-                    // mathjax inline math configuration(ie, '$')
+                    // mathjax inline math configuration(ie, '\(...\)')\
+                    // and added the span tag for the math editor editing function to be valid
                     if ($child->tagName == 'math')
                     {
                         $content .= $doc->saveXML($child);
 
                         $content = preg_replace('/^<math xmlns=(.+)>/', '<math>', $content);
 
-                        $content = preg_replace('/<math>\s+<latex>/', '$', $content);
-                        $content = preg_replace('/<\/latex>\s+<\/math>/', '$', $content);
+                        $content = preg_replace('/<math>\s+<latex>/', '<span class="matheditor">\(', $content);
+                        $content = preg_replace('/<\/latex>\s+<\/math>/', '\)</span>', $content);
                         $content = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $content);
                         // replacing \RNr[...] to \RNr{...}
                         // need to escape twice because it is parsed twice 
@@ -495,6 +496,7 @@ abstract class Element
             $string = str_replace('<cell', '<td', $string);
             $string = str_replace('</cell>', '</td>', $string);
 
+            // TODO: might be able to not change para.body to anything? just replace with empty string?
             $string = str_replace('<para.body', '<span', $string);
             $string = str_replace('</para.body>', '</span>', $string);
 
@@ -517,8 +519,8 @@ abstract class Element
             $string = preg_replace('/<\/latex>\s+<\/math.display>/', '$$', $string);
             $string = preg_replace('/<math.display>\s+<latex\/>\s+<\/math.display>/', '', $string);
 
-            $string = preg_replace('/<math>\s+<latex>/', '$', $string);
-            $string = preg_replace('/<\/latex>\s+<\/math>/', '$', $string);
+            $string = preg_replace('/<math>\s*<latex>/', '<span class="matheditor">\(', $string);
+            $string = preg_replace('/<\/latex>\s*<\/math>/', '\)</span>', $string);
             $string = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $string);
 
             // ? needed to make it ungreedy
@@ -955,7 +957,7 @@ abstract class Element
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
-        
+
         // cannot have <br> b/c loadXML function reads it as mismatched tag
         $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);
 

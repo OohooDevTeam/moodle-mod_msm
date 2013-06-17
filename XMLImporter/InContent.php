@@ -57,50 +57,51 @@ class InContent extends Element
                 $this->type = 'ordered';
                 $this->additional_attribute = $DomElement->getAttribute('type');
 
-                foreach ($DomElement->childNodes as $child)
-                {
-                    if ($child->nodeType == XML_ELEMENT_NODE)
-                    {
-                        if ($child->tagName == 'li')
-                        {
-                            foreach ($child->childNodes as $grandChild)
-                            {
-                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
-                                {
-                                    $position++;
-                                    $block = new Block($this->xmlpath);
-                                    $block->loadFromXml($grandChild, $position);
-                                    $this->childContents[] = $block;
-                                }
-                            }
-                        }
-                    }
-                }
+                // no idea why this code is here?
+//                foreach ($DomElement->childNodes as $child)
+//                {
+//                    if ($child->nodeType == XML_ELEMENT_NODE)
+//                    {
+//                        if ($child->tagName == 'li')
+//                        {
+//                            foreach ($child->childNodes as $grandChild)
+//                            {
+//                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
+//                                {
+//                                    $position++;
+//                                    $block = new Block($this->xmlpath);
+//                                    $block->loadFromXml($grandChild, $position);
+//                                    $this->childContents[] = $block;
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
                 break;
 
             case('ul'):
                 $this->type = 'unordered';
                 $this->additional_attribute = $DomElement->getAttribute('bullet');
 
-                foreach ($DomElement->childNodes as $child)
-                {
-                    if ($child->nodeType == XML_ELEMENT_NODE)
-                    {
-                        if ($child->tagName == 'li')
-                        {
-                            foreach ($child->childNodes as $grandChild)
-                            {
-                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
-                                {
-                                    $position++;
-                                    $block = new Block($this->xmlpath);
-                                    $block->loadFromXml($grandChild, $position);
-                                    $this->childContents[] = $block;
-                                }
-                            }
-                        }
-                    }
-                }
+//                foreach ($DomElement->childNodes as $child)
+//                {
+//                    if ($child->nodeType == XML_ELEMENT_NODE)
+//                    {
+//                        if ($child->tagName == 'li')
+//                        {
+//                            foreach ($child->childNodes as $grandChild)
+//                            {
+//                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
+//                                {
+//                                    $position++;
+//                                    $block = new Block($this->xmlpath);
+//                                    $block->loadFromXml($grandChild, $position);
+//                                    $this->childContents[] = $block;
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
                 break;
 
             case('math.display'):

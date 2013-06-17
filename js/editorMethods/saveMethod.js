@@ -152,11 +152,11 @@ function submitForm()
                             $('#MySplitter').split({
                                 orientation: 'vertical',
                                 position: '50%'
-                            });                           
+                            });   
+                            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);   
                         },
                         close: function() {
                             $("#msm_preview_dialog").find(".msm_subordinate_hotwords").each(function() {
-                                console.log("unbindng click event in this element: " +this.id);
                                 $(this).unbind();
                             });
                             $(".msm_info_dialogs").dialog("destroy");
@@ -181,8 +181,6 @@ function submitForm()
                         }
                             
                         newid += idInfo[idInfo.length-1];
-                        
-                        console.log("calling previeInfo method with this element: "+this.id);
                         
                         previewInfo(this.id, "dialog-"+newid);
                     });

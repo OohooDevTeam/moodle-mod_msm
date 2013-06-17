@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -53,14 +54,15 @@ class EditorStatementTheorem extends EditorElement
         {
             if ($_POST["msm_theoremref_content_input-" . $idInfo[0]] != '')
             {
-                $this->content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
+                $content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
+                $this->content = $this->processMath($content);
 
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
-                
-                foreach($this->processImage($this->content) as $key => $media)
+
+                foreach ($this->processImage($this->content) as $key => $media)
                 {
                     $this->medias[] = $media;
                 }
@@ -97,14 +99,15 @@ class EditorStatementTheorem extends EditorElement
         {
             if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
             {
-                $this->content = $_POST['msm_theorem_content_input-' . $idNumber];
+                $content = $_POST['msm_theorem_content_input-' . $idNumber];
+                $this->content = $this->processMath($content);
 
                 foreach ($this->processSubordinate($this->content) as $key => $subordinates)
                 {
                     $this->subordinates[] = $subordinates;
                 }
-                
-                foreach($this->processImage($this->content) as $key => $media)
+
+                foreach ($this->processImage($this->content) as $key => $media)
                 {
                     $this->medias[] = $media;
                 }
@@ -138,7 +141,7 @@ class EditorStatementTheorem extends EditorElement
                 }
             }
         }
-        
+
 //        print_object($this);
 
         return $this;
@@ -191,7 +194,7 @@ class EditorStatementTheorem extends EditorElement
             $partTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $partTheorem->compid;
         }
-        
+
         $media_sibliing = 0;
         $content = '';
         foreach ($this->medias as $key => $media)
@@ -328,16 +331,16 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theoremref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        
-        $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefcontent$parentId-$this->compid'>";
-        $htmlContent .= "</div>";        
-        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefcontent$parentId-$this->compid'>";        
-        foreach($this->subordinates as $subordinate)
+
+        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefcontent$parentId-$this->compid'>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefcontent$parentId-$this->compid'>";
+        foreach ($this->subordinates as $subordinate)
         {
             $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
-        }        
+        }
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<div id='msm_theoremref_part_droparea-$parentId-$this->compid' class='msm_theoremref_part_dropareas'>";
         foreach ($this->children as $partTheorem)
         {

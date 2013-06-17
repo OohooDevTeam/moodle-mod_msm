@@ -79,7 +79,9 @@ class EditorDefinition extends EditorElement
 
             if ($_POST['msm_defref_content_input-' . $newId] != '')
             {
-                $this->content = $_POST['msm_defref_content_input-' . $newId];
+                $content = $_POST['msm_defref_content_input-' . $newId];
+                
+                $this->content = $this->processMath($content);
 
                 foreach ($this->processImage($this->content) as $key => $media)
                 {
@@ -107,7 +109,9 @@ class EditorDefinition extends EditorElement
 
             if ($_POST['msm_def_content_input-' . $idNumber] != '')
             {
-                $this->content = $_POST['msm_def_content_input-' . $idNumber];
+                $content = $_POST['msm_def_content_input-' . $idNumber];
+                
+                $this->content = $this->processMath($content);
 
                 foreach ($this->processImage($this->content) as $key => $media)
                 {

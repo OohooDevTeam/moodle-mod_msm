@@ -378,7 +378,7 @@ function showUnitPreview()
         dataArray["msm_unit_subordinate_container"] = subordinateString;       
         
         dataArray["msm_file_options"] = JSON.stringify(tinymce_filepicker_options);
-                
+        
         var ids = [];
         $.ajax({
             type: "POST",
@@ -433,10 +433,6 @@ function showUnitPreview()
                             
                     newid += idInfo[idInfo.length-1];
                     
-                    console.log("msm_preview_dialog");
-                    console.log("newid: "+newid);
-                    console.log($("#dialog-"+newid));
-                    
                     $("#dialog-"+newid).dialog({
                         autoOpen: false,
                         height: "auto",
@@ -457,11 +453,6 @@ function showUnitPreview()
                     }
                             
                     newid += idInfo[idInfo.length-1];
-                    
-                    console.log("msm_info_dialogs");
-                    console.log("newid: "+newid);
-                    console.log($("#dialog-"+newid));
-                        
                     $("#dialog-"+newid).dialog({
                         autoOpen: false,
                         height: "auto",

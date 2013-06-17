@@ -204,7 +204,7 @@ class EditorBlock extends EditorElement
         }
 
         $this->type = "extra";
-
+        
         return $this;
     }
 
@@ -221,7 +221,7 @@ class EditorBlock extends EditorElement
      */
     public function insertData($parentid, $siblingid, $msmid)
     {
-        global $DB;
+        global $DB;        
 
         $data = new stdClass();
         $data->block_caption = $this->title;

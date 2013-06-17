@@ -45,11 +45,19 @@ class Intro extends Element
 
         $this->blocks = array();
 
-        foreach ($blocks as $b)
+        foreach ($blocks as $key => $b)
         {
             $position = $position + 1;
             $block = new Block($this->xmlpath);
-            $block->loadFromXml($b, $position);
+            // to make sure that the first block caption goes to intro caption instead of going to the block
+            if ($key == 0)
+            {
+                $block->loadFromXml($b, $position, "intro-$key");
+            }
+            else
+            {
+                $block->loadFromXml($b, $position);
+            }
             $this->blocks[] = $block;
         }
     }
@@ -70,22 +78,11 @@ class Intro extends Element
 
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
-
-        $elementPosition = array();
+        $sibling_id = 0;
         foreach ($this->blocks as $key => $block)
         {
-            $elementPosition['block' . '-' . $key] = $block->position;
-        }
-
-        asort($elementPosition);
-
-        $sibling_id = 0;
-        foreach ($elementPosition as $element => $value)
-        {
-            $blockString = explode('-', $element);
-
-            $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $msmid, $this->compid, $sibling_id);
-            $sibling_id = $this->blocks[$blockString[1]]->compid;
+            $block->saveIntoDb($position, $msmid, $this->compid, $sibling_id);
+            $sibling_id = $block->compid;
         }
     }
 
@@ -107,6 +104,8 @@ class Intro extends Element
             {
                 $childTable = $DB->get_record("msm_table_collection", array('id' => $child->table_id));
 
+                // these conditional statements are to accomodate for the difference in db structure between legacy material import and the newly
+                // exported materials --> only a temporary solution till the legacy material importer is fixed
                 if ($childTable->tablename == 'msm_block')
                 {
                     $block = new Block();
@@ -128,7 +127,7 @@ class Intro extends Element
                 $this->blocks[] = $block;
             }
         }
-        
+
         return $this;
     }
 

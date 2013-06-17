@@ -133,6 +133,8 @@ class ExportPara extends ExportElement
                 $img->parentNode->replaceChild($mediaElement, $img);
             }
         }
+        
+        $this->exportMath($contentNode, $contentDoc);
 
         $newpNode = $this->replacePTags($contentDoc, $contentNode);
 

@@ -45,244 +45,134 @@ class Block extends Element
         $this->tablename = "msm_block";
     }
 
-    function loadFromXml($DomElement, $position = '')
+    function loadFromXml($DomElement, $position = '', $flag = '')
     {
         global $DB;
 
         $this->position = $position;
 
-        $xmlparser = new DOMDocument();
-
-        foreach ($DomElement->childNodes as $bodyChild)
+        if (empty($flag))
         {
-            if ($bodyChild->nodeType == XML_ELEMENT_NODE)
+            $caption = $DomElement->getElementsByTagName("caption");
+
+            if ($caption->length > 0)
             {
-                if ($bodyChild->tagName == "caption")
+                $this->caption = $caption->item(0)->textContent;
+            }
+        }
+        else
+        {
+            $this->caption = '';
+        }
+
+        $blockBodys = $DomElement->getElementsByTagName("block.body");
+
+        foreach ($blockBodys as $blockBody)
+        {
+            foreach ($blockBody->childNodes as $key => $child)
+            {
+                if ($child->nodeType == XML_ELEMENT_NODE)
                 {
-                    // this may need to be changed when the math elements are added
-                    $this->caption = $bodyChild->textContent;
-                }
-                else if ($bodyChild->tagName == "block.body")
-                {
-                    foreach ($bodyChild->childNodes as $key => $child)
+                    $name = $child->tagName;
+
+                    switch ($name)
                     {
-                        if ($child->nodeType == XML_ELEMENT_NODE)
-                        {
-                            $name = $child->tagName;
+                        case('para'):
+                            $position = $position + 1;
+                            $para = new Para($this->xmlpath);
+                            $para->loadFromXml($child, $position);
+                            $this->paras[] = $para;
+                            break;
 
-                            switch ($name)
+                        case('ol'):
+                            $position = $position + 1;
+                            $ol = new InContent($this->xmlpath);
+                            $ol->loadFromXml($child, $position);
+                            $this->ols[] = $ol;
+                            break;
+
+                        case('ul'):
+                            $position = $position + 1;
+                            $ul = new InContent($this->xmlpath);
+                            $ul->loadFromXml($child, $position);
+                            $this->uls[] = $ul;
+                            break;
+
+                        case('math.display'):
+                            $position = $position + 1;
+                            $mathdisplay = new InContent($this->xmlpath);
+                            $mathdisplay->loadFromXml($child, $position);
+                            $this->math_displays[] = $mathdisplay;
+                            break;
+
+                        case('math.array'):
+                            $position = $position + 1;
+                            $matharray = new MathArray($this->xmlpath);
+                            $matharray->loadFromXml($child, $position);
+                            $this->math_arrays[] = $matharray;
+                            break;
+
+                        case('table'):
+                            $position = $position + 1;
+                            $table = new Table($this->xmlpath);
+                            $table->loadFromXml($child, $position);
+                            $this->tables[] = $table;
+                            break;
+
+                        case('xi:include'):
+                            $position = $position + 1;
+                            $href = $child->getAttribute('href');
+
+                            $xiParser = new DOMDocument();
+                            @$xiParser->load($this->xmlpath . '/' . $href);
+
+                            $xiElement = $xiParser->documentElement;
+
+                            if ($xiElement->tagName == 'theorem')
                             {
-                                case('para'):
-                                    $position = $position + 1;
-                                    $para = new Para($this->xmlpath);
-                                    $para->loadFromXml($child, $position);
-                                    $this->paras[] = $para;
-                                    break;
-
-                                case('ol'):
-                                    $position = $position + 1;
-                                    $ol = new InContent($this->xmlpath);
-                                    $ol->loadFromXml($child, $position);
-                                    $this->ols[] = $ol;
-                                    break;
-
-                                case('ul'):
-                                    $position = $position + 1;
-                                    $ul = new InContent($this->xmlpath);
-                                    $ul->loadFromXml($child, $position);
-                                    $this->uls[] = $ul;
-                                    break;
-
-                                case('math.display'):
-                                    $position = $position + 1;
-                                    $mathdisplay = new InContent($this->xmlpath);
-                                    $mathdisplay->loadFromXml($child, $position);
-                                    $this->math_displays[] = $mathdisplay;
-                                    break;
-
-                                case('math.array'):
-                                    $position = $position + 1;
-                                    $matharray = new MathArray($this->xmlpath);
-                                    $matharray->loadFromXml($child, $position);
-                                    $this->math_arrays[] = $matharray;
-                                    break;
-
-                                case('table'):
-                                    $position = $position + 1;
-                                    $table = new Table($this->xmlpath);
-                                    $table->loadFromXml($child, $position);
-                                    $this->tables[] = $table;
-                                    break;
-
-                                case('xi:include'):
-                                    $position = $position + 1;
-                                    $href = $child->getAttribute('href');
-
-                                    $xiParser = new DOMDocument();
-                                    @$xiParser->load($this->xmlpath . '/' . $href);
-
-                                    $xiElement = $xiParser->documentElement;
-
-                                    if ($xiElement->tagName == 'theorem')
-                                    {
-                                        $theoremID = $child->getAttribute('id');
-                                        $position = $position + 1;
-                                        $theorem = new Theorem(dirname($this->xmlpath . '/' . $href));
-                                        $theorem->loadFromXml($xiElement, $position);
-                                        $this->theorems[] = $theorem;
-                                    }
-                                    else
-                                    {
-                                        echo "missing tagName in xi:include in block.body";
-                                        echo $xiElement->tagName;
-                                    }
-                                    break;
-
-                                case('def'):
-                                    $position = $position + 1;
-                                    $def = new Definition($this->xmlpath);
-                                    $def->loadFromXml($child, $position);
-                                    $this->defs[] = $def;
-                                    break;
-
-                                case ("theorem"):
-                                    $position++;
-                                    $theorem = new Theorem($this->xmlpath);
-                                    $theorem->loadFromXml($child, $position);
-                                    $this->theorems[] = $theorem;
-                                    break;
-
-                                case('comment'):
-                                    $position = $position + 1;
-                                    $comment = new MathComment($this->xmlpath);
-                                    $comment->loadFromXml($child, $position);
-                                    $this->comments[] = $comment;
-                                    break;
-
-                                case('media'):
-                                    $position = $position + 1;
-                                    $media = new Media($this->xmlpath);
-                                    $media->loadFromXml($child, $position);
-                                    $this->medias[] = $media;
-                                    break;
+                                $position = $position + 1;
+                                $theorem = new Theorem(dirname($this->xmlpath . '/' . $href));
+                                $theorem->loadFromXml($xiElement, $position);
+                                $this->theorems[] = $theorem;
                             }
-                        }
+                            else
+                            {
+                                echo "missing tagName in xi:include in block.body";
+                                echo $xiElement->tagName;
+                            }
+                            break;
+
+                        case('def'):
+                            $position = $position + 1;
+                            $def = new Definition($this->xmlpath);
+                            $def->loadFromXml($child, $position);
+                            $this->defs[] = $def;
+                            break;
+
+                        case ("theorem"):
+                            $position++;
+                            $theorem = new Theorem($this->xmlpath);
+                            $theorem->loadFromXml($child, $position);
+                            $this->theorems[] = $theorem;
+                            break;
+
+                        case('comment'):
+                            $position = $position + 1;
+                            $comment = new MathComment($this->xmlpath);
+                            $comment->loadFromXml($child, $position);
+                            $this->comments[] = $comment;
+                            break;
+
+                        case('media'):
+                            $position = $position + 1;
+                            $media = new Media($this->xmlpath);
+                            $media->loadFromXml($child, $position);
+                            $this->medias[] = $media;
+                            break;
                     }
                 }
             }
         }
-
-//        $this->caption = $this->getDomAttribute($DomElement->getElementsByTagName('caption'));
-//
-//        $blockbody = $DomElement->getElementsByTagName('block.body');
-//
-//        foreach ($blockbody as $b)
-//        {
-//            foreach ($b->childNodes as $key => $child)
-//            {
-//                if ($child->nodeType == XML_ELEMENT_NODE)
-//                {
-//                    $name = $child->tagName;
-//
-//                    switch ($name)
-//                    {
-//                        case('para'):
-//                            $position = $position + 1;
-//                            $para = new Para($this->xmlpath);
-//                            $para->loadFromXml($child, $position);
-//                            $this->paras[] = $para;
-//                            break;
-//
-//                        case('ol'):
-//                            $position = $position + 1;
-//                            $ol = new InContent($this->xmlpath);
-//                            $ol->loadFromXml($child, $position);
-//                            $this->ols[] = $ol;
-//                            break;
-//
-//                        case('ul'):
-//                            $position = $position + 1;
-//                            $ul = new InContent($this->xmlpath);
-//                            $ul->loadFromXml($child, $position);
-//                            $this->uls[] = $ul;
-//                            break;
-//
-//                        case('math.display'):
-//                            $position = $position + 1;
-//                            $mathdisplay = new InContent($this->xmlpath);
-//                            $mathdisplay->loadFromXml($child, $position);
-//                            $this->math_displays[] = $mathdisplay;
-//                            break;
-//
-//                        case('math.array'):
-//                            $position = $position + 1;
-//                            $matharray = new MathArray($this->xmlpath);
-//                            $matharray->loadFromXml($child, $position);
-//                            $this->math_arrays[] = $matharray;
-//                            break;
-//
-//                        case('table'):
-//                            $position = $position + 1;
-//                            $table = new Table($this->xmlpath);
-//                            $table->loadFromXml($child, $position);
-//                            $this->tables[] = $table;
-//                            break;
-//
-//                        case('xi:include'):
-//                            $position = $position + 1;
-//                            $href = $child->getAttribute('href');
-//
-//                            $xiParser = new DOMDocument();
-//                            @$xiParser->load($this->xmlpath . '/' . $href);
-//
-//                            $xiElement = $xiParser->documentElement;
-//
-//                            if ($xiElement->tagName == 'theorem')
-//                            {
-//                                $theoremID = $child->getAttribute('id');
-//                                $position = $position + 1;
-//                                $theorem = new Theorem(dirname($this->xmlpath . '/' . $href));
-//                                $theorem->loadFromXml($xiElement, $position);
-//                                $this->theorems[] = $theorem;
-//                            }
-//                            else
-//                            {
-//                                echo "missing tagName in xi:include in block.body";
-//                                echo $xiElement->tagName;
-//                            }
-//                            break;
-//
-//                        case('def'):
-//                            $position = $position + 1;
-//                            $def = new Definition($this->xmlpath);
-//                            $def->loadFromXml($child, $position);
-//                            $this->defs[] = $def;
-//                            break;
-//
-//                        case ("theorem"):
-//                            $position++;
-//                            $theorem = new Theorem($this->xmlpath);
-//                            $theorem->loadFromXml($child, $position);
-//                            $this->theorems[] = $theorem;
-//                            break;
-//
-//                        case('comment'):
-//                            $position = $position + 1;
-//                            $comment = new MathComment($this->xmlpath);
-//                            $comment->loadFromXml($child, $position);
-//                            $this->comments[] = $comment;
-//                            break;
-//
-//                        case('media'):
-//                            $position = $position + 1;
-//                            $media = new Media($this->xmlpath);
-//                            $media->loadFromXml($child, $position);
-//                            $this->medias[] = $media;
-//                            break;
-//                    }
-//                }
-//            }
-//        }
     }
 
     /**

@@ -21,7 +21,7 @@ class EditorInfo extends EditorElement
     public $subordinates = array();
     public $medias = array();
     public $ref;
-    
+
     function __construct()
     {
         $this->tablename = 'msm_info';
@@ -64,7 +64,8 @@ class EditorInfo extends EditorElement
                         }
                         else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $subid[0])
                         {
-                            $this->content = htmlspecialchars_decode($idValuePair[1]);
+                            $content = htmlspecialchars_decode($idValuePair[1]);
+                            $this->content = $this->processMath($content);
 
                             foreach ($this->processImage($this->content) as $key => $media)
                             {
@@ -122,7 +123,8 @@ class EditorInfo extends EditorElement
                                 }
                                 else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $newsubid)
                                 {
-                                    $this->content = htmlspecialchars_decode($idValuePair[1]);
+                                    $content = htmlspecialchars_decode($idValuePair[1]);
+                                    $this->content = $this->processMath($content);
 
                                     foreach ($this->processImage($this->content) as $key => $media)
                                     {
@@ -148,7 +150,8 @@ class EditorInfo extends EditorElement
 
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
-                $this->content = $_POST['msm_info_content-' . $idNumber];
+                $content = $_POST['msm_info_content-' . $idNumber];
+                $this->content = $this->processMath($content);
 
                 foreach ($this->processImage($this->content) as $key => $media)
                 {
@@ -436,7 +439,7 @@ class EditorInfo extends EditorElement
         $this->id = $infoCompRecord->unit_id;
 
         $infoRecord = $DB->get_record($this->tablename, array('id' => $this->id));
-        
+
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
 

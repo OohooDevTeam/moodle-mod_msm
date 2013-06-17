@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -21,6 +22,7 @@
  */
 class EditorPartTheorem extends EditorElement
 {
+
     public $id;
     public $compid;
     public $content;
@@ -52,8 +54,9 @@ class EditorPartTheorem extends EditorElement
 
             if ($_POST['msm_theoremref_part_content-' . $idParam[0]] != '')
             {
-                $this->content = $_POST['msm_theoremref_part_content-' . $idParam[0]];
-                
+                $content = $_POST['msm_theoremref_part_content-' . $idParam[0]];
+                $this->content = $this->processMath($content);
+
                 foreach ($this->processImage($this->content) as $key => $media)
                 {
                     $this->medias[] = $media;
@@ -76,8 +79,9 @@ class EditorPartTheorem extends EditorElement
 
             if ($_POST['msm_theorem_part_content-' . $idNumber] != '')
             {
-                $this->content = $_POST['msm_theorem_part_content-' . $idNumber];
-                
+                $content = $_POST['msm_theorem_part_content-' . $idNumber];
+                $this->content = $this->processMath($content);
+
                 foreach ($this->processImage($this->content) as $key => $media)
                 {
                     $this->medias[] = $media;
@@ -97,7 +101,7 @@ class EditorPartTheorem extends EditorElement
         return $this;
     }
 
-   /**
+    /**
      * This method is an abstract method inherited from EditorElement.  Its main purpose is to
      * insert the data obtained from the POST object via method above to the msm_part_theorem table and to 
      * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
@@ -140,7 +144,7 @@ class EditorPartTheorem extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
-        
+
         $media_sibliing = 0;
         $content = '';
         foreach ($this->medias as $key => $media)
@@ -181,9 +185,9 @@ class EditorPartTheorem extends EditorElement
 
         $currentCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
         $parentStatementTheoremRecord = $DB->get_record("msm_compositor", array("id" => $currentCompRecord->parent_id));
-        
+
         $idEnding = "$parentStatementTheoremRecord->parent_id-$currentCompRecord->parent_id-$this->compid";
-        
+
         $htmlContent = '';
         $htmlContent .= "<div id='msm_theorem_part_container-$idEnding' class='msm_theorem_child'>";
         $htmlContent .= "<div id='msm_theorem_part_title_container-$idEnding' class='msm_theorem_part_title_containers'>";
@@ -272,16 +276,16 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<div id='msm_theoremref_part_content-$parentId-$this->compid' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
-        
-         $htmlContent .=  "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefpart$parentId-$this->compid'>";
-        $htmlContent .= "</div>";        
-        $htmlContent .=  "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefpart$parentId-$this->compid'>";        
-        foreach($this->subordinates as $subordinate)
+
+        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefpart$parentId-$this->compid'>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefpart$parentId-$this->compid'>";
+        foreach ($this->subordinates as $subordinate)
         {
             $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
-        }        
+        }
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "</div>";
 
         return $htmlContent;

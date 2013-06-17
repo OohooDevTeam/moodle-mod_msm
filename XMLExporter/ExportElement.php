@@ -85,7 +85,7 @@ abstract class ExportElement
                             }
                         }
 
-                        $this->processMath($child, $contentDoc);
+                        $this->exportMath($child, $contentDoc);
                     }
                     $newChildNode = $this->replacePTags($DomDocument, $child);
                     $childNode = $DomDocument->importNode($newChildNode, true);
@@ -167,7 +167,7 @@ abstract class ExportElement
                             $img->parentNode->replaceChild($mediaElement, $img);
                         }
                     }
-                    $this->processMath($child, $contentDoc);
+                    $this->exportMath($child, $contentDoc);
 
                     $childNode = $DomDocument->importNode($child, true);
                 }
@@ -183,23 +183,32 @@ abstract class ExportElement
         return $DomNode;
     }
 
-    function processMath($DomElement, $DomDocument)
+    function exportMath($DomElement, $DomDocument)
     {
         $mathSpans = $DomElement->getElementsByTagName("span");
-
-        foreach ($mathSpans as $math)
+        
+        // when each of the spans with className of matheditor is replaced, the size of the NodeList above
+        // decreases so need a temporary array that is a copy of the NodeList above
+        $tempArray = array();
+        foreach($mathSpans as $mathspan)
+        {
+            $tempArray[] = $mathspan;
+        }
+        
+        foreach ($tempArray as $math)
         {
             if ($math->getAttribute("class") == "matheditor")
             {
                 $mathNode = $DomDocument->createElement("math");
                 $latexNode = $DomDocument->createElement("latex");
 
-                $innerMathText = preg_replace("/\\(.*\\)/", "$1", $math->textContent);
-
+                $modifiedMathText = preg_replace("/\((.*?)\)/", "$1", trim($math->textContent));
+                $innerMathText = preg_replace("/^\\\(.*?)\\\?$/", "$1", $modifiedMathText);
+                
                 $innerTextNode = $DomDocument->createTextNode($innerMathText);
                 $latexNode->appendChild($innerTextNode);
                 $mathNode->appendChild($latexNode);
-                
+
                 $math->parentNode->replaceChild($mathNode, $math);
             }
         }
@@ -208,10 +217,23 @@ abstract class ExportElement
     function replacePTags($DomDocument, $DomElement)
     {
         $paraNode = $DomDocument->createElement("para");
-        $align = $DomElement->getAttribute("align");
+        $style = $DomElement->getAttribute("style");
+        $align = '';
+
+        $styleProperites = explode(";", $style);
+        foreach ($styleProperites as $property)
+        {
+            $propertyValue = explode(":", $property);
+
+            if ($propertyValue[0] == "text-align")
+            {
+                $align = $propertyValue[1];
+            }
+        }
+        
         if (!empty($align))
         {
-            $paraNode->setAttribute("align", $align);
+            $paraNode->setAttribute("align", trim($align));
         }
         else
         {

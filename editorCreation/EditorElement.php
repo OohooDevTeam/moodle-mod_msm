@@ -51,9 +51,10 @@ abstract class EditorElement
     function processContent($oldContent)
     {
         $doc = new DOMDocument();
-        $doc->loadHTML($oldContent);
-//
-        $rootElement = $doc->getElementsByTagName('body')->item(0);
+        $content = $this->processMath($oldContent);
+        $doc->loadHTML($content);
+        
+        $rootElement = $doc->getElementsByTagName('div')->item(0);
 
         $newContent = array();
 
@@ -117,7 +118,7 @@ abstract class EditorElement
 
         return $subordinates;
     }
-    
+
     function processImage($content)
     {
         $medias = array();
@@ -139,20 +140,18 @@ abstract class EditorElement
     function replaceImages($index, $imgObj, $content, $tagName)
     {
         global $DB;
-        
+
         $htmlParser = new DOMDocument();
         $htmlParser->loadHTML($content);
 
         $imgNodes = $htmlParser->getElementsByTagName("img");
 
         $newImgNode = $htmlParser->createElement("img");
-        $newImgNode->setAttribute("src", $imgObj->src);        
+        $newImgNode->setAttribute("src", $imgObj->src);
         $newImgNode->setAttribute("alt", $imgObj->string_id);
         $newImgNode->setAttribute("height", $imgObj->height);
         $newImgNode->setAttribute("width", $imgObj->width);
 
-//        print_object($imgObj->src);
-        
         foreach ($imgNodes as $key => $imgNode)
         {
             if ($key == $index)
@@ -162,8 +161,63 @@ abstract class EditorElement
         }
 
         $newcontent = $htmlParser->saveXML($htmlParser->importNode($htmlParser->getElementsByTagName($tagName)->item(0), true));
-        
+
         return $newcontent;
+    }
+
+    function processMath($content)
+    {
+        $parser = new DOMDocument();
+        $parser->loadHTML($content);
+         $divs = $parser->getElementsByTagName("div");
+
+        if ($divs->length > 0)
+        {
+            $content = $content;
+        }
+        else
+        {
+             $content = "<div>$content</div>";
+        }
+        $parser->loadHTML($content);
+
+        $spans = $parser->getElementsByTagName("span");
+
+        foreach ($spans as $s)
+        {
+            $classAttr = $s->getAttribute("class");
+
+            if ($classAttr == "matheditor")
+            {
+                foreach ($s->childNodes as $child)
+                {
+                    if ($child->nodeType == XML_TEXT_NODE)
+                    {
+                        $newSpan = $parser->createElement("span");
+                        $newSpan->setAttribute("class", "matheditor");
+                        $newSpan->appendChild($child);
+
+                        $s->parentNode->replaceChild($newSpan, $s);
+                    }
+                    else if ($child->nodeType == XML_ELEMENT_NODE)
+                    {
+                        if ($child->tagName == "script")
+                        {                            
+                            $textNode = $child->textContent;
+                                    
+                            $newSpan = $parser->createElement("span");
+                            $newSpan->setAttribute("class", "matheditor");
+                            
+                            $newTextNode = $parser->createTextNode("\($textNode\)");
+                            $newSpan->appendChild($newTextNode);
+                            
+                            $s->parentNode->replaceChild($newSpan, $s);
+                        }
+                    }
+                }
+            }
+        }
+        return $parser->saveHTML($parser->importNode($parser->getElementsByTagName("div")->item(0)));
     }
 
 }
