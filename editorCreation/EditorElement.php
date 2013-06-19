@@ -170,7 +170,9 @@ abstract class EditorElement
         $parser = new DOMDocument();
         // <nobr> tags from mathjax code caues error in loadHTML function
         $content = str_replace("<nobr>", '', $content);
-        $parser->loadHTML($content);
+        $content = str_replace("</nobr>", '', $content);
+        //htmlParseEntityRef: no name in Entity warning is thrown?
+        @$parser->loadHTML($content);
          $divs = $parser->getElementsByTagName("div");
 
         if ($divs->length > 0)

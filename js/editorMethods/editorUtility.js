@@ -474,10 +474,11 @@ function editUnit(e)
     {
         targetElement = e.target.parentElement.parentElement.id;
     }
-    else if(e.target.tagName == "TEXTNODE")
-    {
+    else 
+    {      
         targetElement = e.target.parentElement.parentElement.parentElement.id;
     }
+    
     
     var elementInfo = [];
     
