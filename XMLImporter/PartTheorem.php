@@ -108,7 +108,7 @@ class PartTheorem extends Element
         {
             $partcontent = '';
             $contentparser = new DOMDocument();
-            $contentparser->loadXML($this->part_content, true);
+            @$contentparser->loadXML($this->part_content, true);
             $contentNode = $contentparser->documentElement;
 
             foreach ($contentNode->childNodes as $child)

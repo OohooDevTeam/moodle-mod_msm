@@ -49,7 +49,7 @@ class AnswerExt extends Element
         {
             $position = $position+1;
             $step = new Step($this->xmlpath);
-            $step->loadFromXml($s, $position);
+            @$step->loadFromXml($s, $position);
             $this->steps[] = $step;
         }
     }

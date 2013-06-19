@@ -147,7 +147,7 @@ class Definition extends Element
             $paracontent = '';
 
             $defbodyparser = new DOMDocument();
-            $defbodyparser->loadXML($this->def_content, true);
+            @$defbodyparser->loadXML($this->def_content, true);
 
             $defbodyNode = $defbodyparser->documentElement;
 

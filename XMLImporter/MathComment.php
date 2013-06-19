@@ -141,7 +141,7 @@ class MathComment extends Element
             $commentcontent = '';
 
             $commentbodyparser = new DOMDocument();
-            $commentbodyparser->loadXML($this->comment_content, true);
+            @$commentbodyparser->loadXML($this->comment_content, true);
 
             $commentbodyNode = $commentbodyparser->documentElement;
 

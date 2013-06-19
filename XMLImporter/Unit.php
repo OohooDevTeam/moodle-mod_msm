@@ -366,7 +366,7 @@ class Unit extends Element
                                         $filepath = $this->findUnitFile($unitrefID, $this->xmlpath);
 
                                         $refdoc = new DOMDocument();
-                                        $refdoc->load($filepath);
+                                        @$refdoc->load($filepath);
 
                                         $unitrefelement = $refdoc->documentElement;
 
@@ -509,7 +509,18 @@ class Unit extends Element
             }
         }
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $existingRecord = $DB->get_record($this->tablename, array("string_id" => $this->string_id));
+
+        if (empty($existingRecord))
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        else
+        {
+            $this->id = $existingRecord->id;
+        }
+
+
 
         // for inserting unit records in to compositor table
 
@@ -807,7 +818,7 @@ class Unit extends Element
                         $subunitID = $subunitRecord->id;
                         $unittableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
 
-                        $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
+                        $subunitCompRecords = $DB->get_records('msm_compositor', array('msm_id' => $msmid, 'unit_id' => $subunitID, 'table_id' => $unittableID));
                         $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $msmid, $this->compid, $sibling_id);
                         $sibling_id = $subunitCompID;
 
@@ -1268,7 +1279,7 @@ class Unit extends Element
                 if ($fileExt == "xml")
                 {
                     $xmlParser = new DOMDocument();
-                    $xmlParser->load($file);
+                    @$xmlParser->load($file);
 
                     $topElement = $xmlParser->documentElement;
 

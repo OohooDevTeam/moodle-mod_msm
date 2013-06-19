@@ -118,7 +118,7 @@ class MathInfo extends Element
             $infocontent = '';
 
             $contentparser = new DOMDocument();
-            $contentparser->loadXML($this->info_content, true);
+            @$contentparser->loadXML($this->info_content, true);
 
             $contentNode = $contentparser->documentElement;
 

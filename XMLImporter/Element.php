@@ -86,7 +86,7 @@ abstract class Element
         {
             if (isset($DomElement->$propertyName))
             {
-                $foundIDs = $DB->get_records($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
+                $foundIDs = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
             }
             else
             {
@@ -100,7 +100,7 @@ abstract class Element
             {
                 if (!empty($DomElement->string_id))
                 {
-                    $foundIDs = $DB->get_records($DomElement->tablename, array('string_id' => $DomElement->string_id));
+                    $foundIDs = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
                 }
                 else
                 {
@@ -109,35 +109,43 @@ abstract class Element
             }
         }
 
-        if (!empty($foundIDs))
-        {
-            $tableRecord = $DB->get_record("msm_table_collection", array("tablename" => $DomElement->tablename));
-            foreach ($foundIDs as $foundID)
-            {
-                if (!empty($foundID))
-                {
-                    $foundRecord = $DB->get_record("msm_compositor", array("table_id" => $tableRecord->id, "unit_id" => $foundID->id, "msm_id" => $msm_id));
-                    break;
-                }
-                else
-                {
-                    return false;
-                }
-            }
+//        if (!empty($foundIDs))
+//        {
+//            $tableRecord = $DB->get_record("msm_table_collection", array("tablename" => $DomElement->tablename));
+//            foreach ($foundIDs as $foundID)
+//            {
+//                if (!empty($foundID))
+//                {
+//                    $debugRecords = $DB->get_records("msm_compositor", array("table_id" => $tableRecord->id, "unit_id" => $foundID->id, "msm_id" => $msm_id));
+//                    
+//                    if(sizeof($debugRecords) > 1)
+//                    {
+//                        print_object($debugRecords);
+//                    }
+//                    
+//                    
+//                    $foundRecord = $DB->get_record("msm_compositor", array("table_id" => $tableRecord->id, "unit_id" => $foundID->id, "msm_id" => $msm_id));
+//                    break;
+//                }
+//                else
+//                {
+//                    return false;
+//                }
+//            }
 
-            if (!empty($foundRecord))
+            if (!empty($foundIDs))
             {
-                return $foundRecord;
+                return $foundIDs;
             }
             else
             {
                 return false;
             }
-        }
-        else
-        {
-            return false;
-        }
+//        }
+//        else
+//        {
+//            return false;
+//        }
     }
 
     /**
@@ -961,7 +969,7 @@ abstract class Element
         // cannot have unclosed <br> or <img...> tags as it causes mismatched tag error when loaded as XML
         $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);
         $XMLcontent = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $XMLcontent);
-        $doc->loadXML($XMLcontent);
+        @$doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');
@@ -1025,7 +1033,7 @@ abstract class Element
                             if ($positionvalue == $hottagid)
                             {
 
-                                $newElementdoc->loadXML($newtag);
+                                @$newElementdoc->loadXML($newtag);
 
                                 $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
                                 $XMLcontent = $doc->saveXML();
@@ -1125,7 +1133,7 @@ abstract class Element
                             $newtag .= "</span>";
                         }
 
-                        $newElementdoc->loadXML($newtag);
+                        @$newElementdoc->loadXML($newtag);
 
                         $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
                         $XMLcontent = $doc->saveXML();
@@ -1202,7 +1210,7 @@ abstract class Element
     function processDbContent($oldcontent, $object)
     {
         $parser = new DOMDocument();
-        $parser->loadXML($oldcontent);
+        @$parser->loadXML($oldcontent);
         $topElement = $parser->documentElement;
 
         $imgs = $topElement->getElementsByTagName("img");

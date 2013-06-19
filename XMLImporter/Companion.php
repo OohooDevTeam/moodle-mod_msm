@@ -468,7 +468,7 @@ class Companion extends Element
                         $subunitID = $subunitRecord->id;
                         $unittableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
 
-                        $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
+                        $subunitCompRecords = $DB->get_records('msm_compositor', array('msm_id'=>$msmid, 'unit_id' => $subunitID, 'table_id' => $unittableID));
                         $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $msmid, $parentid, $sibling_id);
                         $sibling_id = $subunitCompID;
 

@@ -168,7 +168,9 @@ abstract class EditorElement
     function processMath($content)
     {
         $parser = new DOMDocument();
-        @$parser->loadHTML($content);
+        // <nobr> tags from mathjax code caues error in loadHTML function
+        $content = str_replace("<nobr>", '', $content);
+        $parser->loadHTML($content);
          $divs = $parser->getElementsByTagName("div");
 
         if ($divs->length > 0)

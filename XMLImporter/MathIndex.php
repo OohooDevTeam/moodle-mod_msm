@@ -311,7 +311,7 @@ class MathIndex extends Element
                 {
                     $string = $DB->get_field('msm_info', 'info_content', array('id' => $i));
 
-                    if (trim($string) == trim($info->content))
+                    if (trim($string) == trim($info->info_content))
                     {
                         $recordID = $i;
                         break;
