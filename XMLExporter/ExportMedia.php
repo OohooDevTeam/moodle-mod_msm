@@ -14,6 +14,7 @@ class ExportMedia extends ExportElement
 {
     public $id;
     public $compid;
+    public $msmid;
     public $img;
     public $active;
     public $inline;
@@ -23,7 +24,7 @@ class ExportMedia extends ExportElement
     {
         $mediaCreator = new DOMDocument();
         $mediaNode = $mediaCreator->createElement("media");
-        $mediaNode->setAttribute("id", $this->compid);
+        $mediaNode->setAttribute("id", "$this->msmid-$this->compid");
         $mediaNode->setAttribute("active", $this->active);
         $mediaNode->setAttribute("inline", $this->inline);
         $mediaNode->setAttribute("type", $this->type);
@@ -47,6 +48,7 @@ class ExportMedia extends ExportElement
         
         $this->id = $mediaUnitRecord->id;
         $this->compid = $compid;
+        $this->msmid = $mediaCompRecord->msm_id;
         $this->active = $mediaUnitRecord->active;
         $this->inline = $mediaUnitRecord->inline;
         $this->type = $mediaUnitRecord->media_type;

@@ -31,7 +31,7 @@ class ExportComment extends ExportElement
         $commentCreator->preserveWhiteSpace = false;
         $commentNode = $commentCreator->createElement("comment");
         $commentNode->setAttribute("type", $this->type);
-        $commentNode->setAttribute("id", $this->compid);
+        $commentNode->setAttribute("id", "$this->msmid-$this->compid");
 
         if (!empty($this->caption))
         {

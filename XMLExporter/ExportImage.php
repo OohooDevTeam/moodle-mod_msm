@@ -15,6 +15,7 @@ class ExportImage extends ExportElement
 
     public $id;
     public $compid;
+    public $msmid;
     public $msm_name;
     public $src;
     public $width;
@@ -27,7 +28,7 @@ class ExportImage extends ExportElement
     {
         $imgCreator = new DOMDocument();
         $imgNode = $imgCreator->createElement("img");
-        $imgNode->setAttribute("id", $this->compid);
+        $imgNode->setAttribute("id", "$this->msmid-$this->compid");
 
         $srcInfo = explode("/", $this->src);
 
@@ -51,6 +52,7 @@ class ExportImage extends ExportElement
         $msmData = $DB->get_record("msm", array("id"=>$imgCompRecord->msm_id));
 
         $this->id = $imgUnitRecord->id;
+        $this->msmid = $imgCompRecord->msm_id;
         $this->msm_name = preg_replace("/\s+/", '', $msmData->name) . $imgCompRecord->msm_id;
         $this->compid = $compid;
         $this->src = $imgUnitRecord->src;

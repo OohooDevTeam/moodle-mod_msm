@@ -525,7 +525,7 @@ class Associate extends Element
     function loadFromDb($id, $compid)
     {
         global $DB;
-
+        $associateCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
         $associateRecord = $DB->get_record($this->tablename, array('id' => $id));
 
         if (!empty($associateRecord))
@@ -534,7 +534,7 @@ class Associate extends Element
             $this->description = $associateRecord->description;
         }
 
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id' => $associateCompRecord->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
 
         $this->infos = array();
         $this->childs = array();

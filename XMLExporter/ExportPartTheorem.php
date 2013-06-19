@@ -15,6 +15,7 @@ class ExportPartTheorem extends ExportElement
 
     public $id;
     public $compid;
+    public $msmid;
     public $counter;
     public $content;
     public $caption;
@@ -29,7 +30,7 @@ class ExportPartTheorem extends ExportElement
         $partCreator->formatOutput = true;
         $partCreator->preserveWhiteSpace = false;
         $partNode = $partCreator->createElement("part.theorem");
-        $partNode->setAttribute("partid", $this->compid);
+        $partNode->setAttribute("partid", "$this->msmid-$this->compid");
 
         if (!empty($this->counter))
         {
@@ -66,6 +67,7 @@ class ExportPartTheorem extends ExportElement
 
         $this->id = $partUnitRecord->id;
         $this->compid = $compid;
+        $this->msmid = $partCompRecord->msm_id;
         $this->content = $partUnitRecord->part_content;
         $this->counter = $partUnitRecord->counter;
         $this->eqMark = $partUnitRecord->equivalence_mark;

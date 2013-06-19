@@ -125,8 +125,6 @@ class EditorSubordinate extends EditorElement
     public function displayData($parentId)
     {
         global $DB;
-        $subChild = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
-        $childTable = $DB->get_record("msm_table_collection", array("id" => $subChild->table_id))->tablename;
 
         $htmlContent = '';
 
@@ -158,14 +156,40 @@ class EditorSubordinate extends EditorElement
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
 
-        if ($childTable == "msm_info")
+        $compRecord = $DB->get_record("msm_compositor", array("id" => $this->id));
+        $subChilds = $DB->get_records("msm_compositor", array("parent_id" => $this->compid));
+
+        $selectType = '';
+        foreach ($subChilds as $sub)
         {
-            $htmlContent .= "Information";
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $sub->table_id))->tablename;
+
+            if ($childTable == "msm_info")
+            {
+                $selectType = "Information";
+            }
+            else if ($childTable == "msm_external_link")
+            {
+                $selectType = "External Link";
+                break;
+            }
+            else
+            {
+                if ($sub->msm_id == $compRecord->msm_id)
+                {
+                    $selectType = "Internal Reference";
+                    break;
+                }
+                else
+                {
+                    $selectType = "External Reference";
+                    break;
+                }
+            }
         }
-        else if ($childTable == "msm_external_link")
-        {
-            $htmlContent .= "External Link";
-        }
+        
+        $htmlContent .= $selectType;
+
         $htmlContent .= "</div>";
 
         if (!empty($this->external_link))
@@ -217,6 +241,7 @@ class EditorSubordinate extends EditorElement
         {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
+            // need to add references --> def/theorem...etc
             if ($childTable->tablename == 'msm_info')
             {
                 $info = new EditorInfo();

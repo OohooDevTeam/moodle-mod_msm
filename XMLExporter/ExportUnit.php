@@ -15,6 +15,7 @@ class ExportUnit extends ExportElement
 
     public $compid;
     public $id;
+    public $msmid;
     public $contentchildren = array(); // includes intro/preface/summary/trialer/historical.notes/body
     public $unitchildren = array(); // comp id of any subunit elements that will be inserted as legitimate.children element
     public $dates = array();
@@ -39,7 +40,7 @@ class ExportUnit extends ExportElement
 //        $XMLcreator->schemaValidate("$CFG->dirroot/mod/msm/NewSchemas/Unit.xsd");
         $unitNode = $XMLcreator->createElement("unit");
         $unitNode->setAttribute("tagname", $this->unittag);
-        $unitNode->setAttribute("unitid", $this->compid);
+        $unitNode->setAttribute("unitid", "$this->msmid-$this->compid");
         $unitNode->setAttribute("standalone", $this->standalone);
 
         $descriptionNode = null;
@@ -230,7 +231,7 @@ class ExportUnit extends ExportElement
             foreach ($this->unitchildren as $child)
             {
                 $unitchoiceNode = $XMLcreator->createElement("unit.choice");
-                $unitchoiceNode->setAttribute("unitId", $child->compid);
+                $unitchoiceNode->setAttribute("unitId", "$child->msmid-$child->compid");
                 $childrenNode->appendChild($unitchoiceNode);
             }
             $unitNode->appendChild($childrenNode);
@@ -255,6 +256,7 @@ class ExportUnit extends ExportElement
         $unitRecord = $DB->get_record("msm_unit", array("id" => $unitCompRecord->unit_id));
 
         $this->compid = $compid;
+        $this->msmid = $unitCompRecord->msm_id;
         $this->id = $unitRecord->id;
         $this->title = $unitRecord->title;
 //        $this->authors = $unitRecord->authors;

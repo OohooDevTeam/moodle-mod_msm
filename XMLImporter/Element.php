@@ -109,6 +109,7 @@ abstract class Element
             }
         }
 
+
 //        if (!empty($foundIDs))
 //        {
 //            $tableRecord = $DB->get_record("msm_table_collection", array("tablename" => $DomElement->tablename));
@@ -133,14 +134,14 @@ abstract class Element
 //                }
 //            }
 
-            if (!empty($foundIDs))
-            {
-                return $foundIDs;
-            }
-            else
-            {
-                return false;
-            }
+        if (!empty($foundIDs))
+        {
+            return $foundIDs;
+        }
+        else
+        {
+            return false;
+        }
 //        }
 //        else
 //        {
@@ -877,7 +878,7 @@ abstract class Element
         {
             $childSibling = 0;
             // checking if there are child elements to be copied
-            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
+            $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
 
             // checking if the following record is a duplicate or not
             // if it is the original record, it will already have a child elemnts associated with it
@@ -917,7 +918,7 @@ abstract class Element
             {
                 $childSibling = 0;
                 // checking if there are child elements to be copied
-                $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
+                $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
 
                 // checking if the following record is a duplicate or not
                 // if it is the original record, it will already have a child elemnts associated with it
@@ -1183,21 +1184,29 @@ abstract class Element
             {
                 if (!empty($object->medias[$key]))
                 {
-                    $media = $object->medias[$key];
-
-                    if (!empty($media->imgs[0]))
+                    foreach ($object->medias as $media)
                     {
-                        $image = $media->imgs[0];
+                        if (!empty($media->imgs[0]))
+                        {
+                            $image = $media->imgs[0];
+                            $imgAttr = $img->getAttribute('src');
+                            $imgFileNameInfo = explode("/", $imgAttr);
 
-                        $newtag = '';
-                        $newtag .= $media->displayhtml($isindex);
-                        // there can be only one xml declaration for the loadXML to work
-                        // so if there are other xml declarations were added, remove them
-                        $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
-                        
-                        @$newElementdoc->loadXML($newtag);
-                        $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
-                        $XMLcontent = $doc->saveXML();
+                            $srcInfo = explode("/", $image->src);
+
+                            if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1])
+                            {
+                                $newtag = '';
+                                $newtag .= $media->displayhtml($isindex);
+                                // there can be only one xml declaration for the loadXML to work
+                                // so if there are other xml declarations were added, remove them
+                                $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
+
+                                $newElementdoc->loadXML($newtag);
+                                $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
+                                $XMLcontent = $doc->saveXML();
+                            }
+                        }
                     }
                 }
             }
@@ -1209,8 +1218,10 @@ abstract class Element
 
     function processDbContent($oldcontent, $object)
     {
+//        print_object($object);
+
         $parser = new DOMDocument();
-        @$parser->loadXML($oldcontent);
+        $parser->loadXML($oldcontent);
         $topElement = $parser->documentElement;
 
         $imgs = $topElement->getElementsByTagName("img");
@@ -1221,15 +1232,16 @@ abstract class Element
 
             if (isset($object->medias))
             {
-                $imageobj = $object->medias[$key]->imgs[0];
-                $newsrcInfo = explode("||", $imageobj->src);
-                $image->setAttribute("src", $newsrcInfo[0]);
+                if (!empty($object->medias))
+                {
+                    $imageobj = $object->medias[$key]->imgs[0];
+                    $newsrcInfo = explode("||", $imageobj->src);
+                    $image->setAttribute("src", $newsrcInfo[0]);
+                }
             }
         }
 
         $newcontent = $parser->saveXML($topElement);
-
-//        print_object($newcontent);
         return $newcontent;
     }
 

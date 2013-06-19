@@ -27,7 +27,7 @@ class ExportTheorem extends ExportElement
         $theoremCreator->formatOutput = true;
         $theoremCreator->preserveWhiteSpace = false;
         $theoremNode = $theoremCreator->createElement("theorem");
-        $theoremNode->setAttribute("id", $this->compid);
+        $theoremNode->setAttribute("id", "$this->msmid-$this->compid");
         $theoremNode->setAttribute("type", $this->type);
 
         if (!empty($this->caption))

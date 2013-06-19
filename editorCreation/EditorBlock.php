@@ -204,7 +204,7 @@ class EditorBlock extends EditorElement
         }
 
         $this->type = "extra";
-        
+
         return $this;
     }
 
@@ -221,7 +221,7 @@ class EditorBlock extends EditorElement
      */
     public function insertData($parentid, $siblingid, $msmid)
     {
-        global $DB;        
+        global $DB;
 
         $data = new stdClass();
         $data->block_caption = $this->title;
@@ -324,16 +324,19 @@ class EditorBlock extends EditorElement
             $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-bodycontent$this->compid'>";
             foreach ($this->content as $content)
             {
-                foreach ($content->subordinates as $subordinate)
+                if (isset($content->subordinates))
                 {
-                    $htmlContent .= $subordinate->displayData($this->compid);
+                    foreach ($content->subordinates as $subordinate)
+                    {
+                        $htmlContent .= $subordinate->displayData($this->compid);
+                    }
                 }
             }
             $htmlContent .= "</div>";
 
             $htmlContent .= "</div>";
         }
-        
+
 
         return $htmlContent;
     }
@@ -388,6 +391,11 @@ class EditorBlock extends EditorElement
                     $table = new EditorTable();
                     $table->loadData($child->id);
                     $this->content[] = $table;
+                    break;
+                case "msm_media":
+                    $media = new EditorMedia();
+                    $media->loadData($child->id);
+                    $this->content[] = $media;
                     break;
                 default:
                     echo "what tablename? " . $childTable->tablename;

@@ -90,6 +90,7 @@ class ExternalLink extends Element
     {
         global $DB;
         
+        $linkCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
         $linkRecord = $DB->get_record($this->tablename, array('id'=>$id));
         
         if(!empty($linkRecord))
@@ -100,7 +101,7 @@ class ExternalLink extends Element
             $this->target = $linkRecord->target;
         }
         
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$linkCompRecord->msm_id, 'parent_id'=>$compid), 'prev_sibling_id');
         
         $this->infos = array();
         

@@ -511,7 +511,7 @@ class Crossref extends Element
                             // if it does have it, then it will call the grabSubunitChilds to copy all the childElements
                             // if the theorem does not have statement.theorem element, then it's the wrong theorem Record and move on to find the next theorem
                             $statementTheoremExists = false;
-                            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $theoremCompRecord->id), 'prev_sibling_id');
+                            $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$msmid, 'parent_id' => $theoremCompRecord->id), 'prev_sibling_id');
 
                             foreach ($childElements as $child)
                             {

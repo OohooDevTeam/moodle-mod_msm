@@ -84,7 +84,7 @@ class MathImg extends Element
         $data->string_id = $this->string_id;
 
         $sourcefolders = explode('/', $this->src);
-
+        
         if (count($sourcefolders) == 2)
         {
             if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
@@ -209,7 +209,7 @@ class MathImg extends Element
             $this->width = $imgRecord->width;
         }
 
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$this->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
 
         $this->imageareas = array();
 

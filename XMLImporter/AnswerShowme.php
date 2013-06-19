@@ -318,6 +318,7 @@ class AnswerShowme extends Element
     {
         global $DB;
 
+        $answershowmeCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
         $answershowmeRecord = $DB->get_record($this->tablename, array('id' => $id));
 
         if (!empty($answershowmeRecord))
@@ -333,7 +334,7 @@ class AnswerShowme extends Element
         $this->tables = array();
         $this->matharray = array();
 
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$answershowmeCompRecord->msm_id,'parent_id' => $this->compid), 'prev_sibling_id');
 
         foreach ($childElements as $child)
         {

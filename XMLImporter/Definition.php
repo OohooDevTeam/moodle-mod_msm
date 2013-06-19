@@ -121,6 +121,7 @@ class Definition extends Element
                 $this->def_content .= $content;
             }
         }
+        
     }
 
     /**
@@ -143,7 +144,7 @@ class Definition extends Element
         $data->description = $this->description;
 
         if (!empty($this->def_content))
-        {           
+        {
             $paracontent = '';
 
             $defbodyparser = new DOMDocument();
@@ -155,9 +156,9 @@ class Definition extends Element
             {
                 $paracontent .= $defbodyparser->saveXML($defbodyparser->importNode($child, true));
             }
-             
-             $this->def_content = "<div>$paracontent</div>";
-            
+
+            $this->def_content = "<div>$paracontent</div>";
+
             $data->def_content = $this->def_content;
 
 //            $data->def_content = $this->def_content;
@@ -228,7 +229,7 @@ class Definition extends Element
             {
                 $elementPositions['table' . '-' . $key] = $table->position;
             }
-        }     
+        }
 
         asort($elementPositions);
 
@@ -388,6 +389,7 @@ class Definition extends Element
     {
         global $DB;
 
+        $defCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
         $defRecord = $DB->get_record($this->tablename, array('id' => $id));
 
         if (!empty($defRecord))
@@ -405,7 +407,7 @@ class Definition extends Element
         $this->matharrays = array();
         $this->childs = array();
 
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$defCompRecord->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
 
         foreach ($childElements as $child)
         {

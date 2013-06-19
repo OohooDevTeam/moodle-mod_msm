@@ -15,6 +15,7 @@ class ExportIntro extends ExportElement
 
     public $id;
     public $compid;
+    public $msmid;
     public $blocks = array();
     public $caption;
 
@@ -24,7 +25,7 @@ class ExportIntro extends ExportElement
         $introCreator->formatOutput = true;
         $introCreator->preserveWhiteSpace = false;
         $introNode = $introCreator->createElement("intro");
-        $introNode->setAttribute("id", $this->compid);
+        $introNode->setAttribute("id", "$this->msmid-$this->compid");
 
         $captionNode = null;
 
@@ -62,6 +63,7 @@ class ExportIntro extends ExportElement
 
         $this->id = $introUnitRecord->id;
         $this->compid = $compid;
+        $this->msmid = $introCompRecord->msm_id;
         $this->caption = $introUnitRecord->intro_caption;
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");

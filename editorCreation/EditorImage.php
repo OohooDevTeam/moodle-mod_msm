@@ -10,7 +10,8 @@
  *
  * @author User
  */
-class EditorImage extends EditorElement {
+class EditorImage extends EditorElement
+{
 
     public $id;
     public $compid;
@@ -22,13 +23,15 @@ class EditorImage extends EditorElement {
     public $width;
     public $fileoptions;
 
-    function __construct() {
+    function __construct()
+    {
         $this->tablename = 'msm_img';
     }
 
     // code only implements plain texts w/o maps...etc
     // idNumber == DOMElement with tag name of img
-    public function getFormData($idNumber) {
+    public function getFormData($idNumber)
+    {
         global $DB, $CFG;
 
         $doc = new DOMDocument();
@@ -40,12 +43,16 @@ class EditorImage extends EditorElement {
         $srcAttr = $imgNode->getAttribute("src");
         $wwwroot = "$CFG->wwwroot/";
 
-        if (strstr(trim($srcAttr), trim($wwwroot))) {
+        if (strstr(trim($srcAttr), trim($wwwroot)))
+        {
             $src = $srcAttr;
-        } else {
+        }
+        else
+        {
             $srcInfo = explode("/", $srcAttr);
             $src = $CFG->wwwroot;
-            for ($i = 2; $i < sizeof($srcInfo); $i++) {
+            for ($i = 2; $i < sizeof($srcInfo); $i++)
+            {
                 $src .= "/" . $srcInfo[$i];
             }
         }
@@ -74,7 +81,8 @@ class EditorImage extends EditorElement {
         return $this;
     }
 
-    public function insertData($parentid, $siblingid, $msmid) {
+    public function insertData($parentid, $siblingid, $msmid)
+    {
         global $DB, $CFG;
 
         $data = new stdClass();
@@ -97,11 +105,31 @@ class EditorImage extends EditorElement {
         $this->compid = $DB->insert_record("msm_compositor", $compData);
     }
 
-    public function displayData() {
-        
+    public function displayData()
+    {
+        $htmlContent = '';
+        if ((!empty($this->height)) && (!empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src' height='$this->height' width='$this->width'/>";
+        }
+        else if ((empty($this->height)) && (!empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src' width='$this->width'/>";
+        }
+        else if ((!empty($this->height)) && (empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src' height='$this->height'/>";
+        }
+        else if ((empty($this->height)) && (empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src'/>";
+        }
+
+        return $htmlContent;
     }
 
-    public function loadData($compid) {
+    public function loadData($compid)
+    {
         global $DB;
 
         $imgCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -121,8 +149,26 @@ class EditorImage extends EditorElement {
         return $this;
     }
 
-    public function displayPreview() {
+    public function displayPreview()
+    {
         $previewHtml = '';
+
+        if ((!empty($this->height)) && (!empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src' height='$this->height' width='$this->width'/>";
+        }
+        else if ((empty($this->height)) && (!empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src' width='$this->width'/>";
+        }
+        else if ((!empty($this->height)) && (empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src' height='$this->height'/>";
+        }
+        else if ((empty($this->height)) && (empty($this->width)))
+        {
+            $htmlContent .= "<img src='$this->src'/>";
+        }
 
         return $previewHtml;
     }

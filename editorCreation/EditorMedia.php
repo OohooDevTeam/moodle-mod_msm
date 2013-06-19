@@ -98,12 +98,16 @@ class EditorMedia extends EditorElement
 
     public function displayData()
     {
-        
+        $htmlContent = '';
+        $htmlContent .= $this->image->displayData();
+        return $htmlContent;
     }
 
     public function displayPreview()
     {
-        
+        $previewContent = '';
+        $previewContent .= $this->image->displayPreview();
+        return $previewContent;
     }
 
 }

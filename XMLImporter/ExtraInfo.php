@@ -125,6 +125,7 @@ class ExtraInfo extends Element
     {
         global $DB;
 
+        $extrainfoCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
         $extrainfoRecord = $DB->get_record('msm_extra_info', array('id' => $id));
 
         if (!empty($extrainfoRecord))
@@ -132,7 +133,7 @@ class ExtraInfo extends Element
             $this->extra_info_name = $extrainfoRecord->extra_info_name;
         }
 
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$extrainfoCompRecord->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
 
         $this->blocks = array();
 

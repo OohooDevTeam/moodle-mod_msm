@@ -254,9 +254,18 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
                 {
                     unlink($path->getPathname());
                 }
-                else
+                else if(is_dir($path))
                 {
-                    rmdir($path->getPathname());
+                    $existingFiles = scandir($path);
+                    
+                    if(sizeof($existingFiles)<=2)
+                    {
+                        rmdir($path);
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
             }
             rmdir($deletePath);
