@@ -44,10 +44,10 @@ function submitForm()
             subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {
-                var content = tinymce.get(this.id).getContent({
+                this.value = tinymce.get(this.id).getContent({
                     format: "html"
                 });
-                this.value = content.replace(/(<p(.*)>&nbsp;<\/p>\s*)*/, '<br />');
+            //                this.value = content.replace(/(<p(.*)>&nbsp;<\/p>\s*)*/, '<br />');
             }
            
         }
@@ -58,10 +58,10 @@ function submitForm()
             subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {
-                var content = tinymce.get(this.id).getContent({
+                this.value = tinymce.get(this.id).getContent({
                     format: "html"
                 });
-                this.value = content.replace(/(<p(.*)>&nbsp;<\/p>\s*)*/, '<br />');
+            //                this.value = content.replace(/(<p(.*)>&nbsp;<\/p>\s*)*/, '<br />');
             }
         }
     });   
