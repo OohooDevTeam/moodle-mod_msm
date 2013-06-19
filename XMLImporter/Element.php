@@ -958,9 +958,9 @@ abstract class Element
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
 
-        // cannot have <br> b/c loadXML function reads it as mismatched tag
+        // cannot have unclosed <br> or <img...> tags as it causes mismatched tag error when loaded as XML
         $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);
-
+        $XMLcontent = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $XMLcontent);
         $doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
@@ -1186,6 +1186,7 @@ abstract class Element
                         // there can be only one xml declaration for the loadXML to work
                         // so if there are other xml declarations were added, remove them
                         $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
+                        
                         @$newElementdoc->loadXML($newtag);
                         $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
                         $XMLcontent = $doc->saveXML();

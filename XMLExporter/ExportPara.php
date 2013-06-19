@@ -10,8 +10,7 @@
  *
  * @author User
  */
-class ExportPara extends ExportElement
-{
+class ExportPara extends ExportElement {
 
     public $id;
     public $compid;
@@ -21,8 +20,7 @@ class ExportPara extends ExportElement
     public $medias = array();
 
     //put your code here
-    public function exportData()
-    {
+    public function exportData() {
         $paraCreator = new DOMDocument();
         $paraCreator->formatOutput = true;
         $paraCreator->preserveWhiteSpace = false;
@@ -49,8 +47,7 @@ class ExportPara extends ExportElement
         return $newparaNode;
     }
 
-    public function loadDbData($compid)
-    {
+    public function loadDbData($compid) {
         global $DB;
 
         $paraCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -63,18 +60,14 @@ class ExportPara extends ExportElement
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
-        foreach ($childRecords as $child)
-        {
+        foreach ($childRecords as $child) {
             $childtable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-            if ($childtable->tablename == "msm_subordinate")
-            {
+            if ($childtable->tablename == "msm_subordinate") {
                 $subordinate = new ExportSubordinate();
                 $subordinate->loadDbData($child->id);
                 $this->subordinates[] = $subordinate;
-            }
-            else if ($childtable->tablename == "msm_media")
-            {
+            } else if ($childtable->tablename == "msm_media") {
                 $media = new ExportMedia();
                 $media->loadDbData($child->id);
                 $this->medias[] = $media;
@@ -85,8 +78,7 @@ class ExportPara extends ExportElement
     }
 
 //
-    function processParaContent()
-    {
+    function processParaContent() {
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
         $contentDoc->preserveWhiteSpace = false;
@@ -95,45 +87,46 @@ class ExportPara extends ExportElement
 
         $atags = $contentNode->getElementsByTagName("a");
 
-        foreach ($atags as $a)
-        {
+        $alength = $atags->length;
+
+//                        foreach ($anchorArray as $a) {
+        for ($i = 0; $i < $alength; $i++) {
+            $a = $atags->item(0);
             $targetSub = null;
-            $id = $a->getAttribute("id");
+            if (!empty($a)) {
+                $id = $a->getAttribute("id");
 
-            foreach ($this->subordinates as $subordinate)
-            {
-                $hotInfo = explode("||", $subordinate->hot);
+                foreach ($this->subordinates as $subordinate) {
+                    $hotInfo = explode("||", $subordinate->hot);
 
-                if (trim($id) == trim($hotInfo[0]))
-                {
-                    $targetSub = $subordinate;
-                    break;
+                    if (trim($id) == trim($hotInfo[0])) {
+                        $targetSub = $subordinate;
+                        break;
+                    }
+                }
+
+                if (!empty($targetSub)) {
+                    $initsubordinateNode = $targetSub->exportData();
+                    $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
+                    if (!empty($a->parentNode)) {
+                        $a->parentNode->replaceChild($subordinateNode, $a);
+                    }
                 }
             }
-
-            if (!empty($targetSub))
-            {
-                $initsubordinateNode = $targetSub->exportData();
-
-                $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
-
-                $a->parentNode->replaceChild($subordinateNode, $a);
-            }
         }
-
         $imgTags = $contentNode->getElementsByTagName("img");
 
-        foreach ($imgTags as $key => $img)
-        {
-            if (isset($this->medias))
-            {
-                $media = $this->medias[$key];
-                $mediaNode = $media->exportData();
-                $mediaElement = $contentDoc->importNode($mediaNode, true);
-                $img->parentNode->replaceChild($mediaElement, $img);
+        foreach ($imgTags as $key => $img) {
+            if (isset($this->medias)) {
+                if (sizeof($this->medias) > 0) {
+                    $media = $this->medias[$key];
+                    $mediaNode = $media->exportData();
+                    $mediaElement = $contentDoc->importNode($mediaNode, true);
+                    $img->parentNode->replaceChild($mediaElement, $img);
+                }
             }
         }
-        
+
         $this->exportMath($contentNode, $contentDoc);
 
         $newpNode = $this->replacePTags($contentDoc, $contentNode);

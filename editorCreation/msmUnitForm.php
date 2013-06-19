@@ -347,10 +347,10 @@ else
         {
             file_prepare_draft_area($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id);
         }
-        else
-        {
-            file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
-        }
+//        else
+//        {
+//            file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
+//        }
 
         $siblingCompid = 0;
 

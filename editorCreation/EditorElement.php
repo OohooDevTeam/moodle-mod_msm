@@ -168,7 +168,7 @@ abstract class EditorElement
     function processMath($content)
     {
         $parser = new DOMDocument();
-        $parser->loadHTML($content);
+        @$parser->loadHTML($content);
          $divs = $parser->getElementsByTagName("div");
 
         if ($divs->length > 0)
@@ -179,7 +179,7 @@ abstract class EditorElement
         {
              $content = "<div>$content</div>";
         }
-        $parser->loadHTML($content);
+        @$parser->loadHTML($content);
 
         $spans = $parser->getElementsByTagName("span");
 

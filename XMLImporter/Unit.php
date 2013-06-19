@@ -1258,9 +1258,7 @@ class Unit extends Element
             }
             if (is_dir($file))
             {
-
-                $path = $this->findUnitFile($unitID, $file);
-                return $path;
+                continue;
             }
             else
             {

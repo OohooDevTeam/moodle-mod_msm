@@ -10,8 +10,7 @@
  *
  * @author User
  */
-class EditorImage extends EditorElement
-{
+class EditorImage extends EditorElement {
 
     public $id;
     public $compid;
@@ -23,16 +22,14 @@ class EditorImage extends EditorElement
     public $width;
     public $fileoptions;
 
-    function __construct()
-    {
+    function __construct() {
         $this->tablename = 'msm_img';
     }
 
     // code only implements plain texts w/o maps...etc
     // idNumber == DOMElement with tag name of img
-    public function getFormData($idNumber)
-    {
-        global $CFG;
+    public function getFormData($idNumber) {
+        global $DB, $CFG;
 
         $doc = new DOMDocument();
         $imgNode = $doc->importNode($idNumber, true);
@@ -43,19 +40,29 @@ class EditorImage extends EditorElement
         $srcAttr = $imgNode->getAttribute("src");
         $wwwroot = "$CFG->wwwroot/";
 
-        if (strstr(trim($srcAttr), trim($wwwroot)))
-        {
+        if (strstr(trim($srcAttr), trim($wwwroot))) {
             $src = $srcAttr;
-        }
-        else
-        {
+        } else {
             $srcInfo = explode("/", $srcAttr);
             $src = $CFG->wwwroot;
-            for ($i = 2; $i < sizeof($srcInfo); $i++)
-            {
+            for ($i = 2; $i < sizeof($srcInfo); $i++) {
                 $src .= "/" . $srcInfo[$i];
             }
         }
+        $fileoptions = json_decode($_POST["msm_file_options"])->image;
+        $childOrderInfo = explode(",", $_POST["msm_child_order"]);
+        $msmid = trim($childOrderInfo[sizeof($childOrderInfo) - 1]);
+
+        $msm = $DB->get_record('msm', array('id' => $msmid), '*', MUST_EXIST);
+        $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
+        $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
+
+        $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+//        if(str_pos("draftfile.php", $src))
+//        {
+//            print_object($src);
+        file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msmid, null);
+//        }
 
         $this->src = $src;
 
@@ -67,8 +74,7 @@ class EditorImage extends EditorElement
         return $this;
     }
 
-    public function insertData($parentid, $siblingid, $msmid)
-    {
+    public function insertData($parentid, $siblingid, $msmid) {
         global $DB, $CFG;
 
         $data = new stdClass();
@@ -91,13 +97,11 @@ class EditorImage extends EditorElement
         $this->compid = $DB->insert_record("msm_compositor", $compData);
     }
 
-    public function displayData()
-    {
+    public function displayData() {
         
     }
 
-    public function loadData($compid)
-    {
+    public function loadData($compid) {
         global $DB;
 
         $imgCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -117,8 +121,7 @@ class EditorImage extends EditorElement
         return $this;
     }
 
-    public function displayPreview()
-    {
+    public function displayPreview() {
         $previewHtml = '';
 
         return $previewHtml;
