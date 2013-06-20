@@ -14,7 +14,7 @@ $ids = explode(',', $string);
 
 $content = '';
 
-$glossryfilename = '../' . trim($ids[0]) . '-' . trim($ids[1]) . '-msm_glossaryindex.html';
+$glossryfilename = $CFG->dataroot. '/cache/MSM/' . trim($ids[0]) . '-' . trim($ids[1]) . '-msm_glossaryindex.html';
 if (file_exists($glossryfilename))
 {
     $glossaryfile = fopen($glossryfilename, 'r');

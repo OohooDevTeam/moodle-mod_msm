@@ -73,4 +73,6 @@ $string['import_help'] = 'Please either upload the zip file produced from export
                           the top XML element(ie. < unit >) is a directly below the top directory and contains the reference tags that links each child XML files to the top XML file.';
 $string['importElement'] = 'Please specify the XML file to import.';
 
+$string['editmsm'] = "Edit MSM";
+
 

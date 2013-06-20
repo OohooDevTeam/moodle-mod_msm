@@ -522,10 +522,10 @@ abstract class Element
             $string = str_replace('</hot>', '</a>  ', $string);
 
             $string = preg_replace('/<math xmlns=(.+)>/', '<math>', $string);
-            $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>/', '$$', $string);
+            $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>/', '<p align="center"><span class="matheditor">\(', $string);
 
-            $string = preg_replace('/<math.display>\s+<latex>/', '$$', $string);
-            $string = preg_replace('/<\/latex>\s+<\/math.display>/', '$$', $string);
+            $string = preg_replace('/<math.display>\s+<latex>/', '<p align="center"><span class="matheditor">\(', $string);
+            $string = preg_replace('/<\/latex>\s+<\/math.display>/', '\)</span></p>', $string);
             $string = preg_replace('/<math.display>\s+<latex\/>\s+<\/math.display>/', '', $string);
 
             $string = preg_replace('/<math>\s*<latex>/', '<span class="matheditor">\(', $string);
@@ -878,7 +878,7 @@ abstract class Element
         {
             $childSibling = 0;
             // checking if there are child elements to be copied
-            $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
+            $childElements = $DB->get_records('msm_compositor', array('msm_id' => $msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
 
             // checking if the following record is a duplicate or not
             // if it is the original record, it will already have a child elemnts associated with it
@@ -918,7 +918,7 @@ abstract class Element
             {
                 $childSibling = 0;
                 // checking if there are child elements to be copied
-                $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
+                $childElements = $DB->get_records('msm_compositor', array('msm_id' => $msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
 
                 // checking if the following record is a duplicate or not
                 // if it is the original record, it will already have a child elemnts associated with it
@@ -1157,8 +1157,12 @@ abstract class Element
                     $newtableString = $table->displayhtml();
                     @$newElementdoc->loadXML($newtableString);
                     $tables->item($i)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $tables->item($i));
+                    $XMLcontent = $doc->saveXML();
                 }
-                $XMLcontent = $doc->saveXML();
+                else
+                {
+                    $XMLcontent = $doc->saveXML();
+                }
             }
             // could not use foreach matharrays...etc because when replaceChild is executed, it seems like the 
             // the length of the matharrays decrease as well.
@@ -1168,12 +1172,9 @@ abstract class Element
             {
                 if (!empty($object->matharrays[$i]))
                 {
-
                     $matharray = $object->matharrays[$i];
                     $newmarrayString = $matharray->displayhtml();
-
                     @$newElementdoc->loadXML($newmarrayString);
-
                     $matharrays->item(0)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $matharrays->item(0));
                 }
                 $XMLcontent = $doc->saveXML();

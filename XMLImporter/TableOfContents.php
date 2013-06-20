@@ -32,6 +32,8 @@ require_once("Unit.php");
 class TableOfContents
 {
 
+    public $int = 1;
+    
     function __construct()
     {
         $this->unittable = 'msm_unit';
@@ -60,13 +62,13 @@ class TableOfContents
                      </div>';
         $content .= '<ul id="tableofcontent" class="treeview-red">';
 
-        $content .= $this->makeTree($this->unitData, 0);
+        $content .= $this->makeTree($this->unitData);
         $content .= '</ul>';
 
         return $content;
     }
 
-    private function makeTree($TitlesArray, $pgNum)
+    private function makeTree($TitlesArray)
     {
         $newString = '';
 
@@ -78,26 +80,25 @@ class TableOfContents
                 {
                     if (gettype($TitlesArray[$key + 1]) == 'object')
                     {
-                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . " [$pgNum]" . "</a></li>";
-                        $pgNum++;
+                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . " [p. $this->int]" . "</a></li>";
+                        $this->int++;
                     }
                     else
                     {
-                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title)  . " [$pgNum]" . "</a>";
-                         $pgNum++;
+                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title)  . " [p. $this->int]" . "</a>";
+                         $this->int++;
                     }
                 }
                 else
                 {
-                    $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title)  . " [$pgNum]" . "</a></li>";
-                     $pgNum++;
+                    $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title)  . " [p. $this->int]" . "</a></li>";
+                     $this->int++;
                 }
             }
             elseif (gettype($unitTitle) == 'array')
             {
                 $newString .= "<ul>";
-
-                $newString .= $this->makeTree($unitTitle,  $pgNum);
+                $newString .= $this->makeTree($unitTitle);             
 
                 $newString .= "</ul>";
                 $newString .= "</li>";

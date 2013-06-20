@@ -390,13 +390,12 @@ class MathInfo extends Element
             $replacements[3] = "";
 
             $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
-            $caption = html_entity_decode($caption);
-            $caption = htmlentities($modifiedCaption);
+            $caption = $this->displayContent($this, $this->caption);
+            $caption = htmlentities($caption);
 
             $content .= "<div id='dialog-$this->compid' class='dialogs' title='$caption'>";
         }
-        // html_entity_decode added to prevent &nbsp; char from being converted to A character
-        $content .= html_entity_decode($this->displayContent($this, $this->info_content));
+        $content .= $this->displayContent($this, $this->info_content);
 
         $content .= "</div>";
 

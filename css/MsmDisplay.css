@@ -593,6 +593,11 @@ span.extrainfoname
     font-size: 14px;
 }
 
+#msm_slide_pageNumber
+{
+    max-width: 25px;
+}
+
 .answershowme
 {
     background-color: #FAFAFA;

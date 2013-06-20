@@ -12,7 +12,7 @@ function navToPage(unitid)
     var newNextData='';
     var newPrevData='';
     var pgnumber = null;
-     var selected = null;
+    var selected = null;
     
     var eachCurrentData = currentRecord.split('/');
     

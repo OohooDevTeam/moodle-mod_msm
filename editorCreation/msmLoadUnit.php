@@ -75,9 +75,11 @@ else if (isset($_POST['mode']))
     // need to copy unitChildElementRecords to have index as incrementing numbers from zero to n instead of it being compositor id
     $unitChildElements = array();
     $unitTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
+    $personTable = $DB->get_record("msm_table_collection", array("tablename"=> "msm_person"));
+    
     foreach ($unitChildElementRecords as $childRecord)
     {
-        if ($childRecord->table_id != $unitTable->id)
+        if (($childRecord->table_id != $unitTable->id) && ($childRecord->table_id != $personTable->id))
         {
             $unitChildElements[] = $childRecord;
         }
@@ -93,10 +95,10 @@ else if (isset($_POST['mode']))
             $indexElement = $key;
         }
     }
-
+    
     $currentElement = $unitChildElements[$indexElement];
     $currentElementTable = $DB->get_record("msm_table_collection", array("id" => $currentElement->table_id))->tablename;
-
+   
     switch ($currentElementTable)
     {
         case "msm_intro":

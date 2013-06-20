@@ -9,13 +9,15 @@ require_once('Unit.php');
 require_once(dirname(dirname(dirname(dirname(__FILE__)))) . '/config.php');
 require_once(dirname(dirname(__FILE__)) . '/lib.php');
 
+global $CFG;
+
 $string = $_POST["moduleinfo"];
 
 $ids = explode(',', $string);
 
 $content = '';
 
-$authorfilename = '../' . trim($ids[0]) . '-' . trim($ids[1]) . '-msm_authorindex.html';
+$authorfilename =  $CFG->dataroot. '/cache/MSM/' . trim($ids[0]) . '-' . trim($ids[1]) . '-msm_authorindex.html';
 if (file_exists($authorfilename))
 {
     $authorfile = fopen($authorfilename, 'r');

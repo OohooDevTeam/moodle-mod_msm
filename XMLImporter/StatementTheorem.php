@@ -403,8 +403,7 @@ class StatementTheorem extends Element
     function displayhtml($isindex = false)
     {
         $content = '';
-         // html_entity_decode added to prevent &nbsp; char from being converted to A character
-        $content .= html_entity_decode($this->displayContent($this, $this->statement_content, $isindex));
+        $content .= $this->displayContent($this, $this->statement_content, $isindex);
 
         $content .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->childs as $childComponent)

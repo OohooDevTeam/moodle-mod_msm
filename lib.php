@@ -718,5 +718,23 @@ function msm_extend_navigation(navigation_node $navref, stdclass $course, stdcla
  */
 function msm_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $msmnode = null)
 {
+    global $DB, $PAGE;
     
+    $keys = $msmnode->get_children_key_list();
+    $beforekey = null;
+    $i = array_search('modedit', $keys);
+    if ($i === false and array_key_exists(0, $keys)) {
+        $beforekey = $keys[0];
+    } else if (array_key_exists($i + 1, $keys)) {
+        $beforekey = $keys[$i + 1];
+    }
+    
+      $msm = $DB->get_record('msm', array('id' => $PAGE->cm->instance), '*', MUST_EXIST);
+    
+     if (has_capability('mod/msm:view', $PAGE->cm->context)) {
+        $node = navigation_node::create(get_string('editmsm', 'msm'),
+                new moodle_url('/mod/msm/authoringTool.php', array('mid'=>$msm->id)),
+                navigation_node::TYPE_SETTING);
+        $msmnode->add_node($node, $beforekey);
+    }
 }

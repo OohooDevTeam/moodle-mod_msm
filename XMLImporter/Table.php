@@ -407,13 +407,37 @@ class Table extends Element
         $tbody = $table->getElementsByTagName("tbody");
 
 //        print_object($tablecontent);
-        
+
         if (sizeof($tbody) > 0)
         {
             $table->setAttribute("class", "mathtable");
-            foreach($dialogs as $dialog)
+            $atags = $doc->getElementsByTagName('a');
+//
+            foreach ($atags as $atag)
             {
-                $content .= $doc->saveHTML($doc->importNode($dialog, true));
+                // getting the associated info's compid
+                $tagID = $atag->getAttribute('id');
+                $idArray = explode('-', $tagID);
+
+                foreach ($dialogs as $dialog)
+                {
+                    $divclass = $dialog->getAttribute('class');
+                    if ($divclass == 'dialogs')
+                    {
+                        $divID = $dialog->getAttribute('id');
+                        $divIDArray = explode('-', $divID);
+
+                        if ((isset($idArray[1])) && (isset($divIDArray[1])))
+                        {
+                            if ($idArray[1] == $divIDArray[1])
+                            {
+                                $divNode = $doc->importNode($dialog, true);
+                                $atag->parentNode->appendChild($divNode);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             $content .= $doc->saveHTML($doc->importNode($table, true));
         }
@@ -490,7 +514,6 @@ class Table extends Element
 //
 //            $content .= "</table>";
 //        }
-
 //        print_object($content);
         return $content;
     }

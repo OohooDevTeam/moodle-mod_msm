@@ -80,8 +80,8 @@ class Compositor
         $nextStack = array();
 
         $content = '';
-        $nextRecordString = '';
-        $prevRecordString = '';
+//        $nextRecordString = '';
+//        $prevRecordString = '';
 
 
         // grabbing each compositor record passed in input field
@@ -199,32 +199,36 @@ class Compositor
 
         $nextStackSize = count($nextStack);
         $prevStackSize = count($prevStack);
+        
+        $nextRecordString = implode(",", $nextStack);
 
-        for ($i = 0; $i < $nextStackSize - 1; $i++)
-        {
-            $nextRecordString .= $nextStack[$i] . ',';
-        }
+//        for ($i = 1; $i < $nextStackSize; $i++)
+//        {
+//            $nextRecordString .= ',' . $nextStack[$i];
+//        }
 
-        if ($nextStackSize - 1 >= 0)
-        {
-            if (!empty($nextStack[$nextStackSize - 1]))
-            {
-                $nextRecordString .= $nextStack[$nextStackSize - 1];
-            }
-        }
+//        if ($nextStackSize - 1 >= 0)
+//        {
+//            if (!empty($nextStack[$nextStackSize - 1]))
+//            {
+//                $nextRecordString .= $nextStack[$nextStackSize - 1];
+//            }
+//        }
 
-        for ($i = 0; $i < $prevStackSize - 1; $i++)
-        {
-            $prevRecordString .= $prevStack[$i] . ',';
-        }
+        $prevRecordString = implode(",", $prevStack);
+//        $prevRecordString = $prevStack[0];
+//        for ($i = 1; $i < $prevStackSize - 1; $i++)
+//        {
+//            $prevRecordString .= $prevStack[$i] . ',';
+//        }
 
-        if ($prevStackSize - 1 >= 0)
-        {
-            if (!empty($prevStack[$prevStackSize - 1]))
-            {
-                $prevRecordString .= $prevStack[$prevStackSize - 1];
-            }
-        }
+//        if ($prevStackSize - 1 >= 0)
+//        {
+//            if (!empty($prevStack[$prevStackSize - 1]))
+//            {
+//                $prevRecordString .= $prevStack[$prevStackSize - 1];
+//            }
+//        }
         ?>
 
         <script type="text/javascript">

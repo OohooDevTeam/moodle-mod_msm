@@ -15,7 +15,7 @@ $ids = explode(',', $string);
 
 $content = '';
 
-$symbolfilename = '../' . trim($ids[0]) . '-' . trim($ids[1]) . '-msm_symbolindex.html';
+$symbolfilename = $CFG->dataroot. '/cache/MSM/' . trim($ids[0]) . '-' . trim($ids[1]) . '-msm_symbolindex.html';
 if (file_exists($symbolfilename))
 {
     $symbolfile = fopen($symbolfilename, 'r');
