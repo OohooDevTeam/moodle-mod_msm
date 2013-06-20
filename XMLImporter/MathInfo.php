@@ -389,9 +389,10 @@ class MathInfo extends Element
             $replacements[2] = "";
             $replacements[3] = "";
 
-            $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
             $caption = $this->displayContent($this, $this->caption);
-            $caption = htmlentities($caption);
+            $modifiedCaption = preg_replace($patterns, $replacements, $caption);
+
+            $caption = htmlentities($modifiedCaption);
 
             $content .= "<div id='dialog-$this->compid' class='dialogs' title='$caption'>";
         }
