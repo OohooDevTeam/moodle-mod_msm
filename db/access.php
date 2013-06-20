@@ -77,6 +77,15 @@ $capabilities = array(
             'manager' => CAP_ALLOW
         )
     ),
+    'mod/msm:edit' => array (
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_MODULE,
+        'legacy' => array(
+            'teacher' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        )
+    )
         /*         * *************************** remove these comment marks and modify the code as needed
           'mod/msm:view' => array(
           'captype' => 'read',

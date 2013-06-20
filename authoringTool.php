@@ -14,6 +14,7 @@
  * ************************************************************************ */
 require_once('../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
+require_once($CFG->libdir . "/editor/tinymce/lib.php");
 require_once('editorCreation/EditorElement.php');
 require_once('editorCreation/EditorUnit.php');
 require_once('editorCreation/EditorDefinition.php');
