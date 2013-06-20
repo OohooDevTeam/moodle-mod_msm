@@ -351,15 +351,16 @@ function msm_delete_instance($id)
         return false;
     }
     
-    $CompRecords = $DB0->get_records("msm_compositor", array("msm_id"=>$msm->id), "table_id");
+    $CompRecords = $DB->get_records("msm_compositor", array("msm_id"=>$id), "table_id");
     
     foreach($CompRecords as $record)
     {
         $tablename = $DB->get_record("msm_table_collection", array("id"=>$record->table_id));
         $DB->delete_records($tablename->tablename, array("id"=>$record->unit_id));
     }
+    $DB->delete_records("msm_compositor", array("msm_id"=>$id));
 
-    $DB->delete_records('msm', array('id' => $msm->id));
+    $DB->delete_records('msm', array('id' => $id));
 
     return true;
 }

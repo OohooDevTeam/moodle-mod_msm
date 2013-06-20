@@ -43,11 +43,10 @@ function submitForm()
         { 
             subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
-            {
+            {                
                 this.value = tinymce.get(this.id).getContent({
                     format: "html"
                 });
-            //                this.value = content.replace(/(<p(.*)>&nbsp;<\/p>\s*)*/, '<br />');
             }
            
         }
@@ -57,11 +56,10 @@ function submitForm()
             //            subordinateArray.push(prepareSubordinate(this));
             subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
-            {
+            {                
                 this.value = tinymce.get(this.id).getContent({
                     format: "html"
                 });
-            //                this.value = content.replace(/(<p(.*)>&nbsp;<\/p>\s*)*/, '<br />');
             }
         }
     });   

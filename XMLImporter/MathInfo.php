@@ -394,8 +394,8 @@ class MathInfo extends Element
 
             $content .= "<div id='dialog-$this->compid' class='dialogs' title='$caption'>";
         }
-
-        $content .= $this->displayContent($this, $this->info_content);
+         // html_entity_decode added to prevent &nbsp; char from being converted to A character
+        $content .= html_entity_decode($this->displayContent($this, $this->info_content));
 
         $content .= "</div>";
 

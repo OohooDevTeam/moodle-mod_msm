@@ -392,7 +392,8 @@ class PartTheorem extends Element
         {
             $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
         }
-        $content .= $this->displayContent($this, $this->part_content, $isindex);
+         // html_entity_decode added to prevent &nbsp; char from being converted to A character
+        $content .= html_entity_decode($this->displayContent($this, $this->part_content, $isindex));
         $content .= "</li>";
         $content .= "<br />";
 

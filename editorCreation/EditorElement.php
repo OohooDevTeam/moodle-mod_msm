@@ -223,7 +223,6 @@ abstract class EditorElement
         }
         return $parser->saveHTML($parser->importNode($parser->getElementsByTagName("div")->item(0)));
     }
-
 }
 
 ?>

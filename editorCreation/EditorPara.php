@@ -52,7 +52,9 @@ class EditorPara extends EditorElement
 
         $style = $paraNode->getAttribute("style");
         // break style attribute to each of properties
-        $styleProperites = explode(";", $style);
+        if(!empty($style))
+        {
+            $styleProperites = explode(";", $style);
         foreach ($styleProperites as $property)
         {
             $propertyValue = explode(":", $property);
@@ -62,6 +64,12 @@ class EditorPara extends EditorElement
                 $this->align = $propertyValue[1];
             }
         }
+        }
+        else 
+        {
+            $this->align = $paraNode->getAttribute("align");
+        }
+        
 
         $this->content = $doc->saveHTML($paraNode);
 

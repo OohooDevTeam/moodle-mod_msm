@@ -500,7 +500,8 @@ class Definition extends Element
 
 
         $content .= "<div class='mathcontent'>";
-        $content .= $this->displayContent($this, $this->def_content, $isindex);
+         // html_entity_decode added to prevent &nbsp; char from being converted to A character
+        $content .= html_entity_decode($this->displayContent($this, $this->def_content, $isindex));
         $content .= "<br />";
         $content .= "</div>";
 
