@@ -14,8 +14,6 @@
 
 body
 {
-    overflow: auto;
-    overflow-y: scroll;
     margin:0;
     padding:0;
     height:100%;
@@ -703,15 +701,6 @@ span.showmetype
 
 body.loading {
     overflow: hidden;   
-}
-
-body.loading {
-    overflow: hidden;   
-}
-
-.path-mod-msm
-{
-    overflow: hidden;
 }
 
 /*-------------------- PRINT STYLE -------------------------------------------*/

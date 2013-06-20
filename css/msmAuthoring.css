@@ -848,11 +848,6 @@ table.mceLayout
     background: url("../pix/ico_tag.png") no-repeat 0 0;
 }
 
-.path-mod-msm
-{
-    overflow: hidden;
-}
-
 .mceToolbar tr
 {
     background: transparent !important;
