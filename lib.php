@@ -232,18 +232,18 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             }
         }
 
-//        $parser = new DOMDocument();
-//        //define('parser', $parser);
-//        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
-////        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
-//
-//        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
-////        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
-//        $position = 1;
-//
-//        $unit->loadFromXml($parser->documentElement, $position);
-//
-//        $unit->saveIntoDb($unit->position, $msm->id);
+        $parser = new DOMDocument();
+        //define('parser', $parser);
+        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
+//        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
+
+        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
+//        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
+        $position = 1;
+
+        $unit->loadFromXml($parser->documentElement, $position);
+
+        $unit->saveIntoDb($unit->position, $msm->id);
 
         $deletePath = $CFG->dataroot . "/temp/msmtempfiles/";
         if (file_exists($deletePath))
@@ -454,6 +454,13 @@ function msm_cron()
     global $CFG, $DB;
 
     require_once("XMLImporter/Unit.php");
+    
+    $path = "$CFG->dataroot/cache/MSM";
+    
+    if(!file_exists($path))
+    {
+        mkdir($path);
+    }
 
     $msmRecords = $DB->get_records('msm');
 
@@ -462,7 +469,7 @@ function msm_cron()
         $symbol = new MathIndex();
         $symboldata = $symbol->makeSymbolPanel($msm->id);
         $courseid = $DB->get_record('msm', array('id' => $msm->id))->course;
-        $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_symbolindex.html";
+        $filename = $path . "/" . $courseid . "-" . $msm->id . "-msm_symbolindex.html";
 
         $symbolfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
         fwrite($symbolfile, $symboldata);
@@ -472,7 +479,7 @@ function msm_cron()
 
         $glossary = new MathIndex();
         $glossarydata = $glossary->makeGlossaryPanel($msm->id);
-        $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_glossaryindex.html";
+        $filename = $path . "/" . $courseid . "-" . $msm->id . "-msm_glossaryindex.html";
 
         $glossaryfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
         fwrite($glossaryfile, $glossarydata);
@@ -482,7 +489,7 @@ function msm_cron()
 
         $author = new MathIndex();
         $authordata = $author->makeAuthorPanel($msm->id);
-        $filename = dirname(__FILE__) . "/" . $courseid . "-" . $msm->id . "-msm_authorindex.html";
+        $filename = $path . "/" . $courseid . "-" . $msm->id . "-msm_authorindex.html";
 
         $authorfile = fopen($filename, 'w') or die('Cannot open file: ' . $filename);
         fwrite($authorfile, $authordata);

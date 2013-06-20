@@ -243,7 +243,7 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_content_input-$currentCompRecord->parent_id-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-statementtheoremcontent$currentCompRecord->parent_id-$this->compid'>";
@@ -329,7 +329,7 @@ class EditorStatementTheorem extends EditorElement
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theoremref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefcontent$parentId-$this->compid'>";
@@ -368,7 +368,7 @@ class EditorStatementTheorem extends EditorElement
     {
         $previewHtml = '';
 
-        $previewHtml .= $this->content;
+        $previewHtml .= html_entity_decode($this->content);
 
         if (!empty($this->subordinates))
         {

@@ -276,7 +276,7 @@ class EditorComment extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_comment_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_comment_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_comment_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentcontent$this->compid'>";
@@ -401,7 +401,7 @@ class EditorComment extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_commentref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_commentref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_commentref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentrefcontent$parentId-$this->compid'>";
@@ -448,7 +448,7 @@ class EditorComment extends EditorElement
         $previewHtml .= "<br/>";
 
         $previewHtml .= "<div class='mathcontent'>";
-        $previewHtml .= $this->content;
+        $previewHtml .= html_entity_decode($this->content);
 
         if (!empty($this->subordinates))
         {

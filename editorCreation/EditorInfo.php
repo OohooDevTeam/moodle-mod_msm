@@ -302,12 +302,12 @@ class EditorInfo extends EditorElement
 
             $htmlContent .= "<label for='msm_info_title-$assoIdEnding'>title: </label>";
             $htmlContent .= "<div id='msm_info_title-$assoIdEnding' class='msm_info_titles msm_editor_content'>";
-            $htmlContent .= $this->caption;
+            $htmlContent .= html_entity_decode($this->content);
             $htmlContent .= "</div>";
 
             $htmlContent .= "<label for='msm_info_content-$assoIdEnding'>content: </label>";
             $htmlContent .= "<div id='msm_info_content-$assoIdEnding' class='msm_info_contents msm_editor_content'>";
-            $htmlContent .= $this->content;
+            $htmlContent .= html_entity_decode($this->content);
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-infocontent$assoIdEnding'>";
@@ -513,7 +513,7 @@ class EditorInfo extends EditorElement
         $titleString = htmlentities($modifiedCaption);
 
         $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
-        $previewHtml .= $this->content;
+        $previewHtml .= html_entity_decode($this->content);
         $previewHtml .= "</div>";
 
         if (!empty($this->subordinates))

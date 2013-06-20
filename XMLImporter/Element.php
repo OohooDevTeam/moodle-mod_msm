@@ -1221,7 +1221,7 @@ abstract class Element
 //        print_object($object);
 
         $parser = new DOMDocument();
-        $parser->loadXML($oldcontent);
+        @$parser->loadXML($oldcontent);
         $topElement = $parser->documentElement;
 
         $imgs = $topElement->getElementsByTagName("img");

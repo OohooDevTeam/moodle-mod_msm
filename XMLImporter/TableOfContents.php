@@ -60,13 +60,13 @@ class TableOfContents
                      </div>';
         $content .= '<ul id="tableofcontent" class="treeview-red">';
 
-        $content .= $this->makeTree($this->unitData);
+        $content .= $this->makeTree($this->unitData, 0);
         $content .= '</ul>';
 
         return $content;
     }
 
-    private function makeTree($TitlesArray)
+    private function makeTree($TitlesArray, $pgNum)
     {
         $newString = '';
 
@@ -78,23 +78,26 @@ class TableOfContents
                 {
                     if (gettype($TitlesArray[$key + 1]) == 'object')
                     {
-                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . "</a></li>";
+                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . " [$pgNum]" . "</a></li>";
+                        $pgNum++;
                     }
                     else
                     {
-                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . "</a>";
+                        $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title)  . " [$pgNum]" . "</a>";
+                         $pgNum++;
                     }
                 }
                 else
                 {
-                    $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title) . "</a></li>";
+                    $newString .= "<li><a onclick='navToPage($unitTitle->id)'>" . trim($unitTitle->title)  . " [$pgNum]" . "</a></li>";
+                     $pgNum++;
                 }
             }
             elseif (gettype($unitTitle) == 'array')
             {
                 $newString .= "<ul>";
 
-                $newString .= $this->makeTree($unitTitle);
+                $newString .= $this->makeTree($unitTitle,  $pgNum);
 
                 $newString .= "</ul>";
                 $newString .= "</li>";

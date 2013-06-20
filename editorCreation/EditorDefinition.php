@@ -309,7 +309,8 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "</div>";
         $htmlContent .= "<input id='msm_def_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_def_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        $htmlContent .= html_entity_decode($this->content);
+//        $htmlContent .= $this->content;
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-defcontent$this->compid'>";
@@ -477,7 +478,7 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<input id='msm_defref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
 
         $htmlContent .= "<div id='msm_defref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= $this->content;
+        $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-defrefcontent$parentId-$this->compid'>";
@@ -533,7 +534,7 @@ class EditorDefinition extends EditorElement
 
         $previewHtml .= "<div class='mathcontent'>";
 
-        $previewHtml .= $this->content;
+       $previewHtml .= html_entity_decode($this->content);
 
 
 //        print_object($this->content);

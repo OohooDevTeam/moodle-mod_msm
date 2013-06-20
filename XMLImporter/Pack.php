@@ -113,7 +113,7 @@ class Pack extends Element
             foreach ($quizs as $q)
             {
                 $position = $position + 1;
-                $quiz = new Quiz($this->xmlpath);
+                $quiz = new MathQuiz($this->xmlpath);
                 $quiz->loadFromXml($q, $position);
                 $this->quizs[] = $quiz;
             }
@@ -152,7 +152,7 @@ class Pack extends Element
             if ($element->tagName == 'quiz')
             {
                 $position = $position + 1;
-                $quiz = new Quiz($this->xmlpath);
+                $quiz = new MathQuiz($this->xmlpath);
                 $quiz->loadFromXml($element, $position);
                 $this->quizs[] = $quiz;
             }

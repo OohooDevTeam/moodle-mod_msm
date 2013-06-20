@@ -76,7 +76,7 @@ class EditorTable extends EditorElement
     public function displayData()
     {
         $htmlContent = '';
-        $htmlContent .= $this->content;
+        $htmlContent .= html_entity_decode($this->content);
         return $htmlContent;
     }
 
@@ -113,7 +113,7 @@ class EditorTable extends EditorElement
     public function displayPreview()
     {
         $previewHtml = '';
-        $previewHtml .= $this->content;
+        $previewHtml .= html_entity_decode($this->content);
 
         if (!empty($this->subordinates))
         {

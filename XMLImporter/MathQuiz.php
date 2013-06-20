@@ -19,7 +19,7 @@
  *
  * @author User
  */
-class Quiz extends Element
+class MathQuiz extends Element
 {
 
     public $position;
