@@ -2245,7 +2245,7 @@ function xmldb_msm_upgrade($oldversion)
         upgrade_mod_savepoint(true, 2013031100, 'msm');
     }
 
-    if ($oldversion < 2013050100)
+    if ($oldversion < 2013062007)
     {
 
         // Define field block_caption to be dropped from msm_extra_info
@@ -2259,13 +2259,14 @@ function xmldb_msm_upgrade($oldversion)
         }
 
         // msm savepoint reached
-        upgrade_mod_savepoint(true, 2013050100, 'msm');
+        upgrade_mod_savepoint(true, 2013062007, 'msm');
     }
-    if ($oldversion < 2013062000)
+    if ($oldversion < 2013062008)
     {
         // msm savepoint reached
-        upgrade_mod_savepoint(true, 2013062000, 'msm');
+        upgrade_mod_savepoint(true, 2013062008, 'msm');
     }
+   
 
 
 
