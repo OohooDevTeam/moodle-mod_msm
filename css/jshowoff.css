@@ -106,12 +106,10 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
     _background-color: #efefef;
 }
 .jshowoff h2, .jshowoff p {
-    font-size: 18px;
     padding: 5px 10px 5px;
     margin: 0;
 }
 .jshowoff p {
-    font-size: 14px;
 /*    line-height: 15px;*/
 }
 .eddie {
@@ -127,37 +125,41 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
 }
 .jshowoff-slidelinks a, .jshowoff-controls a{
     display: block;
-    background-color: #000;
     color: #fff;
     padding: 5px 7px 5px;
     margin: 5px 0 0 5px;
     float: left;
-    text-decoration: none;
+    text-decoration: none !important;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     outline: none;
     font-size: 11px;
     line-height: 14px;
+    border-radius: 4px;
+    background: #9A9A9A;
+    box-shadow: 0px 3px 3px -3px #888888;
 }
 .jshowoff-slidelinks a:hover, .jshowoff-controls a:hover {
     color: #fff;
+    background: #888888;
 }
 .jshowoff-slidelinks a.jshowoff-active, .jshowoff-slidelinks a.jshowoff-active:hover {
     background-color: #fff;
     color: #000;
 }
 p.jshowoff-controls {
-    background: #aaa;
+    box-shadow: 0px 6px 3px -3px #888888;
+    background: #ABABAB;
+    background-image: linear-gradient(top, #E0E0E0 3%, #D6D6D6 63%, #CCCCCC 92%);
+    background-image: -o-linear-gradient(top, #E0E0E0 3%, #D6D6D6 63%, #CCCCCC 92%);
+    background-image: -moz-linear-gradient(top, #E0E0E0 3%, #D6D6D6 63%, #CCCCCC 92%);
+    background-image: -webkit-linear-gradient(top, #E0E0E0 3%, #D6D6D6 63%, #CCCCCC 92%);
+    background-image: -ms-linear-gradient(top, #E0E0E0 3%, #D6D6D6 63%, #CCCCCC 92%);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0.03, #E0E0E0),color-stop(0.63, #D6D6D6),color-stop(0.92, #CCCCCC));
+    border-radius: 4px;
     overflow: auto;
-    height: 35px;
-    max-height: 35px;
-    width:98%;
+    height: 30px;
     padding: 0 0px 5px 5px;
-    margin-bottom: 10px;
-    -moz-border-radius-bottomleft: 6px;
-    -moz-border-radius-bottomright: 6px;
-    -webkit-border-bottom-left-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
 }
 .jshowoff-controls a {
     margin: 5px 5px 0 0;
@@ -181,7 +183,7 @@ a.jshowoff-next {
     margin: 5px 0 5px; /*centering the page*/
     color: #fff;
     font-weight:bold;
-    padding: 5px 7px 5px;
+    padding: 5px 7px 0px 7px;
     float: left;
     outline: none;
     line-height: 14px;

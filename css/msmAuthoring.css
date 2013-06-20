@@ -25,9 +25,14 @@
         no-repeat;
 }
 
+.path-mod-msm .generalbox
+{
+    position: relative;
+}
+
 #msm_unit_info_div
 {
-    padding: 1%;
+    padding: 5px;
 }
 
 #msm_comp_fullscreen
@@ -38,24 +43,63 @@
 
 .msm_unit_title_labels, .msm_unit_short_title_labels
 {
-    margin-bottom: 2%;
-    margin-left: 2%;
+    margin-bottom: 3px;
+    display: inline-block;
+    width: 15%;
+    text-align: right;
+    clear: both;
+    float:left;
 }
 
 .msm_title_input 
 {
-    width: 85%;
-    margin-bottom: 2%;
-    margin-left: 1.5%;
+    width: 80%;
+    margin-bottom: 3px;
+    display: block;
+    float:right;
 }
 
 .msm_unit_short_titles
 {
-    width: 82%;
-    margin-bottom: 2%;
-    margin-left: 1.5%;
+    width: 80%;
+    margin-bottom: 3px;
+    display: block;
+    float: right;
 }
 
+.generalbox .sf-menu
+{
+    position: absolute;
+    top: -35px;
+    left: 0;
+    float:none;
+}
+.path-mod-msm .sf-menu li a,
+.path-mod-msm .sf-menu li a:visited
+{
+    background-color: #EDEDED;
+    color: inherit;
+    background-image: linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -o-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -moz-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -ms-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.04, #F0F0F0), color-stop(0.49, #F0F0F0), color-stop(0.76, #E8E8E8));
+}
+.path-mod-msm .sf-menu li a
+{
+    border-top: #CDCDCD;
+}
+.path-mod-msm .sf-menu li li a,
+.path-mod-msm .sf-menu li li a:visited
+{
+    background: #EDEDED;
+}
+.path-mod-msm .sf-menu li:hover,
+.path-mod-msm .sf-menu li a:hover
+{
+    background: #CDCDCD;
+}
 #msm_mod_name
 {
     float: left;
@@ -63,21 +107,31 @@
 }
 #msm_editor_container
 {
-    border: 2px solid black;
+    border: 1px solid #999999;
     background-color: #FFFFFF;
     min-height: 710px;
-    margin-top: 3%;/*to allow room for menu bar to showup*/
+    margin-top: 40px;/*to allow room for menu bar to showup*/
 }
 
 #msm_editor_container h2
 {
+    font-size: 16px;
     text-align: center;
-    letter-spacing: 3px;
+    margin: 0 0 10px 0;
+    padding: 5px;
+    box-shadow: 0px 6px 3px -3px #AAAAAA;
+    background-image: linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -o-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -moz-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -ms-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.04, #F0F0F0), color-stop(0.49, #F0F0F0), color-stop(0.76, #E8E8E8));
 }
 #msm_editor_left
 {
-    background-color: #fffdeb;
+    background-color: #FCFCFC;
     min-height: 700px;
+    max-width: 250px;
     overflow-y: auto;
 }
 
@@ -87,36 +141,40 @@
 }
 #msm_editor_middle
 {
-    background-color: #faebdc;
+    background-color: #FFFFFF;
     min-height: 700px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 #msm_editor_right
 {
-    background-color: #fffdeb;
+    background-color: #FCFCFC;
     min-height: 700px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 #msm_editor_middle_droparea{
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-top: 5px;
     margin-top: 0;
     background-color: white;
     min-height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 1px solid black;
+    border: 1px solid #CECECE;
     height: 70%;
+    clear: both;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .msm_sortable_placeholder
 {
-    border: 1px dotted red;
+    border: 1px solid red;
     visibility: visible !important;
-    margin: 3% 2%;
+    margin: 5px auto;
+    background: #ff3333;
 
 }
 .msm_sortable_placeholder *
@@ -209,82 +267,143 @@
     font-weight: 700;
 }
 
+#msm_editor_left br
+{
+    display: none;
+}
 .msm_structural_element {
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8ecc9b), color-stop(1, #aae3b5) );
-    background:-moz-linear-gradient( center top, #8ecc9b 5%, #aae3b5 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ecc9b', endColorstr='#aae3b5');
-    background-color:#8ecc9b;
-    -moz-border-radius:21px;
-    -webkit-border-radius:21px;
-    border-radius:21px;
-    border:2px solid #72c482;
-    display:inline-block;
-    color:#757575;
-    height: 8%;
-    width:25%;
-    margin-top: 8%;
-    margin-left: 36%;
-    /*margin-right: 10%;*/
+    background-image: linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -o-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -moz-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -ms-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.04, #F0F0F0), color-stop(0.49, #F0F0F0), color-stop(0.76, #E8E8E8));
+    border-radius: 4px;
+    border: 1px solid #CDCDCD;
+    display: block;
+    color: #757575;
+    height: 50px;
+    width: 90%;
+    margin: 10px auto;
+    text-align: left;
+    box-shadow: 0px 0px 2px 0px #888888;
 }
 .msm_structural_element:hover {
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #aae3b5), color-stop(1, #8ecc9b) );
-    background:-moz-linear-gradient( center top, #aae3b5 5%, #8ecc9b 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#aae3b5', endColorstr='#8ecc9b');
-    background-color:#aae3b5;
-    cursor: pointer;
+    background-image: linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -o-linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -moz-linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -ms-linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.04, #F0F0F0), color-stop(0.49, #F0F0F0), color-stop(0.76, #E8E8E8));
+    cursor: move;
 }
 .msm_element_label{
-    font-size: 11px;
-    display:block;
-    margin-left: 10%;
-    margin-top: 38%;
-
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 8px 0 0 0 !important;
+    padding: 5px 5px 5px 40px;
+    min-height: 32px;
 }
+
+#msm_def .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_definition.png") no-repeat 5px 0;
+}
+#msm_theorem .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_theorem.png") no-repeat 5px 0;
+}
+#msm_comment .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_comment.png") no-repeat 5px 0;
+}
+#msm_body .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_content.png") no-repeat 5px 0;
+}
+#msm_extra_info .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_extrainfo.png") no-repeat 5px 0;
+}
+#msm_intro .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_intro.png") no-repeat 5px 0;
+}
+
+#msm_editor_right h3
+{
+    letter-spacing: 0px;
+    font-size: 14px;
+}
+
+#msm_editor_right ul
+{
+    padding: 0;
+}
+#msm_editor_right li
+{
+    list-style-type: none;
+}
+
+
 /* This imageless css button was generated by CSSButtonGenerator.com */
 
 .copied_msm_structural_element
 {
-    margin: 3% 2%;
+    margin: 10px auto;
     /*border: 2px dashed black;*/
-    width: 90%;
+    width: 95%;
     height: 25%;
     /* The following two properties are there so that chrome does not
 return auto from getComputedStyle javascript function*/
     left: 0;
     top: 0;
-    padding-top: 0;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-bottom: 2%;
+    padding-top: 5px !important;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #CECECE;
+    border-radius: 4px;
+    position: relative;
+    background: #EDEDED;
 }
 
 .msm_element_close
 {
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
-    background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
-    background-color:#ffc477;
-    -moz-border-radius:42px;
-    -webkit-border-radius:42px;
-    border-radius:42px;
-    border:1px solid #eeb44f;
+    background-image: linear-gradient(bottom, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -o-linear-gradient(bottom, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -moz-linear-gradient(bottom, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -webkit-linear-gradient(bottom, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -ms-linear-gradient(bottom, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.14, #D4D4D4), color-stop(0.57, #F0F0F0), color-stop(0.79, #F0F0F0));
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #CDCDCD;
     display:inline-block;
-    color:#ffffff;
+    color: #555555;
     font-family:arial;
     font-size:15px;
     font-weight:bold;
-    padding:0px 4px;
+    padding:0px;
     text-decoration:none !important;
     float: right;
+    margin-top: 5px !important;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
 }
 .msm_element_close:hover
 {
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
-    background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
-    color:#ffffff;
-    background-color:#fb9e25;
-    cursor: pointer;
+    background-image: linear-gradient(top, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -o-linear-gradient(top, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -moz-linear-gradient(top, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -webkit-linear-gradient(top, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -ms-linear-gradient(top, #D4D4D4 14%, #F0F0F0 57%, #F0F0F0 79%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.14, #D4D4D4), color-stop(0.57, #F0F0F0), color-stop(0.79, #F0F0F0));
+    color: #555555;
 }
 .msm_element_close:active
 {
@@ -361,15 +480,20 @@ return auto from getComputedStyle javascript function*/
 
 .msm_unit_description_labels
 {
-    margin-bottom: 2%;
-    margin-left: 2%;
+    margin-bottom: 3px;
+    display: inline-block;
+    width: 15%;
+    text-align: right;
+    clear: both;
+    float: left;
 }
 
 .msm_unit_description_inputs
 {
-    width: 85%;
-    margin-bottom: 2%;
-    margin-left: 19px; /*to line up with input box above*/
+    width: 80%;
+    margin-bottom: 3px;
+    display: block;
+    float:right;
 }
 
 .msm_child_description_labels
@@ -381,8 +505,9 @@ return auto from getComputedStyle javascript function*/
 .msm_child_description_inputs
 {
     float: right;
-    width: 90%;
+    width: 85%;
     margin-bottom: 2%;
+    margin-right: 1%;
 }
 
 .msm_thumbnails
@@ -395,7 +520,7 @@ return auto from getComputedStyle javascript function*/
     float: right;
     margin-right: 2%;
     width: auto;
-    margin-top: 2%;
+    margin-top: 10px;
 }
 
 .msm_introTitle
@@ -408,7 +533,8 @@ return auto from getComputedStyle javascript function*/
 {
     margin-left: 0;
     width: auto;
-    margin-top: 2%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .msm_unit_child_content, .msm_intro_child_contents
 {
@@ -441,19 +567,20 @@ return auto from getComputedStyle javascript function*/
     bottom: 0;
     left: 90%;
     width: 5%;
-    margin-top: 1%;
+    margin-top: 5px;
     margin-left: 2%;
     margin-right: 2%;
 }
 
 .msm_editor_content
 {
-    margin-top: 2%;
-    width: 91.5%;
-    border: 2px solid black;
-    padding: 2%;
+    margin: 5px auto;
+    width: 95%;
+    border: 1px solid #AAAAAA;
+    padding: 5px;
     text-align: left;
-    margin-bottom: 2%;
+    border-radius: 4px;
+    background: #FFFFFF;
 }
 
 .msm_editor_content table
@@ -526,14 +653,19 @@ return auto from getComputedStyle javascript function*/
 
 .msm_theorem_statement_containers, .msm_theoremref_statement_containers
 {
-    border: 2px dotted red;
-    padding: 2%;
+    border: 1px solid #ff6666;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 2px 0px #888888;
 }
 
 .msm_theorem_child
 {
-    margin-top: 1%;
-    border: 2px dashed darkgreen;
+    margin-top: 5px;
+    border: 1px solid #33cc00;
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px 0px #888888;
 }
 
 .msm_associate_containers{
@@ -550,9 +682,11 @@ return auto from getComputedStyle javascript function*/
 
 }
 .msm_associate_childs{
-    border: 2px dotted orange;
-    padding: 2%;
-    margin-bottom: 1%;
+    border: 1px solid #ff9933;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px 0px #888888;
 }
 
 .msm_info_titles{
@@ -647,20 +781,21 @@ table.mceLayout
 .msm_element_overlays
 {
     position: absolute;
-    background-color: #fae4bd;
-    opacity: 0.5;
-    width: 87%;
-    height: 30px;
-    left: 5%;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    max-height: 100%;
+    top: 0px !important;
+    left: 0px !important;
+    z-index: 2;
 }
 
 .msm_overlayButtons {   
-    background-color:#fae4bd;
-    -moz-border-radius:6px;
-    -webkit-border-radius:6px;
+    background-color: #CDCDCD;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
     border-radius:6px;
     display:inline-block;
-    color:#eeb44f;
+    color: #555555;
     font-family:arial;
     font-size:15px;
     font-weight:bold;
@@ -668,10 +803,12 @@ table.mceLayout
     text-decoration:none !important;
     float: right;
     margin: 1% 2%;
+    border: solid 1px transparent;
 }
 .msm_overlayButtons:hover {
-    background-color:#fae4bd;
-    border: solid 1px #eeb44f;
+    background-color: #E8E8E8;
+    border: solid 1px #AAAAAA;
+    color: #555555;
     cursor: pointer;
 }
 .msm_overlayButtons:active {
@@ -692,4 +829,31 @@ table.mceLayout
 .no-close .ui-dialog-titlebar-close
 {
     display: none;
+}
+
+.path-mod-msm .ui-widget
+{
+    font-size: 1em;
+}
+
+.ui-sortable-helper
+{
+    height: 150px !important;
+    overflow: hidden;
+    opacity: 0.5;
+}
+
+#msm_unit_tree.jstree-default a .jstree-icon
+{
+    background: url("../pix/ico_tag.png") no-repeat 0 0;
+}
+
+.path-mod-msm
+{
+    overflow: hidden;
+}
+
+.mceToolbar tr
+{
+    background: transparent !important;
 }

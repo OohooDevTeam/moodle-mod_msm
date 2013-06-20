@@ -22,17 +22,6 @@ body
     width:100%;    
     z-index:0;
 }
-div.controller{
-    position:absolute;
-    top: 92%;
-    min-width: 96%;
-    max-height: 35px;
-    z-index: 11;
-    /*    margin-top: 10px;*/
-    /*    margin-left: 10px;*/
-    overflow: hidden;
-    margin: 2%;
-}
 
 /*-----------------------------------------------------------------------------*/
 /*css needed for the jSplitter plugin*/
@@ -42,12 +31,15 @@ div.controller{
     min-height: 720px;
     max-width: 100%;
     max-height: 100%;
-    background-image:url('../pix/background.jpg');
-    opacity:0.95;
-    filter:Alpha(opacity=95);
+    background: #CDCDCD;
+    /*background-image:url('../pix/background.jpg');*/
     /*    line-height: 0.3em;*/
-    font-size: 14px;    
+    border-radius: 3px;
+    margin-bottom: 100px;/*Used for display the Previous next menu*/
+    box-shadow: 0 3px 3px 0 #888888, 0 0 3px 0 #EEEEEE;
 }
+
+
 
 /*#MySplitter div {
     overflow: auto;
@@ -62,39 +54,59 @@ div.controller{
 /*-----------------------------------------------------------------------------*/
 
 /*leftbox and rightbox classes are for the faded background in display*/
+#leftcol
+{
+    margin: 5px 0 0 5px;
+}
+#rightcol
+{
+    margin: 5px 5px 0 0;
+}
 
 .leftbox
 {
-    /*background-color: #EBFAF0;*/
-    -moz-box-shadow: 0 0 5px 5px #BF8C30;
-    -webkit-box-shadow: 0 0 5px 5px #BF8C30;
-    box-shadow: 0 0 5px 5px #BF8C30;
+    box-shadow: 0 3px 3px 0 #888888;
+    background: #FFFFFF url("../pix/back_page_left.png") repeat-y right 10px;
 
-    /*opacity: 0.8;*/
-    background-image:url('../pix/background2.jpg');
-    min-height: 650px;
-    max-height: 650px;
+    min-height: 700px;
+    max-height: 700px;
     /*width:97%;*/
-    overflow: auto;
-    margin: 10px;
+    overflow-y: scroll;
+    margin-right: 5px;
+    padding: 5px 30px 5px 0;
+
+}
+div.controller{
+    position:absolute;
+    bottom: -45px;
+    width: 98%;
+    height: 40px;
+    z-index: 11;
+    /*    margin-top: 10px;*/
+    /*    margin-left: 10px;*/
+}
+#MySplitter .vspliter
+{
+    background: #9B9B9B url("../pix/back_vsplitter.png") no-repeat center center;
+    width: 4px;
+    z-index: 2;
+    min-height: 710px;
+    max-height: 710px;
+    margin: 5px 0;
 }
 .rightbox
 {
-    /*background-color: #EBFAF0;*/
-    -moz-box-shadow: 0 0 5px 5px #BF8C30;
-    -webkit-box-shadow: 0 0 5px 5px #BF8C30;
-    box-shadow: 0 0 5px 5px #BF8C30;
+    box-shadow: 0px 3px 3px 0 #888888;
+    background: #FFFFFF url("../pix/back_page_right.png") repeat-y -15px 0;
 
-    /*opacity: 0.8;*/
-    background-image:url('../pix/background2.jpg');
-    min-height: 690px;
-    max-height: 690px;
+    min-height: 700px;
+    max-height: 700px;
     /*width:96%;*/
-    padding: 5px;
+    padding: 5px 5px 5px 15px;
     overflow: auto;
     /*white-space: nowrap;*/
     /*    overflow: hidden;*/
-     margin: 10px;
+    margin-left: 5px;
 }
 
 /*leftcol and rightcol are the divs in MySplitter element*/
@@ -102,20 +114,20 @@ div.controller{
 #leftcol
 {
     /*    overflow: hidden;*/
-/*    margin-bottom:10px;
-    margin-right:10px;    
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-right:10px;
-    padding-left:10px;*/
+    /*    margin-bottom:10px;
+        margin-right:10px;    
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-right:10px;
+        padding-left:10px;*/
 
 }
 
 #rightcol
 {
     /*    overflow: auto;*/
-/*    padding-top:10px;
-    padding-left:10px;*/
+    /*    padding-top:10px;
+        padding-left:10px;*/
 }
 
 #features .title
@@ -126,7 +138,6 @@ div.controller{
     padding-left: 20px;
     padding-right: 20px;
     text-align: center;
-    letter-spacing: 5px;
     font-weight: bold;
     font-size: large;
 }
@@ -178,7 +189,7 @@ div.controller{
 {
     margin-top: 5px;
     /*    margin-bottom: 5px;*/
-    border: 2px solid black;
+    border: 1px solid #ACACAC;
     background-color: white;
     padding: 3px;
     /*    overflow: hidden;*/
@@ -224,14 +235,11 @@ div.controller{
 
 .def
 {
-    width: 90%;
-    background-color: #FF6140;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left:auto;
-    margin-right:auto;
+    background-color: #FAFAFA;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid #DD1E2F;
+    border-left-width: 8px;
 }
 
 /*.defcontent
@@ -247,7 +255,6 @@ span.deftitle
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: right;   
 }
 
@@ -255,7 +262,6 @@ span.deftype
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: left;
 }
 
@@ -270,21 +276,17 @@ span.deftype
 
 .theorem
 {
-    width: 90%;
-    background-color: #A61D00;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left:auto;
-    margin-right:auto;
+    background-color: #FAFAFA;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid #218559;
+    border-left-width: 8px;
 }
 
 span.theoremtitle
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: right;   
 }
 
@@ -292,7 +294,6 @@ span.theoremtype
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: left;
 }
 
@@ -306,7 +307,6 @@ span.parttheoremtitle
 
 .defminibuttons
 {
-    background-color: #FF6140;
     list-style-type:none;
     margin:0;
     padding:0;
@@ -315,31 +315,27 @@ span.parttheoremtitle
 }
 .defminibutton
 {
-    border:1px solid #858181;
-    background-color: #FF6140;
-    background-origin:border-box;
+    border: 0 none;
+    border-left:4px solid #DD1E2F;
+    background-color: transparent;
     display:inline-block;
-    margin-left:5px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin:5px 0 0 0;
     font-family:arial;
     font-size:11px;
     font-weight:bold;
-    padding:0px 7px;
+    padding:0px 4px;
     text-decoration:none;
     float:left;
 }
 
 .defminibutton:hover
 {
-    background-color:#2DD6D6;
+    background-color:#EFEFEF;
 }
 
 /* for associates that is associated with the theorem */
 .minibuttons
 {
-    background-color: #A61D00;
     list-style-type:none;
     margin:0;
     padding:0;
@@ -348,48 +344,40 @@ span.parttheoremtitle
 }
 .minibutton
 {
-    border:1px solid #858181;
-    background-color: #A61D00;
-    background-origin:border-box;
+    border: 0 none;
+    border-left:4px solid #218559;
+    background-color: transparent;
     display:inline-block;
-    margin-left:5px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin:5px 0 0 0;
     font-family:arial;
     font-size:11px;
     font-weight:bold;
-    padding:0px 7px;
+    padding:0px 4px;
     text-decoration:none;
     float:left;
-
 }
 .minibutton:hover
 {
-    background-color:#6060B5;
+    background-color: #EFEFEF;
 }
 
 .proofminibutton
 {
-    border:1px solid #858181;
-    background-color: #A61D00;
-    background-origin:border-box;
+    border: 0 none;
+    border-left:4px solid #A61D00;
+    background-color: transparent;
     display:inline-block;
-    margin-left:5px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin:5px 0 0 0;
     font-family:arial;
     font-size:11px;
     font-weight:bold;
-    padding:0px 7px;
+    padding:0px 4px;
     text-decoration:none;
     float:left;
-
 }
 .proofminibutton:hover
 {
-    background-color:#6060B5;
+    background-color:#EFEFEF;
 }
 
 table.matharray
@@ -423,14 +411,11 @@ div.dialogs{
 
 .comment
 {
-    width: 90%;
-    background-color: #0F900F;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left:auto;
-    margin-right:auto;
+    background-color: #FAFAFA;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid #EBB035;
+    border-left-width: 8px;
 }
 
 /*.commentcontent
@@ -446,7 +431,6 @@ span.commenttitle
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: right;   
 }
 
@@ -454,13 +438,11 @@ span.commenttype
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: left;
 }
 
 .commentminibuttons
 {
-    background-color: #0F900F;
     list-style-type:none;
     margin:0;
     padding:0;
@@ -469,25 +451,22 @@ span.commenttype
 }
 .commentminibutton
 {
-    border:1px solid #858181;
-    background-color: #0F900F;
-    background-origin:border-box;
+    border: 0 none;
+    border-left:4px solid #EBB035;
+    background-color: transparent;
     display:inline-block;
-    margin-left:5px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin:5px 0 0 0;
     font-family:arial;
     font-size:11px;
     font-weight:bold;
-    padding:0px 7px;
+    padding:0px 4px;
     text-decoration:none;
     float:left;
 }
 
 .commentminibutton:hover
 {
-    background-color:#21B468;
+    background-color:#EFEFEF;
 }
 
 img.mathimage
@@ -529,11 +508,16 @@ img.mathimagemap
 
 .extrainfo
 {
-    width: 95%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    background-color: #FAFAFA;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid #06A2CB;
+    border-left-width: 8px;
+}
+
+.extrainfo h3
+{
+    text-align: center;
 }
 
 /*.extrainfocontent
@@ -556,7 +540,6 @@ span.extrainfoname
 {
     font-size: 14px;
     font-weight: bold;
-    color: black;
 }
 
 .proofblocktitle
@@ -569,9 +552,9 @@ span.extrainfoname
 {
     text-align: left;
     margin-left: 20px;
-    margin-right: 10px;
+    margin-right: 0px;
     margin-top: 0px;
-    padding: 3px;
+    padding: 0px;
     font-size: 14px !important;
 }
 
@@ -612,14 +595,11 @@ span.extrainfoname
 
 .answershowme
 {
-    width: 95%;
-    background-color: #0F900F;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left:auto;
-    margin-right:auto;
+    background-color: #FAFAFA;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid #D0C6B1;
+    border-left-width: 8px;
 }
 
 /*.answershowmecontent
@@ -634,7 +614,6 @@ span.answershowmetitle
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: right;   
 }
 
@@ -642,20 +621,16 @@ span.answershowmetype
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: left;
 }
 
 .showme
 {
-    width: 95%;
-    background-color: #0F900F;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left:auto;
-    margin-right:auto;
+    background-color: #FAFAFA;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid #192823;
+    border-left-width: 8px;
 }
 
 /*.showmecontent
@@ -669,7 +644,6 @@ span.showmetitle
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: right;   
 }
 
@@ -677,35 +651,34 @@ span.showmetype
 {
     font-size: 14px;
     font-weight: bold;
-    color: white;
     float: left;
 }
 
 .msm_infobutton {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
-	background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
-	background-color:#77d42a;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
-	border-radius:42px;
-	border:1px solid #268a16;
-	display:inline-block;
-	color:#306108;
-	font-family:Times New Roman;
-	font-size:11px;
-	font-weight:bold;
-	padding:0px 3px;
-	text-decoration:none !important;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
+    background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+    background-color:#77d42a;
+    -moz-border-radius:42px;
+    -webkit-border-radius:42px;
+    border-radius:42px;
+    border:1px solid #268a16;
+    display:inline-block;
+    color:#306108;
+    font-family:Times New Roman;
+    font-size:11px;
+    font-weight:bold;
+    padding:0px 3px;
+    text-decoration:none !important;
 }.msm_infobutton:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
-	background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
-	background-color:#5cb811;
-        cursor: pointer;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
+    background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+    background-color:#5cb811;
+    cursor: pointer;
 }.msm_infobutton:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
 /* This imageless css button was generated by CSSButtonGenerator.com */
 
@@ -729,4 +702,58 @@ body.loading {
 
 body.loading {
     overflow: hidden;   
+}
+
+.path-mod-msm
+{
+    overflow: hidden;
+}
+
+/*-------------------- PRINT STYLE -------------------------------------------*/
+@media print
+{
+    #MySplitter
+    {
+        overflow: visible;
+        position: relative;
+        float: none;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+    }
+    #leftcol, #rightcol
+    {
+        position: relative;
+        float: none;
+        width: auto !important;
+        height: auto !important;
+    }
+    .leftbox, .rightbox
+    {
+        position: relative;
+        float: none;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        width: auto !important;
+        height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        overflow: visible;
+    }
+    .vspliter, .controller, #navigation
+    {
+        display: none;
+    }
+    
+    .spliter_panel .vspliter, .spliter_panel .left_panel, .spliter_panel .right_panel, .spliter_panel .hspliter, .spliter_panel .top_panel, .spliter_panel .bottom_panel
+    {
+        position: relative !important;
+    }
+    
+    #page-wrapper, #features table
+    {
+        min-width: 0 !important;
+    }
+    
 }
