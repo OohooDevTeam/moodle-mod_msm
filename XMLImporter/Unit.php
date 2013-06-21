@@ -757,15 +757,15 @@ class Unit extends Element
                     {
                         $block = $this->block[$blockString[1]];
                         $block->saveIntoDb($block->position, $msmid, $this->compid);
-                        $sibling_id = $block->root;
+                        $sibling_id = $block->compid;
                     }
                     else
                     {
                         $block = $this->block[$blockString[1]];
                         $block->saveIntoDb($block->position, $msmid, $this->compid, $sibling_id);
-                        if (!empty($block->root))
+                        if (!empty($block->compid))
                         {
-                            $sibling_id = $block->root;
+                            $sibling_id = $block->compid;
                         }
                     }
                     break;
@@ -777,15 +777,15 @@ class Unit extends Element
                     {
                         $extra = $this->extraContents[$extraString[1]];
                         $extra->saveIntoDb($extra->position, $msmid, $this->compid);
-                        $sibling_id = $extra->root;
+                        $sibling_id = $extra->compid;
                     }
                     else
                     {
                         $extra = $this->extraContents[$extraString[1]];
                         $extra->saveIntoDb($extracontent->position, $msmid, $this->compid, $sibling_id);
-                        if (!empty($extra->root))
+                        if (!empty($extra->compid))
                         {
-                            $sibling_id = $extra->root;
+                            $sibling_id = $extra->compid;
                         }
                     }
 
@@ -794,9 +794,6 @@ class Unit extends Element
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = explode('-', $element);
                     $subunitRecord = $this->checkForRecord($msmid, $this->subunits[$subunitString[1]]);
-
-//                    echo "is there  a subunit Record?";
-//                    print_object($subunitRecord);
 
                     if (empty($subunitRecord))
                     {
@@ -1189,6 +1186,7 @@ class Unit extends Element
 
     function displayhtml($isindex = false)
     {
+        
         $content = '';
 //        $content .= "<div class='unit' id='unit-" . $this->compid . "'>";
         // most likely a first page if creationdate and authors are there...
