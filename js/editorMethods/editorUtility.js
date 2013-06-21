@@ -298,8 +298,10 @@ function newUnit()
     
     $("#msm_child_order").val('');
     $("#msm_currentUnit_id").val('');
-    $('<input id="msm_file_options" name="msm_file_options" style="display:none;"/>').appendTo("#msm_unit_form");
-    $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
+    
+    var fileoption = $('<input id="msm_file_options" name="msm_file_options" style="display:none;"/>');
+    $(fileoption).val(JSON.stringify(tinymce_filepicker_options));
+    $(fileoption).appendTo("#msm_unit_form");
     
     $("#msm_unit_title").removeAttr("readonly");
     $("#msm_unit_short_title").removeAttr("readonly");

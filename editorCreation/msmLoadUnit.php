@@ -61,7 +61,7 @@ if (isset($_POST['id']))
 
     $htmlContent = '';
     $htmlContent .= $unitData->displayData();
-
+    
     echo json_encode($htmlContent);
 }
 // user has triggered the edit mode from the view.php

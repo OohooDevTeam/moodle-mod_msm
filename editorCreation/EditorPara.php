@@ -155,7 +155,7 @@ class EditorPara extends EditorElement
     public function displayData()
     {
         $htmlContent = '';
-        $htmlContent .= html_entity_decode($this->content);
+        $htmlContent .= $this->content;
         return $htmlContent;
     }
 

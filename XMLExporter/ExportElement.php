@@ -118,7 +118,7 @@ abstract class ExportElement
                     foreach ($ptags as $p)
                     {
                         $newpNode = $this->replacePTags($DomDocument, $p);
-                        $pNode = $DomDocument->importNode($newpNode, true);
+                        $pNode = $contentDoc->importNode($newpNode, true);
                         $p->parentNode->replaceChild($pNode, $p);
                     }
 

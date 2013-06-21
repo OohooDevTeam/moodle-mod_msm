@@ -80,10 +80,8 @@ class Compositor
         $nextStack = array();
 
         $content = '';
-//        $nextRecordString = '';
-//        $prevRecordString = '';
-
-
+        $nextRecordString = '';
+        $prevRecordString = '';
         // grabbing each compositor record passed in input field
         $eachPrevString = explode(',', $previousString);
         $eachNextString = explode(',', $nextString);
@@ -199,36 +197,32 @@ class Compositor
 
         $nextStackSize = count($nextStack);
         $prevStackSize = count($prevStack);
-        
-        $nextRecordString = implode(",", $nextStack);
 
-//        for ($i = 1; $i < $nextStackSize; $i++)
-//        {
-//            $nextRecordString .= ',' . $nextStack[$i];
-//        }
+        for ($i = 0; $i < $nextStackSize - 1; $i++)
+        {
+            $nextRecordString .= $nextStack[$i] . ',';
+        }
 
-//        if ($nextStackSize - 1 >= 0)
-//        {
-//            if (!empty($nextStack[$nextStackSize - 1]))
-//            {
-//                $nextRecordString .= $nextStack[$nextStackSize - 1];
-//            }
-//        }
+        if ($nextStackSize - 1 >= 0)
+        {
+            if (!empty($nextStack[$nextStackSize - 1]))
+            {
+                $nextRecordString .= $nextStack[$nextStackSize - 1];
+            }
+        }
 
-        $prevRecordString = implode(",", $prevStack);
-//        $prevRecordString = $prevStack[0];
-//        for ($i = 1; $i < $prevStackSize - 1; $i++)
-//        {
-//            $prevRecordString .= $prevStack[$i] . ',';
-//        }
+        for ($i = 0; $i < $prevStackSize - 1; $i++)
+        {
+            $prevRecordString .= $prevStack[$i] . ',';
+        }
 
-//        if ($prevStackSize - 1 >= 0)
-//        {
-//            if (!empty($prevStack[$prevStackSize - 1]))
-//            {
-//                $prevRecordString .= $prevStack[$prevStackSize - 1];
-//            }
-//        }
+        if ($prevStackSize - 1 >= 0)
+        {
+            if (!empty($prevStack[$prevStackSize - 1]))
+            {
+                $prevRecordString .= $prevStack[$prevStackSize - 1];
+            }
+        }
         ?>
 
         <script type="text/javascript">
@@ -238,23 +232,23 @@ class Compositor
 
                 //                                $('.unit').append('<input id="stack" type="text" name="stackstring"/>'); 
                 $('#stack').val(stackstring); 
-                                                                                                                                                                                        
+                                                                                                                                                                                                        
                 var currentString = "<?php echo $currentRecord; ?>";
                 $('.unit').append('<input id="current" type="text" name="currentvalue" style="visibility:hidden;"/>');
                 //                                $('.unit').append('<input id="current" type="text" name="currentvalue"/>');
                 $('#current').val(currentString);
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                        
                 var prevString = "<?php echo $prevRecordString; ?>";
                 $('.unit').append('<input id="prevstack" type="text" name="prevstackstring" style="visibility:hidden;"/>');
                 //                                $('.unit').append('<input id="prevstack" type="text" name="prevstackstring"/>');
                 $('#prevstack').val(prevString);
-                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        
                 var functionstring = "<?php echo $functionString; ?>";
                 $('.unit').append('<input id="functioninput" type="text" name="functionstring" style="visibility:hidden;"/>');
                 //                                $('.unit').append('<input id="functioninput" type="text" name="functionstring"/>');
                 $('#functioninput').val(functionstring); 
             });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         </script>
 
         <?php

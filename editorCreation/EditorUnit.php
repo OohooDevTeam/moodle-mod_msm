@@ -326,7 +326,7 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "<div id='msm_editor_middle_droparea'>";
         $htmlContent .= "<div id='msm_child_appending_area'>";
-
+        
         $childOrderString = '';
         foreach ($this->children as $childElement)
         {
@@ -369,7 +369,7 @@ class EditorUnit extends EditorElement
                         <input type="button" class="msm_editor_buttons" id="msm_editor_remove" onclick="removeUnit(event)" value="Remove this Unit"/>';
         $htmlContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
         $htmlContent .= "<input id='msm_file_options' name='msm_file_options' style='display:none;'/>";
-
+        
         return $htmlContent;
     }
 
