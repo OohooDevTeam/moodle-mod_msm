@@ -194,8 +194,8 @@ function initTrees(idPair, parent)
         else if(nodeId == "msm_composition_default")
         {
             $("#msm_editor_new").attr("disabled", "disabled");
-            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
-            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_unit_form");
+            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_unit_form");
             $("#msm_child_appending_area").empty();
         }
 
@@ -254,8 +254,8 @@ function initTrees(idPair, parent)
         else if(nodeId == "msm_standalone_root")
         {
             $("#msm_editor_new").attr("disabled", "disabled");
-            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
-            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+            $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_unit_form");
+            $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_unit_form");
             $("#msm_child_appending_area").empty();
         }
 
@@ -298,14 +298,16 @@ function newUnit()
     
     $("#msm_child_order").val('');
     $("#msm_currentUnit_id").val('');
+    $('<input id="msm_file_options" name="msm_file_options" style="display:none;"/>').appendTo("#msm_unit_form");
+    $("#msm_file_options").val(JSON.stringify(tinymce_filepicker_options));
     
     $("#msm_unit_title").removeAttr("readonly");
     $("#msm_unit_short_title").removeAttr("readonly");
     $("#msm_unit_description_input").removeAttr("readonly");
     
     $(".msm_editor_buttons").remove();    
-    $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
-    $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+    $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_unit_form");
+    $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" disabled=\"disabled\" value=\"Save\"/>").appendTo("#msm_unit_form");
     
     $("#msm_editor_new").attr("disabled", "disabled");
     
@@ -448,37 +450,58 @@ function saveComp(e)
     
     e.preventDefault();
     
-    var treeInnerHTML = $("#msm_composition_default > ul").html();
+    var exsitingSaveButton = $("#msm_editor_middle").find("#msm_editor_save");
     
-    
-    var standaloneTree = '';
-    $("#msm_standalone_root").find("li").each(function() {
-        standaloneTree += $(this).attr("id") + ",";  
-    });
-   
-    var params = {
-        tree_content: treeInnerHTML,
-        standalone_content: standaloneTree
-    };
-    var ids = [];
-    $.ajax({
-        type: 'POST',
-        url:"editorCreation/msmLoadUnit.php",
-        data: params,
-        success: function(data)
-        {
-            ids = JSON.parse(data);
-            var idInfos = ids.split("-");
-            if(ids != '')
-            {
-                window.location = "view.php?msmid="+idInfos[0]+"&unitid="+idInfos[1];                        
+    if(exsitingSaveButton.length > 0)
+    {
+        $("<div class='dialogs' id='msm_save_comp'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Please save the current unit first. </div>").appendTo('#msm_editor_middle');
+        $( "#msm_save_comp" ).dialog({
+            resizable: false,
+            height:180,
+            modal: true,
+            buttons: {
+                "Ok": function() {
+                    $(this).dialog("close");
+                }
             }
-        },
-        error: function(data)
-        {
-            alert("ajax error in loading unit");
-        }
-    }); 
+        });
+    }
+    else
+    {
+        var treeInnerHTML = $("#msm_composition_default > ul").html();
+    
+    
+        var standaloneTree = '';
+        $("#msm_standalone_root").find("li").each(function() {
+            standaloneTree += $(this).attr("id") + ",";  
+        });
+   
+        var params = {
+            tree_content: treeInnerHTML,
+            standalone_content: standaloneTree
+        };
+        var ids = [];
+        $.ajax({
+            type: 'POST',
+            url:"editorCreation/msmLoadUnit.php",
+            data: params,
+            success: function(data)
+            {
+                ids = JSON.parse(data);
+                var idInfos = ids.split("-");
+                if(ids != '')
+                {
+                    window.location = "view.php?msmid="+idInfos[0]+"&unitid="+idInfos[1];                        
+                }
+            },
+            error: function(data)
+            {
+                alert("ajax error in loading unit");
+            }
+        }); 
+    }
+    
+   
      
 // TODO navigate to view page once the db is updated
     
@@ -1631,71 +1654,87 @@ function removeUnit(e)
 {
     e.preventDefault();
     
-    var currentUnitIdPair = $("#msm_currentUnit_id").val();
-    var param = {
-        removeUnit:currentUnitIdPair
-    };
+    $("<div class='dialogs' id='msm_removeUnit'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure that you would like to remove this unit? </div>").appendTo('#msm_editor_middle');
+    $( "#msm_removeUnit" ).dialog({
+        resizable: false,
+        height:180,
+        modal: true,
+        buttons: {
+            "Yes": function() {
+                var currentUnitIdPair = $("#msm_currentUnit_id").val();
+                var param = {
+                    removeUnit:currentUnitIdPair
+                };
     
-    var ids = [];
+                var ids = [];
     
-    $.ajax({
-        type: 'POST',
-        url:"editorCreation/msmUnitForm.php",
-        data: param,
-        success: function(data)
-        {
-            ids = JSON.parse(data);
+                $.ajax({
+                    type: 'POST',
+                    url:"editorCreation/msmUnitForm.php",
+                    data: param,
+                    success: function(data)
+                    {
+                        ids = JSON.parse(data);
             
-            // show root Unit
-            processUnitData(ids); 
-            $("#msm_currentUnit_id").val(currentUnitIdPair);
+                        // show root Unit
+                        processUnitData(ids); 
+                        $("#msm_currentUnit_id").val(currentUnitIdPair);
             
-            $("#msm_unit_tree").find("li").each(function() {           
-                var stringid = "msm_unit-"+currentUnitIdPair;
-                var parent = $(this);
-                var match = this.id.match(/msm_unit-.+/);
-                var currentId = '';
-                if(!match)
-                {
-                    currentId = "msm_unit-"+this.id;
-                }
-                else
-                {
-                    currentId = this.id;
-                }
-                if(currentId == stringid)
-                {
-                    $(this).children("ul").children("li").each(function() {
-                        // to prevent having two elements indicated as the last leaf --> problem with this code = also removes 
-                        // indicator for the last leaf at the leaf that is actually last in the list
-                        //                        if(this.className == "jstree-leaf jstree-last")
-                        //                        {
-                        //                            this.className = "jstree-leaf";
-                        //                        }
-                        $(this).insertBefore(parent);
-                    });               
-                    $(this).empty().remove();
-                }
-            });
+                        $("#msm_unit_tree").find("li").each(function() {           
+                            var stringid = "msm_unit-"+currentUnitIdPair;
+                            var parent = $(this);
+                            var match = this.id.match(/msm_unit-.+/);
+                            var currentId = '';
+                            if(!match)
+                            {
+                                currentId = "msm_unit-"+this.id;
+                            }
+                            else
+                            {
+                                currentId = this.id;
+                            }
+                            if(currentId == stringid)
+                            {
+                                $(this).children("ul").children("li").each(function() {
+                                    // to prevent having two elements indicated as the last leaf --> problem with this code = also removes 
+                                    // indicator for the last leaf at the leaf that is actually last in the list
+                                    //                        if(this.className == "jstree-leaf jstree-last")
+                                    //                        {
+                                    //                            this.className = "jstree-leaf";
+                                    //                        }
+                                    $(this).insertBefore(parent);
+                                });               
+                                $(this).empty().remove();
+                            }
+                        });
             
-            var liElements = $("#msm_unit_tree").find("li");
+                        var liElements = $("#msm_unit_tree").find("li");
             
-            if(liElements.length == 0)
-            {
-                $("#msm_editor_new").attr("disabled", "disabled");
-                $("#msm_comp_done").attr("disabled", "disabled");
+                        if(liElements.length == 0)
+                        {
+                            $("#msm_editor_new").attr("disabled", "disabled");
+                            $("#msm_comp_done").attr("disabled", "disabled");
+                        }
+            
+                        newUnit();
+            
+                        MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
+            
+                    },
+                    error: function(data)
+                    {
+                        alert("ajax error in loading unit");
+                    }
+                });
+                $(this).dialog("close");
+            },
+            "No": function() {
+                $(this).dialog("close");
             }
-            
-            newUnit();
-            
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
-            
-        },
-        error: function(data)
-        {
-            alert("ajax error in loading unit");
         }
     });
+    
+    
     
 }
 
@@ -1706,72 +1745,97 @@ function cancelUnit(e)
 {
     e.preventDefault();
     
-    var currentUnitIdPair = $("#msm_currentUnit_id").val();
+    $("<div class='dialogs' id='msm_cancelUnit'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure that you would like cancel all the changes made? </div>").appendTo('#msm_editor_middle');
+    $( "#msm_cancelUnit" ).dialog({
+        resizable: false,
+        height:180,
+        modal: true,
+        buttons: {
+            "Yes": function() {
+                var currentUnitIdPair = $("#msm_currentUnit_id").val();
     
-    var param = {
-        cancelUnit:currentUnitIdPair
-    };
+                var param = {
+                    cancelUnit:currentUnitIdPair
+                };
     
-    var htmlstring = '';
+                var htmlstring = '';
     
-    $.ajax({
-        type: 'POST',
-        url:"editorCreation/msmLoadUnit.php",
-        data: param,
-        success: function(data)
-        {
-            htmlstring = JSON.parse(data);
+                $.ajax({
+                    type: 'POST',
+                    url:"editorCreation/msmLoadUnit.php",
+                    data: param,
+                    success: function(data)
+                    {
+                        htmlstring = JSON.parse(data);
             
-            //            $("#msm_unit_tree").find("li").each(function() {           
-            //                var stringid = "msm_unit-"+currentUnitIdPair;
-            //                var parent = $(this);
-            //                var match = this.id.match(/msm_unit-.+/);
-            //                var currentId = '';
-            //                if(!match)
-            //                {
-            //                    currentId = "msm_unit-"+this.id;
-            //                }
-            //                else
-            //                {
-            //                    currentId = this.id;
-            //                }
-            //                if(currentId == stringid)
-            //                {
-            //                    $(this).children("ul").children("li").each(function() {
-            //                        $(this).insertBefore(parent);
-            //                    });               
-            //                    $(this).empty().remove();
-            //                }
-            //            });
+                        $("#msm_unit_form").empty();
             
-            $("#msm_unit_form").empty();
+                        $("#msm_unit_form").html(htmlstring);
             
-            $("#msm_unit_form").html(htmlstring);
-            
-            var currentUnitId = document.createElement("input");
-            currentUnitId.id = "msm_currentUnit_id";
-            currentUnitId.name = "msm_currentUnit_id";
-            currentUnitId.setAttribute("style", "display:none;");
-            currentUnitId.value = currentUnitIdPair;
+                        var currentUnitId = document.createElement("input");
+                        currentUnitId.id = "msm_currentUnit_id";
+                        currentUnitId.name = "msm_currentUnit_id";
+                        currentUnitId.setAttribute("style", "display:none;");
+                        currentUnitId.value = currentUnitIdPair;
        
-            $("#msm_unit_form").append($(currentUnitId));
+                        $("#msm_unit_form").append($(currentUnitId));
             
-            removeTinymceEditor();
-            //                  
-            disableEditorFunction();   
-           
-            $(".msm_editor_buttons").remove();
-            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
-            //            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_edit\" type=\"button\" onclick=\"editUnit()\"> Edit </button>").appendTo("#msm_editor_middle");
+                        removeTinymceEditor();
+                        //                  
+                        disableEditorFunction();   
+                        
+                        $(".msm_structural_element").draggable({
+                            appendTo: "msm_editor_middle_droparea",
+                            containment: "msm_editor_middle_droparea",
+                            scroll: true,
+                            cursor: "move",
+                            helper: "clone"                   
+                        });              
         
-            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
-        //            
-        },
-        error: function(data)
-        {
-            alert("ajax error in loading unit");
+                        $("#msm_editor_middle_droparea").droppable({
+                            accept: "#msm_editor_left > div",
+                            hoverClass: "ui-state-hover",
+                            tolerance: "pointer",
+                            drop: function( event, ui ) { 
+                                processDroppedChild(event, ui.draggable.context.id);
+                                allowDragnDrop();        
+                            }
+                        }); 
+                    
+                        $("#msm_unit_title").dblclick(function(){
+                            $(this).removeAttr("readonly");
+                            $(this).addClass("msm_add_border");
+                            allowDragnDrop();
+                        });
+                        $("#msm_unit_short_title").dblclick(function(){
+                            $(this).removeAttr("readonly");
+                            $(this).addClass("msm_add_border");
+                            allowDragnDrop();
+                        });
+                        $("#msm_unit_description_input").dblclick(function(){
+                            $(this).removeAttr("readonly");
+                            $(this).addClass("msm_add_border");
+                            allowDragnDrop();
+                        });
+           
+                        $(".msm_editor_buttons").remove();
+                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");        
+                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+                    },
+                    error: function(data)
+                    {
+                        alert("ajax error in loading unit");
+                    }
+                });
+                $(this).dialog("close");
+            },
+            "No": function() {
+                $(this).dialog("close");
+            }
         }
     });
+    
+   
 }
 
 function swapButtons(e) {
