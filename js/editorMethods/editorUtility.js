@@ -299,9 +299,9 @@ function newUnit()
     $("#msm_child_order").val('');
     $("#msm_currentUnit_id").val('');
     
-    $("#msm_unit_title").removeAttr("disabled");
-    $("#msm_unit_short_title").removeAttr("disabled");
-    $("#msm_unit_description_input").removeAttr("disabled");
+    $("#msm_unit_title").removeAttr("readonly");
+    $("#msm_unit_short_title").removeAttr("readonly");
+    $("#msm_unit_description_input").removeAttr("readonly");
     
     $(".msm_editor_buttons").remove();    
     $("<input class=\"msm_editor_buttons\" id=\"msm_editor_reset\" type=\"button\" onclick=\"resetUnit()\" value=\"Reset\"/> ").appendTo("#msm_editor_middle");
@@ -405,8 +405,40 @@ function processUnitData(htmlData)
             height: "30px"
         }, 300);
         $("#msm_element_overlay-"+idNumber[1]).css("display", "none");
-    }
-    );
+    });
+        
+    $("#msm_unit_title").dblclick(function(){
+        $(this).removeAttr("readonly");
+        $(this).addClass("msm_add_border");
+        allowDragnDrop();
+    });
+    $("#msm_unit_short_title").dblclick(function(){
+        $(this).removeAttr("readonly");
+        $(this).addClass("msm_add_border");
+        allowDragnDrop();
+    });
+    $("#msm_unit_description_input").dblclick(function(){
+        $(this).removeAttr("readonly");
+        $(this).addClass("msm_add_border");
+        allowDragnDrop();
+    });
+    $(".msm_structural_element").draggable({
+        appendTo: "msm_editor_middle_droparea",
+        containment: "msm_editor_middle_droparea",
+        scroll: true,
+        cursor: "move",
+        helper: "clone"                   
+    }); 
+
+    $("#msm_editor_middle_droparea").droppable({
+        accept: "#msm_editor_left > div",
+        hoverClass: "ui-state-hover",
+        tolerance: "pointer",
+        drop: function( event, ui ) { 
+            processDroppedChild(event, ui.draggable.context.id);      
+            allowDragnDrop();  
+        }
+    });        
     
 }
 
@@ -456,17 +488,17 @@ function saveComp(e)
 function editUnit(e)
 {    
     $("#msm_editor_new").attr("disabled", "disabled");
-    if($("#msm_unit_title").attr("disabled"))
+    if($("#msm_unit_title").attr("readonly"))
     {
-        $("#msm_unit_title").removeAttr("disabled");
+        $("#msm_unit_title").removeAttr("readonly");
     }
-    if($("#msm_unit_short_title").attr("disabled"))
+    if($("#msm_unit_short_title").attr("readonly"))
     {
-        $("#msm_unit_short_title").removeAttr("disabled");
+        $("#msm_unit_short_title").removeAttr("readonly");
     }
-    if($("#msm_unit_description_input").attr("disabled"))
+    if($("#msm_unit_description_input").attr("readonly"))
     {
-        $("#msm_unit_description_input").removeAttr("disabled");
+        $("#msm_unit_description_input").removeAttr("readonly");
     }
 
     var targetElement = '';
@@ -1824,6 +1856,31 @@ function deleteOverlayElement(e)
                 $(".msm_editor_buttons").remove();
                 $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");          
                 $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");
+                
+                $("#msm_editor_save").unbind("click");
+                $("#msm_editor_save").click(function(event) { 
+                    //         prevents navigation to msmUnitForm.php
+                    event.preventDefault();
+                    // enabling all input that was disabled to submit the form
+                    $("#msm_unit_title").removeAttr("readonly");
+                    $("#msm_unit_short_title").removeAttr("readonly");
+                    $("#msm_unit_description_input").removeAttr("readonly");
+                    $(".copied_msm_structural_element select").removeAttr("disabled");
+                    $(".copied_msm_structural_element input").removeAttr("disabled");
+            
+                    $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+                        $(this).removeClass("msm_editor_content");
+                        var newdata = document.createElement("textarea");
+                        newdata.id = this.id;
+                        newdata.name = this.id;
+                        newdata.className = this.className;
+        
+                        newdata.value = $(this).html();
+                        $(this).replaceWith(newdata);                   
+                    });
+                    submitForm();
+            
+                });  
             },
             "No": function() {
                 $("#"+currentElement+" textarea").each(function() {
@@ -1853,20 +1910,20 @@ function allowDragnDrop()
     if(buttonPresent.length > 0)
     {
         $(".msm_editor_buttons").remove();
-        $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_unit_form");
-        $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" value=\"Save\"/>").appendTo("#msm_unit_form");
-                
+        $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");
+        $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" value=\"Save\"/>").appendTo("#msm_editor_middle");
+                        
         $("#msm_editor_save").unbind("click");
         $("#msm_editor_save").click(function(event) { 
             //         prevents navigation to msmUnitForm.php
             event.preventDefault();
             // enabling all input that was disabled to submit the form
-            $("#msm_unit_title").removeAttr("disabled");
-            $("#msm_unit_short_title").removeAttr("disabled");
-            $("#msm_unit_description_input").removeAttr("disabled");
+            $("#msm_unit_title").removeAttr("readonly");
+            $("#msm_unit_short_title").removeAttr("readonly");
+            $("#msm_unit_description_input").removeAttr("readonly");
             $(".copied_msm_structural_element select").removeAttr("disabled");
             $(".copied_msm_structural_element input").removeAttr("disabled");
-                      
+                                  
             $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                 $(this).removeClass("msm_editor_content");
                 var newdata = document.createElement("textarea");
@@ -1875,8 +1932,7 @@ function allowDragnDrop()
                 newdata.className = this.className;
         
                 newdata.value = $(this).html();
-                $(this).replaceWith(newdata);
-                   
+                $(this).replaceWith(newdata);                   
             });
             submitForm();
             

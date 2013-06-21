@@ -852,3 +852,8 @@ table.mceLayout
 {
     background: transparent !important;
 }
+
+.msm_add_border
+{
+    border: solid 2px rgba(0,0,0,0.3);
+}

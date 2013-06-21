@@ -21,9 +21,9 @@ function submitForm()
         $("#msm_comp_done").removeAttr("disabled");
     }
         
-    $("#msm_unit_title").removeAttr("disabled");
-    $("#msm_unit_short_title").removeAttr("disabled");
-    $("#msm_unit_description_input").removeAttr("disabled");
+    $("#msm_unit_title").removeAttr("readonly");
+    $("#msm_unit_short_title").removeAttr("readonly");
+    $("#msm_unit_description_input").removeAttr("readonly");
     
     var children =  document.getElementById("msm_child_appending_area").childNodes;
 
@@ -199,9 +199,12 @@ function submitForm()
                         previewInfo(this.id, "dialog-"+newid);
                     });
                     
-                    $("#msm_unit_title").attr("disabled", "disabled");
-                    $("#msm_unit_short_title").attr("disabled", "disabled");
-                    $("#msm_unit_description_input").attr("disabled", "disabled");                    
+                    $("#msm_unit_title").attr("readonly", "true");
+                    $(this).removeClass("msm_add_border");
+                    $("#msm_unit_short_title").attr("readonly", "true");
+                    $(this).removeClass("msm_add_border");
+                    $("#msm_unit_description_input").attr("readonly", "true");         
+                    $(this).removeClass("msm_add_border");
                 }
                 else if(typeof mode === 'undefined')
                 {
@@ -215,7 +218,7 @@ function submitForm()
                     
                     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                         $(this).empty().remove();
-                    })
+                    });                 
                     
                     // removes the editor from textarea, extract the content of textarea, append to a new div and replace the textarea with the new div
                     // This is a work-around to display the content when user decides to save the content.  Textarea just gives raw html and cannot be made
@@ -243,6 +246,22 @@ function submitForm()
                             allowDragnDrop();        
                         }
                     }); 
+                    
+                    $("#msm_unit_title").dblclick(function(){
+                        $(this).removeAttr("readonly");
+                        $(this).addClass("msm_add_border");
+                        allowDragnDrop();
+                    });
+                    $("#msm_unit_short_title").dblclick(function(){
+                        $(this).removeAttr("readonly");
+                        $(this).addClass("msm_add_border");
+                        allowDragnDrop();
+                    });
+                    $("#msm_unit_description_input").dblclick(function(){
+                        $(this).removeAttr("readonly");
+                        $(this).addClass("msm_add_border");
+                        allowDragnDrop();
+                    });
                     
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);     
                     insertUnitStructure(ids);                  
@@ -461,9 +480,12 @@ function removeTinymceEditor()
 */
 function disableEditorFunction()
 {
-    $('.msm_title_input').attr("disabled", "disabled");
-    $('.msm_unit_short_titles').attr("disabled", "disabled");
-    $('.msm_unit_description_inputs').attr("disabled", "disabled");
+    $('.msm_title_input').attr("readonly", "true");
+    $('.msm_title_input').removeClass("msm_add_border");
+    $('.msm_unit_short_titles').attr("readonly", "true");
+    $('.msm_unit_short_titles').removeClass("msm_add_border");
+    $('.msm_unit_description_inputs').attr("readonly", "true");
+    $('.msm_unit_description_inputs').removeClass("msm_add_border");
                     
     $(".copied_msm_structural_element select").attr("disabled", "disabled");
     $(".copied_msm_structural_element input").attr("disabled", "disabled");

@@ -88,13 +88,13 @@ if (!empty($_POST["removeUnit"]))
 
     $emptyUnitContent .= "<div id='msm_unit_info_div'>";
     $emptyUnitContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$topUnitName->unitname title: </label>";
-    $emptyUnitContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $topUnitName->unitname.' name='msm_unit_title' disabled='disabled'/>";
+    $emptyUnitContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $topUnitName->unitname.' name='msm_unit_title' readonly='true'/>";
 
     $emptyUnitContent .= "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
-    $emptyUnitContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $topUnitName->unitname' name='msm_unit_short_title' disabled='disabled'/>";
+    $emptyUnitContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $topUnitName->unitname' name='msm_unit_short_title' readonly='true'/>";
 
     $emptyUnitContent .= "<label id='msm_unit_description_label' class='msm_unit_description_labels' for='msm_unit_description_input'>Description: </label>";
-    $emptyUnitContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' disabled='disabled'/>";
+    $emptyUnitContent .= "<input id='msm_unit_description_input' class='msm_unit_description_inputs' placeholder = 'Insert description to search this element in future.' name='msm_unit_description_input' readonly='true'/>";
     $emptyUnitContent .= "</div>";
 
     $emptyUnitContent .= "<div id='msm_editor_middle_droparea'>";

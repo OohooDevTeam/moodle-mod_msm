@@ -477,7 +477,22 @@ $fpoptions['link'] = $link_options;
 $formContent .= '<script type="text/javascript"> 
         var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
             
-        $(document).ready(function() {   
+        $(document).ready(function() {  
+            $("#msm_unit_title").dblclick(function(){
+                $(this).removeAttr("readonly");
+                $(this).addClass("msm_add_border");
+                allowDragnDrop();
+            });
+            $("#msm_unit_short_title").dblclick(function(){
+                $(this).removeAttr("readonly");
+                $(this).addClass("msm_add_border");
+                allowDragnDrop();
+            });
+            $("#msm_unit_description_input").dblclick(function(){
+                $(this).removeAttr("readonly");
+                $(this).addClass("msm_add_border");
+                allowDragnDrop();
+            });
             
             var lichilds = $("#msm_unit_tree").find("li");
             if(lichilds.length > 0)
@@ -595,24 +610,7 @@ $formContent .= '<script type="text/javascript">
                                 success: function(data)
                                 {
                                     dbInfo = JSON.parse(data);  
-                                    processUnitData(dbInfo); 
-                                    $(".msm_structural_element").draggable({
-                                        appendTo: "msm_editor_middle_droparea",
-                                        containment: "msm_editor_middle_droparea",
-                                        scroll: true,
-                                        cursor: "move",
-                                        helper: "clone"                   
-                                    }); 
-
-                                    $("#msm_editor_middle_droparea").droppable({
-                                        accept: "#msm_editor_left > div",
-                                        hoverClass: "ui-state-hover",
-                                        tolerance: "pointer",
-                                        drop: function( event, ui ) { 
-                                            processDroppedChild(event, ui.draggable.context.id);      
-                                            allowDragnDrop();  
-                                        }
-                                    });        
+                                    processUnitData(dbInfo);                                     
                                     $("#msm_currentUnit_id").val(nodeInfo);
                                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
@@ -633,7 +631,7 @@ $formContent .= '<script type="text/javascript">
 //
 if (!empty($existingUnit))
 {
-    $formContent .= '// need it for the loading of jstree when in edit mode
+$formContent .= '// need it for the loading of jstree when in edit mode
                 $("#msm_unit_tree")
                     .jstree({
                         "plugins": ["themes", "html_data", "ui", "dnd"],
@@ -680,25 +678,8 @@ if (!empty($existingUnit))
                                 },
                                 success: function(data)
                                 {
-                                    dbInfo = JSON.parse(data);  
-                                    processUnitData(dbInfo); 
-                                    $(".msm_structural_element").draggable({
-                                        appendTo: "msm_editor_middle_droparea",
-                                        containment: "msm_editor_middle_droparea",
-                                        scroll: true,
-                                        cursor: "move",
-                                        helper: "clone"                   
-                                    }); 
-
-                                    $("#msm_editor_middle_droparea").droppable({
-                                        accept: "#msm_editor_left > div",
-                                        hoverClass: "ui-state-hover",
-                                        tolerance: "pointer",
-                                        drop: function( event, ui ) { 
-                                            processDroppedChild(event, ui.draggable.context.id);      
-                                           allowDragnDrop();  
-                                        }
-                                    });        
+                                    dbInfo = JSON.parse(data);                                      
+                                    processUnitData(dbInfo);                                           
                                     $("#msm_currentUnit_id").val(nodeInfo);
                                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
@@ -719,7 +700,7 @@ if (!empty($existingUnit))
 }
 else
 {
-    $formContent .= '
+$formContent .= '
             $("#msm_unit_tree")
                     .jstree({
                         "plugins": ["themes", "html_data", "ui", "dnd"]
@@ -763,24 +744,6 @@ else
                                 {
                                     dbInfo = JSON.parse(data);  
                                     processUnitData(dbInfo); 
-                                    
-                                    $(".msm_structural_element").draggable({
-                                         appendTo: "msm_editor_middle_droparea",
-                                         containment: "msm_editor_middle_droparea",
-                                         scroll: true,
-                                         cursor: "move",
-                                         helper: "clone"                   
-                                    }); 
-
-                                    $("#msm_editor_middle_droparea").droppable({
-                                          accept: "#msm_editor_left > div",
-                                          hoverClass: "ui-state-hover",
-                                          tolerance: "pointer",
-                                          drop: function( event, ui ) { 
-                                                   processDroppedChild(event, ui.draggable.context.id);      
-                                                  allowDragnDrop();  
-                                           }
-                                     });        
                                     $("#msm_currentUnit_id").val(nodeInfo);
                                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
@@ -806,104 +769,104 @@ echo $OUTPUT->footer();
 
 function makeUnitTree($compid, $unitid)
 {
-    global $DB;
+global $DB;
 
-    $treeHtml = '';
+$treeHtml = '';
 
-    $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
+$unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
 
-    $treeHtml .= "<ul>";
+$treeHtml .= "<ul>";
 
-    $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid, "table_id" => $unittableid), "prev_sibling_id");
+$childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid, "table_id" => $unittableid), "prev_sibling_id");
 
-    foreach ($childElements as $child)
+foreach ($childElements as $child)
+{
+    $childUnitElement = $DB->get_record("msm_unit", array("id" => $child->unit_id));
+    if ($childUnitElement->standalone == 'false')
     {
-        $childUnitElement = $DB->get_record("msm_unit", array("id" => $child->unit_id));
-        if ($childUnitElement->standalone == 'false')
+        $treeHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
+        if (!empty($childUnitElement->short_name))
         {
-            $treeHtml .= "<li id='msm_unit-$child->id-$child->unit_id'>";
-            if (!empty($childUnitElement->short_name))
-            {
-                $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
-            }
-            else
-            {
-                $treeHtml .= "<a href='#'>$child->id-$child->unit_id</a>";
-            }
-            $treeHtml .= makeUnitTree($child->id, $child->unit_id);
-            $treeHtml .= "</li>";
+            $treeHtml .= "<a href='#'>$childUnitElement->short_name</a>";
         }
+        else
+        {
+            $treeHtml .= "<a href='#'>$child->id-$child->unit_id</a>";
+        }
+        $treeHtml .= makeUnitTree($child->id, $child->unit_id);
+        $treeHtml .= "</li>";
     }
+}
 
-    $treeHtml .= "</ul>";
+$treeHtml .= "</ul>";
 
-    return $treeHtml;
+return $treeHtml;
 }
 
 function makeStandaloneTree($msmid)
 {
-    global $DB;
+global $DB;
 
-    $standaloneHTML = '';
-    $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
-    $possiblestandaloneUnits = $DB->get_records("msm_compositor", array("msm_id" => $msmid, "table_id" => $unittableid));
+$standaloneHTML = '';
+$unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
+$possiblestandaloneUnits = $DB->get_records("msm_compositor", array("msm_id" => $msmid, "table_id" => $unittableid));
 
-    foreach ($possiblestandaloneUnits as $possibleUnit)
+foreach ($possiblestandaloneUnits as $possibleUnit)
+{
+    $unitRecord = $DB->get_record("msm_unit", array("id" => $possibleUnit->unit_id));
+
+    if ($unitRecord->standalone == "true")
     {
-        $unitRecord = $DB->get_record("msm_unit", array("id" => $possibleUnit->unit_id));
+        $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";
 
-        if ($unitRecord->standalone == "true")
+        if (empty($unitRecord->short_name))
         {
-            $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";
-
-            if (empty($unitRecord->short_name))
-            {
-                $standaloneHTML .= "<a href='#'>$possibleUnit->id-$possibleUnit->unit_id</a>";
-            }
-            else
-            {
-                $standaloneHTML .= "<a href='#'>$unitRecord->short_name</a>";
-            }
-            $standaloneHTML .= "</li>";
+            $standaloneHTML .= "<a href='#'>$possibleUnit->id-$possibleUnit->unit_id</a>";
         }
+        else
+        {
+            $standaloneHTML .= "<a href='#'>$unitRecord->short_name</a>";
+        }
+        $standaloneHTML .= "</li>";
     }
+}
 
-    return $standaloneHTML;
+return $standaloneHTML;
 }
 
 function displayRootUnit($unitcompid)
 {
-    global $DB;
+global $DB;
 
-    $unitCompRecord = $DB->get_record('msm_compositor', array('id' => $unitcompid));
+$unitCompRecord = $DB->get_record('msm_compositor', array('id' => $unitcompid));
 
-    $unitRecord = $DB->get_record('msm_unit', array('id' => $unitCompRecord->unit_id));
-    ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var titleString = "<?php echo $unitRecord->plain_title ?>";
-            $('#msm_unit_title').val(titleString);
-            var descriptionString = "<?php echo $unitRecord->description ?>";
-            $("#msm_unit_description_input").val(descriptionString);
+$unitRecord = $DB->get_record('msm_unit', array('id' => $unitCompRecord->unit_id));
+?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var titleString = "<?php echo $unitRecord->plain_title ?>";
+        $('#msm_unit_title').val(titleString);
+        var descriptionString = "<?php echo $unitRecord->description ?>";
+        $("#msm_unit_description_input").val(descriptionString);
                                                                                                                                                                     
-            $("#msm_editor_save").remove();
-            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
+        $("#msm_editor_save").remove();
+        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
                                                                                                                                                                             
-            $("#msm_editor_reset").remove();
-            $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
-        });
-    </script>
-    <?php
-    $rootUnitHtml = '';
+        $("#msm_editor_reset").remove();
+        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+    });
+</script>
+<?php
+$rootUnitHtml = '';
 
-    $rootUnit = new EditorUnit();
-    $rootUnit->loadData($unitcompid);
+$rootUnit = new EditorUnit();
+$rootUnit->loadData($unitcompid);
 
-    foreach ($rootUnit->children as $childElement)
-    {
-        $rootUnitHtml .= $childElement->displayData();
-    }
+foreach ($rootUnit->children as $childElement)
+{
+    $rootUnitHtml .= $childElement->displayData();
+}
 
-    return $rootUnitHtml;
+return $rootUnitHtml;
 }
 ?>
