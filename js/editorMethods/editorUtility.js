@@ -322,7 +322,8 @@ function newUnit()
         hoverClass: "ui-state-hover",
         tolerance: "pointer",
         drop: function( event, ui ) { 
-            processDroppedChild(event, ui.draggable.context.id);                        
+            processDroppedChild(event, ui.draggable.context.id);
+            allowDragnDrop();  
         }
     }); 
     
@@ -603,7 +604,8 @@ function enableEditorFunction()
         hoverClass: "ui-state-hover",
         tolerance: "pointer",
         drop: function( event, ui ) { 
-            processDroppedChild(event, ui.draggable.context.id);                        
+            processDroppedChild(event, ui.draggable.context.id); 
+            allowDragnDrop();    
         }
     });    
     
@@ -1842,4 +1844,42 @@ function deleteOverlayElement(e)
         }
     });  
     
+}
+
+function allowDragnDrop()
+{
+    var buttonPresent = $("#msm_editor_middle").find("#msm_editor_new");
+            
+    if(buttonPresent.length > 0)
+    {
+        $(".msm_editor_buttons").remove();
+        $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_unit_form");
+        $("<input type=\"submit\" name=\"msm_editor_save\" class=\"msm_editor_buttons\" id=\"msm_editor_save\" value=\"Save\"/>").appendTo("#msm_unit_form");
+                
+        $("#msm_editor_save").unbind("click");
+        $("#msm_editor_save").click(function(event) { 
+            //         prevents navigation to msmUnitForm.php
+            event.preventDefault();
+            // enabling all input that was disabled to submit the form
+            $("#msm_unit_title").removeAttr("disabled");
+            $("#msm_unit_short_title").removeAttr("disabled");
+            $("#msm_unit_description_input").removeAttr("disabled");
+            $(".copied_msm_structural_element select").removeAttr("disabled");
+            $(".copied_msm_structural_element input").removeAttr("disabled");
+                      
+            $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+                $(this).removeClass("msm_editor_content");
+                var newdata = document.createElement("textarea");
+                newdata.id = this.id;
+                newdata.name = this.id;
+                newdata.className = this.className;
+        
+                newdata.value = $(this).html();
+                $(this).replaceWith(newdata);
+                   
+            });
+            submitForm();
+            
+        });  
+    }      
 }

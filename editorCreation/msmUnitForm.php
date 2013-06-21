@@ -48,7 +48,6 @@ require_once('../XMLImporter/TableCollection.php');
 
 global $DB;
 
-//print_object($_POST);
 // to remove unit when triggered by Remove this Unit button
 if (!empty($_POST["removeUnit"]))
 {

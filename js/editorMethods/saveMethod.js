@@ -7,7 +7,7 @@ $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();             
-        
+        console.log("submit");
         submitForm();            
     });
 });
@@ -224,7 +224,25 @@ function submitForm()
                                         
                     // disabling all input/selection areas in editor and also disabling all jquery actions such as 
                     // sortable, draggable and droppable
-                    disableEditorFunction();                    
+                    disableEditorFunction();       
+                    
+                    $(".msm_structural_element").draggable({
+                        appendTo: "msm_editor_middle_droparea",
+                        containment: "msm_editor_middle_droparea",
+                        scroll: true,
+                        cursor: "move",
+                        helper: "clone"                   
+                    });              
+        
+                    $("#msm_editor_middle_droparea").droppable({
+                        accept: "#msm_editor_left > div",
+                        hoverClass: "ui-state-hover",
+                        tolerance: "pointer",
+                        drop: function( event, ui ) { 
+                            processDroppedChild(event, ui.draggable.context.id);
+                            allowDragnDrop();        
+                        }
+                    }); 
                     
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);     
                     insertUnitStructure(ids);                  
@@ -452,47 +470,48 @@ function disableEditorFunction()
                     
     $(".copied_msm_structural_element .msm_element_close").remove();
     
-    if($("#msm_child_appending_area").hasClass("ui-sortable"))
-    {
-        $("#msm_child_appending_area").sortable("destroy");
-    }
-    
-    if($("#msm_intro_child_container").hasClass("ui-sortable"))
-    {
-        $("#msm_intro_child_container").sortable("destroy");
-    }
+    //    if($("#msm_child_appending_area").hasClass("ui-sortable"))
+    //    {
+    //        $("#msm_child_appending_area").sortable("destroy");
+    //    }
+    //    
+    //    if($("#msm_intro_child_container").hasClass("ui-sortable"))
+    //    {
+    //        $("#msm_intro_child_container").sortable("destroy");
+    //    }
                     
         
-    $(".msm_theorem_content_containers").each(function(){
-        if($(this).hasClass("ui-sortable"))
-        {
-            $(this).sortable("destroy");
-        }
-    });
-        
-    $(".msm_theorem_part_dropareas").each(function() {
-        if($(this).hasClass("ui-sortable"))
-        {
-            $(this).sortable("destroy");
-        }
-    });  
-        
-    $(".msm_associate_containers").each(function() {
-        if($(this).hasClass("ui-sortable"))
-        {
-            $(this).sortable("destroy");
-        }
-    });
+    //    $(".msm_theorem_content_containers").each(function(){
+    //        if($(this).hasClass("ui-sortable"))
+    //        {
+    //            $(this).sortable("destroy");
+    //        }
+    //    });
+    //        
+    //    $(".msm_theorem_part_dropareas").each(function() {
+    //        if($(this).hasClass("ui-sortable"))
+    //        {
+    //            $(this).sortable("destroy");
+    //        }
+    //    });  
+    //        
+    //    $(".msm_associate_containers").each(function() {
+    //        if($(this).hasClass("ui-sortable"))
+    //        {
+    //            $(this).sortable("destroy");
+    //        }
+    //    });  
     
-    if($(".msm_structural_element").hasClass("ui-draggable"))
-    {
-        $(".msm_structural_element").draggable("destroy");
-    }
-        
-    if($("#msm_editor_middle_droparea").hasClass("ui-droppable"))
-    {
-        $("#msm_editor_middle_droparea").droppable("destroy");
-    }
+    
+    //    if($(".msm_structural_element").hasClass("ui-draggable"))
+    //    {
+    //        $(".msm_structural_element").draggable("destroy");
+    //    }
+    //        
+    //    if($("#msm_editor_middle_droparea").hasClass("ui-droppable"))
+    //    {
+    //        $("#msm_editor_middle_droparea").droppable("destroy");
+    //    }
         
     $(".msm_associate_info_headers").each(function() {
         $(this).children("span").css("display", "none");

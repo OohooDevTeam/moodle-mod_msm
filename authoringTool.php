@@ -529,7 +529,8 @@ $formContent .= '<script type="text/javascript">
                     hoverClass: "ui-state-hover",
                     tolerance: "pointer",
                     drop: function( event, ui ) { 
-                        processDroppedChild(event, ui.draggable.context.id);                        
+                        processDroppedChild(event, ui.draggable.context.id);      
+                        allowDragnDrop();  
                     }
                 });                  
                                
@@ -595,6 +596,23 @@ $formContent .= '<script type="text/javascript">
                                 {
                                     dbInfo = JSON.parse(data);  
                                     processUnitData(dbInfo); 
+                                    $(".msm_structural_element").draggable({
+                                        appendTo: "msm_editor_middle_droparea",
+                                        containment: "msm_editor_middle_droparea",
+                                        scroll: true,
+                                        cursor: "move",
+                                        helper: "clone"                   
+                                    }); 
+
+                                    $("#msm_editor_middle_droparea").droppable({
+                                        accept: "#msm_editor_left > div",
+                                        hoverClass: "ui-state-hover",
+                                        tolerance: "pointer",
+                                        drop: function( event, ui ) { 
+                                            processDroppedChild(event, ui.draggable.context.id);      
+                                            allowDragnDrop();  
+                                        }
+                                    });        
                                     $("#msm_currentUnit_id").val(nodeInfo);
                                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
@@ -664,6 +682,23 @@ if (!empty($existingUnit))
                                 {
                                     dbInfo = JSON.parse(data);  
                                     processUnitData(dbInfo); 
+                                    $(".msm_structural_element").draggable({
+                                        appendTo: "msm_editor_middle_droparea",
+                                        containment: "msm_editor_middle_droparea",
+                                        scroll: true,
+                                        cursor: "move",
+                                        helper: "clone"                   
+                                    }); 
+
+                                    $("#msm_editor_middle_droparea").droppable({
+                                        accept: "#msm_editor_left > div",
+                                        hoverClass: "ui-state-hover",
+                                        tolerance: "pointer",
+                                        drop: function( event, ui ) { 
+                                            processDroppedChild(event, ui.draggable.context.id);      
+                                           allowDragnDrop();  
+                                        }
+                                    });        
                                     $("#msm_currentUnit_id").val(nodeInfo);
                                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
@@ -728,6 +763,24 @@ else
                                 {
                                     dbInfo = JSON.parse(data);  
                                     processUnitData(dbInfo); 
+                                    
+                                    $(".msm_structural_element").draggable({
+                                         appendTo: "msm_editor_middle_droparea",
+                                         containment: "msm_editor_middle_droparea",
+                                         scroll: true,
+                                         cursor: "move",
+                                         helper: "clone"                   
+                                    }); 
+
+                                    $("#msm_editor_middle_droparea").droppable({
+                                          accept: "#msm_editor_left > div",
+                                          hoverClass: "ui-state-hover",
+                                          tolerance: "pointer",
+                                          drop: function( event, ui ) { 
+                                                   processDroppedChild(event, ui.draggable.context.id);      
+                                                  allowDragnDrop();  
+                                           }
+                                     });        
                                     $("#msm_currentUnit_id").val(nodeInfo);
                                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);    
 
@@ -801,8 +854,8 @@ function makeStandaloneTree($msmid)
 
         if ($unitRecord->standalone == "true")
         {
-            $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";          
-            
+            $standaloneHTML .= "<li id='msm_unit-$possibleUnit->id-$possibleUnit->unit_id'>";
+
             if (empty($unitRecord->short_name))
             {
                 $standaloneHTML .= "<a href='#'>$possibleUnit->id-$possibleUnit->unit_id</a>";
@@ -832,10 +885,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);
             var descriptionString = "<?php echo $unitRecord->description ?>";
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                                                                                                
+                                                                                                                                                                    
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
-                                                                                                                                                                        
+                                                                                                                                                                            
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });
