@@ -273,10 +273,10 @@ abstract class ExportElement
                 $mathNode = $DomDocument->createElement("math");
                 $latexNode = $DomDocument->createElement("latex");
 
-                $modifiedMathText = preg_replace("/\((.*?)\)/", "$1", trim($math->textContent));
-                $innerMathText = preg_replace("/^\\\(.*?)\\\?$/", "$1", $modifiedMathText);
+                $modifiedMathText = preg_replace("/\\\((.*?)\\\)/", "$1", trim($math->textContent));
+//                $innerMathText = preg_replace("/^\\\(.*?)\\\?$/", "$1", $modifiedMathText);
 
-                $innerTextNode = $DomDocument->createTextNode($innerMathText);
+                $innerTextNode = $DomDocument->createTextNode($modifiedMathText);
                 $latexNode->appendChild($innerTextNode);
                 $mathNode->appendChild($latexNode);
 

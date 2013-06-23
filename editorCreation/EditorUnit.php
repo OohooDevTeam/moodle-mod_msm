@@ -27,8 +27,7 @@
  * to all the other classes used in MSM.
  *
  */
-class EditorUnit extends EditorElement
-{
+class EditorUnit extends EditorElement {
 
     public $id;
     public $compid;
@@ -39,8 +38,7 @@ class EditorUnit extends EditorElement
     public $short_name;
     public $children = array(); // need it for load/display part
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->tablename = 'msm_unit';
     }
 
@@ -52,8 +50,7 @@ class EditorUnit extends EditorElement
      * @param integer $idNumber         represents MSM instace id passed through URL
      * @return \EditorUnit
      */
-    public function getFormData($idNumber)
-    {
+    public function getFormData($idNumber) {
         global $DB;
         $this->errorArray = array();
 
@@ -76,8 +73,7 @@ class EditorUnit extends EditorElement
      * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
      * @param integer $msmid            The instance ID of the MSM module.
      */
-    public function insertData($parentid, $siblingid, $msmid)
-    {
+    public function insertData($parentid, $siblingid, $msmid) {
         global $DB;
 
         $data = new stdClass();
@@ -112,8 +108,7 @@ class EditorUnit extends EditorElement
      * @param integer $parent           this unit's parent compositor ID
      * @param integer $sibling          this unit's previous sibling compositor ID
      */
-    public function updateUnitStructure($idPair, $parent, $sibling)
-    {
+    public function updateUnitStructure($idPair, $parent, $sibling) {
         global $DB;
 
         $idInfo = explode("-", $idPair);
@@ -122,8 +117,7 @@ class EditorUnit extends EditorElement
         $unitRecord = $DB->get_record($this->tablename, array('id' => $unitCompRecord->unit_id));
         $unittableRecord = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
 
-        if ($parent != 0)
-        {
+        if ($parent != 0) {
             $parentCompRecord = $DB->get_record("msm_compositor", array('id' => $parent));
             $parentUnitRecord = $DB->get_record($this->tablename, array('id' => $parentCompRecord->unit_id));
 
@@ -146,7 +140,7 @@ class EditorUnit extends EditorElement
             $newUnitData->description = $unitRecord->description;
 
             $DB->update_record($this->tablename, $newUnitData);
-            
+
             $newCompData = new stdClass();
             $newCompData->id = $unitCompRecord->id;
             $newCompData->msm_id = $unitCompRecord->msm_id;
@@ -156,15 +150,12 @@ class EditorUnit extends EditorElement
             $newCompData->prev_sibling_id = $sibling;
 
             $DB->update_record("msm_compositor", $newCompData);
-        }
-        else if ($parent === '')
-        {
+        } else if ($parent === '') {
             $unitChildCompRecords = $DB->get_records("msm_compositor", array("parent_id" => $unitCompRecord->id, "table_id" => $unittableRecord->id));
 
             $unitParentCompRecords = $DB->get_records("msm_compositor", array("id" => $unitCompRecord->parent_id, "table_id" => $unittableRecord->id));
 
-            if ((empty($unitChildCompRecords)) && (empty($unitParentCompRecords)))
-            {
+            if ((empty($unitChildCompRecords)) && (empty($unitParentCompRecords))) {
                 $currentUnitDepth = -1;
                 $currentUnitCompType = $DB->get_record("msm_unit_name", array('depth' => $currentUnitDepth, 'msmid' => $unitCompRecord->msm_id));
 
@@ -197,8 +188,7 @@ class EditorUnit extends EditorElement
      * @param integer $compid           The database ID from the msm_compositor table
      * @return \EditorUnit
      */
-    public function loadData($compid)
-    {
+    public function loadData($compid) {
         global $DB;
 
         $unitCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
@@ -219,12 +209,10 @@ class EditorUnit extends EditorElement
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
-        foreach ($childRecords as $child)
-        {
+        foreach ($childRecords as $child) {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
-            switch ($childTable->tablename)
-            {
+            switch ($childTable->tablename) {
                 case "msm_comment":
                     $comment = new EditorComment();
                     $comment->loadData($child->id);
@@ -296,8 +284,7 @@ class EditorUnit extends EditorElement
      * @global moodle_database $DB
      * @return HTML string
      */
-    public function displayData()
-    {
+    public function displayData() {
         global $DB;
 
         $unitCompRecord = $DB->get_record('msm_compositor', array('id' => $this->compid));
@@ -305,8 +292,7 @@ class EditorUnit extends EditorElement
         $unitNameRecords = $DB->get_records('msm_unit_name', array('msmid' => $unitCompRecord->msm_id), 'depth');
 
         $unitNameString = '';
-        foreach ($unitNameRecords as $unitname)
-        {
+        foreach ($unitNameRecords as $unitname) {
             $unitNameString .= $unitname->unitname . ",";
         }
         $unitNameString .= $unitCompRecord->msm_id;
@@ -315,7 +301,11 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
-        $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' readonly='true'/>";
+        if (strpos($this->title, "<math>")) {
+            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' readonly='true'/>";
+        } else {
+            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->title' readonly='true'/>";
+        }
 
         $htmlContent .= "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
         $htmlContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $this->unitName' name='msm_unit_short_title' value='$this->short_name' readonly='true'/>";
@@ -326,15 +316,13 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "<div id='msm_editor_middle_droparea'>";
         $htmlContent .= "<div id='msm_child_appending_area'>";
-        
+
         $childOrderString = '';
-        foreach ($this->children as $childElement)
-        {
+        foreach ($this->children as $childElement) {
             $htmlContent .= $childElement->displayData();
 
             $className = get_class($childElement);
-            switch ($className)
-            {
+            switch ($className) {
                 case "EditorDefinition":
                     $childOrderString .= "copied_msm_def-$childElement->compid";
                     break;
@@ -369,7 +357,7 @@ class EditorUnit extends EditorElement
                         <input type="button" class="msm_editor_buttons" id="msm_editor_remove" onclick="removeUnit(event)" value="Remove this Unit"/>';
         $htmlContent .= "<input id='msm_unit_name_input' value='$unitNameString' style='visibility:hidden;' name='msm_unit_name_input'/>";
         $htmlContent .= "<input id='msm_file_options' name='msm_file_options' style='display:none;'/>";
-        
+
         return $htmlContent;
     }
 
@@ -380,8 +368,7 @@ class EditorUnit extends EditorElement
      * @global moodle_database $DB
      * @param integer $compid           the database id from msm_compositor of the changed unit
      */
-    function updateDbRecord($compid)
-    {
+    function updateDbRecord($compid) {
         global $DB;
 
         $oldCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -422,12 +409,10 @@ class EditorUnit extends EditorElement
      * 
      * @return HTML string
      */
-    public function displayPreview()
-    {
+    public function displayPreview() {
         $previewHtml = '';
 
-        if (!empty($this->title))
-        {
+        if (!empty($this->title)) {
             $previewHtml .= "<div class='title' style='text-align: center;'>";
             $previewHtml .= "<h2>";
             $previewHtml .= $this->title;

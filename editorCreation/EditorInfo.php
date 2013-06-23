@@ -207,7 +207,7 @@ class EditorInfo extends EditorElement
     }
 
     public function insertData($parentid, $siblingid, $msmid)
-    {
+    {        
         global $DB;
 
         $data = new stdClass();
@@ -302,7 +302,7 @@ class EditorInfo extends EditorElement
 
             $htmlContent .= "<label for='msm_info_title-$assoIdEnding'>title: </label>";
             $htmlContent .= "<div id='msm_info_title-$assoIdEnding' class='msm_info_titles msm_editor_content'>";
-            $htmlContent .= html_entity_decode($this->content);
+            $htmlContent .= html_entity_decode($this->caption);
             $htmlContent .= "</div>";
 
             $htmlContent .= "<label for='msm_info_content-$assoIdEnding'>content: </label>";

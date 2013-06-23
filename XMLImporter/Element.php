@@ -506,6 +506,7 @@ abstract class Element
             $string = str_replace('</cell>', '</td>', $string);
 
             // TODO: might be able to not change para.body to anything? just replace with empty string?
+//            $string = preg_replace('/<para.body(.*?)>/', '', $string);
             $string = str_replace('<para.body', '<span', $string);
             $string = str_replace('</para.body>', '</span>', $string);
 
@@ -536,6 +537,7 @@ abstract class Element
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $string);
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $string);
 //            $string = preg_replace('/\\\\dfrac/', '\\\\\frac', $string);
+            
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -878,7 +880,7 @@ abstract class Element
         {
             $childSibling = 0;
             // checking if there are child elements to be copied
-            $childElements = $DB->get_records('msm_compositor', array('msm_id' => $msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
+            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
 
             // checking if the following record is a duplicate or not
             // if it is the original record, it will already have a child elemnts associated with it
@@ -918,7 +920,7 @@ abstract class Element
             {
                 $childSibling = 0;
                 // checking if there are child elements to be copied
-                $childElements = $DB->get_records('msm_compositor', array('msm_id' => $msmid, 'parent_id' => $elementRecord->id), 'prev_sibling_id');
+                $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
 
                 // checking if the following record is a duplicate or not
                 // if it is the original record, it will already have a child elemnts associated with it

@@ -368,6 +368,7 @@ class EditorDefinition extends EditorElement
         $this->description = $defRecord->description;
 
         $htmlParser = new DOMDocument();
+//        print_object($defRecord->def_content);
         $htmlParser->loadHTML($defRecord->def_content);
 
         foreach ($htmlParser->documentElement->childNodes as $child)
