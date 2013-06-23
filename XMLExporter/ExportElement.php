@@ -271,9 +271,11 @@ abstract class ExportElement
             if ($math->getAttribute("class") == "matheditor")
             {
                 $mathNode = $DomDocument->createElement("math");
-                $latexNode = $DomDocument->createElement("latex");
+                $latexNode = $DomDocument->createElement("latex");                
+                
+                $modifiedMathText = substr(trim($math->textContent),2,-2);
 
-                $modifiedMathText = preg_replace("/\\\((.*?)\\\)/", "$1", trim($math->textContent));
+//                $modifiedMathText = preg_replace('/\\\((.*?)\\\)/', '$1', $math->textContent);
 //                $innerMathText = preg_replace("/^\\\(.*?)\\\?$/", "$1", $modifiedMathText);
 
                 $innerTextNode = $DomDocument->createTextNode($modifiedMathText);
