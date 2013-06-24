@@ -89,7 +89,7 @@ class TableCollection
         {
             $table->tablename = $listOfTable;
             
-            $this->id = $DB->insert_record($this->tablename, $table);
+            $this->id = $DB->insert_record($this->tablename, $table, true, true);
         }
     }
 

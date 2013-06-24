@@ -483,8 +483,8 @@ class Unit extends Element
         {
             // get parent record and check if it belongs to unit 
             // if parent is unit --> need to increment depth and put the compositor type id from unit_name to this new unit
-            $parentRecord = $DB->get_record("msm_compositor", array("id" => $parentid));
-
+            $parentRecord = $DB->get_record("msm_compositor", array("msm_id" => $msmid, "id" => $parentid));
+            $parentUnitType = 0;
             if (!empty($parentRecord))
             {
                 $parentUnitType = $parentRecord->table_id;
@@ -497,7 +497,11 @@ class Unit extends Element
             {
                 $parentUnitRecord = $DB->get_record("msm_unit", array("id" => $parentRecord->unit_id));
 
+//                print_object($parentUnitRecord);
+
                 $parentCompType = $parentUnitRecord->compchildtype;
+
+//                print_object($DB->get_records("msm_unit_name", array("msmid"=>$msmid)));
 
                 $compTypeDepth = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "id" => $parentCompType))->depth;
 
@@ -509,17 +513,33 @@ class Unit extends Element
             }
         }
 
-        $existingRecord = $DB->get_record($this->tablename, array("string_id" => $this->string_id));
-
-        if (empty($existingRecord))
+//        $this->id = '';
+        if (!empty($this->string_id))
         {
-            $this->id = $DB->insert_record($this->tablename, $data);
+            $existingUnitRecords = $DB->get_records($this->tablename, array("string_id" => $this->string_id));
+            $unitTableRecord = $DB->get_record("msm_table_collection", array("tablename"=>$this->tablename));
+            $existingCompRecord = null;
+
+            foreach ($existingUnitRecords as $existUnit)
+            {
+                $existingCompRecord = $DB->get_records("msm_compositor", array("table_id"=>$unitTableRecord->id, "unit_id" => $existUnit->id, "msm_id" => $msmid));
+
+                if (!empty($existingCompRecord))
+                {
+                    $this->id = $existUnit->id;
+                    break;
+                }
+            }
+            if (empty($this->id))
+            {
+                $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            }
         }
         else
         {
-            $this->id = $existingRecord->id;
-        }
 
+            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        }
 
 
         // for inserting unit records in to compositor table
@@ -533,7 +553,7 @@ class Unit extends Element
             $compdata->parent_id = 0;
             $compdata->prev_sibling_id = 0;
 
-            $this->compid = $DB->insert_record('msm_compositor', $compdata);
+            $this->compid = $DB->insert_record('msm_compositor', $compdata, true, true);
         }
         else // child element, therefore, has a parentid with possible previous sibling id
         {
@@ -544,7 +564,7 @@ class Unit extends Element
             $compdata->parent_id = $parentid;
             $compdata->prev_sibling_id = $siblingid;
 
-            $this->compid = $DB->insert_record('msm_compositor', $compdata);
+            $this->compid = $DB->insert_record('msm_compositor', $compdata, true, true);
         }
 
         $elementPositions = array();
@@ -1186,7 +1206,7 @@ class Unit extends Element
 
     function displayhtml($isindex = false)
     {
-        
+
         $content = '';
 //        $content .= "<div class='unit' id='unit-" . $this->compid . "'>";
         // most likely a first page if creationdate and authors are there...

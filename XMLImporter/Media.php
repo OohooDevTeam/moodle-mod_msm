@@ -89,7 +89,7 @@ class Media extends Element
         $data->inline = $this->inline;
         $data->media_type = $this->type;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();

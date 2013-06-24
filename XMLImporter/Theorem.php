@@ -112,7 +112,7 @@ class Theorem extends Element
             $data->textcaption = $this->textcaption;
             $data->description = $this->description;
 
-            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data, true, true);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
         else

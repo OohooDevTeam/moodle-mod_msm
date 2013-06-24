@@ -173,6 +173,7 @@ MathJax.Hub.Config({
 
             FakeString: '{\\text{fake}}'
         }      
-    }   
+    },
+    jax:["input/TeX", "output/HTML-CSS"]
 });
 MathJax.Ajax.loadComplete("[MathJax]/config/local/local.js");

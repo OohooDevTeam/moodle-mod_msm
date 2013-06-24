@@ -109,7 +109,7 @@ class PartExample extends Element
             foreach ($this->content as $content)
             {
                 $data->part_content = $content;
-                $this->id = $DB->insert_record($this->tablename, $data);
+                $this->id = $DB->insert_record($this->tablename, $data, true, true);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }

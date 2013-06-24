@@ -62,7 +62,7 @@ class MathRow extends Element
         $data = new stdClass();
         $data->rowspan = $this->rowspan;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
         $elementPosition = array();

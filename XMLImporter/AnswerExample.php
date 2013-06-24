@@ -136,13 +136,13 @@ class AnswerExample extends Element
             foreach ($this->answer_block_body as $block_body)
             {
                 $data->answer_content = $block_body;
-                $this->id = $DB->insert_record($this->tablename, $data);
+                $this->id = $DB->insert_record($this->tablename, $data, true, true);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }
         else
         {
-            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data, true, true);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

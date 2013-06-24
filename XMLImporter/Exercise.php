@@ -106,7 +106,7 @@ class Exercise extends Element
         $data->difficulty = $this->difficulty;
         $data->caption = $this->caption;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
          $elementPositions = array();

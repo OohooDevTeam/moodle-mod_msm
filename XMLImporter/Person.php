@@ -106,7 +106,7 @@ class Person extends Element
 
         $data->type = $type;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
     }
     
     function loadFromDb($id)

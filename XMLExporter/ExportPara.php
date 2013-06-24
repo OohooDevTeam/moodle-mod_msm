@@ -82,7 +82,13 @@ class ExportPara extends ExportElement {
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
         $contentDoc->preserveWhiteSpace = false;
-        $contentDoc->loadXML(utf8_encode(html_entity_decode($this->content)));
+        $content = $this->content;
+        $content = str_replace("<em>", "<emphasis>", $content);
+        $content = str_replace("<b>", "<strong>", $content);
+        $content = str_replace("</em>", "</emphasis>", $content);
+        $content = str_replace("</b>", "</strong>", $content);
+        
+        $contentDoc->loadXML(utf8_encode(html_entity_decode($content)));
         $contentNode = $contentDoc->documentElement;
 
         $atags = $contentNode->getElementsByTagName("a");

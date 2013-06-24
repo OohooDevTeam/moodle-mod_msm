@@ -65,7 +65,7 @@ class ExtraInfo extends Element
             $block = new Block();
             $block->loadFromXml($b);
             $this->blocks[] = $block;
-        }        
+        }    
     }
 
     /**
@@ -80,10 +80,9 @@ class ExtraInfo extends Element
         $data = new stdClass();
         $data->extra_info_name = $this->name;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-
-
+        
         $elementPositions = array();
         $sibling_id = null;
 

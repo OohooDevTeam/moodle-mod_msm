@@ -159,7 +159,7 @@ class MathIndex extends Element
 
             if (empty($recordID))
             {
-                $this->id = $DB->insert_record($this->symboltable, $data);
+                $this->id = $DB->insert_record($this->symboltable, $data, true, true);
                 $this->compid = $this->insertToCompositor($this->id, $this->symboltable, $msmid, $parentid, $sibling_id);
 //                $sibling_id = $this->compid;
             }
@@ -280,7 +280,7 @@ class MathIndex extends Element
 
             if (empty($recordID))
             {
-                $this->id = $DB->insert_record($this->glossarytable, $data);
+                $this->id = $DB->insert_record($this->glossarytable, $data, true, true);
                 $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $msmid, $parentid, $sibling_id);
             }
             else

@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -79,22 +80,22 @@ if (!$units = $DB->get_records('msm_compositor', array('msm_id' => $msm->id)))
 }
 
 
-if(!empty($_REQUEST['unitid'])) // for displaying units created by the editor
+if (!empty($_REQUEST['unitid'])) // for displaying units created by the editor
 {
-    $rootcomps = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'id'=>$_REQUEST['unitid'], 'parent_id' => 0, 'prev_sibling_id' => 0));
+    $rootcomps = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'id' => $_REQUEST['unitid'], 'parent_id' => 0, 'prev_sibling_id' => 0));
 }
 else // for displaying units from the XML legacy material
 {
-   $rootcomps = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0)); 
+    $rootcomps = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'parent_id' => 0, 'prev_sibling_id' => 0));
 }
 
 $rootcomp = null;
 
-foreach($rootcomps as $root)
+foreach ($rootcomps as $root)
 {
-    $rootUnitRecord = $DB->get_record("msm_unit", array("id"=>$root->unit_id));
-    
-    if($rootUnitRecord->standalone == "false")
+    $rootUnitRecord = $DB->get_record("msm_unit", array("id" => $root->unit_id));
+
+    if ($rootUnitRecord->standalone == "false")
     {
         $rootcomp = $root;
         break;
@@ -108,7 +109,7 @@ add_to_log($course->id, 'msm', 'view', "view.php?id={$cm->id}&mid={$msm->id}", $
 
 /// Print the page header
 
-$PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id, 'mid'=>$msm->id));
+$PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id, 'mid' => $msm->id));
 $PAGE->set_title(format_string($msm->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
@@ -170,7 +171,8 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jqu
 
 //echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
 //echo "<script type='text/x-mathjax-config' src='$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
+echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
 
 if ($msm->intro)
 { // Conditions to show the intro can change to look for own settings or whatever
@@ -206,7 +208,6 @@ $string = '';
 $stack = $compositor->makeStack($rootcomp);
 
 $stack = array_reverse($stack); // needed to access the contents in proper order
-
 //last element is added separately to prevent having ending comma
 for ($i = 0; $i < sizeof($stack) - 1; $i++)
 {
@@ -291,7 +292,7 @@ $content .= "
                 $('.dialogs').dialog({
                     autoOpen: false,
                     height: 'auto',
-                    width: 605
+                    width: 605                    
                 });                 
                                
                 $('#features').jshowoff({

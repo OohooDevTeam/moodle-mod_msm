@@ -74,7 +74,7 @@ class Intro extends Element
         $data->string_id = $this->string_id;
         $data->intro_caption = $this->caption;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
 
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 

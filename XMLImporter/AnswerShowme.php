@@ -116,13 +116,13 @@ class AnswerShowme extends Element
             foreach ($this->content as $key => $content)
             {
                 $data->answer_showme_content = $content;
-                $this->id = $DB->insert_record($this->tablename, $data);
+                $this->id = $DB->insert_record($this->tablename, $data, true, true);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }
         else
         {
-            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data, true, true);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

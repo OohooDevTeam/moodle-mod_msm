@@ -17,19 +17,24 @@ abstract class ExportElement
 
     abstract function exportData();
 
-    function makeExportFile($DomDocument)
-    {
-        // function to create XML files and save into moodle file system
-    }
-
     function createXmlContent($DomDocument, $content, $DomNode, $object = '')
     {
-        $anchorArray = array();
         $contentDoc = new DOMDocument();
+        $contentDoc->formatOutput = true;
+        $contentDoc->preserveWhiteSpace = false;
+
+        $DomDocument->formatOutput = true;
+        $DomDocument->preserveWhiteSpace = false;
 //       
 //        $contentDoc->loadXML(utf8_encode(html_entity_decode($content)));
         $content = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $content);
         $content = str_replace("<br>", "<br/>", $content);
+        $content = str_replace("<em>", "<emphasis>", $content);
+        $content = str_replace("<b>", "<strong>", $content);
+        $content = str_replace("</em>", "</emphasis>", $content);
+        $content = str_replace("</b>", "</strong>", $content);
+        $content = preg_replace('/<ol style="list-style-type:([a-zA-Z-]+);">/', '<ol type="$1">', $content);
+        $content = preg_replace('/<ul style="list-style-type:([a-zA-Z-]+);">/', '<ul bullet="$1">', $content);
 
         $contentDoc->loadXML($content);
         $divNode = $contentDoc->documentElement;
@@ -90,7 +95,7 @@ abstract class ExportElement
                                     {
                                         $imgAttr = $img->getAttribute('src');
                                         $imgFileNameInfo = explode("/", $imgAttr);
-                                        
+
                                         $mediaSrcInfo = explode("||", $media->img->src);
 
                                         $srcInfo = explode("/", $mediaSrcInfo[0]);
@@ -113,7 +118,7 @@ abstract class ExportElement
                 }
                 else
                 {
-                    $ptags = $child->getElementsByTagName("p");
+                    $ptags = $contentDoc->getElementsByTagName("p");
 
                     foreach ($ptags as $p)
                     {
@@ -122,23 +127,58 @@ abstract class ExportElement
                         $p->parentNode->replaceChild($pNode, $p);
                     }
 
+                    // li needs to be processed separately as the p tags in li are not detected by the 
+                    // getElementByTagName method above (when there are more than one, it only detects first one for some reason)
                     $litags = $child->getElementsByTagName("li");
 
+                    $newPTag = null;
                     foreach ($litags as $li)
                     {
                         $liDoc = new DOMDocument();
                         $liDoc->formatOutput = true;
                         $liDoc->preserveWhiteSpace = false;
                         $newliTag = $liDoc->createElement("li");
-                        $newPTag = $liDoc->createElement("para");
-                        $newPbodyTag = $liDoc->createElement("para.body");
-                        foreach ($li->childNodes as $lichild)
+
+                        foreach ($li->childNodes as $liChild)
                         {
-                            $lichildNode = $liDoc->importNode($lichild, true);
-                            $newPbodyTag->appendChild($lichildNode);
+                            if ($liChild->nodeType == XML_ELEMENT_NODE)
+                            {
+                                if ($liChild->tagName == "para") // could have para if the above method detected it
+                                {
+                                    $newPTag = $liDoc->importNode($liChild, true);
+                                }
+                                else if ($liChild->tagName == "p")
+                                {
+                                    $newpNode = $this->replacePTags($liDoc, $liChild);
+                                    $newPTag = $liDoc->importNode($newpNode, true);
+                                }
+                            }
+                            // if the DOMText is not blank, then add para tag --> the content created from 
+                            // the authoring tool TinyMCE editor does not have p tags as default so need to add it
+                            // when exporting
+                            else if (!preg_match("/\s+/", $liChild->wholeText))
+                            {
+                                echo "what is this?";
+                                print_object($liChild);
+                                print_object($liDoc->saveXML($liDoc->importNode($liChild, true)));
+                                $newPTag = $liDoc->createElement("para");
+                                $newPbodyTag = $liDoc->createElement("para.body");
+                                $lichildNode = $liDoc->importNode($liChild, true);
+                                $newPbodyTag->appendChild($lichildNode);
+                                $newPTag->appendChild($newPbodyTag);
+                            }
+                            // can have DOMText with whitespace so in this case, no need for the para tag
+                            else if (preg_match("/\s+/", $liChild->wholeText))
+                            {
+                                $newPTag = $liDoc->importNode($liChild, true);
+                            }
+
+                            if (!empty($newPTag))
+                            {
+                                $newliTag->appendChild($newPTag);
+                            }
                         }
-                        $newPTag->appendChild($newPbodyTag);
-                        $newliTag->appendChild($newPTag);
+
                         $newLi = $contentDoc->importNode($newliTag, true);
 
                         $li->parentNode->replaceChild($newLi, $li);
@@ -180,35 +220,6 @@ abstract class ExportElement
                                 }
                             }
                         }
-
-                        // need a copy of anchored element nodelist b/c 
-                        // when the anchored element is replaced with its XML counter part,
-                        // it loses items in the nodelist 
-//                        foreach ($atags as $atag) {
-//                            $anchorArray[] = $atag;
-//                        }
-////                        $alength = $atags->length;
-//
-//                        foreach ($anchorArray as $a) {
-//                            $targetSub = null;
-//                            $id = $a->getAttribute("id");
-//
-//                            foreach ($object->subordinates as $subordinate) {
-//                                $hotInfo = explode("||", $subordinate->hot);
-//                                if (trim($id) == trim($hotInfo[0])) {
-//                                    $targetSub = $subordinate;
-//                                    break;
-//                                }
-//                            }
-//
-//                            if (!empty($targetSub)) {
-//                                $initsubordinateNode = $targetSub->exportData();
-//                                $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
-//                                if (!empty($a->parentNode)) {
-//                                    $a->parentNode->replaceChild($subordinateNode, $a);
-//                                }
-//                            }
-//                        }
                     }
 
                     $imgTags = $child->getElementsByTagName("img");
@@ -248,14 +259,15 @@ abstract class ExportElement
                 $DomNode->appendChild($childNode);
             }
         }
-        $DomDocument->formatOutput = true;
-        $DomDocument->preserveWhiteSpace = false;
 
         return $DomNode;
     }
 
     function exportMath($DomElement, $DomDocument)
     {
+        $DomDocument->formatOutput = true;
+        $DomDocument->preserveWhiteSpace = false;
+
         $mathSpans = $DomElement->getElementsByTagName("span");
 
         // when each of the spans with className of matheditor is replaced, the size of the NodeList above
@@ -271,12 +283,10 @@ abstract class ExportElement
             if ($math->getAttribute("class") == "matheditor")
             {
                 $mathNode = $DomDocument->createElement("math");
-                $latexNode = $DomDocument->createElement("latex");                
-                
-                $modifiedMathText = substr(trim($math->textContent),2,-2);
+                $latexNode = $DomDocument->createElement("latex");
 
-//                $modifiedMathText = preg_replace('/\\\((.*?)\\\)/', '$1', $math->textContent);
-//                $innerMathText = preg_replace("/^\\\(.*?)\\\?$/", "$1", $modifiedMathText);
+                // remove \( and )\ at the end of each math element
+                $modifiedMathText = substr(trim($math->textContent), 2, -2);
 
                 $innerTextNode = $DomDocument->createTextNode($modifiedMathText);
                 $latexNode->appendChild($innerTextNode);
@@ -289,6 +299,9 @@ abstract class ExportElement
 
     function replacePTags($DomDocument, $DomElement)
     {
+        $DomDocument->formatOutput = true;
+        $DomDocument->preserveWhiteSpace = false;
+
         $paraNode = $DomDocument->createElement("para");
         $style = $DomElement->getAttribute("style");
         $align = '';

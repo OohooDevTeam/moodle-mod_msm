@@ -71,7 +71,7 @@ class Proof extends Element
         $data->string_id = $this->string_id;
         $data->proof_type = $this->proof_type;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         foreach ($this->proof_blocks as $proof_block)

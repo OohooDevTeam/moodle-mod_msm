@@ -53,8 +53,6 @@ class Para extends Element
         $this->medias = array();
         $this->tables = array();
 
-//        $this->content = array();
-
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
@@ -107,18 +105,15 @@ class Para extends Element
 
         if (!empty($this->para_content))
         {
-//            foreach ($this->content as $key => $content)
-//            {
-                $data->para_content = $this->para_content;
+                $data->para_content = $this->para_content;                
 
-                $this->id = $DB->insert_record($this->tablename, $data);
+                $this->id = $DB->insert_record($this->tablename, $data, true, true);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
                 $siblingid = $this->compid;
-//            }
         }
         else
         {
-            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data, true, true);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

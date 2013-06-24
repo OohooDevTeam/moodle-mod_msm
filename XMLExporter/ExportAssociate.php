@@ -14,6 +14,7 @@ class ExportAssociate extends ExportElement
 {
     public $id;
     public $compid;
+    public $msmid;
     public $description;
     public $info;
     public $ref;
@@ -40,15 +41,15 @@ class ExportAssociate extends ExportElement
             {
                 case "ExportDefinition":
                     $refNode = $associateCreator->createElement("definition.ref");
-                    $refNode->setAttribute("definitionID", $this->ref->compid);
+                    $refNode->setAttribute("definitionID", $this->msmid . "-" . $this->ref->compid);
                     break;
                 case "ExportTheorem":
                     $refNode = $associateCreator->createElement("theorem.ref");
-                    $refNode->setAttribute("theoremID", $this->ref->compid);
+                    $refNode->setAttribute("theoremID", $this->msmid . "-" . $this->ref->compid);
                     break;
                 case "ExportComment":
                     $refNode = $associateCreator->createElement("comment.ref");
-                    $refNode->setAttribute("commentID", $this->ref->compid);
+                    $refNode->setAttribute("commentID", $this->msmid . "-" . $this->ref->compid);
                     break;
             }
             $associateNode->appendChild($refNode);
@@ -67,16 +68,8 @@ class ExportAssociate extends ExportElement
 
         $this->id = $associateUnitRecord->id;
         $this->compid = $compid;
+        $this->msmid = $associateCompRecord->msm_id;
         $this->description = $associateUnitRecord->description;
-
-//        $infoTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_info"));
-//        $infoChildRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid, "table_id" => $infoTable->id));
-//
-//        if (!empty($infoChildRecord))
-//        {
-//            $info = new ExportInfo();
-//            $info->loadDbData($infoChildRecord->id);
-//            $this->info = $info;
 
         $refCompRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid));
 

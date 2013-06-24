@@ -87,7 +87,7 @@ class ApproachExt extends Element
         $data->ext_content = $this->content;
         $data->ext_name = $this->ext_name;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data, true, true);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
          $elementPositions = array();

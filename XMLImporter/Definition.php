@@ -161,13 +161,12 @@ class Definition extends Element
 
             $data->def_content = $this->def_content;
 
-//            $data->def_content = $this->def_content;
-            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data, true, true);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
         else // has def.body as child of def
         {
-            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data, true, true);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

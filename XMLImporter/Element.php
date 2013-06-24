@@ -78,36 +78,72 @@ abstract class Element
     function checkForRecord($msm_id, $DomElement, $propertyName = '')
     {
         global $DB;
-        $foundRecord = null;
         $foundIDs = null;
-
-        // $propertyName is defined
-        if (!empty($propertyName))
+        
+        $currentElementTable = $DB->get_record("msm_table_collection", array("tablename"=>$DomElement->tablename));
+        
+        $compRecords = $DB->get_records("msm_compositor", array("msm_id"=>$msm_id, "table_id"=>$currentElementTable->id), "unit_id");
+        
+        foreach($compRecords as $compRec)
         {
-            if (isset($DomElement->$propertyName))
+            $unitRecord = $DB->get_record($DomElement->tablename, array("id"=>$compRec->unit_id));
+            
+            if(!empty($propertyName))
             {
-                $foundIDs = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
+                if(isset($DomElement->$propertyName))
+                {
+                    if($unitRecord->$propertyName == $DomElement->$propertyName)
+                    {
+                        $foundIDs  = $unitRecord;
+                        break;
+                    }
+                }
             }
             else
             {
-                return false;
-            }
-        }
-        // if no property name is specified, then default is to check with string_id
-        else
-        {
-            if (isset($DomElement->string_id))
-            {
-                if (!empty($DomElement->string_id))
+                if(isset($DomElement->string_id))
                 {
-                    $foundIDs = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
-                }
-                else
-                {
-                    return false;
+                    if(isset($unitRecord->string_id))
+                    {
+                        if($unitRecord->string_id == $DomElement->string_id)
+                        {
+                            $foundIDs = $unitRecord;
+                            break;
+                        }
+                    }
                 }
             }
         }
+        return false;
+        
+//
+//        // $propertyName is defined
+//        if (!empty($propertyName))
+//        {
+//            if (isset($DomElement->$propertyName))
+//            {
+//                $foundIDs = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
+//            }
+//            else
+//            {
+//                return false;
+//            }
+//        }
+//        // if no property name is specified, then default is to check with string_id
+//        else
+//        {
+//            if (isset($DomElement->string_id))
+//            {
+//                if (!empty($DomElement->string_id))
+//                {
+//                    $foundIDs = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
+//                }
+//                else
+//                {
+//                    return false;
+//                }
+//            }
+//        }
 
 
 //        if (!empty($foundIDs))
@@ -134,14 +170,14 @@ abstract class Element
 //                }
 //            }
 
-        if (!empty($foundIDs))
-        {
-            return $foundIDs;
-        }
-        else
-        {
-            return false;
-        }
+//        if (!empty($foundIDs))
+//        {
+//            return $foundIDs;
+//        }
+//        else
+//        {
+//            return false;
+//        }
 //        }
 //        else
 //        {
@@ -506,26 +542,30 @@ abstract class Element
             $string = str_replace('</cell>', '</td>', $string);
 
             // TODO: might be able to not change para.body to anything? just replace with empty string?
-//            $string = preg_replace('/<para.body(.*?)>/', '', $string);
-            $string = str_replace('<para.body', '<span', $string);
-            $string = str_replace('</para.body>', '</span>', $string);
+            $string = preg_replace('/<para.body(.*?)>/', '', $string);
+//            $string = str_replace('<para.body', '<span', $string);
+            $string = str_replace('</para.body>', '', $string);
 
             $string = str_replace('<para', '<p', $string);
+            $string = preg_replace('/align="(left|center|right)"/', 'style="text-align:$1;"', $string);
             $string = str_replace('</para>', '</p>', $string);
+            
+            $string = preg_replace('/type="([a-zA-Z-]+)"/', 'style="list-style-type:$1;"', $string);
+            $string = preg_replace('/bullet="([a-zA-Z]+)"/', 'style="list-style-type:$1;"', $string);
 
             $string = str_replace('<strong', '<b', $string);
             $string = str_replace('</strong>', '</b>', $string);
 
-            $string = str_replace('<emphasis', '<i', $string);
-            $string = str_replace('</emphasis>', '</i>', $string);
+            $string = str_replace('<emphasis', '<em', $string);
+            $string = str_replace('</emphasis>', '</em>', $string);
 
             $string = str_replace('<hot', '<a', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
             $string = preg_replace('/<math xmlns=(.+)>/', '<math>', $string);
-            $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>/', '<p align="center"><span class="matheditor">\(', $string);
+            $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>/', '<p style="text-align:center"><span class="matheditor">\(', $string);
 
-            $string = preg_replace('/<math.display>\s+<latex>/', '<p align="center"><span class="matheditor">\(', $string);
+            $string = preg_replace('/<math.display>\s+<latex>/', '<p style="text-align:center"><span class="matheditor">\(', $string);
             $string = preg_replace('/<\/latex>\s+<\/math.display>/', '\)</span></p>', $string);
             $string = preg_replace('/<math.display>\s+<latex\/>\s+<\/math.display>/', '', $string);
 
@@ -855,7 +895,7 @@ abstract class Element
         $compdata->parent_id = $parentid;
         $compdata->prev_sibling_id = $siblingid;
 
-        $compid = $DB->insert_record('msm_compositor', $compdata);
+        $compid = $DB->insert_record('msm_compositor', $compdata, true, true);
 
         return $compid;
     }

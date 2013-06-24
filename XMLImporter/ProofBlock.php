@@ -240,7 +240,7 @@ class ProofBlock extends Element
             $data->proof_content = $content;
 
 //            
-            $this->id = $DB->insert_record('msm_proof_block', $data);
+            $this->id = $DB->insert_record('msm_proof_block', $data, true, true);
 
             $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $msmid, $parentid, $siblingid);
             $siblingid = $compid;
