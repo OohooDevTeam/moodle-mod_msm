@@ -210,9 +210,6 @@ class ProofBlock extends Element
     {
         global $DB;
         $data = new stdClass();
-//
-//        echo "proofblock object is?";
-//        print_object($this);
 
         foreach ($this->proof_block_bodys as $key => $content)
         {
@@ -240,7 +237,7 @@ class ProofBlock extends Element
             $data->proof_content = $content;
 
 //            
-            $this->id = $DB->insert_record('msm_proof_block', $data, true, true);
+            $this->id = $DB->insert_record('msm_proof_block', $data);
 
             $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $msmid, $parentid, $siblingid);
             $siblingid = $compid;
@@ -431,6 +428,30 @@ class ProofBlock extends Element
                 }
             }
             $this->compid = $compid;
+
+            if (!empty($this->medias))
+            {
+                $newdata = new stdClass();
+                $newdata->id = $this->id;
+                if (!empty($this->proof_logics[$key]))
+                {
+                    $newdata->proof_logic = $this->proof_logics[$key];
+                }
+                
+                if (!empty($this->captions[$key]))
+                {
+                    $newdata->caption = $this->captions[$key];
+                }
+                
+                if (!empty($this->logic_types[$key]))
+                {
+                    $newdata->logic_type = $this->logic_types[$key];
+                }
+
+                $newdata->proof_content = $this->processDbContent("<div>$content</div>", $this, $key);
+
+                $DB->update_record($this->tablename, $newdata);
+            }
         }
     }
 
@@ -443,6 +464,7 @@ class ProofBlock extends Element
         if (!empty($proofBlockRecord))
         {
             $this->compid = $compid;
+            $this->id = $id;
             $this->proof_logic = $proofBlockRecord->proof_logic;
             $this->caption = $proofBlockRecord->caption;
             $this->proof_content = $proofBlockRecord->proof_content;
@@ -586,7 +608,7 @@ class ProofBlock extends Element
 //        {
 //            $content .= "</ul>";
 //        }
-        
+
         if (!empty($this->proof_logic))
         {
             $content .= "</ul>";

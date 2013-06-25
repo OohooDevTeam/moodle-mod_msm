@@ -138,7 +138,7 @@ class Item extends Element
             $data->position = 1;
         }
 
-        $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         if (!empty($this->content[2]))
@@ -146,7 +146,7 @@ class Item extends Element
             $data->citekey = $this->citekey;
             $data->item_content = $this->content[2];
             $data->position = 2;
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
     }

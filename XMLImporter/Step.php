@@ -110,7 +110,7 @@ class Step extends Element
         $data->caption = $this->caption;
 
         $data->step_content = $this->content;
-        $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();

@@ -84,7 +84,7 @@ class Table extends Element
 
         foreach ($this->processContent($DomElement, $position) as $content)
         {
-            $this->content[] = $content;
+            $this->content .= $content;
         }
     }
 
@@ -96,21 +96,21 @@ class Table extends Element
         $data->table_class = $this->table_class;
         $data->table_summary = $this->table_summary;
         $data->table_title = $this->table_title;
-
-        if (!empty($this->content))
-        {
-            foreach ($this->content as $content)
-            {
-                $data->table_content = $content;
-                $this->id = $DB->insert_record($this->tablename, $data, true, true);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-            }
-        }
-        else
-        {
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-        }
+//
+//        if (!empty($this->content))
+//        {
+//            foreach ($this->content as $content)
+//            {
+        $data->table_content = $this->content;
+        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+//            }
+//        }
+//        else
+//        {
+//            $this->id = $DB->insert_record($this->tablename, $data);
+//            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+//        }
 
         $elementPositions = array();
         $sibling_id = null;
@@ -297,6 +297,18 @@ class Table extends Element
                     }
                     break;
             }
+        }
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->string_id = $this->string_id;
+            $newdata->table_class = $this->table_class;
+            $newdata->table_summary = $this->table_summary;
+            $newdata->table_title = $this->table_title;
+            $newdata->id = $this->id;
+            $newdata->table_content = $this->processDbContent("<div>$this->content</div>", $this);
+
+            $DB->update_record($this->tablename, $newdata);
         }
     }
 

@@ -84,17 +84,17 @@ class MathImg extends Element
         $data->string_id = $this->string_id;
 
         $sourcefolders = explode('/', $this->src);
-        
+
         if (count($sourcefolders) == 2)
         {
             if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
             {
-                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
             }
             else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
             {
-                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
             }
         }
@@ -102,12 +102,12 @@ class MathImg extends Element
         {
             if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
             {
-                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
             }
             else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
             {
-                $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
             }
         }
@@ -131,8 +131,9 @@ class MathImg extends Element
             $fileurlname = str_replace(' ', '%20', $sourcefolders[2]);
             $fileurl = $url . $storedFile->get_filepath() . $storedFile->get_itemid() . '/' . $fileurlname;
             $this->src = $fileurl . "||" . $msmid;
-            $data->src = $this->src;
         }
+
+        $data->src = $this->src;
 
         $data->height = $this->height;
         $data->width = $this->width;
@@ -141,7 +142,7 @@ class MathImg extends Element
 
         if (!empty($this->src))
         {
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 
@@ -209,7 +210,7 @@ class MathImg extends Element
             $this->width = $imgRecord->width;
         }
 
-        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$this->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id' => $this->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
 
         $this->imageareas = array();
 

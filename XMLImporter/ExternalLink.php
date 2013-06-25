@@ -66,7 +66,7 @@ class ExternalLink extends Element
         $data->type = $this->type;
         $data->target =$this->target;
         
-        $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
         $elementPosition = array();

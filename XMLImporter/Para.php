@@ -107,13 +107,13 @@ class Para extends Element
         {
                 $data->para_content = $this->para_content;                
 
-                $this->id = $DB->insert_record($this->tablename, $data, true, true);
+                $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
                 $siblingid = $this->compid;
         }
         else
         {
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

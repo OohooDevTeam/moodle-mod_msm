@@ -21,7 +21,6 @@
  */
 class Associate extends Element
 {
-
     public $position;
 
     function __construct($xmlpath = '')
@@ -253,7 +252,7 @@ class Associate extends Element
         $data = new stdClass();
         $data->description = $this->description;
 
-        $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();

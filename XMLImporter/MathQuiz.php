@@ -144,13 +144,13 @@ class MathQuiz extends Element
             foreach ($this->questions as $question)
             {
                 $data->question = $question;
-                $this->id = $DB->insert_record($this->tablename, $data, true, true);
+                $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }
         else
         {
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

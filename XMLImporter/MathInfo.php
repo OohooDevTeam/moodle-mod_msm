@@ -130,7 +130,7 @@ class MathInfo extends Element
             $this->info_content = "<div>$infocontent</div>";
 
             $data->info_content = $this->info_content;
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

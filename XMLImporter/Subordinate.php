@@ -143,7 +143,7 @@ class Subordinate extends Element
 
         if (empty($recordID))
         {
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
         else //record already exists

@@ -128,13 +128,13 @@ class Approach extends Element
             foreach ($this->content as $content)
             {
                 $data->solution_hint = $content;
-                $this->id = $DB->insert_record($this->tablename, $data, true, true);
+                $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }
         else
         {
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
 

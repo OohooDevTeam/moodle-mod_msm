@@ -124,7 +124,7 @@ class Showme extends Element
         $data->textcaption = $this->textcaption;
 
         $data->statement_showme = $this->statements;
-        $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
 
         $elementPositions = array();
@@ -337,6 +337,17 @@ class Showme extends Element
                     }
                     break;
             }
+        }
+        
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->id = $this->id;
+            $newdata->caption = $this->caption;
+            $newdata->textcaption = $this->textcaption;
+            $newdata->statement_showme = $this->processDbContent("<div>$this->statements</div>", $this);
+
+            $DB->update_record($this->tablename, $newdata);
         }
     }
 

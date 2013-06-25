@@ -895,7 +895,7 @@ abstract class Element
         $compdata->parent_id = $parentid;
         $compdata->prev_sibling_id = $siblingid;
 
-        $compid = $DB->insert_record('msm_compositor', $compdata, true, true);
+        $compid = $DB->insert_record('msm_compositor', $compdata);
 
         return $compid;
     }
@@ -1223,61 +1223,60 @@ abstract class Element
             }
 
 
-            foreach ($imgs as $key => $img)
-            {
-                if (!empty($object->medias[$key]))
-                {
-                    foreach ($object->medias as $media)
-                    {
-                        if (!empty($media->imgs[0]))
-                        {
-                            $image = $media->imgs[0];
-                            $imgAttr = $img->getAttribute('src');
-                            $imgFileNameInfo = explode("/", $imgAttr);
-
-                            $srcInfo = explode("/", $image->src);
-
-                            if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1])
-                            {
-                                $newtag = '';
-                                $newtag .= $media->displayhtml($isindex);
-                                // there can be only one xml declaration for the loadXML to work
-                                // so if there are other xml declarations were added, remove them
-                                $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
-
-                                $newElementdoc->loadXML($newtag);
-                                $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
-                                $XMLcontent = $doc->saveXML();
-                            }
-                        }
-                    }
-                }
-            }
+//            foreach ($imgs as $key => $img)
+//            {
+//                if (!empty($object->medias[$key]))
+//                {
+//                    foreach ($object->medias as $media)
+//                    {
+//                        if (!empty($media->imgs[0]))
+//                        {
+//                            $image = $media->imgs[0];
+//                            $imgAttr = $img->getAttribute('src');
+//                            $imgFileNameInfo = explode("/", $imgAttr);
+//
+//                            $srcInfo = explode("/", $image->src);
+//
+//                            if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1])
+//                            {
+//                                $newtag = '';
+//                                $newtag .= $media->displayhtml($isindex);
+//                                // there can be only one xml declaration for the loadXML to work
+//                                // so if there are other xml declarations were added, remove them
+//                                $newtag = str_replace('<?xml version="1.0">', '', $newtag);
+//
+//                                $newElementdoc->loadXML($newtag);
+//                                $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
+//                                $XMLcontent = $doc->saveXML();
+//                            }
+//                        }
+//                    }
+//                }
+//            }
             $content .= $XMLcontent;
             $content = str_replace('<?xml version="1.0"?>', '', $content);
             return $content;
         }
     }
 
-    function processDbContent($oldcontent, $object)
+    // key param required to process proofblock as it has $this->medias[$key][$index] format 
+    function processDbContent($oldcontent, $object, $key='')
     {
-//        print_object($object);
-
         $parser = new DOMDocument();
         @$parser->loadXML($oldcontent);
         $topElement = $parser->documentElement;
 
         $imgs = $topElement->getElementsByTagName("img");
-
-        foreach ($imgs as $key => $image)
+        
+        foreach ($imgs as $index => $image)
         {
             $image->removeAttribute("src");
 
             if (isset($object->medias))
             {
-                if (!empty($object->medias))
+                if (!empty($object->medias[$key][$index]))
                 {
-                    $imageobj = $object->medias[$key]->imgs[0];
+                    $imageobj = $object->medias[$key][$index]->imgs[0];
                     $newsrcInfo = explode("||", $imageobj->src);
                     $image->setAttribute("src", $newsrcInfo[0]);
                 }

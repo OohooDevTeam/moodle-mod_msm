@@ -71,7 +71,7 @@ class MathArray extends Element
         $data->string_id = $this->string_id;
         $data->no_column = $this->no_column;
 
-        $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
         $elementPosition = array();

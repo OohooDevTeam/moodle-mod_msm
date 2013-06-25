@@ -497,11 +497,7 @@ class Unit extends Element
             {
                 $parentUnitRecord = $DB->get_record("msm_unit", array("id" => $parentRecord->unit_id));
 
-//                print_object($parentUnitRecord);
-
                 $parentCompType = $parentUnitRecord->compchildtype;
-
-//                print_object($DB->get_records("msm_unit_name", array("msmid"=>$msmid)));
 
                 $compTypeDepth = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "id" => $parentCompType))->depth;
 
@@ -513,16 +509,15 @@ class Unit extends Element
             }
         }
 
-//        $this->id = '';
         if (!empty($this->string_id))
         {
             $existingUnitRecords = $DB->get_records($this->tablename, array("string_id" => $this->string_id));
-            $unitTableRecord = $DB->get_record("msm_table_collection", array("tablename"=>$this->tablename));
+            $unitTableRecord = $DB->get_record("msm_table_collection", array("tablename" => $this->tablename));
             $existingCompRecord = null;
 
             foreach ($existingUnitRecords as $existUnit)
             {
-                $existingCompRecord = $DB->get_records("msm_compositor", array("table_id"=>$unitTableRecord->id, "unit_id" => $existUnit->id, "msm_id" => $msmid));
+                $existingCompRecord = $DB->get_records("msm_compositor", array("table_id" => $unitTableRecord->id, "unit_id" => $existUnit->id, "msm_id" => $msmid));
 
                 if (!empty($existingCompRecord))
                 {
@@ -530,15 +525,14 @@ class Unit extends Element
                     break;
                 }
             }
-            if (empty($this->id))
+            if (empty($existingCompRecord))
             {
-                $this->id = $DB->insert_record($this->tablename, $data, true, true);
+                $this->id = $DB->insert_record($this->tablename, $data);
             }
         }
         else
         {
-
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
 
 
@@ -564,7 +558,7 @@ class Unit extends Element
             $compdata->parent_id = $parentid;
             $compdata->prev_sibling_id = $siblingid;
 
-            $this->compid = $DB->insert_record('msm_compositor', $compdata, true, true);
+            $this->compid = $DB->insert_record('msm_compositor', $compdata);
         }
 
         $elementPositions = array();
@@ -591,26 +585,6 @@ class Unit extends Element
                 $elementPositions['contributors' . '-' . $key] = $contributor->position;
             }
         }
-//        if (!empty($this->preface))
-//        {
-//            $elementPositions['preface'] = $this->preface->position;
-//        }
-//
-//        if (!empty($this->historical))
-//        {
-//            $elementPositions['historical'] = $this->historical->position;
-//        }
-//
-//        if (!empty($this->trailer))
-//        {
-//            $elementPositions['trailer'] = $this->trailer->position;
-//        }
-//
-//        if (!empty($this->summary))
-//        {
-//            $elementPositions['summary'] = $this->summary->position;
-//        }
-
         if (!empty($this->extraContents))
         {
             foreach ($this->extraContents as $key => $extracontent)

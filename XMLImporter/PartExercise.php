@@ -87,7 +87,7 @@ class PartExercise extends Element
         $data->part_exercise_number = $this->number;
         $data->difficulty = $this->difficulty;
 
-        $this->id = $DB->insert_record($this->tablename, $data, true, true);
+        $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         
          $elementPositions = array();

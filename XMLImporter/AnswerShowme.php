@@ -93,7 +93,7 @@ class AnswerShowme extends Element
                 }
                 foreach ($this->processContent($asbb, $position) as $content)
                 {
-                    $this->content [] = $content;
+                    $this->content .= $content;
                 }
             }
         }
@@ -111,20 +111,20 @@ class AnswerShowme extends Element
         $data->caption = $this->caption;
         $data->type = $this->type;
 
-        if (!empty($this->content))
-        {
-            foreach ($this->content as $key => $content)
-            {
-                $data->answer_showme_content = $content;
-                $this->id = $DB->insert_record($this->tablename, $data, true, true);
+//        if (!empty($this->content))
+//        {
+//            foreach ($this->content as $key => $content)
+//            {
+                $data->answer_showme_content = $this->content;
+                $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-            }
-        }
-        else
-        {
-            $this->id = $DB->insert_record($this->tablename, $data, true, true);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-        }
+//            }
+//        }
+//        else
+//        {
+//            $this->id = $DB->insert_record($this->tablename, $data);
+//            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+//        }
 
         $elementPositions = array();
         $sibling_id = null;
@@ -311,6 +311,17 @@ class AnswerShowme extends Element
                     }
                     break;
             }
+        }
+        
+        if (!empty($this->medias))
+        {
+            $newdata = new stdClass();
+            $newdata->id = $this->id;
+            $newdata->caption = $this->caption;
+            $newdata->type = $this->type;
+            $newdata->answer_showme_content = $this->processDbContent("<div>$this->content</div>", $this);
+
+            $DB->update_record($this->tablename, $newdata);
         }
     }
 
