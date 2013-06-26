@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Corollary"
          id="Thm_ChangeCoordinatesMatrixProperties"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Properties of coordinate change</caption>
    <statement.theorem>
       <para>

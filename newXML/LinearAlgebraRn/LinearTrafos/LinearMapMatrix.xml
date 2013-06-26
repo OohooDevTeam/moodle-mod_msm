@@ -4,7 +4,7 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_LinearMapMatrix"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Unit.xsd"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Unit.xsd"
       standalone="false">
    <titles>
       <title>Linear Transformations and Matrices</title>

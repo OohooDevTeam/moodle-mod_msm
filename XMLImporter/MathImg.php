@@ -90,38 +90,34 @@ class MathImg extends Element
 
         if (count($sourcefolders) == 2)
         {
-            // legacy files have some <img>'s with incomplete src string --> ie. no filename was specified after ims/ folder path
-            if (!empty($sourcefolders[1]))
+            $fs = get_file_storage();
+            $file_record = array('contextid' => $context->id, 'component' => 'mod_msm', 'filearea' => 'editor',
+                'itemid' => $msmid, 'filepath' => '/', 'filename' => $sourcefolders[1],
+                'timecreated' => time(), 'timemodified' => time());
+
+            if ($fs->file_exists($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[1]))
             {
-                $fs = get_file_storage();
-                $file_record = array('contextid' => $context->id, 'component' => 'mod_msm', 'filearea' => 'editor',
-                    'itemid' => $msmid, 'filepath' => '/', 'filename' => $sourcefolders[1],
-                    'timecreated' => time(), 'timemodified' => time());
+                $existingFile = $fs->get_file($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[1]);
+                $existingFile->delete();
+            }
 
-                if ($fs->file_exists($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[1]))
-                {
-                    $existingFile = $fs->get_file($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[1]);
-                    $existingFile->delete();
-                }
-
-                if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
-                {
+            if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
+            {
 //                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname($this->xmlpath)) . '/'
 //                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
-                    $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname($this->xmlpath)) . '/'
-                            . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
-                }
-                else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
-                {
+                $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname($this->xmlpath)) . '/'
+                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+            }
+            else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
+            {
 //                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
 //                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
-                    $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
-                            . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
-                }
-
-                $storedFile = $fs->create_file_from_pathname($file_record, $path);
-                $fileurlname = str_replace(' ', '%20', $sourcefolders[1]);
+                $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
             }
+
+            $storedFile = $fs->create_file_from_pathname($file_record, $path);
+            $fileurlname = str_replace(' ', '%20', $sourcefolders[1]);
         }
         else if (count($sourcefolders) == 1) // to account for src in xml that does not include the ims folder in its path
         {
@@ -186,7 +182,6 @@ class MathImg extends Element
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
-
 
         $elementPositions = array();
         $sibling_id = null;

@@ -4,7 +4,7 @@
 <showme.pack xmlns="Compositor"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearCombination"
-             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Compositor.xsd">
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Compositor.xsd">
 	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Linear Combination: Examples</title>
@@ -318,10 +318,7 @@ A =
          </para>
 			      <math.display>
 				        <latex>\Vect{u} = (1,0,1/2)\quad \text{and} \quad \Vect{v} = (0,1,1).</latex>
-			      </math.display>
-			      <media type="image" active="0" inline="0">
-            <img src="ims/"/>
-         </media>
+			      </math.display>			
 		    </statement.showme>
 		    <answer.showme type="Explanation">
          <answer.showme.block>

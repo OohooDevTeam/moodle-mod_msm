@@ -140,10 +140,7 @@ A =
 			<para>The animation below illustrates how to express the vector <latex>\Vect{x} = (2,1,2)</latex> of <latex>\RNr[3]</latex> as a linear combination of the vectors.</para>
 			<math.display>
 				<latex>\Vect{u} = (1,0,1/2)\quad \text{and} \quad \Vect{v} = (0,1,1).</latex>
-			</math.display>
-			<figure>
-				<img src="ims/"></img>
-			</figure>
+			</math.display>			
 		</statement>
 		<answer type="Explanation">
 			<para>The animation goes through this progression:</para>

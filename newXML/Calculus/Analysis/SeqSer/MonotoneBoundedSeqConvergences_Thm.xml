@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Proposition"
          id="Thm_MonotoneBoundedSequenceConverges"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/XSLTdocuments/Theorem.xsd">
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Convergence of monotone bounded sequences</caption>
    <associate type="Illustration">
       <unit.ref unitId="Illu_MonotoneBoundedSequenceConverges"/>
