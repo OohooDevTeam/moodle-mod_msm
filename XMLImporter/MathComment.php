@@ -49,7 +49,7 @@ class MathComment extends Element
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
         $this->associates = array();
-//        $this->content = array();
+        $this->comment_content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -111,7 +111,7 @@ class MathComment extends Element
 
             foreach ($this->processContent($c, $position) as $content)
             {
-                $this->comment_content .= $content;
+                $this->comment_content[] = $content;
             }
         }
     }
@@ -124,6 +124,8 @@ class MathComment extends Element
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
+        $ids = array();
+        $tempContent = array();
 
         $data = new stdClass();
         $data->comment_type = $this->comment_type;
@@ -136,27 +138,28 @@ class MathComment extends Element
 
         if (!empty($this->comment_content))
         {
-//            foreach ($this->content as $key => $content)
-//            {
-            $commentcontent = '';
-
-            $commentbodyparser = new DOMDocument();
-            @$commentbodyparser->loadXML($this->comment_content, true);
-
-            $commentbodyNode = $commentbodyparser->documentElement;
-
-            foreach ($commentbodyNode->childNodes as $child)
+            foreach ($this->comment_content as $key => $content)
             {
-                $commentcontent .= $commentbodyparser->saveXML($commentbodyparser->importNode($child, true));
+                $commentcontent = '';
+                $commentbodyparser = new DOMDocument();
+                @$commentbodyparser->loadXML($content, true);
+
+                $commentbodyNode = $commentbodyparser->documentElement;
+
+                foreach ($commentbodyNode->childNodes as $child)
+                {
+                    $commentcontent .= $commentbodyparser->saveXML($commentbodyparser->importNode($child, true));
+                }
+
+                $content = "<div>$commentcontent</div>";
+
+                $data->comment_content = $content;
+                $tempContent[] = $content;
+
+                $this->id = $DB->insert_record($this->tablename, $data);
+                $ids[] = $this->id;
+                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
-
-            $this->comment_content = "<div>$commentcontent</div>";
-
-            $data->comment_content = $this->comment_content;
-
-            $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-//            }
         }
         else
         {
@@ -378,20 +381,23 @@ class MathComment extends Element
 
         if (!empty($this->medias))
         {
-            $newdata = new stdClass();
-            $newdata->id = $this->id;
-            $newdata->comment_type = $this->comment_type;
-            $newdata->string_id = $this->string_id;
-            if (isset($this->caption))
+            foreach ($ids as $key => $id)
             {
-                $newdata->caption = $this->caption;
+                $newdata = new stdClass();
+                $newdata->id = $this->id;
+                $newdata->comment_type = $this->comment_type;
+                $newdata->string_id = $this->string_id;
+                if (isset($this->caption))
+                {
+                    $newdata->caption = $this->caption;
+                }
+
+                $newdata->description = $this->description;
+
+                $newdata->comment_content = $this->processDbContent($tempContent[$key], $this);
+
+                $DB->update_record($this->tablename, $newdata);
             }
-
-            $newdata->description = $this->description;
-
-            $newdata->comment_content = $this->processDbContent($this->comment_content, $this);
-
-            $DB->update_record($this->tablename, $newdata);
         }
     }
 

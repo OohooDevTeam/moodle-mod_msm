@@ -233,7 +233,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         }
 
         $parser = new DOMDocument();
-        //define('parser', $parser);
+        
         @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
 //        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
 

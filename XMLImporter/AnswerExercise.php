@@ -97,7 +97,7 @@ class AnswerExercise extends Element
             foreach ($this->content as $content)
             {
                 $data->answer_exercise_content = $content;
-                $this->id = $DB->insert_record($this->tablename, $data);
+                $this->id = $DB->insert_record($this->tablename, $data);                
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }

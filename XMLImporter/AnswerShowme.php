@@ -60,11 +60,11 @@ class AnswerShowme extends Element
 
             foreach ($answer_showme_block_bodys as $asbb)
             {
-                foreach($this->processMathArray($asbb, $position) as $matharray)
+                foreach ($this->processMathArray($asbb, $position) as $matharray)
                 {
                     $this->matharrays[] = $matharray;
-            }
-                
+                }
+
                 foreach ($this->processIndexAuthor($asbb, $position) as $indexauthor)
                 {
                     $this->indexauthors[] = $indexauthor;
@@ -93,7 +93,7 @@ class AnswerShowme extends Element
                 }
                 foreach ($this->processContent($asbb, $position) as $content)
                 {
-                    $this->content .= $content;
+                    $this->content[] = $content;
                 }
             }
         }
@@ -111,25 +111,28 @@ class AnswerShowme extends Element
         $data->caption = $this->caption;
         $data->type = $this->type;
 
-//        if (!empty($this->content))
-//        {
-//            foreach ($this->content as $key => $content)
-//            {
-                $data->answer_showme_content = $this->content;
+        $ids = array();
+
+        if (!empty($this->content))
+        {
+            foreach ($this->content as $key => $content)
+            {
+                $data->answer_showme_content = $content;
                 $this->id = $DB->insert_record($this->tablename, $data);
+                $ids[] = $this->id;
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-//            }
-//        }
-//        else
-//        {
-//            $this->id = $DB->insert_record($this->tablename, $data);
-//            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-//        }
+            }
+        }
+        else
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+        }
 
         $elementPositions = array();
         $sibling_id = null;
 
-        
+
         if (!empty($this->matharrays))
         {
             foreach ($this->matharrays as $key => $matharray)
@@ -208,7 +211,7 @@ class AnswerShowme extends Element
                         $sibling_id = $matharray->compid;
                     }
                     break;
-                
+
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = explode('-', $element);
 
@@ -312,16 +315,19 @@ class AnswerShowme extends Element
                     break;
             }
         }
-        
+
         if (!empty($this->medias))
         {
-            $newdata = new stdClass();
-            $newdata->id = $this->id;
-            $newdata->caption = $this->caption;
-            $newdata->type = $this->type;
-            $newdata->answer_showme_content = $this->processDbContent("<div>$this->content</div>", $this);
+            foreach ($ids as $key => $id)
+            {
+                $newdata = new stdClass();
+                $newdata->id = $id;
+                $newdata->caption = $this->caption;
+                $newdata->type = $this->type;
+                $newdata->answer_showme_content = $this->processDbContent("<div>" . $this->content[$key] . "</div>", $this);
 
-            $DB->update_record($this->tablename, $newdata);
+                $DB->update_record($this->tablename, $newdata);
+            }
         }
     }
 
@@ -329,7 +335,7 @@ class AnswerShowme extends Element
     {
         global $DB;
 
-        $answershowmeCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
+        $answershowmeCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
         $answershowmeRecord = $DB->get_record($this->tablename, array('id' => $id));
 
         if (!empty($answershowmeRecord))
@@ -345,7 +351,7 @@ class AnswerShowme extends Element
         $this->tables = array();
         $this->matharray = array();
 
-        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$answershowmeCompRecord->msm_id,'parent_id' => $this->compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id' => $answershowmeCompRecord->msm_id, 'parent_id' => $this->compid), 'prev_sibling_id');
 
         foreach ($childElements as $child)
         {
@@ -370,7 +376,7 @@ class AnswerShowme extends Element
                     $table->loadFromDb($child->unit_id, $child->id);
                     $this->tables[] = $table;
                     break;
-                
+
                 case('msm_math_array'):
                     $matharray = new MathArray();
                     $matharray->loadFromDb($child->unit_id, $child->id);

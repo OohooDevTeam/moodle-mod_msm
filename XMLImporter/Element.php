@@ -79,33 +79,33 @@ abstract class Element
     {
         global $DB;
         $foundIDs = null;
-        
-        $currentElementTable = $DB->get_record("msm_table_collection", array("tablename"=>$DomElement->tablename));
-        
-        $compRecords = $DB->get_records("msm_compositor", array("msm_id"=>$msm_id, "table_id"=>$currentElementTable->id), "unit_id");
-        
-        foreach($compRecords as $compRec)
+
+        $currentElementTable = $DB->get_record("msm_table_collection", array("tablename" => $DomElement->tablename));
+
+        $compRecords = $DB->get_records("msm_compositor", array("msm_id" => $msm_id, "table_id" => $currentElementTable->id), "unit_id");
+
+        foreach ($compRecords as $compRec)
         {
-            $unitRecord = $DB->get_record($DomElement->tablename, array("id"=>$compRec->unit_id));
-            
-            if(!empty($propertyName))
+            $unitRecord = $DB->get_record($DomElement->tablename, array("id" => $compRec->unit_id));
+
+            if (!empty($propertyName))
             {
-                if(isset($DomElement->$propertyName))
+                if (isset($DomElement->$propertyName))
                 {
-                    if($unitRecord->$propertyName == $DomElement->$propertyName)
+                    if ($unitRecord->$propertyName == $DomElement->$propertyName)
                     {
-                        $foundIDs  = $unitRecord;
+                        $foundIDs = $unitRecord;
                         break;
                     }
                 }
             }
             else
             {
-                if(isset($DomElement->string_id))
+                if (isset($DomElement->string_id))
                 {
-                    if(isset($unitRecord->string_id))
+                    if (isset($unitRecord->string_id))
                     {
-                        if($unitRecord->string_id == $DomElement->string_id)
+                        if ($unitRecord->string_id == $DomElement->string_id)
                         {
                             $foundIDs = $unitRecord;
                             break;
@@ -115,7 +115,7 @@ abstract class Element
             }
         }
         return false;
-        
+
 //
 //        // $propertyName is defined
 //        if (!empty($propertyName))
@@ -144,8 +144,6 @@ abstract class Element
 //                }
 //            }
 //        }
-
-
 //        if (!empty($foundIDs))
 //        {
 //            $tableRecord = $DB->get_record("msm_table_collection", array("tablename" => $DomElement->tablename));
@@ -169,7 +167,6 @@ abstract class Element
 //                    return false;
 //                }
 //            }
-
 //        if (!empty($foundIDs))
 //        {
 //            return $foundIDs;
@@ -549,7 +546,7 @@ abstract class Element
             $string = str_replace('<para', '<p', $string);
             $string = preg_replace('/align="(left|center|right)"/', 'style="text-align:$1;"', $string);
             $string = str_replace('</para>', '</p>', $string);
-            
+
             $string = preg_replace('/type="([a-zA-Z-]+)"/', 'style="list-style-type:$1;"', $string);
             $string = preg_replace('/bullet="([a-zA-Z]+)"/', 'style="list-style-type:$1;"', $string);
 
@@ -577,7 +574,7 @@ abstract class Element
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $string);
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $string);
 //            $string = preg_replace('/\\\\dfrac/', '\\\\\frac', $string);
-            
+
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -1223,36 +1220,36 @@ abstract class Element
             }
 
 
-//            foreach ($imgs as $key => $img)
-//            {
-//                if (!empty($object->medias[$key]))
-//                {
-//                    foreach ($object->medias as $media)
-//                    {
-//                        if (!empty($media->imgs[0]))
-//                        {
-//                            $image = $media->imgs[0];
-//                            $imgAttr = $img->getAttribute('src');
-//                            $imgFileNameInfo = explode("/", $imgAttr);
-//
-//                            $srcInfo = explode("/", $image->src);
-//
-//                            if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1])
-//                            {
-//                                $newtag = '';
-//                                $newtag .= $media->displayhtml($isindex);
-//                                // there can be only one xml declaration for the loadXML to work
-//                                // so if there are other xml declarations were added, remove them
-//                                $newtag = str_replace('<?xml version="1.0">', '', $newtag);
-//
-//                                $newElementdoc->loadXML($newtag);
-//                                $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
-//                                $XMLcontent = $doc->saveXML();
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+            foreach ($imgs as $key => $img)
+            {
+                if (!empty($object->medias[$key]))
+                {
+                    foreach ($object->medias as $media)
+                    {
+                        if (!empty($media->imgs[0]))
+                        {
+                            $image = $media->imgs[0];
+                            $imgAttr = $img->getAttribute('src');
+                            $imgFileNameInfo = explode("/", $imgAttr);
+
+                            $srcInfo = explode("/", $image->src);
+
+                            if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1])
+                            {
+                                $newtag = '';
+                                $newtag .= $media->displayhtml($isindex);
+                                // there can be only one xml declaration for the loadXML to work
+                                // so if there are other xml declarations were added, remove them
+                                $newtag = str_replace('<?xml version="1.0">', '', $newtag);
+
+                                $newElementdoc->loadXML($newtag);
+                                $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
+                                $XMLcontent = $doc->saveXML();
+                            }
+                        }
+                    }
+                }
+            }
             $content .= $XMLcontent;
             $content = str_replace('<?xml version="1.0"?>', '', $content);
             return $content;
@@ -1260,25 +1257,37 @@ abstract class Element
     }
 
     // key param required to process proofblock as it has $this->medias[$key][$index] format 
-    function processDbContent($oldcontent, $object, $key='')
+    function processDbContent($oldcontent, $object, $key = '')
     {
         $parser = new DOMDocument();
         @$parser->loadXML($oldcontent);
         $topElement = $parser->documentElement;
 
         $imgs = $topElement->getElementsByTagName("img");
-        
+
         foreach ($imgs as $index => $image)
         {
             $image->removeAttribute("src");
 
             if (isset($object->medias))
             {
-                if (!empty($object->medias[$key][$index]))
+                if ($key !== '')
                 {
-                    $imageobj = $object->medias[$key][$index]->imgs[0];
-                    $newsrcInfo = explode("||", $imageobj->src);
-                    $image->setAttribute("src", $newsrcInfo[0]);
+                    if (!empty($object->medias[$key][$index]))
+                    {
+                        $imageobj = $object->medias[$key][$index]->imgs[0];
+                        $newsrcInfo = explode("||", $imageobj->src);
+                        $image->setAttribute("src", $newsrcInfo[0]);
+                    }
+                }
+                else
+                {
+                    if (!empty($object->medias[$index]))
+                    {
+                        $imageobj = $object->medias[$index]->imgs[0];
+                        $newsrcInfo = explode("||", $imageobj->src);
+                        $image->setAttribute("src", $newsrcInfo[0]);
+                    }
                 }
             }
         }

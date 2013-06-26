@@ -689,6 +689,8 @@ class Block extends Element
                 $content .= "<div style='text-align:center;'><h3>$this->title</h3></div>";
             }
         }
+        
+//        print_object($this->childs);
 
         foreach ($this->childs as $child)
         {

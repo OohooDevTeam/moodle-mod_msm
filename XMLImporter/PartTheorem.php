@@ -35,7 +35,7 @@ class PartTheorem extends Element
     {
         $this->position = $position;
 
-//        $this->content = array();
+        $this->part_content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -89,7 +89,7 @@ class PartTheorem extends Element
 
             foreach ($this->processContent($parb, $position) as $content)
             {
-                $this->part_content .= $content;
+                $this->part_content[] = $content;
             }
         }
     }
@@ -97,6 +97,10 @@ class PartTheorem extends Element
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
+
+        $ids = array();
+        $tempContent = array();
+
         $data = new stdClass();
 
         $data->partid = $this->partid;
@@ -106,22 +110,27 @@ class PartTheorem extends Element
 
         if (!empty($this->part_content))
         {
-            $partcontent = '';
-            $contentparser = new DOMDocument();
-            @$contentparser->loadXML($this->part_content, true);
-            $contentNode = $contentparser->documentElement;
-
-            foreach ($contentNode->childNodes as $child)
+            foreach ($this->part_content as $content)
             {
-                $partcontent .= $contentparser->saveXML($contentparser->importNode($child, true));
-            }
+                $partcontent = '';
+                $contentparser = new DOMDocument();
+                @$contentparser->loadXML($content, true);
+                $contentNode = $contentparser->documentElement;
 
-            $this->part_content = "<div>$partcontent</div>";
+                foreach ($contentNode->childNodes as $child)
+                {
+                    $partcontent .= $contentparser->saveXML($contentparser->importNode($child, true));
+                }
 
-            $data->part_content = $this->part_content;
+                $content = "<div>$partcontent</div>";
+
+                $data->part_content = $content;
+                $tempContent[] = $content;
 //           
-            $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+                $this->id = $DB->insert_record($this->tablename, $data);
+                $ids[] = $this->id;
+                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+            }
         }
         else
         {
@@ -318,15 +327,18 @@ class PartTheorem extends Element
 
         if (!empty($this->medias))
         {
-            $newdata = new stdClass();
-            $newdata->id = $this->id;
-            $newdata->partid = $this->partid;
-            $newdata->counter = $this->counter;
-            $newdata->equivalence_mark = $this->equiv_mark;
-            $newdata->caption = $this->caption;
-            $newdata->part_content = $this->processDbContent($this->part_content, $this);
+            foreach ($ids as $key => $id)
+            {
+                $newdata = new stdClass();
+                $newdata->id = $id;
+                $newdata->partid = $this->partid;
+                $newdata->counter = $this->counter;
+                $newdata->equivalence_mark = $this->equiv_mark;
+                $newdata->caption = $this->caption;
+                $newdata->part_content = $this->processDbContent($tempContent[$key], $this);
 
-            $DB->update_record($this->tablename, $newdata);
+                $DB->update_record($this->tablename, $newdata);
+            }
         }
     }
 

@@ -85,31 +85,72 @@ class MathImg extends Element
 
         $sourcefolders = explode('/', $this->src);
 
+        $storedFile = null;
+        $fileurlname = '';
+
         if (count($sourcefolders) == 2)
         {
-            if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
+            // legacy files have some <img>'s with incomplete src string --> ie. no filename was specified after ims/ folder path
+            if (!empty($sourcefolders[1]))
             {
-                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
-                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
-            }
-            else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
-            {
-                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
-                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+                $fs = get_file_storage();
+                $file_record = array('contextid' => $context->id, 'component' => 'mod_msm', 'filearea' => 'editor',
+                    'itemid' => $msmid, 'filepath' => '/', 'filename' => $sourcefolders[1],
+                    'timecreated' => time(), 'timemodified' => time());
+
+                if ($fs->file_exists($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[1]))
+                {
+                    $existingFile = $fs->get_file($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[1]);
+                    $existingFile->delete();
+                }
+
+                if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
+                {
+//                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname($this->xmlpath)) . '/'
+//                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+                    $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname($this->xmlpath)) . '/'
+                            . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+                }
+                else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
+                {
+//                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+//                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+                    $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+                            . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+                }
+
+                $storedFile = $fs->create_file_from_pathname($file_record, $path);
+                $fileurlname = str_replace(' ', '%20', $sourcefolders[1]);
             }
         }
         else if (count($sourcefolders) == 1) // to account for src in xml that does not include the ims folder in its path
         {
+            $fs = get_file_storage();
+            $file_record = array('contextid' => $context->id, 'component' => 'mod_msm', 'filearea' => 'editor',
+                'itemid' => $msmid, 'filepath' => '/', 'filename' => $sourcefolders[0],
+                'timecreated' => time(), 'timemodified' => time());
+
+            if ($fs->file_exists($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[0]))
+            {
+                $existingFile = $fs->get_file($context->id, "mod_msm", "editor", $msmid, "/", $sourcefolders[0]);
+                $existingFile->delete();
+            }
+
             if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
             {
-                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+//                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname($this->xmlpath)) . '/'
+//                        . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
+                $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
             }
             else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
             {
-                $this->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
+                $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
             }
+
+            $storedFile = $fs->create_file_from_pathname($file_record, $path);
+            $fileurlname = str_replace(' ', '%20', $sourcefolders[0]);
         }
         else if (count($sourcefolders) == 3) // for new XML formed by the editor --> in ../pic/filename.ext format
         {
@@ -126,12 +167,12 @@ class MathImg extends Element
             }
 
             $storedFile = $fs->create_file_from_pathname($file_record, $pathofImg);
-
-            $url = "{$CFG->wwwroot}/pluginfile.php/{$context->id}/mod_msm/editor";
             $fileurlname = str_replace(' ', '%20', $sourcefolders[2]);
-            $fileurl = $url . $storedFile->get_filepath() . $storedFile->get_itemid() . '/' . $fileurlname;
-            $this->src = $fileurl . "||" . $msmid;
         }
+
+        $url = "{$CFG->wwwroot}/pluginfile.php/{$context->id}/mod_msm/editor";
+        $fileurl = $url . $storedFile->get_filepath() . $storedFile->get_itemid() . '/' . $fileurlname;
+        $this->src = $fileurl . "||" . $msmid;
 
         $data->src = $this->src;
 

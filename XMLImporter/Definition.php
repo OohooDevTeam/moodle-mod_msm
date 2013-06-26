@@ -21,9 +21,10 @@
  */
 class Definition extends Element
 {
-
+    public $id;
+    public $compid;
     public $position;
-    public $def_content;
+    public $def_contents = array();
     public $caption;
     public $string_id;
     public $type;
@@ -34,7 +35,6 @@ class Definition extends Element
     public $indexauthors = array();
     public $indexglossarys = array();
     public $indexsymbols = array();
-//        $this->medias = array();
     public $tables = array();
     public $matharrays = array();
 
@@ -65,8 +65,6 @@ class Definition extends Element
 
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
-
-
         $associates = $DomElement->getElementsByTagName('associate');
 
         foreach ($associates as $a)
@@ -77,8 +75,6 @@ class Definition extends Element
             $this->associates[] = $associate;
         }
         $defbodys = $DomElement->getElementsByTagName('def.body');
-
-        $doc = new DOMDocument();
 
         foreach ($defbodys as $d)
         {
@@ -118,10 +114,9 @@ class Definition extends Element
 
             foreach ($this->processContent($d, $position) as $content)
             {
-                $this->def_content .= $content;
+                $this->def_contents[] = $content;
             }
         }
-        
     }
 
     /**
@@ -136,6 +131,10 @@ class Definition extends Element
         $data = new stdClass();
         $data->def_type = $this->type;
         $data->string_id = $this->string_id;
+
+        $ids = array();
+        $tempContent = array();
+
         if (!empty($this->caption))
         {
             $data->caption = $this->caption;
@@ -143,26 +142,31 @@ class Definition extends Element
 
         $data->description = $this->description;
 
-        if (!empty($this->def_content))
+        if (!empty($this->def_contents))
         {
-            $paracontent = '';
-
-            $defbodyparser = new DOMDocument();
-            @$defbodyparser->loadXML($this->def_content, true);
-
-            $defbodyNode = $defbodyparser->documentElement;
-
-            foreach ($defbodyNode->childNodes as $child)
+            foreach ($this->def_contents as $content)
             {
-                $paracontent .= $defbodyparser->saveXML($defbodyparser->importNode($child, true));
+                $paracontent = '';
+
+                $defbodyparser = new DOMDocument();
+                @$defbodyparser->loadXML($content, true);
+
+                $defbodyNode = $defbodyparser->documentElement;
+
+                foreach ($defbodyNode->childNodes as $child)
+                {
+                    $paracontent .= $defbodyparser->saveXML($defbodyparser->importNode($child, true));
+                }
+
+                $content = "<div>$paracontent</div>";
+
+                $data->def_content = $content;
+                $tempContent[] = $content;
+
+                $this->id = $DB->insert_record($this->tablename, $data);
+                $ids[] = $this->id;
+                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
-
-            $this->def_content = "<div>$paracontent</div>";
-
-            $data->def_content = $this->def_content;
-
-            $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
         else // has def.body as child of def
         {
@@ -359,20 +363,21 @@ class Definition extends Element
 
         if (!empty($this->medias))
         {
-            $newdata = new stdClass();
-            $newdata->id = $this->id;
-            $newdata->def_type = $this->type;
-            $newdata->string_id = $this->string_id;
-            if (isset($this->caption))
+            foreach ($ids as $key => $id)
             {
-                $newdata->caption = $this->caption;
+                $newdata = new stdClass();
+                $newdata->id = $id;
+                $newdata->def_type = $this->type;
+                $newdata->string_id = $this->string_id;
+                if (isset($this->caption))
+                {
+                    $newdata->caption = $this->caption;
+                }
+
+                $newdata->description = $this->description;
+                $newdata->def_contents = $this->processDbContent($tempContent[$key], $this);
+                $DB->update_record($this->tablename, $newdata);
             }
-
-            $newdata->description = $this->description;
-
-            $newdata->def_content = $this->processDbContent($this->def_content, $this);
-
-            $DB->update_record($this->tablename, $newdata);
         }
 
         $sibling_id = 0;
@@ -406,7 +411,7 @@ class Definition extends Element
         $this->matharrays = array();
         $this->childs = array();
 
-        $childElements = $DB->get_records('msm_compositor', array('msm_id'=>$defCompRecord->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('msm_id' => $defCompRecord->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
 
         foreach ($childElements as $child)
         {
