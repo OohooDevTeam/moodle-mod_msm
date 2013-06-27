@@ -321,7 +321,13 @@ class MathImg extends Element
                 $width = $imageinfo[0];
                 $height = $imageinfo[1];
 
-                $hTowRatio = $height / $width;
+                $hTowRatio = 1;
+
+                // to prevent division by zero warning
+                if ($width != 0)
+                {
+                    $hTowRatio = $height / $width;
+                }
 
                 // longer height than width
                 if ($hTowRatio >= 1)

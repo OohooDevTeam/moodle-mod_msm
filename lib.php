@@ -232,18 +232,18 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             }
         }
 
-        $parser = new DOMDocument();
-        
-        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
-//        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
-
-        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
-//        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
-        $position = 1;
-
-        $unit->loadFromXml($parser->documentElement, $position);
-
-        $unit->saveIntoDb($unit->position, $msm->id);
+//        $parser = new DOMDocument();
+//        
+//        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
+////        @$parser->load(dirname(__FILE__) . '/newXML/Calculus/Analysis/Analysis.xml');
+//
+//        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
+////        $unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
+//        $position = 1;
+//
+//        $unit->loadFromXml($parser->documentElement, $position);
+//
+//        $unit->saveIntoDb($unit->position, $msm->id);
 
         $deletePath = $CFG->dataroot . "/temp/msmtempfiles/";
         if (file_exists($deletePath))

@@ -1009,6 +1009,7 @@ abstract class Element
         // cannot have unclosed <br> or <img...> tags as it causes mismatched tag error when loaded as XML
         $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);
         $XMLcontent = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $XMLcontent);
+        $XMLcontent = preg_replace("/<\/img>/", '', $XMLcontent);
         @$doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
@@ -1217,8 +1218,7 @@ abstract class Element
                     $matharrays->item(0)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $matharrays->item(0));
                 }
                 $XMLcontent = $doc->saveXML();
-            }
-
+            }            
 
             foreach ($imgs as $key => $img)
             {
@@ -1290,6 +1290,13 @@ abstract class Element
                     }
                 }
             }
+        }
+        
+        $imageMappings = $topElement->getElementsByTagName("image.mapping");
+        
+        foreach($imageMappings as $imgMap)
+        {
+            $imgMap->parentNode->removeChild($imgMap);
         }
 
         $newcontent = $parser->saveXML($topElement);
