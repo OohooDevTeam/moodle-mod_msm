@@ -279,6 +279,31 @@ function processDroppedChild(e, droppedId)
                 
 }
 
+function initTitleEditor(elId)
+{
+    YUI().use('editor_tinymce', function(Y) {
+        M.editor_tinymce.init_editor(Y, elId, {
+            mode:"exact",
+            inline: true,
+            elements: elId,
+            plugins:"matheditor,paste,contextmenu,insertdatetime,save,iespell",
+            width: "80%",
+            min_height: "20",
+            theme_advanced_font_sizes:"1,2,3,4,5,6,7",
+            theme_advanced_layout_manager:"SimpleLayout",
+            theme_advanced_toolbar_align:"left",
+            theme_advanced_statusbar_location: "none",
+            theme_advanced_fonts:"Trebuchet=Trebuchet MS,Verdana,Arial,Helvetica,sans-serif;Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;Georgia=georgia,times new roman,times,serif;Tahoma=tahoma,arial,helvetica,sans-serif;Times New Roman=times new roman,times,serif;Verdana=verdana,arial,helvetica,sans-serif;Impact=impact;Wingdings=wingdings",
+            theme_advanced_toolbar_location:"external",
+            language_load:false,
+            langrev:-1,
+            theme_advanced_buttons1:"fontselect,fontsizeselect,|,undo,redo,|,bold,italic,underline,strikethrough,sub,sup,|,matheditor",
+            moodle_init_plugins:"matheditor:loader.php/matheditor/-1/editor_plugin.js",
+            moodle_plugin_base: M.cfg.wwwroot+"/lib/editor/tinymce/plugins/"
+        })
+    });
+}
+
 function initEditor(elId)
 { 
     YUI().use('editor_tinymce', function(Y) {

@@ -478,6 +478,7 @@ $formContent .= '<script type="text/javascript">
         var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
             
         $(document).ready(function() {  
+            initTitleEditor("msm_unit_title");
             $("#msm_unit_title").dblclick(function(){
                 $(this).removeAttr("readonly");
                 $(this).addClass("msm_add_border");

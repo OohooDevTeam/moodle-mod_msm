@@ -192,7 +192,7 @@ class EditorBlock extends EditorElement
         {
             $rawextracontent = $_POST['msm_extra_content_input-' . $idInfo[1]];
 
-            foreach ($this->processContent($rawextracontent) as $content)
+            foreach ($this->processContent("<div>" . $rawextracontent . "</div>") as $content)
             {
                 $this->content[] = $content;
             }

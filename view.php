@@ -317,7 +317,6 @@ $content .= "
             });
         </script>";
 
-
 // where the display method would go...
 
 echo $OUTPUT->box($content);

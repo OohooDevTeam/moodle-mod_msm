@@ -108,6 +108,7 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
 .jshowoff h2, .jshowoff p {
     padding: 5px 10px 5px;
     margin: 0;
+    white-space: pre-wrap !important; /*need this to preserve multiple spaces that might be in content*/
 }
 .jshowoff p {
 /*    line-height: 15px;*/

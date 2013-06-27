@@ -164,7 +164,7 @@ class ExtraInfo extends Element
         {
             $content .= $block->displayhtml();
         }
-        $content .= "</div>";
+        $content .= "</div>";        
 
         $content .= "</div>";
         return $content;

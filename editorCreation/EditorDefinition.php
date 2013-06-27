@@ -366,16 +366,19 @@ class EditorDefinition extends EditorElement
         $this->type = $defRecord->def_type;
         $this->title = $defRecord->caption;
         $this->description = $defRecord->description;
+        $this->content = $defRecord->def_content;
 
-        $htmlParser = new DOMDocument();
+//        $htmlParser = new DOMDocument();
+//        
+//        $htmlParser->loadXML($defRecord->def_content);        
+//
+//        foreach ($htmlParser->documentElement->childNodes as $child)
+//        {
+//            $this->content .= $htmlParser->saveXML($child);
+//        }
+//        
 //        print_object($defRecord->def_content);
-        $htmlParser->loadHTML($defRecord->def_content);
-
-        foreach ($htmlParser->documentElement->childNodes as $child)
-        {
-            $this->content .= $htmlParser->saveHTML($child);
-        }
-//        $this->content = $defRecord->def_content;
+//        print_object($this->content);
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
@@ -479,7 +482,8 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<input id='msm_defref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
 
         $htmlContent .= "<div id='msm_defref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-        $htmlContent .= html_entity_decode($this->content);
+//        $htmlContent .= html_entity_decode($this->content);
+        $htmlContent .= $this->content;
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-defrefcontent$parentId-$this->compid'>";

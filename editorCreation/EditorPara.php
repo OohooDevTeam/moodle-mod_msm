@@ -70,8 +70,7 @@ class EditorPara extends EditorElement
             $this->align = $paraNode->getAttribute("align");
         }
         
-
-        $this->content = $doc->saveHTML($paraNode);
+        $this->content = $doc->saveXML($paraNode);        
 
         foreach ($this->processImage($this->content) as $key => $media)
         {

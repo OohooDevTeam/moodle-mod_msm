@@ -1011,7 +1011,7 @@ abstract class Element
         $XMLcontent = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $XMLcontent);
         $XMLcontent = preg_replace("/<\/img>/", '', $XMLcontent);
         @$doc->loadXML($XMLcontent);
-
+        
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');
         $hottags = $doc->getElementsByTagName('a');
@@ -1252,6 +1252,7 @@ abstract class Element
             }
             $content .= $XMLcontent;
             $content = str_replace('<?xml version="1.0"?>', '', $content);
+            
             return $content;
         }
     }

@@ -348,7 +348,7 @@ class Para extends Element
     function displayhtml($isindex = false)
     {
         $content = '';
-        $content .= $this->displayContent($this, $this->para_content, $isindex);
+        $content .= $this->displayContent($this, $this->para_content, $isindex);        
         return $content;
     }
 

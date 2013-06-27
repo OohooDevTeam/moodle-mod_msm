@@ -52,7 +52,7 @@ abstract class EditorElement
     {
         $doc = new DOMDocument();
         $content = $this->processMath($oldContent);
-        $doc->loadHTML($content);
+        @$doc->loadXML($content);
         
         $rootElement = $doc->getElementsByTagName('div')->item(0);
 
@@ -168,11 +168,14 @@ abstract class EditorElement
     function processMath($content)
     {
         $parser = new DOMDocument();
-        // <nobr> tags from mathjax code caues error in loadHTML function
+        // <nobr> tags from mathjax code caues error in loadXML function
         $content = str_replace("<nobr>", '', $content);
         $content = str_replace("</nobr>", '', $content);
-        //htmlParseEntityRef: no name in Entity warning is thrown?
-        @$parser->loadHTML($content);
+        $content = preg_replace("/\&nbsp;/", ' ', $content);
+        
+        //htmlParseEntityRef: no name in Entity warning is thrown?     
+        // changed to loadXML due to encoding issue --> loadHTML doesn't read &nbsp; properly
+        @$parser->loadXML($content);
          $divs = $parser->getElementsByTagName("div");
 
         if ($divs->length > 0)
@@ -183,7 +186,7 @@ abstract class EditorElement
         {
              $content = "<div>$content</div>";
         }
-        @$parser->loadHTML($content);
+        @$parser->loadXML($content);
 
         $spans = $parser->getElementsByTagName("span");
 
@@ -221,7 +224,7 @@ abstract class EditorElement
                 }
             }
         }
-        return $parser->saveHTML($parser->importNode($parser->getElementsByTagName("div")->item(0)));
+        return $parser->saveXML($parser->importNode($parser->getElementsByTagName("div")->item(0)));
     }
 }
 
