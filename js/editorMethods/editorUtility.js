@@ -522,10 +522,7 @@ function saveComp(e)
 function editUnit(e)
 {    
     $("#msm_editor_new").attr("disabled", "disabled");
-    //    if($("#msm_unit_title").attr("readonly"))
-    //    {
-    //        $("#msm_unit_title").removeAttr("readonly");
-    //    }
+    
     if($("#msm_unit_short_title").attr("readonly"))
     {
         $("#msm_unit_short_title").removeAttr("readonly");
