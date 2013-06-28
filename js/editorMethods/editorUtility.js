@@ -292,6 +292,14 @@ function newUnit()
 {
     $("#msm_child_appending_area").empty();
     
+    if(tinymce.getInstanceById("msm_unit_title") != null)
+    {
+        tinyMCE.execCommand("mceRemoveControl", true, "msm_unit_title");        
+    }
+    
+    // need to switch display only div to input field so when the form is submitted, then the data can be passed as POST object
+    $("div#msm_unit_title").replaceWith('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>')
+    
     $("#msm_unit_title").val('');
     $("#msm_unit_short_title").val('');
     $("#msm_unit_description_input").val('');
@@ -303,7 +311,9 @@ function newUnit()
     $(fileoption).val(JSON.stringify(tinymce_filepicker_options));
     $(fileoption).appendTo("#msm_unit_form");
     
-    $("#msm_unit_title").removeAttr("readonly");
+   
+    initTitleEditor("msm_unit_title");
+    //    $("#msm_unit_title").removeAttr("readonly");
     $("#msm_unit_short_title").removeAttr("readonly");
     $("#msm_unit_description_input").removeAttr("readonly");
     
@@ -412,8 +422,7 @@ function processUnitData(htmlData)
     });
         
     $("#msm_unit_title").dblclick(function(){
-        $(this).removeAttr("readonly");
-        $(this).addClass("msm_add_border");
+        processTitleContent(this.id);
         allowDragnDrop();
     });
     $("#msm_unit_short_title").dblclick(function(){
@@ -513,10 +522,10 @@ function saveComp(e)
 function editUnit(e)
 {    
     $("#msm_editor_new").attr("disabled", "disabled");
-    if($("#msm_unit_title").attr("readonly"))
-    {
-        $("#msm_unit_title").removeAttr("readonly");
-    }
+    //    if($("#msm_unit_title").attr("readonly"))
+    //    {
+    //        $("#msm_unit_title").removeAttr("readonly");
+    //    }
     if($("#msm_unit_short_title").attr("readonly"))
     {
         $("#msm_unit_short_title").removeAttr("readonly");
@@ -614,7 +623,7 @@ function editUnit(e)
                 //         prevents navigation to msmUnitForm.php
                 event.preventDefault();
                 // enabling all input that was disabled to submit the form
-                $("#msm_unit_title").removeAttr("disabled");
+                //                $("#msm_unit_title").removeAttr("disabled");
                 $("#msm_unit_short_title").removeAttr("disabled");
                 $("#msm_unit_description_input").removeAttr("disabled");
                 $(".copied_msm_structural_element select").removeAttr("disabled");
@@ -1805,8 +1814,7 @@ function cancelUnit(e)
                         }); 
                     
                         $("#msm_unit_title").dblclick(function(){
-                            $(this).removeAttr("readonly");
-                            $(this).addClass("msm_add_border");
+                            processTitleContent(this.id);
                             allowDragnDrop();
                         });
                         $("#msm_unit_short_title").dblclick(function(){
@@ -1928,7 +1936,6 @@ function deleteOverlayElement(e)
                     //         prevents navigation to msmUnitForm.php
                     event.preventDefault();
                     // enabling all input that was disabled to submit the form
-                    $("#msm_unit_title").removeAttr("readonly");
                     $("#msm_unit_short_title").removeAttr("readonly");
                     $("#msm_unit_description_input").removeAttr("readonly");
                     $(".copied_msm_structural_element select").removeAttr("disabled");
@@ -1984,7 +1991,6 @@ function allowDragnDrop()
             //         prevents navigation to msmUnitForm.php
             event.preventDefault();
             // enabling all input that was disabled to submit the form
-            $("#msm_unit_title").removeAttr("readonly");
             $("#msm_unit_short_title").removeAttr("readonly");
             $("#msm_unit_description_input").removeAttr("readonly");
             $(".copied_msm_structural_element select").removeAttr("disabled");
@@ -2004,4 +2010,25 @@ function allowDragnDrop()
             
         });  
     }      
+}
+
+/**
+ * when the tinymce is activated again to edit already existing unit title, need to remove mathjax code
+ * and only get the needed math content wrapped in <span class="matheditor">mathcontent</span> to allow
+ * tinymce to recognize the math element.
+ */ 
+function processTitleContent(id)
+{    
+    $("#"+id).find("span.matheditor").each(function() {
+        var newspan = document.createElement("span");
+        newspan.className = "matheditor";
+    
+        var scriptChild = $(this).find("script");
+        
+        var scriptWithMath = scriptChild[scriptChild.length-1];
+        var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+        $(newspan).append(mathContent);
+        $(this).replaceWith(newspan);
+    });
+    initTitleEditor(id);
 }

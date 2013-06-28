@@ -21,7 +21,7 @@ function submitForm()
         $("#msm_comp_done").removeAttr("disabled");
     }
         
-    $("#msm_unit_title").removeAttr("readonly");
+    //    $("#msm_unit_title").removeAttr("readonly");
     $("#msm_unit_short_title").removeAttr("readonly");
     $("#msm_unit_description_input").removeAttr("readonly");
     
@@ -62,7 +62,21 @@ function submitForm()
                 });
             }
         }
-    });   
+    });  
+    
+    console.log($("#msm_unit_title"));
+        
+    $("#msm_unit_title").val(tinymce.get("msm_unit_title").getContent({
+        format:"html"
+    }));
+    
+    console.log(tinymce.get("msm_unit_title").getContent({
+        format:"html"
+    }));
+    
+     console.log(tinymce.getInstanceById("msm_unit_title").getContent({
+        format:"html"
+    }));
     
     var urlParam = window.location.search;
        
@@ -199,8 +213,8 @@ function submitForm()
                         previewInfo(this.id, "dialog-"+newid);
                     });
                     
-                    $("#msm_unit_title").attr("readonly", "true");
-                    $(this).removeClass("msm_add_border");
+                    //                    $("#msm_unit_title").attr("readonly", "true");
+                    //                    $(this).removeClass("msm_add_border");
                     $("#msm_unit_short_title").attr("readonly", "true");
                     $(this).removeClass("msm_add_border");
                     $("#msm_unit_description_input").attr("readonly", "true");         
@@ -248,8 +262,7 @@ function submitForm()
                     }); 
                     
                     $("#msm_unit_title").dblclick(function(){
-                        $(this).removeAttr("readonly");
-                        $(this).addClass("msm_add_border");
+                        processTitleContent(this.id);
                         allowDragnDrop();
                     });
                     $("#msm_unit_short_title").dblclick(function(){
@@ -288,190 +301,96 @@ function prepareSubordinate(id)
 
 function removeTinymceEditor()
 { 
-    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {           
-        var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
-        if(edInstance)
-        {
-            if (edInstance.isHidden())
-            {
-                tinyMCE.remove(edInstance);
-            }
-            tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
-        }
-        tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-                        
-        var editorContent = document.createElement("div");
-        editorContent.id = this.id;
-        var content = null;
-        if($(this).hasClass("msm_editor_content"))
-        {
-            editorContent.className = this.className;
-            content = $(this).html();
-        }
-        else
-        {
-            editorContent.className = this.className+" msm_editor_content";
-            content = $(this).val();
-        }        
-        
-        $(editorContent).html(content);
-        $(this).replaceWith(editorContent);
+    titleInput2Div("msm_unit_title");
+    
+    $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {     
+        textArea2Div($(this).attr("id"));
     });
                     
     $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function() {
-        var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
-        if(edInstance)
-        {
-            if (edInstance.isHidden())
-            {
-                tinyMCE.remove(edInstance);
-            }
-            tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
-        }
-        tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-       
-        var editorContent = document.createElement("div");
-        editorContent.id = this.id;
-        var content = null;
-        if($(this).hasClass("msm_editor_content"))
-        {
-            editorContent.className = this.className;
-            content = $(this).html();
-        }
-        else
-        {
-            editorContent.className = this.className+" msm_editor_content";
-            content = $(this).val();
-        }   
-                        
-        $(editorContent).html(content);
-        $(this).replaceWith(editorContent);
+        textArea2Div($(this).attr("id"));
     });
     
     $('.msm_theorem_part_dropareas').each(function() {
-        $(this).find('.msm_theorem_content').each(function() {
-            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
-            if(edInstance)
-            {
-                if (edInstance.isHidden())
-                {
-                    tinyMCE.remove(edInstance);
-                }
-                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
-            }
-            tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-                        
-            var editorContent = document.createElement("div");
-            editorContent.id = this.id;
-            var content = null;
-            if($(this).hasClass("msm_editor_content"))
-            {
-                editorContent.className = this.className;
-                content = $(this).html();
-            }
-            else
-            {
-                editorContent.className = this.className+" msm_editor_content";
-                content = $(this).val();
-            }   
-                        
-            $(editorContent).html(content);
-            $(this).replaceWith(editorContent);
-        });
+        textArea2Div($(this).attr("id"));
     });
     
     $('.msm_theoremref_part_dropareas').each(function() {
         $(this).find('.msm_theorem_content').each(function() {
-            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
-            if(edInstance)
-            {
-                if (edInstance.isHidden())
-                {
-                    tinyMCE.remove(edInstance);
-                }
-                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
-            }
-            tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-                        
-            var editorContent = document.createElement("div");
-            editorContent.id = this.id;
-            var content = null;
-            if($(this).hasClass("msm_editor_content"))
-            {
-                editorContent.className = this.className;
-                content = $(this).html();
-            }
-            else
-            {
-                editorContent.className = this.className+" msm_editor_content";
-                content = $(this).val();
-            }   
-                        
-            $(editorContent).html(content);
-            $(this).replaceWith(editorContent);
+            textArea2Div($(this).attr("id"));
         });
     });
     
     $('.msm_associate_containers').each(function() {
         $(this).find('.msm_info_titles').each(function() {
-            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
-            if(edInstance)
-            {
-                if (edInstance.isHidden())
-                {
-                    tinyMCE.remove(edInstance);
-                }
-                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
-            }
-            tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-                        
-            var editorContent = document.createElement("div");
-            editorContent.id = this.id;
-            var content = null;
-            if($(this).hasClass("msm_editor_content"))
-            {
-                editorContent.className = this.className;
-                content = $(this).html();
-            }
-            else
-            {
-                editorContent.className = this.className+" msm_editor_content";
-                content = $(this).val();
-            }   
-                        
-            $(editorContent).html(content);
-            $(this).replaceWith(editorContent);
+            textArea2Div($(this).attr("id"));
         });
         $(this).find('.msm_info_contents').each(function() {
-            var edInstance = tinyMCE.getInstanceById($(this).attr("id"));
-            if(edInstance)
-            {
-                if (edInstance.isHidden())
-                {
-                    tinyMCE.remove(edInstance);
-                }
-                tinyMCE.execCommand('mceRemoveControl', true, $(this).attr("id"));
-            }
-            tinyMCE.execCommand("mceRemoveControl", true, $(this).attr("id")); 
-                        
-            var editorContent = document.createElement("div");
-            editorContent.id = this.id;
-            var content = null;
-            if($(this).hasClass("msm_editor_content"))
-            {
-                editorContent.className = this.className;
-                content = $(this).html();
-            }
-            else
-            {
-                editorContent.className = this.className+" msm_editor_content";
-                content = $(this).val();
-            }   
-                        
-            $(editorContent).html(content);
-            $(this).replaceWith(editorContent);
+            textArea2Div($(this).attr("id"));
         });
     });
+}
+
+function textArea2Div(id)
+{
+    var edInstance = tinyMCE.getInstanceById(id);
+    if(edInstance)
+    {
+        if (edInstance.isHidden())
+        {
+            tinyMCE.remove(edInstance);
+        }
+        tinyMCE.execCommand('mceRemoveControl', true, id);
+    }
+    tinyMCE.execCommand("mceRemoveControl", true, id); 
+                        
+    var editorContent = document.createElement("div");
+    editorContent.id = id;
+    var content = null;
+    if($(this).hasClass("msm_editor_content"))
+    {
+        editorContent.className = this.className;
+        content = $("#"+id).html();
+    }
+    else
+    {
+        editorContent.className = document.getElementById(id).className+" msm_editor_content";
+        content = $("#"+id).val();
+    }        
+        
+    $(editorContent).html(content);
+    $("#"+id).replaceWith(editorContent);
+}
+
+function titleInput2Div(id)
+{
+    var edInstance = tinyMCE.getInstanceById(id);
+    if(edInstance)
+    {
+        if (edInstance.isHidden())
+        {
+            tinyMCE.remove(edInstance);
+        }
+        tinyMCE.execCommand('mceRemoveControl', true, id);
+    }
+    tinyMCE.execCommand("mceRemoveControl", true, id); 
+                        
+    var editorTitle = document.createElement("div");
+    editorTitle.id = id;
+    var title = null;
+    if($(this).hasClass("msm_editor_titles"))
+    {
+        editorTitle.className = this.className;
+        title = $("#"+id).html();
+    }
+    else
+    {
+        editorTitle.className = document.getElementById(id).className+" msm_editor_titles";
+        title = $("#"+id).val();
+    }        
+        
+    $(editorTitle).html(title);
+    $("#"+id).replaceWith(editorTitle);
 }
 
 /**
@@ -480,8 +399,8 @@ function removeTinymceEditor()
 */
 function disableEditorFunction()
 {
-    $('.msm_title_input').attr("readonly", "true");
-    $('.msm_title_input').removeClass("msm_add_border");
+    //    $('.msm_title_input').attr("readonly", "true");
+    //    $('.msm_title_input').removeClass("msm_add_border");
     $('.msm_unit_short_titles').attr("readonly", "true");
     $('.msm_unit_short_titles').removeClass("msm_add_border");
     $('.msm_unit_description_inputs').attr("readonly", "true");

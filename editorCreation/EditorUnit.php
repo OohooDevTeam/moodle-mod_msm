@@ -79,7 +79,7 @@ class EditorUnit extends EditorElement {
         $data = new stdClass();
         $data->title = $this->title;
         // TODO temporary value --> later will need to fix this
-        $data->plain_title = $this->title;
+        $data->plain_title = $this->short_name;
         $data->description = $this->description;
         $data->short_name = $this->short_name;
         // when saving the unit for the first time, no structure is given(ie no subunit is specified until user structures the unit in hierarchy column)
@@ -301,11 +301,14 @@ class EditorUnit extends EditorElement {
 
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
-        if (strpos($this->title, "<math>")) {
-            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' readonly='true'/>";
-        } else {
-            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->title' readonly='true'/>";
-        }
+//        if (strpos($this->title, "<math>")) {
+//            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' readonly='true'/>";
+//        } else {
+//            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->title'/>";
+//        }
+        $htmlContent .= "<div id='msm_unit_title' class='msm_title_input msm_editor_titles'>";
+        $htmlContent .= $this->title;
+        $htmlContent .= "</div>";
 
         $htmlContent .= "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
         $htmlContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $this->unitName' name='msm_unit_short_title' value='$this->short_name' readonly='true'/>";
@@ -411,7 +414,7 @@ class EditorUnit extends EditorElement {
      */
     public function displayPreview() {
         $previewHtml = '';
-
+        
         if (!empty($this->title)) {
             $previewHtml .= "<div class='title' style='text-align: center;'>";
             $previewHtml .= "<h2>";

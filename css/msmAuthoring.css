@@ -597,6 +597,16 @@ return auto from getComputedStyle javascript function*/
     border: thin solid maroon;
 }
 
+.msm_editor_titles
+{
+    width: 79.5%;
+    border: 1px solid #AAAAAA;
+    text-align: left;
+    background: #FFFFFF;
+    height: 15px;
+    padding: 2px;
+}
+
 .msm_intro_child_buttons
 {
     margin-left: 45%;
@@ -866,4 +876,10 @@ table.mceLayout
     float: right;
     margin-bottom: 3px;
     margin-top: 0;
+}
+
+.msm_tinymce_title_bodies
+{
+    margin: 2px !important;
+    font-size: 12px !important;
 }

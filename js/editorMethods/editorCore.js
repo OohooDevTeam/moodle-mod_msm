@@ -281,11 +281,14 @@ function processDroppedChild(e, droppedId)
 
 function initTitleEditor(elId)
 {
+    YUI().add("editor_tinymce");
     YUI().use('editor_tinymce', function(Y) {
         M.editor_tinymce.init_editor(Y, elId, {
             mode:"exact",
             inline: true,
             elements: elId,
+            body_class: "msm_tinymce_title_bodies",
+            content_css: "css/msmAuthoring.css",
             plugins:"matheditor,paste,contextmenu,insertdatetime,save,iespell",
             width: "80%",
             min_height: "20",
@@ -300,12 +303,13 @@ function initTitleEditor(elId)
             theme_advanced_buttons1:"fontselect,fontsizeselect,|,undo,redo,|,bold,italic,underline,strikethrough,sub,sup,|,matheditor",
             moodle_init_plugins:"matheditor:loader.php/matheditor/-1/editor_plugin.js",
             moodle_plugin_base: M.cfg.wwwroot+"/lib/editor/tinymce/plugins/"
-        })
-    });
+        });
+    });   
 }
 
 function initEditor(elId)
 { 
+    YUI().add("editor_tinymce");
     YUI().use('editor_tinymce', function(Y) {
         M.editor_tinymce.init_editor(Y, elId, {
             mode:"exact",
@@ -338,6 +342,7 @@ function initEditor(elId)
 
 function noSubInitEditor(elId)
 {
+    YUI().add("editor_tinymce");
     YUI().use('editor_tinymce', function(Y) {
         M.editor_tinymce.init_editor(Y, elId, {
             mode:"exact",

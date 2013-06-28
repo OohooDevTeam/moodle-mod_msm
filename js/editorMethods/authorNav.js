@@ -191,11 +191,11 @@ function validateBorder()
             $('#msm_type_specifiedType').css('border-color', '#228B22');
         }
     }
-    else if(document.getElementById('msm_unit_title').style.borderColor == 'rgb(255, 165, 0)')
+    else if(document.getElementById('msm_unit_title_ifr').style.borderColor == 'rgb(255, 165, 0)')
     {
-        if($('#msm_unit_title').val())
+        if(tinymce.get("msm_unit_title").getContent())
         {
-            $('#msm_unit_title').css('border-color', '#228B22');
+            $('#msm_unit_title_ifr').css('border-color', '#228B22');
         }
     }
 }
@@ -356,8 +356,9 @@ function showUnitPreview()
     $("#msm_child_order").val(childOrderString+urlParamInfo[1]);
     
     var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
+    var editorTitleDivs = $("#msm_unit_form").find(".msm_editor_titles");
       
-    if(editorDivs.length > 0)  // editor is in display mode
+    if((editorDivs.length > 0) && (editorTitleDivs.length > 0))  // editor is in display mode
     {  
         var dataArray  = getDisabledData();
         
@@ -477,8 +478,7 @@ function getDisabledData()
 {
     var dataArray = {};    
     dataArray["msm_child_order"] = $("#msm_child_order").val();
-    dataArray["msm_mode_info"] = "preview";
-    dataArray["msm_unit_title"] = $("#msm_unit_title").val();
+    dataArray["msm_mode_info"] = "preview";    
     dataArray["msm_unit_description_input"] = $("#msm_unit_description_input").val();
     dataArray["msm_unit_short_title"] = $("#msm_unit_short_title").val();
     
@@ -553,13 +553,36 @@ function getDisabledData()
     });  
     // for any tinymces that is active
     $("textarea").each(function(){        
-        if(typeof tinymce.get(this.id) !== "undefined")
+        if(typeof tinymce.getInstanceById(this.id) !== "undefined")
         {
-            dataArray[this.id] = tinymce.get(this.id).getContent({
+            dataArray[this.id] = tinymce.getInstanceById(this.id).getContent({
                 format: "html"
             });     
         }
-    });  
+    }); 
+        
+    if(typeof tinymce.getInstanceById("msm_unit_id") !== "undefined")
+    {
+        dataArray["msm_unit_id"] = tinymce.getInstanceById("msm_unit_id").getContent({
+            format: "html"
+        });     
+    }
+    else
+    {        
+        $("#msm_unit_title").find("span.matheditor").each(function() {
+            var newspan = document.createElement("span");
+            newspan.className = "matheditor";
+    
+            var scriptChild = $(this).find("script");
+        
+            var scriptWithMath = scriptChild[scriptChild.length-1];
+            var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+            $(newspan).append(mathContent);
+            $(this).replaceWith(newspan);
+        });
+        
+        dataArray["msm_unit_title"] = $("#msm_unit_title").html();
+    }
         
     return dataArray;
 }

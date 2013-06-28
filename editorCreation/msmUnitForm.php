@@ -88,7 +88,7 @@ if (!empty($_POST["removeUnit"]))
 
     $emptyUnitContent .= "<div id='msm_unit_info_div'>";
     $emptyUnitContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$topUnitName->unitname title: </label>";
-    $emptyUnitContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $topUnitName->unitname.' name='msm_unit_title' readonly='true'/>";
+    $emptyUnitContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $topUnitName->unitname.' name='msm_unit_title'/>";
 
     $emptyUnitContent .= "<label class='msm_unit_short_title_labels' for='msm_unit_short_title'> XML hierarchy Name: </label>";
     $emptyUnitContent .= "<input class='msm_unit_short_titles' id='msm_unit_short_title' placeholder='Please enter short title for this $topUnitName->unitname' name='msm_unit_short_title' readonly='true'/>";
