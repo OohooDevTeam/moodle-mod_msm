@@ -60,6 +60,7 @@ class Intro extends Element
             }
             $this->blocks[] = $block;
         }
+         return $this;
     }
 
     /**

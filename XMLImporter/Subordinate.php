@@ -102,6 +102,7 @@ class Subordinate extends Element
                 }
             }
         }
+        return $this;
     }
 
     /**

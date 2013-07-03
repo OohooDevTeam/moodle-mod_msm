@@ -114,6 +114,7 @@ class MathComment extends Element
                 $this->comment_content[] = $content;
             }
         }
+         return $this;
     }
 
     /**
@@ -142,7 +143,7 @@ class MathComment extends Element
             {
                 $commentcontent = '';
                 $commentbodyparser = new DOMDocument();
-                @$commentbodyparser->loadXML($content, true);
+                $commentbodyparser->loadXML($content, true);
 
                 $commentbodyNode = $commentbodyparser->documentElement;
 

@@ -79,6 +79,7 @@ class AnswerExercise extends Element
                 $this->medias[] = $media;
             }
         }
+         return $this;
     }
 
     /**

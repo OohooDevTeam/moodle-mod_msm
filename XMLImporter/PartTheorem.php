@@ -92,6 +92,7 @@ class PartTheorem extends Element
                 $this->part_content[] = $content;
             }
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')

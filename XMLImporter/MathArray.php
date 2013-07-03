@@ -57,6 +57,7 @@ class MathArray extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

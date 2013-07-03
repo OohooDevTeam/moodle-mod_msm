@@ -86,6 +86,7 @@ class Exercise extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

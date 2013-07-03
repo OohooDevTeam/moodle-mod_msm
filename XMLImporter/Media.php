@@ -73,6 +73,7 @@ class Media extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

@@ -525,6 +525,7 @@ abstract class Element
         }
         // converting XML content into string for further XML tag processing
         $doc = new DOMDocument();
+        $doc->encoding = "UTF-8";
         $element = $doc->importNode($DomElement, true);
         $content[] = $doc->saveXML($element);
 
@@ -539,13 +540,18 @@ abstract class Element
             $string = str_replace('</cell>', '</td>', $string);
 
             // TODO: might be able to not change para.body to anything? just replace with empty string?
-            $string = preg_replace('/<para.body(.*?)>/', '', $string);
+            $string = preg_replace('/\s*<para.body(.*?)>/', '', $string);
 //            $string = str_replace('<para.body', '<span', $string);
-            $string = str_replace('</para.body>', '', $string);
-
-            $string = str_replace('<para', '<p', $string);
+            $string = preg_replace('/<\/para.body>\s*/', '', $string);
+            
+            // for some reason when trying to remove spaces surrounding para tags, it causes an error in proofBlock content save part.
+            // so just removed the whitespaces surrounding the para.body tag before converting the para to p
+            $string = str_replace("<para", "<p", $string);
+            $string = str_replace("</para>", "</p>", $string);
             $string = preg_replace('/align="(left|center|right)"/', 'style="text-align:$1;"', $string);
-            $string = str_replace('</para>', '</p>', $string);
+            $string = preg_replace('/\s*xmlns="([A-Za-z]+)"/', '', $string);
+            
+            $string = preg_replace('/<p[^>]*>(\s|&nbsp;?)*<\/p>/', '', $string);
 
             $string = preg_replace('/type="([a-zA-Z-]+)"/', 'style="list-style-type:$1;"', $string);
             $string = preg_replace('/bullet="([a-zA-Z]+)"/', 'style="list-style-type:$1;"', $string);
@@ -556,11 +562,11 @@ abstract class Element
             $string = str_replace('<emphasis', '<em', $string);
             $string = str_replace('</emphasis>', '</em>', $string);
 
-            $string = str_replace('<hot', '<a', $string);
-            $string = str_replace('</hot>', '</a>  ', $string);
+            $string = preg_replace('/\s*<hot(.*?)>\s*/', '<a$1>', $string);
+            $string = preg_replace('/\s*<\/hot>\s*/', '</a>  ', $string);
 
             $string = preg_replace('/<math xmlns=(.+)>/', '<math>', $string);
-            $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>/', '<p style="text-align:center"><span class="matheditor">\(', $string);
+            $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>\s*/', '<p style="text-align:center"><span class="matheditor">\(', $string);
 
             $string = preg_replace('/<math.display>\s+<latex>/', '<p style="text-align:center"><span class="matheditor">\(', $string);
             $string = preg_replace('/<\/latex>\s+<\/math.display>/', '\)</span></p>', $string);
@@ -577,6 +583,7 @@ abstract class Element
 
             $resultcontent[] = $string;
         }
+
         return $resultcontent;
     }
 
@@ -1004,14 +1011,14 @@ abstract class Element
         global $DB;
         $content = '';
         $doc = new DOMDocument();
-        $doc->preserveWhiteSpace = true;
+        $doc->preserveWhiteSpace = false;
 
         // cannot have unclosed <br> or <img...> tags as it causes mismatched tag error when loaded as XML
         $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);
         $XMLcontent = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $XMLcontent);
         $XMLcontent = preg_replace("/<\/img>/", '', $XMLcontent);
         @$doc->loadXML($XMLcontent);
-        
+
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');
         $hottags = $doc->getElementsByTagName('a');
@@ -1218,7 +1225,7 @@ abstract class Element
                     $matharrays->item(0)->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $matharrays->item(0));
                 }
                 $XMLcontent = $doc->saveXML();
-            }            
+            }
 
             foreach ($imgs as $key => $img)
             {
@@ -1252,7 +1259,7 @@ abstract class Element
             }
             $content .= $XMLcontent;
             $content = str_replace('<?xml version="1.0"?>', '', $content);
-            
+
             return $content;
         }
     }
@@ -1261,7 +1268,7 @@ abstract class Element
     function processDbContent($oldcontent, $object, $key = '')
     {
         $parser = new DOMDocument();
-        @$parser->loadXML($oldcontent);
+        $parser->loadXML($oldcontent);
         $topElement = $parser->documentElement;
 
         $imgs = $topElement->getElementsByTagName("img");
@@ -1292,10 +1299,10 @@ abstract class Element
                 }
             }
         }
-        
+
         $imageMappings = $topElement->getElementsByTagName("image.mapping");
-        
-        foreach($imageMappings as $imgMap)
+
+        foreach ($imageMappings as $imgMap)
         {
             $imgMap->parentNode->removeChild($imgMap);
         }

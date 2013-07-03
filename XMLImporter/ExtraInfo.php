@@ -65,7 +65,8 @@ class ExtraInfo extends Element
             $block = new Block();
             $block->loadFromXml($b);
             $this->blocks[] = $block;
-        }    
+        }  
+         return $this;
     }
 
     /**

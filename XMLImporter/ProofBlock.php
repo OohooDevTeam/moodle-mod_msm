@@ -23,6 +23,17 @@ class ProofBlock extends Element
 {
 
     public $position;
+    public $logic_types = array();
+    public $proof_logics = array();
+    public $proof_block_bodys = array();
+    public $captions = array();
+    public $indexauthors = array();
+    public $indexglossarys = array();
+    public $indexsymbols = array();
+    public $subordinates = array();
+    public $matharrays = array();
+    public $medias = array();
+    public $tables = array();
 
     function __construct($xmlpath = '')
     {
@@ -38,21 +49,8 @@ class ProofBlock extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        $this->logic_types = array();
-        $this->proof_logics = array();
-        $this->proof_block_bodys = array();
-        $this->captions = array();
-
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->subordinates = array();
-        $this->matharrays = array();
-        $this->medias = array();
-        $this->tables = array();
 
         $doc = new DOMDocument();
-        @$doc->loadXML($DomElement);
 
         // index is used to group the appropriate logic/captiona and proof.block.body for the
         // specified proof.block
@@ -122,7 +120,6 @@ class ProofBlock extends Element
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
-
                 if ($child->tagName == 'logic')
                 {
                     $index++;
@@ -199,6 +196,8 @@ class ProofBlock extends Element
                 }
             }
         }
+
+        return $this;
     }
 
     /**
@@ -234,9 +233,13 @@ class ProofBlock extends Element
             {
                 $data->logic_type = $this->logic_types[$key];
             }
+            else
+            {
+                $data->logic_type = null;
+            }
+
             $data->proof_content = $content;
 
-//            
             $this->id = $DB->insert_record('msm_proof_block', $data);
 
             $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $msmid, $parentid, $siblingid);
@@ -437,20 +440,20 @@ class ProofBlock extends Element
                 {
                     $newdata->proof_logic = $this->proof_logics[$key];
                 }
-                
+
                 if (!empty($this->captions[$key]))
                 {
                     $newdata->caption = $this->captions[$key];
                 }
-                
+
                 if (!empty($this->logic_types[$key]))
                 {
                     $newdata->logic_type = $this->logic_types[$key];
                 }
 
-                $newdata->proof_content = $this->processDbContent("<div>$content</div>", $this, $key);
+                $newdata->proof_content = $this->processDbContent($content, $this, $key);
 
-                $DB->update_record($this->tablename, $newdata);
+                $DB->update_record('msm_proof_block', $newdata);
             }
         }
     }

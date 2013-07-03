@@ -129,6 +129,8 @@ class Example extends Element
             $answerext->loadFromXml($ax, $position);
             $this->answer_exts[] = $answerext;
         }
+        
+         return $this;
     }
 
     /**

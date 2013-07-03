@@ -52,6 +52,7 @@ class AnswerExt extends Element
             @$step->loadFromXml($s, $position);
             $this->steps[] = $step;
         }
+         return $this;
     }
     
     /**

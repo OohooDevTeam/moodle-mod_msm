@@ -95,6 +95,7 @@ class Pilot extends Element
                 }
             }
         }
+        return $this;
     }
 
     /**

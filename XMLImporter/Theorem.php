@@ -23,6 +23,9 @@ class Theorem extends Element
 {
 
     public $position;
+    public $statements = array();
+    public $associates = array();
+    public $proofs = array();
 
     function __construct($xmlpath = '')
     {
@@ -45,9 +48,6 @@ class Theorem extends Element
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
-        $this->statements = array();
-        $this->associates = array();
-        $this->proofs = array();
 
         if ($isRef == 'false')
         {
@@ -95,6 +95,7 @@ class Theorem extends Element
                 }
             }
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '', $theoremCompid = '')

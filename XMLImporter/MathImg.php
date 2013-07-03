@@ -63,6 +63,7 @@ class MathImg extends Element
                 $this->imageareas[] = $imgArea;
             }
         }
+         return $this;
     }
 
     /**

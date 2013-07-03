@@ -113,6 +113,7 @@ class AnswerExample extends Element
                 }
             }
         }
+        return $this;
     }
 
     /**

@@ -75,6 +75,7 @@ class Person extends Element
             $this->contactdata["phone"] = $this->getDomAttribute($contactdata->getElementsByTagName("phone"));
             $this->contactdata["address"] = $this->getDomAttribute($contactdata->getElementsByTagName("address"));
         }
+        return $this;
     }
 
     /**

@@ -110,6 +110,7 @@ class Approach extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

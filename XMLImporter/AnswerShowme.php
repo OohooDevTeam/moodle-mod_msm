@@ -97,6 +97,7 @@ class AnswerShowme extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

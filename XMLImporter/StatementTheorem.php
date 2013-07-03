@@ -106,6 +106,7 @@ class StatementTheorem extends Element
                 }
             }
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')

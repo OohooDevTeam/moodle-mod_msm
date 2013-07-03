@@ -113,6 +113,7 @@ class Showme extends Element
             $answer_showme->loadFromXml($a, $position);
             $this->answer_showmes[] = $answer_showme;
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')

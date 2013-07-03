@@ -117,6 +117,7 @@ class Definition extends Element
                 $this->def_contents[] = $content;
             }
         }
+         return $this;
     }
 
     /**

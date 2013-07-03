@@ -97,6 +97,7 @@ class MathInfo extends Element
         {
             $this->info_content .= $content;
         }
+         return $this;
     }
 
     /**

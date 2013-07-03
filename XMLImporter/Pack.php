@@ -157,6 +157,7 @@ class Pack extends Element
                 $this->quizs[] = $quiz;
             }
         }
+         return $this;
     }
 
     /**

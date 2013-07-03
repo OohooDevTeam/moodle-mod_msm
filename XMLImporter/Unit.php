@@ -90,6 +90,12 @@ class Unit extends Element
     public $tagname;
     public $extraContents = array();
     public $subunits = array();
+    public $authors = array();
+    public $block = array();
+    public $exercisepacks = array();
+    public $examplepacks = array();
+    public $showmepacks = array();
+    public $quizpacks = array();
 
     function __construct($xmlpath = '')
     {
@@ -119,17 +125,6 @@ class Unit extends Element
         if (!is_null($DomElement))
         {
             $element = $doc->importNode($DomElement, true);
-
-            $this->authors = array();
-            $this->block = array();
-            $this->preface = array();
-            $this->summary = array();
-            $this->historical = array();
-            $this->trailer = array();
-            $this->exercisepacks = array();
-            $this->examplepacks = array();
-            $this->showmepacks = array();
-            $this->quizpacks = array();
 
             // for exercise/examples listed as a studymaterial element
             $this->studyexercises = array();
@@ -447,6 +442,7 @@ class Unit extends Element
                 }
             }
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
@@ -505,7 +501,7 @@ class Unit extends Element
             }
             else
             {
-                $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => 0))->id;
+                $data->compchildtype = $DB->get_record('msm_unit_name', array("msmid" => $msmid, "depth" => -1))->id;
             }
         }
 
@@ -547,7 +543,7 @@ class Unit extends Element
             $compdata->parent_id = 0;
             $compdata->prev_sibling_id = 0;
 
-            $this->compid = $DB->insert_record('msm_compositor', $compdata, true, true);
+            $this->compid = $DB->insert_record('msm_compositor', $compdata);
         }
         else // child element, therefore, has a parentid with possible previous sibling id
         {

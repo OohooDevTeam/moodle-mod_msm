@@ -86,6 +86,7 @@ class Table extends Element
         {
             $this->content[] = $content;
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
@@ -104,6 +105,7 @@ class Table extends Element
             foreach ($this->content as $content)
             {
                 $data->table_content = $content;
+
                 $this->id = $DB->insert_record($this->tablename, $data);
                 $ids[] = $this->id;
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);

@@ -51,6 +51,7 @@ class SolutionExt extends Element
             $step->loadFromXml($s, $position);
             $this->steps[] = $step;
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')

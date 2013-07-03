@@ -99,6 +99,7 @@ class Step extends Element
                 $this->content .= $content;
             }
         }
+        return $this;
     }
 
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')

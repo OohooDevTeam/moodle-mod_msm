@@ -94,6 +94,7 @@ class QuizChoice extends Element
             $info->loadFromXml($i, $position);
             $this->infos[] = $info;
         }
+        return $this;
     }
 
     /**

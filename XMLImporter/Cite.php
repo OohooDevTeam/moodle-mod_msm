@@ -50,6 +50,7 @@ class Cite extends Element
             $item->loadFromXml($i, $position);
             $this->items[] = $item;
         }
+         return $this;
     }
 
     /**

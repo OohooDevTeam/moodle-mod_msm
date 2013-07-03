@@ -124,6 +124,7 @@ class MathQuiz extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

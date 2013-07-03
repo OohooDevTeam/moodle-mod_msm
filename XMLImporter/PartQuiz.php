@@ -112,6 +112,7 @@ class PartQuiz extends Element
                 }
             }
         }
+        return $this;
     }
 
     /**

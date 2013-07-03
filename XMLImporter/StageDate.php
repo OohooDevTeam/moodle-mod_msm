@@ -61,6 +61,7 @@ class StageDate extends Element
 
             $this->dates[] = $year . $month . $day;
         }
+        return $this;
     }
     
     /**

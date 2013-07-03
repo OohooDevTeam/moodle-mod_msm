@@ -119,6 +119,7 @@ class Item extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

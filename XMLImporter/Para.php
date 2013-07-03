@@ -86,6 +86,7 @@ class Para extends Element
         {
             $this->para_content .= $content;
         }
+        return $this;
     }
 
     /**
@@ -105,11 +106,11 @@ class Para extends Element
 
         if (!empty($this->para_content))
         {
-                $data->para_content = $this->para_content;                
+            $data->para_content = $this->para_content;
 
-                $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-                $siblingid = $this->compid;
+            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
+            $siblingid = $this->compid;
         }
         else
         {
@@ -282,8 +283,8 @@ class Para extends Element
         if (!empty($this->medias))
         {
             $newparadata = new stdClass();
-             $newparadata->id = $this->id;
-                $newparadata->string_id = $this->string_id;
+            $newparadata->id = $this->id;
+            $newparadata->string_id = $this->string_id;
             $newparadata->para_align = $this->align;
             $newparadata->caption = $this->caption;
             $newparadata->description = $this->description;
@@ -291,7 +292,7 @@ class Para extends Element
 //            {
 //               
 
-                $newparadata->para_content = $this->processDbContent($this->para_content, $this);
+            $newparadata->para_content = $this->processDbContent($this->para_content, $this);
 //            }
 
             $DB->update_record($this->tablename, $newparadata);
@@ -348,7 +349,7 @@ class Para extends Element
     function displayhtml($isindex = false)
     {
         $content = '';
-        $content .= $this->displayContent($this, $this->para_content, $isindex);        
+        $content .= $this->displayContent($this, $this->para_content, $isindex);
         return $content;
     }
 

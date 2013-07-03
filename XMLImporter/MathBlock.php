@@ -173,6 +173,7 @@ class Block extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

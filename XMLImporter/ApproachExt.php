@@ -69,6 +69,7 @@ class ApproachExt extends Element
                 }
             }
         }
+         return $this;
     }
 
     /**

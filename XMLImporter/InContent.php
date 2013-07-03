@@ -139,6 +139,7 @@ class InContent extends Element {
         foreach ($this->processContent($DomElement, $position) as $content) {
             $this->content .= $content;
         }
+         return $this;
     }
 
     /**

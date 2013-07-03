@@ -114,6 +114,7 @@ class MathIndex extends Element
                     break;
             }
         }
+         return $this;
     }
 
     /**
