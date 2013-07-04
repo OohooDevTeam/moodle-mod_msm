@@ -1,25 +1,47 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportAssociate
+ * This class is representing all the associate elements that needs to be exported as XML document.  ExportAssociate
+ * class is called by ExportDefinition, ExportTheorem and ExportComment classes.
+ * It inherits methods from the abstract class ExportElement including the abstract methods exportData and loadDbData.
+ * For more information on the other inherited methods, go to ExportElement class document.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ExportAssociate extends ExportElement
 {
-    public $id;
-    public $compid;
-    public $msmid;
-    public $description;
-    public $info;
-    public $ref;
+    public $id;             // current asscoaite id from msm_associate table
+    public $compid;         // current associate id from msm_compositor table
+    public $msmid;          // msm instance id
+    public $description;    // the type of associate specified from the editor form
+    public $info;           // ExportInfo object associated to current associate
+    public $ref;            // an object from the one of the following classes that is linked to associate
+                            // as reference material: ExportUnit, ExportDefinition, ExportComment or ExportTheorem
 
-    //put your code here
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with Associate element into properly structured XML document.
+     * It follows the XML schema in ../NewSchemas/Molecules.xsd.  This method also calls the exportData method
+     * from ExportInfo, ExportUnit, ExportDefiniton, ExportComment and ExportTheorem clases.  The DOMElement object 
+     * that is returned from exportData calls from classes mentioned above is then appended to the associate DOMElement
+     * and is returned to be appended to the one of the following elements: Defintion, Comment or Theorem elements.
+     * 
+     * @return DOMElement
+     */
     public function exportData()
     {
         $associateCreator = new DOMDocument();
@@ -51,6 +73,7 @@ class ExportAssociate extends ExportElement
                     $refNode = $associateCreator->createElement("comment.ref");
                     $refNode->setAttribute("commentID", $this->msmid . "-" . $this->ref->compid);
                     break;
+                // need to add ExportUnit later when dealing with internal/exteral references
             }
             $associateNode->appendChild($refNode);
             $this->ref->exportData("ref");
@@ -59,6 +82,15 @@ class ExportAssociate extends ExportElement
         return $associateNode;
     }
 
+    /**
+     * This method is used to pull all relevant data linked with associate elements from the database table
+     * "msm_associate".  It also calls the loadDbData method from the ExportUnit, ExportDefinition, ExportComment, ExportTheorem
+     * and/or from ExportInfo classes.
+     * 
+     * @global moodle_database $DB
+     * @param int $compid               Current Associate ID from msm_compositor database table
+     * @return \ExportAssociate
+     */
     public function loadDbData($compid)
     {
         global $DB;
@@ -106,7 +138,6 @@ class ExportAssociate extends ExportElement
                 }
             }
         }
-//        }
 
         return $this;
     }

@@ -525,9 +525,12 @@ abstract class Element
         }
         // converting XML content into string for further XML tag processing
         $doc = new DOMDocument();
+        $doc->preserveWhiteSpace = FALSE;
         $doc->encoding = "UTF-8";
         $element = $doc->importNode($DomElement, true);
-        $content[] = $doc->saveXML($element);
+        $content[] = htmlentities($doc->saveXML($element));
+        
+        print_object($content);
 
         $resultcontent = array();
 
@@ -562,8 +565,8 @@ abstract class Element
             $string = str_replace('<emphasis', '<em', $string);
             $string = str_replace('</emphasis>', '</em>', $string);
 
-            $string = preg_replace('/\s*<hot(.*?)>\s*/', '<a$1>', $string);
-            $string = preg_replace('/\s*<\/hot>\s*/', '</a>  ', $string);
+            $string = preg_replace('/\s*<hot(.*?)>\s*/', ' <a$1>', $string);
+            $string = preg_replace('/\s*<\/hot>/', '</a> ', $string);
 
             $string = preg_replace('/<math xmlns=(.+)>/', '<math>', $string);
             $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>\s*/', '<p style="text-align:center"><span class="matheditor">\(', $string);
@@ -581,7 +584,8 @@ abstract class Element
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $string);
 //            $string = preg_replace('/\\\\dfrac/', '\\\\\frac', $string);
 
-            $resultcontent[] = $string;
+            $resultcontent[] = html_entity_decode($string);
+            print_object($resultcontent);
         }
 
         return $resultcontent;
@@ -1012,6 +1016,7 @@ abstract class Element
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = false;
+        $doc->formatOutput = false;
 
         // cannot have unclosed <br> or <img...> tags as it causes mismatched tag error when loaded as XML
         $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);

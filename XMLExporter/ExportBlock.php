@@ -1,24 +1,46 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportBlock
+ * This class is representing all the block elements that needs to be exported as XML document.  ExportBlock
+ * class is called by ExportUnit, ExportExtraInfo and ExportIntro.
+ * It inherits methods from the abstract class ExportElement including the abstract methods exportData and loadDbData.
+ * For more information on the other inherited methods, go to ExportElement class document.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ExportBlock extends ExportElement
 {
 
-    public $id;
-    public $compid;
-    public $caption;
-    public $content = array();
+    public $id;                     // database ID of current block element in msm_block database table
+    public $compid;                 // database ID of current block element in msm_compositor database table
+    public $caption;                // title associated with this block element
+    public $content = array();      // array of other content class objects such as ExportPara, ExportInContent and/or ExportTable objects
 
-    //put your code here
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with block element into properly structured XML document.
+     * It follows the XML schema in ../NewSchemas/Molecules.xsd.  This method also calls the exportData method
+     * from ExportPara, ExportInContent, and ExportTable clases.  The DOMElement object that is returned from exportData
+     * calls from classes mentioned above is then appended to the block DOMElement and is returned to be appended to the 
+     * one of the following elements: ExtraInfo, Intro or Unit elements
+     * 
+     * @param DOMElement $captionNode       // passed from ExportIntro if the intro element has a title associated with it
+     * @return DOMElement
+     */
     public function exportData($captionNode = '')
     {
         $blockCreator = new DOMDocument();
@@ -52,6 +74,14 @@ class ExportBlock extends ExportElement
         return $blockNode;
     }
 
+    /**
+     * This method is used to pull all relevant data linked with block elements from the database table
+     * "msm_block".  It also calls the loadDbData method from the ExportPara, ExportInContent, and/or ExportTable classes.
+     * 
+     * @global moodle_database $DB
+     * @param int $compid               database ID of the current block element in the msm_compositor table
+     * @return \ExportBlock
+     */
     public function loadDbData($compid)
     {
         global $DB;

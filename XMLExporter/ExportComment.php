@@ -1,29 +1,53 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportComment
+ * This class is representing all the comment elements that needs to be exported as XML document.  ExportComment
+ * class is called by ExportUnit, ExportSubordinate and ExportAssociate classes.
+ * It inherits methods from the abstract class ExportElement including the abstract methods exportData and loadDbData.
+ * For more information on the other inherited methods, go to ExportElement class document.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ExportComment extends ExportElement
 {
 
-    public $id;
-    public $msmid;
-    public $compid;
-    public $caption;
-    public $description;
-    public $type;
-    public $content;
-    public $associate = array();
-    public $subordinates = array();
-    public $medias = array();
+    public $id;                         // database ID of the current comment element in msm_comment database table
+    public $msmid;                      // msm instance id
+    public $compid;                     // database ID of the current comment element in msm_compositor database table
+    public $caption;                    // title associated with the comment element
+    public $description;                // description associated with the comment
+    public $type;                       // the type of the comment specified
+    public $content;                    // the content associated with the comment
+    public $associate = array();        // ExportAssociate objects linked to this comment
+    public $subordinates = array();     // any ExportSubordinate objects associated with this comment's content
+    public $medias = array();           // any ExportMedia objects associated with this comment's content
 
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with comment element into properly structured XML document.
+     * It follows the XML schema in ../NewSchemas/Comment.xsd.  This method also calls the exportData method
+     * from ExportAssociate, ExportSubordinate and/or ExportMedias.  The DOMElement object 
+     * that is returned from exportData calls from classes mentioned above is then appended to the comment DOMElement
+     * and is returned to be appended to the one of the following elements: Unit, Associate or Subordinate elements
+     * 
+     * @param string $flag      A flag that indicates if the comment is a reference material
+     *                          If the flag is not empty string, then the comment is a reference material and should create new XML file in standalone folder.
+     * @return DOMElement
+     */
     public function exportData($flag = '')
     {
         $commentCreator = new DOMDocument();
@@ -64,16 +88,25 @@ class ExportComment extends ExportElement
             }
         }
         
-        if (!empty($flag))
+        if (!empty($flag)) // comment is a reference material (ie. ExportAssociate called this function)
         {
+            // create a new XML file in standalone folder
             $this->createXMLFile($this, $commentCreator->saveXML() . $commentCreator->saveXML($commentCreator->importNode($commentNode, true)));
         }
-        else
+        else // comment is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
         {
             return $commentNode;
         }
     }
 
+    /**
+     * This method is used to pull all relevant data linked with comment elements from the database table
+     * "msm_comment".  It also calls the loadDbData method from the ExportSubordinate, ExportAssociate, and/or from ExportMedia classes.
+     * 
+     * @global moodle_database $DB
+     * @param int $compid               database ID of this comment element in the msm_compositor database table
+     * @return \ExportComment
+     */
     public function loadDbData($compid)
     {
         global $DB;

@@ -1,22 +1,51 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportElement
+ * ExportElement is an abstract class that all the other classes in the XMLExporter folder inherits from.
+ * This class has 2 abstract functions, loadDbData and exportData, that the classes define, one function that is
+ * only used within the ExportElement class (function exportMath) and 3 other functions that is called by all the child
+ * classes.  For details on each of these functions read information below.
  *
- * @author User
+ * @author Ga Young Kim
  */
 abstract class ExportElement
 {
 
+    // this abstrac function allows the objects of the child classes to retrieve desired data from the database tables
+    // (for more informations, read the documentations written in each of the classes)
     abstract function loadDbData($compid);
 
+    // this abstrac function converts the database information to XML files
+    // (for more informations, read the documentations written in each of the classes)
     abstract function exportData();
 
+    /**
+     * This method is called by ExportComment, ExportDefinition, ExportStatementTheorem, ExportPartTheorem, ExportInfo and ExportInContent
+     * to process the content associated with each of these classes to prepare for conversion to XML.  It removes any Mathjax javascript
+     * that maybe integrated into the content, any anchored elements that represents subordinate is substituted to subordinate elements and all img
+     * tags are replaced with media tags.  After all the content processing is done, the final product is appended to the DOMElement representing the element that called
+     * this method.  This method also calls the exportData of ExportMedia and ExportSubordinate classes and use the exportMath method in this class to process math contents.
+     * 
+     * @param DOMDocument $DomDocument          DOMDocument that created the DOMElement representing the object that called this method
+     * @param string $content                   content associated with the object
+     * @param DOMElement $DomNode               DOMElement representing the object that called this method
+     * @param Object $object                    Instace of the class that called this method
+     * @return DOMElement
+     */
     function createXmlContent($DomDocument, $content, $DomNode, $object = '')
     {
         $contentDoc = new DOMDocument();
@@ -25,10 +54,9 @@ abstract class ExportElement
 
         $DomDocument->formatOutput = true;
         $DomDocument->preserveWhiteSpace = false;
-//       
-//        $contentDoc->loadXML(utf8_encode(html_entity_decode($content)));
-        $content = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $content);
-        $content = str_replace("<br>", "<br/>", $content);
+       
+        $content = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $content); // need the self closing tag to prevent mismatching tag error from loadXML
+        $content = str_replace("<br>", "<br/>", $content); // need the self closing tag to prevent mismatching tag error from loadXML
         $content = str_replace("<em>", "<emphasis>", $content);
         $content = str_replace("<b>", "<strong>", $content);
         $content = str_replace("</em>", "</emphasis>", $content);
@@ -47,11 +75,11 @@ abstract class ExportElement
                 {
                     if (!empty($object))
                     {
+                        // replace all anchored elements as subordinates
                         $atags = $child->getElementsByTagName("a");
 
                         $alength = $atags->length;
 
-//                        foreach ($anchorArray as $a) {
                         for ($i = 0; $i < $alength; $i++)
                         {
                             $a = $atags->item(0);
@@ -83,6 +111,7 @@ abstract class ExportElement
                             }
                         }
 
+                        // replace all img tags with media
                         $imgTags = $child->getElementsByTagName("img");
 
                         foreach ($imgTags as $key => $img)
@@ -158,9 +187,6 @@ abstract class ExportElement
                             // when exporting
                             else if (!preg_match("/\s+/", $liChild->wholeText))
                             {
-                                echo "what is this?";
-                                print_object($liChild);
-                                print_object($liDoc->saveXML($liDoc->importNode($liChild, true)));
                                 $newPTag = $liDoc->createElement("para");
                                 $newPbodyTag = $liDoc->createElement("para.body");
                                 $lichildNode = $liDoc->importNode($liChild, true);
@@ -263,6 +289,13 @@ abstract class ExportElement
         return $DomNode;
     }
 
+    /**
+     * This method is only used internally by ExportElement and it deals with all mathjax elements in the contents.
+     * It detects the <span class="matheditor"> \(MathjaxContent\)</span> and converts it into <math><latex> MathjaxContent </latex></math>.
+     * 
+     * @param DOMElement $DomElement        DOMElement representation of the class that called the createXmlContent originially
+     * @param DOMDocument $DomDocument      DOMDocument that created the DOMElement representation of the class that called the createXmlContent originially
+     */
     function exportMath($DomElement, $DomDocument)
     {
         $DomDocument->formatOutput = true;
@@ -297,6 +330,14 @@ abstract class ExportElement
         }
     }
 
+    /**
+     * This method is called by ExportElement and by ExportPara classes to replace all p tags
+     * with <para><para.body>content</para.body></para> structure and returns the para element to be replaced with the p tags
+     * 
+     * @param DOMDocument $DomDocument  DOMDocument that created the DOMElement representation of the class that called the createXmlContent originially
+     * @param DOMElement $DomElement    DOMElement representation of the class that called the createXmlContent originially
+     * @return DOMElement
+     */
     function replacePTags($DomDocument, $DomElement)
     {
         $DomDocument->formatOutput = true;
@@ -338,6 +379,18 @@ abstract class ExportElement
         return $paraNode;
     }
 
+    /**
+     * This function is called by ExportDefinition, ExportTheorem, and ExportComment to create an XML file
+     * when the instaces of the classes above are reference materials.  All reference materials are create in the folder 
+     * "standalone" as its own XML file.  This function creates the standalone folder in the temporary folder if it does not exist
+     * already and create a new XML file with given content.  Then later when all the relevant database information is converted to XML
+     * files, then the whole folder is compresssed into a zip file and user is prompted to download the folder.
+     * 
+     * @global moodle_database $DB
+     * @global type $CFG
+     * @param type $obj
+     * @param type $elementContent
+     */
     function createXMLFile($obj, $elementContent)
     {
         global $DB, $CFG;
@@ -360,6 +413,7 @@ abstract class ExportElement
                 break;
         }
 
+        // standalone folder already exists
         if (file_exists($CompDir))
         {
             if (!empty($obj->caption))
@@ -373,6 +427,7 @@ abstract class ExportElement
         }
         else
         {
+            // need to make a standalone folder
             if (mkdir($CompDir))
             {
                 if (!empty($obj->caption))

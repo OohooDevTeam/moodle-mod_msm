@@ -1,29 +1,53 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportDefinition
+ * This class is representing all the definition elements that needs to be exported as XML document.
+ * ExportDefinition class is called by ExportUnit, ExportSubordinate and ExportAssociate classes.
+ * It inherits methods from the abstract class ExportElement including the abstract methods exportData and loadDbData.
+ * For more information on the other inherited methods, go to ExportElement class document.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ExportDefinition extends ExportElement
 {
 
-    public $id;
-    public $compid;
-    public $caption;
-    public $description;
-    public $type;
-    public $content;
-    public $msmid;
-    public $associates = array();
-    public $subordinates = array();
-    public $medias = array();
+    public $id;                         // ID of this definition in the msm_def database table
+    public $compid;                     // ID of this definition in the msm_compositor database table
+    public $caption;                    // title associated with this definition
+    public $description;                // description associated with this definition
+    public $type;                       // the type of the definition specified (eg. definition, convention, agreement...etc)
+    public $content;                    // the content associated with this definition
+    public $msmid;                      // msm instance id
+    public $associates = array();       // ExportAssociate objects associated with this definition
+    public $subordinates = array();     // ExportSubordinate objects linked to this definition's content
+    public $medias = array();           // ExportMedia objects linked to this definition's content
 
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with definition element into properly structured XML document.
+     * It follows the XML schema in ../NewSchemas/Defintion.xsd.  This method also calls the exportData method
+     * from ExportAssociate, ExportSubordinate and/or ExportMedias.  The DOMElement object 
+     * that is returned from exportData calls from classes mentioned above is then appended to the definition DOMElement
+     * and is returned to be appended to the one of the following elements: Unit, Associate or Subordinate elements
+     * 
+     * @param string $flag      A flag that indicates if the comment is a reference material
+     *                          If the flag is not empty string, then the comment is a reference material and should create new XML file in standalone folder.
+     * @return DOMElement
+     */
     public function exportData($flag = '')
     {
         $defCreator = new DOMDocument();
@@ -65,16 +89,25 @@ class ExportDefinition extends ExportElement
             }
         }
 
-        if (!empty($flag))
+        if (!empty($flag)) // def is a reference material (ie. ExportAssociate called this function)
         {
+             // create a new XML file in standalone folder
             $this->createXMLFile($this, $defCreator->saveXML() . $defCreator->saveXML($defCreator->importNode($defNode, true)));
         }
-        else
+        else // def is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
         {
             return $defNode;
         }
     }
 
+    /**
+     * This method is used to pull all relevant data linked with def elements from the database table
+     * "msm_def".  It also calls the loadDbData method from the ExportSubordinate, ExportAssociate, and/or from ExportMedia classes.
+     * 
+     * @global moodle_database $DB
+     * @param int $compid               database ID of current definition element in msm_compositor table
+     * @return \ExportDefinition
+     */
     public function loadDbData($compid)
     {
         global $DB;
