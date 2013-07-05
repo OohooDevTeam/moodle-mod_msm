@@ -240,17 +240,7 @@ class ProofBlock extends Element
 
             $data->proof_content = $content;
 
-            try
-            {
-                $this->id = $DB->insert_record('msm_proof_block', $data);
-            }
-            catch (Exception $e)
-            {
-                echo "error message";
-                var_dump($this);
-                die;
-            }
-
+            $this->id = $DB->insert_record('msm_proof_block', $data);
 
             $compid = $this->insertToCompositor($this->id, 'msm_proof_block', $msmid, $parentid, $siblingid);
             $siblingid = $compid;
