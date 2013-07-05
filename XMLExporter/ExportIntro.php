@@ -1,24 +1,45 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportIntro
+ * This class is representing all the intro elements that needs to be exported as XML document. 
+ * ExportIntro class is called by ExportUnit class. It inherits methods from the abstract class
+ * ExportElement including the abstract methods exportData and loadDbData.
+ * For more information on the other inherited methods, go to ExportElement class document.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ExportIntro extends ExportElement
 {
 
-    public $id;
-    public $compid;
-    public $msmid;
-    public $blocks = array();
-    public $caption;
+    public $id;                     // ID of the current intro element in msm_intro database table
+    public $compid;                 // ID of the current intro element in msm_compositor database table
+    public $msmid;                  // msm instance ID
+    public $blocks = array();       // ExportBlock objects associated with the current intro element
+    public $caption;                // title associated with the current intro element
 
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with intro element into properly structured XML document.
+     * It follows the XML schema in ../NewSchemas/Unit.xsd.  This method also calls the exportData method
+     * from ExportBlock class.  The DOMElement object that is returned from exportData calls from classes 
+     * mentioned above is then appended to the intro DOMElement and is returned to be appended to the Unit element.
+     * 
+     * @return DOMElement
+     */
     public function exportData()
     {
         $introCreator = new DOMDocument();
@@ -54,6 +75,14 @@ class ExportIntro extends ExportElement
         return $introNode;
     }
 
+    /**
+     * This method is used to pull all relevant data linked with intro elements from the database table
+     * "msm_intro".  It also calls the loadDbData method from the ExportBlock class.
+     * 
+     * @global moodle_database $DB
+     * @param int $compid               ID of the current intro element in msm_compositor database table
+     * @return \ExportIntro
+     */
     public function loadDbData($compid)
     {
         global $DB;

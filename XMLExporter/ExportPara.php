@@ -1,52 +1,65 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportPara
+ * This class is representing all the paragraph elements(ie. <p>) that needs to be exported as XML document.
+ * ExportPara class is called by ExportDefinition, ExportTheorem and ExportComment classes.
+ * It inherits methods from the abstract class ExportElement including the abstract methods exportData and loadDbData.
+ * For more information on the other inherited methods, go to ExportElement class document.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ExportPara extends ExportElement {
 
-    public $id;
-    public $compid;
-    public $align;
-    public $subordinates = array();
-    public $content;
-    public $medias = array();
+    public $id;                             // ID of the current paragraph element in msm_para database table
+    public $compid;                         // ID of the current paragraph element in msm_compositor database table
+    public $align;                          // alignment specification for the paragraph element (eg. left, center, right)
+    public $subordinates = array();         // ExportSubordinate objects associated with the content of the paragraph element
+    public $content;                        // content associated with the paragraph element
+    public $medias = array();               // ExportMedia objects associated with the content of the paragraph element
 
-    //put your code here
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with paragraph element into properly structured XML document.
+     * It follows the XML schema in ../NewSchemas/Molecules.xsd.  This method calls a processParaContent function
+     * that processes all para contents and calls the exportData method from ExportSubordinate and ExportMedia clases.
+     * The DOMElement object that is returned from exportData calls from classes mentioned above is then appended to
+     * the content of the paragraph element which is then replaced with para.body DOMElement which is appended to para DOMElement.
+     * The para DOMElement is returned to be appended to the Block elements.
+     * 
+     * @return DOMElement
+     */
     public function exportData() {
         $paraCreator = new DOMDocument();
         $paraCreator->formatOutput = true;
         $paraCreator->preserveWhiteSpace = false;
         $paraNode = $this->processParaContent();
         $newparaNode = $paraCreator->importNode($paraNode, true);
-//        $paraNode = $paraCreator->createElement("para");
-//        if (!empty($this->align))
-//        {
-//            $paraNode->setAttribute("align", $this->align);
-//        }
-//        else
-//        {
-//            $paraNode->setAttribute("align", "left");
-//        }
-//        $paraNode->setAttribute("id", $this->compid);       
-//
-//        $content = $this->processParaContent();
-//        $contentElement = $paraCreator->importNode($content, true);
-//
-//        $parabodyNode->appendChild($contentNode);
-//
-//        $paraNode->appendChild($parabodyNode);
-
+        
         return $newparaNode;
     }
 
+    /**
+     * This method is used to pull all relevant data linked with paragraph elements from the database table
+     * "msm_para".  It also calls the loadDbData method from the ExportSubordinate and ExportMedia classes.
+     * 
+     * @global moodle_database $DB
+     * @param int $compid               ID of the current paragraph elmeent in msm_compositor database table
+     * @return \ExportPara
+     */
     public function loadDbData($compid) {
         global $DB;
 
@@ -77,8 +90,18 @@ class ExportPara extends ExportElement {
         return $this;
     }
 
-//
-    function processParaContent() {
+    /**
+     * This method only exists within the ExportPara class and is a similar function to the 
+     * createXmlContent function in ExportElement in a sense that it processes content to 
+     * replace all image and anchored elements to its XML equivalent form and replace all 
+     * b and em tags to strong and emphasis tags, respectively to match the schema specified by
+     * ../NewSchemas/Molecules.xsd.  The processed content is then appended to new para.body XML element
+     * which is then appended to new para XML element.  The new para XML element is then returned to be
+     * ultimately appended to the block element.
+     * 
+     * @return DOMElement
+     */
+    private function processParaContent() {
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
         $contentDoc->preserveWhiteSpace = false;
@@ -91,11 +114,11 @@ class ExportPara extends ExportElement {
         $contentDoc->loadXML(utf8_encode(html_entity_decode($content)));
         $contentNode = $contentDoc->documentElement;
 
+        // replace all anchored elements to subordinate XML elements
         $atags = $contentNode->getElementsByTagName("a");
 
         $alength = $atags->length;
 
-//                        foreach ($anchorArray as $a) {
         for ($i = 0; $i < $alength; $i++) {
             $a = $atags->item(0);
             $targetSub = null;
@@ -120,6 +143,8 @@ class ExportPara extends ExportElement {
                 }
             }
         }
+        
+         // replace all image elements to media XML elements
         $imgTags = $contentNode->getElementsByTagName("img");
 
         foreach ($imgTags as $key => $img) {
@@ -133,8 +158,10 @@ class ExportPara extends ExportElement {
             }
         }
 
+        // replace all mathjax code to <span class="matheditor">math content </span> format
         $this->exportMath($contentNode, $contentDoc);
 
+        // replace p HTML tags to <para><para.body> XML elements
         $newpNode = $this->replacePTags($contentDoc, $contentNode);
 
         return $newpNode;

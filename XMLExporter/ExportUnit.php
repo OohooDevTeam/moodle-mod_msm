@@ -1,43 +1,66 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportUnit
+ * This class is representing all the associate elements that needs to be exported as XML document.
+ * ExportUnit represents the largest container element in the document.  It can contain other
+ * ExportUnit as child elements or it can be the top structural element.  It is called by beginExport.php
+ * when the export button in navigation menu triggers an AJAX call.  Then this causes a recursive proces of
+ * loading all data from database related to this composition and export the information in zip file containing
+ * properly formed XML documents and all other related files(such as pictures).
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ExportUnit extends ExportElement
 {
+    public $compid;                         // ID of the current unit element in msm_compositor
+    public $id;                             // ID of the current unit element in msm_unit
+    public $msmid;                          // MSM instance ID
+    public $contentchildren = array();      // ExportDefintion, ExportTheorem, ExportComment, ExportExtraInfo, ExportBlock
+                                            // and/or ExportIntro objects that are associated with this unit
+    public $unitchildren = array();         // ID of the any ExportUnit objects that are child of this unit from msm_compositor database table
+    public $dates = array();                // Dates for creating/editting this composition
+    public $authors;                        // creators of this composition
+    public $title;                          // title associated with this unit
+    public $shortname;                      // short plain text title associated with this unit used to display in XML hierarchy tree
+    public $description;                    // description associated with this unit
+    public $standalone;                     // status if this unit is a reference material only or if it is a main part of the composition
+    public $unittag;                        // the name of this unit accoding to the depth of it (eg. top unit can be called Lecture, Book...etc)
 
-    public $compid;
-    public $id;
-    public $msmid;
-    public $contentchildren = array(); // includes intro/preface/summary/trialer/historical.notes/body
-    public $unitchildren = array(); // comp id of any subunit elements that will be inserted as legitimate.children element
-    public $dates = array();
-    public $authors;
-    public $title;
-    public $shortname;
-    public $description;
-    public $standalone;
-    public $unittag;
-
-//    public $acknowledgement;
-
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with unit element into properly structured XML document.
+     * It follows the XML schema in ../NewSchemas/Unit.xsd.  This method also calls the exportData method
+     * from ExportExtraInfo, ExportBlock, ExportIntro, ExportUnit, ExportDefinition, ExportTheorem 
+     * and/or from ExportComment classes..  The DOMElement object that is returned from exportData calls from
+     * classes mentioned above is then appended to the unit DOMElement and the DOMDocument that created
+     * this unit elemenet would be returned to be used to get the completed XML document
+     * and create a file in either standalones or NestUnits folders to be compressed as zip file.
+     * 
+     * @todo need to implement getting author and dates
+     * 
+     * @return \DOMDocument
+     */
     public function exportData()
     {
-        global $CFG;
-
         $XMLcreator = new DOMDocument();
         // to format the resulting XML document
         $XMLcreator->formatOutput = true;
         $XMLcreator->preserveWhiteSpace = false;
         $XMLcreator->encoding = "UTF-8";
-//        $XMLcreator->schemaValidate("$CFG->dirroot/mod/msm/NewSchemas/Unit.xsd");
         $unitNode = $XMLcreator->createElement("unit");
         $unitNode->setAttribute("tagname", $this->unittag);
         $unitNode->setAttribute("unitid", "$this->msmid-$this->compid");
@@ -96,15 +119,6 @@ class ExportUnit extends ExportElement
 //            
 //        }
 //
-//        if (!empty($this->acknowledgement))
-//        {
-//            print_object($this->acknowledgement);
-//            $ackNode = $XMLcreator->createElement("acknowledgements");
-//            $ackText = $XMLcreator->createTextNode($this->acknowledgement);
-//            $ackNode->appendChild($ackText);
-//            $unitNode->appendChild($ackNode);
-//        }
-
         if (!empty($this->dates))
         {
             $datesNode = $XMLcreator->createElement("dates");
@@ -238,15 +252,18 @@ class ExportUnit extends ExportElement
         }
         $XMLcreator->appendChild($unitNode);
 
-//        $this->makeExportFile($XMLcreator);
-//        foreach($this->unitchildren as $subunit)
-//        {
-//            $subunit->exportData();
-//        }
-
         return $XMLcreator;
     }
 
+    /**
+     * This method is used to pull all relevant data linked with unit elements from the database table
+     * "msm_unit".  It also calls the loadDbData method from the ExportUnit, ExportBlock, ExportIntro, ExportExtraInfo,
+     * ExportDefinition, ExportTheorem and/or from ExportComment classes.
+     * 
+     * @global moodle_database $DB
+     * @param int $compid                   ID of the current unit element in the msm_compositor table
+     * @return \ExportUnit
+     */
     public function loadDbData($compid)
     {
         global $DB;

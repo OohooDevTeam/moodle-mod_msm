@@ -44,8 +44,8 @@ class ExportDefinition extends ExportElement
      * that is returned from exportData calls from classes mentioned above is then appended to the definition DOMElement
      * and is returned to be appended to the one of the following elements: Unit, Associate or Subordinate elements
      * 
-     * @param string $flag      A flag that indicates if the comment is a reference material
-     *                          If the flag is not empty string, then the comment is a reference material and should create new XML file in standalone folder.
+     * @param string $flag      A flag that indicates if the definition is a reference material
+     *                          If the flag is not empty string, then the definition is a reference material and should create new XML file in standalone folder.
      * @return DOMElement
      */
     public function exportData($flag = '')

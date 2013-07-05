@@ -15,16 +15,27 @@
 **************************************************************************/
 
 /**
- * Loading and storing for answer.exercise,block element
+ * Loading and storing for answer.exercise.block element
  *
  * @author User
  */
 class AnswerExercise extends Element
 {
 
-    public $position;
-    public $caption;
+    public $position;                       // integer that keeps track of order if elements
+    public $caption;                        // title assocaited with the answer.exercise.block elements
+    public $content = array();              // contents assocaited with the answer.exercise.block elements
+    public $subordinates = array();         // Subordinate objects assocaited with the answer.exercise.block elements 
+    public $indexauthors = array();         // index.author elements assocaited with the content of answer.exercise.block elements
+    public $indexglossarys = array();       // index.glossary elements assocaited with the content of answer.exercise.block elements
+    public $indexsymbols = array();         // index.symbol elements assocaited with the content of answer.exercise.block elements
+    public $medias = array();               // Media objects assocaited with the answer.exercise.block elements 
 
+    /**
+     * constructor for this class
+     * 
+     * @param string $xmlpath    filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -32,20 +43,17 @@ class AnswerExercise extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (answer.exercise.block element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        answer.exercise.block DOMElement
      * @param int $position 
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
-        $this->content = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));        
 
         $bodys = $DomElement->getElementsByTagName('answer.exercise.block.body');
         foreach ($bodys as $b)
@@ -83,9 +91,15 @@ class AnswerExercise extends Element
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of answer.exercise.block element into
+     * msm_answer_exercise database table.  It calls saveInfoDb method for Subordinate, Media, Table,
+     * and MathIndex classes.
+    * 
+    * @global moodle_databse $DB
+    * @param int $position              integer that keeps track of order if elements
+    * @param int $msmid                 MSM instance ID
+    * @param int $parentid              ID of the parent element from msm_compositor
+    * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {

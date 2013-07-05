@@ -108,7 +108,16 @@ class Para extends Element
         {
             $data->para_content = $this->para_content;
 
-            $this->id = $DB->insert_record($this->tablename, $data);
+            try
+            {
+                $this->id = $DB->insert_record($this->tablename, $data);
+            }
+            catch (Exception $e)
+            {
+                echo "error";
+                print_r($this->para_content);
+            }
+
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             $siblingid = $this->compid;
         }

@@ -122,7 +122,7 @@ class MathInfo extends Element
             @$contentparser->loadXML($this->info_content, true);
 
             $contentNode = $contentparser->documentElement;
-
+            
             foreach ($contentNode->childNodes as $child)
             {
                 $infocontent .= $contentparser->saveXML($contentparser->importNode($child, true));

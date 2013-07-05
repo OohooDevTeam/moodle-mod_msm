@@ -37,8 +37,8 @@ class ExportInContent extends ExportElement {
      * convert all database data associated with ul and/or ol element into properly structured XML document.
      * It follows the XML schema in ../NewSchemas/Molecules.xsd.  This method also calls the exportData method
      * from ExportSubordinate and ExportMedia classes.  The DOMElement object that is returned from exportData
-     * calls from classes mentioned above is then appended to the ul and/or ol DOMElement and is returned to be appended to the 
-     * block element.
+     * calls from classes mentioned above is then appended to the content of the ul and/or ol DOMElement and is
+     * returned to be appended to the block element.
      * 
      * @return DOMElement
      */

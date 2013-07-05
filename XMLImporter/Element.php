@@ -526,12 +526,9 @@ abstract class Element
         // converting XML content into string for further XML tag processing
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = FALSE;
-        $doc->encoding = "UTF-8";
         $element = $doc->importNode($DomElement, true);
-        $content[] = htmlentities($doc->saveXML($element));
+        $content[] = $doc->saveXML($element);
         
-        print_object($content);
-
         $resultcontent = array();
 
         foreach ($content as $key => $string)
@@ -564,9 +561,9 @@ abstract class Element
 
             $string = str_replace('<emphasis', '<em', $string);
             $string = str_replace('</emphasis>', '</em>', $string);
-
-            $string = preg_replace('/\s*<hot(.*?)>\s*/', ' <a$1>', $string);
-            $string = preg_replace('/\s*<\/hot>/', '</a> ', $string);
+            
+            $string = preg_replace('/<hot(.*?)>/', ' <a$1>', $string);
+            $string = preg_replace('/<\/hot>/', '</a> ', $string);
 
             $string = preg_replace('/<math xmlns=(.+)>/', '<math>', $string);
             $string = preg_replace('/<math.display xmlns=(.+)>\s+<latex>\s*/', '<p style="text-align:center"><span class="matheditor">\(', $string);
@@ -584,8 +581,7 @@ abstract class Element
             $string = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)(\$|\\\\|:|\s|\.|=)/', '\\\\$1{}$2', $string);
 //            $string = preg_replace('/\\\\dfrac/', '\\\\\frac', $string);
 
-            $resultcontent[] = html_entity_decode($string);
-            print_object($resultcontent);
+            $resultcontent[] = $string;
         }
 
         return $resultcontent;
@@ -1273,7 +1269,7 @@ abstract class Element
     function processDbContent($oldcontent, $object, $key = '')
     {
         $parser = new DOMDocument();
-        $parser->loadXML($oldcontent);
+        @$parser->loadXML($oldcontent);
         $topElement = $parser->documentElement;
 
         $imgs = $topElement->getElementsByTagName("img");

@@ -15,20 +15,35 @@
  * ************************************************************************ */
 
 /**
- * Description of AnswerExample
+ * This class represents al the answer.example XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Example class.
+ * AnswerExample class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class AnswerExample extends Element
 {
 
-    public $position;
-    public $caption;
-    public $answer_type;
-    public $answer_version;
-    public $logic_type;
-    public $example_answer_logic;
+    public $position;                       // integer that keeps track of order if elements
+    public $caption;                        // title associated with answer element
+    public $answer_type;                    // type associated with answer element (eg. solution)
+    public $answer_version;                 // version associated with answer element
+    public $logic_type;                     // logic element that is associated with answer element
+    public $example_answer_logic;           // type associated with logic element in answer.block element
+    public $answer_block_body = array();    // content of answer element (which is in answer.block element)
+    public $subordinates = array();         // Subordinate objects that is associated with content of answer element
+    public $indexauthors = array();         // index.author elements in the content
+    public $indexglossarys = array();       // index.glossary elements in the content
+    public $indexsymbols = array();         // index.symbols elements in the content
+    public $medias = array();               // Media objects in the content of answer element
+    public $tables = array();               // Table objects in the content of answer element
 
+    /**
+     * constructor for the instace of this class
+     * 
+     * @param type $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -36,9 +51,12 @@ class AnswerExample extends Element
     }
 
     /**
-     *
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (answer element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
      * @param DOMElement $DomElement
-     * @param int $position 
+     * @param int $position                 integer that keeps track of order if elements
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -47,14 +65,6 @@ class AnswerExample extends Element
         $this->answer_version = $DomElement->getAttribute('version');
 
         $answer_blocks = $DomElement->getElementsByTagName('answer.block');
-
-        $this->answer_block_body = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
 
         foreach ($answer_blocks as $answer_block)
         {
@@ -74,6 +84,7 @@ class AnswerExample extends Element
                 }
             }
 
+            // loop through all answer.block.body elements and process its contents
             $answer_block_bodys = $answer_block->getElementsByTagName('answer.block.body');
 
             foreach ($answer_block_bodys as $answer_block_body)
@@ -116,11 +127,17 @@ class AnswerExample extends Element
         return $this;
     }
 
-    /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
-     */
+   /**
+    * This method saves the extracted information from the XML files of answer element into
+     * msm_answer database table.  It calls saveInfoDb method for Subordinate, Media, Table,
+     * and MathIndex classes.
+    * 
+    * @global moodle_databse $DB
+    * @param int $position              integer that keeps track of order if elements
+    * @param int $msmid                 MSM instance ID
+    * @param int $parentid              ID of the parent element from msm_compositor
+    * @param int $siblingid             ID of the previous sibling element from msm_compositor
+    */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -150,7 +167,7 @@ class AnswerExample extends Element
         $elementPositions = array();
         $sibling_id = null;
 
-
+        // call saveIntoDb for each of child elements in order they appeared in
         if (!empty($this->subordinates))
         {
             foreach ($this->subordinates as $key => $subordinate)
