@@ -48,7 +48,7 @@ class AnswerExercise extends Element
      * needed information to be inserted into the database.
      * 
      * @param DOMElement $DomElement        answer.exercise.block DOMElement
-     * @param int $position 
+     * @param int $position                 integer that keeps track of order if elements
      */
     public function loadFromXml($DomElement, $position = '')
     {

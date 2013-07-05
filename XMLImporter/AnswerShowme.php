@@ -15,15 +15,32 @@
  * ************************************************************************ */
 
 /**
- * Description of AnswerShowme
+ * This class represents al the answer.showme XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Showme class.
+ * AnswerShowme class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class AnswerShowme extends Element
 {
 
-    public $position;
-    public $type;
+    public $position;                       // integer that keeps track of order if elements
+    public $type;                           // type of the answer.showme element
+    public $content = array();              // content associated with the answer.showme (in answer.showme.block) elements
+    public $subordinates = array();         // Subordinate objects associated with the content of the answer.showme element
+    public $indexauthors = array();         // MathIndex objects associated with the content of the answer.showme element    
+    public $indexglossarys = array();       // MathIndex objects associated with the content of the answer.showme element    
+    public $indexsymbols = array();         // MathIndex objects associated with the content of the answer.showme element    
+    public $medias = array();               // Media objects associated with the content of the answer.showme element    
+    public $tables = array();               // Table objects associated with the content of the answer.showme element    
+    public $matharrays = array();           // MathArray objects associated with the content of the answer.showme element    
+
+    /**
+     * constructor for the instace of this class
+     * 
+     * @param type $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -32,23 +49,17 @@ class AnswerShowme extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (answer.showme element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        answer.showme elements
+     * @param int $position                 integer that keeps track of order if elements
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->type = $DomElement->getAttribute('type');
-
         $this->position = $position;
-        $this->content = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
 
         $answer_showme_blocks = $DomElement->getElementsByTagName('answer.showme.block');
 
@@ -97,13 +108,19 @@ class AnswerShowme extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of answer.showme element into
+     * msm_answer_showme database table.  It calls saveInfoDb method for MathArray, Subordinate, Media, Table,
+     * and MathIndex classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -317,6 +334,8 @@ class AnswerShowme extends Element
             }
         }
 
+        // if the content has media elements in legacy XMl files, need to process all image tags to
+        // replace src from relative pathing to moodle file area url with pluginfile.php
         if (!empty($this->medias))
         {
             foreach ($ids as $key => $id)
@@ -332,6 +351,15 @@ class AnswerShowme extends Element
         }
     }
 
+    /**
+     * This method retrieves all relevant data to display the answer.showme elements from msm_answer_showme database table.
+     * The method also calls the loadFromDb for classes Subordinate, Table, MathArray and Media.
+     * 
+     * @global moodle_databse $DB   
+     * @param int $id                   ID of current answer.showme element in msm_answer_showme
+     * @param int $compid               ID of current asnwer.showme element in msm_compositor
+     * @return \AnswerShowme
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -389,6 +417,14 @@ class AnswerShowme extends Element
         return $this;
     }
 
+    /**
+     * This method takes the data retrieved from the method above and outputs properly
+     * structured HTML string for displaying the information.  The method also calls 
+     * displayhtml function for Subordinate, Media, MathArray and Table indirectly by
+     * calling the displayContent method in Element class.
+     * 
+     * @return string
+     */
     function displayhtml()
     {
         $content = '';
