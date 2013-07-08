@@ -5,6 +5,7 @@
 
 function processAdditionalChild(event, draggedId)
 {
-    console.log(event);
-    console.log(draggedId);
+    // need to get the type of div that the drag and drop div is in to
+    // check valid child elements allowed in the div
+    
 }
