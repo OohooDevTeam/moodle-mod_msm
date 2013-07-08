@@ -264,9 +264,9 @@ class EditorTheorem extends EditorElement
         foreach ($this->contents as $content)
         {
             $htmlContent .= $content->displayData();
-        }
+        }       
 
-        $htmlContent .= "<input id='msm_theorem_child_button-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addTheoremContent(event)' disabled='disabled'/>";
+//        $htmlContent .= "<input id='msm_theorem_child_button-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addTheoremContent(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
 
 //        $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-statementtheoremcontent$this->compid'>";
@@ -290,8 +290,10 @@ class EditorTheorem extends EditorElement
         {
             $htmlContent .= $associate->displayData();
         }
-        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"theorem\")' disabled='disabled'/>";
+//        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"theorem\")' disabled='disabled'/>";
         $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
 
         $htmlContent .= "</div>";
 

@@ -64,17 +64,7 @@ function submitForm()
         }
     });  
     
-    console.log($("#msm_unit_title"));
-        
-    $("#msm_unit_title").val(tinymce.get("msm_unit_title").getContent({
-        format:"html"
-    }));
-    
-    console.log(tinymce.get("msm_unit_title").getContent({
-        format:"html"
-    }));
-    
-    console.log(tinymce.getInstanceById("msm_unit_title").getContent({
+    $("#msm_unit_title").val(tinymce.getInstanceById("msm_unit_title").getContent({
         format:"html"
     }));
     

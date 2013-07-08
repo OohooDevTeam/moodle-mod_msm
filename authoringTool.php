@@ -337,23 +337,26 @@ $formContent .= '<div id="msm_editor_container">
                             <span class="msm_element_label" style="margin-left: 25%;">Intro</span>
                         </div>         
                     </div>
-                   <div id="msm_component_tabs-2">
-                        <div class="msm_child_element" id="msm_associate">
-                            <span class="msm_element_label">Associate</span>
-                        </div>  
-                        <div class="msm_child_element" id="msm_extra_content">
-                            <span class="msm_element_label">Extra Content</span>
-                        </div>  
-                        <div class="msm_child_element" id="msm_part_theorem">
-                            <span class="msm_element_label">Parts of a Theorem</span>
-                        </div>
-                        <div class="msm_child_element" id="msm_internal_ref">
-                            <span class="msm_element_label">Internal Reference</span>
-                        </div>
-                        <div class="msm_child_element" id="msm_external_ref">
-                            <span class="msm_element_label">External Reference</span>
-                        </div>
-                    </div>
+                    <div id="msm_component_tabs-2">
+                         <div class="msm_child_element" id="msm_associate">
+                             <span class="msm_element_label">Associate</span>
+                         </div>  
+                         <div class="msm_child_element" id="msm_extra_content">
+                             <span class="msm_element_label">Extra Content</span>
+                         </div>  
+                         <div class="msm_child_element" id="msm_part_theorem">
+                             <span class="msm_element_label">Parts of a Theorem</span>
+                         </div>
+                         <div class="msm_child_element" id="msm_internal_ref">
+                             <span class="msm_element_label">Internal Reference</span>
+                         </div>
+                         <div class="msm_child_element" id="msm_external_ref">
+                             <span class="msm_element_label">External Reference</span>
+                         </div>
+                         <div class="msm_child_element" id="msm_new_ref">
+                             <span class="msm_element_label">New Reference</span>
+                         </div>
+                     </div>
               </div>               
             </div>
             <div id="msm_editor_middleright">
@@ -365,7 +368,7 @@ $formContent .= '<div id="msm_editor_container">
 
 if (!empty($unitRecord))
 {
-    $formContent .= '<div class="msm_title_input msm_editor_titles" id="msm_unit_title"' . $unitRecord->title . "</div>";
+    $formContent .= '<div class="msm_title_input msm_editor_titles" id="msm_unit_title">' . $unitRecord->title . "</div>";
 }
 else
 {
@@ -409,7 +412,6 @@ $formContent .= '
                         <input id="msm_file_options" name="msm_file_options" style="display:none;"/>
                     </form>
                 </div>
-
                 <div id="msm_editor_right">
                     <h2> XML Hierarchy </h2>
                     <ul><li><h3> Main Composition </h3></li></ul>
@@ -440,7 +442,7 @@ $formContent .= '</li></ul>
 
 $formContent .=' </div>                
                 </div>     
-       </div>
+       </div>            
        <div class="msm_loadingscreen"></div>
         <button class="msm_comp_buttons" id="msm_comp_done" type="button" onclick="saveComp(event)" disabled="disabled"> Done </button>
         <button id="msm_comp_fullscreen"> Full Screen </button>';

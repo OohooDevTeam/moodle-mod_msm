@@ -555,7 +555,9 @@ function saveComp(e)
 
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
 function editUnit(e)
-{    
+{   
+    initTitleEditor("msm_unit_title");
+    
     $("#msm_editor_new").attr("disabled", "disabled");
     
     if($("#msm_unit_short_title").attr("readonly"))
