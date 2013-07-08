@@ -271,7 +271,7 @@
 {
     display: none;
 }
-.msm_structural_element {
+.msm_structural_element, .msm_child_element {
     background-image: linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
     background-image: -o-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
     background-image: -moz-linear-gradient(bottom, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
@@ -288,7 +288,7 @@
     text-align: left;
     box-shadow: 0px 0px 2px 0px #888888;
 }
-.msm_structural_element:hover {
+.msm_structural_element:hover,  .msm_child_element:hover {
     background-image: linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
     background-image: -o-linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
     background-image: -moz-linear-gradient(top, #F0F0F0 4%, #F0F0F0 49%, #E8E8E8 76%);
@@ -882,4 +882,44 @@ table.mceLayout
 {
     margin: 2px !important;
     font-size: 12px !important;
+}
+
+.msm_dnd_containers
+{
+    border: 2px dashed #4E6632;
+    text-align: center;
+    color: #4E6632;
+    font-size: 14px;
+    margin: 2% 1%;
+    height: 60px;
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+/*CSS for jquery UI redefined to erase the background color for tab lists and to change the size of the tabs*/
+#msm_component_tab { 
+    padding: 0px; 
+    background: none; 
+    border-width: 0px; 
+    width:100%;
+} 
+#msm_component_tab .ui-tabs-nav { 
+    padding-left: 0px; 
+    background: transparent; 
+    border-width: 0px 0px 1px 0px; 
+    -moz-border-radius: 0px; 
+    -webkit-border-radius: 0px; 
+    border-radius: 0px; 
+    width: 99%;
+} 
+
+#msm_component_tab .ui-tabs-nav li {
+    width: 48.1%;
+    white-space: pre;
+    text-align: center;
+}
+
+#msm_component_tab .ui-tabs-panel { 
+    background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top; 
+    border-width: 0px 1px 1px 1px; 
 }

@@ -108,6 +108,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorUtility.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveMethod.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorChildComponents.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
@@ -307,30 +308,53 @@ if (!empty($existingUnit))
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
-
-                <div class="msm_structural_element" id="msm_def">
-                    <span class="msm_element_label">Definition</span>
-                </div>                
-                <div class="msm_structural_element" id="msm_theorem">
-                    <span class="msm_element_label">Theorem</span>
-                </div>                
-                <br />
-                <div class="msm_structural_element" id="msm_comment">
-                    <span class="msm_element_label">Comment</span>
-                </div>                
-                <div class="msm_structural_element" id="msm_body">
-                    <span class="msm_element_label">Content</span>
-                </div>                
-                <br />
-                <div class="msm_structural_element" id="msm_extra_info">
-                    <span class="msm_element_label" style="margin-top: 20%;">Extra
-                    Information</span>
-                </div>
-                <div class="msm_structural_element" id="msm_intro">
-                    <span class="msm_element_label" style="margin-left: 25%;">Intro</span>
-                </div>                
-                <br />
                 
+                <div id="msm_component_tab">
+                    <ul>
+                        <li><a href="#msm_component_tabs-1">Main' . "\n" . 'Components</a></li>
+                        <li><a href="#msm_component_tabs-2">Child' . "\n" . 'Components</a></li>
+                    </ul>
+                    <div id="msm_component_tabs-1">
+                        <div class="msm_structural_element" id="msm_def">
+                            <span class="msm_element_label">Definition</span>
+                        </div>                
+                        <div class="msm_structural_element" id="msm_theorem">
+                            <span class="msm_element_label">Theorem</span>
+                        </div>                
+                        <br />
+                        <div class="msm_structural_element" id="msm_comment">
+                            <span class="msm_element_label">Comment</span>
+                        </div>                
+                        <div class="msm_structural_element" id="msm_body">
+                            <span class="msm_element_label">Content</span>
+                        </div>                
+                        <br />
+                        <div class="msm_structural_element" id="msm_extra_info">
+                            <span class="msm_element_label" style="margin-top: 20%;">Extra
+                            Information</span>
+                        </div>
+                        <div class="msm_structural_element" id="msm_intro">
+                            <span class="msm_element_label" style="margin-left: 25%;">Intro</span>
+                        </div>         
+                    </div>
+                   <div id="msm_component_tabs-2">
+                        <div class="msm_child_element" id="msm_associate">
+                            <span class="msm_element_label">Associate</span>
+                        </div>  
+                        <div class="msm_child_element" id="msm_extra_content">
+                            <span class="msm_element_label">Extra Content</span>
+                        </div>  
+                        <div class="msm_child_element" id="msm_part_theorem">
+                            <span class="msm_element_label">Parts of a Theorem</span>
+                        </div>
+                        <div class="msm_child_element" id="msm_internal_ref">
+                            <span class="msm_element_label">Internal Reference</span>
+                        </div>
+                        <div class="msm_child_element" id="msm_external_ref">
+                            <span class="msm_element_label">External Reference</span>
+                        </div>
+                    </div>
+              </div>               
             </div>
             <div id="msm_editor_middleright">
                 <div id="msm_editor_middle" >
@@ -489,7 +513,10 @@ $fpoptions['link'] = $link_options;
 $formContent .= '<script type="text/javascript"> 
         var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
             
-        $(document).ready(function() {             
+        $(document).ready(function() {    
+            $("#msm_component_tab").tabs({
+                event: "mouseover"
+            });
             $("#msm_unit_title").dblclick(function(){
                 processTitleContent(this.id);
                 allowDragnDrop();
@@ -550,15 +577,33 @@ $formContent .= '<script type="text/javascript">
                     helper: "clone"                   
                 }); 
                 
+                $(".msm_child_element").draggable({
+                    appendTo: "msm_editor_middle_droparea",
+                    containment: "msm_editor_middle_droparea",
+                    scroll: true,
+                    cursor: "move",
+                    helper: "clone"                   
+                }); 
+                
+                $(".msm_dnd_containers").droppable({
+                    accept: "#msm_component_tabs-2 > div",
+                    hoverClass: "ui-state-hover",
+                    tolerance: "pointer",
+                    drop: function( event, ui ) { 
+                        processAdditionalChild(event, ui.draggable.context.id);      
+                        allowDragnDrop();  
+                    }
+                });
+                
                 $("#msm_editor_middle_droparea").droppable({
-                    accept: "#msm_editor_left > div",
+                    accept: "#msm_component_tabs-1 > div",
                     hoverClass: "ui-state-hover",
                     tolerance: "pointer",
                     drop: function( event, ui ) { 
                         processDroppedChild(event, ui.draggable.context.id);      
                         allowDragnDrop();  
                     }
-                });                  
+                });   
                                
                 $("ul.sf-menu").superfish({
                     autoArrows: false

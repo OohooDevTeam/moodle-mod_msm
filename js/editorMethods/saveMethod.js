@@ -74,7 +74,7 @@ function submitForm()
         format:"html"
     }));
     
-     console.log(tinymce.getInstanceById("msm_unit_title").getContent({
+    console.log(tinymce.getInstanceById("msm_unit_title").getContent({
         format:"html"
     }));
     
@@ -249,10 +249,18 @@ function submitForm()
                         scroll: true,
                         cursor: "move",
                         helper: "clone"                   
-                    });              
+                    });        
+                    
+                    $(".msm_child_element").draggable({
+                        appendTo: ".msm_dnd_containers",
+                        containment: ".msm_dnd_containers",
+                        scroll: true,
+                        cursor: "move",
+                        helper: "clone"                   
+                    }); 
         
                     $("#msm_editor_middle_droparea").droppable({
-                        accept: "#msm_editor_left > div",
+                        accept: "#msm_component_tabs-1 > div",
                         hoverClass: "ui-state-hover",
                         tolerance: "pointer",
                         drop: function( event, ui ) { 
@@ -260,6 +268,15 @@ function submitForm()
                             allowDragnDrop();        
                         }
                     }); 
+                    $(".msm_dnd_containers").droppable({
+                        accept: "#msm_component_tabs-2 > div",
+                        hoverClass: "ui-state-hover",
+                        tolerance: "pointer",
+                        drop: function( event, ui ) { 
+                            processAdditionalChild(event, ui.draggable.context.id);      
+                            allowDragnDrop();  
+                        }
+                    });
                     
                     $("#msm_unit_title").dblclick(function(){
                         processTitleContent(this.id);

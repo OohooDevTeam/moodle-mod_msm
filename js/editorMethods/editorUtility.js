@@ -329,10 +329,18 @@ function newUnit()
         scroll: true,
         cursor: "move",
         helper: "clone"                   
-    });              
+    });       
+    
+    $(".msm_child_element").draggable({
+        appendTo: ".msm_dnd_containers",
+        containment: ".msm_dnd_containers",
+        scroll: true,
+        cursor: "move",
+        helper: "clone"                   
+    }); 
         
     $("#msm_editor_middle_droparea").droppable({
-        accept: "#msm_editor_left > div",
+        accept: "#msm_component_tabs-1 > div",
         hoverClass: "ui-state-hover",
         tolerance: "pointer",
         drop: function( event, ui ) { 
@@ -340,6 +348,16 @@ function newUnit()
             allowDragnDrop();  
         }
     }); 
+    
+    $(".msm_dnd_containers").droppable({
+        accept: "#msm_component_tabs-2 > div",
+        hoverClass: "ui-state-hover",
+        tolerance: "pointer",
+        drop: function( event, ui ) { 
+            processAdditionalChild(event, ui.draggable.context.id);      
+            allowDragnDrop();  
+        }
+    });
     
     
     $("#msm_child_appending_area").sortable({
@@ -442,16 +460,33 @@ function processUnitData(htmlData)
         cursor: "move",
         helper: "clone"                   
     }); 
+    
+    $(".msm_child_element").draggable({
+        appendTo: ".msm_dnd_containers",
+        containment: ".msm_dnd_containers",
+        scroll: true,
+        cursor: "move",
+        helper: "clone"                   
+    }); 
 
     $("#msm_editor_middle_droparea").droppable({
-        accept: "#msm_editor_left > div",
+        accept: "#msm_component_tabs-1 > div",
         hoverClass: "ui-state-hover",
         tolerance: "pointer",
         drop: function( event, ui ) { 
             processDroppedChild(event, ui.draggable.context.id);      
             allowDragnDrop();  
         }
-    });        
+    }); 
+    $(".msm_dnd_containers").droppable({
+        accept: "#msm_component_tabs-2 > div",
+        hoverClass: "ui-state-hover",
+        tolerance: "pointer",
+        drop: function( event, ui ) { 
+            processAdditionalChild(event, ui.draggable.context.id);      
+            allowDragnDrop();  
+        }
+    });
     
 }
 
@@ -661,16 +696,33 @@ function enableEditorFunction()
         cursor: "move",
         helper: "clone"                   
     });      
+    
+    $(".msm_child_element").draggable({
+        appendTo: ".msm_dnd_containers",
+        containment: ".msm_dnd_containers",
+        scroll: true,
+        cursor: "move",
+        helper: "clone"                   
+    }); 
             
     $("#msm_editor_middle_droparea").droppable({
-        accept: "#msm_editor_left > div",
+        accept: "#msm_component_tabs-1 > div",
         hoverClass: "ui-state-hover",
         tolerance: "pointer",
         drop: function( event, ui ) { 
             processDroppedChild(event, ui.draggable.context.id); 
             allowDragnDrop();    
         }
-    });    
+    }); 
+    $(".msm_dnd_containers").droppable({
+        accept: "#msm_component_tabs-2 > div",
+        hoverClass: "ui-state-hover",
+        tolerance: "pointer",
+        drop: function( event, ui ) { 
+            processAdditionalChild(event, ui.draggable.context.id);      
+            allowDragnDrop();  
+        }
+    });
     
     moveElements();
     
@@ -1798,17 +1850,34 @@ function cancelUnit(e)
                             scroll: true,
                             cursor: "move",
                             helper: "clone"                   
-                        });              
+                        });    
+                        
+                        $(".msm_child_element").draggable({
+                            appendTo: ".msm_dnd_containers",
+                            containment: ".msm_dnd_containers",
+                            scroll: true,
+                            cursor: "move",
+                            helper: "clone"                   
+                        }); 
         
                         $("#msm_editor_middle_droparea").droppable({
-                            accept: "#msm_editor_left > div",
+                            accept: "#msm_component_tabs-1 > div",
                             hoverClass: "ui-state-hover",
                             tolerance: "pointer",
                             drop: function( event, ui ) { 
                                 processDroppedChild(event, ui.draggable.context.id);
                                 allowDragnDrop();        
                             }
-                        }); 
+                        });
+                        $(".msm_dnd_containers").droppable({
+                            accept: "#msm_component_tabs-2 > div",
+                            hoverClass: "ui-state-hover",
+                            tolerance: "pointer",
+                            drop: function( event, ui ) { 
+                                processAdditionalChild(event, ui.draggable.context.id);      
+                                allowDragnDrop();  
+                            }
+                        });
                     
                         $("#msm_unit_title").dblclick(function(){
                             processTitleContent(this.id);

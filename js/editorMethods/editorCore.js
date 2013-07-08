@@ -103,7 +103,10 @@ function processDroppedChild(e, droppedId)
                 var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-introcontent'+_index+'"></div>');
             
                 var introChildContainer = $("<div id='msm_intro_child_container'></div>");
-                var introChildButton = $('<input class="msm_intro_child_buttons" id="msm_intro_child_button-'+_index+'" type="button" onclick="addIntroContent('+_index+')" value="Add additional content"/>');
+                var dndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"'>Drag additional content to here.\n\
+                                     <p>Valid child Elements: Extra Contents</p>\n\
+                                 </div>"); 
+//                var introChildButton = $('<input class="msm_intro_child_buttons" id="msm_intro_child_button-'+_index+'" type="button" onclick="addIntroContent('+_index+')" value="Add additional content"/>');
             
                 clonedCurrentElement.attr("id", "copied_msm_intro-"+_index);
                 clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -125,7 +128,7 @@ function processDroppedChild(e, droppedId)
                 clonedCurrentElement.append(subordinateContainer);
                 clonedCurrentElement.append(subordinateResult);
                 clonedCurrentElement.append(introChildContainer);
-                clonedCurrentElement.append(introChildButton);
+                clonedCurrentElement.append(dndDiv);
                 clonedCurrentElement.appendTo('#msm_child_appending_area');
             
                 currentContentid = 'msm_intro_content_input-'+_index;
@@ -193,6 +196,17 @@ function processDroppedChild(e, droppedId)
             break;       
             
     }
+    
+    $(".msm_dnd_containers").droppable({
+        accept: "#msm_component_tabs-2 > div",
+        hoverClass: "ui-state-hover",
+        tolerance: "pointer",
+        drop: function( event, ui ) { 
+            console.log("dropped: "+ui.draggable.context.id)
+            processAdditionalChild(event, ui.draggable.context.id);      
+            allowDragnDrop();  
+        }
+    });
     
     
     if($('#msm_editor_save').attr("disabled"))
@@ -1068,15 +1082,14 @@ function makeDefinition()
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-defcontent'+_index+'"></div>');
     var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_def_description_label-"+_index+"' for='msm_def_description_input-"+_index+"'>Description: </label>");
     var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_def_description_input-"+_index+"' name='msm_def_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-    var defAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
-    var type = "def";
-    var defAssociateButton = $("<input type='button' class='msm_associate_buttons' id='msm_associate_button-"+_index+"' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
+    
+    var dndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Associates, internal and/or external references</p>\n\
+                    </div>");
             
     clonedCurrentElement.attr("id", "copied_msm_def-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
-    defAssociateDiv.append(defAssociateButton);
-    
     defTitleContainer.append(defTitleHidden);
     
     overlayMenu.append(overlayButtonDelete);
@@ -1092,7 +1105,7 @@ function makeDefinition()
     clonedCurrentElement.append(subordinateResult);
     clonedCurrentElement.append(defDescriptionLabel);
     clonedCurrentElement.append(defDescriptionField);
-    clonedCurrentElement.append(defAssociateDiv);
+    clonedCurrentElement.append(dndDiv);
     
     return clonedCurrentElement;
 }
@@ -1129,21 +1142,22 @@ function makeTheorem()
     var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'-1" name="msm_theorem_content_input-'+_index+'-1"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-statementtheoremcontent'+_index+'-1"></div>');
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-statementtheoremcontent'+_index+'-1"></div>');
-    var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+_index+'-1"></div>');
+    var theoremPartWrapper = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"-1'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Part of a Theorem</p>\n\
+                    </div>");   
             
-    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent(event)" value="Add content"/>');
-    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'-1" type="button" onclick="addTheoremPart(event)" value="Add more parts"/>');
+//    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent(event)" value="Add content"/>');
+//    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'-1" type="button" onclick="addTheoremPart(event)" value="Add more parts"/>');
     var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_description_input-"+_index+"'>Description: </label>");
     var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_description_input-"+_index+"' name='msm_theorem_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-    var theoremAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
-    var type = "theorem";
-    var theoremAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
+    var dndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Associates, Extra Contents, internal and/or external references</p>\n\
+                    </div>");        
         
     clonedCurrentElement.attr("id", "copied_msm_theorem-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
-    theoremPartWrapper.append(theoremPartButton);
-    theoremAssociateDiv.append(theoremAssociateButton);
+//    theoremPartWrapper.append(theoremPartButton);
     
     theoremTitleContainer.append(theoremTitleHidden);
     
@@ -1156,7 +1170,7 @@ function makeTheorem()
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
-    theoremContentWrapper.append(theoremChildButton);
+//    theoremContentWrapper.append(theoremChildButton);
     
     overlayMenu.append(overlayButtonDelete);
     overlayMenu.append(overlayButtonEdit);
@@ -1169,7 +1183,7 @@ function makeTheorem()
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
-    clonedCurrentElement.append(theoremAssociateDiv);
+    clonedCurrentElement.append(dndDiv);
     
     $("#msm_theorem_content_container-"+_index+"-1").sortable({
         appendTo: "msm_theorem_content_container-"+_index+"-1",
@@ -1240,14 +1254,12 @@ function makeComment()
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-commentcontent'+_index+'"></div>');
     var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_comment_description_label-"+_index+"' for='msm_comment_description_input-"+_index+"'>Description: </label>");
     var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_comment_description_input-"+_index+"' name='msm_comment_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
-    var commentAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
-    var type = "comment";
-    var commentAssociateButton = $("<input class='msm_associate_buttons' id='msm_associate_button-"+_index+"' type='button' onclick='addAssociateForm("+_index+", \""+type+"\")' value='Add Associated Information''/>")
+    var dndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Associates, internal and/or external references</p>\n\
+                    </div>");
             
     clonedCurrentElement.attr("id", "copied_msm_comment-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
-            
-    commentAssociateDiv.append(commentAssociateButton);
     
     commentTitleContainer.append(commentTitleHidden);    
    
@@ -1264,7 +1276,7 @@ function makeComment()
     clonedCurrentElement.append(subordinateResult);
     clonedCurrentElement.append(commentDescriptionLabel);
     clonedCurrentElement.append(commentDescriptionField);
-    clonedCurrentElement.append(commentAssociateDiv);
+    clonedCurrentElement.appned(dndDiv);
     
     return clonedCurrentElement;
 }
