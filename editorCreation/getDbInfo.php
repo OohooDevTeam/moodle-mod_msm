@@ -48,6 +48,8 @@ print_object($dbType);
 print_object($matchString);
 print_object($fieldType);
 
+// need to include msm ID 
+// also need to be given info to know if this is internal or external referencing
 if ($dbType == "definition")
 {
     if ($fieldType == "title")
