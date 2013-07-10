@@ -544,9 +544,9 @@ function getDisabledData()
         dataArray[this.id] = $(this).val(); 
     }); 
         
-    $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
-        dataArray[this.id] = $(this).val(); 
-    }); 
+//    $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
+//        dataArray[this.id] = $(this).val(); 
+//    }); 
         
     $("#msm_child_appending_area").find(".msm_theoremref_part_title").each(function() {
         dataArray[this.id] = $(this).val(); 

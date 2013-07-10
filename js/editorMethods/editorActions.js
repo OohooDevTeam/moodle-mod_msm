@@ -238,10 +238,10 @@ function deleteRefElement(e)
             "Yes": function() {
                 $('#'+currentElement).empty().remove();
                 
-                if($('#msm_associate_reftype_option-'+currentElementInfo[1]+"-"+currentElementInfo[2]).children().length < 1)
-                {
-                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
-                }
+//                if($('#msm_associate_reftype_option-'+currentElementInfo[1]+"-"+currentElementInfo[2]).children().length < 1)
+//                {
+//                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
+//                }
                 
                 $( this ).dialog( "close" );
             },
@@ -285,10 +285,13 @@ function addrefTheoremContent(event)
    
     var param = idNumber+"-"+newId;
    
-    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
+   var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+"-"+newId+"'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Part of a Theorem</p>\n\
+                    </div>"); 
+//    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+idNumber+'-'+newId+'"></div>');
             
-    theoremPartWrapper.append(theoremPartButton);
+    theoremPartWrapper.append(partDndDiv);
     
     theoremContentTitleContainer.append(theoremContentTitleHidden);
             

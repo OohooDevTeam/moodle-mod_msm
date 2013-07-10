@@ -6,8 +6,8 @@
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
-        event.preventDefault();             
-        console.log("submit");
+        event.preventDefault();       
+        
         submitForm();            
     });
 });

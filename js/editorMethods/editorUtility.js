@@ -1314,9 +1314,9 @@ function createAssociateText(mainElement, aArray)
         $(this).removeAttr("disabled");
     });
     
-    $("#"+mainElement).find(".msm_associate_reftype_dropdown").each(function() {
-        $(this).removeAttr("disabled");
-    });
+    //    $("#"+mainElement).find(".msm_associate_reftype_dropdown").each(function() {
+    //        $(this).removeAttr("disabled");
+    //    });
     
     var associateArray = aArray["children"];
     var associateIds = $("#"+mainElement).find(".msm_associate_childs");
@@ -1393,7 +1393,8 @@ function createAssociateText(mainElement, aArray)
                     initEditor(defrefTextArea.id);
                     break;
                 case "msm_theorem":
-                    createTheoremRefText(mainElement, associateArray, i, infoid);                    
+                    //                    createTheoremRefText(mainElement, associateArray, i, infoid);   
+                    createTheoremRefText(mainElement, associateArray, i, refid);  
                     break;
                 case "msm_comment":
                     $("#msm_commentref_type_dropdown-"+refid).removeAttr("disabled");

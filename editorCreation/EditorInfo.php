@@ -322,57 +322,57 @@ class EditorInfo extends EditorElement
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div id='msm_associate_reftype_option-$assoIdEnding' class='msm_associate_reftype_optionarea'>";
-            $htmlContent .= "<span class='msm_associate_reftype_label'>Type of reference to add: </span>";
-            $htmlContent .= "<select id='msm_associate_reftype-$assoIdEnding' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$assoIdEnding' disabled='disabled'>";
-
-            if (empty($this->ref))
-            {
-                $htmlContent .= "<option value='None' selected='selected'>None</option>";
-                $htmlContent .= "<option value='Comment'>Comment</option>";
-                $htmlContent .= "<option value='Definition'>Definition</option>";
-                $htmlContent .= "<option value='Theorem'>Theorem</option>";
-                $htmlContent .= "<option value='Example'>Example</option>";
-                $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
-            }
-            else
-            {
-                switch (get_class($this->ref))
-                {
-                    case "EditorDefinition":
-                        $htmlContent .= "<option value='None'>None</option>";
-                        $htmlContent .= "<option value='Comment'>Comment</option>";
-                        $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
-                        $htmlContent .= "<option value='Theorem'>Theorem</option>";
-                        $htmlContent .= "<option value='Example'>Example</option>";
-                        $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
-                        break;
-                    case "EditorComment":
-                        $htmlContent .= "<option value='None'>None</option>";
-                        $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
-                        $htmlContent .= "<option value='Definition'>Definition</option>";
-                        $htmlContent .= "<option value='Theorem'>Theorem</option>";
-                        $htmlContent .= "<option value='Example'>Example</option>";
-                        $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
-                        break;
-                    case "EditorTheorem":
-                        $htmlContent .= "<option value='None'>None</option>";
-                        $htmlContent .= "<option value='Comment'>Comment</option>";
-                        $htmlContent .= "<option value='Definition'>Definition</option>";
-                        $htmlContent .= "<option value='Theorem' selected='selected'>Theorem</option>";
-                        $htmlContent .= "<option value='Example'>Example</option>";
-                        $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
-                        break;
-                    case "EditorUnit":
-                        $htmlContent .= "<option value='None'>None</option>";
-                        $htmlContent .= "<option value='Comment'>Comment</option>";
-                        $htmlContent .= "<option value='Definition'>Definition</option>";
-                        $htmlContent .= "<option value='Theorem'>Theorem</option>";
-                        $htmlContent .= "<option value='Example'>Example</option>";
-                        $htmlContent .= "<option value='Section of this Composition' selected='selected'>Section of this Composition</option>";
-                        break;
-                }
-            }
-            $htmlContent .= "</select>";
+//            $htmlContent .= "<span class='msm_associate_reftype_label'>Type of reference to add: </span>";
+//            $htmlContent .= "<select id='msm_associate_reftype-$assoIdEnding' class='msm_associate_reftype_dropdown' onchange='processReftype(event)' name='msm_associate_reftype-$assoIdEnding' disabled='disabled'>";
+//
+//            if (empty($this->ref))
+//            {
+//                $htmlContent .= "<option value='None' selected='selected'>None</option>";
+//                $htmlContent .= "<option value='Comment'>Comment</option>";
+//                $htmlContent .= "<option value='Definition'>Definition</option>";
+//                $htmlContent .= "<option value='Theorem'>Theorem</option>";
+//                $htmlContent .= "<option value='Example'>Example</option>";
+//                $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+//            }
+//            else
+//            {
+//                switch (get_class($this->ref))
+//                {
+//                    case "EditorDefinition":
+//                        $htmlContent .= "<option value='None'>None</option>";
+//                        $htmlContent .= "<option value='Comment'>Comment</option>";
+//                        $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
+//                        $htmlContent .= "<option value='Theorem'>Theorem</option>";
+//                        $htmlContent .= "<option value='Example'>Example</option>";
+//                        $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+//                        break;
+//                    case "EditorComment":
+//                        $htmlContent .= "<option value='None'>None</option>";
+//                        $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
+//                        $htmlContent .= "<option value='Definition'>Definition</option>";
+//                        $htmlContent .= "<option value='Theorem'>Theorem</option>";
+//                        $htmlContent .= "<option value='Example'>Example</option>";
+//                        $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+//                        break;
+//                    case "EditorTheorem":
+//                        $htmlContent .= "<option value='None'>None</option>";
+//                        $htmlContent .= "<option value='Comment'>Comment</option>";
+//                        $htmlContent .= "<option value='Definition'>Definition</option>";
+//                        $htmlContent .= "<option value='Theorem' selected='selected'>Theorem</option>";
+//                        $htmlContent .= "<option value='Example'>Example</option>";
+//                        $htmlContent .= "<option value='Section of this Composition'>Section of this Composition</option>";
+//                        break;
+//                    case "EditorUnit":
+//                        $htmlContent .= "<option value='None'>None</option>";
+//                        $htmlContent .= "<option value='Comment'>Comment</option>";
+//                        $htmlContent .= "<option value='Definition'>Definition</option>";
+//                        $htmlContent .= "<option value='Theorem'>Theorem</option>";
+//                        $htmlContent .= "<option value='Example'>Example</option>";
+//                        $htmlContent .= "<option value='Section of this Composition' selected='selected'>Section of this Composition</option>";
+//                        break;
+//                }
+//            }
+//            $htmlContent .= "</select>";
 
             if (!empty($this->ref))
             {

@@ -348,7 +348,8 @@ class EditorStatementTheorem extends EditorElement
         {
             $htmlContent .= $partTheorem->displayRefData("$parentId-$this->compid");
         }
-        $htmlContent .= "<input id='msm_theoremref_part_button-$parentId-$this->compid' class='msm_theoremref_part_buttons' type='button' value='Add more parts' onclick='addrefTheoremPart(event)' disabled='disabled'/>";
+        $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$parentId-$this->compid'>Drag additional content to here.<p>Valid child Elements: Part of a Theorem</p></div>";
+//        $htmlContent .= "<input id='msm_theoremref_part_button-$parentId-$this->compid' class='msm_theoremref_part_buttons' type='button' value='Add more parts' onclick='addrefTheoremPart(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
 

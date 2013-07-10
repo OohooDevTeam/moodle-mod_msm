@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -204,7 +205,7 @@ class EditorTheorem extends EditorElement
         }
     }
 
-     /**
+    /**
      * This method is an abstract method from EditorElement that has a purpose of displaying the 
      * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
      * displayData from the EditorAssociate and EditorStatement classes.
@@ -264,7 +265,7 @@ class EditorTheorem extends EditorElement
         foreach ($this->contents as $content)
         {
             $htmlContent .= $content->displayData();
-        }       
+        }
 
 //        $htmlContent .= "<input id='msm_theorem_child_button-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addTheoremContent(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
@@ -291,9 +292,9 @@ class EditorTheorem extends EditorElement
             $htmlContent .= $associate->displayData();
         }
 //        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"theorem\")' disabled='disabled'/>";
-        $htmlContent .= "</div>";
-        
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
+
+        $htmlContent .= "</div>";
 
         $htmlContent .= "</div>";
 
@@ -407,7 +408,9 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "<input id='msm_theoremref_child_button-$parentId-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addrefTheoremContent(event)' disabled='disabled'/>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label id='msm_theoremref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_theoremref_description_label-$parentId-$this->compid'>Description: </label>";
-        $htmlContent .= "<input id='msm_theoremref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$parentId-$this->compid'/>";
+        $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$parentId-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
+
+//           $htmlContent .= "<input id='msm_theoremref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$parentId-$this->compid'/>";
         $htmlContent .= "</div>";
 
         return $htmlContent;

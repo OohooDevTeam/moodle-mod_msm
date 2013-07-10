@@ -80,7 +80,7 @@ class EditorDefinition extends EditorElement
             if ($_POST['msm_defref_content_input-' . $newId] != '')
             {
                 $content = $_POST['msm_defref_content_input-' . $newId];
-                
+
                 $this->content = $this->processMath($content);
 
                 foreach ($this->processImage($this->content) as $key => $media)
@@ -110,7 +110,7 @@ class EditorDefinition extends EditorElement
             if ($_POST['msm_def_content_input-' . $idNumber] != '')
             {
                 $content = $_POST['msm_def_content_input-' . $idNumber];
-                
+
                 $this->content = $this->processMath($content);
 
                 foreach ($this->processImage($this->content) as $key => $media)
@@ -335,10 +335,10 @@ class EditorDefinition extends EditorElement
             $htmlContent .= $associate->displayData();
         }
 //        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"def\")' disabled='disabled'/>";
-        $htmlContent .= "</div>";
-        
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
-        
+        $htmlContent .= "</div>";
+
+
         $htmlContent .= "</div>";
 
         return $htmlContent;
@@ -541,7 +541,7 @@ class EditorDefinition extends EditorElement
 
         $previewHtml .= "<div class='mathcontent'>";
 
-       $previewHtml .= html_entity_decode($this->content);
+        $previewHtml .= html_entity_decode($this->content);
 
 
 //        print_object($this->content);

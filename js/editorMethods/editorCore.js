@@ -921,15 +921,16 @@ function addAssociateForm(index, type)
 
     var subordinateContentResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infocontent'+index + '-' + newId+'-1"></div>');
 
-    var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"-1'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
-                                <select name='msm_associate_reftype-"+index + "-" + newId+"-1' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"-1' onchange='processReftype(event);'>\n\
-                                    <option value='None'>None</option>\n\
-                                    <option value='Comment'>Comment</option>\n\
-                                    <option value='Definition'>Definition</option>\n\
-                                    <option value='Theorem'>Theorem</option>\n\
-                                    <option value='Example'>Example</option> \n\
-                                    <option value='Section of this Composition'>Section of this Composition</option>\n\
-                                </select></div>");
+    var refTypeDiv = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index+"-"+newId+"-1'></div>"); // area where ref form gets appended to
+//    var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"-1'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
+//                                <select name='msm_associate_reftype-//"+index + "-" + newId+"-1' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"-1' onchange='processReftype(event);'>\n\
+//                                    <option value='None'>None</option>\n\
+//                                    <option value='Comment'>Comment</option>\n\
+//                                    <option value='Definition'>Definition</option>\n\
+//                                    <option value='Theorem'>Theorem</option>\n\
+//                                    <option value='Example'>Example</option> \n\
+//                                    <option value='Section of this Composition'>Section of this Composition</option>\n\
+//                                </select></div>//");
     
     var associateCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
   
@@ -947,9 +948,9 @@ function addAssociateForm(index, type)
     associateInfoDiv.append(infoContentInput);
     associateInfoDiv.append(subordinateContentContainer);
     associateInfoDiv.append(subordinateContentResult);
-    associateInfoDiv.append(refTypeDropdown);
+    associateInfoDiv.append(refTypeDiv);
      
-    $(associateInfoDiv).appendTo("#msm_associate_container-"+index);
+    $(associateInfoDiv).insertBefore("#msm_dnd_container-"+index);
         
     if(tinymce.getInstanceById("msm_info_content-"+index+"-"+newId+"-1") != null)
     {
@@ -993,7 +994,7 @@ function addAssociateForm(index, type)
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
-            
+                       
             $(this).find('.msm_associate_reftype_optionarea').each(function() {
                 $(this).find('.copied_msm_structural_element').each(function() {
                     $(this).find('.msm_unit_child_content').each(function()
@@ -1021,7 +1022,7 @@ function addAssociateForm(index, type)
                     initEditor(this.id);
                 }
             });
-            
+           
             $(this).find('.msm_associate_reftype_optionarea').each(function() {
                 $(this).find('.copied_msm_structural_element').each(function() {
                     $(this).find('.msm_unit_child_content').each(function()
@@ -1032,8 +1033,7 @@ function addAssociateForm(index, type)
                         }
                     });
                 });
-            });
-            
+            });            
         }
     });
     
@@ -1101,6 +1101,8 @@ function makeDefinition()
     clonedCurrentElement.attr("id", "copied_msm_def-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
+    defAssociateDiv.append(dndDiv);
+            
     defTitleContainer.append(defTitleHidden);
     
     overlayMenu.append(overlayButtonDelete);
@@ -1117,7 +1119,6 @@ function makeDefinition()
     clonedCurrentElement.append(defDescriptionLabel);
     clonedCurrentElement.append(defDescriptionField);
     clonedCurrentElement.append(defAssociateDiv);
-    clonedCurrentElement.append(dndDiv);
     
     return clonedCurrentElement;
 }
@@ -1154,7 +1155,8 @@ function makeTheorem()
     var theoremContentField = $('<textarea class="msm_unit_child_content" id="msm_theorem_content_input-'+_index+'-1" name="msm_theorem_content_input-'+_index+'-1"/>');
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-statementtheoremcontent'+_index+'-1"></div>');
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-statementtheoremcontent'+_index+'-1"></div>');
-    var theoremPartWrapper = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"-1'>Drag additional content to here.\n\
+    var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+_index+'-1"></div>');
+    var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"-1'>Drag additional content to here.\n\
                         <p>Valid child Elements: Part of a Theorem</p>\n\
                     </div>");   
             
@@ -1170,7 +1172,9 @@ function makeTheorem()
     clonedCurrentElement.attr("id", "copied_msm_theorem-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
-    //    theoremPartWrapper.append(theoremPartButton);
+    theoremPartWrapper.append(partDndDiv);
+    
+    theoremAssociateDiv.append(dndDiv);
     
     theoremTitleContainer.append(theoremTitleHidden);
     
@@ -1197,7 +1201,6 @@ function makeTheorem()
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
     clonedCurrentElement.append(theoremAssociateDiv);
-    clonedCurrentElement.append(dndDiv);
     
     $("#msm_theorem_content_container-"+_index+"-1").sortable({
         appendTo: "msm_theorem_content_container-"+_index+"-1",
@@ -1276,6 +1279,8 @@ function makeComment()
     clonedCurrentElement.attr("id", "copied_msm_comment-"+_index);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
     
+    commentAssociateDiv.append(dndDiv);
+    
     commentTitleContainer.append(commentTitleHidden);    
    
     overlayMenu.append(overlayButtonDelete);
@@ -1292,7 +1297,6 @@ function makeComment()
     clonedCurrentElement.append(commentDescriptionLabel);
     clonedCurrentElement.append(commentDescriptionField);
     clonedCurrentElement.append(commentAssociateDiv);
-    clonedCurrentElement.append(dndDiv);
     
     return clonedCurrentElement;
 }
