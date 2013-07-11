@@ -167,8 +167,24 @@ class EditorInfo extends EditorElement
             {
                 $this->errorArray[] = 'msm_info_content-' . $idNumber . '_ifr';
             }
+            
+            $refType = '';
+            $intExtFlag = '';
 
-            $refType = $_POST['msm_associate_reftype-' . $idNumber];
+            if(isset($_POST['msm_associate_reftype-' . $idNumber]))
+            {
+                $refType = $_POST['msm_associate_reftype-' . $idNumber];
+            }
+            // to process internal/external references which do not have dropdown menu
+            else // todo: need to add more types
+            {
+               if(isset($_POST["msm_defref_content_input-" . $idNumber]))
+               {
+                   $refType = "Definition";
+               }
+               $intExtFlag = 'intext';
+            }
+            
 
             $idNumberInfo = explode("-", $idNumber);
 
@@ -178,7 +194,7 @@ class EditorInfo extends EditorElement
                 $newId .= $idNumberInfo[$i] . "-";
             }
             $newId .= $idNumberInfo[sizeof($idNumberInfo) - 2];
-            $param = $newId . "|ref";
+            $param = $newId . "|$intExtFlag" . "ref";
 
             switch ($refType)
             {

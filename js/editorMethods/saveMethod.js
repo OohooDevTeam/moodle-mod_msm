@@ -6,7 +6,21 @@
 $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
-        event.preventDefault();       
+        event.preventDefault();   
+        $("#msm_unit_short_title").removeAttr("readonly");
+        $("#msm_unit_description_input").removeAttr("readonly");
+        $(".copied_msm_structural_element select").removeAttr("disabled");
+        $(".copied_msm_structural_element input").removeAttr("disabled");
+        $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+            $(this).removeClass("msm_editor_content");
+            var newdata = document.createElement("textarea");
+            newdata.id = this.id;
+            newdata.name = this.id;
+            newdata.className = this.className;
+        
+            newdata.value = $(this).html();
+            $(this).replaceWith(newdata);                   
+        });
         
         submitForm();            
     });

@@ -879,6 +879,8 @@ function addAssociateForm(index, type)
  
     var typeDropdown;
     
+    console.log("type of parent for this associate? : " + type);
+    
     if((type == 'def')||(type == 'comment'))
     {
         typeDropdown = $('<div class="msm_associate_optionarea"><span class="msm_associate_option_label"> Type of information: </span>\n\

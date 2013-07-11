@@ -35,6 +35,7 @@ class EditorDefinition extends EditorElement
     public $children = array(); //associate
     public $subordinates = array();
     public $medias = array();
+    public $isRef;
 
     // constructor for the class
     public function __construct()
@@ -74,7 +75,31 @@ class EditorDefinition extends EditorElement
                 }
             }
             $this->type = $_POST['msm_defref_type_dropdown-' . $newId];
-            $this->description = $_POST['msm_defref_description_input-' . $newId];
+            if ($idInfo[1] != "ref")
+            {
+                print_object($idInfo[1]);
+                foreach ($_POST as $key => $value)
+                {
+                    $pattern = "msm_defref_description_input-$newId";
+                    if (strpos($key, $pattern))
+                    {
+                        print_object($key);
+                        $this->description = $value;
+                        $newkey = explode("__", $key);
+                        $this->isRef = $newkey[1];
+                        break;
+                    }
+                    else
+                    {
+                        echo "not a match";
+                        print_object($key);
+                    }
+                }
+            }
+            else
+            {
+                $this->description = $_POST['msm_defref_description_input-' . $newId];
+            }
             $this->title = $_POST['msm_defref_title_input-' . $newId];
 
             if ($_POST['msm_defref_content_input-' . $newId] != '')
@@ -165,25 +190,35 @@ class EditorDefinition extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        $data->def_type = $this->type;
-        $data->caption = $this->title;
 
-        $pParser = new DOMDocument();
-        $pParser->loadHTML($this->content);
-        $divs = $pParser->getElementsByTagName("div");
-
-        if ($divs->length > 0)
+        if (!empty($this->isRef))
         {
-            $data->def_content = $this->content;
+            $existingDef = $DB->get_record("msm_compositor", array("id" => $this->isRef));
+            $this->id = $existingDef->unit_id;
         }
         else
         {
-            $data->def_content = "<div>$this->content</div>";
+            $data->def_type = $this->type;
+            $data->caption = $this->title;
+
+            $pParser = new DOMDocument();
+            $pParser->loadHTML($this->content);
+            $divs = $pParser->getElementsByTagName("div");
+
+            if ($divs->length > 0)
+            {
+                $data->def_content = $this->content;
+            }
+            else
+            {
+                $data->def_content = "<div>$this->content</div>";
+            }
+
+            $data->description = $this->description;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
 
-        $data->description = $this->description;
-
-        $this->id = $DB->insert_record($this->tablename, $data);
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;

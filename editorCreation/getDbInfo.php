@@ -144,7 +144,15 @@ foreach ($records as $rec)
     $html .= "<td class='msm_search_result_table_cells'><input type='checkbox' id='msm_search_select-" . $rec->id . "' name='msm_search_select-" . $rec->id . "'/></td>";
     if ($deftableID->tablename == "msm_def")
     {
-        $html .= "<td class='msm_search_result_table_cells'>Definition</td>";
+        if(!empty($rec->def_type))
+        {
+            $html .= "<td class='msm_search_result_table_cells'>$rec->def_type</td>";
+        }
+        else
+        {
+            $html .= "<td class='msm_search_result_table_cells'>Definition</td>";
+        }
+        
     }
     $html .= "<td class='msm_search_result_table_cells'>$rec->caption</td>";
 

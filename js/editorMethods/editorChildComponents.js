@@ -16,7 +16,7 @@ function processAdditionalChild(event, draggedId)
             return false;
         }
         
-        if(draggedId == "msm_associate")
+        if((draggedId == "msm_associate") ||(draggedId == "msm_internal_ref") || (draggedId == "msm_external_ref"))
         {
             if(parentId.match(/def/))
             {
@@ -56,39 +56,33 @@ function processAdditionalChild(event, draggedId)
             return false;
         }
         
-        if((draggedId == "msm_extra_content") || (draggedId == "msm_associate"))
+        if((draggedId == "msm_extra_content") || (draggedId == "msm_associate") ||(draggedId == "msm_internal_ref") || (draggedId == "msm_external_ref"))
         {
             type = "theorem";
         }
     }
     
-    var idEnding = event.target.id.split("-");
-    
+    var idEnding = event.target.id.split("-");  
+    var index = '';
     switch(draggedId)
     {
         case "msm_associate":
             addAssociateForm(idEnding[1], type)
             break;
         case "msm_internal_ref":
-            addAssociateForm(idEnding[1], type);            
-            createRefDialog(idEnding[1], "Internal References");           
+            addAssociateForm(idEnding[1], type); 
+            index = getAssociateIndex(event);
+            createRefDialog(idEnding[1], "Internal References", index);           
             break;
         case "msm_external_ref":
             addAssociateForm(idEnding[1], type);
-            createRefDialog(idEnding[1], "External References");        
+            index = getAssociateIndex(event);
+            createRefDialog(idEnding[1], "External References", index);        
             break;
         case "msm_new_ref":
             addAssociateForm(idEnding[1], type);
+            index = getAssociateIndex(event);
             var associateContainer = event.target.parentElement.id;
-            var refAreaId = $("#"+associateContainer).find(".msm_associate_reftype_optionarea").index(0).attr("id");            
-            var refAreaIdInfo = refAreaId.split("-");
-            
-            var index = refAreaIdInfo[1];
-            for(var i = 2; i < refAreaIdInfo.length; i++)
-            {
-                index += "-" + refAreaIdInfo[i];
-            }
-            
             var selectMenu = "<select name='msm_associate_reftype-//"+index+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index+"' onchange='processReftype(event);'>\n\
                                   <option value='Comment'>Comment</option>\n\
                                   <option value='Definition'>Definition</option>\n\
@@ -113,6 +107,24 @@ function processAdditionalChild(event, draggedId)
 
 }
 
+function getAssociateIndex(e)
+{
+    var associateContainer = e.target.parentElement.id;
+    
+    var refdropareas = $("#"+associateContainer).find(".msm_associate_reftype_optionarea");
+    
+    var refAreaId = refdropareas[0].id;            
+    var refAreaIdInfo = refAreaId.split("-");
+    
+    var index = refAreaIdInfo[1];
+    for(var i = 2; i < refAreaIdInfo.length; i++)
+    {
+        index += "-" + refAreaIdInfo[i];
+    }
+    
+    return index;
+}
+
 function openErrorDialog()
 {
     var message = $("<div id='msm_child_addition_error' title='Wrong child element type'>\n\
@@ -132,7 +144,7 @@ function openErrorDialog()
     });
 }
 
-function createRefDialog(id, refTypeString)
+function createRefDialog(id, refTypeString, currentId)
 {  
     var dialogDiv = $("<div class='msm_ref_search_windows' id='msm_ref_search_window-"+id+"' title='"+refTypeString+"'></div>");
     
@@ -181,7 +193,40 @@ function createRefDialog(id, refTypeString)
         closeOnEscape: false,
         buttons: {
             "Insert" : function() {
-                alert("where selected info would get inserted into current element");
+                var selectedBox =  $("#msm_search_result_table input").filter(":checked");
+                
+                if((typeof selectedBox === "undefined") && (selectedBox == null))
+                {
+                    var message = $("<div id='msm_search_error' title='No results Selected'>\n\
+                                         <p> This is not a valid child type. Please select one of the following search results or click 'Cancel' to exit.</p>\n\
+                                     </div>");
+                    $(message).appendTo("#msm_child_appending_area");
+                    
+                    $( "#msm_search_error" ).dialog({
+                        resizable: false,
+                        height:180,
+                        modal: false,
+                        buttons: {
+                            "Ok": function() {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    var selectedRow = $(selectedBox).closest("tr");                    
+                    var selectedCells = $(selectedRow).find("td");
+                    var selectedCheckbox = $(selectedCells[0]).find("input");
+                    
+                    var selectedId = $(selectedCheckbox[0]).attr("id").split("-");
+                    
+                    addDefRef(selectedCells, currentId, selectedId[1]);
+                    
+                    $(this).dialog("close");
+                }
+            
+            
             },
             "Cancel": function() {
                 $(this).dialog("close");
@@ -254,4 +299,35 @@ function createRefDialog(id, refTypeString)
     });
 
 
+}
+
+function addDefRef(cellArray, index, dbId)
+{
+    var type = $(cellArray[1]).html();
+    var content = $(cellArray[3]).html();
+    var title = $(cellArray[2]).html();
+    var description = $(cellArray[4]).html();
+    
+    var defelement = makeRefDefinition(index);
+    
+    $("#msm_associate_reftype_option-"+index).append(defelement);
+    
+    $("#msm_defref_type_dropdown-"+index).find("option").each(function() {
+        var currentType = $(this).val();
+        
+        if(currentType == type)
+        {                                
+            $(this).attr("selected", "selected");
+        }
+    });
+    
+    $("#msm_defref_title_input-"+index).val(title);
+    $("#msm_defref_description_input-"+index + "__" + dbId).val(description);
+    $("#msm_defref_content_input-"+index).val(content);
+    
+    $("#msm_defref_type_dropdown-"+index).attr("disabled", "disabled");
+    $("#msm_defref_title_input-"+index).attr("disabled", "disabled");
+    $("#msm_defref_description_input-"+index).attr("disabled", "disabled");
+    
+    textArea2Div("msm_defref_content_input-"+index);
 }
