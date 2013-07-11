@@ -110,7 +110,7 @@ function processAdditionalChild(event, draggedId)
             addTheoremPart(event)
             break;
     }
-    
+
 }
 
 function openErrorDialog()
@@ -119,7 +119,7 @@ function openErrorDialog()
                                 <p> This is not a valid child type. Please add acceptable child elements listed in the drop area.</p>\n\
                     </div>");
     $(message).appendTo("#msm_child_appending_area");
-            
+    
     $( "#msm_child_addition_error" ).dialog({
         resizable: false,
         height:180,
@@ -135,7 +135,7 @@ function openErrorDialog()
 function createRefDialog(id, refTypeString)
 {  
     var dialogDiv = $("<div class='msm_ref_search_windows' id='msm_ref_search_window-"+id+"' title='"+refTypeString+"'></div>");
-   
+    
     var accordionMenu = $("<div id='msm_search_accordion-"+id+"'>\n\
                             <h3>Search </h3>\n\
                             <div>\n\
@@ -168,10 +168,10 @@ function createRefDialog(id, refTypeString)
     $("#msm_dnd_container-"+id).append(dialogDiv);
     var wWidth = $(window).width();
     var wHeight = $(window).height();
-                
+    
     var dWidth = wWidth*0.8;
     var dHeight = wHeight*0.8;
-                    
+    
     $("#msm_ref_search_window-"+id).dialog({
         resizable: false,
         modal: true,
@@ -188,29 +188,63 @@ function createRefDialog(id, refTypeString)
             }
         },
         open: function() {
-            $("#msm_search_accordion-"+id).accordion();
+            $("#msm_search_accordion-"+id).accordion({
+                heightStyle: "content"
+            });
         },
         close: function() {
             $(this).empty().remove();
         }
     });
     
-    var msmId = window.location.search.split("=");    
+    var msmId = '';
+    var msmIdInfo = window.location.search.split("=");   
+    var currentmsmId =  msmIdInfo[1];
+    
+    if(refTypeString == "Internal References")
+    {        
+        msmId = msmIdInfo[1];  
+    }
     
     $("#msm_search_submit").click(function() {
         var param = $("#msm_search_form").serializeArray();
-      
+        
         $.ajax({
             type: 'POST',
             url:"editorCreation/getDbInfo.php",
             data: {
                 param: param,
-                msmId: msmId[1]
+                msmId: msmId,
+                current_id: currentmsmId
             },
             success: function(data)
             {
-                var string = JSON.parse(data);               
-                console.log(string);
+                var string = JSON.parse(data);    
+                
+                $("#msm_search_result").empty(); // empty out any previous values
+                $("#msm_search_result").append(string);
+                $("#msm_search_accordion-"+id).accordion("option", "active", 1);
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
+                
+                // only allowing one checkbox to be selected at any given time
+                $("#msm_search_result input").click(function() {
+                    var checked = $(this).attr("checked");
+                    
+                    // when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
+                    if((checked === null) || (typeof checked === "undefined"))
+                    {
+                        $(this).closest("tr").removeClass("ui-widget-header");
+                    }
+                    else
+                    {
+                        // when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
+                        $("#msm_search_result input").filter(":checked").not(this).closest("tr").removeClass("ui-widget-header");
+                        $("#msm_search_result input").filter(":checked").not(this).removeAttr("checked");
+                        
+                        $(this).closest("tr").addClass("ui-widget-header");
+                    }
+                
+                });
             }, 
             erorr: function()
             {
@@ -218,6 +252,6 @@ function createRefDialog(id, refTypeString)
             }
         });
     });
-    
-   
+
+
 }

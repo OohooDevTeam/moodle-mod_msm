@@ -923,3 +923,17 @@ table.mceLayout
     background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top; 
     border-width: 0px 1px 1px 1px; 
 }
+
+#msm_search_result_table
+{
+    border-collapse: separate !important;
+    border-spacing: 2px;
+    border: thin solid #AED0EA;
+}
+
+.msm_search_result_table_cells
+{
+    border-collapse: separate !important;
+    border-spacing: 2px;
+    border: thin solid #AED0EA;
+}
