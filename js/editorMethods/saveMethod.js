@@ -17,9 +17,27 @@ $(document).ready(function(){
             newdata.id = this.id;
             newdata.name = this.id;
             newdata.className = this.className;
+                    
+            $(this).find("span.matheditor").each(function() {
+                var newspan = document.createElement("span");
+                newspan.className = "matheditor";
+    
+                var scriptChild = $(this).find("script");
         
+                var scriptWithMath = scriptChild[scriptChild.length-1];
+                var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+                $(newspan).append(mathContent);
+                
+                console.log("new span that will replace mathjax code");
+                console.log($(newspan));
+                $(this).replaceWith(newspan);
+            });
+            
             newdata.value = $(this).html();
-            $(this).replaceWith(newdata);                   
+            console.log("new content");
+            
+            $(this).replaceWith(newdata);   
+            console.log($(this));
         });
         
         submitForm();            

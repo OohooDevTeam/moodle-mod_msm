@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Loading and storing for answer.exercise.block element
@@ -22,6 +22,8 @@
 class AnswerExercise extends Element
 {
 
+    public $id;                             // database ID of current answer.exercise element in msm_answer_exercise
+    public $compid;                         // database ID of current answer.exercise element in msm_compositor
     public $position;                       // integer that keeps track of order if elements
     public $caption;                        // title assocaited with the answer.exercise.block elements
     public $content = array();              // contents assocaited with the answer.exercise.block elements
@@ -36,6 +38,7 @@ class AnswerExercise extends Element
      * 
      * @param string $xmlpath    filepath to the parent dierectory of this XML file being parsed
      */
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -53,7 +56,7 @@ class AnswerExercise extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));        
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
         $bodys = $DomElement->getElementsByTagName('answer.exercise.block.body');
         foreach ($bodys as $b)
@@ -87,19 +90,19 @@ class AnswerExercise extends Element
                 $this->medias[] = $media;
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
      * This method saves the extracted information from the XML files of answer.exercise.block element into
      * msm_answer_exercise database table.  It calls saveInfoDb method for Subordinate, Media, Table,
      * and MathIndex classes.
-    * 
-    * @global moodle_databse $DB
-    * @param int $position              integer that keeps track of order if elements
-    * @param int $msmid                 MSM instance ID
-    * @param int $parentid              ID of the parent element from msm_compositor
-    * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -112,7 +115,7 @@ class AnswerExercise extends Element
             foreach ($this->content as $content)
             {
                 $data->answer_exercise_content = $content;
-                $this->id = $DB->insert_record($this->tablename, $data);                
+                $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
             }
         }

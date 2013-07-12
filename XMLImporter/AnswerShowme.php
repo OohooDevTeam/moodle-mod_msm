@@ -4,15 +4,15 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
  * This class represents al the answer.showme XML elements in the legacy document
@@ -25,6 +25,8 @@
 class AnswerShowme extends Element
 {
 
+    public $id;                             // database ID of current answer.showme element in msm_answer_showme
+    public $compid;                         // database ID of current answer.showme element in msm_compositor
     public $position;                       // integer that keeps track of order if elements
     public $type;                           // type of the answer.showme element
     public $content = array();              // content associated with the answer.showme (in answer.showme.block) elements
@@ -39,7 +41,7 @@ class AnswerShowme extends Element
     /**
      * constructor for the instace of this class
      * 
-     * @param type $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
 
     function __construct($xmlpath = '')

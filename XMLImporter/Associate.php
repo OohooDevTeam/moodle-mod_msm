@@ -4,44 +4,63 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
- * Description of Associate
+ * This class represents al the associate XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by Definition/Theorem/Comment classes.
+ * Associate class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Associate extends Element
 {
-    public $position;
 
+    public $id;                             // database ID of current associate element in msm_associate
+    public $compid;                         // database ID of current associate element in msm_compositor
+    public $position;                       // integer that keeps track of order if elements
+    public $description;                    // description associated with this element
+    public $infos = array();                // MathInfo objects that are linked to this associate element as a reference material
+    public $comments = array();             // MathComment objects that are linked to this associate element as a reference material
+    public $subunits = array();             // Unit objects that are linked to this associate element as a reference material
+    public $defs = array();                 // Definition objects that are linked to this associate element as a reference material
+    public $theorems = array();             // Theorem objects that are linked to this associate element as a reference material
+    public $refs = array();                 // Pack objects that are linked to this associate element as a reference material
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
         $this->tablename = 'msm_associate';
     }
 
+    /**
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (associate element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        associate elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Associate
+     */
     public function loadFromXml($DomElement, $position = '')
     {
-        global $DB;
-
         $this->position = $position;
         $this->description = $DomElement->getAttribute('type');
-
-        $this->infos = array();
-        $this->comments = array();
-        $this->subunits = array();
-        $this->defs = array();
-        $this->theorems = array();
-        $this->refs = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -52,6 +71,7 @@ class Associate extends Element
 
                 switch ($name)
                 {
+                    // asociates can have reference materials as child elements
                     case('comment.ref'):
                         $commentrefID = $child->getAttribute('commentID');
 
@@ -243,9 +263,19 @@ class Associate extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of associate element into
+     * msm_associate database table.  It calls saveInfoDb method for MathInfo, Defintion, Theorem, Comment, Unit and Pack classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -332,13 +362,14 @@ class Associate extends Element
 
                 case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
                     $commentString = explode('-', $element);
+                    $commentRecord = null;
                     if (!empty($this->comments[$commentString[1]]->string_id))
                     {
-                        $commentID = $this->checkForRecord($msmid, $this->comments[$commentString[1]]);
+                        $commentRecord = $this->checkForRecord($msmid, $this->comments[$commentString[1]]);
                     }
                     else
                     {
-                        $commentID = $this->checkForRecord($msmid, $this->comments[$commentString[1]], 'caption');
+                        $commentRecord = $this->checkForRecord($msmid, $this->comments[$commentString[1]], 'caption');
                     }
 
                     if (empty($commentID))
@@ -409,16 +440,17 @@ class Associate extends Element
 
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = explode('-', $element);
+                    $defRecord = null;
                     if (!empty($this->defs[$defString[1]]->string_id))
                     {
-                        $defID = $this->checkForRecord($msmid, $this->defs[$defString[1]]);
+                        $defRecord = $this->checkForRecord($msmid, $this->defs[$defString[1]]);
                     }
                     else
                     {
-                        $defID = $this->checkForRecord($msmid, $this->defs[$defString[1]], 'caption');
+                        $defRecord = $this->checkForRecord($msmid, $this->defs[$defString[1]], 'caption');
                     }
 
-                    if (empty($defID))
+                    if (empty($defRecord))
                     {
                         if (empty($sibling_id))
                         {
@@ -522,6 +554,16 @@ class Associate extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the associate element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from MathInfo, Defintion, Theorem, Comment, Unit and Pack
+     * classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                   ID of the current associate element from msm_associate
+     * @param int $compid               ID of the current associate element from msm_compositor
+     * @return \Associate
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -586,6 +628,14 @@ class Associate extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in MathInfo, Defintion, Theorem, Comment, Unit and Pack classes to
+     * display the data from thoses classes.
+     * 
+     * @global moodle_database $DB
+     * @return string
+     */
     function displayhtml()
     {
         global $DB;
@@ -598,6 +648,7 @@ class Associate extends Element
 
         $associateParentTablename = $DB->get_record('msm_table_collection', array('id' => $associateParenttable))->tablename;
 
+        // Definition/Theorem and Comment linked to associates needs to be processed differently due to them having different views in display
         if ($associateParentTablename == 'msm_def')
         {
             if ($this->description != 'Quiz')

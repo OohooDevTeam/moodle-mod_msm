@@ -53,7 +53,7 @@ abstract class EditorElement
         $doc = new DOMDocument();
         $content = $this->processMath($oldContent);
         @$doc->loadXML($content);
-        
+
         $rootElement = $doc->getElementsByTagName('div')->item(0);
 
         $newContent = array();
@@ -171,12 +171,12 @@ abstract class EditorElement
         // <nobr> tags from mathjax code caues error in loadXML function
         $content = str_replace("<nobr>", '', $content);
         $content = str_replace("</nobr>", '', $content);
-        $content = preg_replace("/\&nbsp;/", ' ', $content);
-        
+        $content = preg_replace("/\&nbsp;/", ' ', $content);        
+
         //htmlParseEntityRef: no name in Entity warning is thrown?     
         // changed to loadXML due to encoding issue --> loadHTML doesn't read &nbsp; properly
         @$parser->loadXML($content);
-         $divs = $parser->getElementsByTagName("div");
+        $divs = $parser->getElementsByTagName("div");
 
         if ($divs->length > 0)
         {
@@ -184,7 +184,7 @@ abstract class EditorElement
         }
         else
         {
-             $content = "<div>$content</div>";
+            $content = "<div>$content</div>";
         }
         @$parser->loadXML($content);
 
@@ -209,15 +209,15 @@ abstract class EditorElement
                     else if ($child->nodeType == XML_ELEMENT_NODE)
                     {
                         if ($child->tagName == "script")
-                        {                            
+                        {
                             $textNode = $child->textContent;
-                                    
+
                             $newSpan = $parser->createElement("span");
                             $newSpan->setAttribute("class", "matheditor");
-                            
+
                             $newTextNode = $parser->createTextNode("\($textNode\)");
                             $newSpan->appendChild($newTextNode);
-                            
+
                             $s->parentNode->replaceChild($newSpan, $s);
                         }
                     }
@@ -226,6 +226,7 @@ abstract class EditorElement
         }
         return $parser->saveXML($parser->importNode($parser->getElementsByTagName("div")->item(0)));
     }
+
 }
 
 ?>

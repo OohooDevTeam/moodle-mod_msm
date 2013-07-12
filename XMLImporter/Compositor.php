@@ -3,32 +3,37 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 require_once("Element.php");
 require_once("Person.php");
 require_once("Unit.php");
 
 /**
- * Description of Compositor
+ * This class is the only class that does not inherit from the Element abstract class.
+ * Compositor class is responsible for keeping the structure specified by the XML files
+ * when retriveing data from database and displaying the result.  It creates a stack
+ * that contains all the Unit objects in order which contains information about its child
+ * elements.  Then the stack is used to display prev and next slides in view.php by popping
+ * and pushing elements from and into the stack.  The values in these stacks are stored in 
+ * hidden input field in view.php.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Compositor
 {
+    public $unit;                   // Unit objects that are associated with this composition
 
-    public $unit;
-
-//    public $displayunits = array();
-//    public $theorem;
-
+    /**
+     * constructor for this class
+     */
     function __construct()
     {
         $this->tablename = "msm_compositor";
@@ -45,9 +50,7 @@ class Compositor
     function makeStack($DomElement)
     {
         global $DB;
-
-        // stack that will have all the unit records in order given by the compositor table
-//        $this->childs = array();
+        
         $childs = array();
 
         array_push($childs, $DomElement);
@@ -72,6 +75,19 @@ class Compositor
         return $childs;
     }
 
+    /**
+     * This method is called by an AJAX call in jquery.jshowoff.js whenever the user triggers either the prev or the next button 
+     * in the slideshow plugin.  It takes the values in hidden input fields representing previous/next/current units to navigate through the 
+     * strcuture given by the XML file.  This method calls loadFromDb and displayhtml functions from Unit class which starts the process of
+     * displaying the composition.
+     * 
+     * @global moodle_database $DB
+     * @param string $previousString            hidden input values representing previous units (eg. compid/unitid, compid/unitid...etc format)
+     * @param string $nextString                hidden input values representing units that come after current unit in same format as above
+     * @param string $current                   hidden input value that has database ID in msm_compositor and database ID in msm_unit of current unit
+     * @param string $functionString            hidden input value that specifies the action user chose in slideshow plugin (eg. previous/ next triggered);
+     * @return string                           HTML code that is used to view current unit data and associated child elements
+     */
     function loadAndDisplay($previousString, $nextString, $current, $functionString)
     {
         global $DB;

@@ -4,15 +4,15 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 require_once("Subordinate.php");
 require_once("Media.php");
 require_once("MathImg.php");
@@ -78,12 +78,13 @@ abstract class Element
     function checkForRecord($msm_id, $DomElement, $propertyName = '')
     {
         global $DB;
+
         $foundIDs = null;
 
         $currentElementTable = $DB->get_record("msm_table_collection", array("tablename" => $DomElement->tablename));
 
-        $compRecords = $DB->get_records("msm_compositor", array("msm_id" => $msm_id, "table_id" => $currentElementTable->id), "unit_id");
-
+        $compRecords = $DB->get_records("msm_compositor", array("msm_id" => $msm_id, "table_id" => $currentElementTable->id));
+        
         foreach ($compRecords as $compRec)
         {
             $unitRecord = $DB->get_record($DomElement->tablename, array("id" => $compRec->unit_id));
@@ -114,7 +115,8 @@ abstract class Element
                 }
             }
         }
-        return false;
+        
+        return $foundIDs;
 
 //
 //        // $propertyName is defined
@@ -528,7 +530,7 @@ abstract class Element
         $doc->preserveWhiteSpace = FALSE;
         $element = $doc->importNode($DomElement, true);
         $content[] = $doc->saveXML($element);
-        
+
         $resultcontent = array();
 
         foreach ($content as $key => $string)
@@ -543,14 +545,14 @@ abstract class Element
             $string = preg_replace('/\s*<para.body(.*?)>/', '', $string);
 //            $string = str_replace('<para.body', '<span', $string);
             $string = preg_replace('/<\/para.body>\s*/', '', $string);
-            
+
             // for some reason when trying to remove spaces surrounding para tags, it causes an error in proofBlock content save part.
             // so just removed the whitespaces surrounding the para.body tag before converting the para to p
             $string = str_replace("<para", "<p", $string);
             $string = str_replace("</para>", "</p>", $string);
             $string = preg_replace('/align="(left|center|right)"/', 'style="text-align:$1;"', $string);
             $string = preg_replace('/\s*xmlns="([A-Za-z]+)"/', '', $string);
-            
+
             $string = preg_replace('/<p[^>]*>(\s|&nbsp;?)*<\/p>/', '', $string);
 
             $string = preg_replace('/type="([a-zA-Z-]+)"/', 'style="list-style-type:$1;"', $string);
@@ -561,7 +563,7 @@ abstract class Element
 
             $string = str_replace('<emphasis', '<em', $string);
             $string = str_replace('</emphasis>', '</em>', $string);
-            
+
             $string = preg_replace('/<hot(.*?)>/', ' <a$1>', $string);
             $string = preg_replace('/<\/hot>/', '</a> ', $string);
 
@@ -1001,6 +1003,10 @@ abstract class Element
     }
 
     /**
+     * This function processes content of objects passed by parameter to view properly.
+     * It replaces all anchored elements' id with hottag-# so that jQuery dialog can be 
+     * activated by hover on the anchored element.  It also replaces the img element with properly
+     * formatted src value and also replace math.array with table element to display properly.
      * 
      * @param Object $object
      * @param String $XMLcontent
@@ -1008,7 +1014,6 @@ abstract class Element
      */
     function displayContent($object, $XMLcontent, $isindex = false)
     {
-        global $DB;
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = false;

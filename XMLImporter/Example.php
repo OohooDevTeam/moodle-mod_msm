@@ -4,26 +4,44 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
- * Description of Example
+ * This class represents al the example XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Pack class.
+ * Example class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Example extends Element
 {
 
+    public $id;
+    public $compid;
     public $position;
     public $string_id;
+    public $caption;
+    public $textcaption;
+    public $description;
+    public $statement_examples = array();
+    public $subordinates = array();
+    public $indexauthors = array();
+    public $indexglossarys = array();
+    public $indexsymbols = array();
+    public $medias = array();
+    public $tables = array();
+    public $part_examples = array();
+    public $answers = array();
+    public $answer_exts = array();
 
     function __construct($xmlpath = '')
     {
@@ -47,15 +65,6 @@ class Example extends Element
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
 
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
-
-        $this->statement_examples = array();
-
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
 
         $statement_examples = $DomElement->getElementsByTagName('statement.example');
 
@@ -98,8 +107,6 @@ class Example extends Element
 
         $part_examples = $DomElement->getElementsByTagName('part.example');
 
-        $this->part_examples = array();
-
         foreach ($part_examples as $part_ex)
         {
             $position = $position + 1;
@@ -109,7 +116,6 @@ class Example extends Element
         }
 
         $answers = $DomElement->getElementsByTagName('answer');
-        $this->answers = array();
 
         foreach ($answers as $a)
         {
@@ -120,7 +126,6 @@ class Example extends Element
         }
 
         $answerexts = $DomElement->getElementsByTagName('answer.ext');
-        $this->answer_exts = array();
 
         foreach ($answerexts as $ax)
         {

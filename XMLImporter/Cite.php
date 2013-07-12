@@ -1,28 +1,42 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of Cite
+ * This class represents al the cite XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by ImgArea, and Subordinate classes.
+ * Cite class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Cite extends Element
 {
 
-    public $position;
+    public $id;                      // database ID of current cite element in msm_cite
+    public $compid;                  // database ID of current cite element in msm_compositor
+    public $position;                // integer that keeps track of order if elements
+    public $cite_label;              // label that is associated with this cite element
+    public $caption;                 // title that is associated with this cite element
+    public $items = array();         // Item objects that are assocaited with this cite element
+
+    /**
+     * constructor for this class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -31,9 +45,13 @@ class Cite extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (cite element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param moodle_database $DomElement           cite element
+     * @param int $position                         integer that keeps track of order if elements
+     * @return \Cite
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -42,7 +60,6 @@ class Cite extends Element
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
         $items = $DomElement->getElementsByTagName('item');
-        $this->items = array();
         foreach ($items as $i)
         {
             $position = $position + 1;
@@ -50,13 +67,18 @@ class Cite extends Element
             $item->loadFromXml($i, $position);
             $this->items[] = $item;
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
+     * This method saves the extracted information from the XML files of cite element into
+     * msm_cite database table.  It calls saveInfoDb method for Item class.
+     * 
      * @global moodle_database $DB
-     * @param int $position 
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {

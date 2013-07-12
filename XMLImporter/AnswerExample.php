@@ -4,15 +4,15 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
  * This class represents al the answer.example XML elements in the legacy document
@@ -25,6 +25,8 @@
 class AnswerExample extends Element
 {
 
+    public $id;                             // database ID of current answer element in msm_answer
+    public $compid;                         // database ID of current answer element in msm_compositor
     public $position;                       // integer that keeps track of order if elements
     public $caption;                        // title associated with answer element
     public $answer_type;                    // type associated with answer element (eg. solution)
@@ -42,8 +44,9 @@ class AnswerExample extends Element
     /**
      * constructor for the instace of this class
      * 
-     * @param type $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -127,17 +130,17 @@ class AnswerExample extends Element
         return $this;
     }
 
-   /**
-    * This method saves the extracted information from the XML files of answer element into
+    /**
+     * This method saves the extracted information from the XML files of answer element into
      * msm_answer database table.  It calls saveInfoDb method for Subordinate, Media, Table,
      * and MathIndex classes.
-    * 
-    * @global moodle_databse $DB
-    * @param int $position              integer that keeps track of order if elements
-    * @param int $msmid                 MSM instance ID
-    * @param int $parentid              ID of the parent element from msm_compositor
-    * @param int $siblingid             ID of the previous sibling element from msm_compositor
-    */
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;

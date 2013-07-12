@@ -113,7 +113,7 @@ function getAssociateIndex(e)
     
     var refdropareas = $("#"+associateContainer).find(".msm_associate_reftype_optionarea");
     
-    var refAreaId = refdropareas[0].id;            
+    var refAreaId = refdropareas[refdropareas.length-1].id;            
     var refAreaIdInfo = refAreaId.split("-");
     
     var index = refAreaIdInfo[1];
@@ -194,11 +194,11 @@ function createRefDialog(id, refTypeString, currentId)
         buttons: {
             "Insert" : function() {
                 var selectedBox =  $("#msm_search_result_table input").filter(":checked");
-                
-                if((typeof selectedBox === "undefined") && (selectedBox == null))
+              
+                if(selectedBox.length == 0)
                 {
                     var message = $("<div id='msm_search_error' title='No results Selected'>\n\
-                                         <p> This is not a valid child type. Please select one of the following search results or click 'Cancel' to exit.</p>\n\
+                                         <p> No reference material was selected.  Please select one of the following search results or click 'Cancel' to exit.</p>\n\
                                      </div>");
                     $(message).appendTo("#msm_child_appending_area");
                     
@@ -213,10 +213,10 @@ function createRefDialog(id, refTypeString, currentId)
                         }
                     });
                 }
-                else
+                else if(selectedBox.length > 0)
                 {
                     var selectedRow = $(selectedBox).closest("tr");                    
-                    var selectedCells = $(selectedRow).find("td");
+                    var selectedCells = $(selectedRow).find(".msm_search_result_table_cells");
                     var selectedCheckbox = $(selectedCells[0]).find("input");
                     
                     var selectedId = $(selectedCheckbox[0]).attr("id").split("-");
@@ -308,7 +308,7 @@ function addDefRef(cellArray, index, dbId)
     var title = $(cellArray[2]).html();
     var description = $(cellArray[4]).html();
     
-    var defelement = makeRefDefinition(index);
+    var defelement = makeRefDefinition(index, dbId);
     
     $("#msm_associate_reftype_option-"+index).append(defelement);
     
@@ -322,12 +322,16 @@ function addDefRef(cellArray, index, dbId)
     });
     
     $("#msm_defref_title_input-"+index).val(title);
-    $("#msm_defref_description_input-"+index + "__" + dbId).val(description);
+    $("#msm_defref_description_input-"+index).val(description);
+//    $("#msm_defref_description_input-"+index).attr("id", "msm_defref_description_input-"+index + "__" + dbId);
     $("#msm_defref_content_input-"+index).val(content);
     
     $("#msm_defref_type_dropdown-"+index).attr("disabled", "disabled");
     $("#msm_defref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_defref_description_input-"+index).attr("disabled", "disabled");
+    
+//    console.log($("#msm_defref_description_input-"+index));
+//    console.log($("#msm_defref_description_input-"+index + "__" + dbId));
     
     textArea2Div("msm_defref_content_input-"+index);
 }

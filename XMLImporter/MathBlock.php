@@ -173,7 +173,7 @@ class Block extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
@@ -285,9 +285,10 @@ class Block extends Element
             {
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = explode('-', $element);
-
                     if (is_object($this->defs[$defString[1]]))
                     {
+                        $defRecord = null;
+
                         if (!empty($this->defs[$defString[1]]->string_id))
                         {
                             $defRecord = $this->checkForRecord($msmid, $this->defs[$defString[1]]);
@@ -397,6 +398,7 @@ class Block extends Element
 
                     if (is_object($this->comments[$commentString[1]]))
                     {
+                        $commentRecord = null;
                         if (!empty($this->comments[$commentString[1]]->string_id))
                         {
                             $commentRecord = $this->checkForRecord($msmid, $this->comments[$commentString[1]]);
@@ -690,7 +692,7 @@ class Block extends Element
                 $content .= "<div style='text-align:center;'><h3>$this->title</h3></div>";
             }
         }
-        
+
 //        print_object($this->childs);
 
         foreach ($this->childs as $child)

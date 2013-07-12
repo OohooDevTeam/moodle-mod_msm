@@ -4,15 +4,15 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
  * This class represents al the answer.ext XML elements in the legacy document
@@ -25,6 +25,8 @@
 class AnswerExt extends Element
 {
 
+    public $id;                             // database ID of current answer.ext element in msm_ext
+    public $compid;                         // database ID of current answer.ext element in msm_compositor
     public $position;                   // integer that keeps track of order if elements
     public $type;                       // type associated with answer.ext element (eg. solution)
     public $version;                    // version associated with answer.ext element

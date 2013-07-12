@@ -4,44 +4,51 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
- * Description of Definition
+ * This class represents all the def XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Block/Associate/Companion/Crossref/Unit/MathCell/Subordinate/MathIndex classes.
+ * Definition class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Definition extends Element
 {
-    public $id;
-    public $compid;
-    public $position;
-    public $def_contents = array();
-    public $caption;
-    public $string_id;
-    public $type;
-    public $description;
-    public $medias = array();
-    public $associates = array();
-    public $subordinates = array();
-    public $indexauthors = array();
-    public $indexglossarys = array();
-    public $indexsymbols = array();
-    public $tables = array();
-    public $matharrays = array();
+
+    public $id;                                 // database ID of current def element in msm_def
+    public $compid;                             // database ID of current def element in msm_compositor
+    public $position;                           // integer that keeps track of order if elements
+    public $caption;                            // title associated with this def element
+    public $string_id;                          // unique string ID attached to this def element
+                                                // (int in new XML material but in legacy material, it's a string value)
+    public $type;                               // type of definition (eg. Notation, Definition...etc)
+    public $description;                        // description associated with this def to allow to be searched 
+    public $def_contents = array();             // contents of this def element
+    public $medias = array();                   // Media objects associated with the def element's contents
+    public $associates = array();               // Associate objects associated with the def element
+    public $subordinates = array();             // Subordinate objects associated with the def element's contents
+    public $indexauthors = array();             // MathIndex objects representing authors in def element's contents
+    public $indexglossarys = array();           // MathIndex objects representing glossarys in def element's contents
+    public $indexsymbols = array();             // MathIndex objects representing symbols in def element's contents
+    public $tables = array();                   // Table objects in def element's contents
+    public $matharrays = array();               // MathArray objects in def element's contents
 
     /**
-     *
-     * @param String $xmlpath 
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -49,9 +56,13 @@ class Definition extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (def element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        def elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Definition
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -117,13 +128,18 @@ class Definition extends Element
                 $this->def_contents[] = $content;
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of def element into
+     * msm_def database table.  It calls saveInfoDb method for Associate/Subordinate/Table/MathIndex/Media/MathArray classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -145,6 +161,7 @@ class Definition extends Element
 
         if (!empty($this->def_contents))
         {
+            // need to wrap all the content elements in div to have one root element
             foreach ($this->def_contents as $content)
             {
                 $paracontent = '';
@@ -362,6 +379,8 @@ class Definition extends Element
             }
         }
 
+        // if there are media elements in the definition content, need to change the src to 
+        // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {
             foreach ($ids as $key => $id)
@@ -390,6 +409,17 @@ class Definition extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the def element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Associate, Subordinate,
+     * Media, MathArray and Table classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current def element in msm_def table
+     * @param int $compid                   database ID of the current def element in msm_compositor table
+     * @param bool $indexref                flag to indicate that the MathIndex object called this function
+     * @return \Definition
+     */
     function loadFromDb($id, $compid, $indexref = false)
     {
         global $DB;
@@ -404,16 +434,10 @@ class Definition extends Element
             $this->caption = $defRecord->caption;
             $this->def_content = $defRecord->def_content;
         }
-
-        $this->associates = array();
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
-        $this->childs = array();
-
+        
         $childElements = $DB->get_records('msm_compositor', array('msm_id' => $defCompRecord->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
 
+        // @todo there definitely is a better way to code this!
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -453,7 +477,7 @@ class Definition extends Element
                         break;
                 }
             }
-            else
+            else // definitions associated with MathIndex does not have Associate objects linked to it
             {
                 switch ($childtablename)
                 {
@@ -487,6 +511,14 @@ class Definition extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in Associate, Subordinate, Media, MathArray and Table classes to
+     * display the data from these classes.
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($isindex = false)
     {
         $content = '';

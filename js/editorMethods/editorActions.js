@@ -97,7 +97,7 @@ function processReftype(e)
    
 }
 
-function makeRefDefinition(idindex)
+function makeRefDefinition(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
     
@@ -116,7 +116,17 @@ function makeRefDefinition(idindex)
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-defrefcontent'+idindex+'"></div>');
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-defrefcontent'+idindex+'"></div>');
     var defDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_defref_description_label-"+idindex+"' for='msm_defref_description_input-"+idindex+"'>Description: </label>");
-    var defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+idindex+"' name='msm_defref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
+  
+    var defDescriptionField = null;
+  
+    if(dbId != '')
+    {
+        defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+idindex+"' name='msm_defref_description_input-"+idindex+"__"+dbId+"' placeholder='Insert description to search this element in future. '/>");
+    }
+    else
+    {
+        defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+idindex+"' name='msm_defref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
+    }
                
     clonedCurrentElement.attr("id", "copied_msm_defref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -238,10 +248,10 @@ function deleteRefElement(e)
             "Yes": function() {
                 $('#'+currentElement).empty().remove();
                 
-//                if($('#msm_associate_reftype_option-'+currentElementInfo[1]+"-"+currentElementInfo[2]).children().length < 1)
-//                {
-//                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
-//                }
+                //                if($('#msm_associate_reftype_option-'+currentElementInfo[1]+"-"+currentElementInfo[2]).children().length < 1)
+                //                {
+                //                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
+                //                }
                 
                 $( this ).dialog( "close" );
             },
@@ -285,10 +295,10 @@ function addrefTheoremContent(event)
    
     var param = idNumber+"-"+newId;
    
-   var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+"-"+newId+"'>Drag additional content to here.\n\
+    var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+"-"+newId+"'>Drag additional content to here.\n\
                         <p>Valid child Elements: Part of a Theorem</p>\n\
                     </div>"); 
-//    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
+    //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+idNumber+'-'+newId+'"></div>');
             
     theoremPartWrapper.append(partDndDiv);

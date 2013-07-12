@@ -1,47 +1,59 @@
 <?php
-
 /**
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
- * Description of Crossref
+ * This class represents al the crossref XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by ImgArea/Subordinate classes.
+ * Crossref class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Crossref extends Element
 {
+    public $position;                       // integer that keeps track of order if elements
+    public $comments = array();             // MathComment objects associated with current companion element as reference materials
+    public $defs = array();                 // Definition objects associated with current companion element as reference materials
+    public $theorems = array();             // Theorem objects associated with current companion element as reference materials
+    public $packs = array();                // Pack objects associated with current companion element as reference materials
+    public $subunits = array();             // Unit objects associated with current companion element as reference materials
+    public $infos = array();                // MathInfo objects associated with current companion element
 
-    public $position;
-
+    /**
+     * constructor for this class
+     * 
+     * @param string $xmlpath               filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
     }
 
+    /**
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (crossref element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement                    crossref element
+     * @param int $position                             integer that keeps track of order if elements
+     * @return \Crossref
+     */
     function loadFromXml($DomElement, $position = '')
     {
-        global $DB;
-
         $this->position = $position;
-
-        $this->comments = array();
-        $this->defs = array();
-        $this->theorems = array();
-        $this->packs = array();
-        $this->subunits = array();
-        $this->compositions = array();
-        $this->infos = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -273,6 +285,16 @@ class Crossref extends Element
          return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of crossref element and its associated child elements into
+     * their respective database tables.  It calls saveInfoDb method for MathInfo, Defintion, Theorem, Comment, Unit and Pack classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -396,6 +418,7 @@ class Crossref extends Element
 
                 case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
                     $commentString = explode('-', $element);
+                    $commentRecord = null;
                     if (!empty($this->comments[$commentString[1]]->string_id))
                     {
                         $commentRecord = $this->checkForRecord($msmid, $this->comments[$commentString[1]]);
@@ -438,6 +461,7 @@ class Crossref extends Element
 
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = explode('-', $element);
+                    $defRecord = null;
                     if (!empty($this->defs[$defString[1]]->string_id))
                     {
                         $defRecord = $this->checkForRecord($msmid, $this->defs[$defString[1]]);
