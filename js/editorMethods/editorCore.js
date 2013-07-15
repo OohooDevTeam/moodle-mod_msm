@@ -866,7 +866,17 @@ function addTheoremPart(event)
 function addAssociateForm(index, type)
 {
     var newId = 1;
-        
+    
+//    var parentElement = $("#msm_dnd_container-"+index).closest(".copied_msm_structural_element");
+//    console.log(parentElement);
+//    
+//    var editorContents = $("#msm_dnd_container-"+index).closest(".copied_msm_structural_element").find(".msm_editor_content");
+//    
+//    if(editorContents.length > 0)
+//        {
+//            editUnit($(parentElement).attr("id"));
+//        }
+    
     if($("#msm_associate_container-"+index).children("div").length > 0)
     {
         while(document.getElementById('msm_associate_childs-'+index+'-'+newId) != null)
@@ -980,6 +990,7 @@ function addAssociateForm(index, type)
         handle: ".msm_associate_info_headers",
         start: function(event,ui)
         {
+            console.log("associate start drag");
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
             $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
             $(".msm_sortable_placeholder").css("background-color","#DC143C");

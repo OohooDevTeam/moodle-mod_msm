@@ -15,7 +15,7 @@
  * ************************************************************************* */
 
 /**
- * This class represents al the answer.example XML elements in the legacy document
+ * This class represents all the answer.example XML elements in the legacy document
  * (ie. files in the newXML) and it is called by Example class.
  * AnswerExample class inherits from the abstract class Element and for all the methods
  * inherited, read documents for Element class.
@@ -27,7 +27,7 @@ class AnswerExample extends Element
 
     public $id;                             // database ID of current answer element in msm_answer
     public $compid;                         // database ID of current answer element in msm_compositor
-    public $position;                       // integer that keeps track of order if elements
+    public $position;                       // integer that keeps track of order of elements
     public $caption;                        // title associated with answer element
     public $answer_type;                    // type associated with answer element (eg. solution)
     public $answer_version;                 // version associated with answer element

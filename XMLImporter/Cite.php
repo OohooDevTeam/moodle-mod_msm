@@ -27,7 +27,7 @@ class Cite extends Element
 
     public $id;                      // database ID of current cite element in msm_cite
     public $compid;                  // database ID of current cite element in msm_compositor
-    public $position;                // integer that keeps track of order if elements
+    public $position;                // integer that keeps track of order of elements
     public $cite_label;              // label that is associated with this cite element
     public $caption;                 // title that is associated with this cite element
     public $items = array();         // Item objects that are assocaited with this cite element

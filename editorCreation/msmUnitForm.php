@@ -289,15 +289,17 @@ else
 
             $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
 
-            $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid));
+            $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid, "msm_id" => $msmId));
 
             foreach ($oldUnitChildRecords as $oldchild)
             {
                 $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
 
+                // first condition: to prevent from deleting the unit when it is editted
+                // second condition: to prevent from deleting reference materials from other compoitions from being deleted
                 if ($oldchild->table_id != $unittableid)
                 {
-                    deleteOldChildRecord($oldchild->id);
+                    deleteOldChildRecord($oldchild->id, $msmId);
                 }
                 else
                 {
@@ -408,17 +410,39 @@ else
  * @global moodle_datbase $DB
  * @param integer $compid
  */
-function deleteOldChildRecord($compid)
+function deleteOldChildRecord($compid, $msm_id)
 {
     global $DB;
 
     if ($compid != 0)
     {
+        $compRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+        $compTableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
         $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
 
         foreach ($childElements as $child)
         {
-            deleteOldChildRecord($child->id);
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+            // reference materials
+            if ((($compTableRecord->tablename == "msm_associate") || ($compTableRecord->tablename == "msm_subordinate")) && ($childTable->tablename != "msm_info"))
+            {
+                $sql = "SELECT * FROM mdl_msm_compositor WHERE msm_id<>$msm_id AND table_id=$child->table_id AND unit_id=$child->unit_id";
+                $records = $DB->get_records_sql($sql);
+
+                if (!empty($records))
+                {
+                    $DB->delete_records("msm_compositor", array("id" => $child->id));
+                    continue;
+                }
+                else
+                {
+                    deleteOldChildRecord($child->id, $msm_id);
+                }
+            }
+            else
+            {
+                deleteOldChildRecord($child->id, $msm_id);
+            }
         }
 
         $childRecord = $DB->get_record("msm_compositor", array('id' => $compid));

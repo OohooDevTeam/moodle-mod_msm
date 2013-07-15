@@ -167,25 +167,33 @@ class EditorInfo extends EditorElement
             {
                 $this->errorArray[] = 'msm_info_content-' . $idNumber . '_ifr';
             }
-            
+
             $refType = '';
             $intExtFlag = '';
 
-            if(isset($_POST['msm_associate_reftype-' . $idNumber]))
+            if (isset($_POST['msm_associate_reftype-' . $idNumber]))
             {
                 $refType = $_POST['msm_associate_reftype-' . $idNumber];
             }
             // to process internal/external references which do not have dropdown menu
             else // todo: need to add more types
             {
-               if(isset($_POST["msm_defref_content_input-" . $idNumber]))
-               {
-                   $refType = "Definition";
-               }
-               $intExtFlag = 'intext';
+                // only put the intext flag when ref material is being saved the first time...if it is editted then no need to skip the inser to db process
+                foreach ($_POST as $key => $value) 
+                {
+                    if (strpos($key, "msm_defref_description_input") !== false)
+                    {
+                        $refType = "Definition";
+                        $descrInfo = explode("__", $key);
+                        if (sizeof($descrInfo) > 1)
+                        {
+                            $intExtFlag = 'intext';
+                            break;
+                        }
+                    }
+                }
             }
             
-
             $idNumberInfo = explode("-", $idNumber);
 
             $newId = '';
@@ -195,7 +203,7 @@ class EditorInfo extends EditorElement
             }
             $newId .= $idNumberInfo[sizeof($idNumberInfo) - 2];
             $param = $newId . "|$intExtFlag" . "ref";
-
+          
             switch ($refType)
             {
                 case "Definition":
@@ -223,7 +231,7 @@ class EditorInfo extends EditorElement
     }
 
     public function insertData($parentid, $siblingid, $msmid)
-    {        
+    {
         global $DB;
 
         $data = new stdClass();

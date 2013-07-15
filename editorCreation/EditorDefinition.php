@@ -101,7 +101,6 @@ class EditorDefinition extends EditorElement
                 $content = $_POST['msm_defref_content_input-' . $newId];
 
                 $this->content = $this->processMath($content);
-                die;
 
                 foreach ($this->processImage($this->content) as $key => $media)
                 {

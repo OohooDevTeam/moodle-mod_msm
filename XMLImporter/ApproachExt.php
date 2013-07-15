@@ -1,29 +1,44 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
- * Description of ApproachExt
+ * This class represents all the approach.ext XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Exercise/PartExercise class.
+ * ApproachExt class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ApproachExt extends Element
 {
 
     public $position;
+    public $type;
+    public $caption;
+    public $content;
+    public $ext_name;
+    public $version;
+    public $answer_exercises = array();
+    public $solution_exts = array();
 
+    /**
+     *  constructor for the instace of this class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -31,9 +46,13 @@ class ApproachExt extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (approach.ext element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        approach.ext DOMElement
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \ApproachExt
      */
     function loadFromXml($DomElement, $position = '')
     {
@@ -42,9 +61,6 @@ class ApproachExt extends Element
         $this->caption = null;
         $this->content = null;
         $this->ext_name = $DomElement->tagName;
-
-        $this->answer_exercises = array();
-        $this->solution_exts = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -69,13 +85,18 @@ class ApproachExt extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of approach.ext element into
+     * msm_ext database table.  It calls saveInfoDb method for SolutionExt, AnswerExercise classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -90,8 +111,8 @@ class ApproachExt extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-        
-         $elementPositions = array();
+
+        $elementPositions = array();
         $sibling_id = null;
 
         if (!empty($this->answer_exercises))
@@ -115,7 +136,7 @@ class ApproachExt extends Element
         foreach ($elementPositions as $element => $value)
         {
             switch ($element)
-            {               
+            {
                 case(preg_match("/^(answerexercise.\d+)$/", $element) ? true : false):
                     $answerexerciseString = explode('-', $element);
 

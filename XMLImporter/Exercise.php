@@ -1,28 +1,47 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
- * Description of Exercise
+ * This class represents al the exercise XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Pack class.
+ * Example class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Exercise extends Element
 {
 
-    public $position;
+    public $id;                                     // database ID of current example element in msm_exercise table
+    public $compid;                                 // database ID of current example element in msm_compositor table
+    public $position;                               // integer that keeps track of order of elements
+    public $string_id;                              // unique ID given by user in XML files to identify this exercise element
+    // for new XML files, it's same as its compid listed above but for legacy material, it's user defined string
+    public $difficulty;                             // difficulty level associated with this exercise element
+    public $caption;                                // title associated with this exercise element
+    public $problems = array();                     // Problem object associated with this exercise element (problem part of this exercise)
+    public $approachs = array();                    // Approach object associated with this exercise element (different approaches that students might take to solve the problem)
+    public $approach_exts = array();                // ApporachExt object associated with this exercise element (different approaches that students might take to solve the problem)
+    public $part_exercises = array();               // PartExercise object associated with this exercise element (different approaches that students might take to solve the problem)
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -31,9 +50,13 @@ class Exercise extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     *  This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (exercise element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        exercise element
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Exercise
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -43,10 +66,6 @@ class Exercise extends Element
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
         // problem element can be a direct child of exercise or it could be a child of part.exercise which is a child of exercise
-        $this->problems = array();
-        $this->approachs = array();
-        $this->approach_exts = array();
-        $this->part_exercises = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -86,21 +105,23 @@ class Exercise extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of exercise element and its associated child elements into
+     * their respective database tables.  It calls saveInfoDb method for PartExercise, Approach, ApproachExt, and Problem classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
-//        echo "exercise save start";
-//        $time = time();
-//        print_object($time);
-        
         global $DB;
+
         $data = new stdClass();
 
         $data->string_id = $this->string_id;
@@ -109,8 +130,8 @@ class Exercise extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-        
-         $elementPositions = array();
+
+        $elementPositions = array();
         $sibling_id = null;
 
 

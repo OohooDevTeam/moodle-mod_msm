@@ -27,7 +27,7 @@ class Definition extends Element
 
     public $id;                                 // database ID of current def element in msm_def
     public $compid;                             // database ID of current def element in msm_compositor
-    public $position;                           // integer that keeps track of order if elements
+    public $position;                           // integer that keeps track of order of elements
     public $caption;                            // title associated with this def element
     public $string_id;                          // unique string ID attached to this def element
                                                 // (int in new XML material but in legacy material, it's a string value)

@@ -24,7 +24,7 @@
  */
 class Crossref extends Element
 {
-    public $position;                       // integer that keeps track of order if elements
+    public $position;                       // integer that keeps track of order of elements
     public $comments = array();             // MathComment objects associated with current companion element as reference materials
     public $defs = array();                 // Definition objects associated with current companion element as reference materials
     public $theorems = array();             // Theorem objects associated with current companion element as reference materials

@@ -25,9 +25,9 @@
 class AnswerExt extends Element
 {
 
-    public $id;                             // database ID of current answer.ext element in msm_ext
-    public $compid;                         // database ID of current answer.ext element in msm_compositor
-    public $position;                   // integer that keeps track of order if elements
+    public $id;                         // database ID of current answer.ext element in msm_ext
+    public $compid;                     // database ID of current answer.ext element in msm_compositor
+    public $position;                   // integer that keeps track of order of elements
     public $type;                       // type associated with answer.ext element (eg. solution)
     public $version;                    // version associated with answer.ext element
     public $caption;                    // title associated with answer.ext element

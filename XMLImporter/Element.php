@@ -1270,7 +1270,18 @@ abstract class Element
         }
     }
 
-    // key param required to process proofblock as it has $this->medias[$key][$index] format 
+    /**
+     * This method take the content of given object and processes it to be able to insert into
+     * TinyMCE editor.  It removes image.mapping elements as it causes errors when inserted into 
+     * TinyMCE editor and it also changes the src attribute value to moodle format for served files
+     * with pluginfiles.php script.  The returned value is then used to update the content for
+     * already existing record.
+     * 
+     * @param string $oldcontent
+     * @param object $object
+     * @param string $key
+     * @return string
+     */
     function processDbContent($oldcontent, $object, $key = '')
     {
         $parser = new DOMDocument();

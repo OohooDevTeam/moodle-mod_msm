@@ -24,7 +24,7 @@ class AnswerExercise extends Element
 
     public $id;                             // database ID of current answer.exercise element in msm_answer_exercise
     public $compid;                         // database ID of current answer.exercise element in msm_compositor
-    public $position;                       // integer that keeps track of order if elements
+    public $position;                       // integer that keeps track of order of elements
     public $caption;                        // title assocaited with the answer.exercise.block elements
     public $content = array();              // contents assocaited with the answer.exercise.block elements
     public $subordinates = array();         // Subordinate objects assocaited with the answer.exercise.block elements 
@@ -52,6 +52,7 @@ class AnswerExercise extends Element
      * 
      * @param DOMElement $DomElement        answer.exercise.block DOMElement
      * @param int $position                 integer that keeps track of order if elements
+     * @return \AnswerExercise
      */
     public function loadFromXml($DomElement, $position = '')
     {

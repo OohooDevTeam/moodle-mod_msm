@@ -15,7 +15,7 @@
  * ************************************************************************* */
 
 /**
- * This class represents al the associate XML elements in the legacy document
+ * This class represents all the associate XML elements in the legacy document
  * (ie. files in the newXML) and the newly formed XML exported by the editor system
  * and it is called by Definition/Theorem/Comment classes.
  * Associate class inherits from the abstract class Element and for all the methods
@@ -28,7 +28,7 @@ class Associate extends Element
 
     public $id;                             // database ID of current associate element in msm_associate
     public $compid;                         // database ID of current associate element in msm_compositor
-    public $position;                       // integer that keeps track of order if elements
+    public $position;                       // integer that keeps track of order of elements
     public $description;                    // description associated with this element
     public $infos = array();                // MathInfo objects that are linked to this associate element as a reference material
     public $comments = array();             // MathComment objects that are linked to this associate element as a reference material

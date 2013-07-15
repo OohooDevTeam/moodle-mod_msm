@@ -27,7 +27,7 @@ class AnswerShowme extends Element
 
     public $id;                             // database ID of current answer.showme element in msm_answer_showme
     public $compid;                         // database ID of current answer.showme element in msm_compositor
-    public $position;                       // integer that keeps track of order if elements
+    public $position;                       // integer that keeps track of order of elements
     public $type;                           // type of the answer.showme element
     public $content = array();              // content associated with the answer.showme (in answer.showme.block) elements
     public $subordinates = array();         // Subordinate objects associated with the content of the answer.showme element

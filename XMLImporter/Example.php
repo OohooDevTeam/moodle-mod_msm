@@ -25,23 +25,30 @@
 class Example extends Element
 {
 
-    public $id;
-    public $compid;
-    public $position;
-    public $string_id;
-    public $caption;
-    public $textcaption;
-    public $description;
-    public $statement_examples = array();
-    public $subordinates = array();
-    public $indexauthors = array();
-    public $indexglossarys = array();
-    public $indexsymbols = array();
-    public $medias = array();
-    public $tables = array();
-    public $part_examples = array();
-    public $answers = array();
-    public $answer_exts = array();
+    public $id;                                     // database ID of current example element in msm_example table
+    public $compid;                                 // database ID of current example element in msm_compositor table
+    public $position;                               // integer that keeps track of order of elements
+    public $string_id;                              // unique ID given by user in XML files to identify this example element
+                                                    // for new XML files, it's same as its compid listed above but for legacy material, it's user defined string
+    public $caption;                                // title associated with this example element   
+    public $textcaption;                            // title without math elements associated with this example element
+    public $description;                            // description element associated with this example element
+    public $statement_examples = array();           // content elements associated with this example
+    public $subordinates = array();                 // Subordinate objects associated with this example (extra info shown as popup in content)
+    public $indexauthors = array();                 // MathIndex objects associated with this example (index of authors that gives more info about the author)
+    public $indexglossarys = array();               // MathIndex objects associated with this example (index of glossary that gives definition/extra info about the term)
+    public $indexsymbols = array();                 // MathIndex objects associated with this example (index of symbols that gives definition/extra info about the symbols)
+    public $medias = array();                       // Media objects associated with this example (ie. video/images...etc)
+    public $tables = array();                       // Table objects assocaited with this example
+    public $part_examples = array();                // PartExample objects associated with this example
+    public $answers = array();                      // AnswerExample objets associated with this example
+    public $answer_exts = array();                  // AnswerExt objects associatedwith this example
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -50,9 +57,13 @@ class Example extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (example element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        example element
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Example
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -134,14 +145,20 @@ class Example extends Element
             $answerext->loadFromXml($ax, $position);
             $this->answer_exts[] = $answerext;
         }
-        
-         return $this;
+
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     *  This method saves the extracted information from the XML files of example element and its associated child elements into
+     * their respective database tables.  It calls saveInfoDb method for AnswerExample. AnswerExt, PartExample, MathIndex, Media, Table,
+     *  and Subordinate classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
