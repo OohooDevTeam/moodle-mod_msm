@@ -571,16 +571,22 @@ function editUnit(e)
 
     var targetElement = '';
     
-    if(e.target.tagName == "A")
+    if($.type(e) === "string")
     {
-        targetElement = e.target.parentElement.parentElement.id;
+        targetElement = e;
     }
-    else 
-    {      
-        targetElement = e.target.parentElement.parentElement.parentElement.id;
+    else
+    {
+        if(e.target.tagName == "A")
+        {
+            targetElement = e.target.parentElement.parentElement.id;
+        }
+        else 
+        {      
+            targetElement = e.target.parentElement.parentElement.parentElement.id;
+        }
     }
-    
-    
+       
     var elementInfo = [];
     
     $.ajax({
@@ -620,6 +626,11 @@ function editUnit(e)
                 $("<input type='submit' class='msm_editor_buttons' id='msm_editor_save' value='Save'/>").appendTo("#msm_editor_middle");          
                 $('<button class="msm_editor_buttons" id="msm_editor_cancel" onclick="cancelUnit(event)"> Cancel </button>').appendTo("#msm_editor_middle");  
             } 
+            
+            // when new child elements are editted in after save, if the close button is not removed, the code below adds multiple close buttons
+            $("#"+targetElement).find(".msm_element_close").each(function() {
+                $(this).remove(); 
+            });
             
             $("#"+targetElement).find(".msm_theorem_statement_title_containers").each(function() {
                 var closeButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');      
@@ -1324,42 +1335,47 @@ function createAssociateText(mainElement, aArray)
     for(var i = 0; i < associateIds.length; i++)
     {
         var infos = $("#"+associateIds[i].id).find(".msm_editor_content"); // includes the reference
-       
-        var currentInfo = infos[0].id.split("-");
         
-        var infoid = '';
-        for(var j=1; j < currentInfo.length-1; j++)
+        // can have associate that do not have msm_editor_content (ie.when the associate is editted in after save)
+        if(infos.length > 0)
         {
-            infoid += currentInfo[j]+"-";
-        }
-        infoid += currentInfo[currentInfo.length-1];
+            var currentInfo = infos[0].id.split("-");
         
-        //-------------------processing info----------------------
+            var infoid = '';
+            for(var j=1; j < currentInfo.length-1; j++)
+            {
+                infoid += currentInfo[j]+"-";
+            }
+            infoid += currentInfo[currentInfo.length-1];
         
-        var associateTitle = associateArray[i]["infos"][0]["caption"];
-        var associateContent = associateArray[i]["infos"][0]["content"];
+            //-------------------processing info----------------------
+        
+            var associateTitle = associateArray[i]["infos"][0]["caption"];
+            var associateContent = associateArray[i]["infos"][0]["content"];
   
-        var infoTitleArea = document.createElement("textarea");
-        infoTitleArea.id = "msm_info_title-"+infoid;
-        infoTitleArea.name = "msm_info_title-"+infoid;
-        infoTitleArea.className = "msm_info_titles";
+            var infoTitleArea = document.createElement("textarea");
+            infoTitleArea.id = "msm_info_title-"+infoid;
+            infoTitleArea.name = "msm_info_title-"+infoid;
+            infoTitleArea.className = "msm_info_titles";
         
-        var infoContentArea = document.createElement("textarea");
-        infoContentArea.id = "msm_info_content-"+infoid;
-        infoContentArea.name = "msm_info_content-"+infoid;
-        infoContentArea.className = "msm_info_contents";
+            var infoContentArea = document.createElement("textarea");
+            infoContentArea.id = "msm_info_content-"+infoid;
+            infoContentArea.name = "msm_info_content-"+infoid;
+            infoContentArea.className = "msm_info_contents";
         
-        $(infoTitleArea).val(associateTitle);
+            $(infoTitleArea).val(associateTitle);
     
-        $("#"+infos[0].id).replaceWith(infoTitleArea);
+            $("#"+infos[0].id).replaceWith(infoTitleArea);
         
-        noSubInitEditor(infoTitleArea.id);
+            noSubInitEditor(infoTitleArea.id);
         
-        $(infoContentArea).val(associateContent);
+            $(infoContentArea).val(associateContent);
     
-        $("#"+infos[1].id).replaceWith(infoContentArea);
+            $("#"+infos[1].id).replaceWith(infoContentArea);
         
-        initEditor(infoContentArea.id);
+            initEditor(infoContentArea.id);
+        }
+       
         
         //-------------------processing references----------------------
         

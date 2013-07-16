@@ -866,17 +866,7 @@ function addTheoremPart(event)
 function addAssociateForm(index, type)
 {
     var newId = 1;
-    
-//    var parentElement = $("#msm_dnd_container-"+index).closest(".copied_msm_structural_element");
-//    console.log(parentElement);
-//    
-//    var editorContents = $("#msm_dnd_container-"+index).closest(".copied_msm_structural_element").find(".msm_editor_content");
-//    
-//    if(editorContents.length > 0)
-//        {
-//            editUnit($(parentElement).attr("id"));
-//        }
-    
+        
     if($("#msm_associate_container-"+index).children("div").length > 0)
     {
         while(document.getElementById('msm_associate_childs-'+index+'-'+newId) != null)
@@ -887,9 +877,7 @@ function addAssociateForm(index, type)
     
     var associateInfoDiv = $('<div class="msm_associate_childs" id="msm_associate_childs-' + index + '-' + newId + '"></div>');
  
-    var typeDropdown;
-    
-    console.log("type of parent for this associate? : " + type);
+    var typeDropdown;    
     
     if((type == 'def')||(type == 'comment'))
     {

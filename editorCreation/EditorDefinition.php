@@ -54,6 +54,9 @@ class EditorDefinition extends EditorElement
     function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
+        
+//        echo "idNumber";
+//        print_object($idInfo);
 
         // processing definitions as reference material
         if (sizeof($idInfo) > 1)

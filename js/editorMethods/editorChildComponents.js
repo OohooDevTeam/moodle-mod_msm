@@ -4,9 +4,16 @@
  */
 
 function processAdditionalChild(event, draggedId)
-{
+{    
     var type = null;
     var parentId = event.target.parentElement.parentElement.id;
+    
+    var editorDivs = $("#"+parentId).find(".msm_editor_content");
+    
+    if(editorDivs.length > 0)
+    {
+        editUnit(parentId);
+    }
     
     if((parentId.match(/def/)) || (parentId.match(/comment/)))
     {
@@ -215,6 +222,7 @@ function createRefDialog(id, refTypeString, currentId)
                 }
                 else if(selectedBox.length > 0)
                 {
+                    $(".msm_info_dialogs").dialog("destroy").css("display", "none");
                     var selectedRow = $(selectedBox).closest("tr");                    
                     var selectedCells = $(selectedRow).find(".msm_search_result_table_cells");
                     var selectedCheckbox = $(selectedCells[0]).find("input");
@@ -235,23 +243,24 @@ function createRefDialog(id, refTypeString, currentId)
         open: function() {
             $("#msm_search_accordion-"+id).accordion({
                 heightStyle: "content"
-            });
+            });           
         },
         close: function() {
             $(this).empty().remove();
         }
     });
     
-    var msmId = '';
     var msmIdInfo = window.location.search.split("=");   
-    var currentmsmId =  msmIdInfo[1];
+    var msmId = msmIdInfo[1]; 
     
-    if(refTypeString == "Internal References")
-    {        
-        msmId = msmIdInfo[1];  
-    }
-    
-    $("#msm_search_submit").click(function() {
+    //    $("#msm_search_submit").keyup(function(e) {
+    //        if(e.keyCode == 13)
+    //        {
+    //            $("#msm_search_submit").click();
+    //        }
+    //    });
+
+    $("#msm_search_submit").click(function(e) {
         var param = $("#msm_search_form").serializeArray();
         
         $.ajax({
@@ -260,29 +269,66 @@ function createRefDialog(id, refTypeString, currentId)
             data: {
                 param: param,
                 msmId: msmId,
-                current_id: currentmsmId
+                refereceType: refTypeString
             },
             success: function(data)
             {
-                var string = JSON.parse(data);    
                 
+                var string = JSON.parse(data);    
+                                
                 $("#msm_search_result").empty(); // empty out any previous values
                 $("#msm_search_result").append(string);
-                $("#msm_search_accordion-"+id).accordion("option", "active", 1);
+                $("#msm_search_accordion-"+id).accordion("option", "active", 1);       
+                
+                $("#msm_search_result_table .msm_info_dialogs").dialog({
+                    autoOpen: false,
+                    height: "auto",
+                    modal: false,
+                    width: 605
+                });  
+                                
+                $("#msm_search_result_table").find(".msm_subordinate_hotwords").each(function(i, element) {
+                    var idInfo = this.id.split("-");
+                    var newid = '';
+                                        
+                    for(var i=1; i < idInfo.length-1; i++)
+                    {
+                        newid += idInfo[i]+"-";
+                    }
+                                            
+                    newid += idInfo[idInfo.length-1];
+                                                        
+                    previewInfo(this.id, "dialog-"+newid);
+                });
+                                    
+                $("#msm_search_result_table .msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
+                    var idInfo = this.id.split("-");
+                    var newid = '';
+                                        
+                    for(var i=1; i < idInfo.length-1; i++)
+                    {
+                        newid += idInfo[i]+"-";
+                    }
+                                            
+                    newid += idInfo[idInfo.length-1];
+                                                               
+                    previewInfo(this.id, "dialog-"+newid);
+                });
+                
                 MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
                 
-                // only allowing one checkbox to be selected at any given time
+                //                 only allowing one checkbox to be selected at any given time
                 $("#msm_search_result input").click(function() {
                     var checked = $(this).attr("checked");
                     
-                    // when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
+                    //                     when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
                     if((checked === null) || (typeof checked === "undefined"))
                     {
                         $(this).closest("tr").removeClass("ui-widget-header");
                     }
                     else
                     {
-                        // when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
+                        //                         when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
                         $("#msm_search_result input").filter(":checked").not(this).closest("tr").removeClass("ui-widget-header");
                         $("#msm_search_result input").filter(":checked").not(this).removeAttr("checked");
                         
@@ -290,6 +336,7 @@ function createRefDialog(id, refTypeString, currentId)
                     }
                 
                 });
+                
             }, 
             erorr: function()
             {
@@ -304,7 +351,8 @@ function createRefDialog(id, refTypeString, currentId)
 function addDefRef(cellArray, index, dbId)
 {
     var type = $(cellArray[1]).html();
-    var content = $(cellArray[3]).html();
+    var contentobject = processSubContent(cellArray[3], "defrefcontent-"+index);
+    var content = $(contentobject).html();
     var title = $(cellArray[2]).html();
     var description = $(cellArray[4]).html();
     
@@ -323,15 +371,85 @@ function addDefRef(cellArray, index, dbId)
     
     $("#msm_defref_title_input-"+index).val(title);
     $("#msm_defref_description_input-"+index).val(description);
-//    $("#msm_defref_description_input-"+index).attr("id", "msm_defref_description_input-"+index + "__" + dbId);
     $("#msm_defref_content_input-"+index).val(content);
     
     $("#msm_defref_type_dropdown-"+index).attr("disabled", "disabled");
     $("#msm_defref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_defref_description_input-"+index).attr("disabled", "disabled");
     
-//    console.log($("#msm_defref_description_input-"+index));
-//    console.log($("#msm_defref_description_input-"+index + "__" + dbId));
-    
     textArea2Div("msm_defref_content_input-"+index);
+}
+
+function processSubContent(contentobj, id)
+{
+    var idEnding = '';
+    
+    $(contentobj).find(".msm_subordinate_hotwords").each(function() {
+        var idEndingInfo = this.id.split("-");
+       
+        idEnding = idEndingInfo[1];
+        for(var i = 2; i < idEndingInfo.length; i++)
+        {
+            idEnding += "-"+idEndingInfo[i];
+        }
+        
+        var subContainer = document.createElement("div");
+        subContainer.id = "msm_subordinate_result-"+idEnding;
+        subContainer.className = "msm_subordinate_results";
+        
+        var selectDiv = document.createElement("div");
+        selectDiv.id = "msm_subordinate_select-"+idEnding;
+        var selectTextNode = null;
+        var selectUrlText = '';
+        
+        console.log($(this).attr("href"));
+        
+        if($(this).attr("href") == "#")
+        {
+            selectTextNode = document.createTextNode("Information");
+            selectUrlText = document.createTextNode('');
+        }
+        else
+        {
+            selectTextNode = document.createTextNode("External Link");
+            selectUrlText = document.createTextNode($(this).attr("href"));
+        }
+        
+        selectDiv.appendChild(selectTextNode);
+        
+        var subUrlDiv = document.createElement("div");
+        subUrlDiv.id = "msm_subordinate_url-"+idEnding;
+        subUrlDiv.appendChild(selectUrlText);
+        
+        var subHotwordMatch = document.createElement("div");
+        subHotwordMatch.id = "msm_subordinate_hotword_match-"+idEnding;
+        subHotwordMatch.className = "msm_subordinate_hotword_matchs";
+        var subHotwordText = document.createTextNode(this.id);
+        subHotwordMatch.appendChild(subHotwordText);
+        
+        var subinfoTitleDiv = document.createElement("div");
+        subinfoTitleDiv.id = "msm_subordinate_infoTitle-"+idEnding;
+        
+        var matchingInfoTitle = document.createTextNode($(contentobj).find("#dialog-"+idEnding).attr("title"));
+        subinfoTitleDiv.appendChild(matchingInfoTitle);
+        
+        var subinfoContentDiv = document.createElement("div");
+        subinfoContentDiv.id = "msm_subordinate_infoContent-"+idEnding;
+        
+        var matchingInfoContent = document.createTextNode($(contentobj).find("#dialog-"+idEnding).html());
+        subinfoContentDiv.appendChild(matchingInfoContent);
+        
+        subContainer.appendChild(selectDiv);
+        subContainer.appendChild(subUrlDiv);
+        subContainer.appendChild(subHotwordMatch);
+        subContainer.appendChild(subinfoTitleDiv);
+        subContainer.appendChild(subinfoContentDiv);
+        
+        $("#msm_subordinate_result_container-"+id).append(subContainer);
+        
+        $(contentobj).find("#dialog-"+idEnding).remove();
+        
+    });
+    
+    return contentobj;
 }

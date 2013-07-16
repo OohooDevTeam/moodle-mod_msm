@@ -28,16 +28,11 @@ $(document).ready(function(){
                 var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
                 $(newspan).append(mathContent);
                 
-                console.log("new span that will replace mathjax code");
-                console.log($(newspan));
                 $(this).replaceWith(newspan);
             });
             
-            newdata.value = $(this).html();
-            console.log("new content");
-            
+            newdata.value = $(this).html();            
             $(this).replaceWith(newdata);   
-            console.log($(this));
         });
         
         submitForm();            
@@ -562,12 +557,12 @@ function disableEditorFunction()
 
 // to activate the dialog box for display purposes
 function previewInfo(elementid, dialogid)
-{     
+{       
     var x = 0; // stores the x-axis position of the mouse
-    var y = 0; // stores the y-axis position of the mouse   
+    var y = 0; // stores the y-axis position of the mouse
  
     $("#msm_preview_dialog #"+elementid).unbind();
-    $("#msm_preview_dialog #"+elementid).click(function(e) { 
+    $("#msm_preview_dialog #"+elementid).click(function(e) {
         x = e.clientX+5;
         y = e.clientY+5;
     
@@ -582,7 +577,7 @@ function previewInfo(elementid, dialogid)
             $("#"+dialogid).dialog('open').css("display", "block");
         });
     
-    });    
+    });
    
     $("#msm_preview_dialog #"+elementid).mouseover(function (e) {
         $("#"+dialogid).dialog("option", {
@@ -594,7 +589,30 @@ function previewInfo(elementid, dialogid)
     $("#msm_preview_dialog #"+elementid).mouseout(function(){
         $("#"+dialogid).dialog("close").css("display", "none");
     });
+    //----------------------------------------------------------------------
     
+    $("#msm_search_result_table").find("#"+elementid).unbind();    
+                
+    $("#msm_search_result_table").find("#"+elementid).ready(function(){ 
+        $("#msm_search_result_table").find("#"+elementid).mousemove(function (e) {   
+            e.preventDefault();
+            $("#"+dialogid).dialog('option', {
+                position: [e.clientX+5, e.clientY+5]
+            });
+            $("#"+dialogid).dialog('open');
+        });
+         
+        $("#msm_search_result_table").find("#"+elementid).mouseout(function(e){
+            e.preventDefault();
+            $("#"+dialogid).dialog('close');
+        });
+         $("#msm_search_result_table").find("#"+elementid).click(function(e){
+            e.preventDefault();
+        });
+
+    });
+   
+    //----------------------------------------------------------------------
     // for displaying dialog boxes from hotwords in associate info boxes
     $(".msm_info_dialogs").find("#"+elementid).unbind("click");
     $(".msm_info_dialogs").find("#"+elementid).click(function(e) {
@@ -612,7 +630,7 @@ function previewInfo(elementid, dialogid)
             $("#"+dialogid).dialog('open').css("display", "block");
         });
     
-    });    
+    });
    
     $(".msm_info_dialogs").find("#"+elementid).mouseover(function (e) {
         $("#"+dialogid).dialog("option", {
@@ -624,7 +642,6 @@ function previewInfo(elementid, dialogid)
     $(".msm_info_dialogs").find("#"+elementid).mouseout(function(){
         $("#"+dialogid).dialog("close").css("display", "none");
     });
-    
     
 } 
 

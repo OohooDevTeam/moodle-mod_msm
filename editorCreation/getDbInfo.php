@@ -33,9 +33,9 @@ require_once('../XMLImporter/TableCollection.php');
 global $DB;
 
 $msmId = $_POST["msmId"];
-$currentId = $_POST["current_id"];
+$refType = $_POST["refereceType"];
 
-$msm = $DB->get_record('msm', array('id' => $currentId), '*', MUST_EXIST);
+$msm = $DB->get_record('msm', array('id' => $msmId), '*', MUST_EXIST);
 $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
 $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
 
@@ -49,9 +49,13 @@ $deftableID = $DB->get_record("msm_table_collection", array("tablename" => "msm_
 
 $msmString = '';
 
-if (!empty($msmId))
+if ($refType == "Internal Reference")
 {
     $msmString = " AND c1.msm_id=$msmId";
+}
+else if ($refType == "External Reference")
+{
+    $msmString = " AND c1.msm_id<>$msmId";
 }
 
 $whereClause = '';
@@ -129,40 +133,71 @@ else
     echo "error in retrieving records using SQL queries";
 }
 
-$html = "<table id='msm_search_result_table'>";
-$html .= "<tr>";
-$html .= "<th class='msm_search_result_table_cells'> Select </th>";
-$html .= "<th class='msm_search_result_table_cells'> Type </th>";
-$html .= "<th class='msm_search_result_table_cells'> Title </th>";
-$html .= "<th class='msm_search_result_table_cells'> Content </th>";
-$html .= "<th class='msm_search_result_table_cells'> Description </th>";
-$html .= "</tr>";
-
-foreach ($records as $rec)
-{
-    $html .= "<tr>";
-    $html .= "<td class='msm_search_result_table_cells'><input type='checkbox' id='msm_search_select-" . $rec->id . "' name='msm_search_select-" . $rec->id . "'/></td>";
-    if ($deftableID->tablename == "msm_def")
-    {
-        if(!empty($rec->def_type))
-        {
-            $html .= "<td class='msm_search_result_table_cells'>$rec->def_type</td>";
-        }
-        else
-        {
-            $html .= "<td class='msm_search_result_table_cells'>Definition</td>";
-        }
-        
-    }
-    $html .= "<td class='msm_search_result_table_cells'>$rec->caption</td>";
-
-    $content = preg_replace("/<math.array(.*?)>/", "<table$1>", $rec->content);
-    $content = preg_replace("/<\/math.array>/", "</table>", $content);
-    $html .= "<td class='msm_search_result_table_cells'>$content</td>";
-    $html .= "<td class='msm_search_result_table_cells'>$rec->description</td>";
-    $html .= "</tr>";
-}
-$html .= "</table>";
+$html = displaySearchResult($records, $deftableID);
 
 echo json_encode($html);
+
+function displaySearchResult($records, $tableRecords)
+{
+    $displayString = '';
+    $displayString .= "<table id='msm_search_result_table'>";
+    $displayString .= "<tr>";
+    $displayString .= "<th class='msm_search_result_table_cells'> Select </th>";
+    $displayString .= "<th class='msm_search_result_table_cells'> Type </th>";
+    $displayString .= "<th class='msm_search_result_table_cells'> Title </th>";
+    $displayString .= "<th class='msm_search_result_table_cells'> Content </th>";
+    $displayString .= "<th class='msm_search_result_table_cells'> Description </th>";
+    $displayString .= "</tr>";
+
+    foreach ($records as $rec)
+    {
+        $displaySubordinate = displaySearchSubordinate($rec);
+
+        $displayString .= "<tr>";
+        $displayString .= "<td class='msm_search_result_table_cells'><input type='checkbox' id='msm_search_select-" . $rec->id . "' name='msm_search_select-" . $rec->id . "'/></td>";
+        if ($tableRecords->tablename == "msm_def")
+        {
+            if (!empty($rec->def_type))
+            {
+                $displayString .= "<td class='msm_search_result_table_cells'>$rec->def_type</td>";
+            }
+            else
+            {
+                $displayString .= "<td class='msm_search_result_table_cells'>Definition</td>";
+            }
+        }
+        $displayString .= "<td class='msm_search_result_table_cells'>$rec->caption</td>";
+
+        $content = preg_replace("/<math.array(.*?)>/", "<table$1>", $rec->content);
+        $content = preg_replace("/<\/math.array>/", "</table>", $content);
+
+        $displayString .= "<td class='msm_search_result_table_cells'>" . $content . $displaySubordinate . "</td>";
+        $displayString .= "<td class='msm_search_result_table_cells'>$rec->description</td>";
+        $displayString .= "</tr>";
+    }
+    $displayString .= "</table>";
+
+    return $displayString;
+}
+
+function displaySearchSubordinate($record)
+{
+    global $DB;
+    
+    $subordinateString = '';
+
+    $subordinateTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_subordinate"));
+    $childSubs = $DB->get_records("msm_compositor", array("parent_id" => $record->id, "table_id" => $subordinateTable->id), "prev_sibling_id");
+
+    foreach ($childSubs as $sub)
+    {
+        $subordinate = new EditorSubordinate();
+        $subordinate->loadData($sub->id);
+        
+        $subordinateString .= $subordinate->displayPreview();
+    }
+    
+    return $subordinateString;
+}
+
 ?>

@@ -146,7 +146,7 @@ class EditorInfo extends EditorElement
         }
         else if (sizeof($subid) == 1)
         {
-            $this->caption = $_POST['msm_info_title-' . $idNumber];
+            $this->caption = $_POST['msm_info_title-' . $idNumber];            
 
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
@@ -179,7 +179,7 @@ class EditorInfo extends EditorElement
             else // todo: need to add more types
             {
                 // only put the intext flag when ref material is being saved the first time...if it is editted then no need to skip the inser to db process
-                foreach ($_POST as $key => $value) 
+                foreach ($_POST as $key => $value)
                 {
                     if (strpos($key, "msm_defref_description_input") !== false)
                     {
@@ -193,7 +193,7 @@ class EditorInfo extends EditorElement
                     }
                 }
             }
-            
+
             $idNumberInfo = explode("-", $idNumber);
 
             $newId = '';
@@ -203,7 +203,7 @@ class EditorInfo extends EditorElement
             }
             $newId .= $idNumberInfo[sizeof($idNumberInfo) - 2];
             $param = $newId . "|$intExtFlag" . "ref";
-          
+
             switch ($refType)
             {
                 case "Definition":
@@ -536,7 +536,14 @@ class EditorInfo extends EditorElement
         $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
         $titleString = htmlentities($modifiedCaption);
 
-        $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
+        if (!empty($titleString))
+        {
+            $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
+        }
+        else
+        {
+            $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs'>";
+        }
         $previewHtml .= html_entity_decode($this->content);
         $previewHtml .= "</div>";
 

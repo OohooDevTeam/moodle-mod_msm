@@ -1,30 +1,41 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of Item
+ * his class represents al the item XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Cite class.
+ * Cite class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Item extends Element
 {
 
+    public $id;
+    public $compid;
     public $position;
     public $length;
     public $citekey;
+    public $content = array();
+    public $indexauthors = array();
+    public $indexglossarys = array();
+    public $indexsymbols = array();
+    public $subordinates = array();
+    public $medias = array();
 
     function __construct($xmlpath = '')
     {
@@ -119,7 +130,7 @@ class Item extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
