@@ -17,13 +17,13 @@ function processAdditionalChild(event, draggedId)
     
     if((parentId.match(/def/)) || (parentId.match(/comment/)))
     {
-        if((draggedId !== "msm_associate") && (draggedId !== "msm_internal_ref") && (draggedId !== "msm_external_ref"))
+        if((draggedId !== "msm_associate") && (draggedId !== "msm_internal_ref") && (draggedId !== "msm_external_ref") && (draggedId !== "msm_new_ref"))
         {
             openErrorDialog();
             return false;
         }
         
-        if((draggedId == "msm_associate") ||(draggedId == "msm_internal_ref") || (draggedId == "msm_external_ref"))
+        if((draggedId == "msm_associate") ||(draggedId == "msm_internal_ref") || (draggedId == "msm_external_ref") || (draggedId == "msm_new_ref"))
         {
             if(parentId.match(/def/))
             {
@@ -49,21 +49,37 @@ function processAdditionalChild(event, draggedId)
     }
     else if(parentId.match(/statement/))
     {
+        if(parentId.match(/theoremref_statement/))
+        {
+            type = "theoremref";
+        }
         if(draggedId !== "msm_part_theorem")
         {
             openErrorDialog();
             return false;
         }
     }
+    else if(parentId.match(/theoremref/))
+    {
+        if(draggedId !== "msm_extra_content")
+        {
+            openErrorDialog();
+            return false;
+        }        
+        else
+        {
+            type = "theoremref";
+        }
+    }
     else if(parentId.match(/theorem/))
     {
-        if((draggedId !== "msm_associate") && (draggedId !== "msm_internal_ref") && (draggedId !== "msm_external_ref") && (draggedId !== "msm_extra_content"))
+        if((draggedId !== "msm_associate") && (draggedId !== "msm_internal_ref") && (draggedId !== "msm_external_ref") && (draggedId !== "msm_new_ref") && (draggedId !== "msm_extra_content"))
         {
             openErrorDialog();
             return false;
         }
         
-        if((draggedId == "msm_extra_content") || (draggedId == "msm_associate") ||(draggedId == "msm_internal_ref") || (draggedId == "msm_external_ref"))
+        if((draggedId == "msm_extra_content") || (draggedId == "msm_associate") ||(draggedId == "msm_internal_ref") || (draggedId == "msm_new_ref") || (draggedId == "msm_external_ref"))
         {
             type = "theorem";
         }
@@ -89,18 +105,27 @@ function processAdditionalChild(event, draggedId)
         case "msm_new_ref":
             addAssociateForm(idEnding[1], type);
             index = getAssociateIndex(event);
-            var associateContainer = event.target.parentElement.id;
-            var selectMenu = "<select name='msm_associate_reftype-//"+index+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index+"' onchange='processReftype(event);'>\n\
-                                  <option value='Comment'>Comment</option>\n\
+            var selectMenu = "<select name='msm_associate_reftype-"+index+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index+"' onchange='processReftype(event);'>\n\
+                                  <option value='Comment' selected='selected'>Comment</option>\n\
                                   <option value='Definition'>Definition</option>\n\
                                   <option value='Theorem'>Theorem</option>\n\
-                               </select>"
-            $("#"+associateContainer).append(selectMenu);
+                               </select>";
+//            $(selectMenu).insertBefore("#"+event.target.id);
+
+            $(selectMenu).appendTo("#msm_associate_reftype_option-"+index);
+            
+            var commentelement = makeRefComment(idEnding[1]);
+            $(commentelement).insertAfter("#msm_associate_reftype-"+index);
+            initEditor('msm_commentref_content_input-'+idEnding[1]);            
             break;
         case "msm_extra_content":
             if(type == "theorem")
             {
                 addTheoremContent(event)
+            }
+            else if(type == "theoremref")
+            {
+                addrefTheoremContent(event)
             }
             else if(type == "intro")
             {
@@ -108,7 +133,14 @@ function processAdditionalChild(event, draggedId)
             }
             break;
         case "msm_part_theorem":
-            addTheoremPart(event)
+            if(type == "theoremref")
+            {
+                addrefTheoremPart(event);
+            }
+            else
+            {
+                addTheoremPart(event);
+            }
             break;
     }
 
@@ -225,9 +257,6 @@ function createRefDialog(id, refTypeString, currentId)
                     {
                         var refSelectType = $("#msm_search_type").val();
                         
-                        console.log("type of reference defined by dropdown menu: comment?def?..etc");
-                        console.log(refSelectType);
-                        
                         $(".msm_info_dialogs").dialog("destroy").css("display", "none");
                         var selectedRow = $(selectedBox).closest("tr");                    
                         var selectedCells = $(selectedRow).find(".msm_search_result_table_cells");
@@ -259,8 +288,16 @@ function createRefDialog(id, refTypeString, currentId)
     
         var msmIdInfo = window.location.search.split("=");   
         var msmId = msmIdInfo[1]; 
-    
-        $("#msm_search_submit").click(function(e) {
+        
+        // to prevent page from navigating when enter is pressed
+        $("#msm_search_form").keydown(function(e) {
+            if(e.keyCode == 13)
+            {
+                e.preventDefault();
+            }
+        });
+            
+        $("#msm_search_submit").click(function(e) { 
             var param = $("#msm_search_form").serializeArray();
         
             $.ajax({
@@ -334,8 +371,7 @@ function createRefDialog(id, refTypeString, currentId)
                             $(this).closest("tr").addClass("ui-widget-header");
                         }
                 
-                    });
-                
+                    });                
                 }, 
                 erorr: function()
                 {
@@ -356,6 +392,9 @@ function addRefElements(type, tbcellArray, ind, databaseId)
             break;
         case "comment":
             addCommentRef(tbcellArray, ind, databaseId);
+            break;
+        case "theorem":
+            addTheoremRef(tbcellArray, ind, databaseId);
             break;
     }
 }
@@ -422,6 +461,44 @@ function addCommentRef(cellArray, index, dbId)
     $("#msm_commentref_description_input-"+index).attr("disabled", "disabled");
     
     textArea2Div("msm_commentref_content_input-"+index);
+}
+
+function addTheoremRef(cellArray, index, dbId)
+{
+    var type = $(cellArray[1]).html();   
+    var title = $(cellArray[2]).html();
+    var description = $(cellArray[4]).html();
+    
+    var theoremElement = makeRefTheorem(index, dbId);   
+    
+    $("#msm_associate_reftype_option-"+index).append(theoremElement);
+    
+    console.log("theorem content?");
+    console.log($(cellArray[3]));
+    
+    //@TODO need to implement methods to add theorem contents(ie. statement theores) and part theorems
+    
+    //    var contentobject = processSubContent(cellArray[3], "commentrefcontent"+index);
+    //    var content = $(contentobject).html();
+    //    
+    $("#msm_theoremref_type_dropdown-"+index).find("option").each(function() {
+        var currentType = $(this).val();
+        
+        if(currentType == type)
+        {                                
+            $(this).attr("selected", "selected");
+        }
+    });
+    //    
+    $("#msm_theoremref_title_input-"+index).val(title);
+    $("#msm_theoremref_description_input-"+index).val(description);
+    //    $("#msm_commentref_content_input-"+index).val(content);
+    
+    $("#msm_theoremref_type_dropdown-"+index).attr("disabled", "disabled");
+    $("#msm_theoremref_title_input-"+index).attr("disabled", "disabled");
+    $("#msm_theoremref_description_input-"+index).attr("disabled", "disabled");
+//    
+//    textArea2Div("msm_commentref_content_input-"+index);
 }
 
 function processSubContent(contentobj, id)

@@ -157,26 +157,32 @@ class EditorStatementTheorem extends EditorElement
      * @param integer $parentid         Database ID from msm_compositor of the parent element
      * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
      * @param integer $msmid            The instance ID of the MSM module.
+     * @param string $ref               Optional param that indicates that its either from internal/external theorem 
      */
-    public function insertData($parentid, $siblingid, $msmid)
+    public function insertData($parentid, $siblingid, $msmid, $ref = '')
     {
         global $DB;
 
         $data = new stdClass();
-        $pParser = new DOMDocument();
-        $pParser->loadHTML($this->content);
-        $divs = $pParser->getElementsByTagName("div");
 
-        if ($divs->length > 0)
+        if (empty($ref))
         {
-            $data->statement_content = $this->content;
-        }
-        else
-        {
-            $data->statement_content = "<div>$this->content</div>";
+            $pParser = new DOMDocument();
+            $pParser->loadHTML($this->content);
+            $divs = $pParser->getElementsByTagName("div");
+
+            if ($divs->length > 0)
+            {
+                $data->statement_content = $this->content;
+            }
+            else
+            {
+                $data->statement_content = "<div>$this->content</div>";
+            }
+
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
 
-        $this->id = $DB->insert_record($this->tablename, $data);
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;
@@ -191,7 +197,7 @@ class EditorStatementTheorem extends EditorElement
 
         foreach ($this->children as $partTheorem)
         {
-            $partTheorem->insertData($this->compid, $sibling_id, $msmid);
+            $partTheorem->insertData($this->compid, $sibling_id, $msmid, $ref);
             $sibling_id = $partTheorem->compid;
         }
 

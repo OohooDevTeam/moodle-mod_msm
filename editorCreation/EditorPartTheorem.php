@@ -111,30 +111,35 @@ class EditorPartTheorem extends EditorElement
      * @param integer $parentid         Database ID from msm_compositor of the parent element
      * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
      * @param integer $msmid            The instance ID of the MSM module.
+     * @param string $ref               Optional param that indicates that its either from internal/external theorem 
      */
-    public function insertData($parentid, $siblingid, $msmid)
+    public function insertData($parentid, $siblingid, $msmid, $ref = '')
     {
         global $DB;
 
         $data = new stdClass();
-        $data->partid = null;
-        $data->counter = null;
-        $data->equivalence_mark = null;
-        $data->caption = $this->caption;
-        $pParser = new DOMDocument();
-        $pParser->loadHTML($this->content);
-        $divs = $pParser->getElementsByTagName("div");
 
-        if ($divs->length > 0)
+        if (empty($ref))
         {
-            $data->part_content = $this->content;
-        }
-        else
-        {
-            $data->part_content = "<div>$this->content</div>";
-        }
+            $data->partid = null;
+            $data->counter = null;
+            $data->equivalence_mark = null;
+            $data->caption = $this->caption;
+            $pParser = new DOMDocument();
+            $pParser->loadHTML($this->content);
+            $divs = $pParser->getElementsByTagName("div");
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+            if ($divs->length > 0)
+            {
+                $data->part_content = $this->content;
+            }
+            else
+            {
+                $data->part_content = "<div>$this->content</div>";
+            }
+
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;

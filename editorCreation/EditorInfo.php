@@ -201,6 +201,16 @@ class EditorInfo extends EditorElement
                             break;
                         }
                     }
+                    else if (strpos($key, "msm_theoremref_description_input") !== false)
+                    {
+                        $refType = "Theorem";
+                        $descrInfo = explode("__", $key);
+                        if (sizeof($descrInfo) > 1)
+                        {
+                            $intExtFlag = 'intext';
+                            break;
+                        }
+                    }
                 }
             }
 

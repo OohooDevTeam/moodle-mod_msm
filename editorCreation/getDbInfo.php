@@ -48,34 +48,37 @@ $fieldType = $_POST["param"][2]["value"];
 
 $tableID = null;
 
-if($dbType == "definition")
+if ($dbType == "definition")
 {
     $tableID = $DB->get_record("msm_table_collection", array("tablename" => "msm_def"));
 }
-else if($dbType == "theorem")
+else if ($dbType == "theorem")
 {
-    $tableID = $DB->get_record("msm_table_collection", array("tablename"=>"msm_theorem"));
+    $tableID = $DB->get_record("msm_table_collection", array("tablename" => "msm_theorem"));
+    $statementTheoremTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_statement_theorem"));
+    $partTheoremTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_part_theorem"));
 }
-else if($dbType == "comment")
+else if ($dbType == "comment")
 {
-    $tableID = $DB->get_record("msm_table_collection", array("tablename"=>"msm_comment"));
+    $tableID = $DB->get_record("msm_table_collection", array("tablename" => "msm_comment"));
 }
-else if($dbType == "unit")
+else if ($dbType == "unit")
 {
-    $tableID = $DB->get_record("msm_table_collection", array("tablename"=>"msm_unit"));
+    $tableID = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
 }
 
 $msmString = '';
 
-if ($refType == "Internal Reference")
+if ($refType == "Internal References")
 {
     $msmString = " AND c1.msm_id=$msmId";
 }
-else if ($refType == "External Reference")
+else if ($refType == "External References")
 {
     $msmString = " AND c1.msm_id<>$msmId";
 }
 
+$records = array();
 $whereClause = '';
 
 // need to include msm ID 
@@ -116,7 +119,7 @@ if ($dbType == "definition")
                 GROUP BY comp.unit_id";
     }
 }
-else if($dbType == "comment")
+else if ($dbType == "comment")
 {
     if ($fieldType == "title")
     {
@@ -152,6 +155,248 @@ else if($dbType == "comment")
                 GROUP BY comp.unit_id";
     }
 }
+else if ($dbType == "theorem")
+{
+    if ($fieldType == "title")
+    {
+        $whereClause = "WHERE LOWER(thm.caption) LIKE '%$matchString%' OR LOWER(thm.caption) LIKE '$matchString%' OR LOWER(thm.caption) LIKE '%$matchString'
+                        OR LOWER(thm.textcaption) LIKE '%$matchString%' OR LOWER(thm.textcaption) LIKE '$matchString%' OR LOWER(thm.textcaption) LIKE '%$matchString'";
+
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                FROM (SELECT * 
+                     FROM mdl_msm_compositor c1
+                     WHERE c1.table_id = $tableID->id" . "$msmString)
+                AS comp INNER JOIN
+                    (SELECT * 
+                     FROM mdl_msm_theorem thm
+                     $whereClause)
+                AS theorem
+                ON comp.unit_id = theorem.id                
+                GROUP BY comp.unit_id";
+
+        $records = $DB->get_records_sql($sql);
+
+        // finding theorem with part_theorem caption that has the matching string init when theorem caption does not
+        $found = false;
+
+        $theoremSql = "SELECT * 
+                        FROM mdl_msm_compositor c1
+                        WHERE c1.table_id = $tableID->id" . "$msmString";
+
+        // eliminate records that are already in records array
+        foreach ($records as $rec)
+        {
+            $theoremSql .= " AND c1.id <> $rec->id";
+        }
+
+        $theoremRecords = $DB->get_records_sql($theoremSql);
+
+        foreach ($theoremRecords as $theoremrec)
+        {
+            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $theoremrec->id, "table_id" => $statementTheoremTable->id), "prev_sibling_id");
+
+            foreach ($statementTheorems as $statement)
+            {
+                $partTheorems = $DB->get_records("msm_compositor", array("parent_id" => $statement->id, "table_id" => $partTheoremTable->id), "prev_sibling_id");
+
+                foreach ($partTheorems as $part)
+                {
+                    $partRecord = $DB->get_record("msm_part_theorem", array("id" => $part->unit_id));
+
+                    if (strpos($partRecord->caption, $matchString) !== false)
+                    {
+                        $found = true;
+                        break 2;
+                    }
+                }
+            }
+
+            if ($found)
+            {
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                FROM (SELECT * 
+                     FROM mdl_msm_compositor c1
+                     WHERE c1.id = $theoremrec->id)
+                AS comp INNER JOIN
+                    (SELECT *
+                     FROM mdl_msm_theorem thm
+                     WHERE thm.id = $theoremrec->unit_id)
+                AS theorem
+                ON comp.unit_id = theorem.id                
+                GROUP BY comp.unit_id";
+
+                $joineRec = $DB->get_record_sql($joinedsql);
+                array_push($records, $joineRec);
+            }
+        }
+    }
+    else if ($fieldType == "content")
+    {
+        // finding theorem with part_theorem caption that has the matching string init when theorem caption does not
+        $found = false;
+
+        $theoremSql = "SELECT * 
+                        FROM mdl_msm_compositor c1
+                        WHERE c1.table_id = $tableID->id" . "$msmString";
+
+        $theoremRecords = $DB->get_records_sql($theoremSql);
+
+        foreach ($theoremRecords as $theoremrec)
+        {
+            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $theoremrec->id, "table_id" => $statementTheoremTable->id), "prev_sibling_id");
+
+            foreach ($statementTheorems as $statement)
+            {
+                $stateUnitRecord = $DB->get_record("msm_statement_theorem", array("id" => $statement->unit_id));
+
+                if (strpos($stateUnitRecord->statement_content, $matchString) !== false)
+                {
+                    $found = true;
+                    break;
+                }
+                else
+                {
+                    $partTheorems = $DB->get_records("msm_compositor", array("parent_id" => $statement->id, "table_id" => $partTheoremTable->id), "prev_sibling_id");
+
+                    foreach ($partTheorems as $part)
+                    {
+                        $partRecord = $DB->get_record("msm_part_theorem", array("id" => $part->unit_id));
+
+                        if (strpos($partRecord->part_content, $matchString) !== false)
+                        {
+                            $found = true;
+                            break 2;
+                        }
+                    }
+                }
+            }
+
+            if ($found)
+            {
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                FROM (SELECT * 
+                     FROM mdl_msm_compositor c1
+                     WHERE c1.id = $theoremrec->id)
+                AS comp INNER JOIN
+                    (SELECT *
+                     FROM mdl_msm_theorem thm
+                     WHERE thm.id = $theoremrec->unit_id)
+                AS theorem
+                ON comp.unit_id = theorem.id                
+                GROUP BY comp.unit_id";
+
+                $joineRec = $DB->get_record_sql($joinedsql);
+                array_push($records, $joineRec);
+            }
+        }
+    }
+    else if ($fieldType == "description")
+    {
+        $whereClause = "WHERE LOWER(thm.description) LIKE '%$matchString%' OR LOWER(thm.description) LIKE '$matchString%' OR LOWER(thm.description) LIKE '%$matchString'";
+
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.comment_type, theorem.description
+                FROM (SELECT * 
+                     FROM mdl_msm_compositor c1
+                     WHERE c1.table_id = $tableID->id" . "$msmString)
+                AS comp INNER JOIN
+                    (SELECT * 
+                     FROM mdl_msm_theorem thm
+                     $whereClause)
+                AS theorem
+                ON comp.unit_id = theorem.id                
+                GROUP BY comp.unit_id";
+
+        $records = $DB->get_records_sql($sql);
+    }
+    else if ($fieldType == "all")
+    {
+        $whereClause = "WHERE LOWER(thm.textcaption) LIKE '%$matchString%' OR LOWER(thm.caption) LIKE '%$matchString%' OR LOWER(thm.description) LIKE '%$matchString%'
+                        OR LOWER(thm.textcaption) LIKE '$matchString%' OR LOWER(thm.caption) LIKE '$matchString%' OR LOWER(thm.description) LIKE '$matchString%'
+                        OR LOWER(thm.textcaption) LIKE '%$matchString' OR LOWER(thm.caption) LIKE '%$matchString' OR LOWER(thm.description) LIKE '%$matchString'";
+
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                FROM (SELECT * 
+                     FROM mdl_msm_compositor c1
+                     WHERE c1.table_id = $tableID->id" . "$msmString)
+                AS comp INNER JOIN
+                    (SELECT * 
+                     FROM mdl_msm_theorem thm
+                     $whereClause)
+                AS theorem
+                ON comp.unit_id = theorem.id                
+                GROUP BY comp.unit_id";
+
+        $records = $DB->get_records_sql($sql);
+
+        $found = false;
+
+        $theoremSql = "SELECT * 
+                        FROM mdl_msm_compositor c1
+                        WHERE c1.table_id = $tableID->id" . "$msmString";
+
+        // eliminate records that are already in records array
+        foreach ($records as $rec)
+        {
+            $theoremSql .= " AND c1.id <> $rec->id";
+        }
+
+        $theoremRecords = $DB->get_records_sql($theoremSql);
+
+        foreach ($theoremRecords as $theoremrec)
+        {
+            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $theoremrec->id, "table_id" => $statementTheoremTable->id), "prev_sibling_id");
+
+            foreach ($statementTheorems as $statement)
+            {
+                $stateUnitRecord = $DB->get_record("msm_statement_theorem", array("id" => $statement->unit_id));
+
+                if (strpos($stateUnitRecord->statement_content, $matchString) !== false)
+                {
+                    $found = true;
+                    break;
+                }
+                else
+                {
+                    $partTheorems = $DB->get_records("msm_compositor", array("parent_id" => $statement->id, "table_id" => $partTheoremTable->id), "prev_sibling_id");
+
+                    foreach ($partTheorems as $part)
+                    {
+                        $partRecord = $DB->get_record("msm_part_theorem", array("id" => $part->unit_id));
+
+                        if (strpos($partRecord->part_content, $matchString) !== false)
+                        {
+                            $found = true;
+                            break 2;
+                        }
+                        else if (strpos($partRecord->caption, $matchString) !== false)
+                        {
+                            $found = true;
+                            break 2;
+                        }
+                    }
+                }
+            }
+
+            if ($found)
+            {
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                FROM (SELECT * 
+                     FROM mdl_msm_compositor c1
+                     WHERE c1.id = $theoremrec->id)
+                AS comp INNER JOIN
+                    (SELECT * 
+                     FROM mdl_msm_theorem thm
+                     WHERE thm.id = $theoremrec->unit_id)
+                AS theorem
+                ON comp.unit_id = theorem.id                
+                GROUP BY comp.unit_id";
+
+                $joineRec = $DB->get_record_sql($joinedsql);
+                array_push($records, $joineRec);
+            }
+        }
+    }
+}
 //else if ($dbType == "theorem") // complication --> title can be from theorem/or part theorem and contents can be either statement/part theorem.
 //{
 //    if ($fieldType == "title")
@@ -176,15 +421,16 @@ else if($dbType == "comment")
 //    
 //}
 
-$records = null;
-
-if (!empty($sql))
+if (empty($records))
 {
-    $records = $DB->get_records_sql($sql);
-}
-else
-{
-    echo "error in retrieving records using SQL queries";
+    if (!empty($sql))
+    {
+        $records = $DB->get_records_sql($sql);
+    }
+    else
+    {
+        echo "error in retrieving records using SQL queries";
+    }
 }
 
 $html = displaySearchResult($records, $tableID);
@@ -205,7 +451,6 @@ function displaySearchResult($records, $tableRecords)
 
     foreach ($records as $rec)
     {
-        $displaySubordinate = displaySearchSubordinate($rec);
 
         $displayString .= "<tr>";
         $displayString .= "<td class='msm_search_result_table_cells'><input type='checkbox' id='msm_search_select-" . $rec->id . "' name='msm_search_select-" . $rec->id . "'/></td>";
@@ -220,9 +465,9 @@ function displaySearchResult($records, $tableRecords)
                 $displayString .= "<td class='msm_search_result_table_cells'>Definition</td>";
             }
         }
-        else if($tableRecords->tablename == "msm_comment")
+        else if ($tableRecords->tablename == "msm_comment")
         {
-            if(!empty($rec->comment_type))
+            if (!empty($rec->comment_type))
             {
                 $displayString .= "<td class='msm_search_result_table_cells'>$rec->comment_type</td>";
             }
@@ -231,12 +476,34 @@ function displaySearchResult($records, $tableRecords)
                 $displayString .= "<td class='msm_search_result_table_cells'>Comment</td>";
             }
         }
+        else if ($tableRecords->tablename == "msm_theorem")
+        {
+            if (!empty($rec->theorem_type))
+            {
+                $displayString .= "<td class='msm_search_result_table_cells'>$rec->theorem_type</td>";
+            }
+            else
+            {
+                $displayString .= "<td class='msm_search_result_table_cells'>Theorem</td>";
+            }
+        }
         $displayString .= "<td class='msm_search_result_table_cells'>$rec->caption</td>";
 
-        $content = preg_replace("/<math.array(.*?)>/", "<table$1>", $rec->content);
-        $content = preg_replace("/<\/math.array>/", "</table>", $content);
+        if (($tableRecords->tablename == "msm_def") || ($tableRecords->tablename == "msm_comment"))
+        {
+            $displaySubordinate = displaySearchSubordinate($rec);
 
-        $displayString .= "<td class='msm_search_result_table_cells'>" . $content . $displaySubordinate . "</td>";
+            $content = preg_replace("/<math.array(.*?)>/", "<table$1>", $rec->content);
+            $content = preg_replace("/<\/math.array>/", "</table>", $content);
+
+            $displayString .= "<td class='msm_search_result_table_cells'>" . $content . $displaySubordinate . "</td>";
+        }
+        else if ($tableRecords->tablename == "msm_theorem")
+        {
+            $theoremContent = displaySearchTheorem($rec);
+            $displayString .= "<td class='msm_search_result_table_cells'>" . $theoremContent . "</td>";
+        }
+
         $displayString .= "<td class='msm_search_result_table_cells'>$rec->description</td>";
         $displayString .= "</tr>";
     }
@@ -248,7 +515,7 @@ function displaySearchResult($records, $tableRecords)
 function displaySearchSubordinate($record)
 {
     global $DB;
-    
+
     $subordinateString = '';
 
     $subordinateTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_subordinate"));
@@ -258,11 +525,29 @@ function displaySearchSubordinate($record)
     {
         $subordinate = new EditorSubordinate();
         $subordinate->loadData($sub->id);
-        
+
         $subordinateString .= $subordinate->displayPreview();
     }
-    
+
     return $subordinateString;
+}
+
+function displaySearchTheorem($searchTheoremRec)
+{
+    $content = '';
+
+    $theorem = new EditorTheorem();
+    $theorem->loadData($searchTheoremRec->id);
+
+    foreach ($theorem->contents as $statement)
+    {
+        $content .= $statement->displayPreview($statement->id);
+    }
+
+    $newcontent = preg_replace("/<math.array(.*?)>/", "<table$1>", $content);
+    $newcontent = preg_replace("/<\/math.array>/", "</table>", $newcontent);
+
+    return $newcontent;
 }
 
 ?>

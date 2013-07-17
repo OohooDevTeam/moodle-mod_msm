@@ -73,7 +73,26 @@ class EditorTheorem extends EditorElement
                 }
             }
             $this->type = $_POST['msm_theoremref_type_dropdown-' . $newTid];
-            $this->description = $_POST['msm_theoremref_description_input-' . $newTid];
+
+            if ($idNumberInfo[1] != "ref")
+            {
+                foreach ($_POST as $key => $value)
+                {
+                    $pattern = "msm_theoremref_description_input-$newTid";
+                    if (strpos($key, $pattern) !== false)
+                    {
+                        $this->description = $value;
+                        $newkey = explode("__", $key);
+                        $this->isRef = $newkey[1];
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                $this->description = $_POST['msm_theoremref_description_input-' . $newTid];
+            }
+
             $this->title = $_POST['msm_theoremref_title_input-' . $newTid];
 
             $contentmatch = '/msm_theoremref_content_input-' . $newTid . '-\d+.*$/';
@@ -175,11 +194,40 @@ class EditorTheorem extends EditorElement
         $data = new stdClass();
         $compData = new stdClass();
 
-        $data->theorem_type = $this->type;
-        $data->caption = $this->title;
-        $data->description = $this->description;
+        if (!empty($this->isRef))
+        {
+            $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
+            $this->id = $existingTheorem->unit_id;
+            
+            $statementTable = $DB->get_record("msm_table_collection", array("tablename"=>"msm_statement_theorem"));
+            $partTable = $DB->get_record("msm_table_collection", array("tablename"=>"msm_part_theorem"));
+            
+            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id"=>$existingTheorem->id, "table_id"=>$statementTable->id), "prev_sibling_id");
+            
+            $i = 0;
+            foreach($statementTheorems as $statement)
+            {
+                $this->content[$i]->id = $statement->unit_id;
+                
+                $partTheorems = $DB->get_records("msm_compositor", array("parent_id"=>$statement->id, "table_id"=>$partTable->id), "prev_sibling_id");
+                
+                $j = 0;
+                foreach($partTheorems as $part)
+                {
+                    $this->content[$i]->children[$j]->id = $part->unit_id;
+                    $j++;
+                }
+                $i++;
+            }
+        }
+        else
+        {
+            $data->theorem_type = $this->type;
+            $data->caption = $this->title;
+            $data->description = $this->description;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
 
         $compData->msm_id = $msmid;
         $compData->unit_id = $this->id;
@@ -190,9 +238,9 @@ class EditorTheorem extends EditorElement
         $this->compid = $DB->insert_record("msm_compositor", $compData);
 
         $sibling_id = 0;
-        foreach ($this->contents as $statementTheorem)
+        foreach ($this->contents as $key=>$statementTheorem)
         {
-            $statementTheorem->insertData($this->compid, $sibling_id, $msmid);
+            $statementTheorem->insertData($this->compid, $sibling_id, $msmid, $this->ref);
             $sibling_id = $statementTheorem->compid;
         }
 

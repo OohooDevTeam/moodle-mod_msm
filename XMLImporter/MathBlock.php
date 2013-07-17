@@ -15,9 +15,9 @@
  * ************************************************************************ */
 
 /**
- * This class represents all the ol, ul and math.display XML elements in the legacy document
+ * This class represents all the block and block.body XML elements in the legacy document
  * (ie. files in the newXML) and the newly formed XML exported by the editor system
- * and it is called by Block/Unit classes. InContent class inherits from the abstract class Element
+ * and it is called by ExtraInfo/Intro/Unit classes. Block class inherits from the abstract class Element
  * and for all the methods inherited, read documents for Element class.
  *
  * @author Ga Young Kim
@@ -25,22 +25,21 @@
 class Block extends Element
 {
 
-    public $caption;
-    public $position;
-    public $root;
-    public $title;
-    public $compid;
-    public $id;
-    public $defs = array();
-    public $theorems = array();
-    public $comments = array();
-    public $paras = array();
-    public $uls = array();
-    public $ols = array();
-    public $math_displays = array();
-    public $math_arrays = array();
-    public $tables = array();
-    public $medias = array();
+    public $id;                             // Database ID of current block element in msm_block table
+    public $compid;                         // Database ID of current block element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $root;                           // storing previous sibling id to order the blocks properly in unit
+    public $title;                          // caption element associated with this block element
+    public $defs = array();                 // Definition objects assocaited with this block element
+    public $theorems = array();             // Theorem objects assocaited with this block element
+    public $comments = array();             // MathComment objects assocaited with this block element
+    public $paras = array();                // Para objects assocaited with this block element
+    public $uls = array();                  // InContent objects assocaited with this block element (in this case representing ul element)
+    public $ols = array();                  // InContent objects assocaited with this block element (in this case representing ol element)
+    public $math_displays = array();        // InContent objects assocaited with this block element (in this case representing math.display element)
+    public $math_arrays = array();          // MathArray objects assocaited with this block element
+    public $tables = array();               // Table objects assocaited with this block element
+    public $medias = array();               // Media objects assocaited with this block element
 
     function __construct($xmlpath = '')
     {
@@ -60,12 +59,12 @@ class Block extends Element
 
             if ($caption->length > 0)
             {
-                $this->caption = $caption->item(0)->textContent;
+                $this->$title = $caption->item(0)->textContent;
             }
         }
         else
         {
-            $this->caption = '';
+            $this->$title = '';
         }
 
         $blockBodys = $DomElement->getElementsByTagName("block.body");
@@ -191,7 +190,7 @@ class Block extends Element
         if ((empty($this->defs)) && (empty($this->theorems)) && (empty($this->comments)))
         {
             $data = new stdClass();
-            $data->block_caption = $this->caption;
+            $data->block_caption = $this->$title;
 
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);

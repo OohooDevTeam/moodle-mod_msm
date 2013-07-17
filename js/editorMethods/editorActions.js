@@ -143,7 +143,7 @@ function makeRefDefinition(idindex, dbId)
     return clonedCurrentElement;
 }
 
-function makeRefTheorem(idindex)
+function makeRefTheorem(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
 
@@ -169,16 +169,33 @@ function makeRefTheorem(idindex)
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+idindex+'-1"></div>');
             
     var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+idindex+'-1"></div>');
+     var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idindex+"-1'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Part of a Theorem</p>\n\
+                    </div>");   
             
-    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theoremref_child_button-'+idindex+'" type="button" onclick="addrefTheoremContent(event)" value="Add content"/>');
-    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idindex+'-1" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
+//    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theoremref_child_button-'+idindex+'" type="button" onclick="addrefTheoremContent(event)" value="Add content"/>');
+//    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idindex+'-1" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
     var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theoremref_description_label-"+idindex+"' for='msm_theoremref_description_input-"+idindex+"'>Description: </label>");
-    var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theoremref_description_input-"+idindex+"' name='msm_theoremref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
+    
+    var theoremDescriptionField = '';
+    
+    if(dbId != '')
+    {
+        theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theoremref_description_input-"+idindex+"' name='msm_theoremref_description_input-"+idindex+"__"+dbId+"' placeholder='Insert description to search this element in future. '/>");
+    }
+    else
+    {
+        theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theoremref_description_input-"+idindex+"' name='msm_theoremref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
+    }    
+    
+    var dndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idindex+"'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Extra Contents</p>\n\
+                    </div>");     
             
     clonedCurrentElement.attr("id", "copied_msm_theoremref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             
-    theoremPartWrapper.append(theoremPartButton);
+    theoremPartWrapper.append(partDndDiv);
     theoremContentTitleContainer.append(theoremContentTitleHidden);
             
     theoremStatementWrapper.append(theoremContentTitleContainer);
@@ -188,11 +205,12 @@ function makeRefTheorem(idindex)
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
-    theoremContentWrapper.append(theoremChildButton);
+//    theoremContentWrapper.append(theoremChildButton);
             
     clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleField);
     clonedCurrentElement.append(theoremContentWrapper);
+    clonedCurrentElement.append(dndDiv);
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
             
