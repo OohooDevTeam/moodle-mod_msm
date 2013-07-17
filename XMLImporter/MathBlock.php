@@ -15,9 +15,12 @@
  * ************************************************************************ */
 
 /**
- * Description of Block
+ * This class represents all the ol, ul and math.display XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by Block/Unit classes. InContent class inherits from the abstract class Element
+ * and for all the methods inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Block extends Element
 {

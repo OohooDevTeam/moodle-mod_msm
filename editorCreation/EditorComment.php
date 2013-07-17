@@ -33,6 +33,7 @@ class EditorComment extends EditorElement
     public $children = array(); //associate
     public $subordinates = array();
     public $medias = array();
+    public $isRef;
 
     // constructor for the class
     function __construct()
@@ -73,7 +74,26 @@ class EditorComment extends EditorElement
             }
 
             $this->type = $_POST['msm_commentref_type_dropdown-' . $newId];
-            $this->description = $_POST['msm_commentref_description_input-' . $newId];
+
+            if ($idInfo[1] != "ref")
+            {
+                foreach ($_POST as $key => $value)
+                {
+                    $pattern = "msm_commentref_description_input-$newId";
+                    if (strpos($key, $pattern) !== false)
+                    {
+                        $this->description = $value;
+                        $newkey = explode("__", $key);
+                        $this->isRef = $newkey[1];
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                $this->description = $_POST['msm_commentref_description_input-' . $newId];
+            }
+
             $this->title = $_POST['msm_commentref_title_input-' . $newId];
 
             if ($_POST['msm_commentref_content_input-' . $newId] != '')
@@ -166,25 +186,34 @@ class EditorComment extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        $data->comment_type = $this->type;
-        $data->caption = $this->title;
 
-        $cParser = new DOMDocument();
-        $cParser->loadHTML($this->content);
-        $divs = $cParser->getElementsByTagName("div");
-
-        if ($divs->length > 0)
+        if (!empty($this->isRef))
         {
-            $data->comment_content = $this->content;
+            $existingComment = $DB->get_record("msm_compositor", array("id" => $this->isRef));
+            $this->id = $existingComment->unit_id;
         }
         else
         {
-            $data->comment_content = "<div>$this->content</div>";
+            $data->comment_type = $this->type;
+            $data->caption = $this->title;
+
+            $cParser = new DOMDocument();
+            $cParser->loadHTML($this->content);
+            $divs = $cParser->getElementsByTagName("div");
+
+            if ($divs->length > 0)
+            {
+                $data->comment_content = $this->content;
+            }
+            else
+            {
+                $data->comment_content = "<div>$this->content</div>";
+            }
+
+            $data->description = $this->description;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
-
-        $data->description = $this->description;
-
-        $this->id = $DB->insert_record($this->tablename, $data);
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;

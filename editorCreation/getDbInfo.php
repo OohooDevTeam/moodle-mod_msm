@@ -45,7 +45,25 @@ $dbType = $_POST["param"][0]["value"];
 $matchString = trim(strtolower($_POST["param"][1]["value"]));
 $fieldType = $_POST["param"][2]["value"];
 
-$deftableID = $DB->get_record("msm_table_collection", array("tablename" => "msm_def"));
+
+$tableID = null;
+
+if($dbType == "definition")
+{
+    $tableID = $DB->get_record("msm_table_collection", array("tablename" => "msm_def"));
+}
+else if($dbType == "theorem")
+{
+    $tableID = $DB->get_record("msm_table_collection", array("tablename"=>"msm_theorem"));
+}
+else if($dbType == "comment")
+{
+    $tableID = $DB->get_record("msm_table_collection", array("tablename"=>"msm_comment"));
+}
+else if($dbType == "unit")
+{
+    $tableID = $DB->get_record("msm_table_collection", array("tablename"=>"msm_unit"));
+}
 
 $msmString = '';
 
@@ -88,13 +106,49 @@ if ($dbType == "definition")
         $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, def.caption, def.string_id, def.def_type, def.def_content AS content, def.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
-                     WHERE c1.table_id = $deftableID->id" . "$msmString)
+                     WHERE c1.table_id = $tableID->id" . "$msmString)
                 AS comp INNER JOIN
                     (SELECT * 
                      FROM mdl_msm_def d1
                      $whereClause)
                 AS def
                 ON comp.unit_id = def.id                
+                GROUP BY comp.unit_id";
+    }
+}
+else if($dbType == "comment")
+{
+    if ($fieldType == "title")
+    {
+        $whereClause = "WHERE LOWER(com1.caption) LIKE '%$matchString%' OR LOWER(com1.caption) LIKE '$matchString%' OR LOWER(com1.caption) LIKE '%$matchString'";
+    }
+    else if ($fieldType == "content")
+    {
+        $whereClause = "WHERE LOWER(com1.comment_content) LIKE '%$matchString%' OR LOWER(com1.comment_content) LIKE '$matchString%' OR LOWER(com1.comment_content) LIKE '%$matchString'";
+    }
+    else if ($fieldType == "description")
+    {
+        $whereClause = "WHERE LOWER(com1.description) LIKE '%$matchString%' OR LOWER(com1.description) LIKE '$matchString%' OR LOWER(com1.description) LIKE '%$matchString'";
+    }
+    else if ($fieldType == "all")
+    {
+        $whereClause = "WHERE LOWER(com1.comment_content) LIKE '%$matchString%' OR LOWER(com1.caption) LIKE '%$matchString%' OR LOWER(com1.description) LIKE '%$matchString%'
+                        OR LOWER(com1.comment_content) LIKE '$matchString%' OR LOWER(com1.caption) LIKE '$matchString%' OR LOWER(com1.description) LIKE '$matchString%'
+                        OR LOWER(com1.comment_content) LIKE '%$matchString' OR LOWER(com1.caption) LIKE '%$matchString' OR LOWER(com1.description) LIKE '%$matchString'";
+    }
+
+    if (!empty($whereClause))
+    {
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comment.caption, comment.string_id, comment.comment_type, comment.comment_content AS content, comment.description
+                FROM (SELECT * 
+                     FROM mdl_msm_compositor c1
+                     WHERE c1.table_id = $tableID->id" . "$msmString)
+                AS comp INNER JOIN
+                    (SELECT * 
+                     FROM mdl_msm_comment com1
+                     $whereClause)
+                AS comment
+                ON comp.unit_id = comment.id                
                 GROUP BY comp.unit_id";
     }
 }
@@ -133,7 +187,7 @@ else
     echo "error in retrieving records using SQL queries";
 }
 
-$html = displaySearchResult($records, $deftableID);
+$html = displaySearchResult($records, $tableID);
 
 echo json_encode($html);
 
@@ -164,6 +218,17 @@ function displaySearchResult($records, $tableRecords)
             else
             {
                 $displayString .= "<td class='msm_search_result_table_cells'>Definition</td>";
+            }
+        }
+        else if($tableRecords->tablename == "msm_comment")
+        {
+            if(!empty($rec->comment_type))
+            {
+                $displayString .= "<td class='msm_search_result_table_cells'>$rec->comment_type</td>";
+            }
+            else
+            {
+                $displayString .= "<td class='msm_search_result_table_cells'>Comment</td>";
             }
         }
         $displayString .= "<td class='msm_search_result_table_cells'>$rec->caption</td>";

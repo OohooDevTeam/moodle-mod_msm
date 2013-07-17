@@ -15,7 +15,7 @@
  * ************************************************************************ */
 
 /**
- *  This class represents all the intro XML elements in the legacy document
+ * This class represents all the intro XML elements in the legacy document
  * (ie. files in the newXML) and the newly formed XML exported by the editor system
  * and it is called by Unit class. Intro class inherits from the abstract class Element
  * and for all the methods inherited, read documents for Element class.

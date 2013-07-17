@@ -199,7 +199,7 @@ function makeRefTheorem(idindex)
     return clonedCurrentElement;
 }
 
-function makeRefComment(idindex)
+function makeRefComment(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
     var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+idindex+'">\n\
@@ -215,8 +215,18 @@ function makeRefComment(idindex)
 
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-commentrefcontent'+idindex+'"></div>');
     var commentDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_commentref_description_label-"+idindex+"' for='msm_commentref_description_input-"+idindex+"'>Description: </label>");
-    var commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+idindex+"' name='msm_commentref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
-            
+    
+    var commentDescriptionField = null;
+  
+    if(dbId != '')
+    {
+        commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+idindex+"' name='msm_commentref_description_input-"+idindex+"__"+dbId+"' placeholder='Insert description to search this element in future. '/>");
+    }
+    else
+    {
+        commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+idindex+"' name='msm_commentref_description_input-"+idindex+"' placeholder='Insert description to search this element in future. '/>");
+    }           
+    
     clonedCurrentElement.attr("id", "copied_msm_commentref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
             

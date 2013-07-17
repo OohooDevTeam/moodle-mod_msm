@@ -4,7 +4,7 @@
  */
 
 function processAdditionalChild(event, draggedId)
-{    
+{   
     var type = null;
     var parentId = event.target.parentElement.parentElement.id;
     
@@ -191,174 +191,186 @@ function createRefDialog(id, refTypeString, currentId)
     var dWidth = wWidth*0.8;
     var dHeight = wHeight*0.8;
     
-    $("#msm_ref_search_window-"+id).dialog({
-        resizable: false,
-        modal: true,
-        height: dHeight,
-        width: dWidth,
-        dialogClass: "no-close",
-        closeOnEscape: false,
-        buttons: {
-            "Insert" : function() {
-                var selectedBox =  $("#msm_search_result_table input").filter(":checked");
+    $("#msm_ref_search_window-"+id).ready(function() {
+        $("#msm_ref_search_window-"+id).dialog({
+            resizable: false,
+            modal: true,
+            height: dHeight,
+            width: dWidth,
+            dialogClass: "no-close",
+            closeOnEscape: false,
+            buttons: {
+                "Insert" : function() {
+                    var selectedBox =  $("#msm_search_result_table input").filter(":checked");
               
-                if(selectedBox.length == 0)
-                {
-                    var message = $("<div id='msm_search_error' title='No results Selected'>\n\
+                    if(selectedBox.length == 0)
+                    {
+                        var message = $("<div id='msm_search_error' title='No results Selected'>\n\
                                          <p> No reference material was selected.  Please select one of the following search results or click 'Cancel' to exit.</p>\n\
                                      </div>");
-                    $(message).appendTo("#msm_child_appending_area");
+                        $(message).appendTo("#msm_child_appending_area");
                     
-                    $( "#msm_search_error" ).dialog({
-                        resizable: false,
-                        height:180,
-                        modal: false,
-                        buttons: {
-                            "Ok": function() {
-                                $(this).dialog("close");
+                        $( "#msm_search_error" ).dialog({
+                            resizable: false,
+                            height:180,
+                            modal: false,
+                            buttons: {
+                                "Ok": function() {
+                                    $(this).dialog("close");
+                                }
                             }
-                        }
-                    });
-                }
-                else if(selectedBox.length > 0)
-                {
-                    $(".msm_info_dialogs").dialog("destroy").css("display", "none");
-                    var selectedRow = $(selectedBox).closest("tr");                    
-                    var selectedCells = $(selectedRow).find(".msm_search_result_table_cells");
-                    var selectedCheckbox = $(selectedCells[0]).find("input");
+                        });
+                    }
+                    else if(selectedBox.length > 0)
+                    {
+                        var refSelectType = $("#msm_search_type").val();
+                        
+                        console.log("type of reference defined by dropdown menu: comment?def?..etc");
+                        console.log(refSelectType);
+                        
+                        $(".msm_info_dialogs").dialog("destroy").css("display", "none");
+                        var selectedRow = $(selectedBox).closest("tr");                    
+                        var selectedCells = $(selectedRow).find(".msm_search_result_table_cells");
+                        var selectedCheckbox = $(selectedCells[0]).find("input");
                     
-                    var selectedId = $(selectedCheckbox[0]).attr("id").split("-");
+                        var selectedId = $(selectedCheckbox[0]).attr("id").split("-");
                     
-                    addDefRef(selectedCells, currentId, selectedId[1]);
+                        addRefElements(refSelectType, selectedCells, currentId, selectedId[1])
+                        //                        addDefRef(selectedCells, currentId, selectedId[1]);
                     
+                        $(this).dialog("close");
+                    }
+            
+            
+                },
+                "Cancel": function() {
                     $(this).dialog("close");
                 }
-            
-            
             },
-            "Cancel": function() {
-                $(this).dialog("close");
-            }
-        },
-        open: function() {
-            $("#msm_search_accordion-"+id).accordion({
-                heightStyle: "content"
-            });           
-        },
-        close: function() {
-            $(this).empty().remove();
-        }
-    });
-    
-    var msmIdInfo = window.location.search.split("=");   
-    var msmId = msmIdInfo[1]; 
-    
-    //    $("#msm_search_submit").keyup(function(e) {
-    //        if(e.keyCode == 13)
-    //        {
-    //            $("#msm_search_submit").click();
-    //        }
-    //    });
-
-    $("#msm_search_submit").click(function(e) {
-        var param = $("#msm_search_form").serializeArray();
-        
-        $.ajax({
-            type: 'POST',
-            url:"editorCreation/getDbInfo.php",
-            data: {
-                param: param,
-                msmId: msmId,
-                refereceType: refTypeString
+            open: function() {
+                $("#msm_search_accordion-"+id).accordion({
+                    heightStyle: "content"
+                });           
             },
-            success: function(data)
-            {
-                
-                var string = JSON.parse(data);    
-                                
-                $("#msm_search_result").empty(); // empty out any previous values
-                $("#msm_search_result").append(string);
-                $("#msm_search_accordion-"+id).accordion("option", "active", 1);       
-                
-                $("#msm_search_result_table .msm_info_dialogs").dialog({
-                    autoOpen: false,
-                    height: "auto",
-                    modal: false,
-                    width: 605
-                });  
-                                
-                $("#msm_search_result_table").find(".msm_subordinate_hotwords").each(function(i, element) {
-                    var idInfo = this.id.split("-");
-                    var newid = '';
-                                        
-                    for(var i=1; i < idInfo.length-1; i++)
-                    {
-                        newid += idInfo[i]+"-";
-                    }
-                                            
-                    newid += idInfo[idInfo.length-1];
-                                                        
-                    previewInfo(this.id, "dialog-"+newid);
-                });
-                                    
-                $("#msm_search_result_table .msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
-                    var idInfo = this.id.split("-");
-                    var newid = '';
-                                        
-                    for(var i=1; i < idInfo.length-1; i++)
-                    {
-                        newid += idInfo[i]+"-";
-                    }
-                                            
-                    newid += idInfo[idInfo.length-1];
-                                                               
-                    previewInfo(this.id, "dialog-"+newid);
-                });
-                
-                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
-                
-                //                 only allowing one checkbox to be selected at any given time
-                $("#msm_search_result input").click(function() {
-                    var checked = $(this).attr("checked");
-                    
-                    //                     when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
-                    if((checked === null) || (typeof checked === "undefined"))
-                    {
-                        $(this).closest("tr").removeClass("ui-widget-header");
-                    }
-                    else
-                    {
-                        //                         when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
-                        $("#msm_search_result input").filter(":checked").not(this).closest("tr").removeClass("ui-widget-header");
-                        $("#msm_search_result input").filter(":checked").not(this).removeAttr("checked");
-                        
-                        $(this).closest("tr").addClass("ui-widget-header");
-                    }
-                
-                });
-                
-            }, 
-            erorr: function()
-            {
-                alert("error");      
+            close: function() {
+                $(this).empty().remove();
             }
         });
+    
+        var msmIdInfo = window.location.search.split("=");   
+        var msmId = msmIdInfo[1]; 
+    
+        $("#msm_search_submit").click(function(e) {
+            var param = $("#msm_search_form").serializeArray();
+        
+            $.ajax({
+                type: 'POST',
+                url:"editorCreation/getDbInfo.php",
+                data: {
+                    param: param,
+                    msmId: msmId,
+                    refereceType: refTypeString
+                },
+                success: function(data)
+                {                
+                    var string = JSON.parse(data);    
+                                
+                    $("#msm_search_result").empty(); // empty out any previous values
+                    $("#msm_search_result").append(string);
+                    $("#msm_search_accordion-"+id).accordion("option", "active", 1);       
+                
+                    $("#msm_search_result_table .msm_info_dialogs").dialog({
+                        autoOpen: false,
+                        height: "auto",
+                        modal: false,
+                        width: 605
+                    });  
+                                
+                    $("#msm_search_result_table").find(".msm_subordinate_hotwords").each(function(i, element) {
+                        var idInfo = this.id.split("-");
+                        var newid = '';
+                                        
+                        for(var i=1; i < idInfo.length-1; i++)
+                        {
+                            newid += idInfo[i]+"-";
+                        }
+                                            
+                        newid += idInfo[idInfo.length-1];
+                                                        
+                        previewInfo(this.id, "dialog-"+newid);
+                    });
+                                    
+                    $("#msm_search_result_table .msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
+                        var idInfo = this.id.split("-");
+                        var newid = '';
+                                        
+                        for(var i=1; i < idInfo.length-1; i++)
+                        {
+                            newid += idInfo[i]+"-";
+                        }
+                                            
+                        newid += idInfo[idInfo.length-1];
+                                                               
+                        previewInfo(this.id, "dialog-"+newid);
+                    });
+                
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
+                
+                    //                 only allowing one checkbox to be selected at any given time
+                    $("#msm_search_result input").click(function(e) {
+                        var checked = $(this).attr("checked");
+                    
+                        //                     when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
+                        if((checked === null) || (typeof checked === "undefined"))
+                        {
+                            $(this).closest("tr").removeClass("ui-widget-header");
+                        }
+                        else
+                        {
+                            //                         when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
+                            $("#msm_search_result input").filter(":checked").not(this).closest("tr").removeClass("ui-widget-header");
+                            $("#msm_search_result input").filter(":checked").not(this).removeAttr("checked");
+                        
+                            $(this).closest("tr").addClass("ui-widget-header");
+                        }
+                
+                    });
+                
+                }, 
+                erorr: function()
+                {
+                    alert("error");      
+                }
+            });
+        });
     });
+    
+}
 
-
+function addRefElements(type, tbcellArray, ind, databaseId)
+{
+    switch(type)
+    {
+        case "definition":
+            addDefRef(tbcellArray, ind, databaseId);
+            break;
+        case "comment":
+            addCommentRef(tbcellArray, ind, databaseId);
+            break;
+    }
 }
 
 function addDefRef(cellArray, index, dbId)
 {
-    var type = $(cellArray[1]).html();
-    var contentobject = processSubContent(cellArray[3], "defrefcontent-"+index);
-    var content = $(contentobject).html();
+    var type = $(cellArray[1]).html();   
     var title = $(cellArray[2]).html();
     var description = $(cellArray[4]).html();
     
-    var defelement = makeRefDefinition(index, dbId);
-    
+    var defelement = makeRefDefinition(index, dbId);   
     $("#msm_associate_reftype_option-"+index).append(defelement);
+    
+    var contentobject = processSubContent(cellArray[3], "defrefcontent"+index);
+    var content = $(contentobject).html();
     
     $("#msm_defref_type_dropdown-"+index).find("option").each(function() {
         var currentType = $(this).val();
@@ -378,6 +390,38 @@ function addDefRef(cellArray, index, dbId)
     $("#msm_defref_description_input-"+index).attr("disabled", "disabled");
     
     textArea2Div("msm_defref_content_input-"+index);
+}
+
+function addCommentRef(cellArray, index, dbId)
+{
+    var type = $(cellArray[1]).html();   
+    var title = $(cellArray[2]).html();
+    var description = $(cellArray[4]).html();
+    
+    var commentelement = makeRefComment(index, dbId);   
+    $("#msm_associate_reftype_option-"+index).append(commentelement);
+    
+    var contentobject = processSubContent(cellArray[3], "commentrefcontent"+index);
+    var content = $(contentobject).html();
+    
+    $("#msm_commentref_type_dropdown-"+index).find("option").each(function() {
+        var currentType = $(this).val();
+        
+        if(currentType == type)
+        {                                
+            $(this).attr("selected", "selected");
+        }
+    });
+    
+    $("#msm_commentref_title_input-"+index).val(title);
+    $("#msm_commentref_description_input-"+index).val(description);
+    $("#msm_commentref_content_input-"+index).val(content);
+    
+    $("#msm_commentref_type_dropdown-"+index).attr("disabled", "disabled");
+    $("#msm_commentref_title_input-"+index).attr("disabled", "disabled");
+    $("#msm_commentref_description_input-"+index).attr("disabled", "disabled");
+    
+    textArea2Div("msm_commentref_content_input-"+index);
 }
 
 function processSubContent(contentobj, id)
@@ -400,9 +444,8 @@ function processSubContent(contentobj, id)
         var selectDiv = document.createElement("div");
         selectDiv.id = "msm_subordinate_select-"+idEnding;
         var selectTextNode = null;
-        var selectUrlText = '';
-        
-        console.log($(this).attr("href"));
+        var selectUrlText = '';  
+        var subUrlDiv = '';
         
         if($(this).attr("href") == "#")
         {
@@ -413,14 +456,13 @@ function processSubContent(contentobj, id)
         {
             selectTextNode = document.createTextNode("External Link");
             selectUrlText = document.createTextNode($(this).attr("href"));
+            subUrlDiv = document.createElement("div");
+            subUrlDiv.id = "msm_subordinate_url-"+idEnding;
+            subUrlDiv.appendChild(selectUrlText);
         }
         
         selectDiv.appendChild(selectTextNode);
-        
-        var subUrlDiv = document.createElement("div");
-        subUrlDiv.id = "msm_subordinate_url-"+idEnding;
-        subUrlDiv.appendChild(selectUrlText);
-        
+                
         var subHotwordMatch = document.createElement("div");
         subHotwordMatch.id = "msm_subordinate_hotword_match-"+idEnding;
         subHotwordMatch.className = "msm_subordinate_hotword_matchs";
@@ -430,7 +472,16 @@ function processSubContent(contentobj, id)
         var subinfoTitleDiv = document.createElement("div");
         subinfoTitleDiv.id = "msm_subordinate_infoTitle-"+idEnding;
         
-        var matchingInfoTitle = document.createTextNode($(contentobj).find("#dialog-"+idEnding).attr("title"));
+        var titleValue = $(contentobj).find("#dialog-"+idEnding).attr("title");
+        var matchingInfoTitle = '';
+        if(typeof titleValue !== "undefined")
+        {
+            matchingInfoTitle = document.createTextNode(titleValue);
+        }
+        else
+        {
+            matchingInfoTitle = document.createTextNode('');
+        }
         subinfoTitleDiv.appendChild(matchingInfoTitle);
         
         var subinfoContentDiv = document.createElement("div");
@@ -440,7 +491,11 @@ function processSubContent(contentobj, id)
         subinfoContentDiv.appendChild(matchingInfoContent);
         
         subContainer.appendChild(selectDiv);
-        subContainer.appendChild(subUrlDiv);
+        if(subUrlDiv != '')
+        {
+            subContainer.appendChild(subUrlDiv);
+
+        }
         subContainer.appendChild(subHotwordMatch);
         subContainer.appendChild(subinfoTitleDiv);
         subContainer.appendChild(subinfoContentDiv);

@@ -289,7 +289,7 @@ function submitForm()
                         accept: "#msm_component_tabs-2 > div",
                         hoverClass: "ui-state-hover",
                         tolerance: "pointer",
-                        drop: function( event, ui ) { 
+                        drop: function( event, ui ) {                             
                             processAdditionalChild(event, ui.draggable.context.id);      
                             allowDragnDrop();  
                         }

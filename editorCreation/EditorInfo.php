@@ -146,7 +146,7 @@ class EditorInfo extends EditorElement
         }
         else if (sizeof($subid) == 1)
         {
-            $this->caption = $_POST['msm_info_title-' . $idNumber];            
+            $this->caption = $_POST['msm_info_title-' . $idNumber];
 
             if ($_POST['msm_info_content-' . $idNumber] != '')
             {
@@ -184,6 +184,16 @@ class EditorInfo extends EditorElement
                     if (strpos($key, "msm_defref_description_input") !== false)
                     {
                         $refType = "Definition";
+                        $descrInfo = explode("__", $key);
+                        if (sizeof($descrInfo) > 1)
+                        {
+                            $intExtFlag = 'intext';
+                            break;
+                        }
+                    }
+                    else if (strpos($key, "msm_commentref_description_input") !== false)
+                    {
+                        $refType = "Comment";
                         $descrInfo = explode("__", $key);
                         if (sizeof($descrInfo) > 1)
                         {
