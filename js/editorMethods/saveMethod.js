@@ -361,26 +361,6 @@ function removeTinymceEditor()
         }
     });
     
-    //    $('.msm_theoremref_part_dropareas').each(function() {
-    //        $(this).find('.msm_theorem_content').each(function() {
-    //            textArea2Div($(this).attr("id"));
-    //        });
-    //    });
-    
-    //    $(".msm_theoremref_statement_containers").each(function() {
-    //    $(".msm_theorem_part_dropareas").each(function() {
-    //        console.log($(this));
-    //        $(this).find(".msm_theorem_child").each(function() {
-    //            console.log($(this));
-    //            $(this).find(".msm_theorem_content").each(function() {
-    //                console.log($(this));
-    //                textArea2Div($(this).attr("id"));
-    //
-    //            })
-    //        }); 
-    //    });
-    //    });
-    
     $('.msm_associate_containers').each(function() {
         $(this).find('.msm_info_titles').each(function() {
             textArea2Div($(this).attr("id"));
@@ -393,7 +373,6 @@ function removeTinymceEditor()
 
 function textArea2Div(id)
 {
-    console.log("id?: "+id);
     var edInstance = tinyMCE.getInstanceById(id);
     if(edInstance)
     {
