@@ -16,18 +16,34 @@
 require_once('GlossaryNode.php');
 
 /**
- * Description of Index
+ * This class represents all the index.author/index.glossary/index.symbol XML elements in the legacy document
+ * (ie. files in the newXML) and it is generally called by all classes with content by Element class methods when
+ * processing contents.  These elements represented by this class give extra information about author/glossary terms/symbols hot linked 
+ * to trigger a popup when mouse is hovered and if it has reference material attached to it, then it will appear on the
+ * right panel to be viewed. MathIndex class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class MathIndex extends Element
 {
 
-    public $position;
-    public $term;
-    public $symbol;
-    public $symbol_type;
-    public $sortstring;
+    public $id;                     // database ID associated with this index element in its appropriate table 
+    // (author --> msm_person, glossary--> msm_index_glossary, symbol--> msm_index_symbol)
+    public $compid;                 // database ID associated with this index element in msm_compositor table
+    public $position;               // integer that keeps track of order of elements
+    public $term;                   // term element associated with index.glossary element
+    public $symbol;                 // symbol element associated with index.symbol element
+    public $symbol_type;            // type of symbols associated with index.symbol element
+    public $sortstring;             // text associted with index.symbol element that aid the sorting of symbols
+    public $infos = array();        // MathInfo objects associated with this index element
+    public $names = array();        // First/miidle/initials/last names associated with the index.author
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -37,9 +53,14 @@ class MathIndex extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (index.author/index.glossary/index.symbol
+     * element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        index.author/index.glossary/index.symbol elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \MathIndex
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -49,11 +70,9 @@ class MathIndex extends Element
 
             $nameofElement = $DomElement->tagName;
 
-            $this->infos = array();
-            $this->names = array();
-
             switch ($nameofElement)
             {
+                // the element that was parsed is index.symbol
                 case('index.symbol'):
                     $this->symbol = $this->getContent($DomElement->getElementsByTagName('symbol')->item(0));
                     $this->symbol_type = $DomElement->getElementsByTagName('symbol')->item(0)->getAttribute('type');
@@ -68,9 +87,8 @@ class MathIndex extends Element
                         $info->loadFromXml($i, $position);
                         $this->infos[] = $info;
                     }
-
                     break;
-
+                // the element that was parsed is index.symbol
                 case('index.glossary'):
                     $terms = $DomElement->getElementsByTagName('term');
                     $string = '';
@@ -91,9 +109,8 @@ class MathIndex extends Element
                         $info->loadFromXml($i, $position);
                         $this->infos[] = $info;
                     }
-
                     break;
-
+                // the element that was parsed is index.symbol
                 case('index.author'):
 
                     $position = $position + 1;
@@ -110,17 +127,21 @@ class MathIndex extends Element
                         $info->loadFromXml($i, $position);
                         $this->infos[] = $info;
                     }
-
                     break;
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of index.author/index.glossary/index.symbol element into
+     * msm_person/msm_index_glossary/msm_index_symbol database tables, respectively.  
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -128,6 +149,7 @@ class MathIndex extends Element
         $data = new stdClass();
         $sibling_id = $siblingid;
 
+        // processing index.symbol elements
         if (!empty($this->symbol))
         {
             $data->symbol_type = $this->symbol_type;
@@ -179,6 +201,7 @@ class MathIndex extends Element
             $sibling_id = $this->compid;
         }
 
+        // processing index.author elements
         if (!empty($this->names))
         {
             foreach ($this->names as $key => $name)
@@ -247,7 +270,7 @@ class MathIndex extends Element
                 }
             }
         }
-
+        // processing index.glossary elements
         if (!empty($this->term))
         {
             $data->term = trim($this->term);
@@ -287,14 +310,6 @@ class MathIndex extends Element
             else
             {
                 $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $msmid, $parentid, $sibling_id);
-
-//                $glossaryTableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_index_glossary'))->id;
-//                $sameGlossaryRecords = $DB->get_records('msm_compositor', array('unit_id' => $recordID, 'table_id' => $glossaryTableID));
-//
-//                foreach ($sameGlossaryRecords as $glossaryrecord)
-//                {
-//                    $this->grabSubunitChilds($glossaryrecord, $this->compid, $msmid);
-//                }
             }
             $sibling_id = $this->compid;
         }
@@ -302,8 +317,6 @@ class MathIndex extends Element
         $sibling_id = 0;
         foreach ($this->infos as $info)
         {
-//            $info->saveIntoDb($info->position, $msmid, $this->compid, $sibling_id);
-//            $sibling_id = $info->compid;
             $numOfRecords = $DB->count_records('msm_info');
             if ($numOfRecords > 0)
             {
@@ -342,9 +355,15 @@ class MathIndex extends Element
     }
 
     /**
+     * This method is used to retrieve all relevant data linked with the index.glossary element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Defintion/Theorem/MathInfo/Unit classes
+     * are also called by this method.  This method also calls the private method createTree and starts the 
+     * recursive process of making the glossary node tree.  findParentUnit method is also called to get the parent unit object
+     * of current glossary index.  For more information read the comments below about these methods.
      * 
      * @global moodle_database $DB
-     * @return \MathIndex
+     * @param int $msmid                    // MSM module instance ID
+     * @return \GlossaryNode
      */
     function loadGlossaryFromDb($msmid)
     {
@@ -462,13 +481,28 @@ class MathIndex extends Element
         return $rootNode;
     }
 
+    /**
+     * This recursive function creates node tree that preserves stucture of each index.glossary elements and its child elements
+     * while ordering each index in alphabetical order in tree form.  The categorizing of the glossary
+     * indices were done by sortstring values which is a string in similar format to file pathing but
+     * it provides pathing to the term in categories.  Another recursive private method sortTree is called to sort the nodes using the
+     * sortstring values.
+     * 
+     * @param int $currentCompid                Database ID of current index element in msm_compositor
+     * @param array $children                   An array containing all the child elements of current index element
+     * @param array $ancestors                  An array containing all the parent elements of current index element 
+     *                                          (ie. has names of the categories)
+     * @param GlossaryNode $rootNode            GlossaryNode object that represents the root node of the tree
+     * @param GlossaryNode $parentNode          GlossaryNode object that represents the parent node of the current index element
+     * @param array $termArray                  Array that contains all the terms of glossary
+     */
     private function createTree($currentCompid, $children, $ancestors, $rootNode, $parentNode, $termArray)
     {
         if (!empty($termArray))
         {
             $term = array_shift($termArray);
             $isfound = false;
-            if (!empty($parentNode->children))
+            if (!empty($parentNode->children)) // parent is not the leaf of the tree
             {
                 foreach ($parentNode->children as $currentNode)
                 {
@@ -532,10 +566,6 @@ class MathIndex extends Element
                 }
                 if (!$isfound)
                 {
-//                    $foundNode = $this->findNode($rootNode, $term);
-//
-//                    if (empty($foundNode))
-//                    {
                     $currentNode = new GlossaryNode();
                     $currentNode->compid = $currentCompid;
                     $currentNode->text = $term;
@@ -594,10 +624,9 @@ class MathIndex extends Element
                     }
 
                     $this->createTree($currentCompid, $children, $ancestors, $rootNode, $currentNode, $termArray);
-//                    
                 }
             }
-            else
+            else // parentNode is a leaf so create new GlossaryNode instance as child of parentNode
             {
                 $currentNode = new GlossaryNode();
                 $currentNode->compid = $currentCompid;
@@ -654,6 +683,16 @@ class MathIndex extends Element
         $this->sortTree($parentNode, 'text');
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the index.symbol element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Defintion/Theorem/Unit/MathInfo classes
+     * are also called by this method.  findParentUnit method is also called to get the parent unit object
+     * of current glossary index.  For more information read the comments below about this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $msmid                    MSM module instance ID
+     * @return \GlossaryNode
+     */
     function loadSymbolFromDb($msmid)
     {
         global $DB;
@@ -758,6 +797,17 @@ class MathIndex extends Element
         return $symbols;
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the index.author element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Defintion/Theorem/Unit/MathInfo classes
+     * are also called by this method.  This method also calls private method sortTree to order the resulting index
+     * tree correctly.  findParentUnit method is also called to get the parent unit object
+     * of current glossary index.  For more information read the comments below about these methods.
+     * 
+     * @global moodle_database $DB
+     * @param int $msmid                    MSM module instance ID
+     * @return \GlossaryNode
+     */
     function loadAuthorFromDb($msmid)
     {
         global $DB;
@@ -867,6 +917,16 @@ class MathIndex extends Element
         return $authors;
     }
 
+    /**
+     * This method is called by loadGlossaryFromDb, loadSymbolFromDb, loadAuthorFromDb methods to find 
+     * the parent Unit object of specified ID by parentId paramter.  This unit is then loaded by loadFromDb
+     * and added as a parent in the current index GlossaryNode object.
+     * 
+     * @global moodle_database $DB      
+     * @param int $unittableid              Database ID of msm_unit in msm_table_collection
+     * @param int $parentId                 Database ID of unit object in msm_compositor
+     * @return stdClass                     record from msm_compositor
+     */
     private function findParentUnit($unittableid, $parentId)
     {
         global $DB;
@@ -884,6 +944,14 @@ class MathIndex extends Element
         return $parentElement;
     }
 
+    /**
+     * This method is called by makeGlossaryPanel function and its main role is to 
+     * take the data loaded and organized by above methods and create an HTML code that
+     * is consistent with jsTree plugin syntax to create file-tree-like index tree.
+     * 
+     * @param GlossaryNode $glossaryTree          The GlossaryNode tree that has all the index.glossary data in order
+     * @return string
+     */
     function displayGlossary($glossaryTree)
     {
         $content = '';
@@ -971,10 +1039,16 @@ class MathIndex extends Element
         return $content;
     }
 
+    /**
+     * This method is called by makeSymbolPanel function and its main role is to 
+     * take the data loaded and organized by above methods and create an HTML code that
+     * is consistent with jsTree plugin syntax to create file-tree-like index tree.
+     * 
+     * @param GlossaryNode $symbolNode         the GlossaryNode tree that has all the index.symbol data in order
+     * @return string
+     */
     function displaySymbol($symbolNode)
     {
-        global $DB;
-
         $content = '';
         foreach ($symbolNode->children as $symbol)
         {
@@ -999,10 +1073,16 @@ class MathIndex extends Element
         return $content;
     }
 
+    /**
+     * This method is called by makeAuthorPanel function and its main role is to 
+     * take the data loaded and organized by above methods and create an HTML code that
+     * is consistent with jsTree plugin syntax to create file-tree-like index tree.
+     * 
+     * @param GlossaryNode $authorNode         the GlossaryNode tree that has all the index.author data in order
+     * @return string
+     */
     function displayAuthor($authorNode)
     {
-        global $DB;
-
         $content = '';
         foreach ($authorNode->children as $author)
         {
@@ -1031,67 +1111,80 @@ class MathIndex extends Element
         return $content;
     }
 
+    /**
+     * This method is called by the loadSymbol.php script that creates an
+     * HTML file that will be loaded upon trigger by an user in view.php.
+     * This method creates the content that will be in the new HTML file
+     * and is in format of unordered list type that will be in a file
+     * tree structure by jsTree jQuery plugin.  The loadSymbolFromDb and 
+     * displaySymbol functions are called by this method.
+     * 
+     * @param int $msmid                MSM module instance ID
+     * @return string
+     */
     function makeSymbolPanel($msmid)
     {
         $content = '';
-
-//        $content .= "<div id='symbolpanel' class='panel'>";
-//        $content .="<div class='symbolpanelcontent' id='symbolcontent'>";
         $content .= "<h3> S Y M B O L S </h3>";
         $content .= '<ul id="symbolindex" class="treeview-red">';
-
         $symbolList = $this->loadSymbolFromDb($msmid);
         $content .= $this->displaySymbol($symbolList);
-
         $content .= "</ul>";
-//        $content .="</div>"; // end of slidepanelcontent
-//        $content .= "</div>"; // end of panel
-
-        return $content;
-    }
-
-    function makeGlossaryPanel($msmid)
-    {
-        $content = '';
-
-//        $content .= "<div id='glossarypanel' class='panel'>";
-//        $content .="<div class='glossarypanelcontent' id='glossarycontent'>";
-        $content .= "<h3> G L O S S A R Y </h3>";
-        $content .= '<ul id="glossaryindex" class="treeview-red">';
-
-        $glossaryTree = $this->loadGlossaryFromDb($msmid);
-        $content .= $this->displayGlossary($glossaryTree);
-
-        $content .= "</ul>";
-//        $content .="</div>"; // end of slidepanelcontent
-//        $content .= "</div>"; // end of panel
-
-        return $content;
-    }
-
-    function makeAuthorPanel($msmid)
-    {
-        $content = '';
-
-//        $content .= "<div id='authorpanel' class='panel'>";
-//        $content .="<div class='authorpanelcontent' id='authorcontent'>";
-        $content .= "<h3> A U T H O R S </h3>";
-        $content .= '<ul id="authorindex" class="treeview-red">';
-
-        $authorTree = $this->loadAuthorFromDb($msmid);
-        $content .= $this->displayAuthor($authorTree);
-
-        $content .= "</ul>";
-//        $content .="</div>"; // end of slidepanelcontent
-//        $content .= "</div>"; // end of panel
-
         return $content;
     }
 
     /**
+     * This method is called by the loadGlossary.php script that creates an
+     * HTML file that will be loaded upon trigger by an user in view.php.
+     * This method creates the content that will be in the new HTML file
+     * and is in format of unordered list type that will be in a file
+     * tree structure by jsTree jQuery plugin.  The loadGlossaryFromDb and 
+     * displayGlossary functions are called by this method.
+     * 
+     * @param int $msmid               MSM module instance ID
+     * @return string
+     */
+    function makeGlossaryPanel($msmid)
+    {
+        $content = '';
+        $content .= "<h3> G L O S S A R Y </h3>";
+        $content .= '<ul id="glossaryindex" class="treeview-red">';
+        $glossaryTree = $this->loadGlossaryFromDb($msmid);
+        $content .= $this->displayGlossary($glossaryTree);
+        $content .= "</ul>";
+        return $content;
+    }
+
+    /**
+     * This method is called by the loadAuthor.php script that creates an
+     * HTML file that will be loaded upon trigger by an user in view.php.
+     * This method creates the content that will be in the new HTML file
+     * and is in format of unordered list type that will be in a file
+     * tree structure by jsTree jQuery plugin.  The loadAuthorFromDb and 
+     * displayAuthor functions are called by this method.
+     * 
+     * @param int $msmid               MSM module instance ID
+     * @return string
+     */
+    function makeAuthorPanel($msmid)
+    {
+        $content = '';
+        $content .= "<h3> A U T H O R S </h3>";
+        $content .= '<ul id="authorindex" class="treeview-red">';
+        $authorTree = $this->loadAuthorFromDb($msmid);
+        $content .= $this->displayAuthor($authorTree);
+        $content .= "</ul>";
+        return $content;
+    }
+
+    /**
+     * This method sorts the given tree to order specified by sortstring or by alphabetical order of
+     * chosen object property represented as compareObject parameter.
      * 
      * @param GlossaryNode $finalTree       represents the root element of the tree created in loadGlossaryFromDb function
-     *                                      using createTree method.
+     *                                           using createTree method.
+     * @param mixed $compareObject           property in GlossaryNode object that will be sorted and matched to created Tree
+     *                                           represented by above variable
      */
     private function sortTree($finalTree, $compareObject)
     {

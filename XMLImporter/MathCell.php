@@ -15,21 +15,34 @@
  * ************************************************************************ */
 
 /**
- * Description of MathCell
+ * This class represents all the cell XML elements in the math.array elements in the legacy document
+ * (ie. files in the newXML) and it is called by MathRow class. MathCell class inherits from the abstract class Element
+ * and for all the methods inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class MathCell extends Element
 {
 
-    public $position;
-    public $content;
-    public $colspan;
-    public $halign;
-    public $valign;
-    public $bgcolor;
-    public $fontcolor;
+    public $id;                             // database ID associated with this cell element in msm_math_cell table
+    public $compid;                         // database ID associated with this cell element in msm_compositor table        
+    public $position;                       // integer that keeps track of order of elements
+    public $content;                        // content associated with this cell element
+    public $colspan;                        // column span value (same function as HTML code)
+    public $halign;                         // horizontal alignment value (ie. left, center or right) --> same as HTML code for table element
+    public $valign;                         // vertical alignment value (ie. top, middle, bottom) --> same as HTML code for table element
+    public $bgcolor;                        // background color of this cell
+    public $fontcolor;                      // font color of this cell
+    public $companion = array();            // Companion elements associated with this cell element
+    public $subordinates = array();         // Subordinate elements associated with this cell element
+    public $refchilds = array();            // Definition/Comment/Theorem/Unit objects that were associated with Companion element in cell element
+    public $childs = array();               // MathInfo objects associated with this cell element
 
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -37,14 +50,17 @@ class MathCell extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (cell element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        cell elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \MathCell
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-
         $this->colspan = $DomElement->getAttribute('colspan');
         $this->halign = $DomElement->getAttribute('halign');
         $this->valign = $DomElement->getAttribute('valign');
@@ -62,7 +78,7 @@ class MathCell extends Element
 
                 switch ($childname)
                 {
-                    case('math'):
+                    case('math'): // cell has a math child element
                         foreach ($this->processSubordinate($child, $position) as $subordinate)
                         {
                             $this->subordinates[] = $subordinate;
@@ -73,22 +89,33 @@ class MathCell extends Element
                         }
                         break;
 
-                    case('text'):
+                    case('text'):   // cell has just a text node as a child
                         $element = $doc->importNode($child, true);
                         $this->content .= $doc->saveXML($element);
                         break;
 
-                    case('companion'):
+                    case('companion'): // cell has a companion child element
                         $position++;
                         $companion = new Companion();
                         $companion->loadFromXml($child, $position);
                         $this->companion[] = $companion;
+                        break;
                 }
             }
         }
          return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of cell element into
+     * msm_math_cell database table.  It calls saveInfoDb method for Companion and Subordinate classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -163,6 +190,16 @@ class MathCell extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the cell element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Subordinate, Definition,
+     * Comment, Theorem, Unit and MathInfo classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current cell element in msm_cell table
+     * @param int $compid                   database ID of the current cell element in msm_compositor table
+     * @return \MathCell
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -181,10 +218,7 @@ class MathCell extends Element
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
-        $this->refchilds = array();
-        $this->childs = array();
-        $this->subordinates = array();
-
+       
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -230,6 +264,16 @@ class MathCell extends Element
         return $this;
     }
 
+    /**
+     * This method displays cell element like a cell element in table in HTML without borders.  MathArray data
+     * associated as an ancestor of this cell would make the table element then each associated MathRow objects
+     * would make the tr elements appened to the table element.  This method also calls displayhtml for 
+     * MathInfo and Definition/Comment/Theorem/Unit classes for reference materials.
+     * 
+     * @param string $rowspan                 size of rows given by the rowspan property in MathRow class object
+     * @param bool $isindex                 flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($rowspan, $isindex = false)
     {
         $content = '';

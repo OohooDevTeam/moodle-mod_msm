@@ -59,7 +59,7 @@ function processAdditionalChild(event, draggedId)
             return false;
         }
     }
-    else if(parentId.match(/theoremref/))
+    else if(event.target.parentElement.id.match(/theoremref/)) // adding more content to theoremref
     {
         if(draggedId !== "msm_extra_content")
         {
@@ -105,18 +105,18 @@ function processAdditionalChild(event, draggedId)
         case "msm_new_ref":
             addAssociateForm(idEnding[1], type);
             index = getAssociateIndex(event);
-            var selectMenu = "<select name='msm_associate_reftype-"+index+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index+"' onchange='processReftype(event);'>\n\
-                                  <option value='Comment' selected='selected'>Comment</option>\n\
+            var selectMenu = "<select name='msm_associate_reftype-"+index+"' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index+"'>\n\
+                                  <option value='None' selected='selected'>None</option>\n\
+                                  <option value='Comment'>Comment</option>\n\
                                   <option value='Definition'>Definition</option>\n\
                                   <option value='Theorem'>Theorem</option>\n\
                                </select>";
-//            $(selectMenu).insertBefore("#"+event.target.id);
-
             $(selectMenu).appendTo("#msm_associate_reftype_option-"+index);
             
-            var commentelement = makeRefComment(idEnding[1]);
-            $(commentelement).insertAfter("#msm_associate_reftype-"+index);
-            initEditor('msm_commentref_content_input-'+idEnding[1]);            
+            $("#msm_associate_reftype-"+index).change(function(event) {
+                processReftype(event);
+            });
+            
             break;
         case "msm_extra_content":
             if(type == "theorem")

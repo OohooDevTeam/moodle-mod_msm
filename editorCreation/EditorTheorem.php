@@ -28,11 +28,13 @@ class EditorTheorem extends EditorElement
     public $compid;
     public $type;
     public $title;
-    public $contents = array(); // statement theorem
     public $associateType;
     public $tablename;
     public $description;
+    public $contents = array(); // statement theorem
+    public $errorArray = array();
     public $children = array(); //associates
+    public $isRef;
 
     public function __construct()
     {
@@ -49,8 +51,6 @@ class EditorTheorem extends EditorElement
      */
     public function getFormData($idNumber)
     {
-        $this->errorArray = array();
-
         $idNumberInfo = explode("|", $idNumber);
 
         // reference material
@@ -198,21 +198,21 @@ class EditorTheorem extends EditorElement
         {
             $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
             $this->id = $existingTheorem->unit_id;
-            
-            $statementTable = $DB->get_record("msm_table_collection", array("tablename"=>"msm_statement_theorem"));
-            $partTable = $DB->get_record("msm_table_collection", array("tablename"=>"msm_part_theorem"));
-            
-            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id"=>$existingTheorem->id, "table_id"=>$statementTable->id), "prev_sibling_id");
-            
+
+            $statementTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_statement_theorem"));
+            $partTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_part_theorem"));
+
+            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $existingTheorem->id, "table_id" => $statementTable->id), "prev_sibling_id");
+
             $i = 0;
-            foreach($statementTheorems as $statement)
+            foreach ($statementTheorems as $statement)
             {
                 $this->content[$i]->id = $statement->unit_id;
-                
-                $partTheorems = $DB->get_records("msm_compositor", array("parent_id"=>$statement->id, "table_id"=>$partTable->id), "prev_sibling_id");
-                
+
+                $partTheorems = $DB->get_records("msm_compositor", array("parent_id" => $statement->id, "table_id" => $partTable->id), "prev_sibling_id");
+
                 $j = 0;
-                foreach($partTheorems as $part)
+                foreach ($partTheorems as $part)
                 {
                     $this->content[$i]->children[$j]->id = $part->unit_id;
                     $j++;
@@ -238,9 +238,9 @@ class EditorTheorem extends EditorElement
         $this->compid = $DB->insert_record("msm_compositor", $compData);
 
         $sibling_id = 0;
-        foreach ($this->contents as $key=>$statementTheorem)
+        foreach ($this->contents as $key => $statementTheorem)
         {
-            $statementTheorem->insertData($this->compid, $sibling_id, $msmid, $this->ref);
+            $statementTheorem->insertData($this->compid, $sibling_id, $msmid, $this->isRef);
             $sibling_id = $statementTheorem->compid;
         }
 
@@ -453,12 +453,13 @@ class EditorTheorem extends EditorElement
         {
             $htmlContent .= $content->displayRefData("$parentId-$this->compid");
         }
-        $htmlContent .= "<input id='msm_theoremref_child_button-$parentId-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addrefTheoremContent(event)' disabled='disabled'/>";
-        $htmlContent .= "</div>";
-        $htmlContent .= "<label id='msm_theoremref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_theoremref_description_label-$parentId-$this->compid'>Description: </label>";
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$parentId-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
 
-//           $htmlContent .= "<input id='msm_theoremref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$parentId-$this->compid'/>";
+//        $htmlContent .= "<input id='msm_theoremref_child_button-$parentId-$this->compid' class='msm_theorem_child_buttons' type='button' value='Add content' onclick='addrefTheoremContent(event)' disabled='disabled'/>";
+        $htmlContent .= "</div>";
+        $htmlContent .= "<label id='msm_theoremref_description_label-$parentId-$this->compid' class='msm_child_description_labels' for='msm_theoremref_description_label-$parentId-$this->compid'>Description: </label>";
+
+        $htmlContent .= "<input id='msm_theoremref_description_input-$parentId-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_theoremref_description_input-$parentId-$this->compid'/>";
         $htmlContent .= "</div>";
 
         return $htmlContent;

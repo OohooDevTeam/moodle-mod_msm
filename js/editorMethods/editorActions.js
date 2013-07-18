@@ -55,7 +55,7 @@ function processReftype(e)
             currentId = 'msm_theoremref_content_input-'+indexNumber+"-1";
             break;
         case 4:
-            selectedtext = "Example";
+            //            selectedtext = "Example";
             break;
         case 5:
             // element = makeCompositionRef();
@@ -64,6 +64,16 @@ function processReftype(e)
     }
     
     initEditor(currentId);
+    
+    $(".msm_dnd_containers").droppable({
+        accept: "#msm_component_tabs-2 > div",
+        hoverClass: "ui-state-hover",
+        tolerance: "pointer",
+        drop: function( event, ui ) { 
+            processAdditionalChild(event, ui.draggable.context.id);      
+            allowDragnDrop();  
+        }
+    });
     
     $("#msm_theoremref_title_container-"+indexNumber).mouseover(function () {
         $(this).children("span").css({
@@ -119,7 +129,7 @@ function makeRefDefinition(idindex, dbId)
   
     var defDescriptionField = null;
   
-    if(dbId != '')
+    if((dbId != '') && (typeof dbId !== "undefined"))
     {
         defDescriptionField = $("<input class='msm_child_description_inputs' id='msm_defref_description_input-"+idindex+"' name='msm_defref_description_input-"+idindex+"__"+dbId+"' placeholder='Insert description to search this element in future. '/>");
     }
@@ -169,17 +179,17 @@ function makeRefTheorem(idindex, dbId)
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+idindex+'-1"></div>');
             
     var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+idindex+'-1"></div>');
-     var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idindex+"-1'>Drag additional content to here.\n\
+    var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idindex+"-1'>Drag additional content to here.\n\
                         <p>Valid child Elements: Part of a Theorem</p>\n\
                     </div>");   
             
-//    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theoremref_child_button-'+idindex+'" type="button" onclick="addrefTheoremContent(event)" value="Add content"/>');
-//    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idindex+'-1" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
+    //    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theoremref_child_button-'+idindex+'" type="button" onclick="addrefTheoremContent(event)" value="Add content"/>');
+    //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idindex+'-1" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
     var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theoremref_description_label-"+idindex+"' for='msm_theoremref_description_input-"+idindex+"'>Description: </label>");
     
     var theoremDescriptionField = '';
     
-    if(dbId != '')
+    if((dbId != '') && (typeof dbId !== "undefined"))
     {
         theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theoremref_description_input-"+idindex+"' name='msm_theoremref_description_input-"+idindex+"__"+dbId+"' placeholder='Insert description to search this element in future. '/>");
     }
@@ -205,7 +215,7 @@ function makeRefTheorem(idindex, dbId)
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
-//    theoremContentWrapper.append(theoremChildButton);
+    //    theoremContentWrapper.append(theoremChildButton);
             
     clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleField);
@@ -236,7 +246,7 @@ function makeRefComment(idindex, dbId)
     
     var commentDescriptionField = null;
   
-    if(dbId != '')
+    if((dbId != '') && (typeof dbId !== "undefined"))
     {
         commentDescriptionField = $("<input class='msm_child_description_inputs' id='msm_commentref_description_input-"+idindex+"' name='msm_commentref_description_input-"+idindex+"__"+dbId+"' placeholder='Insert description to search this element in future. '/>");
     }
@@ -343,7 +353,17 @@ function addrefTheoremContent(event)
     
     $(theoremStatementWrapper).insertBefore("#"+event.target.id);
     
-    initEditor("msm_theoremref_content_input-"+idNumber+'-'+newId);
+    initEditor("msm_theoremref_content_input-"+idNumber+'-'+newId);    
+     
+    $("#msm_dnd_container-"+idNumber+"-"+newId).droppable({
+        accept: "#msm_component_tabs-2 > div",
+        hoverClass: "ui-state-hover",
+        tolerance: "pointer",
+        drop: function( event, ui ) { 
+            processAdditionalChild(event, ui.draggable.context.id);      
+            allowDragnDrop();  
+        }
+    });
     
     $("#msm_theoremref_content_container-"+idNumber).sortable({
         appendTo: "msm_theoremref_content_container-"+idNumber,

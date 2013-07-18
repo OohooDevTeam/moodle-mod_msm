@@ -15,17 +15,35 @@
  * ************************************************************************ */
 
 /**
- * Description of MathImg
+ * This class represents all the img/image XML elements in the legacy document
+ * (ie. files in the newXML) and just img elements in the new XML documents 
+ * created from the editor and this class is called by Media class.
+ * MathImg class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class MathImg extends Element
 {
 
-    public $id;
-    public $position;
-    public $msm_id;
-    public $itemid;
+    public $id;                         // database ID associated with current img element in msm_img table
+    public $compid;                     // database ID associated with current img element in msm_compositor table
+    public $position;                   // integer that keeps track of order of elements
+    public $string_id;                  // unique string ID given to img element by the user in legacy XML (none in new XML)
+    public $src;                        // src attribute value with path to image (in database, it's in moodle file serving format--> ../pluginfile.php/..)
+    public $height;                     // height attribute associated with this image element
+    public $width;                      // width attribute associated with this image element
+    public $description;                // description associated with this image element
+    public $extended_caption;           // extra information associated with this image
+    public $msm_id;                     // MSM module instance
+    public $itemid;                     // database ID associated with this image that is served by moodle in mdl_files table
+    public $imageareas = array();       // ImgArea objects associated with this image for image mapping
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -34,9 +52,13 @@ class MathImg extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (image element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        image elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \MathImg
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -63,18 +85,24 @@ class MathImg extends Element
                 $this->imageareas[] = $imgArea;
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
+     * This method saves the extracted information from the XML files of img element into
+     * msm_img database table.  It calls saveInfoDb method for ImgArea class.
+     * 
      * @global moodle_database $DB
-     * @param int $position 
+     * @global type $CFG
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB, $CFG;
-//
+
         $msm = $DB->get_record('msm', array('id' => $msmid), '*', MUST_EXIST);
         $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
         $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
@@ -135,8 +163,6 @@ class MathImg extends Element
 
             if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
             {
-//                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname($this->xmlpath)) . '/'
-//                        . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
                 $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
             }
@@ -220,6 +246,16 @@ class MathImg extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the img element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from ImgArea classes are
+     * also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current image element in msm_img table
+     * @param int $compid                   database ID of the current image element in msm_compositor table
+     * @return \MathImg
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -266,6 +302,16 @@ class MathImg extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in ImgArea classes to display the data from these classes.
+     * 
+     * @global moodle_database $DB
+     * @global type $CFG
+     * @param bool $inline                  indicating if the image should be inline(if $inline=1) with content or be centered to body
+     * @param type $isindex                 flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($inline, $isindex = false)
     {
         global $DB, $CFG;

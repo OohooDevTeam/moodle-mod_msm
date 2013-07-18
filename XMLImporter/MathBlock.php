@@ -41,16 +41,31 @@ class Block extends Element
     public $tables = array();               // Table objects assocaited with this block element
     public $medias = array();               // Media objects assocaited with this block element
 
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
         $this->tablename = "msm_block";
     }
 
+    /**
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (block element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        block elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @param string $flag                  flag for if the block element came from intro element as a parent
+     *                                      --> if flag is not an empty string, then caption goes to msm_intro database table 
+     * @return \Block
+     */
     function loadFromXml($DomElement, $position = '', $flag = '')
     {
-        global $DB;
-
         $this->position = $position;
 
         if (empty($flag))
@@ -59,12 +74,12 @@ class Block extends Element
 
             if ($caption->length > 0)
             {
-                $this->$title = $caption->item(0)->textContent;
+                $this->title = $caption->item(0)->textContent;
             }
         }
         else
         {
-            $this->$title = '';
+            $this->title = '';
         }
 
         $blockBodys = $DomElement->getElementsByTagName("block.body");
@@ -179,9 +194,15 @@ class Block extends Element
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of block element into
+     * msm_block database table.  It calls saveInfoDb method for Para, MathArray, Table, InContent,
+     * Media, Definition, Theorem and/or Comment classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -190,7 +211,7 @@ class Block extends Element
         if ((empty($this->defs)) && (empty($this->theorems)) && (empty($this->comments)))
         {
             $data = new stdClass();
-            $data->block_caption = $this->$title;
+            $data->block_caption = $this->title;
 
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
@@ -565,6 +586,16 @@ class Block extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the block element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Para, MathArray, Table, InContent,
+     * and/or Media classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current block element in msm_block table
+     * @param int $compid                   database ID of the current block element in msm_compositor table
+     * @return \Block
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -573,115 +604,67 @@ class Block extends Element
 
         $blockCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
 
-        $tableName = $DB->get_record('msm_table_collection', array('id' => $blockCompRecord->table_id))->tablename;
+//        $tableName = $DB->get_record('msm_table_collection', array('id' => $blockCompRecord->table_id))->tablename;
+//        if ($tableName == 'msm_block')
+//        {
+        $this->compid = $blockCompRecord->id;
+        $this->id = $blockCompRecord->unit_id;
+        $blockRecord = $DB->get_record('msm_block', array('id' => $this->id));
 
-        if ($tableName == 'msm_block')
+        $this->title = $blockRecord->block_caption;
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
         {
-            $this->compid = $blockCompRecord->id;
-            $this->id = $blockCompRecord->unit_id;
-            $blockRecord = $DB->get_record('msm_block', array('id' => $this->id));
-
-            $this->title = $blockRecord->block_caption;
-
-            $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
-
-            foreach ($childElements as $child)
-            {
-                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
-
-                switch ($childtablename)
-                {
-
-                    case('msm_para'):
-                        $para = new Para();
-                        $para->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $para;
-                        break;
-
-                    case('msm_content'):
-                        $incontent = new InContent();
-                        $incontent->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $incontent;
-                        break;
-
-                    case('msm_math_array'):
-                        $matharray = new MathArray();
-                        $matharray->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $matharray;
-                        break;
-
-                    case('msm_media'):
-                        $media = new Media();
-                        $media->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $media;
-                        break;
-
-                    case('msm_comment'):
-                        $comment = new MathComment();
-                        $comment->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $comment;
-                        break;
-//               
-                    case('msm_table'):
-                        $table = new Table();
-                        $table->loadFromDb($child->unit_id, $child->id);
-                        $this->childs[] = $table;
-                        break;
-                }
-            }
-        }
-        else
-        {
-            $childRecord = $DB->get_record('msm_compositor', array('id' => $compid));
-//
-//            foreach ($childElements as $child)
-//            {
-            $childtablename = $DB->get_record('msm_table_collection', array('id' => $childRecord->table_id))->tablename;
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
             switch ($childtablename)
             {
-
                 case('msm_para'):
                     $para = new Para();
-                    $para->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $para->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $para;
                     break;
 
                 case('msm_content'):
                     $incontent = new InContent();
-                    $incontent->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $incontent->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $incontent;
                     break;
 
                 case('msm_math_array'):
                     $matharray = new MathArray();
-                    $matharray->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $matharray->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $matharray;
                     break;
 
                 case('msm_media'):
                     $media = new Media();
-                    $media->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $media->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $media;
-                    break;
-
-                case('msm_comment'):
-                    $comment = new MathComment();
-                    $comment->loadFromDb($childRecord->unit_id, $childRecord->id);
-                    $this->childs[] = $comment;
                     break;
 //               
                 case('msm_table'):
                     $table = new Table();
-                    $table->loadFromDb($childRecord->unit_id, $childRecord->id);
+                    $table->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $table;
                     break;
             }
-//            }
         }
+//        }     
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in Para, MathArray, Table, InContent, Media, Definition,
+     * Theorem and/or Comment classes to display the data from these classes.
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @param type $flag                flag indicating if the caption exists in msm_intro table
+     * @return type
+     */
     function displayhtml($isindex = false, $flag = false)
     {
         $content = '';
@@ -694,8 +677,6 @@ class Block extends Element
                 $content .= "<div style='text-align:center;'><h3>$this->title</h3></div>";
             }
         }
-
-//        print_object($this->childs);
 
         foreach ($this->childs as $child)
         {

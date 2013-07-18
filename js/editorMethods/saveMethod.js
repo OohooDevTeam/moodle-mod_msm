@@ -346,14 +346,40 @@ function removeTinymceEditor()
     });
     
     $('.msm_theorem_part_dropareas').each(function() {
-        textArea2Div($(this).attr("id"));
+        if(this.id.match(/theoremref/))
+        {
+            $(this).find(".msm_theorem_child").each(function() {
+                $(this).find(".msm_theorem_content").each(function() {
+                    textArea2Div($(this).attr("id"));
+
+                });
+            }); 
+        }
+        else
+        {
+            textArea2Div($(this).attr("id"));
+        }
     });
     
-    $('.msm_theoremref_part_dropareas').each(function() {
-        $(this).find('.msm_theorem_content').each(function() {
-            textArea2Div($(this).attr("id"));
-        });
-    });
+    //    $('.msm_theoremref_part_dropareas').each(function() {
+    //        $(this).find('.msm_theorem_content').each(function() {
+    //            textArea2Div($(this).attr("id"));
+    //        });
+    //    });
+    
+    //    $(".msm_theoremref_statement_containers").each(function() {
+    //    $(".msm_theorem_part_dropareas").each(function() {
+    //        console.log($(this));
+    //        $(this).find(".msm_theorem_child").each(function() {
+    //            console.log($(this));
+    //            $(this).find(".msm_theorem_content").each(function() {
+    //                console.log($(this));
+    //                textArea2Div($(this).attr("id"));
+    //
+    //            })
+    //        }); 
+    //    });
+    //    });
     
     $('.msm_associate_containers').each(function() {
         $(this).find('.msm_info_titles').each(function() {
@@ -367,6 +393,7 @@ function removeTinymceEditor()
 
 function textArea2Div(id)
 {
+    console.log("id?: "+id);
     var edInstance = tinyMCE.getInstanceById(id);
     if(edInstance)
     {
@@ -606,7 +633,7 @@ function previewInfo(elementid, dialogid)
             e.preventDefault();
             $("#"+dialogid).dialog('close');
         });
-         $("#msm_search_result_table").find("#"+elementid).click(function(e){
+        $("#msm_search_result_table").find("#"+elementid).click(function(e){
             e.preventDefault();
         });
 

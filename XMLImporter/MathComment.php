@@ -15,18 +15,39 @@
  * ************************************************************************ */
 
 /**
- * Description of Comment
+ * This class represents all the comment XML elements in the legacy document
+ * (ie. files in the newXML) and and new XML files created from editor and this class is called
+ * by Block/Associate/Companion/Crossref/Unit/MathCell/Subordinate/MathIndex classes.
+ * MathComment class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class MathComment extends Element
 {
 
-    public $position;
-    public $comment_content;
-    public $description;
+    public $id;                             // database ID associated with this comment element in msm_comment table
+    public $compid;                         // database ID associated with this comment element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $string_id;                      // unique string ID given to this comment by the user (in legacy XML) or same as compid above (new XML)
+    public $comment_type;                   // type associated with this comment (ie. comment, remark...etc)
+    public $caption;                        // title associated with this comment
+    public $comment_content = array();      // content elements associated with this comment
+    public $description;                    // description associated with this comment (used in search for reference material)
+    public $associates = array();           // Associated objects associated with this comment
+    public $subordinates = array();         // Subordinate objects associated with this comment
+    public $indexauthors = array();         // MathIndex objects associated with this comment --> in this case, it's for authors
+    public $indexglossarys = array();       // MathIndex objects associated with this comment --> in this case, it's for glossarys
+    public $indexsymbols = array();         // MathIndex objects associated with this comment --> in this case, it's for symbols
+    public $medias = array();               // Media objects associated with this comment (ie. images, videos)
+    public $tables = array();               // Table objects associated with this comment
+    public $matharrays = array();           // MathArray objects associated with this comment
 
-    //public $content;
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -35,9 +56,13 @@ class MathComment extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (comment element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        comment elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \MathComment
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -47,17 +72,6 @@ class MathComment extends Element
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
-
-        $this->associates = array();
-        $this->comment_content = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
-
 
         $associates = $DomElement->getElementsByTagName('associate');
 
@@ -71,7 +85,6 @@ class MathComment extends Element
 
 
         $commentbodys = $DomElement->getElementsByTagName('comment.body');
-        $doc = new DOMDocument();
 
         foreach ($commentbodys as $c)
         {
@@ -114,19 +127,25 @@ class MathComment extends Element
                 $this->comment_content[] = $content;
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of comment element into
+     * msm_comment database table.  It calls saveInfoDb method for Associate/Subordinate/Table/
+     * MathIndex/Media/MathArray classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
-        $ids = array();
-        $tempContent = array();
+        $ids = array();         // ids associated with these comments --> needed when processing media in content
+        $tempContent = array(); // array that contains all the comment contents to later get media elements processed
 
         $data = new stdClass();
         $data->comment_type = $this->comment_type;
@@ -152,7 +171,7 @@ class MathComment extends Element
                     $commentcontent .= $commentbodyparser->saveXML($commentbodyparser->importNode($child, true));
                 }
 
-                $content = "<div>$commentcontent</div>";
+                $content = "<div>$commentcontent</div>"; // need div as root element for later using DOMDocument for parsing
 
                 $data->comment_content = $content;
                 $tempContent[] = $content;
@@ -380,6 +399,8 @@ class MathComment extends Element
             }
         }
 
+        // process all media elements --> make image src attribute have proper values
+        // containing pluginfiles.php script
         if (!empty($this->medias))
         {
             foreach ($ids as $key => $id)
@@ -402,6 +423,17 @@ class MathComment extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the comment element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Associate, Subordinate,
+     * Media, MathArray and Table classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current comment element in msm_comment table
+     * @param int $compid                   database ID of the current comment element in msm_compositor table
+     * @param bool $indexref                flag to indicate that the MathIndex object called this function
+     * @return \MathComment
+     */
     function loadFromDb($id, $compid, $indexref = false)
     {
         global $DB;
@@ -418,13 +450,6 @@ class MathComment extends Element
         }
 
         $childElement = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->associates = array();
-        $this->matharrays = array();
-        $this->tables = array();
-        $this->childs = array();
 
         foreach ($childElement as $child)
         {
@@ -499,6 +524,14 @@ class MathComment extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in Associate, Subordinate, Media, MathArray and Table classes to
+     * display the data from these classes.
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($isindex = false)
     {
         $content = '';
