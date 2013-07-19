@@ -42,6 +42,7 @@ class Associate extends Element
      * 
      * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -690,7 +691,15 @@ class Associate extends Element
                 $modifiedCaption = preg_replace($patterns, $replacements, $this->infos[0]->caption);
                 $caption = htmlentities($modifiedCaption);
 
-                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
+                if (($caption === null) || (strlen(trim($caption)) == 0))
+                {
+                    $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs">';
+                }
+                else
+                {
+                    $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
+                }
+
                 $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
                 $content .= "</div>";
             }
@@ -738,7 +747,15 @@ class Associate extends Element
                 $modifiedCaption = preg_replace($patterns, $replacements, $this->infos[0]->caption);
                 $caption = htmlentities($modifiedCaption);
 
-                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
+                if (($caption === null) || (strlen(trim($caption)) == 0))
+                {
+                    $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs">';
+                }
+                else
+                {
+                    $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
+                }
+
                 $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
                 $content .= "</div>";
             }
@@ -784,7 +801,14 @@ class Associate extends Element
             $modifiedCaption = preg_replace($patterns, $replacements, $this->infos[0]->caption);
             $caption = htmlentities($modifiedCaption);
 
-            $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
+            if (($caption === null) || (strlen(trim($caption)) == 0))
+            {
+                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs">';
+            }
+            else
+            {
+                $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $caption . '">';
+            }
             $content .= $this->displayContent($this->infos[0], $this->infos[0]->info_content);
             $content .= "</div>";
         }

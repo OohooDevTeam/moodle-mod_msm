@@ -15,16 +15,36 @@
  * ************************************************************************ */
 
 /**
- * Description of Info
+ * This class represents all the info XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by Associate/Companion/Crossref/Subordinate/ExternalLink/ImgArea/
+ * MathCell/MathIndex/MathQuiz/Media/PartQuiz/QuizChoice classes.  The info element
+ * in the XML files represents the extra information given in form of a popup.
+ * MathInfo class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class MathInfo extends Element
 {
 
-    public $position;
-    public $info_content;
-    public $caption;
+    public $id;                             // Database ID associated with this info element in msm_info table
+    public $compid;                         // Database ID associated with this info element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $info_content;                   // content associated with this info element
+    public $caption;                        // title associated with this info element
+    public $subordinates = array();         // Subordinate objects associated with this info element (ie. meaning this info has nested popups)
+    public $indexauthors = array();         // MathIndex objects associated with this info element --> this represents the authors
+    public $indexglossarys = array();       // MathIndex objects associated with this info element --> this represents the glossarys
+    public $indexsymbols = array();         // MathIndex objects associated with this info element --> this represents the symbols
+    public $medias = array();               // Media objects associated with this info element --> images, videos
+    public $tables = array();               // Table objects associated with this info element
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -33,25 +53,20 @@ class MathInfo extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (info element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        info elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \MathInfo
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
 
-        //$this->content = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
-
-//        $this->caption = $this->getContent($DomElement->getElementsByTagName('info.caption')->item(0));
         //for now to just show text in title
-
+        //@TODO need to have methods implemented to process math
         foreach ($DomElement->childNodes as $child)
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
@@ -97,13 +112,19 @@ class MathInfo extends Element
         {
             $this->info_content .= $content;
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of info element into
+     * msm_info database table.  It calls saveInfoDb method for Media, MathIndex, Subordinate,
+     * and Table classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -122,7 +143,7 @@ class MathInfo extends Element
             @$contentparser->loadXML($this->info_content, true);
 
             $contentNode = $contentparser->documentElement;
-            
+
             foreach ($contentNode->childNodes as $child)
             {
                 $infocontent .= $contentparser->saveXML($contentparser->importNode($child, true));
@@ -297,6 +318,8 @@ class MathInfo extends Element
             }
         }
 
+        // process the images in the content to have src attribute with proper
+        // pathing to moodle file storage area with pluginfile.php script
         if (!empty($this->medias))
         {
             $newdata = new stdClass();
@@ -312,6 +335,16 @@ class MathInfo extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the info element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Subordinate/Media/Table
+     * classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                   ID of the current info element from msm_info
+     * @param int $compid               ID of the current info element from msm_compositor
+     * @return \MathInfo
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -334,10 +367,6 @@ class MathInfo extends Element
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-
-        $this->medias = array();
-        $this->subordinates = array();
-        $this->tables = array();
 
         foreach ($childElements as $child)
         {
@@ -368,11 +397,18 @@ class MathInfo extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * displays the information using jQuery UI Dialog plugin to create a popup like window
+     * that becomes triggered by mouseover event.
+     * 
+     * @return string
+     */
     function displayhtml()
     {
         $content = '';
 
-        if (empty($this->caption))
+        if (($this->caption === null) || (strlen(trim($this->caption)) == 0))
         {
             $content .= '<div id="dialog-' . $this->compid . '" class="dialogs">';
         }

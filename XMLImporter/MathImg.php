@@ -132,15 +132,11 @@ class MathImg extends Element
 
             if (basename(dirname($this->xmlpath)) == "LinearAlgebraRn")
             {
-//                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname($this->xmlpath)) . '/'
-//                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
                 $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
             }
             else if (basename(dirname(dirname($this->xmlpath))) == "Calculus")
             {
-//                $path = $CFG->wwwroot . '/mod/msm/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
-//                        . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
                 $path = dirname(dirname(__FILE__)) . '/newXML/' . basename(dirname(dirname($this->xmlpath))) . '/' . basename(dirname($this->xmlpath)) . '/'
                         . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
             }

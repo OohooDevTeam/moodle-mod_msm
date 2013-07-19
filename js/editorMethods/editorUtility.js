@@ -667,7 +667,8 @@ function editUnit(e)
             $("#msm_editor_save").click(function(event) { 
                 //         prevents navigation to msmUnitForm.php
                 event.preventDefault();
-                // enabling all input that was disabled to submit the form
+                // enabling all input that was disabled to submit the form             
+                 
                 //                $("#msm_unit_title").removeAttr("disabled");
                 $("#msm_unit_short_title").removeAttr("disabled");
                 $("#msm_unit_description_input").removeAttr("disabled");
@@ -1242,9 +1243,9 @@ function createTheoremText(element, unitInfo)
     $("#msm_theorem_child_button-"+elementIdInfo[1]).removeAttr("disabled");
     $("#msm_associate_button-"+elementIdInfo[1]).removeAttr("disabled");
     
-    $("#"+element).find(".msm_theorem_part_buttons").each(function() {
-        $(this).removeAttr("disabled");
-    });
+    //    $("#"+element).find(".msm_theorem_part_buttons").each(function() {
+    //        $(this).removeAttr("disabled");
+    //    });
     
     var theoremStatementInfo = $("#"+element).find(".msm_theorem_statement_containers");
     
@@ -1325,9 +1326,9 @@ function createAssociateText(mainElement, aArray)
         $(this).removeAttr("disabled");
     });
     
-    //    $("#"+mainElement).find(".msm_associate_reftype_dropdown").each(function() {
-    //        $(this).removeAttr("disabled");
-    //    });
+    $("#"+mainElement).find(".msm_associate_reftype_dropdown").each(function() {
+        $(this).removeAttr("disabled");
+    });
     
     var associateArray = aArray["children"];
     var associateIds = $("#"+mainElement).find(".msm_associate_childs");
@@ -1374,8 +1375,7 @@ function createAssociateText(mainElement, aArray)
             $("#"+infos[1].id).replaceWith(infoContentArea);
         
             initEditor(infoContentArea.id);
-        }
-       
+        }       
         
         //-------------------processing references----------------------
         
@@ -1409,8 +1409,8 @@ function createAssociateText(mainElement, aArray)
                     initEditor(defrefTextArea.id);
                     break;
                 case "msm_theorem":
-                    //                    createTheoremRefText(mainElement, associateArray, i, infoid);   
-                    createTheoremRefText(mainElement, associateArray, i, refid);  
+                    createTheoremRefText(mainElement, associateArray, i, infoid);   
+                    //                    createTheoremRefText(mainElement, associateArray, i, refid);  
                     break;
                 case "msm_comment":
                     $("#msm_commentref_type_dropdown-"+refid).removeAttr("disabled");
@@ -1434,11 +1434,11 @@ function createAssociateText(mainElement, aArray)
 
 function createTheoremRefText(element, aArray, index, infoId)
 {    
-    $("#"+element).find(".msm_theoremref_part_buttons").each(function() {
-        $(this).removeAttr("disabled");
-    });
+    //    $("#"+element).find(".msm_theoremref_part_buttons").each(function() {
+    //        $(this).removeAttr("disabled");
+    //    });
           
-    $("#"+element).find(".msm_theoremref_part_title").each(function() {
+    $("#"+element).find(".msm_theorem_part_title").each(function() {
         $(this).removeAttr("disabled");
     });
    
@@ -1454,12 +1454,12 @@ function createTheoremRefText(element, aArray, index, infoId)
         $(this).removeAttr("disabled");
     });
     
-    $("#"+element).find(".msm_theorem_child_buttons").each(function() {
-        $(this).removeAttr("disabled");
-    });
+    //    $("#"+element).find(".msm_theorem_child_buttons").each(function() {
+    //        $(this).removeAttr("disabled");
+    //    });
 
     var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoId).find(".msm_theoremref_statement_containers");
-    
+     
     for(var ind = 0; ind < theoremStatementInfo.length; ind++)
     {
         var theoremcontent = aArray[index]["infos"][0]["ref"]["contents"][ind]["content"];

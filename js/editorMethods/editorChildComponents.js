@@ -472,15 +472,30 @@ function addTheoremRef(cellArray, index, dbId)
     var theoremElement = makeRefTheorem(index, dbId);   
     
     $("#msm_associate_reftype_option-"+index).append(theoremElement);
+   
+    var statementNum = 0;
+    var partNum = 0;
+    var partIndex = '';
     
-    console.log("theorem content?");
-    console.log($(cellArray[3]));
+    var processedContent = processSubContent(cellArray[3], "theoremrefcontent"+index);
+   
+    $(processedContent).children().each(function() {
+        var tagName = $(this).prop("tagName");
+        
+        if(tagName == "DIV")
+        {
+            statementNum++;
+            partIndex = addTheoremStatementRef(this, index, statementNum);
+        }
+        else if(tagName == "OL")
+        {
+            $(this).find("li").each(function() {
+                partNum++;
+                addTheoremPartRef(this, partIndex, partNum); 
+            });
+        }
+    });
     
-    //@TODO need to implement methods to add theorem contents(ie. statement theores) and part theorems
-    
-    //    var contentobject = processSubContent(cellArray[3], "commentrefcontent"+index);
-    //    var content = $(contentobject).html();
-    //    
     $("#msm_theoremref_type_dropdown-"+index).find("option").each(function() {
         var currentType = $(this).val();
         
@@ -492,13 +507,109 @@ function addTheoremRef(cellArray, index, dbId)
     //    
     $("#msm_theoremref_title_input-"+index).val(title);
     $("#msm_theoremref_description_input-"+index).val(description);
-    //    $("#msm_commentref_content_input-"+index).val(content);
     
     $("#msm_theoremref_type_dropdown-"+index).attr("disabled", "disabled");
     $("#msm_theoremref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_theoremref_description_input-"+index).attr("disabled", "disabled");
-//    
-//    textArea2Div("msm_commentref_content_input-"+index);
+}
+
+function addTheoremStatementRef(htmlElement, id, statementId)
+{    
+    var param = id+"-"+statementId;    
+   
+    if(statementId >= 2) // starting with second statement, need to add more forms
+    {    
+        var theoremStatementWrapper = $('<div class="msm_theoremref_statement_containers" id="msm_theoremref_statement_container-'+param+'"></div>');
+        var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
+    
+        var theoremContentTitleContainer = $('<div class="msm_theoremref_statement_title_containers" id="msm_theoremref_statement_title_container-'+param+'"><b> Theorem Content </b></div>');
+        var theoremContentTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
+        var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+param+'" name="msm_theoremref_content_input-'+param+'"/>');
+        var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefcontent'+param+'"></div>');
+
+        var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+param+'"></div>');
+   
+    
+   
+        var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+param+"'>Drag additional content to here.\n\
+                        <p>Valid child Elements: Part of a Theorem</p>\n\
+                    </div>"); 
+        var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+param+'"></div>');
+            
+        theoremPartWrapper.append(partDndDiv);
+    
+        theoremContentTitleContainer.append(theoremContentTitleHidden);
+            
+        theoremStatementWrapper.append(theoremCloseButton);
+        theoremStatementWrapper.append(theoremContentTitleContainer);
+        theoremStatementWrapper.append(theoremContentField);
+        theoremStatementWrapper.append(subordinateContainer);
+        theoremStatementWrapper.append(subordinateResult);
+   
+        theoremStatementWrapper.append(theoremPartWrapper);
+    
+        $(theoremStatementWrapper).insertBefore("#msm_dnd_container-"+id);        
+    }
+    
+    $("#msm_theoremref_content_input-"+param).val($(htmlElement).html());
+    
+    textArea2Div("msm_theoremref_content_input-"+param);
+    
+    return param;
+}
+
+function addTheoremPartRef(htmlElement, id, partId)
+{
+    var partTitle = '';
+    var partContent = '';
+    
+    $(htmlElement).children().each(function() {
+        var tagname = $(this).prop("tagName");
+       
+        if(tagname == "SPAN")
+        {
+            partTitle = $(this).html();
+        }
+        else if(tagname == "DIV")
+        {
+            partContent = $(this).html();   
+        }
+    });
+    
+    var param = id+"-"+partId;
+    
+    var theoremPartContainer = $('<div class="msm_theorem_child" id="msm_theoremref_part_container-'+param+'"></div>');
+    
+    var theoremCloseButton = $('<a style="margin-bottom:1%;" class="msm_element_close" onclick="deleteElement(event)">x</a>');
+    
+    var theoremPartTitleContainer = $('<div class="msm_theoremref_part_title_containers" id="msm_theoremref_part_title_container-'+param+'"></div>');
+    var theoremPartTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
+    
+    var theoremPartLabel = $('<label class="msm_theorem_part_tlabel" for="msm_theoremref_part_title-'+param+'">Part Theorem title: </label>');
+    var theoremPartTitle = $('<input class="msm_theorem_part_title" id="msm_theoremref_part_title-'+param+'" name="msm_theoremref_part_title-'+param+'" placeholder=" Title for this part of the theorem."/>');
+    var theoremPartContentField = $('<textarea class="msm_theorem_content" id="msm_theoremref_part_content-'+param+'" name="msm_theoremref_part_content-'+param+'"/>');
+    var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefpart'+param+'"></div>');
+
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefpart'+param+'"></div>');
+            
+    theoremPartTitleContainer.append(theoremPartTitleHidden);
+            
+    theoremPartContainer.append(theoremCloseButton);
+    theoremPartContainer.append(theoremPartTitleContainer);
+    theoremPartContainer.append(theoremPartLabel);
+    theoremPartContainer.append(theoremPartTitle);
+    theoremPartContainer.append(theoremPartContentField);
+    theoremPartContainer.append(subordinateContainer);
+    theoremPartContainer.append(subordinateResult);
+    
+    $(theoremPartContainer).insertBefore("#msm_dnd_container-"+id);
+    
+    $("#msm_theoremref_part_title-"+param).val(partTitle);
+    $("#msm_theoremref_part_content-"+param).val(partContent);
+    
+    $("#msm_theoremref_part_title-"+param).attr("disabled", "diabled");
+    
+    textArea2Div("msm_theoremref_part_content-"+param);
 }
 
 function processSubContent(contentobj, id)

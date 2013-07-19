@@ -59,6 +59,8 @@ class EditorUnit extends EditorElement {
         $this->short_name = $_POST['msm_unit_short_title'];
 
         $this->unitName = $DB->get_record('msm_unit_name', array('msmid' => $idNumber, 'depth' => 0))->id;
+        
+//        print_object($this);
 
         return $this;
     }
@@ -373,6 +375,8 @@ class EditorUnit extends EditorElement {
      */
     function updateDbRecord($compid) {
         global $DB;
+        
+//        print_object($this);
 
         $oldCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
 
@@ -397,6 +401,9 @@ class EditorUnit extends EditorElement {
         $newUnitData->description = $this->description;
         $newUnitData->compchildtype = $this->unitName;
         $newUnitData->standalone = $oldUnitRecord->standalone;
+        
+//        echo "newUnitData";
+//        print_object($newUnitData);
 
         $DB->update_record($this->tablename, $newUnitData);
 

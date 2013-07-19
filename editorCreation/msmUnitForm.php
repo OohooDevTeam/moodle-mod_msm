@@ -112,6 +112,9 @@ if (!empty($_POST["removeUnit"]))
 }
 
 $childOrder = $_POST['msm_child_order'];
+//
+//echo "editted unit title?";
+//print_object($_POST);
 
 $arrayOfChild = explode(",", $childOrder);
 

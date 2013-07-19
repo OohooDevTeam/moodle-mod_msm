@@ -15,22 +15,34 @@
  * ************************************************************************ */
 
 /**
- * Description of Media
+ * This class represents all the media XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by almost all the classes with any content associated with them.
+ * The media element can be representing either images or videos that are included
+ * in the content.
+ * Media class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Media extends Element
 {
 
-    public $position;
-    public $string_id;
-    public $inline;
-    public $type;
-    public $imgs = array();
-    public $infos = array();
+    public $id;                     // Database ID associated with this media element in msm_media table
+    public $compid;                 // Database ID associated with this media element in msm_compositor table
+    public $position;               // integer that keeps track of order of elements
+    public $string_id;              // unique string given to element that is either user-defined(legacy XML) or same as compid above(new XML)
+    public $active;                 // flag indicating if the media element is active (ie. has an image map attched to it) or inactive
+    public $inline;                 // flag indicating if the media element is displayed inline with text or in center
+    public $type;                   // type of media element (either image/video)
+    public $imgs = array();         // MathImg objects associated with this media element
+    public $infos = array();        // MathInfo objects associated with this media element
 
-//    public $img;
-
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -38,9 +50,13 @@ class Media extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (media element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        media elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Media
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -49,9 +65,6 @@ class Media extends Element
         $this->active = $DomElement->getAttribute('active');
         $this->inline = $DomElement->getAttribute('inline');
         $this->type = $DomElement->getAttribute('type');
-//
-//        $this->imgs = array();
-//        $this->infos = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -77,9 +90,15 @@ class Media extends Element
     }
 
     /**
-     *
+     * This method saves the extracted information from the XML files of media element into
+     * msm_media database table.  It calls saveInfoDb method for MathImg and MathInfo class.
+     * 
      * @global moodle_database $DB
-     * @param int $position 
+     * @global type $CFG
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -154,6 +173,16 @@ class Media extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the media element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from MathImg and MathInfo
+     * classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current media element in msm_media table
+     * @param int $compid                   database ID of the current media element in msm_compositor table
+     * @return \Media
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -171,9 +200,6 @@ class Media extends Element
         $mediaCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
 
         $childElements = $DB->get_records('msm_compositor', array("msm_id"=>$mediaCompRecord->msm_id, 'parent_id' => $compid), 'prev_sibling_id');
-//
-//        $this->childs = array();
-//        $this->infos = array();
 
         foreach ($childElements as $child)
         {
@@ -196,6 +222,13 @@ class Media extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in MathImg and MathInfo classes to display the data from these classes.
+     * 
+     * @param type $isindex                 flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($isindex = false)
     {
         $content = '';

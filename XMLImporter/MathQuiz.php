@@ -15,15 +15,38 @@
  * ************************************************************************ */
 
 /**
- * Description of Quiz
+ * This class represents all the quiz XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Pack class.
+ * MathQuiz class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class MathQuiz extends Element
 {
 
-    public $position;
-    public $question;
+    public $id;                             // Database ID associated with this quiz element in msm_quiz table
+    public $compid;                         // Database ID associated with this quiz element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $caption;                        // title associated with this quiz element
+    public $textcaption;                    // plain text title without any math elements associated with this quiz element
+    public $string_id;                      // unique ID given by the user to identify this quiz element
+    public $subordinates = array();         // Subordinate objects associated with this quiz element
+    public $indexauthors = array();         // MathIndex objects associated with this quiz element --> this represents index.author elements
+    public $indexglossarys = array();       // MathIndex objects associated with this quiz element --> this represents index.glossary elements
+    public $indexsymbols = array();         // MathIndex objects associated with this quiz element --> this represents index.symbol elements
+    public $medias = array();               // Media objects associated with this quiz element
+    public $tables = array();               // Table objects associated with this quiz element
+    public $questions = array();            // question elements associated with this quiz element
+    public $hints = array();                // MathInfo objects associated with this quiz element --> hints given for certain question in quiz
+    public $choices = array();              // QuizChoice objects associated with this quiz element --> possible answers to the question in the quiz
+    public $parts = array();                // PartQuiz objects associated with this quiz element --> different parts of this quiz
+
+    /**
+     *  constructor for the instace of this class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -32,9 +55,13 @@ class MathQuiz extends Element
     }
 
     /**
-     *
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (quiz element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
      * @param DOMElement $DomElement
-     * @param int $position 
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \MathQuiz
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -42,19 +69,6 @@ class MathQuiz extends Element
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
-        //$this->questions = array();
-
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
-
-        $this->questions = array();
-        $this->hints = array();
-        $this->choices = array();
-        $this->parts = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -124,13 +138,19 @@ class MathQuiz extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of quiz element into
+     * msm_quiz database table.  It calls saveInfoDb method for MathIndex, Subordinate, Media,
+     * Table, MathInfo, PartQuiz and QuizChoice classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {

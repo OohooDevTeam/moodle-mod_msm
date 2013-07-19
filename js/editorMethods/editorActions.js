@@ -337,7 +337,7 @@ function addrefTheoremContent(event)
                         <p>Valid child Elements: Part of a Theorem</p>\n\
                     </div>"); 
     //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
-    var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theoremref_part_droparea-'+idNumber+'-'+newId+'"></div>');
+    var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+idNumber+'-'+newId+'"></div>');
             
     theoremPartWrapper.append(partDndDiv);
     

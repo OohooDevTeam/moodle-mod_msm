@@ -54,12 +54,14 @@ class AnswerExample extends Element
     }
 
     /**
+     * 
      * This is an abstract method inherited from Element class that is implemented by each of the classes 
      * in XMLImporter folder.  This method parses the given DOMElement (answer element in this case) and extract
      * needed information to be inserted into the database.
      * 
      * @param DOMElement $DomElement
      * @param int $position                 integer that keeps track of order if elements
+     * @return \AnswerExample
      */
     public function loadFromXml($DomElement, $position = '')
     {
