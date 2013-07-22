@@ -397,25 +397,7 @@ else if ($dbType == "theorem")
         }
     }
 }
-//else if ($dbType == "theorem") // complication --> title can be from theorem/or part theorem and contents can be either statement/part theorem.
-//{
-//    if ($fieldType == "title")
-//    {
-//        $sql = "SELECT * FROM mdl_msm_theorem WHERE 'caption' LIKE '%$matchString%'";
-//    }
-//    else if ($fieldType == "content")
-//    {
-//        $sql = "SELECT * FROM mdl_msm_theorem WHERE 'def_content' LIKE '%$matchString%'";
-//    }
-//    else if ($fieldType == "description")
-//    {
-//        $sql = "SELECT * FROM mdl_msm_theorem WHERE 'description' LIKE '%$matchString%'";
-//    }
-//    else if ($fieldType == "both")
-//    {
-//        $sql = "SELECT * FROM mdl_msm_theorem WHERE 'def_content' LIKE '%$matchString%' OR 'caption' LIKE '%$matchString%'";
-//    }
-//}
+
 //else if ($dbType == "unit") // complication --> when searching through unit, need to gather all unit's children and search through there.
 //{
 //    

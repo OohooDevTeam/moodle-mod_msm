@@ -1,28 +1,44 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
- * Description of PartExercise
+ * This class represents all the part.exercise XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Exercise class.
+ * PartExercise class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class PartExercise extends Element
 {
 
-    public $position;
+    public $id;                             // Database ID of the part.exercise in the msm_part_exercise table
+    public $compid;                         // Database ID of the part.exercise in the msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $number;                         // number separating different parts in the exercise
+    public $difficulty;                     // difficulty level associated with this part of the exercise
+    public $problems = array();             // Problem objects associated with this part.exercise 
+    public $approachs = array();            // Approach objects associated with this part.exercise
+    public $approach_exts = array();        // ApproachExt objects associated with this part.exercise
+
+    /**
+     * constructor for this class
+     * 
+     * @param string $xmlpath    filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -31,9 +47,13 @@ class PartExercise extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (part.exercise element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        part.exercise DOMElement
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \PartExercise
      */
     function loadFromXml($DomElement, $position = '')
     {
@@ -41,10 +61,6 @@ class PartExercise extends Element
 
         $this->number = $DomElement->getAttribute('number');
         $this->difficulty = $DomElement->getAttribute('Difficulty');
-
-        $this->problems = array();
-        $this->approachs = array();
-        $this->approach_exts = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -77,9 +93,19 @@ class PartExercise extends Element
                 }
             }
         }
-         return $this;
+        return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of part.exercise element into
+     * msm_part_exercise database table.  It calls saveInfoDb method for Problem, Approach, ApproachExt classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -90,8 +116,8 @@ class PartExercise extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-        
-         $elementPositions = array();
+
+        $elementPositions = array();
         $sibling_id = null;
 
 
@@ -177,7 +203,6 @@ class PartExercise extends Element
                     break;
             }
         }
-
     }
 
 }

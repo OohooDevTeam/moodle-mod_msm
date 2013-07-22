@@ -171,6 +171,15 @@ class EditorInfo extends EditorElement
             $refType = '';
             $intExtFlag = '';
 
+            $idNumberInfo = explode("-", $idNumber);
+
+            $newId = '';
+            for ($i = 0; $i < sizeof($idNumberInfo) - 2; $i++)
+            {
+                $newId .= $idNumberInfo[$i] . "-";
+            }
+            $newId .= $idNumberInfo[sizeof($idNumberInfo) - 2];
+
             if (isset($_POST['msm_associate_reftype-' . $idNumber]))
             {
                 $refType = $_POST['msm_associate_reftype-' . $idNumber];
@@ -181,7 +190,7 @@ class EditorInfo extends EditorElement
                 // only put the intext flag when ref material is being saved the first time...if it is editted then no need to skip the inser to db process
                 foreach ($_POST as $key => $value)
                 {
-                    if (strpos($key, "msm_defref_description_input") !== false)
+                    if (strpos($key, "msm_defref_description_input-$newId") !== false)
                     {
                         $refType = "Definition";
                         $descrInfo = explode("__", $key);
@@ -191,7 +200,7 @@ class EditorInfo extends EditorElement
                             break;
                         }
                     }
-                    else if (strpos($key, "msm_commentref_description_input") !== false)
+                    else if (strpos($key, "msm_commentref_description_input-$newId") !== false)
                     {
                         $refType = "Comment";
                         $descrInfo = explode("__", $key);
@@ -201,7 +210,7 @@ class EditorInfo extends EditorElement
                             break;
                         }
                     }
-                    else if (strpos($key, "msm_theoremref_description_input") !== false)
+                    else if (strpos($key, "msm_theoremref_description_input-$newId") !== false)
                     {
                         $refType = "Theorem";
                         $descrInfo = explode("__", $key);
@@ -214,14 +223,6 @@ class EditorInfo extends EditorElement
                 }
             }
 
-            $idNumberInfo = explode("-", $idNumber);
-
-            $newId = '';
-            for ($i = 0; $i < sizeof($idNumberInfo) - 2; $i++)
-            {
-                $newId .= $idNumberInfo[$i] . "-";
-            }
-            $newId .= $idNumberInfo[sizeof($idNumberInfo) - 2];
             $param = $newId . "|$intExtFlag" . "ref";
 
             switch ($refType)

@@ -584,7 +584,7 @@ $formContent .= '<script type="text/javascript">
                     containment: "msm_editor_middle_droparea",
                     scroll: true,
                     cursor: "move",
-                    helper: "clone"                   
+                    helper: "clone"
                 }); 
                 
                 $(".msm_dnd_containers").droppable({
@@ -592,6 +592,7 @@ $formContent .= '<script type="text/javascript">
                     hoverClass: "ui-state-hover",
                     tolerance: "pointer",
                     drop: function( event, ui ) { 
+                        console.log("this droppable --> authroing tool");
                         processAdditionalChild(event, ui.draggable.context.id);      
                         allowDragnDrop();  
                     }
@@ -903,9 +904,9 @@ function displayRootUnit($unitcompid)
     ?>
     <script type="text/javascript">
         $(document).ready(function() {
-            var titleString = "<?php echo $unitRecord->plain_title ?>";
+            var titleString = '<?php echo $unitRecord->plain_title ?>';
             $('#msm_unit_title').val(titleString);        
-            var descriptionString = "<?php echo $unitRecord->description ?>";
+            var descriptionString = '<?php echo $unitRecord->description ?>';
             $("#msm_unit_description_input").val(descriptionString);
                                                                                                                                                                         
             $("#msm_editor_save").remove();

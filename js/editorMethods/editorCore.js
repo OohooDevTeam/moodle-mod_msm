@@ -922,15 +922,15 @@ function addAssociateForm(index, type)
     var subordinateContentResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infocontent'+index + '-' + newId+'-1"></div>');
 
     var refTypeDiv = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index+"-"+newId+"-1'></div>"); // area where ref form gets appended to
-//    var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"-1'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
-//                                <select name='msm_associate_reftype-//"+index + "-" + newId+"-1' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"-1' onchange='processReftype(event);'>\n\
-//                                    <option value='None'>None</option>\n\
-//                                    <option value='Comment'>Comment</option>\n\
-//                                    <option value='Definition'>Definition</option>\n\
-//                                    <option value='Theorem'>Theorem</option>\n\
-//                                    <option value='Example'>Example</option> \n\
-//                                    <option value='Section of this Composition'>Section of this Composition</option>\n\
-//                                </select></div>//");
+    //    var refTypeDropdown = $("<div class='msm_associate_reftype_optionarea' id='msm_associate_reftype_option-"+index + "-" + newId+"-1'><span class='msm_associate_reftype_label'>Type of reference to add: </span>\n\
+    //                                <select name='msm_associate_reftype-//"+index + "-" + newId+"-1' class='msm_associate_reftype_dropdown' id='msm_associate_reftype-"+index + "-" + newId+"-1' onchange='processReftype(event);'>\n\
+    //                                    <option value='None'>None</option>\n\
+    //                                    <option value='Comment'>Comment</option>\n\
+    //                                    <option value='Definition'>Definition</option>\n\
+    //                                    <option value='Theorem'>Theorem</option>\n\
+    //                                    <option value='Example'>Example</option> \n\
+    //                                    <option value='Section of this Composition'>Section of this Composition</option>\n\
+    //                                </select></div>//");
     
     var associateCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event);">x</a>');
   
@@ -978,7 +978,6 @@ function addAssociateForm(index, type)
         handle: ".msm_associate_info_headers",
         start: function(event,ui)
         {
-            console.log("associate start drag");
             $(".msm_sortable_placeholder").width(ui.item.context.offsetWidth);
             $(".msm_sortable_placeholder").height(ui.item.context.offsetHeight/2);
             $(".msm_sortable_placeholder").css("background-color","#DC143C");
@@ -1201,7 +1200,7 @@ function makeTheorem()
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
-    clonedCurrentElement.append(theoremAssociateDiv);
+    clonedCurrentElement.append(theoremAssociateDiv); 
     
     $("#msm_theorem_content_container-"+_index+"-1").sortable({
         appendTo: "msm_theorem_content_container-"+_index+"-1",

@@ -191,10 +191,14 @@ class EditorDefinition extends EditorElement
         if (!empty($this->isRef))
         {
             $existingDef = $DB->get_record("msm_compositor", array("id" => $this->isRef));
+            echo "in insertData";
+            print_object($this->isRef);
+            print_object($existingDef);
             $this->id = $existingDef->unit_id;
         }
         else
         {
+            echo "in insert data with out ref";
             $data->def_type = $this->type;
             $data->caption = $this->title;
 
@@ -212,6 +216,8 @@ class EditorDefinition extends EditorElement
             }
 
             $data->description = $this->description;
+            
+            print_object($data);
 
             $this->id = $DB->insert_record($this->tablename, $data);
         }

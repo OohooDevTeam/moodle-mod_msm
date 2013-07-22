@@ -15,9 +15,12 @@
  * ************************************************************************ */
 
 /**
- * Loading and storing for answer.exercise.block element
+ * This class represents all the answer.exercise XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Exercise class.
+ * AnswerExercise class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class AnswerExercise extends Element
 {

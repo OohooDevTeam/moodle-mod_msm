@@ -269,11 +269,11 @@ function submitForm()
                     });        
                     
                     $(".msm_child_element").draggable({
-                        appendTo: ".msm_dnd_containers",
-                        containment: ".msm_dnd_containers",
+                        appendTo: "msm_editor_middle_droparea",
+                        containment: "msm_editor_middle_droparea",
                         scroll: true,
                         cursor: "move",
-                        helper: "clone"                   
+                        helper: "clone"
                     }); 
         
                     $("#msm_editor_middle_droparea").droppable({
@@ -289,7 +289,7 @@ function submitForm()
                         accept: "#msm_component_tabs-2 > div",
                         hoverClass: "ui-state-hover",
                         tolerance: "pointer",
-                        drop: function( event, ui ) {                             
+                        drop: function( event, ui ) {      
                             processAdditionalChild(event, ui.draggable.context.id);      
                             allowDragnDrop();  
                         }

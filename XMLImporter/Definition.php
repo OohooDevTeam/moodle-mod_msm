@@ -16,10 +16,11 @@
 
 /**
  * This class represents all the def XML elements in the legacy document
- * (ie. files in the newXML) and it is called by Block/Associate/Companion/Crossref/Unit/MathCell/Subordinate/MathIndex classes.
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by Block/Associate/Companion/Crossref/Unit/MathCell/Subordinate/MathIndex classes.
  * Definition class inherits from the abstract class Element and for all the methods
  * inherited, read documents for Element class.
- *
+ * 
  * @author Ga Young Kim
  */
 class Definition extends Element

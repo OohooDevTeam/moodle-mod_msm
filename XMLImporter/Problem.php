@@ -15,15 +15,34 @@
  * ************************************************************************ */
 
 /**
- * Description of Problem
+ * This class represents all the problem XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Exercise/PartExercise classes.
+ * Problem class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Problem extends Element
 {
 
-    public $position;
-    public $content;
+    public $id;                            // database ID associated with the problem element in msm_problem table
+    public $compid;                        // database ID associated with the problem element in msm_compositor table
+    public $position;                      // integer that keeps track of order of elements
+    public $textcaption;                   // plain text title associated with this problem (ie. no math elements)
+    public $caption;                       // title associated with this problem
+    public $content;                       // content elements associated with the problem element
+    public $indexauthors = array();        // MathIndex associated with the problem element --> referncing index.author
+    public $indexglossarys = array();      // MathIndex associated with the problem element --> referncing index.glossary
+    public $indexsymbols = array();        // MathIndex associated with the problem element --> referncing index.symbol
+    public $subordinates = array();        // Subordinate objects associated with the problem elements
+    public $tables = array();              // Table objects associated with the problem elements
+    public $medias = array();              // Media objects associated with the problem elements
+
+    /**
+     * constructor for the instace of this class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -32,21 +51,17 @@ class Problem extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (problem element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        problem element in XML file
+     * @param int $position                 integer that keeps track of order if elements
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
-
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->subordinates = array();
-        $this->tables = array();
-        $this->medias = array();
 
         $problembody = $DomElement->getElementsByTagName('problem.body')->item(0);
 
@@ -86,6 +101,17 @@ class Problem extends Element
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of problem element into
+     * msm_problem database table.  This method also calls the saveIntoDb from Subordinate/MathIndex/
+     * Media/Table classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;

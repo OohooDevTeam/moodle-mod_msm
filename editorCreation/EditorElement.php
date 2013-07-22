@@ -139,8 +139,6 @@ abstract class EditorElement
 
     function replaceImages($index, $imgObj, $content, $tagName)
     {
-        global $DB;
-
         $htmlParser = new DOMDocument();
         $htmlParser->loadHTML($content);
 
@@ -169,9 +167,10 @@ abstract class EditorElement
     {
         $parser = new DOMDocument();
         // <nobr> tags from mathjax code caues error in loadXML function
+        $content = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $content);
         $content = str_replace("<nobr>", '', $content);
         $content = str_replace("</nobr>", '', $content);
-        $content = preg_replace("/\&nbsp;/", ' ', $content);        
+        $content = preg_replace("/\&nbsp;/", ' ', $content);
 
         //htmlParseEntityRef: no name in Entity warning is thrown?     
         // changed to loadXML due to encoding issue --> loadHTML doesn't read &nbsp; properly
@@ -186,7 +185,8 @@ abstract class EditorElement
         {
             $content = "<div>$content</div>";
         }
-        @$parser->loadXML($content);
+        
+       @$parser->loadXML($content);
 
         $spans = $parser->getElementsByTagName("span");
 
@@ -224,6 +224,7 @@ abstract class EditorElement
                 }
             }
         }
+
         return $parser->saveXML($parser->importNode($parser->getElementsByTagName("div")->item(0)));
     }
 

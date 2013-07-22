@@ -303,6 +303,7 @@ else
                 }
                 else
                 {
+                    echo "update Data";
                     // update the parent id of the child so that it corresponds to parent id of the current unit element
                     $updateData = new stdClass();
                     $updateData->id = $oldchild->id;
@@ -311,6 +312,8 @@ else
                     $updateData->unit_id = $oldchild->unit_id;
                     $updateData->parent_id = 0;
                     $updateData->prev_sibling_id = 0;
+                    
+                    print_object($updateData);
 
                     $DB->update_record("msm_compositor", $updateData);
                 }
@@ -409,8 +412,12 @@ function deleteOldChildRecord($compid, $msm_id)
     if ($compid != 0)
     {
         $compRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+        echo "compRecord";
+        print_object($compRecord);
         $compTableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
         $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
+
+        print_object($childElements);
 
         foreach ($childElements as $child)
         {
@@ -418,17 +425,28 @@ function deleteOldChildRecord($compid, $msm_id)
             // reference materials
             if ((($compTableRecord->tablename == "msm_associate") || ($compTableRecord->tablename == "msm_subordinate")) && ($childTable->tablename != "msm_info"))
             {
-                $sql = "SELECT * FROM mdl_msm_compositor WHERE msm_id<>$msm_id AND table_id=$child->table_id AND unit_id=$child->unit_id";
-                $records = $DB->get_records_sql($sql);
-
-                if (!empty($records))
+                if (!empty($child->unit_id))
                 {
-                    $DB->delete_records("msm_compositor", array("id" => $child->id));
-                    continue;
+                    $sql = "SELECT * FROM mdl_msm_compositor WHERE msm_id<>$msm_id AND table_id=$child->table_id AND unit_id=$child->unit_id";
+                    $records = $DB->get_records_sql($sql);
+
+                    if (!empty($records))
+                    {
+                        $DB->delete_records("msm_compositor", array("id" => $child->id));
+                        continue;
+                    }
+                    else
+                    {
+                        deleteOldChildRecord($child->id, $msm_id);
+                    }
                 }
                 else
                 {
-                    deleteOldChildRecord($child->id, $msm_id);
+                    echo "empty unit_id";
+                    print_object($child->unit_id);
+                    print_object($child);
+                    echo "the end";
+                    die;
                 }
             }
             else

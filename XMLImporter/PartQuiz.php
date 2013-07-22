@@ -4,26 +4,47 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
- * This class is a support class for Quiz class.  It processes information given under part element in XML files.
- * The data retrieve from this class is stored to msm_quiz table, which is similar to the Quiz class.
+ * This class represents all the part XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by MathQuiz class.
+ * PartQuiz class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.  This class stores the data in the same table as MathQuiz
+ * because part elements in quiz elements have the similar child elements as quiz except for not having parts itself
+ * and no titles associated with them.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class PartQuiz extends Element
 {
 
-    public $position;
+    public $id;                             // Database ID associted with this part element in msm_quiz table
+    public $compid;                         // Database ID associted with this part element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $subordinates = array();         // Subordinate objects associated with the part element
+    public $indexauthors = array();         // MathIndex objects associated with the part element --> in this case, representing index.author
+    public $indexglossarys = array();       // MathIndex objects associated with the part element --> in this case, representing index.glossary
+    public $indexsymbols = array();         // MathIndex objects associated with the part element --> in this case, representing index.symbol
+    public $medias = array();               // Media objects associated with the part element
+    public $tables = array();               // Table objects associated with the part element
+    public $questions = array();            // question elements associated with the part element
+    public $hints = array();                // MathInfo objects associated with the part element
+    public $choices = array();              // QuizChoice objects associated with this quiz element --> possible answers to the question in the quiz
+
+    /**
+     * constructor for the instace of this class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -32,24 +53,17 @@ class PartQuiz extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (part element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        part element (part of quiz element)
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \PartQuiz
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
-
-        $this->questions = array();
-        $this->hints = array();
-        $this->choices = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -116,14 +130,18 @@ class PartQuiz extends Element
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position
-     * @param String $stringid
-     * @param String $caption
-     * @param String $textcaption
-     * @param int $parentid
-     * @param int $siblingid 
+     * This method saves the extracted information from the XML files of quiz element into
+     * msm_quiz database table.  It calls saveInfoDb method for MathIndex, Subordinate, Media,
+     * Table, MathInfo, PartQuiz and QuizChoice classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param string $stringid           unique user-defined string ID given to parent Quiz element
+     * @param string $caption            title associated with the parent quiz element
+     * @param string $textcaption        title associated with the parent quiz element (version without any math elements)
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $stringid = '', $caption = '', $textcaption = '', $parentid = '', $siblingid = '')
     {

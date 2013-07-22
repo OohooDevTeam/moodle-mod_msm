@@ -344,11 +344,11 @@ function newUnit()
     });       
     
     $(".msm_child_element").draggable({
-        appendTo: ".msm_dnd_containers",
-        containment: ".msm_dnd_containers",
+        appendTo: "msm_editor_middle_droparea",
+        containment: "msm_editor_middle_droparea",
         scroll: true,
         cursor: "move",
-        helper: "clone"                   
+        helper: "clone"
     }); 
         
     $("#msm_editor_middle_droparea").droppable({
@@ -361,15 +361,15 @@ function newUnit()
         }
     }); 
     
-    $(".msm_dnd_containers").droppable({
-        accept: "#msm_component_tabs-2 > div",
-        hoverClass: "ui-state-hover",
-        tolerance: "pointer",
-        drop: function( event, ui ) { 
-            processAdditionalChild(event, ui.draggable.context.id);      
-            allowDragnDrop();  
-        }
-    });
+    //    $(".msm_dnd_containers").droppable({
+    //        accept: "#msm_component_tabs-2 > div",
+    //        hoverClass: "ui-state-hover",
+    //        tolerance: "pointer",
+    //        drop: function( event, ui ) { 
+    //            processAdditionalChild(event, ui.draggable.context.id);      
+    //            allowDragnDrop();  
+    //        }
+    //    });
     
     
     $("#msm_child_appending_area").sortable({
@@ -474,11 +474,11 @@ function processUnitData(htmlData)
     }); 
     
     $(".msm_child_element").draggable({
-        appendTo: ".msm_dnd_containers",
-        containment: ".msm_dnd_containers",
+        appendTo: "msm_editor_middle_droparea",
+        containment: "msm_editor_middle_droparea",
         scroll: true,
         cursor: "move",
-        helper: "clone"                   
+        helper: "clone"
     }); 
 
     $("#msm_editor_middle_droparea").droppable({
@@ -731,11 +731,11 @@ function enableEditorFunction()
     });      
     
     $(".msm_child_element").draggable({
-        appendTo: ".msm_dnd_containers",
-        containment: ".msm_dnd_containers",
+        appendTo: "msm_editor_middle_droparea",
+        containment: "msm_editor_middle_droparea",
         scroll: true,
         cursor: "move",
-        helper: "clone"                   
+        helper: "clone"
     }); 
             
     $("#msm_editor_middle_droparea").droppable({
@@ -1879,7 +1879,7 @@ function cancelUnit(e)
                         $("#msm_unit_form").append($(currentUnitId));
             
                         removeTinymceEditor();
-                        //                  
+                                          
                         disableEditorFunction();   
                         
                         $(".msm_structural_element").draggable({
@@ -1891,11 +1891,11 @@ function cancelUnit(e)
                         });    
                         
                         $(".msm_child_element").draggable({
-                            appendTo: ".msm_dnd_containers",
-                            containment: ".msm_dnd_containers",
+                            appendTo: "msm_editor_middle_droparea",
+                            containment: "msm_editor_middle_droparea",
                             scroll: true,
                             cursor: "move",
-                            helper: "clone"                   
+                            helper: "clone"
                         }); 
         
                         $("#msm_editor_middle_droparea").droppable({
@@ -2014,7 +2014,7 @@ function deleteOverlayElement(e)
             tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
         }
     });
-    //    
+        
     $("<div class='dialogs' id='msm_deleteComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
     $( "#msm_deleteComposition" ).dialog({
         resizable: false,

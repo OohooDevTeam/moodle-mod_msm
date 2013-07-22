@@ -52,7 +52,7 @@ class EditorComment extends EditorElement
     public function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
-
+        
         // the idNumber param contains "|ref" ending meaning that this comment is a reference material
         if (sizeof($idInfo) > 1)
         {

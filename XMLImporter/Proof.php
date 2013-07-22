@@ -15,14 +15,29 @@
  * ************************************************************************ */
 
 /**
- * Description of Proof
+ * This class represents all the associate XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Theorem classes.
+ * Proof class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Proof extends Element
 {
 
-    public $position;
+    public $id;                         // database ID associated with the proof element in msm_proof table
+    public $compid;                     // database ID associated with the proof element in msm_compositor table
+    public $position;                   // integer that keeps track of order of elements
+    public $string_id;                  // unique user-defined string to identify this proof element
+    public $proof_type;                 // type of proof --> proof/idea/justification...etc
+    public $proof_blocks = array();     // sections/parts of proof elements
+    public $childs = array();           // same as proof_block but used in load/display of db data
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -31,15 +46,17 @@ class Proof extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (proof element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        proof elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Proof
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-
-        $this->proof_blocks = array();
 
         $this->string_id = $DomElement->getAttribute('proofid');
 
@@ -57,11 +74,16 @@ class Proof extends Element
         return $this;
     }
 
-    /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
-     */
+   /**
+    * This method saves the extracted information from the XML files of proof element into
+     * msm_proof database table.  It calls saveInfoDb method for ProofBlock classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+    */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -71,10 +93,10 @@ class Proof extends Element
 
         $data->string_id = $this->string_id;
         $data->proof_type = $this->proof_type;
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-        
+
         foreach ($this->proof_blocks as $proof_block)
         {
             if (empty($sibling_id))
@@ -90,6 +112,15 @@ class Proof extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the proof element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from ProofBlock class is also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current proof element in msm_proof table
+     * @param int $compid                   database ID of the current proof element in msm_compositor table
+     * @return \Proof
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -103,8 +134,6 @@ class Proof extends Element
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-
-        $this->childs = array();
 
         foreach ($childElements as $child)
         {
@@ -121,6 +150,12 @@ class Proof extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in ProofBlock class to display the data.
+     * 
+     * @return string
+     */
     function displayhtml()
     {
         $content = '';

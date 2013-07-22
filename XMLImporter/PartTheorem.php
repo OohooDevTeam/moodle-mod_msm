@@ -4,45 +4,67 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
- * Description of PartTheorem
+ * This class represents all the def XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by StatementTheorem class.  PartTheorem class inherits from the
+ * abstract class Element and for all the methods inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class PartTheorem extends Element
 {
 
-    public $position;
-    public $part_content;
-
+    public $id;                             // database ID associated with the part.theorem element in msm_part_theorem table
+    public $compid;                         // database ID associated with the part.theorem element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $partid;                         // unique user-defined string ID to identify the specified part of the theorem
+    public $counter;                        // the numbering used (similar to the ordered list list-style-type property)
+    public $equiv_mark;                     // marks which parts are equivalent to another(?) --> represents the equivalence.mark attribute
+    public $caption;                        // title associated with this part.theorem element
+    public $part_content;                   // content of the part.theorem element when being loaded from DB and being displayed
+    public $content = array();              // content objects that are associated with this part.theorem --> used for insert into db
+    public $subordinates = array();         // Subordinate objects associated with the part.theorem element
+    public $indexauthors = array();         // MathIndex objects associated with the part.theorem element (representing the index.author element)
+    public $indexglossarys = array();       // MathIndex objects associated with the part.theorem element (representing the index.glossary element)
+    public $indexsymbols = array();         // MathIndex objects associated with the part.theorem element (representing the index.symbol element)
+    public $medias = array();               // Media objects associated with the part.theorem element
+    public $matharrays = array();           // MathArray objects associated with the part.theorem element
+    public $tables = array();               // Table objects associated with the part.theorem element
+    
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
         $this->tablename = 'msm_part_theorem';
     }
 
+    /**
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (part.theorem element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        part.theorem elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \PartTheorem
+     */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-
-        $this->part_content = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->matharrays = array();
-        $this->tables = array();
 
         $this->partid = $DomElement->getAttribute('partid');
         $this->counter = $DomElement->getAttribute('counter');
@@ -89,12 +111,23 @@ class PartTheorem extends Element
 
             foreach ($this->processContent($parb, $position) as $content)
             {
-                $this->part_content[] = $content;
+                $this->content[] = $content;
             }
         }
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of part.theorem element into
+     * msm_part_theorem database table.  It calls saveInfoDb method for Subordinate/MathIndex/Table/
+     * Media/MathArray classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -109,9 +142,9 @@ class PartTheorem extends Element
         $data->equivalence_mark = $this->equiv_mark;
         $data->caption = $this->caption;
 
-        if (!empty($this->part_content))
+        if (!empty($this->content))
         {
-            foreach ($this->part_content as $content)
+            foreach ($this->content as $content)
             {
                 $partcontent = '';
                 $contentparser = new DOMDocument();
@@ -326,6 +359,8 @@ class PartTheorem extends Element
             }
         }
 
+        // if there are media elements in the part.theorem content, need to change the src to 
+        // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {
             foreach ($ids as $key => $id)
@@ -343,6 +378,16 @@ class PartTheorem extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the part.theorem element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Subordinate,
+     * Media, MathArray and Table classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current part.theorem element in msm_part_theorem table
+     * @param int $compid                   database ID of the current part.theorem element in msm_compositor table
+     * @return \PartTheorem
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -357,10 +402,6 @@ class PartTheorem extends Element
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->matharrays = array();
-        $this->tables = array();
 
         foreach ($childElements as $child)
         {
@@ -397,6 +438,15 @@ class PartTheorem extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in Subordinate, Media, MathArray and Table classes to
+     * display the data from these classes.  The part theorem elements are displayed as an item in
+     * an ordered list with statement.theorem as a parent content.
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($isindex = false)
     {
         $content = '';

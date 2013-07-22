@@ -34,7 +34,7 @@ function processAdditionalChild(event, draggedId)
             }
         }
     }
-    else if(parentId.match(/intro/))
+    else if(event.target.parentElement.id.match(/intro/))
     {
         if((draggedId !== "msm_def") && (draggedId !== "msm_theorem") && (draggedId !== "msm_comment") && (draggedId !== "msm_extra_content"))
         {
