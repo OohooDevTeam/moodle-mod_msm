@@ -10,7 +10,7 @@ function insertUnitStructure(dbId)
 
     var unitInfo = ajaxInfo[0].split("-");
     var unitName = null;
-    var idPair = null;    
+    var idPair = null; 
     
     if(unitInfo.length > 2)
     {
@@ -20,8 +20,11 @@ function insertUnitStructure(dbId)
     else
     {
         idPair = ajaxInfo[0];
-    }
+    }    
+    
+    var linkText = null;  
         
+    // from being called after edit was done
     if(ajaxInfo.length > 1)
     {
         var currentUnitInfo = ajaxInfo[1].split("-");
@@ -54,12 +57,23 @@ function insertUnitStructure(dbId)
             {                
                 var parent = $(this).parents("ul").eq(0);
                 var copyofCurrent = $(this).clone();
+                
+                // to replace the unit name if it had been changed from edit
+                if(unitName != null)
+                {
+                    linkText = document.createTextNode(unitName);
+                    $(copyofCurrent).children("a").each(function() {
+                        $(this).empty();
+                        $(this).append(linkText);
+                    })
+                }
+                
                 $(this).empty().remove();
                 $(copyofCurrent).appendTo(parent);                
             }                
         });
     }
-    else
+    else // creating the tree for the first time
     {
         var treetopli = $("#msm_composition_default").children("ul");
     
@@ -67,9 +81,7 @@ function insertUnitStructure(dbId)
         $(listChild).attr("id", "msm_unit-"+idPair);
     
         var linkElement = $("<a href='#'></a>");
-    
-        var linkText = null;    
-    
+        
         if(unitName != null)
         {
             linkText = document.createTextNode(unitName);
@@ -298,7 +310,7 @@ function newUnit()
     }
     
     // need to switch display only div to input field so when the form is submitted, then the data can be passed as POST object
-    $("div#msm_unit_title").replaceWith('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>')
+    $("div#msm_unit_title").replaceWith('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
     
     $("#msm_unit_title").val('');
     $("#msm_unit_short_title").val('');
@@ -556,6 +568,13 @@ function saveComp(e)
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
 function editUnit(e)
 {   
+    var inputUnitTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
+    var currentTitleContent = $("div#msm_unit_title").html();
+    
+    $(inputUnitTitle).val(currentTitleContent);
+    
+    $("div#msm_unit_title").replaceWith(inputUnitTitle);   
+    
     initTitleEditor("msm_unit_title");
     
     $("#msm_editor_new").attr("disabled", "disabled");
@@ -2080,7 +2099,21 @@ function allowDragnDrop()
             $("#msm_unit_description_input").removeAttr("readonly");
             $(".copied_msm_structural_element select").removeAttr("disabled");
             $(".copied_msm_structural_element input").removeAttr("disabled");
-                                  
+         
+            if(typeof tinymce.getInstanceById("msm_unit_title") === "undefined")
+            {
+                var titlecontent = $("div#msm_unit_title").html();
+                var inputTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');                    
+                $(inputTitle).val(titlecontent);                    
+                $("div#msm_unit_title").replaceWith(inputTitle);                       
+            }
+            else
+            {
+                tinymce.execCommand('mceFocus', false, "msm_unit_title"); 
+                tinymce.execCommand('mceRemoveControl', true, "msm_unit_title");
+            }
+            initTitleEditor("msm_unit_title"); 
+         
             $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                 $(this).removeClass("msm_editor_content");
                 var newdata = document.createElement("textarea");

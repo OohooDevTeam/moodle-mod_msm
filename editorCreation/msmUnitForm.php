@@ -112,9 +112,6 @@ if (!empty($_POST["removeUnit"]))
 }
 
 $childOrder = $_POST['msm_child_order'];
-//
-//echo "editted unit title?";
-//print_object($_POST);
 
 $arrayOfChild = explode(",", $childOrder);
 
@@ -312,9 +309,6 @@ else
                     $updateData->msm_id = $oldchild->msm_id;
                     $updateData->table_id = $oldchild->table_id;
                     $updateData->unit_id = $oldchild->unit_id;
-//                    $updateData->parent_id = $currentUnitRecord->parent_id;
-//                    $updateData->prev_sibling_id = $oldchild->prev_sibling_id;  
-
                     $updateData->parent_id = 0;
                     $updateData->prev_sibling_id = 0;
 
@@ -351,10 +345,6 @@ else
         {
             file_prepare_draft_area($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id);
         }
-//        else
-//        {
-//            file_save_draft_area_files($fileoptions->itemid, $context->id, "mod_msm", $fileoptions->env, $msm->id, null);
-//        }
 
         $siblingCompid = 0;
 
@@ -365,7 +355,7 @@ else
         }
         // need both compid(in case the same unit was inserted multiple times in the composition) and the id of the unit
 
-        if (!empty($_POST['msm_currentUnit_id']))
+        if (!empty($_POST['msm_currentUnit_id'])) // from edit trigger
         {
             if (!empty($unit->short_name))
             {
@@ -375,9 +365,8 @@ else
             {
                 echo json_encode($unit->compid . "-" . $unit->id . "|" . $_POST['msm_currentUnit_id']);
             }
-//            
         }
-        else
+        else // needed to create the compositor tree for the first time
         {
             if (!empty($unit->short_name))
             {

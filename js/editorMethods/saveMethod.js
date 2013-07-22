@@ -90,18 +90,11 @@ function submitForm()
             }
         }
     });  
-    
-    console.log("tinymce title");
-    console.log(tinymce.getInstanceById("msm_unit_title"));
-    console.log(tinymce.getInstanceById("msm_unit_title").getContent({
-        format:"html"
-    }));
-    console.log($("#msm_unit_title"));
-    
+       
     $("#msm_unit_title").val(tinymce.getInstanceById("msm_unit_title").getContent({
         format:"html"
-    }));
-    
+    }));  
+        
     var urlParam = window.location.search;
        
     var urlParamInfo = urlParam.split("=");
