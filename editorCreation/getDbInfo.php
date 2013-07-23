@@ -106,7 +106,7 @@ if ($dbType == "definition")
 
     if (!empty($whereClause))
     {
-        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, def.caption, def.string_id, def.def_type, def.def_content AS content, def.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, def.caption, def.string_id, def.def_type, def.def_content AS content, def.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -142,7 +142,7 @@ else if ($dbType == "comment")
 
     if (!empty($whereClause))
     {
-        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comment.caption, comment.string_id, comment.comment_type, comment.comment_content AS content, comment.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, comment.caption, comment.string_id, comment.comment_type, comment.comment_content AS content, comment.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -162,7 +162,7 @@ else if ($dbType == "theorem")
         $whereClause = "WHERE LOWER(thm.caption) LIKE '%$matchString%' OR LOWER(thm.caption) LIKE '$matchString%' OR LOWER(thm.caption) LIKE '%$matchString'
                         OR LOWER(thm.textcaption) LIKE '%$matchString%' OR LOWER(thm.textcaption) LIKE '$matchString%' OR LOWER(thm.textcaption) LIKE '%$matchString'";
 
-        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -213,7 +213,7 @@ else if ($dbType == "theorem")
 
             if ($found)
             {
-                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.id = $theoremrec->id)
@@ -273,7 +273,7 @@ else if ($dbType == "theorem")
 
             if ($found)
             {
-                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.id = $theoremrec->id)
@@ -294,7 +294,7 @@ else if ($dbType == "theorem")
     {
         $whereClause = "WHERE LOWER(thm.description) LIKE '%$matchString%' OR LOWER(thm.description) LIKE '$matchString%' OR LOWER(thm.description) LIKE '%$matchString'";
 
-        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.comment_type, theorem.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.comment_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -314,7 +314,7 @@ else if ($dbType == "theorem")
                         OR LOWER(thm.textcaption) LIKE '$matchString%' OR LOWER(thm.caption) LIKE '$matchString%' OR LOWER(thm.description) LIKE '$matchString%'
                         OR LOWER(thm.textcaption) LIKE '%$matchString' OR LOWER(thm.caption) LIKE '%$matchString' OR LOWER(thm.description) LIKE '%$matchString'";
 
-        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -379,7 +379,7 @@ else if ($dbType == "theorem")
 
             if ($found)
             {
-                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.id = $theoremrec->id)
@@ -421,6 +421,10 @@ echo json_encode($html);
 
 function displaySearchResult($records, $tableRecords)
 {
+    global $DB;
+
+    $associateTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_associate"));
+
     $displayString = '';
     $displayString .= "<table id='msm_search_result_table'>";
     $displayString .= "<tr>";
@@ -433,9 +437,10 @@ function displaySearchResult($records, $tableRecords)
 
     foreach ($records as $rec)
     {
-
         $displayString .= "<tr>";
+
         $displayString .= "<td class='msm_search_result_table_cells'><input type='checkbox' id='msm_search_select-" . $rec->id . "' name='msm_search_select-" . $rec->id . "'/></td>";
+
         if ($tableRecords->tablename == "msm_def")
         {
             if (!empty($rec->def_type))

@@ -30,6 +30,8 @@ class EditorInfo extends EditorElement
     // idNumber --> parentid-currentelementid
     public function getFormData($idNumber)
     {
+//        print_object($_POST);
+        
         $flag = false;
         $subid = explode("|", $idNumber);
 
@@ -194,7 +196,12 @@ class EditorInfo extends EditorElement
                     {
                         $refType = "Definition";
                         $descrInfo = explode("__", $key);
-                        if (sizeof($descrInfo) > 1)
+                        if (sizeof($descrInfo) > 2)
+                        {
+                            $intExtFlag = 'same';
+                            break;
+                        }
+                        else if(sizeof($descrInfo) > 1)
                         {
                             $intExtFlag = 'intext';
                             break;
@@ -204,7 +211,12 @@ class EditorInfo extends EditorElement
                     {
                         $refType = "Comment";
                         $descrInfo = explode("__", $key);
-                        if (sizeof($descrInfo) > 1)
+                        if (sizeof($descrInfo) > 2)
+                        {
+                            $intExtFlag = 'same';
+                            break;
+                        }
+                        else if(sizeof($descrInfo) > 1)
                         {
                             $intExtFlag = 'intext';
                             break;
@@ -214,7 +226,12 @@ class EditorInfo extends EditorElement
                     {
                         $refType = "Theorem";
                         $descrInfo = explode("__", $key);
-                        if (sizeof($descrInfo) > 1)
+                        if (sizeof($descrInfo) > 2)
+                        {
+                            $intExtFlag = 'same';
+                            break;
+                        }
+                        else if(sizeof($descrInfo) > 1)
                         {
                             $intExtFlag = 'intext';
                             break;

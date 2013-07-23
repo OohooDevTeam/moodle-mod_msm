@@ -287,12 +287,21 @@ else
 
             $unit->updateDbRecord($compid);
 
+//            echo "unit after update";
+//            print_object($unit);
+
             $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
 
             $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid, "msm_id" => $msmId));
 
+//            echo "in here";
+//            print_object($oldUnitChildRecords);        
+
+
             foreach ($oldUnitChildRecords as $oldchild)
             {
+//                echo "in delete/update loop";
+//                print_object($oldchild);
                 $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
 
                 // first condition: to prevent from deleting the unit when it is editted
@@ -303,7 +312,6 @@ else
                 }
                 else
                 {
-                    echo "update Data";
                     // update the parent id of the child so that it corresponds to parent id of the current unit element
                     $updateData = new stdClass();
                     $updateData->id = $oldchild->id;
@@ -312,8 +320,6 @@ else
                     $updateData->unit_id = $oldchild->unit_id;
                     $updateData->parent_id = 0;
                     $updateData->prev_sibling_id = 0;
-                    
-                    print_object($updateData);
 
                     $DB->update_record("msm_compositor", $updateData);
                 }
@@ -321,6 +327,7 @@ else
         }
         else
         {
+//            echo "insert data";
             $unit->insertData(0, 0, $msmId);
         }
         // need code fo insert unit information to unitdatabase before procesing the child so that
@@ -351,6 +358,8 @@ else
 
         $siblingCompid = 0;
 
+//        echo "before insertData of rest of unit";
+//        print_object($unitcontent);
         foreach ($unitcontent as $element)
         {
             $element->insertData($unit->compid, $siblingCompid, $msmId);
@@ -412,12 +421,8 @@ function deleteOldChildRecord($compid, $msm_id)
     if ($compid != 0)
     {
         $compRecord = $DB->get_record("msm_compositor", array("id" => $compid));
-        echo "compRecord";
-        print_object($compRecord);
         $compTableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
         $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
-
-        print_object($childElements);
 
         foreach ($childElements as $child)
         {
@@ -439,14 +444,6 @@ function deleteOldChildRecord($compid, $msm_id)
                     {
                         deleteOldChildRecord($child->id, $msm_id);
                     }
-                }
-                else
-                {
-                    echo "empty unit_id";
-                    print_object($child->unit_id);
-                    print_object($child);
-                    echo "the end";
-                    die;
                 }
             }
             else

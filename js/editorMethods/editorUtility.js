@@ -403,6 +403,34 @@ function newUnit()
     $("#msm_editor_save").click(function(event) { 
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();
+        
+        $("#msm_unit_short_title").removeAttr("readonly");
+        $("#msm_unit_description_input").removeAttr("readonly");
+        $(".copied_msm_structural_element select").removeAttr("disabled");
+        $(".copied_msm_structural_element input").removeAttr("disabled");
+        $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
+            $(this).removeClass("msm_editor_content");
+            var newdata = document.createElement("textarea");
+            newdata.id = this.id;
+            newdata.name = this.id;
+            newdata.className = this.className;
+                    
+            $(this).find("span.matheditor").each(function() {
+                var newspan = document.createElement("span");
+                newspan.className = "matheditor";
+    
+                var scriptChild = $(this).find("script");
+        
+                var scriptWithMath = scriptChild[scriptChild.length-1];
+                var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+                $(newspan).append(mathContent);
+                
+                $(this).replaceWith(newspan);
+            });
+            
+            newdata.value = $(this).html();            
+            $(this).replaceWith(newdata);               
+        });
               
         submitForm();
             
@@ -687,23 +715,32 @@ function editUnit(e)
                 //         prevents navigation to msmUnitForm.php
                 event.preventDefault();
                 // enabling all input that was disabled to submit the form             
-                 
-                //                $("#msm_unit_title").removeAttr("disabled");
-                $("#msm_unit_short_title").removeAttr("disabled");
-                $("#msm_unit_description_input").removeAttr("disabled");
+                $("#msm_unit_short_title").removeAttr("readonly");
+                $("#msm_unit_description_input").removeAttr("readonly");
                 $(".copied_msm_structural_element select").removeAttr("disabled");
                 $(".copied_msm_structural_element input").removeAttr("disabled");
-                      
                 $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                     $(this).removeClass("msm_editor_content");
                     var newdata = document.createElement("textarea");
                     newdata.id = this.id;
                     newdata.name = this.id;
                     newdata.className = this.className;
+                    
+                    $(this).find("span.matheditor").each(function() {
+                        var newspan = document.createElement("span");
+                        newspan.className = "matheditor";
+    
+                        var scriptChild = $(this).find("script");
         
-                    newdata.value = $(this).html();
-                    $(this).replaceWith(newdata);
-                   
+                        var scriptWithMath = scriptChild[scriptChild.length-1];
+                        var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+                        $(newspan).append(mathContent);
+                
+                        $(this).replaceWith(newspan);
+                    });
+            
+                    newdata.value = $(this).html();            
+                    $(this).replaceWith(newdata);               
                 });
                 submitForm();
             
@@ -2044,16 +2081,28 @@ function deleteOverlayElement(e)
                     $("#msm_unit_description_input").removeAttr("readonly");
                     $(".copied_msm_structural_element select").removeAttr("disabled");
                     $(".copied_msm_structural_element input").removeAttr("disabled");
-            
                     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                         $(this).removeClass("msm_editor_content");
                         var newdata = document.createElement("textarea");
                         newdata.id = this.id;
                         newdata.name = this.id;
                         newdata.className = this.className;
+                    
+                        $(this).find("span.matheditor").each(function() {
+                            var newspan = document.createElement("span");
+                            newspan.className = "matheditor";
+    
+                            var scriptChild = $(this).find("script");
         
-                        newdata.value = $(this).html();
-                        $(this).replaceWith(newdata);                   
+                            var scriptWithMath = scriptChild[scriptChild.length-1];
+                            var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+                            $(newspan).append(mathContent);
+                
+                            $(this).replaceWith(newspan);
+                        });
+            
+                        newdata.value = $(this).html();            
+                        $(this).replaceWith(newdata);               
                     });
                     submitForm();
             
@@ -2094,12 +2143,12 @@ function allowDragnDrop()
         $("#msm_editor_save").click(function(event) { 
             //         prevents navigation to msmUnitForm.php
             event.preventDefault();
-            // enabling all input that was disabled to submit the form
+            
             $("#msm_unit_short_title").removeAttr("readonly");
             $("#msm_unit_description_input").removeAttr("readonly");
             $(".copied_msm_structural_element select").removeAttr("disabled");
             $(".copied_msm_structural_element input").removeAttr("disabled");
-         
+            
             if(typeof tinymce.getInstanceById("msm_unit_title") === "undefined")
             {
                 var titlecontent = $("div#msm_unit_title").html();
@@ -2113,17 +2162,31 @@ function allowDragnDrop()
                 tinymce.execCommand('mceRemoveControl', true, "msm_unit_title");
             }
             initTitleEditor("msm_unit_title"); 
-         
+            
             $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                 $(this).removeClass("msm_editor_content");
                 var newdata = document.createElement("textarea");
                 newdata.id = this.id;
                 newdata.name = this.id;
                 newdata.className = this.className;
+                    
+                $(this).find("span.matheditor").each(function() {
+                    var newspan = document.createElement("span");
+                    newspan.className = "matheditor";
+    
+                    var scriptChild = $(this).find("script");
         
-                newdata.value = $(this).html();
-                $(this).replaceWith(newdata);                   
+                    var scriptWithMath = scriptChild[scriptChild.length-1];
+                    var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+                    $(newspan).append(mathContent);
+                
+                    $(this).replaceWith(newspan);
+                });
+            
+                newdata.value = $(this).html();            
+                $(this).replaceWith(newdata);               
             });
+            
             submitForm();
             
         });  

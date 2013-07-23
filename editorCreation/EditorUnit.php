@@ -398,9 +398,6 @@ class EditorUnit extends EditorElement {
         $newUnitData->compchildtype = $this->unitName;
         $newUnitData->standalone = $oldUnitRecord->standalone;
         
-//        echo "newUnitData";
-//        print_object($newUnitData);
-
         $DB->update_record($this->tablename, $newUnitData);
 
         $this->compid = $compid;

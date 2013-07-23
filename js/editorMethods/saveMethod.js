@@ -32,7 +32,7 @@ $(document).ready(function(){
             });
             
             newdata.value = $(this).html();            
-            $(this).replaceWith(newdata);   
+            $(this).replaceWith(newdata);               
         });
         
         submitForm();            
