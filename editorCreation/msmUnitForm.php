@@ -290,7 +290,7 @@ else
             $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
 
             $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid, "msm_id" => $msmId));
-            
+
             $oldChildIds = array();
 
             foreach ($oldUnitChildRecords as $oldchild)
@@ -411,43 +411,53 @@ function deleteOldChildRecord($compid, $msm_id)
 
     if ($compid != 0)
     {
-        $compRecord = $DB->get_record("msm_compositor", array("id" => $compid));
-        $compTableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
+//        $compRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+//        $compTableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
         $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
 
         foreach ($childElements as $child)
         {
-            $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
-            // reference materials
-            if ((($compTableRecord->tablename == "msm_associate") || ($compTableRecord->tablename == "msm_subordinate")) && ($childTable->tablename != "msm_info"))
-            {
-                if (!empty($child->unit_id))
-                {
-                    $sql = "SELECT * FROM mdl_msm_compositor WHERE msm_id<>$msm_id AND table_id=$child->table_id AND unit_id=$child->unit_id";
-                    $records = $DB->get_records_sql($sql);
-
-                    if (!empty($records))
-                    {
-                        $DB->delete_records("msm_compositor", array("id" => $child->id));
-                        continue;
-                    }
-                    else
-                    {
-                        deleteOldChildRecord($child->id, $msm_id);
-                    }
-                }
-            }
-            else
-            {
-                deleteOldChildRecord($child->id, $msm_id);
-            }
+            deleteOldChildRecord($child->id, $msm_id);
         }
 
         $childRecord = $DB->get_record("msm_compositor", array('id' => $compid));
         $childTablename = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id))->tablename;
 
-        $DB->delete_records($childTablename, array("id" => $childRecord->unit_id));
-        $DB->delete_records("msm_compositor", array("id" => $compid));
+        $otherchildRecords = $DB->get_records("msm_compositor", array("unit_id" => $childRecord->unit_id, "table_id" => $childRecord->table_id));
+
+        $hasRef = false;
+        foreach ($otherchildRecords as $otherchild)
+        {
+            $parentRecord = $DB->get_record("msm_compositor", array("id" => $otherchild->parent_id));
+            $parentTable = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
+
+            if (($parentTable->tablename == "msm_associate") || ($parentTable->tablename == "msm_subordinate"))
+            {
+                $hasRef = true;
+                break;
+            }
+        }
+
+        if (!$hasRef)
+        {
+            $directParent = $DB->get_record("msm_compositor", array("id" => $childRecord->parent_id));
+            $directParentTable = $DB->get_record("msm_table_collection", array("id" => $directParent->table_id));
+
+            if (($directParentTable->tablename == "msm_associate") || ($directParentTable->tablename == "msm_subordinate"))
+            {
+                $hasRef = true;
+            }
+        }
+
+        if ($hasRef) // if there are references to this --> then do not delete the orignial copy
+        {
+            $DB->delete_records("msm_compositor", array("id" => $compid));
+        }
+        else
+        {
+            $DB->delete_records($childTablename, array("id" => $childRecord->unit_id));
+            $DB->delete_records("msm_compositor", array("id" => $compid));
+        }
     }
 }
 

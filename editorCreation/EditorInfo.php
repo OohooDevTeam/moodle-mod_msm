@@ -30,11 +30,11 @@ class EditorInfo extends EditorElement
     // idNumber --> parentid-currentelementid
     public function getFormData($idNumber)
     {
-//        print_object($_POST);
-        
+        global $DB;
+
         $flag = false;
         $subid = explode("|", $idNumber);
-
+        
         if (sizeof($subid) > 1)
         {
             $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
@@ -78,9 +78,33 @@ class EditorInfo extends EditorElement
                             {
                                 $this->subordinates[] = $subordinates;
                             }
-                            $flag = true;
-                            break;
                         }
+                    }
+                    else if ($idValuePair[0] == "msm_subordinate_ref-" . $subid[0])
+                    {
+                        $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
+                        $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
+
+                        switch ($tableRecord->tablename)
+                        {
+                            case "msm_def":
+                                $def = new EditorDefinition();
+                                $def->isRef = $record->id;
+                                $this->ref = $def;
+                                break;
+                            case "msm_theorem":
+                                $theorem = new EditorTheorem();
+                                $theorem->isRef = $record->id;
+                                $this->ref = $theorem;
+                                break;
+                            case "msm_comment":
+                                $comment = new EditorComment();
+                                $comment->isRef = $record->id;
+                                $this->ref = $comment;
+                                break;
+                        }
+
+                        $flag = true;
                     }
                 }
             }
@@ -138,6 +162,30 @@ class EditorInfo extends EditorElement
                                         $this->subordinates[] = $subordinates;
                                     }
                                     break;
+                                }
+                                else if ($idValuePair[0] == "msm_subordinate_ref-" . $newsubid)
+                                {
+                                    $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
+                                    $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
+
+                                    switch ($tableRecord->tablename)
+                                    {
+                                        case "Definition":
+                                            $def = new EditorDefinition();
+                                            $def->isRef = $record->id;
+                                            $this->ref = $def;
+                                            break;
+                                        case "Theorem":
+                                            $theorem = new EditorTheorem();
+                                            $theorem->isRef = $record->id;
+                                            $this->ref = $theorem;
+                                            break;
+                                        case "Comment":
+                                            $comment = new EditorComment();
+                                            $comment->isRef = $record->id;
+                                            $this->ref = $comment;
+                                            break;
+                                    }
                                 }
                             }
                         }
@@ -201,7 +249,7 @@ class EditorInfo extends EditorElement
                             $intExtFlag = 'same';
                             break;
                         }
-                        else if(sizeof($descrInfo) > 1)
+                        else if (sizeof($descrInfo) > 1)
                         {
                             $intExtFlag = 'intext';
                             break;
@@ -216,7 +264,7 @@ class EditorInfo extends EditorElement
                             $intExtFlag = 'same';
                             break;
                         }
-                        else if(sizeof($descrInfo) > 1)
+                        else if (sizeof($descrInfo) > 1)
                         {
                             $intExtFlag = 'intext';
                             break;
@@ -231,7 +279,7 @@ class EditorInfo extends EditorElement
                             $intExtFlag = 'same';
                             break;
                         }
-                        else if(sizeof($descrInfo) > 1)
+                        else if (sizeof($descrInfo) > 1)
                         {
                             $intExtFlag = 'intext';
                             break;

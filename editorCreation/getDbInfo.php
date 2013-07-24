@@ -45,8 +45,26 @@ $dbType = $_POST["param"][0]["value"];
 $matchString = trim(strtolower($_POST["param"][1]["value"]));
 $fieldType = $_POST["param"][2]["value"];
 
-$currentUnitInfo = explode("-", $_POST["currentUnit"]);
-$unitId = $currentUnitInfo[1];
+// msm_current_unit hidden input field may not exist in case for subordinates
+// b/c the unit that the subordinate is being added to might not have been saved into
+// database yet
+if (isset($_POST["currentUnit"]))
+{
+    if (!empty($_POST["currentUnit"]))
+    {
+        $currentUnitInfo = explode("-", $_POST["currentUnit"]);
+        $unitId = $currentUnitInfo[1];
+    }
+    else
+    {
+        $unitId = '';
+    }
+}
+else
+{
+    $unitId = '';
+}
+
 
 $tableID = null;
 
@@ -424,7 +442,7 @@ echo json_encode($html);
 function displaySearchResult($unit, $records, $tableRecords)
 {
     global $DB;
-    
+
     $hasDisplay = false;
 
     $displayString = '';
@@ -436,11 +454,6 @@ function displaySearchResult($unit, $records, $tableRecords)
     $displayString .= "<th class='msm_search_result_table_cells'> Content </th>";
     $displayString .= "<th class='msm_search_result_table_cells'> Description </th>";
     $displayString .= "</tr>";
-    
-    if(sizeof($records) == 0)
-    {
-        
-    }
 
     foreach ($records as $rec)
     {
@@ -518,8 +531,8 @@ function displaySearchResult($unit, $records, $tableRecords)
         }
     }
     $displayString .= "</table>";
-    
-    if(!$hasDisplay)
+
+    if (!$hasDisplay)
     {
         $displayString = "<b style='text-align: center;'> There are no results that satisfies the specified search parameter. </b>";
     }

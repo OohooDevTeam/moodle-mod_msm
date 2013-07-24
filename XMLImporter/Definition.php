@@ -34,7 +34,8 @@ class Definition extends Element
                                                 // (int in new XML material but in legacy material, it's a string value)
     public $type;                               // type of definition (eg. Notation, Definition...etc)
     public $description;                        // description associated with this def to allow to be searched 
-    public $def_contents = array();             // contents of this def element
+    public $def_contents = array();             // contents of this def element(for parse and insert to db)
+    public $def_content;                        // contents of this def element(for load and display)
     public $medias = array();                   // Media objects associated with the def element's contents
     public $associates = array();               // Associate objects associated with the def element
     public $subordinates = array();             // Subordinate objects associated with the def element's contents

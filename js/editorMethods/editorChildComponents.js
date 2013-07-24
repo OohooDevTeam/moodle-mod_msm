@@ -306,91 +306,103 @@ function createRefDialog(id, refTypeString, currentId)
             }
         });
             
-        $("#msm_search_submit").click(function(e) { 
-            var param = $("#msm_search_form").serializeArray();
-        
-            $.ajax({
-                type: 'POST',
-                url:"editorCreation/getDbInfo.php",
-                data: {
-                    param: param,
-                    msmId: msmId,
-                    refereceType: refTypeString,
-                    currentUnit: $("#msm_currentUnit_id").val()
-                },
-                success: function(data)
-                {                
-                    var string = JSON.parse(data);    
-                                
-                    $("#msm_search_result").empty(); // empty out any previous values
-                    $("#msm_search_result").append(string);
-                    $("#msm_search_accordion-"+id).accordion("option", "active", 1);       
-                
-                    $("#msm_search_result_table .msm_info_dialogs").dialog({
-                        autoOpen: false,
-                        height: "auto",
-                        modal: false,
-                        width: 605
-                    });  
-                                
-                    $("#msm_search_result_table").find(".msm_subordinate_hotwords").each(function(i, element) {
-                        var idInfo = this.id.split("-");
-                        var newid = '';
-                                        
-                        for(var i=1; i < idInfo.length-1; i++)
-                        {
-                            newid += idInfo[i]+"-";
-                        }
-                                            
-                        newid += idInfo[idInfo.length-1];
-                                                        
-                        previewInfo(this.id, "dialog-"+newid);
-                    });
-                                    
-                    $("#msm_search_result_table .msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
-                        var idInfo = this.id.split("-");
-                        var newid = '';
-                                        
-                        for(var i=1; i < idInfo.length-1; i++)
-                        {
-                            newid += idInfo[i]+"-";
-                        }
-                                            
-                        newid += idInfo[idInfo.length-1];
-                                                               
-                        previewInfo(this.id, "dialog-"+newid);
-                    });
-                
-                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
-                
-                    //                 only allowing one checkbox to be selected at any given time
-                    $("#msm_search_result input").click(function(e) {
-                        var checked = $(this).attr("checked");
-                    
-                        //                     when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
-                        if((checked === null) || (typeof checked === "undefined"))
-                        {
-                            $(this).closest("tr").removeClass("ui-widget-header");
-                        }
-                        else
-                        {
-                            //                         when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
-                            $("#msm_search_result input").filter(":checked").not(this).closest("tr").removeClass("ui-widget-header");
-                            $("#msm_search_result input").filter(":checked").not(this).removeAttr("checked");
-                        
-                            $(this).closest("tr").addClass("ui-widget-header");
-                        }
-                
-                    });                
-                }, 
-                erorr: function()
-                {
-                    alert("error");      
-                }
-            });
+        $("#msm_search_submit").click(function(e) {
+            submitAjax(refTypeString, msmId, id, "associate")
         });
+    });    
+}
+
+// also used in subordinate.js to trigger search
+function submitAjax(refString, msmId, id, parentType)
+{    
+    var param = $("#msm_search_form").serializeArray();
+        
+    $.ajax({
+        type: 'POST',
+        url:"editorCreation/getDbInfo.php",
+        data: {
+            param: param,
+            msmId: msmId,
+            refereceType: refString,
+            currentUnit: $("#msm_currentUnit_id").val()
+        },
+        success: function(data)
+        {                
+            var string = JSON.parse(data);    
+                                
+            $("#msm_search_result").empty(); // empty out any previous values
+            $("#msm_search_result").append(string);
+            if(parentType == "associate")
+            {
+                $("#msm_search_accordion-"+id).accordion("option", "active", 1);        
+            }
+            else
+            {
+                $("#msm_subordinate_accordion-"+id).accordion("option", "active", 2);       
+            }
+                
+            $("#msm_search_result_table .msm_info_dialogs").dialog({
+                autoOpen: false,
+                height: "auto",
+                modal: false,
+                width: 605
+            });  
+                                
+            $("#msm_search_result_table").find(".msm_subordinate_hotwords").each(function(i, element) {
+                var idInfo = this.id.split("-");
+                var newid = '';
+                                        
+                for(var i=1; i < idInfo.length-1; i++)
+                {
+                    newid += idInfo[i]+"-";
+                }
+                                            
+                newid += idInfo[idInfo.length-1];
+                                                        
+                previewInfo(this.id, "dialog-"+newid);
+            });
+                                    
+            $("#msm_search_result_table .msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
+                var idInfo = this.id.split("-");
+                var newid = '';
+                                        
+                for(var i=1; i < idInfo.length-1; i++)
+                {
+                    newid += idInfo[i]+"-";
+                }
+                                            
+                newid += idInfo[idInfo.length-1];
+                                                               
+                previewInfo(this.id, "dialog-"+newid);
+            });
+                
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
+                
+            //                 only allowing one checkbox to be selected at any given time
+            $("#msm_search_result input").click(function(e) {
+                var checked = $(this).attr("checked");
+                    
+                //                     when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
+                if((checked === null) || (typeof checked === "undefined"))
+                {
+                    $(this).closest("tr").removeClass("ui-widget-header");
+                }
+                else
+                {
+                    //                         when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
+                    $("#msm_search_result input").filter(":checked").not(this).closest("tr").removeClass("ui-widget-header");
+                    $("#msm_search_result input").filter(":checked").not(this).removeAttr("checked");
+                        
+                    $(this).closest("tr").addClass("ui-widget-header");
+                }
+                
+            });                
+        }, 
+        erorr: function()
+        {
+            alert("error");      
+        }
     });
-    
 }
 
 function addRefElements(type, tbcellArray, ind, databaseId)
