@@ -265,7 +265,6 @@ function createRefDialog(id, refTypeString, currentId)
                         var selectedId = $(selectedCheckbox[0]).attr("id").split("-");
                     
                         addRefElements(refSelectType, selectedCells, currentId, selectedId[1])
-                        //                        addDefRef(selectedCells, currentId, selectedId[1]);
                     
                         $(this).dialog("close");
                     }
@@ -273,6 +272,16 @@ function createRefDialog(id, refTypeString, currentId)
             
                 },
                 "Cancel": function() {
+                    var associateIdInfo = currentId.split("-");
+                   
+                    var associateId = associateIdInfo[0];
+                    for(var i = 1; i < associateIdInfo.length-1; i++)
+                    {
+                        associateId += "-"+associateIdInfo[i];
+                    }
+                   
+                    // remove appended associate form 
+                    $("#msm_associate_childs-"+associateId).empty().remove();
                     $(this).dialog("close");
                 }
             },
@@ -306,7 +315,8 @@ function createRefDialog(id, refTypeString, currentId)
                 data: {
                     param: param,
                     msmId: msmId,
-                    refereceType: refTypeString
+                    refereceType: refTypeString,
+                    currentUnit: $("#msm_currentUnit_id").val()
                 },
                 success: function(data)
                 {                

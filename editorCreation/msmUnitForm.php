@@ -287,21 +287,14 @@ else
 
             $unit->updateDbRecord($compid);
 
-//            echo "unit after update";
-//            print_object($unit);
-
             $currentUnitRecord = $DB->get_record("msm_compositor", array("id" => $compid));
 
             $oldUnitChildRecords = $DB->get_records("msm_compositor", array("parent_id" => $compid, "msm_id" => $msmId));
-
-//            echo "in here";
-//            print_object($oldUnitChildRecords);        
-
+            
+            $oldChildIds = array();
 
             foreach ($oldUnitChildRecords as $oldchild)
             {
-//                echo "in delete/update loop";
-//                print_object($oldchild);
                 $unittableid = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"))->id;
 
                 // first condition: to prevent from deleting the unit when it is editted
@@ -358,8 +351,6 @@ else
 
         $siblingCompid = 0;
 
-//        echo "before insertData of rest of unit";
-//        print_object($unitcontent);
         foreach ($unitcontent as $element)
         {
             $element->insertData($unit->compid, $siblingCompid, $msmId);

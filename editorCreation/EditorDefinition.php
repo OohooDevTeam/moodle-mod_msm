@@ -54,9 +54,6 @@ class EditorDefinition extends EditorElement
     function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
-        
-//        echo "idNumber";
-//        print_object($idInfo);
 
         // processing definitions as reference material
         if (sizeof($idInfo) > 1)
@@ -78,7 +75,7 @@ class EditorDefinition extends EditorElement
                 }
             }
             $this->type = $_POST['msm_defref_type_dropdown-' . $newId];
-            
+
             if ($idInfo[1] != "ref")
             {
                 foreach ($_POST as $key => $value)
@@ -86,7 +83,6 @@ class EditorDefinition extends EditorElement
                     $pattern = "msm_defref_description_input-$newId";
                     if (strpos($key, $pattern) !== false)
                     {
-                        print_object($key);
                         $this->description = $value;
                         $newkey = explode("__", $key);
                         $this->isRef = $newkey[1];
@@ -124,7 +120,7 @@ class EditorDefinition extends EditorElement
         }
         // processing definition as main part of unit
         else if (sizeof($idInfo) == 1)
-        {            
+        {
             $this->type = $_POST['msm_def_type_dropdown-' . $idNumber];
             $this->description = $_POST['msm_def_description_input-' . $idNumber];
             $this->title = $_POST['msm_def_title_input-' . $idNumber];

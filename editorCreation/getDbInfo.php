@@ -45,6 +45,8 @@ $dbType = $_POST["param"][0]["value"];
 $matchString = trim(strtolower($_POST["param"][1]["value"]));
 $fieldType = $_POST["param"][2]["value"];
 
+$currentUnitInfo = explode("-", $_POST["currentUnit"]);
+$unitId = $currentUnitInfo[1];
 
 $tableID = null;
 
@@ -106,7 +108,7 @@ if ($dbType == "definition")
 
     if (!empty($whereClause))
     {
-        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, def.caption, def.string_id, def.def_type, def.def_content AS content, def.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, def.caption, def.string_id, def.def_type, def.def_content AS content, def.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -142,7 +144,7 @@ else if ($dbType == "comment")
 
     if (!empty($whereClause))
     {
-        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, comment.caption, comment.string_id, comment.comment_type, comment.comment_content AS content, comment.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, comment.caption, comment.string_id, comment.comment_type, comment.comment_content AS content, comment.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -162,7 +164,7 @@ else if ($dbType == "theorem")
         $whereClause = "WHERE LOWER(thm.caption) LIKE '%$matchString%' OR LOWER(thm.caption) LIKE '$matchString%' OR LOWER(thm.caption) LIKE '%$matchString'
                         OR LOWER(thm.textcaption) LIKE '%$matchString%' OR LOWER(thm.textcaption) LIKE '$matchString%' OR LOWER(thm.textcaption) LIKE '%$matchString'";
 
-        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -213,7 +215,7 @@ else if ($dbType == "theorem")
 
             if ($found)
             {
-                $joinedsql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.id = $theoremrec->id)
@@ -273,7 +275,7 @@ else if ($dbType == "theorem")
 
             if ($found)
             {
-                $joinedsql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.id = $theoremrec->id)
@@ -294,7 +296,7 @@ else if ($dbType == "theorem")
     {
         $whereClause = "WHERE LOWER(thm.description) LIKE '%$matchString%' OR LOWER(thm.description) LIKE '$matchString%' OR LOWER(thm.description) LIKE '%$matchString'";
 
-        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.comment_type, theorem.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.comment_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -314,7 +316,7 @@ else if ($dbType == "theorem")
                         OR LOWER(thm.textcaption) LIKE '$matchString%' OR LOWER(thm.caption) LIKE '$matchString%' OR LOWER(thm.description) LIKE '$matchString%'
                         OR LOWER(thm.textcaption) LIKE '%$matchString' OR LOWER(thm.caption) LIKE '%$matchString' OR LOWER(thm.description) LIKE '%$matchString'";
 
-        $sql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+        $sql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.table_id = $tableID->id" . "$msmString)
@@ -379,7 +381,7 @@ else if ($dbType == "theorem")
 
             if ($found)
             {
-                $joinedsql = "SELECT comp.id, MAX(comp.unit_id) AS unit_id, comp.msm_id, comp.table_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
+                $joinedsql = "SELECT comp.id, MAX(comp.unit_id), comp.msm_id, comp.table_id, comp.parent_id, theorem.caption, theorem.textcaption, theorem.string_id, theorem.theorem_type, theorem.description
                 FROM (SELECT * 
                      FROM mdl_msm_compositor c1
                      WHERE c1.id = $theoremrec->id)
@@ -415,15 +417,15 @@ if (empty($records))
     }
 }
 
-$html = displaySearchResult($records, $tableID);
+$html = displaySearchResult($unitId, $records, $tableID);
 
 echo json_encode($html);
 
-function displaySearchResult($records, $tableRecords)
+function displaySearchResult($unit, $records, $tableRecords)
 {
     global $DB;
-
-    $associateTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_associate"));
+    
+    $hasDisplay = false;
 
     $displayString = '';
     $displayString .= "<table id='msm_search_result_table'>";
@@ -434,67 +436,93 @@ function displaySearchResult($records, $tableRecords)
     $displayString .= "<th class='msm_search_result_table_cells'> Content </th>";
     $displayString .= "<th class='msm_search_result_table_cells'> Description </th>";
     $displayString .= "</tr>";
+    
+    if(sizeof($records) == 0)
+    {
+        
+    }
 
     foreach ($records as $rec)
     {
-        $displayString .= "<tr>";
+        $fromSameUnit = false;
+        $parentUnitRecord = $DB->get_record("msm_compositor", array("id" => $rec->parent_id));
+        $unitTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
 
-        $displayString .= "<td class='msm_search_result_table_cells'><input type='checkbox' id='msm_search_select-" . $rec->id . "' name='msm_search_select-" . $rec->id . "'/></td>";
-
-        if ($tableRecords->tablename == "msm_def")
+        if ($parentUnitRecord->table_id == $unitTable->id)
         {
-            if (!empty($rec->def_type))
+            if ($parentUnitRecord->unit_id == $unit)
             {
-                $displayString .= "<td class='msm_search_result_table_cells'>$rec->def_type</td>";
-            }
-            else
-            {
-                $displayString .= "<td class='msm_search_result_table_cells'>Definition</td>";
+                $fromSameUnit = true;
             }
         }
-        else if ($tableRecords->tablename == "msm_comment")
-        {
-            if (!empty($rec->comment_type))
-            {
-                $displayString .= "<td class='msm_search_result_table_cells'>$rec->comment_type</td>";
-            }
-            else
-            {
-                $displayString .= "<td class='msm_search_result_table_cells'>Comment</td>";
-            }
-        }
-        else if ($tableRecords->tablename == "msm_theorem")
-        {
-            if (!empty($rec->theorem_type))
-            {
-                $displayString .= "<td class='msm_search_result_table_cells'>$rec->theorem_type</td>";
-            }
-            else
-            {
-                $displayString .= "<td class='msm_search_result_table_cells'>Theorem</td>";
-            }
-        }
-        $displayString .= "<td class='msm_search_result_table_cells'>$rec->caption</td>";
 
-        if (($tableRecords->tablename == "msm_def") || ($tableRecords->tablename == "msm_comment"))
+        if (!$fromSameUnit)
         {
-            $displaySubordinate = displaySearchSubordinate($rec);
+            $hasDisplay = true;
+            $displayString .= "<tr>";
 
-            $content = preg_replace("/<math.array(.*?)>/", "<table$1>", $rec->content);
-            $content = preg_replace("/<\/math.array>/", "</table>", $content);
+            $displayString .= "<td class='msm_search_result_table_cells'><input type='checkbox' id='msm_search_select-" . $rec->id . "' name='msm_search_select-" . $rec->id . "'/></td>";
 
-            $displayString .= "<td class='msm_search_result_table_cells'>" . $content . $displaySubordinate . "</td>";
+            if ($tableRecords->tablename == "msm_def")
+            {
+                if (!empty($rec->def_type))
+                {
+                    $displayString .= "<td class='msm_search_result_table_cells'>$rec->def_type</td>";
+                }
+                else
+                {
+                    $displayString .= "<td class='msm_search_result_table_cells'>Definition</td>";
+                }
+            }
+            else if ($tableRecords->tablename == "msm_comment")
+            {
+                if (!empty($rec->comment_type))
+                {
+                    $displayString .= "<td class='msm_search_result_table_cells'>$rec->comment_type</td>";
+                }
+                else
+                {
+                    $displayString .= "<td class='msm_search_result_table_cells'>Comment</td>";
+                }
+            }
+            else if ($tableRecords->tablename == "msm_theorem")
+            {
+                if (!empty($rec->theorem_type))
+                {
+                    $displayString .= "<td class='msm_search_result_table_cells'>$rec->theorem_type</td>";
+                }
+                else
+                {
+                    $displayString .= "<td class='msm_search_result_table_cells'>Theorem</td>";
+                }
+            }
+            $displayString .= "<td class='msm_search_result_table_cells'>$rec->caption</td>";
+
+            if (($tableRecords->tablename == "msm_def") || ($tableRecords->tablename == "msm_comment"))
+            {
+                $displaySubordinate = displaySearchSubordinate($rec);
+
+                $content = preg_replace("/<math.array(.*?)>/", "<table$1>", $rec->content);
+                $content = preg_replace("/<\/math.array>/", "</table>", $content);
+
+                $displayString .= "<td class='msm_search_result_table_cells'>" . $content . $displaySubordinate . "</td>";
+            }
+            else if ($tableRecords->tablename == "msm_theorem")
+            {
+                $theoremContent = displaySearchTheorem($rec);
+                $displayString .= "<td class='msm_search_result_table_cells'>" . $theoremContent . "</td>";
+            }
+
+            $displayString .= "<td class='msm_search_result_table_cells'>$rec->description</td>";
+            $displayString .= "</tr>";
         }
-        else if ($tableRecords->tablename == "msm_theorem")
-        {
-            $theoremContent = displaySearchTheorem($rec);
-            $displayString .= "<td class='msm_search_result_table_cells'>" . $theoremContent . "</td>";
-        }
-
-        $displayString .= "<td class='msm_search_result_table_cells'>$rec->description</td>";
-        $displayString .= "</tr>";
     }
     $displayString .= "</table>";
+    
+    if(!$hasDisplay)
+    {
+        $displayString = "<b style='text-align: center;'> There are no results that satisfies the specified search parameter. </b>";
+    }
 
     return $displayString;
 }
