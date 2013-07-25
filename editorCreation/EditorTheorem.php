@@ -197,6 +197,7 @@ class EditorTheorem extends EditorElement
         if (!empty($this->isRef))
         {
             $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
+
             $this->id = $existingTheorem->unit_id;
 
             $statementTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_statement_theorem"));
@@ -204,19 +205,25 @@ class EditorTheorem extends EditorElement
 
             $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $existingTheorem->id, "table_id" => $statementTable->id), "prev_sibling_id");
 
+
             $i = 0;
             foreach ($statementTheorems as $statement)
             {
-                $this->contents[$i]->id = $statement->unit_id;
+                $statementThr = new EditorStatementTheorem();
+                $statementThr->id = $statement->unit_id;
 
                 $partTheorems = $DB->get_records("msm_compositor", array("parent_id" => $statement->id, "table_id" => $partTable->id), "prev_sibling_id");
 
                 $j = 0;
                 foreach ($partTheorems as $part)
                 {
-                    $this->contents[$i]->children[$j]->id = $part->unit_id;
+                    $partThr = new EditorPartTheorem();
+                    $partThr->id = $part->unit_id;
+                    $statementThr->children[$j] = $partThr;                    
                     $j++;
                 }
+                $this->contents[$i] = $statementThr;
+
                 $i++;
             }
         }
