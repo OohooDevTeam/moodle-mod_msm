@@ -365,7 +365,7 @@ class InContent extends Element
             }
         }
 
-        // if there are media elements in the definition content, need to change the src to 
+        // if there are media elements in the incontent content, need to change the src to 
         // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {

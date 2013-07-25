@@ -15,25 +15,42 @@
  * ************************************************************************ */
 
 /**
- * Description of ProofBlock
+ * This class represents all the proof.block XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Proof classes.
+ * ProofBlock class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class ProofBlock extends Element
 {
 
-    public $position;
-    public $logic_types = array();
-    public $proof_logics = array();
-    public $proof_block_bodys = array();
-    public $captions = array();
-    public $indexauthors = array();
-    public $indexglossarys = array();
-    public $indexsymbols = array();
-    public $subordinates = array();
-    public $matharrays = array();
-    public $medias = array();
-    public $tables = array();
+    public $id;                                     // database ID associated with the proof.block element in msm_proof_block table
+    public $compid;                                 // database ID associated with the proof.block element in msm_compositor table
+    public $position;                               // integer that keeps track of order of elements
+    public $logic_types = array();                  // type of logic represented by the logic elements (eg. implies/equivalent to...etc)
+    public $proof_logics = array();                 // logic elements associated with the proof.block element
+    public $proof_block_bodys = array();            // content elements associated with the proof.block element
+    public $captions = array();                     // caption elements (ie. titles) associated with each proof.block elements
+    public $indexauthors = array();                 // MathIndex objects associated with the proof.block element--> info on authors
+    public $indexglossarys = array();               // MathIndex objects associated with the proof.block element--> info on terms
+    public $indexsymbols = array();                 // MathIndex objects associated with the proof.block element--> info on symbols
+    public $subordinates = array();                 // Subordinate objects associated with the proof.block element
+    public $matharrays = array();                   // MathArray objects associated with the proof.block element
+    public $medias = array();                       // Media objects associated with the proof.block element
+    public $tables = array();                       // Table objects associated with the proof.block element
+    public $partrefs = array();                     // part.ref elements as child of logic elements in proof.block elements
+    //      (part.ref elements are references to different part of proof.block that
+    //       are related with logic given by its parent elmeent)
+    public $caption;                                // title associated with the proof.block element in load/display functions
+    public $proof_content;                          // content associated with the proof.block element in load/display functions
+    public $proof_logic;                            // logic associated with the proof.block element in load/display functions
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -42,9 +59,13 @@ class ProofBlock extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (proof.block element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        proof.block elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \ProofBlock
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -71,7 +92,6 @@ class ProofBlock extends Element
         $appended = false; // checking if the new node has been appended to the document 
         foreach ($DomElement->childNodes as $child)
         {
-
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
                 if ($child->tagName == 'logic')
@@ -110,8 +130,6 @@ class ProofBlock extends Element
         $doc->appendChild($newProofblockNode);
 
         $rootElement = $doc->documentElement; // new proof.block element
-        // parsing the new XML document
-//        $newdoc = new DOMDocument();
 
         $logicExisted = false;
         $captionExisted = false;
@@ -201,9 +219,15 @@ class ProofBlock extends Element
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of proof element into
+     * msm_proof_block database table.  It calls saveInfoDb method for MathIndex, Subordinate, Table,
+     * MathArray, Media classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
@@ -432,6 +456,8 @@ class ProofBlock extends Element
             }
             $this->compid = $compid;
 
+            // if there are media elements in the proof.block content, need to change the src to 
+            // pluginfile.php format to serve the pictures.
             if (!empty($this->medias))
             {
                 $newdata = new stdClass();
@@ -458,6 +484,16 @@ class ProofBlock extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the proof.block element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Subordinate, MathArray, Media,
+     * Table classes is also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current proof.block element in msm_proof_block table
+     * @param int $compid                   database ID of the current proof.block element in msm_compositor table
+     * @return \ProofBlock
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -472,13 +508,6 @@ class ProofBlock extends Element
             $this->caption = $proofBlockRecord->caption;
             $this->proof_content = $proofBlockRecord->proof_content;
         }
-
-        $this->subordinates = array();
-        $this->matharrays = array();
-        $this->medias = array();
-        $this->tables = array();
-
-        $this->partrefs = array();
 
         $proofid = $DB->get_record('msm_compositor', array('id' => $compid))->parent_id;
         $theoremid = $DB->get_record('msm_compositor', array('id' => $proofid))->parent_id;
@@ -558,6 +587,14 @@ class ProofBlock extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in Subordinate, Media, MathArray and Table classes to
+     * display the data from these classes.
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($isindex = false)
     {
         $content = '';
@@ -601,16 +638,10 @@ class ProofBlock extends Element
             $content .= "</div>";
         }
 
-//        echo "before displayContent in the proofblock";
         // this content needs proof.block.body tags to be added due to it lacking a root element
         // (without it, it will error out in displayContent due to loadXML method needing a root element)
 
         $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>");
-
-//        if ((!empty($this->proof_logic)) && (empty($this->caption)))
-//        {
-//            $content .= "</ul>";
-//        }
 
         if (!empty($this->proof_logic))
         {

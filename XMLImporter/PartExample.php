@@ -15,15 +15,36 @@
  * ************************************************************************ */
 
 /**
- * Does not exist in legacy files but will be an option for the author when new materials are generated
+ * This class represents al the part.example XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Example class.
+ * Example class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class PartExample extends Element
 {
 
-    public $position;
+    public $id;                         // database ID associated with part.example element in msm_part_example table
+    public $compid;                     // database ID associated with part.example element in msm_compositor table
+    public $position;                   // integer that keeps track of order of elements
+    public $partid;                     // unique user-defined string that identifies this specific part.example
+    public $counter;                    // the numbering used (similar to the ordered list list-style-type property)
+    public $equiv_mark;                 // marks which parts are equivalent to another(?) --> represents the equivalence.mark attribute
+    public $caption;                    // title associated with the part.example element
+    public $content = array();          // content elements associated with the part.example element
+    public $subordinates = array();     // Subordinate objects associated with this part.example element
+    public $indexauthors = array();     // MathIndex objects associated with this part.example (index of authors that gives more info about the author)
+    public $indexglossarys = array();   // MathIndex objects associated with this part.example (index of glossary that gives definition/extra info about the term)
+    public $indexsymbols = array();     // MathIndex objects associated with this part.example (index of symbols that gives definition/extra info about the symbols)
+    public $tables = array();           // Table objects associated with this part.example
+    public $medias = array();
 
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -31,28 +52,22 @@ class PartExample extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (part.example element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        part.example element
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \PartExample
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        $this->content = array();
         $this->partid = $DomElement->getAttribute('partid');
         $this->counter = $DomElement->getAttribute('counter');
         $this->equiv_mark = $DomElement->getAttribute('equivalence.mark');
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
-
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->tables = array();
-        $this->medias = array();
-
-        $this->content = array();
 
         $part_example_bodys = $DomElement->getElementsByTagName('part.example.body');
 
@@ -92,9 +107,19 @@ class PartExample extends Element
                 $this->content[] = $content;
             }
         }
-         return $this;
+        return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of part.example element and its associated child elements into
+     * their respective database tables.  It calls saveInfoDb method for MathIndex, Media, Table, and Subordinate classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;

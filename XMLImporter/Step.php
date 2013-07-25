@@ -15,15 +15,36 @@
  * ************************************************************************ */
 
 /**
- * Description of Step
+ * This class represents al the step XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by AnswerExt/SolutionExt classes.
+ * Step class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Step extends Element
 {
 
-    public $position;
-    public $content;
+    public $id;                             // database ID associated with the step element in msm_step table
+    public $compid;                         // database ID associated with the step element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $caption;                        // title element associated with step element
+    public $partref;                        // represents part of exercise whose wolution begins with this step
+    public $content;                        // content elements in the step.body elements of the step element (by their partid)
+    public $pilots = array();               // Pilot objects associated with the step element
+    public $indexauthors = array();         // MathIndex objects associated with the step element --> info on authors
+    public $indexglossarys = array();       // MathIndex objects associated with the step element --> info on terms
+    public $indexsymbols = array();         // MathIndex objects associated with the step element --> info on symbols
+    public $subordinates = array();         // Subordinate objects associated with the step element 
+    public $medias = array();               // Media objects associated with the step element 
+    public $tables = array();               // Table objects associated with the step element 
+    public $matharrays = array();           // MathArray objects associated with the step element 
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -32,9 +53,13 @@ class Step extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (step element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        step element in XML file
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Step
      */
     function loadFromXml($DomElement, $position = '')
     {
@@ -53,13 +78,6 @@ class Step extends Element
             $pilot->loadFromXml($p, $position);
             $this->pilots[] = $pilot;
         }
-
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
 
         $step_bodys = $DomElement->getElementsByTagName('step.body');
 
@@ -83,13 +101,13 @@ class Step extends Element
             {
                 $this->subordinates[] = $subordinate;
             }
-            
-            foreach($this->processMedia($stb, $position) as $media)
+
+            foreach ($this->processMedia($stb, $position) as $media)
             {
                 $this->medias[] = $media;
             }
-            
-            foreach($this->processTable($stb, $position) as $table)
+
+            foreach ($this->processTable($stb, $position) as $table)
             {
                 $this->tables[] = $table;
             }
@@ -102,6 +120,17 @@ class Step extends Element
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of step element into
+     * msm_step database table.  It calls saveInfoDb method for Pilot, Subordinate, MathArray,
+     * Media, Table, MathIndex class.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;

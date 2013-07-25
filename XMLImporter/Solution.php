@@ -15,15 +15,34 @@
  * ************************************************************************ */
 
 /**
- * Description of Solution
+ * This class represents all the solution XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Approach/ApproachExt classes and it 
+ * is used to indicate the possible solutions for different approaches.
+ * Solution class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Solution extends Element
 {
 
-    public $position;
-    public $content;
+    public $id;                         // database ID associated with the solution element in msm_solution table
+    public $compid;                     // database ID associated with the solution element in msm_compositor table
+    public $position;                   // integer that keeps track of order of elements
+    public $caption;                    // title element associated with the solution element
+    public $content;                    // content elements associated with the solution element(eg. para, ol/ul..etc)
+    public $indexauthors = array();     // MathIndex objects associtaed with the solution element --> info on authors
+    public $indexglossarys = array();   // MathIndex objects associtaed with the solution element --> info on terms
+    public $indexsymbols = array();     // MathIndex objects associtaed with the solution element --> info on symbols
+    public $subordinates = array();     // Subordinate objects associated with the solution element
+    public $medias = array();           // Media objects associated with the solution element
+    public $tables = array();           // Table objects associated with the solution element
+
+    /**
+     * constructor for the instace of this class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -32,19 +51,17 @@ class Solution extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (solution element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        solution DOMElement
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Solution
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->tables = array();
 
         $body = $DomElement->getElementsByTagName('solution.body')->item(0);
 
@@ -84,6 +101,17 @@ class Solution extends Element
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of solution element into
+     * msm_solution database table.  It calls saveInfoDb method for Table, Subordinate, Media,
+     * and MathIndex classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;

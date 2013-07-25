@@ -1,9 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 require_once("Unit.php");
 
 /**
@@ -32,8 +28,12 @@ require_once("Unit.php");
 class TableOfContents
 {
 
-    public $int = 1;
+    public $int = 1;                // this int is used to keep track of the page numbers
+    public $unitData = array();     // record from msm_unit table
     
+    /**
+     *  constructor for this class
+     */
     function __construct()
     {
         $this->unittable = 'msm_unit';
@@ -41,12 +41,17 @@ class TableOfContents
         $this->tabletable = 'msm_table_collection';
     }
 
+    /**
+     * This method takes all the unit records returned from the getTocData and passes it to 
+     * the makeTree function to start the recursive process of creating the HTML code to display 
+     * the table of contents using jQuery jsTree plugin.  This method also sets the root of the table of content with 
+     * options to collapse/expand all nodes in the table of contents.
+     * 
+     * @param int $msm_id
+     * @return string
+     */
     function makeToc($msm_id)
     {
-        global $DB;
-
-        $this->unitData = array();
-
         foreach ($this->getTocData('root', $msm_id) as $unitTitleArray)
         {
             $this->unitData[] = $unitTitleArray;
@@ -68,6 +73,13 @@ class TableOfContents
         return $content;
     }
 
+    /**
+     * This recursive function takes the array passed in its parameter and create the HTML code to display the table of contents.
+     * Each node of the table of content shows the unit title and the page number.
+     * 
+     * @param array $TitlesArray            can contain either unitRecords(stdClass object) or another array with unitRecords 
+     * @return string
+     */
     private function makeTree($TitlesArray)
     {
         $newString = '';
@@ -104,10 +116,19 @@ class TableOfContents
                 $newString .= "</li>";
             }
         }
-//
         return $newString;
     }
 
+    /**
+     * This recursive function creates an array of unit records from msm_unit table that maintains the structure
+     * given by the way records are linked to each other by parent-child relation in msm_compositor.  This array is taken by 
+     * methods above to display it as a file tree that gives the table of contents.
+     * 
+     * @global moode_database $DB
+     * @param stdClass $compRecord          record of the unit in the msm_compositor table
+     * @param ints= $msm_id                 MSM module instance ID
+     * @return array
+     */
     private function getTocData($compRecord, $msm_id)
     {
         global $DB;

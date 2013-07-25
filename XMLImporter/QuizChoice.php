@@ -15,15 +15,33 @@
  * ************************************************************************ */
 
 /**
- * Description of QuizChoice
+ * This class represents all the choice XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by MathQuiz class.
+ * QuizChoice class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class QuizChoice extends Element
 {
 
-    public $position;
-    public $answer;
+    public $id;                         // database ID associated with choice element in msm_quiz_choice table
+    public $compid;                     // database ID associated with choice element in msm_compositor table
+    public $position;                   // integer that keeps track of order of elements
+    public $answer;                     // answer elements associated with each choice element
+    public $indexauthors = array();     // MathIndex objects associated with the choice element --> info on authors
+    public $indexsymbols = array();     // MathIndex objects associated with the choice element --> info on symbols
+    public $indexglossarys = array();   // MathIndex objects associated with the choice element --> info on terms
+    public $subordinates = array();     // Subordinate objects associated with the choice element
+    public $medias = array();           // Media objects associated with the choice element
+    public $tables = array();           // Table objects associated with the choice element
+    public $infos = array();            // MathInfo objects associated with the choice element
+
+    /**
+     * constructor for the instace of this class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -32,22 +50,19 @@ class QuizChoice extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (choice element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        choice element 
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \QuizChoice
      */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
 
         $answer = $DomElement->getElementsByTagName('answer')->item(0);
-
-        $this->indexauthors = array();
-        $this->indexsymbols = array();
-        $this->indexglossarys = array();
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->tables = array();
 
         foreach ($this->processIndexAuthor($answer, $position) as $indexauthor)
         {
@@ -85,8 +100,6 @@ class QuizChoice extends Element
 
         $infos = $DomElement->getElementsByTagName('info');
 
-        $this->infos = array();
-
         foreach ($infos as $i)
         {
             $position = $position + 1;
@@ -98,16 +111,22 @@ class QuizChoice extends Element
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $position 
+     * This method saves the extracted information from the XML files of choice element into
+     * msm_quiz_choice database table.  It calls saveInfoDb method for MathIndex, Subordinate, Media,
+     * Table, and MathInfo classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
-        
+
         $data = new stdClass();
-        
+
         $data->answer = $this->answer;
 
         $this->id = $DB->insert_record($this->tablename, $data);

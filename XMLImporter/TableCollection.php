@@ -15,18 +15,30 @@
 **************************************************************************/
 
 /**
- * Description of TableCollection
+ * This class does not inherit from the Element class and is used in lib.php to fill in the
+ * appropriate data for the msm_table_collection database table.  This database table contains
+ * names of all the tables needed in the MSM module.  The IDs given to each of these tables
+ * are then usually used to query the msm_compositor table where it has table_id field that stores ID
+ * corresponding to this table IDs.
  *
- * @author User
+ * @author Ga Young
  */
 class TableCollection
 {
 
+    /**
+     *  constructor for this class
+     */
     function __construct()
     {
         $this->tablename = "msm_table_collection";
     }
 
+    /**
+     * This method has an array with all the names of the database tables and inserts 
+     * them one by one into msm_table_collection database table
+     * @global moodle_database $DB
+     */
     function insertTablename()
     {
         global $DB;

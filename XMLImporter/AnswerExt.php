@@ -53,6 +53,7 @@ class AnswerExt extends Element
      * 
      * @param DOMElement $DomElement        answer.ext element in XML file
      * @param int $position                 integer that keeps track of order if elements
+     * @return \AnswerExt
      */
     public function loadFromXml($DomElement, $position = '')
     {

@@ -15,16 +15,37 @@
  * ************************************************************************ */
 
 /**
- * Description of Showme
+ * This class represents all the showme XML elements in the legacy document
+ * (ie. files in the newXML) and it is called by Pack class.
+ * Showme class inherits from the abstract class Element and for all the methods
+ * inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Showme extends Element
 {
 
-    public $position;
-    public $statements;
+    public $id;                         // database ID of the showme element in msm_showme table
+    public $compid;                     // database ID of the showme element in msm_compositor table
+    public $position;                   // integer that keeps track of order of elements
+    public $caption;                    // title element associated with the showme element
+    public $textcaption;                // title element without any math elements that is associated with the showme element
+    public $statements;                 // content associated with the showme element
+    public $subordinate = array();      // Subordinate objects associated with the showme element
+    public $indexauthors = array();     // MathIndex objects associated with the showme element --> info on authors
+    public $indexglossarys = array();   // MathIndex objects associated with the showme element --> info on terms
+    public $indexsymbols = array();     // MathIndex objects associated with the showme element --> info on symbols
+    public $tables = array();           // Table objects associated with the showme element
+    public $medias = array();           // Media objects associated with the showme element
+    public $matharrays = array();       // MathArray objects associated with the showme element
+    public $answer_showmes = array();   // AnswerShowme objects associated with the showme element --> for parse/insert to db
+    public $childs = array();           // AnswerShowme objects associated with the showme element --> for load/display
 
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -32,9 +53,13 @@ class Showme extends Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position 
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (showme element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        showme element
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \Showme
      */
     public function loadFromXml($DomElement, $position = '')
     {
@@ -44,25 +69,10 @@ class Showme extends Element
 
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
 
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
-
         $statements = $DomElement->getElementsByTagName('statement.showme');
 
         foreach ($statements as $st)
         {
-//            $doc = new DOMDocument();
-//            $childElement = $doc->importNode($st, true);
-//            $newNode = $doc->createElement('wrapper');
-//            $newNode->appendChild($childElement);
-//
-//            $element = $doc->importNode($newNode, true);
-
             foreach ($this->processIndexAuthor($st, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
@@ -103,8 +113,6 @@ class Showme extends Element
             }
         }
 
-        $this->answer_showmes = array();
-
         $answer_showmes = $DomElement->getElementsByTagName('answer.showme');
         foreach ($answer_showmes as $a)
         {
@@ -116,6 +124,16 @@ class Showme extends Element
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of showme element and its associated child elements into
+     * their respective database tables.  It calls saveInfoDb method for MathIndex, Media, Table, and Subordinate classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -339,7 +357,9 @@ class Showme extends Element
                     break;
             }
         }
-        
+
+        // if there are media elements in the showme content, need to change the src to 
+        // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {
             $newdata = new stdClass();
@@ -352,6 +372,15 @@ class Showme extends Element
         }
     }
 
+    /**
+     * This method retrieves all relevant data to display the showme elements from msm_showme database table.
+     * The method also calls the loadFromDb for classes AnswerShowme, Subordinate, Table, MathArray and Media.
+     * 
+     * @global moodle_databse $DB   
+     * @param int $id                   ID of current showme element in msm_showme
+     * @param int $compid               ID of current showme element in msm_compositor
+     * @return \Showme
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -365,12 +394,6 @@ class Showme extends Element
             $this->textcaption = $showmeRecord->textcaption;
             $this->statement_showme = $showmeRecord->statement_showme;
         }
-
-        $this->childs = array();
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
@@ -397,7 +420,7 @@ class Showme extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
-                
+
                 case('msm_math_array'):
                     $matharray = new MathArray();
                     $matharray->loadFromDb($child->unit_id, $child->id);
@@ -415,6 +438,14 @@ class Showme extends Element
         return $this;
     }
 
+    /**
+     * This method takes the data retrieved from the method above and outputs properly
+     * structured HTML string for displaying the information.  The method also calls 
+     * displayhtml function for AnswerShowme directly and Subordinate, Media, MathArray and Table indirectly by
+     * calling the displayContent method in Element class.
+     * 
+     * @return string
+     */
     function displayhtml()
     {
         $content = '';

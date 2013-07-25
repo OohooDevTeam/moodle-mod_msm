@@ -150,9 +150,9 @@ class Example extends Element
     }
 
     /**
-     *  This method saves the extracted information from the XML files of example element and its associated child elements into
+     * This method saves the extracted information from the XML files of example element and its associated child elements into
      * their respective database tables.  It calls saveInfoDb method for AnswerExample. AnswerExt, PartExample, MathIndex, Media, Table,
-     *  and Subordinate classes.
+     * and Subordinate classes.
      * 
      * @global moodle_databse $DB
      * @param int $position              integer that keeps track of order if elements

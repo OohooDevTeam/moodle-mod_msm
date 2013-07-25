@@ -15,7 +15,7 @@
  * ************************************************************************ */
 
 /**
- * This class represents all the associate XML elements in the legacy document
+ * This class represents all the proof XML elements in the legacy document
  * (ie. files in the newXML) and it is called by Theorem classes.
  * Proof class inherits from the abstract class Element and for all the methods
  * inherited, read documents for Element class.
@@ -74,8 +74,8 @@ class Proof extends Element
         return $this;
     }
 
-   /**
-    * This method saves the extracted information from the XML files of proof element into
+    /**
+     * This method saves the extracted information from the XML files of proof element into
      * msm_proof database table.  It calls saveInfoDb method for ProofBlock classes.
      * 
      * @global moodle_databse $DB
@@ -83,7 +83,7 @@ class Proof extends Element
      * @param int $msmid                 MSM instance ID
      * @param int $parentid              ID of the parent element from msm_compositor
      * @param int $siblingid             ID of the previous sibling element from msm_compositor
-    */
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;

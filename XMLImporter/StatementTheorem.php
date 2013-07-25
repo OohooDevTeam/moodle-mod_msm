@@ -4,26 +4,46 @@
  * *************************************************************************
  * *                              MSM                                     **
  * *************************************************************************
- * @package     mod                                                      **
- * @subpackage  msm                                                      **
- * @name        msm                                                      **
- * @copyright   University of Alberta                                    **
- * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
- * ************************************************************************ */
+ * ************************************************************************* */
 
 /**
- * Description of Statement
+ * This class represents all the statement.theorem XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by Theorem class.  StatementTheorem class inherits from the
+ * abstract class Element and for all the methods inherited, read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class StatementTheorem extends Element
 {
 
-    public $position;
-    public $statement_content;
+    public $id;                             // database ID associated with the statement.theorem element in msm_statement_theorem table
+    public $compid;                         // database ID associated with the statement.theorem element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $statement_content;              // content elements associated with the statement.theorem element
+    public $part_theorems = array();        // PathTheorem objects associated with the statement.theorem element
+    public $indexauthors = array();         // MathIndex objects associated with the statement.theorem element --> info on authors
+    public $indexglossarys = array();       // MathIndex objects associated with the statement.theorem element --> info on terms
+    public $indexsymbols = array();         // MathIndex objects associated with the statement.theorem element --> info on symbols
+    public $subordinates = array();         // Subordinate objects associated with the statement.theorem element 
+    public $medias = array();               // Media objects associated with the statement.theorem element 
+    public $tables = array();               // Table objects associated with the statement.theorem element 
+    public $matharrays = array();           // MathArray objects associated with the statement.theorem element 
+    public $childs = array();               // PartTheorem objects associated with the statement.theorem element --> for load/display
+
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
 
     function __construct($xmlpath = '')
     {
@@ -31,18 +51,18 @@ class StatementTheorem extends Element
         $this->tablename = 'msm_statement_theorem';
     }
 
+    /**
+     * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (statement.theorem element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        statement.theorem elements
+     * @param int $position                 integer that keeps track of order if elements
+     * @return \StatementTheorem
+     */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        // $this->content = array();
-        $this->part_theorems = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -109,6 +129,17 @@ class StatementTheorem extends Element
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of statement.theorem element into
+     * msm_statement_theorem database table.  It calls saveInfoDb method for PartTheorem/Subordinate/MathIndex/Table/
+     * Media/MathArray classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -329,7 +360,9 @@ class StatementTheorem extends Element
                     break;
             }
         }
-        
+
+        // if there are media elements in the statement.theorem content, need to change the src to 
+        // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {
             $newdata = new stdClass();
@@ -340,6 +373,16 @@ class StatementTheorem extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the statement.theorem element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from PartTheorem, Subordinate,
+     * Media, MathArray and Table classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current statement.theorem element in msm_statements_theorem table
+     * @param int $compid                   database ID of the current statesment.theorem element in msm_compositor table
+     * @return \StatementTheorem
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -353,12 +396,6 @@ class StatementTheorem extends Element
         }
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-
-        $this->childs = array();
-        $this->subordinates = array();
-        $this->medias = array();
-        $this->tables = array();
-        $this->matharrays = array();
 
         foreach ($childElements as $child)
         {
@@ -401,6 +438,14 @@ class StatementTheorem extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in PartTheorem, Subordinate, Media, MathArray and Table classes to
+     * display the data from these classes. 
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @return string
+     */
     function displayhtml($isindex = false)
     {
         $content = '';

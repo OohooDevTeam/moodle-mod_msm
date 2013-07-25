@@ -73,30 +73,41 @@ require_once("Crossref.php");
 class Unit extends Element
 {
 
-    public $position; //needed to properly place the contents in differen tables in the compositor db table 
-    public $creation;
-    public $last_revision;
-    public $intro;
-    // compid contains the id of the record inserted into the compositor table to be used to 
-    // define parent_id and prev_sibling_id fields in compositor table
-    public $compid;
-    public $string_id;
-    public $standalone;
-    public $compchildtype;
-    public $title;
-    public $plain_title;
-    public $short_name;
-    public $description;
-    public $tagname;
-    public $extraContents = array();
-    public $subunits = array();
-    public $authors = array();
-    public $block = array();
-    public $exercisepacks = array();
-    public $examplepacks = array();
-    public $showmepacks = array();
-    public $quizpacks = array();
+    public $id;                             // database ID associated with the unit element in msm_unit table
+    public $compid;                         // database ID associated with the unit element in msm_compositor table
+    public $position;                       // needed to properly place the contents in differen tables in the compositor db table 
+    public $creation;                       // creation date associated with this composition
+    public $last_revision;                  // date of last revision made to this composition
+    public $intro;                          // Intro object that is associate with the unit element   
+    public $string_id;                      // unique user-defined string(legacy material) or same as compid value associated with unit to identify it in XML
+    public $standalone;                     // boolean value to determine if the unit has a parent-child relationship or if it is a "reference-material-only" unit
+    public $compchildtype;                  // database ID associaed with msm_unit_name table that represent the unit name 
+                                            // associated with depth of it's parent-child relationship
+    public $title;                          // title of the unit 
+    public $plain_title;                    // title without math element associated with the unit element
+    public $short_name;                     // short version of the title that is shown in the XML hierarchy tree section of editor
+    public $description;                    // description associated with the unit that is used as a search parameter 
+    public $tagname;                        // with newly formed XML, the ID given by compchildtype can be used to extract the name of the unit at 
+                                            // specified depth and it is recorded to XML files as attribute of unit
+    public $extraContents = array();        // ExtraInfo objects associated with the unit element
+    public $subunits = array();             // other Unit objects associated with the unit element
+    public $authors = array();              // Person objects associated with the unit element(represents authors)
+    public $contributors = array();         // Person objects associated with the unit element(represents contributors)
+    public $block = array();                // Block objects associated with the unit element
+    public $exercisepacks = array();        // Pack objects associated with the unit element (exercise.pack in this case)
+    public $examplepacks = array();         // Pack objects associated with the unit element (example.pack in this case)
+    public $showmepacks = array();          // Pack objects associated with the unit element (showme.pack in this case)
+    public $quizpacks = array();            // Pack objects associated with the unit element (quiz.pack in this case)
+    public $studyexercises = array();       // Pack objects associated with the unit element (exercise.pack in studymaterial element)
+    public $studyexamples = array();        // Pack objects associated with the unit element (example.pack in studymaterial element)
+    public $stagedates = array();           // StageDate objects associated with the unit element 
+    public $childs = array();               // all objects associated with the unit as child elements (definition...etc)
 
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -111,6 +122,8 @@ class Unit extends Element
      * the database table
      * 
      * @param DOMElement $DomElement 
+     * @param int $position
+     * @return \Unit 
      */
     function loadFromXml($DomElement, $position = '')
     {
@@ -125,11 +138,6 @@ class Unit extends Element
         if (!is_null($DomElement))
         {
             $element = $doc->importNode($DomElement, true);
-
-            // for exercise/examples listed as a studymaterial element
-            $this->studyexercises = array();
-            $this->studyexamples = array();
-            $this->stagedates = array();
 
             foreach ($element->childNodes as $key => $child)
             {
@@ -159,8 +167,6 @@ class Unit extends Element
                     }
                     else if ($child->tagName == 'contributors')
                     {
-                        $this->contributors = array();
-
                         $persons = $child->getElementsByTagName('person');
 
                         foreach ($persons as $p)
@@ -445,11 +451,21 @@ class Unit extends Element
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of unit element into
+     * msm_unit database table.  It calls saveInfoDb method for Unit/Intro/Person/ExtraInfo/
+     * Pack/StageDate/Block classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     * 
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
-        $exercisepackRecordID = 0;
-        $examplepackRecordID = 0;
 
         // to keep track of prev_sibling ids when going through all child elements
         $sibling_id = null;
@@ -983,6 +999,17 @@ class Unit extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the unit element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Intro/Definition/
+     * Theorem/Comment/ExtraInfo/Person/InContent/Media/MathArray/Table/Block classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current unit element in msm_unit table
+     * @param int $compid                   database ID of the current unit element in msm_compositor table
+     * @param bool $indexref                flag to indicate that the MathIndex object called this function
+     * @return \Unit
+     */
     function loadFromDb($id, $compid, $indexref = false)
     {
         global $DB;
@@ -1009,9 +1036,6 @@ class Unit extends Element
 
         //return child element records in ascending order of prev_sibling_id field
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-
-        $this->authors = array();
-        $this->childs = array();
 
         foreach ($childElements as $child)
         {
@@ -1174,6 +1198,14 @@ class Unit extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in Intro/Definition/Theorem/Comment/ExtraInfo/Person/InContent/
+     * Media/MathArray/Table/Block classes to display the data from these classes.
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @return type
+     */
     function displayhtml($isindex = false)
     {
 
@@ -1295,60 +1327,19 @@ class Unit extends Element
                 }
             }
         }
-
-//        if (is_dir($newpath))
-//        {
-//            $fileArray = scandir($path);
-//
-//            foreach ($fileArray as $key => $file)
-//            {
-//                if ($key > 1)
-//                {
-//                    $new = $path . "/" . $file;
-//                    return $this->findUnitFile($unitID, $new);
-//                }
-//            }
-//        }
-//        else
-//        {
-//            $fileInfo = explode(".", $path);
-//            $fileExt = $fileInfo[sizeof($fileInfo) - 1];
-//
-//            if ($fileExt == "xml")
-//            {
-//                $xmlParser = new DOMDocument();
-//                $xmlParser->load($newpath);
-//
-//                $topElement = $xmlParser->documentElement;
-//
-//                switch ($topElement->tagName)
-//                {
-//                    case "unit":
-//                        if ($topElement->getAttribute("unitid") == $unitID)
-//                        {
-//                            return $newpath;
-//                        }
-//                        break;
-//                    case "example.pack":
-//                        if ($topElement->getAttribute("id") == $unitID)
-//                        {
-//                            return $newpath;
-//                        }
-//                        break;
-//                    case "exercise.pack":
-//                        if ($topElement->getAttribute("id") == $unitID)
-//                        {
-//                            return $newpath;
-//                        }
-//                        break;
-//                }
-//            }
-//        }
-//
-//        print_object($newpath);
-//        return $newpath;
     }
 
+    /**
+     * This recursive method updates the unit names associated with depth of the unit objects
+     * according to their parent-child relationship with other unit objects.  The
+     * name of unit per depth is stored in msm_unit_name and when the user changes the values
+     * in the settings in editor, this method updates all the values.
+     * 
+     * @global moodle_database $DB
+     * @param array $oldnameArray           array with database IDs of old unit names in msm_unit_name
+     * @param int $msmid                    MSM module instance ID
+     * @param int $depth                    depth value of current unit according to the parent-child relationship
+     */
     function updateUnitNames($oldnameArray, $msmid, $depth)
     {
         global $DB;

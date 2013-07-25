@@ -1,8 +1,22 @@
 <?php
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This script is called by the navMenu.js file by an AJAX call when the user clicks the author 
+ * index menu in view.php.  This script finds the HTML file with all the HTML code for creating the
+ * index tree using jquery jsTree plugin.
  */
 require_once('Unit.php');
 require_once(dirname(dirname(dirname(dirname(__FILE__)))) . '/config.php');

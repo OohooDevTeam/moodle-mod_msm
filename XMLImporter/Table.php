@@ -15,22 +15,53 @@
  * ************************************************************************ */
 
 /**
- * Description of Table
+ * This class represents all the table XML elements in the legacy document
+ * (ie. files in the newXML) and the newly formed XML exported by the editor system
+ * and it is called by almost all the classes with content associated it them. Table
+ * class inherits from the abstract class Element and for all the methods inherited,
+ * read documents for Element class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Table extends Element
 {
 
-    public $position;
+    public $id;                             // database ID associated wtih table element in msm_table table
+    public $compid;                         // database ID associated wtih table element in msm_compositor table
+    public $position;                       // integer that keeps track of order of elements
+    public $string_id;                      // user-defined unique string given to this table element to identify it 
+    public $table_class;                    // class name given to the table element
+    public $table_summary;                  // summary associated with the table element
+    public $table_title;                    // title element associated with the table element
+    public $content = array();              // content elements associated with the table element
+    public $subordinates = array();         // Subordinate objects associated with the current table element
+    public $matharrays = array();           // MathArray objects associated with the current table element
+    public $indexauthors = array();         // MathIndex objects associated with the current table element --> for authors
+    public $indexsymbols = array();         // MathIndex objects associated with the current table element --> for symbols
+    public $indexglossarys = array();       // MathIndex objects associated with the current table element --> for glossarys
+    public $medias = array();               // Media objects associated with the current table element
+    public $tables = array();               // Table objects associated with the current table element
 
+    /**
+     * constructor for the class
+     * 
+     * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
+     */
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
         $this->tablename = 'msm_table';
     }
 
-    //put your code here
+   /**
+    * This is an abstract method inherited from Element class that is implemented by each of the classes 
+     * in XMLImporter folder.  This method parses the given DOMElement (table element in this case) and extract
+     * needed information to be inserted into the database.
+     * 
+     * @param DOMElement $DomElement        table elements
+     * @param int $position                 integer that keeps track of order if elements
+    * @return \Table
+    */
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
@@ -39,14 +70,6 @@ class Table extends Element
         $this->table_class = $DomElement->getAttribute('class');
         $this->table_summary = $DomElement->getAttribute('summary');
         $this->table_title = $DomElement->getAttribute('title');
-
-        $this->content = array();
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-        $this->matharrays = array();
 
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
@@ -89,6 +112,17 @@ class Table extends Element
         return $this;
     }
 
+    /**
+     * This method saves the extracted information from the XML files of table element into
+     * msm_table database table.  It calls saveInfoDb method for MathIndex, Subordinate, Media
+     * MathArray, Table classes.
+     * 
+     * @global moodle_databse $DB
+     * @param int $position              integer that keeps track of order if elements
+     * @param int $msmid                 MSM instance ID
+     * @param int $parentid              ID of the parent element from msm_compositor
+     * @param int $siblingid             ID of the previous sibling element from msm_compositor
+     */
     function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
     {
         global $DB;
@@ -303,6 +337,9 @@ class Table extends Element
                     break;
             }
         }
+        
+        // if there are media elements in the table content, need to change the src to 
+        // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {
             foreach ($ids as $key => $id)
@@ -320,6 +357,16 @@ class Table extends Element
         }
     }
 
+    /**
+     * This method is used to retrieve all relevant data linked with the table element specified by the 
+     * database IDs given by the parameter of the method.  LoadFromDb method from Subordinate, Table
+     * MathArray and Media classes are also called by this method.
+     * 
+     * @global moodle_database $DB
+     * @param int $id                       database ID of the current table element in msm_table table
+     * @param int $compid                   database ID of the current table element in msm_compositor table
+     * @return \Table
+     */
     function loadFromDb($id, $compid)
     {
         global $DB;
@@ -334,11 +381,6 @@ class Table extends Element
             $this->table_title = $tableRecord->table_title;
             $this->table_content = $tableRecord->table_content;
         }
-
-        $this->subordinates = array();
-        $this->tables = array();
-        $this->medias = array();
-        $this->matharrays = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
@@ -376,6 +418,16 @@ class Table extends Element
         return $this;
     }
 
+    /**
+     * This method produces an HTML code to display the retrieved data from method above and
+     * also calls the same method in Subordinate, Media, MathArray and Table classes to
+     * display the data from these classes.  Before displaying the content, it needs to be processed properly to 
+     * structure any popups in content to be correctly placed in HTML structure and this is done by the function below:
+     * processTableContent.
+     * 
+     * @param bool $isindex             flag variable to indicate if this method was called by MathIndex object
+     * @return type
+     */
     function displayhtml($isindex = false)
     {
         $newtablecontent = $this->displayContent($this, $this->table_content, $isindex);
@@ -387,6 +439,14 @@ class Table extends Element
         return $content;
     }
 
+    /**
+     * The main role of this function is to place all jQuery Dialog divs in the proper
+     * places in HTML structure.  Also to add the mathtable class name so it doesn't get confused with
+     * math.array and have correct border styling.
+     * 
+     * @param string $tablecontent           content of table with <body> tag as root 
+     * @return string
+     */
     function processTableContent($tablecontent)
     {
         $content = '';
@@ -425,9 +485,6 @@ class Table extends Element
         }
 
         $tbody = $table->getElementsByTagName("tbody");
-
-//        print_object($tablecontent);
-
         if (sizeof($tbody) > 0)
         {
             $table->setAttribute("class", "mathtable");
@@ -461,80 +518,6 @@ class Table extends Element
             }
             $content .= $doc->saveHTML($doc->importNode($table, true));
         }
-//        else
-//        {
-//            echo "no tbody";
-//            $content .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "' style='width:100% !important;'>";
-//
-//            foreach ($table->childNodes as $row)
-//            {
-//                if ($row->nodeType == XML_ELEMENT_NODE)
-//                {
-//                    if ($row->tagName == 'tr')
-//                    {
-//                        $content .= "<tr>";
-//                        foreach ($row->childNodes as $grandChild)
-//                        {
-//                            if ($grandChild->nodeType == XML_ELEMENT_NODE)
-//                            {
-//                                if ($grandChild->tagName == 'td')
-//                                {
-//                                    $content .= "<td style='border-width:" . $border . "px !important;'>";
-//                                    foreach ($grandChild->childNodes as $contentElement)
-//                                    {
-//                                        if ($contentElement->nodeType == XML_ELEMENT_NODE)
-//                                        {
-//                                            $atags = $contentElement->getElementsByTagName('a');
-////
-//                                            foreach ($atags as $atag)
-//                                            {
-//                                                // getting the associated info's compid
-//                                                $tagID = $atag->getAttribute('id');
-//                                                $idArray = explode('-', $tagID);
-//
-//                                                foreach ($dialogs as $dialog)
-//                                                {
-//                                                    $divclass = $dialog->getAttribute('class');
-//                                                    if ($divclass == 'dialogs')
-//                                                    {
-//                                                        $divID = $dialog->getAttribute('id');
-//                                                        $divIDArray = explode('-', $divID);
-//
-//                                                        if ((isset($idArray[1])) && (isset($divIDArray[1])))
-//                                                        {
-//                                                            if ($idArray[1] == $divIDArray[1])
-//                                                            {
-//                                                                $divNode = $doc->importNode($dialog, true);
-//                                                                $atag->parentNode->appendChild($divNode);
-//                                                                break;
-//                                                            }
-//                                                        }
-//                                                    }
-//                                                }
-//                                            }
-//                                            $content .= $doc->saveHTML($contentElement);
-//                                        }
-//                                        else
-//                                        {
-//                                            $content .= $doc->saveHTML($contentElement);
-//                                        }
-//                                    }
-//                                    $content .= "</td>";
-//                                }
-//                            }
-//                            else
-//                            {
-//                                $content .= $doc->saveHTML($grandChild);
-//                            }
-//                        }
-//                        $content .= "</tr>";
-//                    }
-//                }
-//            }
-//
-//            $content .= "</table>";
-//        }
-//        print_object($content);
         return $content;
     }
 

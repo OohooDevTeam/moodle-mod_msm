@@ -59,7 +59,7 @@ class MathQuiz extends Element
      * in XMLImporter folder.  This method parses the given DOMElement (quiz element in this case) and extract
      * needed information to be inserted into the database.
      * 
-     * @param DOMElement $DomElement
+     * @param DOMElement $DomElement        quiz element 
      * @param int $position                 integer that keeps track of order if elements
      * @return \MathQuiz
      */
