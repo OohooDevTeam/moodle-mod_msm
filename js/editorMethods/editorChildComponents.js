@@ -499,9 +499,11 @@ function addTheoremRef(cellArray, index, dbId)
     var partNum = 0;
     var partIndex = '';
     
-    var processedContent = processSubContent(cellArray[3], "theoremrefcontent"+index);
-   
-    $(processedContent).children().each(function() {
+    //    var processedContent = processSubContent(cellArray[3], "theoremrefcontent"+index);
+    
+    console.log(cellArray[3]);
+    
+    $(cellArray[3]).children().each(function() {
         var tagName = $(this).prop("tagName");
         
         if(tagName == "DIV")
@@ -549,9 +551,7 @@ function addTheoremStatementRef(htmlElement, id, statementId)
         var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theoremref_content_input-'+param+'" name="msm_theoremref_content_input-'+param+'"/>');
         var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-theoremrefcontent'+param+'"></div>');
 
-        var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+param+'"></div>');
-   
-    
+        var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-theoremrefcontent'+param+'"></div>');  
    
         var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+param+"'>Drag additional content to here.\n\
                         <p>Valid child Elements: Part of a Theorem</p>\n\
@@ -573,7 +573,10 @@ function addTheoremStatementRef(htmlElement, id, statementId)
         $(theoremStatementWrapper).insertBefore("#msm_dnd_container-"+id);        
     }
     
-    $("#msm_theoremref_content_input-"+param).val($(htmlElement).html());
+    var processedContent = processSubContent(htmlElement, "theoremrefcontent"+param);
+    var contentvalue = $(processedContent).html();
+    
+    $("#msm_theoremref_content_input-"+param).val(contentvalue);
     
     textArea2Div("msm_theoremref_content_input-"+param);
     
@@ -583,7 +586,7 @@ function addTheoremStatementRef(htmlElement, id, statementId)
 function addTheoremPartRef(htmlElement, id, partId)
 {
     var partTitle = '';
-    var partContent = '';
+    var partContent = '';   
     
     $(htmlElement).children().each(function() {
         var tagname = $(this).prop("tagName");
@@ -626,8 +629,12 @@ function addTheoremPartRef(htmlElement, id, partId)
     
     $(theoremPartContainer).insertBefore("#msm_dnd_container-"+id);
     
+    var processedContent = processSubContent(partContent, "theoremrefpart"+param);
+    var contentvalue = $(processedContent).html();
+
+    
     $("#msm_theoremref_part_title-"+param).val(partTitle);
-    $("#msm_theoremref_part_content-"+param).val(partContent);
+    $("#msm_theoremref_part_content-"+param).val(contentvalue);
     
     $("#msm_theoremref_part_title-"+param).attr("disabled", "diabled");
     

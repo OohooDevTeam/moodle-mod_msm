@@ -660,11 +660,16 @@ function addTheoremContent(event)
     var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-statementtheoremcontent'+idNumber+'-'+newId+'"></div>');   
        
     //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addTheoremPart(event)" value="Add more parts"/>');
-    var theoremPartWrapper = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+'-'+newId+"'>Drag additional content to here.\n\
+    //    var theoremPartWrapper = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+'-'+newId+"'>Drag additional content to here.\n\
+    //                        <p>Valid child Elements: Part of a Theorem</p>\n\
+    //                    </div>//");   
+
+    var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+idNumber+'-'+newId+'"></div>');
+    var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+'-'+newId+"'>Drag additional content to here.\n\
                         <p>Valid child Elements: Part of a Theorem</p>\n\
-                    </div>");   
+                    </div>");
             
-    //    theoremPartWrapper.append(theoremPartButton);
+    theoremPartWrapper.append(partDndDiv);
     
     theoremContentTitleContainer.append(theoremContentTitleHidden);
             
@@ -676,7 +681,7 @@ function addTheoremContent(event)
    
     theoremStatementWrapper.append(theoremPartWrapper);
     
-    $(theoremStatementWrapper).insertBefore("#"+event.target.id);   
+    $("#msm_theorem_content_container-"+idNumber).append(theoremStatementWrapper);    
     
     initEditor("msm_theorem_content_input-"+idNumber+'-'+newId); 
     

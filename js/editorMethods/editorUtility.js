@@ -1292,6 +1292,9 @@ function createTheoremText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
     
+     $("#"+element).find(".msm_theorem_part_title").each(function() {
+        $(this).removeAttr("disabled");
+    });
     $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
     $("#msm_theorem_type_dropdown-"+elementIdInfo[1]).removeAttr("disabled");
     $("#msm_theorem_title_input-"+elementIdInfo[1]).removeAttr("disabled");

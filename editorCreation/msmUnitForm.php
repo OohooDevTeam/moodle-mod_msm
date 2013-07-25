@@ -436,6 +436,29 @@ function deleteOldChildRecord($compid, $msm_id)
                 $hasRef = true;
                 break;
             }
+            else if ($parentTable->tablename == "msm_statement_theorem")
+            {
+                $theoremRecord = $DB->get_record("msm_compositor", array("id" => $parentRecord->parent_id));
+                $theoremParent = $DB->get_record("msm_compositor", array("id" => $theoremRecord->parent_id)); // associate/subordinate..etc
+                $theoremParentTable = $DB->get_record("msm_table_collection", array("id" => $theoremParent->table_id));
+
+                if (($theoremParentTable->tablename == "msm_associate") || ($theoremParentTable->tablename == "msm_subordinate"))
+                {
+                    $hasRef = true;
+                    break;
+                }
+            }
+            else if ($parentTable->tablename == "msm_theorem")
+            {
+                $theoremParent = $DB->get_record("msm_compositor", array("id" => $parentRecord->parent_id)); // associate/subordinate..etc
+                $theoremParentTable = $DB->get_record("msm_table_collection", array("id" => $theoremParent->table_id));
+
+                if (($theoremParentTable->tablename == "msm_associate") || ($theoremParentTable->tablename == "msm_subordinate"))
+                {
+                    $hasRef = true;
+                    break;
+                }
+            }
         }
 
         if (!$hasRef)

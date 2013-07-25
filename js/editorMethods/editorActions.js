@@ -351,7 +351,7 @@ function addrefTheoremContent(event)
    
     theoremStatementWrapper.append(theoremPartWrapper);
     
-    $(theoremStatementWrapper).insertBefore("#"+event.target.id);
+    $("#msm_theoremref_content_container-"+idNumber).append(theoremStatementWrapper);    
     
     initEditor("msm_theoremref_content_input-"+idNumber+'-'+newId);    
      

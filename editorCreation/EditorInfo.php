@@ -313,6 +313,8 @@ class EditorInfo extends EditorElement
                     break;
             }
         }
+//        print_object($_POST);
+//        print_object($this);
         return $this;
     }
 

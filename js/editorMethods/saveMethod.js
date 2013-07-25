@@ -356,7 +356,9 @@ function removeTinymceEditor()
         }
         else
         {
-            textArea2Div($(this).attr("id"));
+            $(this).find(".msm_theorem_content").each(function() {
+                textArea2Div($(this).attr("id"));
+            });           
         }
     });
     

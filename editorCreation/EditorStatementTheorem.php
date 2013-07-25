@@ -46,7 +46,7 @@ class EditorStatementTheorem extends EditorElement
      * @return \EditorStatementTheorem
      */
     public function getFormData($idNumber)
-    {
+    {        
         $idInfo = explode("|", $idNumber);
 
         // the statement theorem is a part of a reference theorem material
@@ -138,7 +138,7 @@ class EditorStatementTheorem extends EditorElement
                     $partTheorem->getFormData($newId);
                     $this->children[] = $partTheorem;
                     $i++;
-                }
+                }                
             }
         }
 
