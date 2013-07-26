@@ -1918,7 +1918,7 @@ function cancelUnit(e)
        
                         $("#msm_unit_form").append($(currentUnitId));
             
-                        removeTinymceEditor();
+//                        removeTinymceEditor(); // causes the content to disappear
                                           
                         disableEditorFunction();   
                         

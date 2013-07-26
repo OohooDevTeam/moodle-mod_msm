@@ -189,6 +189,29 @@ class EditorDefinition extends EditorElement
         {
             $existingDef = $DB->get_record("msm_compositor", array("id" => $this->isRef));
             $this->id = $existingDef->unit_id;
+
+            $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
+
+            foreach ($childRecords as $child)
+            {
+                $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+
+                switch ($childTable->tablename)
+                {
+                    case "msm_subordinate":
+                        $subord = new EditorSubordinate();
+                        $subord->id = $child->unit_id;
+                        $subord->isRef = $child->id;
+                        $this->subordinates[] = $subord;
+                        break;
+                    case "msm_media":
+                        $med = new EditorSubordinate();
+                        $med->id = $child->unit_id;
+                        $med->isRef = $child->id;
+                        $this->medias[] = $med;
+                        break;
+                }
+            }
         }
         else
         {
@@ -339,7 +362,6 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<input id='msm_def_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_def_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
         $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
-//        $htmlContent .= $this->content;
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-defcontent$this->compid'>";
@@ -398,18 +420,6 @@ class EditorDefinition extends EditorElement
         $this->title = $defRecord->caption;
         $this->description = $defRecord->description;
         $this->content = $defRecord->def_content;
-
-//        $htmlParser = new DOMDocument();
-//        
-//        $htmlParser->loadXML($defRecord->def_content);        
-//
-//        foreach ($htmlParser->documentElement->childNodes as $child)
-//        {
-//            $this->content .= $htmlParser->saveXML($child);
-//        }
-//        
-//        print_object($defRecord->def_content);
-//        print_object($this->content);
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 

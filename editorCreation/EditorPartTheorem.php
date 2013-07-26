@@ -30,6 +30,7 @@ class EditorPartTheorem extends EditorElement
     public $errorArray = array();
     public $subordinates = array();
     public $medias = array();
+    public $isRef;
 
     function __construct()
     {
@@ -113,13 +114,13 @@ class EditorPartTheorem extends EditorElement
      * @param integer $msmid            The instance ID of the MSM module.
      * @param string $ref               Optional param that indicates that its either from internal/external theorem 
      */
-    public function insertData($parentid, $siblingid, $msmid, $ref = '')
+    public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
 
         $data = new stdClass();
 
-        if (empty($ref))
+        if (empty($this->isRef))
         {
             $data->partid = null;
             $data->counter = null;
@@ -139,6 +140,31 @@ class EditorPartTheorem extends EditorElement
             }
 
             $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        else
+        {
+            $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
+
+            foreach ($childRecords as $child)
+            {
+                $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+
+                switch ($childTable->tablename)
+                {
+                    case "msm_subordinate":
+                        $subord = new EditorSubordinate();
+                        $subord->id = $child->unit_id;
+                        $subord->isRef = $child->id;
+                        $this->subordinates[] = $subord;
+                        break;
+                    case "msm_media":
+                        $med = new EditorSubordinate();
+                        $med->id = $child->unit_id;
+                        $med->isRef = $child->id;
+                        $this->medias[] = $med;
+                        break;
+                }
+            }
         }
 
         $compData = new stdClass();

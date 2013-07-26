@@ -201,30 +201,14 @@ class EditorTheorem extends EditorElement
             $this->id = $existingTheorem->unit_id;
 
             $statementTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_statement_theorem"));
-            $partTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_part_theorem"));
-
             $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $existingTheorem->id, "table_id" => $statementTable->id), "prev_sibling_id");
 
-
-            $i = 0;
             foreach ($statementTheorems as $statement)
             {
                 $statementThr = new EditorStatementTheorem();
                 $statementThr->id = $statement->unit_id;
-
-                $partTheorems = $DB->get_records("msm_compositor", array("parent_id" => $statement->id, "table_id" => $partTable->id), "prev_sibling_id");
-
-                $j = 0;
-                foreach ($partTheorems as $part)
-                {
-                    $partThr = new EditorPartTheorem();
-                    $partThr->id = $part->unit_id;
-                    $statementThr->children[$j] = $partThr;                    
-                    $j++;
-                }
-                $this->contents[$i] = $statementThr;
-
-                $i++;
+                $statementThr->isRef = $statement->id;              
+                $this->contents[] = $statementThr;
             }
         }
         else
@@ -247,7 +231,7 @@ class EditorTheorem extends EditorElement
         $sibling_id = 0;
         foreach ($this->contents as $key => $statementTheorem)
         {
-            $statementTheorem->insertData($this->compid, $sibling_id, $msmid, $this->isRef);
+            $statementTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $statementTheorem->compid;
         }
 

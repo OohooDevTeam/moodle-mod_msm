@@ -405,82 +405,111 @@ else
  * @global moodle_datbase $DB
  * @param integer $compid
  */
-function deleteOldChildRecord($compid, $msm_id)
+function deleteOldChildRecord($compid, $msm_id, $ref = false)
 {
     global $DB;
 
+    $hasRef = $ref;
+
     if ($compid != 0)
     {
-//        $compRecord = $DB->get_record("msm_compositor", array("id" => $compid));
-//        $compTableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
+        $currentRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+        $currentTableRecord = $DB->get_record("msm_table_collection", array("id" => $currentRecord->id));
+
+        $currentParent = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
+        
+        $currentParentTable = $DB->get_record("msm_table_collection", array("id" => $currentParent->table_id));
+
+        if (($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate"))
+        {
+            $hasRef = true;
+        }
+        else
+        {
+            $sql = "SELECT * FROM mdl_msm_compositor WHERE unit_id=$currentRecord->unit_id AND table_id=$currentRecord->table_id AND id<>$compid";
+            $otherSameRecords = $DB->get_records_sql($sql);
+
+            foreach ($otherSameRecords as $sameRecord)
+            {
+                $parentRecord = $DB->get_record("msm_compositor", array("id" => $sameRecord->parent_id));
+                if (!empty($parentRecord))
+                {
+                    $parentTable = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
+
+                    if (($parentTable->tablename == "msm_subordinate") || ($parentTable->tablename == "msm_associate"))
+                    {
+                        $hasRef = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }       
+
         $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
 
         foreach ($childElements as $child)
         {
-            deleteOldChildRecord($child->id, $msm_id);
+            deleteOldChildRecord($child->id, $msm_id, $hasRef);
         }
-
-        $childRecord = $DB->get_record("msm_compositor", array('id' => $compid));
-        $childTablename = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id))->tablename;
-
-        $otherchildRecords = $DB->get_records("msm_compositor", array("unit_id" => $childRecord->unit_id, "table_id" => $childRecord->table_id));
-
-        $hasRef = false;
-        foreach ($otherchildRecords as $otherchild)
-        {
-            $parentRecord = $DB->get_record("msm_compositor", array("id" => $otherchild->parent_id));
-            $parentTable = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
-
-            if (($parentTable->tablename == "msm_associate") || ($parentTable->tablename == "msm_subordinate"))
-            {
-                $hasRef = true;
-                break;
-            }
-            else if ($parentTable->tablename == "msm_statement_theorem")
-            {
-                $theoremRecord = $DB->get_record("msm_compositor", array("id" => $parentRecord->parent_id));
-                $theoremParent = $DB->get_record("msm_compositor", array("id" => $theoremRecord->parent_id)); // associate/subordinate..etc
-                $theoremParentTable = $DB->get_record("msm_table_collection", array("id" => $theoremParent->table_id));
-
-                if (($theoremParentTable->tablename == "msm_associate") || ($theoremParentTable->tablename == "msm_subordinate"))
-                {
-                    $hasRef = true;
-                    break;
-                }
-            }
-            else if ($parentTable->tablename == "msm_theorem")
-            {
-                $theoremParent = $DB->get_record("msm_compositor", array("id" => $parentRecord->parent_id)); // associate/subordinate..etc
-                $theoremParentTable = $DB->get_record("msm_table_collection", array("id" => $theoremParent->table_id));
-
-                if (($theoremParentTable->tablename == "msm_associate") || ($theoremParentTable->tablename == "msm_subordinate"))
-                {
-                    $hasRef = true;
-                    break;
-                }
-            }
-        }
-
-        if (!$hasRef)
-        {
-            $directParent = $DB->get_record("msm_compositor", array("id" => $childRecord->parent_id));
-            $directParentTable = $DB->get_record("msm_table_collection", array("id" => $directParent->table_id));
-
-            if (($directParentTable->tablename == "msm_associate") || ($directParentTable->tablename == "msm_subordinate"))
-            {
-                $hasRef = true;
-            }
-        }
-
+        
+        // need delete function to be after recursive function, so that all the parent references still exist and 
+        // function would be deleting the leaf element to root
         if ($hasRef) // if there are references to this --> then do not delete the orignial copy
         {
             $DB->delete_records("msm_compositor", array("id" => $compid));
         }
         else
         {
-            $DB->delete_records($childTablename, array("id" => $childRecord->unit_id));
+            $DB->delete_records($currentTableRecord->tablename, array("id" => $currentRecord->unit_id));
             $DB->delete_records("msm_compositor", array("id" => $compid));
         }
+
+//        $childRecord = $DB->get_record("msm_compositor", array('id' => $compid));
+//        $childTablename = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id))->tablename;
+//
+//
+//        if (!$ref)
+//        {
+//            $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
+//
+//            foreach ($childElements as $child)
+//            {
+//                $otherchildRecords = $DB->get_records("msm_compositor", array("unit_id" => $childRecord->unit_id, "table_id" => $childRecord->table_id));
+//
+//                $hasRef = $ref;
+//                foreach ($otherchildRecords as $otherchild)
+//                {
+//                    $parentRecord = $DB->get_record("msm_compositor", array("id" => $otherchild->parent_id));
+//                    $parentTable = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
+//
+//                    if (($parentTable->tablename == "msm_associate") || ($parentTable->tablename == "msm_subordinate"))
+//                    {
+//                        $hasRef = true;
+//                        break;
+//                    }
+//                }
+//
+//                if (!$hasRef)
+//                {
+//                    $directParent = $DB->get_record("msm_compositor", array("id" => $childRecord->parent_id));
+//                    $directParentTable = $DB->get_record("msm_table_collection", array("id" => $directParent->table_id));
+//
+//                    if (($directParentTable->tablename == "msm_associate") || ($directParentTable->tablename == "msm_subordinate"))
+//                    {
+//                        $hasRef = true;
+//                    }
+//                }
+//                deleteOldChildRecord($child->id, $msm_id, $hasRef);
+//            }
+//        }
+//
+//
+//
+//        
     }
 }
 

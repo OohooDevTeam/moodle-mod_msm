@@ -566,6 +566,8 @@ function displaySearchTheorem($searchTheoremRec)
 
     $theorem = new EditorTheorem();
     $theorem->loadData($searchTheoremRec->id);
+    
+//    print_object($theorem);
 
     foreach ($theorem->contents as $statement)
     {

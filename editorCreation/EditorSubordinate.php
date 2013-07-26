@@ -18,6 +18,7 @@ class EditorSubordinate extends EditorElement
     public $hot;
     public $info;
     public $external_link;
+    public $isRef;
 
     // no errorArray necessary b/c null input has been checked already
     // when the subordinate was made
@@ -98,9 +99,35 @@ class EditorSubordinate extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        $data->hot = $this->hot;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        if (empty($this->isRef))
+        {
+            $data->hot = $this->hot;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        else
+        {
+            $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->isRef));
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id));
+
+            switch ($childTable->tablename)
+            {
+                case "msm_external_link":
+                    $extlink = new EditorExternalLink();
+                    $extlink->id = $childRecord->unit_id;
+                    $extlink->isRef = $childRecord->id;
+                    $this->external_link = $extlink;
+                    break;
+                case "msm_info":
+                    $info = new EditorInfo();
+                    $info->id = $childRecord->unit_id;
+                    $info->isRef = $childRecord->id;
+                    $this->info = $info;
+                    break;
+            }
+        }
+
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;
@@ -187,7 +214,7 @@ class EditorSubordinate extends EditorElement
                 }
             }
         }
-        
+
         $htmlContent .= $selectType;
 
         $htmlContent .= "</div>";
@@ -228,7 +255,7 @@ class EditorSubordinate extends EditorElement
         global $DB;
 
         $subordinateCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
-
+        
         $this->compid = $compid;
         $this->id = $subordinateCompRecord->unit_id;
 

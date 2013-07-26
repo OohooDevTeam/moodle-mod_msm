@@ -20,6 +20,7 @@ class EditorMedia extends EditorElement
     public $inline;
     public $media_type;
     public $image;
+    public $isRef;
 
 //    public $images = array();
 
@@ -47,11 +48,28 @@ class EditorMedia extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        $data->active = $this->active;
-        $data->inline = $this->inline;
-        $data->media_type = $this->media_type;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        if (empty($this->isRef))
+        {
+            $data->active = $this->active;
+            $data->inline = $this->inline;
+            $data->media_type = $this->media_type;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        else
+        {
+            $childRecords = $DB->get_record("msm_compositor", array("parent_id" => $this->isRef));
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $childRecords->table_id));
+
+            if ($childTable->tablename == "msm_img")
+            {
+                $img = new EditorImage();
+                $img->id = $childRecords->unit_id;
+                $img->isRef = $childRecords->id;
+                $this->image = $img;
+            }
+        }
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;
@@ -61,7 +79,7 @@ class EditorMedia extends EditorElement
         $compData->prev_sibling_id = $siblingid;
 
         $this->compid = $DB->insert_record("msm_compositor", $compData);
-        
+
         $this->image->insertData($this->compid, 0, $msmid);
     }
 

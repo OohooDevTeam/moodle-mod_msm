@@ -191,6 +191,29 @@ class EditorComment extends EditorElement
         {
             $existingComment = $DB->get_record("msm_compositor", array("id" => $this->isRef));
             $this->id = $existingComment->unit_id;
+            
+            $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
+
+            foreach ($childRecords as $child)
+            {
+                $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+
+                switch ($childTable->tablename)
+                {
+                    case "msm_subordinate":
+                        $subord = new EditorSubordinate();
+                        $subord->id = $child->unit_id;
+                        $subord->isRef = $child->id;
+                        $this->subordinates[] = $subord;
+                        break;
+                    case "msm_media":
+                        $med = new EditorSubordinate();
+                        $med->id = $child->unit_id;
+                        $med->isRef = $child->id;
+                        $this->medias[] = $med;
+                        break;
+                }
+            }
         }
         else
         {

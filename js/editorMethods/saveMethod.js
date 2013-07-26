@@ -448,8 +448,6 @@ function titleInput2Div(id)
 */
 function disableEditorFunction()
 {
-    //    $('.msm_title_input').attr("readonly", "true");
-    //    $('.msm_title_input').removeClass("msm_add_border");
     $('.msm_unit_short_titles').attr("readonly", "true");
     $('.msm_unit_short_titles').removeClass("msm_add_border");
     $('.msm_unit_description_inputs').attr("readonly", "true");
@@ -459,49 +457,6 @@ function disableEditorFunction()
     $(".copied_msm_structural_element input").attr("disabled", "disabled");
                     
     $(".copied_msm_structural_element .msm_element_close").remove();
-    
-    //    if($("#msm_child_appending_area").hasClass("ui-sortable"))
-    //    {
-    //        $("#msm_child_appending_area").sortable("destroy");
-    //    }
-    //    
-    //    if($("#msm_intro_child_container").hasClass("ui-sortable"))
-    //    {
-    //        $("#msm_intro_child_container").sortable("destroy");
-    //    }
-                    
-        
-    //    $(".msm_theorem_content_containers").each(function(){
-    //        if($(this).hasClass("ui-sortable"))
-    //        {
-    //            $(this).sortable("destroy");
-    //        }
-    //    });
-    //        
-    //    $(".msm_theorem_part_dropareas").each(function() {
-    //        if($(this).hasClass("ui-sortable"))
-    //        {
-    //            $(this).sortable("destroy");
-    //        }
-    //    });  
-    //        
-    //    $(".msm_associate_containers").each(function() {
-    //        if($(this).hasClass("ui-sortable"))
-    //        {
-    //            $(this).sortable("destroy");
-    //        }
-    //    });  
-    
-    
-    //    if($(".msm_structural_element").hasClass("ui-draggable"))
-    //    {
-    //        $(".msm_structural_element").draggable("destroy");
-    //    }
-    //        
-    //    if($("#msm_editor_middle_droparea").hasClass("ui-droppable"))
-    //    {
-    //        $("#msm_editor_middle_droparea").droppable("destroy");
-    //    }
         
     $(".msm_associate_info_headers").each(function() {
         $(this).children("span").css("display", "none");

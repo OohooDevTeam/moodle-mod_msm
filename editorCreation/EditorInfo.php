@@ -21,6 +21,7 @@ class EditorInfo extends EditorElement
     public $subordinates = array();
     public $medias = array();
     public $ref;
+    public $isRef;
 
     function __construct()
     {
@@ -34,7 +35,7 @@ class EditorInfo extends EditorElement
 
         $flag = false;
         $subid = explode("|", $idNumber);
-        
+
         if (sizeof($subid) > 1)
         {
             $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
@@ -324,38 +325,66 @@ class EditorInfo extends EditorElement
 
         $data = new stdClass();
 
-        $patterns = array();
-        $replacements = array();
-        $patterns[0] = "/<div.*?>/";
-        $patterns[1] = "/<\/div>/";
-        $patterns[0] = "/<p.*?>/";
-        $patterns[1] = "/<\/p>/";
-        $patterns[2] = "/<span.*?>/";
-        $patterns[3] = "/<\/span>/";
-        $replacements[0] = "";
-        $replacements[1] = "";
-        $replacements[2] = "";
-        $replacements[3] = "";
-
-        $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
-        $titleString = htmlentities($modifiedCaption);
-
-        $data->caption = $titleString;
-
-        $pParser = new DOMDocument();
-        $pParser->loadHTML($this->content);
-        $divs = $pParser->getElementsByTagName("div");
-
-        if ($divs->length > 0)
+        if (empty($this->isRef))
         {
-            $data->info_content = $this->content;
+            $patterns = array();
+            $replacements = array();
+            $patterns[0] = "/<div.*?>/";
+            $patterns[1] = "/<\/div>/";
+            $patterns[0] = "/<p.*?>/";
+            $patterns[1] = "/<\/p>/";
+            $patterns[2] = "/<span.*?>/";
+            $patterns[3] = "/<\/span>/";
+            $replacements[0] = "";
+            $replacements[1] = "";
+            $replacements[2] = "";
+            $replacements[3] = "";
+
+            $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
+            $titleString = htmlentities($modifiedCaption);
+
+            $data->caption = $titleString;
+
+            $pParser = new DOMDocument();
+            $pParser->loadHTML($this->content);
+            $divs = $pParser->getElementsByTagName("div");
+
+            if ($divs->length > 0)
+            {
+                $data->info_content = $this->content;
+            }
+            else
+            {
+                $data->info_content = "<div>$this->content</div>";
+            }
+
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
         else
         {
-            $data->info_content = "<div>$this->content</div>";
-        }
+            $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+            foreach ($childRecords as $child)
+            {
+                $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+
+                switch ($childTable->tablename)
+                {
+                    case "msm_subordinate":
+                        $subord = new EditorSubordinate();
+                        $subord->id = $child->unit_id;
+                        $subord->isRef = $child->id;
+                        $this->subordinates[] = $subord;
+                        break;
+                    case "msm_media":
+                        $med = new EditorSubordinate();
+                        $med->id = $child->unit_id;
+                        $med->isRef = $child->id;
+                        $this->medias[] = $med;
+                        break;
+                }
+            }
+        }
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;

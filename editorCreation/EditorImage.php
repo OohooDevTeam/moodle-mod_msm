@@ -22,6 +22,7 @@ class EditorImage extends EditorElement
     public $height;
     public $width;
     public $fileoptions;
+    public $isRef;
 
     function __construct()
     {
@@ -83,17 +84,21 @@ class EditorImage extends EditorElement
 
     public function insertData($parentid, $siblingid, $msmid)
     {
-        global $DB, $CFG;
+        global $DB;
 
         $data = new stdClass();
-        $data->string_id = $this->string_id;
+
+        if (empty($this->isRef))
+        {
+            $data->string_id = $this->string_id;
 // $data->description = $this->description;
 // $data->extended_caption = $this->caption;
-        $data->src = $this->src . "||" . $msmid;
-        $data->height = $this->height;
-        $data->width = $this->width;
+            $data->src = $this->src . "||" . $msmid;
+            $data->height = $this->height;
+            $data->width = $this->width;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;
