@@ -314,8 +314,6 @@ class EditorInfo extends EditorElement
                     break;
             }
         }
-//        print_object($_POST);
-//        print_object($this);
         return $this;
     }
 
@@ -552,6 +550,18 @@ class EditorInfo extends EditorElement
             $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
+            
+            if(empty($this->ref))
+            {
+                $htmlContent .= "<div id='msm_subordinate_ref-$idEnding'>";
+                $htmlContent .= "</div>";
+            }
+            else
+            {
+                $htmlContent .= "<div id='msm_subordinate_ref-$idEnding'>";
+                $htmlContent .= $this->ref->compid;
+                $htmlContent .= "</div>";
+            }
 
             $htmlContent .= "</div>"; // end of msm_subordinate_results div
 

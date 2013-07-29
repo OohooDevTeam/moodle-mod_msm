@@ -182,10 +182,10 @@ class EditorSubordinate extends EditorElement
 
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
-
-        $compRecord = $DB->get_record("msm_compositor", array("id" => $this->id));
+        
+        $compRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
         $subChilds = $DB->get_records("msm_compositor", array("parent_id" => $this->compid));
-
+        
         $selectType = '';
         foreach ($subChilds as $sub)
         {

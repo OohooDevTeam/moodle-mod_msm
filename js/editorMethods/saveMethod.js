@@ -527,7 +527,7 @@ function disableEditorFunction()
 
 // to activate the dialog box for display purposes
 function previewInfo(elementid, dialogid)
-{       
+{        
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse
  
@@ -561,10 +561,10 @@ function previewInfo(elementid, dialogid)
     });
     //----------------------------------------------------------------------
     
-    $("#msm_search_result_table").find("#"+elementid).unbind();    
+    $("#msm_search_result_table").find("#"+elementid).unbind();
                 
-    $("#msm_search_result_table").find("#"+elementid).ready(function(){ 
-        $("#msm_search_result_table").find("#"+elementid).mousemove(function (e) {   
+    $("#msm_search_result_table").find("#"+elementid).ready(function(){
+        $("#msm_search_result_table").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();
             $("#"+dialogid).dialog('option', {
                 position: [e.clientX+5, e.clientY+5]
@@ -613,6 +613,6 @@ function previewInfo(elementid, dialogid)
         $("#"+dialogid).dialog("close").css("display", "none");
     });
     
-} 
+}
 
 

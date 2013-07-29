@@ -320,7 +320,6 @@ else
         }
         else
         {
-//            echo "insert data";
             $unit->insertData(0, 0, $msmId);
         }
         // need code fo insert unit information to unitdatabase before procesing the child so that

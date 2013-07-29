@@ -61,7 +61,7 @@ if (isset($_POST['id']))
 
     $htmlContent = '';
     $htmlContent .= $unitData->displayData();
-    
+
     echo json_encode($htmlContent);
 }
 // user has triggered the edit mode from the view.php
@@ -75,8 +75,8 @@ else if (isset($_POST['mode']))
     // need to copy unitChildElementRecords to have index as incrementing numbers from zero to n instead of it being compositor id
     $unitChildElements = array();
     $unitTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
-    $personTable = $DB->get_record("msm_table_collection", array("tablename"=> "msm_person"));
-    
+    $personTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_person"));
+
     foreach ($unitChildElementRecords as $childRecord)
     {
         if (($childRecord->table_id != $unitTable->id) && ($childRecord->table_id != $personTable->id))
@@ -95,10 +95,10 @@ else if (isset($_POST['mode']))
             $indexElement = $key;
         }
     }
-    
+
     $currentElement = $unitChildElements[$indexElement];
     $currentElementTable = $DB->get_record("msm_table_collection", array("id" => $currentElement->table_id))->tablename;
-   
+
     switch ($currentElementTable)
     {
         case "msm_intro":
@@ -185,7 +185,7 @@ else if (isset($_POST['tree_content']))
     echo json_encode($idPairs[0]);
 }
 // user triggered to discard any changes made to the unit
-else if ($_POST["cancelUnit"]) // from cancelUnit js function
+else if (isset($_POST["cancelUnit"])) // from cancelUnit js function
 {
     $unitidInfo = explode('-', $_POST['cancelUnit']);
 
@@ -196,6 +196,42 @@ else if ($_POST["cancelUnit"]) // from cancelUnit js function
     $htmlContent .= $unitData->displayData();
 
     echo json_encode($htmlContent);
+}
+// for displaying chosen reference material for loading the existing subordinate for editting
+else if (isset($_POST["loadRefId"])) 
+{
+    $refId = $_POST["loadRefId"];
+
+    $compRecord = $DB->get_record("msm_compositor", array("id" => $refId));
+    $tableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
+
+    switch ($tableRecord->tablename)
+    {
+        case "msm_def":
+            $definition = new EditorDefinition();
+            $definition->loadData($refId);
+            $refHtml = $definition->displayPreview();
+            echo json_encode($refHtml);
+            break;
+        case "msm_comment":
+            $comment = new EditorComment();
+            $comment->loadData($refId);
+            $refHtml = $comment->displayPreview("1");
+            echo json_encode($refHtml);
+            break;
+        case "msm_theorem":
+            $theorem = new EditorTheorem();
+            $theorem->loadData($refId);
+            $refHtml = $theorem->displayPreview("1");
+            echo json_encode($refHtml);
+            break;
+        case "msm_unit":
+            $unit = new EditorUnit();
+            $unit->loadData($refId);
+            $refHtml = $unit->displayPreview("1");
+            echo json_encode($refHtml);
+            break;
+    }
 }
 
 /**
