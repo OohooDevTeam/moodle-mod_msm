@@ -581,6 +581,26 @@ function previewInfo(elementid, dialogid)
         });
 
     });
+           
+    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();
+    $("#msm_subordinate_ref_display").find("#"+elementid).ready(function(){
+        $("#msm_subordinate_ref_display").find("#"+elementid).mousemove(function (e) {
+            e.preventDefault();
+            $("#"+dialogid).dialog('option', {
+                position: [e.clientX+5, e.clientY+5]
+            });
+            $("#"+dialogid).dialog('open');
+        });
+         
+        $("#msm_subordinate_ref_display").find("#"+elementid).mouseout(function(e){
+            e.preventDefault();
+            $("#"+dialogid).dialog('close');
+        });
+        $("#msm_subordinate_ref_display").find("#"+elementid).click(function(e){
+            e.preventDefault();
+        });
+
+    });
    
     //----------------------------------------------------------------------
     // for displaying dialog boxes from hotwords in associate info boxes

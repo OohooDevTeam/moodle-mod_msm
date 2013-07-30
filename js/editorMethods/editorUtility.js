@@ -439,6 +439,11 @@ function newUnit()
 
 function processUnitData(htmlData)
 {
+    
+    if(tinymce.getInstanceById("msm_unit_title") != null)
+    {
+        tinyMCE.execCommand("mceRemoveControl", true, "msm_unit_title");        
+    }
     $('#msm_unit_form').empty();
     
     $('#msm_unit_form').append(htmlData);
@@ -1292,7 +1297,7 @@ function createTheoremText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
     
-     $("#"+element).find(".msm_theorem_part_title").each(function() {
+    $("#"+element).find(".msm_theorem_part_title").each(function() {
         $(this).removeAttr("disabled");
     });
     $("#msm_element_overlay-"+elementIdInfo[1]).css("display", "none");
@@ -1918,7 +1923,7 @@ function cancelUnit(e)
        
                         $("#msm_unit_form").append($(currentUnitId));
             
-//                        removeTinymceEditor(); // causes the content to disappear
+                        //                        removeTinymceEditor(); // causes the content to disappear
                                           
                         disableEditorFunction();   
                         

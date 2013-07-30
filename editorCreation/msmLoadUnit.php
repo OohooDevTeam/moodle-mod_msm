@@ -216,19 +216,19 @@ else if (isset($_POST["loadRefId"]))
         case "msm_comment":
             $comment = new EditorComment();
             $comment->loadData($refId);
-            $refHtml = $comment->displayPreview("1");
+            $refHtml = $comment->displayPreview();
             echo json_encode($refHtml);
             break;
         case "msm_theorem":
             $theorem = new EditorTheorem();
             $theorem->loadData($refId);
-            $refHtml = $theorem->displayPreview("1");
+            $refHtml = $theorem->displayPreview();
             echo json_encode($refHtml);
             break;
         case "msm_unit":
             $unit = new EditorUnit();
             $unit->loadData($refId);
-            $refHtml = $unit->displayPreview("1");
+            $refHtml = $unit->displayPreview();
             echo json_encode($refHtml);
             break;
     }

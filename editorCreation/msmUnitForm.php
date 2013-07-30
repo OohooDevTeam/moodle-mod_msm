@@ -67,7 +67,7 @@ if (!empty($_POST["removeUnit"]))
 
         if ($oldchild->table_id != $unittableid)
         {
-            deleteOldChildRecord($oldchild->id);
+            removeUnit($oldchild->id, $msmId);
         }
     }
 
@@ -416,7 +416,7 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
         $currentTableRecord = $DB->get_record("msm_table_collection", array("id" => $currentRecord->id));
 
         $currentParent = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
-        
+
         $currentParentTable = $DB->get_record("msm_table_collection", array("id" => $currentParent->table_id));
 
         if (($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate"))
@@ -446,7 +446,7 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
                     continue;
                 }
             }
-        }       
+        }
 
         $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
 
@@ -454,7 +454,7 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
         {
             deleteOldChildRecord($child->id, $msm_id, $hasRef);
         }
-        
+
         // need delete function to be after recursive function, so that all the parent references still exist and 
         // function would be deleting the leaf element to root
         if ($hasRef) // if there are references to this --> then do not delete the orignial copy
@@ -466,49 +466,42 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
             $DB->delete_records($currentTableRecord->tablename, array("id" => $currentRecord->unit_id));
             $DB->delete_records("msm_compositor", array("id" => $compid));
         }
+    }
+}
 
-//        $childRecord = $DB->get_record("msm_compositor", array('id' => $compid));
-//        $childTablename = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id))->tablename;
-//
-//
-//        if (!$ref)
-//        {
-//            $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
-//
-//            foreach ($childElements as $child)
-//            {
-//                $otherchildRecords = $DB->get_records("msm_compositor", array("unit_id" => $childRecord->unit_id, "table_id" => $childRecord->table_id));
-//
-//                $hasRef = $ref;
-//                foreach ($otherchildRecords as $otherchild)
-//                {
-//                    $parentRecord = $DB->get_record("msm_compositor", array("id" => $otherchild->parent_id));
-//                    $parentTable = $DB->get_record("msm_table_collection", array("id" => $parentRecord->table_id));
-//
-//                    if (($parentTable->tablename == "msm_associate") || ($parentTable->tablename == "msm_subordinate"))
-//                    {
-//                        $hasRef = true;
-//                        break;
-//                    }
-//                }
-//
-//                if (!$hasRef)
-//                {
-//                    $directParent = $DB->get_record("msm_compositor", array("id" => $childRecord->parent_id));
-//                    $directParentTable = $DB->get_record("msm_table_collection", array("id" => $directParent->table_id));
-//
-//                    if (($directParentTable->tablename == "msm_associate") || ($directParentTable->tablename == "msm_subordinate"))
-//                    {
-//                        $hasRef = true;
-//                    }
-//                }
-//                deleteOldChildRecord($child->id, $msm_id, $hasRef);
-//            }
-//        }
-//
-//
-//
-//        
+function removeUnit($compid, $msm_id)
+{
+    global $DB;
+    
+    $hasRef = false;
+    $currentRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+    $currentTableRecord = $DB->get_record("msm_table_collection", array("id" => $currentRecord->id));
+
+    $currentParent = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
+
+    $currentParentTable = $DB->get_record("msm_table_collection", array("id" => $currentParent->table_id));
+
+    if (($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate"))
+    {
+        $hasRef = true;
+    }
+    $childElements = $DB->get_records("msm_compositor", array("parent_id" => $compid));
+
+    foreach ($childElements as $child)
+    {
+        removeUnit($child->id, $msm_id);
+    }
+
+    // need delete function to be after recursive function, so that all the parent references still exist and 
+    // function would be deleting the leaf element to root
+    if ($hasRef) // if there are references to this --> then do not delete the orignial copy
+    {
+        $DB->delete_records("msm_compositor", array("id" => $compid));
+    }
+    else
+    {
+        $DB->delete_records($currentTableRecord->tablename, array("id" => $currentRecord->unit_id));
+        $DB->delete_records("msm_compositor", array("id" => $compid));
     }
 }
 

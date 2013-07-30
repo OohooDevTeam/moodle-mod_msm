@@ -132,51 +132,17 @@ echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/
 $msm_nav = '';
 $msm_nav .= '<ul class="sf-menu">
             <li>
-                <a href="#a"><span >File</span></a>
+                <!--a href="#a"><span >File</span></a>
                 <span class="sf-sub-indicator"> >> </span>
-                <ul>
-                    <li>
-                        <a href="#aa"> <span>Open</span></a>
-                    </li>
-                    <li>
-                        <a href="#ab"> <span>Save</span></a>
-                    </li>
-                    <li>
+                <ul>                    
+                    <li-->
                         <a href="#" id="msm_nav_export" onclick="exportComposition(event);"> <span>Export as XML</span></a>
-                    </li>
+                    <!--/li>
                     <li>
                         <a href="#ad"> <span>Rename Composition</span></a>
                     </li>
-                </ul>
-            </li>
-            <!--li>
-                <a href="#b"> <span>Edit</span></a>       
-                <span class="sf-sub-indicator"> >> </span>
-                <ul>
-                    <li>
-                        <a href="#ba"> <span>Undo</span></a>
-                    </li>
-                    <li>
-                        <a href="#bb"> <span>Redo</span></a>
-                    </li>
-                    <li>
-                        <a href="#bc"> <span>Cut</span></a>
-                    </li>
-                    <li>
-                        <a href="#bd"> <span>Copy</span></a>
-                    </li>
-                    <li>
-                        <a href="#be"> <span>Paste</span></a>
-                    </li>
-                    <li>
-                        <a href="#bf"> <span>Delete</span></a>
-                    </li>
-
-                    <li>
-                        <a href="#bg"> <span>Select All</span></a>
-                    </li>
-                </ul>
-            </li-->
+                </ul-->
+            </li>            
             <li>
                 <a id="msm_nav_preview" onclick="showUnitPreview()"> <span>View</span></a>                 
             </li>

@@ -470,7 +470,7 @@ class EditorTheorem extends EditorElement
         $previewHtml .= "<div class='mathcontent'>";
         foreach ($this->contents as $statementTheorem)
         {
-            $previewHtml .= $statementTheorem->displayPreview($id);
+            $previewHtml .= $statementTheorem->displayPreview();
         }
         $previewHtml .= "</div>";
 

@@ -398,10 +398,9 @@ class EditorStatementTheorem extends EditorElement
      * For cases where the statement theorem are a part of a reference theorem material, it will not appear till the associate button is 
      * triggered by a click.
      * 
-     * @param string $id          String to be added to HTML ID of this definition and its components to make them unique
      * @return HTML string 
      */
-    public function displayPreview($id)
+    public function displayPreview()
     {
         $previewHtml = '';
 
@@ -418,7 +417,7 @@ class EditorStatementTheorem extends EditorElement
         $previewHtml .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->children as $childComponent)
         {
-            $previewHtml .= $childComponent->displayPreview($id);
+            $previewHtml .= $childComponent->displayPreview();
         }
         $previewHtml .= "</ol>";
 
