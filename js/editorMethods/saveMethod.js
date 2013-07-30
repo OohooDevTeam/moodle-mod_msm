@@ -561,8 +561,7 @@ function previewInfo(elementid, dialogid)
     });
     //----------------------------------------------------------------------
     
-    $("#msm_search_result_table").find("#"+elementid).unbind();
-                
+    $("#msm_search_result_table").find("#"+elementid).unbind();                
     $("#msm_search_result_table").find("#"+elementid).ready(function(){
         $("#msm_search_result_table").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();
@@ -578,11 +577,17 @@ function previewInfo(elementid, dialogid)
         });
         $("#msm_search_result_table").find("#"+elementid).click(function(e){
             e.preventDefault();
+            $(".msm_subordinate_textareas").each(function() {
+                var edInstance = tinymce.getInstanceById(this.id);
+                if(typeof edInstance !== "undefined")
+                {
+                    tinymce.execCommand("mceRemoveControl", true, this.id);
+                }
+            });
         });
-
     });
-           
-    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();
+    
+    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();                
     $("#msm_subordinate_ref_display").find("#"+elementid).ready(function(){
         $("#msm_subordinate_ref_display").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();
@@ -598,6 +603,13 @@ function previewInfo(elementid, dialogid)
         });
         $("#msm_subordinate_ref_display").find("#"+elementid).click(function(e){
             e.preventDefault();
+            $(".msm_subordinate_textareas").each(function() {
+                var edInstance = tinymce.getInstanceById(this.id);
+                if(typeof edInstance !== "undefined")
+                {
+                    tinymce.execCommand("mceRemoveControl", true, this.id);
+                }
+            });
         });
 
     });

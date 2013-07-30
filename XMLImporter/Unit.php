@@ -82,13 +82,13 @@ class Unit extends Element
     public $string_id;                      // unique user-defined string(legacy material) or same as compid value associated with unit to identify it in XML
     public $standalone;                     // boolean value to determine if the unit has a parent-child relationship or if it is a "reference-material-only" unit
     public $compchildtype;                  // database ID associaed with msm_unit_name table that represent the unit name 
-                                            // associated with depth of it's parent-child relationship
+    // associated with depth of it's parent-child relationship
     public $title;                          // title of the unit 
     public $plain_title;                    // title without math element associated with the unit element
     public $short_name;                     // short version of the title that is shown in the XML hierarchy tree section of editor
     public $description;                    // description associated with the unit that is used as a search parameter 
     public $tagname;                        // with newly formed XML, the ID given by compchildtype can be used to extract the name of the unit at 
-                                            // specified depth and it is recorded to XML files as attribute of unit
+    // specified depth and it is recorded to XML files as attribute of unit
     public $extraContents = array();        // ExtraInfo objects associated with the unit element
     public $subunits = array();             // other Unit objects associated with the unit element
     public $authors = array();              // Person objects associated with the unit element(represents authors)
@@ -108,6 +108,7 @@ class Unit extends Element
      * 
      * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -1208,14 +1209,13 @@ class Unit extends Element
      */
     function displayhtml($isindex = false)
     {
-
         $content = '';
 //        $content .= "<div class='unit' id='unit-" . $this->compid . "'>";
         // most likely a first page if creationdate and authors are there...
         if ((!empty($this->creationdate)) || (!empty($this->authors)))
         {
             $content .= "<div class='ridge'>";
-            if (!empty($this->title))
+            if ((!empty($this->title) && (preg_match("/<div\/>/", trim($this->title)) == 0)))
             {
                 $content .= "<div class='title'>";
                 $content .= $this->title;
@@ -1250,7 +1250,7 @@ class Unit extends Element
         } // any units that is not a root element
         else
         {
-            if (!empty($this->title))
+            if ((!empty($this->title) && (preg_match("/<div\/>/", trim($this->title)) == 0)))
             {
                 $content .= "<div class='title'>";
                 $content .= $this->title;
