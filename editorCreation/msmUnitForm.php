@@ -349,6 +349,8 @@ else
         }
 
         $siblingCompid = 0;
+        
+                    print_object($unitcontent);
 
         foreach ($unitcontent as $element)
         {
@@ -413,7 +415,7 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
     if ($compid != 0)
     {
         $currentRecord = $DB->get_record("msm_compositor", array("id" => $compid));
-        $currentTableRecord = $DB->get_record("msm_table_collection", array("id" => $currentRecord->id));
+        $currentTableRecord = $DB->get_record("msm_table_collection", array("id" => $currentRecord->table_id));
 
         $currentParent = $DB->get_record("msm_compositor", array("id" => $currentRecord->parent_id));
 

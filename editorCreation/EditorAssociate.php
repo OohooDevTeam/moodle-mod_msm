@@ -25,9 +25,9 @@
 class EditorAssociate extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $type; // in db--> description of the associate
+    public $id;                     // database ID for associate element in msm_associate table
+    public $compid;                 // database ID for associate element in msm_compositor table
+    public $type;                   // type of associate chosen by the user in a dropdown menu (eg. comment/Explanation...etc)
     public $infos = array();
 
     // constructor for the class

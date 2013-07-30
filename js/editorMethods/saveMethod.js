@@ -561,7 +561,7 @@ function previewInfo(elementid, dialogid)
     });
     //----------------------------------------------------------------------
     
-    $("#msm_search_result_table").find("#"+elementid).unbind();                
+//    $("#msm_search_result_table").find("#"+elementid).unbind();                
     $("#msm_search_result_table").find("#"+elementid).ready(function(){
         $("#msm_search_result_table").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();
@@ -587,7 +587,7 @@ function previewInfo(elementid, dialogid)
         });
     });
     
-    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();                
+//    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();                
     $("#msm_subordinate_ref_display").find("#"+elementid).ready(function(){
         $("#msm_subordinate_ref_display").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();
