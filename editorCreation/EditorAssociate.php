@@ -109,9 +109,8 @@ class EditorAssociate extends EditorElement
     }
 
     /**
-     * This method is an abstract method from EditorElement that has a purpose of displaying the 
-     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
-     * displayData from the EditorInfo class.
+     * This method has a purpose of displaying the data extracted from DB from loadData
+     * method by outputting the HTML code.  This method calls displayData from the EditorInfo class.
      * 
      * @global moodle_database $DB
      * @return HTML string
@@ -198,7 +197,7 @@ class EditorAssociate extends EditorElement
     }
 
     /**
-     * This abstract method from EditoElement extracts appropriate information from the 
+     * This abstract method from EditorElement extracts appropriate information from the 
      * msm_associate table and also triggers extraction of data from its children using the 
      * data given by the msm_compositor table. It calls the loadData method from the EditorInfo 
      * class.

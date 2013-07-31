@@ -1,32 +1,54 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorExtraInfo
+ * EditorExtraInfo class is inherited from the abstract class EditorElement and contains 
+ * these abstract methods: getFormData, insertData, and loadData.  This class represents 
+ * extra information element in editor that user used to add additional side information about
+ * the unit or any of the components of the unit.  These extra information are added in one of the five
+ * forms: Preface, Acknowledgement, Historical Nodes, Summay and/or Trailer.  The type of extra
+ * information can be specified by the dropdown menu in the editor.  This class calls the 
+ * EditorBlock class as a child class.
  *
- * @author User
  */
 class EditorExtraInfo extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $name;
-    public $title;
-//    public $errorArray = array();
+    public $id;                     // database ID of the extra info elements in msm_extra_info table
+    public $compid;                 // database ID of the extra info elements in msm_compositor table
+    public $name;                   // type of the extra info element (preface/acknowledgement/historical.note/summary/trailer)
+    public $title;                  // title input associated with this extra info element
     public $blocks = array();
 
+    // constructor of this class
     function __construct()
     {
         $this->tablename = "msm_extra_info";
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorBlock) to process its
+     * children's data.
+     * 
+     * @param string $idNumber          represents information needed to identify needed key for the POST object
+     * @return \EditorExtraInfo
+     */
     public function getFormData($idNumber)
-    {        
+    {
         $this->name = $_POST["msm_extra_type_dropdown-$idNumber"];
 
         $block = new EditorBlock();
@@ -37,6 +59,17 @@ class EditorExtraInfo extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_extra_info table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorBlock class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         The ID of the parent of this object(ie.Unit) in compositor table.
+     * @param integer $siblingid        The ID of the previous sibling of this object(ie. anther associate) in compositor table.
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -65,6 +98,16 @@ class EditorExtraInfo extends EditorElement
         }
     }
 
+    /**
+     * This abstract method from EditorElement extracts appropriate information from the 
+     * msm_extra_info table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorBlock 
+     * class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorExtraInfo
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -95,6 +138,14 @@ class EditorExtraInfo extends EditorElement
         return $this;
     }
 
+    /**
+     * This method has a purpose of displaying the data extracted from DB from loadData
+     * method by outputting the HTML code.  This method calls displayData from all the classes
+     * that make up the content of this extra info (i.e. EditorPara, EditorInContent..etc) and 
+     * EditorSubordinate.
+     * 
+     * @return HTML string
+     */
     public function displayData()
     {
         $htmlContent = '';
@@ -181,6 +232,14 @@ class EditorExtraInfo extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * The method in this class is called by Unit and is responsible for showing the appropriate components of the extra info element.
+     * This method, in turn, calls the displayPreview of the EditorPara/EditorInContent/EditorTable to display.
+     * 
+     * @param string $id
+     * @return HTML string
+     */
     public function displayPreview($id = '')
     {
         $previewHtml = '';

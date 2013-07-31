@@ -48,6 +48,7 @@ require_once("ExportSubordinate.php");
 require_once("ExportMedia.php");
 require_once("ExportImage.php");
 require_once("ExportExternalLink.php");
+require_once("ExportReference.php");
 
 global $DB, $CFG;
 

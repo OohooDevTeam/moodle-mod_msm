@@ -174,7 +174,7 @@ class EditorInContent extends EditorElement
     }
 
     /**
-     * This abstract method from EditoElement extracts appropriate information from the 
+     * This abstract method from EditorElement extracts appropriate information from the 
      * msm_content table and also triggers extraction of data from its children using the 
      * data given by the msm_compositor table. It calls the loadData method from the EditorSubordinate 
      * class.

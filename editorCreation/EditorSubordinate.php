@@ -108,23 +108,27 @@ class EditorSubordinate extends EditorElement
         }
         else
         {
-            $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->isRef));
-            $childTable = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id));
+            $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef));
 
-            switch ($childTable->tablename)
+            foreach ($childRecords as $child)
             {
-                case "msm_external_link":
-                    $extlink = new EditorExternalLink();
-                    $extlink->id = $childRecord->unit_id;
-                    $extlink->isRef = $childRecord->id;
-                    $this->external_link = $extlink;
-                    break;
-                case "msm_info":
-                    $info = new EditorInfo();
-                    $info->id = $childRecord->unit_id;
-                    $info->isRef = $childRecord->id;
-                    $this->info = $info;
-                    break;
+                $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
+
+                switch ($childTable->tablename)
+                {
+                    case "msm_external_link":
+                        $extlink = new EditorExternalLink();
+                        $extlink->id = $child->unit_id;
+                        $extlink->isRef = $child->id;
+                        $this->external_link = $extlink;
+                        break;
+                    case "msm_info":
+                        $info = new EditorInfo();
+                        $info->id = $child->unit_id;
+                        $info->isRef = $this->isRef; // info and reference materials both have parent_id of subordinate
+                        $this->info = $info;
+                        break;
+                }
             }
         }
 
@@ -182,10 +186,10 @@ class EditorSubordinate extends EditorElement
 
         $htmlContent .= "<div id='msm_subordinate_result-$idEnding' class='msm_subordinate_results'>";
         $htmlContent .= "<div id='msm_subordinate_select-$idEnding'>";
-        
+
         $compRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
         $subChilds = $DB->get_records("msm_compositor", array("parent_id" => $this->compid));
-        
+
         $selectType = '';
         foreach ($subChilds as $sub)
         {
@@ -255,7 +259,7 @@ class EditorSubordinate extends EditorElement
         global $DB;
 
         $subordinateCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
-        
+
         $this->compid = $compid;
         $this->id = $subordinateCompRecord->unit_id;
 

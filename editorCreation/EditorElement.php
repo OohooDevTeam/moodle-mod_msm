@@ -23,21 +23,17 @@
 abstract class EditorElement
 {
 
-    // This method deals with retrieving appropriate information from form data.  The
-    // specific implementation differs between classes.
+    // This method deals with retrieving appropriate information from form data.
+    // The specific implementation differs between classes.
     abstract function getFormData($idNumber);
 
-    // This method deals with inserting the class information to database tables.  The
-    // specific implementation differs between classes.
+    // This method deals with inserting the class information to database tables.
+    // The specific implementation differs between classes.
     abstract function insertData($parentid, $siblingid, $msmid);
 
-    // This method is used to retrieve information from database to be displayed.  The
-    // specific implementation differs between classes.
+    // This method is used to retrieve information from database to be displayed.
+    // The specific implementation differs between classes.
     abstract function loadData($compid);
-
-    // This method is generates the HTML code with appropriate clas information to display the data.  The
-    // specific implementation differs between classes.
-//    abstract function displayData();
 
     /**
      * This function parses a raw HTML string content and looks for the HTML elements considered to be
@@ -45,8 +41,8 @@ abstract class EditorElement
      * associated data is passed to appropriate content classes such as EditorPara, EditorInContent and EditorTable
      * to be processed by these class methods.  Then the resulting class objects are pushed into an array which is returned.
      * 
-     * @param string $oldContent  raw content HTML string that needs to be processsed as mentioned above
-     * @return array              array containing all content class objects
+     * @param string $oldContent    raw content HTML string that needs to be processsed as mentioned above
+     * @return array                array containing all content class objects
      */
     function processContent($oldContent)
     {
@@ -80,12 +76,6 @@ abstract class EditorElement
                     $table->getFormData($child);
                     $newContent[] = $table;
                 }
-//                else if ($child->tagName == "img")
-//                {
-//                    $image = new EditorImage();
-//                    $image->getFormData($child);
-//                    $newContent[] = $image;
-//                }
             }
         }
 
@@ -99,7 +89,7 @@ abstract class EditorElement
      * EditorSubordinate class to be processed and be inserted into msm_subordinate database table.
      * 
      * @param string $content       content value of the parent class
-     * @return array                an array with all subordinate objects containing appropriate values
+     * @return array                an array with all EditorSubordinate objects containing appropriate values
      */
     function processSubordinate($content)
     {
@@ -109,7 +99,7 @@ abstract class EditorElement
         $htmlParser->loadHTML($content);
 
         $aElements = $htmlParser->getElementsByTagName('a');
-        foreach ($aElements as $key => $a)
+        foreach ($aElements as $a)
         {
             $hotword = new EditorSubordinate();
             $hotword->getFormData($a);
@@ -119,6 +109,15 @@ abstract class EditorElement
         return $subordinates;
     }
 
+    /**
+     * This method is used to process all the media elements in the content bodies.
+     * It is called by all class that has content property(ie. EditorDefinition, EditorComment...etc).
+     * It looks for image elements in the content and pass the DOMElement to the getFormData function of
+     * EditorMedia class to be processed and be inserted into msm_media database table.
+     * 
+     * @param string $content           content value of the parent class
+     * @return array                    an array with all EditorMedia objects containing appropriate values
+     */
     function processImage($content)
     {
         $medias = array();
@@ -127,7 +126,7 @@ abstract class EditorElement
         $htmlParser->loadHTML($content);
 
         $imgElements = $htmlParser->getElementsByTagName('img');
-        foreach ($imgElements as $key => $img)
+        foreach ($imgElements as $img)
         {
             $media = new EditorMedia();
             $media->getFormData($img);
@@ -137,6 +136,18 @@ abstract class EditorElement
         return $medias;
     }
 
+    /**
+     * This method is used to process all the image elements in the content bodies.
+     * It is called by all class that has content property(ie. EditorDefinition, EditorComment...etc).
+     * It looks for image elements in the content and replaces the img node with relative pathing
+     * to the image file to new image node with url to where the moodle is serving the image files.
+     * 
+     * @param integer $index        integer used to track the order of images as they appear in the content
+     * @param Object $imgObj        EditorImage object that is representing this image element
+     * @param string $content       content of the parent element
+     * @param string $tagName       tagName associated with root element of above content
+     * @return string               new processed content
+     */
     function replaceImages($index, $imgObj, $content, $tagName)
     {
         $htmlParser = new DOMDocument();
@@ -163,6 +174,17 @@ abstract class EditorElement
         return $newcontent;
     }
 
+    /**
+     * This method is used in getFormData method of any class with content associated (eg. EditorDefinition/EditorComment..etc)
+     * and it removes the MathJax code in the $_POST object representing the content.  The MathJax code, if left in the content,
+     * interrupts the load process of DOMDocument and throws an error due to wrong syntax that it does not recognize as valid.
+     * Therefore, this method detects span tags with class name matheditor and removes all tags except for the last script tag
+     * which contains the raw mathjax code.  Then the code takes the raw mathjax code and append to new span tag with matheditor
+     * classname and replace it into content.
+     * 
+     * @param string $content           content from parent to be modified
+     * @return string                   new content
+     */
     function processMath($content)
     {
         $parser = new DOMDocument();

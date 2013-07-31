@@ -23,17 +23,17 @@
  */
 class EditorComment extends EditorElement
 {
-
-    public $type;
-    public $description;
-    public $title;
-    public $id;
-    public $compid;
-    public $errorArray = array(); // ids to indicate empty content
-    public $children = array(); //associate
-    public $subordinates = array();
-    public $medias = array();
-    public $isRef;
+    public $id;                         // database ID associated with the comment element in msm_comment table
+    public $compid;                     // database ID associated with the comment element in msm_compositor table
+    public $type;                       // type of comment chosen by the user in a dropdown menu (eg. comment/Remark...etc)
+    public $description;                // description input associated with the comment element
+                                        // --> used to search for this comment when adding this comment as a reference material
+    public $title;                      // title input associated with the comment element
+    public $errorArray = array();       // HTML IDs to indicate empty content
+    public $children = array();         // EditorAssociate objects associated with this comment element
+    public $subordinates = array();     // EditorSubordinate objects associated with this comment element
+    public $medias = array();           // EditorMedia objects associated with this comment element
+    public $isRef;                      // database ID associated with the referenced already-existing comment element in msm_compositor table
 
     // constructor for the class
     function __construct()
@@ -75,6 +75,7 @@ class EditorComment extends EditorElement
 
             $this->type = $_POST['msm_commentref_type_dropdown-' . $newId];
 
+            // if the reference material already exist in database
             if ($idInfo[1] != "ref")
             {
                 foreach ($_POST as $key => $value)
@@ -187,6 +188,9 @@ class EditorComment extends EditorElement
 
         $data = new stdClass();
 
+        // The current comment already exists in msm_comment table so just need to insert
+        // structural data to msm_compositor.  The property isRef contains the database ID from 
+        // msm_compositor of the already existing comment that is same as the referenced one.
         if (!empty($this->isRef))
         {
             $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
@@ -219,6 +223,7 @@ class EditorComment extends EditorElement
                 }
             }
         }
+        // current comment element is new and doesn't exist in msm_comment yet
         else
         {
             $data->comment_type = $this->type;
@@ -267,6 +272,9 @@ class EditorComment extends EditorElement
             $media_sibliing = $media->compid;
             $content = $this->replaceImages($key, $media->image, $data->comment_content, "div");
         }
+        
+        // if there are media elements in the comment content, need to change the src to 
+        // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {
             $this->content = $content;
@@ -285,9 +293,8 @@ class EditorComment extends EditorElement
     }
 
     /**
-     * This method is an abstract method from EditorElement that has a purpose of displaying the 
-     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
-     * displayData from the EditorAssociate class.
+     * This method has a purpose of displaying the data extracted from DB from loadData
+     * method by outputting the HTML code.  This method calls displayData from the EditorAssociate class.
      * 
      * @return HTML string
      */
@@ -363,7 +370,7 @@ class EditorComment extends EditorElement
     }
 
     /**
-     * This abstract method from EditoElement extracts appropriate information from the 
+     * This abstract method from EditorElement extracts appropriate information from the 
      * msm_comment table and also triggers extraction of data from its children using the 
      * data given by the msm_compositor table. It calls the loadData method from the EditorAssociate 
      * class.
@@ -407,12 +414,8 @@ class EditorComment extends EditorElement
                     $subordinate->loadData($child->id);
                     $this->subordinates[] = $subordinate;
                     break;
-                //add subordinate later
             }
         }
-
-        // need to process content to find all <a> and match with subordinate data..etc
-        // need to process child elements
 
         return $this;
     }
@@ -512,7 +515,6 @@ class EditorComment extends EditorElement
                 $previewHtml .= $subordinate->displayPreview();
             }
         }
-//        $previewHtml .= "<br />";
         $previewHtml .= "</div>";
 
         $previewHtml .= "<br />";

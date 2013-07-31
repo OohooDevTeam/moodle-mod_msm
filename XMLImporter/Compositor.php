@@ -207,7 +207,6 @@ class Compositor
         $unit->loadFromDb($unitId, $compId);
         $this->unit = $unit;
 
-
         $content .= "<div class='unit'>";
         $content .= $this->unit->displayhtml();
 

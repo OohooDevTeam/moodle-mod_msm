@@ -16,7 +16,7 @@
 
 /**
  * EditorBlock class is inherited from the abstract class EditorElement and contains 
- * four abstract methods (getFormData, insertData, loadData and displayData).  This class
+ * abstract methods (getFormData, insertData, and loadData).  This class
  * represents all the content block of unit composition(ie. body of the unit/intro). It is
  * a parent class for all content related classes such as EditorPara/EditorInContent and EditorTable.
  *
@@ -24,13 +24,14 @@
 class EditorBlock extends EditorElement
 {
 
-    public $title;
-    public $id;
-    public $compid;
-    public $errorArray = array(); // contains the id of the component with an empty/null content
-    public $content = array();
-    public $type; // indicates the parent of the block --> used to do separate display process 
+    public $title;                      // title input associated with this block element
+    public $id;                         // database ID of this block element in msm_block table
+    public $compid;                     // database ID of this block element in msm_compositor table
+    public $errorArray = array();       // contains the id of the component with an empty/null content
+    public $content = array();          // content elements associated with this block (eg. EditorPara, EditorInContent...etc)
+    public $type;                       // indicates the parent of the block(from EditorIntro object/EditorUnit object)
 
+    // and is used to do separate display process 
     // constructor for the class
 
     function __construct()
@@ -179,6 +180,18 @@ class EditorBlock extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is to process blocks that are part of the exra content elements.
+     * (eg. prefaces/acknowledgement...etc that are represented by EditorExtraInfo);
+     * It looks for specific keys of the POST object to 
+     * obtain the appropriate information to be inserted to the database tables.
+     * This method calls the processContent method from the EditorElement to call
+     * getFormData methods for all the other content related classes.
+     * (ie. EditorPara/EditorInContent and EditorTable)
+     * 
+     * @param string $formKey               A key of the POST object
+     * @return \EditorBlock
+     */
     function processExtraContent($formKey)
     {
         $idInfo = explode("-", $formKey);
@@ -245,9 +258,9 @@ class EditorBlock extends EditorElement
     }
 
     /**
-     * This method is an abstract method from EditorElement that has a purpose of displaying the 
-     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
-     * displayData from the EdtiorPara/EditorInContent/EditorTable class.
+     * This has a purpose of displaying the data extracted from DB from loadData method
+     * by outputting the HTML code.  This method calls displayData from the 
+     * EdtiorPara/EditorInContent/EditorTable class.
      * 
      * @return HTML string
      */
@@ -255,6 +268,8 @@ class EditorBlock extends EditorElement
     {
         $htmlContent = '';
 
+        // this method was called by EditorIntro and needs to have different HTML IDs and class names to
+        // identify it when editting the form...etc
         if ($this->type == 'msm_intro')
         {
             $htmlContent .= "<div id='msm_intro_child_div-$this->compid' class='msm_intro_child'>";
@@ -290,6 +305,8 @@ class EditorBlock extends EditorElement
 
             $htmlContent .= "</div>";
         }
+        // this method was called by EditorUnit and needs to have different HTML IDs and class names to
+        // identify it when editting the form...etc
         else if ($this->type == 'msm_unit')
         {
             $htmlContent .= "<div id='copied_msm_body-$this->compid' class='copied_msm_structural_element' style='padding-top: 2%;'>";
@@ -337,19 +354,21 @@ class EditorBlock extends EditorElement
             $htmlContent .= "</div>";
         }
 
+        // the method to display block elements associated with extra content elements (ie. elements represented by EditorExtraInfo objects)
+        // is in EditorExtraInfo class
 
         return $htmlContent;
     }
 
     /**
-     * This abstract method from EditoElement extracts appropriate information from the 
+     * This abstract method from EditorElement extracts appropriate information from the 
      * msm_block table and also triggers extraction of data from its children using the 
      * data given by the msm_compositor table. It calls the loadData method from the 
      * EditorPara/EditorInContent/EditorTable class.
      * 
      * @global moodle_database $DB
      * @param integer $compid           The database ID from the msm_compositor table
-     * @return \EditorAssociate
+     * @return \EditorBlock
      */
     public function loadData($compid)
     {

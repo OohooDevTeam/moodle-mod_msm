@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -31,6 +32,7 @@ class ExportSubordinate extends ExportElement
     public $hot;                    // word(s) that is wrapped in <hot> XML tag to trigger a popup content in ExportInfo
     public $info;                   // ExportInfo object associated with the current subordinate element
     public $external_link;          // ExportExternalLink object associated with the current subordinate element
+    public $ref;                    // ExportReference object associated with the current subordinate element
 
     /**
      * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
@@ -42,6 +44,7 @@ class ExportSubordinate extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $subordinateCreator = new DOMDocument();
@@ -56,17 +59,24 @@ class ExportSubordinate extends ExportElement
         $hotNode->appendChild($hotText);
         $subordinateNode->appendChild($hotNode);
 
+        if (!empty($this->ref))
+        {
+            $refNode = $this->ref->exportData();
+            $importRefNode = $subordinateCreator->importNode($refNode, true);
+            $subordinateNode->appendChild($importRefNode);
+        }
+
+        if (!empty($this->external_link))
+        {
+            $extLinkNode = $this->external_link->exportData();
+            $importExtLinkNode = $subordinateCreator->importNode($extLinkNode, true);
+            $subordinateNode->appendChild($importExtLinkNode);
+        }
         if (!empty($this->info))
         {
             $infoNode = $this->info->exportData();
             $importInfoNode = $subordinateCreator->importNode($infoNode, true);
             $subordinateNode->appendChild($importInfoNode);
-        }
-        if(!empty($this->external_link))
-        {
-            $extLinkNode = $this->external_link->exportData();
-            $importExtLinkNode = $subordinateCreator->importNode($extLinkNode, true);
-            $subordinateNode->appendChild($importExtLinkNode);
         }
 
         return $subordinateNode;
@@ -92,23 +102,31 @@ class ExportSubordinate extends ExportElement
         $this->compid = $compid;
         $this->hot = $subordinateUnitRecord->hot;
 
-        $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
-        $childTable = $DB->get_record("msm_table_collection", array("id"=>$childRecord->table_id));
-        
-        if($childTable->tablename == "msm_info")
-        {
-            $info = new ExportInfo();
-            $info->loadDbData($childRecord->id);
-            $this->info = $info;
-        }
-        else if($childTable->tablename == "msm_external_link")
-        {
-            $externalLink = new ExportExternalLink();
-            $externalLink->loadDbData($childRecord->id);
-            $this->external_link = $externalLink;
-        }
+        $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid));
 
+        foreach ($childRecords as $child)
+        {
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
+            if ($childTable->tablename == "msm_info")
+            {
+                $info = new ExportInfo();
+                $info->loadDbData($child->id);
+                $this->info = $info;
+            }
+            else if ($childTable->tablename == "msm_external_link")
+            {
+                $externalLink = new ExportExternalLink();
+                $externalLink->loadDbData($child->id);
+                $this->external_link = $externalLink;
+            }
+            else
+            {
+                $reference = new ExportReference();
+                $reference->loadDbData($child->id);
+                $this->ref = $reference;
+            }
+        }
         return $this;
     }
 

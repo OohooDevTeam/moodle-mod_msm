@@ -357,36 +357,42 @@ class Subordinate extends Element
 
             switch ($childtablename)
             {
-                case('msm_info'):
+                case 'msm_info':
                     $info = new MathInfo();
                     $info->loadFromDb($child->unit_id, $child->id);
                     $this->infos[] = $info;
                     break;
-                case('msm_external_link'):
+                case 'msm_external_link':
                     $externallink = new ExternalLink();
                     $externallink->loadFromDb($child->unit_id, $child->id);
                     $this->external_links[] = $externallink;
                     break;
 
-                case('msm_theorem'):
+                case 'msm_theorem':
                     $theorem = new Theorem();
                     $theorem->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $theorem;
                     break;
 //
-                case('msm_def'):
+                case 'msm_def':
                     $def = new Definition();
                     $def->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $def;
                     break;
+                
+                case 'msm_comment':
+                    $comment = new MathComment();
+                    $comment->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $comment;
+                    break;
 
-                case('msm_unit'):
+                case 'msm_unit':
                     $unit = new Unit();
                     $unit->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $unit;
                     break;
 
-                case('msm_packs'):
+                case 'msm_packs':
                     $pack = new Pack();
                     $pack->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $pack;

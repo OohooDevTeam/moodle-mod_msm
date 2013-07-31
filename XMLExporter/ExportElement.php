@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -54,7 +55,7 @@ abstract class ExportElement
 
         $DomDocument->formatOutput = true;
         $DomDocument->preserveWhiteSpace = false;
-       
+
         $content = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $content); // need the self closing tag to prevent mismatching tag error from loadXML
         $content = str_replace("<br>", "<br/>", $content); // need the self closing tag to prevent mismatching tag error from loadXML
         $content = str_replace("<em>", "<emphasis>", $content);
@@ -418,7 +419,9 @@ abstract class ExportElement
         {
             if (!empty($obj->caption))
             {
-                $filename = $CompDir . $obj->caption . "-$elementType" . $obj->compid . ".xml";
+                $captionTrim = preg_replace("/\s+/", '', $obj->caption);
+                $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
+                $filename = $CompDir . $captionmod . "-$elementType" . $obj->compid . ".xml";
             }
             else if (!empty($obj->type))
             {
@@ -432,7 +435,9 @@ abstract class ExportElement
             {
                 if (!empty($obj->caption))
                 {
-                    $filename = $CompDir . $obj->caption . "-$elementType" . $obj->compid . ".xml";
+                    $captionTrim = preg_replace("/\s+/", '', $obj->caption);
+                    $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
+                    $filename = $CompDir . $captionmod . "-$elementType" . $obj->compid . ".xml";
                 }
                 else if (!empty($obj->type))
                 {

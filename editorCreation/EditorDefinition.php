@@ -24,20 +24,20 @@
 class EditorDefinition extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $type;
-    public $title;
-    public $content;
-    public $tablename;
-    public $description;
-    public $errorArray = array(); // has ids of empty contents
-    public $children = array(); //associate
-    public $subordinates = array();
-    public $medias = array();
-    public $isRef;
+    public $id;                         // database ID associated with the definition element in msm_def table
+    public $compid;                     // database ID associated with the definition element in msm_compositor table
+    public $type;                       // type of definition chosen by the user in a dropdown menu (eg. Definition/Notation...etc)
+    public $title;                      // title input associated with the definition element
+    public $content;                    // content input associatd with the definition element
+    public $description;                // description input associated with the definition element
+    public $errorArray = array();       // HTML IDs of empty contents --> used to put colored border around the input/textarea to warn user of empty content
+    public $children = array();         // EditorAssociate objects associated with this definition elmeent
+    public $subordinates = array();     // EditorSubordinate objects associated with the content of this definition element
+    public $medias = array();           // EditorMedia objects associated with the content of this definition element
+    public $isRef;                      // database ID associated with the referenced already-existing definition element in msm_compositor table
 
     // constructor for the class
+
     public function __construct()
     {
         $this->tablename = 'msm_def';
@@ -76,6 +76,7 @@ class EditorDefinition extends EditorElement
             }
             $this->type = $_POST['msm_defref_type_dropdown-' . $newId];
 
+            // if the reference material already exist in database
             if ($idInfo[1] != "ref")
             {
                 foreach ($_POST as $key => $value)
@@ -185,6 +186,9 @@ class EditorDefinition extends EditorElement
 
         $data = new stdClass();
 
+        // The current definition already exists in msm_def table so just need to insert
+        // structural data to msm_compositor.  The property isRef contains the database ID from 
+        // msm_compositor of the already existing definition that is same as the referenced one.
         if (!empty($this->isRef))
         {
             $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
@@ -193,7 +197,7 @@ class EditorDefinition extends EditorElement
             {
                 $this->id = $existingTheorem->unit_id;
             }
-            
+
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
             foreach ($childRecords as $child)
@@ -217,6 +221,7 @@ class EditorDefinition extends EditorElement
                 }
             }
         }
+        // current definition element is new and doesn't exist in msm_def yet
         else
         {
             $data->def_type = $this->type;
@@ -239,7 +244,6 @@ class EditorDefinition extends EditorElement
 
             $this->id = $DB->insert_record($this->tablename, $data);
         }
-
 
         $compData = new stdClass();
         $compData->msm_id = $msmid;
@@ -267,6 +271,8 @@ class EditorDefinition extends EditorElement
             $content = $this->replaceImages($key, $media->image, $data->def_content, "div");
         }
 
+        // if there are media elements in the def content, need to change the src to 
+        // pluginfile.php format to serve the pictures.
         if (!empty($this->medias))
         {
             $this->content = $content;
@@ -285,9 +291,8 @@ class EditorDefinition extends EditorElement
     }
 
     /**
-     * This method is an abstract method from EditorElement that has a purpose of displaying the 
-     * data extracted from DB from loadData method by outputting the HTML code.  This method calls 
-     * displayData from the EditorAssociate class.
+     * This method has a purpose of displaying the data extracted from DB from loadData
+     * method by outputting the HTML code.  This method calls displayData from the EditorAssociate class.
      * 
      * @return HTML string
      */
@@ -389,7 +394,6 @@ class EditorDefinition extends EditorElement
         {
             $htmlContent .= $associate->displayData();
         }
-//        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"def\")' disabled='disabled'/>";
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
         $htmlContent .= "</div>";
 
@@ -400,7 +404,7 @@ class EditorDefinition extends EditorElement
     }
 
     /**
-     * This abstract method from EditoElement extracts appropriate information from the 
+     * This abstract method from EditorElement extracts appropriate information from the 
      * msm_def table and also triggers extraction of data from its children using the 
      * data given by the msm_compositor table. It calls the loadData method from the EditorAssociate 
      * class.
@@ -453,14 +457,11 @@ class EditorDefinition extends EditorElement
      * This method is called by the EditorInfo class to display the definition as a reference material.
      * The information is hidden until the user triggers the display by clicking on the associate mini buttons.
      * 
-     * @global moodle_database $DB
      * @param string $parentId          End of HTML ID that made the parent(ie. associate) HTML element unique
      * @return HTML string
      */
     function displayRefData($parentId)
     {
-        global $DB;
-
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";
@@ -527,7 +528,6 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<input id='msm_defref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
 
         $htmlContent .= "<div id='msm_defref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
-//        $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= $this->content;
         $htmlContent .= "</div>";
 
@@ -564,8 +564,6 @@ class EditorDefinition extends EditorElement
      */
     public function displayPreview($id = '')
     {
-        global $DB;
-
         $previewHtml = '';
 
         $previewHtml .= "<br />";
@@ -583,13 +581,7 @@ class EditorDefinition extends EditorElement
 
 
         $previewHtml .= "<div class='mathcontent'>";
-
         $previewHtml .= html_entity_decode($this->content);
-
-
-//        print_object($this->content);
-//        $previewHtml .= $this->previewSubordinate("<div>$this->content</div>", $this->subordinates);
-//        $previewHtml .= "<br />";
         $previewHtml .= "</div>";
 
         $previewHtml .= "<br />";
