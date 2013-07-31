@@ -158,7 +158,7 @@ class EditorPartTheorem extends EditorElement
                         $this->subordinates[] = $subord;
                         break;
                     case "msm_media":
-                        $med = new EditorSubordinate();
+                        $med = new EditorMedia();
                         $med->id = $child->unit_id;
                         $med->isRef = $child->id;
                         $this->medias[] = $med;

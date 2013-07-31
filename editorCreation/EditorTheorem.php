@@ -198,16 +198,19 @@ class EditorTheorem extends EditorElement
         {
             $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
 
-            $this->id = $existingTheorem->unit_id;
+            if (!empty($existingTheorem))
+            {
+                $this->id = $existingTheorem->unit_id;
+            }
 
             $statementTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_statement_theorem"));
-            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $existingTheorem->id, "table_id" => $statementTable->id), "prev_sibling_id");
+            $statementTheorems = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef, "table_id" => $statementTable->id), "prev_sibling_id");
 
             foreach ($statementTheorems as $statement)
             {
                 $statementThr = new EditorStatementTheorem();
                 $statementThr->id = $statement->unit_id;
-                $statementThr->isRef = $statement->id;              
+                $statementThr->isRef = $statement->id;
                 $this->contents[] = $statementThr;
             }
         }

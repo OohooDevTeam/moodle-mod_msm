@@ -52,7 +52,7 @@ class EditorComment extends EditorElement
     public function getFormData($idNumber)
     {
         $idInfo = explode("|", $idNumber);
-        
+
         // the idNumber param contains "|ref" ending meaning that this comment is a reference material
         if (sizeof($idInfo) > 1)
         {
@@ -189,8 +189,12 @@ class EditorComment extends EditorElement
 
         if (!empty($this->isRef))
         {
-            $existingComment = $DB->get_record("msm_compositor", array("id" => $this->isRef));
-            $this->id = $existingComment->unit_id;
+            $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
+
+            if (!empty($existingTheorem))
+            {
+                $this->id = $existingTheorem->unit_id;
+            }
             
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
@@ -207,7 +211,7 @@ class EditorComment extends EditorElement
                         $this->subordinates[] = $subord;
                         break;
                     case "msm_media":
-                        $med = new EditorSubordinate();
+                        $med = new EditorMedia();
                         $med->id = $child->unit_id;
                         $med->isRef = $child->id;
                         $this->medias[] = $med;
@@ -417,14 +421,11 @@ class EditorComment extends EditorElement
      * This method is called by the EditorInfo class to display the comment as a reference material.
      * The information is hidden until the user triggers the display by clicking on the associate mini buttons.
      * 
-     * @global moodle_database $DB
      * @param string $parentId          End of HTML ID that made the parent(ie. associate) HTML element unique
      * @return HTML string
      */
     function displayRefData($parentId)
     {
-        global $DB;
-
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_commentref-$parentId-$this->compid' class='copied_msm_structural_element'>";

@@ -162,31 +162,33 @@ class EditorInfo extends EditorElement
                                     {
                                         $this->subordinates[] = $subordinates;
                                     }
-                                    break;
                                 }
-                                else if ($idValuePair[0] == "msm_subordinate_ref-" . $newsubid)
-                                {
-                                    $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
-                                    $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
+                            }
+                            else if ($idValuePair[0] == "msm_subordinate_ref-" . $newsubid)
+                            {
+                                $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
+                                $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
 
-                                    switch ($tableRecord->tablename)
-                                    {
-                                        case "Definition":
-                                            $def = new EditorDefinition();
-                                            $def->isRef = $record->id;
-                                            $this->ref = $def;
-                                            break;
-                                        case "Theorem":
-                                            $theorem = new EditorTheorem();
-                                            $theorem->isRef = $record->id;
-                                            $this->ref = $theorem;
-                                            break;
-                                        case "Comment":
-                                            $comment = new EditorComment();
-                                            $comment->isRef = $record->id;
-                                            $this->ref = $comment;
-                                            break;
-                                    }
+                                switch ($tableRecord->tablename)
+                                {
+                                    case "msm_def":
+                                        $def = new EditorDefinition();
+                                        $def->isRef = $record->id;
+                                        $def->id = $record->unit_id;
+                                        $this->ref = $def;
+                                        break;
+                                    case "msm_theorem":
+                                        $theorem = new EditorTheorem();
+                                        $theorem->isRef = $record->id;
+                                        $theorem->id = $record->unit_id;
+                                        $this->ref = $theorem;
+                                        break;
+                                    case "msm_comment":
+                                        $comment = new EditorComment();
+                                        $comment->isRef = $record->id;
+                                        $comment->id = $record->unit_id;
+                                        $this->ref = $comment;
+                                        break;
                                 }
                             }
                         }
@@ -375,7 +377,7 @@ class EditorInfo extends EditorElement
                         $this->subordinates[] = $subord;
                         break;
                     case "msm_media":
-                        $med = new EditorSubordinate();
+                        $med = new EditorMedia();
                         $med->id = $child->unit_id;
                         $med->isRef = $child->id;
                         $this->medias[] = $med;
@@ -550,8 +552,8 @@ class EditorInfo extends EditorElement
             $htmlContent .= "<div id='msm_subordinate_infoContent-$idEnding'>";
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
-            
-            if(empty($this->ref))
+
+            if (empty($this->ref))
             {
                 $htmlContent .= "<div id='msm_subordinate_ref-$idEnding'>";
                 $htmlContent .= "</div>";

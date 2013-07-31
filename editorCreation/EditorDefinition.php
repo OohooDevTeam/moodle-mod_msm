@@ -187,9 +187,13 @@ class EditorDefinition extends EditorElement
 
         if (!empty($this->isRef))
         {
-            $existingDef = $DB->get_record("msm_compositor", array("id" => $this->isRef));
-            $this->id = $existingDef->unit_id;
+            $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
 
+            if (!empty($existingTheorem))
+            {
+                $this->id = $existingTheorem->unit_id;
+            }
+            
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
             foreach ($childRecords as $child)
@@ -205,7 +209,7 @@ class EditorDefinition extends EditorElement
                         $this->subordinates[] = $subord;
                         break;
                     case "msm_media":
-                        $med = new EditorSubordinate();
+                        $med = new EditorMedia();
                         $med->id = $child->unit_id;
                         $med->isRef = $child->id;
                         $this->medias[] = $med;
