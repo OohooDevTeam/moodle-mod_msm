@@ -23,14 +23,14 @@
 class EditorInContent extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $errorArray = array();
-    public $additional_attribute;
-    public $type;
-    public $content;
-    public $subordinates = array();
-    public $medias = array();
+    public $id;                         // database ID associated with the incontent elements in msm_content table
+    public $compid;                     // database ID associated with the incontent elements in msm_compositor table
+    public $errorArray = array();       // HTML IDs of any content textareas that were submitted with empty values
+    public $additional_attribute;       // has styling attributes for bullet point types/numbering types
+    public $type;                       // to determine if the element is ordered/unordered list
+    public $content;                    // content elements associated with the incontent elements
+    public $subordinates = array();     // EditorSubordinate objects associated with the content of this incontent element
+    public $medias = array();           // EditorMedia objects associated with the content of this incontent element
 
     /**
      * constructor for the class
@@ -45,7 +45,7 @@ class EditorInContent extends EditorElement
      * from the POST object(from editor form submission).  It calls the same method from another class(EditorSubordinate) to process its
      * children's data.
      * 
-     * @param DOMElement $idNumber corresponds to ol/ul child from content
+     * @param DOMElement $idNumber              corresponds to ol/ul child from content
      * @return \EditorInContent
      */
     public function getFormData($idNumber)

@@ -1023,6 +1023,7 @@ abstract class Element
         $XMLcontent = preg_replace("/<br>/", "<br />", $XMLcontent);
         $XMLcontent = preg_replace("/(?s)(<img(\"[^\"]*\"|'[^']*'|[^'\">\/])*)(>)/", "$1/>", $XMLcontent);
         $XMLcontent = preg_replace("/<\/img>/", '', $XMLcontent);
+        
         @$doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
@@ -1233,6 +1234,8 @@ abstract class Element
                 $XMLcontent = $doc->saveXML();
             }
 
+            echo "image length";
+            print_object($imgs->length);
             foreach ($imgs as $key => $img)
             {
                 if (!empty($object->medias[$key]))
@@ -1254,8 +1257,11 @@ abstract class Element
                                 // there can be only one xml declaration for the loadXML to work
                                 // so if there are other xml declarations were added, remove them
                                 $newtag = str_replace('<?xml version="1.0">', '', $newtag);
-
                                 $newElementdoc->loadXML($newtag);
+                                echo "printing";
+                                print_object($doc->saveXML($doc->importNode($newElementdoc->documentElement, true)));
+                                print_object($doc->saveXML($doc->importNode($img, true)));
+//                                print_object($doc->saveXML($doc->importNode($img->parentNode, true)));
                                 $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
                                 $XMLcontent = $doc->saveXML();
                             }

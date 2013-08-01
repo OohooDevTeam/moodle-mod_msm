@@ -22,13 +22,12 @@
 class EditorIntro extends EditorElement
 {
 
-    public $position;
-    public $id;
-    public $compid;
-    public $title;
-    public $errorArray = array();
-    public $blocks = array();
+    public $id;                     // database ID associated with the intro element in msm_intro table
+    public $compid;                 // database ID associated with the intro element in msm_compositor table
+    public $title;                  // title input associated with the intro element
+    public $blocks = array();       // EditorBlock elements associated with the intro element
 
+    // constrcutor for this class
     function __construct()
     {
         $this->tablename = "msm_intro";

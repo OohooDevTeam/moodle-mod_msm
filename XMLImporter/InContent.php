@@ -29,6 +29,7 @@ class InContent extends Element
     public $compid;                         // database ID associated with current incontent element in msm_compositor
     public $position;                       // integer that keeps track of order of elements
     public $content;                        // content of the incontent elements
+    public $additional_attribute;           // has styling attributes for bullet point types/numbering types
     public $subordinates = array();         // Subordinate objects associated with the current incontent element
     public $matharrays = array();           // MathArray objects associated with the current incontent element
     public $tables = array();               // Table objects associated with the current incontent element

@@ -21,8 +21,7 @@
  * element.
  *
  */
-class EditorDefinition extends EditorElement
-{
+class EditorDefinition extends EditorElement {
 
     public $id;                         // database ID associated with the definition element in msm_def table
     public $compid;                     // database ID associated with the definition element in msm_compositor table
@@ -38,8 +37,7 @@ class EditorDefinition extends EditorElement
 
     // constructor for the class
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->tablename = 'msm_def';
     }
 
@@ -51,23 +49,18 @@ class EditorDefinition extends EditorElement
      * @param string $idNumber          contains parent_HTML_id ending number and if it is a reference material, it ends with "|ref"
      * @return \EditorDefinition
      */
-    function getFormData($idNumber)
-    {
+    function getFormData($idNumber) {
         $idInfo = explode("|", $idNumber);
 
         // processing definitions as reference material
-        if (sizeof($idInfo) > 1)
-        {
+        if (sizeof($idInfo) > 1) {
             $match = "/^msm_defref_content_input-$idInfo[0].*$/";
 
             $newId = '';
-            foreach ($_POST as $id => $value)
-            {
-                if (preg_match($match, $id))
-                {
+            foreach ($_POST as $id => $value) {
+                if (preg_match($match, $id)) {
                     $tempidInfo = explode("-", $id);
-                    for ($i = 1; $i < sizeof($tempidInfo) - 1; $i++)
-                    {
+                    for ($i = 1; $i < sizeof($tempidInfo) - 1; $i++) {
                         $newId .= $tempidInfo[$i] . "-";
                     }
                     $newId .= $tempidInfo[sizeof($tempidInfo) - 1];
@@ -77,75 +70,59 @@ class EditorDefinition extends EditorElement
             $this->type = $_POST['msm_defref_type_dropdown-' . $newId];
 
             // if the reference material already exist in database
-            if ($idInfo[1] != "ref")
-            {
-                foreach ($_POST as $key => $value)
-                {
+            if ($idInfo[1] != "ref") {
+                foreach ($_POST as $key => $value) {
                     $pattern = "msm_defref_description_input-$newId";
-                    if (strpos($key, $pattern) !== false)
-                    {
+                    if (strpos($key, $pattern) !== false) {
                         $this->description = $value;
                         $newkey = explode("__", $key);
                         $this->isRef = $newkey[1];
                         break;
                     }
                 }
-            }
-            else
-            {
+            } else {
                 $this->description = $_POST['msm_defref_description_input-' . $newId];
             }
             $this->title = $_POST['msm_defref_title_input-' . $newId];
 
-            if ($_POST['msm_defref_content_input-' . $newId] != '')
-            {
+            if ($_POST['msm_defref_content_input-' . $newId] != '') {
                 $content = $_POST['msm_defref_content_input-' . $newId];
 
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processImage($this->content) as $key => $media)
-                {
+                foreach ($this->processImage($this->content) as $key => $media) {
                     $this->medias[] = $media;
                 }
 
                 // grab all anchored elements in content --> it is only from subordinate
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
                     $this->subordinates[] = $subordinates;
                 }
-            }
-            else
-            {
+            } else {
                 $this->errorArray[] = 'msm_defref_content_input-' . $newId . '_ifr';
             }
         }
         // processing definition as main part of unit
-        else if (sizeof($idInfo) == 1)
-        {
+        else if (sizeof($idInfo) == 1) {
             $this->type = $_POST['msm_def_type_dropdown-' . $idNumber];
             $this->description = $_POST['msm_def_description_input-' . $idNumber];
             $this->title = $_POST['msm_def_title_input-' . $idNumber];
 
 
-            if ($_POST['msm_def_content_input-' . $idNumber] != '')
-            {
+            if ($_POST['msm_def_content_input-' . $idNumber] != '') {
                 $content = $_POST['msm_def_content_input-' . $idNumber];
 
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processImage($this->content) as $key => $media)
-                {
+                foreach ($this->processImage($this->content) as $key => $media) {
                     $this->medias[] = $media;
                 }
 
                 // grab all anchored elements in content --> it is only from subordinate
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
                     $this->subordinates[] = $subordinates;
                 }
-            }
-            else
-            {
+            } else {
                 $this->errorArray[] = 'msm_def_content_input-' . $idNumber . '_ifr';
             }
 
@@ -153,10 +130,8 @@ class EditorDefinition extends EditorElement
 
             $i = 0;
 
-            foreach ($_POST as $id => $value)
-            {
-                if (preg_match($match, $id))
-                {
+            foreach ($_POST as $id => $value) {
+                if (preg_match($match, $id)) {
                     $idInfo = explode("-", $id);
                     $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                     $associate = new EditorAssociate();
@@ -180,8 +155,7 @@ class EditorDefinition extends EditorElement
      * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
      * @param integer $msmid            The instance ID of the MSM module.
      */
-    function insertData($parentid, $siblingid, $msmid)
-    {
+    function insertData($parentid, $siblingid, $msmid) {
         global $DB;
 
         $data = new stdClass();
@@ -189,23 +163,19 @@ class EditorDefinition extends EditorElement
         // The current definition already exists in msm_def table so just need to insert
         // structural data to msm_compositor.  The property isRef contains the database ID from 
         // msm_compositor of the already existing definition that is same as the referenced one.
-        if (!empty($this->isRef))
-        {
-            $existingTheorem = $DB->get_record("msm_compositor", array("id" => $this->isRef));
+        if (!empty($this->isRef)) {
+            $existingDef = $DB->get_record("msm_compositor", array("id" => $this->isRef));
 
-            if (!empty($existingTheorem))
-            {
-                $this->id = $existingTheorem->unit_id;
+            if (!empty($existingDef)) {
+                $this->id = $existingDef->unit_id;
             }
 
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
-            foreach ($childRecords as $child)
-            {
+            foreach ($childRecords as $child) {
                 $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-                switch ($childTable->tablename)
-                {
+                switch ($childTable->tablename) {
                     case "msm_subordinate":
                         $subord = new EditorSubordinate();
                         $subord->id = $child->unit_id;
@@ -222,8 +192,7 @@ class EditorDefinition extends EditorElement
             }
         }
         // current definition element is new and doesn't exist in msm_def yet
-        else
-        {
+        else {
             $data->def_type = $this->type;
             $data->caption = $this->title;
 
@@ -231,12 +200,9 @@ class EditorDefinition extends EditorElement
             $pParser->loadHTML($this->content);
             $divs = $pParser->getElementsByTagName("div");
 
-            if ($divs->length > 0)
-            {
+            if ($divs->length > 0) {
                 $data->def_content = $this->content;
-            }
-            else
-            {
+            } else {
                 $data->def_content = "<div>$this->content</div>";
             }
 
@@ -256,35 +222,36 @@ class EditorDefinition extends EditorElement
 
         $sibling_id = 0;
 
-        foreach ($this->children as $associate)
-        {
+        foreach ($this->children as $associate) {
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;
         }
 
         $media_sibliing = 0;
         $content = '';
-        foreach ($this->medias as $key => $media)
-        {
+        foreach ($this->medias as $key => $media) {
             $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
-            $content = $this->replaceImages($key, $media->image, $data->def_content, "div");
+            if (empty($this->isRef)) {
+                $content = $this->replaceImages($key, $media->image, $data->def_content, "div");
+            }
         }
 
-        // if there are media elements in the def content, need to change the src to 
-        // pluginfile.php format to serve the pictures.
-        if (!empty($this->medias))
-        {
-            $this->content = $content;
+        if (empty($this->isRef)) {
+            // if there are media elements in the def content, need to change the src to 
+            // pluginfile.php format to serve the pictures.
+            if (!empty($this->medias)) {
+                $this->content = $content;
 
-            $data->id = $this->id;
-            $data->def_content = $this->content;
-            $this->id = $DB->update_record($this->tablename, $data);
+                $data->id = $this->id;
+                $data->def_content = $this->content;
+                $this->id = $DB->update_record($this->tablename, $data);
+            }
         }
+
 
         $subordinate_sibling = 0;
-        foreach ($this->subordinates as $subordinate)
-        {
+        foreach ($this->subordinates as $subordinate) {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
@@ -296,8 +263,7 @@ class EditorDefinition extends EditorElement
      * 
      * @return HTML string
      */
-    public function displayData()
-    {
+    public function displayData() {
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_def-$this->compid' class='copied_msm_structural_element'>";
@@ -311,8 +277,7 @@ class EditorDefinition extends EditorElement
 
         $htmlContent .= "<select id='msm_def_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_def_type_dropdown-$this->compid' disabled='disabled'>";
 
-        switch ($this->type)
-        {
+        switch ($this->type) {
             case "Definition":
                 $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
                 $htmlContent .= "<option value='Notation'>Notation</option>";
@@ -378,8 +343,7 @@ class EditorDefinition extends EditorElement
 
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-defcontent$this->compid'>";
 
-        foreach ($this->subordinates as $subordinate)
-        {
+        foreach ($this->subordinates as $subordinate) {
             $htmlContent .= $subordinate->displayData($this->compid);
         }
 
@@ -390,8 +354,7 @@ class EditorDefinition extends EditorElement
         $htmlContent .= "<input id='msm_def_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_def_description_input-$this->compid'/>";
 
         $htmlContent .= "<div id='msm_associate_container-$this->compid' class='msm_associate_containers'>";
-        foreach ($this->children as $associate)
-        {
+        foreach ($this->children as $associate) {
             $htmlContent .= $associate->displayData();
         }
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
@@ -413,8 +376,7 @@ class EditorDefinition extends EditorElement
      * @param integer $compid           The database ID from the msm_compositor table
      * @return \EditorDefinition
      */
-    public function loadData($compid)
-    {
+    public function loadData($compid) {
         global $DB;
 
         $defCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
@@ -431,12 +393,10 @@ class EditorDefinition extends EditorElement
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-        foreach ($childRecords as $child)
-        {
+        foreach ($childRecords as $child) {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
-            switch ($childTable->tablename)
-            {
+            switch ($childTable->tablename) {
                 case "msm_associate":
                     $associate = new EditorAssociate();
                     $associate->loadData($child->id);
@@ -460,16 +420,14 @@ class EditorDefinition extends EditorElement
      * @param string $parentId          End of HTML ID that made the parent(ie. associate) HTML element unique
      * @return HTML string
      */
-    function displayRefData($parentId)
-    {
+    function displayRefData($parentId) {
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";
 
         $htmlContent .= "<select id='msm_defref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_defref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
-        switch ($this->type)
-        {
+        switch ($this->type) {
             case "Definition":
                 $htmlContent .= "<option value='Definition' selected='selected'>Definition</option>";
                 $htmlContent .= "<option value='Notation'>Notation</option>";
@@ -536,8 +494,7 @@ class EditorDefinition extends EditorElement
 
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-defrefcontent$parentId-$this->compid'>";
 
-        foreach ($this->subordinates as $subordinate)
-        {
+        foreach ($this->subordinates as $subordinate) {
             $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
         }
 
@@ -562,19 +519,16 @@ class EditorDefinition extends EditorElement
      * @param string $id        String to be added to HTML ID of this definition and its components to make them unique
      * @return HTML string
      */
-    public function displayPreview($id = '')
-    {
+    public function displayPreview($id = '') {
         $previewHtml = '';
 
         $previewHtml .= "<br />";
         $previewHtml .= "<div class='def'>";
-        if (!empty($this->title))
-        {
+        if (!empty($this->title)) {
             $previewHtml .= "<span class='deftitle'>" . $this->title . "</span>";
         }
 
-        if (!empty($this->type))
-        {
+        if (!empty($this->type)) {
             $previewHtml .= "<span class='deftype'>" . $this->type . "</span>";
         }
         $previewHtml .= "<br/>";
@@ -586,20 +540,16 @@ class EditorDefinition extends EditorElement
 
         $previewHtml .= "<br />";
 
-        if (!empty($this->children))
-        {
+        if (!empty($this->children)) {
             $previewHtml .= "<ul class='defminibuttons'>";
-            foreach ($this->children as $key => $associate)
-            {
+            foreach ($this->children as $key => $associate) {
                 $previewHtml .= $associate->displayPreview("def", $id . "-" . $key);
             }
             $previewHtml .= "</ul>";
         }
 
-        if (!empty($this->subordinates))
-        {
-            foreach ($this->subordinates as $subordinate)
-            {
+        if (!empty($this->subordinates)) {
+            foreach ($this->subordinates as $subordinate) {
                 $previewHtml .= $subordinate->displayPreview();
             }
         }

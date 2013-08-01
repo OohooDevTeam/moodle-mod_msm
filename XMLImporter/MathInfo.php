@@ -25,8 +25,7 @@
  *
  * @author Ga Young Kim
  */
-class MathInfo extends Element
-{
+class MathInfo extends Element {
 
     public $id;                             // Database ID associated with this info element in msm_info table
     public $compid;                         // Database ID associated with this info element in msm_compositor table
@@ -46,8 +45,7 @@ class MathInfo extends Element
      * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
 
-    function __construct($xmlpath = '')
-    {
+    function __construct($xmlpath = '') {
         parent::__construct($xmlpath);
         $this->tablename = 'msm_info';
     }
@@ -61,55 +59,44 @@ class MathInfo extends Element
      * @param int $position                 integer that keeps track of order if elements
      * @return \MathInfo
      */
-    public function loadFromXml($DomElement, $position = '')
-    {
+    public function loadFromXml($DomElement, $position = '') {
         $this->position = $position;
 
         //for now to just show text in title
         //@TODO need to have methods implemented to process math
-        foreach ($DomElement->childNodes as $child)
-        {
-            if ($child->nodeType == XML_ELEMENT_NODE)
-            {
-                if ($child->tagName == "info.caption")
-                {
+        foreach ($DomElement->childNodes as $child) {
+            if ($child->nodeType == XML_ELEMENT_NODE) {
+                if ($child->tagName == "info.caption") {
                     $this->caption = $child->textContent;
                     break;
                 }
             }
         }
 
-        foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
-        {
+        foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor) {
             $this->indexauthors[] = $indexauthor;
         }
 
-        foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
-        {
+        foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary) {
             $this->indexglossarys[] = $indexglossary;
         }
 
-        foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
-        {
+        foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol) {
             $this->indexsymbols[] = $indexsymbol;
         }
-        foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
-        {
+        foreach ($this->processSubordinate($DomElement, $position) as $subordinate) {
             $this->subordinates[] = $subordinate;
         }
 
-        foreach ($this->processMedia($DomElement, $position) as $media)
-        {
+        foreach ($this->processMedia($DomElement, $position) as $media) {
             $this->medias[] = $media;
         }
 
-        foreach ($this->processTable($DomElement, $position) as $table)
-        {
+        foreach ($this->processTable($DomElement, $position) as $table) {
             $this->tables[] = $table;
         }
 
-        foreach ($this->processContent($DomElement, $position) as $content)
-        {
+        foreach ($this->processContent($DomElement, $position) as $content) {
             $this->info_content .= $content;
         }
         return $this;
@@ -126,17 +113,14 @@ class MathInfo extends Element
      * @param int $parentid              ID of the parent element from msm_compositor
      * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
-    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
-    {
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '') {
         global $DB;
 
         $data = new stdClass();
-        if (!empty($this->caption))
-        {
+        if (!empty($this->caption)) {
             $data->caption = $this->caption;
         }
-        if (!empty($this->info_content))
-        {
+        if (!empty($this->info_content)) {
             $infocontent = '';
 
             $contentparser = new DOMDocument();
@@ -144,8 +128,7 @@ class MathInfo extends Element
 
             $contentNode = $contentparser->documentElement;
 
-            foreach ($contentNode->childNodes as $child)
-            {
+            foreach ($contentNode->childNodes as $child) {
                 $infocontent .= $contentparser->saveXML($contentparser->importNode($child, true));
             }
 
@@ -160,71 +143,54 @@ class MathInfo extends Element
         $sibling_id = null;
 
 
-        if (!empty($this->subordinates))
-        {
-            foreach ($this->subordinates as $key => $subordinate)
-            {
+        if (!empty($this->subordinates)) {
+            foreach ($this->subordinates as $key => $subordinate) {
                 $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
             }
         }
 
-        if (!empty($this->indexauthors))
-        {
-            foreach ($this->indexauthors as $key => $indexauthor)
-            {
+        if (!empty($this->indexauthors)) {
+            foreach ($this->indexauthors as $key => $indexauthor) {
                 $elementPositions['indexauthor' . '-' . $key] = $indexauthor->position;
             }
         }
 
-        if (!empty($this->indexglossarys))
-        {
-            foreach ($this->indexglossarys as $key => $indexglosary)
-            {
+        if (!empty($this->indexglossarys)) {
+            foreach ($this->indexglossarys as $key => $indexglosary) {
                 $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
             }
         }
 
-        if (!empty($this->indexsymbols))
-        {
-            foreach ($this->indexsymbols as $key => $indexsymbol)
-            {
+        if (!empty($this->indexsymbols)) {
+            foreach ($this->indexsymbols as $key => $indexsymbol) {
                 $elementPositions['indexsymbol' . '-' . $key] = $indexsymbol->position;
             }
         }
 
-        if (!empty($this->medias))
-        {
-            foreach ($this->medias as $key => $media)
-            {
+        if (!empty($this->medias)) {
+            foreach ($this->medias as $key => $media) {
                 $elementPositions['media' . '-' . $key] = $media->position;
             }
         }
 
-        if (!empty($this->tables))
-        {
-            foreach ($this->tables as $key => $table)
-            {
+        if (!empty($this->tables)) {
+            foreach ($this->tables as $key => $table) {
                 $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
         asort($elementPositions);
 
-        foreach ($elementPositions as $element => $value)
-        {
-            switch ($element)
-            {
+        foreach ($elementPositions as $element => $value) {
+            switch ($element) {
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid);
                         $sibling_id = $subordinate->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
@@ -234,14 +200,11 @@ class MathInfo extends Element
                 case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
                     $indexauthorString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $indexauthor = $this->subordinates[$indexauthorString[1]];
                         $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid);
                         $sibling_id = $indexauthor->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $indexauthor = $this->subordinates[$indexauthorString[1]];
                         $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexauthor->compid;
@@ -251,14 +214,11 @@ class MathInfo extends Element
                 case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
                     $indexsymbolString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
                         $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid);
                         $sibling_id = $indexsymbol->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
                         $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexsymbol->compid;
@@ -268,14 +228,11 @@ class MathInfo extends Element
                 case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
                     $indexglossaryString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
                         $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid);
                         $sibling_id = $indexglossary->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
                         $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexglossary->compid;
@@ -285,14 +242,11 @@ class MathInfo extends Element
                 case(preg_match("/^(media.\d+)$/", $element) ? true : false):
                     $mediaString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $msmid, $this->compid);
                         $sibling_id = $media->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
@@ -302,14 +256,11 @@ class MathInfo extends Element
                 case(preg_match("/^(table.\d+)$/", $element) ? true : false):
                     $tableString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $table = $this->tables[$tableString[1]];
                         $table->saveIntoDb($table->position, $msmid, $this->compid);
                         $sibling_id = $table->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $table = $this->tables[$tableString[1]];
                         $table->saveIntoDb($table->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $table->compid;
@@ -320,12 +271,10 @@ class MathInfo extends Element
 
         // process the images in the content to have src attribute with proper
         // pathing to moodle file storage area with pluginfile.php script
-        if (!empty($this->medias))
-        {
+        if (!empty($this->medias)) {
             $newdata = new stdClass();
             $newdata->id = $this->id;
-            if (isset($this->caption))
-            {
+            if (isset($this->caption)) {
                 $newdata->caption = $this->caption;
             }
 
@@ -345,20 +294,15 @@ class MathInfo extends Element
      * @param int $compid               ID of the current info element from msm_compositor
      * @return \MathInfo
      */
-    function loadFromDb($id, $compid)
-    {
+    function loadFromDb($id, $compid) {
         global $DB;
 
         $infoRecord = $DB->get_record($this->tablename, array('id' => $id));
 
-        if (!empty($infoRecord))
-        {
-            if (empty($infoRecord->caption))
-            {
+        if (!empty($infoRecord)) {
+            if (empty($infoRecord->caption)) {
                 $this->caption = null;
-            }
-            else
-            {
+            } else {
                 $this->caption = $infoRecord->caption;
             }
             $this->info_content = $infoRecord->info_content;
@@ -368,12 +312,10 @@ class MathInfo extends Element
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-        foreach ($childElements as $child)
-        {
+        foreach ($childElements as $child) {
             $childtable = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            switch ($childtable)
-            {
+            switch ($childtable) {
                 case('msm_subordinate'):
                     $subordinate = new Subordinate();
                     $subordinate->loadFromDb($child->unit_id, $child->id);
@@ -404,29 +346,29 @@ class MathInfo extends Element
      * 
      * @return string
      */
-    function displayhtml()
-    {
+    function displayhtml() {
         $content = '';
 
-        if (($this->caption === null) || (strlen(trim($this->caption)) == 0))
-        {
+        if (($this->caption === null) || (strlen(trim($this->caption)) == 0)) {
             $content .= '<div id="dialog-' . $this->compid . '" class="dialogs">';
-        }
-        else
-        {
+        } else {
             // removing HTML tags since new jquery UI dialog titles cannot have HTML tags
             $patterns = array();
             $replacements = array();
             $patterns[0] = "/<p.*?>/";
             $patterns[1] = "/<\/p>/";
-            $patterns[2] = "/<span.*?>/";
-            $patterns[3] = "/<\/span>/";
+            $patterns[2] = "/<div.*?>/";
+            $patterns[3] = "/<\/div>/";
+            $patterns[4] = "/<span.*?>/";
+            $patterns[5] = "/<\/span>/";
             $replacements[0] = "";
             $replacements[1] = "";
             $replacements[2] = "";
             $replacements[3] = "";
+            $replacements[4] = "";
+            $replacements[5] = "";
 
-            $caption = $this->displayContent($this, $this->caption);
+            $caption = $this->displayContent($this, "<div>$this->caption</div>");
             $modifiedCaption = preg_replace($patterns, $replacements, $caption);
 
             $caption = htmlentities($modifiedCaption);

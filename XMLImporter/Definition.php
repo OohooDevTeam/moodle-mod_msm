@@ -539,6 +539,8 @@ class Definition extends Element
 
 
         $content .= "<div class='mathcontent'>";
+        echo "definition content";
+        print_object($this->def_content);
         $content .= $this->displayContent($this, $this->def_content, $isindex);
         $content .= "<br />";
         $content .= "</div>";

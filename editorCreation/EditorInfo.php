@@ -1,93 +1,105 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
- * Description of EditorInfo
+ *  EditorInfo class inherits from the EditorElement class and it represents the
+ * information elements that are shown in the view as a popup jquery dialog boxes upon
+ * mouse hover as a trigger.  This class is called by EditorSubordinate/EditorAssociate
+ * classes and itself calls EditorSubordinate and/or EditorMedia classess
  *
- * @author User
  */
-class EditorInfo extends EditorElement
-{
+class EditorInfo extends EditorElement {
 
-    public $id;
-    public $compid;
-    public $caption;
-    public $content;
-    public $errorArray = array();
-    public $subordinates = array();
-    public $medias = array();
-    public $ref;
-    public $isRef;
+    public $id;                         // database ID associated with the info element in msm_info table
+    public $compid;                     // database ID associated with the info element in msm_compositor table
+    public $caption;                    // title input associated with the info element
+    public $content;                    // content input associated with the info element
+    public $errorArray = array();       // HTML IDs of content/title textareas that are empty
+    public $subordinates = array();     // EditorSubordinate objects associated with content of this info
+    public $medias = array();           // EditorMedia objects associated with content of this info
+    public $ref;                        // reference materials associated with the parent subordinate/associate element
+    public $isRef;                      // database ID associated with the referenced already-existing info element in msm_compositor table
 
-    function __construct()
-    {
+    // constructor for this class
+
+    function __construct() {
         $this->tablename = 'msm_info';
     }
 
     // idNumber --> parentid-currentelementid
-    public function getFormData($idNumber)
-    {
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorSubordinate) to process its
+     * children's data.
+     * 
+     * @global moodle_database $DB
+     * @param string $idNumber          unique string attached to end of each info HTML elements to get values from POST object
+     *                                  (the string is in format of parent_id-current_element_id)
+     * @return \EditorInfo
+     */
+    public function getFormData($idNumber) {
         global $DB;
 
+        // flag to check if the $idNumber is valid ending or 
+        // if the html ending of subordinate changed due to going from 
+        // view to edit --> causes db IDs to be used instead of generated numbers
         $flag = false;
         $subid = explode("|", $idNumber);
 
-        if (sizeof($subid) > 1)
-        {
+        // if the $idNumber has |sub ending attached, then this info element's parent 
+        // is a subordinate element
+        if (sizeof($subid) > 1) {
             $allSubordinateValues = $_POST['msm_unit_subordinate_container'];
-//
+
             $tempallSubordinates = explode("//|", $allSubordinateValues);
 
             // copying the array from string processing above (due to it ending in comma, the last
             // element is empty)
             $allSubordinates = array();
 
-            for ($i = 0; $i < sizeof($tempallSubordinates); $i++)
-            {
+            for ($i = 0; $i < sizeof($tempallSubordinates); $i++) {
                 $allSubordinates[] = $tempallSubordinates[$i];
             }
 
             $i = 0;
-            foreach ($allSubordinates as $index => $subordinate)
-            {
+            foreach ($allSubordinates as $index => $subordinate) {
                 $idValuePair = explode("||", $subordinate);
 
-                if (strpos($idValuePair[0], $subid[0]) !== false)
-                {
-                    if (strpos($idValuePair[0], 'info') !== false)
-                    {
-                        if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $subid[0])
-                        {
+                if (strpos($idValuePair[0], $subid[0]) !== false) {
+                    if (strpos($idValuePair[0], 'info') !== false) {
+                        if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $subid[0]) {
                             // converting &gt;..etc back to html characters
                             $this->caption = htmlspecialchars_decode($idValuePair[1]);
-                        }
-                        else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $subid[0])
-                        {
+                        } else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $subid[0]) {
                             $content = htmlspecialchars_decode($idValuePair[1]);
                             $this->content = $this->processMath($content);
 
-                            foreach ($this->processImage($this->content) as $key => $media)
-                            {
+                            foreach ($this->processImage($this->content) as $key => $media) {
                                 $this->medias[] = $media;
                             }
 
-                            foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                            {
+                            foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
                                 $this->subordinates[] = $subordinates;
                             }
                         }
-                    }
-                    else if ($idValuePair[0] == "msm_subordinate_ref-" . $subid[0])
-                    {
+                    } else if ($idValuePair[0] == "msm_subordinate_ref-" . $subid[0]) {
                         $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
                         $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
 
-                        switch ($tableRecord->tablename)
-                        {
+                        switch ($tableRecord->tablename) {
                             case "msm_def":
                                 $def = new EditorDefinition();
                                 $def->isRef = $record->id;
@@ -110,21 +122,19 @@ class EditorInfo extends EditorElement
                 }
             }
 
-            if (!$flag)
-            {
+            // the $idNumber ending is not valid due to changes in html ID
+            // from view.php to authoringTool.php
+            if (!$flag) {
                 $newsubid = '';
-                foreach ($allSubordinates as $index => $subordinate)
-                {
+                foreach ($allSubordinates as $index => $subordinate) {
                     $idValuePair = explode("||", $subordinate);
 
-                    if (strpos($idValuePair[0], "msm_subordinate_hotword_match") !== false)
-                    {
-                        if (strpos($idValuePair[1], $subid[0]))
-                        {
+                    // old HTML ID when it was first created is stored in msm_subordinate_hotword_match div
+                    if (strpos($idValuePair[0], "msm_subordinate_hotword_match") !== false) {
+                        if (strpos($idValuePair[1], $subid[0])) {
                             $newIdInfo = explode("-", $idValuePair[0]);
 
-                            for ($i = 1; $i < sizeof($newIdInfo) - 1; $i++)
-                            {
+                            for ($i = 1; $i < sizeof($newIdInfo) - 1; $i++) {
                                 $newsubid .= $newIdInfo[$i] . "-";
                             }
                             $newsubid .= $newIdInfo[sizeof($newIdInfo) - 1];
@@ -133,44 +143,32 @@ class EditorInfo extends EditorElement
                     }
                 }
 
-                if ($newsubid !== '')
-                {
-                    foreach ($allSubordinates as $index => $subordinate)
-                    {
+                if ($newsubid !== '') {
+                    foreach ($allSubordinates as $index => $subordinate) {
                         $idValuePair = explode("||", $subordinate);
 
-                        if (strpos($idValuePair[0], $newsubid) !== false)
-                        {
-                            if (strpos($idValuePair[0], 'info') !== false)
-                            {
-                                if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $newsubid)
-                                {
+                        if (strpos($idValuePair[0], $newsubid) !== false) {
+                            if (strpos($idValuePair[0], 'info') !== false) {
+                                if ($idValuePair[0] == 'msm_subordinate_infoTitle-' . $newsubid) {
                                     // converting &gt;..etc back to html characters
                                     $this->caption = htmlspecialchars_decode($idValuePair[1]);
-                                }
-                                else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $newsubid)
-                                {
+                                } else if ($idValuePair[0] == 'msm_subordinate_infoContent-' . $newsubid) {
                                     $content = htmlspecialchars_decode($idValuePair[1]);
                                     $this->content = $this->processMath($content);
 
-                                    foreach ($this->processImage($this->content) as $key => $media)
-                                    {
+                                    foreach ($this->processImage($this->content) as $key => $media) {
                                         $this->medias[] = $media;
                                     }
 
-                                    foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                                    {
+                                    foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
                                         $this->subordinates[] = $subordinates;
                                     }
                                 }
-                            }
-                            else if ($idValuePair[0] == "msm_subordinate_ref-" . $newsubid)
-                            {
+                            } else if ($idValuePair[0] == "msm_subordinate_ref-" . $newsubid) {
                                 $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
                                 $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
 
-                                switch ($tableRecord->tablename)
-                                {
+                                switch ($tableRecord->tablename) {
                                     case "msm_def":
                                         $def = new EditorDefinition();
                                         $def->isRef = $record->id;
@@ -195,29 +193,22 @@ class EditorInfo extends EditorElement
                     }
                 }
             }
-            // add reference processing stuff
-        }
-        else if (sizeof($subid) == 1)
-        {
+            // no |sub ending so it's an info element with associate element as a parent element
+        } else if (sizeof($subid) == 1) {
             $this->caption = $_POST['msm_info_title-' . $idNumber];
 
-            if ($_POST['msm_info_content-' . $idNumber] != '')
-            {
+            if ($_POST['msm_info_content-' . $idNumber] != '') {
                 $content = $_POST['msm_info_content-' . $idNumber];
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processImage($this->content) as $key => $media)
-                {
+                foreach ($this->processImage($this->content) as $key => $media) {
                     $this->medias[] = $media;
                 }
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
-                {
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
                     $this->subordinates[] = $subordinates;
                 }
-            }
-            else
-            {
+            } else {
                 $this->errorArray[] = 'msm_info_content-' . $idNumber . '_ifr';
             }
 
@@ -227,63 +218,45 @@ class EditorInfo extends EditorElement
             $idNumberInfo = explode("-", $idNumber);
 
             $newId = '';
-            for ($i = 0; $i < sizeof($idNumberInfo) - 2; $i++)
-            {
+            for ($i = 0; $i < sizeof($idNumberInfo) - 2; $i++) {
                 $newId .= $idNumberInfo[$i] . "-";
             }
             $newId .= $idNumberInfo[sizeof($idNumberInfo) - 2];
 
-            if (isset($_POST['msm_associate_reftype-' . $idNumber]))
-            {
+            if (isset($_POST['msm_associate_reftype-' . $idNumber])) {
                 $refType = $_POST['msm_associate_reftype-' . $idNumber];
             }
             // to process internal/external references which do not have dropdown menu
-            else // todo: need to add more types
-            {
-                // only put the intext flag when ref material is being saved the first time...if it is editted then no need to skip the inser to db process
-                foreach ($_POST as $key => $value)
-                {
-                    if (strpos($key, "msm_defref_description_input-$newId") !== false)
-                    {
+            else { // todo: need to add more types
+                // only put the intext flag when ref material is being saved the first time...if it is editted then no need to skip the insert to db process
+                foreach ($_POST as $key => $value) {
+                    if (strpos($key, "msm_defref_description_input-$newId") !== false) {
                         $refType = "Definition";
                         $descrInfo = explode("__", $key);
-                        if (sizeof($descrInfo) > 2)
-                        {
+                        if (sizeof($descrInfo) > 2) {
                             $intExtFlag = 'same';
                             break;
-                        }
-                        else if (sizeof($descrInfo) > 1)
-                        {
+                        } else if (sizeof($descrInfo) > 1) {
                             $intExtFlag = 'intext';
                             break;
                         }
-                    }
-                    else if (strpos($key, "msm_commentref_description_input-$newId") !== false)
-                    {
+                    } else if (strpos($key, "msm_commentref_description_input-$newId") !== false) {
                         $refType = "Comment";
                         $descrInfo = explode("__", $key);
-                        if (sizeof($descrInfo) > 2)
-                        {
+                        if (sizeof($descrInfo) > 2) {
                             $intExtFlag = 'same';
                             break;
-                        }
-                        else if (sizeof($descrInfo) > 1)
-                        {
+                        } else if (sizeof($descrInfo) > 1) {
                             $intExtFlag = 'intext';
                             break;
                         }
-                    }
-                    else if (strpos($key, "msm_theoremref_description_input-$newId") !== false)
-                    {
+                    } else if (strpos($key, "msm_theoremref_description_input-$newId") !== false) {
                         $refType = "Theorem";
                         $descrInfo = explode("__", $key);
-                        if (sizeof($descrInfo) > 2)
-                        {
+                        if (sizeof($descrInfo) > 2) {
                             $intExtFlag = 'same';
                             break;
-                        }
-                        else if (sizeof($descrInfo) > 1)
-                        {
+                        } else if (sizeof($descrInfo) > 1) {
                             $intExtFlag = 'intext';
                             break;
                         }
@@ -293,8 +266,7 @@ class EditorInfo extends EditorElement
 
             $param = $newId . "|$intExtFlag" . "ref";
 
-            switch ($refType)
-            {
+            switch ($refType) {
                 case "Definition":
                     $def = new EditorDefinition();
                     $def->getFormData($param);
@@ -319,14 +291,26 @@ class EditorInfo extends EditorElement
         return $this;
     }
 
-    public function insertData($parentid, $siblingid, $msmid)
-    {
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_info table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorSubordinate/EditorMedia classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
+    public function insertData($parentid, $siblingid, $msmid) {
         global $DB;
 
         $data = new stdClass();
 
-        if (empty($this->isRef))
-        {
+        if (empty($this->isRef)) {
+            // this string replacement code only added due to 
+            // new jquery dialog not supporting having HTML code
+            // in the title attribute
             $patterns = array();
             $replacements = array();
             $patterns[0] = "/<div.*?>/";
@@ -349,27 +333,20 @@ class EditorInfo extends EditorElement
             $pParser->loadHTML($this->content);
             $divs = $pParser->getElementsByTagName("div");
 
-            if ($divs->length > 0)
-            {
+            if ($divs->length > 0) {
                 $data->info_content = $this->content;
-            }
-            else
-            {
+            } else {
                 $data->info_content = "<div>$this->content</div>";
             }
 
             $this->id = $DB->insert_record($this->tablename, $data);
-        }
-        else
-        {
+        } else {
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
-            foreach ($childRecords as $child)
-            {
+            foreach ($childRecords as $child) {
                 $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-                switch ($childTable->tablename)
-                {
+                switch ($childTable->tablename) {
                     case "msm_subordinate":
                         $subord = new EditorSubordinate();
                         $subord->id = $child->unit_id;
@@ -395,39 +372,48 @@ class EditorInfo extends EditorElement
 
         $this->compid = $DB->insert_record('msm_compositor', $compData);
 
-        if (!empty($this->ref))
-        {
+        if (!empty($this->ref)) {
             $this->ref->insertData($parentid, $this->compid, $msmid);
         }
 
         $media_sibliing = 0;
         $content = '';
-        foreach ($this->medias as $key => $media)
-        {
+        foreach ($this->medias as $key => $media) {
             $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
             $content = $this->replaceImages($key, $media->image, $data->info_content, "div");
         }
 
-        if (!empty($this->medias))
-        {
-            $this->content = $content;
+        if (empty($this->isRef)) {
+            // if there are media elements in the info content, need to change the src to 
+            // pluginfile.php format to serve the pictures.
+            if (!empty($this->medias)) {
+                $this->content = $content;
 
-            $data->id = $this->id;
-            $data->info_content = $this->content;
-            $this->id = $DB->update_record($this->tablename, $data);
+                $data->id = $this->id;
+                $data->info_content = $this->content;
+                $this->id = $DB->update_record($this->tablename, $data);
+            }
         }
 
         $subordinate_sibling = 0;
-        foreach ($this->subordinates as $subordinate)
-        {
+        foreach ($this->subordinates as $subordinate) {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
     }
 
-    public function displayData($parentId = '', $idEnding = '')
-    {
+    /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  This method also
+     * calls the displayData from EditorSubordinate and EditorMedia classes.
+     * 
+     * @global moodle_database $DB
+     * @param string $parentId          string added at the end of the parent subordinate HTML element ID
+     * @param string $idEnding          string added at the end of the parent associate HTML element ID
+     * @return string
+     */
+    public function displayData($parentId = '', $idEnding = '') {
         global $DB;
 
         $htmlContent = '';
@@ -437,8 +423,8 @@ class EditorInfo extends EditorElement
         $parentRecord = $DB->get_record('msm_compositor', array('id' => $infoCompRecord->parent_id)); // associate/subordinate
         $parentTable = $DB->get_record('msm_table_collection', array('id' => $parentRecord->table_id));
 
-        if ($parentTable->tablename == 'msm_associate')
-        {
+        // this info element is a child element of an associate
+        if ($parentTable->tablename == 'msm_associate') {
             $assoIdEnding = "$parentRecord->parent_id-$parentRecord->id-$this->compid";
 
             $htmlContent .= "<label for='msm_info_title-$assoIdEnding'>title: </label>";
@@ -456,8 +442,7 @@ class EditorInfo extends EditorElement
 
             $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-infocontent$assoIdEnding'>";
 
-            foreach ($this->subordinates as $subordinate)
-            {
+            foreach ($this->subordinates as $subordinate) {
                 $htmlContent .= $subordinate->displayData($parentId);
             }
             $htmlContent .= "</div>";
@@ -515,35 +500,27 @@ class EditorInfo extends EditorElement
 //            }
 //            $htmlContent .= "</select>";
 
-            if (!empty($this->ref))
-            {
+            if (!empty($this->ref)) {
                 $htmlContent .= $this->ref->displayRefData("$parentRecord->parent_id-$parentRecord->id");
             }
 
             $htmlContent .= "</div>";
-        }
-        else if (($parentTable->tablename == 'msm_subordinate') || ($parentTable->tablename == "msm_external_link"))
-        {
+            // this info element is a child element of an subordinate/external.link
+        } else if (($parentTable->tablename == 'msm_subordinate') || ($parentTable->tablename == "msm_external_link")) {
 
             $idEndingInfo = explode("-", $idEnding);
 
-            if (sizeof($idEndingInfo) > 2)
-            {
+            if (sizeof($idEndingInfo) > 2) {
                 // only for nested subordinates
                 $containerId = substr($idEnding, 0, -2);
-            }
-            else
-            {
+            } else {
                 $containerId = $idEnding;
             }
 
-            if (empty($this->caption))
-            {
+            if (empty($this->caption)) {
                 $htmlContent .= "<div id='msm_subordinate_infoTitle-$idEnding'>";
                 $htmlContent .= "</div>";
-            }
-            else
-            {
+            } else {
                 $htmlContent .= "<div id='msm_subordinate_infoTitle-$idEnding'>";
                 $htmlContent .= $this->caption;
                 $htmlContent .= "</div>";
@@ -553,13 +530,10 @@ class EditorInfo extends EditorElement
             $htmlContent .= $this->content;
             $htmlContent .= "</div>";
 
-            if (empty($this->ref))
-            {
+            if (empty($this->ref)) {
                 $htmlContent .= "<div id='msm_subordinate_ref-$idEnding'>";
                 $htmlContent .= "</div>";
-            }
-            else
-            {
+            } else {
                 $htmlContent .= "<div id='msm_subordinate_ref-$idEnding'>";
                 $htmlContent .= $this->ref->compid;
                 $htmlContent .= "</div>";
@@ -570,10 +544,8 @@ class EditorInfo extends EditorElement
             $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-$containerId'>";
             $htmlContent .= "</div>";
 
-            if (sizeof($this->subordinates) > 0)
-            {
-                foreach ($this->subordinates as $subordinate)
-                {
+            if (sizeof($this->subordinates) > 0) {
+                foreach ($this->subordinates as $subordinate) {
                     $htmlContent .= $subordinate->displayData($parentId);
                 }
             }
@@ -582,8 +554,17 @@ class EditorInfo extends EditorElement
         return $htmlContent;
     }
 
-    public function loadData($compid)
-    {
+    /**
+     * This abstract method from EditorElement extracts appropriate information from the 
+     * msm_info table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the
+     * EditorSubordinate/EditorMedia classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorInfo
+     */
+    public function loadData($compid) {
         global $DB;
 
         $infoCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
@@ -596,14 +577,13 @@ class EditorInfo extends EditorElement
         $this->caption = $infoRecord->caption;
         $this->content = $infoRecord->info_content;
 
+        // getting all the reference materials which has subordinate database ID as a parent_id
         $subordinateChildRecords = $DB->get_records('msm_compositor', array('parent_id' => $infoCompRecord->parent_id), 'prev_sibling_id');
 
-        foreach ($subordinateChildRecords as $subchild)
-        {
+        foreach ($subordinateChildRecords as $subchild) {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $subchild->table_id));
 
-            switch ($childTable->tablename)
-            {
+            switch ($childTable->tablename) {
                 case "msm_def":
                     $def = new EditorDefinition();
                     $def->loadData($subchild->id);
@@ -626,18 +606,14 @@ class EditorInfo extends EditorElement
 
         $infoChildRecords = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
-        foreach ($infoChildRecords as $infoChild)
-        {
+        foreach ($infoChildRecords as $infoChild) {
             $infoChildTable = $DB->get_record("msm_table_collection", array("id" => $infoChild->table_id));
 
-            if ($infoChildTable->tablename == "msm_subordinate")
-            {
+            if ($infoChildTable->tablename == "msm_subordinate") {
                 $subordinate = new EditorSubordinate();
                 $subordinate->loadData($infoChild->id);
                 $this->subordinates[] = $subordinate;
-            }
-            else if ($infoChildTable->tablename == "msm_media")
-            {
+            } else if ($infoChildTable->tablename == "msm_media") {
                 $media = new EditorMedia();
                 $media->loadData($infoChild->id);
                 $this->medias[] = $media;
@@ -647,8 +623,18 @@ class EditorInfo extends EditorElement
         return $this;
     }
 
-    public function displayPreview($id)
-    {
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database.  For the info elements, the contents will be shown when the user either hovers over the
+     * associate "mini" buttons attached to def/theorem/comment or when user hovers over the "hot-tagged" words in anchor element form.
+     * This mouse trigger creats the jquery dialog necessary to view the info contents.
+     * 
+     * @param string $id        String to be added to HTML ID of this info and its components to make them unique
+     * @return string
+     */
+    public function displayPreview($id) {
         $previewHtml = '';
 
         $patterns = array();
@@ -665,21 +651,16 @@ class EditorInfo extends EditorElement
         $modifiedCaption = preg_replace($patterns, $replacements, $this->caption);
         $titleString = htmlentities($modifiedCaption);
 
-        if (!empty($titleString))
-        {
+        if (!empty($titleString)) {
             $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs' title='$titleString'>";
-        }
-        else
-        {
+        } else {
             $previewHtml .= "<div id='dialog-$id' class='msm_info_dialogs'>";
         }
         $previewHtml .= html_entity_decode($this->content);
         $previewHtml .= "</div>";
 
-        if (!empty($this->subordinates))
-        {
-            foreach ($this->subordinates as $subordinate)
-            {
+        if (!empty($this->subordinates)) {
+            foreach ($this->subordinates as $subordinate) {
                 $previewHtml .= $subordinate->displayPreview();
             }
         }
