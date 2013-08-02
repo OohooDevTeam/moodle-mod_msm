@@ -623,9 +623,25 @@ function editUnit(e)
 
     var targetElement = '';
     
+    
+    // when editUnit is called from editChildCompnents.js when child elements are dragged
+    // to edit the content without edit button trigger
     if($.type(e) === "string")
     {
-        targetElement = e;
+        if(e.match(/theorem/))
+        {
+            var idInfo = e.split("-");
+            var theoremId = idInfo[1];
+            if(e.match(/theoremref/))
+            {
+                targetElement = "copied_msm_theoremref-"+theoremId;
+            }
+            targetElement = "copied_msm_theorem-"+theoremId;                
+        }
+        else
+        {
+            targetElement = e;
+        }
     }
     else
     {
@@ -1307,75 +1323,81 @@ function createTheoremText(element, unitInfo)
     $("#msm_theorem_child_button-"+elementIdInfo[1]).removeAttr("disabled");
     $("#msm_associate_button-"+elementIdInfo[1]).removeAttr("disabled");
     
-    //    $("#"+element).find(".msm_theorem_part_buttons").each(function() {
-    //        $(this).removeAttr("disabled");
-    //    });
     
     var theoremStatementInfo = $("#"+element).find(".msm_theorem_statement_containers");
     
     for(var i = 0; i < theoremStatementInfo.length; i++)
     {
-        var theoremcontent = unitInfo["contents"][i]["content"];
-        var statementidInfo = theoremStatementInfo[i].id.split("-");
+        if(typeof unitInfo["contents"][i] !== "undefined")
+        {           
+            var theoremcontent = unitInfo["contents"][i]["content"];
+            var statementidInfo = theoremStatementInfo[i].id.split("-");
             
-        var statementid = '';
-        for(var j = 1; j < statementidInfo.length-1; j++)
-        {
-            statementid += statementidInfo[j]+"-";
-        }
-                
-        statementid += statementidInfo[statementidInfo.length-1]; // now containering theoremid-statementid pair for first content then for rest it's theoremid-topstatementid-statementid
-        
-        var theoremStatementTextArea = document.createElement("textarea");
-        theoremStatementTextArea.id = "msm_theorem_content_input-"+statementid;
-        theoremStatementTextArea.name = "msm_theorem_content_input-"+statementid;
-        theoremStatementTextArea.className = "msm_unit_child_content";
-            
-        $(theoremStatementTextArea).val(theoremcontent);
-        
-        $("#"+theoremStatementInfo[i].id).children(".msm_editor_content").each(function(index, element){
-            $(this).replaceWith(theoremStatementTextArea);
-        });
-        
-        initEditor(theoremStatementTextArea.id);
-        
-        var theoremPartInfo = $("#"+theoremStatementInfo[i].id).find(".msm_theorem_child");
-     
-        for(var k=0; k < theoremPartInfo.length; k++)
-        {
-            var theoremPartContent = unitInfo["contents"][i]["children"][k]["content"];
-            var partidInfo = theoremPartInfo[k].id.split("-");
-             
-            var partid = '';
-            for(var m = 1; m < partidInfo.length-1; m++)
+            var statementid = '';
+            for(var j = 1; j < statementidInfo.length-1; j++)
             {
-                partid += partidInfo[m]+"-";
+                statementid += statementidInfo[j]+"-";
             }
                 
-            partid += partidInfo[partidInfo.length-1];
+            statementid += statementidInfo[statementidInfo.length-1]; // now containering theoremid-statementid pair for first content then for rest it's theoremid-topstatementid-statementid
         
-            var theoremPartTextArea = document.createElement("textarea");
-            theoremPartTextArea.id = "msm_theorem_part_content-"+partid;
-            theoremPartTextArea.name = "msm_theorem_part_content-"+partid;
-            theoremPartTextArea.className = "msm_theorem_content";
+            var theoremStatementTextArea = document.createElement("textarea");
+            theoremStatementTextArea.id = "msm_theorem_content_input-"+statementid;
+            theoremStatementTextArea.name = "msm_theorem_content_input-"+statementid;
+            theoremStatementTextArea.className = "msm_unit_child_content";
             
-            $(theoremPartTextArea).val(theoremPartContent);
+            $(theoremStatementTextArea).val(theoremcontent);
         
-            $("#"+theoremPartInfo[k].id).children(".msm_editor_content").each(function(){
-                var elementidInfo = this.id.split("-");
-                
-                var elementid = '';
-                for(var n=1; n < elementidInfo.length-1; n++)
-                {
-                    elementid += elementidInfo[n] + "-";
-                }
-                elementid += elementidInfo[elementidInfo.length-1];
-                if(elementid == partid)
-                {
-                    $(this).replaceWith(theoremPartTextArea);
-                }
+            $("#"+theoremStatementInfo[i].id).children(".msm_editor_content").each(function(index, element){
+                $(this).replaceWith(theoremStatementTextArea);
             });
-            initEditor(theoremPartTextArea.id);
+        
+            initEditor(theoremStatementTextArea.id);
+        
+            var theoremPartInfo = $("#"+theoremStatementInfo[i].id).find(".msm_theorem_child");
+     
+            for(var k=0; k < theoremPartInfo.length; k++)
+            {
+                // when new part theorem is added by dragging before triggering the editUnit,
+                // there are more part theorems than given in unitInfo object
+                if(typeof unitInfo["contents"][i]["children"][k] !== "undefined")
+                {
+                    var theoremPartContent = unitInfo["contents"][i]["children"][k]["content"];            
+           
+                    var partidInfo = theoremPartInfo[k].id.split("-");
+             
+                    var partid = '';
+                    for(var m = 1; m < partidInfo.length-1; m++)
+                    {
+                        partid += partidInfo[m]+"-";
+                    }
+                
+                    partid += partidInfo[partidInfo.length-1];
+        
+                    var theoremPartTextArea = document.createElement("textarea");
+                    theoremPartTextArea.id = "msm_theorem_part_content-"+partid;
+                    theoremPartTextArea.name = "msm_theorem_part_content-"+partid;
+                    theoremPartTextArea.className = "msm_theorem_content";
+            
+                    $(theoremPartTextArea).val(theoremPartContent);
+        
+                    $("#"+theoremPartInfo[k].id).children(".msm_editor_content").each(function(){
+                        var elementidInfo = this.id.split("-");
+                
+                        var elementid = '';
+                        for(var n=1; n < elementidInfo.length-1; n++)
+                        {
+                            elementid += elementidInfo[n] + "-";
+                        }
+                        elementid += elementidInfo[elementidInfo.length-1];
+                        if(elementid == partid)
+                        {
+                            $(this).replaceWith(theoremPartTextArea);
+                        }
+                    });
+                    initEditor(theoremPartTextArea.id);
+                }            
+            }
         }
     }
     $("#"+element).unbind();
