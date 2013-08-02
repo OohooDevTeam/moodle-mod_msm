@@ -550,10 +550,6 @@ class MathComment extends Element
         $content .= "<br/>";
 
         $content .= "<div class='mathcontent'>";
-        
-        echo "comment content";
-        print_object($this->comment_content);
-        
         $content .= $this->displayContent($this, $this->comment_content, $isindex);
         $content .= "<br />";
         $content .= "</div>";

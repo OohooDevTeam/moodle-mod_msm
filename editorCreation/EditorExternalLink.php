@@ -33,6 +33,7 @@ class EditorExternalLink extends EditorElement
     public $type;           // type of document (value retained from XML structure but not implemented in MSM editor)        
     public $target;         // specifying where to open the link(basically same function as HTML)
     public $info;           // EditorInfo objects associated with the external.link element
+    public $isRef;          // database ID associated with the referenced already-existing external.link element in msm_compositor table
 
     // constructor of this class
 
@@ -104,11 +105,29 @@ class EditorExternalLink extends EditorElement
         global $DB;
 
         $data = new stdClass();
-        $data->type = $this->type;
-        $data->href = $this->href;
-        $data->target = $this->target;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        if (empty($this->isRef))
+        {
+            $data->type = $this->type;
+            $data->href = $this->href;
+            $data->target = $this->target;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        else
+        {
+            $childRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->isRef));
+
+            $childTable = $DB->get_record("msm_table_collection", array("id" => $childRecord->table_id));
+
+            if ($childTable->tablename == "msm_info")
+            {
+                $info = new EditorInfo();
+                $info->id = $childRecord->unit_id;
+                $info->isRef = $this->isRef; // info and reference materials both have parent_id of subordinate
+                $this->info = $info;
+            }
+        }
 
         $compdata = new stdClass();
         $compdata->unit_id = $this->id;
@@ -163,7 +182,7 @@ class EditorExternalLink extends EditorElement
     }
 
     /* Unlike most of the other classes with EditorElement as a parent class, this class doesn't have its own
-       display method but the values loaded from above method is used in displayData method in EditorSubordinate*/
+      display method but the values loaded from above method is used in displayData method in EditorSubordinate */
 
     /**
      * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.

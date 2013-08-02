@@ -21,7 +21,8 @@
  * element.
  *
  */
-class EditorComment extends EditorElement {
+class EditorComment extends EditorElement
+{
 
     public $id;                         // database ID associated with the comment element in msm_comment table
     public $compid;                     // database ID associated with the comment element in msm_compositor table
@@ -37,7 +38,8 @@ class EditorComment extends EditorElement {
 
     // constructor for the class
 
-    function __construct() {
+    function __construct()
+    {
         $this->tablename = "msm_comment";
     }
 
@@ -49,18 +51,23 @@ class EditorComment extends EditorElement {
      * @param string $idNumber          represents information needed to identify needed key for the POST object(for reference material, has "|ref" ending)
      * @return \EditorComment
      */
-    public function getFormData($idNumber) {
+    public function getFormData($idNumber)
+    {
         $idInfo = explode("|", $idNumber);
 
         // the idNumber param contains "|ref" ending meaning that this comment is a reference material
-        if (sizeof($idInfo) > 1) {
+        if (sizeof($idInfo) > 1)
+        {
             $match = "/^msm_commentref_content_input-$idInfo[0].*$/";
 
             $newId = '';
-            foreach ($_POST as $id => $value) {
-                if (preg_match($match, $id)) {
+            foreach ($_POST as $id => $value)
+            {
+                if (preg_match($match, $id))
+                {
                     $tempidInfo = explode("-", $id);
-                    for ($i = 1; $i < sizeof($tempidInfo) - 1; $i++) {
+                    for ($i = 1; $i < sizeof($tempidInfo) - 1; $i++)
+                    {
                         $newId .= $tempidInfo[$i] . "-";
                     }
                     $newId .= $tempidInfo[sizeof($tempidInfo) - 1];
@@ -71,60 +78,79 @@ class EditorComment extends EditorElement {
             $this->type = $_POST['msm_commentref_type_dropdown-' . $newId];
 
             // if the reference material already exist in database
-            if ($idInfo[1] != "ref") {
-                foreach ($_POST as $key => $value) {
+            if ($idInfo[1] != "ref")
+            {
+                foreach ($_POST as $key => $value)
+                {
                     $pattern = "msm_commentref_description_input-$newId";
-                    if (strpos($key, $pattern) !== false) {
+                    if (strpos($key, $pattern) !== false)
+                    {
                         $this->description = $value;
                         $newkey = explode("__", $key);
                         $this->isRef = $newkey[1];
                         break;
                     }
                 }
-            } else {
+            }
+            else
+            {
                 $this->description = $_POST['msm_commentref_description_input-' . $newId];
             }
 
             $this->title = $_POST['msm_commentref_title_input-' . $newId];
 
-            if ($_POST['msm_commentref_content_input-' . $newId] != '') {
+            if ($_POST['msm_commentref_content_input-' . $newId] != '')
+            {
                 $content = $_POST['msm_commentref_content_input-' . $newId];
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processImage($this->content) as $key => $media) {
-                    $this->medias[] = $media;
-                }
+                if (empty($this->isRef))
+                {
+                    foreach ($this->processImage($this->content) as $key => $media)
+                    {
+                        $this->medias[] = $media;
+                    }
 
-                // grab all anchored elements in content --> it is only from subordinate
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
-                    $this->subordinates[] = $subordinates;
+                    // grab all anchored elements in content --> it is only from subordinate
+                    foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                    {
+                        $this->subordinates[] = $subordinates;
+                    }
                 }
-            } else {
+            }
+            else
+            {
                 // empty content
                 $this->errorArray[] = 'msm_commentref_content_input-' . $newId . "_ifr";
             }
         }
         // the idNumber param does not contain "|ref" ending meaning that this comment is part of unit element
-        else if (sizeof($idInfo) == 1) {
+        else if (sizeof($idInfo) == 1)
+        {
             $this->type = $_POST['msm_comment_type_dropdown-' . $idNumber];
             $this->description = $_POST['msm_comment_description_input-' . $idNumber];
             $this->title = $_POST['msm_comment_title_input-' . $idNumber];
 
             $this->errorArray = array();
 
-            if ($_POST['msm_comment_content_input-' . $idNumber] != '') {
+            if ($_POST['msm_comment_content_input-' . $idNumber] != '')
+            {
                 $content = $_POST['msm_comment_content_input-' . $idNumber];
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processImage($this->content) as $key => $media) {
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
                     $this->medias[] = $media;
                 }
 
                 // grab all anchored elements in content --> it is only from subordinate
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
                     $this->subordinates[] = $subordinates;
                 }
-            } else {
+            }
+            else
+            {
                 // empty content
                 $this->errorArray[] = 'msm_comment_content_input-' . $idNumber . "_ifr";
             }
@@ -133,8 +159,10 @@ class EditorComment extends EditorElement {
 
             $i = 0;
 
-            foreach ($_POST as $id => $value) {
-                if (preg_match($match, $id)) {
+            foreach ($_POST as $id => $value)
+            {
+                if (preg_match($match, $id))
+                {
                     $idInfo = explode("-", $id);
                     $indexNumber = $idInfo[1] . "-" . $idInfo[2];
                     $associate = new EditorAssociate();
@@ -143,9 +171,8 @@ class EditorComment extends EditorElement {
                     $i++;
                 }
             }
-
-            return $this;
         }
+        return $this;
     }
 
     /**
@@ -159,7 +186,8 @@ class EditorComment extends EditorElement {
      * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
      * @param integer $msmid            The instance ID of the MSM module.
      */
-    public function insertData($parentid, $siblingid, $msmid) {
+    public function insertData($parentid, $siblingid, $msmid)
+    {
         global $DB;
 
         $data = new stdClass();
@@ -167,19 +195,23 @@ class EditorComment extends EditorElement {
         // The current comment already exists in msm_comment table so just need to insert
         // structural data to msm_compositor.  The property isRef contains the database ID from 
         // msm_compositor of the already existing comment that is same as the referenced one.
-        if (!empty($this->isRef)) {
+        if (!empty($this->isRef))
+        {
             $existingComment = $DB->get_record("msm_compositor", array("id" => $this->isRef));
 
-            if (!empty($existingComment)) {
+            if (!empty($existingComment))
+            {
                 $this->id = $existingComment->unit_id;
             }
 
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
-            foreach ($childRecords as $child) {
+            foreach ($childRecords as $child)
+            {
                 $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-                switch ($childTable->tablename) {
+                switch ($childTable->tablename)
+                {
                     case "msm_subordinate":
                         $subord = new EditorSubordinate();
                         $subord->id = $child->unit_id;
@@ -196,7 +228,8 @@ class EditorComment extends EditorElement {
             }
         }
         // current comment element is new and doesn't exist in msm_comment yet
-        else {
+        else
+        {
             $data->comment_type = $this->type;
             $data->caption = $this->title;
 
@@ -204,9 +237,12 @@ class EditorComment extends EditorElement {
             $cParser->loadHTML($this->content);
             $divs = $cParser->getElementsByTagName("div");
 
-            if ($divs->length > 0) {
+            if ($divs->length > 0)
+            {
                 $data->comment_content = $this->content;
-            } else {
+            }
+            else
+            {
                 $data->comment_content = "<div>$this->content</div>";
             }
 
@@ -226,25 +262,29 @@ class EditorComment extends EditorElement {
 
         $sibling_id = 0;
 
-        foreach ($this->children as $associate) {
+        foreach ($this->children as $associate)
+        {
             $associate->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $associate->compid;
         }
 
         $media_sibliing = 0;
         $content = '';
-        foreach ($this->medias as $key => $media) {
+        foreach ($this->medias as $key => $media)
+        {
             $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
-            if (empty($this->isRef)) {
+            if (empty($this->isRef))
+            {
                 $content = $this->replaceImages($key, $media->image, $data->comment_content, "div");
             }
         }
 
-        if (empty($this->isRef)) {
-            // if there are media elements in the comment content, need to change the src to 
+        if (empty($this->isRef))
+        {            // if there are media elements in the comment content, need to change the src to 
             // pluginfile.php format to serve the pictures.
-            if (!empty($this->medias)) {
+            if (!empty($this->medias))
+            {
                 $this->content = $content;
 
                 $data->id = $this->id;
@@ -253,9 +293,9 @@ class EditorComment extends EditorElement {
             }
         }
 
-
         $subordinate_sibling = 0;
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
@@ -267,7 +307,8 @@ class EditorComment extends EditorElement {
      * 
      * @return HTML string
      */
-    public function displayData() {
+    public function displayData()
+    {
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_comment-$this->compid' class='copied_msm_structural_element'>";
@@ -281,7 +322,8 @@ class EditorComment extends EditorElement {
 
         $htmlContent .= "<select id='msm_comment_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_comment_type_dropdown-$this->compid' disabled='disabled'>";
 
-        switch ($this->type) {
+        switch ($this->type)
+        {
             case "Comment":
                 $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
                 $htmlContent .= "<option value='Remark'>Remark</option>";
@@ -312,7 +354,8 @@ class EditorComment extends EditorElement {
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentcontent$this->compid'>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentcontent$this->compid'>";
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $htmlContent .= $subordinate->displayData($this->compid);
         }
         $htmlContent .= "</div>";
@@ -321,7 +364,8 @@ class EditorComment extends EditorElement {
         $htmlContent .= "<input id='msm_comment_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_comment_description_input-$this->compid'/>";
 
         $htmlContent .= "<div id='msm_associate_container-$this->compid' class='msm_associate_containers'>";
-        foreach ($this->children as $associate) {
+        foreach ($this->children as $associate)
+        {
             $htmlContent .= $associate->displayData();
         }
 //        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"comment\")' disabled='disabled'/>";
@@ -344,7 +388,8 @@ class EditorComment extends EditorElement {
      * @param integer $compid           The database ID from the msm_compositor table
      * @return \EditorComment
      */
-    public function loadData($compid) {
+    public function loadData($compid)
+    {
         global $DB;
 
         $commentCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
@@ -361,10 +406,12 @@ class EditorComment extends EditorElement {
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-        foreach ($childRecords as $child) {
+        foreach ($childRecords as $child)
+        {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
-            switch ($childTable->tablename) {
+            switch ($childTable->tablename)
+            {
                 case "msm_associate":
                     $associate = new EditorAssociate();
                     $associate->loadData($child->id);
@@ -389,13 +436,15 @@ class EditorComment extends EditorElement {
      * @param string $parentId          End of HTML ID that made the parent(ie. associate) HTML element unique
      * @return HTML string
      */
-    function displayRefData($parentId) {
+    function displayRefData($parentId)
+    {
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_commentref-$parentId-$this->compid' class='copied_msm_structural_element'>";
         $htmlContent .= "<select id='msm_commentref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_commentref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
-        switch ($this->type) {
+        switch ($this->type)
+        {
             case "Comment":
                 $htmlContent .= "<option value='Comment' selected='selected'>Comment</option>";
                 $htmlContent .= "<option value='Remark'>Remark</option>";
@@ -425,7 +474,8 @@ class EditorComment extends EditorElement {
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-commentrefcontent$parentId-$this->compid'>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-commentrefcontent$parentId-$this->compid'>";
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
         }
         $htmlContent .= "</div>";
@@ -447,16 +497,19 @@ class EditorComment extends EditorElement {
      * @param string $id        String to be added to HTML ID of this comment and its components to make them unique
      * @return string
      */
-    public function displayPreview($id = '') {
+    public function displayPreview($id = '')
+    {
         $previewHtml = '';
 
         $previewHtml .= "<br />";
         $previewHtml .= "<div class='comment'>";
-        if (!empty($this->title)) {
+        if (!empty($this->title))
+        {
             $previewHtml .= "<span class='commenttitle'>" . $this->title . "</span>";
         }
 
-        if (!empty($this->type)) {
+        if (!empty($this->type))
+        {
             $previewHtml .= "<span class='commenttype'>" . $this->type . "</span>";
         }
         $previewHtml .= "<br/>";
@@ -464,8 +517,10 @@ class EditorComment extends EditorElement {
         $previewHtml .= "<div class='mathcontent'>";
         $previewHtml .= html_entity_decode($this->content);
 
-        if (!empty($this->subordinates)) {
-            foreach ($this->subordinates as $subordinate) {
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $subordinate)
+            {
                 $previewHtml .= $subordinate->displayPreview();
             }
         }
@@ -473,9 +528,11 @@ class EditorComment extends EditorElement {
 
         $previewHtml .= "<br />";
 
-        if (!empty($this->children)) {
+        if (!empty($this->children))
+        {
             $previewHtml .= "<ul class='commentminibuttons'>";
-            foreach ($this->children as $key => $associate) {
+            foreach ($this->children as $key => $associate)
+            {
                 $previewHtml .= $associate->displayPreview("comment", $id . "-" . $key);
             }
             $previewHtml .= "</ul>";

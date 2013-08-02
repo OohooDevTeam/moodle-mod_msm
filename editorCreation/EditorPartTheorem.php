@@ -20,7 +20,8 @@
  * This class can also represent part theorem elements in theorem as a reference material.
  *
  */
-class EditorPartTheorem extends EditorElement {
+class EditorPartTheorem extends EditorElement
+{
 
     public $id;
     public $compid;
@@ -31,7 +32,8 @@ class EditorPartTheorem extends EditorElement {
     public $medias = array();
     public $isRef;
 
-    function __construct() {
+    function __construct()
+    {
         $this->tablename = 'msm_part_theorem';
     }
 
@@ -43,42 +45,59 @@ class EditorPartTheorem extends EditorElement {
      * @param string $idNumber          the string id given in HTML form and if it is a reference material, it ends with "|ref"
      * @return \EditorPartTheorem
      */
-    public function getFormData($idNumber) {
+    public function getFormData($idNumber, $ref = '')
+    {
         $idParam = explode("|", $idNumber);
 
-        if (sizeof($idParam) > 1) {
+        if (sizeof($idParam) > 1)
+        {
             $this->caption = $_POST['msm_theoremref_part_title-' . $idParam[0]];
 
-            if ($_POST['msm_theoremref_part_content-' . $idParam[0]] != '') {
+            if ($_POST['msm_theoremref_part_content-' . $idParam[0]] != '')
+            {
                 $content = $_POST['msm_theoremref_part_content-' . $idParam[0]];
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processImage($this->content) as $key => $media) {
-                    $this->medias[] = $media;
-                }
+                if (empty($ref))
+                {
+                    foreach ($this->processImage($this->content) as $key => $media)
+                    {
+                        $this->medias[] = $media;
+                    }
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
-                    $this->subordinates[] = $subordinates;
+                    foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                    {
+                        $this->subordinates[] = $subordinates;
+                    }
                 }
-            } else {
+            }
+            else
+            {
                 $this->errorArray[] = 'msm_theoremref_part_content-' . $idParam[0] . '_ifr';
             }
-        } else if (sizeof($idParam) == 1) {
+        }
+        else if (sizeof($idParam) == 1)
+        {
 
             $this->caption = $_POST['msm_theorem_part_title-' . $idNumber];
 
-            if ($_POST['msm_theorem_part_content-' . $idNumber] != '') {
+            if ($_POST['msm_theorem_part_content-' . $idNumber] != '')
+            {
                 $content = $_POST['msm_theorem_part_content-' . $idNumber];
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processImage($this->content) as $key => $media) {
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
                     $this->medias[] = $media;
                 }
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
                     $this->subordinates[] = $subordinates;
                 }
-            } else {
+            }
+            else
+            {
                 $this->errorArray[] = 'msm_theorem_part_content-' . $idNumber . '_ifr';
             }
         }
@@ -98,12 +117,14 @@ class EditorPartTheorem extends EditorElement {
      * @param integer $msmid            The instance ID of the MSM module.
      * @param string $ref               Optional param that indicates that its either from internal/external theorem 
      */
-    public function insertData($parentid, $siblingid, $msmid) {
+    public function insertData($parentid, $siblingid, $msmid)
+    {
         global $DB;
 
         $data = new stdClass();
 
-        if (empty($this->isRef)) {
+        if (empty($this->isRef))
+        {
             $data->partid = null;
             $data->counter = null;
             $data->equivalence_mark = null;
@@ -112,20 +133,27 @@ class EditorPartTheorem extends EditorElement {
             $pParser->loadHTML($this->content);
             $divs = $pParser->getElementsByTagName("div");
 
-            if ($divs->length > 0) {
+            if ($divs->length > 0)
+            {
                 $data->part_content = $this->content;
-            } else {
+            }
+            else
+            {
                 $data->part_content = "<div>$this->content</div>";
             }
 
             $this->id = $DB->insert_record($this->tablename, $data);
-        } else {
+        }
+        else
+        {
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
-            foreach ($childRecords as $child) {
+            foreach ($childRecords as $child)
+            {
                 $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-                switch ($childTable->tablename) {
+                switch ($childTable->tablename)
+                {
                     case "msm_subordinate":
                         $subord = new EditorSubordinate();
                         $subord->id = $child->unit_id;
@@ -153,16 +181,20 @@ class EditorPartTheorem extends EditorElement {
 
         $media_sibliing = 0;
         $content = '';
-        foreach ($this->medias as $key => $media) {
+        foreach ($this->medias as $key => $media)
+        {
             $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
-            if (empty($this->isRef)) {
+            if (empty($this->isRef))
+            {
                 $content = $this->replaceImages($key, $media->image, $data->part_content, "div");
             }
         }
 
-        if (empty($this->isRef)) {
-            if (!empty($this->medias)) {
+        if (empty($this->isRef))
+        {
+            if (!empty($this->medias))
+            {
                 $this->content = $content;
 
                 $data->id = $this->id;
@@ -172,7 +204,8 @@ class EditorPartTheorem extends EditorElement {
         }
 
         $subordinate_sibling = 0;
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
@@ -186,7 +219,8 @@ class EditorPartTheorem extends EditorElement {
      * @global moodle_database $DB
      * @return HTML string
      */
-    public function displayData() {
+    public function displayData()
+    {
         global $DB;
 
         $currentCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
@@ -209,7 +243,8 @@ class EditorPartTheorem extends EditorElement {
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-parttheoremcontent$idEnding'>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-parttheoremcontent$idEnding'>";
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $htmlContent .= $subordinate->displayData($idEnding);
         }
         $htmlContent .= "</div>";
@@ -229,7 +264,8 @@ class EditorPartTheorem extends EditorElement {
      * @param integer $compid           The database ID from the msm_compositor table
      * @return \EditorPartTheorem
      */
-    public function loadData($compid) {
+    public function loadData($compid)
+    {
         global $DB;
 
         $partCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
@@ -244,10 +280,12 @@ class EditorPartTheorem extends EditorElement {
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-        foreach ($childElements as $child) {
+        foreach ($childElements as $child)
+        {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
-            switch ($childTable->tablename) {
+            switch ($childTable->tablename)
+            {
                 case "msm_subordinate":
                     $subordinate = new EditorSubordinate();
                     $subordinate->loadData($child->id);
@@ -266,7 +304,8 @@ class EditorPartTheorem extends EditorElement {
      * @param string $parentId          End of HTML ID that made the parent(ie. statement theorem) HTML element unique
      * @return HTML string
      */
-    function displayRefData($parentId) {
+    function displayRefData($parentId)
+    {
         $htmlContent = '';
         $htmlContent .= "<div id='msm_theoremref_part_container-$parentId-$this->compid' class='msm_theorem_child'>";
         $htmlContent .= "<div id='msm_theoremref_part_title_container-$parentId-$this->compid' class='msm_theoremref_part_title_containers'>";
@@ -281,7 +320,8 @@ class EditorPartTheorem extends EditorElement {
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefpart$parentId-$this->compid'>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefpart$parentId-$this->compid'>";
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
         }
         $htmlContent .= "</div>";
@@ -301,17 +341,21 @@ class EditorPartTheorem extends EditorElement {
      * 
      * @return HTML string
      */
-    public function displayPreview() {
+    public function displayPreview()
+    {
         $previewHtml = '';
 
         $previewHtml .= "<li>";
-        if (!empty($this->caption)) {
+        if (!empty($this->caption))
+        {
             $previewHtml .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
         }
         $previewHtml .= html_entity_decode($this->content);
 
-        if (!empty($this->subordinates)) {
-            foreach ($this->subordinates as $subordinate) {
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $subordinate)
+            {
                 $previewHtml .= $subordinate->displayPreview();
             }
         }

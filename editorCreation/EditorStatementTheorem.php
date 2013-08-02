@@ -21,7 +21,8 @@
  * This class can also represent statement theorem elements in theorem as a reference material.
  *
  */
-class EditorStatementTheorem extends EditorElement {
+class EditorStatementTheorem extends EditorElement
+{
 
     public $id;
     public $compid;
@@ -32,7 +33,8 @@ class EditorStatementTheorem extends EditorElement {
     public $medias = array();
     public $isRef;
 
-    function __construct() {
+    function __construct()
+    {
         $this->tablename = 'msm_statement_theorem';
     }
 
@@ -42,36 +44,50 @@ class EditorStatementTheorem extends EditorElement {
      * EditorSubordinate and EditorPartTheorem classes.
      * 
      * @param string $idNumber          the string id given in HTML form and if it is a reference material, it ends with "|ref"
+     * @param string $ref             database ID of already existing theorem that is identical to current one
      * @return \EditorStatementTheorem
      */
-    public function getFormData($idNumber) {
+    public function getFormData($idNumber, $ref = '')
+    {
         $idInfo = explode("|", $idNumber);
 
         // the statement theorem is a part of a reference theorem material
-        if (sizeof($idInfo) > 1) {
-            if ($_POST["msm_theoremref_content_input-" . $idInfo[0]] != '') {
+        if (sizeof($idInfo) > 1)
+        {
+            if ($_POST["msm_theoremref_content_input-" . $idInfo[0]] != '')
+            {
                 $content = $_POST['msm_theoremref_content_input-' . $idInfo[0]];
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
-                    $this->subordinates[] = $subordinates;
-                }
+                if (empty($ref))
+                {
+                    foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                    {
+                        $this->subordinates[] = $subordinates;
+                    }
 
-                foreach ($this->processImage($this->content) as $key => $media) {
-                    $this->medias[] = $media;
+                    foreach ($this->processImage($this->content) as $key => $media)
+                    {
+                        $this->medias[] = $media;
+                    }
                 }
-            } else {
+            }
+            else
+            {
                 $this->errorArray[] = 'msm_theoremref_content_input-' . $idInfo[0] . '_ifr';
             }
 
             $partmatch = "/^msm_theoremref_part_content-$idInfo[0]-\d+$/";
 
-            foreach ($_POST as $id => $content) {
-                if (preg_match($partmatch, $id)) {
+            foreach ($_POST as $id => $content)
+            {
+                if (preg_match($partmatch, $id))
+                {
                     $indexNumber = explode("-", $id);
 
                     $newId = '';
-                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++) {
+                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
+                    {
                         $newId .= $indexNumber[$i] . "-";
                     }
                     $newId .= $indexNumber[sizeof($indexNumber) - 1];
@@ -83,19 +99,26 @@ class EditorStatementTheorem extends EditorElement {
                     $this->children[] = $partTheorem;
                 }
             }
-        } else if (sizeof($idInfo) == 1) { // the statement theorem is a part of a theorem material
-            if ($_POST['msm_theorem_content_input-' . $idNumber] != '') {
+        }
+        else if (sizeof($idInfo) == 1)
+        { // the statement theorem is a part of a theorem material
+            if ($_POST['msm_theorem_content_input-' . $idNumber] != '')
+            {
                 $content = $_POST['msm_theorem_content_input-' . $idNumber];
                 $this->content = $this->processMath($content);
 
-                foreach ($this->processSubordinate($this->content) as $key => $subordinates) {
+                foreach ($this->processSubordinate($this->content) as $key => $subordinates)
+                {
                     $this->subordinates[] = $subordinates;
                 }
 
-                foreach ($this->processImage($this->content) as $key => $media) {
+                foreach ($this->processImage($this->content) as $key => $media)
+                {
                     $this->medias[] = $media;
                 }
-            } else {
+            }
+            else
+            {
                 $this->errorArray[] = 'msm_theorem_content_input-' . $idNumber . '_ifr';
             }
 
@@ -103,18 +126,21 @@ class EditorStatementTheorem extends EditorElement {
 
             $i = 0;
 
-            foreach ($_POST as $id => $content) {
-                if (preg_match($partmatch, $id)) {
+            foreach ($_POST as $id => $content)
+            {
+                if (preg_match($partmatch, $id))
+                {
                     $indexNumber = explode("-", $id);
 
                     $newId = '';
-                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++) {
+                    for ($i = 1; $i < sizeof($indexNumber) - 1; $i++)
+                    {
                         $newId .= $indexNumber[$i] . "-";
                     }
                     $newId .= $indexNumber[sizeof($indexNumber) - 1];
 
                     $partTheorem = new EditorPartTheorem();
-                    $partTheorem->getFormData($newId);
+                    $partTheorem->getFormData($newId, $this->isRef);
                     $this->children[] = $partTheorem;
                     $i++;
                 }
@@ -135,30 +161,39 @@ class EditorStatementTheorem extends EditorElement {
      * @param integer $msmid            The instance ID of the MSM module.
      * @param string $ref               Optional param that indicates that its either from internal/external theorem 
      */
-    public function insertData($parentid, $siblingid, $msmid) {
+    public function insertData($parentid, $siblingid, $msmid)
+    {
         global $DB;
 
         $data = new stdClass();
 
-        if (empty($this->isRef)) {
+        if (empty($this->isRef))
+        {
             $pParser = new DOMDocument();
             $pParser->loadHTML($this->content);
             $divs = $pParser->getElementsByTagName("div");
 
-            if ($divs->length > 0) {
+            if ($divs->length > 0)
+            {
                 $data->statement_content = $this->content;
-            } else {
+            }
+            else
+            {
                 $data->statement_content = "<div>$this->content</div>";
             }
 
             $this->id = $DB->insert_record($this->tablename, $data);
-        } else {
+        }
+        else
+        {
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
 
-            foreach ($childRecords as $child) {
+            foreach ($childRecords as $child)
+            {
                 $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-                switch ($childTable->tablename) {
+                switch ($childTable->tablename)
+                {
                     case "msm_part_theorem":
                         $partThr = new EditorPartTheorem();
                         $partThr->id = $child->unit_id;
@@ -192,23 +227,28 @@ class EditorStatementTheorem extends EditorElement {
 
         $sibling_id = 0;
 
-        foreach ($this->children as $partTheorem) {
+        foreach ($this->children as $partTheorem)
+        {
             $partTheorem->insertData($this->compid, $sibling_id, $msmid);
             $sibling_id = $partTheorem->compid;
         }
 
         $media_sibliing = 0;
         $content = '';
-        foreach ($this->medias as $key => $media) {
+        foreach ($this->medias as $key => $media)
+        {
             $media->insertData($this->compid, $media_sibliing, $msmid);
             $media_sibliing = $media->compid;
-            if (empty($this->isRef)) {
+            if (empty($this->isRef))
+            {
                 $content = $this->replaceImages($key, $media->image, $data->statement_content, "div");
             }
         }
 
-        if (empty($this->isRef)) {
-            if (!empty($this->medias)) {
+        if (empty($this->isRef))
+        {
+            if (!empty($this->medias))
+            {
                 $this->content = $content;
 
                 $data->id = $this->id;
@@ -216,9 +256,9 @@ class EditorStatementTheorem extends EditorElement {
                 $this->id = $DB->update_record($this->tablename, $data);
             }
         }
-
         $subordinate_sibling = 0;
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $subordinate->insertData($this->compid, $subordinate_sibling, $msmid);
             $subordinate_sibling = $subordinate->compid;
         }
@@ -232,7 +272,8 @@ class EditorStatementTheorem extends EditorElement {
      * @global moodle_database $DB
      * @return HTML string
      */
-    public function displayData() {
+    public function displayData()
+    {
         global $DB;
 
         $currentCompRecord = $DB->get_record("msm_compositor", array("id" => $this->compid));
@@ -251,13 +292,15 @@ class EditorStatementTheorem extends EditorElement {
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-statementtheoremcontent$currentCompRecord->parent_id-$this->compid'>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-statementtheoremcontent$currentCompRecord->parent_id-$this->compid'>";
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $htmlContent .= $subordinate->displayData($this->compid);
         }
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_theorem_part_droparea-$currentCompRecord->parent_id-$this->compid' class='msm_theorem_part_dropareas'>";
-        foreach ($this->children as $partTheorem) {
+        foreach ($this->children as $partTheorem)
+        {
             $htmlContent .= $partTheorem->displayData();
         }
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$currentCompRecord->parent_id-$this->compid'>Drag additional content to here.<p>Valid child Elements: Part of a Theorem</p></div>";
@@ -279,7 +322,8 @@ class EditorStatementTheorem extends EditorElement {
      * @param integer $compid           The database ID from the msm_compositor table
      * @return \EditorStatementTheorem
      */
-    public function loadData($compid) {
+    public function loadData($compid)
+    {
         global $DB;
 
         $statementCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
@@ -291,10 +335,12 @@ class EditorStatementTheorem extends EditorElement {
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-        foreach ($childElements as $child) {
+        foreach ($childElements as $child)
+        {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
-            switch ($childTable->tablename) {
+            switch ($childTable->tablename)
+            {
                 case "msm_subordinate":
                     $subordinate = new EditorSubordinate();
                     $subordinate->loadData($child->id);
@@ -318,7 +364,8 @@ class EditorStatementTheorem extends EditorElement {
      * @param string $parentId          End of HTML ID that made the parent(ie. theorem) HTML element unique
      * @return HTML string
      */
-    function displayRefData($parentId) {
+    function displayRefData($parentId)
+    {
         $htmlContent = '';
 
         $htmlContent .= "<div id='msm_theoremref_statement_container-$parentId-$this->compid' class='msm_theoremref_statement_containers'>";
@@ -333,13 +380,15 @@ class EditorStatementTheorem extends EditorElement {
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-theoremrefcontent$parentId-$this->compid'>";
         $htmlContent .= "</div>";
         $htmlContent .= "<div class='msm_subordinate_result_containers' id='msm_subordinate_result_container-theoremrefcontent$parentId-$this->compid'>";
-        foreach ($this->subordinates as $subordinate) {
+        foreach ($this->subordinates as $subordinate)
+        {
             $htmlContent .= $subordinate->displayData("$parentId-$this->compid");
         }
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_theoremref_part_droparea-$parentId-$this->compid' class='msm_theoremref_part_dropareas'>";
-        foreach ($this->children as $partTheorem) {
+        foreach ($this->children as $partTheorem)
+        {
             $htmlContent .= $partTheorem->displayRefData("$parentId-$this->compid");
         }
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$parentId-$this->compid'>Drag additional content to here.<p>Valid child Elements: Part of a Theorem</p></div>";
@@ -360,19 +409,23 @@ class EditorStatementTheorem extends EditorElement {
      * 
      * @return HTML string 
      */
-    public function displayPreview() {
+    public function displayPreview()
+    {
         $previewHtml = '';
 
         $previewHtml .= html_entity_decode($this->content);
 
-        if (!empty($this->subordinates)) {
-            foreach ($this->subordinates as $subordinate) {
+        if (!empty($this->subordinates))
+        {
+            foreach ($this->subordinates as $subordinate)
+            {
                 $previewHtml .= $subordinate->displayPreview();
             }
         }
 
         $previewHtml .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
-        foreach ($this->children as $childComponent) {
+        foreach ($this->children as $childComponent)
+        {
             $previewHtml .= $childComponent->displayPreview();
         }
         $previewHtml .= "</ol>";

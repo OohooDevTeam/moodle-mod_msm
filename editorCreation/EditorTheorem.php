@@ -113,7 +113,7 @@ class EditorTheorem extends EditorElement
                     $newId .= $indexNumber[sizeof($indexNumber) - 1] . "|ref";
 
                     $statementRefTheorem = new EditorStatementTheorem();
-                    $statementRefTheorem->getFormData($newId);
+                    $statementRefTheorem->getFormData($newId, $this->isRef);
                     $this->contents[] = $statementRefTheorem;
                     $i++;
                 }
