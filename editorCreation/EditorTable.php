@@ -1,29 +1,47 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorTable
- *
- * @author User
+ * EditorTable class inherits from the EditorElement class and it represents the
+ * table elements in the HTML content of tinyMCE editor.  Usually the
+ * parent class that calls this class function is EditorBlock, EditorIntro or EditorUnit classes.
  */
 class EditorTable extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $content;
-    public $subordinates = array();
+    public $id;                         // database ID associated with the table element in msm_table table
+    public $compid;                     // database ID associated with the table element in msm_compositor table
+    public $content;                    // content element associated with the table element
+    public $subordinates = array();     // EditorSubordinate objects associated with the table element
+
+    // constructor for this class
 
     function __construct()
     {
         $this->tablename = 'msm_table';
     }
 
-    // idNumber is the DOMElement with Table element as a root
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorSubordinate) to process its
+     * children's data.
+     * 
+     * @param DOMElement $idNumber      table DOMElement from content
+     * @return \EditorTable
+     */
     public function getFormData($idNumber)
     {
         $doc = new DOMDocument();
@@ -47,6 +65,17 @@ class EditorTable extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_table table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorSubordinate class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -73,6 +102,12 @@ class EditorTable extends EditorElement
         }
     }
 
+    /**
+     * This method is an abstract method from EditorElement that has a purpose of displaying the 
+     * data extracted from DB from loadData method by outputting the HTML code.  
+     * 
+     * @return string
+     */
     public function displayData()
     {
         $htmlContent = '';
@@ -80,6 +115,16 @@ class EditorTable extends EditorElement
         return $htmlContent;
     }
 
+    /**
+     * This abstract method from EditorElement extracts appropriate information from the 
+     * msm_table table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the EditorSubordinate 
+     * class.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid           The database ID from the msm_compositor table
+     * @return \EditorTable
+     */
     public function loadData($compid)
     {
         global $DB;
@@ -94,7 +139,7 @@ class EditorTable extends EditorElement
         $this->content = $tableRecord->table_content;
 
         $childRecords = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
-        
+
         foreach ($childRecords as $child)
         {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
@@ -104,12 +149,20 @@ class EditorTable extends EditorElement
                 $subordinate = new EditorSubordinate();
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
-            }            
+            }
         }
 
         return $this;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database.
+     * 
+     * @return HTML string
+     */
     public function displayPreview()
     {
         $previewHtml = '';

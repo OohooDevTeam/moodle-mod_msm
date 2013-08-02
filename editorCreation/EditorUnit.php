@@ -29,15 +29,16 @@
  */
 class EditorUnit extends EditorElement {
 
-    public $id;
-    public $compid;
-    public $title;
-    public $plain_title;
-    public $description;
-    public $unitName;
-    public $short_name;
-    public $children = array(); // need it for load/display part
+    public $id;                     // database ID associated with the unit element in msm_unit table
+    public $compid;                 // database ID associated with the unit element in msm_compositor table
+    public $title;                  // title input associated with the unit element
+    public $plain_title;            // plain text title input associated with the unit element (no math elements)
+    public $description;            // description input associated with the unit element
+    public $unitName;               // name in msm_unit_name table that is associated with the nested nature of this unit (ie. according to the depth)
+    public $short_name;             // short version of the plain_title that is used to label nodes in XML hierarchy jquery jsTree
+    public $children = array();     // need it for load/display part --> child objects of unit
 
+    // constructor for this class
     public function __construct() {
         $this->tablename = 'msm_unit';
     }

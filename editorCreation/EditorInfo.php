@@ -15,10 +15,10 @@
  * ************************************************************************ */
 
 /**
- *  EditorInfo class inherits from the EditorElement class and it represents the
+ * EditorInfo class inherits from the EditorElement class and it represents the
  * information elements that are shown in the view as a popup jquery dialog boxes upon
  * mouse hover as a trigger.  This class is called by EditorSubordinate/EditorAssociate
- * classes and itself calls EditorSubordinate and/or EditorMedia classess
+ * classes and itself calls EditorSubordinate and/or EditorMedia classess.
  *
  */
 class EditorInfo extends EditorElement

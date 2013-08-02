@@ -23,14 +23,14 @@
 class EditorPartTheorem extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $content;
-    public $caption;
-    public $errorArray = array();
-    public $subordinates = array();
-    public $medias = array();
-    public $isRef;
+    public $id;                         // database ID associated with the part.theorem element in msm_part_theorem table
+    public $compid;                     // database ID associated with the part.theorem element in msm_compositor table
+    public $content;                    // content element associated with the part.theorem element
+    public $caption;                    // title input associated with the part.theorem element
+    public $errorArray = array();       // HTML IDs of empty contents --> used to put colored border around the input/textarea to warn user of empty content
+    public $subordinates = array();     // EditorSubordinate objects associated with the part.theorem element
+    public $medias = array();           // EditorMedia objects associated with the part.theorem element
+    public $isRef;                      // database ID associated with the referenced already-existing part.theorem element in msm_compositor table
 
     function __construct()
     {
@@ -237,7 +237,6 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<input id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$idEnding' disabled='disabled' value='$this->caption'/>";
         $htmlContent .= "<div id='msm_theorem_part_content-$idEnding' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
-//        $htmlContent .= $content;
         $htmlContent .= "</div>";
 
         $htmlContent .= "<div class='msm_subordinate_containers' id='msm_subordinate_container-parttheoremcontent$idEnding'>";

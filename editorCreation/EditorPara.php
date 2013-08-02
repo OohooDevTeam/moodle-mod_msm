@@ -15,7 +15,7 @@
  * ************************************************************************* */
 
 /**
- *  EditorPara class inherits from the EditorElement class and it represents the
+ * EditorPara class inherits from the EditorElement class and it represents the
  * paragraph elements in the HTML content of tinyMCE editor.  Usually the
  * parent class that calls this class function is EditorBlock, EditorIntro or EditorUnit classes.
  * 
@@ -23,15 +23,16 @@
 class EditorPara extends EditorElement
 {
 
-    public $align;
-    public $description;
-    public $content;
-    public $id;
-    public $compid;
-//    public $imgs = array();
-    public $subordinates = array();
-    public $medias = array();
+    public $id;                         // database ID associated with the para element in msm_para table
+    public $compid;                     // database ID associated with the para element in msm_compositor table
+    public $align;                      // alignement of the para in the content (left/right/center);
+    public $description;                // description associated with the para element (was not implemented 
+                                        // due to not implementing search for every para --> might be more efficient to use copy/paste?)
+    public $content;                    // text content associated with the para element
+    public $subordinates = array();     // EditorSubordinate objects associated with the para element
+    public $medias = array();           // EditorMedia objects associated with the para element
 
+    //constructor for this class
     function __construct()
     {
         $this->tablename = "msm_para";
@@ -42,7 +43,7 @@ class EditorPara extends EditorElement
      * from the POST object(from editor form submission).  It calls the same method from another class(EditorSubordinate) to process its
      * children's data.
      * 
-     * @param DOMElement $idNumber corresponds to <p> elements from content
+     * @param DOMElement $idNumber          corresponds to <p> elements from content
      * @return \EditorPara
      */
     function getFormData($idNumber)
@@ -195,10 +196,6 @@ class EditorPara extends EditorElement
                 $subordinate->loadData($child->id);
                 $this->subordinates[] = $subordinate;
             }
-//            else
-//            {
-//                echo "another child of para? " . $childTable->tablename;
-//            }
         }
 
         return $this;

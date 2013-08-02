@@ -24,18 +24,17 @@
 class EditorTheorem extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $type;
-    public $title;
-    public $associateType;
-    public $tablename;
-    public $description;
-    public $contents = array(); // statement theorem
-    public $errorArray = array();
-    public $children = array(); //associates
-    public $isRef;
+    public $id;                         // database ID associated with the theorem element in msm_theorem table
+    public $compid;                     // database ID associated with the theorem element in msm_compositor table
+    public $type;                       // type of theorem chosen by the user in a dropdown menu (eg. Theorem/Lemma...etc)
+    public $title;                      // title input associated with the theorem element
+    public $description;                // description input associated with the theorem element
+    public $contents = array();         // EditorStatement objects associated with the theorem element
+    public $errorArray = array();       // HTML IDs of empty contents --> used to put colored border around the input/textarea to warn user of empty content
+    public $children = array();         // EditorAssociate objects associated with the theorem element
+    public $isRef;                      // database ID associated with the referenced already-existing theorem element in msm_compositor table
 
+    // constructor for this class
     public function __construct()
     {
         $this->tablename = 'msm_theorem';
@@ -370,7 +369,6 @@ class EditorTheorem extends EditorElement
                     $associate->loadData($child->id);
                     $this->children[] = $associate;
                     break;
-                //associate, proof...etc
             }
         }
 

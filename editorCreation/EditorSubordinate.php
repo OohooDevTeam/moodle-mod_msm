@@ -1,35 +1,52 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
 /**
- * Description of EditorSubordinate
- *
- * @author User
+ * EditorSubordinate class inherits from the EditorElement class and it represents the
+ * subordinate elements that are shown in the view as a popup jquery dialog boxes upon
+ * mouse hover as a trigger.  This class is called by most of the classes with content components
+ * associated and calls on EditorInfo class.
  */
 class EditorSubordinate extends EditorElement
 {
 
-    public $id;
-    public $compid;
-    public $hot;
-    public $info;
-    public $external_link;
-    public $isRef;
+    public $id;                 // database ID associated with subordinate element in msm_subordinate table
+    public $compid;             // database ID associated with subordinate element in msm_compositor table
+    public $hot;                // anchor element text that triggers display of info element in view
+    public $info;               // EditorInfo objects associated with the subordinate element
+    public $external_link;      // EditorExternalLink objects associated with the subordinate element
+    public $isRef;              // database ID associated with the referenced already-existing subordinate element in msm_compositor table
 
     // no errorArray necessary b/c null input has been checked already
     // when the subordinate was made
 
+    // constructor for this class
     function __construct()
     {
         $this->tablename = 'msm_subordinate';
     }
 
-    // idNumber in this case is the anchored element passed from
-    // contents (of various classes such as EditorDefinition/EditorTheorem...etc)
+    /**
+     * This method is an abstract method inherited from EditorElement.  It finds the needed information for database table
+     * from the POST object(from editor form submission).  It calls the same method from another class(EditorInfo/EditorExternalLink) to process its
+     * children's data.
+     * 
+     * @param DOMElement $idNumber              anchor element from content
+     * @return \EditorSubordinate
+     */
     public function getFormData($idNumber)
     {
         $doc = new DOMDocument;
@@ -94,6 +111,17 @@ class EditorSubordinate extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is an abstract method inherited from EditorElement.  Its main purpose is to
+     * insert the data obtained from the POST object via method above to the msm_subordinate table and to 
+     * insert structural data (its parent/sibling...etc) to the compositor table. This method also calls 
+     * insertData method from EditorInfo and/or EditorExternalLink classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $parentid         Database ID from msm_compositor of the parent element
+     * @param integer $siblingid        Database ID from msm_compositor of the previous sibling element
+     * @param integer $msmid            The instance ID of the MSM module.
+     */
     public function insertData($parentid, $siblingid, $msmid)
     {
         global $DB;
@@ -153,6 +181,15 @@ class EditorSubordinate extends EditorElement
         }
     }
 
+    /**
+     * This method has a purpose of displaying the data extracted from DB from loadData
+     * method by outputting the HTML code.  This method calls displayData from the EditorInfo
+     * and/or EditorExternalLink class.
+     *  
+     * @global moodle_database $DB
+     * @param int $parentId                 database ID of parent element in msm_compositor table
+     * @return string
+     */
     public function displayData($parentId)
     {
         global $DB;
@@ -249,9 +286,13 @@ class EditorSubordinate extends EditorElement
     }
 
     /**
+     * This abstract method from EditorElement extracts appropriate information from the 
+     * msm_subordinate table and also triggers extraction of data from its children using the 
+     * data given by the msm_compositor table. It calls the loadData method from the 
+     * EditorExternalLink/EditorInfo classes.
      * 
      * @global moodle_database $DB
-     * @param type $compid
+     * @param integer $compid           The database ID from the msm_compositor table
      * @return \EditorSubordinate
      */
     public function loadData($compid)
@@ -272,7 +313,6 @@ class EditorSubordinate extends EditorElement
         {
             $childTable = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
 
-            // need to add references --> def/theorem...etc
             if ($childTable->tablename == 'msm_info')
             {
                 $info = new EditorInfo();
@@ -289,6 +329,15 @@ class EditorSubordinate extends EditorElement
         return $this;
     }
 
+    /**
+     * This method is triggered when the View navigation button on the editor is clicked to show the preview of the unit to the user.
+     * It generates the appropriate HTML code to display the information as it is layed out on the MSM editor not according to how
+     * the elements are structured in the database.  Hence allowing user to preview the material while making changes without having to 
+     * commit to saving it in the database. The contents associated with subordinate elements are shown when the user hovers over the
+     * anchor element which triggers opening of jquery dialog box for information element.
+     * 
+     * @return HTML string
+     */
     public function displayPreview()
     {
         $previewHtml = '';

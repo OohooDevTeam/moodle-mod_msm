@@ -1,10 +1,26 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
+/*
+ * This script is called from submitAjax function in editorChildComponents.js file when the user pressed search button in
+ * the internal/external reference search jquery dialog window.  This script takes the information posted from the AJAX call
+ * from the js file and searches the database for the def/theorem/comment or unit elements with title/content/description
+ * that matches the given string in the search field.  All the search results are formatted into a table and displayed for the 
+ * user to choose the desired reference material.  
+ */
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 
@@ -101,22 +117,25 @@ else if ($refType == "External References")
 $records = array();
 $whereClause = '';
 
-// need to include msm ID 
-// also need to be given info to know if this is internal or external referencing
+// searching for definition that matches the given string in title/content/description
 if ($dbType == "definition")
 {
+    // title matches the string
     if ($fieldType == "title")
     {
         $whereClause = "WHERE LOWER(d1.caption) LIKE '%$matchString%' OR LOWER(d1.caption) LIKE '$matchString%' OR LOWER(d1.caption) LIKE '%$matchString'";
     }
+    // content matches the string
     else if ($fieldType == "content")
     {
         $whereClause = "WHERE LOWER(d1.def_content) LIKE '%$matchString%' OR LOWER(d1.def_content) LIKE '$matchString%' OR LOWER(d1.def_content) LIKE '%$matchString'";
     }
+    // description matches the string
     else if ($fieldType == "description")
     {
         $whereClause = "WHERE LOWER(d1.description) LIKE '%$matchString%' OR LOWER(d1.description) LIKE '$matchString%' OR LOWER(d1.description) LIKE '%$matchString'";
     }
+     // title/content/description matches the string
     else if ($fieldType == "all")
     {
         $whereClause = "WHERE LOWER(d1.def_content) LIKE '%$matchString%' OR LOWER(d1.caption) LIKE '%$matchString%' OR LOWER(d1.description) LIKE '%$matchString%'
@@ -139,6 +158,8 @@ if ($dbType == "definition")
                 GROUP BY comp.unit_id";
     }
 }
+
+// searching for comment that matches the given string in title/content/description
 else if ($dbType == "comment")
 {
     if ($fieldType == "title")
@@ -439,6 +460,20 @@ $html = displaySearchResult($unitId, $records, $tableID);
 
 echo json_encode($html);
 
+/**
+ * This function is used to display all the database records that match the search parameters
+ * in to a table format with checkboxese for user to choose the record to be inserted as a
+ * reference material.
+ * 
+ * @global moodle_database $DB
+ * @param int $unit                     database ID of the current unit being editted (need to make sure that
+ *                                      the reference didn't come from the same unit to prevent referencing in circles
+ *                                      --> which causes infinite loops)
+ * @param array $records                array with all the records that meets the criteria given by the search parameters
+ * @param stdClass $tableRecords        record from msm_table_collection that has the ID and tablename of chosen element
+ *                                      (def/comment/theorem/unit)
+ * @return string
+ */
 function displaySearchResult($unit, $records, $tableRecords)
 {
     global $DB;
@@ -461,6 +496,7 @@ function displaySearchResult($unit, $records, $tableRecords)
         $parentUnitRecord = $DB->get_record("msm_compositor", array("id" => $rec->parent_id));
         $unitTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
 
+        // checking that the record doesn't exist in the same parent unit
         if ($parentUnitRecord->table_id == $unitTable->id)
         {
             if ($parentUnitRecord->unit_id == $unit)
@@ -532,6 +568,7 @@ function displaySearchResult($unit, $records, $tableRecords)
     }
     $displayString .= "</table>";
 
+    // if there are no records that meets the criteria given by the search parameters, let the user know about the absence of any results
     if (!$hasDisplay)
     {
         $displayString = "<b style='text-align: center;'> There are no results that satisfies the specified search parameter. </b>";
@@ -540,6 +577,15 @@ function displaySearchResult($unit, $records, $tableRecords)
     return $displayString;
 }
 
+/**
+ * This method is used to display the subordinate elements and its associated info jquery dialog boxes in the
+ * search dialog window.  It checks for any subordinate elements as child of the searched record and displays the 
+ * subordinate and the info contents in appropriate HTML code to trigger jquery dialog
+ * 
+ * @global moodle_database $DB
+ * @param stdClass $record              record that met the criteria given by the search parameters
+ * @return string
+ */
 function displaySearchSubordinate($record)
 {
     global $DB;
@@ -560,14 +606,19 @@ function displaySearchSubordinate($record)
     return $subordinateString;
 }
 
+/**
+ * This method is used to display the theorem search results to 
+ * have the proper view for the theorem contents.
+ * 
+ * @param stdClass $searchTheoremRec            record of theorem satisfying the search parameters
+ * @return string
+ */
 function displaySearchTheorem($searchTheoremRec)
 {
     $content = '';
 
     $theorem = new EditorTheorem();
     $theorem->loadData($searchTheoremRec->id);
-    
-//    print_object($theorem);
 
     foreach ($theorem->contents as $statement)
     {
