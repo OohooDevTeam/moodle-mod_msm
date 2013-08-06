@@ -1,6 +1,5 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *  These are functions that are no longer in use for this module but it was kept in case it becomes relevant later in the project?
  */
 
 /*for possibly implementing activation of tinymce only when that specific text area is under focus...

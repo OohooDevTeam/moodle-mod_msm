@@ -1,6 +1,21 @@
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
+
 /* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * This file deals with any changes that is saved in the settings menu.  Any changes made to
+ * each unit names for each depth of nesting are saved into database by calling the ajaxSettingUpdate.php
+ * script by an AJAX call.  It also updates the hidden input field with all the names of the unit.
  */
 
 $(document).ready(function () {
@@ -93,16 +108,28 @@ $(document).ready(function () {
                                 }
                             });  
                         }
-                        else
-                        {
-                            $('#msm_unit_name_input').val(inputValue);
-                            $("#msm_setting_dialog").dialog("close");
-                        }
+//                        else
+//                        {
+//                            $('#msm_unit_name_input').val(inputValue);
+//                            var eachName = inputValue.split(",");
+//                            
+//                            console.log($("#msm_unit_title_label"));
+//                            console.log($("#msm_top_unit_label"));
+//                            $("#msm_unit_title_label").text(eachName[0]+" title: ");
+//                            $("#msm_top_unit_label").text(eachName[0]+" Design Area");
+//                            $("#msm_setting_dialog").dialog("close");
+//                        }
                         
                     }
                     else
                     {
                         $('#msm_unit_name_input').val(errorids);
+                        
+                        // eachName has order of: reference name, top unit, 2nd unit...etc
+                        var eachName = errorids.split(",");     
+                        // to dynamically change the name when user change the names
+                        $("#msm_unit_title_label").text(eachName[1]+" title: ");
+                        $("#msm_top_unit_label").text(eachName[1]+" Design Area");                            
                         $("#msm_setting_dialog").dialog("close");
                     }
                 },

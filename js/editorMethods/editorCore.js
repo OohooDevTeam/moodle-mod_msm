@@ -22,9 +22,6 @@
 // variable that gives an unique id number for all the structural element in the editor
 var _index = 0;
 
-// variable that gives unique id number to each image of the editor
-
-
 /**
  * This function is activated when user drags one of the structural elememts on the very left side of the panel to middle panel.
  * It adds appropriate fields for the users to fill out for def/theorem/comments/info/content/media and images.
@@ -41,29 +38,25 @@ function processDroppedChild(e, droppedId)
     {
         case "msm_def":
             element = makeDefinition();
-            element.appendTo('#msm_child_appending_area');
-            
+            element.appendTo('#msm_child_appending_area');            
             currentContentid = 'msm_def_content_input-'+_index;
             break;
         
         case "msm_theorem":
             element = makeTheorem();
-            element.appendTo('#msm_child_appending_area');
-            
+            element.appendTo('#msm_child_appending_area');            
             currentContentid = 'msm_theorem_content_input-'+_index+'-1';
             break;
             
         case "msm_comment":
             element = makeComment();
-            element.appendTo('#msm_child_appending_area');
-            
+            element.appendTo('#msm_child_appending_area');            
             currentContentid = 'msm_comment_content_input-'+_index;
             break;
             
         case "msm_extra_info":
             element = makeExtraInfo();
-            element.appendTo("#msm_child_appending_area");
-            
+            element.appendTo("#msm_child_appending_area");            
             currentContentid = 'msm_extra_content_input-'+_index;
             break;
             
@@ -106,7 +99,6 @@ function processDroppedChild(e, droppedId)
                 var dndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"'>Drag additional content to here.\n\
                                      <p>Valid child Elements: Extra Contents</p>\n\
                                  </div>"); 
-                //                var introChildButton = $('<input class="msm_intro_child_buttons" id="msm_intro_child_button-'+_index+'" type="button" onclick="addIntroContent('+_index+')" value="Add additional content"/>');
             
                 clonedCurrentElement.attr("id", "copied_msm_intro-"+_index);
                 clonedCurrentElement.attr("class", "copied_msm_structural_element");
@@ -193,8 +185,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
             currentContentid = 'msm_body_content_input-'+_index;
-            break;       
-            
+            break;    
     }
     
     $(".msm_dnd_containers").droppable({
@@ -205,8 +196,7 @@ function processDroppedChild(e, droppedId)
             processAdditionalChild(event, ui.draggable.context.id);      
             allowDragnDrop();  
         }
-    });
-    
+    });    
     
     if($('#msm_editor_save').attr("disabled"))
     {
@@ -292,6 +282,13 @@ function processDroppedChild(e, droppedId)
                 
 }
 
+/**
+ * Thie method is used to initiate tinyMCE for the title elements, such as for unit.
+ * It is separated from the initEditor due to title editors having a simpler layout
+ * that does not need any advanced function in tinyMCE.
+ *
+ * @param string elId                   HTML element ID
+ */
 function initTitleEditor(elId)
 {
     YUI().add("editor_tinymce");
@@ -320,6 +317,11 @@ function initTitleEditor(elId)
     });   
 }
 
+/**
+ * Thie method is used to initiate tinyMCE for the textarea elements.
+ * 
+ * @param string elId                   HTML element ID
+ */
 function initEditor(elId)
 { 
     YUI().add("editor_tinymce");
@@ -353,6 +355,12 @@ function initEditor(elId)
     });
 }
 
+/**
+ * This method is used to initiate information title textarea which cannot have subordinate
+ * functionality in the tinyMCE editor.
+ * 
+ * @param string elId               HTML element ID (for information element)
+ */
 function noSubInitEditor(elId)
 {
     YUI().add("editor_tinymce");
@@ -418,6 +426,7 @@ function resetUnit()
  * This method is used to delete elements that were added to the middle panel and is triggered by msm_element_close button in each of the 
  * structural elements dragged from the left column.
  * 
+ * @param eventObject e         event object from clicking the close buttons on each of draggable elements
  */
 function deleteElement(e)
 {
@@ -436,7 +445,7 @@ function deleteElement(e)
             tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
         }
     });
-    //    
+        
     $("<div class='dialogs' id='msm_deleteComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
     $( "#msm_deleteComposition" ).dialog({
         resizable: false,
@@ -472,6 +481,8 @@ function deleteElement(e)
  * This method is triggered by the add content button in introduction.  It adds a div identical to content in
  * structural element for user to be able to extend the intro into sections...etc with it's own subtitles to section them off. 
  * All contents added in here belongs to block in intro section.
+ * 
+ * @param string idNumer                string added to main intro div to make it unique
  */
 function addIntroContent(idNumber)
 {
@@ -481,7 +492,7 @@ function addIntroContent(idNumber)
         childNumber++;
     })
     
-    var newId = idNumber + childNumber;
+    var newId = idNumber + "-" + childNumber;
     
     // preventing duplicate ID from being created...so check if the ID already exists
     $(".msm_intro_child").each(function() {
@@ -629,6 +640,12 @@ function addIntroContent(idNumber)
      
 }
 
+/**
+ * This method creates the form for additional contents in theorem element.  It is triggered when an 
+ * "Extra Content" element is dragged and dropped to a droppable container in theorem.
+ * 
+ * @param eventObject event         event triggered from dropping an "Extra Content" element to theorem
+ */
 function addTheoremContent(event)
 {    
     var newId = 1;
@@ -657,12 +674,7 @@ function addTheoremContent(event)
     var theoremContentField = $('<textarea class="msm_unit_child_content msm_theorem_content" id="msm_theorem_content_input-'+idNumber+'-'+newId+'" name="msm_theorem_content_input-'+idNumber+'-'+newId+'"/>');    
     var subordinateContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-statementtheoremcontent'+idNumber+'-'+newId+'"></div>');
 
-    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-statementtheoremcontent'+idNumber+'-'+newId+'"></div>');   
-       
-    //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addTheoremPart(event)" value="Add more parts"/>');
-    //    var theoremPartWrapper = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+'-'+newId+"'>Drag additional content to here.\n\
-    //                        <p>Valid child Elements: Part of a Theorem</p>\n\
-    //                    </div>//");   
+    var subordinateResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-statementtheoremcontent'+idNumber+'-'+newId+'"></div>'); 
 
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+idNumber+'-'+newId+'"></div>');
     var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+'-'+newId+"'>Drag additional content to here.\n\
@@ -755,6 +767,12 @@ function addTheoremContent(event)
                 
 }
 
+/**
+ * This method creates the form for additional parts in theorem element.  It is triggered when an 
+ * "Parts of a Theorem" element is dragged and dropped to a droppable container in theorem content.
+ * 
+ * @param eventObject event         event object triggered from item being dropped into a designated droppable container
+ */
 function addTheoremPart(event)
 {
     var newId = 1;   
@@ -865,9 +883,12 @@ function addTheoremPart(event)
                 
 }
 
-// index is the ending id number for associate
-
-// ** make sure that the form input areas have both index number and their own unique idnumber so can order them according to their parents
+/**
+ * 
+ * 
+ * @param int index                     ending id number for associate to be attached to the HTML ID of the associate
+ * @param string type                   the parent of the associate (def/comment/theorem)
+ */
 function addAssociateForm(index, type)
 {
     var newId = 1;
@@ -917,8 +938,6 @@ function addAssociateForm(index, type)
     var infoTitleLabel = $('<label for="msm_info_title-'+index + '-' + newId+'-1">title: </label>');
     // title input area needs to be a textarea due to the need for math equation editor
     var infoTitleInput = $('<textarea class="msm_info_titles" id="msm_info_title-'+index + '-' + newId+'-1" name="msm_info_title-'+index + '-' + newId+'-1"/>');    
-    //    var subordinateTitleContainer = $('<div class="msm_subordinate_containers" id="msm_subordinate_container-infotitle'+index + '-' + newId+'"></div>');
-    //    var subordinateTitleResult = $('<div class="msm_subordinate_result_containers" id="msm_subordinate_result_container-infotitle'+index + '-' + newId+'-1"></div>');
     
     var infoContentLabel = $('<label for="msm_info_content-'+index + '-' + newId+'-1">content: </label>');
     var infoContentInput = $('<textarea class="msm_info_contents" id="msm_info_content-'+index + '-' + newId+'-1" name="msm_info_content-'+index + '-' + newId+'-1"/>');
@@ -947,8 +966,6 @@ function addAssociateForm(index, type)
     associateInfoDiv.append(typeDropdown);
     associateInfoDiv.append(infoTitleLabel);
     associateInfoDiv.append(infoTitleInput);
-    //    associateInfoDiv.append(subordinateTitleContainer);
-    //    associateInfoDiv.append(subordinateTitleResult);
     associateInfoDiv.append(infoContentLabel);
     associateInfoDiv.append(infoContentInput);
     associateInfoDiv.append(subordinateContentContainer);
@@ -970,9 +987,7 @@ function addAssociateForm(index, type)
     }
     
     initEditor("msm_info_content-"+index+"-"+newId+"-1");
-    noSubInitEditor("msm_info_title-"+index+"-"+newId+"-1");
-    // info title cannot have subordinate 
-    
+    noSubInitEditor("msm_info_title-"+index+"-"+newId+"-1");    
        
     $("#msm_associate_container-"+index).sortable({
         appendTo: "msm_associate_container-"+index,
@@ -1043,7 +1058,6 @@ function addAssociateForm(index, type)
     });
     
     $("#msm_associate_container-"+index).sortable("refresh");
-
     
     $("#msm_associate_info_header-"+index+"-"+newId).mouseover(function () {
         $(this).children("span").css({
@@ -1057,18 +1071,20 @@ function addAssociateForm(index, type)
     $("#msm_associate_info_header-"+index+"-"+newId).mouseout(function () {
         $(this).children("span").css({
             "visibility":"hidden"
-        // "display":"none"
         });
     });
     $("#msm_associate_info_header-"+index+"-"+newId).mouseup(function () {
         $(this).children("span").css({
             "visibility":"hidden"
-        // "display":"none"
         });
-    });
-     
+    });     
 }
 
+/**
+ * This method creates the form need to input the information for definition elements.
+ * 
+ * @return object               finished form in a container div
+ */
 function makeDefinition()
 {
     checkIndexNumber("copied_msm_def-"+_index);
@@ -1128,6 +1144,11 @@ function makeDefinition()
     return clonedCurrentElement;
 }
 
+/**
+ * This method creates the form need to input the information for theorem elements.
+ * 
+ * @return object               finished form in a container div
+ */
 function makeTheorem()
 {
     checkIndexNumber("copied_msm_theorem-"+_index);
@@ -1163,10 +1184,7 @@ function makeTheorem()
     var theoremPartWrapper = $('<div class="msm_theorem_part_dropareas" id="msm_theorem_part_droparea-'+_index+'-1"></div>');
     var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+_index+"-1'>Drag additional content to here.\n\
                         <p>Valid child Elements: Part of a Theorem</p>\n\
-                    </div>");   
-            
-    //    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theorem_child_button-'+_index+'" type="button" onclick="addTheoremContent(event)" value="Add content"/>');
-    //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theorem_part_button-'+_index+'-1" type="button" onclick="addTheoremPart(event)" value="Add more parts"/>');
+                    </div>");               
     var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theorem_description_label-"+_index+"' for='msm_theorem_description_input-"+_index+"'>Description: </label>");
     var theoremDescriptionField = $("<input class='msm_child_description_inputs' id='msm_theorem_description_input-"+_index+"' name='msm_theorem_description_input-"+_index+"' placeholder='Insert description to search this element in future. '/>");
     var theoremAssociateDiv = $("<div class='msm_associate_containers' id='msm_associate_container-"+_index+"'></div>");
@@ -1192,7 +1210,6 @@ function makeTheorem()
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
-    //    theoremContentWrapper.append(theoremChildButton);
     
     overlayMenu.append(overlayButtonDelete);
     overlayMenu.append(overlayButtonEdit);
@@ -1251,6 +1268,11 @@ function makeTheorem()
     return clonedCurrentElement;
 }
 
+/**
+ * This method creates the form need to input the information for comment elements.
+ * 
+ * @return object               finished form in a container div
+ */
 function makeComment()
 {
     checkIndexNumber("copied_msm_comment-"+_index);
@@ -1306,6 +1328,11 @@ function makeComment()
     return clonedCurrentElement;
 }
 
+/**
+ * This method creates the form need to input the information for extra information elements.
+ * 
+ * @return object               finished form in a container div
+ */
 function makeExtraInfo()
 {
     checkIndexNumber("copied_msm_extra_info-"+_index);
@@ -1353,6 +1380,12 @@ function makeExtraInfo()
     return clonedCurrentElement;
 }
 
+/**
+ * This element check if the current element HTML ID exists in the form or not.
+ * If the element ID already exists, then it increments the index number.
+ * 
+ * @param string oldid          current element id 
+ */
 function checkIndexNumber(oldid)
 {
     $("#msm_child_appending_area").find(".copied_msm_structural_element").each(function() {

@@ -1,6 +1,19 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
+
+/**
+ * This file contains all the function needed when the user triggers the save button after creating an unit.
  */
 
 $(document).ready(function(){
@@ -39,6 +52,10 @@ $(document).ready(function(){
     });
 });
 
+/**
+ * This method is responsible for the AJAX call to the msmUnitForm.php script to process
+ * all the form data submitted and to insert the data into the database.
+ */
 function submitForm()
 {        
     var disabled = $("#msm_comp_done").attr("disabled");
@@ -48,7 +65,6 @@ function submitForm()
         $("#msm_comp_done").removeAttr("disabled");
     }
         
-    //    $("#msm_unit_title").removeAttr("readonly");
     $("#msm_unit_short_title").removeAttr("readonly");
     $("#msm_unit_description_input").removeAttr("readonly");
     
@@ -63,6 +79,7 @@ function submitForm()
         }           
     }
         
+    // subordinateArray stores all the subordinates found in content of these textareas
     var subordinateArray = [];
     $("textarea").each(function(){
         // process information from textarea that are not related to info elements
@@ -80,7 +97,6 @@ function submitForm()
         // process associate information
         else if(this.id.match(/_info_/))
         {
-            //            subordinateArray.push(prepareSubordinate(this));
             subordinateArray.push(prepareSubordinate(this.id));
             if(typeof tinymce.get(this.id) !== "undefined")
             {                
@@ -101,6 +117,9 @@ function submitForm()
        
     $("#msm_child_order").val(idString+urlParamInfo[1]);
         
+    // subordinateData is essentially a string version of subordinateArray
+    // to be passed to the server side as a POST object
+    // - the string format: HTML_ID||value//|HTML_ID||value//|...etc
     var subordinateData = '';    
     for(var i=0; i < subordinateArray.length; i++)
     {
@@ -128,6 +147,7 @@ function submitForm()
             // a warning dialog box and highlights the contents that are empty
             ids = JSON.parse(data);
                 
+            // there is an empty content that cannot be empty
             if(ids instanceof Array)
             {
                 $("#msm_unit_form").find(".empty_content_error").each(function() {
@@ -165,6 +185,8 @@ function submitForm()
             }
             else
             {        
+                // showUnitPreview triggered submit to use the form data to display
+                // the current content as a preview.
                 if(typeof mode !== 'undefined')
                 {                    
                     $("#msm_preview_dialog .leftbox").append(ids); 
@@ -230,21 +252,17 @@ function submitForm()
                         previewInfo(this.id, "dialog-"+newid);
                     });
                     
-                    //                    $("#msm_unit_title").attr("readonly", "true");
-                    //                    $(this).removeClass("msm_add_border");
                     $("#msm_unit_short_title").attr("readonly", "true");
                     $(this).removeClass("msm_add_border");
                     $("#msm_unit_description_input").attr("readonly", "true");         
                     $(this).removeClass("msm_add_border");
                 }
+                // triggered by the save button and need to change the editor from edit mode to display mode
                 else if(typeof mode === 'undefined')
                 {
-                    // replace save and reset button to edit and new buttons, respectively
-                    
-                    $(".msm_editor_buttons").remove();
-                    
+                    // replace save and reset button to edit and new buttons, respectively                    
+                    $(".msm_editor_buttons").remove();                    
                     $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
-
                     $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
                     
                     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
@@ -312,8 +330,7 @@ function submitForm()
                     
                     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);     
                     insertUnitStructure(ids);                  
-                }
-                   
+                }                   
             }
         },
         error: function() {
@@ -322,6 +339,13 @@ function submitForm()
     });
 }
 
+/**
+ *  This method finds all the subordinate from a given content element in the form and returns
+ *  them in a form of an array.
+ *  
+ *  @param string id            HTML ID of the textarea with tinyMCE
+ *  @return array               an associative array of all the subordinates with its HTML ID as a key
+ */
 function prepareSubordinate(id)
 {
     var subordinates = [];
@@ -333,6 +357,11 @@ function prepareSubordinate(id)
     return subordinates;    
 }
 
+/**
+ * This method is used to remove all tinyMCE in the form and is used to change the 
+ * mode of the editor from edit mode to display mode after save/cancel is triggered.
+ * 
+ */
 function removeTinymceEditor()
 { 
     titleInput2Div("msm_unit_title");
@@ -380,6 +409,12 @@ function removeTinymceEditor()
     });
 }
 
+/**
+ * This method is used to convert the textarea with tinyMCE enabled to divs with
+ * the tinyMCE contents and without tinyMCE editor activated.  
+ * 
+ * @param string id                 HTML ID of the textarea
+ */
 function textArea2Div(id)
 {
     var edInstance = tinyMCE.getInstanceById(id);
@@ -411,6 +446,10 @@ function textArea2Div(id)
     $("#"+id).replaceWith(editorContent);
 }
 
+/**
+ * This method converts the title input field with tinyMCE enabled to a div without tinyMCE but with identical content for
+ * display purposes.
+ */
 function titleInput2Div(id)
 {
     var edInstance = tinyMCE.getInstanceById(id);
@@ -443,8 +482,9 @@ function titleInput2Div(id)
 }
 
 /**
-* disabling all input/selection areas in editor and also disabling all jquery actions such as 
-* sortable, draggable and droppable
+* This method is responsible for disabling all input/selection areas in editor and also
+* disabling all jquery actions such as sortable, draggable and droppable and enabling the
+* overlay for each core elements (ie. definition/comment..etc any direct child element of unit)
 */
 function disableEditorFunction()
 {
@@ -519,13 +559,13 @@ function disableEditorFunction()
             height: "30px"
         }, 300);
         $("#msm_element_overlay-"+idNumber[1]).css("display", "none");
-    }
-    );
-    
+    });    
 }
 
-
-// to activate the dialog box for display purposes
+/**
+ * This method is used to activate the jquery UI dialog popup windows for the display of
+ * information elements in associate/subordinate elements during preview and search result display.
+ */
 function previewInfo(elementid, dialogid)
 {        
     var x = 0; // stores the x-axis position of the mouse
@@ -561,7 +601,7 @@ function previewInfo(elementid, dialogid)
     });
     //----------------------------------------------------------------------
     
-//    $("#msm_search_result_table").find("#"+elementid).unbind();                
+    //    $("#msm_search_result_table").find("#"+elementid).unbind();                
     $("#msm_search_result_table").find("#"+elementid).ready(function(){
         $("#msm_search_result_table").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();
@@ -587,7 +627,7 @@ function previewInfo(elementid, dialogid)
         });
     });
     
-//    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();                
+    //    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();                
     $("#msm_subordinate_ref_display").find("#"+elementid).ready(function(){
         $("#msm_subordinate_ref_display").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();

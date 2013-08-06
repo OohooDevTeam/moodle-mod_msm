@@ -1,18 +1,29 @@
 /**
-**************************************************************************
-** MSM **
-**************************************************************************
-* @package mod **
-* @subpackage msm **
-* @name msm **
-* @copyright University of Alberta **
-* @link http://ualberta.ca **
-* @author Ga Young Kim **
-* @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
 
-// e = event
+/**
+ *  This js file contains the methods for making forms for the new reference materials
+ *  that are added to def/comment/theorem elements by associate elements.
+ */
+
+/**
+ * This method is triggered when the selection of dropdown menu for selecting different type of reference material
+ * in associate element forms changes.  It calls various other function in this js file to change the form according to the 
+ * selection of the dropdown menu.
+ * 
+ * @param eventObject e          event object from user changing the dropdown menu selection
+ */
 function processReftype(e)
 {
     var selectedReftype = e.target.selectedIndex;
@@ -21,8 +32,7 @@ function processReftype(e)
         
     var element;
     
-    var idString = "#"+e.target.parentElement.id + " > div";
-   
+    var idString = "#"+e.target.parentElement.id + " > div";   
     
     // removes any previously added forms for previous choices made by the author
     $(idString).each(function() {
@@ -63,6 +73,7 @@ function processReftype(e)
             break;
     }
     
+    // activate the tinymce editors for textareas
     initEditor(currentId);
     
     $(".msm_dnd_containers").droppable({
@@ -103,10 +114,18 @@ function processReftype(e)
     });
     $("#msm_theoremref_statement_title_container-"+indexNumber+'-1').mouseup(function () {
         $(this).children("span").css("visibility", "hidden");
-    });
-   
+    });   
 }
 
+/**
+ * This method creates the form for making the definition reference materials.
+ * 
+ * @param string idindex                        string to attach to end of HTML ID to make this element unique
+ * @param int dbId                              if user added internal/external reference, this value flags this reference
+ *                                              when the values are passed to the server side to be inserted into db
+ *                                              (if dbId is not an empty value, then the data already exists so do not insert data to msm_def table)
+ * @return object clonedCurrentElement          definition form container to be inserted below associate info element forms
+ */
 function makeRefDefinition(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
@@ -153,6 +172,15 @@ function makeRefDefinition(idindex, dbId)
     return clonedCurrentElement;
 }
 
+/**
+ * This method creates the form for making the theorem reference materials.
+ * 
+ * @param string idindex                        string to attach to end of HTML ID to make this element unique
+ * @param int dbId                              if user added internal/external reference, this value flags this reference
+ *                                              when the values are passed to the server side to be inserted into db
+ *                                              (if dbId is not an empty value, then the data already exists so do not insert data to msm_theorem table)
+ * @return object clonedCurrentElement          theorem form container to be inserted below associate info element forms
+ */
 function makeRefTheorem(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
@@ -180,11 +208,9 @@ function makeRefTheorem(idindex, dbId)
             
     var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+idindex+'-1"></div>');
     var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idindex+"-1'>Drag additional content to here.\n\
-                        <p>Valid child Elements: Part of a Theorem</p>\n\
-                    </div>");   
+                            <p>Valid child Elements: Part of a Theorem</p>\n\
+                        </div>");   
             
-    //    var theoremChildButton = $('<input class="msm_theorem_child_buttons" id="msm_theoremref_child_button-'+idindex+'" type="button" onclick="addrefTheoremContent(event)" value="Add content"/>');
-    //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idindex+'-1" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
     var theoremDescriptionLabel = $("<label class='msm_child_description_labels' id='msm_theoremref_description_label-"+idindex+"' for='msm_theoremref_description_input-"+idindex+"'>Description: </label>");
     
     var theoremDescriptionField = '';
@@ -215,7 +241,6 @@ function makeRefTheorem(idindex, dbId)
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
-    //    theoremContentWrapper.append(theoremChildButton);
             
     clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleField);
@@ -227,6 +252,15 @@ function makeRefTheorem(idindex, dbId)
     return clonedCurrentElement;
 }
 
+/**
+ * This method creates the form for making the comment reference materials.
+ * 
+ * @param string idindex                        string to attach to end of HTML ID to make this element unique
+ * @param int dbId                              if user added internal/external reference, this value flags this reference
+ *                                              when the values are passed to the server side to be inserted into db
+ *                                              (if dbId is not an empty value, then the data already exists so do not insert data to msm_comment table)
+ * @return object clonedCurrentElement          comment form container to be inserted below associate info element forms
+ */
 function makeRefComment(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
@@ -270,42 +304,53 @@ function makeRefComment(idindex, dbId)
     return clonedCurrentElement;
 }
 
-function deleteRefElement(e)
-{
-    var currentElementType = e.target.id.split("_");
-    var currentElementInfo = e.target.id.split("-");
-    
-    var currentElement = "copied_msm_"+currentElementType[1]+"ref-"+currentElementInfo[1]+"-"+currentElementInfo[2];
-    
-    $("<div class='dialogs' id='msm_deleteRefComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
-    $( "#msm_deleteRefComposition" ).dialog({
-        resizable: false,
-        height:180,
-        modal: true,
-        buttons: {
-            "Yes": function() {
-                $('#'+currentElement).empty().remove();
-                
-                //                if($('#msm_associate_reftype_option-'+currentElementInfo[1]+"-"+currentElementInfo[2]).children().length < 1)
-                //                {
-                //                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
-                //                }
-                
-                $( this ).dialog( "close" );
-            },
-            "No": function() {
-                $( this ).dialog( "close" );
-            }
-        }
-    });
-}
+/**
+ * Not Used?
+ * 
+ */
+//function deleteRefElement(e)
+//{
+//    var currentElementType = e.target.id.split("_");
+//    var currentElementInfo = e.target.id.split("-");
+//    
+//    var currentElement = "copied_msm_"+currentElementType[1]+"ref-"+currentElementInfo[1]+"-"+currentElementInfo[2];
+//    
+//    $("<div class='dialogs' id='msm_deleteRefComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
+//    $( "#msm_deleteRefComposition" ).dialog({
+//        resizable: false,
+//        height:180,
+//        modal: true,
+//        buttons: {
+//            "Yes": function() {
+//                $('#'+currentElement).empty().remove();
+//                
+//                //                if($('#msm_associate_reftype_option-'+currentElementInfo[1]+"-"+currentElementInfo[2]).children().length < 1)
+//                //                {
+//                //                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
+//                //                }
+//                
+//                $( this ).dialog( "close" );
+//            },
+//            "No": function() {
+//                $( this ).dialog( "close" );
+//            }
+//        }
+//    });
+//}
 
+/**
+ * This method creates the form for additional contents in theorem element.  It is triggered when an 
+ * "Extra Content" element is dragged and dropped to a droppable container in theorem.
+ * 
+ * @param eventObject event         event object triggered from item being dropped into a designated droppable container
+ */
 function addrefTheoremContent(event)
 {
     var newId = 1;
    
     var buttonIdInfo = event.target.id.split("-");
     
+    // getting HTML id endings added to parent containers
     var idNumber = '';
     for(var i = 1; i < buttonIdInfo.length-1; i++)
     {
@@ -313,6 +358,7 @@ function addrefTheoremContent(event)
     }
     idNumber += buttonIdInfo[buttonIdInfo.length-1];
         
+    // generating a number to be added at the end of HTML ID to make it unique
     if($("#msm_theoremref_content_container-"+idNumber).children("div").length > 0)
     {
         while(document.getElementById('msm_theoremref_statement_container-'+idNumber+'-'+newId) != null)
@@ -336,7 +382,6 @@ function addrefTheoremContent(event)
     var partDndDiv = $("<div class='msm_dnd_containers' id='msm_dnd_container-"+idNumber+"-"+newId+"'>Drag additional content to here.\n\
                         <p>Valid child Elements: Part of a Theorem</p>\n\
                     </div>"); 
-    //    var theoremPartButton = $('<input class="msm_theorem_part_buttons" id="msm_theoremref_part_button-'+idNumber+'-'+newId+'" type="button" onclick="addrefTheoremPart(event)" value="Add more parts"/>');
     var theoremPartWrapper = $('<div class="msm_theoremref_part_dropareas" id="msm_theoremref_part_droparea-'+idNumber+'-'+newId+'"></div>');
             
     theoremPartWrapper.append(partDndDiv);
@@ -420,9 +465,14 @@ function addrefTheoremContent(event)
     });
 }
 
+/**
+ * This method creates the form for additional parts in theorem element.  It is triggered when an 
+ * "Parts of a Theorem" element is dragged and dropped to a droppable container in theorem content.
+ * 
+ * @param eventObject event         event object triggered from item being dropped into a designated droppable container
+ */
 function addrefTheoremPart(event)
-{
-    
+{    
     var newId = 1;
     
     var buttonIdInfo = event.target.id.split("-");

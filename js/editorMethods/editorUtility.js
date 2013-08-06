@@ -1,9 +1,22 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
+
+/**
+ * This method is called when the unit is saved and it adds a node to jsTree when the unit is added. * 
+ *
+ * @param string dbId                       string with information about saved unit
  */
-
-
 function insertUnitStructure(dbId)
 {
     var ajaxInfo = dbId.split("|");
@@ -27,6 +40,9 @@ function insertUnitStructure(dbId)
     // from being called after edit was done
     if(ajaxInfo.length > 1)
     {
+        // ajaxInfo[1] contains the id information for editted unit
+        // it is used to find the old unit to replace with new unit when the
+        // unit is editted
         var currentUnitInfo = ajaxInfo[1].split("-");
         var currentidPair = null;
         
@@ -148,6 +164,12 @@ function insertUnitStructure(dbId)
     
 }
 
+/**
+ * This method is used to initialize the tree built by the above method with jsTree jquery plugin.
+ * 
+ * @param string idPair             string of unit-comp_id-unit-unit_Id
+ * @param string parent             HTML ID of the parent node of current unit node
+ */
 function initTrees(idPair, parent)
 {
     $("#msm_unit_tree")
@@ -158,8 +180,10 @@ function initTrees(idPair, parent)
         }
     })
     .bind("load.jstree", function(){
+        // select current unit as a default
         $("#msm_unit_tree").jstree("select_node", "msm_unit-"+idPair).trigger("select_node.jstree");
         $(".copied_msm_structural_element").unbind();
+        // activate the overlay to give user buttons for edit/delete
         $("#msm_child_appending_area > .copied_msm_structural_element").mouseenter(
             function() {                
                 var idNumber = $(this).attr("id").split("-");
@@ -184,6 +208,8 @@ function initTrees(idPair, parent)
         
     })
     .bind("select_node.jstree", function(event, data) {
+        // when a node is selected, use AJAX call to retrieve contents associated with this unit
+        // and display the unit in middle panel
         $("#msm_standalone_tree").jstree("deselect_all");
         var dbInfo = [];         
 
@@ -300,6 +326,9 @@ function initTrees(idPair, parent)
     });   
 }
 
+/**
+ *  This method is used to create blank unit form when the user triggers the "New Unit" button after save.
+ */
 function newUnit()
 {
     $("#msm_child_appending_area").empty();
@@ -325,7 +354,6 @@ function newUnit()
     
    
     initTitleEditor("msm_unit_title");
-    //    $("#msm_unit_title").removeAttr("readonly");
     $("#msm_unit_short_title").removeAttr("readonly");
     $("#msm_unit_description_input").removeAttr("readonly");
     
@@ -359,18 +387,7 @@ function newUnit()
             processDroppedChild(event, ui.draggable.context.id);
             allowDragnDrop();  
         }
-    }); 
-    
-    //    $(".msm_dnd_containers").droppable({
-    //        accept: "#msm_component_tabs-2 > div",
-    //        hoverClass: "ui-state-hover",
-    //        tolerance: "pointer",
-    //        drop: function( event, ui ) { 
-    //            processAdditionalChild(event, ui.draggable.context.id);      
-    //            allowDragnDrop();  
-    //        }
-    //    });
-    
+    });     
     
     $("#msm_child_appending_area").sortable({
         appendTo: "#msm_child_appending_area",
@@ -398,10 +415,9 @@ function newUnit()
         }
     });         
     $("#msm_child_appending_area").sortable("refresh");
-
     
     $("#msm_editor_save").click(function(event) { 
-        //         prevents navigation to msmUnitForm.php
+        //prevents navigation to msmUnitForm.php
         event.preventDefault();
         
         $("#msm_unit_short_title").removeAttr("readonly");
@@ -415,6 +431,8 @@ function newUnit()
             newdata.name = this.id;
             newdata.className = this.className;
                     
+            // remove all mathjax HTML code in content before
+            // putting the content into tinyMCE
             $(this).find("span.matheditor").each(function() {
                 var newspan = document.createElement("span");
                 newspan.className = "matheditor";
@@ -430,16 +448,20 @@ function newUnit()
             
             newdata.value = $(this).html();            
             $(this).replaceWith(newdata);               
-        });
-              
-        submitForm();
-            
+        });              
+        submitForm();            
     });
 }
 
+/**
+ * This method appends the content of the selected unit to the main editor
+ * and displays the information.  Also it sets the editor up for any edit that 
+ * maybe made by the user and disables all editor until the edit is triggered.
+ *
+ * @param string htmlData                HTML code to display the unit
+ */
 function processUnitData(htmlData)
-{
-    
+{    
     if(tinymce.getInstanceById("msm_unit_title") != null)
     {
         tinyMCE.execCommand("mceRemoveControl", true, "msm_unit_title");        
@@ -451,6 +473,7 @@ function processUnitData(htmlData)
     var currentUnit = document.getElementById('msm_currentUnit_id');
     var form = document.getElementById("msm_unit_form");
    
+    // if the currentUnit hidden input field is missing, readd it
     if((currentUnit == null)||(currentUnit == "undefined"))
     {
         var newInputField = document.createElement("input");
@@ -461,6 +484,7 @@ function processUnitData(htmlData)
         form.appendChild(newInputField);
     }
     
+    // activate the overlay
     $(".copied_msm_structural_element").unbind();
     $("#msm_child_appending_area > .copied_msm_structural_element").mouseenter(
         function() {
@@ -484,6 +508,7 @@ function processUnitData(htmlData)
         $("#msm_element_overlay-"+idNumber[1]).css("display", "none");
     });
         
+    // enable all unit title/description input fields to be able to edit upon double click trigger
     $("#msm_unit_title").dblclick(function(){
         processTitleContent(this.id);
         allowDragnDrop();
@@ -531,14 +556,18 @@ function processUnitData(htmlData)
             processAdditionalChild(event, ui.draggable.context.id);      
             allowDragnDrop();  
         }
-    });
-    
+    });    
 }
 
+/**
+ * This method is triggered by the "Done" button and it starts the methods to update the unit information
+ * to reflect the relationship between each unit in the jsTree into msm_compositor table.  After done button
+ * is pressed, the page navigates to the view.php for displaying the unit.
+ *
+ * @param eventObject e             click trigger event object
+ */
 function saveComp(e)
 {
-    // TODO need to ask dialog to save unit that is currently focused on in middle panel if it is in edit mode
-    
     e.preventDefault();
     
     var exsitingSaveButton = $("#msm_editor_middle").find("#msm_editor_save");
@@ -559,8 +588,7 @@ function saveComp(e)
     }
     else
     {
-        var treeInnerHTML = $("#msm_composition_default > ul").html();
-    
+        var treeInnerHTML = $("#msm_composition_default > ul").html();    
     
         var standaloneTree = '';
         $("#msm_standalone_root").find("li").each(function() {
@@ -590,15 +618,17 @@ function saveComp(e)
                 alert("ajax error in loading unit");
             }
         }); 
-    }
-    
-   
-     
-// TODO navigate to view page once the db is updated
-    
+    }    
 }
 
 // triggered by edit button when either saved after making the unit, or when edit button is clicked after returning to edit mode from display mode
+/**
+ * This method is triggered by the user when the "Edit" button on the overlay is pressed or when other elements are dragged to designated areas to be added.
+ * This method essentially enables the tinyMCE for each div with class name msm_editor_content and for unit title input field.  Also all the input fields
+ * and the select menus are enabled.
+ *
+ * @param eventObject e                 click event object from the edit button in overlay
+ */
 function editUnit(e)
 {   
     var inputUnitTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
@@ -668,6 +698,7 @@ function editUnit(e)
         },
         success: function(data)
         {
+            // elementInfo is an instance of EditorUnit class
             elementInfo = JSON.parse(data);
             enableContentEditors(elementInfo, targetElement);  
             enableEditorFunction();   
@@ -747,6 +778,7 @@ function editUnit(e)
                     newdata.name = this.id;
                     newdata.className = this.className;
                     
+                    // replace mathjax HTML code with <span class='matheditor'>\(math_content\)</span>
                     $(this).find("span.matheditor").each(function() {
                         var newspan = document.createElement("span");
                         newspan.className = "matheditor";
@@ -820,6 +852,10 @@ function enableEditorFunction()
     enableDragTitleToggle();
 }
 
+/**
+ * This method initializes all the sortable jquery plugins to each draggable elements
+ * for drag and drop sorting.
+ */
 function moveElements() 
 {
     $("#msm_child_appending_area").sortable({
@@ -1130,7 +1166,10 @@ function moveElements()
     });
 }
 
-
+/**
+ * This method enables the draggable area for each draggable element.  It enables the toggling of 
+ * text to indicate draggable area.
+ */
 function enableDragTitleToggle()
 {   
     $(".msm_element_title_containers").each(function() {
@@ -1273,6 +1312,15 @@ function enableDragTitleToggle()
     });
 }
 
+/**
+ * This method call the appropriate method to change from view mode to 
+ * edit mode with all the editors, inputs, dropdown menus...etc activated.
+ * The appropriate method is chosen according to the ID of div containers that 
+ * the overlay is over which has the edit button.
+ *
+ * @param array unitArray               instance of the EditorUnit children class that was passed by JSON
+ * @param string currentElement         HTML ID of the container with overlay that the edit button was triggere from
+ */
 function enableContentEditors(unitArray, currentElement)
 { 
     var intromatch = /^copied_msm_intro-\d+$/;
@@ -1305,10 +1353,16 @@ function enableContentEditors(unitArray, currentElement)
     else if(currentElement.match(extrainfomatch))
     {
         createExtraInfoText(currentElement, unitArray);
-    }
-    
+    }    
 }
 
+/**
+ * This method creates the "editable" theorem with all the input and dropdown
+ * menus and tinyMCE editors enabled and disables the overlay.
+ *
+ * @param string element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param array unitInfo        instance of the EditorTheorem class that was passed by JSON
+ */
 function createTheoremText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
@@ -1330,6 +1384,7 @@ function createTheoremText(element, unitInfo)
     {
         if(typeof unitInfo["contents"][i] !== "undefined")
         {           
+            // get theorem content from the unit object
             var theoremcontent = unitInfo["contents"][i]["content"];
             var statementidInfo = theoremStatementInfo[i].id.split("-");
             
@@ -1354,6 +1409,7 @@ function createTheoremText(element, unitInfo)
         
             initEditor(theoremStatementTextArea.id);
         
+            // replace displayed theorem part to "editable" theorem part form
             var theoremPartInfo = $("#"+theoremStatementInfo[i].id).find(".msm_theorem_child");
      
             for(var k=0; k < theoremPartInfo.length; k++)
@@ -1405,7 +1461,13 @@ function createTheoremText(element, unitInfo)
     enableEditorFunction();
 }
 
-
+/**
+ * This method is used to create associate form that user can edit. It enables all 
+ * tinyMCE edtiros and input fields/dropdown menus and disables the overlay.
+ *
+ * @param string mainElement            HTML ID of the container with overlay that the edit button was triggere from
+ * @param array aArray                  instance of the EditorUnit children class that was passed by JSON
+ */
 function createAssociateText(mainElement, aArray)
 {
     $("#"+mainElement).find(".msm_associated_dropdown").each(function() {
@@ -1496,7 +1558,6 @@ function createAssociateText(mainElement, aArray)
                     break;
                 case "msm_theorem":
                     createTheoremRefText(mainElement, associateArray, i, infoid);   
-                    //                    createTheoremRefText(mainElement, associateArray, i, refid);  
                     break;
                 case "msm_comment":
                     $("#msm_commentref_type_dropdown-"+refid).removeAttr("disabled");
@@ -1518,12 +1579,17 @@ function createAssociateText(mainElement, aArray)
     enableEditorFunction();
 }
 
+/**
+ * This method creates a form for theorem reference material for the user to edit
+ * the existing content.  
+ *
+ * @param string element                HTML ID of the container with overlay that the edit button was triggere from
+ * @param array aArray                  instance of the EditorAssociate class that was passed by JSON
+ * @param int index                     index number for which associate this reference is relevant
+ * @param string infoId                 string added to end of info element textareas to make them unique
+ */
 function createTheoremRefText(element, aArray, index, infoId)
-{    
-    //    $("#"+element).find(".msm_theoremref_part_buttons").each(function() {
-    //        $(this).removeAttr("disabled");
-    //    });
-          
+{           
     $("#"+element).find(".msm_theorem_part_title").each(function() {
         $(this).removeAttr("disabled");
     });
@@ -1540,10 +1606,6 @@ function createTheoremRefText(element, aArray, index, infoId)
         $(this).removeAttr("disabled");
     });
     
-    //    $("#"+element).find(".msm_theorem_child_buttons").each(function() {
-    //        $(this).removeAttr("disabled");
-    //    });
-
     var theoremStatementInfo = $("#msm_associate_reftype_option-"+infoId).find(".msm_theoremref_statement_containers");
      
     for(var ind = 0; ind < theoremStatementInfo.length; ind++)
@@ -1614,6 +1676,13 @@ function createTheoremRefText(element, aArray, index, infoId)
     }
 }
 
+/**
+ * This method creates the "editable" comment with all the input and dropdown
+ * menus and tinyMCE editors enabled and disables the overlay.
+ *
+ * @param string element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param array unitInfo        instance of the EditorComment class that was passed by JSON
+ */
 function createCommentText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
@@ -1645,6 +1714,13 @@ function createCommentText(element, unitInfo)
     enableEditorFunction();
 }
 
+/**
+ * This method creates the "editable" definition with all the input and dropdown
+ * menus and tinyMCE editors enabled and disables the overlay.
+ *
+ * @param string element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param array unitInfo        instance of the EditoDefinition class that was passed by JSON
+ */
 function createDefText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
@@ -1677,7 +1753,13 @@ function createDefText(element, unitInfo)
    
 }
 
-
+/**
+ * This method creates the "editable" intro with all the input and dropdown
+ * menus and tinyMCE editors enabled and disables the overlay.
+ *
+ * @param string element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param array unitInfo        instance of the EditorIntro class that was passed by JSON
+ */
 function createIntroText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
@@ -1751,6 +1833,13 @@ function createIntroText(element, unitInfo)
     enableEditorFunction();
 }
 
+/**
+ * This method creates the "editable" unit body with all the input and dropdown
+ * menus and tinyMCE editors enabled and disables the overlay.
+ *
+ * @param string element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param array unitInfo        instance of the EditorBlock class that was passed by JSON
+ */
 function createBodyText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
@@ -1781,6 +1870,13 @@ function createBodyText(element, unitInfo)
     enableEditorFunction();    
 }
 
+/**
+ * This method creates the "editable" extra information with all the input and dropdown
+ * menus and tinyMCE editors enabled and disables the overlay.
+ *
+ * @param string element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param array unitInfo        instance of the EditorExtrInfo class that was passed by JSON
+ */
 function createExtraInfoText(element, unitInfo)
 {
     var elementIdInfo = element.split("-");
@@ -1812,9 +1908,12 @@ function createExtraInfoText(element, unitInfo)
     enableEditorFunction();    
 }
 
-// triggered by 'Remove this Unit' button due to transition from view to edit
-// should remove the unit --> javascript code should remove all the display functions then have AJAX call to a php page that will
-// update the compositor and related db information (ie. delete unit from table data, update all parent/sibling information)
+/**
+ * This method is triggered by "Remove this Unit" button after user saves the content.  It removes all data related to the
+ * specified unit but if any component of the unit is used as a reference material or if it contains reference material that
+ * is part of a content in another unit, it only removes the structural data in msm_compositor but does not remove the orignial data
+ * in its respetive database table.
+ */
 function removeUnit(e)
 {
     e.preventDefault();
@@ -1861,12 +1960,6 @@ function removeUnit(e)
                             if(currentId == stringid)
                             {
                                 $(this).children("ul").children("li").each(function() {
-                                    // to prevent having two elements indicated as the last leaf --> problem with this code = also removes 
-                                    // indicator for the last leaf at the leaf that is actually last in the list
-                                    //                        if(this.className == "jstree-leaf jstree-last")
-                                    //                        {
-                                    //                            this.className = "jstree-leaf";
-                                    //                        }
                                     $(this).insertBefore(parent);
                                 });               
                                 $(this).empty().remove();
@@ -1897,15 +1990,14 @@ function removeUnit(e)
                 $(this).dialog("close");
             }
         }
-    });
-    
-    
-    
+    });   
 }
 
-// triggered by cancel button during edit mode after save has been already implemented.  basically its role is to popup a warning message about
-// losing unsaved content and ignore any changes done if answered yes otherwise just close the popup window.  When yes is triggered, just load screen back to
-// display of previous state
+/**
+ * This method is triggered by the "Cancel" button during the edit mode before the save has been triggered.  Basically the rol of this ethod is to popup 
+ * a warning message about losing unsaved content.  If user decides not to go with cancel, then it just closes the popup window but if the 
+ * user agrees to go with cancel action, then it changes the editor content to ones in the database to erases all the changes.
+ */
 function cancelUnit(e)
 {
     e.preventDefault();
@@ -1925,6 +2017,7 @@ function cancelUnit(e)
     
                 var htmlstring = '';
     
+                // AJAX call to retrieve the unchanged data from the database
                 $.ajax({
                     type: 'POST',
                     url:"editorCreation/msmLoadUnit.php",
@@ -1944,9 +2037,6 @@ function cancelUnit(e)
                         currentUnitId.value = currentUnitIdPair;
        
                         $("#msm_unit_form").append($(currentUnitId));
-            
-                        //                        removeTinymceEditor(); // causes the content to disappear
-                                          
                         disableEditorFunction();   
                         
                         $(".msm_structural_element").draggable({
@@ -2014,11 +2104,15 @@ function cancelUnit(e)
                 $(this).dialog("close");
             }
         }
-    });
-    
-   
+    });  
 }
 
+/**
+ * This method is called everytime a "Full Screen" or "Basic Window" is triggered
+ * to toggle between two buttons and to toggle between full screeen and basic window modes.
+ * 
+ * @param eventObject e             click event object
+ */
 function swapButtons(e) {
     var target = e.target.id;
     
@@ -2050,6 +2144,7 @@ function swapButtons(e) {
         $("#msm_comp_basicwindow").remove();
     }
     
+    // when full screen is triggered, remove all blocks and other moodle menus
     $("#msm_comp_fullscreen").click(function(event) {
         $("#page-header").css("display", "none");
         $(".block").addClass("dock_on_load");
@@ -2058,7 +2153,8 @@ function swapButtons(e) {
         $("#msm_editor_middleright").trigger("spliter.resize");
         swapButtons(event);
     });
-                
+            
+    // when basic window button is triggered, undo what was done above
     $("#msm_comp_basicwindow").click(function(event) {
         $("#page-header").css("display", "block");
         $(".block").removeClass("dock_on_load");
@@ -2066,10 +2162,15 @@ function swapButtons(e) {
         $("#msm_editor_container").trigger("spliter.resize");
         $("#msm_editor_middleright").trigger("spliter.resize");
         swapButtons(event);
-    });   
-    
+    });     
 }
 
+/**
+ * This method is triggered by the "Delete" button on the overlay of each core elements. 
+ * It removes the core element with the overlay with the triggered button and all its child elements.
+ *
+ * @param eventObject e             click event object
+ */
 function deleteOverlayElement(e)
 {
     var currentElement = e.target.parentElement.parentElement.id;
@@ -2134,8 +2235,7 @@ function deleteOverlayElement(e)
                         newdata.value = $(this).html();            
                         $(this).replaceWith(newdata);               
                     });
-                    submitForm();
-            
+                    submitForm();            
                 });  
             },
             "No": function() {
@@ -2155,10 +2255,15 @@ function deleteOverlayElement(e)
                 $( this ).dialog( "close" );                   
             }
         }
-    });  
-    
+    });   
 }
 
+/**
+ * This method is called by double click trigger in the title/description inputs in unit and it changes the 
+ * buttons from New Unit/Remove this Unit to Save/Cancel buttons and also has code to retrieve data when the
+ * save is triggered.
+ * 
+ */
 function allowDragnDrop()
 {
     var buttonPresent = $("#msm_editor_middle").find("#msm_editor_new");
@@ -2227,6 +2332,8 @@ function allowDragnDrop()
  * when the tinymce is activated again to edit already existing unit title, need to remove mathjax code
  * and only get the needed math content wrapped in <span class="matheditor">mathcontent</span> to allow
  * tinymce to recognize the math element.
+ * 
+ * @param string id                 HTML ID of the title element that the math is being processed from.
  */ 
 function processTitleContent(id)
 {    

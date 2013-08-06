@@ -1,11 +1,32 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
+
+/**
+ * This js file has methods to deal with drag and drop of elements in the 
+ * "Child Components" tab.
  */
 
+/**
+ *  This method is triggerd when the child elements are dropped to its proper
+ *  msm_dnd_containers.  
+ *  
+ *  @param eventObject event        event object triggered from item being dropped into a designated droppable container   
+ *  @param string draggedId         dragged child element's HTML ID
+ */
 function processAdditionalChild(event, draggedId)
 {   
-    var type = null;
+    var type = null; // variable used to store the type of the parent div.
     var parentId = event.target.parentElement.parentElement.id;
     
     var editorDivs = $("#"+parentId).find(".msm_editor_content");
@@ -17,6 +38,8 @@ function processAdditionalChild(event, draggedId)
     
     if((parentId.match(/def/)) || (parentId.match(/comment/)))
     {
+        // if elements other than associate/internal/external/new references are dropped to the container in definition/comment,
+        // give a warning message to the user to let them know that it is an invalid choice.
         if((draggedId !== "msm_associate") && (draggedId !== "msm_internal_ref") && (draggedId !== "msm_external_ref") && (draggedId !== "msm_new_ref"))
         {
             openErrorDialog();
@@ -146,6 +169,12 @@ function processAdditionalChild(event, draggedId)
 
 }
 
+/**
+ * This method is used to get the HTML ID ending of the parent associate reference area 
+ * for the reference forms to append to.  
+ * 
+ * @param eventObject e         droppable event 
+ */
 function getAssociateIndex(e)
 {
     var associateContainer = e.target.parentElement.id;
@@ -164,6 +193,9 @@ function getAssociateIndex(e)
     return index;
 }
 
+/**
+ * This method is used to create a jquery dialog for warning the user of wrong elemnts being dragged and dropped into an area.
+ */
 function openErrorDialog()
 {
     var message = $("<div id='msm_child_addition_error' title='Wrong child element type'>\n\
@@ -183,6 +215,15 @@ function openErrorDialog()
     });
 }
 
+/**
+ * This method is used to create a jquery dialog window to search existing def/comment/theorem/unit elements in the database.
+ * The window contains editors for adding the content for information elements associated with this reference material and also search
+ * parameter inputs to get the correct records from the database table.  The search results are then shown in a form of a table.
+ * 
+ * @param string id                     string added to the end of search dialog window to make it unique
+ * @param string refTypeString          reference type to be added --> used for dialog window title
+ * @param string currentId              string to be added to the end of the display of the chosen record to make it unique
+ */
 function createRefDialog(id, refTypeString, currentId)
 {  
     var dialogDiv = $("<div class='msm_ref_search_windows' id='msm_ref_search_window-"+id+"' title='"+refTypeString+"'></div>");
@@ -235,6 +276,7 @@ function createRefDialog(id, refTypeString, currentId)
                 "Insert" : function() {
                     var selectedBox =  $("#msm_search_result_table input").filter(":checked");
               
+                    // none of the search results were selected --> give user an eror message
                     if(selectedBox.length == 0)
                     {
                         var message = $("<div id='msm_search_error' title='No results Selected'>\n\
@@ -253,6 +295,7 @@ function createRefDialog(id, refTypeString, currentId)
                             }
                         });
                     }
+                    // a record to be added to associated has been chosen
                     else if(selectedBox.length > 0)
                     {
                         var refSelectType = $("#msm_search_type").val();
@@ -312,7 +355,18 @@ function createRefDialog(id, refTypeString, currentId)
     });    
 }
 
-// also used in subordinate.js to trigger search
+/**
+ * This method is triggered from Search button in the internal/external reference dialog window.
+ * It passes the search paramter defined by the user to the server script(getDbInfo.php) which 
+ * runs the SQL queries necessary to obtain the search results.  The script passes the HTML code 
+ * to display the search results in table format and this method, upon successful AJAX call, appends the
+ * HTML code to search dialog window.
+ * 
+ * @param string refString              string to define the type of reference (ie. internal/external)
+ * @param int msmId                     MSM instance ID
+ * @param string id                     string added to end of search window HTML ID to make it unique
+ * @param string parentType             string to define the type of parent to this reference(ie. associate/subordinate)
+ */
 function submitAjax(refString, msmId, id, parentType)
 {    
     var param = $("#msm_search_form").serializeArray();
@@ -332,10 +386,15 @@ function submitAjax(refString, msmId, id, parentType)
                                 
             $("#msm_search_result").empty(); // empty out any previous values
             $("#msm_search_result").append(string);
+            
+            // if the parent is associate, there are only 2 accordion panels due to
+            // panel with information not being there
             if(parentType == "associate")
             {
                 $("#msm_search_accordion-"+id).accordion("option", "active", 1);        
             }
+            // if the parent is subordinate, there are 3 accordion panels:
+            // for information input/search input/search result
             else
             {
                 $("#msm_subordinate_accordion-"+id).accordion("option", "active", 2);       
@@ -347,7 +406,8 @@ function submitAjax(refString, msmId, id, parentType)
                 modal: false,
                 width: 605
             });  
-                                
+               
+            // allow the popups for subordinate to work in search result
             $("#msm_search_result_table").find(".msm_subordinate_hotwords").each(function(i, element) {
                 var idInfo = this.id.split("-");
                 var newid = '';
@@ -361,7 +421,8 @@ function submitAjax(refString, msmId, id, parentType)
                                                         
                 previewInfo(this.id, "dialog-"+newid);
             });
-                                    
+                              
+            // allow the popups for nested subordinate to work in search result --> not yet tested
             $("#msm_search_result_table .msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
                 var idInfo = this.id.split("-");
                 var newid = '';
@@ -378,18 +439,17 @@ function submitAjax(refString, msmId, id, parentType)
                 
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
                 
-            //                 only allowing one checkbox to be selected at any given time
             $("#msm_search_result input").click(function(e) {
                 var checked = $(this).attr("checked");
                     
-                //                     when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
+                // when the same checkbox is clicked to deselect the box, need to remove the class that is highlighting the row as well
                 if((checked === null) || (typeof checked === "undefined"))
                 {
                     $(this).closest("tr").removeClass("ui-widget-header");
                 }
                 else
                 {
-                    //                         when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
+                    // when currently clicked checkbox is selected, then need to deselect all other checkboxes and remove the higlighting class as well
                     $("#msm_search_result input").filter(":checked").not(this).closest("tr").removeClass("ui-widget-header");
                     $("#msm_search_result input").filter(":checked").not(this).removeAttr("checked");
                         
@@ -405,6 +465,19 @@ function submitAjax(refString, msmId, id, parentType)
     });
 }
 
+/**
+ * This method is like a bridge function between createRefDialog and the methods to
+ * insert the chosen reference material into the editor.  It is called from createRefDialog 
+ * when the user triggers the insert button in the search dialog window and it calls the methods to
+ * add the chosen search result into the main editor panel with proper display.
+ * 
+ * @param string type               type of reference chosen (def/comment/theorem/unit)
+ * @param array tdcellArray         array of all the information in the chosen record
+ *                                  (ie. information displayed in each cell in chosen row)
+ * @param string ind                string added to end of HTML ID to make the element unique
+ * @param int databaseId            database ID from msm_compositor that was attached to each search
+ *                                  result row HTML ID
+ */
 function addRefElements(type, tbcellArray, ind, databaseId)
 {
     switch(type)
@@ -418,9 +491,23 @@ function addRefElements(type, tbcellArray, ind, databaseId)
         case "theorem":
             addTheoremRef(tbcellArray, ind, databaseId);
             break;
+    // @TODO: unit element
     }
 }
 
+/**
+ * This method is called if the searched reference type was definition.  The information of the
+ * chosen record is taken from the array in the parameter and is used to display the information identical to if the user 
+ * have added a new reference with an exception of the internal/external referenced material having an database ID attached
+ * to the end of description HTML ID and name.  This was added to identify the referenced material in the server side and to
+ * identify the originial definition element in the msm_compositor in the server side.
+ * 
+ * @param array cellArray           array of all the information in the chosen record
+ *                                  (ie. information displayed in each cell in chosen row)
+ * @param string index              string added to end of HTML ID to make the element unique
+ * @param int dbId                  database ID from msm_compositor that was attached to each search
+ *                                  result row HTML ID
+ */
 function addDefRef(cellArray, index, dbId)
 {
     var type = $(cellArray[1]).html();   
@@ -428,6 +515,7 @@ function addDefRef(cellArray, index, dbId)
     var description = $(cellArray[4]).html();
     
     var defelement = makeRefDefinition(index, dbId);   
+    // append the added reference material to main editor panel
     $("#msm_associate_reftype_option-"+index).append(defelement);
     
     var contentobject = processSubContent(cellArray[3], "defrefcontent"+index);
@@ -450,16 +538,32 @@ function addDefRef(cellArray, index, dbId)
     $("#msm_defref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_defref_description_input-"+index).attr("disabled", "disabled");
     
+    // basically deactivating the tinymce and switching the textarea with content to div
+    //(for more info on this method, read the documentation on this method in saveMethod.js)
     textArea2Div("msm_defref_content_input-"+index);
 }
 
+/**
+ * This method is called if the searched reference type was comment.  The information of the
+ * chosen record is taken from the array in the parameter and is used to display the information identical to if the user 
+ * have added a new reference with an exception of the internal/external referenced material having an database ID attached
+ * to the end of description HTML ID and name.  This was added to identify the referenced material in the server side and to
+ * identify the originial comment element in the msm_compositor in the server side.
+ * 
+ * @param array cellArray           array of all the information in the chosen record
+ *                                  (ie. information displayed in each cell in chosen row)
+ * @param string index              string added to end of HTML ID to make the element unique
+ * @param int dbId                  database ID from msm_compositor that was attached to each search
+ *                                  result row HTML ID
+ */
 function addCommentRef(cellArray, index, dbId)
 {
     var type = $(cellArray[1]).html();   
     var title = $(cellArray[2]).html();
     var description = $(cellArray[4]).html();
     
-    var commentelement = makeRefComment(index, dbId);   
+    var commentelement = makeRefComment(index, dbId); 
+    // append the added reference material to main editor panel
     $("#msm_associate_reftype_option-"+index).append(commentelement);
     
     var contentobject = processSubContent(cellArray[3], "commentrefcontent"+index);
@@ -482,9 +586,24 @@ function addCommentRef(cellArray, index, dbId)
     $("#msm_commentref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_commentref_description_input-"+index).attr("disabled", "disabled");
     
+    // basically deactivating the tinymce and switching the textarea with content to div
+    //(for more info on this method, read the documentation on this method in saveMethod.js)
     textArea2Div("msm_commentref_content_input-"+index);
 }
 
+/**
+ * This method is called if the searched reference type was theorem.  The information of the
+ * chosen record is taken from the array in the parameter and is used to display the information identical to if the user 
+ * have added a new reference with an exception of the internal/external referenced material having an database ID attached
+ * to the end of description HTML ID and name.  This was added to identify the referenced material in the server side and to
+ * identify the originial theorem element in the msm_compositor in the server side.
+ * 
+ * @param array cellArray           array of all the information in the chosen record
+ *                                  (ie. information displayed in each cell in chosen row)
+ * @param string index              string added to end of HTML ID to make the element unique
+ * @param int dbId                  database ID from msm_compositor that was attached to each search
+ *                                  result row HTML ID
+ */
 function addTheoremRef(cellArray, index, dbId)
 {
     var type = $(cellArray[1]).html();   
@@ -499,18 +618,16 @@ function addTheoremRef(cellArray, index, dbId)
     var partNum = 0;
     var partIndex = '';
     
-    //    var processedContent = processSubContent(cellArray[3], "theoremrefcontent"+index);
-    
-    console.log(cellArray[3]);
-    
     $(cellArray[3]).children().each(function() {
         var tagName = $(this).prop("tagName");
         
+        // each of the contents for the theorem is contained in a div
         if(tagName == "DIV")
         {
             statementNum++;
             partIndex = addTheoremStatementRef(this, index, statementNum);
         }
+        // all the part theorems in the same theorem content are contained in a ordered list
         else if(tagName == "OL")
         {
             $(this).find("li").each(function() {
@@ -528,7 +645,7 @@ function addTheoremRef(cellArray, index, dbId)
             $(this).attr("selected", "selected");
         }
     });
-    //    
+        
     $("#msm_theoremref_title_input-"+index).val(title);
     $("#msm_theoremref_description_input-"+index).val(description);
     
@@ -537,6 +654,15 @@ function addTheoremRef(cellArray, index, dbId)
     $("#msm_theoremref_description_input-"+index).attr("disabled", "disabled");
 }
 
+/**
+ * This method is called by the addTheoremRef method above to add all the theorem contents into theorem element.
+ * 
+ * @param HTMLobject htmlElement        Div element containing the content for the theorem
+ * @param string id                     string added to end of HTML ID to make the element unique
+ * @param int statementId               number indicating how many statements are in the theorem
+ *                                      (id and statementId are combined to give unique id to each statement theorems)
+ * @return string                       string added to the end of statement theorem to make the element unique
+ */
 function addTheoremStatementRef(htmlElement, id, statementId)
 {    
     var param = id+"-"+statementId;    
@@ -573,6 +699,7 @@ function addTheoremStatementRef(htmlElement, id, statementId)
         $(theoremStatementWrapper).insertBefore("#msm_dnd_container-"+id);        
     }
     
+    // process all the subordinate elements in the content
     var processedContent = processSubContent(htmlElement, "theoremrefcontent"+param);
     var contentvalue = $(processedContent).html();
     
@@ -583,6 +710,15 @@ function addTheoremStatementRef(htmlElement, id, statementId)
     return param;
 }
 
+/**
+ * This method is called by the addTheoremStatementRef method above to add the theorem parts to each 
+ * theorem content.
+ * 
+ * @param HTMLobject htmlElement        HTML elements in the ordered list
+ * @param string id                     string added at the end of statement theorems to make them unique
+ * @param int partId                    number of part theorems in this content
+ *                                      (id and statementId are combined to give unique id to each part theorems)
+ */
 function addTheoremPartRef(htmlElement, id, partId)
 {
     var partTitle = '';
@@ -641,6 +777,15 @@ function addTheoremPartRef(htmlElement, id, partId)
     textArea2Div("msm_theoremref_part_content-"+param);
 }
 
+/**
+ * This method processes all the subordinates in the contents of theorem and part theorems to 
+ * include all the information in the subordinates such as type/content from information elements...etc.
+ * This information in the search result is copied to to the main editor.
+ * 
+ * @param object contentobj         HTML object of content of theorem/part theorem
+ * @param string id                 string added to subordinate result container element to make it unique 
+ * @return object                   modified content object
+ */
 function processSubContent(contentobj, id)
 {
     var idEnding = '';

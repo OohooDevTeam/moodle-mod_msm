@@ -211,8 +211,7 @@ function processChange(e)
     var child1Value;
     var child2Value;
     var child3Value;
-    var child4Value;
-    
+    var child4Value;    
     
     switch(e.target.id)
     {
@@ -328,6 +327,12 @@ function processChange(e)
 
 }
 
+/**
+ * This function is triggered when the user clicks on the "View" navigation menu button.
+ * It is responsible for creating the preview of the unit at current state in jquery Dialog window
+ * and it calls on makePreviewDialog method to create the basic UI for the preview window
+ * 
+ */
 function showUnitPreview()
 {
     makePreviewDialog();
@@ -358,7 +363,8 @@ function showUnitPreview()
     var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
     var editorTitleDivs = $("#msm_unit_form").find(".msm_editor_titles");
       
-    if((editorDivs.length > 0) && (editorTitleDivs.length > 0))  // editor is in display mode
+    // editor is in display mode --> ie. no tinymce is activated
+    if((editorDivs.length > 0) && (editorTitleDivs.length > 0)) 
     {  
         var dataArray  = getDisabledData();
         
@@ -381,14 +387,15 @@ function showUnitPreview()
         dataArray["msm_file_options"] = JSON.stringify(tinymce_filepicker_options);
         
         var ids = [];
+        
+        // this AJAX calls on the msmUnitForm.php script to trigger the displayPreview method for
+        // the current unit which generates the HTML code to display the preview of the unit.
         $.ajax({
             type: "POST",
             url: "editorCreation/msmUnitForm.php",
             data: $.param(dataArray),
            
             success: function(data) { 
-                // this section of the code is for detecting empty contents and it gives the user 
-                // a warning dialog box and highlights the contents that are empty
                 ids = JSON.parse(data);
                 $(".msm_info_dialogs").dialog("destroy");
                 $(".msm_info_dialogs").empty().remove();
@@ -422,7 +429,8 @@ function showUnitPreview()
                         $("#msm_mode_info").empty().remove();
                     }
                 });   
-                                
+                  
+                // code to trigger the subordinate popup windows
                 $("#msm_preview_dialog .leftbox").find(".msm_subordinate_hotwords").each(function(i, element) {
                     var idInfo = this.id.split("-");
                     var newid = '';
@@ -444,6 +452,7 @@ function showUnitPreview()
                     previewInfo(this.id, "dialog-"+newid);
                 });
                 
+                // code to trigger the subordinate popup windows that is nested in another popup window
                 $(".msm_info_dialogs").find(".msm_subordinate_hotwords").each(function() {
                     var idInfo = this.id.split("-");
                     var newid = '';
@@ -466,7 +475,6 @@ function showUnitPreview()
                                
             }
         });
-    // parse HTML to get needed contents... but still need to put in ajax to can use PHP class functions
     }
     else // editor is in edit mode
     {
@@ -474,6 +482,15 @@ function showUnitPreview()
     }   
 }
 
+/**
+ * This method is called by the showUnitPreview method above to get the values in divs that are showing
+ * the content of the tinymce editors.  All the values are stored in an associative array with HTML ID
+ * of each divs as a key.  The information in this array is then used to give the user a preview of the
+ * current unit.
+ * 
+ * @return array dataArray                  an associative array with values in divs that are showing 
+ *                                          the content of the tinymce editors
+ */
 function getDisabledData()
 {
     var dataArray = {};    
@@ -503,7 +520,8 @@ function getDisabledData()
     
     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
         // need to deal with mathjax code before sending it off to server side to be
-        // processed
+        // processed --> the mathjax code causes error when loading to DOMDocument due to
+        // it not recognizing some tags
         var currentContent = $(this).clone();
         
         $(currentContent).find(".MathJax_Preview").each(function() {
@@ -544,9 +562,9 @@ function getDisabledData()
         dataArray[this.id] = $(this).val(); 
     }); 
         
-//    $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
-//        dataArray[this.id] = $(this).val(); 
-//    }); 
+    //    $("#msm_child_appending_area").find(".msm_associate_reftype_dropdown").each(function() {
+    //        dataArray[this.id] = $(this).val(); 
+    //    }); 
         
     $("#msm_child_appending_area").find(".msm_theoremref_part_title").each(function() {
         dataArray[this.id] = $(this).val(); 
@@ -587,6 +605,13 @@ function getDisabledData()
     return dataArray;
 }
 
+/**
+ *  This method creates the jquery dialog window to show the preview of the unit and also
+ *  sets up the dialog window to look like the final display in view.php by adding all the container
+ *  divs for jsSplitter plugin.  If there are no child nodes in jsTree on right planel in editor display, or
+ *  if there are no child elements added in middle panel of the editor, an warning message would be displayed
+ *  as there are no contents for the preview to show.
+ */
 function makePreviewDialog()
 {    
     var jsTree = document.getElementById("msm_unit_tree");
@@ -627,13 +652,16 @@ function makePreviewDialog()
                     $(this).dialog("close");
                 }
             }
-        });
-        
-        
-    }
-    
+        });       
+    }   
 }
 
+/**
+ * This method is used to show the EditorInfo object contents in the preview dialog
+ * when the user hovers over the associate "mini-buttons" on def/theorem/comment
+ * elements and also shows the reference materials that is associated with the associate button
+ * on the right panel of the split screen when the user clicks on the button.
+ */
 function previewinfoopen(triggerId, idEnding)
 {    
     $("#"+triggerId).unbind('click');
@@ -683,11 +711,18 @@ function previewinfoopen(triggerId, idEnding)
             $('#dialog-'+idEnding).dialog('close');
         });
    
-    });
-    
-    
+    });   
 }
 
+/**
+ * This method is triggered by the Export This Composition button on the navigation menu which
+ * triggers the AJAX call to beginExport.php script.  This script starts the export process which converts
+ * information created from the editor into an XML file.  All the XML files are compressed into a zip file 
+ * that triggered for a download.
+ * 
+ * @param eventObject event             mouse click event object --> used to suppress the
+ *                                      default action of anchor elements to navigate to another page
+ */
 function exportComposition(event)
 {
     event.preventDefault();      
@@ -696,7 +731,7 @@ function exportComposition(event)
     var unitInfo = unitnames.split(",");
     
     var msmid = unitInfo[unitInfo.length-1];
-    //    var issuccess = false;
+    
     var ids = null;
     $.ajax({
         type: "POST",
@@ -705,6 +740,8 @@ function exportComposition(event)
             msm_id: msmid
         },           
         success: function(data) { 
+            // ids can be either a string saying error (ie. error in export process)/empty (ie. no content in
+            // database tables to be exported) or a link to a zip file that is presented in jquery dialog window 
             ids = JSON.parse(data);
             if((ids != 'error') &&(ids != 'empty'))
             {
@@ -733,7 +770,7 @@ function exportComposition(event)
                     }
                 });                
             }
-            else if(ids == "empty")
+            else if(ids == "empty") // no data in database tables to export
             {
                 var exportEmpty = $("<div id='msm_export_empty' class='dialogs' title='Cannot Export'><p> There is no content in the database to be exported. </p></div>");
                     
@@ -747,7 +784,7 @@ function exportComposition(event)
                     }
                 });
             }
-            else
+            else // error while running the export process
             {
                 var exportError = $("<div id='msm_export_error' class='dialogs' title='Export Error'><p> The export process was not able to finish successfully. </p></div>");
                     
@@ -763,8 +800,7 @@ function exportComposition(event)
                 });
             }
             
-        },
-        error: function() {}
+        }
     });
 }
 

@@ -419,10 +419,15 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
 
         $currentParentTable = $DB->get_record("msm_table_collection", array("id" => $currentParent->table_id));
 
+        // if the current child object of an unit has a subordinate/associate elements as a parent, it is a reference material
+        // so in order for the references to exist, cannot delete the data in the data table associated with this element
         if (($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate"))
         {
             $hasRef = true;
         }
+        // current child object can have other records in msm_compositor that refers to the same unit by same unit_id and table_id
+        // if any of these objects have parent element of subordinate/associate, then cannot delete data in the element data table
+        // but just delete the reference in msm_compositor
         else
         {
             $sql = "SELECT * FROM mdl_msm_compositor WHERE unit_id=$currentRecord->unit_id AND table_id=$currentRecord->table_id AND id<>$compid";
@@ -469,6 +474,14 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
     }
 }
 
+/**
+ * This method is used to remove an EditorUnit object when the user triggers the 
+ * "Remove Unit" button.
+ * 
+ * @global moodle_datbase $DB
+ * @param int $compid               database ID of child of current unit
+ * @param int $msm_id               MSM instance ID
+ */
 function removeUnit($compid, $msm_id)
 {
     global $DB;
