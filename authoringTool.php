@@ -12,6 +12,13 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
  * *************************************************************************
  * ************************************************************************ */
+
+/**
+ * This script creates the main page for the editor after the user creates an instance of MSM.
+ * It sets up all the HTML to display the editor and also initializes all the javascript code
+ * needed to run the editor.  This script is also called when the user chooess to edit the content after
+ * running the view.php.
+ */
 require_once('../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 require_once($CFG->libdir . "/editor/tinymce/lib.php");
@@ -73,8 +80,8 @@ for ($i = 3; $i < sizeof($basepath); $i++)
     $editorpath .= "/" . $basepath[$i];
 }
 
-echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
-echo " <link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jshowoff.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jshowoff.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/superfish.css' media='screen'/> ";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
@@ -109,7 +116,6 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveMethod.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorChildComponents.js'></script>";
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorFileBrowser.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
@@ -122,13 +128,10 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery
 echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/tiny_mce.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/module.js'></script>";
 
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
-//echo "<script type='text/x-mathjax-config' src='$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>"; // for using local copy
 echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
 
-
-//$selectedValue = $DB->get_record('msm', array('id' => $msm->id))->comptype;
-
+// creating the navigation menu for the main editor
 $msm_nav = '';
 $msm_nav .= '<ul class="sf-menu">
             <li>
@@ -206,10 +209,12 @@ $msm_nav .= '<ul class="sf-menu">
 
 echo $OUTPUT->heading($msm->name);
 
+// creating the main form for the editor --> upon submit, it calls the msmUnitForm.php script
 $formContent = '';
 
 $topContainer = $DB->get_record('msm_unit_name', array('msmid' => $msm->id, 'depth' => 0))->unitname;
 
+// unit names for each unit according to their depth
 $unitNames = '';
 
 foreach ($DB->get_records('msm_unit_name', array('msmid' => $msm->id), 'depth') as $key => $record)
@@ -220,6 +225,7 @@ $unitNames .= $msm->id;
 
 $unittable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'));
 
+// if this script was triggered after display, then there are existing unit to be displayed.
 $existingUnits = $DB->get_records('msm_compositor', array('msm_id' => $msm->id, 'table_id' => $unittable->id, 'parent_id' => 0, 'prev_sibling_id' => 0));
 
 $existingUnit = null;
@@ -241,10 +247,12 @@ else
         }
     }
 }
-
-$treeContent = '';
-$rootUnit = '';
-
+// the main unit structural tree in XML hierarchy part of editor
+$treeContent = ''; 
+// When loading the main editor page and if there are already units exsiting, then
+// load the top level unit as default
+$rootUnit = ''; 
+// the standalone unit tree in XML hierarchy part of editor
 $standaloneTree = '';
 $unitRecord = null;
 
@@ -477,7 +485,7 @@ $fpoptions['image'] = $image_options;
 $fpoptions['media'] = $media_options;
 $fpoptions['link'] = $link_options;
 
-
+// loading all the javascript code needed 
 $formContent .= '<script type="text/javascript"> 
         var tinymce_filepicker_options = ' . json_encode($fpoptions) . ';
             
@@ -793,6 +801,14 @@ else
 echo $OUTPUT->box($msm_nav . $formContent);
 echo $OUTPUT->footer();
 
+/**
+ * This method creates the main unit structural tree on the XML hierarchy area of the editor.
+ * 
+ * @global moodle_database $DB
+ * @param int $compid                   database ID of the EditorUnit object in msm_compositor
+ * @param int $unitid                   database ID of the EditorUnit object in msm_unit
+ * @return string                       HTML code to create the tree
+ */
 function makeUnitTree($compid, $unitid)
 {
     global $DB;
@@ -829,6 +845,13 @@ function makeUnitTree($compid, $unitid)
     return $treeHtml;
 }
 
+/**
+ * This method creates the standalone unit tree on the XML hierarchy area of the editor.
+ * 
+ * @global moodle_database $DB
+ * @param int $msmid                    instance ID of MSM
+ * @return string
+ */
 function makeStandaloneTree($msmid)
 {
     global $DB;
@@ -856,10 +879,17 @@ function makeStandaloneTree($msmid)
             $standaloneHTML .= "</li>";
         }
     }
-
     return $standaloneHTML;
 }
 
+/**
+ * This method is used to display the information of the existing top unit
+ * when this script is triggered from view.php.
+ * 
+ * @global moodle_database $DB
+ * @param int $unitcompid           database ID of an EditorUnit object in msm_compositor
+ * @return string                   HTML code to display the root unit element
+ */
 function displayRootUnit($unitcompid)
 {
     global $DB;

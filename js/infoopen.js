@@ -19,12 +19,11 @@
  * to the frame.
  */
 
-
-
 /* variable i is passed by each time the defminibutton/minibutton in definition.php/theorem.php has a mouse hovering over and 
  * it tracks the unique ID number of the buttons to call the correct dialog windows.
+ * 
+ * @TODO: need to be refactored
  */
-
 function infoopen(i) {    
     
     var x = 0; // stores the x-axis position of the mouse
@@ -51,11 +50,17 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('option', {
                 position: [e.clientX+5, e.clientY+5]
             });  
-            $('#dialog-'+i).dialog('open').css({"display":"block", "visibility":"visible"});
+            $('#dialog-'+i).dialog('open').css({
+                "display":"block", 
+                "visibility":"visible"
+            });
         });
          
         $('#defminibutton-'+i).mouseout(function(){
-            $('#dialog-'+i).dialog('close').css({"display":"none", "visibility":"hidden"});
+            $('#dialog-'+i).dialog('close').css({
+                "display":"none", 
+                "visibility":"hidden"
+            });
         });   
     });
         

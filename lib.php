@@ -158,6 +158,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             $tableid = $table_collection->insertTablename();
         }
 
+        // importing newly created XML files
         $draftitemid = file_get_submitted_draft_itemid('importElement');
 
         if (!empty($draftitemid))
@@ -232,6 +233,13 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             }
         }
 
+        /********************************************************************************************
+         *                         Part of Code to import the legacy material                       *
+        *********************************************************************************************/
+        
+        // uncomment if want to import legacy material and if want to import
+        // other legacy material, just change the pathing
+        
 //        $parser = new DOMDocument();
 //        
 //        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
@@ -244,6 +252,8 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //        $unit->loadFromXml($parser->documentElement, $position);
 //        
 //        $unit->saveIntoDb($unit->position, $msm->id);
+        
+         // *********************************************************************************************
 
         $deletePath = $CFG->dataroot . "/temp/msmtempfiles/";
         if (file_exists($deletePath))
@@ -271,9 +281,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
             rmdir($deletePath);
         }
     }
-//    echo "done";
-//    die;
-
     return $msm->id;
 }
 

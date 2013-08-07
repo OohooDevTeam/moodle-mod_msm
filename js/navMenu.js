@@ -1,8 +1,21 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 
+/**
+ * This function gives functionality to the small vertical menus on the right side of the
+ * view.php for displaying the table of content, glossary, symbol and author indices.
+ */
 
 $(function() {   
     $('#toc').click(function () {  

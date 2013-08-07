@@ -389,8 +389,8 @@ abstract class ExportElement
      * 
      * @global moodle_database $DB
      * @global type $CFG
-     * @param type $obj
-     * @param type $elementContent
+     * @param object $obj                       ExportDefinition/ExportTheoerem/ExportComment object to be exported
+     * @param string $elementContent            content of the DOMDocument that created XML version of above mentioned classes
      */
     function createXMLFile($obj, $elementContent)
     {
@@ -417,15 +417,23 @@ abstract class ExportElement
         // standalone folder already exists
         if (file_exists($CompDir))
         {
+            // if the directory exists, there is a possibility that the same reference
+            // was already exported --> so check if XML file with same content exists
+            $existingCompid = $this->checkForSameFile($CompDir, $obj);
+            
+            if(!empty($existingCompid))
+            {
+                return $existingCompid;
+            }
             if (!empty($obj->caption))
             {
                 $captionTrim = preg_replace("/\s+/", '', $obj->caption);
                 $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
-                $filename = $CompDir . $captionmod . "-$elementType" . $obj->compid . ".xml";
+                $filename = $CompDir . $captionmod . "-$elementType-" . $obj->compid . ".xml";
             }
             else if (!empty($obj->type))
             {
-                $filename = $CompDir . $obj->type . "-$elementType" . $obj->compid . ".xml";
+                $filename = $CompDir . $obj->type . "-$elementType-" . $obj->compid . ".xml";
             }
         }
         else
@@ -437,11 +445,11 @@ abstract class ExportElement
                 {
                     $captionTrim = preg_replace("/\s+/", '', $obj->caption);
                     $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
-                    $filename = $CompDir . $captionmod . "-$elementType" . $obj->compid . ".xml";
+                    $filename = $CompDir . $captionmod . "-$elementType-" . $obj->compid . ".xml";
                 }
                 else if (!empty($obj->type))
                 {
-                    $filename = $CompDir . $obj->type . "-$elementType" . $obj->compid . ".xml";
+                    $filename = $CompDir . $obj->type . "-$elementType-" . $obj->compid . ".xml";
                 }
             }
             else
@@ -454,6 +462,7 @@ abstract class ExportElement
         {
             fwrite($xmlfile, $elementContent);
             fclose($xmlfile);
+            return false;
         }
         else
         {
@@ -461,8 +470,80 @@ abstract class ExportElement
         }
     }
 
-    //need a function to look for subordinate and math
-    // need a function to convert some HTML stuff to XML
+    /**
+     * This method is called by the createXMLFile function above to check if there are any
+     * existing XML in the standalone folder that is the same XML content as current reference material
+     * being exported.  This can happen if the same element is used multiple times as a reference.
+     * It takes the database ID from msm_compositor attached at the end of the XML file name and queries 
+     * unit_id and table_id from the msm_compositor and check if its the same as the current object being
+     * exported. If it is the same, then return the compositor ID to be referenced in XML attribute.
+     * 
+     * @global moodle_database $DB
+     * @param string $filepath                  filepath to standalone folder of temporary files
+     * @param object $object                    object of ExportDefinition/ExportTheorem/ExportComment that is being exported
+     * @return integer/boolean                  If there is an equivalent XML file already existing in standalone folder, then return the existing compositor ID.
+     *                                          If there is no equivalent XML file in the staandalone folder, then return false.   
+     */
+    function checkForSameFile($filepath, $object)
+    {
+        global $DB;
+        
+        $filenamematch = '';
+
+        $files = scandir($filepath);
+
+        $type = '';
+        $tableInfo = '';
+        switch (get_class($object))
+        {
+            case "ExportDefinition":
+                $type = "definition";
+                $tableInfo = $DB->get_record("msm_table_collection", array("tablename" => "msm_def"));
+                break;
+            case "ExportTheorem":
+                $type = "theorem";
+                $tableInfo = $DB->get_record("msm_table_collection", array("tablename" => "msm_theorem"));
+                break;
+            case "ExportComment":
+                $type = "comment";
+                $tableInfo = $DB->get_record("msm_table_collection", array("tablename" => "msm_comment"));
+                break;
+        }
+
+        foreach ($files as $file)
+        {
+            if (!empty($object->caption))
+            {
+                $captionTrim = preg_replace("/\s+/", '', $object->caption);
+                $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
+
+                $filenamematch = $captionmod . "-$type";                
+            }
+            else if (!empty($object->type))
+            {
+                $filenamematch = $object->type . "-$type";
+            }
+            
+            if(!empty($filenamematch))
+            {
+                if (strpos($file, $filenamematch) !== false)
+                {
+                    $fileInfo = explode(".", $file);
+                    $filenameInfo = explode("-", $fileInfo[0]);
+                    $filecompid = $filenameInfo[sizeof($filenameInfo) - 1];
+
+                    $existingFileRecord = $DB->get_record("msm_compositor", array("id"=>$filecompid));
+                    
+                    if(($existingFileRecord->table_id == $tableInfo->id) && ($existingFileRecord->unit_id == $object->id))
+                    {
+                        return $filecompid;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
 }
 
 ?>

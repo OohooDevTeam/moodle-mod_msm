@@ -44,7 +44,7 @@ class ExportTheorem extends ExportElement
      * @param string $flag              A flag that indicates if the theorem is a reference material
      *                                  If the flag is not empty string, then the theorem is a reference
      *                                  material and should create new XML file in standalone folder.
-     * @return DOMElement
+     * @return DOMElement/integer/false
      */
     public function exportData($flag = '')
     {
@@ -94,7 +94,9 @@ class ExportTheorem extends ExportElement
         if (!empty($flag)) // theorem is a reference material (ie. ExportAssociate called this function)
         {
             // create a new XML file in standalone folder
-            $this->createXMLFile($this, $theoremCreator->saveXML() . $theoremCreator->saveXML($theoremCreator->importNode($theoremNode, true)));
+            $existingUnit = $this->createXMLFile($this, $theoremCreator->saveXML() . $theoremCreator->saveXML($theoremCreator->importNode($theoremNode, true)));
+            // return value can be a database ID or false
+            return $existingUnit;
         }
         else  // theorem is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
         {
@@ -107,7 +109,7 @@ class ExportTheorem extends ExportElement
      * "msm_theorem".  It also calls the loadDbData method from the ExportStatementTheorem, and ExportAssociate classes.
      * 
      * @global moodle_database $DB
-     * @param int $compid
+     * @param int $compid                           ID of the current theorem elements in the msm_compositor table
      * @return \ExportTheorem
      */
     public function loadDbData($compid)

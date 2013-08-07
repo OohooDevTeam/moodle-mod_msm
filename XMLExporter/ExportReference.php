@@ -1,31 +1,54 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 
 /**
- * Description of ExportReference
- *
- * @author User
+ * ExportReference class is representing any internal/external references that exist in the
+ * contents in the editor.  These references are made as a child element of associate or subordinate
+ * elements and needs to have a <type.ref typeID=#/> in place of the reference and have the
+ * reference exported as a standalone material.  These reference materials can be an instance of
+ * ExportDefinition/ExportComment/ExportTheorem classes.
  */
 class ExportReference extends ExportElement
 {
 
-    public $id;
-    public $compid;
-    public $msmid; // if external reference, it will be the msm_id of the original content
-    public $type;
-    public $ref;
+    public $id;                 // database ID of the current comment element in reference material's respective database table
+    public $compid;             // database ID of the current comment element in msm_compositor database table
+    public $msmid;              // if external reference, it will be the msm_id of the original content
+                                // if internal reference, it will be the instance ID of the current MSM module
+    public $type;               // internal/external references
+    public $ref;                // ExportDefinition/ExportComment/ExportTheorem objects used as a reference material
 
+    /**
+     * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
+     * convert all database data associated with internal/external element into properly structured XML document.
+     * This method calls the exportData method from reference material object and creates a tag for the reference
+     * material with its MSM instance ID and compoistor ID to find the standalone XML file later during import.
+     * 
+     * @return DOMElement
+     */
     public function exportData()
     {
         $refCreator = new DOMDocument();
         $refCreator->formatOutput = true;
         $refCreator->preserveWhiteSpace = false;
-        
+
         $refTypeNode = null;
+
+        $existingCompid = $this->ref->exportData("ref");
+
         if ($this->type == "internal")
         {
             $refTypeNode = $refCreator->createElement("companion");
@@ -39,25 +62,49 @@ class ExportReference extends ExportElement
         {
             case "ExportDefinition":
                 $refNode = $refCreator->createElement("definition.ref");
-                $refNode->setAttribute("definitionID", $this->msmid . "-" . $this->compid);
+                if (!empty($existingCompid))
+                {
+                    $refNode->setAttribute("definitionID", $this->msmid . "-" . $existingCompid);
+                }
+                else
+                {
+                    $refNode->setAttribute("definitionID", $this->msmid . "-" . $this->compid);
+                }
                 break;
             case "ExportTheorem":
                 $refNode = $refCreator->createElement("theorem.ref");
-                $refNode->setAttribute("theoremID", $this->msmid . "-" . $this->compid);
+                if (!empty($existingCompid))
+                {
+                    $refNode->setAttribute("theoremID", $this->msmid . "-" . $existingCompid);
+                }
+                else
+                {
+                    $refNode->setAttribute("theoremID", $this->msmid . "-" . $this->compid);
+                }
                 break;
             case "ExportComment":
                 $refNode = $refCreator->createElement("comment.ref");
-                $refNode->setAttribute("commentID", $this->msmid . "-" . $this->compid);
+                if (!empty($existingCompid))
+                {
+                    $refNode->setAttribute("commentID", $this->msmid . "-" . $existingCompid);
+                }
+                else
+                {
+                    $refNode->setAttribute("commentID", $this->msmid . "-" . $this->compid);
+                }
                 break;
-            // need to add ExportUnit later when dealing with internal/exteral references
         }
         $refTypeNode->appendChild($refNode);
-        
-        $this->ref->exportData("ref");
-        
         return $refTypeNode;
     }
 
+    /**
+     * This method is used to pull all relevant data linked with internal/external elements from the reference mateterial's respective database tables
+     * (msm_def/msm_comment/msm_theorem).  It also calls the loadDbData method from the ExportDefinition/ExportTheorem/ExportComment classes.
+     * 
+     * @global moodle_database $DB
+     * @param integer $compid                           database ID of the current reference material in msm_compositor table
+     */
     public function loadDbData($compid)
     {
         global $DB;

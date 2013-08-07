@@ -46,7 +46,7 @@ class ExportDefinition extends ExportElement
      * 
      * @param string $flag      A flag that indicates if the definition is a reference material
      *                          If the flag is not empty string, then the definition is a reference material and should create new XML file in standalone folder.
-     * @return DOMElement
+     * @return DOMElement/integer/false
      */
     public function exportData($flag = '')
     {
@@ -92,7 +92,10 @@ class ExportDefinition extends ExportElement
         if (!empty($flag)) // def is a reference material (ie. ExportAssociate called this function)
         {
              // create a new XML file in standalone folder
-            $this->createXMLFile($this, $defCreator->saveXML() . $defCreator->saveXML($defCreator->importNode($defNode, true)));
+            $existingUnit = $this->createXMLFile($this, $defCreator->saveXML() . $defCreator->saveXML($defCreator->importNode($defNode, true)));
+            // return value can be a database ID or false
+            return $existingUnit;
+            
         }
         else // def is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
         {

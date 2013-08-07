@@ -1,8 +1,22 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 
+/**
+ * This method is used to view a specific page(ie. unit) when the user clicks on any of the 
+ * nodes in the table of content tree.  This function is bound to each li elements making up the
+ * table of content tree by a mouse click event.
+ */
 function navToPage(unitid)
 {
     var nextRecords = $('#stack').val();
@@ -30,6 +44,8 @@ function navToPage(unitid)
             }
         }
         
+        // if the current unit on the display is clicked on the table of content tree
+        // give a message to the user that they are viewing the same page.
         if(selected == 'current')
         {
             alert('This is the current page.');
@@ -215,6 +231,9 @@ function navToPage(unitid)
     });   
 }
 
+/**
+ * This method updates the page number on the view.php page on the middle of jshowoff controller.
+ */
 function updatepgnumber(pgnumber) {
        
     var pgnum = ''+pgnumber+'';
