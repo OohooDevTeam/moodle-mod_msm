@@ -81,7 +81,7 @@ class Companion extends Element
 
                                 $element = $parser->documentElement;
 
-                                $comments = $element->getElementsByTagName('comment');
+                                $comments = $parser->getElementsByTagName('comment');
 
                                 foreach ($comments as $c)
                                 {
@@ -108,10 +108,8 @@ class Companion extends Element
                             if (!empty($filepath))
                             {
                                 @$parser->load($filepath);
-
                                 $element = $parser->documentElement;
-
-                                $defs = $element->getElementsByTagName('def');
+                                $defs = $parser->getElementsByTagName('def');
 
                                 foreach ($defs as $d)
                                 {

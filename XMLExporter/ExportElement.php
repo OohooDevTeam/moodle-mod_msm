@@ -34,6 +34,46 @@ abstract class ExportElement
     // (for more informations, read the documentations written in each of the classes)
     abstract function exportData();
 
+    function createXmlTitle($DomDocument, $title, $DomNode)
+    {
+        $titleDoc = new DOMDocument();
+        $titleDoc->formatOutput = true;
+        $titleDoc->preserveWhiteSpace = false;
+
+        $DomDocument->formatOutput = true;
+        $DomDocument->preserveWhiteSpace = false;
+        
+        if(strpos($title, "<div") === false)
+        {
+            $title = "<div>$title</div>";
+        }
+
+        $title = str_replace("<br>", "<br/>", $title); // need the self closing tag to prevent mismatching tag error from loadXML
+        $title = str_replace("<em>", "<emphasis>", $title);
+        $title = str_replace("<b>", "<strong>", $title);
+        $title = str_replace("</em>", "</emphasis>", $title);
+        $title = str_replace("</b>", "</strong>", $title);
+        $title = str_replace("<p>", "", $title);
+        $title = preg_replace("/<p.*?>/", '', $title);
+        $title = str_replace("</p>", "", $title);
+        
+        $titleDoc->loadXML($title);
+        $divNode = $titleDoc->documentElement;
+
+        $this->exportMath($divNode, $titleDoc);
+
+        $titleDoc->formatOutput = true;
+        $titleDoc->preserveWhiteSpace = false;
+
+        foreach ($divNode->childNodes as $child)
+        {
+            $childNode = $DomDocument->importNode($child, true);
+            $DomNode->appendChild($childNode);
+        }
+
+        return $DomNode;
+    }
+
     /**
      * This method is called by ExportComment, ExportDefinition, ExportStatementTheorem, ExportPartTheorem, ExportInfo and ExportInContent
      * to process the content associated with each of these classes to prepare for conversion to XML.  It removes any Mathjax javascript
@@ -420,8 +460,8 @@ abstract class ExportElement
             // if the directory exists, there is a possibility that the same reference
             // was already exported --> so check if XML file with same content exists
             $existingCompid = $this->checkForSameFile($CompDir, $obj);
-            
-            if(!empty($existingCompid))
+
+            if (!empty($existingCompid))
             {
                 return $existingCompid;
             }
@@ -487,7 +527,7 @@ abstract class ExportElement
     function checkForSameFile($filepath, $object)
     {
         global $DB;
-        
+
         $filenamematch = '';
 
         $files = scandir($filepath);
@@ -517,14 +557,14 @@ abstract class ExportElement
                 $captionTrim = preg_replace("/\s+/", '', $object->caption);
                 $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
 
-                $filenamematch = $captionmod . "-$type";                
+                $filenamematch = $captionmod . "-$type";
             }
             else if (!empty($object->type))
             {
                 $filenamematch = $object->type . "-$type";
             }
-            
-            if(!empty($filenamematch))
+
+            if (!empty($filenamematch))
             {
                 if (strpos($file, $filenamematch) !== false)
                 {
@@ -532,18 +572,19 @@ abstract class ExportElement
                     $filenameInfo = explode("-", $fileInfo[0]);
                     $filecompid = $filenameInfo[sizeof($filenameInfo) - 1];
 
-                    $existingFileRecord = $DB->get_record("msm_compositor", array("id"=>$filecompid));
-                    
-                    if(($existingFileRecord->table_id == $tableInfo->id) && ($existingFileRecord->unit_id == $object->id))
+                    $existingFileRecord = $DB->get_record("msm_compositor", array("id" => $filecompid));
+
+                    if (($existingFileRecord->table_id == $tableInfo->id) && ($existingFileRecord->unit_id == $object->id))
                     {
                         return $filecompid;
                     }
                 }
             }
         }
-        
+
         return false;
     }
+
 }
 
 ?>

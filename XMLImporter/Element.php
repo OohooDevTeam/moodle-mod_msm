@@ -214,9 +214,9 @@ abstract class Element
 
                         $content = preg_replace('/^<math xmlns=(.+)>/', '<math>', $content);
 
-                        $content = preg_replace('/<math>\s+<latex>/', '<span class="matheditor">\(', $content);
-                        $content = preg_replace('/<\/latex>\s+<\/math>/', '\)</span>', $content);
-                        $content = preg_replace('/<math>\s+<latex\/>\s+<\/math>/', '', $content);
+                        $content = preg_replace('/<math>\s*<latex>/', '<span class="matheditor">\(', $content);
+                        $content = preg_replace('/<\/latex>\s*<\/math>/', '\)</span>', $content);
+                        $content = preg_replace('/<math>\s*<latex\/>\s*<\/math>/', '', $content);
                         // replacing \RNr[...] to \RNr{...}
                         // need to escape twice because it is parsed twice 
                         $content = preg_replace('/\\\\(RNr|CNr|QNr|ZNr|NNr|IdMtrx|Id)\[(.*?)\]/', '\\\\$1{$2}', $content);

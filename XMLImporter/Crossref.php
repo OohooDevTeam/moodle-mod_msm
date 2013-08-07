@@ -77,7 +77,7 @@ class Crossref extends Element
 
                                 $element = $parser->documentElement;
 
-                                $comments = $element->getElementsByTagName('comment');
+                                $comments = $parser->getElementsByTagName('comment');
 
                                 foreach ($comments as $c)
                                 {
@@ -104,11 +104,9 @@ class Crossref extends Element
                             if (!empty($filepath))
                             {
                                 @$parser->load($filepath);
-
                                 $element = $parser->documentElement;
-
-                                $defs = $element->getElementsByTagName('def');
-
+                                $defs = $parser->getElementsByTagName('def');
+                                
                                 foreach ($defs as $d)
                                 {
                                     $dID = $d->getAttribute('id');
@@ -550,16 +548,9 @@ class Crossref extends Element
 
                             if ((!empty($childElements)) && ($statementTheoremExists))
                             {
-//                                echo "in this branch\n";
                                 $this->grabSubunitChilds($theoremCompRecord, $theoremCompID, $msmid, true);
-//                                print_object($this->theorems);
                                 break;
                             }
-//                            else if((!empty($childElements)) && (!$statementTheoremExists))
-//                            {
-//                                echo "no statement theorem";
-//                                print_object($childElements);
-//                            }
                         }
                     }
                     break;

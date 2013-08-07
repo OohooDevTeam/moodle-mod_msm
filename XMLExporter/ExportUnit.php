@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -26,11 +27,12 @@
  */
 class ExportUnit extends ExportElement
 {
+
     public $compid;                         // ID of the current unit element in msm_compositor
     public $id;                             // ID of the current unit element in msm_unit
     public $msmid;                          // MSM instance ID
     public $contentchildren = array();      // ExportDefintion, ExportTheorem, ExportComment, ExportExtraInfo, ExportBlock
-                                            // and/or ExportIntro objects that are associated with this unit
+    // and/or ExportIntro objects that are associated with this unit
     public $unitchildren = array();         // ID of the any ExportUnit objects that are child of this unit from msm_compositor database table
     public $dates = array();                // Dates for creating/editting this composition
     public $authors;                        // creators of this composition
@@ -54,6 +56,7 @@ class ExportUnit extends ExportElement
      * 
      * @return \DOMDocument
      */
+
     public function exportData()
     {
         $XMLcreator = new DOMDocument();
@@ -91,9 +94,9 @@ class ExportUnit extends ExportElement
 
             if (!empty($this->title))
             {
-                $titleNode = $XMLcreator->createElement("title");
-                $titleText = $XMLcreator->createTextNode($this->title);
-                $titleNode->appendChild($titleText);
+                $oldtitleNode = $XMLcreator->createElement("title");
+                $createdTitleNode = $this->createXmlTitle($XMLcreator, $this->title, $oldtitleNode);
+                $titleNode = $XMLcreator->importNode($createdTitleNode, true);
             }
             if (!empty($this->shortname))
             {

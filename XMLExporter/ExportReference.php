@@ -46,16 +46,19 @@ class ExportReference extends ExportElement
         $refCreator->preserveWhiteSpace = false;
 
         $refTypeNode = null;
+        $msmId = '';
 
         $existingCompid = $this->ref->exportData("ref");
 
         if ($this->type == "internal")
         {
             $refTypeNode = $refCreator->createElement("companion");
+            $msmId = $this->msmid;
         }
         else
         {
             $refTypeNode = $refCreator->createElement("external.ref");
+            $msmId = $this->ref->msmid;
         }
 
         switch (get_class($this->ref))
@@ -64,33 +67,33 @@ class ExportReference extends ExportElement
                 $refNode = $refCreator->createElement("definition.ref");
                 if (!empty($existingCompid))
                 {
-                    $refNode->setAttribute("definitionID", $this->msmid . "-" . $existingCompid);
+                    $refNode->setAttribute("definitionID", $msmId . "-" . $existingCompid);
                 }
                 else
                 {
-                    $refNode->setAttribute("definitionID", $this->msmid . "-" . $this->compid);
+                    $refNode->setAttribute("definitionID", $msmId . "-" . $this->compid);
                 }
                 break;
             case "ExportTheorem":
                 $refNode = $refCreator->createElement("theorem.ref");
                 if (!empty($existingCompid))
                 {
-                    $refNode->setAttribute("theoremID", $this->msmid . "-" . $existingCompid);
+                    $refNode->setAttribute("theoremID", $msmId . "-" . $existingCompid);
                 }
                 else
                 {
-                    $refNode->setAttribute("theoremID", $this->msmid . "-" . $this->compid);
+                    $refNode->setAttribute("theoremID", $msmId . "-" . $this->compid);
                 }
                 break;
             case "ExportComment":
                 $refNode = $refCreator->createElement("comment.ref");
                 if (!empty($existingCompid))
                 {
-                    $refNode->setAttribute("commentID", $this->msmid . "-" . $existingCompid);
+                    $refNode->setAttribute("commentID", $msmId . "-" . $existingCompid);
                 }
                 else
                 {
-                    $refNode->setAttribute("commentID", $this->msmid . "-" . $this->compid);
+                    $refNode->setAttribute("commentID", $msmId . "-" . $this->compid);
                 }
                 break;
         }

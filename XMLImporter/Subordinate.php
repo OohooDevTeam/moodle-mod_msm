@@ -38,7 +38,7 @@ class Subordinate extends Element
     public $infos = array();                // MathInfo objects associated with the subordinate elements (creates the popups)
     public $companions = array();           // Companion objects associated with the subordinate elements (popup with reference material)
     public $external_refs = array();        // Reference materials(eg. Definiton..etc) linked to the subordinate
-                                            // (in this case, ones that doesn't exist in the same composition as this subordinate)
+    // (in this case, ones that doesn't exist in the same composition as this subordinate)
     public $crossrefs = array();            // Crossref objects associated with the subordinate elements (popup with reference material)
     public $cites = array();                // Cite objects associated with the subordinate elements
     public $childs = array();               // reference materials that the subordinate is associated with --> for load/display from DB
@@ -48,6 +48,7 @@ class Subordinate extends Element
      * 
      * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -94,6 +95,12 @@ class Subordinate extends Element
                             $companion->loadFromXml($child, $position);
                             $this->companions[] = $companion;
                             break;
+                        case ("external.ref"):
+                            $position++;
+                            $crossref = new Crossref($this->xmlpath);
+                            $crossref->loadFromXml($child, $position);
+                            $this->external_refs[] = $crossref;
+                            break;
 
                         // external ref has the same children as crossref
                         case('crossref'):
@@ -120,6 +127,7 @@ class Subordinate extends Element
                 }
             }
         }
+        
         return $this;
     }
 
@@ -379,7 +387,7 @@ class Subordinate extends Element
                     $def->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $def;
                     break;
-                
+
                 case 'msm_comment':
                     $comment = new MathComment();
                     $comment->loadFromDb($child->unit_id, $child->id);
@@ -402,8 +410,8 @@ class Subordinate extends Element
 
         return $this;
     }
-    // display is done by processContent method in Element class
 
+    // display is done by processContent method in Element class
 }
 
 ?>

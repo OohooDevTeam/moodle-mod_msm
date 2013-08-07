@@ -897,10 +897,13 @@ function displayRootUnit($unitcompid)
     $unitCompRecord = $DB->get_record('msm_compositor', array('id' => $unitcompid));
 
     $unitRecord = $DB->get_record('msm_unit', array('id' => $unitCompRecord->unit_id));
+    $titleValue = str_replace("<div>", '', $unitRecord->title);
+    $titleValue = str_replace("</div>", '', $titleValue);
+    $titleValue = preg_replace("/\n/", '', $titleValue);
     ?>
     <script type="text/javascript">
         $(document).ready(function() {
-            var titleString = '<?php echo $unitRecord->plain_title ?>';
+            var titleString = '<?php echo $titleValue ?>';
             $('#msm_unit_title').val(titleString);        
             var descriptionString = '<?php echo $unitRecord->description ?>';
             $("#msm_unit_description_input").val(descriptionString);
