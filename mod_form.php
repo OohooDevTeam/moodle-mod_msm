@@ -74,14 +74,12 @@ class mod_msm_mod_form extends moodleform_mod
         }
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
-//        $mform->addHelpButton('name', 'msmname', 'msm');
         // Adding the standard "intro" and "introformat" fields
         $this->add_intro_editor();
 
         //-------------------------------------------------------------------------------
         // Adding the rest of msm settings, spreeading all them into this fieldset
         // or adding more fieldsets ('header' elements) if needed for better logic
-//        $mform->addElement('static', 'label1', get_string('msmtype', 'msm'));
 
         $msm_types = array();
         $msm_types[0] = 'Lecture';
@@ -130,8 +128,6 @@ class mod_msm_mod_form extends moodleform_mod
                 }
                 "
         );
-
-//        $mform->addElement('editor', 'editor', get_string('toplevel', 'msm'));
 
         $mform->addElement('select', 'comptype', get_string('msmtype', 'msm'), $msm_types, $selectattr);
         $mform->addHelpButton('comptype', 'msmtype', 'msm');

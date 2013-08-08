@@ -1,3 +1,30 @@
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Jörn Zaefferer                                           **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
+
+/*!
+ * StyleSheet for JQuery Spliter Plugin
+ * Copyright (C) 2010 Jakub Jankiewicz <http://jcubic.pl>
+ *
+ * Same license as plugin
+ */
+ 
+ /* 
+  * This CSS file defines all the style speficifications for displaying the 
+  * jTreeview plugin used for displaying the author/glossary/symbol indices in
+  * view.php
+  */
+
 .treeview, .treeview ul { 
 	padding: 0;
 	margin: 0;

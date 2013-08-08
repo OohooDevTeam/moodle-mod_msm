@@ -13,6 +13,12 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document is used to convert simplepage elements (a reference material used in the content of either
+* top element book itself or in the content of any of child elements of the book) to one of the unit elements without
+* any sub units as a child. The new schema file to follow is Unit.xsd in NewSchemas directory.
+-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:sp="http://webmath.math.ualberta.ca/v1/Simplepage"
     xmlns:xi="http://www.w3.org/2001/XInclude"

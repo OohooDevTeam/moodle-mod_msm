@@ -13,17 +13,22 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document is used to convert section elements as a child element of book elements to
+* unit elements within another unit element. The new schema file to follow is Unit.xsd in NewSchemas directory
+-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:bk="http://webmath.math.ualberta.ca/v1/Book"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:unit="Unit"
-    version="2.0">
+                xmlns:xi="http://www.w3.org/2001/XInclude"
+                xmlns:bk="http://webmath.math.ualberta.ca/v1/Book"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:unit="Unit"
+                version="2.0">
     
     <xsl:import href="Unit.xsl"/>
     
     <xsl:output method="xml" indent="yes" version="1.0"
-        encoding="UTF-8"/>
+                encoding="UTF-8"/>
     
     <xsl:strip-space elements="*"/>
     
@@ -36,7 +41,9 @@
             </xsl:if>
             
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Unit <xsl:sequence select="resolve-uri('Unit.xsd')"/></xsl:attribute>
+                <xsl:attribute name="xsi:schemaLocation">Unit 
+                    <xsl:sequence select="resolve-uri('Unit.xsd')"/>
+                </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">
                 <xsl:attribute name="xi">
@@ -70,9 +77,7 @@
             </xsl:if>
             
             <xsl:if test="node()[name()='section.body']">
-                <!--xsl:element name="legitimate.children" namespace="Unit"-->
-                    <xsl:apply-templates select="bk:section.body"/>
-                <!--/xsl:element-->
+                <xsl:apply-templates select="bk:section.body"/>
             </xsl:if>
             
             <xsl:if test="node()[name()='subsection']">
@@ -80,10 +85,8 @@
                     <xsl:apply-templates select="bk:subsection"/>
                 </xsl:element>
             </xsl:if>
-            <xsl:if test="node()[name()='studymaterials']">
-                
-                    <xsl:apply-templates select="bk:studymaterials"/>
-                
+            <xsl:if test="node()[name()='studymaterials']">                
+                <xsl:apply-templates select="bk:studymaterials"/>                
             </xsl:if>
         </xsl:element>
     </xsl:template>

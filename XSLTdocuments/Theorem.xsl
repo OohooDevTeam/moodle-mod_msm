@@ -13,6 +13,11 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document is used to convert theorem elements as a child element of book elements to
+* unit elements within another unit element. The new schema file to follow is Theorem.xsd in NewSchemas directory
+-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xi="http://www.w3.org/2001/XInclude"
                 xmlns:thm="http://webmath.math.ualberta.ca/v1/Theorem"
@@ -39,7 +44,9 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Theorem <xsl:sequence select="resolve-uri('Theorem.xsd')"/></xsl:attribute>
+                <xsl:attribute name="xsi:schemaLocation">Theorem 
+                    <xsl:sequence select="resolve-uri('Theorem.xsd')"/>
+                </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">
                 <xsl:attribute name="xi">
@@ -118,7 +125,7 @@
                         </xsl:when>
                         <xsl:otherwise>
                             <!--xsl:element name="proof.block.body" namespace="Theorem"-->
-                                <xsl:apply-templates/>
+                            <xsl:apply-templates/>
                             <!--/xsl:element-->
                         </xsl:otherwise>
                     </xsl:choose>
@@ -1019,7 +1026,7 @@
                 <xsl:element name="info" namespace="Theorem">
                     <xsl:if test="child::node()[name() = 'caption']">
                         
-                            <xsl:apply-templates select="thm:caption"/>
+                        <xsl:apply-templates select="thm:caption"/>
                         
                     </xsl:if>
                     <xsl:apply-templates select="child::node()[not(name()='caption' or name()='subpage.ref' or name()='chapter.ref' or name()='subsection.ref' or name()='section.ref' or name()='theorem.ref' or name()='comment.ref' or name()='definition.ref' or name()='exercise.pack.ref' or name()='example.pack.ref' or name()='external.ref')]"/>

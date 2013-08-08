@@ -1,16 +1,22 @@
 /**
 **************************************************************************
-** MSM **
+**                              MSM                                     **
 **************************************************************************
-* @package mod **
-* @subpackage msm **
-* @name msm **
-* @copyright University of Alberta **
-* @link http://ualberta.ca **
-* @author Ga Young Kim **
-* @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+* @package     mod                                                      **
+* @subpackage  msm                                                      **
+* @name        msm                                                      **
+* @copyright   University of Alberta                                    **
+* @link        http://ualberta.ca                                       **
+* @author      Ga Young Kim, Nicolas Bretin                             **
+* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
 **************************************************************************
 **************************************************************************/
+
+/*
+ * This CSS file contains all the style specifications for displaying the
+ * editor to create content.
+ */
+
 .msm_loadingscreen {
     display:    none;
     position:   fixed;
@@ -352,11 +358,10 @@
 .copied_msm_structural_element
 {
     margin: 10px auto;
-    /*border: 2px dashed black;*/
     width: 95%;
     height: 25%;
     /* The following two properties are there so that chrome does not
-return auto from getComputedStyle javascript function*/
+    return auto from getComputedStyle javascript function*/
     left: 0;
     top: 0;
     padding-top: 5px !important;
@@ -633,7 +638,6 @@ return auto from getComputedStyle javascript function*/
 
 .msm_theorem_content_containers
 {
-    /*text-align: center !important;*/
     margin-bottom: 1%;
 }
 
@@ -737,7 +741,6 @@ table.mceLayout
     width: 74%;
     margin-bottom: 2%;
     padding-left: 39%;
-    /*text-align: center;*/
 }
 
 .msm_theorem_part_title_containers
@@ -869,7 +872,7 @@ table.mceLayout
 }
 
 .mceExternalToolbar {
-   right: 0;
+    right: 0;
 }
 #msm_unit_title_tbl
 {

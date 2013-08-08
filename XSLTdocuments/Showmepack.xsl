@@ -13,16 +13,21 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document converts the legacy XML document with root element showme.pack
+* to follow the new schema files (Compositor.xsd and Example.xsd in NewSchemas)
+-->
+
 <xsl:stylesheet xmlns:compositor="Compositor"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:exa="http://webmath.math.ualberta.ca/v1/Example"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="2.0">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:exa="http://webmath.math.ualberta.ca/v1/Example"
+                xmlns:xi="http://www.w3.org/2001/XInclude"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                version="2.0">
     
     <xsl:output method="xml" indent="yes" version="1.0"
-        encoding="UTF-8"
-        doctype-system="../Symbols.dtd"/>
+                encoding="UTF-8"
+                doctype-system="../Symbols.dtd"/>
     
     <xsl:template match="exa:showme.pack">
         <xsl:element name="showme.pack" namespace="Compositor">
@@ -32,7 +37,9 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Compositor <xsl:sequence select="resolve-uri('Compositor.xsd')"/></xsl:attribute>
+                <xsl:attribute name="xsi:schemaLocation">Compositor 
+                    <xsl:sequence select="resolve-uri('Compositor.xsd')"/>
+                </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">
                 <xsl:attribute name="xi">
@@ -144,26 +151,26 @@
     </xsl:template>
     
     <xsl:template match="exa:caption">
-    <xsl:choose>
-        <xsl:when test="parent::node()[name()='info']">
-            <xsl:element name="info.caption" namespace="Compositor">
-                <xsl:apply-templates/>
-            </xsl:element>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:apply-templates select="child::node()[name()='partref']"/>
-            <xsl:element name="caption" namespace="Compositor">
-                <xsl:apply-templates select="child::node()[not(name()='partref')]"/>
-            </xsl:element>
-        </xsl:otherwise>
-    </xsl:choose>      
+        <xsl:choose>
+            <xsl:when test="parent::node()[name()='info']">
+                <xsl:element name="info.caption" namespace="Compositor">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates select="child::node()[name()='partref']"/>
+                <xsl:element name="caption" namespace="Compositor">
+                    <xsl:apply-templates select="child::node()[not(name()='partref')]"/>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>      
     </xsl:template>
         
-        <xsl:template match="exa:tablabel">
-            <xsl:element name="textcaption" namespace="Compositor">
-                <xsl:apply-templates/>
-            </xsl:element>
-        </xsl:template>
+    <xsl:template match="exa:tablabel">
+        <xsl:element name="textcaption" namespace="Compositor">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
     
     <xsl:template match="exa:figure">
         <xsl:element name="media" namespace="Compositor">
@@ -252,24 +259,24 @@
                 </xsl:element>         
             </xsl:when>
             <xsl:when test="parent::node()[name()='hot']">
-                    <xsl:attribute name="type">image</xsl:attribute>
-                    <xsl:attribute name="active">1</xsl:attribute>
-                    <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img" namespace="Compositor">
-                        <xsl:attribute name="src">
-                            <xsl:value-of select="./@src"/>
+                <xsl:attribute name="type">image</xsl:attribute>
+                <xsl:attribute name="active">1</xsl:attribute>
+                <xsl:attribute name="inline">0</xsl:attribute>
+                <xsl:element name="img" namespace="Compositor">
+                    <xsl:attribute name="src">
+                        <xsl:value-of select="./@src"/>
+                    </xsl:attribute>
+                    <xsl:if test="./@height">
+                        <xsl:attribute name="height">
+                            <xsl:value-of select="./@height"/>
                         </xsl:attribute>
-                        <xsl:if test="./@height">
-                            <xsl:attribute name="height">
-                                <xsl:value-of select="./@height"/>
-                            </xsl:attribute>
-                        </xsl:if>
-                        <xsl:if test="./@width">
-                            <xsl:attribute name="width">
-                                <xsl:value-of select="./@width"/>
-                            </xsl:attribute>
-                        </xsl:if>
-                    </xsl:element>                             
+                    </xsl:if>
+                    <xsl:if test="./@width">
+                        <xsl:attribute name="width">
+                            <xsl:value-of select="./@width"/>
+                        </xsl:attribute>
+                    </xsl:if>
+                </xsl:element>                             
             </xsl:when>
             <xsl:otherwise>
                 <xsl:element name="media" namespace="Compositor">
@@ -342,11 +349,11 @@
                     </xsl:attribute>
                 </xsl:if>
             
-            <xsl:if test="child::node()[not(name()='path')]">
-                <xsl:element name="image.mapping" namespace="Compositor">
-                    <xsl:apply-templates select="exa:area"/>
-                </xsl:element>
-            </xsl:if>
+                <xsl:if test="child::node()[not(name()='path')]">
+                    <xsl:element name="image.mapping" namespace="Compositor">
+                        <xsl:apply-templates select="exa:area"/>
+                    </xsl:element>
+                </xsl:if>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -357,9 +364,9 @@
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
         
-        <xsl:for-each select=".">
-            <xsl:apply-templates/>
-        </xsl:for-each>
+            <xsl:for-each select=".">
+                <xsl:apply-templates/>
+            </xsl:for-each>
         </xsl:element>
     </xsl:template>
     
@@ -758,7 +765,7 @@
         <xsl:element name="info" namespace="Compositor">
             <xsl:if test="exa:caption != ''">
                
-                    <xsl:apply-templates select="exa:caption"/>
+                <xsl:apply-templates select="exa:caption"/>
                 
             </xsl:if>
             <xsl:apply-templates select="node()[not(name()='caption')]"/>            
@@ -834,7 +841,7 @@
                 <xsl:element name="info" namespace="Compositor">
                     <xsl:if test="child::node()[name() = 'caption']">
                         
-                            <xsl:apply-templates select="exa:caption"/>
+                        <xsl:apply-templates select="exa:caption"/>
                         
                     </xsl:if>
                     <xsl:apply-templates select="child::node()[not(name()='caption' or name()='subpage.ref' or name()='chapter.ref' or name()='subsection.ref' or name()='section.ref' or name()='theorem.ref' or name()='comment.ref' or name()='definition.ref' or name()='exercise.pack.ref' or name()='example.pack.ref' or name()='external.ref')]"/>
@@ -937,7 +944,7 @@
                 <xsl:element name="info" namespace="Compositor">
                     <xsl:if test="child::node()[name() = 'caption']">
                        
-                            <xsl:apply-templates select="exa:caption"/>
+                        <xsl:apply-templates select="exa:caption"/>
                         
                     </xsl:if>
                     <xsl:apply-templates select="child::node()[not(name()='caption')]"/>
@@ -1012,7 +1019,7 @@
                     <xsl:element name="info" namespace="Compositor">
                         <xsl:if test="child::node()[name() = 'caption']">
                             
-                                <xsl:apply-templates select="exa:caption"/>
+                            <xsl:apply-templates select="exa:caption"/>
                             
                         </xsl:if>
                         <xsl:apply-templates select="node()[not(name()='caption' or name()='subpage.ref' or name()='definition.ref' or name()='comment.ref' or name()='theorem.ref' or name()='quiz.pack.ref' or name()='showme.pack.ref')]"/>

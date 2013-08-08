@@ -1,6 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * *************************************************************************
  */
 package xmltransformer;
 
@@ -20,12 +30,16 @@ import org.xml.sax.SAXException;
 /**
  * The foundation of this code was taken from
  * http://blog.msbbc.co.uk/2007/06/simple-saxon-java-example.html
- *
- * @author User
+ * 
+ * This class is used to transform the legacy XML files(in xml directory) with old XML schema to new
+ * XML files that follow the new schema files(in NewSchemas directory).  The converted new XML files are then
+ * exported to newXML directory with same file names as legacy files.
  */
 public class XMLTransformer {
 
     /**
+     * This main method starts the conversion process by calling scandir function
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -49,7 +63,9 @@ public class XMLTransformer {
     }
 
     /**
-     *
+     * This method scans the files in xml directory and depending on the root element of the XML document which is specified by the identifyXmlElement
+     * method below, it matches the XML file with the correct XSLT document in XSLTdocuments directory.
+     * 
      * @param xml
      * @param newxml
      * @param xsl
@@ -68,8 +84,6 @@ public class XMLTransformer {
                 if (newxml.getParent().equals("..")) {
                     newXmlPath = newXmlPath + "/" + currentFile.getName();
                 } else {
-                    //newXmlPath = newxml.getParent();
-
                     newXmlPath = newXmlPath + "/" + currentFile.getName();
                 }
                 
@@ -177,9 +191,12 @@ public class XMLTransformer {
     }
 
     /**
-     *
+     * This method is called by the scandir function above and it identifies the root
+     * element of the xml document given.  Then it returns a string specifying the type of
+     * the root element which is used to pair the files up with the correct XSLT document in scandir method.
+     * 
      * @param xmlpath
-     * @return
+     * @return string
      * @throws SaxonApiException
      */
     public static String identifyXmlElement(String xmlpath) throws SaxonApiException {
@@ -256,7 +273,8 @@ public class XMLTransformer {
     }
 
     /**
-     *
+     * This method copies the non XML files such as image files from  xml directory to newXML directory.
+     * 
      * @param nonxmlFile
      * @param newnonxmlFile
      * @throws IOException
@@ -322,7 +340,9 @@ public class XMLTransformer {
     }
 
     /**
-     *
+     * This method takes the legacy XML file and XSLT document file paths and runs the XsltTransformer in the 
+     * Saxon library.
+     * 
      * @param inputXmlPath
      * @param inputXslPath
      * @param outputFile

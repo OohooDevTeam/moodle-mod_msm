@@ -13,6 +13,11 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document converts the legacy XML document with root element example.pack
+* to follow the new schema files (Compositor.xsd and Example.xsd in NewSchemas)
+-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:exa="http://webmath.math.ualberta.ca/v1/Example"
     xmlns:xi="http://www.w3.org/2001/XInclude"

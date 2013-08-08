@@ -18,13 +18,18 @@
  *
  * Same license as plugin
  */
+ 
+ /* 
+  * This CSS file defines all the style speficifications for displaying the 
+  * jSplitter plugin used to divide the editor container into three parts to
+  * divide areas that serve different purposes
+  */
 .spliter_panel {
   position: relative;
 }
 .spliter_panel .vspliter {
     background-color: white;
     cursor: col-resize;
-    /*z-index:900;*/ /* interfering with dialog boxes */
     width: 4px;
 }
 
@@ -37,7 +42,6 @@
 .spliter_panel .vspliter, .spliter_panel .left_panel, .spliter_panel .right_panel,
 .spliter_panel .hspliter, .spliter_panel .top_panel, .spliter_panel .bottom_panel {
     position: absolute;
-    /*overflow: auto;*/
 }
 .spliter_panel .vspliter, .spliter_panel .left_panel, .spliter_panel .right_panel {
   height: 100%;

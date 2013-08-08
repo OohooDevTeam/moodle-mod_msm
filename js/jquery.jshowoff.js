@@ -7,14 +7,10 @@
  * @name        msm                                                      **
  * @copyright   University of Alberta                                    **
  * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
+ * @author      Ga Young Kim(modified by), Erik Kallevig(original author)**
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
  **************************************************************************
  **************************************************************************/
-
-/* The following plugin orginally by Erik Kallevig has been changed to
-* better accommodate the use in this module
-*/
 
 /*
 ***************************plugin by*******************************************
@@ -38,6 +34,12 @@ links : whether to create & display numeric links to each slide [boolean, defaul
 speed : time each slide is shown [integer, milliseconds, defaults to 3000]
 
 ******************************************************************************/
+
+/**
+ * This jquery plugin is used in view.php to create the "slideshow" of units to view page by page.
+ * The orignial plugin has been modified to dynamically load each unit as user navigates between pages by
+ * adding AJAX calls to prev and next buttons.
+ */
 
 (function($) {
     // default global vars

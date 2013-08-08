@@ -13,6 +13,11 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document is used to convert section elements as a child element of book elements to
+* unit elements within another unit element. The new schema file to follow is Unit.xsd in NewSchemas directory
+-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:bk="http://webmath.math.ualberta.ca/v1/Book"
                 xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -34,7 +39,8 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Unit <xsl:sequence select="resolve-uri('Unit.xsd')"/>
+                <xsl:attribute name="xsi:schemaLocation">Unit 
+                    <xsl:sequence select="resolve-uri('Unit.xsd')"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">

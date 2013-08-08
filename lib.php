@@ -298,43 +298,9 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 function msm_update_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 {
     global $CFG, $DB;
-//
-//    require_once("$CFG->libdir/resourcelib.php");
-//    require_once("XMLImporter/Unit.php");
 
     $msm->timemodified = time();
     $msm->id = $msm->instance;
-    
-
-//    $tablenames = $DB->get_record('msm_table_collection', array('tablename' => '*'));
-//
-//    if (!empty($tablenames))
-//    {
-//
-//        foreach ($tablenames as $key => $tablename)
-//        {
-//            $DB->delete_records($tablename);
-//        }
-//    }
-//
-//    $DB->set_field('course_modules', 'instance', $msm->id, array('id' => $courseid));
-//    $context = get_context_instance(CONTEXT_MODULE, $courseid);
-//
-//    if ($msm->id = $DB->insert_record('msm', $msm))
-//    {
-//        $parser = new DOMDocument();
-//        //define('parser', $parser);
-//        @$parser->load(dirname(__FILE__) . '/newXML/LinearAlgebraRn/LinearAlgebraInRn.xml');
-//        //$parser->load(dirname(__FILE__).'/../xml/Calculus/Calculus.xml');
-//
-//        $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
-//        //$book = new Book(dirname(__FILE__).'/../xml/Calculus/', $parser);
-//        $unit->loadFromXml($parser->documentElement);
-//
-//
-//        $id = $unit->saveIntoDb();
-//        die;
-//    }
 
     return $DB->update_record('msm', $msm);
 }

@@ -13,6 +13,11 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document converts the legacy XML document with root element intro
+* to follow the new schema files (Unit.xsd in NewSchemas)
+-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:bk="http://webmath.math.ualberta.ca/v1/Book"
     xmlns:xi="http://www.w3.org/2001/XInclude"

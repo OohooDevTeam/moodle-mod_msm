@@ -34,6 +34,15 @@ abstract class ExportElement
     // (for more informations, read the documentations written in each of the classes)
     abstract function exportData();
 
+    /**
+     * This element is called by any class that has title or caption element and it processes the 
+     * title elements so that it is exported with the consistent XML structure as given by the schema files.
+     * 
+     * @param DOMDocument $DomDocument          DOMDocument with the new title element from the class that this function was called from
+     * @param string $title                     title string to be modified
+     * @param DOMNode $DomNode                  new title element to be appended to the new XML file
+     * @return DOMNode
+     */
     function createXmlTitle($DomDocument, $title, $DomNode)
     {
         $titleDoc = new DOMDocument();
@@ -43,6 +52,8 @@ abstract class ExportElement
         $DomDocument->formatOutput = true;
         $DomDocument->preserveWhiteSpace = false;
         
+        // it needs to have root element to be read by loadXML
+        // so if there isnt one already, then add one.
         if(strpos($title, "<div") === false)
         {
             $title = "<div>$title</div>";

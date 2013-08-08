@@ -1,10 +1,21 @@
-/* 
-    Document   : imageMapperDisplay
-    Created on : May 21, 2013, 2:35:20 PM
-    Author     : User
-    Description:
-        Purpose of the stylesheet follows.
-*/
+/**
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                       **
+ * @subpackage  msm                                                       **
+ * @name        msm                                                       **
+ * @copyright   University of Alberta                                     **
+ * @link        http://ualberta.ca                                        **
+ * @author      Ga Young Kim                                              **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
+ * *************************************************************************
+ * ************************************************************************* */
+
+/*
+ * This CSS file contains all the style specifications for displaying the imagemapper
+ * tinyMCE plugin UI.
+ */
 .msm_imagemapper_containers
 {
     padding: 2px 2%;
@@ -13,22 +24,11 @@
 .msm_image_accordiondivs
 {
     position: relative;
-    /*border: 1px solid blue;*/
-    /*background-color: white;*/
 }
-/*
-.msm_image_infodivs
-{
-    border: 1px solid red;
-    position: relative;
-    background-color: white;
-}*/
 
 .msm_image_divs
 {
-    /*border: 1px solid green;*/
     position: relative;
-    /*width: 95%;*/
     background-color: white;
     padding: 2%;
 }

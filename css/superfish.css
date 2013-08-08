@@ -23,6 +23,8 @@
  *
  * CHANGELOG: http://users.tpg.com.au/j_birch/plugins/superfish/changelog.txt
  */
+ 
+ /*This CSS file is defining the style for the navigation menu on top of the editor.*/
 
 
 /*** ESSENTIAL STYLES ***/
@@ -81,14 +83,12 @@ ul.sf-menu li li li.sfHover ul {
 /*** DEMO SKIN ***/
 .sf-menu {
     float: right;
-    /*margin-right: 10px;*/
     width: 60%;
     font-weight: 400 !important /* to remove the bolding caused by moodle css*/ 
 }
 .sf-menu a {
     border-left:	1px solid #fff;
     border-top:		1px solid #CFDEFF;
-    /*padding: 		5% 35%;*/
     padding: 5%;
     text-align: center;
     text-decoration:none;

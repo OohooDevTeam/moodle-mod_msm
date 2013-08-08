@@ -278,7 +278,9 @@ if (!empty($existingUnit))
     $standaloneTree .= makeStandaloneTree($msm->id);
 }
 
-
+//creating the core part of the editor (the 3 split panels with right panel having possible drag and drop
+//elements, middle with unit information and area for the draggable to be dropped and left panel showing the
+//relationship between already created units)
 $formContent .= '<div id="msm_editor_container">
             <div id="msm_editor_left">
                 <h2> Structural Elements </h2>
@@ -381,7 +383,6 @@ else
 }
 
 $formContent .= '       
-
                         <input id="msm_unit_name_input" name="msm_unit_name_input" style="visibility:hidden;" value="' . $unitNames . '"/> 
                         <input id="msm_file_options" name="msm_file_options" style="display:none;"/>
                     </form>
@@ -661,7 +662,7 @@ $formContent .= '<script type="text/javascript">
                     });
                 ';
 
-//
+
 if (!empty($existingUnit))
 {
     $formContent .= '// need it for the loading of jstree when in edit mode

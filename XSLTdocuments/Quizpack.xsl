@@ -13,6 +13,11 @@
 **************************************************************************
 **************************************************************************-->
 
+<!--
+* This XSLT document converts the legacy XML document with root element quiz.pack
+* to follow the new schema files (Compositor.xsd and CyberTutor.xsd in NewSchemas)
+-->
+
 <xsl:stylesheet xmlns:compositor="Compositor"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:exe="http://webmath.math.ualberta.ca/v1/Exercise"

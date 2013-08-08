@@ -1,3 +1,21 @@
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Brian Cherne(original author for this plugin)            **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
+
+/**
+ * This function is used by superfish plugin.
+ */
+
 (function($){
 	/* hoverIntent by Brian Cherne */
 	$.fn.hoverIntent = function(f,g) {

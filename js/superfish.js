@@ -7,7 +7,7 @@
  * @name        msm                                                      **
  * @copyright   University of Alberta                                    **
  * @link        http://ualberta.ca                                       **
- * @author      Ga Young Kim                                             **
+ * @author      Joel Birch(original author for this plugin)              **
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
  **************************************************************************
  **************************************************************************/
@@ -21,6 +21,10 @@
  * 	http://www.gnu.org/licenses/gpl.html
  *
  * CHANGELOG: http://users.tpg.com.au/j_birch/plugins/superfish/changelog.txt
+ */
+
+/**
+ * This jquery plugin is used to created the navigation menu on top of the editor in authoringTool.php.
  */
 
 ;(function($){

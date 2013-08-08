@@ -7,11 +7,15 @@
 * @name        msm                                                      **
 * @copyright   University of Alberta                                    **
 * @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
+* @author      Ga Young Kim, Nicolas Bretin                             **
 * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
 **************************************************************************
 **************************************************************************/
 
+/*
+ * This CSS file contains all the style specifications for displaying created
+ * contents in view.php
+ */
 body
 {
     margin:0;
@@ -30,26 +34,10 @@ body
     max-width: 100%;
     max-height: 100%;
     background: #CDCDCD;
-    /*background-image:url('../pix/background.jpg');*/
-    /*    line-height: 0.3em;*/
     border-radius: 3px;
     margin-bottom: 100px;/*Used for display the Previous next menu*/
     box-shadow: 0 3px 3px 0 #888888, 0 0 3px 0 #EEEEEE;
 }
-
-
-
-/*#MySplitter div {
-    overflow: auto;
-}*/
-/*.vsplitbar {
-    min-width:0.5%;
-    max-width:0.5%;
-    height:100%-2px;
-    cursor: col-resize;
-    background: #FFFFFF;
-}*/
-/*-----------------------------------------------------------------------------*/
 
 /*leftbox and rightbox classes are for the faded background in display*/
 #leftcol
@@ -65,10 +53,8 @@ body
 {
     box-shadow: 0 3px 3px 0 #888888;
     background: #FFFFFF url("../pix/back_page_left.png") repeat-y right 10px;
-
     min-height: 700px;
     max-height: 700px;
-    /*width:97%;*/
     overflow-y: scroll;
     margin-right: 5px;
     padding: 5px 30px 5px 0;
@@ -80,8 +66,6 @@ div.controller{
     width: 98%;
     height: 40px;
     z-index: 11;
-    /*    margin-top: 10px;*/
-    /*    margin-left: 10px;*/
 }
 #MySplitter .vspliter
 {
@@ -96,41 +80,17 @@ div.controller{
 {
     box-shadow: 0px 3px 3px 0 #888888;
     background: #FFFFFF url("../pix/back_page_right.png") repeat-y -15px 0;
-
     min-height: 700px;
     max-height: 700px;
-    /*width:96%;*/
     padding: 5px 5px 5px 15px;
     overflow: auto;
-    /*white-space: nowrap;*/
-    /*    overflow: hidden;*/
     margin-left: 5px;
 }
 
 /*leftcol and rightcol are the divs in MySplitter element*/
 
-#leftcol
-{
-    /*    overflow: hidden;*/
-    /*    margin-bottom:10px;
-        margin-right:10px;    
-        padding-top:10px;
-        padding-bottom:10px;
-        padding-right:10px;
-        padding-left:10px;*/
-
-}
-
-#rightcol
-{
-    /*    overflow: auto;*/
-    /*    padding-top:10px;
-        padding-left:10px;*/
-}
-
 #features .title
 {
-    /*    overflow: hidden;*/
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -140,10 +100,8 @@ div.controller{
     font-size: large;
 }
 
-/*for creating double border look*/
-
+/*for creating double border look for the unit title area*/
 .ridge {
-    /*    overflow: hidden;*/
     border-top-width: 5px;
     border-bottom-width: 5px;
     border-top-style: double;
@@ -151,14 +109,6 @@ div.controller{
     border-top-color: #773322;
     border-bottom-color: #773322;
     padding: 8px 0px;
-}
-
-/* for creating a border that looks like polaroid*/
-
-.snapshot {
-    /*    overflow: hidden;*/
-    border: 1px solid #666666;
-    padding: 10px 10px 60px 10px;
 }
 
 .blockgroup
@@ -170,14 +120,12 @@ div.controller{
 
 #features .date
 {
-    /*    overflow: hidden;*/
     font-size: 12px;
     text-align: right;
     margin-right: 5px;
 }
 
 #features .author{
-    /*    overflow: hidden;*/
     font-size: 12px;
     text-align: center;
     margin-right: 5px;
@@ -186,22 +134,17 @@ div.controller{
 .mathcontent
 {
     margin-top: 5px;
-    /*    margin-bottom: 5px;*/
     border: 1px solid #ACACAC;
     background-color: white;
     padding: 3px;
-    /*    overflow: hidden;*/
     font-size:14px;
     text-align: left;
-
-
 }
 
 #features table
 {
     margin-left:auto;
     margin-right:auto;
-    /*max-width: 300px;*/
     min-width: 200px;
 }
 
@@ -240,15 +183,6 @@ div.controller{
     border-left-width: 8px;
 }
 
-/*.defcontent
-{
-    margin-top: 5px;
-        margin-bottom: 5px;
-    border: 2px solid black;
-    background-color: white;
-    padding: 3px;
-}*/
-
 span.deftitle
 {
     font-size: 14px;
@@ -262,15 +196,6 @@ span.deftype
     font-weight: bold;
     float: left;
 }
-
-/*.theoremcontent
-{
-    margin-top: 5px;
-        margin-bottom: 5px;
-    border: 2px solid black;
-    background-color: white;
-    padding: 3px;
-}*/
 
 .theorem
 {
@@ -416,15 +341,6 @@ div.dialogs{
     border-left-width: 8px;
 }
 
-/*.commentcontent
-{
-    margin-top: 5px;
-        margin-bottom: 5px;
-    border: 2px solid black;
-    background-color: white;
-    padding: 3px;
-}*/
-
 span.commenttitle
 {
     font-size: 14px;
@@ -518,14 +434,6 @@ img.mathimagemap
     text-align: center;
 }
 
-/*.extrainfocontent
-{
-    margin-top: 5px;
-    border: 2px solid black;
-    background-color: white;
-    padding: 3px;
-}*/
-
 span.extrainfocaption
 {
     font-size: 14px;
@@ -558,7 +466,6 @@ span.extrainfoname
 
 .refcontent .title
 {
-    /*    overflow: hidden;*/
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -580,7 +487,6 @@ span.extrainfoname
 
 .proof .title
 {
-    /*    overflow: hidden;*/
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -590,11 +496,6 @@ span.extrainfoname
     font-weight: bold;
     font-size: 14px;
 }
-/*
-#msm_slide_pageNumber
-{
-    max-width: 25px;
-}*/
 
 .answershowme
 {
@@ -604,14 +505,6 @@ span.extrainfoname
     border: 1px solid #D0C6B1;
     border-left-width: 8px;
 }
-
-/*.answershowmecontent
-{
-    margin-top: 5px;
-    padding: 3px;
-    border: 2px solid black;
-    background-color: white;
-}*/
 
 span.answershowmetitle
 {
@@ -635,13 +528,6 @@ span.answershowmetype
     border: 1px solid #192823;
     border-left-width: 8px;
 }
-
-/*.showmecontent
-{
-    padding: 3px;
-    border: 2px solid black;
-    background-color: white;
-}*/
 
 span.showmetitle
 {
@@ -739,15 +625,15 @@ body.loading {
     {
         display: none;
     }
-    
+
     .spliter_panel .vspliter, .spliter_panel .left_panel, .spliter_panel .right_panel, .spliter_panel .hspliter, .spliter_panel .top_panel, .spliter_panel .bottom_panel
     {
         position: relative !important;
     }
-    
+
     #page-wrapper, #features table
     {
         min-width: 0 !important;
     }
-    
+
 }

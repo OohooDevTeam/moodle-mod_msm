@@ -37,7 +37,6 @@ require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 require_once(dirname(__FILE__) . '/lib.php');
 require_once(dirname(__FILE__) . '/XMLImporter/Compositor.php');
 require_once(dirname(__FILE__) . '/XMLImporter/TableOfContents.php');
-//$PAGE->requires->css('/mod/msm/MsmDisplay.css');
 
 global $PAGE, $OUTPUT;
 
@@ -108,7 +107,6 @@ $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 add_to_log($course->id, 'msm', 'view', "view.php?id={$cm->id}&mid={$msm->id}", $msm->name, $cm->id);
 
 /// Print the page header
-
 $PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id, 'mid' => $msm->id));
 $PAGE->set_title(format_string($msm->name));
 $PAGE->set_heading(format_string($course->fullname));
@@ -125,14 +123,8 @@ if ($PAGE->user_allowed_editing())
 }
 //*********************************************************************************************************
 $PAGE->set_cacheable(true);
-//$PAGE->set_focuscontrol('some-html-id');
-//$PAGE->add_body_class('msm-'.$somevar);
-// Output starts here
 
 echo $OUTPUT->header();
-
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.8.2.js'></script>";
-//echo "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
 
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/cupertino/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
@@ -160,7 +152,6 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.splitt
 
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/maphilight/jquery.maphilight.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
@@ -168,9 +159,6 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/lib/jquery.cookie.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
 
-
-//echo "<script type ='text/javascript' src='$CFG->wwwroot/mod/msm/js/jimagemapster.js'></script>";
-//
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
 echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
 //echo "<script type='text/x-mathjax-config' src='$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
@@ -190,14 +178,10 @@ echo $OUTPUT->heading('<ul id="navigation">
             <li class="glossary"><a id="glossary"><span>Glossary</span></a></li>            
             <li class="contact"><a id="contact"><span>Contact</span></a></li>
         </ul>');
-//<li class="biblio"><a href=""><span>Bibliography</span></a></li> --> add in later when info is given
 $content = '';
-//$content .= "hello";
-//$content .= "<div>";
 $content .= "<div id = 'MySplitter' padding:10px;>";
 
 $content .= "<div id = 'leftcol'>";
-
 $content .= "<div class = 'leftbox'>";
 $content .= "<div id='features'>";
 
@@ -225,14 +209,9 @@ $content .= "</div>"; // leftbox
 $content .= "<div class='controller'>";
 $content .= "</div>";
 $content .= "</div>"; // leftcol
-//
-//print_object($content);
-//die;
 
 $content .= "<div id = 'rightcol'>";
-
 $content .= "<div class = 'rightbox'>";
-
 $content .= "</div>";
 $content .= "</div>";
 
@@ -317,9 +296,6 @@ $content .= "
                 
             });
         </script>";
-
-// where the display method would go...
-
 echo $OUTPUT->box($content);
 // Finish the page
 echo $OUTPUT->footer();

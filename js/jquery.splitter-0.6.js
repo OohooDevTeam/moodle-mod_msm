@@ -30,6 +30,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * This plugin is used to create split panels in the editor.  This plugin is called twiced to create 3 different panels.
+ */
 (function($, undefined) {
     var count = 0;    
     var spliter_id = null;

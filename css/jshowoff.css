@@ -7,8 +7,8 @@
 * @name        msm                                                      **
 * @copyright   University of Alberta                                    **
 * @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @author      Erik Kallevig                                            **
+* @author      Ga Young Kim  (modified by)                              **
+* @author      Erik Kallevig (original author)                          **
 * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
 **************************************************************************
 **************************************************************************/
@@ -23,55 +23,12 @@ License: 	Dual licensed under the MIT and GPL licenses.
 */
 
 
-/*-- reset styles --*/
-/*
-html,body,div,span,
-applet,object,iframe,
-h1,h2,h3,h4,h5,h6,p,blockquote,pre,
-a,abbr,acronym,address,big,cite,code,
-del,dfn,em,font,img,ins,kbd,q,s,samp,
-small,strike,strong,sub,sup,tt,var,
-dd,dl,dt,li,ol,ul,
-fieldset,form,label,legend,
-table,caption,tbody,tfoot,thead,tr,th,td {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 100%;
-        font-family: inherit;
-        text-align: left;
-        }
-table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        }
-ol,ul {
-        list-style: none;
-        }
-q:before,q:after,
-blockquote:before,blockquote:after {
-        content: "";
-        }
-h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
-        font-weight: bold;
-        }
-*/
 /*-- jShowOff module styles --*/
-
-
 #features, #slidingFeatures, #labelFeatures, #basicFeatures, #thumbFeatures {
     position: absolute;
-    /*    overflow: auto;*/
-    /*width: 97%;*/
-
-    /*    min-width: inherit;
-        width: inherit;*/
     min-height: 650px;
     height: auto !important;
     height: 650px;
-    /*    margin: 10px;*/
     margin-left:10px;
     margin-top: 10px;
     -webkit-border-top-left-radius: 6px;
@@ -81,23 +38,6 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
 
 }
 
-
-
-/*.jshowoff {
-        width: 100%;
-
-        }*/
-/*.jshowoff ol,.jshowoff ul {
-        list-style: none;
-        }*/
-/*.jshowoff div {	
-        width: 97%;
-        max-width:97%;
-        }*/
-/*.jshowoff div, .jshowoff img, .jshowoff {
-    -webkit-border-top-left-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
-}*/
 #basicFeatures, .jshowoff.basicFeatures, .jshowoff.basicFeatures img, .jshowoff.basicFeatures div {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -110,9 +50,6 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
     margin: 0;
     /*need this to preserve multiple spaces that might be in content*/
     /*white-space: pre-wrap !important;*/ 
-}
-.jshowoff p {
-/*    line-height: 15px;*/
 }
 .eddie {
     float: right;
