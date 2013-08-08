@@ -421,7 +421,7 @@ function deleteOldChildRecord($compid, $msm_id, $ref = false)
 
         // if the current child object of an unit has a subordinate/associate elements as a parent, it is a reference material
         // so in order for the references to exist, cannot delete the data in the data table associated with this element
-        if (($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate"))
+        if (($currentTableRecord->tablename != "msm_info")&&(($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate")))
         {
             $hasRef = true;
         }
@@ -494,7 +494,7 @@ function removeUnit($compid, $msm_id)
 
     $currentParentTable = $DB->get_record("msm_table_collection", array("id" => $currentParent->table_id));
 
-    if (($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate"))
+    if (($currentTableRecord->tablename != "msm_info")&&(($currentParentTable->tablename == "msm_subordinate") || ($currentParentTable->tablename == "msm_associate")))
     {
         $hasRef = true;
     }

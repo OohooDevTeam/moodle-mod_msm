@@ -111,29 +111,32 @@ class EditorInfo extends EditorElement
                     }
                     else if ($idValuePair[0] == "msm_subordinate_ref-" . $subid[0])
                     {
-                        $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
-                        $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
-
-                        switch ($tableRecord->tablename)
+                        if (!empty($idValuePair[1]))
                         {
-                            case "msm_def":
-                                $def = new EditorDefinition();
-                                $def->isRef = $record->id;
-                                $this->ref = $def;
-                                break;
-                            case "msm_theorem":
-                                $theorem = new EditorTheorem();
-                                $theorem->isRef = $record->id;
-                                $this->ref = $theorem;
-                                break;
-                            case "msm_comment":
-                                $comment = new EditorComment();
-                                $comment->isRef = $record->id;
-                                $this->ref = $comment;
-                                break;
-                        }
+                            $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
+                            $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
 
-                        $flag = true;
+                            switch ($tableRecord->tablename)
+                            {
+                                case "msm_def":
+                                    $def = new EditorDefinition();
+                                    $def->isRef = $record->id;
+                                    $this->ref = $def;
+                                    break;
+                                case "msm_theorem":
+                                    $theorem = new EditorTheorem();
+                                    $theorem->isRef = $record->id;
+                                    $this->ref = $theorem;
+                                    break;
+                                case "msm_comment":
+                                    $comment = new EditorComment();
+                                    $comment->isRef = $record->id;
+                                    $this->ref = $comment;
+                                    break;
+                            }
+
+                            $flag = true;
+                        }
                     }
                 }
             }
@@ -197,29 +200,32 @@ class EditorInfo extends EditorElement
                             }
                             else if ($idValuePair[0] == "msm_subordinate_ref-" . $newsubid)
                             {
-                                $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
-                                $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
-
-                                switch ($tableRecord->tablename)
+                                if (!empty($idValuePair[1]))
                                 {
-                                    case "msm_def":
-                                        $def = new EditorDefinition();
-                                        $def->isRef = $record->id;
-                                        $def->id = $record->unit_id;
-                                        $this->ref = $def;
-                                        break;
-                                    case "msm_theorem":
-                                        $theorem = new EditorTheorem();
-                                        $theorem->isRef = $record->id;
-                                        $theorem->id = $record->unit_id;
-                                        $this->ref = $theorem;
-                                        break;
-                                    case "msm_comment":
-                                        $comment = new EditorComment();
-                                        $comment->isRef = $record->id;
-                                        $comment->id = $record->unit_id;
-                                        $this->ref = $comment;
-                                        break;
+                                    $record = $DB->get_record("msm_compositor", array("id" => $idValuePair[1]));
+                                    $tableRecord = $DB->get_record("msm_table_collection", array("id" => $record->table_id));
+
+                                    switch ($tableRecord->tablename)
+                                    {
+                                        case "msm_def":
+                                            $def = new EditorDefinition();
+                                            $def->isRef = $record->id;
+                                            $def->id = $record->unit_id;
+                                            $this->ref = $def;
+                                            break;
+                                        case "msm_theorem":
+                                            $theorem = new EditorTheorem();
+                                            $theorem->isRef = $record->id;
+                                            $theorem->id = $record->unit_id;
+                                            $this->ref = $theorem;
+                                            break;
+                                        case "msm_comment":
+                                            $comment = new EditorComment();
+                                            $comment->isRef = $record->id;
+                                            $comment->id = $record->unit_id;
+                                            $this->ref = $comment;
+                                            break;
+                                    }
                                 }
                             }
                         }

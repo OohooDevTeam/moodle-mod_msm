@@ -12,7 +12,6 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
  * *************************************************************************
  * ************************************************************************ */
-
 /**
  * This script creates the main page for the editor after the user creates an instance of MSM.
  * It sets up all the HTML to display the editor and also initializes all the javascript code
@@ -71,13 +70,23 @@ echo $OUTPUT->header();
 
 // getting the relative path for tinymce editor
 $tinymce = new tinymce_texteditor();
-// need to remove the moodle/.. part since it's included in $CFG->wwwroot path
+//// need to remove the moodle/.. part since it's included in $CFG->wwwroot path
 $basepath = explode("/", $tinymce->get_tinymce_base_url()->get_path());
-
 $editorpath = $basepath[2];
-for ($i = 3; $i < sizeof($basepath); $i++)
+$moodleEditorPath = $basepath[2];
+
+for ($i = 3; $i < sizeof($basepath) - 1; $i++)
 {
+
     $editorpath .= "/" . $basepath[$i];
+    if ($i > sizeof($basepath) - 4)
+    {
+        $moodleEditorPath .= '';
+    }
+    else
+    {
+        $moodleEditorPath .= "/" . $basepath[$i];
+    }
 }
 
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
@@ -88,7 +97,6 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/Msm
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/imageMapperDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/cupertino/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/css/cupertino/jquery-ui-1.10.3.custom.css'/>";
-echo "<link rel='styelsheet' type='text/css' href='$CFG->wwwroot/$editorpath/plugins/subordinate/css/subordinate.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
 
 echo "<script src='$CFG->wwwroot/mod/msm/jqueryUI/js/jquery-1.7.1.js'></script>"; // can't use 1.9.1 due to jssplitter not being compatible with it
@@ -122,7 +130,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'>
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'></script>";
 
-echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/plugins/subordinate/js/subordinate.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/$moodleEditorPath/plugins/subordinate/tinymce/js/subordinate.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/plugins/imagemapper/js/imagemapper.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery.jstree.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/tiny_mce.js'></script>";
@@ -248,10 +256,10 @@ else
     }
 }
 // the main unit structural tree in XML hierarchy part of editor
-$treeContent = ''; 
+$treeContent = '';
 // When loading the main editor page and if there are already units exsiting, then
 // load the top level unit as default
-$rootUnit = ''; 
+$rootUnit = '';
 // the standalone unit tree in XML hierarchy part of editor
 $standaloneTree = '';
 $unitRecord = null;
@@ -344,7 +352,16 @@ $formContent .= '<div id="msm_editor_container">
 
 if (!empty($unitRecord))
 {
-    $formContent .= '<div class="msm_title_input msm_editor_titles" id="msm_unit_title">' . $unitRecord->title . "</div>";
+    // self-closing divs causes all the divs to be out of order...and view becomes broken
+    if (strpos($unitRecord->title, "<div/>") !== false)
+    {
+        $unitTitle = '';
+    }
+    else
+    {
+        $unitTitle = $unitRecord->title;
+    }
+    $formContent .= '<div class="msm_title_input msm_editor_titles" id="msm_unit_title">' . $unitTitle . "</div>";
 }
 else
 {
@@ -908,10 +925,10 @@ function displayRootUnit($unitcompid)
             $('#msm_unit_title').val(titleString);        
             var descriptionString = '<?php echo $unitRecord->description ?>';
             $("#msm_unit_description_input").val(descriptionString);
-                                                                                                                                                                        
+                                                                                                                                                                                    
             $("#msm_editor_save").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");
-                                                                                                                                                                                
+                                                                                                                                                                                            
             $("#msm_editor_reset").remove();
             $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
         });
