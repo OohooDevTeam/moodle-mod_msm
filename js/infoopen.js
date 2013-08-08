@@ -28,9 +28,12 @@ function infoopen(i) {
     
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse
+    
+    // for dialog windows on associate of a definition
     $('#defminibutton-'+i).unbind('click'); 
     $('#defminibutton-'+i).click(
         function() {
+            // if there are reference materials then display reference material to right panel
             $('.rightbox').empty();
             var cloned = $('#refcontent-'+i).clone();
             cloned.find('*').each(function(){
@@ -64,6 +67,7 @@ function infoopen(i) {
         });   
     });
         
+    // for dialog windows on associate of a theorem
     $('#minibutton-'+i).unbind('click');
     $('#minibutton-'+i).click(function() {
         $('.rightbox').empty();
@@ -93,6 +97,8 @@ function infoopen(i) {
    
     });
     
+    // for dialog windows a anchor element(ie. subordinate) without reference material
+    // @TODO: need to check if this part of code is needed?
     $('#hottag-'+i).unbind('click');
     $('#hottag-'+i).click(
         function() {
@@ -125,6 +131,7 @@ function infoopen(i) {
 
     });
     
+    // for dialog windows a anchor element(ie. subordinate) with reference material
     $('#activehottag-'+i).unbind('click');
     $('#activehottag-'+i).click(
         function() {
@@ -157,6 +164,7 @@ function infoopen(i) {
 
     });
 
+    // for dialog windows on associate of a comment
     $('#commentminibutton-'+i).unbind('click');
     $('#commentminibutton-'+i).click(function() {
         $('.rightbox').empty();
@@ -185,6 +193,9 @@ function infoopen(i) {
         });
    
     });
+    
+    // for dialog windows on associate of a proof --> not mouse over action
+    // b/c no info is associated
     $('#proofminibutton-'+i).unbind('click');
     $('#proofminibutton-'+i).click(function() {
         $('.rightbox').empty();
@@ -201,11 +212,13 @@ function infoopen(i) {
 
     });
  
+    // for dialog windows on associate of a definition on the right panel
     $('#copydefminibutton-'+i).unbind('click');
     $('#copydefminibutton-'+i).click(function(e) {
         x = e.clientX+5;
         y = e.clientY+5;
 
+        // if there are reference materials, then open a modal dialog window to show content
         $('#dialog'+i).dialog('open');
         $('#copydefminibutton-'+i).mousemove(function () {
             $('#dialog-'+i).dialog('option', {
@@ -232,6 +245,7 @@ function infoopen(i) {
    
     });
     
+    // for dialog windows on associate of a theorem on the right panel
     $('#copyminibutton-'+i).unbind('click');
     $('#copyminibutton-'+i).click(function(e) {
         x = e.clientX+5;
@@ -263,6 +277,8 @@ function infoopen(i) {
    
     });
     
+    // for dialog windows on anchor element(ie.subordinate) without reference material
+    // @TODO: again not sure if this code is needed?
     $('#copyhottag-'+i).unbind('click'); 
     $('#copyhottag-'+i).click(function(e) {
         x = e.clientX+5;
@@ -293,6 +309,7 @@ function infoopen(i) {
         });   
     });  
     
+    // for dialog windows on associate of a comment on the right panel
     $('#copycommentminibutton-'+i).unbind('click');    
     $('#copycommentminibutton-'+i).click(function(e) {    
         x = e.clientX+5;
@@ -354,6 +371,8 @@ function infoopen(i) {
         });   
     });
     
+    // for dialog windows associated with symbol indices
+    // dialog window is triggered by the button beside the symbol
     $('#symbolinfo-'+i).unbind('click');
     $('#symbolinfo-'+i).click(function(e) { 
         $('#symbolrefcontent-'+i).attr('class', 'renderefcontent');        
@@ -387,7 +406,9 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('close');
         });   
     });
-   
+    
+    // for dialog windows associated with glossary indices
+    // dialog window is triggered by the button beside the glossary   
     $('#glossaryinfo-'+i).unbind('click');
     $('#glossaryinfo-'+i).click(function(e) {        
         $('#glossaryrefcontent-'+i).attr('class', 'renderefcontent');        
@@ -419,6 +440,9 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('close');
         });   
     });
+    
+    // for dialog windows associated with author indices
+    // dialog window is triggered by the button beside the author   
     $('#authorinfo-'+i).unbind('click');
     $('#authorinfo-'+i).click(function(e) {  
         $('#authorrefcontent-'+i).attr('class', 'renderefcontent');        

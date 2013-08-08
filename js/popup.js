@@ -24,6 +24,7 @@ function popup(i) {
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse
     
+    // for minibuttons on associate of definition on left panel
     $('#defminibutton-'+i).unbind('click');
     $('#defminibutton-'+i).click(function(e) {
         x = e.clientX+5;
@@ -54,6 +55,8 @@ function popup(i) {
             $('#dialog-'+i).dialog('close');
         });
     });
+    
+    // for minibuttons on associate of theorem on left panel
     $('#minibutton-'+i).unbind('click');
     $('#minibutton-'+i).click(function(e) {
         x = e.clientX+5;
@@ -85,6 +88,7 @@ function popup(i) {
         });
     });
     
+    // for dialog box associated with anchor element(ie. subordinate) on left panel
     $('#hottag-'+i).unbind('click');
     $('#hottag-'+i).click(function(e) {
         x = e.clientX+5;
@@ -131,6 +135,7 @@ function popup(i) {
 
     });
     
+    // for minibuttons on associate of comment on left panel
     $('#commentminibutton-'+i).unbind('click');
     $('#commentminibutton-'+i).click(function(e) {
         x = e.clientX+5;
@@ -162,6 +167,7 @@ function popup(i) {
         });
     });
     
+    // for minibuttons on associate of definition on right panel
     $('#copydefminibutton-'+i).unbind('click');
     $('#copydefminibutton-'+i).click(function(e) {
         x = e.clientX+5;
@@ -193,6 +199,7 @@ function popup(i) {
         });
     });
     
+    // for minibuttons on associate of theorem on right panel
     $('#copyminibutton-'+i).unbind('click');
     $('#copyminibutton-'+i).click(function(e) {
         x = e.clientX+5;
@@ -224,6 +231,7 @@ function popup(i) {
         });
     });
     
+    // for dialog box associated with anchor element(ie. subordinate) on right panel
     $('#copyhottag-'+i).unbind('click');
     $('#copyhottag-'+i).click(function(e) {
         x = e.clientX+5;
@@ -255,6 +263,7 @@ function popup(i) {
         });
     });
     
+    // for minibuttons on associate of comment on right panel
     $('#copycommentminibutton-'+i).unbind('click');
     $('#copycommentminibutton-'+i).click(function(e) {
         x = e.clientX+5;
@@ -286,6 +295,7 @@ function popup(i) {
         });
     });
     
+    // for displaying the dialog boxes associated with image map on left panel
     $('#pic-'+i).unbind('click');
     $('#pic-'+i).click(function(e) {
         x = e.clientX+5;
@@ -317,6 +327,7 @@ function popup(i) {
         });
     });
     
+    // for displaying the dialog boxes associated with image map on right panel
     $('#copypic-'+i).unbind('click');
     $('#copypic-'+i).click(function(e) {
         x = e.clientX+5;
