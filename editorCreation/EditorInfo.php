@@ -352,7 +352,7 @@ class EditorInfo extends EditorElement
                 case "Sections of this Composition":
                     break;
             }
-        }
+        }        
         return $this;
     }
 
