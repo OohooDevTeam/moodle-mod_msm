@@ -94,7 +94,7 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jsh
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/superfish.css' media='screen'/> ";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/imageMapperDisplay.css'/>";
+//echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/imageMapperDisplay.css'/>"; // uncomment these to add the image mapper
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/cupertino/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/css/cupertino/jquery-ui-1.10.3.custom.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
@@ -131,7 +131,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navMenu.js'><
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/$moodleEditorPath/plugins/subordinate/tinymce/js/subordinate.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/plugins/imagemapper/js/imagemapper.js'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/plugins/imagemapper/js/imagemapper.js'></script>"; // uncomment these to add the image mapper
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery.jstree.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/tiny_mce.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/module.js'></script>";
