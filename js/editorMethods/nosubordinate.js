@@ -14,8 +14,20 @@
 
 /* This js file contains all the function needed for moodlesubnolink tinyMCE plugin to work*/
 
-function removeSubordinate()
-{
-    
+/**
+ * 
+ * @param tinyMCE editor            current editor that the moodlesubnolink plugin was triggered from
+ */
+function removeSubordinate(editor)
+{    
+    var selectedNode = '';
+    if($.browser.msie)
+    {
+        selectedNode = editor.selection.getNode().childNodes[0].tagName;
+    }
+    else
+    {
+        selectedNode = editor.selection.getNode().tagName;
+    }
 }
 
