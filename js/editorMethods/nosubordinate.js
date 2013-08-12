@@ -15,12 +15,17 @@
 /* This js file contains all the function needed for moodlesubnolink tinyMCE plugin to work*/
 
 /**
+ * This recursive method looks for all the information related to the subordinate element
+ * represented by the anchorElement.  If there are any nested subordinate elements in related contents
+ * of the current subordinate element, then it calls itself with the nested subordinate HTML ID
+ * as anchorElement parameter value.  Then all the related information on these subordinates are deleted.
  * 
  * @param {tinymce.Editor} editor            current editor that the moodlesubnolink plugin was triggered from
  * @param {string} anchorElement             HTML ID of the highlighted anchor element to remove the subordinate
  */
 function removeSubordinate(editor, anchorElement)
 {  
+    // for first time that this method is called
     if(anchorElement == '')
     {
         var currentSubId = editor.selection.getNode().id;        
@@ -71,6 +76,7 @@ function removeSubordinate(editor, anchorElement)
    
     $(resultContainer).empty().remove();
         
+    // for first time that this method is called 
     if(editor.selection.getNode().id == anchorElement)
     {
         var currentId = editor.selection.getNode();

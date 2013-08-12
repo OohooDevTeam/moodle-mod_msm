@@ -1,8 +1,31 @@
-// used by subordinate tinyMCE plugin to create the plugin UI and to process the input properly
+/**
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 
+/* This js file contains all the function used by subordinate tinyMCE plugin to create the plugin UI and to process the input properly*/
 
+// global variable to keep track of subordinates created and to avoid having duplicate HTML IDs by
+// adding this number to end of HTML IDs
 var _subIndex = 1;
 
+/**
+ * This method is called everytime the dropdown menu in the subordinate dialog is changed to vary the type of the subordinate.
+ * It erases the child components of the form and creates new form elements that is appropriate for chosen type.
+ *
+ * @param {eventObject} e               event object for when the dropdown menu changes to specify the type of subordinate
+ * @param {tinymce.Editor} ed           current editor that the subordinate plugin was triggered from
+ * @param {string} id                   ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ */
 function changeForm(e, ed, id) {
     var container = document.getElementById("msm_subordinate_content_form_container-"+id);
     var selectVal;
@@ -31,6 +54,9 @@ function changeForm(e, ed, id) {
     
     var prevValues = [];
     
+    // between changes of type of subordinate, the information element is common between them
+    // so whenever the form component is chaned, keep the information element values and carry it over
+    // to the new information form.
     $("#msm_subordinate_form-"+id).find(".msm_subordinate_textareas").each(function() {
         if(this.id == "msm_subordinate_infoTitle-"+id)
         {
@@ -46,6 +72,7 @@ function changeForm(e, ed, id) {
         }
     });
     
+    // create new information element forms
     var fieldset = makeInfoForm(ed, id, false);
     
     //-----------------------------start of external url form-----------------------------//
@@ -72,20 +99,20 @@ function changeForm(e, ed, id) {
     var refString = '';
     switch(selectVal)
     {
-        case 0:
+        case 0: // information selected
             container.appendChild(fieldset);
             break;
-        case 1:
+        case 1: // external link selected
             container.appendChild(urlFieldSet);
             container.appendChild(fieldset);
             break;
-        case 2:
+        case 2: // internal reference selected
             accordionContainer.id = "msm_subordinate_accordion-"+id;
             container.appendChild(accordionContainer);
             makeRefForm(ed, id, '');
             refString = "Internal References";
             break;
-        case 3:
+        case 3: // external reference selected
             accordionContainer.id = "msm_subordinate_accordion-"+id;
             container.appendChild(accordionContainer);
             makeRefForm(ed, id, '');
@@ -94,6 +121,7 @@ function changeForm(e, ed, id) {
         
     }
     
+    // for jQuery UI accordion plugin used for external/internal referencing
     $("#msm_subordinate_accordion-"+id).accordion({
         heightStyle: "content",
         beforeActivate: function(e, ui) {
@@ -108,10 +136,13 @@ function changeForm(e, ed, id) {
             }
         }
     });
+    // for submitting the search param for internal/external referencing
     $("#msm_search_submit").click(function(e) {
         submitAjax(refString, msmId, id, "subordinate");
     });
     
+    // insert the values already in the previous information form before change trigger for
+    // dropdown menu into new information element form
     $("#msm_subordinate_form-"+id).find(".msm_subordinate_textareas").each(function() {
         if(this.id == "msm_subordinate_infoTitle-"+id)
         {
@@ -123,11 +154,19 @@ function changeForm(e, ed, id) {
         }
     });
     
+    // initialize the tinyMCE editor
     initInfoEditor(id);
 }
 
 // existingRefId is given by msm_subordinate_ref-id result div and is a
 // compositor ID for existing reference
+/**
+ *
+ * @param {tinymce.Editor} ed           current editor that the subordinate plugin was triggered from
+ * @param {string} id                   ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ * @param {string} existingRefId        database ID of the internal/external reference that was already saved into db(used to load existing subordinate)
+ *                                      or if there are no existing subordinate and reference form is being created for the first time, then value is empty string
+ */
 function makeRefForm(ed, id, existingRefId)
 {
     var infoAccordionHeader = $("<h3> Information Form </h3>");
@@ -139,6 +178,7 @@ function makeRefForm(ed, id, existingRefId)
     $("#msm_subordinate_accordion-"+id).append(infoAccordionHeader);
     $("#msm_subordinate_accordion-"+id).append(infoDiv);
     
+    // subordinate does not have existing references --> so load the search form
     if(existingRefId == '')
     {
         var searchAccordionHeader = $("<h3> Search Form </h3>");
@@ -176,6 +216,8 @@ function makeRefForm(ed, id, existingRefId)
     
         $("input#msm_search_word").css("width", "75%");
     }
+    // the subordinate have already exisitng internal/external references
+    // --> so load the previously chosen reference material
     else
     {
         var displayHeader = $("<h3> Current Reference Material </h3>");
@@ -183,6 +225,7 @@ function makeRefForm(ed, id, existingRefId)
         $("#msm_subordinate_accordion-"+id).append(displayHeader);
         $("#msm_subordinate_accordion-"+id).append(displayDiv);
         
+        // AJAX call to load and display the exisitng reference
         $.ajax({
             type: 'POST',
             url:"editorCreation/msmLoadUnit.php",
@@ -195,6 +238,8 @@ function makeRefForm(ed, id, existingRefId)
                 
                 $("#msm_subordinate_ref_display").append(htmlString);
                 
+                // this code is needed to view dialog popup windows associated with subordinates
+                // in the existing reference material
                 $("#msm_subordinate_ref_display .msm_info_dialogs").dialog({
                     autoOpen: false,
                     height: "auto",
@@ -204,17 +249,12 @@ function makeRefForm(ed, id, existingRefId)
                                 
                 $("#msm_subordinate_ref_display").find(".msm_subordinate_hotwords").each(function(i, element) {
                     var idInfo = this.id.split("-");
-                    var newid = '';
-                                                    
-                    for(var i=1; i < idInfo.length-1; i++)
+                    var newid = idInfo[1];                                                    
+                    for(var i = 2; i < idInfo.length; i++)
                     {
-                        newid += idInfo[i]+"-";
-                    }
-                                                        
-                    newid += idInfo[idInfo.length-1];
+                        newid += "-"+idInfo[i];
+                    }                                                    
                                                                            
-                    previewInfo(this.id, "dialog-"+newid);
-                                                        
                     previewInfo(this.id, "dialog-"+newid);
                    
                 });
@@ -223,11 +263,18 @@ function makeRefForm(ed, id, existingRefId)
     }
 }
 
+/**
+ * 
+ * 
+ * @param {string} id            ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ *                               used to uniquely identify the textareas for information title and content elements
+ */
 function initInfoEditor(id)
 {
     var titleid = "msm_subordinate_infoTitle-"+id;
     var contentid = "msm_subordinate_infoContent-"+id;
     
+    // initialize tinymce for title textarea
     YUI().use('editor_tinymce', function(Y) {
         M.editor_tinymce.init_editor(Y, titleid, {
             mode:"exact",
@@ -258,6 +305,7 @@ function initInfoEditor(id)
         M.editor_tinymce.init_filepicker(Y, id, tinymce_filepicker_options);
     });
     
+    // initialize tinymce for content textarea --> allow the subordinate plugin to be added to get nested subordinates
     YUI().use('editor_tinymce', function(Y) {
         M.editor_tinymce.init_editor(Y, contentid, {
             mode:"exact",
@@ -289,6 +337,14 @@ function initInfoEditor(id)
     });
 }
 
+/**
+ * This method creates form for the information elements in the subordinate dialog.  
+ *
+ * @param {tinymce.Editor} ed      current editor that the subordinate plugin was triggered from     
+ * @param {string} id              ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ * @param {bool}   refFlag         a flag used to determine if the information form is needed for internal/external reference forms or not
+ *                                  (if this info form is part of reference form, then do not need legends in fieldset)
+ */
 function makeInfoForm(ed, id, refFlag)
 {
     // making a fieldset element for the info form (all selection will be using it
@@ -346,6 +402,14 @@ function makeInfoForm(ed, id, refFlag)
     return fieldset;
 }
 
+/**
+ * This method is used to load previous subordinate data given by the hidden divs. The hidden divs contains all the
+ * data to create the subordinate dialog with all the saved data.  This function loads all of them into correct
+ * form and display it for user to edit.
+ *
+ * @param {tinymce.Editor} editor        current editor that the subordinate plugin was triggered from     
+ * @param {string} id                    ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ */
 function loadPreviousData(editor, id)
 {
     var selectedAnchorIdInfo = null;
@@ -385,6 +449,7 @@ function loadPreviousData(editor, id)
     var prevInfoContentValue = null;
     var prevRefId = null;
    
+    // load all the previous values into correct area
     $('#msm_subordinate_result-'+indexId).children('div').each(function() {
         if(this.id == 'msm_subordinate_select-'+indexId)
         {
@@ -420,6 +485,7 @@ function loadPreviousData(editor, id)
             
     var select = document.getElementById("msm_subordinate_select-"+id);
         
+    // selecting the dropdown menu to correct type
     switch(prevSelectValue)
     {
         case "Information":
@@ -443,6 +509,7 @@ function loadPreviousData(editor, id)
         $("#msm_subordinate_form-"+id+ " #msm_subordinate_url-"+id).val(prevUrlValue);
     }
     
+    // there are reference materials saved previously
     if((prevRefId != '')&&(prevRefId != 'undefined')&&(prevRefId !== null))
     {
         var container = $("#msm_subordinate_content_form_container-"+id);
@@ -482,6 +549,12 @@ function loadPreviousData(editor, id)
      
 }
 
+/**
+ * This method is used when the type of subordinate triggered is "External Link" which needs 
+ * additional form components for adding the URL for the link.
+ *
+ * @param {string} id       ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ */
 function appendUrlForm(id)
 {
     var urlfieldset = document.createElement("fieldset");
@@ -519,6 +592,12 @@ function appendUrlForm(id)
     return urlfieldset;
 }
 
+/**
+ * This method is called to disable all tinyMCE editor and then closing the 
+ * subordinate dialog window.
+ *
+ * @param {string} id           ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ */
 function closeSubFormDialog(id)
 {
     $('#msm_subordinate_container-'+id+" textarea").each(function() {
@@ -534,9 +613,13 @@ function closeSubFormDialog(id)
 }
 
 /**
- * tinyMCE object ed --> the id of the editor where the popup was triggered from
- * string id --> ending of HTML ID of the subordinate components to make them unique
- * string subId
+ * This method is triggered by the save button in the dialog window and it extracts all the information 
+ * in the dialog form and organizes them into hidden divs that can later be used to load these data back
+ * when user wants to edit the content.
+ *
+ * @param {tinymce.Editor} ed       current editor that the subordinate plugin was triggered from     
+ * @param {string} id               ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
+ * @param {string} subId            a string flag for nested subordinates     
  */
 function submitSubForm(ed, id, subId)
 {
@@ -546,7 +629,7 @@ function submitSubForm(ed, id, subId)
             
     var selectedNode = null;
         
-    if($.browser.msie)
+    if($.browser.msie) // for firefox the strucutre of ed object is a bit different
     {
         selectedNode = ed.selection.getNode().childNodes[0].tagName;
     }
@@ -557,6 +640,8 @@ function submitSubForm(ed, id, subId)
     
     var newSubordinateDiv = null;
     
+    // if this subordinate is new, then add the hidden divs to the result container div
+    // otherwise, delete the old data and the associated hidden divs and add new ones
     if(selectedNode != 'A')
     {
         newSubordinateDiv = createSubordinateDiv(id, id+"-"+_subIndex, '');
@@ -574,12 +659,13 @@ function submitSubForm(ed, id, subId)
         
         newSubordinateDiv = replaceSubordinateDiv(id, textId, subId);
     }
-                
+       
+    // when empty contents are submitted
     if(newSubordinateDiv instanceof Array)
     {
         nullErrorWarning(newSubordinateDiv, id);
     }
-    else
+    else // no error
     {
         var subordinateDivIndexInfo = newSubordinateDiv.id.split("-");
     
@@ -611,6 +697,7 @@ function submitSubForm(ed, id, subId)
         var newContent = '';
         if(selectedNode != "A")
         {
+            // wrap the highlighted text with <a>
             if((urltext != '') &&(urltext != null) &&(typeof urltext !== "undefined"))
             {
                 newContent = "<a href='"+$.trim(urltext)+"' target='_blank' class='msm_subordinate_hotwords' id='msm_subordinate_hotword-"+subIndex+"'>"+$.trim(selectedText)+"</a> ";
@@ -627,6 +714,14 @@ function submitSubForm(ed, id, subId)
    
 }
 
+/**
+ * This method deletes the associated hidden divs with existing subordinate and inserts new hidden divs with 
+ * newly updated/editted data associated with the same subordinate when the user edits its contents.
+ * 
+ * @param {string} index        string that was added to an HTML element ID to make them unique --> top level subordinate
+ * @param {string} hotId        string that was added to an HTML element ID to make them unique --> id ending of current anchor element
+ * @param {string} subId        string that was added to an HTML element ID to make them unique --> nested subordinate
+ */
 function replaceSubordinateDiv(index, hotId, subId)
 {
     var subparent = null;
@@ -696,6 +791,15 @@ function replaceSubordinateDiv(index, hotId, subId)
     return subordinateResultContainer;
 }
 
+/**
+ * This method is used to create the hidden divs for submitted subordinate form data.
+ * These hidden divs with data are used to load the existing subordinate data when
+ * user triggers an edit.
+ * 
+ * @param {string} index            string that was added to an HTML element ID to make them unique --> top level subordinate  
+ * @param {string} oldidString      string that was added to an HTML element ID to make them unique --> id ending of current anchor element
+ * @param {string} flag             string flag to indicate if this method was called from replaceSubordinateDiv or not (if it is, has "replace" value)
+ */
 function createSubordinateDiv(index, oldidString, flag)
 {
     var idString = '';
@@ -768,6 +872,7 @@ function createSubordinateDiv(index, oldidString, flag)
         var resultContentDiv = document.createElement("div");
         resultContentDiv.id = "msm_subordinate_infoContent-"+idString;
        
+       // replace all math elements in the infocontent to span with text value of \(mathtext\)
         $("#msm_subordinate_infoContent-"+index).find(".matheditor").each(function() {
             var newcontent = '';
             $(this).find("script").each(function() {
