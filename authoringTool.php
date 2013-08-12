@@ -125,7 +125,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/saveSetting.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/editorChildComponents.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/subordinate.js'></script>";
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/nosubordinate.js></script>'";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/editorMethods/nosubordinate.js'></script>";
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
