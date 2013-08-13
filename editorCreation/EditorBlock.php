@@ -278,10 +278,23 @@ class EditorBlock extends EditorElement
             $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
             $htmlContent .= "</div>";
 
-            $htmlContent .= "<div>";
-            $htmlContent .= "Title: ";
-            $htmlContent .= "<input id='msm_intro_child_title-$this->compid' class='msm_intro_child_titles' name='msm_intro_child_title-$this->compid' placeholder='Optional Title for the Content' disabled='disabled' value='$this->title'/>";
-            $htmlContent .= "</div>";
+//            $htmlContent .= "<div>";
+            $htmlContent .= "<label class='msm_intro_child_title_labels'>Title: </label>";
+            $htmlContent .= "<div id='msm_intro_child_title-$this->compid' class='msm_intro_child_titles msm_editor_titles'>";
+
+            if (strpos($this->title, "<div/>") !== false)
+            {
+                $introChildTitle = '';
+            }
+            else
+            {
+                $introChildTitle = $this->title;
+            }
+
+            $htmlContent .= $introChildTitle;
+            $htmlContent .= "</div>"; // end of title input div     
+//            $htmlContent .= "<input id='msm_intro_child_title-$this->compid' class='msm_intro_child_titles' name='msm_intro_child_title-$this->compid' placeholder='Optional Title for the Content' disabled='disabled' value='$this->title'/>";
+//            $htmlContent .= "</div>";
 
             $htmlContent .= "<div id='msm_intro_child_content-$this->compid' class='msm_intro_child_contents msm_editor_content'>";
             foreach ($this->content as $content)

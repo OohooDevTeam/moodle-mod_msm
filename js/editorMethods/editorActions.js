@@ -434,7 +434,8 @@ function addrefTheoremContent(event)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            // if the css is not set, then it remains yellow as when it was being dragged
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_unit_child_content').each(function() {
@@ -550,7 +551,7 @@ function addrefTheoremPart(event)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {

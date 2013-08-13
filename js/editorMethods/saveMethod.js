@@ -111,9 +111,13 @@ function submitForm()
         format:"html"
     })); 
     
-    console.log($(",msm_unit_intro_title"));
-    
     $(".msm_unit_intro_title").each(function() {
+        $(this).val(tinymce.getInstanceById(this.id).getContent({
+            format: "html"
+        }));
+    });
+    
+    $(".msm_intro_child_titles").each(function() {
         $(this).val(tinymce.getInstanceById(this.id).getContent({
             format: "html"
         }));
@@ -322,7 +326,7 @@ function submitForm()
                     });
                     
                     $("#msm_unit_title").dblclick(function(){                       
-                        processTitleContent(this.id);
+                        processMathContent(this.id);
                         initTitleEditor(this.id, "80%");
                         allowDragnDrop();
                     });
@@ -376,7 +380,11 @@ function removeTinymceEditor()
     titleInput2Div("msm_unit_title");
     $(".msm_unit_intro_title").each(function() {
         titleInput2Div(this.id);
-    })
+    });
+    
+    $(".msm_intro_child_titles").each(function() {
+        titleInput2Div(this.id);
+    });
     
     $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {     
         textArea2Div($(this).attr("id"));

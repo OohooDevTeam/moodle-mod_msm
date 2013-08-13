@@ -444,7 +444,7 @@ return auto from getComputedStyle javascript function*/
     margin-right: 2%;
 }
 
-.msm_unit_intro_title_labels, .msm_unit_body_title_labels
+.msm_unit_intro_title_labels, .msm_unit_body_title_labels,.msm_intro_child_title_labels
 {
   clear: both;
   display: inline-block;

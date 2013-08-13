@@ -430,6 +430,8 @@ function newUnit()
         },
         stop: function(event, ui)
         {
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
+            
             $(this).find('.msm_unit_child_content').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
@@ -569,7 +571,7 @@ function processUnitData(htmlData)
         
     // enable all unit title/description input fields to be able to edit upon double click trigger
     $("#msm_unit_title").dblclick(function(){
-        processTitleContent(this.id);
+        processMathContent(this.id);
         initTitleEditor(this.id, "80%");
         allowDragnDrop();
     });
@@ -862,7 +864,7 @@ function editUnit(e)
 function reinitAllTitles() 
 {
     var inputUnitTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
-    processTitleContent("msm_unit_title");
+    processMathContent("msm_unit_title");
     var currentTitleContent = $("div#msm_unit_title").html();
     
     console.log("content of unit title?");
@@ -880,7 +882,7 @@ function reinitAllTitles()
         
         var inputIntroTitle = $('<input class="'+currentClassName+'" id="'+currentIntroId+'" name="'+currentIntroId+'"/>');
         
-        processTitleContent(this.id);
+        processMathContent(this.id);
         var currentIntroContent = $(this).html();
         
         console.log("content of intro title?");
@@ -1002,7 +1004,7 @@ function moveElements()
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");  
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
                 
             var id = $(this).attr("id");
             
@@ -1076,7 +1078,7 @@ function moveElements()
             },
             stop: function(event, ui)
             {
-                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+                $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
                 // if there are children in intro element, need to refresh the ifram of its editors
                 var id = $(this).attr("id");
@@ -1120,15 +1122,15 @@ function moveElements()
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
-            
-            $(this).find(".msm_unit_intro_title").each(function() {
+                        
+            $(this).find(".msm_intro_child_titles").each(function() {
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
@@ -1136,12 +1138,12 @@ function moveElements()
                 {
                     initEditor(this.id);                    
                 }
-            });
+            });            
             
-            $(this).find(".msm_unit_intro_title").each(function() {
+            $(this).find(".msm_intro_child_titles").each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    initTitleEditor(this.id);                    
+                    initTitleEditor(this.id, "96%");                    
                 }
             });
         }
@@ -1178,7 +1180,7 @@ function moveElements()
             },
             stop: function(event, ui)
             {
-                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+                $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
                 var id = $(this).attr("id");
             
@@ -1221,7 +1223,7 @@ function moveElements()
             },
             stop: function(event, ui)
             {
-                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+                $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
                 // if there are children in intro element, need to refresh the ifram of its editors
                 $(this).find('.msm_theorem_content').each(function() {
@@ -1264,7 +1266,7 @@ function moveElements()
             },
             stop: function(event, ui)
             {
-                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+                $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
                 var id = $(this).attr("id");
             
@@ -1306,7 +1308,7 @@ function moveElements()
             },
             stop: function(event, ui)
             {
-                $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+                $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
                 // if there are children in intro element, need to refresh the ifram of its editors
                 $(this).find('.msm_theorem_content').each(function() {
@@ -2234,7 +2236,7 @@ function cancelUnit(e)
                         });
                     
                         $("#msm_unit_title").dblclick(function(){
-                            processTitleContent(this.id);
+                            processMathContent(this.id);
                             initTitleEditor(this.id, "80%");
                             allowDragnDrop();
                         });
@@ -2495,7 +2497,7 @@ function allowDragnDrop()
  * 
  * @param {string} id                 HTML ID of the title element that the math is being processed from.
  */ 
-function processTitleContent(id)
+function processMathContent(id)
 {    
     $("#"+id).find("span.matheditor").each(function() {
         var newspan = document.createElement("span");

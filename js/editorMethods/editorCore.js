@@ -267,7 +267,7 @@ function processDroppedChild(e, droppedId)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");    
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");    
                  
             var id = $(this).attr("id");
             
@@ -489,6 +489,7 @@ function resetUnit()
  */
 function deleteElement(e)
 {
+    
     var currentElement = e.target.parentElement.id;
     
     if(currentElement == '')
@@ -497,6 +498,10 @@ function deleteElement(e)
         currentElement = e.target.parentElement.parentElement.id;       
     }
     
+    // may need to insert code to remove tinyMCE Editor from each title input fields that this element has
+    // --> did not implement since no error was encountered... 
+    // --> if later some problem with tinyMCE reinitialization for title fields, then insert the code to 
+    //      reinitialize the tinyMCE here
     $("#"+currentElement+" textarea").each(function() {
         if(tinymce.getInstanceById($(this).attr("id")) != null)
         {
@@ -545,13 +550,12 @@ function deleteElement(e)
  */
 function addIntroContent(idNumber)
 {
-    var childNumber = 0;
+    // no need for parent ID to be preserved as there are only one intros allows in an unit
+    var newId = 1;
     
     $(".msm_intro_child").each(function() {
-        childNumber++;
-    })
-    
-    var newId = idNumber + "-" + childNumber;
+        newId++;
+    });    
     
     // preventing duplicate ID from being created...so check if the ID already exists
     $(".msm_intro_child").each(function() {
@@ -604,11 +608,15 @@ function addIntroContent(idNumber)
     dragArea.id = "msm_intro_child_dragarea-"+newId;
     dragText.appendChild(dragTextNode);
     dragArea.appendChild(dragText);
-        
-    var titleContainer = document.createElement("div");
     
-    var titleLabel = document.createTextNode("Title:");
-    introChildTitleLabel.appendChild(titleLabel);
+    var childTitleLabel = document.createElement("label");
+    childTitleLabel.className = "msm_intro_child_title_labels";
+    var childTitleLabelText = document.createTextNode("Title:");
+        
+//    var titleContainer = document.createElement("div");
+//    
+//    var titleLabel = document.createTextNode("Title:");
+    childTitleLabel.appendChild(childTitleLabelText);
     
     var introChildTitle = document.createElement("input");
     introChildTitle.id = "msm_intro_child_title-"+newId;
@@ -616,8 +624,8 @@ function addIntroContent(idNumber)
     introChildTitle.name = "msm_intro_child_title-"+newId;
     introChildTitle.setAttribute("placeholder", "Optional Title for the Content");
     
-    titleContainer.appendChild(titleLabel);
-    titleContainer.appendChild(introChildTitle);
+//    titleContainer.appendChild(titleLabel);
+//    titleContainer.appendChild(introChildTitle);
     
     var introChildContent = document.createElement("textarea");
     introChildContent.id = "msm_intro_child_content-"+newId;
@@ -635,13 +643,16 @@ function addIntroContent(idNumber)
     introChildDiv.appendChild(introCloseButton);
     introChildDiv.appendChild(dragArea);
 
-    introChildDiv.appendChild(titleContainer);
+//    introChildDiv.appendChild(titleContainer);
+    introChildDiv.appendChild(childTitleLabel);
+    introChildDiv.appendChild(introChildTitle);
     introChildDiv.appendChild(introChildContent);
     introChildDiv.appendChild(subordinateContainer);
     introChildDiv.appendChild(subordinateResult);
     
     $(introChildDiv).appendTo("#msm_intro_child_container"); 
     
+    initTitleEditor("msm_intro_child_title-"+newId, "96%");
     initEditor("msm_intro_child_content-"+newId);
     
     $("#msm_intro_child_container").sortable({
@@ -676,7 +687,7 @@ function addIntroContent(idNumber)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_intro_child_contents').each(function() {
@@ -689,7 +700,7 @@ function addIntroContent(idNumber)
             $(this).find('.msm_intro_child_titles').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    initTitleEditor(this.id, "92%");                    
+                    initTitleEditor(this.id, "96%");                    
                 }
             });
         }
@@ -809,7 +820,7 @@ function addTheoremContent(event)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             var id = $(this).attr("id");
             
@@ -926,7 +937,7 @@ function addTheoremPart(event)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_theorem_content').each(function() {
@@ -1101,7 +1112,7 @@ function addAssociateForm(index, type)
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_info_titles').each(function() {
@@ -1325,7 +1336,7 @@ function makeTheorem()
         },
         stop: function(event, ui)
         {
-            $("#"+ui.item.context.id).css("background-color", "#FFFFFF");
+            $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
             $(this).find('.msm_unit_child_content').each(function() {

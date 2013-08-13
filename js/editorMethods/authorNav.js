@@ -110,10 +110,10 @@ function openNavDialog()
 }
 
 /**
-*  This function is activated when the add Children button is clicked in settings form.
-*  It adds more input fields for the users to fill out.
-*
-*/
+ *  This function is activated when the add Children button is clicked in settings form.
+ *  It adds more input fields for the users to fill out.
+ *
+ */
 function addChildUnit()
 {
     $('#msm_child_add').ready(function () {
@@ -150,10 +150,10 @@ function addChildUnit()
 }
 
 /**
-* This function is activated when the cancel button is pressed in the settings form.
-* It prompts the user for verification on their choice to close the settings form without saving.
-*
-*/
+ * This function is activated when the cancel button is pressed in the settings form.
+ * It prompts the user for verification on their choice to close the settings form without saving.
+ *
+ */
 function closeSetting()
 {
     $('#msm_setting_cancel').ready(function() {
@@ -178,10 +178,10 @@ function closeSetting()
 
 
 /**
-*  This method checks if the user tried to save without filling in required field (ie, different border color for field)
-*  then changes the border color when user fills in the field. (color change = orange --> green)
-*
-*/
+ *  This method checks if the user tried to save without filling in required field (ie, different border color for field)
+ *  then changes the border color when user fills in the field. (color change = orange --> green)
+ *
+ */
 function validateBorder()
 {
     if(document.getElementById('msm_type_specifiedType').style.borderColor == 'rgb(255, 165, 0)')
@@ -201,9 +201,11 @@ function validateBorder()
 }
 
 /**
-* This function is activated when radio buttons are triggered.  When the selection of the radio buttons are changed, then update the settings composition name
-* input area to be updated accordingly.
-*/
+ * This function is activated when radio buttons are triggered.  When the selection of the radio buttons are changed, then update the settings composition name
+ * input area to be updated accordingly.
+ * 
+ * @param {eventObject} e               event object triggered from changing selection in the dropdown menu
+ */
 function processChange(e)
 {
     $(".msm_setting_form").empty().remove();  
@@ -216,8 +218,7 @@ function processChange(e)
     switch(e.target.id)
     {
         case "msm_type_lecture":
-            $("#msm_structure_input_top").val("Lecture");
-            
+            $("#msm_structure_input_top").val("Lecture");            
             child1Value = "Part";
             child2Value = "Topic";
             child3Value = "Section";
@@ -225,8 +226,7 @@ function processChange(e)
             break;
         
         case "msm_type_book":
-            $("#msm_structure_input_top").val("Book");
-            
+            $("#msm_structure_input_top").val("Book");            
             child1Value = "Book Part";
             child2Value = "Chapter";
             child3Value = "Section";
@@ -238,8 +238,7 @@ function processChange(e)
             child1Value = "Book Part";
             child2Value = "Chapter";
             child3Value = "Section";
-            child4Value = "Subsection";
-            
+            child4Value = "Subsection";            
             break;
         
         case "msm_type_others":
@@ -488,7 +487,7 @@ function showUnitPreview()
  * of each divs as a key.  The information in this array is then used to give the user a preview of the
  * current unit.
  * 
- * @return array dataArray                  an associative array with values in divs that are showing 
+ * @return {array} dataArray                  an associative array with values in divs that are showing 
  *                                          the content of the tinymce editors
  */
 function getDisabledData()
@@ -505,16 +504,8 @@ function getDisabledData()
     $("#msm_child_appending_area").find(".msm_unit_child_title").each(function() {
         dataArray[this.id] = $(this).val(); 
     });
-    
-    $("#msm_child_appending_area").find(".msm_unit_intro_title").each(function() {
-        dataArray[this.id] = $(this).val(); 
-    });
         
     $("#msm_child_appending_area").find(".msm_unit_body_title").each(function() {
-        dataArray[this.id] = $(this).val(); 
-    });
-        
-    $("#msm_child_appending_area").find(".msm_intro_child_titles").each(function() {
         dataArray[this.id] = $(this).val(); 
     });
     
@@ -586,22 +577,20 @@ function getDisabledData()
         });     
     }
     else
-    {        
-        $("#msm_unit_title").find("span.matheditor").each(function() {
-            var newspan = document.createElement("span");
-            newspan.className = "matheditor";
-    
-            var scriptChild = $(this).find("script");
+    {             
+        processMathContent("msm_unit_title");
+        dataArray["msm_unit_title"] = $("#msm_unit_title").html();
         
-            var scriptWithMath = scriptChild[scriptChild.length-1];
-            var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
-            $(newspan).append(mathContent);
-            $(this).replaceWith(newspan);
+        $(".msm_unit_intro_title").each(function() {
+            processMathContent(this.id);
+            dataArray[this.id] = $(this).html();
         });
         
-        dataArray["msm_unit_title"] = $("#msm_unit_title").html();
-    }
-        
+        $(".msm_intro_child_titles").each(function() {
+            processMathContent(this.id);
+            dataArray[this.id] = $(this).html();
+        });
+    }        
     return dataArray;
 }
 
@@ -661,6 +650,11 @@ function makePreviewDialog()
  * when the user hovers over the associate "mini-buttons" on def/theorem/comment
  * elements and also shows the reference materials that is associated with the associate button
  * on the right panel of the split screen when the user clicks on the button.
+ * 
+ * @param {string} triggerId                HTML ID of the object that triggered the previewinfoopen method
+ *                                          (mouseover/click on associate minibuttons/subordinate anchor element)
+ * @param {string} idEnding                 string ending given at the end of dialog window or the reference content
+ *                                          to uniquely identify the element
  */
 function previewinfoopen(triggerId, idEnding)
 {    
@@ -720,8 +714,8 @@ function previewinfoopen(triggerId, idEnding)
  * information created from the editor into an XML file.  All the XML files are compressed into a zip file 
  * that triggered for a download.
  * 
- * @param eventObject event             mouse click event object --> used to suppress the
- *                                      default action of anchor elements to navigate to another page
+ * @param {eventObject} event             mouse click event object --> used to suppress the
+ *                                        default action of anchor elements to navigate to another page
  */
 function exportComposition(event)
 {

@@ -514,7 +514,7 @@ $formContent .= '<script type="text/javascript">
                 event: "mouseover"
             });
             $("#msm_unit_title").dblclick(function(){
-                processTitleContent(this.id);
+                processMathContent(this.id);
                 initTitleEditor(this.id, "80%");
                 allowDragnDrop();
             });
