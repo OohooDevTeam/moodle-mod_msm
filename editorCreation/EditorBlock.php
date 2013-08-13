@@ -95,7 +95,7 @@ class EditorBlock extends EditorElement
         {
             if (!empty($_POST['msm_intro_child_title-' . $idInfo[1]]))
             {
-                $this->title = $_POST['msm_intro_child_title-' . $idInfo[1]];
+                $this->title = $this->processMath($_POST['msm_intro_child_title-' . $idInfo[1]]);
             }
 
             if (!empty($_POST['msm_intro_child_content-' . $idInfo[1]]))
@@ -117,7 +117,7 @@ class EditorBlock extends EditorElement
         {
             if (!empty($_POST['msm_intro_title_input-' . $idInfo[1]]))
             {
-                $this->title = $_POST['msm_intro_title_input-' . $idInfo[1]];
+                $this->title = $this->processMath($_POST['msm_intro_title_input-' . $idInfo[1]]);
             }
             if (!empty($_POST['msm_intro_content_input-' . $idInfo[1]]))
             {
@@ -157,7 +157,7 @@ class EditorBlock extends EditorElement
 
         if (!empty($_POST['msm_body_title_input-' . $idInfo[1]]))
         {
-            $this->title = $_POST['msm_body_title_input-' . $idInfo[1]];
+            $this->title = $this->processMath($_POST['msm_body_title_input-' . $idInfo[1]]);
         }
 
         if (!empty($_POST['msm_body_content_input-' . $idInfo[1]]))
@@ -198,7 +198,7 @@ class EditorBlock extends EditorElement
 
         if (!empty($_POST['msm_extra_title_input-' . $idInfo[1]]))
         {
-            $this->title = $_POST['msm_extra_title_input-' . $idInfo[1]];
+            $this->title = $this->processMath($_POST['msm_extra_title_input-' . $idInfo[1]]);
         }
 
         if (!empty($_POST['msm_extra_content_input-' . $idInfo[1]]))

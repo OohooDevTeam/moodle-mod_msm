@@ -109,7 +109,15 @@ function submitForm()
        
     $("#msm_unit_title").val(tinymce.getInstanceById("msm_unit_title").getContent({
         format:"html"
-    }));  
+    })); 
+    
+    console.log($(",msm_unit_intro_title"));
+    
+    $(".msm_unit_intro_title").each(function() {
+        $(this).val(tinymce.getInstanceById(this.id).getContent({
+            format: "html"
+        }));
+    })
         
     var urlParam = window.location.search;
        
@@ -315,6 +323,7 @@ function submitForm()
                     
                     $("#msm_unit_title").dblclick(function(){                       
                         processTitleContent(this.id);
+                        initTitleEditor(this.id, "80%");
                         allowDragnDrop();
                     });
                     $("#msm_unit_short_title").dblclick(function(){
@@ -365,6 +374,9 @@ function prepareSubordinate(id)
 function removeTinymceEditor()
 { 
     titleInput2Div("msm_unit_title");
+    $(".msm_unit_intro_title").each(function() {
+        titleInput2Div(this.id);
+    })
     
     $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {     
         textArea2Div($(this).attr("id"));
@@ -452,6 +464,7 @@ function textArea2Div(id)
  */
 function titleInput2Div(id)
 {
+    console.log("title input to div --> id: "+id);
     var edInstance = tinyMCE.getInstanceById(id);
     if(edInstance)
     {
@@ -466,17 +479,35 @@ function titleInput2Div(id)
     var editorTitle = document.createElement("div");
     editorTitle.id = id;
     var title = null;
-    if($(this).hasClass("msm_editor_titles"))
+    
+    // different class name due to needing different CSS
+    if(id == "msm_unit_title")
     {
-        editorTitle.className = this.className;
-        title = $("#"+id).html();
+        if($(this).hasClass("msm_editor_unit_title"))
+        {
+            editorTitle.className = this.className;
+            title = $("#"+id).html();
+        }
+        else
+        {
+            editorTitle.className = document.getElementById(id).className+" msm_editor_unit_title";
+            title = $("#"+id).val();
+        }  
     }
     else
     {
-        editorTitle.className = document.getElementById(id).className+" msm_editor_titles";
-        title = $("#"+id).val();
-    }        
-        
+        if($(this).hasClass("msm_editor_titles"))
+        {
+            editorTitle.className = this.className;
+            title = $("#"+id).html();
+        }
+        else
+        {
+            editorTitle.className = document.getElementById(id).className+" msm_editor_titles";
+            title = $("#"+id).val();
+        }  
+    }
+   
     $(editorTitle).html(title);
     $("#"+id).replaceWith(editorTitle);
 }

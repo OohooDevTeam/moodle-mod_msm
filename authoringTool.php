@@ -515,6 +515,7 @@ $formContent .= '<script type="text/javascript">
             });
             $("#msm_unit_title").dblclick(function(){
                 processTitleContent(this.id);
+                initTitleEditor(this.id, "80%");
                 allowDragnDrop();
             });
             $("#msm_unit_short_title").dblclick(function(){
@@ -754,7 +755,7 @@ if (!empty($existingUnit))
 else
 {
     $formContent .= '
-            initTitleEditor("msm_unit_title");
+            initTitleEditor("msm_unit_title", "80%");
             $("#msm_unit_tree")
                     .jstree({
                         "plugins": ["themes", "html_data", "ui", "dnd"]

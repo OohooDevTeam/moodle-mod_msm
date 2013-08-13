@@ -21,8 +21,8 @@
  *  This method is triggerd when the child elements are dropped to its proper
  *  msm_dnd_containers.  
  *  
- *  @param eventObject event        event object triggered from item being dropped into a designated droppable container   
- *  @param string draggedId         dragged child element's HTML ID
+ *  @param {eventObject} event        event object triggered from item being dropped into a designated droppable container   
+ *  @param {string} draggedId         dragged child element's HTML ID
  */
 function processAdditionalChild(event, draggedId)
 {   
@@ -173,7 +173,7 @@ function processAdditionalChild(event, draggedId)
  * This method is used to get the HTML ID ending of the parent associate reference area 
  * for the reference forms to append to.  
  * 
- * @param eventObject e         droppable event 
+ * @param {eventObject} e         droppable event 
  */
 function getAssociateIndex(e)
 {
@@ -220,9 +220,9 @@ function openErrorDialog()
  * The window contains editors for adding the content for information elements associated with this reference material and also search
  * parameter inputs to get the correct records from the database table.  The search results are then shown in a form of a table.
  * 
- * @param string id                     string added to the end of search dialog window to make it unique
- * @param string refTypeString          reference type to be added --> used for dialog window title
- * @param string currentId              string to be added to the end of the display of the chosen record to make it unique
+ * @param {string} id                     string added to the end of search dialog window to make it unique
+ * @param {string} refTypeString          reference type to be added --> used for dialog window title
+ * @param {string} currentId              string to be added to the end of the display of the chosen record to make it unique
  */
 function createRefDialog(id, refTypeString, currentId)
 {  
@@ -362,10 +362,10 @@ function createRefDialog(id, refTypeString, currentId)
  * to display the search results in table format and this method, upon successful AJAX call, appends the
  * HTML code to search dialog window.
  * 
- * @param string refString              string to define the type of reference (ie. internal/external)
- * @param int msmId                     MSM instance ID
- * @param string id                     string added to end of search window HTML ID to make it unique
- * @param string parentType             string to define the type of parent to this reference(ie. associate/subordinate)
+ * @param {string} refString              string to define the type of reference (ie. internal/external)
+ * @param {integer} msmId                     MSM instance ID
+ * @param {string} id                     string added to end of search window HTML ID to make it unique
+ * @param {string} parentType             string to define the type of parent to this reference(ie. associate/subordinate)
  */
 function submitAjax(refString, msmId, id, parentType)
 {    
@@ -497,11 +497,11 @@ function submitAjax(refString, msmId, id, parentType)
  * when the user triggers the insert button in the search dialog window and it calls the methods to
  * add the chosen search result into the main editor panel with proper display.
  * 
- * @param string type               type of reference chosen (def/comment/theorem/unit)
- * @param array tdcellArray         array of all the information in the chosen record
+ * @param {string} type               type of reference chosen (def/comment/theorem/unit)
+ * @param {array} tdcellArray         array of all the information in the chosen record
  *                                  (ie. information displayed in each cell in chosen row)
- * @param string ind                string added to end of HTML ID to make the element unique
- * @param int databaseId            database ID from msm_compositor that was attached to each search
+ * @param {string} ind                string added to end of HTML ID to make the element unique
+ * @param {integer} databaseId            database ID from msm_compositor that was attached to each search
  *                                  result row HTML ID
  */
 function addRefElements(type, tbcellArray, ind, databaseId)
@@ -528,10 +528,10 @@ function addRefElements(type, tbcellArray, ind, databaseId)
  * to the end of description HTML ID and name.  This was added to identify the referenced material in the server side and to
  * identify the originial definition element in the msm_compositor in the server side.
  * 
- * @param array cellArray           array of all the information in the chosen record
+ * @param {array} cellArray           array of all the information in the chosen record
  *                                  (ie. information displayed in each cell in chosen row)
- * @param string index              string added to end of HTML ID to make the element unique
- * @param int dbId                  database ID from msm_compositor that was attached to each search
+ * @param {string} index              string added to end of HTML ID to make the element unique
+ * @param {integer} dbId                  database ID from msm_compositor that was attached to each search
  *                                  result row HTML ID
  */
 function addDefRef(cellArray, index, dbId)
@@ -576,10 +576,10 @@ function addDefRef(cellArray, index, dbId)
  * to the end of description HTML ID and name.  This was added to identify the referenced material in the server side and to
  * identify the originial comment element in the msm_compositor in the server side.
  * 
- * @param array cellArray           array of all the information in the chosen record
+ * @param {array} cellArray           array of all the information in the chosen record
  *                                  (ie. information displayed in each cell in chosen row)
- * @param string index              string added to end of HTML ID to make the element unique
- * @param int dbId                  database ID from msm_compositor that was attached to each search
+ * @param {string} index              string added to end of HTML ID to make the element unique
+ * @param {integer} dbId                  database ID from msm_compositor that was attached to each search
  *                                  result row HTML ID
  */
 function addCommentRef(cellArray, index, dbId)
@@ -624,10 +624,10 @@ function addCommentRef(cellArray, index, dbId)
  * to the end of description HTML ID and name.  This was added to identify the referenced material in the server side and to
  * identify the originial theorem element in the msm_compositor in the server side.
  * 
- * @param array cellArray           array of all the information in the chosen record
+ * @param {array} cellArray           array of all the information in the chosen record
  *                                  (ie. information displayed in each cell in chosen row)
- * @param string index              string added to end of HTML ID to make the element unique
- * @param int dbId                  database ID from msm_compositor that was attached to each search
+ * @param {string} index              string added to end of HTML ID to make the element unique
+ * @param {integer} dbId                  database ID from msm_compositor that was attached to each search
  *                                  result row HTML ID
  */
 function addTheoremRef(cellArray, index, dbId)
@@ -683,11 +683,11 @@ function addTheoremRef(cellArray, index, dbId)
 /**
  * This method is called by the addTheoremRef method above to add all the theorem contents into theorem element.
  * 
- * @param HTMLobject htmlElement        Div element containing the content for the theorem
- * @param string id                     string added to end of HTML ID to make the element unique
- * @param int statementId               number indicating how many statements are in the theorem
+ * @param {HTMLobject} htmlElement        Div element containing the content for the theorem
+ * @param {string} id                     string added to end of HTML ID to make the element unique
+ * @param {integer} statementId               number indicating how many statements are in the theorem
  *                                      (id and statementId are combined to give unique id to each statement theorems)
- * @return string                       string added to the end of statement theorem to make the element unique
+ * @return {string}                       string added to the end of statement theorem to make the element unique
  */
 function addTheoremStatementRef(htmlElement, id, statementId)
 {    
@@ -740,9 +740,9 @@ function addTheoremStatementRef(htmlElement, id, statementId)
  * This method is called by the addTheoremStatementRef method above to add the theorem parts to each 
  * theorem content.
  * 
- * @param HTMLobject htmlElement        HTML elements in the ordered list
- * @param string id                     string added at the end of statement theorems to make them unique
- * @param int partId                    number of part theorems in this content
+ * @param {HTMLobject} htmlElement        HTML elements in the ordered list
+ * @param {string} id                     string added at the end of statement theorems to make them unique
+ * @param {integer} partId                    number of part theorems in this content
  *                                      (id and statementId are combined to give unique id to each part theorems)
  */
 function addTheoremPartRef(htmlElement, id, partId)
@@ -808,9 +808,9 @@ function addTheoremPartRef(htmlElement, id, partId)
  * include all the information in the subordinates such as type/content from information elements...etc.
  * This information in the search result is copied to to the main editor.
  * 
- * @param object contentobj         HTML object of content of theorem/part theorem
- * @param string id                 string added to subordinate result container element to make it unique 
- * @return object                   modified content object
+ * @param {object} contentobj         HTML object of content of theorem/part theorem
+ * @param {string} id                 string added to subordinate result container element to make it unique 
+ * @return {object}                   modified content object
  */
 function processSubContent(contentobj, id)
 {

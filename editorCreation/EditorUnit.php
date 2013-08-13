@@ -317,12 +317,7 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
-//        if (strpos($this->title, "<math>")) {
-//            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->plain_title' readonly='true'/>";
-//        } else {
-//            $htmlContent .= "<input id='msm_unit_title' class='msm_title_input' placeholder = 'Please enter the title of this $this->unitName.' name='msm_unit_title' value='$this->title'/>";
-//        }
-        $htmlContent .= "<div id='msm_unit_title' class='msm_title_input msm_editor_titles'>";
+        $htmlContent .= "<div id='msm_unit_title' class='msm_title_input msm_editor_unit_title'>";
       
         if (strpos($this->title, "<div/>") !== false)
         {

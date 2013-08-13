@@ -15,7 +15,7 @@
 /*
  * This CSS file contains all the style specifications for displaying the
  * editor to create content.
- */
+*/
 
 .msm_loadingscreen {
     display:    none;
@@ -371,7 +371,7 @@
     border: 1px solid #CECECE;
     border-radius: 4px;
     position: relative;
-    background: #EDEDED;
+    background: #EDEDED !important;
 }
 
 .msm_element_close
@@ -438,10 +438,21 @@ return auto from getComputedStyle javascript function*/
     z-index: 2002; /*to prevent resizable borders to have effect in dialog box*/
 }
 
-.msm_unit_pic_title_labels, .msm_unit_intro_title_labels, .msm_unit_body_title_labels, .msm_intro_child_title_labels, .msm_theorem_part_tlabel
+.msm_unit_pic_title_labels, .msm_intro_child_title_labels, .msm_theorem_part_tlabel
 {
     float:left;
     margin-right: 2%;
+}
+
+.msm_unit_intro_title_labels, .msm_unit_body_title_labels
+{
+  clear: both;
+  display: inline-block;
+  float: left;
+  margin-bottom: 5px;
+  margin-left: 3px;
+  margin-right: 10px;
+  text-align: right;
 }
 
 .msm_unit_intro_title, .msm_unit_body_title, .msm_intro_child_titles
@@ -602,14 +613,25 @@ return auto from getComputedStyle javascript function*/
     border: thin solid maroon;
 }
 
-.msm_editor_titles
+.msm_editor_unit_title
 {
     width: 79.5%;
     border: 1px solid #AAAAAA;
     text-align: left;
     background: #FFFFFF;
     height: 15px;
+    padding: 2px; 
+}
+
+.msm_editor_titles
+{
+    width: 91.5%;
+    border: 1px solid #AAAAAA;
+    text-align: left;
+    background: #FFFFFF;
+    height: 15px;
     padding: 2px;
+    margin-left: 6%;
 }
 
 .msm_intro_child_buttons

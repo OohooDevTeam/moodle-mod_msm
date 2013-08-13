@@ -25,12 +25,16 @@ var _index = 0;
 /**
  * This function is activated when user drags one of the structural elememts on the very left side of the panel to middle panel.
  * It adds appropriate fields for the users to fill out for def/theorem/comments/info/content/media and images.
+ * 
+ * @param {eventObject} e               event object triggered by changes made to the selection of the dropdown menu 
+ * @param {string} droppedId            tablename of element that was dropped into middle panel of the editor
  */
 function processDroppedChild(e, droppedId)
 { 
     _index++;
     var currentContentid = 0;    
     var currenttheoremPart = 0;
+    var currentTitleId = '';
     
     var element;
    
@@ -123,6 +127,7 @@ function processDroppedChild(e, droppedId)
                 clonedCurrentElement.append(dndDiv);
                 clonedCurrentElement.appendTo('#msm_child_appending_area');
             
+                currentTitleId = "msm_intro_title_input-"+_index;
                 currentContentid = 'msm_intro_content_input-'+_index;
             }
             else
@@ -184,6 +189,7 @@ function processDroppedChild(e, droppedId)
             clonedCurrentElement.append(imagemappingResult);
             clonedCurrentElement.appendTo('#msm_child_appending_area');
             
+            currentTitleId = "msm_body_title_input-"+_index;
             currentContentid = 'msm_body_content_input-'+_index;
             break;    
     }
@@ -204,7 +210,7 @@ function processDroppedChild(e, droppedId)
     }
     
     // has to be exact mode b/c if it is initiated twice, the editor function gives it a random id and breaks the save method
-     
+    initTitleEditor(currentTitleId, "96%");
     initEditor(currentContentid);
     initEditor(currenttheoremPart);
     
@@ -232,6 +238,31 @@ function processDroppedChild(e, droppedId)
                     tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                 }
             });
+            
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+            
+            $(this).find(".msm_unit_body_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+            
              
         },
         stop: function(event, ui)
@@ -243,7 +274,34 @@ function processDroppedChild(e, droppedId)
             $("#"+id+" textarea").each(function() {
                 if(tinymce.getInstanceById($(this).attr("id")) == null)
                 {
-                    initEditor(this.id);       
+                    if(this.className == "msm_info_titles")
+                    {
+                        noSubInitEditor(this.id);
+                    }
+                    else
+                    {
+                        initEditor(this.id); 
+                    }      
+                }
+            });
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
+                }
+            });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
+                }
+            });
+            
+            $(this).find(".msm_unit_body_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
                 }
             });
         }
@@ -287,9 +345,10 @@ function processDroppedChild(e, droppedId)
  * It is separated from the initEditor due to title editors having a simpler layout
  * that does not need any advanced function in tinyMCE.
  *
- * @param string elId                   HTML element ID
+ * @param {string} elId                   HTML element ID
+ * @param {string} width                  width % for CSS of editor
  */
-function initTitleEditor(elId)
+function initTitleEditor(elId, width)
 {
     YUI().add("editor_tinymce");
     YUI().use('editor_tinymce', function(Y) {
@@ -300,7 +359,7 @@ function initTitleEditor(elId)
             body_class: "msm_tinymce_title_bodies",
             content_css: "css/msmAuthoring.css",
             plugins:"matheditor,paste,contextmenu,insertdatetime,save,iespell",
-            width: "80%",
+            width: width,
             min_height: "20",
             theme_advanced_font_sizes:"1,2,3,4,5,6,7",
             theme_advanced_layout_manager:"SimpleLayout",
@@ -320,7 +379,7 @@ function initTitleEditor(elId)
 /**
  * Thie method is used to initiate tinyMCE for the textarea elements.
  * 
- * @param string elId                   HTML element ID
+ * @param {string} elId                   HTML element ID
  */
 function initEditor(elId)
 { 
@@ -359,7 +418,7 @@ function initEditor(elId)
  * This method is used to initiate information title textarea which cannot have subordinate
  * functionality in the tinyMCE editor.
  * 
- * @param string elId               HTML element ID (for information element)
+ * @param {string} elId               HTML element ID (for information element)
  */
 function noSubInitEditor(elId)
 {
@@ -426,7 +485,7 @@ function resetUnit()
  * This method is used to delete elements that were added to the middle panel and is triggered by msm_element_close button in each of the 
  * structural elements dragged from the left column.
  * 
- * @param eventObject e         event object from clicking the close buttons on each of draggable elements
+ * @param {eventObject} e         event object from clicking the close buttons on each of draggable elements
  */
 function deleteElement(e)
 {
@@ -482,7 +541,7 @@ function deleteElement(e)
  * structural element for user to be able to extend the intro into sections...etc with it's own subtitles to section them off. 
  * All contents added in here belongs to block in intro section.
  * 
- * @param string idNumer                string added to main intro div to make it unique
+ * @param {string} idNumer                string added to main intro div to make it unique
  */
 function addIntroContent(idNumber)
 {
@@ -606,6 +665,14 @@ function addIntroContent(idNumber)
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
+            
+            $(this).find('.msm_intro_child_titles').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
         },
         stop: function(event, ui)
         {
@@ -616,6 +683,13 @@ function addIntroContent(idNumber)
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
                     initEditor(this.id);                    
+                }
+            });
+            
+            $(this).find('.msm_intro_child_titles').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initTitleEditor(this.id, "92%");                    
                 }
             });
         }
@@ -644,7 +718,7 @@ function addIntroContent(idNumber)
  * This method creates the form for additional contents in theorem element.  It is triggered when an 
  * "Extra Content" element is dragged and dropped to a droppable container in theorem.
  * 
- * @param eventObject event         event triggered from dropping an "Extra Content" element to theorem
+ * @param {eventObject} event         event triggered from dropping an "Extra Content" element to theorem
  */
 function addTheoremContent(event)
 {    
@@ -771,7 +845,7 @@ function addTheoremContent(event)
  * This method creates the form for additional parts in theorem element.  It is triggered when an 
  * "Parts of a Theorem" element is dragged and dropped to a droppable container in theorem content.
  * 
- * @param eventObject event         event object triggered from item being dropped into a designated droppable container
+ * @param {eventObject} event         event object triggered from item being dropped into a designated droppable container
  */
 function addTheoremPart(event)
 {
@@ -884,10 +958,10 @@ function addTheoremPart(event)
 }
 
 /**
+ * This method add the form components needed to create associate element in the editor and also initializes all the plugins needed.
  * 
- * 
- * @param int index                     ending id number for associate to be attached to the HTML ID of the associate
- * @param string type                   the parent of the associate (def/comment/theorem)
+ * @param {int} index                     ending id number for associate to be attached to the HTML ID of the associate
+ * @param {string} type                   the parent of the associate (def/comment/theorem)
  */
 function addAssociateForm(index, type)
 {
@@ -1083,7 +1157,7 @@ function addAssociateForm(index, type)
 /**
  * This method creates the form need to input the information for definition elements.
  * 
- * @return object               finished form in a container div
+ * @return {object}               finished form in a container div
  */
 function makeDefinition()
 {
@@ -1147,7 +1221,7 @@ function makeDefinition()
 /**
  * This method creates the form need to input the information for theorem elements.
  * 
- * @return object               finished form in a container div
+ * @return {object}               finished form in a container div
  */
 function makeTheorem()
 {
@@ -1271,7 +1345,7 @@ function makeTheorem()
 /**
  * This method creates the form need to input the information for comment elements.
  * 
- * @return object               finished form in a container div
+ * @return {object}               finished form in a container div
  */
 function makeComment()
 {
@@ -1331,7 +1405,7 @@ function makeComment()
 /**
  * This method creates the form need to input the information for extra information elements.
  * 
- * @return object               finished form in a container div
+ * @return {object}               finished form in a container div
  */
 function makeExtraInfo()
 {
@@ -1384,7 +1458,7 @@ function makeExtraInfo()
  * This element check if the current element HTML ID exists in the form or not.
  * If the element ID already exists, then it increments the index number.
  * 
- * @param string oldid          current element id 
+ * @param {string} oldid          current element id 
  */
 function checkIndexNumber(oldid)
 {

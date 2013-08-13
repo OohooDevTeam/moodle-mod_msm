@@ -175,7 +175,11 @@ class Intro extends Element
 
         if (!empty($this->caption))
         {
-            $content .= "<h3>$this->caption</h3>";
+            if ((!empty($this->caption) && (preg_match("/<div\/>/", trim($this->caption)) == 0)))
+            {
+                $content .= "<h3>$this->caption</h3>";
+            }
+            
         }
 
         foreach ($this->blocks as $key => $block)

@@ -15,7 +15,7 @@
 /**
  * This method is called when the unit is saved and it adds a node to jsTree when the unit is added. * 
  *
- * @param string dbId                       string with information about saved unit
+ * @param {string} dbId                       string with information about saved unit
  */
 function insertUnitStructure(dbId)
 {
@@ -167,8 +167,8 @@ function insertUnitStructure(dbId)
 /**
  * This method is used to initialize the tree built by the above method with jsTree jquery plugin.
  * 
- * @param string idPair             string of unit-comp_id-unit-unit_Id
- * @param string parent             HTML ID of the parent node of current unit node
+ * @param {string} idPair             string of unit-comp_id-unit-unit_Id
+ * @param {string} parent             HTML ID of the parent node of current unit node
  */
 function initTrees(idPair, parent)
 {
@@ -353,7 +353,7 @@ function newUnit()
     $(fileoption).appendTo("#msm_unit_form");
     
    
-    initTitleEditor("msm_unit_title");
+    initTitleEditor("msm_unit_title", "80%");
     $("#msm_unit_short_title").removeAttr("readonly");
     $("#msm_unit_description_input").removeAttr("readonly");
     
@@ -403,13 +403,65 @@ function newUnit()
             $(this).find('.msm_unit_child_content').each(function() {
                 tinyMCE.execCommand("mceRemoveControl", false, $(this).attr("id")); 
             });
+            
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+            
+            $(this).find(".msm_unit_body_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
         },
         stop: function(event, ui)
         {
             $(this).find('.msm_unit_child_content').each(function() {
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
-                    initEditor(this.id);                    
+                    if(this.className == "msm_info_titles")
+                    {
+                        noSubInitEditor(this.id);
+                    }
+                    else
+                    {
+                        initEditor(this.id); 
+                    }                   
+                }
+            });
+            
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
+                }
+            });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
+                }
+            });
+            
+            $(this).find(".msm_unit_body_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
                 }
             });
         }
@@ -458,7 +510,7 @@ function newUnit()
  * and displays the information.  Also it sets the editor up for any edit that 
  * maybe made by the user and disables all editor until the edit is triggered.
  *
- * @param string htmlData                HTML code to display the unit
+ * @param {string} htmlData                HTML code to display the unit
  */
 function processUnitData(htmlData)
 {    
@@ -466,6 +518,13 @@ function processUnitData(htmlData)
     {
         tinyMCE.execCommand("mceRemoveControl", true, "msm_unit_title");        
     }
+    
+    $(".msm_unit_intro_title").each(function() {
+        if(tinymce.getInstanceById(this.id) != null)
+        {
+            tinyMCE.execCommand("mceRemoveControl", true, this.id);        
+        }
+    })
     $('#msm_unit_form').empty();
     
     $('#msm_unit_form').append(htmlData);
@@ -511,6 +570,7 @@ function processUnitData(htmlData)
     // enable all unit title/description input fields to be able to edit upon double click trigger
     $("#msm_unit_title").dblclick(function(){
         processTitleContent(this.id);
+        initTitleEditor(this.id, "80%");
         allowDragnDrop();
     });
     $("#msm_unit_short_title").dblclick(function(){
@@ -564,7 +624,7 @@ function processUnitData(htmlData)
  * to reflect the relationship between each unit in the jsTree into msm_compositor table.  After done button
  * is pressed, the page navigates to the view.php for displaying the unit.
  *
- * @param eventObject e             click trigger event object
+ * @param {eventObject} e             click trigger event object
  */
 function saveComp(e)
 {
@@ -627,18 +687,11 @@ function saveComp(e)
  * This method essentially enables the tinyMCE for each div with class name msm_editor_content and for unit title input field.  Also all the input fields
  * and the select menus are enabled.
  *
- * @param eventObject e                 click event object from the edit button in overlay
+ * @param {eventObject} e                 click event object from the edit button in overlay
  */
 function editUnit(e)
 {   
-    var inputUnitTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
-    var currentTitleContent = $("div#msm_unit_title").html();
-    
-    $(inputUnitTitle).val(currentTitleContent);
-    
-    $("div#msm_unit_title").replaceWith(inputUnitTitle);   
-    
-    initTitleEditor("msm_unit_title");
+    reinitAllTitles();   
     
     $("#msm_editor_new").attr("disabled", "disabled");
     
@@ -803,6 +856,45 @@ function editUnit(e)
     });
 }
 
+/**
+ * This method is called by editUnit method above to reinitiate tinyMCE editor to all the title input fields.
+ */
+function reinitAllTitles() 
+{
+    var inputUnitTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
+    processTitleContent("msm_unit_title");
+    var currentTitleContent = $("div#msm_unit_title").html();
+    
+    console.log("content of unit title?");
+    console.log(currentTitleContent);
+    
+    $(inputUnitTitle).val(currentTitleContent);
+    
+    $("div#msm_unit_title").replaceWith(inputUnitTitle);   
+    
+    $("div.msm_editor_titles").each(function() {
+        var currentIntroId = this.id;
+        
+        $(this).removeClass("msm_editor_titles");
+        var currentClassName = this.className;
+        
+        var inputIntroTitle = $('<input class="'+currentClassName+'" id="'+currentIntroId+'" name="'+currentIntroId+'"/>');
+        
+        processTitleContent(this.id);
+        var currentIntroContent = $(this).html();
+        
+        console.log("content of intro title?");
+        console.log(currentIntroContent);
+        
+        $(inputIntroTitle).val(currentIntroContent);
+        
+        $(this).replaceWith(inputIntroTitle);    
+        initTitleEditor(this.id, "96%");
+    });
+    
+    initTitleEditor("msm_unit_title", "80%");
+}
+
 
 
 /**
@@ -882,6 +974,30 @@ function moveElements()
                     tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                 }
             });
+            
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
+            
+            $(this).find(".msm_unit_body_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }
+            });
                  
         },
         stop: function(event, ui)
@@ -902,6 +1018,27 @@ function moveElements()
                         initEditor(this.id); 
                     }                 
                     
+                }
+            });
+            
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
+                }
+            });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
+                }
+            });
+            
+            $(this).find(".msm_unit_body_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "96%");       
                 }
             });
         }
@@ -935,6 +1072,7 @@ function moveElements()
                         tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                     }
                 });
+                
             },
             stop: function(event, ui)
             {
@@ -946,15 +1084,20 @@ function moveElements()
                 $("#"+id+" textarea").each(function() {
                     if(tinymce.getInstanceById($(this).attr("id")) == null)
                     {
-                        initEditor(this.id);                    
+                        if(this.className == "msm_info_titles")
+                        {
+                            noSubInitEditor(this.id);
+                        }
+                        else
+                        {
+                            initEditor(this.id); 
+                        }                
                     }
                 });  
             }
         });   
         $("#"+this.id).sortable("refresh");
-    });    
-                            
-
+    });   
     
     $("#msm_intro_child_container").sortable({
         appendTo: "msm_intro_child_container",
@@ -977,6 +1120,11 @@ function moveElements()
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
         },
         stop: function(event, ui)
         {
@@ -987,6 +1135,13 @@ function moveElements()
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
                     initEditor(this.id);                    
+                }
+            });
+            
+            $(this).find(".msm_unit_intro_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initTitleEditor(this.id);                    
                 }
             });
         }
@@ -1318,8 +1473,8 @@ function enableDragTitleToggle()
  * The appropriate method is chosen according to the ID of div containers that 
  * the overlay is over which has the edit button.
  *
- * @param array unitArray               instance of the EditorUnit children class that was passed by JSON
- * @param string currentElement         HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} unitArray               instance of the EditorUnit children class that was passed by JSON
+ * @param {string} currentElement         HTML ID of the container with overlay that the edit button was triggere from
  */
 function enableContentEditors(unitArray, currentElement)
 { 
@@ -1360,8 +1515,8 @@ function enableContentEditors(unitArray, currentElement)
  * This method creates the "editable" theorem with all the input and dropdown
  * menus and tinyMCE editors enabled and disables the overlay.
  *
- * @param string element        HTML ID of the container with overlay that the edit button was triggere from
- * @param array unitInfo        instance of the EditorTheorem class that was passed by JSON
+ * @param {string} element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} unitInfo        instance of the EditorTheorem class that was passed by JSON
  */
 function createTheoremText(element, unitInfo)
 {
@@ -1465,8 +1620,8 @@ function createTheoremText(element, unitInfo)
  * This method is used to create associate form that user can edit. It enables all 
  * tinyMCE edtiros and input fields/dropdown menus and disables the overlay.
  *
- * @param string mainElement            HTML ID of the container with overlay that the edit button was triggere from
- * @param array aArray                  instance of the EditorUnit children class that was passed by JSON
+ * @param {string} mainElement            HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} aArray                  instance of the EditorUnit children class that was passed by JSON
  */
 function createAssociateText(mainElement, aArray)
 {
@@ -1583,10 +1738,10 @@ function createAssociateText(mainElement, aArray)
  * This method creates a form for theorem reference material for the user to edit
  * the existing content.  
  *
- * @param string element                HTML ID of the container with overlay that the edit button was triggere from
- * @param array aArray                  instance of the EditorAssociate class that was passed by JSON
- * @param int index                     index number for which associate this reference is relevant
- * @param string infoId                 string added to end of info element textareas to make them unique
+ * @param {string} element                HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} aArray                  instance of the EditorAssociate class that was passed by JSON
+ * @param {integer} index                     index number for which associate this reference is relevant
+ * @param {string} infoId                 string added to end of info element textareas to make them unique
  */
 function createTheoremRefText(element, aArray, index, infoId)
 {           
@@ -1680,8 +1835,8 @@ function createTheoremRefText(element, aArray, index, infoId)
  * This method creates the "editable" comment with all the input and dropdown
  * menus and tinyMCE editors enabled and disables the overlay.
  *
- * @param string element        HTML ID of the container with overlay that the edit button was triggere from
- * @param array unitInfo        instance of the EditorComment class that was passed by JSON
+ * @param {string} element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} unitInfo        instance of the EditorComment class that was passed by JSON
  */
 function createCommentText(element, unitInfo)
 {
@@ -1718,8 +1873,8 @@ function createCommentText(element, unitInfo)
  * This method creates the "editable" definition with all the input and dropdown
  * menus and tinyMCE editors enabled and disables the overlay.
  *
- * @param string element        HTML ID of the container with overlay that the edit button was triggere from
- * @param array unitInfo        instance of the EditoDefinition class that was passed by JSON
+ * @param {string} element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} unitInfo        instance of the EditoDefinition class that was passed by JSON
  */
 function createDefText(element, unitInfo)
 {
@@ -1757,8 +1912,8 @@ function createDefText(element, unitInfo)
  * This method creates the "editable" intro with all the input and dropdown
  * menus and tinyMCE editors enabled and disables the overlay.
  *
- * @param string element        HTML ID of the container with overlay that the edit button was triggere from
- * @param array unitInfo        instance of the EditorIntro class that was passed by JSON
+ * @param {string} element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} unitInfo        instance of the EditorIntro class that was passed by JSON
  */
 function createIntroText(element, unitInfo)
 {
@@ -1837,8 +1992,8 @@ function createIntroText(element, unitInfo)
  * This method creates the "editable" unit body with all the input and dropdown
  * menus and tinyMCE editors enabled and disables the overlay.
  *
- * @param string element        HTML ID of the container with overlay that the edit button was triggere from
- * @param array unitInfo        instance of the EditorBlock class that was passed by JSON
+ * @param {string} element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} unitInfo        instance of the EditorBlock class that was passed by JSON
  */
 function createBodyText(element, unitInfo)
 {
@@ -1874,8 +2029,8 @@ function createBodyText(element, unitInfo)
  * This method creates the "editable" extra information with all the input and dropdown
  * menus and tinyMCE editors enabled and disables the overlay.
  *
- * @param string element        HTML ID of the container with overlay that the edit button was triggere from
- * @param array unitInfo        instance of the EditorExtrInfo class that was passed by JSON
+ * @param {string} element        HTML ID of the container with overlay that the edit button was triggere from
+ * @param {array} unitInfo        instance of the EditorExtrInfo class that was passed by JSON
  */
 function createExtraInfoText(element, unitInfo)
 {
@@ -1913,6 +2068,8 @@ function createExtraInfoText(element, unitInfo)
  * specified unit but if any component of the unit is used as a reference material or if it contains reference material that
  * is part of a content in another unit, it only removes the structural data in msm_compositor but does not remove the orignial data
  * in its respetive database table.
+ * 
+ * @param {eventObject} e             event object triggered from click to "Remove this Unit" button
  */
 function removeUnit(e)
 {
@@ -1997,6 +2154,8 @@ function removeUnit(e)
  * This method is triggered by the "Cancel" button during the edit mode before the save has been triggered.  Basically the rol of this ethod is to popup 
  * a warning message about losing unsaved content.  If user decides not to go with cancel, then it just closes the popup window but if the 
  * user agrees to go with cancel action, then it changes the editor content to ones in the database to erases all the changes.
+ * 
+ * @param {eventObject} e               event object triggered by click to "Cancel" button during edit process
  */
 function cancelUnit(e)
 {
@@ -2076,6 +2235,7 @@ function cancelUnit(e)
                     
                         $("#msm_unit_title").dblclick(function(){
                             processTitleContent(this.id);
+                            initTitleEditor(this.id, "80%");
                             allowDragnDrop();
                         });
                         $("#msm_unit_short_title").dblclick(function(){
@@ -2111,7 +2271,7 @@ function cancelUnit(e)
  * This method is called everytime a "Full Screen" or "Basic Window" is triggered
  * to toggle between two buttons and to toggle between full screeen and basic window modes.
  * 
- * @param eventObject e             click event object
+ * @param {eventObject} e             click event object
  */
 function swapButtons(e) {
     var target = e.target.id;
@@ -2169,7 +2329,7 @@ function swapButtons(e) {
  * This method is triggered by the "Delete" button on the overlay of each core elements. 
  * It removes the core element with the overlay with the triggered button and all its child elements.
  *
- * @param eventObject e             click event object
+ * @param {eventObject} e             click event object
  */
 function deleteOverlayElement(e)
 {
@@ -2252,7 +2412,7 @@ function deleteOverlayElement(e)
                         }
                     }
                 });
-                $( this ).dialog( "close" );                   
+                $(this).dialog("close");                   
             }
         }
     });   
@@ -2296,7 +2456,7 @@ function allowDragnDrop()
                 tinymce.execCommand('mceFocus', false, "msm_unit_title"); 
                 tinymce.execCommand('mceRemoveControl', true, "msm_unit_title");
             }
-            initTitleEditor("msm_unit_title"); 
+            initTitleEditor("msm_unit_title", "80%"); 
             
             $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
                 $(this).removeClass("msm_editor_content");
@@ -2333,7 +2493,7 @@ function allowDragnDrop()
  * and only get the needed math content wrapped in <span class="matheditor">mathcontent</span> to allow
  * tinymce to recognize the math element.
  * 
- * @param string id                 HTML ID of the title element that the math is being processed from.
+ * @param {string} id                 HTML ID of the title element that the math is being processed from.
  */ 
 function processTitleContent(id)
 {    
@@ -2343,10 +2503,15 @@ function processTitleContent(id)
     
         var scriptChild = $(this).find("script");
         
-        var scriptWithMath = scriptChild[scriptChild.length-1];
-        var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
-        $(newspan).append(mathContent);
-        $(this).replaceWith(newspan);
+        // if user triggers any edit function while the mathjax is loading, there will be no
+        // script tag due to it not being converted by mathjax yet
+        if(scriptChild.length != 0)
+        {
+            var scriptWithMath = scriptChild[scriptChild.length-1];
+            var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+            $(newspan).append(mathContent);
+            $(this).replaceWith(newspan);
+        }
+        
     });
-    initTitleEditor(id);
 }
