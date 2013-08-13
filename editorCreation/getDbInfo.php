@@ -59,6 +59,14 @@ require_login($course, true, $cm); // for security measures
 
 $dbType = $_POST["param"][0]["value"];
 $matchString = trim(strtolower($_POST["param"][1]["value"]));
+
+if(empty($matchString))
+{
+    
+   echo json_encode("error");
+   return;
+}
+
 $fieldType = $_POST["param"][2]["value"];
 
 // msm_current_unit hidden input field may not exist in case for subordinates

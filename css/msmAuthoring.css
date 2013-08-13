@@ -940,3 +940,10 @@ table.mceLayout
     border-spacing: 2px;
     border: thin solid #AED0EA;
 }
+
+/*class to be added when the required input field is left empty
+        --> used in search parameter input*/
+.msm_empty_error
+{
+    border: 2px solid #FFA500;
+}
