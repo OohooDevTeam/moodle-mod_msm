@@ -121,6 +121,12 @@ function submitForm()
         $(this).val(tinymce.getInstanceById(this.id).getContent({
             format: "html"
         }));
+    });
+    
+    $(".msm_unit_body_title").each(function() {
+        $(this).val(tinymce.getInstanceById(this.id).getContent({
+            format: "html"
+        }));
     })
         
     var urlParam = window.location.search;
@@ -385,6 +391,10 @@ function removeTinymceEditor()
     $(".msm_intro_child_titles").each(function() {
         titleInput2Div(this.id);
     });
+    
+    $(".msm_unit_body_title").each(function() {
+        titleInput2Div(this.id);
+    })
     
     $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {     
         textArea2Div($(this).attr("id"));

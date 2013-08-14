@@ -336,7 +336,22 @@ class EditorBlock extends EditorElement
 
             $htmlContent .= "<div style='margin-top: 2%;'>";
             $htmlContent .= "<label id='msm_body_title_label-$this->compid' class='msm_unit_body_title_labels' for='msm_body_title_input-$this->compid'>Title: </label>";
-            $htmlContent .= "<input id='msm_body_title_input-$this->compid' class='msm_unit_body_title' placeholder='Optional Title for this Content' name='msm_body_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+            
+             $htmlContent .= "<div id='msm_body_title_input-$this->compid' class='msm_unit_body_title msm_editor_titles'>";
+
+            if (strpos($this->title, "<div/>") !== false)
+            {
+                $bodyTitle = '';
+            }
+            else
+            {
+                $bodyTitle = $this->title;
+            }
+
+            $htmlContent .= $bodyTitle;
+            $htmlContent .= "</div>"; // end of title input div     
+            
+//            $htmlContent .= "<input id='msm_body_title_input-$this->compid' class='msm_unit_body_title' placeholder='Optional Title for this Content' name='msm_body_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
             $htmlContent .= "</div>";
 
             $htmlContent .= "<div id='msm_body_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
