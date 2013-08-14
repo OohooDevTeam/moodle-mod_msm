@@ -438,21 +438,33 @@ return auto from getComputedStyle javascript function*/
     z-index: 2002; /*to prevent resizable borders to have effect in dialog box*/
 }
 
-.msm_unit_pic_title_labels, .msm_intro_child_title_labels, .msm_theorem_part_tlabel
+.msm_unit_pic_title_labels, .msm_intro_child_title_labels
 {
     float:left;
     margin-right: 2%;
 }
 
+.msm_theorem_part_tlabel
+{
+    clear: both;
+    display: inline-block;
+    float: left;
+    /*margin-bottom: 5px;*/
+    margin-left: 3px;
+    margin-right: 10px;
+    text-align: right;
+    margin-top: 10px;
+}
+
 .msm_unit_intro_title_labels, .msm_unit_body_title_labels,.msm_intro_child_title_labels
 {
-  clear: both;
-  display: inline-block;
-  float: left;
-  margin-bottom: 5px;
-  margin-left: 3px;
-  margin-right: 10px;
-  text-align: right;
+    clear: both;
+    display: inline-block;
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 3px;
+    margin-right: 10px;
+    text-align: right;
 }
 
 .msm_unit_intro_title, .msm_unit_body_title, .msm_intro_child_titles
@@ -462,6 +474,7 @@ return auto from getComputedStyle javascript function*/
 
 .msm_theorem_part_title{
     width: 81%;
+    margin-bottom: 5px;
 }
 
 .msm_unit_pic_title
@@ -547,10 +560,24 @@ return auto from getComputedStyle javascript function*/
 
 .msm_unit_child_dropdown
 {
-    margin-left: 0;
-    width: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    clear: both;
+    display: inline-block;
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 3px;
+    margin-right: 59.5%;
+    width: 14%;
+}
+
+.msm_display_unit_child_dropdown
+{
+    clear: both;
+    display: inline-block;
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 2%;
+    margin-right: 0;
+    width: 14%;
 }
 .msm_unit_child_content, .msm_intro_child_contents
 {
@@ -625,13 +652,14 @@ return auto from getComputedStyle javascript function*/
 
 .msm_editor_titles
 {
-    width: 91.5%;
     border: 1px solid #AAAAAA;
     text-align: left;
     background: #FFFFFF;
     height: 15px;
     padding: 2px;
     margin-left: 6%;
+    margin-bottom: 5px;
+    margin-top: 0;
 }
 
 .msm_intro_child_buttons

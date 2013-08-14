@@ -95,7 +95,7 @@ class EditorDefinition extends EditorElement
             {
                 $this->description = $_POST['msm_defref_description_input-' . $newId];
             }
-            $this->title = $_POST['msm_defref_title_input-' . $newId];
+            $this->title = $this->processMath($_POST['msm_defref_title_input-' . $newId]);
 
             if ($_POST['msm_defref_content_input-' . $newId] != '')
             {
@@ -127,7 +127,7 @@ class EditorDefinition extends EditorElement
         {
             $this->type = $_POST['msm_def_type_dropdown-' . $idNumber];
             $this->description = $_POST['msm_def_description_input-' . $idNumber];
-            $this->title = $_POST['msm_def_title_input-' . $idNumber];
+            $this->title = $this->processMath($_POST['msm_def_title_input-' . $idNumber]);
 
 
             if ($_POST['msm_def_content_input-' . $idNumber] != '')
@@ -169,6 +169,7 @@ class EditorDefinition extends EditorElement
                 }
             }
         }
+        
         return $this;
     }
 
@@ -321,7 +322,14 @@ class EditorDefinition extends EditorElement
 
         $htmlContent .= "</div>";
 
-        $htmlContent .= "<select id='msm_def_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_def_type_dropdown-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 40%;'> DEFINITION </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        $htmlContent .= "</div>";
+
+        $htmlContent .= "<div class='msm_select_title_containers'>";
+
+        $htmlContent .= "<select id='msm_def_type_dropdown-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_def_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -376,11 +384,22 @@ class EditorDefinition extends EditorElement
         }
         $htmlContent .= "</select>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
-        $htmlContent .= "<b style='margin-left: 30%;'> DEFINITION </b>";
-        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        $htmlContent .= "<div id='msm_def_title_input-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
+
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $defTitle = '';
+        }
+        else
+        {
+            $defTitle = $this->title;
+        }
+
+        $htmlContent .= $defTitle;
         $htmlContent .= "</div>";
-        $htmlContent .= "<input id='msm_def_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_def_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        
+        $htmlContent .= "</div>"; // end of msm_select_title_containers div
+
         $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
@@ -399,6 +418,7 @@ class EditorDefinition extends EditorElement
 
 
         $htmlContent .= "<label id='msm_def_description_label-$this->compid' class='msm_child_description_labels' for='msm_def_description_label-$this->compid'>Description: </label>";
+
         $htmlContent .= "<input id='msm_def_description_input-$this->compid' class='msm_child_description_inputs' placeholder='Insert description to search this element in future.' value='$this->description' disabled='disabled' name='msm_def_description_input-$this->compid'/>";
 
         $htmlContent .= "<div id='msm_associate_container-$this->compid' class='msm_associate_containers'>";
@@ -477,8 +497,14 @@ class EditorDefinition extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";
+        
+        $htmlContent .= "<span class='msm_element_title'>";
+        $htmlContent .= "<b style='margin-left: 40%;'> DEFINITION </b>";
+        $htmlContent .= "</span>";
 
-        $htmlContent .= "<select id='msm_defref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_defref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div class='msm_select_title_containers'>";
+
+        $htmlContent .= "<select id='msm_defref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_defref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -533,11 +559,21 @@ class EditorDefinition extends EditorElement
         }
         $htmlContent .= "</select>";
 
-        $htmlContent .= "<span class='msm_element_title'>";
-        $htmlContent .= "<b style='margin-left: 30%;'> DEFINITION </b>";
-        $htmlContent .= "</span>";
+        $htmlContent .= "<div id='msm_defref_title_input-$parentId-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
 
-        $htmlContent .= "<input id='msm_defref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Definition' name='msm_defref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $defrefTitle = '';
+        }
+        else
+        {
+            $defrefTitle = $this->title;
+        }
+
+        $htmlContent .= $defrefTitle;
+        $htmlContent .= "</div>";
+
+        $htmlContent .= "</div>"; // end of msm_select_title_containers div
 
         $htmlContent .= "<div id='msm_defref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= $this->content;
@@ -581,7 +617,7 @@ class EditorDefinition extends EditorElement
         $previewHtml .= "<br />";
         $previewHtml .= "<div class='def'>";
         if (!empty($this->title))
-        {
+        {  
             $previewHtml .= "<span class='deftitle'>" . $this->title . "</span>";
         }
 

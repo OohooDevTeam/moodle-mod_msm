@@ -159,6 +159,12 @@ class EditorExtraInfo extends EditorElement
 
         $htmlContent .= "</div>";
 
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 30%;'> Extra Information </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        $htmlContent .= "</div>";
+
+        $htmlContent .= "<div class='msm_select_title_containers'>";
         $htmlContent .= "<select id='msm_extra_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_extra_type_dropdown-$this->compid' disabled='disabled'>";
         switch ($this->name)
         {
@@ -200,12 +206,22 @@ class EditorExtraInfo extends EditorElement
         }
         $htmlContent .= "</select>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
-        $htmlContent .= "<b style='margin-left: 20%;'> Extra Information </b>";
-        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        $htmlContent .= "<div id='msm_extra_title_input-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
+
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $extraTitle = '';
+        }
+        else
+        {
+            $extraTitle = $this->title;
+        }
+
+        $htmlContent .= $extraTitle;
         $htmlContent .= "</div>";
 
-        $htmlContent .= "<input id='msm_extra_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Extra Information' name='msm_extra_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "</div>";
+
         $htmlContent .= "<div id='msm_extra_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
 
         foreach ($this->blocks[0]->content as $content)

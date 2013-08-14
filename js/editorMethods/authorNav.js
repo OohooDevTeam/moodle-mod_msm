@@ -501,13 +501,6 @@ function getDisabledData()
     $("#msm_child_appending_area").find(".msm_unit_child_dropdown").each(function() {
         dataArray[this.id] = $(this).val(); 
     });
-    $("#msm_child_appending_area").find(".msm_unit_child_title").each(function() {
-        dataArray[this.id] = $(this).val(); 
-    });
-        
-    $("#msm_child_appending_area").find(".msm_unit_body_title").each(function() {
-        dataArray[this.id] = $(this).val(); 
-    });
     
     $("#msm_child_appending_area").find(".msm_editor_content").each(function() {
         // need to deal with mathjax code before sending it off to server side to be
@@ -590,6 +583,16 @@ function getDisabledData()
             processMathContent(this.id);
             dataArray[this.id] = $(this).html();
         });
+        
+        $(".msm_unit_body_title").each(function() {
+            processMathContent(this.id);
+            dataArray[this.id] = $(this).html();
+        });
+        
+        $(".msm_unit_child_title").each(function() {
+            processMathContent(this.id);
+            dataArray[this.id] = $(this).html();
+        })
     }        
     return dataArray;
 }

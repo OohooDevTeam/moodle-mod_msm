@@ -42,25 +42,29 @@ function processDroppedChild(e, droppedId)
     {
         case "msm_def":
             element = makeDefinition();
-            element.appendTo('#msm_child_appending_area');            
+            element.appendTo('#msm_child_appending_area');       
+            currentTitleId = 'msm_def_title_input-'+_index;
             currentContentid = 'msm_def_content_input-'+_index;
             break;
         
         case "msm_theorem":
             element = makeTheorem();
-            element.appendTo('#msm_child_appending_area');            
+            element.appendTo('#msm_child_appending_area');  
+            currentTitleId = 'msm_theorem_title_input-'+_index
             currentContentid = 'msm_theorem_content_input-'+_index+'-1';
             break;
             
         case "msm_comment":
             element = makeComment();
-            element.appendTo('#msm_child_appending_area');            
+            element.appendTo('#msm_child_appending_area'); 
+            currentTitleId = 'msm_comment_title_input-'+_index
             currentContentid = 'msm_comment_content_input-'+_index;
             break;
             
         case "msm_extra_info":
             element = makeExtraInfo();
-            element.appendTo("#msm_child_appending_area");            
+            element.appendTo("#msm_child_appending_area");     
+            currentTitleId = 'msm_extra_title_input-'+_index;
             currentContentid = 'msm_extra_content_input-'+_index;
             break;
             
@@ -210,7 +214,16 @@ function processDroppedChild(e, droppedId)
     }
     
     // has to be exact mode b/c if it is initiated twice, the editor function gives it a random id and breaks the save method
-    initTitleEditor(currentTitleId, "96%");
+    
+    if((currentTitleId.match(/def/)) || (currentTitleId.match(/theorem/)) || (currentTitleId.match(/comment/)) || currentTitleId.match(/extra/))
+    {
+        initTitleEditor(currentTitleId, "26%");
+    }
+    else
+    {
+        initTitleEditor(currentTitleId, "96%");
+    }
+    
     initEditor(currentContentid);
     initEditor(currenttheoremPart);
     
@@ -263,6 +276,10 @@ function processDroppedChild(e, droppedId)
                 }
             });
             
+            $(this).find('.msm_theorem_part_title').each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
              
         },
         stop: function(event, ui)
@@ -287,7 +304,14 @@ function processDroppedChild(e, droppedId)
             $(this).find(".msm_unit_child_title").each(function() {
                 if(tinymce.getInstanceById($(this).attr("id")) == null)
                 {
-                    initTitleEditor(this.id, "96%");       
+                    if((this.id.match(/def/)) || (this.id.match(/theorem/)) || (this.id.match(/comment/)) || this.id.match(/extra/))
+                    {
+                        initTitleEditor(this.id, "26%");
+                    }
+                    else
+                    {
+                        initTitleEditor(this.id, "96%");
+                    }
                 }
             });
             
@@ -303,6 +327,11 @@ function processDroppedChild(e, droppedId)
                 {
                     initTitleEditor(this.id, "96%");       
                 }
+            });
+            
+            $(this).find('.msm_theorem_part_title').each(function() {
+                initTitleEditor(this.id, "85%");
+                $(this).sortable("refresh");
             });
         }
     });    
@@ -510,6 +539,18 @@ function deleteElement(e)
         }
     });
         
+    $("#"+currentElement+" input").each(function() {
+        if(($(this).hasClass("msm_unit_child_title")) || ($(this).hasClass("msm_unit_intro_title")) ||
+            ($(this).hasClass("msm_intro_child_titles")) || $(this).hasClass("msm_unit_body_title"))
+            {
+            if(tinymce.getInstanceById($(this).attr("id")) != null)
+            {
+                tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            }
+        }
+    })
+        
     $("<div class='dialogs' id='msm_deleteComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
     $( "#msm_deleteComposition" ).dialog({
         resizable: false,
@@ -613,9 +654,9 @@ function addIntroContent(idNumber)
     childTitleLabel.className = "msm_intro_child_title_labels";
     var childTitleLabelText = document.createTextNode("Title:");
         
-//    var titleContainer = document.createElement("div");
-//    
-//    var titleLabel = document.createTextNode("Title:");
+    //    var titleContainer = document.createElement("div");
+    //    
+    //    var titleLabel = document.createTextNode("Title:");
     childTitleLabel.appendChild(childTitleLabelText);
     
     var introChildTitle = document.createElement("input");
@@ -624,8 +665,8 @@ function addIntroContent(idNumber)
     introChildTitle.name = "msm_intro_child_title-"+newId;
     introChildTitle.setAttribute("placeholder", "Optional Title for the Content");
     
-//    titleContainer.appendChild(titleLabel);
-//    titleContainer.appendChild(introChildTitle);
+    //    titleContainer.appendChild(titleLabel);
+    //    titleContainer.appendChild(introChildTitle);
     
     var introChildContent = document.createElement("textarea");
     introChildContent.id = "msm_intro_child_content-"+newId;
@@ -643,7 +684,7 @@ function addIntroContent(idNumber)
     introChildDiv.appendChild(introCloseButton);
     introChildDiv.appendChild(dragArea);
 
-//    introChildDiv.appendChild(titleContainer);
+    //    introChildDiv.appendChild(titleContainer);
     introChildDiv.appendChild(childTitleLabel);
     introChildDiv.appendChild(introChildTitle);
     introChildDiv.appendChild(introChildContent);
@@ -817,6 +858,11 @@ function addTheoremContent(event)
                 }
             });
             
+            $(this).find('.msm_theorem_part_title').each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
+            
         },
         stop: function(event, ui)
         {
@@ -829,6 +875,10 @@ function addTheoremContent(event)
                 {
                     initEditor(this.id);                    
                 }
+            });
+            
+            $(this).find('.msm_theorem_part_title').each(function() {
+                initTitleEditor(this.id, "85%");
             });
         }
     });    
@@ -910,6 +960,11 @@ function addTheoremPart(event)
         initEditor("msm_theorem_part_content-"+idNumber+"-"+newId);  
     }
     
+    if(tinymce.getInstanceById("msm_theorem_part_title-"+idNumber+"-"+newId) == null)
+    {
+        initTitleEditor("msm_theorem_part_title-"+idNumber+"-"+newId, "85%");  
+    }
+    
     $("#msm_theorem_part_droparea-"+idNumber).sortable({
         appendTo: "msm_theorem_part_droparea-"+idNumber,
         connectWith: "msm_theorem_part_droparea-"+idNumber,
@@ -934,6 +989,14 @@ function addTheoremPart(event)
                     tinymce.execCommand('mceRemoveControl', true, $(this).attr("id")); 
                 }                
             });
+        
+            $(this).find('.msm_theorem_part_title').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));          
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id")); 
+                }                
+            });
         },
         stop: function(event, ui)
         {
@@ -944,6 +1007,13 @@ function addTheoremPart(event)
                 if(tinymce.getInstanceById($(this).attr("id"))==null)
                 {
                     initEditor(this.id);                    
+                }
+            });
+            
+            $(this).find('.msm_theorem_part_title').each(function() {
+                if(tinymce.getInstanceById($(this).attr("id"))==null)
+                {
+                    initTitleEditor(this.id, "85%");                    
                 }
             });
         }
@@ -1107,7 +1177,20 @@ function addAssociateForm(index, type)
                         tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
                         tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                     });
+                    $(this).find('.msm_theorem_part_title').each(function() {
+                        tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                        tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                    });
                 });
+            });
+            
+            // should only find referenced materials
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) != null)
+                {
+                    tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                    tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                }                 
             });
         },
         stop: function(event, ui)
@@ -1138,7 +1221,20 @@ function addAssociateForm(index, type)
                         }
                     });
                 });
-            });            
+            });
+
+            $(this).find(".msm_unit_child_title").each(function() {
+                if(tinymce.getInstanceById($(this).attr("id")) == null)
+                {
+                    initTitleEditor(this.id, "26%");
+                }
+                
+            });
+            
+            $(this).find('.msm_theorem_part_title').each(function() {
+                initTitleEditor(this.id, "85%");
+                $(this).sortable("refresh");
+            });
         }
     });
     
@@ -1182,6 +1278,7 @@ function makeDefinition()
     var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
     var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
     
+    var selectAndTitleDiv = $("<div class='msm_select_title_containers'></div>");
     var defSelectMenu = $('<select name="msm_def_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_def_type_dropdown-'+_index+'">\n\
                                     <option value="Notation">Notation</option>\n\
                                     <option value="Definition">Definition</option>\n\
@@ -1190,7 +1287,7 @@ function makeDefinition()
                                     <option value="Axiom">Axiom</option>\n\
                                     <option value="Terminology">Terminology</option>\n\
                                 </select>');
-    var defTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%;"> DEFINITION </b></div>');
+    var defTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 40%;"> DEFINITION </b></div>');
     var defTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');   
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_def_title_input-'+_index+'" name="msm_def_title_input-'+_index+'" placeholder=" Title of Definition"/>');
           
@@ -1211,14 +1308,19 @@ function makeDefinition()
             
     defTitleContainer.append(defTitleHidden);
     
+    selectAndTitleDiv.append(defSelectMenu);
+    selectAndTitleDiv.append(defTitleField);
+    
     overlayMenu.append(overlayButtonDelete);
     overlayMenu.append(overlayButtonEdit);
             
     clonedCurrentElement.append(defCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    clonedCurrentElement.append(defSelectMenu);
+    //    clonedCurrentElement.append(defSelectMenu);
     clonedCurrentElement.append(defTitleContainer);
-    clonedCurrentElement.append(defTitleField);
+    //    clonedCurrentElement.append(defTitleField);
+
+    clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(defContentField);
     clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(subordinateResult);
@@ -1245,6 +1347,7 @@ function makeTheorem()
     var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
     var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
 
+    var selectAndTitleDiv = $("<div class='msm_select_title_containers'></div>");
     var theoremSelectMenu = $('<select name="msm_theorem_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_theorem_type_dropdown-'+_index+'">\n\
                                 <option value="Theorem">Theorem</option>\n\
                                 <option value="Proposition">Proposition</option>\n\
@@ -1252,7 +1355,7 @@ function makeTheorem()
                                 <option value="Corollary">Corollary</option>\n\
                             </select>');
     
-    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 31%;"> THEOREM </b></div>');   
+    var theoremTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 41%;"> THEOREM </b></div>');   
     var theoremTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');       
     var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theorem_title_input-'+_index+'" name="msm_theorem_title_input-'+_index+'" placeholder=" Title of Theorem"/>');
             
@@ -1298,12 +1401,16 @@ function makeTheorem()
     
     overlayMenu.append(overlayButtonDelete);
     overlayMenu.append(overlayButtonEdit);
+    
+    selectAndTitleDiv.append(theoremSelectMenu);
+    selectAndTitleDiv.append(theoremTitleField);
             
     clonedCurrentElement.append(theoremCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    clonedCurrentElement.append(theoremSelectMenu);
+    //    clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleContainer);
-    clonedCurrentElement.append(theoremTitleField);
+    clonedCurrentElement.append(selectAndTitleDiv)
+    //    clonedCurrentElement.append(theoremTitleField);
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
@@ -1333,6 +1440,11 @@ function makeTheorem()
                     tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
                 }               
             });
+            
+            $(this).find('.msm_theorem_part_title').each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
         },
         stop: function(event, ui)
         {
@@ -1344,6 +1456,11 @@ function makeTheorem()
                 {
                     initEditor(this.id);                    
                 }
+            });
+            
+             $(this).find('.msm_theorem_part_title').each(function() {
+                initTitleEditor(this.id, "85%");
+                $(this).sortable("refresh");
             });
         }
     });    
@@ -1369,12 +1486,13 @@ function makeComment()
     var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
     var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
     
+    var selectAndTitleDiv = $("<div class='msm_select_title_containers'></div>");
     var commentSelectMenu = $('<select name="msm_comment_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_comment_type_dropdown-'+_index+'">\n\
                                 <option value="Comment">Comment</option>\n\
                                 <option value="Remark">Remark</option>\n\
                                 <option value="Information">Information</option>\n\
                             </select>');
-    var commentTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%"> COMMENT </b></div>'); 
+    var commentTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 40%"> COMMENT </b></div>'); 
     var commentTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
     var commentTitleField = $('<input class="msm_unit_child_title" id="msm_comment_title_input-'+_index+'" name="msm_comment_title_input-'+_index+'" placeholder=" Title of Comment"/>');
           
@@ -1397,12 +1515,17 @@ function makeComment()
    
     overlayMenu.append(overlayButtonDelete);
     overlayMenu.append(overlayButtonEdit);
+    
+    selectAndTitleDiv.append(commentSelectMenu);
+    selectAndTitleDiv.append(commentTitleField);
             
     clonedCurrentElement.append(commentCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    clonedCurrentElement.append(commentSelectMenu);
+    //    clonedCurrentElement.append(commentSelectMenu);
     clonedCurrentElement.append(commentTitleContainer);
-    clonedCurrentElement.append(commentTitleField);
+    //    clonedCurrentElement.append(commentTitleField);
+
+    clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(commentContentField);
     clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(subordinateResult);
@@ -1430,6 +1553,7 @@ function makeExtraInfo()
     var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_overlayButton_edit-'+_index+'" onclick=editUnit(event)> Edit </a>');
     var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_overlayButton_delete-'+_index+'" onclick="deleteOverlayElement(event);"> Delete </a>');
     
+    var selectAndTitleDiv = $("<div class='msm_select_title_containers'></div>");
     var extraSelectMenu = $('<select name="msm_extra_type_dropdown-'+_index+'" class="msm_unit_child_dropdown" id="msm_extra_type_dropdown-'+_index+'">\n\
                                 <option value="Summary">Summary</option>\n\
                                 <option value="Historical">Historical Notes</option>\n\
@@ -1437,7 +1561,7 @@ function makeExtraInfo()
                                 <option value="Acknowledgements">Acknowledgements</option>\n\
                                 <option value="Preface">Preface</option>\n\
                            </select>');
-    var extraTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 20%;"> Extra Information </b></div>'); 
+    var extraTitleContainer = $('<div class="msm_element_title_containers" id="msm_element_title_container-'+_index+'"><b style="margin-left: 30%;"> Extra Information </b></div>'); 
     var extraTitleHidden = $('<span style="visibility: hidden;">Drag here to move this element.</span>');
     var extraTitleField = $('<input class="msm_unit_child_title" id="msm_extra_title_input-'+_index+'" name="msm_extra_title_input-'+_index+'" placeholder=" Title of this extra information"/>');
           
@@ -1452,12 +1576,16 @@ function makeExtraInfo()
    
     overlayMenu.append(overlayButtonDelete);
     overlayMenu.append(overlayButtonEdit);
+    
+    selectAndTitleDiv.append(extraSelectMenu);
+    selectAndTitleDiv.append(extraTitleField);
             
     clonedCurrentElement.append(extraInfoCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    clonedCurrentElement.append(extraSelectMenu);
+    //    clonedCurrentElement.append(extraSelectMenu);
     clonedCurrentElement.append(extraTitleContainer);
-    clonedCurrentElement.append(extraTitleField);
+    clonedCurrentElement.append(selectAndTitleDiv);
+    //    clonedCurrentElement.append(extraTitleField);
     clonedCurrentElement.append(extraContentField);
     clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(subordinateResult);

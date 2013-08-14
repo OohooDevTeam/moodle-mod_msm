@@ -322,6 +322,15 @@ function createRefDialog(id, refTypeString, currentId)
                     {
                         associateId += "-"+associateIdInfo[i];
                     }
+                    
+                    // remove tinymce instance for each textarea in information element before erasing the associate
+                    $("#msm_associate_childs-"+associateId).find("textarea").each(function() {
+                        if(tinymce.getInstanceById($(this).attr("id")) != null)
+                        {
+                            tinymce.execCommand('mceFocus', false, $(this).attr("id")); 
+                            tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+                        }
+                    });
                    
                     // remove appended associate form 
                     $("#msm_associate_childs-"+associateId).empty().remove();
@@ -561,8 +570,10 @@ function addDefRef(cellArray, index, dbId)
     $("#msm_defref_content_input-"+index).val(content);
     
     $("#msm_defref_type_dropdown-"+index).attr("disabled", "disabled");
-    $("#msm_defref_title_input-"+index).attr("disabled", "disabled");
+    //    $("#msm_defref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_defref_description_input-"+index).attr("disabled", "disabled");
+    
+    titleInput2Div("msm_defref_title_input-"+index);
     
     // basically deactivating the tinymce and switching the textarea with content to div
     //(for more info on this method, read the documentation on this method in saveMethod.js)
@@ -609,8 +620,10 @@ function addCommentRef(cellArray, index, dbId)
     $("#msm_commentref_content_input-"+index).val(content);
     
     $("#msm_commentref_type_dropdown-"+index).attr("disabled", "disabled");
-    $("#msm_commentref_title_input-"+index).attr("disabled", "disabled");
+    //    $("#msm_commentref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_commentref_description_input-"+index).attr("disabled", "disabled");
+    
+    titleInput2Div("msm_commentref_title_input-"+index);
     
     // basically deactivating the tinymce and switching the textarea with content to div
     //(for more info on this method, read the documentation on this method in saveMethod.js)
@@ -676,8 +689,10 @@ function addTheoremRef(cellArray, index, dbId)
     $("#msm_theoremref_description_input-"+index).val(description);
     
     $("#msm_theoremref_type_dropdown-"+index).attr("disabled", "disabled");
-    $("#msm_theoremref_title_input-"+index).attr("disabled", "disabled");
+    //    $("#msm_theoremref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_theoremref_description_input-"+index).attr("disabled", "disabled");
+    
+    titleInput2Div("msm_theoremref_title_input-"+index);
 }
 
 /**

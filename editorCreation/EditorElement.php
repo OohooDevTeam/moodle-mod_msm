@@ -208,7 +208,7 @@ abstract class EditorElement
             $content = "<div>$content</div>";
         }
 
-        @$parser->loadXML($content);
+        $parser->loadXML($content);
 
         $spans = $parser->getElementsByTagName("span");
 

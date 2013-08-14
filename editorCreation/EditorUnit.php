@@ -317,7 +317,7 @@ class EditorUnit extends EditorElement
 
         $htmlContent .= "<div id='msm_unit_info_div'>";
         $htmlContent .= "<label id='msm_unit_title_label' class='msm_unit_title_labels' for='msm_unit_title'>$this->unitName title: </label>";
-        $htmlContent .= "<div id='msm_unit_title' class='msm_title_input msm_editor_unit_title'>";
+        $htmlContent .= "<div id='msm_unit_title' class='msm_title_input msm_editor_unit_title' style='width: 79.5%;'>";
       
         if (strpos($this->title, "<div/>") !== false)
         {

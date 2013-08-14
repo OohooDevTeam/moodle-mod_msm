@@ -97,7 +97,7 @@ class EditorComment extends EditorElement
                 $this->description = $_POST['msm_commentref_description_input-' . $newId];
             }
 
-            $this->title = $_POST['msm_commentref_title_input-' . $newId];
+            $this->title = $this->processMath($_POST['msm_commentref_title_input-' . $newId]);
 
             if ($_POST['msm_commentref_content_input-' . $newId] != '')
             {
@@ -129,7 +129,7 @@ class EditorComment extends EditorElement
         {
             $this->type = $_POST['msm_comment_type_dropdown-' . $idNumber];
             $this->description = $_POST['msm_comment_description_input-' . $idNumber];
-            $this->title = $_POST['msm_comment_title_input-' . $idNumber];
+            $this->title = $this->processMath($_POST['msm_comment_title_input-' . $idNumber]);
 
             $this->errorArray = array();
 
@@ -320,7 +320,13 @@ class EditorComment extends EditorElement
 
         $htmlContent .= "</div>";
 
-        $htmlContent .= "<select id='msm_comment_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_comment_type_dropdown-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 40%;'> COMMENT </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        $htmlContent .= "</div>";
+
+        $htmlContent .= "<div class='msm_select_title_containers'>";
+        $htmlContent .= "<select id='msm_comment_type_dropdown-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_comment_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -342,11 +348,22 @@ class EditorComment extends EditorElement
         }
         $htmlContent .= "</select>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
-        $htmlContent .= "<b style='margin-left: 30%;'> COMMENT </b>";
-        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        $htmlContent .= "<div id='msm_comment_title_input-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
+
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $commentTitle = '';
+        }
+        else
+        {
+            $commentTitle = $this->title;
+        }
+
+        $htmlContent .= $commentTitle;
         $htmlContent .= "</div>";
-        $htmlContent .= "<input id='msm_comment_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_comment_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+
+        $htmlContent .= "</div>";
+
         $htmlContent .= "<div id='msm_comment_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
@@ -368,7 +385,6 @@ class EditorComment extends EditorElement
         {
             $htmlContent .= $associate->displayData();
         }
-//        $htmlContent .= "<input id='msm_associate_button-$this->compid' class='msm_associate_buttons' type='button' value='Add Associated Information' onclick='addAssociateForm($this->compid, \"comment\")' disabled='disabled'/>";
         $htmlContent .= "<div class='msm_dnd_containers' id='msm_dnd_container-$this->compid'>Drag additional content to here.<p>Valid child Elements: Associates, internal and/or external references</p></div>";
         $htmlContent .= "</div>";
 
@@ -441,7 +457,13 @@ class EditorComment extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_commentref-$parentId-$this->compid' class='copied_msm_structural_element'>";
-        $htmlContent .= "<select id='msm_commentref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_commentref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
+
+        $htmlContent .= "<div id='msm_element_title_container-$parentId-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 40%;'> COMMENT </b>";
+        $htmlContent .= "</div>";
+
+        $htmlContent .= "<div class='msm_select_title_containers'>";
+        $htmlContent .= "<select id='msm_commentref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_commentref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -463,10 +485,21 @@ class EditorComment extends EditorElement
         }
         $htmlContent .= "</select>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$parentId-$this->compid' class='msm_element_title_containers'>";
-        $htmlContent .= "<b style='margin-left: 30%;'> COMMENT </b>";
+        $htmlContent .= "<div id='msm_commentref_title_input-$parentId-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
+
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $commentrefTitle = '';
+        }
+        else
+        {
+            $commentrefTitle = $this->title;
+        }
+
+        $htmlContent .= $commentrefTitle;
         $htmlContent .= "</div>";
-        $htmlContent .= "<input id='msm_commentref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Comment' name='msm_commentref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
+        $htmlContent .= "</div>";
+        
         $htmlContent .= "<div id='msm_commentref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";

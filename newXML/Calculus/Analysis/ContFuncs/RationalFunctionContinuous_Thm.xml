@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          type="Corollary"
          id="Thm_RationalFunctionContinuous"
-         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Theorem.xsd">
+         xsi:schemaLocation="Theorem &#xA;                    file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Theorem.xsd">
    <caption>Rational functions are continuous</caption>
    <statement.theorem>
       <para>

@@ -22,7 +22,7 @@
  * in associate element forms changes.  It calls various other function in this js file to change the form according to the 
  * selection of the dropdown menu.
  * 
- * @param eventObject e          event object from user changing the dropdown menu selection
+ * @param {eventObject} e          event object from user changing the dropdown menu selection
  */
 function processReftype(e)
 {
@@ -38,7 +38,8 @@ function processReftype(e)
     $(idString).each(function() {
         $(this).empty().remove();
     })
-    var currentId;
+    var currentId = '';
+    var currentTitle = '';
     var associateInfo = selectedId.split("-");
     
     // associate[1] = parent structural element id
@@ -52,16 +53,19 @@ function processReftype(e)
         case 1: //comment
             element = makeRefComment(indexNumber);
             $(element).insertAfter("#"+selectedId);
+            currentTitle = 'msm_commentref_title_input-'+indexNumber;
             currentId = 'msm_commentref_content_input-'+indexNumber;
             break;
         case 2: //def
             element = makeRefDefinition(indexNumber);
             $(element).insertAfter("#"+selectedId);
+            currentTitle = 'msm_defref_title_input-'+indexNumber;
             currentId = 'msm_defref_content_input-'+indexNumber;
             break;
         case 3: //theorem
             element = makeRefTheorem(indexNumber);
             $(element).insertAfter("#"+selectedId);
+            currentTitle = 'msm_theoremref_title_input-'+indexNumber;
             currentId = 'msm_theoremref_content_input-'+indexNumber+"-1";
             break;
         case 4:
@@ -73,7 +77,8 @@ function processReftype(e)
             break;
     }
     
-    // activate the tinymce editors for textareas
+    // activate the tinymce editors for title input fields and content textareas
+    initTitleEditor(currentTitle, "26%");
     initEditor(currentId);
     
     $(".msm_dnd_containers").droppable({
@@ -120,16 +125,17 @@ function processReftype(e)
 /**
  * This method creates the form for making the definition reference materials.
  * 
- * @param string idindex                        string to attach to end of HTML ID to make this element unique
- * @param int dbId                              if user added internal/external reference, this value flags this reference
+ * @param {string} idindex                        string to attach to end of HTML ID to make this element unique
+ * @param {integer} dbId                              if user added internal/external reference, this value flags this reference
  *                                              when the values are passed to the server side to be inserted into db
  *                                              (if dbId is not an empty value, then the data already exists so do not insert data to msm_def table)
- * @return object clonedCurrentElement          definition form container to be inserted below associate info element forms
+ * @return {object} clonedCurrentElement          definition form container to be inserted below associate info element forms
  */
 function makeRefDefinition(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
     
+    var selectAndTitleDiv = $("<div class='msm_select_title_containers'></div>");
     var defSelectMenu = $('<select name="msm_defref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_defref_type_dropdown-'+idindex+'">\n\
                                 <option value="Notation">Notation</option>\n\
                                 <option value="Definition">Definition</option>\n\
@@ -138,7 +144,7 @@ function makeRefDefinition(idindex, dbId)
                                 <option value="Axiom">Axiom</option>\n\
                                 <option value="Terminology">Terminology</option>\n\
                                 </select>');
-    var defTitle = $("<span class='msm_element_title'><b style='margin-left: 30%;'> DEFINITION </b></span>");
+    var defTitle = $("<span class='msm_element_title'><b style='margin-left: 40%;'> DEFINITION </b></span>");
     var defTitleField = $('<input class="msm_unit_child_title" id="msm_defref_title_input-'+idindex+'" name="msm_defref_title_input-'+idindex+'" placeholder=" Title of Definition"/>');
           
     var defContentField = $('<textarea class="msm_unit_child_content" id="msm_defref_content_input-'+idindex+'" name="msm_defref_content_input-'+idindex+'"/>');
@@ -159,10 +165,14 @@ function makeRefDefinition(idindex, dbId)
                
     clonedCurrentElement.attr("id", "copied_msm_defref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
+    
+    selectAndTitleDiv.append(defSelectMenu);
+    selectAndTitleDiv.append(defTitleField);
    
-    clonedCurrentElement.append(defSelectMenu);
+    //    clonedCurrentElement.append(defSelectMenu);
     clonedCurrentElement.append(defTitle);
-    clonedCurrentElement.append(defTitleField);
+    clonedCurrentElement.append(selectAndTitleDiv);
+    //    clonedCurrentElement.append(defTitleField);
     clonedCurrentElement.append(defContentField);
     clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(subordinateResult);
@@ -175,16 +185,17 @@ function makeRefDefinition(idindex, dbId)
 /**
  * This method creates the form for making the theorem reference materials.
  * 
- * @param string idindex                        string to attach to end of HTML ID to make this element unique
- * @param int dbId                              if user added internal/external reference, this value flags this reference
- *                                              when the values are passed to the server side to be inserted into db
- *                                              (if dbId is not an empty value, then the data already exists so do not insert data to msm_theorem table)
- * @return object clonedCurrentElement          theorem form container to be inserted below associate info element forms
+ * @param {string} idindex                        string to attach to end of HTML ID to make this element unique
+ * @param {int} dbId                              if user added internal/external reference, this value flags this reference
+ *                                                when the values are passed to the server side to be inserted into db
+ *                                                (if dbId is not an empty value, then the data already exists so do not insert data to msm_theorem table)
+ * @return {object} clonedCurrentElement          theorem form container to be inserted below associate info element forms
  */
 function makeRefTheorem(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
 
+    var selectAndTitleDiv = $("<div class='msm_select_title_containers'></div>");
     var theoremSelectMenu = $('<select name="msm_theoremref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_theoremref_type_dropdown-'+idindex+'">\n\
                                     <option value="Theorem">Theorem</option>\n\
                                     <option value="Proposition">Proposition</option>\n\
@@ -192,6 +203,7 @@ function makeRefTheorem(idindex, dbId)
                                     <option value="Corollary">Corollary</option>\n\
                                 </select>');
     
+    var theoremTitle = $("<span class='msm_element_title'><b style='margin-left: 41%;'> Theorem </b></span>");
     var theoremTitleField = $('<input class="msm_unit_child_title" id="msm_theoremref_title_input-'+idindex+'" name="msm_theoremref_title_input-'+idindex+'" placeholder=" Title of Theorem"/>');
             
     var theoremContentWrapper = $('<div class="msm_theoremref_content_containers" id="msm_theoremref_content_container-'+idindex+'"></div>');
@@ -234,6 +246,7 @@ function makeRefTheorem(idindex, dbId)
     theoremPartWrapper.append(partDndDiv);
     theoremContentTitleContainer.append(theoremContentTitleHidden);
             
+            
     theoremStatementWrapper.append(theoremContentTitleContainer);
     theoremStatementWrapper.append(theoremContentField);
     theoremStatementWrapper.append(subordinateContainer);
@@ -241,9 +254,15 @@ function makeRefTheorem(idindex, dbId)
     theoremStatementWrapper.append(theoremPartWrapper);
             
     theoremContentWrapper.append(theoremStatementWrapper);
+    
+    selectAndTitleDiv.append(theoremSelectMenu);
+    selectAndTitleDiv.append(theoremTitleField);
             
-    clonedCurrentElement.append(theoremSelectMenu);
-    clonedCurrentElement.append(theoremTitleField);
+            
+    //    clonedCurrentElement.append(theoremSelectMenu);
+    //    clonedCurrentElement.append(theoremTitleField);
+    clonedCurrentElement.append(theoremTitle);
+    clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(dndDiv);
     clonedCurrentElement.append(theoremDescriptionLabel);
@@ -255,21 +274,23 @@ function makeRefTheorem(idindex, dbId)
 /**
  * This method creates the form for making the comment reference materials.
  * 
- * @param string idindex                        string to attach to end of HTML ID to make this element unique
- * @param int dbId                              if user added internal/external reference, this value flags this reference
- *                                              when the values are passed to the server side to be inserted into db
- *                                              (if dbId is not an empty value, then the data already exists so do not insert data to msm_comment table)
- * @return object clonedCurrentElement          comment form container to be inserted below associate info element forms
+ * @param {string} idindex                        string to attach to end of HTML ID to make this element unique
+ * @param {int} dbId                              if user added internal/external reference, this value flags this reference
+ *                                                when the values are passed to the server side to be inserted into db
+ *                                                (if dbId is not an empty value, then the data already exists so do not insert data to msm_comment table)
+ * @return {object} clonedCurrentElement          comment form container to be inserted below associate info element forms
  */
 function makeRefComment(idindex, dbId)
 {
     var clonedCurrentElement = $("<div></div>");
+    
+    var selectAndTitleDiv = $("<div class='msm_select_title_containers'></div>");
     var commentSelectMenu = $('<select name="msm_commentref_type_dropdown-'+idindex+'" class="msm_unit_child_dropdown" id="msm_commentref_type_dropdown-'+idindex+'">\n\
                                     <option value="Comment">Comment</option>\n\
                                     <option value="Remark">Remark</option>\n\
                                     <option value="Information">Information</option>\n\
                                </select>');
-    var commentTitle = $("<span class='msm_element_title'><b style='margin-left: 30%;'> COMMENT </b></span>");
+    var commentTitle = $("<span class='msm_element_title'><b style='margin-left: 40%;'> COMMENT </b></span>");
     var commentTitleField = $('<input class="msm_unit_child_title" id="msm_commentref_title_input-'+idindex+'" name="msm_commentref_title_input-'+idindex+'" placeholder=" Title of Comment"/>');
           
     var commentContentField = $('<textarea class="msm_unit_child_content" id="msm_commentref_content_input-'+idindex+'" name="msm_commentref_content_input-'+idindex+'"/>');
@@ -291,10 +312,14 @@ function makeRefComment(idindex, dbId)
     
     clonedCurrentElement.attr("id", "copied_msm_commentref-"+idindex);
     clonedCurrentElement.attr("class", "copied_msm_structural_element");
+    
+    selectAndTitleDiv.append(commentSelectMenu);
+    selectAndTitleDiv.append(commentTitleField);
             
-    clonedCurrentElement.append(commentSelectMenu);
+    //    clonedCurrentElement.append(commentSelectMenu);
     clonedCurrentElement.append(commentTitle);
-    clonedCurrentElement.append(commentTitleField);
+    //    clonedCurrentElement.append(commentTitleField);
+    clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(commentContentField);
     clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(subordinateResult);
@@ -342,7 +367,7 @@ function makeRefComment(idindex, dbId)
  * This method creates the form for additional contents in theorem element.  It is triggered when an 
  * "Extra Content" element is dragged and dropped to a droppable container in theorem.
  * 
- * @param eventObject event         event object triggered from item being dropped into a designated droppable container
+ * @param {eventObject} event         event object triggered from item being dropped into a designated droppable container
  */
 function addrefTheoremContent(event)
 {
@@ -366,7 +391,6 @@ function addrefTheoremContent(event)
             newId++;
         }
     }
-    
     var theoremStatementWrapper = $('<div class="msm_theoremref_statement_containers" id="msm_theoremref_statement_container-'+idNumber+'-'+newId+'"></div>');
     var theoremCloseButton = $('<a class="msm_element_close" onclick="deleteElement(event)">x</a>');
     
@@ -431,6 +455,12 @@ function addrefTheoremContent(event)
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
             });
+            
+            $(this).find('.msm_theorem_part_title').each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
+            
         },
         stop: function(event, ui)
         {
@@ -445,6 +475,11 @@ function addrefTheoremContent(event)
             
             $(this).find('.msm_theorem_content').each(function() {
                 initEditor(this.id);
+                $(this).sortable("refresh");
+            });
+            
+            $(this).find('.msm_theorem_part_title').each(function() {
+                initTitleEditor(this.id, "85%");
                 $(this).sortable("refresh");
             });
         }
@@ -470,7 +505,7 @@ function addrefTheoremContent(event)
  * This method creates the form for additional parts in theorem element.  It is triggered when an 
  * "Parts of a Theorem" element is dragged and dropped to a droppable container in theorem content.
  * 
- * @param eventObject event         event object triggered from item being dropped into a designated droppable container
+ * @param {eventObject} event         event object triggered from item being dropped into a designated droppable container
  */
 function addrefTheoremPart(event)
 {    
@@ -525,6 +560,13 @@ function addrefTheoremPart(event)
         tinymce.execCommand('mceRemoveControl', true, "msm_theoremref_part_content-"+idNumber+"-"+newId);
     }
     
+    if(tinymce.getInstanceById("msm_theoremref_part_title-"+idNumber+"-"+newId))
+    {
+        tinyMCE.execCommand('mceFocus', false, "msm_theoremref_part_title-"+idNumber+"-"+newId);
+        tinymce.execCommand('mceRemoveControl', true, "msm_theoremref_part_title-"+idNumber+"-"+newId);
+    }
+    
+    initTitleEditor("msm_theoremref_part_title-"+idNumber+"-"+newId, "85%");
     initEditor("msm_theoremref_part_content-"+idNumber+"-"+newId);
     
     $("#msm_theoremref_part_droparea-"+idNumber).sortable({
@@ -544,6 +586,11 @@ function addrefTheoremPart(event)
             
             // this code along with the one in stop is needed for enabling sortable on the div containing
             // the tinymce editor so the iframe part of the editor doesn't become disabled
+            $(this).find(".msm_theorem_part_title").each(function() {
+                tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
+                tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
+            });
+            
             $(this).find('.msm_theorem_content').each(function() {
                 tinyMCE.execCommand('mceFocus', false, $(this).attr("id"));
                 tinymce.execCommand('mceRemoveControl', true, $(this).attr("id"));
@@ -554,6 +601,11 @@ function addrefTheoremPart(event)
             $("#"+ui.item.context.id).css("background-color", "#EDEDED");
             
             // if there are children in intro element, need to refresh the ifram of its editors
+            $(this).find('.msm_theorem_part_title').each(function() {
+                initTitleEditor(this.id, "85%");
+                $(this).sortable("refresh");
+            });
+            
             $(this).find('.msm_theorem_content').each(function() {
                 initEditor(this.id);
                 $(this).sortable("refresh");

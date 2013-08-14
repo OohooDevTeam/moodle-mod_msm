@@ -84,7 +84,6 @@ else if (isset($_POST['mode']))
             $unitChildElements[] = $childRecord;
         }
     }
-
     $childOrderArray = explode(",", $_POST['childOrder']);
 
     $indexElement = null;

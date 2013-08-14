@@ -20,6 +20,7 @@ $(document).ready(function(){
     $("#msm_unit_form").submit(function(event) { 
         //         prevents navigation to msmUnitForm.php
         event.preventDefault();   
+        reinitAllTitles(); 
         $("#msm_unit_short_title").removeAttr("readonly");
         $("#msm_unit_description_input").removeAttr("readonly");
         $(".copied_msm_structural_element select").removeAttr("disabled");
@@ -127,7 +128,19 @@ function submitForm()
         $(this).val(tinymce.getInstanceById(this.id).getContent({
             format: "html"
         }));
-    })
+    });
+    
+    $(".msm_unit_child_title").each(function() {
+        $(this).val(tinymce.getInstanceById(this.id).getContent({
+            format: "html"
+        }));
+    });
+    
+    $(".msm_theorem_part_title").each(function() {
+        $(this).val(tinymce.getInstanceById(this.id).getContent({
+            format: "html"
+        }));
+    });
         
     var urlParam = window.location.search;
        
@@ -362,8 +375,8 @@ function submitForm()
  *  This method finds all the subordinate from a given content element in the form and returns
  *  them in a form of an array.
  *  
- *  @param string id            HTML ID of the textarea with tinyMCE
- *  @return array               an associative array of all the subordinates with its HTML ID as a key
+ *  @param {string} id            HTML ID of the textarea with tinyMCE
+ *  @return {array}               an associative array of all the subordinates with its HTML ID as a key
  */
 function prepareSubordinate(id)
 {
@@ -383,17 +396,20 @@ function prepareSubordinate(id)
  */
 function removeTinymceEditor()
 { 
-    titleInput2Div("msm_unit_title");
+    titleInput2Div("msm_unit_title", "79.5%");
     $(".msm_unit_intro_title").each(function() {
         titleInput2Div(this.id);
     });
     
     $(".msm_intro_child_titles").each(function() {
-        titleInput2Div(this.id);
+        titleInput2Div(this.id, "91.5%");
     });
     
     $(".msm_unit_body_title").each(function() {
-        titleInput2Div(this.id);
+        titleInput2Div(this.id, "91.5%");
+    });
+    $(".msm_unit_child_title").each(function() {
+        titleInput2Div(this.id, "26%");
     })
     
     $('#msm_child_appending_area').find('.msm_unit_child_content').each(function() {     
@@ -403,6 +419,14 @@ function removeTinymceEditor()
     $('#msm_intro_child_container').find('.msm_intro_child_contents').each(function() {
         textArea2Div($(this).attr("id"));
     });
+    
+    $(".msm_unit_child_dropdown").each(function() {
+        $(this).addClass("msm_display_unit_child_dropdown");
+    });
+    
+    $(".msm_theorem_part_title").each(function() {
+        titleInput2Div($(this).attr("id"), "85%");
+    })
     
     $('.msm_theorem_part_dropareas').each(function() {
         if(this.id.match(/theoremref/))
@@ -443,7 +467,7 @@ function removeTinymceEditor()
  * This method is used to convert the textarea with tinyMCE enabled to divs with
  * the tinyMCE contents and without tinyMCE editor activated.  
  * 
- * @param string id                 HTML ID of the textarea
+ * @param {string} id                 HTML ID of the textarea
  */
 function textArea2Div(id)
 {
@@ -479,10 +503,11 @@ function textArea2Div(id)
 /**
  * This method converts the title input field with tinyMCE enabled to a div without tinyMCE but with identical content for
  * display purposes.
+ * 
+ * @param {string} id                HTML ID of the title input field
  */
-function titleInput2Div(id)
+function titleInput2Div(id, width)
 {
-    console.log("title input to div --> id: "+id);
     var edInstance = tinyMCE.getInstanceById(id);
     if(edInstance)
     {
@@ -527,6 +552,7 @@ function titleInput2Div(id)
     }
    
     $(editorTitle).html(title);
+    $(editorTitle).css("width", width);
     $("#"+id).replaceWith(editorTitle);
 }
 
@@ -614,6 +640,9 @@ function disableEditorFunction()
 /**
  * This method is used to activate the jquery UI dialog popup windows for the display of
  * information elements in associate/subordinate elements during preview and search result display.
+ * 
+ * @param {string} elementid            end of HTML ID of anchor element that triggered the information element display
+ * @param {string} dialogid             HTML ID of the dialog window to be open for information element display
  */
 function previewInfo(elementid, dialogid)
 {        

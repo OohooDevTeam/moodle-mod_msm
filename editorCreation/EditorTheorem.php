@@ -92,7 +92,7 @@ class EditorTheorem extends EditorElement
                 $this->description = $_POST['msm_theoremref_description_input-' . $newTid];
             }
 
-            $this->title = $_POST['msm_theoremref_title_input-' . $newTid];
+            $this->title = $this->processMath($_POST['msm_theoremref_title_input-' . $newTid]);
 
             $contentmatch = '/msm_theoremref_content_input-' . $newTid . '-\d+.*$/';
 
@@ -122,7 +122,7 @@ class EditorTheorem extends EditorElement
         {
             $this->type = $_POST['msm_theorem_type_dropdown-' . $idNumber];
             $this->description = $_POST['msm_theorem_description_input-' . $idNumber];
-            $this->title = $_POST['msm_theorem_title_input-' . $idNumber];
+            $this->title = $this->processMath($_POST['msm_theorem_title_input-' . $idNumber]);
 
             $contentmatch = "/^msm_theorem_content_input-$idNumber-.*/";
 
@@ -264,9 +264,15 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
 
-        $htmlContent .= "</div>";
+        $htmlContent .= "</div>";      
 
-        $htmlContent .= "<select id='msm_theorem_type_dropdown-$this->compid' class='msm_unit_child_dropdown' name='msm_theorem_type_dropdown-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 40%;'> THEOREM </b>";
+        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div class='msm_select_title_containers'>";
+         $htmlContent .= "<select id='msm_theorem_type_dropdown-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_theorem_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -296,12 +302,22 @@ class EditorTheorem extends EditorElement
                 break;
         }
         $htmlContent .= "</select>";
+        
+        $htmlContent .= "<div id='msm_theorem_title_input-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
-        $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
-        $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $theoremTitle = '';
+        }
+        else
+        {
+            $theoremTitle = $this->title;
+        }
+
+        $htmlContent .= $theoremTitle;
         $htmlContent .= "</div>";
-        $htmlContent .= "<input id='msm_theorem_title_input-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theorem_title_input-$this->compid' disabled='disabled' value='$this->title'/>";
+        
+        $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_content_container-$this->compid' class='msm_theorem_content_containers'>";
         foreach ($this->contents as $content)
         {
@@ -379,17 +395,21 @@ class EditorTheorem extends EditorElement
      * This method is called by the EditorInfo class to display the theorem as a reference material.
      * The information is hidden until the user triggers the display by clicking on the associate mini buttons.
      * 
-     * @global moodle_database $DB
      * @param string $parentId          End of HTML ID that made the parent(ie. associate) HTML element unique
      * @return HTML string
      */
     function displayRefData($parentId)
     {
-        global $DB;
         $htmlContent = '';
 
-        $htmlContent .= "<div id='copied_msm_theoremref-$parentId-$this->compid' class='copied_msm_structural_element'>";
-        $htmlContent .= "<select id='msm_theoremref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown' name='msm_theoremref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<div id='copied_msm_theoremref-$parentId-$this->compid' class='copied_msm_structural_element'>";        
+
+        $htmlContent .= "<div id='msm_element_title_container-$parentId-$this->compid' class='msm_element_title_containers'>";
+        $htmlContent .= "<b style='margin-left: 40%;'> THEOREM </b>";
+        $htmlContent .= "</div>";
+        
+        $htmlContent .= "<div class='msm_select_title_containers'>";
+        $htmlContent .= "<select id='msm_theoremref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_theoremref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -419,11 +439,23 @@ class EditorTheorem extends EditorElement
                 break;
         }
         $htmlContent .= "</select>";
+        
+        $htmlContent .= "<div id='msm_theoremref_title_input-$parentId-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
 
-        $htmlContent .= "<div id='msm_element_title_container-$parentId-$this->compid' class='msm_element_title_containers'>";
-        $htmlContent .= "<b style='margin-left: 30%;'> THEOREM </b>";
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $theoremrefTitle = '';
+        }
+        else
+        {
+            $theoremrefTitle = $this->title;
+        }
+
+        $htmlContent .= $theoremrefTitle;
+        $htmlContent .= "</div>";        
+        
         $htmlContent .= "</div>";
-        $htmlContent .= "<input id='msm_theoremref_title_input-$parentId-$this->compid' class='msm_unit_child_title' placeholder='Title of Theorem' name='msm_theoremref_title_input-$parentId-$this->compid' disabled='disabled' value='$this->title'/>";
+        
         $htmlContent .= "<div id='msm_theoremref_content_container-$parentId-$this->compid' class='msm_theoremref_content_containers'>";
         foreach ($this->contents as $content)
         {

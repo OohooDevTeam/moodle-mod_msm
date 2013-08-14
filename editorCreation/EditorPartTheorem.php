@@ -234,7 +234,21 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$idEnding'>Part Theorem title: </label>";
-        $htmlContent .= "<input id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$idEnding' disabled='disabled' value='$this->caption'/>";
+         $htmlContent .= "<div id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title msm_editor_titles' style='width: 85%;'>";
+
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $partTheoremTitle = '';
+        }
+        else
+        {
+            $partTheoremTitle = $this->title;
+        }
+
+        $htmlContent .= $partTheoremTitle;
+        $htmlContent .= "</div>";
+        
+//        $htmlContent .= "<input id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theorem_part_title-$idEnding' disabled='disabled' value='$this->caption'/>";
         $htmlContent .= "<div id='msm_theorem_part_content-$idEnding' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
@@ -311,7 +325,21 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
         $htmlContent .= "<label class='msm_theoremref_part_tlabel' for='msm_theoremref_part_title-$parentId-$this->compid'>Part Theorem title: </label>";
-        $htmlContent .= "<input id='msm_theoremref_part_title-$parentId-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$parentId-$this->compid' disabled='disabled' value='$this->caption'/>";
+        $htmlContent .= "<div id='msm_theoremref_part_content-$parentId-$this->compid' class='msm_theorem_part_title msm_editor_titles' style='width: 85%;'>";
+
+        if (strpos($this->title, "<div/>") !== false)
+        {
+            $partTheoremRefTitle = '';
+        }
+        else
+        {
+            $partTheoremRefTitle = $this->title;
+        }
+
+        $htmlContent .= $partTheoremRefTitle;
+        $htmlContent .= "</div>";
+        
+//        $htmlContent .= "<input id='msm_theoremref_part_title-$parentId-$this->compid' class='msm_theorem_part_title' placeholder='Title for this part of the theorem.' name='msm_theoremref_part_title-$parentId-$this->compid' disabled='disabled' value='$this->caption'/>";
         $htmlContent .= "<div id='msm_theoremref_part_content-$parentId-$this->compid' class='msm_theorem_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
