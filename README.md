@@ -18,7 +18,7 @@ Installation:
 ========================================================================================================================
 Prerequisites:
 
-- Moodle version 2.3+ (tested upto version 2.5)
+- Moodle version 2.4+
 - Matheditor TinyMCE Plugin: https://github.com/oohoo/moodle-tinymce_matheditor
 - Subordinate TinyMCE Plugin: https://github.com/gayoung/moodle-tinymce_subordinate
 - Remove Subordinate TinyMCE Plugin: https://github.com/oohoo/moodle-tinymce_subnolink
