@@ -330,13 +330,8 @@ function initTrees(idPair, parent)
  *  This method is used to create blank unit form when the user triggers the "New Unit" button after save.
  */
 function newUnit()
-{
+{ 
     $("#msm_child_appending_area").empty();
-    
-    if(tinymce.getInstanceById("msm_unit_title") != null)
-    {
-        tinyMCE.execCommand("mceRemoveControl", true, "msm_unit_title");        
-    }
     
     // need to switch display only div to input field so when the form is submitted, then the data can be passed as POST object
     $("div#msm_unit_title").replaceWith('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
@@ -709,7 +704,7 @@ function saveComp(e)
  * @param {eventObject} e                 click event object from the edit button in overlay
  */
 function editUnit(e)
-{   
+{  
     reinitAllTitles();   
     
     $("#msm_editor_new").attr("disabled", "disabled");
@@ -884,13 +879,19 @@ function editUnit(e)
  */
 function reinitAllTitles() 
 {
-    var inputUnitTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
-    processMathContent("msm_unit_title");
-    var currentTitleContent = $("div#msm_unit_title").html();    
+    var unitTitle = $("div#msm_unit_title");
+    if(unitTitle.length != 0)
+    {
+        var inputUnitTitle = $('<input class="msm_title_input" id="msm_unit_title" name="msm_unit_title" onkeypress="validateBorder()"/>');
+        processMathContent("msm_unit_title");
+        var currentTitleContent = $("div#msm_unit_title").html();    
     
-    $(inputUnitTitle).val(currentTitleContent);
+        $(inputUnitTitle).val(currentTitleContent);
     
-    $("div#msm_unit_title").replaceWith(inputUnitTitle);   
+        $("div#msm_unit_title").replaceWith(inputUnitTitle);  
+        
+        initTitleEditor("msm_unit_title", "80%");
+    }    
     
     $("div.msm_editor_titles").each(function() {
         var currentIntroId = this.id;
@@ -922,9 +923,7 @@ function reinitAllTitles()
         {
             initTitleEditor(this.id, "96%");
         }   
-    });
-    
-    initTitleEditor("msm_unit_title", "80%");
+    });    
 }
 
 
@@ -2300,6 +2299,12 @@ function cancelUnit(e)
                     success: function(data)
                     {
                         htmlstring = JSON.parse(data);
+                        
+                        if(tinyMCE.getInstanceById("msm_unit_title") != null)
+                        {
+                            console.log("removing tinymce");
+                            tinyMCE.execCommand("mceRemoveControl", true, "msm_unit_title");        
+                        }
             
                         $("#msm_unit_form").empty();
             
@@ -2347,8 +2352,12 @@ function cancelUnit(e)
                                 processAdditionalChild(event, ui.draggable.context.id);      
                                 allowDragnDrop();  
                             }
-                        });
-                    
+                        });               
+           
+                        $(".msm_editor_buttons").remove();
+                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");        
+                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
+                        
                         $("#msm_unit_title").dblclick(function(){
                             processMathContent(this.id);
                             initTitleEditor(this.id, "80%");
@@ -2364,10 +2373,6 @@ function cancelUnit(e)
                             $(this).addClass("msm_add_border");
                             allowDragnDrop();
                         });
-           
-                        $(".msm_editor_buttons").remove();
-                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_new\" type=\"button\" onclick=\"newUnit()\"> New Unit </button>").appendTo("#msm_editor_middle");        
-                        $("<button class=\"msm_editor_buttons\" id=\"msm_editor_remove\" type=\"button\" onclick=\"removeUnit(event)\"> Remove this Unit </button>").appendTo("#msm_editor_middle");
                     },
                     error: function(data)
                     {

@@ -39,7 +39,8 @@ $(document).ready(function(){
                 var scriptChild = $(this).find("script");
         
                 var scriptWithMath = scriptChild[scriptChild.length-1];
-                var mathContent = "\\("+$(scriptWithMath).text()+"\\)"; 
+                var mathText = $(scriptWithMath).text();
+                var mathContent = "\\("+mathText+"\\)"; 
                 $(newspan).append(mathContent);
                 
                 $(this).replaceWith(newspan);
@@ -344,7 +345,8 @@ function submitForm()
                         }
                     });
                     
-                    $("#msm_unit_title").dblclick(function(){                       
+                    $("#msm_unit_title").dblclick(function(){ 
+                        console.log("here?");
                         processMathContent(this.id);
                         initTitleEditor(this.id, "80%");
                         allowDragnDrop();
@@ -505,6 +507,7 @@ function textArea2Div(id)
  * display purposes.
  * 
  * @param {string} id                HTML ID of the title input field
+ * @param {string} width             percentage value of the input field width
  */
 function titleInput2Div(id, width)
 {
@@ -518,7 +521,7 @@ function titleInput2Div(id, width)
         tinyMCE.execCommand('mceRemoveControl', true, id);
     }
     tinyMCE.execCommand("mceRemoveControl", true, id); 
-                        
+                            
     var editorTitle = document.createElement("div");
     editorTitle.id = id;
     var title = null;
@@ -552,7 +555,7 @@ function titleInput2Div(id, width)
     }
    
     $(editorTitle).html(title);
-    $(editorTitle).css("width", width);
+    $(editorTitle).css("width", width);     
     $("#"+id).replaceWith(editorTitle);
 }
 

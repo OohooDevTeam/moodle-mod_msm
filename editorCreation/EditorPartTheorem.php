@@ -236,13 +236,13 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<label class='msm_theorem_part_tlabel' for='msm_theorem_part_title-$idEnding'>Part Theorem title: </label>";
          $htmlContent .= "<div id='msm_theorem_part_title-$idEnding' class='msm_theorem_part_title msm_editor_titles' style='width: 85%;'>";
 
-        if (strpos($this->title, "<div/>") !== false)
+        if (strpos($this->caption, "<div/>") !== false)
         {
             $partTheoremTitle = '';
         }
         else
         {
-            $partTheoremTitle = $this->title;
+            $partTheoremTitle = $this->caption;
         }
 
         $htmlContent .= $partTheoremTitle;
@@ -327,13 +327,13 @@ class EditorPartTheorem extends EditorElement
         $htmlContent .= "<label class='msm_theoremref_part_tlabel' for='msm_theoremref_part_title-$parentId-$this->compid'>Part Theorem title: </label>";
         $htmlContent .= "<div id='msm_theoremref_part_content-$parentId-$this->compid' class='msm_theorem_part_title msm_editor_titles' style='width: 85%;'>";
 
-        if (strpos($this->title, "<div/>") !== false)
+        if (strpos($this->caption, "<div/>") !== false)
         {
             $partTheoremRefTitle = '';
         }
         else
         {
-            $partTheoremRefTitle = $this->title;
+            $partTheoremRefTitle = $this->caption;
         }
 
         $htmlContent .= $partTheoremRefTitle;
