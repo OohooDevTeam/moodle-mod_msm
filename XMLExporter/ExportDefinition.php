@@ -59,10 +59,14 @@ class ExportDefinition extends ExportElement
 
         if (!empty($this->caption))
         {
-            $captionNode = $defCreator->createElement("caption");
-            $captionText = $defCreator->createTextNode($this->caption);
-            $captionNode->appendChild($captionText);
-            $defNode->appendChild($captionNode);
+            $oldtitleNode = $defCreator->createElement("caption");
+            $createdTitleNode = $this->createXmlTitle($defCreator, $this->caption, $oldtitleNode);
+            $titleNode = $defCreator->importNode($createdTitleNode, true);
+            
+//            $captionNode = $defCreator->createElement("caption");
+//            $captionText = $defCreator->createTextNode($this->caption);
+//            $captionNode->appendChild($captionText);
+            $defNode->appendChild($titleNode);
         }
 
         if (!empty($this->description))

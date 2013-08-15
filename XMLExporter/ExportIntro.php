@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -22,8 +23,7 @@
  *
  * @author Ga Young Kim
  */
-class ExportIntro extends ExportElement
-{
+class ExportIntro extends ExportElement {
 
     public $id;                     // ID of the current intro element in msm_intro database table
     public $compid;                 // ID of the current intro element in msm_compositor database table
@@ -40,32 +40,27 @@ class ExportIntro extends ExportElement
      * 
      * @return DOMElement
      */
-    public function exportData()
-    {
+
+    public function exportData() {
         $introCreator = new DOMDocument();
         $introCreator->formatOutput = true;
         $introCreator->preserveWhiteSpace = false;
         $introNode = $introCreator->createElement("intro");
         $introNode->setAttribute("id", "$this->msmid-$this->compid");
 
-        $captionNode = null;
+        $titleNode = null;
 
-        if (!empty($this->caption))
-        {
+        if (!empty($this->caption)) {
             $captionNode = $introCreator->createElement("caption");
-            $captionText = $introCreator->createTextNode($this->caption);
-            $captionNode->appendChild($captionText);
+            $createdTitleNode = $this->createXmlTitle($introCreator, $this->caption, $captionNode);
+            $titleNode = $introCreator->importNode($createdTitleNode, true);
         }
 
-        foreach ($this->blocks as $key => $block)
-        {
+        foreach ($this->blocks as $key => $block) {
             $blockNode = null;
-            if (($key == 0) && ($captionNode != null))
-            {
-                $blockNode = $block->exportData($captionNode);
-            }
-            else
-            {
+            if (($key == 0) && ($titleNode != null)) {
+                $blockNode = $block->exportData($titleNode);
+            } else {
                 $blockNode = $block->exportData();
             }
             $newblockNode = $introCreator->importNode($blockNode, true);
@@ -83,8 +78,7 @@ class ExportIntro extends ExportElement
      * @param int $compid               ID of the current intro element in msm_compositor database table
      * @return \ExportIntro
      */
-    public function loadDbData($compid)
-    {
+    public function loadDbData($compid) {
         global $DB;
 
         $introCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -97,12 +91,10 @@ class ExportIntro extends ExportElement
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
-        foreach ($childRecords as $child)
-        {
+        foreach ($childRecords as $child) {
             $childtable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-            if ($childtable->tablename == "msm_block")
-            {
+            if ($childtable->tablename == "msm_block") {
                 $block = new ExportBlock();
                 $block->loadDbData($child->id);
                 $this->blocks[] = $block;

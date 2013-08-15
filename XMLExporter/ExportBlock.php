@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -22,8 +23,7 @@
  *
  * @author Ga Young Kim
  */
-class ExportBlock extends ExportElement
-{
+class ExportBlock extends ExportElement {
 
     public $id;                     // database ID of current block element in msm_block database table
     public $compid;                 // database ID of current block element in msm_compositor database table
@@ -41,30 +41,26 @@ class ExportBlock extends ExportElement
      * @param DOMElement $captionNode       // passed from ExportIntro if the intro element has a title associated with it
      * @return DOMElement
      */
-    public function exportData($captionNode = '')
-    {
+
+    public function exportData($captionNode = '') {
         $blockCreator = new DOMDocument();
         $blockCreator->formatOutput = true;
         $blockCreator->preserveWhiteSpace = false;
         $blockNode = $blockCreator->createElement("block");
 
-        if (!empty($captionNode))
-        {
+        if (!empty($captionNode)) {
             $impCaption = $blockCreator->importNode($captionNode, true);
             $blockNode->appendChild($impCaption);
-        }
-        else if (!empty($this->caption))
-        {
-            $captionNode = $blockCreator->createElement("caption");
-            $captionText = $blockCreator->createTextNode($this->caption);
-            $captionNode->appendChild($captionText);
-            $blockNode->appendChild($captionNode);
+        } else if (!empty($this->caption)) {
+            $oldtitleNode = $blockCreator->createElement("caption");
+            $createdTitleNode = $this->createXmlTitle($blockCreator, $this->caption, $oldtitleNode);
+            $titleNode = $blockCreator->importNode($createdTitleNode, true);
+            $blockNode->appendChild($titleNode);
         }
 
         $blockbodyNode = $blockCreator->createElement("block.body");
 
-        foreach ($this->content as $content)
-        {
+        foreach ($this->content as $content) {
             $contentNode = $content->exportData();
             $newcontentNode = $blockCreator->importNode($contentNode, true);
             $blockbodyNode->appendChild($newcontentNode);
@@ -82,8 +78,7 @@ class ExportBlock extends ExportElement
      * @param int $compid               database ID of the current block element in the msm_compositor table
      * @return \ExportBlock
      */
-    public function loadDbData($compid)
-    {
+    public function loadDbData($compid) {
         global $DB;
 
         $blockCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -95,12 +90,10 @@ class ExportBlock extends ExportElement
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
-        foreach ($childRecords as $child)
-        {
+        foreach ($childRecords as $child) {
             $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-            switch ($childTable->tablename)
-            {
+            switch ($childTable->tablename) {
                 case "msm_para":
                     $para = new ExportPara();
                     $para->loadDbData($child->id);

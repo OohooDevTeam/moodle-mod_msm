@@ -65,10 +65,14 @@ class ExportPartTheorem extends ExportElement
 
         if (!empty($this->caption))
         {
-            $captionNode = $partCreator->createElement("caption");
-            $captionText = $partCreator->createTextNode($this->caption);
-            $captionNode->appendChild($captionText);
-            $partNode->appendChild($captionNode);
+            $oldtitleNode = $partCreator->createElement("caption");
+            $createdTitleNode = $this->createXmlTitle($partCreator, $this->caption, $oldtitleNode);
+            $titleNode = $partCreator->importNode($createdTitleNode, true);
+            
+//            $captionNode = $partCreator->createElement("caption");
+//            $captionText = $partCreator->createTextNode($this->caption);
+//            $captionNode->appendChild($captionText);
+            $partNode->appendChild($titleNode);
         }
 
         $partbodyNode = $partCreator->createElement("part.body");

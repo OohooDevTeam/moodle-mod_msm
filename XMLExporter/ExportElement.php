@@ -23,8 +23,7 @@
  *
  * @author Ga Young Kim
  */
-abstract class ExportElement
-{
+abstract class ExportElement {
 
     // this abstrac function allows the objects of the child classes to retrieve desired data from the database tables
     // (for more informations, read the documentations written in each of the classes)
@@ -43,19 +42,17 @@ abstract class ExportElement
      * @param DOMNode $DomNode                  new title element to be appended to the new XML file
      * @return DOMNode
      */
-    function createXmlTitle($DomDocument, $title, $DomNode)
-    {
+    function createXmlTitle($DomDocument, $title, $DomNode) {
         $titleDoc = new DOMDocument();
         $titleDoc->formatOutput = true;
         $titleDoc->preserveWhiteSpace = false;
 
         $DomDocument->formatOutput = true;
         $DomDocument->preserveWhiteSpace = false;
-        
+
         // it needs to have root element to be read by loadXML
         // so if there isnt one already, then add one.
-        if(strpos($title, "<div") === false)
-        {
+        if (strpos($title, "<div") === false) {
             $title = "<div>$title</div>";
         }
 
@@ -67,7 +64,7 @@ abstract class ExportElement
         $title = str_replace("<p>", "", $title);
         $title = preg_replace("/<p.*?>/", '', $title);
         $title = str_replace("</p>", "", $title);
-        
+
         $titleDoc->loadXML($title);
         $divNode = $titleDoc->documentElement;
 
@@ -76,8 +73,7 @@ abstract class ExportElement
         $titleDoc->formatOutput = true;
         $titleDoc->preserveWhiteSpace = false;
 
-        foreach ($divNode->childNodes as $child)
-        {
+        foreach ($divNode->childNodes as $child) {
             $childNode = $DomDocument->importNode($child, true);
             $DomNode->appendChild($childNode);
         }
@@ -98,8 +94,7 @@ abstract class ExportElement
      * @param Object $object                    Instace of the class that called this method
      * @return DOMElement
      */
-    function createXmlContent($DomDocument, $content, $DomNode, $object = '')
-    {
+    function createXmlContent($DomDocument, $content, $DomNode, $object = '') {
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
         $contentDoc->preserveWhiteSpace = false;
@@ -119,44 +114,34 @@ abstract class ExportElement
         $contentDoc->loadXML($content);
         $divNode = $contentDoc->documentElement;
 
-        foreach ($divNode->childNodes as $child)
-        {
-            if ($child->nodeType == XML_ELEMENT_NODE)
-            {
-                if ($child->tagName == "p")
-                {
-                    if (!empty($object))
-                    {
+        foreach ($divNode->childNodes as $child) {
+            if ($child->nodeType == XML_ELEMENT_NODE) {
+                if ($child->tagName == "p") {
+                    if (!empty($object)) {
                         // replace all anchored elements as subordinates
                         $atags = $child->getElementsByTagName("a");
 
                         $alength = $atags->length;
 
-                        for ($i = 0; $i < $alength; $i++)
-                        {
+                        for ($i = 0; $i < $alength; $i++) {
                             $a = $atags->item(0);
                             $targetSub = null;
-                            if (!empty($a))
-                            {
+                            if (!empty($a)) {
                                 $id = $a->getAttribute("id");
 
-                                foreach ($object->subordinates as $subordinate)
-                                {
+                                foreach ($object->subordinates as $subordinate) {
                                     $hotInfo = explode("||", $subordinate->hot);
 
-                                    if (trim($id) == trim($hotInfo[0]))
-                                    {
+                                    if (trim($id) == trim($hotInfo[0])) {
                                         $targetSub = $subordinate;
                                         break;
                                     }
                                 }
 
-                                if (!empty($targetSub))
-                                {
+                                if (!empty($targetSub)) {
                                     $initsubordinateNode = $targetSub->exportData();
                                     $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
-                                    if (!empty($a->parentNode))
-                                    {
+                                    if (!empty($a->parentNode)) {
                                         $a->parentNode->replaceChild($subordinateNode, $a);
                                     }
                                 }
@@ -166,14 +151,10 @@ abstract class ExportElement
                         // replace all img tags with media
                         $imgTags = $child->getElementsByTagName("img");
 
-                        foreach ($imgTags as $key => $img)
-                        {
-                            if (isset($object->medias))
-                            {
-                                if (sizeof($object->medias) > 0)
-                                {
-                                    foreach ($object->medias as $media)
-                                    {
+                        foreach ($imgTags as $key => $img) {
+                            if (isset($object->medias)) {
+                                if (sizeof($object->medias) > 0) {
+                                    foreach ($object->medias as $media) {
                                         $imgAttr = $img->getAttribute('src');
                                         $imgFileNameInfo = explode("/", $imgAttr);
 
@@ -181,8 +162,7 @@ abstract class ExportElement
 
                                         $srcInfo = explode("/", $mediaSrcInfo[0]);
 
-                                        if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1])
-                                        {
+                                        if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1]) {
                                             $mediaNode = $media->exportData();
                                             $mediaElement = $contentDoc->importNode($mediaNode, true);
                                             $img->parentNode->replaceChild($mediaElement, $img);
@@ -196,13 +176,10 @@ abstract class ExportElement
                     }
                     $newChildNode = $this->replacePTags($DomDocument, $child);
                     $childNode = $DomDocument->importNode($newChildNode, true);
-                }
-                else
-                {
+                } else {
                     $ptags = $contentDoc->getElementsByTagName("p");
 
-                    foreach ($ptags as $p)
-                    {
+                    foreach ($ptags as $p) {
                         $newpNode = $this->replacePTags($DomDocument, $p);
                         $pNode = $contentDoc->importNode($newpNode, true);
                         $p->parentNode->replaceChild($pNode, $p);
@@ -213,23 +190,17 @@ abstract class ExportElement
                     $litags = $child->getElementsByTagName("li");
 
                     $newPTag = null;
-                    foreach ($litags as $li)
-                    {
+                    foreach ($litags as $li) {
                         $liDoc = new DOMDocument();
                         $liDoc->formatOutput = true;
                         $liDoc->preserveWhiteSpace = false;
                         $newliTag = $liDoc->createElement("li");
 
-                        foreach ($li->childNodes as $liChild)
-                        {
-                            if ($liChild->nodeType == XML_ELEMENT_NODE)
-                            {
-                                if ($liChild->tagName == "para") // could have para if the above method detected it
-                                {
+                        foreach ($li->childNodes as $liChild) {
+                            if ($liChild->nodeType == XML_ELEMENT_NODE) {
+                                if ($liChild->tagName == "para") { // could have para if the above method detected it
                                     $newPTag = $liDoc->importNode($liChild, true);
-                                }
-                                else if ($liChild->tagName == "p")
-                                {
+                                } else if ($liChild->tagName == "p") {
                                     $newpNode = $this->replacePTags($liDoc, $liChild);
                                     $newPTag = $liDoc->importNode($newpNode, true);
                                 }
@@ -237,8 +208,7 @@ abstract class ExportElement
                             // if the DOMText is not blank, then add para tag --> the content created from 
                             // the authoring tool TinyMCE editor does not have p tags as default so need to add it
                             // when exporting
-                            else if (!preg_match("/\s+/", $liChild->wholeText))
-                            {
+                            else if (!preg_match("/\s+/", $liChild->wholeText)) {
                                 $newPTag = $liDoc->createElement("para");
                                 $newPbodyTag = $liDoc->createElement("para.body");
                                 $lichildNode = $liDoc->importNode($liChild, true);
@@ -246,13 +216,11 @@ abstract class ExportElement
                                 $newPTag->appendChild($newPbodyTag);
                             }
                             // can have DOMText with whitespace so in this case, no need for the para tag
-                            else if (preg_match("/\s+/", $liChild->wholeText))
-                            {
+                            else if (preg_match("/\s+/", $liChild->wholeText)) {
                                 $newPTag = $liDoc->importNode($liChild, true);
                             }
 
-                            if (!empty($newPTag))
-                            {
+                            if (!empty($newPTag)) {
                                 $newliTag->appendChild($newPTag);
                             }
                         }
@@ -261,38 +229,31 @@ abstract class ExportElement
 
                         $li->parentNode->replaceChild($newLi, $li);
                     }
-                    if (!empty($object))
-                    {
+                    if (!empty($object)) {
                         $atags = $child->getElementsByTagName("a");
 
                         $alength = $atags->length;
 
 //                        foreach ($anchorArray as $a) {
-                        for ($i = 0; $i < $alength; $i++)
-                        {
+                        for ($i = 0; $i < $alength; $i++) {
                             $a = $atags->item(0);
                             $targetSub = null;
-                            if (!empty($a))
-                            {
+                            if (!empty($a)) {
                                 $id = $a->getAttribute("id");
 
-                                foreach ($object->subordinates as $subordinate)
-                                {
+                                foreach ($object->subordinates as $subordinate) {
                                     $hotInfo = explode("||", $subordinate->hot);
 
-                                    if (trim($id) == trim($hotInfo[0]))
-                                    {
+                                    if (trim($id) == trim($hotInfo[0])) {
                                         $targetSub = $subordinate;
                                         break;
                                     }
                                 }
 
-                                if (!empty($targetSub))
-                                {
+                                if (!empty($targetSub)) {
                                     $initsubordinateNode = $targetSub->exportData();
                                     $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
-                                    if (!empty($a->parentNode))
-                                    {
+                                    if (!empty($a->parentNode)) {
                                         $a->parentNode->replaceChild($subordinateNode, $a);
                                     }
                                 }
@@ -302,21 +263,16 @@ abstract class ExportElement
 
                     $imgTags = $child->getElementsByTagName("img");
 
-                    foreach ($imgTags as $key => $img)
-                    {
-                        if (isset($object->medias))
-                        {
-                            if (sizeof($object->medias) > 0)
-                            {
-                                foreach ($object->medias as $media)
-                                {
+                    foreach ($imgTags as $key => $img) {
+                        if (isset($object->medias)) {
+                            if (sizeof($object->medias) > 0) {
+                                foreach ($object->medias as $media) {
                                     $imgAttr = $img->getAttribute('src');
                                     $imgFileNameInfo = explode("/", $imgAttr);
 
                                     $srcInfo = explode("/", $media->img->src);
 
-                                    if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1])
-                                    {
+                                    if ($imgFileNameInfo[sizeof($imgFileNameInfo) - 1] == $srcInfo[sizeof($srcInfo) - 1]) {
                                         $mediaNode = $media->exportData();
                                         $mediaElement = $contentDoc->importNode($mediaNode, true);
                                         $img->parentNode->replaceChild($mediaElement, $img);
@@ -330,9 +286,7 @@ abstract class ExportElement
                     $childNode = $DomDocument->importNode($child, true);
                 }
                 $DomNode->appendChild($childNode);
-            }
-            else
-            { // info captions saved from imported XML does not have any tags other than top div tags --> b/c only takes textContent
+            } else { // info captions saved from imported XML does not have any tags other than top div tags --> b/c only takes textContent
                 $childNode = $DomDocument->importNode($child, true);
                 $DomNode->appendChild($childNode);
             }
@@ -348,8 +302,7 @@ abstract class ExportElement
      * @param DOMElement $DomElement        DOMElement representation of the class that called the createXmlContent originially
      * @param DOMDocument $DomDocument      DOMDocument that created the DOMElement representation of the class that called the createXmlContent originially
      */
-    function exportMath($DomElement, $DomDocument)
-    {
+    function exportMath($DomElement, $DomDocument) {
         $DomDocument->formatOutput = true;
         $DomDocument->preserveWhiteSpace = false;
 
@@ -358,15 +311,12 @@ abstract class ExportElement
         // when each of the spans with className of matheditor is replaced, the size of the NodeList above
         // decreases so need a temporary array that is a copy of the NodeList above
         $tempArray = array();
-        foreach ($mathSpans as $mathspan)
-        {
+        foreach ($mathSpans as $mathspan) {
             $tempArray[] = $mathspan;
         }
 
-        foreach ($tempArray as $math)
-        {
-            if ($math->getAttribute("class") == "matheditor")
-            {
+        foreach ($tempArray as $math) {
+            if ($math->getAttribute("class") == "matheditor") {
                 $mathNode = $DomDocument->createElement("math");
                 $latexNode = $DomDocument->createElement("latex");
 
@@ -390,8 +340,7 @@ abstract class ExportElement
      * @param DOMElement $DomElement    DOMElement representation of the class that called the createXmlContent originially
      * @return DOMElement
      */
-    function replacePTags($DomDocument, $DomElement)
-    {
+    function replacePTags($DomDocument, $DomElement) {
         $DomDocument->formatOutput = true;
         $DomDocument->preserveWhiteSpace = false;
 
@@ -400,28 +349,22 @@ abstract class ExportElement
         $align = '';
 
         $styleProperites = explode(";", $style);
-        foreach ($styleProperites as $property)
-        {
+        foreach ($styleProperites as $property) {
             $propertyValue = explode(":", $property);
 
-            if ($propertyValue[0] == "text-align")
-            {
+            if ($propertyValue[0] == "text-align") {
                 $align = $propertyValue[1];
             }
         }
 
-        if (!empty($align))
-        {
+        if (!empty($align)) {
             $paraNode->setAttribute("align", trim($align));
-        }
-        else
-        {
+        } else {
             $paraNode->setAttribute("align", "left");
         }
         $parabody = $DomDocument->createElement("para.body");
 
-        foreach ($DomElement->childNodes as $child)
-        {
+        foreach ($DomElement->childNodes as $child) {
             $childNode = $DomDocument->importNode($child, true);
             $paraContentNode = $childNode->cloneNode(true);
             $parabody->appendChild($paraContentNode);
@@ -443,8 +386,7 @@ abstract class ExportElement
      * @param object $obj                       ExportDefinition/ExportTheoerem/ExportComment object to be exported
      * @param string $elementContent            content of the DOMDocument that created XML version of above mentioned classes
      */
-    function createXMLFile($obj, $elementContent)
-    {
+    function createXMLFile($obj, $elementContent) {
         global $DB, $CFG;
 
         $msmRecord = $DB->get_record("msm", array("id" => $obj->msmid));
@@ -452,8 +394,7 @@ abstract class ExportElement
         $CompDir = $CFG->dataroot . "/temp/msmtempfiles/$msmtrimName$msmRecord->id/standalones/";
 
         $elementType = '';
-        switch (get_class($obj))
-        {
+        switch (get_class($obj)) {
             case "ExportDefinition":
                 $elementType = "definition";
                 break;
@@ -466,57 +407,41 @@ abstract class ExportElement
         }
 
         // standalone folder already exists
-        if (file_exists($CompDir))
-        {
+        if (file_exists($CompDir)) {
             // if the directory exists, there is a possibility that the same reference
             // was already exported --> so check if XML file with same content exists
             $existingCompid = $this->checkForSameFile($CompDir, $obj);
 
-            if (!empty($existingCompid))
-            {
+            if (!empty($existingCompid)) {
                 return $existingCompid;
             }
-            if (!empty($obj->caption))
-            {
+            if (!empty($obj->caption)) {
                 $captionTrim = preg_replace("/\s+/", '', $obj->caption);
                 $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
                 $filename = $CompDir . $captionmod . "-$elementType-" . $obj->compid . ".xml";
-            }
-            else if (!empty($obj->type))
-            {
+            } else if (!empty($obj->type)) {
                 $filename = $CompDir . $obj->type . "-$elementType-" . $obj->compid . ".xml";
             }
-        }
-        else
-        {
+        } else {
             // need to make a standalone folder
-            if (mkdir($CompDir))
-            {
-                if (!empty($obj->caption))
-                {
+            if (mkdir($CompDir)) {
+                if (!empty($obj->caption)) {
                     $captionTrim = preg_replace("/\s+/", '', $obj->caption);
                     $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
                     $filename = $CompDir . $captionmod . "-$elementType-" . $obj->compid . ".xml";
-                }
-                else if (!empty($obj->type))
-                {
+                } else if (!empty($obj->type)) {
                     $filename = $CompDir . $obj->type . "-$elementType-" . $obj->compid . ".xml";
                 }
-            }
-            else
-            {
+            } else {
                 echo "error with creating standalone folder";
             }
         }
 
-        if ($xmlfile = fopen($filename, "w"))
-        {
+        if ($xmlfile = fopen($filename, "w")) {
             fwrite($xmlfile, $elementContent);
             fclose($xmlfile);
             return false;
-        }
-        else
-        {
+        } else {
             echo json_encode("error");
         }
     }
@@ -535,8 +460,7 @@ abstract class ExportElement
      * @return integer/boolean                  If there is an equivalent XML file already existing in standalone folder, then return the existing compositor ID.
      *                                          If there is no equivalent XML file in the staandalone folder, then return false.   
      */
-    function checkForSameFile($filepath, $object)
-    {
+    function checkForSameFile($filepath, $object) {
         global $DB;
 
         $filenamematch = '';
@@ -545,8 +469,7 @@ abstract class ExportElement
 
         $type = '';
         $tableInfo = '';
-        switch (get_class($object))
-        {
+        switch (get_class($object)) {
             case "ExportDefinition":
                 $type = "definition";
                 $tableInfo = $DB->get_record("msm_table_collection", array("tablename" => "msm_def"));
@@ -561,32 +484,25 @@ abstract class ExportElement
                 break;
         }
 
-        foreach ($files as $file)
-        {
-            if (!empty($object->caption))
-            {
+        foreach ($files as $file) {
+            if (!empty($object->caption)) {
                 $captionTrim = preg_replace("/\s+/", '', $object->caption);
                 $captionmod = preg_replace("/[\/|\\|\.|,]/", '', $captionTrim);
 
                 $filenamematch = $captionmod . "-$type";
-            }
-            else if (!empty($object->type))
-            {
+            } else if (!empty($object->type)) {
                 $filenamematch = $object->type . "-$type";
             }
 
-            if (!empty($filenamematch))
-            {
-                if (strpos($file, $filenamematch) !== false)
-                {
+            if (!empty($filenamematch)) {
+                if (strpos($file, $filenamematch) !== false) {
                     $fileInfo = explode(".", $file);
                     $filenameInfo = explode("-", $fileInfo[0]);
                     $filecompid = $filenameInfo[sizeof($filenameInfo) - 1];
 
                     $existingFileRecord = $DB->get_record("msm_compositor", array("id" => $filecompid));
 
-                    if (($existingFileRecord->table_id == $tableInfo->id) && ($existingFileRecord->unit_id == $object->id))
-                    {
+                    if (($existingFileRecord->table_id == $tableInfo->id) && ($existingFileRecord->unit_id == $object->id)) {
                         return $filecompid;
                     }
                 }

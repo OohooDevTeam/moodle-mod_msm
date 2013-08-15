@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -22,8 +23,7 @@
  *
  * @author Ga Young Kim
  */
-class ExportComment extends ExportElement
-{
+class ExportComment extends ExportElement {
 
     public $id;                         // database ID of the current comment element in msm_comment database table
     public $msmid;                      // msm instance id
@@ -48,8 +48,8 @@ class ExportComment extends ExportElement
      *                          If the flag is not empty string, then the comment is a reference material and should create new XML file in standalone folder.
      * @return DOMElement/integer/false
      */
-    public function exportData($flag = '')
-    {
+
+    public function exportData($flag = '') {
         $commentCreator = new DOMDocument();
         $commentCreator->formatOutput = true;
         $commentCreator->preserveWhiteSpace = false;
@@ -57,16 +57,18 @@ class ExportComment extends ExportElement
         $commentNode->setAttribute("type", $this->type);
         $commentNode->setAttribute("id", "$this->msmid-$this->compid");
 
-        if (!empty($this->caption))
-        {
-            $captionNode = $commentCreator->createElement("caption");
-            $captionText = $commentCreator->createTextNode($this->caption);
-            $captionNode->appendChild($captionText);
-            $commentNode->appendChild($captionNode);
+        if (!empty($this->caption)) {
+            $oldtitleNode = $commentCreator->createElement("caption");
+            $createdTitleNode = $this->createXmlTitle($commentCreator, $this->caption, $oldtitleNode);
+            $titleNode = $commentCreator->importNode($createdTitleNode, true);
+
+//            $captionNode = $commentCreator->createElement("caption");
+//            $captionText = $commentCreator->createTextNode($this->caption);
+//            $captionNode->appendChild($captionText);
+            $commentNode->appendChild($titleNode);
         }
 
-        if (!empty($this->description))
-        {
+        if (!empty($this->description)) {
             $descriptionNode = $commentCreator->createElement("description");
             $descriptionText = $commentCreator->createTextNode($this->description);
             $descriptionNode->appendChild($descriptionText);
@@ -78,25 +80,20 @@ class ExportComment extends ExportElement
         $bodyNode = $commentCreator->importNode($createdbodyNode, true);
         $commentNode->appendChild($bodyNode);
 
-        if (!empty($this->associates))
-        {
-            foreach ($this->associates as $associate)
-            {
+        if (!empty($this->associates)) {
+            foreach ($this->associates as $associate) {
                 $associateNode = $associate->exportData();
                 $newassociateNode = $commentCreator->importNode($associateNode, true);
                 $commentNode->appendChild($newassociateNode);
             }
         }
-        
-        if (!empty($flag)) // comment is a reference material (ie. ExportAssociate called this function)
-        {
+
+        if (!empty($flag)) { // comment is a reference material (ie. ExportAssociate called this function)
             // create a new XML file in standalone folder
-            $existingUnit = $this->createXMLFile($this, $commentCreator->saveXML() . $commentCreator->saveXML($commentCreator->importNode($commentNode, true))); 
+            $existingUnit = $this->createXMLFile($this, $commentCreator->saveXML() . $commentCreator->saveXML($commentCreator->importNode($commentNode, true)));
             // return value can be a database ID or false
             return $existingUnit;
-        }
-        else // comment is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
-        {
+        } else { // comment is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
             return $commentNode;
         }
     }
@@ -109,8 +106,7 @@ class ExportComment extends ExportElement
      * @param int $compid               database ID of this comment element in the msm_compositor database table
      * @return \ExportComment
      */
-    public function loadDbData($compid)
-    {
+    public function loadDbData($compid) {
         global $DB;
 
         $commentCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -126,23 +122,17 @@ class ExportComment extends ExportElement
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), 'prev_sibling_id');
 
-        foreach ($childRecords as $child)
-        {
+        foreach ($childRecords as $child) {
             $childTable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
-            if ($childTable->tablename == "msm_subordinate")
-            {
+            if ($childTable->tablename == "msm_subordinate") {
                 $subordinate = new ExportSubordinate();
                 $subordinate->loadDbData($child->id);
                 $this->subordinates[] = $subordinate;
-            }
-            else if ($childTable->tablename == "msm_associate")
-            {
+            } else if ($childTable->tablename == "msm_associate") {
                 $associate = new ExportAssociate();
                 $associate->loadDbData($child->id);
                 $this->associates[] = $associate;
-            }
-            else if($childTable->tablename == "msm_media")
-            {
+            } else if ($childTable->tablename == "msm_media") {
                 $media = new ExportMedia();
                 $media->loadDbData($child->id);
                 $this->medias[] = $media;
