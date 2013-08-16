@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -24,6 +25,7 @@
  */
 class ExportTable extends ExportElement
 {
+
     public $id;                             // ID of the current table element in the msm_table database table
     public $compid;                         // ID of the current table element in the msm_compositor database table
     public $content;                        // content associated with the current table element
@@ -45,6 +47,7 @@ class ExportTable extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $tableCreator = new DOMDocument();

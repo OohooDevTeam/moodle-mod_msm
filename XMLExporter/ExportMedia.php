@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -27,6 +28,7 @@
  */
 class ExportMedia extends ExportElement
 {
+
     public $id;                 // ID of the current media element in msm_media database table
     public $compid;             // ID of the current media element in msm_compositor database table
     public $msmid;              // MSM instance ID
@@ -34,7 +36,7 @@ class ExportMedia extends ExportElement
     public $active;             // whether or not the image maps are associated with the image of the current media element
     public $inline;             // whether or not the media element should be displayed inline or centered
     public $type;               // type of media element --> eg) image or video
-    
+
     /**
      * This method is an abstract method declared by the abstract class ExportElement.  Its role is to
      * convert all database data associated with media element into properly structured XML document.
@@ -45,6 +47,7 @@ class ExportMedia extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $mediaCreator = new DOMDocument();
@@ -53,14 +56,14 @@ class ExportMedia extends ExportElement
         $mediaNode->setAttribute("active", $this->active);
         $mediaNode->setAttribute("inline", $this->inline);
         $mediaNode->setAttribute("type", $this->type);
-        
-        if(!empty($this->img))
+
+        if (!empty($this->img))
         {
             $imgNode = $this->img->exportData();
             $newimgNode = $mediaCreator->importNode($imgNode, true);
             $mediaNode->appendChild($newimgNode);
         }
-        
+
         return $mediaNode;
     }
 
@@ -75,28 +78,29 @@ class ExportMedia extends ExportElement
     public function loadDbData($compid)
     {
         global $DB;
-        
-        $mediaCompRecord = $DB->get_record("msm_compositor", array("id"=>$compid));
-        $mediaUnitRecord = $DB->get_record("msm_media", array("id"=>$mediaCompRecord->unit_id));
-        
+
+        $mediaCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
+        $mediaUnitRecord = $DB->get_record("msm_media", array("id" => $mediaCompRecord->unit_id));
+
         $this->id = $mediaUnitRecord->id;
         $this->compid = $compid;
         $this->msmid = $mediaCompRecord->msm_id;
         $this->active = $mediaUnitRecord->active;
         $this->inline = $mediaUnitRecord->inline;
         $this->type = $mediaUnitRecord->media_type;
-        
-        $imgRecord = $DB->get_record("msm_compositor", array("parent_id"=>$this->compid));
-        
-        if(!empty($imgRecord))
+
+        $imgRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
+
+        if (!empty($imgRecord))
         {
             $image = new ExportImage();
             $image->loadDbData($imgRecord->id);
             $this->img = $image;
         }
-        
+
         return $this;
     }
+
 }
 
 ?>

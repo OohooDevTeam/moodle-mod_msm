@@ -560,10 +560,10 @@ function titleInput2Div(id, width)
 }
 
 /**
-* This method is responsible for disabling all input/selection areas in editor and also
-* disabling all jquery actions such as sortable, draggable and droppable and enabling the
-* overlay for each core elements (ie. definition/comment..etc any direct child element of unit)
-*/
+ * This method is responsible for disabling all input/selection areas in editor and also
+ * disabling all jquery actions such as sortable, draggable and droppable and enabling the
+ * overlay for each core elements (ie. definition/comment..etc any direct child element of unit)
+ */
 function disableEditorFunction()
 {
     $('.msm_unit_short_titles').attr("readonly", "true");
@@ -651,23 +651,61 @@ function previewInfo(elementid, dialogid)
 {        
     var x = 0; // stores the x-axis position of the mouse
     var y = 0; // stores the y-axis position of the mouse
+    
+    // reference content div HTML ID ending is identical to the one for dialog 
+    // to indicate which dialog and reference materials are associated with which anchor element
+    var dialogEnding = dialogid.split('-');
+    var refId = dialogEnding[1];
+       
+    for(var i = 2; i < dialogEnding.length; i++)
+    {
+        refId += "-" + dialogEnding[i];
+    }
+    var refElementId = "msm_refcontent-"+refId;
+    
+    var refElement = null;
+    $("#msm_preview_dialog").find(".msm_refcontents").each(function() {
+        if(this.id == refElementId)
+        {
+            refElement = $(this);
+        }
+    });       
  
     $("#msm_preview_dialog #"+elementid).unbind();
-    $("#msm_preview_dialog #"+elementid).click(function(e) {
-        x = e.clientX+5;
-        y = e.clientY+5;
-    
-        $("#"+dialogid).dialog('open').css("display", "block");
-        $("#msm_preview_dialog #"+elementid).mousemove(function () {
-            $("#"+dialogid).dialog("option", {
-                position: [x, y]
-            });
-        });
-    
-        $("#msm_preview_dialog #"+elementid).mouseout(function(){
+    $("#msm_preview_dialog #"+elementid).click(function(e) { 
+        // if there are reference material, show on right side
+        if(refElement != null)
+        {
+            $('.rightbox').empty();
+            // if not cloned, then when user views different subordinate,
+            // the reference content for previous one is lost 
+            var cloned = $(refElement).clone();
+            cloned.find('*').each(function(){
+                var currentid = $(this).attr('id');
+                if(typeof currentid != 'undefined')
+                {
+                    $(this).attr('id', 'copy'+currentid);
+                }
+            });           
+            $(cloned).appendTo($('.rightbox')).css('display', 'block');
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
+        }
+        else
+        {
+            x = e.clientX+5;
+            y = e.clientY+5;
+            
             $("#"+dialogid).dialog('open').css("display", "block");
-        });
-    
+            $("#msm_preview_dialog #"+elementid).mousemove(function () {
+                $("#"+dialogid).dialog("option", {
+                    position: [x, y]
+                });
+            });
+            
+            $("#msm_preview_dialog #"+elementid).mouseout(function(){
+                $("#"+dialogid).dialog('open').css("display", "block");
+            });
+        }    
     });
    
     $("#msm_preview_dialog #"+elementid).mouseover(function (e) {
@@ -682,7 +720,6 @@ function previewInfo(elementid, dialogid)
     });
     //----------------------------------------------------------------------
     
-    //    $("#msm_search_result_table").find("#"+elementid).unbind();                
     $("#msm_search_result_table").find("#"+elementid).ready(function(){
         $("#msm_search_result_table").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();
@@ -708,7 +745,6 @@ function previewInfo(elementid, dialogid)
         });
     });
     
-    //    $("#msm_subordinate_ref_display").find("#"+elementid).unbind();                
     $("#msm_subordinate_ref_display").find("#"+elementid).ready(function(){
         $("#msm_subordinate_ref_display").find("#"+elementid).mousemove(function (e) {
             e.preventDefault();

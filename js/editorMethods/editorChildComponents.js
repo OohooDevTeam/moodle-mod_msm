@@ -40,7 +40,6 @@ function processAdditionalChild(event, draggedId)
             parentId = $(event.target).closest(".copied_msm_structural_element").attr("id");
         }
         
-        console.log(parentId);
         editUnit(parentId);
     }
     
@@ -271,6 +270,8 @@ function createRefDialog(id, refTypeString, currentId)
     var dWidth = wWidth*0.8;
     var dHeight = wHeight*0.8;
     
+    
+    // creating the jQuery Dialog window for the search window for reference material
     $("#msm_ref_search_window-"+id).ready(function() {
         $("#msm_ref_search_window-"+id).dialog({
             resizable: false,
@@ -280,7 +281,7 @@ function createRefDialog(id, refTypeString, currentId)
             dialogClass: "no-close",
             closeOnEscape: false,
             buttons: {
-                "Insert" : function() {
+                "Insert" : function() { // insert the chosen search result to main editor
                     var selectedBox =  $("#msm_search_result_table input").filter(":checked");
               
                     // none of the search results were selected --> give user an eror message
@@ -321,7 +322,7 @@ function createRefDialog(id, refTypeString, currentId)
             
             
                 },
-                "Cancel": function() {
+                "Cancel": function() {  // cancel adding reference material
                     var associateIdInfo = currentId.split("-");
                    
                     var associateId = associateIdInfo[0];
@@ -364,7 +365,8 @@ function createRefDialog(id, refTypeString, currentId)
                 e.preventDefault();
             }
         });
-            
+          
+          // submit search param to get results
         $("#msm_search_submit").click(function(e) {
             submitAjax(refTypeString, msmId, id, "associate")
         });
@@ -514,7 +516,7 @@ function submitAjax(refString, msmId, id, parentType)
  * add the chosen search result into the main editor panel with proper display.
  * 
  * @param {string} type               type of reference chosen (def/comment/theorem/unit)
- * @param {array} tdcellArray         array of all the information in the chosen record
+ * @param {array} tbcellArray         array of all the information in the chosen record
  *                                  (ie. information displayed in each cell in chosen row)
  * @param {string} ind                string added to end of HTML ID to make the element unique
  * @param {integer} databaseId            database ID from msm_compositor that was attached to each search
@@ -577,7 +579,6 @@ function addDefRef(cellArray, index, dbId)
     $("#msm_defref_content_input-"+index).val(content);
     
     $("#msm_defref_type_dropdown-"+index).attr("disabled", "disabled");
-    //    $("#msm_defref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_defref_description_input-"+index).attr("disabled", "disabled");
     
     titleInput2Div("msm_defref_title_input-"+index);
@@ -627,7 +628,6 @@ function addCommentRef(cellArray, index, dbId)
     $("#msm_commentref_content_input-"+index).val(content);
     
     $("#msm_commentref_type_dropdown-"+index).attr("disabled", "disabled");
-    //    $("#msm_commentref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_commentref_description_input-"+index).attr("disabled", "disabled");
     
     titleInput2Div("msm_commentref_title_input-"+index);
@@ -696,7 +696,6 @@ function addTheoremRef(cellArray, index, dbId)
     $("#msm_theoremref_description_input-"+index).val(description);
     
     $("#msm_theoremref_type_dropdown-"+index).attr("disabled", "disabled");
-    //    $("#msm_theoremref_title_input-"+index).attr("disabled", "disabled");
     $("#msm_theoremref_description_input-"+index).attr("disabled", "disabled");
     
     titleInput2Div("msm_theoremref_title_input-"+index);

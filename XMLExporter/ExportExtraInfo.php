@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -42,6 +43,7 @@ class ExportExtraInfo extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $extraInfoCreator = new DOMDocument();

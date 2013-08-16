@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -42,6 +43,7 @@ class ExportStatementTheorem extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $statementCreator = new DOMDocument();

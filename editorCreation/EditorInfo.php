@@ -771,6 +771,11 @@ class EditorInfo extends EditorElement
                 $previewHtml .= $subordinate->displayPreview();
             }
         }
+        
+        if(!empty($this->ref))
+        {
+            $previewHtml .= $this->ref->displayPreview("ref||$id");
+        }
 
 
         return $previewHtml;

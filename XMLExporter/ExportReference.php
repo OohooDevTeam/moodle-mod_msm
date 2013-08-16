@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -27,7 +28,7 @@ class ExportReference extends ExportElement
     public $id;                 // database ID of the current comment element in reference material's respective database table
     public $compid;             // database ID of the current comment element in msm_compositor database table
     public $msmid;              // if external reference, it will be the msm_id of the original content
-                                // if internal reference, it will be the instance ID of the current MSM module
+    // if internal reference, it will be the instance ID of the current MSM module
     public $type;               // internal/external references
     public $ref;                // ExportDefinition/ExportComment/ExportTheorem objects used as a reference material
 
@@ -39,6 +40,7 @@ class ExportReference extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $refCreator = new DOMDocument();

@@ -499,7 +499,7 @@ class EditorComment extends EditorElement
         $htmlContent .= $commentrefTitle;
         $htmlContent .= "</div>";
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<div id='msm_commentref_content_input-$parentId-$this->compid' class='msm_unit_child_content msm_editor_content'>";
         $htmlContent .= html_entity_decode($this->content);
         $htmlContent .= "</div>";
@@ -534,47 +534,83 @@ class EditorComment extends EditorElement
     {
         $previewHtml = '';
 
-        $previewHtml .= "<br />";
-        $previewHtml .= "<div class='comment'>";
-        if (!empty($this->title))
+         $idInfo = explode("||", $id);
+        
+        // processing comment called by EditorInfo as reference material
+        if ($idInfo[0] == "ref")
         {
-            $previewHtml .= "<span class='commenttitle'>" . $this->title . "</span>";
-        }
-
-        if (!empty($this->type))
-        {
-            $previewHtml .= "<span class='commenttype'>" . $this->type . "</span>";
-        }
-        $previewHtml .= "<br/>";
-
-        $previewHtml .= "<div class='mathcontent'>";
-        $previewHtml .= html_entity_decode($this->content);
-
-        if (!empty($this->subordinates))
-        {
-            foreach ($this->subordinates as $subordinate)
+             // need to call loadData b/c isRef only contains database ID of the reference element in msm_compositor
+            // so need to retrieve rest of data from msm_comment
+            $this->loadData($this->isRef);
+            
+            $previewHtml .= "<div class='comment msm_refcontents' id='msm_ref_content-$idInfo[1]' style='display:none;'>";
+            if (!empty($this->title))
             {
-                $previewHtml .= $subordinate->displayPreview();
+                $previewHtml .= "<span class='commenttitle'>" . $this->title . "</span>";
             }
-        }
-        $previewHtml .= "</div>";
 
-        $previewHtml .= "<br />";
-
-        if (!empty($this->children))
-        {
-            $previewHtml .= "<ul class='commentminibuttons'>";
-            foreach ($this->children as $key => $associate)
+            if (!empty($this->type))
             {
-                $previewHtml .= $associate->displayPreview("comment", $id . "-" . $key);
+                $previewHtml .= "<span class='commenttype'>" . $this->type . "</span>";
             }
-            $previewHtml .= "</ul>";
+            $previewHtml .= "<br/>";
+
+            $previewHtml .= "<div class='mathcontent'>";
+            $previewHtml .= html_entity_decode($this->content);
+
+            if (!empty($this->subordinates))
+            {
+                foreach ($this->subordinates as $subordinate)
+                {
+                    $previewHtml .= $subordinate->displayPreview();
+                }
+            }
+            $previewHtml .= "</div>";
         }
+        // comment as main unit component
+        else
+        {
+            $previewHtml .= "<br />";
+            $previewHtml .= "<div class='comment'>";
+            if (!empty($this->title))
+            {
+                $previewHtml .= "<span class='commenttitle'>" . $this->title . "</span>";
+            }
+
+            if (!empty($this->type))
+            {
+                $previewHtml .= "<span class='commenttype'>" . $this->type . "</span>";
+            }
+            $previewHtml .= "<br/>";
+
+            $previewHtml .= "<div class='mathcontent'>";
+            $previewHtml .= html_entity_decode($this->content);
+
+            if (!empty($this->subordinates))
+            {
+                foreach ($this->subordinates as $subordinate)
+                {
+                    $previewHtml .= $subordinate->displayPreview();
+                }
+            }
+            $previewHtml .= "</div>";
+
+            $previewHtml .= "<br />";
+
+            if (!empty($this->children))
+            {
+                $previewHtml .= "<ul class='commentminibuttons'>";
+                foreach ($this->children as $key => $associate)
+                {
+                    $previewHtml .= $associate->displayPreview("comment", $idInfo[1] . "-" . $key);
+                }
+                $previewHtml .= "</ul>";
+            }
 
 
-        $previewHtml .= "</div>";
-        $previewHtml .= "<br />";
-
+            $previewHtml .= "</div>";
+            $previewHtml .= "<br />";
+        }
 
         return $previewHtml;
     }

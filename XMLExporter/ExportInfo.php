@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -42,6 +43,7 @@ class ExportInfo extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $infoCreator = new DOMDocument();
@@ -51,7 +53,7 @@ class ExportInfo extends ExportElement
 
         if (!empty($this->caption))
         {
-            $captionNode = $infoCreator->createElement("info.caption");            
+            $captionNode = $infoCreator->createElement("info.caption");
             $captionText = $infoCreator->createTextNode($this->caption);
             $captionNode->appendChild($captionText);
 

@@ -96,7 +96,10 @@ function changeForm(e, ed, id) {
     
     var accordionContainer = document.createElement("div");
 
-    var refString = '';
+    var refString = '';    
+    
+    $("#msm_subordinate_select-"+id).prop("selectedIndex", selectVal);
+     
     switch(selectVal)
     {
         case 0: // information selected
@@ -161,6 +164,8 @@ function changeForm(e, ed, id) {
 // existingRefId is given by msm_subordinate_ref-id result div and is a
 // compositor ID for existing reference
 /**
+ * This method creates forms needed to search the existing materials to be added as a reference material.
+ * The container div for internal/external reference forms are displayed using jQuery UI accordion plugin.
  *
  * @param {tinymce.Editor} ed           current editor that the subordinate plugin was triggered from
  * @param {string} id                   ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
@@ -219,8 +224,14 @@ function makeRefForm(ed, id, existingRefId)
     // --> so load the previously chosen reference material
     else
     {
+        $("#msm_subordinate_select-"+id).attr("disabled", "disabled");
+        
+        var overlayButtonEdit = $('<a class="msm_overlayButtons" id="msm_search_again_button-'+id+'")> Search Again </a>');
+        var overlayButtonDelete = $('<a class="msm_overlayButtons" id="msm_delete_search-'+id+'"> Delete </a>');
+                
         var displayHeader = $("<h3> Current Reference Material </h3>");
-        var displayDiv = $("<div id='msm_subordinate_ref_display'></div>");
+        var displayDiv = $("<div id='msm_subordinate_ref_display'></div>");      
+        
         $("#msm_subordinate_accordion-"+id).append(displayHeader);
         $("#msm_subordinate_accordion-"+id).append(displayDiv);
         
@@ -233,9 +244,12 @@ function makeRefForm(ed, id, existingRefId)
             },
             success: function(data)
             {
-                var htmlString = JSON.parse(data);
+                var htmlString = JSON.parse(data);              
                 
                 $("#msm_subordinate_ref_display").append(htmlString);
+                
+                $("#msm_subordinate_ref_display").append(overlayButtonDelete);
+                $("#msm_subordinate_ref_display").append(overlayButtonEdit);
                 
                 // this code is needed to view dialog popup windows associated with subordinates
                 // in the existing reference material
@@ -257,13 +271,143 @@ function makeRefForm(ed, id, existingRefId)
                     previewInfo(this.id, "dialog-"+newid);
                    
                 });
+                
+                // user chooses to search for a different existing material to be referenced
+                // --> remove all display data and replace with search param again
+                $("#msm_search_again_button-"+id).click(function() {
+                    $("#msm_subordinate_select-"+id).removeAttr("disabled");
+                    $("#msm_subordinate_accordion-"+id).accordion("destroy");
+                    
+                    $(displayHeader).empty().remove();
+                    $(displayDiv).empty().remove();
+                   
+                    var searchAccordionHeader = $("<h3> Search Form </h3>");
+                    var searchDiv = $("<div>\n\
+                                <form id='msm_search_form'>\n\
+                                    <label for='msm_search_type'>Type: </label>\n\
+                                    <select id='msm_search_type' name='msm_search_type'>\n\
+                                        <option value='definition'>Definition</option>\n\
+                                        <option value='theorem'>Theorem</option>\n\
+                                        <option value='comment'>Comment</option>\n\
+                                    </select>\n\
+                                    <br /><br />\n\
+                                    <label for='msm_search_word'>Search: </label>\n\
+                                    <input id='msm_search_word' name='msm_search_word' style='width: 80%;'/>\n\
+                                    <select id='msm_search_word_type' name='msm_search_word_type' style='margin-left: 1%;'>\n\
+                                        <option value='title'>Title</option>\n\
+                                        <option value='content'>Content</option>\n\
+                                        <option value='description'>Description</option>\n\
+                                        <option value='all'>Title/Content/Description</option>\n\
+                                    </select>\n\
+                                    <br /><br />\n\
+                                    <input type='button' value='Search' id='msm_search_submit' class='msm_search_buttons'/>\n\
+                                </form>\n\
+                            </div>");
+        
+                    $("#msm_subordinate_accordion-"+id).append(searchAccordionHeader);
+                    $("#msm_subordinate_accordion-"+id).append(searchDiv);
+    
+                    var searchResultAccordionHeader = $("<h3> Search Results </h3>");
+                    var searchResultAccordionDiv = $("<div id='msm_search_result'></div>");
+    
+                    $("#msm_subordinate_accordion-"+id).append(searchResultAccordionHeader);
+                    $("#msm_subordinate_accordion-"+id).append(searchResultAccordionDiv);
+    
+                    $("input#msm_search_word").css("width", "75%");
+                    
+                    $("#msm_subordinate_accordion-"+id).accordion({
+                        heightStyle: "content",
+                        beforeActivate: function(e, ui) {
+                            if(ui.newPanel[0].id.match(/msm_info_accordion/))
+                            {
+                                $(".msm_subordinate_textareas").each(function() {
+                                    if(typeof tinymce.getInstanceById(this.id) === "undefined")
+                                    {
+                                        tinymce.execCommand("mceAddControl", true, this.id);
+                                    }                    
+                                });
+                            }
+                        }
+                    });
+                    
+                    var refString = '';
+                    
+                    if($("#msm_subordinate_select-"+id).prop("selectedIndex") == 2)
+                    {
+                        refString = "Internal Reference";
+                    }
+                    else if($("#msm_subordinate_select-"+id).prop("selectedIndex") == 3)
+                    {
+                        refString = "External Reference";
+                    }
+                    
+                    var msmIdInfo = window.location.search.split("=");
+                    var msmId = msmIdInfo[1];
+    
+                    // for submitting the search param for internal/external referencing
+                    $("#msm_search_submit").click(function(e) {
+                        submitAjax(refString, msmId, id, "subordinate");
+                    });
+                   
+                });
+                
+                // user chooses to delete the reference
+                // --> change the default form to information form --> so just information title/content textareas
+                //      with tinyMCE enabled
+                $("#msm_delete_search-"+id).click(function() {
+                    $("#msm_subordinate_select-"+id).removeAttr("disabled");
+                    $("#msm_subordinate_select-"+id).prop("selectedIndex", 0); // change dropdown value to information
+                    
+                    var prevValues = [];
+                    
+                    $("#msm_subordinate_form-"+id).find(".msm_subordinate_textareas").each(function() {
+                        if(this.id == "msm_subordinate_infoTitle-"+id)
+                        {
+                            prevValues["msm_subordinate_infoTitle"] = tinymce.get(this.id).getContent({
+                                format: "html"
+                            });
+                        }
+                        else if(this.id == "msm_subordinate_infoContent-"+id)
+                        {
+                            prevValues["msm_subordinate_infoContent"] = tinymce.get(this.id).getContent({
+                                format: "html"
+                            });
+                        }
+                    });
+                    
+                    $('#msm_subordinate_content_form_container-'+id+" textarea").each(function() {
+                        if(tinymce.getInstanceById($(this).attr("id")) != null)
+                        {
+                            tinymce.execCommand('mceFocus', false, $(this).attr("id"));
+                            tinymce.execCommand('mceRemoveControl', false, $(this).attr("id"));
+                        }
+                    });
+                    
+                    $("#msm_subordinate_content_form_container-"+id).empty();
+                    
+                    var infoForm = makeInfoForm(ed, id, false);
+                    $("#msm_subordinate_content_form_container-"+id).append(infoForm);
+                    
+                    $("#msm_subordinate_form-"+id).find(".msm_subordinate_textareas").each(function() {
+                        if(this.id == "msm_subordinate_infoTitle-"+id)
+                        {
+                            $(this).val(prevValues["msm_subordinate_infoTitle"]);
+                        }
+                        else if(this.id == "msm_subordinate_infoContent-"+id)
+                        {
+                            $(this).val(prevValues["msm_subordinate_infoContent"]);
+                        }
+                    });
+                    
+                    initInfoEditor(id);
+                });
             }
         });
     }
 }
 
 /**
- * 
+ * This method is used to initialize the tinyMCE editor for each of textareas associated with information element.
  * 
  * @param {string} id            ending of this subordinat dialog("ending of parent element ID - number that is incremented per subordinate)
  *                               used to uniquely identify the textareas for information title and content elements
@@ -480,24 +624,22 @@ function loadPreviousData(editor, id)
         {
             prevRefId = $(this).text();
         }
-    });
-            
-    var select = document.getElementById("msm_subordinate_select-"+id);
+    });           
         
     // selecting the dropdown menu to correct type
     switch(prevSelectValue)
     {
         case "Information":
-            select.selectedIndex = 0;
+            $("#msm_subordinate_select-"+id).prop("selectedIndex", 0);
             break;
         case "External Link":
-            select.selectedIndex = 1;
+            $("#msm_subordinate_select-"+id).prop("selectedIndex", 1);
             break;
         case "Internal Reference":
-            select.selectedIndex = 2;
+            $("#msm_subordinate_select-"+id).prop("selectedIndex", 2);
             break;
         case "External Reference":
-            select.selectedIndex = 3;
+            $("#msm_subordinate_select-"+id).prop("selectedIndex", 3);
             break;
     }
   
@@ -871,7 +1013,7 @@ function createSubordinateDiv(index, oldidString, flag)
         var resultContentDiv = document.createElement("div");
         resultContentDiv.id = "msm_subordinate_infoContent-"+idString;
        
-       // replace all math elements in the infocontent to span with text value of \(mathtext\)
+        // replace all math elements in the infocontent to span with text value of \(mathtext\)
         $("#msm_subordinate_infoContent-"+index).find(".matheditor").each(function() {
             var newcontent = '';
             $(this).find("script").each(function() {
@@ -926,6 +1068,11 @@ function createSubordinateDiv(index, oldidString, flag)
     }
 }
 
+/**
+ * 
+ * @param {array} errorArray        array of HTML IDs of empty required fields that is used to change border color to indicate an error for user
+ * @param {string} id               HTML ID ending of elements associated with the subordinate dialog window
+ */
 function nullErrorWarning(errorArray, id)
 {
     for(var i=0; i < errorArray.length; i++)
@@ -963,46 +1110,13 @@ function nullErrorWarning(errorArray, id)
     });
 }
 
-function changeSelectIndex(ed, id)
-{
-    var selectedNodeInfo = ed.selection.getNode().id.split("-");
-        
-    var selectedId = '';
-    for(var i = 1; i < selectedNodeInfo.length-1; i++)
-    {
-        selectedId += selectedNodeInfo[i]+"-";
-    }
-    selectedId += selectedNodeInfo[selectedNodeInfo.length-1];
-        
-    var prevSelectValue = null;
-        
-    $('#msm_subordinate_result-'+selectedId).children('div').each(function() {
-        if(this.id == 'msm_subordinate_select-'+selectedId)
-        {
-            prevSelectValue = $(this).text();
-        }
-       
-    });
-        
-    var select = $("#msm_subordinate_form-"+id+ " #msm_subordinate_select-"+id);
-        
-    switch(prevSelectValue)
-    {
-        case "Information":
-            select.selectedIndex = 0;
-            break;
-        case "External Link":
-            select.selectedIndex = 1;
-            break;
-        case "Internal Reference":
-            select.selectedIndex = 2;
-            break;
-        case "External Reference":
-            select.selectedIndex = 3;
-            break;
-    }
-}
-
+/**
+ * This recurisve method is used to create new HTML ID for the HTML elements in the
+ * subordinate dialog window.  For jquery Dialog and tinyMCE editor for each textarea to be
+ * initiated properly, the HTML IDs have to be unique.
+ * 
+ * @param {string} oldtestId        HTML ID of previously created subordinate dialog window.
+ */
 function checkForExistence(oldtestId)
 {
     var newTestId = '';
@@ -1039,6 +1153,14 @@ function checkForExistence(oldtestId)
     return newTestId;
 }
 
+/**
+ *  This method is used to activate the subordinate dialog window and all the needed
+ *  jquery plugins for display.
+ *  
+ *  @param {tinymce.Editor} ed          current editor that the subordinate plugin was triggered from  
+ *  @param {string} idNumber            HTML ID ending of elements associated with the subordinate dialog window
+ *  @param {string} subId               a string flag for nested subordinates  
+ */
 function createDialog(ed, idNumber, subId)
 {
     // to fix the dialog window size to 80% of window size
@@ -1088,6 +1210,12 @@ function createDialog(ed, idNumber, subId)
     $('#msm_subordinate_container-'+idNumber).dialog('open').css('display', 'block');
 }
 
+/**
+ * This method is used to find the main component of unit that triggered this subordinate plugin.
+ * (essentially looking for the div that contained the tinyMCE editor that triggered the subordinate plugin)
+ * 
+ * @param {string} idEnding         HTML ID ending of elements associated with the subordinate dialog window
+ */
 function findParentDiv(idEnding)
 {   
     var parent = null;
@@ -1236,6 +1364,13 @@ function findParentDiv(idEnding)
     return parent;
 }
 
+/**
+ * The anchored element that the subordinate is linked to is IDed differently when navigating from
+ * view.php back to authoringTool.php than when created for the first time.  The initial ID is stored in 
+ * div msm_subordiante_hotword-idEnding and it is used to retrieve the new html ending used for edit.
+ * 
+ * @param {string} oldid           HTML ID ending of intially created subordinate elements when it was first created
+ */
 function isExistingIndex(oldid)
 {
     var newId = '';
@@ -1260,7 +1395,12 @@ function isExistingIndex(oldid)
     return newId;
 }
 
-// replaces temporary HTML id given before view.php with database id after view.php script is triggered
+/**
+ * This method replaces temporary HTML id given before view.php with database id after view.php script is triggered.
+ * 
+ * @param {tinymce.Editor} ed               current tinyMCE editor that the subordinate plugin was triggered from
+ * @param {array} edIdInfo                  HTML Id of the editor split at "-" delimiter
+ */
 function replaceIdEnding(ed, edIdInfo)
 {
     var pattern = /([A-Za-z]*?)(\d+)((?:-\d+)*)/;

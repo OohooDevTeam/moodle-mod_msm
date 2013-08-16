@@ -653,10 +653,7 @@ function addIntroContent(idNumber)
     var childTitleLabel = document.createElement("label");
     childTitleLabel.className = "msm_intro_child_title_labels";
     var childTitleLabelText = document.createTextNode("Title:");
-        
-    //    var titleContainer = document.createElement("div");
-    //    
-    //    var titleLabel = document.createTextNode("Title:");
+    
     childTitleLabel.appendChild(childTitleLabelText);
     
     var introChildTitle = document.createElement("input");
@@ -664,9 +661,6 @@ function addIntroContent(idNumber)
     introChildTitle.className = "msm_intro_child_titles";
     introChildTitle.name = "msm_intro_child_title-"+newId;
     introChildTitle.setAttribute("placeholder", "Optional Title for the Content");
-    
-    //    titleContainer.appendChild(titleLabel);
-    //    titleContainer.appendChild(introChildTitle);
     
     var introChildContent = document.createElement("textarea");
     introChildContent.id = "msm_intro_child_content-"+newId;
@@ -684,7 +678,6 @@ function addIntroContent(idNumber)
     introChildDiv.appendChild(introCloseButton);
     introChildDiv.appendChild(dragArea);
 
-    //    introChildDiv.appendChild(titleContainer);
     introChildDiv.appendChild(childTitleLabel);
     introChildDiv.appendChild(introChildTitle);
     introChildDiv.appendChild(introChildContent);
@@ -748,7 +741,7 @@ function addIntroContent(idNumber)
     });    
     $("#msm_intro_child_container").sortable("refresh");
 
-    
+    // enables the toggling fuctions for indicating draggable area
     $("#msm_intro_child_dragarea-"+newId).mouseover(function () {
         $(this).children("span").css({
             "visibility": "visible", 
@@ -884,7 +877,7 @@ function addTheoremContent(event)
     });    
     $("#msm_theorem_content_container-"+idNumber).sortable("refresh");
 
-    
+    // enables the toggling fuctions for indicating draggable area
     $("#msm_theorem_statement_title_container-"+idNumber+'-'+newId).mouseover(function () {
         $(this).children("span").css({
             "visibility": "visible", 
@@ -1020,7 +1013,7 @@ function addTheoremPart(event)
     });    
     $("#msm_theorem_part_droparea-"+idNumber).sortable("refresh");
 
-    
+    // enables the toggling fuctions for indicating draggable area
     $("#msm_theorem_part_title_container-"+idNumber+'-'+newId).mouseover(function () {
         $(this).children("span").css({
             "visibility": "visible", 
@@ -1240,6 +1233,7 @@ function addAssociateForm(index, type)
     
     $("#msm_associate_container-"+index).sortable("refresh");
     
+    // enables the toggling fuctions for indicating draggable area
     $("#msm_associate_info_header-"+index+"-"+newId).mouseover(function () {
         $(this).children("span").css({
             "display": "inline",
@@ -1316,9 +1310,7 @@ function makeDefinition()
             
     clonedCurrentElement.append(defCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    //    clonedCurrentElement.append(defSelectMenu);
     clonedCurrentElement.append(defTitleContainer);
-    //    clonedCurrentElement.append(defTitleField);
 
     clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(defContentField);
@@ -1407,10 +1399,8 @@ function makeTheorem()
             
     clonedCurrentElement.append(theoremCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    //    clonedCurrentElement.append(theoremSelectMenu);
     clonedCurrentElement.append(theoremTitleContainer);
     clonedCurrentElement.append(selectAndTitleDiv)
-    //    clonedCurrentElement.append(theoremTitleField);
     clonedCurrentElement.append(theoremContentWrapper);
     clonedCurrentElement.append(theoremDescriptionLabel);
     clonedCurrentElement.append(theoremDescriptionField);
@@ -1521,9 +1511,7 @@ function makeComment()
             
     clonedCurrentElement.append(commentCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    //    clonedCurrentElement.append(commentSelectMenu);
     clonedCurrentElement.append(commentTitleContainer);
-    //    clonedCurrentElement.append(commentTitleField);
 
     clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(commentContentField);
@@ -1582,10 +1570,8 @@ function makeExtraInfo()
             
     clonedCurrentElement.append(extraInfoCloseButton);
     clonedCurrentElement.append(overlayMenu);
-    //    clonedCurrentElement.append(extraSelectMenu);
     clonedCurrentElement.append(extraTitleContainer);
     clonedCurrentElement.append(selectAndTitleDiv);
-    //    clonedCurrentElement.append(extraTitleField);
     clonedCurrentElement.append(extraContentField);
     clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(subordinateResult);

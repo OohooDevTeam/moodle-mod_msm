@@ -233,7 +233,7 @@ class EditorInContent extends EditorElement
         {
             foreach ($this->subordinates as $subordinate)
             {
-                $previewHtml .= $subordinate->displayPreview();
+                $previewHtml .= $subordinate->displayPreview($content);
             }
         }
 

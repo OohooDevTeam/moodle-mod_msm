@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -46,6 +47,7 @@ class ExportImage extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $imgCreator = new DOMDocument();
@@ -81,7 +83,7 @@ class ExportImage extends ExportElement
 
         $imgCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
         $imgUnitRecord = $DB->get_record("msm_img", array("id" => $imgCompRecord->unit_id));
-        $msmData = $DB->get_record("msm", array("id"=>$imgCompRecord->msm_id));
+        $msmData = $DB->get_record("msm", array("id" => $imgCompRecord->msm_id));
 
         $this->id = $imgUnitRecord->id;
         $this->msmid = $imgCompRecord->msm_id;

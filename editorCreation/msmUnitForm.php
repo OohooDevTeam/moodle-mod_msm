@@ -390,7 +390,7 @@ else
         foreach ($unitcontent as $key => $unitchild)
         {
             $previewHtml .= $unitchild->displayPreview($key);
-        }
+        }        
 
         echo json_encode($previewHtml);
     }

@@ -340,8 +340,8 @@ class EditorSubordinate extends EditorElement
      */
     public function displayPreview()
     {
-        $previewHtml = '';
-
+        $previewHtml = ''; 
+                
         $idInfo = explode("||", $this->hot);
         $indexInfo = explode("-", $idInfo[0]);
 
@@ -360,7 +360,7 @@ class EditorSubordinate extends EditorElement
         if (!empty($this->info))
         {
             $previewHtml .= $this->info->displayPreview($id);
-        }
+        }        
 
         return $previewHtml;
     }

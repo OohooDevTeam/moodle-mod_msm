@@ -35,6 +35,7 @@ class EditorTheorem extends EditorElement
     public $isRef;                      // database ID associated with the referenced already-existing theorem element in msm_compositor table
 
     // constructor for this class
+
     public function __construct()
     {
         $this->tablename = 'msm_theorem';
@@ -264,15 +265,15 @@ class EditorTheorem extends EditorElement
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_delete-$this->compid' onclick='deleteOverlayElement(event);'> Delete </a>";
         $htmlContent .= "<a class='msm_overlayButtons' id='msm_overlayButton_edit-$this->compid' onclick='editUnit(event);'> Edit </a>";
 
-        $htmlContent .= "</div>";      
+        $htmlContent .= "</div>";
 
         $htmlContent .= "<div id='msm_element_title_container-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 40%;'> THEOREM </b>";
         $htmlContent .= "<span style='visibility: hidden;'>Drag here to move this element.</span>";
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<div class='msm_select_title_containers'>";
-         $htmlContent .= "<select id='msm_theorem_type_dropdown-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_theorem_type_dropdown-$this->compid' disabled='disabled'>";
+        $htmlContent .= "<select id='msm_theorem_type_dropdown-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_theorem_type_dropdown-$this->compid' disabled='disabled'>";
 
         switch ($this->type)
         {
@@ -302,7 +303,7 @@ class EditorTheorem extends EditorElement
                 break;
         }
         $htmlContent .= "</select>";
-        
+
         $htmlContent .= "<div id='msm_theorem_title_input-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
 
         if (strpos($this->title, "<div/>") !== false)
@@ -316,7 +317,7 @@ class EditorTheorem extends EditorElement
 
         $htmlContent .= $theoremTitle;
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "</div>";
         $htmlContent .= "<div id='msm_theorem_content_container-$this->compid' class='msm_theorem_content_containers'>";
         foreach ($this->contents as $content)
@@ -402,12 +403,12 @@ class EditorTheorem extends EditorElement
     {
         $htmlContent = '';
 
-        $htmlContent .= "<div id='copied_msm_theoremref-$parentId-$this->compid' class='copied_msm_structural_element'>";        
+        $htmlContent .= "<div id='copied_msm_theoremref-$parentId-$this->compid' class='copied_msm_structural_element'>";
 
         $htmlContent .= "<div id='msm_element_title_container-$parentId-$this->compid' class='msm_element_title_containers'>";
         $htmlContent .= "<b style='margin-left: 40%;'> THEOREM </b>";
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "<div class='msm_select_title_containers'>";
         $htmlContent .= "<select id='msm_theoremref_type_dropdown-$parentId-$this->compid' class='msm_unit_child_dropdown msm_display_unit_child_dropdown' name='msm_theoremref_type_dropdown-$parentId-$this->compid' disabled='disabled'>";
 
@@ -439,7 +440,7 @@ class EditorTheorem extends EditorElement
                 break;
         }
         $htmlContent .= "</select>";
-        
+
         $htmlContent .= "<div id='msm_theoremref_title_input-$parentId-$this->compid' class='msm_unit_child_title msm_editor_titles' style='width: 26%;'>";
 
         if (strpos($this->title, "<div/>") !== false)
@@ -452,10 +453,10 @@ class EditorTheorem extends EditorElement
         }
 
         $htmlContent .= $theoremrefTitle;
-        $htmlContent .= "</div>";        
-        
         $htmlContent .= "</div>";
-        
+
+        $htmlContent .= "</div>";
+
         $htmlContent .= "<div id='msm_theoremref_content_container-$parentId-$this->compid' class='msm_theoremref_content_containers'>";
         foreach ($this->contents as $content)
         {
@@ -487,38 +488,72 @@ class EditorTheorem extends EditorElement
     {
         $previewHtml = '';
 
-        $previewHtml .= "<br />";
-        $previewHtml .= "<div class='theorem'>";
-        if (!empty($this->title))
+        $idInfo = explode("||", $id);
+
+        // processing theorem called by EditorInfo as reference material
+        if ($idInfo[0] == "ref")
         {
-            $previewHtml .= "<span class='theoremtitle'>" . $this->title . "</span>";
+            // need to call loadData b/c isRef only contains database ID of the reference element in msm_compositor
+            // so need to retrieve rest of data from msm_theorem
+            $this->loadData($this->isRef);
+
+            $previewHtml .= "<div class='theorem msm_refcontents' id='msm_refcontent-$idInfo[1]' style='display:none;'>";
+            if (!empty($this->title))
+            {
+                $previewHtml .= "<span class='theoremtitle'>" . $this->title . "</span>";
+            }
+
+            if (!empty($this->type))
+            {
+                $previewHtml .= "<span class='theoremtype'>" . $this->type . "</span>";
+            }
+            $previewHtml .= "<br/>";
+
+            $previewHtml .= "<div class='mathcontent'>";
+            foreach ($this->contents as $statementTheorem)
+            {
+                $previewHtml .= $statementTheorem->displayPreview();
+            }
+            $previewHtml .= "</div>";
+        }
+        // theorem as main component of unit
+        else
+        {
+            $previewHtml .= "<br />";
+            $previewHtml .= "<div class='theorem'>";
+            if (!empty($this->title))
+            {
+                $previewHtml .= "<span class='theoremtitle'>" . $this->title . "</span>";
+            }
+
+            if (!empty($this->type))
+            {
+                $previewHtml .= "<span class='theoremtype'>" . $this->type . "</span>";
+            }
+            $previewHtml .= "<br/>";
+
+            $previewHtml .= "<div class='mathcontent'>";
+            foreach ($this->contents as $statementTheorem)
+            {
+                $previewHtml .= $statementTheorem->displayPreview();
+            }
+            $previewHtml .= "</div>";
+
+            $previewHtml .= "<br />";
+
+            $previewHtml .= "<ul class='minibuttons'>";
+            foreach ($this->children as $key => $associate)
+            {
+                $previewHtml .= $associate->displayPreview("theorem", $idInfo[1] . "-" . $key);
+            }
+            $previewHtml .= "</ul>";
+
+
+            $previewHtml .= "</div>";
+            $previewHtml .= "<br />";
         }
 
-        if (!empty($this->type))
-        {
-            $previewHtml .= "<span class='theoremtype'>" . $this->type . "</span>";
-        }
-        $previewHtml .= "<br/>";
 
-        $previewHtml .= "<div class='mathcontent'>";
-        foreach ($this->contents as $statementTheorem)
-        {
-            $previewHtml .= $statementTheorem->displayPreview();
-        }
-        $previewHtml .= "</div>";
-
-        $previewHtml .= "<br />";
-
-        $previewHtml .= "<ul class='minibuttons'>";
-        foreach ($this->children as $key => $associate)
-        {
-            $previewHtml .= $associate->displayPreview("theorem", $id . "-" . $key);
-        }
-        $previewHtml .= "</ul>";
-
-
-        $previewHtml .= "</div>";
-        $previewHtml .= "<br />";
 
         return $previewHtml;
     }

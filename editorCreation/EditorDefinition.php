@@ -169,7 +169,7 @@ class EditorDefinition extends EditorElement
                 }
             }
         }
-        
+
         return $this;
     }
 
@@ -203,8 +203,6 @@ class EditorDefinition extends EditorElement
             }
 
             $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->isRef), "prev_sibling_id");
-
-//            print_object($childRecords);
 
             foreach ($childRecords as $child)
             {
@@ -397,7 +395,7 @@ class EditorDefinition extends EditorElement
 
         $htmlContent .= $defTitle;
         $htmlContent .= "</div>";
-        
+
         $htmlContent .= "</div>"; // end of msm_select_title_containers div
 
         $htmlContent .= "<div id='msm_def_content_input-$this->compid' class='msm_unit_child_content msm_editor_content'>";
@@ -497,7 +495,7 @@ class EditorDefinition extends EditorElement
         $htmlContent = '';
 
         $htmlContent .= "<div id='copied_msm_defref-$parentId-$this->compid' class='copied_msm_structural_element'>";
-        
+
         $htmlContent .= "<span class='msm_element_title'>";
         $htmlContent .= "<b style='margin-left: 40%;'> DEFINITION </b>";
         $htmlContent .= "</span>";
@@ -614,47 +612,88 @@ class EditorDefinition extends EditorElement
     {
         $previewHtml = '';
 
-        $previewHtml .= "<br />";
-        $previewHtml .= "<div class='def'>";
-        if (!empty($this->title))
-        {  
-            $previewHtml .= "<span class='deftitle'>" . $this->title . "</span>";
-        }
+        $idInfo = explode("||", $id);
 
-        if (!empty($this->type))
+        // processing definition called by EditorInfo as reference material
+        if ($idInfo[0] == "ref")
         {
-            $previewHtml .= "<span class='deftype'>" . $this->type . "</span>";
-        }
-        $previewHtml .= "<br/>";
+            // need to call loadData b/c isRef only contains database ID of the reference element in msm_compositor
+            // so need to retrieve rest of data from msm_def
+            $this->loadData($this->isRef);
 
-
-        $previewHtml .= "<div class='mathcontent'>";
-        $previewHtml .= html_entity_decode($this->content);
-        $previewHtml .= "</div>";
-
-        $previewHtml .= "<br />";
-
-        if (!empty($this->children))
-        {
-            $previewHtml .= "<ul class='defminibuttons'>";
-            foreach ($this->children as $key => $associate)
+            $previewHtml .= "<div class='def msm_refcontents' id='msm_refcontent-$idInfo[1]' style='display:none;'>";
+            if (!empty($this->title))
             {
-                $previewHtml .= $associate->displayPreview("def", $id . "-" . $key);
+                $previewHtml .= "<span class='deftitle'>" . $this->title . "</span>";
             }
-            $previewHtml .= "</ul>";
-        }
 
-        if (!empty($this->subordinates))
-        {
-            foreach ($this->subordinates as $subordinate)
+            if (!empty($this->type))
             {
-                $previewHtml .= $subordinate->displayPreview();
+                $previewHtml .= "<span class='deftype'>" . $this->type . "</span>";
             }
+            $previewHtml .= "<br/>";
+
+
+            $previewHtml .= "<div class='mathcontent'>";
+            $previewHtml .= html_entity_decode($this->content);
+            $previewHtml .= "</div>";
+
+            $previewHtml .= "<br />";
+
+            if (!empty($this->subordinates))
+            {
+                foreach ($this->subordinates as $subordinate)
+                {
+                    $previewHtml .= $subordinate->displayPreview();
+                }
+            }
+
+            $previewHtml .= "</div>";
         }
+        // displaying definition as main component of unit
+        else
+        {
+            $previewHtml .= "<br />";
+            $previewHtml .= "<div class='def'>";
+            if (!empty($this->title))
+            {
+                $previewHtml .= "<span class='deftitle'>" . $this->title . "</span>";
+            }
 
-        $previewHtml .= "</div>";
-        $previewHtml .= "<br />";
+            if (!empty($this->type))
+            {
+                $previewHtml .= "<span class='deftype'>" . $this->type . "</span>";
+            }
+            $previewHtml .= "<br/>";
 
+
+            $previewHtml .= "<div class='mathcontent'>";
+            $previewHtml .= html_entity_decode($this->content);
+            $previewHtml .= "</div>";
+
+            $previewHtml .= "<br />";
+
+            if (!empty($this->children))
+            {
+                $previewHtml .= "<ul class='defminibuttons'>";
+                foreach ($this->children as $key => $associate)
+                {
+                    $previewHtml .= $associate->displayPreview("def", $idInfo[1] . "-" . $key);
+                }
+                $previewHtml .= "</ul>";
+            }
+
+            if (!empty($this->subordinates))
+            {
+                foreach ($this->subordinates as $subordinate)
+                {
+                    $previewHtml .= $subordinate->displayPreview();
+                }
+            }
+
+            $previewHtml .= "</div>";
+            $previewHtml .= "<br />";
+        }
         return $previewHtml;
     }
 

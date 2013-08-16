@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -13,7 +14,6 @@
  * *************************************************************************
  * *************************************************************************
  */
-
 /**
  * This PHP script is called by AJAX call when user triggers the export button
  * from the navigation menu which starts the process of retrieving the data in the
@@ -26,7 +26,6 @@
  * and xml files that represents the compositions and zipXmlFiles takes the 
  * msmstempfiles folder and creates a zip file for the user to donwload
  */
-
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/mod/msm/lib.php');
 require_once("ExportElement.php");

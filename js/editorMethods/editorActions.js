@@ -68,13 +68,6 @@ function processReftype(e)
             currentTitle = 'msm_theoremref_title_input-'+indexNumber;
             currentId = 'msm_theoremref_content_input-'+indexNumber+"-1";
             break;
-        case 4:
-            //            selectedtext = "Example";
-            break;
-        case 5:
-            // element = makeCompositionRef();
-            // $(element).insertAfter("#"+selectedId);
-            break;
     }
     
     // activate the tinymce editors for title input fields and content textareas
@@ -169,10 +162,8 @@ function makeRefDefinition(idindex, dbId)
     selectAndTitleDiv.append(defSelectMenu);
     selectAndTitleDiv.append(defTitleField);
    
-    //    clonedCurrentElement.append(defSelectMenu);
     clonedCurrentElement.append(defTitle);
     clonedCurrentElement.append(selectAndTitleDiv);
-    //    clonedCurrentElement.append(defTitleField);
     clonedCurrentElement.append(defContentField);
     clonedCurrentElement.append(subordinateContainer);
     clonedCurrentElement.append(subordinateResult);
@@ -258,9 +249,6 @@ function makeRefTheorem(idindex, dbId)
     selectAndTitleDiv.append(theoremSelectMenu);
     selectAndTitleDiv.append(theoremTitleField);
             
-            
-    //    clonedCurrentElement.append(theoremSelectMenu);
-    //    clonedCurrentElement.append(theoremTitleField);
     clonedCurrentElement.append(theoremTitle);
     clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(theoremContentWrapper);
@@ -316,9 +304,7 @@ function makeRefComment(idindex, dbId)
     selectAndTitleDiv.append(commentSelectMenu);
     selectAndTitleDiv.append(commentTitleField);
             
-    //    clonedCurrentElement.append(commentSelectMenu);
     clonedCurrentElement.append(commentTitle);
-    //    clonedCurrentElement.append(commentTitleField);
     clonedCurrentElement.append(selectAndTitleDiv);
     clonedCurrentElement.append(commentContentField);
     clonedCurrentElement.append(subordinateContainer);
@@ -328,40 +314,6 @@ function makeRefComment(idindex, dbId)
     
     return clonedCurrentElement;
 }
-
-/**
- * Not Used?
- * 
- */
-//function deleteRefElement(e)
-//{
-//    var currentElementType = e.target.id.split("_");
-//    var currentElementInfo = e.target.id.split("-");
-//    
-//    var currentElement = "copied_msm_"+currentElementType[1]+"ref-"+currentElementInfo[1]+"-"+currentElementInfo[2];
-//    
-//    $("<div class='dialogs' id='msm_deleteRefComposition'> <span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>Are you sure you wish to delete this element from the composition? </div>").appendTo('#'+currentElement);
-//    $( "#msm_deleteRefComposition" ).dialog({
-//        resizable: false,
-//        height:180,
-//        modal: true,
-//        buttons: {
-//            "Yes": function() {
-//                $('#'+currentElement).empty().remove();
-//                
-//                //                if($('#msm_associate_reftype_option-'+currentElementInfo[1]+"-"+currentElementInfo[2]).children().length < 1)
-//                //                {
-//                //                    $('#msm_associate_reftype-'+currentElementInfo[1]+'-1').val("None");
-//                //                }
-//                
-//                $( this ).dialog( "close" );
-//            },
-//            "No": function() {
-//                $( this ).dialog( "close" );
-//            }
-//        }
-//    });
-//}
 
 /**
  * This method creates the form for additional contents in theorem element.  It is triggered when an 

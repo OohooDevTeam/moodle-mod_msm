@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -45,6 +46,7 @@ class ExportPartTheorem extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $partCreator = new DOMDocument();
@@ -68,7 +70,7 @@ class ExportPartTheorem extends ExportElement
             $oldtitleNode = $partCreator->createElement("caption");
             $createdTitleNode = $this->createXmlTitle($partCreator, $this->caption, $oldtitleNode);
             $titleNode = $partCreator->importNode($createdTitleNode, true);
-            
+
 //            $captionNode = $partCreator->createElement("caption");
 //            $captionText = $partCreator->createTextNode($this->caption);
 //            $captionNode->appendChild($captionText);

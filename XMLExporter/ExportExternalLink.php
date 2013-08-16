@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -24,6 +25,7 @@
  */
 class ExportExternalLink extends ExportElement
 {
+
     public $id;             // ID of this external link element in msm_external_link database table
     public $compid;         // ID of this external link element in msm_compositor database table
     public $href;           // the URL that this external link is containing
@@ -40,6 +42,7 @@ class ExportExternalLink extends ExportElement
      * 
      * @return DOMElement
      */
+
     public function exportData()
     {
         $extLinkCreator = new DOMDocument();
@@ -56,14 +59,14 @@ class ExportExternalLink extends ExportElement
         {
             $extLinkNode->setAttribute("target", $this->target);
         }
-        
+
         if (!empty($this->info))
         {
             $infoNode = $this->info->exportData();
             $importInfoNode = $extLinkCreator->importNode($infoNode, true);
             $extLinkNode->appendChild($importInfoNode);
         }
-        
+
         return $extLinkNode;
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -48,6 +49,7 @@ class ExportDefinition extends ExportElement
      *                          If the flag is not empty string, then the definition is a reference material and should create new XML file in standalone folder.
      * @return DOMElement/integer/false
      */
+
     public function exportData($flag = '')
     {
         $defCreator = new DOMDocument();
@@ -62,7 +64,7 @@ class ExportDefinition extends ExportElement
             $oldtitleNode = $defCreator->createElement("caption");
             $createdTitleNode = $this->createXmlTitle($defCreator, $this->caption, $oldtitleNode);
             $titleNode = $defCreator->importNode($createdTitleNode, true);
-            
+
 //            $captionNode = $defCreator->createElement("caption");
 //            $captionText = $defCreator->createTextNode($this->caption);
 //            $captionNode->appendChild($captionText);
@@ -95,11 +97,10 @@ class ExportDefinition extends ExportElement
 
         if (!empty($flag)) // def is a reference material (ie. ExportAssociate called this function)
         {
-             // create a new XML file in standalone folder
+            // create a new XML file in standalone folder
             $existingUnit = $this->createXMLFile($this, $defCreator->saveXML() . $defCreator->saveXML($defCreator->importNode($defNode, true)));
             // return value can be a database ID or false
             return $existingUnit;
-            
         }
         else // def is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
         {

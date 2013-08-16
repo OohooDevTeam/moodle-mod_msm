@@ -108,18 +108,6 @@ $(document).ready(function () {
                                 }
                             });  
                         }
-//                        else
-//                        {
-//                            $('#msm_unit_name_input').val(inputValue);
-//                            var eachName = inputValue.split(",");
-//                            
-//                            console.log($("#msm_unit_title_label"));
-//                            console.log($("#msm_top_unit_label"));
-//                            $("#msm_unit_title_label").text(eachName[0]+" title: ");
-//                            $("#msm_top_unit_label").text(eachName[0]+" Design Area");
-//                            $("#msm_setting_dialog").dialog("close");
-//                        }
-                        
                     }
                     else
                     {

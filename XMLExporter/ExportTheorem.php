@@ -23,7 +23,8 @@
  *
  * @author Ga Young Kim
  */
-class ExportTheorem extends ExportElement {
+class ExportTheorem extends ExportElement
+{
 
     public $id;                             // ID of the current theorem in msm_theorem database table
     public $msmid;                          // MSM instance ID
@@ -48,7 +49,8 @@ class ExportTheorem extends ExportElement {
      * @return DOMElement/integer/false
      */
 
-    public function exportData($flag = '') {
+    public function exportData($flag = '')
+    {
         $theoremCreator = new DOMDocument();
         $theoremCreator->formatOutput = true;
         $theoremCreator->preserveWhiteSpace = false;
@@ -56,7 +58,8 @@ class ExportTheorem extends ExportElement {
         $theoremNode->setAttribute("id", "$this->msmid-$this->compid");
         $theoremNode->setAttribute("type", $this->type);
 
-        if (!empty($this->caption)) {
+        if (!empty($this->caption))
+        {
             $oldtitleNode = $theoremCreator->createElement("caption");
             $createdTitleNode = $this->createXmlTitle($theoremCreator, $this->caption, $oldtitleNode);
             $titleNode = $theoremCreator->importNode($createdTitleNode, true);
@@ -67,35 +70,43 @@ class ExportTheorem extends ExportElement {
             $theoremNode->appendChild($titleNode);
         }
 
-        if (!empty($this->description)) {
+        if (!empty($this->description))
+        {
             $descriptionNode = $theoremCreator->createElement("description");
             $descriptionText = $theoremCreator->createTextNode($this->description);
             $descriptionNode->appendChild($descriptionText);
             $theoremNode->appendChild($descriptionNode);
         }
 
-        if (!empty($this->statements)) {
-            foreach ($this->statements as $statement) {
+        if (!empty($this->statements))
+        {
+            foreach ($this->statements as $statement)
+            {
                 $statementNode = $statement->exportData();
                 $newstatementNode = $theoremCreator->importNode($statementNode, true);
                 $theoremNode->appendChild($newstatementNode);
             }
         }
 
-        if (!empty($this->associates)) {
-            foreach ($this->associates as $associate) {
+        if (!empty($this->associates))
+        {
+            foreach ($this->associates as $associate)
+            {
                 $associateNode = $associate->exportData();
                 $newassociateNode = $theoremCreator->importNode($associateNode, true);
                 $theoremNode->appendChild($newassociateNode);
             }
         }
 
-        if (!empty($flag)) { // theorem is a reference material (ie. ExportAssociate called this function)
+        if (!empty($flag))
+        { // theorem is a reference material (ie. ExportAssociate called this function)
             // create a new XML file in standalone folder
             $existingUnit = $this->createXMLFile($this, $theoremCreator->saveXML() . $theoremCreator->saveXML($theoremCreator->importNode($theoremNode, true)));
             // return value can be a database ID or false
             return $existingUnit;
-        } else {  // theorem is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
+        }
+        else
+        {  // theorem is a main part of the unit (ie. ExportUnit or ExportSubordinate called this function)
             return $theoremNode;
         }
     }
@@ -108,7 +119,8 @@ class ExportTheorem extends ExportElement {
      * @param int $compid                           ID of the current theorem elements in the msm_compositor table
      * @return \ExportTheorem
      */
-    public function loadDbData($compid) {
+    public function loadDbData($compid)
+    {
         global $DB;
 
         $theoremCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -123,14 +135,18 @@ class ExportTheorem extends ExportElement {
 
         $childrenCompRecord = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
-        foreach ($childrenCompRecord as $child) {
+        foreach ($childrenCompRecord as $child)
+        {
             $childtable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-            if ($childtable->tablename == "msm_statement_theorem") {
+            if ($childtable->tablename == "msm_statement_theorem")
+            {
                 $statement = new ExportStatementTheorem();
                 $statement->loadDbData($child->id);
                 $this->statements[] = $statement;
-            } else if ($childtable->tablename == "msm_associate") {
+            }
+            else if ($childtable->tablename == "msm_associate")
+            {
                 $associate = new ExportAssociate();
                 $associate->loadDbData($child->id);
                 $this->associates[] = $associate;

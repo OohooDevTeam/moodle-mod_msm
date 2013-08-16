@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -22,7 +23,8 @@
  *
  * @author Ga Young Kim
  */
-class ExportInContent extends ExportElement {
+class ExportInContent extends ExportElement
+{
 
     public $id;                             // ID of the current ul and/or ol elements in msm_content database table
     public $compid;                         // ID of the current ul and/or ol elements in msm_compositor database table
@@ -42,19 +44,26 @@ class ExportInContent extends ExportElement {
      * 
      * @return DOMElement
      */
-    public function exportData() {
+
+    public function exportData()
+    {
         $incontentCreator = new DOMDocument();
         $incontentCreator->formatOutput = true;
         $incontentCreator->preserveWhiteSpace = false;
         $incontentNode = null;
-        if ($this->type == "ordered") {
+        if ($this->type == "ordered")
+        {
             $incontentNode = $incontentCreator->createElement("ol");
-            if (!empty($this->attr)) {
+            if (!empty($this->attr))
+            {
                 $incontentNode->setAttribute("type", $this->attr);
             }
-        } else if ($this->type == "unordered") {
+        }
+        else if ($this->type == "unordered")
+        {
             $incontentNode = $incontentCreator->createElement("ul");
-            if (!empty($this->attr)) {
+            if (!empty($this->attr))
+            {
                 $incontentNode->setAttribute("bullet", $this->attr);
             }
         }
@@ -72,7 +81,8 @@ class ExportInContent extends ExportElement {
      * @param int $compid               database ID of the current ul/ol element in the msm_compositor table
      * @return \ExportInContent
      */
-    public function loadDbData($compid) {
+    public function loadDbData($compid)
+    {
         global $DB;
 
         $incontentCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -86,14 +96,18 @@ class ExportInContent extends ExportElement {
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
-        foreach ($childRecords as $child) {
+        foreach ($childRecords as $child)
+        {
             $childtable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-            if ($childtable->tablename == "msm_subordinate") {
+            if ($childtable->tablename == "msm_subordinate")
+            {
                 $subordinate = new ExportSubordinate();
                 $subordinate->loadDbData($child->id);
                 $this->subordinates[] = $subordinate;
-            } else if ($childtable->tablename == "msm_media") {
+            }
+            else if ($childtable->tablename == "msm_media")
+            {
                 $media = new ExportMedia();
                 $media->loadDbData($child->id);
                 $this->medias[] = $media;

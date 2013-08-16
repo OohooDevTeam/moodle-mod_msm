@@ -1,4 +1,5 @@
 <?php
+
 /**
  * *************************************************************************
  * *                              MSM                                     **
@@ -22,7 +23,8 @@
  *
  * @author Ga Young Kim
  */
-class ExportPara extends ExportElement {
+class ExportPara extends ExportElement
+{
 
     public $id;                             // ID of the current paragraph element in msm_para database table
     public $compid;                         // ID of the current paragraph element in msm_compositor database table
@@ -42,13 +44,15 @@ class ExportPara extends ExportElement {
      * 
      * @return DOMElement
      */
-    public function exportData() {
+
+    public function exportData()
+    {
         $paraCreator = new DOMDocument();
         $paraCreator->formatOutput = true;
         $paraCreator->preserveWhiteSpace = false;
         $paraNode = $this->processParaContent();
         $newparaNode = $paraCreator->importNode($paraNode, true);
-        
+
         return $newparaNode;
     }
 
@@ -60,7 +64,8 @@ class ExportPara extends ExportElement {
      * @param int $compid               ID of the current paragraph elmeent in msm_compositor database table
      * @return \ExportPara
      */
-    public function loadDbData($compid) {
+    public function loadDbData($compid)
+    {
         global $DB;
 
         $paraCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
@@ -73,14 +78,18 @@ class ExportPara extends ExportElement {
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->compid), "prev_sibling_id");
 
-        foreach ($childRecords as $child) {
+        foreach ($childRecords as $child)
+        {
             $childtable = $DB->get_record("msm_table_collection", array("id" => $child->table_id));
 
-            if ($childtable->tablename == "msm_subordinate") {
+            if ($childtable->tablename == "msm_subordinate")
+            {
                 $subordinate = new ExportSubordinate();
                 $subordinate->loadDbData($child->id);
                 $this->subordinates[] = $subordinate;
-            } else if ($childtable->tablename == "msm_media") {
+            }
+            else if ($childtable->tablename == "msm_media")
+            {
                 $media = new ExportMedia();
                 $media->loadDbData($child->id);
                 $this->medias[] = $media;
@@ -101,7 +110,8 @@ class ExportPara extends ExportElement {
      * 
      * @return DOMElement
      */
-    private function processParaContent() {
+    private function processParaContent()
+    {
         $contentDoc = new DOMDocument();
         $contentDoc->formatOutput = true;
         $contentDoc->preserveWhiteSpace = false;
@@ -110,7 +120,7 @@ class ExportPara extends ExportElement {
         $content = str_replace("<b>", "<strong>", $content);
         $content = str_replace("</em>", "</emphasis>", $content);
         $content = str_replace("</b>", "</strong>", $content);
-        
+
         $contentDoc->loadXML(utf8_encode(html_entity_decode($content)));
         $contentNode = $contentDoc->documentElement;
 
@@ -119,37 +129,46 @@ class ExportPara extends ExportElement {
 
         $alength = $atags->length;
 
-        for ($i = 0; $i < $alength; $i++) {
+        for ($i = 0; $i < $alength; $i++)
+        {
             $a = $atags->item(0);
             $targetSub = null;
-            if (!empty($a)) {
+            if (!empty($a))
+            {
                 $id = $a->getAttribute("id");
 
-                foreach ($this->subordinates as $subordinate) {
+                foreach ($this->subordinates as $subordinate)
+                {
                     $hotInfo = explode("||", $subordinate->hot);
 
-                    if (trim($id) == trim($hotInfo[0])) {
+                    if (trim($id) == trim($hotInfo[0]))
+                    {
                         $targetSub = $subordinate;
                         break;
                     }
                 }
 
-                if (!empty($targetSub)) {
+                if (!empty($targetSub))
+                {
                     $initsubordinateNode = $targetSub->exportData();
                     $subordinateNode = $contentDoc->importNode($initsubordinateNode, true);
-                    if (!empty($a->parentNode)) {
+                    if (!empty($a->parentNode))
+                    {
                         $a->parentNode->replaceChild($subordinateNode, $a);
                     }
                 }
             }
         }
-        
-         // replace all image elements to media XML elements
+
+        // replace all image elements to media XML elements
         $imgTags = $contentNode->getElementsByTagName("img");
 
-        foreach ($imgTags as $key => $img) {
-            if (isset($this->medias)) {
-                if (sizeof($this->medias) > 0) {
+        foreach ($imgTags as $key => $img)
+        {
+            if (isset($this->medias))
+            {
+                if (sizeof($this->medias) > 0)
+                {
                     $media = $this->medias[$key];
                     $mediaNode = $media->exportData();
                     $mediaElement = $contentDoc->importNode($mediaNode, true);

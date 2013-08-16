@@ -485,7 +485,7 @@ function newUnit()
     $("#msm_editor_save").click(function(event) { 
         //prevents navigation to msmUnitForm.php
         event.preventDefault();
-        
+        reinitAllTitles();
         $("#msm_unit_short_title").removeAttr("readonly");
         $("#msm_unit_description_input").removeAttr("readonly");
         $(".copied_msm_structural_element select").removeAttr("disabled");
@@ -879,6 +879,8 @@ function editUnit(e)
  */
 function reinitAllTitles() 
 {
+    console.log("here?");
+    // switching the div displaying unit title to tinymce
     var unitTitle = $("div#msm_unit_title");
     if(unitTitle.length != 0)
     {
@@ -893,6 +895,7 @@ function reinitAllTitles()
         initTitleEditor("msm_unit_title", "80%");
     }    
     
+    // switching the div displaying unit child components' titles to tinymce editors
     $("div.msm_editor_titles").each(function() {
         var currentIntroId = this.id;
         
@@ -908,14 +911,17 @@ function reinitAllTitles()
         
         $(this).replaceWith(inputTitle); 
         
+        console.log("id?: "+this.id);
+        
         if((this.id.match(/def/)) || (this.id.match(/theorem/)) || (this.id.match(/comment/)) || this.id.match(/extra/))
         {
-            if(this.id.match(/theorem_part/))
+            if(this.id.match(/theorem_part/)) // par theorem is the lowest level --> so title width is smaller
             {
                 initTitleEditor(this.id, "85%");
             }
-            else
+            else // for def/theorem/comment/extra information elemnts with title on right side and dropdown on left
             {
+                console.log("initEidotr?");
                 initTitleEditor(this.id, "26%");
             }
         }
