@@ -33,6 +33,14 @@ function processAdditionalChild(event, draggedId)
     
     if(editorDivs.length > 0)
     {
+        // when dragging new item into main component as extra content...etc --> parent elemnt of parent elemnt of current element is msm_child_appending_area
+        // which causes error in msmLoadUnit
+        if((parentId.match(/copied-/) == null))
+        {
+            parentId = $(event.target).closest(".copied_msm_structural_element").attr("id");
+        }
+        
+        console.log(parentId);
         editUnit(parentId);
     }
     
@@ -237,7 +245,6 @@ function createRefDialog(id, refTypeString, currentId)
                                         <option value='definition'>Definition</option>\n\
                                         <option value='theorem'>Theorem</option>\n\
                                         <option value='comment'>Comment</option>\n\
-                                        <option value='unit'>Unit</option>\n\
                                     </select>\n\
                                     <br /><br />\n\
                                     <label for='msm_search_word'>Search: </label>\n\

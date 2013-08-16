@@ -189,7 +189,6 @@ function makeRefForm(ed, id, existingRefId)
                                         <option value='definition'>Definition</option>\n\
                                         <option value='theorem'>Theorem</option>\n\
                                         <option value='comment'>Comment</option>\n\
-                                        <option value='unit'>Unit</option>\n\
                                     </select>\n\
                                     <br /><br />\n\
                                     <label for='msm_search_word'>Search: </label>\n\

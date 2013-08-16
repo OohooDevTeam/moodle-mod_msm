@@ -51,8 +51,7 @@ require_once('../XMLImporter/TableCollection.php');
 global $DB;
 
 // user triggered a specific node of a jstree to view a particular unit
-if (isset($_POST['id']))
-{
+if (isset($_POST['id'])) {
 // id passed in form of an array with id index and value of msm_unit-#compid-#unitid
     $unitidInfo = explode('-', $_POST['id']);
 
@@ -65,9 +64,9 @@ if (isset($_POST['id']))
     echo json_encode($htmlContent);
 }
 // user has triggered the edit mode from the view.php
-else if (isset($_POST['mode']))
-{
+else if (isset($_POST['mode'])) {
     $unitCompidInfo = explode("-", $_POST['currentUnit']);
+
     $unitCompid = $unitCompidInfo[0];
 
     $unitChildElementRecords = $DB->get_records("msm_compositor", array("parent_id" => $unitCompid), "prev_sibling_id");
@@ -77,20 +76,17 @@ else if (isset($_POST['mode']))
     $unitTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_unit"));
     $personTable = $DB->get_record("msm_table_collection", array("tablename" => "msm_person"));
 
-    foreach ($unitChildElementRecords as $childRecord)
-    {
-        if (($childRecord->table_id != $unitTable->id) && ($childRecord->table_id != $personTable->id))
-        {
+    foreach ($unitChildElementRecords as $childRecord) {
+        if (($childRecord->table_id != $unitTable->id) && ($childRecord->table_id != $personTable->id)) {
             $unitChildElements[] = $childRecord;
         }
     }
+
     $childOrderArray = explode(",", $_POST['childOrder']);
 
     $indexElement = null;
-    foreach ($childOrderArray as $key => $value)
-    {
-        if ($value == $_POST["currentElement"])
-        {
+    foreach ($childOrderArray as $key => $value) {
+        if ($value == $_POST["currentElement"]) {
             $indexElement = $key;
         }
     }
@@ -98,8 +94,7 @@ else if (isset($_POST['mode']))
     $currentElement = $unitChildElements[$indexElement];
     $currentElementTable = $DB->get_record("msm_table_collection", array("id" => $currentElement->table_id))->tablename;
 
-    switch ($currentElementTable)
-    {
+    switch ($currentElementTable) {
         case "msm_intro":
             $intro = new EditorIntro();
             $intro->loadData($currentElement->id);
@@ -133,8 +128,7 @@ else if (isset($_POST['mode']))
     }
 }
 // when triggered to view.php from MSM editor panel
-else if (isset($_POST['tree_content']))
-{
+else if (isset($_POST['tree_content'])) {
     $doc = new DOMDocument();
     $doc->loadHTML($_POST['tree_content']);
 
@@ -148,10 +142,8 @@ else if (isset($_POST['tree_content']))
     processTreeContent($ulElement, 0, 0);
 
     // updating standalone units to change the standalone status in the msm_unit table
-    foreach ($standaloneIdInfos as $idInfo)
-    {
-        if (!empty($idInfo))
-        {
+    foreach ($standaloneIdInfos as $idInfo) {
+        if (!empty($idInfo)) {
             $idsets = explode("-", $idInfo);
 
             $idPair = $idsets[1] . "-" . $idsets[2];
@@ -164,8 +156,7 @@ else if (isset($_POST['tree_content']))
 
     $compidArray = array();
 
-    foreach ($liElements as $liEl)
-    {
+    foreach ($liElements as $liEl) {
         $id = $liEl->getAttribute("id");
 
         $string = explode("-", $id);
@@ -175,8 +166,7 @@ else if (isset($_POST['tree_content']))
 
     $idPairs = array();
 
-    foreach ($compidArray as $compid)
-    {
+    foreach ($compidArray as $compid) {
         $elementRecord = $DB->get_record('msm_compositor', array('id' => $compid));
         $idPairs[] = $elementRecord->msm_id . "-" . $compid;
     }
@@ -184,8 +174,7 @@ else if (isset($_POST['tree_content']))
     echo json_encode($idPairs[0]);
 }
 // user triggered to discard any changes made to the unit
-else if (isset($_POST["cancelUnit"])) // from cancelUnit js function
-{
+else if (isset($_POST["cancelUnit"])) { // from cancelUnit js function
     $unitidInfo = explode('-', $_POST['cancelUnit']);
 
     $unitData = new EditorUnit();
@@ -197,15 +186,13 @@ else if (isset($_POST["cancelUnit"])) // from cancelUnit js function
     echo json_encode($htmlContent);
 }
 // for displaying chosen reference material for loading the existing subordinate for editting
-else if (isset($_POST["loadRefId"])) 
-{
+else if (isset($_POST["loadRefId"])) {
     $refId = $_POST["loadRefId"];
 
     $compRecord = $DB->get_record("msm_compositor", array("id" => $refId));
     $tableRecord = $DB->get_record("msm_table_collection", array("id" => $compRecord->table_id));
 
-    switch ($tableRecord->tablename)
-    {
+    switch ($tableRecord->tablename) {
         case "msm_def":
             $definition = new EditorDefinition();
             $definition->loadData($refId);
@@ -245,16 +232,11 @@ else if (isset($_POST["loadRefId"]))
  * @param Integer $parentId
  * @param Integer $siblingId
  */
-function processTreeContent($DomElement, $parentId, $siblingId)
-{
-    if ($DomElement->hasChildNodes())
-    {
-        foreach ($DomElement->childNodes as $child)
-        {
-            if ($child->nodeType == XML_ELEMENT_NODE)
-            {
-                switch ($child->tagName)
-                {
+function processTreeContent($DomElement, $parentId, $siblingId) {
+    if ($DomElement->hasChildNodes()) {
+        foreach ($DomElement->childNodes as $child) {
+            if ($child->nodeType == XML_ELEMENT_NODE) {
+                switch ($child->tagName) {
                     case "ul":
                         processTreeContent($child, $parentId, $siblingId);
                         break;
@@ -268,14 +250,10 @@ function processTreeContent($DomElement, $parentId, $siblingId)
 
                         $siblingId = $childIdInfo[1];
 
-                        if ($child->hasChildNodes())
-                        {
-                            foreach ($child->childNodes as $grandChild)
-                            {
-                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
-                                {
-                                    if ($grandChild->tagName == "ul")
-                                    {
+                        if ($child->hasChildNodes()) {
+                            foreach ($child->childNodes as $grandChild) {
+                                if ($grandChild->nodeType == XML_ELEMENT_NODE) {
+                                    if ($grandChild->tagName == "ul") {
                                         processTreeContent($grandChild, $childIdInfo[1], 0);
                                     }
                                 }

@@ -704,7 +704,7 @@ function saveComp(e)
  * @param {eventObject} e                 click event object from the edit button in overlay
  */
 function editUnit(e)
-{  
+{ 
     reinitAllTitles();   
     
     $("#msm_editor_new").attr("disabled", "disabled");
@@ -1600,30 +1600,34 @@ function enableContentEditors(unitArray, currentElement)
     var theoremmatch = /^copied_msm_theorem-\d+$/;  
     var extrainfomatch = /^copied_msm_extra_info-\d+$/;
     
-    if(currentElement.match(bodymatch))
+    // need to check that the main unit elements have divs displaying contents instead of active tinyMCE
+    if($("#"+currentElement).children(".msm_editor_content").length != 0)
     {
-        createBodyText(currentElement, unitArray);    
-    }
-    else if(currentElement.match(intromatch))
-    {
-        createIntroText(currentElement, unitArray);
-    }
-    else if(currentElement.match(defmatch))
-    {
-        createDefText(currentElement, unitArray)
-    }
-    else if(currentElement.match(commentmatch))
-    {
-        createCommentText(currentElement, unitArray)
-    }
-    else if(currentElement.match(theoremmatch))
-    {
-        createTheoremText(currentElement, unitArray)
-    }
-    else if(currentElement.match(extrainfomatch))
-    {
-        createExtraInfoText(currentElement, unitArray);
-    }    
+        if(currentElement.match(bodymatch))
+        {
+            createBodyText(currentElement, unitArray);    
+        }
+        else if(currentElement.match(intromatch))
+        {
+            createIntroText(currentElement, unitArray);
+        }
+        else if(currentElement.match(defmatch))
+        {
+            createDefText(currentElement, unitArray)
+        }
+        else if(currentElement.match(commentmatch))
+        {
+            createCommentText(currentElement, unitArray)
+        }
+        else if(currentElement.match(theoremmatch))
+        {
+            createTheoremText(currentElement, unitArray)
+        }
+        else if(currentElement.match(extrainfomatch))
+        {
+            createExtraInfoText(currentElement, unitArray);
+        }  
+    }     
 }
 
 /**
