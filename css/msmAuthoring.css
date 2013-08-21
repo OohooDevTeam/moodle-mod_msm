@@ -987,14 +987,12 @@ table.mceLayout
     width:100%;
 } 
 #msm_component_tab .ui-tabs-nav { 
-    padding-left: 5px; 
-    padding-right: 5px; 
+    padding-left: 5px;
     background: transparent; 
     border-width: 0px 0px 1px 0px; 
     -moz-border-radius: 0px; 
     -webkit-border-radius: 0px; 
-    border-radius: 0px; 
-    width: 99%;
+    border-radius: 0px;
 } 
 
 #msm_component_tab .ui-tabs-nav li {
@@ -1009,7 +1007,7 @@ table.mceLayout
 
 #msm_component_tab .ui-tabs-panel { 
     /*background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top; */
-    border-width: 0px 1px 1px 1px; 
+    
 }
 
 #msm_search_result_table
