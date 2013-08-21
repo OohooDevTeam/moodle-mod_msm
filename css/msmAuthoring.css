@@ -337,6 +337,36 @@
     background: transparent url("../pix/structure/ico_intro.png") no-repeat 5px 0;
 }
 
+#msm_associate .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_associate.png") no-repeat 5px 0;
+}
+
+#msm_extra_content .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_extracontent.png") no-repeat 5px 0;
+}
+
+#msm_part_theorem .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_theorempart.png") no-repeat 5px 0;
+}
+
+#msm_internal_ref .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_reference.png") no-repeat 5px 0;
+}
+
+#msm_external_ref .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_referenceexternal.png") no-repeat 5px 0;
+}
+
+#msm_new_ref .msm_element_label
+{
+    background: transparent url("../pix/structure/ico_referencenew.png") no-repeat 5px 0;
+}
+
 #msm_editor_right h3
 {
     letter-spacing: 0px;
@@ -957,7 +987,8 @@ table.mceLayout
     width:100%;
 } 
 #msm_component_tab .ui-tabs-nav { 
-    padding-left: 0px; 
+    padding-left: 5px; 
+    padding-right: 5px; 
     background: transparent; 
     border-width: 0px 0px 1px 0px; 
     -moz-border-radius: 0px; 
@@ -967,13 +998,17 @@ table.mceLayout
 } 
 
 #msm_component_tab .ui-tabs-nav li {
-    width: 48.1%;
+    /*width: 48.1%;*/
     white-space: pre;
     text-align: center;
 }
 
+#msm_component_tab .ui-tabs-nav li a {
+    cursor: pointer;
+}
+
 #msm_component_tab .ui-tabs-panel { 
-    background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top; 
+    /*background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top; */
     border-width: 0px 1px 1px 1px; 
 }
 
