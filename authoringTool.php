@@ -95,7 +95,7 @@ echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/sup
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/msmAuthoring.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
 //echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/imageMapperDisplay.css'/>"; // uncomment these to add the image mapper
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/smoothness/jquery.ui.all.css'/>";
+//echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/smoothness/jquery.ui.all.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/css/smoothness/jquery-ui-1.10.3.custom.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/js/jstree/themes/default/style.css'/>";
 
