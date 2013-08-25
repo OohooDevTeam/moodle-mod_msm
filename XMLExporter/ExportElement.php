@@ -194,7 +194,7 @@ abstract class ExportElement
 
                         $this->exportMath($child, $contentDoc);
                     }
-                    $newChildNode = $this->replacePTags($DomDocument, $child);
+                    $newChildNode = $this->replacePTags($DomDocument, $child);                    
                     $childNode = $DomDocument->importNode($newChildNode, true);
                 }
                 else
@@ -326,9 +326,9 @@ abstract class ExportElement
                         }
                     }
                     $this->exportMath($child, $contentDoc);
-
+                    
                     $childNode = $DomDocument->importNode($child, true);
-                }
+                }                
                 $DomNode->appendChild($childNode);
             }
             else

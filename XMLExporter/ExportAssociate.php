@@ -133,6 +133,7 @@ class ExportAssociate extends ExportElement
                         $info->loadDbData($refCompRecord->id);
                         $this->info = $info;
                         break;
+                    // add code to this condition to add feature to reference unit
 //                    case "msm_unit":
 //                        break;
                 }

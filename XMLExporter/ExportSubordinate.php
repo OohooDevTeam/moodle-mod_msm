@@ -122,9 +122,13 @@ class ExportSubordinate extends ExportElement
             }
             else
             {
-                $reference = new ExportReference();
-                $reference->loadDbData($child->id);
-                $this->ref = $reference;
+                // take this condition out for adding features to reference unit/exercises/examples..etc
+                if(($childTable->tablename != "msm_unit") && ($childTable->tablename != "msm_packs"))
+                {
+                    $reference = new ExportReference();
+                    $reference->loadDbData($child->id);
+                    $this->ref = $reference;
+                }               
             }
         }
         return $this;

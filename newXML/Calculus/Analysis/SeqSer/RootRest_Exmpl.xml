@@ -4,7 +4,7 @@
 <showme.pack xmlns="Compositor"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_RootTest"
-             xsi:schemaLocation="Compositor &#xA;                    file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Compositor.xsd">
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle2.5/mod/msm/XSLTdocuments/Compositor.xsd">
 	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Root Test: Examples</title>

@@ -247,7 +247,7 @@ function createRefDialog(id, refTypeString, currentId)
                                     </select>\n\
                                     <br /><br />\n\
                                     <label for='msm_search_word'>Search: </label>\n\
-                                    <input id='msm_search_word' name='msm_search_word' style='width: 80%;'/>\n\
+                                    <input id='msm_search_word' name='msm_search_word' style='width: 74.5%;'/>\n\
                                     <select id='msm_search_word_type' name='msm_search_word_type' style='margin-left: 1%;'>\n\
                                         <option value='title'>Title</option>\n\
                                         <option value='content'>Content</option>\n\

@@ -346,7 +346,6 @@ function submitForm()
                     });
                     
                     $("#msm_unit_title").dblclick(function(){ 
-                        console.log("here?");
                         processMathContent(this.id);
                         initTitleEditor(this.id, "80%");
                         allowDragnDrop();

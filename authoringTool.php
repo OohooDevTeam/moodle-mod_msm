@@ -138,8 +138,8 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jstree/jquery
 echo "<script type='text/javascript' src='$CFG->wwwroot/$editorpath/tiny_mce.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/lib/editor/tinymce/module.js'></script>";
 
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>"; // for using local copy
-echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>"; // for using local copy
+//echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
 
 // creating the navigation menu for the main editor
 $msm_nav = '';

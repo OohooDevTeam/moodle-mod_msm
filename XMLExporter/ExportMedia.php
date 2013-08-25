@@ -89,7 +89,10 @@ class ExportMedia extends ExportElement
         $this->inline = $mediaUnitRecord->inline;
         $this->type = $mediaUnitRecord->media_type;
 
-        $imgRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid));
+        // only checking img child at the moment
+        // but if want to expand MSM to have image mapping feature, need to check for both img and image.mapping data
+        $imgTable = $DB->get_record("msm_table_collection", array("tablename"=>"msm_img"));
+        $imgRecord = $DB->get_record("msm_compositor", array("parent_id" => $this->compid, "table_id"=>$imgTable->id));
 
         if (!empty($imgRecord))
         {

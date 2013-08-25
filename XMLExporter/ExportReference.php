@@ -165,8 +165,10 @@ class ExportReference extends ExportElement
                 $comment->loadDbData($referenceCompRecord->id);
                 $this->ref = $comment;
                 break;
-            case "msm_unit":
-                break;
+            // add code to add referencing unit features
+//            case "msm_unit":
+//                
+//                break;
         }
     }
 

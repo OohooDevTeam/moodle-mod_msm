@@ -22,8 +22,7 @@
  *
  * @author Ga Young Kim
  */
-class Problem extends Element
-{
+class Problem extends Element {
 
     public $id;                            // database ID associated with the problem element in msm_problem table
     public $compid;                        // database ID associated with the problem element in msm_compositor table
@@ -44,8 +43,7 @@ class Problem extends Element
      * @param string $xmlpath         filepath to the parent dierectory of this XML file being parsed
      */
 
-    function __construct($xmlpath = '')
-    {
+    function __construct($xmlpath = '') {
         parent::__construct($xmlpath);
         $this->tablename = 'msm_problem';
     }
@@ -58,46 +56,39 @@ class Problem extends Element
      * @param DOMElement $DomElement        problem element in XML file
      * @param int $position                 integer that keeps track of order if elements
      */
-    public function loadFromXml($DomElement, $position = '')
-    {
+    public function loadFromXml($DomElement, $position = '') {
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
         $problembody = $DomElement->getElementsByTagName('problem.body')->item(0);
 
-        foreach ($this->processIndexAuthor($problembody, $position) as $indexauthor)
-        {
+        foreach ($this->processIndexAuthor($problembody, $position) as $indexauthor) {
             $this->indexauthors[] = $indexauthor;
         }
 
-        foreach ($this->processIndexGlossary($problembody, $position) as $indexglossary)
-        {
+        foreach ($this->processIndexGlossary($problembody, $position) as $indexglossary) {
             $this->indexglossarys[] = $indexglossary;
         }
 
-        foreach ($this->processIndexSymbols($problembody, $position) as $indexsymbol)
-        {
+        foreach ($this->processIndexSymbols($problembody, $position) as $indexsymbol) {
             $this->indexsymbols[] = $indexsymbol;
         }
-        foreach ($this->processSubordinate($problembody, $position) as $subordinate)
-        {
+        foreach ($this->processSubordinate($problembody, $position) as $subordinate) {
             $this->subordinates[] = $subordinate;
         }
 
-        foreach ($this->processMedia($problembody, $position) as $media)
-        {
+        foreach ($this->processMedia($problembody, $position) as $media) {
             $this->medias[] = $media;
         }
 
-        foreach ($this->processTable($problembody, $position) as $table)
-        {
+        foreach ($this->processTable($problembody, $position) as $table) {
             $this->tables[] = $table;
         }
 
-        foreach ($this->processContent($problembody, $position) as $content)
-        {
+        foreach ($this->processContent($problembody, $position) as $content) {
             $this->content .= $content;
         }
+
         return $this;
     }
 
@@ -112,22 +103,18 @@ class Problem extends Element
      * @param int $parentid              ID of the parent element from msm_compositor
      * @param int $siblingid             ID of the previous sibling element from msm_compositor
      */
-    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '')
-    {
+    function saveIntoDb($position, $msmid, $parentid = '', $siblingid = '') {
         global $DB;
         $data = new stdClass();
 
         $data->textcaption = $this->textcaption;
         $data->caption = $this->caption;
 
-        if (!empty($this->content))
-        {
+        if (!empty($this->content)) {
             $data->problem_content = $this->content;
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
-        }
-        else
-        {
+        } else {
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $msmid, $parentid, $siblingid);
         }
@@ -136,71 +123,54 @@ class Problem extends Element
         $sibling_id = null;
 
 
-        if (!empty($this->subordinates))
-        {
-            foreach ($this->subordinates as $key => $subordinate)
-            {
+        if (!empty($this->subordinates)) {
+            foreach ($this->subordinates as $key => $subordinate) {
                 $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
             }
         }
 
-        if (!empty($this->indexauthors))
-        {
-            foreach ($this->indexauthors as $key => $indexauthor)
-            {
+        if (!empty($this->indexauthors)) {
+            foreach ($this->indexauthors as $key => $indexauthor) {
                 $elementPositions['indexauthor' . '-' . $key] = $indexauthor->position;
             }
         }
 
-        if (!empty($this->indexglossarys))
-        {
-            foreach ($this->indexglossarys as $key => $indexglosary)
-            {
+        if (!empty($this->indexglossarys)) {
+            foreach ($this->indexglossarys as $key => $indexglosary) {
                 $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
             }
         }
 
-        if (!empty($this->indexsymbols))
-        {
-            foreach ($this->indexsymbols as $key => $indexsymbol)
-            {
+        if (!empty($this->indexsymbols)) {
+            foreach ($this->indexsymbols as $key => $indexsymbol) {
                 $elementPositions['indexsymbol' . '-' . $key] = $indexsymbol->position;
             }
         }
 
-        if (!empty($this->medias))
-        {
-            foreach ($this->medias as $key => $media)
-            {
+        if (!empty($this->medias)) {
+            foreach ($this->medias as $key => $media) {
                 $elementPositions['media' . '-' . $key] = $media->position;
             }
         }
 
-        if (!empty($this->tables))
-        {
-            foreach ($this->tables as $key => $table)
-            {
+        if (!empty($this->tables)) {
+            foreach ($this->tables as $key => $table) {
                 $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
         asort($elementPositions);
 
-        foreach ($elementPositions as $element => $value)
-        {
-            switch ($element)
-            {
+        foreach ($elementPositions as $element => $value) {
+            switch ($element) {
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid);
                         $sibling_id = $subordinate->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
@@ -210,14 +180,11 @@ class Problem extends Element
                 case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
                     $indexauthorString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $indexauthor = $this->indexauthors[$indexauthorString[1]];
                         $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid);
                         $sibling_id = $indexauthor->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $indexauthor = $this->indexauthors[$indexauthorString[1]];
                         $indexauthor->saveIntoDb($indexauthor->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexauthor->compid;
@@ -227,14 +194,11 @@ class Problem extends Element
                 case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
                     $indexsymbolString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
                         $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid);
                         $sibling_id = $indexsymbol->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
                         $indexsymbol->saveIntoDb($indexsymbol->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexsymbol->compid;
@@ -244,14 +208,11 @@ class Problem extends Element
                 case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
                     $indexglossaryString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
                         $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid);
                         $sibling_id = $indexglossary->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
                         $indexglossary->saveIntoDb($indexglossary->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $indexglossary->compid;
@@ -261,14 +222,11 @@ class Problem extends Element
                 case(preg_match("/^(media.\d+)$/", $element) ? true : false):
                     $mediaString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $msmid, $this->compid);
                         $sibling_id = $media->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
@@ -278,14 +236,11 @@ class Problem extends Element
                 case(preg_match("/^(table.\d+)$/", $element) ? true : false):
                     $tableString = explode('-', $element);
 
-                    if (empty($sibling_id))
-                    {
+                    if (empty($sibling_id)) {
                         $table = $this->tables[$tableString[1]];
                         $table->saveIntoDb($table->position, $msmid, $this->compid);
                         $sibling_id = $table->compid;
-                    }
-                    else
-                    {
+                    } else {
                         $table = $this->tables[$tableString[1]];
                         $table->saveIntoDb($table->position, $msmid, $this->compid, $sibling_id);
                         $sibling_id = $table->compid;

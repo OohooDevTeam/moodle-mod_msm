@@ -126,7 +126,8 @@ $PAGE->set_cacheable(true);
 
 echo $OUTPUT->header();
 
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/smoothness/jquery.ui.all.css'/>";
+//echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/development-bundle/themes/smoothness/jquery.ui.all.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/jqueryUI/css/smoothness/jquery-ui-1.10.3.custom.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/jquery.splitter.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/slideNav.css'/>";
@@ -159,8 +160,8 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/navToPage.js'
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/lib/jquery.cookie.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jTreeview/jquery.treeview.js'></script>";
 
-//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
-echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local'></script>";
+//echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
 //echo "<script type='text/x-mathjax-config' src='$CFG->wwwroot/mod/msm/js/mathjax/config/local/local.js'></script>";
 
 if ($msm->intro)

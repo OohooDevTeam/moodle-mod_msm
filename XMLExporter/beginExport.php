@@ -53,17 +53,12 @@ global $DB, $CFG;
 
 // AJAX call triggered from the close download popup which is for deleting all temp
 // directories and files
-if (isset($_POST["mode"]))
-{
+if (isset($_POST["mode"])) {
     $deletePath = $CFG->dataroot . "/temp/msmtempfiles/";
-    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($deletePath, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $path)
-    {
-        if ($path->isFile())
-        {
+    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($deletePath, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $path) {
+        if ($path->isFile()) {
             unlink($path->getPathname());
-        }
-        else
-        {
+        } else {
             rmdir($path->getPathname());
         }
     }
@@ -87,14 +82,12 @@ $topUnits = $DB->get_records("msm_compositor", array("msm_id" => $msm_id, "table
 
 $unitObjects = array();
 
-if (sizeof($topUnits) == 0)
-{
+if (sizeof($topUnits) == 0) {
     echo json_encode("empty");
     return;
 }
 
-foreach ($topUnits as $topUnit)
-{
+foreach ($topUnits as $topUnit) {
     $unit = new ExportUnit();
     $unit->loadDbData($topUnit->id);
     $unitObjects[] = $unit;
@@ -104,68 +97,49 @@ $parentDir = $CFG->dataroot . "/temp/msmtempfiles/";
 $msmRecord = $DB->get_record("msm", array("id" => $msm_id));
 
 $msmtrimName = preg_replace("/\s+/", '', $msmRecord->name);
+$msmtrimName = str_replace('/', '', $msmtrimName);
+$msmtrimName = str_replace('\\', '', $msmtrimName);
+$msmtrimName = str_replace('-', '', $msmtrimName);
 $CompDir = "$parentDir/$msmtrimName$msmRecord->id/";
 
-if (file_exists($parentDir))
-{
-    if (file_exists($CompDir))
-    {
-        foreach ($unitObjects as $unitobject)
-        {
+if (file_exists($parentDir)) {
+    if (file_exists($CompDir)) {
+        foreach ($unitObjects as $unitobject) {
             exportToFile($CompDir, $unitobject, $msm_id, true);
         }
 
         exportAllImages($CompDir, $context, $msm_id);
-    }
-    else
-    {
-        if (mkdir($CompDir))
-        {
-            foreach ($unitObjects as $unitobject)
-            {
+    } else {
+        if (mkdir($CompDir)) {
+            foreach ($unitObjects as $unitobject) {
                 exportToFile($CompDir, $unitobject, $msm_id, true);
             }
 
             exportAllImages($CompDir, $context, $msm_id);
-        }
-        else
-        {
+        } else {
             echo json_encode("error");
         }
     }
-}
-else
-{
-    if (mkdir($parentDir))
-    {
-        if (file_exists($CompDir))
-        {
-            foreach ($unitObjects as $unitobject)
-            {
+} else {
+    if (mkdir($parentDir)) {
+        if (file_exists($CompDir)) {
+            foreach ($unitObjects as $unitobject) {
                 exportToFile($CompDir, $unitobject, $msm_id, true);
             }
 
             exportAllImages($CompDir, $context, $msm_id);
-        }
-        else
-        {
-            if (mkdir($CompDir))
-            {
-                foreach ($unitObjects as $unitobject)
-                {
+        } else {
+            if (mkdir($CompDir)) {
+                foreach ($unitObjects as $unitobject) {
                     exportToFile($CompDir, $unitobject, $msm_id, true);
                 }
 
                 exportAllImages($CompDir, $context, $msm_id);
-            }
-            else
-            {
+            } else {
                 echo json_encode("error");
             }
         }
-    }
-    else
-    {
+    } else {
         echo json_encode("error");
     }
 }
@@ -177,8 +151,7 @@ $filename = $msmtrimName . $msmRecord->id . ".zip";
 
 $existingfile = $fs->get_file($context->id, 'mod_msm', 'editor', $msm->id, "/", $filename);
 
-if ($existingfile)
-{
+if ($existingfile) {
     $existingfile->delete();
 //    $fs->delete_area_files($context->id, 'mod_msm', 'editor', $existingfile->get_itemid());
 }
@@ -206,71 +179,50 @@ echo json_encode($downloadlink);
  * @param Object $cntxt                 moodle context object
  * @param int $msmId                    MSM instance ID
  */
-function exportAllImages($parentPath, $cntxt, $msmId)
-{
+function exportAllImages($parentPath, $cntxt, $msmId) {
     $fs = get_file_storage();
 
-    foreach ($fs->get_area_files($cntxt->id, "mod_msm", "editor") as $file)
-    {
+    foreach ($fs->get_area_files($cntxt->id, "mod_msm", "editor") as $file) {
         $filename = $file->get_filename();
         $picFilePath = "$parentPath/pics/";
 
-        if ($filename != ".")
-        {
-            if (file_exists($picFilePath))
-            {
+        if ($filename != ".") {
+            if (file_exists($picFilePath)) {
                 $fileInfo = explode(".", $filename);
 
                 $ext = $fileInfo[sizeof($fileInfo) - 1];
 
-                if (($ext == "jpg") || ($ext == "png") || ($ext == "gif") || ($ext == "jpeg") || ($ext == "bmp"))
-                {
+                if (($ext == "jpg") || ($ext == "png") || ($ext == "gif") || ($ext == "jpeg") || ($ext == "bmp")) {
                     $newpath = $picFilePath . $filename;
 
-                    if ($imgfile = fopen($newpath, "w"))
-                    {
+                    if ($imgfile = fopen($newpath, "w")) {
                         fwrite($imgfile, $file->get_content());
                         fclose($imgfile);
-                    }
-                    else
-                    {
+                    } else {
                         echo json_encode("error");
                     }
-                }
-                else
-                {
+                } else {
                     continue;
                 }
-            }
-            else
-            {
-                if (mkdir($picFilePath))
-                {
+            } else {
+                if (mkdir($picFilePath)) {
                     $fileInfo = explode(".", $filename);
 
                     $ext = $fileInfo[sizeof($fileInfo) - 1];
 
-                    if (($ext == "jpg") || ($ext == "png") || ($ext == "gif") || ($ext == "jpeg") || ($ext == "bmp"))
-                    {
+                    if (($ext == "jpg") || ($ext == "png") || ($ext == "gif") || ($ext == "jpeg") || ($ext == "bmp")) {
                         $newpath = $picFilePath . $filename;
 
-                        if ($imgfile = fopen($newpath, "w"))
-                        {
+                        if ($imgfile = fopen($newpath, "w")) {
                             fwrite($imgfile, $file->get_content());
                             fclose($imgfile);
-                        }
-                        else
-                        {
+                        } else {
                             echo json_encode("error");
                         }
-                    }
-                    else
-                    {
+                    } else {
                         continue;
                     }
-                }
-                else
-                {
+                } else {
                     echo json_encode("error");
                 }
             }
@@ -289,113 +241,79 @@ function exportAllImages($parentPath, $cntxt, $msmId)
  * @param int $msmid                        MSM intance ID
  * @param bool $isTop                       flag to indicate top unit(it needs to be in folder above NestedUnit)
  */
-function exportToFile($parentPath, $unitObj, $msmid, $isTop)
-{
+function exportToFile($parentPath, $unitObj, $msmid, $isTop) {
     $topunitDocument = $unitObj->exportData();
     $filename = null;
 
     $trimmedTag = preg_replace('/\s+/', '', $unitObj->unittag);
-    if (!empty($unitObj->shortname))
-    {
+    $trimmedTag = str_replace('/', '', $trimmedTag);
+    $trimmedTag = str_replace('\\', '', $trimmedTag);
+    $trimmedTag = str_replace('-', '', $trimmedTag);
+    if (!empty($unitObj->shortname)) {
         $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+        $unitname = str_replace('/', '', $unitname);
+        $unitname = str_replace('\\', '', $unitname);
+        $unitname = str_replace('-', '', $unitname);
     }
 
     // dealing with reference materials
-    if ($unitObj->standalone == "true")
-    {
+    if ($unitObj->standalone == "true") {
         $directoryname = $parentPath . "standalones/";
-        if (file_exists($directoryname))
-        {
-            if (!empty($unitObj->shortname))
-            {
+        if (file_exists($directoryname)) {
+            if (!empty($unitObj->shortname)) {
                 $filename = "$directoryname$trimmedTag$unitObj->compid-$unitname.xml";
-            }
-            else
-            {
+            } else {
                 $filename = "$directoryname$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
             }
-        }
-        else
-        {
-            if (mkdir($directoryname))
-            {
-                if (!empty($unitObj->shortname))
-                {
+        } else {
+            if (mkdir($directoryname)) {
+                if (!empty($unitObj->shortname)) {
                     $filename = "$directoryname$trimmedTag$unitObj->compid-$unitname.xml";
-                }
-                else
-                {
+                } else {
                     $filename = "$directoryname$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
                 }
-            }
-            else
-            {
+            } else {
                 echo "error in making the standalone directory!";
             }
         }
-    }
-    else
-    {
-        if ($isTop) // this unit is top unit which needs to be placed in parent directory of NestedUnits
-        {
-            if (!empty($unitObj->shortname))
-            {
-                $unitname = preg_replace('/\s+/', '', $unitObj->shortname);
+    } else {
+        if ($isTop) { // this unit is top unit which needs to be placed in parent directory of NestedUnits
+            if (!empty($unitObj->shortname)) {
                 $filename = "$parentPath$trimmedTag$unitObj->compid-$unitname.xml";
-            }
-            else
-            {
+            } else {
                 $filename = "$parentPath$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
             }
-        }
-        else  // this unit is nested unit which needs to be placed in NestedUnits
-        {
+        } else {  // this unit is nested unit which needs to be placed in NestedUnits
             $filepath = $parentPath . "NestedUnits/";
 
-            if (file_exists($filepath))
-            {
-                if (!empty($unitObj->shortname))
-                {
+            if (file_exists($filepath)) {
+                if (!empty($unitObj->shortname)) {
                     $filename = "$filepath$trimmedTag$unitObj->compid-$unitname.xml";
-                }
-                else
-                {
+                } else {
                     $filename = "$filepath$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
                 }
-            }
-            else
-            {
-                if (mkdir($filepath))
-                {
-                    if (!empty($unitObj->shortname))
-                    {
+            } else {
+                if (mkdir($filepath)) {
+                    if (!empty($unitObj->shortname)) {
                         $filename = "$filepath$trimmedTag$unitObj->compid-$unitname.xml";
-                    }
-                    else
-                    {
+                    } else {
                         $filename = "$filepath$trimmedTag$unitObj->compid-$unitObj->id.xml"; // default if no name is given --> id from msm_unit
                     }
-                }
-                else
-                {
+                } else {
                     echo "error making parent directory";
                 }
             }
         }
     }
 
-    if ($xmlfile = fopen($filename, "w"))
-    {
+    if ($xmlfile = fopen($filename, "w")) {
         fwrite($xmlfile, $topunitDocument->saveXML());
         fclose($xmlfile);
-    }
-    else
-    {
+    } else {
         echo json_encode("error");
     }
 
-    foreach ($unitObj->unitchildren as $subunit)
-    {
+    foreach ($unitObj->unitchildren as $subunit) {
         exportToFile($parentPath, $subunit, $msmid, false);
     }
 }
@@ -408,53 +326,42 @@ function exportToFile($parentPath, $unitObj, $msmid, $isTop)
  * @param string $zipfilename       filename that is created from MSM instance name and database ID
  * @return boolean
  */
-function zipXmlFiles($source, $zipfilename)
-{
+function zipXmlFiles($source, $zipfilename) {
     $destination = $source . $zipfilename . ".zip";
 
-    if (!extension_loaded('zip') || !file_exists($source))
-    {
+    if (!extension_loaded('zip') || !file_exists($source)) {
         return false;
     }
 
     $zip = new ZipArchive();
-    if (!$zip->open($destination, ZIPARCHIVE::CREATE))
-    {
+    if (!$zip->open($destination, ZIPARCHIVE::CREATE)) {
         return false;
     }
 
     // need file path to only contain forward slash
     $source = str_replace('\\', '/', realpath($source));
 
-    if (is_dir($source) === true)
-    {
+    if (is_dir($source) === true) {
         $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
 
-        foreach ($files as $file)
-        {
+        foreach ($files as $file) {
             $file = str_replace('\\', '/', $file);
 
             // Ignore "." and ".." folders
-            if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..')))
-            {
+            if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..'))) {
                 continue;
             }
 
             $file = realpath($file);
             $file = str_replace('\\', '/', $file); // realpath function gives pathnames with backslashes instead of forward slashes so replace them for string comparision with $source
 
-            if (is_dir($file) === true)
-            {
+            if (is_dir($file) === true) {
                 $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
-            }
-            else if (is_file($file) === true)
-            {
+            } else if (is_file($file) === true) {
                 $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
             }
         }
-    }
-    else if (is_file($source) === true)
-    {
+    } else if (is_file($source) === true) {
         $zip->addFromString(basename($source), file_get_contents($source));
     }
     $zip->close();

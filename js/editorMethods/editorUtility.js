@@ -837,6 +837,7 @@ function editUnit(e)
             $("#msm_editor_save").click(function(event) { 
                 //         prevents navigation to msmUnitForm.php
                 event.preventDefault();
+                reinitAllTitles();   
                 // enabling all input that was disabled to submit the form             
                 $("#msm_unit_short_title").removeAttr("readonly");
                 $("#msm_unit_description_input").removeAttr("readonly");
@@ -879,7 +880,7 @@ function editUnit(e)
  */
 function reinitAllTitles() 
 {
-    console.log("here?");
+    console.log("here");
     // switching the div displaying unit title to tinymce
     var unitTitle = $("div#msm_unit_title");
     if(unitTitle.length != 0)
@@ -911,8 +912,6 @@ function reinitAllTitles()
         
         $(this).replaceWith(inputTitle); 
         
-        console.log("id?: "+this.id);
-        
         if((this.id.match(/def/)) || (this.id.match(/theorem/)) || (this.id.match(/comment/)) || this.id.match(/extra/))
         {
             if(this.id.match(/theorem_part/)) // par theorem is the lowest level --> so title width is smaller
@@ -921,7 +920,6 @@ function reinitAllTitles()
             }
             else // for def/theorem/comment/extra information elemnts with title on right side and dropdown on left
             {
-                console.log("initEidotr?");
                 initTitleEditor(this.id, "26%");
             }
         }
@@ -1598,7 +1596,7 @@ function enableDragTitleToggle()
  * @param {string} currentElement         HTML ID of the container with overlay that the edit button was triggere from
  */
 function enableContentEditors(unitArray, currentElement)
-{ 
+{     
     var intromatch = /^copied_msm_intro-\d+$/;
     var bodymatch = /^copied_msm_body-\d+$/;
     var defmatch = /^copied_msm_def-\d+$/;
@@ -1606,8 +1604,18 @@ function enableContentEditors(unitArray, currentElement)
     var theoremmatch = /^copied_msm_theorem-\d+$/;  
     var extrainfomatch = /^copied_msm_extra_info-\d+$/;
     
-    // need to check that the main unit elements have divs displaying contents instead of active tinyMCE
-    if($("#"+currentElement).children(".msm_editor_content").length != 0)
+    // need to check that the main unit elements have divs displaying contents instead of active tinyMCE    
+    var hasTheorem = false;
+    // theorem does not have msm_editor_content as a direct child of structural elements
+    if(currentElement.match(theoremmatch))
+        {
+            var firstContent = $("#"+currentElement).find(".msm_theorem_statement_containers").first();            
+            if($(firstContent).children(".msm_editor_content").length != 0)
+            {
+                hasTheorem = true;
+            }
+        }        
+    if(($("#"+currentElement).children(".msm_editor_content").length != 0) || (hasTheorem))
     {
         if(currentElement.match(bodymatch))
         {
@@ -1627,6 +1635,7 @@ function enableContentEditors(unitArray, currentElement)
         }
         else if(currentElement.match(theoremmatch))
         {
+            console.log("theorem match");
             createTheoremText(currentElement, unitArray)
         }
         else if(currentElement.match(extrainfomatch))
@@ -1691,7 +1700,6 @@ function createTheoremText(element, unitInfo)
         
             // replace displayed theorem part to "editable" theorem part form
             var theoremPartInfo = $("#"+theoremStatementInfo[i].id).find(".msm_theorem_child");
-     
             for(var k=0; k < theoremPartInfo.length; k++)
             {
                 // when new part theorem is added by dragging before triggering the editUnit,
@@ -2312,7 +2320,6 @@ function cancelUnit(e)
                         
                         if(tinyMCE.getInstanceById("msm_unit_title") != null)
                         {
-                            console.log("removing tinymce");
                             tinyMCE.execCommand("mceRemoveControl", true, "msm_unit_title");        
                         }
             
@@ -2510,6 +2517,7 @@ function deleteOverlayElement(e)
                 $("#msm_editor_save").click(function(event) { 
                     //         prevents navigation to msmUnitForm.php
                     event.preventDefault();
+                    reinitAllTitles();   
                     // enabling all input that was disabled to submit the form
                     $("#msm_unit_short_title").removeAttr("readonly");
                     $("#msm_unit_description_input").removeAttr("readonly");
@@ -2581,7 +2589,7 @@ function allowDragnDrop()
         $("#msm_editor_save").click(function(event) { 
             //         prevents navigation to msmUnitForm.php
             event.preventDefault();
-            
+            reinitAllTitles();   
             $("#msm_unit_short_title").removeAttr("readonly");
             $("#msm_unit_description_input").removeAttr("readonly");
             $(".copied_msm_structural_element select").removeAttr("disabled");

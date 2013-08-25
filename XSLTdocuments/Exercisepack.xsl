@@ -13,17 +13,12 @@
 **************************************************************************
 **************************************************************************-->
 
-<!--
-* This XSLT document converts the legacy XML document with root element exercise.pack
-* to follow the new schema files (Compositor.xsd and Exercise.xsd in NewSchemas)
--->
-
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:compositor="Compositor"
-                xmlns:exe="http://webmath.math.ualberta.ca/v1/Exercise"
-                xmlns:xi="http://www.w3.org/2001/XInclude"
-                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                version="2.0">
+    xmlns:compositor="Compositor"
+    xmlns:exe="http://webmath.math.ualberta.ca/v1/Exercise"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.0">
     
     <xsl:import href="Quizpack.xsl"/>
     
@@ -33,15 +28,13 @@
     
     <xsl:template match="exe:exercise.pack">
         <xsl:element name="exercise.pack" namespace="Compositor">
-            <xsl:if test="./@id != ''">
-                <xsl:attribute name="id">
-                    <xsl:value-of select="./@id"/>
-                </xsl:attribute>
-            </xsl:if>
+        <xsl:if test="./@id != ''">
+            <xsl:attribute name="id">
+                <xsl:value-of select="./@id"/>
+            </xsl:attribute>
+        </xsl:if>
             <xsl:if test="./@xsi:schemaLocation">
-                <xsl:attribute name="xsi:schemaLocation">Compositor 
-                    <xsl:sequence select="resolve-uri('Compositor.xsd')"/>
-                </xsl:attribute>
+                <xsl:attribute name="xsi:schemaLocation">Compositor <xsl:sequence select="resolve-uri('Compositor.xsd')"/></xsl:attribute>
             </xsl:if>
             <xsl:if test="./@xi != ''">
                 <xsl:attribute name="xi">
@@ -53,7 +46,7 @@
                     <xsl:value-of select="./@xsi"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:apply-templates/>
+        <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
    
@@ -198,7 +191,16 @@
             </xsl:if>
             <xsl:if test="child::node()[name()='quiz']">
                 <xsl:apply-templates select="child::node()[name()='quiz']"/>
-            </xsl:if>           
+            </xsl:if>
+            
+            <!--xsl:if test="child::node()[name()='quiz']">
+                <xsl:for-each select="child::node()[name()='quiz']">
+                    <xsl:apply-templates select="."/>
+                    <xsl:element name="pilot.body" namespace="Compositor">
+                        <xsl:apply-templates select="child::node()[not(name()='quiz')]"/>
+                    </xsl:element>
+                </xsl:for-each>
+            </xsl:if-->
         </xsl:element>
     </xsl:template>
 </xsl:stylesheet>

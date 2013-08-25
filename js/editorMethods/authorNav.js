@@ -359,13 +359,22 @@ function showUnitPreview()
     
     $("#msm_child_order").val(childOrderString+urlParamInfo[1]);
     
-    var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
-    var editorTitleDivs = $("#msm_unit_form").find(".msm_editor_titles");
+    var idEdit = false;
+    
+    $("#msm_unit_form").find("textarea").each(function() {
+        if(typeof tinymce.get(this.id) !== "undefined")
+        {                
+            idEdit = true;
+        }
+    })
+    
+//    var editorDivs = $("#msm_unit_form").find(".msm_editor_content");
+//    var editorTitleDivs = $("#msm_unit_form").find(".msm_editor_titles");
       
     // editor is in display mode --> ie. no tinymce is activated
-    if((editorDivs.length > 0) && (editorTitleDivs.length > 0)) 
-    {  
-        var dataArray  = getDisabledData();
+    if(!idEdit) 
+    {          
+        var dataArray  = getDisabledData();     
         
         var subordinates = [];
         
@@ -575,11 +584,12 @@ function getDisabledData()
         dataArray["msm_unit_title"] = $("#msm_unit_title").html();
         
         $(".msm_unit_intro_title").each(function() {
+            console.log(this.id);
             processMathContent(this.id);
             dataArray[this.id] = $(this).html();
         });
         
-        $(".msm_intro_child_titles").each(function() {
+        $(".msm_intro_child_titles").each(function() {           
             processMathContent(this.id);
             dataArray[this.id] = $(this).html();
         });

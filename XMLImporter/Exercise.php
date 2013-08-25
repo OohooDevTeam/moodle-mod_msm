@@ -64,7 +64,7 @@ class Exercise extends Element
         $this->string_id = $DomElement->getAttribute('id');
         $this->difficulty = $DomElement->getAttribute('Difficulty');
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
-
+        
         // problem element can be a direct child of exercise or it could be a child of part.exercise which is a child of exercise
 
         foreach ($DomElement->childNodes as $child)

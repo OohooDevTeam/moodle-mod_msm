@@ -72,7 +72,7 @@ class ExportTable extends ExportElement
     {
         global $DB;
 
-        $tableCompRecord = $DB->get_record("msm_compositor", array("id" => compid));
+        $tableCompRecord = $DB->get_record("msm_compositor", array("id" => $compid));
         $tableUnitRecord = $DB->get_record("msm_table", array("id" => $tableCompRecord->unit_id));
 
         $this->id = $tableUnitRecord->id;
@@ -80,7 +80,7 @@ class ExportTable extends ExportElement
         $this->content = $tableUnitRecord->table_content;
         $this->class = $tableUnitRecord->table_class;
         $this->summary = $tableUnitRecord->table_summary;
-        $this->title = $tableUnitRecord->title;
+        $this->title = $tableUnitRecord->table_title;
 
         $childRecords = $DB->get_records("msm_compositor", array("parent_id" => $this->id), "prev_sibling_id");
 
