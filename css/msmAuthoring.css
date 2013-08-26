@@ -1005,6 +1005,10 @@ table.mceLayout
     cursor: pointer;
 }
 
+#msm_component_tab.ui-tabs .ui-tabs-nav li a {
+    padding: 5px 8px;
+}
+
 #msm_component_tab .ui-tabs-panel { 
     /*background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top; */
     
